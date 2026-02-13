@@ -6,7 +6,7 @@
 	set category = "Admin.Panels"
 
 	if(!SSticker.mode)
-		to_chat(mob, SPAN_WARNING("The round has not started yet."))
+		to_chat(mob, SPAN_WARNING("回合尚未开始。"))
 		return
 
 	if(modifiers_panel)

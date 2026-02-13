@@ -1,6 +1,6 @@
 /obj/item/mortar_shell
 	name = "\improper 80mm mortar shell"
-	desc = "An unlabeled 80mm mortar shell, probably a casing."
+	desc = "一枚未标记的80毫米迫击炮弹，可能是个弹壳。"
 	icon = 'icons/obj/structures/mortar.dmi'
 	icon_state = "mortar_ammo_cas"
 	item_icons = list(
@@ -31,7 +31,7 @@
 
 /obj/item/mortar_shell/he
 	name = "\improper 80mm high explosive mortar shell"
-	desc = "An 80mm mortar shell, loaded with a high explosive charge."
+	desc = "一枚80毫米迫击炮弹，装有高爆炸药。"
 	icon_state = "mortar_ammo_he"
 	item_state = "mortar_ammo_he"
 
@@ -40,7 +40,7 @@
 
 /obj/item/mortar_shell/frag
 	name = "\improper 80mm fragmentation mortar shell"
-	desc = "An 80mm mortar shell, loaded with a fragmentation charge."
+	desc = "一枚80毫米迫击炮弹，装有破片杀伤炸药。"
 	icon_state = "mortar_ammo_frag"
 	item_state = "mortar_ammo_frag"
 
@@ -51,7 +51,7 @@
 
 /obj/item/mortar_shell/incendiary
 	name = "\improper 80mm incendiary mortar shell"
-	desc = "An 80mm mortar shell, loaded with a Type B napalm charge. Perfect for long-range area denial."
+	desc = "一枚80毫米迫击炮弹，装有B型凝固汽油炸药。非常适合远距离区域封锁。"
 	icon_state = "mortar_ammo_inc"
 	item_state = "mortar_ammo_inc"
 	var/radius = 5
@@ -66,7 +66,7 @@
 
 /obj/item/mortar_shell/flare
 	name = "\improper 80mm flare/camera mortar shell"
-	desc = "An 80mm mortar shell, loaded with an illumination flare / camera combo, attached to a parachute."
+	desc = "一枚80毫米迫击炮弹，装有照明弹/摄像头组合装置，并附有降落伞。"
 	icon_state = "mortar_ammo_flr"
 	item_state = "mortar_ammo_flr"
 
@@ -77,7 +77,7 @@
 
 /obj/item/mortar_shell/custom
 	name = "\improper 80mm custom mortar shell"
-	desc = "An 80mm mortar shell."
+	desc = "一枚80毫米迫击炮弹。"
 	icon_state = "mortar_ammo_custom"
 	item_state = "mortar_ammo_custom_locked"
 	matter = list("metal" = 18750) //5 sheets
@@ -121,17 +121,17 @@
 
 /obj/item/mortar_shell/custom/attackby(obj/item/W as obj, mob/user)
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-		to_chat(user, SPAN_WARNING("You do not know how to tinker with [name]."))
+		to_chat(user, SPAN_WARNING("你不知道如何摆弄[name]。"))
 		return
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		if(!warhead)
-			to_chat(user, SPAN_NOTICE("[name] must contain a warhead to do that!"))
+			to_chat(user, SPAN_NOTICE("[name]必须装有弹头才能这么做！"))
 			return
 		if(locked)
-			to_chat(user, SPAN_NOTICE("You unlock [name]."))
+			to_chat(user, SPAN_NOTICE("你解锁了[name]。"))
 			icon_state = initial(icon_state) +"_unlocked"
 		else
-			to_chat(user, SPAN_NOTICE("You lock [name]."))
+			to_chat(user, SPAN_NOTICE("你锁上了[name]。"))
 			if(fuel && fuel.reagents.get_reagent_amount(fuel_type) >= fuel_requirement)
 				icon_state = initial(icon_state) +"_locked"
 			else
@@ -141,26 +141,26 @@
 		return
 	else if(istype(W,/obj/item/reagent_container/glass) && !locked)
 		if(fuel)
-			to_chat(user, SPAN_DANGER("The [name] already has a fuel container!"))
+			to_chat(user, SPAN_DANGER("[name]已经装有燃料容器了！"))
 			return
 		else
 			user.temp_drop_inv_item(W)
 			W.forceMove(src)
 			fuel = W
-			to_chat(user, SPAN_DANGER("You add [W] to [name]."))
+			to_chat(user, SPAN_DANGER("你将[W]装入[name]。"))
 			playsound(loc, 'sound/items/Screwdriver2.ogg', 25, 0, 6)
 	else if(istype(W,/obj/item/explosive/warhead/mortar) && !locked)
 		if(warhead)
-			to_chat(user, SPAN_DANGER("The [name] already has a warhead!"))
+			to_chat(user, SPAN_DANGER("[name]已经装有弹头了！"))
 			return
 		var/obj/item/explosive/warhead/mortar/det = W
 		if(det.assembly_stage < ASSEMBLY_LOCKED)
-			to_chat(user, SPAN_DANGER("The [W] is not secured!"))
+			to_chat(user, SPAN_DANGER("[W]未固定！"))
 			return
 		user.temp_drop_inv_item(W)
 		W.forceMove(src)
 		warhead = W
-		to_chat(user, SPAN_DANGER("You add [W] to [name]."))
+		to_chat(user, SPAN_DANGER("你将[W]装入[name]。"))
 		icon_state = initial(icon_state) +"_unlocked"
 		playsound(loc, 'sound/items/Screwdriver2.ogg', 25, 0, 6)
 
@@ -170,7 +170,7 @@
 
 /obj/item/mortar_shell/attack_hand(mob/user)
 	if(burning)
-		to_chat(user, SPAN_DANGER("[src] is on fire and might explode!"))
+		to_chat(user, SPAN_DANGER("[src]着火了，可能会爆炸！"))
 		return
 	return ..()
 
@@ -199,7 +199,7 @@
 
 /obj/item/mortar_shell/proc/handle_fire(cause_data)
 	if(can_explode())
-		visible_message(SPAN_WARNING("[src] catches on fire and starts cooking off! It's gonna blow!"))
+		visible_message(SPAN_WARNING("[src]着火并开始走火！要爆炸了！"))
 		anchored = TRUE // don't want other explosions launching it elsewhere
 		var/datum/effect_system/spark_spread/sparks = new()
 		sparks.set_up(n = 10, loca = loc)
@@ -215,7 +215,7 @@
 
 /obj/structure/closet/crate/secure/mortar_ammo
 	name = "\improper M402 mortar ammo crate"
-	desc = "A crate containing live mortar shells with various payloads. DO NOT DROP. KEEP AWAY FROM FIRE SOURCES."
+	desc = "一个装有各种有效载荷的实弹迫击炮弹的板条箱。请勿掉落。远离火源。"
 	icon = 'icons/obj/structures/mortar.dmi'
 	icon_state = "secure_locked_mortar"
 	icon_opened = "secure_open_mortar"
@@ -244,7 +244,7 @@
 
 /obj/structure/closet/crate/secure/mortar_ammo/mortar_kit
 	name = "\improper M402 mortar kit"
-	desc = "A crate containing a basic set of a mortar and some shells, to get an engineer started."
+	desc = "一个装有迫击炮基础套装和一些炮弹的板条箱，供工程师入门使用。"
 	var/jtac_key_type = /obj/item/device/encryptionkey/jtac
 
 /obj/structure/closet/crate/secure/mortar_ammo/mortar_kit/Initialize()

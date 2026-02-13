@@ -12,7 +12,7 @@
 	can_be_shield_blocked = TRUE
 
 /datum/action/xeno_action/onclick/lurker_invisibility
-	name = "Turn Invisible"
+	name = "隐形"
 	action_icon_state = "lurker_invisibility"
 	macro_path = /datum/action/xeno_action/verb/verb_lurker_invisibility
 	ability_primacy = XENO_PRIMARY_ACTION_2
@@ -26,7 +26,7 @@
 
 // tightly coupled 'buff next slash' action
 /datum/action/xeno_action/onclick/lurker_assassinate
-	name = "Crippling Strike"
+	name = "致残打击"
 	action_icon_state = "lurker_inject_neuro"
 	macro_path = /datum/action/xeno_action/verb/verb_crippling_strike
 	ability_primacy = XENO_PRIMARY_ACTION_3
@@ -39,7 +39,7 @@
 // VAMP LURKER ABILITIES
 
 /datum/action/xeno_action/activable/pounce/rush
-	name = "Rush"
+	name = "突进"
 	action_icon_state = "pounce"
 	action_text = "rush"
 	macro_path = /datum/action/xeno_action/verb/verb_rush
@@ -54,7 +54,7 @@
 	freeze_self = FALSE
 
 /datum/action/xeno_action/activable/flurry
-	name = "Flurry"
+	name = "连击"
 	action_icon_state = "rav_spike"
 	macro_path = /datum/action/xeno_action/verb/verb_flurry
 	ability_primacy = XENO_PRIMARY_ACTION_2
@@ -62,7 +62,7 @@
 	xeno_cooldown = 3 SECONDS
 
 /datum/action/xeno_action/activable/tail_jab
-	name = "Tail Jab"
+	name = "尾刺"
 	action_icon_state = "prae_pierce"
 	macro_path = /datum/action/xeno_action/verb/verb_tail_jab
 	ability_primacy = XENO_PRIMARY_ACTION_3
@@ -70,7 +70,7 @@
 	xeno_cooldown = 7 SECONDS
 
 /datum/action/xeno_action/activable/headbite
-	name = "Headbite"
+	name = "噬首"
 	action_icon_state = "headbite"
 	macro_path = /datum/action/xeno_action/verb/verb_headbite
 	ability_primacy = XENO_PRIMARY_ACTION_4

@@ -108,14 +108,14 @@ Contains most of the procs that are called when a mob is attacked by something
 	//IF there is an override, use that, otherwise, check if selected zone is valid, if it is, use that, otherwise use chest
 
 	if(!target_zone) //this should NEVER happen
-		visible_message(SPAN_DANGER("[user] misses [src] with \the [I]!"), null, null, 5)
+		visible_message(SPAN_DANGER("[user]用\the [I]攻击[src]但失手了！"), null, null, 5)
 		return FALSE
 
 	var/obj/limb/affecting = get_limb(target_zone)
 	if (!affecting)
 		return FALSE
 	if(affecting.status & LIMB_DESTROYED)
-		to_chat(user, "What [affecting.display_name]?")
+		to_chat(user, "什么[affecting.display_name]？")
 		return FALSE
 	var/hit_area = affecting.display_name
 
@@ -123,9 +123,9 @@ Contains most of the procs that are called when a mob is attacked by something
 		return FALSE
 
 	if(LAZYLEN(I.attack_verb))
-		visible_message(SPAN_DANGER("<B>[src] has been [pick(I.attack_verb)] in the [hit_area] with [I.name] by [user]!</B>"), null, null, 5)
+		visible_message(SPAN_DANGER("<B>[src]的[hit_area]被[user]用[I.name][pick(I.attack_verb)]了！</B>"), null, null, 5)
 	else
-		visible_message(SPAN_DANGER("<B>[src] has been attacked in the [hit_area] with [I.name] by [user]!</B>"), null, null, 5)
+		visible_message(SPAN_DANGER("<B>[src]的[hit_area]被[user]用[I.name]攻击了！</B>"), null, null, 5)
 
 	var/armor = getarmor(affecting, ARMOR_MELEE)
 
@@ -207,7 +207,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	if (throw_mode && can_catch && !get_active_hand() && cur_speed <= SPEED_VERY_FAST && \
 		!is_mob_incapacitated() && isturf(O.loc) && put_in_active_hand(O)
 	)
-		visible_message(SPAN_WARNING("[src] catches [O]!"), null, null, 5)
+		visible_message(SPAN_WARNING("[src]接住了[O]！"), null, null, 5)
 		toggle_throw_mode(THROW_MODE_OFF)
 		return
 
@@ -235,7 +235,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	var/obj/limb/affecting = get_limb(zone)
 	var/hit_area = affecting.display_name
 
-	src.visible_message(SPAN_DANGER("[src] has been hit in the [hit_area] by [O]."), null, null, 5)
+	src.visible_message(SPAN_DANGER("[src]的[hit_area]被[O]击中了。"), null, null, 5)
 
 	var/armor = getarmor(affecting, ARMOR_MELEE)
 
@@ -329,4 +329,4 @@ Contains most of the procs that are called when a mob is attacked by something
 			if(HAS_TRAIT(src, TRAIT_SUPER_STRONG))
 				resist_modifier = 0.25
 			next_move_slowdown = next_move_slowdown + (SLOWDOWN_AMT_GREENFIRE * resist_modifier)
-			to_chat(src, SPAN_DANGER("The viscous napalm clings to your limbs as you struggle to move through the flames!"))
+			to_chat(src, SPAN_DANGER("粘稠的凝固汽油粘附在你的四肢上，你在火焰中艰难移动！"))

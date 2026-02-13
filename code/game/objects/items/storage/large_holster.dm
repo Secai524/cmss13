@@ -2,7 +2,7 @@
 
 /obj/item/storage/large_holster
 	name = "\improper Rifle Holster"
-	desc = "Holster."
+	desc = "枪套。"
 	icon = 'icons/obj/items/storage/holsters.dmi'
 	icon_state = ""
 	w_class = SIZE_LARGE
@@ -64,7 +64,7 @@
 
 /obj/item/storage/large_holster/m37
 	name = "\improper L44 shotgun scabbard"
-	desc = "A large leather holster fitted for USCM-issue shotguns. It has harnesses that allow it to be secured to the back for easy storage."
+	desc = "一个为USCM制式霰弹枪设计的大型皮革枪套。配有背带，可固定在背部以便存放。"
 	icon_state = "m37_holster"
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_map/jungle.dmi'
 	item_icons = list(
@@ -103,7 +103,7 @@
 
 /obj/item/storage/large_holster/machete
 	name = "\improper H5 pattern M2132 machete scabbard"
-	desc = "A large leather scabbard used to carry a M2132 machete. It can be strapped to the back or the armor."
+	desc = "一个用于携带M2132砍刀的大型皮革刀鞘。可固定在背部或护甲上。"
 	icon_state = "machete_holster"
 	flags_equip_slot = SLOT_WAIST|SLOT_BACK
 	can_hold = list(/obj/item/weapon/sword/machete)
@@ -120,7 +120,7 @@
 
 /obj/item/storage/large_holster/machete/arnold
 	name = "\improper QH20 pattern M2100 custom machete scabbard"
-	desc = "A large leather scabbard used to carry a M2100 \"Ngájhe\" machete. It can be strapped to the back or the armor."
+	desc = "一个用于携带M2100 \"Ngájhe\" machete. It can be strapped to the back or the armor."
 	icon_state = "arnold-machete-pouch"
 	flags_equip_slot = SLOT_WAIST|SLOT_BACK
 	can_hold = list(/obj/item/weapon/sword/machete)
@@ -130,7 +130,7 @@
 
 /obj/item/storage/large_holster/machete/smartgunner
 	name = "\improper M56 harness machete scabbard"
-	desc = "A scabbard that connects to the M56 combat harness for carrying a M2132 machete."
+	desc = "一个可连接到M56战斗背带以携带M2132砍刀的刀鞘。"
 	icon_state = "smartgun_machete_holster"
 	flags_equip_slot = SLOT_BACK
 	flags_item = SMARTGUNNER_BACKPACK_OVERRIDE
@@ -144,7 +144,7 @@
 
 	if(!user.wear_suit || !(user.wear_suit.flags_inventory & SMARTGUN_HARNESS))
 		if(!disable_warning)
-			to_chat(equipping_mob, SPAN_WARNING("You can't equip [src] without a harness."))
+			to_chat(equipping_mob, SPAN_WARNING("没有背带，你无法装备[src]。"))
 		return FALSE
 
 /obj/item/storage/large_holster/machete/smartgunner/full/fill_preset_inventory()
@@ -152,7 +152,7 @@
 
 /obj/item/storage/large_holster/katana
 	name = "\improper katana scabbard"
-	desc = "A large, vibrantly colored katana scabbard used to carry a Japanese sword. It can be strapped to the back or worn at the belt. Because of the sturdy wood casing of the scabbard, it makes an okay defensive weapon in a pinch."
+	desc = "一个色彩鲜艳的大型武士刀刀鞘，用于携带日本刀。可固定在背部或系在腰带上。由于其坚固的木制外壳，在紧急情况下也可作为凑合的防御武器。"
 	icon_state = "katana_holster"
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/holster.dmi',
@@ -169,8 +169,8 @@
 	new /obj/item/weapon/sword/katana(src)
 
 /obj/item/storage/large_holster/ceremonial_sword
-	name = "ceremonial sword scabbard"
-	desc = "A large, old-styled scabbard used to carry a ceremonial sword."
+	name = "仪仗剑鞘"
+	desc = "一个用于携带仪仗剑的大型旧式刀鞘。"
 	icon_state = "ceremonial_sword_holster"//object icon is duplicate of katana holster, needs new icon at some point.
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/scabbards.dmi',
@@ -186,7 +186,7 @@
 
 /obj/item/storage/large_holster/dragon_katana
 	name = "\improper dragon katana scabbard"
-	desc = "A large, cherry colored katana scabbard with an illustration of a dragon on it. It can be strapped to the back or worn at the belt. Because of the sturdy wood casing of the scabbard, it makes an okay defensive weapon in a pinch."
+	desc = "一个樱桃色的大型武士刀刀鞘，上面绘有龙的图案。可固定在背部或系在腰带上。由于其坚固的木制外壳，在紧急情况下也可作为凑合的防御武器。"
 	icon_state = "dragon_katana_holster"
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/holster.dmi',
@@ -204,7 +204,7 @@
 
 /obj/item/storage/large_holster/m39
 	name = "\improper M276 pattern M39 holster rig"
-	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This holster features a larger frame and stiff backboard to support a submachinegun. It's designed for the M39, but the clips are adjustable enough to fit most compact submachineguns. Due to its unorthodox design, it isn't a very common sight, and is only specially issued."
+	desc = "M276是USCM的标准负重装备。它由一个带有各种卡扣的模块化腰带组成。此枪套采用更大的框架和硬质背板以支撑冲锋枪。专为M39设计，但其卡扣可调节以适应大多数紧凑型冲锋枪。由于其非正统的设计，并不常见，仅特殊配发。"
 	icon_state = "m39_holster"
 	icon = 'icons/obj/items/clothing/belts/belts.dmi'
 	flags_equip_slot = SLOT_WAIST
@@ -270,7 +270,7 @@
 
 /obj/item/storage/large_holster/fuelpack
 	name = "\improper Broiler-T flexible refueling system"
-	desc = "A specialized back harness that carries the Broiler-T flexible refueling system. Designed by and for USCM Pyrotechnicians."
+	desc = "一个专门用于携带Broiler-T柔性加油系统的背部背带。由USCM火焰技术兵设计并为其所用。"
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_map/jungle.dmi'
 	icon_state = "flamethrower_broiler"
 	flags_atom = FPRINT|CONDUCT
@@ -341,7 +341,7 @@
 	..()
 
 // Get the right onmob icon when we have flamer holstered.
-/obj/item/storage/large_holster/fuelpack/get_mob_overlay(mob/user_mob, slot, default_bodytype = "Default")
+/obj/item/storage/large_holster/fuelpack/get_mob_overlay(mob/user_mob, slot, default_bodytype = "默认")
 	var/image/ret = ..()
 	if(slot == WEAR_BACK)
 		if(length(contents))
@@ -359,15 +359,15 @@
 		return FALSE
 
 	if(user.back != src)
-		to_chat(user, SPAN_WARNING("[src] must be equipped before you can switch types."))
+		to_chat(user, SPAN_WARNING("必须先装备[src]才能切换类型。"))
 		return
 
 	if(!linked_flamer)
-		to_chat(user, SPAN_WARNING("An incinerator unit must be linked in order to switch fuel types."))
+		to_chat(user, SPAN_WARNING("焚烧器必须连接至单位才能切换燃料类型。"))
 		return
 
 	if(user.get_active_hand() != linked_flamer)
-		to_chat(user, SPAN_WARNING("You must be holding [linked_flamer] to use [src]."))
+		to_chat(user, SPAN_WARNING("你必须手持[linked_flamer]才能使用[src]。"))
 		return
 
 	if(!active_fuel)
@@ -386,7 +386,7 @@
 	for(var/datum/action/action_added as anything in actions)
 		action_added.update_button_icon()
 
-	to_chat(user, "You switch the fuel tank to <b>[active_fuel.caliber]</b>")
+	to_chat(user, "你将燃料罐切换为<b>[active_fuel.caliber]</b>")
 	playsound(src, 'sound/machines/click.ogg', 25, TRUE)
 	linked_flamer.current_mag = active_fuel
 	linked_flamer.update_icon()
@@ -394,7 +394,7 @@
 	return TRUE
 
 /obj/item/storage/large_holster/fuelpack/verb/toggle_fuel()
-	set name = "Toggle Fuel Type"
+	set name = "切换燃料类型"
 	set desc = "Toggle between the fuel types."
 	set category = "Pyro"
 	set src in usr
@@ -428,8 +428,8 @@
 	else
 		fuel.forceMove(get_turf(user))
 		fuel = new_fuel
-	visible_message("[user] swaps out the fuel tank in [src].","You swap out the fuel tank in [src] and drop the old one.")
-	to_chat(user, "The newly inserted [new_fuel.caliber] contains: [floor(new_fuel.get_ammo_percent())]% fuel.")
+	visible_message("[user]更换了[src]中的燃料罐。","You swap out the fuel tank in [src] and drop the old one.")
+	to_chat(user, "新装入的[new_fuel.caliber]含有：[floor(new_fuel.get_ammo_percent())]%燃料。")
 	user.temp_drop_inv_item(new_fuel)
 	new_fuel.moveToNullspace() //necessary to not confuse the storage system
 	playsound(src, 'sound/machines/click.ogg', 25, TRUE)
@@ -455,7 +455,7 @@
 
 /datum/action/item_action/specialist/toggle_fuel/New(mob/living/user, obj/item/holder)
 	..()
-	name = "Toggle Fuel Type"
+	name = "切换燃料类型"
 	button.name = name
 	update_button_icon()
 
@@ -491,7 +491,7 @@
 
 /obj/item/storage/belt/gun/brutepack
 	name = "\improper M271A2 Pattern Launcher Rig"
-	desc = "A special-issue harness designed to allow the user to freely and securely holster a M6H-BRUTE launcher system on their back without impeding movement, while also having several other integrated storage packs for additional ammo and equipment."
+	desc = "一种特制背带，旨在让使用者能在背部自由且安全地携带M6H-BRUTE发射器系统而不妨碍行动，同时集成了多个其他储物包用于存放额外弹药和装备。"
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
 	icon_state = "bruterig"
 	map_specific_decoration = FALSE

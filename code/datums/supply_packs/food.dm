@@ -1,7 +1,7 @@
 //Food.Regrouping all the ASRS crate related to food here.
 // crate of random ingredient that you can buy in vendor in kitchen
 /datum/supply_packs/ingredient
-	name = "surplus boxes of ingredients(x6 boxes)"
+	name = "剩余原料箱 (x6箱)"
 	randomised_num_contained = 6
 	contains = list(
 		/obj/item/storage/fancy/egg_box,
@@ -44,7 +44,7 @@
 //all the finish snacks.
 
 /datum/supply_packs/donuts
-	name = "box of donuts (x5)"
+	name = "甜甜圈盒 (x5)"
 	contains = list(
 		/obj/item/storage/donut_box,
 		/obj/item/storage/donut_box,
@@ -54,11 +54,11 @@
 	)
 	cost = 10
 	containertype = /obj/structure/closet/crate/supply
-	containername = "box of donuts (x5)"
+	containername = "甜甜圈盒 (x5)"
 	group = "Food"
 
 /datum/supply_packs/mre
-	name = "USCM MRE crate(x2)"
+	name = "USCM 即食口粮箱 (x2)"
 	contains = list(
 		/obj/item/ammo_box/magazine/misc/mre,
 		/obj/item/ammo_box/magazine/misc/mre,
@@ -69,7 +69,7 @@
 	group = "Food"
 
 /datum/supply_packs/pizzas
-	name = "pizza ready-to-eat (x3)"
+	name = "即食披萨 (x3)"
 	contains = list(
 		/obj/item/pizzabox/mystery/stack,
 	)

@@ -1,7 +1,7 @@
 GLOBAL_LIST_EMPTY(item_cleanup_list)
 
 SUBSYSTEM_DEF(item_cleanup)
-	name = "Item Cleanup"
+	name = "物品清理"
 	wait = 10 MINUTES //should be adjusted for WO
 	var/start_processing_time = 35 MINUTES //should be adjusted for WO
 	var/percentage_of_garbage_to_delete = 0.5 //should be adjusted for WO

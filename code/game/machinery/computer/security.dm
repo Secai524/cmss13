@@ -1,8 +1,8 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
 /obj/structure/machinery/computer/secure_data//TODO:SANITY
-	name = "Security Records"
-	desc = "Used to view and edit personnel's security records."
+	name = "安全记录"
+	desc = "用于查看和编辑人员的安全记录。"
 	icon_state = "security"
 	req_access = list(ACCESS_MARINE_BRIG)
 	circuit = /obj/item/circuitboard/computer/secure_data
@@ -15,13 +15,13 @@
 	if(istype(O, /obj/item/device/clue_scanner) && !scanner)
 		var/obj/item/device/clue_scanner/S = O
 		if(!S.print_list)
-			to_chat(user, SPAN_WARNING("There are no prints stored in \the [S]!"))
+			to_chat(user, SPAN_WARNING("\the [S]中没有存储任何指纹！"))
 			return
 
 		if(usr.drop_held_item())
 			O.forceMove(src)
 			scanner = O
-			to_chat(user, SPAN_NOTICE("You insert [O]."))
+			to_chat(user, SPAN_NOTICE("你插入了[O]。"))
 			playsound(loc, 'sound/machines/scanning.ogg', 15, 1)
 
 	. = ..()
@@ -87,21 +87,21 @@
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
 		// Open TGUI with records data
-		ui = new(user, src, "SecurityRecords", "Security Records")
+		ui = new(user, src, "SecurityRecords", "安全记录")
 		ui.open()
 
 //Someone needs to break down the dat += into chunks instead of long ass lines.
 /obj/structure/machinery/computer/secure_data/attack_hand(mob/user as mob)
 	if(..() || inoperable())
-		to_chat(user, SPAN_INFO("It does not appear to be working."))
+		to_chat(user, SPAN_INFO("它似乎无法正常工作。"))
 		return
 
 	if(!allowed(usr))
-		to_chat(user, SPAN_WARNING("Access denied."))
+		to_chat(user, SPAN_WARNING("权限被拒绝。"))
 		return
 
 	if(!is_mainship_level(z))
-		to_chat(user, SPAN_DANGER("<b>Unable to establish a connection</b>: \black You're too far away from the station!"))
+		to_chat(user, SPAN_DANGER("<b>无法建立连接</b>: \black 你离空间站太远了！"))
 		return
 
 	tgui_interact(user)
@@ -134,10 +134,10 @@
 					R.fields["age"] = rand(5, 85)
 					msg_admin_niche("The security record age of [R.fields["name"]] was scrambled!")
 				if(4)
-					R.fields["criminal"] = pick("None", "*Arrest*", "Incarcerated", "Released", "Suspect", "NJP")
+					R.fields["criminal"] = pick("无", "*Arrest*", "Incarcerated", "Released", "Suspect", "NJP")
 					msg_admin_niche("The security record criminal status of [R.fields["name"]] was scrambled!")
 				if(5)
-					R.fields["p_stat"] = pick("Inactive", "Active", "Unknown")
+					R.fields["p_stat"] = pick("Inactive", "Active", "未知")
 					msg_admin_niche("The security record physical state of [R.fields["name"]] was scrambled!")
 				if(6)
 					R.fields["m_stat"] = pick("*Insane*", "*Unstable*", "*Watch*", "Stable")
@@ -161,7 +161,7 @@
 
 	var/mob/user = ui.user
 	if(!allowed(user))
-		to_chat(user, SPAN_WARNING("Access denied."))
+		to_chat(user, SPAN_WARNING("权限被拒绝。"))
 		return
 
 	playsound(src, get_sfx("terminal_button"), 25, FALSE)
@@ -172,14 +172,14 @@
 			var/id = params["id"]
 
 			if(!id)
-				tgui_alert(user,"Invalid record ID.")
+				tgui_alert(user,"无效记录ID。")
 				return
 
 			// Find the corresponding general record
 			var/datum/data/record/general_record = find_record("general", id)
 
 			if(!general_record)
-				tgui_alert(user,"Record not found.")
+				tgui_alert(user,"未找到记录。")
 				return
 
 			var/icon/photo_icon = new /icon('icons/misc/buildmode.dmi', "buildhelp")
@@ -202,19 +202,19 @@
 
 			var/validation_error = validate_field(field, value, user, FALSE)
 			if (validation_error)
-				to_chat(user, SPAN_WARNING("Console returns error with buzzing sound: [validation_error]"))
+				to_chat(user, SPAN_WARNING("控制台发出蜂鸣声并返回错误：[validation_error]"))
 				playsound(loc, 'sound/machines/buzz-two.ogg', 15, 1)
 				return
 
 			if(!id || !field)
-				alert(user, "Invalid record ID or field.")
+				alert(user, "无效记录ID或字段。")
 				return
 
 			var/is_general_field = copytext(field, 1, 9) == "general_"
 			var/is_security_field = copytext(field, 1, 10) == "security_"
 
 			if(!is_general_field && !is_security_field)
-				tgui_alert(user, "Invalid field prefix.")
+				tgui_alert(user, "无效字段前缀。")
 				return
 
 			// Remove the prefix to map to the original field name
@@ -238,7 +238,7 @@
 					for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
 						H.sec_hud_set_security_status()
 			else
-				tgui_alert(user, "Record or associated field not found.")
+				tgui_alert(user, "未找到记录或关联字段。")
 				return
 
 
@@ -251,14 +251,14 @@
 			var/comment = params["comment"]
 
 			if (!id || !comment || length(trim(comment)) == 0)
-				to_chat(user, SPAN_WARNING("Invalid input. Ensure both ID and comment are provided."))
+				to_chat(user, SPAN_WARNING("输入无效。请确保同时提供ID和评论。"))
 				return
 
 			// Locate the security record
 			var/datum/data/record/security_record = find_record("security", id)
 
 			if (!security_record)
-				to_chat(user, SPAN_WARNING("Record not found."))
+				to_chat(user, SPAN_WARNING("未找到记录。"))
 				return
 
 			var/comment_id = length(security_record.fields["comments"] || list()) + 1
@@ -278,7 +278,7 @@
 			else
 				security_record.fields["comments"]["[comment_id]"] = new_comment
 
-			to_chat(user, SPAN_NOTICE("Comment added successfully."))
+			to_chat(user, SPAN_NOTICE("评论添加成功。"))
 			msg_admin_niche("[key_name_admin(user)] added security comment.")
 
 			return
@@ -287,23 +287,23 @@
 			var/comment_key = params["key"]
 
 			if (!id || !comment_key)
-				to_chat(user, SPAN_WARNING("Invalid input. Ensure both ID and comment key are provided."))
+				to_chat(user, SPAN_WARNING("输入无效。请确保同时提供ID和评论键。"))
 				return
 
 			// Locate the security record
 			var/datum/data/record/security_record = find_record("security", id)
 
 			if (!security_record)
-				to_chat(user, SPAN_WARNING("Record not found."))
+				to_chat(user, SPAN_WARNING("未找到记录。"))
 				return
 
 			if (!security_record.fields["comments"] || !security_record.fields["comments"][comment_key])
-				to_chat(user, SPAN_WARNING("Comment not found."))
+				to_chat(user, SPAN_WARNING("未找到评论。"))
 				return
 
 			var/comment = security_record.fields["comments"][comment_key]
 			if (comment["deleted_by"])
-				to_chat(user, SPAN_WARNING("This comment is already deleted."))
+				to_chat(user, SPAN_WARNING("此评论已被删除。"))
 				return
 
 			var/mob/living/carbon/human/U = user
@@ -312,7 +312,7 @@
 
 			security_record.fields["comments"][comment_key] = comment
 
-			to_chat(user, SPAN_NOTICE("Comment deleted successfully."))
+			to_chat(user, SPAN_NOTICE("评论删除成功。"))
 			msg_admin_niche("[key_name_admin(user)] deleted security comment.")
 
 		//* Records maintenance actions
@@ -326,12 +326,12 @@
 
 		if ("new_general_record")
 			CreateGeneralRecord()
-			to_chat(user, SPAN_NOTICE("You successfully created new general record."))
+			to_chat(user, SPAN_NOTICE("你成功创建了新的通用记录。"))
 			msg_admin_niche("[key_name_admin(user)] created new general record.")
 
 		if ("delete_general_record")
 			if(!check_player_paygrade(user,list(GLOB.uscm_highcom_paygrades))){
-				to_chat(user, SPAN_WARNING("You have no permission to do that."))
+				to_chat(user, SPAN_WARNING("你没有权限执行此操作。"))
 				return
 			}
 
@@ -339,7 +339,7 @@
 			var/datum/data/record/general_record = find_record("general", id)
 
 			if (!general_record)
-				to_chat(user, SPAN_WARNING("Record not found."))
+				to_chat(user, SPAN_WARNING("未找到记录。"))
 				return
 
 			var/record_name = general_record.fields["name"]
@@ -353,9 +353,9 @@
 			if (!printing)
 				printing = TRUE
 				if (!scanner || !scanner.print_list)
-					to_chat(user, SPAN_WARNING("No scanner data found."))
+					to_chat(user, SPAN_WARNING("未找到扫描仪数据。"))
 					return
-				to_chat(user, SPAN_NOTICE("Printing report."))
+				to_chat(user, SPAN_NOTICE("正在打印报告。"))
 				sleep(15)
 				playsound(loc, 'sound/machines/twobeep.ogg', 15, 1)
 
@@ -368,16 +368,16 @@
 
 		if ("clear_fingerprints")
 			if (!scanner)
-				to_chat(user, SPAN_WARNING("No scanner found."))
+				to_chat(user, SPAN_WARNING("未找到扫描仪。"))
 				return
 
 			QDEL_NULL_LIST(scanner.print_list)
 			scanner.update_icon()
-			to_chat(user, SPAN_NOTICE("Fingerprints cleared from the scanner."))
+			to_chat(user, SPAN_NOTICE("扫描仪指纹已清除。"))
 
 		if("eject_fingerprint_scanner")
 			if (!scanner)
-				to_chat(user, SPAN_WARNING("No scanner found."))
+				to_chat(user, SPAN_WARNING("未找到扫描仪。"))
 				return
 
 			scanner.update_icon()
@@ -395,9 +395,9 @@
 				var/datum/data/record/security_record = find_record("security", id)
 
 				if (!general_record)
-					to_chat(user, SPAN_WARNING("Record not found."))
+					to_chat(user, SPAN_WARNING("未找到记录。"))
 					return
-				to_chat(user, SPAN_NOTICE("Printing record."))
+				to_chat(user, SPAN_NOTICE("正在打印记录。"))
 				sleep(15)
 				playsound(loc, 'sound/machines/print.ogg', 15, 1)
 
@@ -409,21 +409,21 @@
 			var/photo_profile = params["photo_profile"]
 			var/icon/img = get_photo(user)
 			if(!img)
-				to_chat(user, SPAN_WARNING("You are currently not holding any photo."))
+				to_chat(user, SPAN_WARNING("你目前没有手持任何照片。"))
 				return
 
 			// Locate the general record
 			var/datum/data/record/general_record = find_record("general", id)
 
 			if (!general_record)
-				to_chat(user, SPAN_WARNING("Record not found."))
+				to_chat(user, SPAN_WARNING("未找到记录。"))
 				return
 
 			general_record.fields["photo_[photo_profile]"] = img
 			ui.send_update(list(
 				"photo_[photo_profile]" = icon2html(img, user.client, sourceonly=TRUE),
 			))
-			to_chat(user, SPAN_NOTICE("You successfully updated record [photo_profile] photo."))
+			to_chat(user, SPAN_NOTICE("你成功更新了记录[photo_profile]的照片。"))
 			msg_admin_niche("[key_name_admin(user)] updated record photo of [general_record.fields["name"]].")
 
 /obj/structure/machinery/computer/secure_data/proc/validate_field(field, value, mob/user = usr, strict_mode = FALSE)
@@ -454,7 +454,7 @@
 		"security_criminal" = list(
 			"type" = "string",
 			"required" = TRUE,
-			"allowed_values" = list("*Arrest*", "Incarcerated", "Released", "Suspect", "NJP", "None"),
+			"allowed_values" = list("*Arrest*", "Incarcerated", "Released", "Suspect", "NJP", "无"),
 		),
 		"security_comments" = list(
 			"type" = "string",

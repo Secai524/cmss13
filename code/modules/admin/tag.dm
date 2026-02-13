@@ -6,19 +6,19 @@
  */
 /datum/admins/proc/add_tagged_datum(datum/target_datum)
 	if(LAZYFIND(tagged_datums, target_datum))
-		to_chat(owner, SPAN_WARNING("[target_datum] is already tagged!"))
+		to_chat(owner, SPAN_WARNING("[target_datum] 已被标记！"))
 		return
 
 	LAZYADD(tagged_datums, target_datum)
 	RegisterSignal(target_datum, COMSIG_PARENT_QDELETING, PROC_REF(handle_tagged_del), override = TRUE)
-	to_chat(owner, SPAN_NOTICE("[target_datum] has been tagged."))
+	to_chat(owner, SPAN_NOTICE("[target_datum] 已被标记。"))
 
 /// Get ahead of the curve with deleting
 /datum/admins/proc/handle_tagged_del(datum/source)
 	SIGNAL_HANDLER
 
 	if(owner)
-		to_chat(owner, SPAN_BOLDNOTICE("Tagged datum [source] ([source.type]) has been deleted."))
+		to_chat(owner, SPAN_BOLDNOTICE("已标记数据 [source] ([source.type]) 已被删除。"))
 	remove_tagged_datum(source, silent = TRUE)
 
 /**
@@ -35,9 +35,9 @@
 	if(LAZYFIND(tagged_datums, target_datum))
 		LAZYREMOVE(tagged_datums, target_datum)
 		if(!silent)
-			to_chat(owner, SPAN_NOTICE("[target_datum] has been untagged."))
+			to_chat(owner, SPAN_NOTICE("[target_datum] 的标记已被移除。"))
 	else if(!silent)
-		to_chat(owner, SPAN_WARNING("[target_datum] was not already tagged."))
+		to_chat(owner, SPAN_WARNING("[target_datum] 先前并未被标记。"))
 
 /// Quick define for readability
 #define TAG_DEL(X) "<b>(<A href='byond://?src=[REF(src)];[HrefToken(forceGlobal = TRUE)];del_tag=[REF(X)]'>UNTAG</a>)</b>"
@@ -58,7 +58,7 @@
 	if (!istype(src, /datum/admins))
 		src = usr.client.admin_holder
 	if (!istype(src, /datum/admins))
-		to_chat(usr, "Error: you are not an admin!", confidential = TRUE)
+		to_chat(usr, "错误：你不是管理员！", confidential = TRUE)
 		return
 
 	var/index = 0

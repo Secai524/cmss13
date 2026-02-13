@@ -3,7 +3,7 @@
 
 #define MAXCOIL 30
 /obj/item/stack/cable_coil
-	name = "cable coil"
+	name = "电缆卷"
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
@@ -13,7 +13,7 @@
 	amount = MAXCOIL
 	max_amount = MAXCOIL
 	color = COLOR_RED
-	desc = "A coil of power cable."
+	desc = "一卷电力电缆。"
 	throwforce = 10
 	w_class = SIZE_SMALL
 	throw_speed = SPEED_SLOW
@@ -22,7 +22,7 @@
 	flags_equip_slot = SLOT_WAIST
 	item_state = "coil"
 	attack_verb = list("whipped", "lashed", "disciplined", "flogged")
-	stack_id = "cable coil"
+	stack_id = "电缆卷"
 	attack_speed = 3
 	ground_offset_x = 2
 	ground_offset_y = 2
@@ -40,13 +40,13 @@
 		color = pick(COLOR_RED, COLOR_BLUE, COLOR_GREEN, COLOR_ORANGE, COLOR_WHITE, COLOR_MAGENTA, COLOR_YELLOW, COLOR_CYAN)
 	if(amount == 1)
 		icon_state = "coil1"
-		name = "cable piece"
+		name = "电缆段"
 	else if(amount == 2)
 		icon_state = "coil2"
-		name = "cable piece"
+		name = "电缆段"
 	else
 		icon_state = "coil"
-		name = "cable coil"
+		name = "电缆卷"
 
 /obj/item/stack/cable_coil/proc/update_wclass()
 	if(amount == 1)
@@ -73,11 +73,11 @@
 		if(!istype(usr.loc,/turf))
 			return
 		if(src.amount <= 14)
-			to_chat(usr, SPAN_WARNING("You need at least 15 lengths to make restraints!"))
+			to_chat(usr, SPAN_WARNING("你至少需要15段电缆来制作束缚装置！"))
 			return
 		var/obj/item/restraint/adjustable/cable/B = new /obj/item/restraint/adjustable/cable(usr.loc)
 		B.color = color
-		to_chat(usr, SPAN_NOTICE("You wind some cable together to make some restraints."))
+		to_chat(usr, SPAN_NOTICE("你将一些电缆缠绕在一起，制作成束缚装置。"))
 		src.use(15)
 	else
 		to_chat(usr, SPAN_NOTICE("\blue You cannot do that."))
@@ -86,7 +86,7 @@
 	if( HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) && src.amount > 1)
 		src.amount--
 		new/obj/item/stack/cable_coil(user.loc, 1,color)
-		to_chat(user, SPAN_NOTICE("You cut a piece off the cable coil."))
+		to_chat(user, SPAN_NOTICE("你从电缆卷上切下一段。"))
 		src.updateicon()
 		src.update_wclass()
 		return
@@ -94,17 +94,17 @@
 	else if( istype(W, /obj/item/stack/cable_coil) )
 		var/obj/item/stack/cable_coil/C = W
 		if(C.amount >= MAXCOIL)
-			to_chat(user, "The coil is too long, you cannot add any more cable to it.")
+			to_chat(user, "这卷电缆太长了，你无法再添加更多电缆。")
 			return
 
 		if( (C.amount + src.amount <= MAXCOIL) )
-			to_chat(user, "You join the cable coils together.")
+			to_chat(user, "你将电缆卷连接在一起。")
 			C.add(src.amount) // give it cable
 			src.use(src.amount) // make sure this one cleans up right
 
 		else
 			var/amt = MAXCOIL - C.amount
-			to_chat(user, "You transfer [amt] length\s of cable from one coil to the other.")
+			to_chat(user, "你将[amt]段电缆从一卷转移到另一卷。")
 			C.add(amt)
 			src.use(amt)
 		return
@@ -142,11 +142,11 @@
 		return
 
 	if(get_dist(F,user) > 1)
-		to_chat(user, SPAN_WARNING("You can't lay cable at a place that far away."))
+		to_chat(user, SPAN_WARNING("你无法在那么远的地方铺设电缆。"))
 		return
 
 	if(F.intact_tile) // if floor is intact, complain
-		to_chat(user, SPAN_WARNING("You can't lay cable there unless the floor tiles are removed."))
+		to_chat(user, SPAN_WARNING("除非移除地板砖，否则你无法在那里铺设电缆。"))
 		return
 
 	else
@@ -159,12 +159,12 @@
 
 		for(var/obj/structure/cable/LC in F)
 			if((LC.d1 == dirn && LC.d2 == 0 ) || ( LC.d2 == dirn && LC.d1 == 0))
-				to_chat(user, SPAN_WARNING("There's already a cable at that position."))
+				to_chat(user, SPAN_WARNING("该位置已有一条电缆。"))
 				return
 
 		for(var/obj/structure/cable/LC in F)
 			if((LC.d1 == dirn && LC.d2 == 0 ) || ( LC.d2 == dirn && LC.d1 == 0))
-				to_chat(user, "There's already a cable at that position.")
+				to_chat(user, "该位置已有一条电缆。")
 				return
 
 		var/obj/structure/cable/C = new(F)
@@ -200,7 +200,7 @@
 		return
 
 	if(get_dist(C, user) > 1) // make sure it's close enough
-		to_chat(user, SPAN_WARNING("You can't lay cable at a place that far away."))
+		to_chat(user, SPAN_WARNING("你无法在那么远的地方铺设电缆。"))
 		return
 
 
@@ -211,7 +211,7 @@
 
 	if(C.d1 == dirn || C.d2 == dirn) // one end of the clicked cable is pointing towards us
 		if(U.intact_tile) // can't place a cable if the floor is complete
-			to_chat(user, SPAN_WARNING("You can't lay cable there unless the floor tiles are removed."))
+			to_chat(user, SPAN_WARNING("除非移除地板砖，否则你无法在那里铺设电缆。"))
 			return
 		else
 			// cable is pointing at us, we're standing on an open tile
@@ -221,7 +221,7 @@
 
 			for(var/obj/structure/cable/LC in U) // check to make sure there's not a cable there already
 				if(LC.d1 == fdirn || LC.d2 == fdirn)
-					to_chat(user, SPAN_WARNING("There's already a cable at that position."))
+					to_chat(user, SPAN_WARNING("该位置已有一条电缆。"))
 					return
 
 			var/obj/structure/cable/NC = new(U)
@@ -254,7 +254,7 @@
 			if(LC == C) // skip the cable we're interacting with
 				continue
 			if((LC.d1 == nd1 && LC.d2 == nd2) || (LC.d1 == nd2 && LC.d2 == nd1) ) // make sure no cable matches either direction
-				to_chat(user, SPAN_WARNING("There's already a cable at that position."))
+				to_chat(user, SPAN_WARNING("该位置已有一条电缆。"))
 				return
 
 
@@ -336,7 +336,7 @@
 			user.visible_message(SPAN_DANGER("\The [user] repairs some burn damage on \the [M]'s [S.display_name] with \the [src]."))
 			return
 		else
-			to_chat(user, "Nothing to fix!")
+			to_chat(user, "无需修复！")
 
 	else
 		return ..()

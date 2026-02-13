@@ -1,7 +1,7 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
 /obj/structure/machinery/computer/prisoner
-	name = "Prisoner Management"
+	name = "囚犯管理"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "explosive"
 	density = TRUE
@@ -51,7 +51,7 @@
 				continue//Out of range
 			if(!T.implanted)
 				continue
-			var/loc_display = "Unknown"
+			var/loc_display = "未知"
 			var/mob/living/carbon/M = T.imp_in
 			if(is_ground_level(M.z) && !istype(M.loc, /turf/open/space))
 				var/turf/mob_loc = get_turf(M)
@@ -97,16 +97,16 @@
 			if(src.allowed(usr))
 				screen = !screen
 			else
-				to_chat(usr, "Unauthorized Access.")
+				to_chat(usr, "未授权访问。")
 
 		else if(href_list["warn"])
-			var/warning = strip_html(input(usr,"Message:","Enter your message here!",""))
+			var/warning = strip_html(input(usr,"信息：","Enter your message here!",""))
 			if(!warning)
 				return
 			var/obj/item/implant/I = locate(href_list["warn"])
 			if((I)&&(I.imp_in))
 				var/mob/living/carbon/R = I.imp_in
-				to_chat(R, SPAN_XENOWARNING("You hear a voice in your head saying: '[warning]'"))
+				to_chat(R, SPAN_XENOWARNING("你听到脑海中有一个声音说：'[warning]'"))
 
 		src.add_fingerprint(usr)
 	src.updateUsrDialog()

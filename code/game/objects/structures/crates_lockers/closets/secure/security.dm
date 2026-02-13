@@ -1,5 +1,5 @@
 /obj/structure/closet/secure_closet/warden
-	name = "Warden's Locker"
+	name = "典狱长储物柜"
 	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
 	icon_state = "secure_locked_warden"
 	icon_closed = "secure_unlocked_warden"
@@ -28,7 +28,7 @@
 	new /obj/item/clothing/head/beret/sec/warden(src)
 
 /obj/structure/closet/secure_closet/marshal
-	name = "Marshal's Locker"
+	name = "警长储物柜"
 	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
 	icon_state = "secure_locked_warrant"
 	icon_closed = "secure_unlocked_warrant"
@@ -47,7 +47,7 @@
 	new /obj/item/clothing/shoes/jackboots(src)
 
 /obj/structure/closet/secure_closet/security/standard
-	name = "Security Officer's Locker"
+	name = "安全官储物柜"
 	req_one_access = list(ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_BRIG)
 	icon_state = "secure_locked_police"
 	icon_closed = "secure_closed_police"
@@ -77,7 +77,7 @@
 	new /obj/item/clothing/under/rank/security/corp(src)
 
 /obj/structure/closet/secure_closet/security/soro
-	name = "Security Officer's Locker"
+	name = "安全官储物柜"
 	req_one_access = list(ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_BRIG)
 	icon_state = "secure_locked_police"
 	icon_closed = "secure_closed_police"
@@ -126,7 +126,7 @@
 	new /obj/item/device/encryptionkey/med(src)
 
 /obj/structure/closet/secure_closet/security_empty
-	name = "Security Officer's Locker"
+	name = "安全官储物柜"
 	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
 	icon_state = "secure_open_police"
 	icon_closed = "secure_closed_police"
@@ -140,7 +140,7 @@
 	density = FALSE
 
 /obj/structure/closet/secure_closet/detective
-	name = "Detective's Cabinet"
+	name = "侦探储物柜"
 	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
 	icon_state = "cabinetdetective_locked"
 	icon_closed = "cabinetdetective"
@@ -178,7 +178,7 @@
 			icon_state = icon_opened
 
 /obj/structure/closet/secure_closet/injection
-	name = "Lethal Injections"
+	name = "致命注射剂"
 	req_access = list(ACCESS_MARINE_SENIOR)
 
 /obj/structure/closet/secure_closet/injection/Initialize()
@@ -187,7 +187,7 @@
 	new /obj/item/reagent_container/ld50_syringe/choral(src)
 
 /obj/structure/closet/secure_closet/brig
-	name = "Brig Locker"
+	name = "禁闭室储物柜"
 	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
 	anchored = TRUE
 	locked = TRUE
@@ -202,7 +202,7 @@
 	new /obj/item/device/radio/headset(src)
 
 /obj/structure/closet/secure_closet/brig/prison_uni
-	name = "Spare Prison Uniforms"
+	name = "备用囚服"
 	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
 	anchored = TRUE
 	locked = TRUE
@@ -227,7 +227,7 @@
 	new /obj/item/device/radio/headset(src)
 
 /obj/structure/closet/secure_closet/brig/restraints
-	name = "Spare Restraints"
+	name = "备用束缚装置"
 	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
 	anchored = TRUE
 	locked = TRUE
@@ -258,7 +258,7 @@
 	GLOB.brig_locker_list -= src
 	return ..()
 /obj/structure/closet/secure_closet/courtroom
-	name = "Courtroom Locker"
+	name = "法庭储物柜"
 	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
 
 /obj/structure/closet/secure_closet/courtroom/Initialize()
@@ -273,7 +273,7 @@
 	new /obj/item/storage/briefcase(src)
 
 /obj/structure/closet/secure_closet/wall
-	name = "security wall locker"
+	name = "安保壁柜"
 	req_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
 	icon_state = "security_wall_locked"
 	density = TRUE

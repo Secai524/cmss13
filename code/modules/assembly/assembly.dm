@@ -6,7 +6,7 @@
 
 /obj/item/device/assembly
 	name = "assembly"
-	desc = "A small electronic device that should never exist."
+	desc = "一个本不该存在的小型电子装置。"
 	icon = 'icons/obj/items/new_assemblies.dmi'
 	icon_state = ""
 	flags_atom = FPRINT|CONDUCT
@@ -64,7 +64,7 @@
 /obj/item/device/assembly/proc/attach_assembly(obj/A, mob/user) //Called when an assembly is attacked by another
 	holder = new/obj/item/device/assembly_holder(get_turf(src))
 	if(holder.attach(A,src,user))
-		to_chat(user, SPAN_NOTICE("You attach \the [A] to \the [src]!"))
+		to_chat(user, SPAN_NOTICE("你将\the [A]安装到\the [src]上！"))
 		return 1
 	return 0
 

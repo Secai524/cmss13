@@ -7,8 +7,8 @@
 
 
 /obj/item/reagent_container/glass/bottle/robot/inaprovaline
-	name = "internal inaprovaline bottle"
-	desc = "A small bottle. Contains inaprovaline - used to stabilize patients."
+	name = "内置伊纳普罗瓦林瓶"
+	desc = "一个小瓶子。内含伊纳普罗瓦林——用于稳定病人状况。"
 	icon = 'icons/obj/items/chemistry.dmi'
 	reagent = "inaprovaline"
 
@@ -19,8 +19,8 @@
 
 
 /obj/item/reagent_container/glass/bottle/robot/antitoxin
-	name = "internal anti-toxin bottle"
-	desc = "A small bottle of Anti-toxins. Counters poisons, and repairs damage, a wonder drug."
+	name = "内置抗毒素瓶"
+	desc = "一小瓶抗毒素。可解毒并修复损伤，一种特效药。"
 	icon = 'icons/obj/items/chemistry.dmi'
 	reagent = "anti_toxin"
 

@@ -2,7 +2,7 @@
 /// For dilutable items, like tea bags, coffee, etc.
 
 /obj/item/reagent_container/pill/teabag
-	name = "instant tea bag"
+	name = "速溶茶包"
 	icon = 'icons/obj/items/food/mre_food/twe.dmi'
 	icon_state = "teabag"
 	item_state = null
@@ -19,8 +19,8 @@
 /obj/item/reagent_container/pill/teabag/Initialize(mapload, ...)
 	. = ..()
 	var/tea_name = pick(tea_blends)
-	name = "instant [tea_name] tea bag"
-	desc = "A bag of instant [tea_name] black tea. Fully dilutable including the bag itself, bag is probably made out of tea as well. No heating required."
+	name = "速溶[tea_name]茶包"
+	desc = "一包速溶[tea_name]红茶。包括茶包本身均可完全溶解，茶包可能也是由茶叶制成。无需加热。"
 
 /obj/item/reagent_container/pill/teabag/earl_grey
 	tea_blends = list("Earl Grey")

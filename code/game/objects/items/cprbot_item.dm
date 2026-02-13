@@ -1,6 +1,6 @@
 /obj/item/cprbot_item
-	name = "CPRbot"
-	desc = "A compact CPRbot 9000 assembly."
+	name = "心肺复苏机器人"
+	desc = "一个紧凑的心肺复苏机器人9000组件。"
 	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	icon_state = "cprbot"
 	w_class = SIZE_MEDIUM
@@ -18,7 +18,7 @@
 		return
 
 	if (istype(user) && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
+		to_chat(user, SPAN_WARNING("你似乎不知道如何使用 [src]..."))
 		return
 
 	qdel(src)
@@ -36,8 +36,8 @@
 			deploy_cprbot(user, target_turf)
 
 /obj/item/cprbot_broken
-	name = "CPRbot"
-	desc = "A compact CPRbot 9000 assembly, it appears to be in bad shape."
+	name = "心肺复苏机器人"
+	desc = "一个紧凑的心肺复苏机器人9000组件，看起来状况不佳。"
 	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	icon_state = "cprbot_broken"
 	w_class = SIZE_MEDIUM
@@ -45,16 +45,16 @@
 /obj/item/cprbot_broken/attackby(obj/item/attacked_by, mob/living/user)
 	if(iswelder(attacked_by))
 		if(!HAS_TRAIT(attacked_by, TRAIT_TOOL_BLOWTORCH))
-			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			to_chat(user, SPAN_WARNING("你需要一把更强的喷枪！"))
 			return
 
 		var/obj/item/tool/weldingtool/welder_tool = attacked_by
 		if(!welder_tool.isOn())
-			to_chat(user, SPAN_WARNING("The [welder_tool] needs to be on!"))
+			to_chat(user, SPAN_WARNING("[welder_tool]需要打开！"))
 			return
 
 		if(!welder_tool.remove_fuel(5, user))  // Ensure enough fuel is available
-			to_chat(user, SPAN_NOTICE("You need more welding fuel to complete this task."))
+			to_chat(user, SPAN_NOTICE("你需要更多焊枪燃料来完成此任务。"))
 			return
 
 		playsound(src, 'sound/items/Welder.ogg', 25, 1)

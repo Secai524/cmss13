@@ -95,7 +95,7 @@
 			light_disabled = !light_disabled
 
 		if(CAMERA_WIRE_ALARM)
-			src.visible_message("[icon2html(src, hearers(src))] *beep*", "[icon2html(src, hearers(src))] *beep*")
+			src.visible_message("[icon2html(src, hearers(src))] *哔*", "[icon2html(src, hearers(src))] *哔*")
 
 	src.interact(usr)
 
@@ -106,7 +106,7 @@
 	user.set_interaction(src)
 	var/t1 = text("<B>Access Panel</B><br>\n")
 	var/list/wires = list(
-		"Orange" = 1,
+		"橙子" = 1,
 		"Dark red" = 2,
 		"White" = 3,
 		"Yellow" = 4,
@@ -141,7 +141,7 @@
 			var/t1 = text2num(href_list["wires"])
 			var/obj/item/held_item = usr.get_held_item()
 			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
-				to_chat(usr, SPAN_WARNING("You need wirecutters!"))
+				to_chat(usr, SPAN_WARNING("你需要剪线钳！"))
 				return
 			if (src.isWireColorCut(t1))
 				src.mend(t1)
@@ -151,10 +151,10 @@
 			var/t1 = text2num(href_list["pulse"])
 			var/obj/item/held_item = usr.get_held_item()
 			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
-				to_chat(usr, SPAN_WARNING("You need a multitool!"))
+				to_chat(usr, SPAN_WARNING("你需要万用工具！"))
 				return
 			if (src.isWireColorCut(t1))
-				to_chat(usr, SPAN_WARNING("You can't pulse a cut wire."))
+				to_chat(usr, SPAN_WARNING("你无法激活一根已切断的线缆。"))
 				return
 			else
 				src.pulse(t1)

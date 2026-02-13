@@ -3,8 +3,8 @@
 //littering up floor with opened locker and ramming objects
 
 /obj/structure/vehicle_locker
-	name = "wall-mounted storage compartment"
-	desc = "Small storage unit allowing vehicle crewmen to store their personal possessions or weaponry ammunition. Only vehicle crewmen can access these."
+	name = "壁挂式储物舱"
+	desc = "小型存储单元，允许载具乘员存放个人物品或武器弹药。只有载具乘员可以访问这些。"
 	icon = 'icons/obj/vehicles/interiors/general.dmi'
 	icon_state = "locker"
 	anchored = TRUE
@@ -48,7 +48,7 @@
 		return
 
 	if(!role_restriction.Find(H.job))
-		to_chat(H, SPAN_WARNING("You cannot access \the [name]."))
+		to_chat(H, SPAN_WARNING("你无法访问\the [name]。"))
 		return
 
 	empty(get_turf(H), H)
@@ -56,19 +56,19 @@
 //regular storage's empty() proc doesn't work due to checks, so imitate it
 /obj/structure/vehicle_locker/proc/empty(turf/T, mob/living/carbon/human/H)
 	if(!container)
-		to_chat(H, SPAN_WARNING("No internal storage found."))
+		to_chat(H, SPAN_WARNING("未找到内部存储空间。"))
 		return
 
-	H.visible_message(SPAN_NOTICE("[H] starts to empty \the [src]..."), SPAN_NOTICE("You start to empty \the [src]..."))
+	H.visible_message(SPAN_NOTICE("[H]开始清空\the [src]..."), SPAN_NOTICE("You start to empty \the [src]..."))
 	if(!do_after(H, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-		H.visible_message(SPAN_WARNING("[H] stops emptying \the [src]..."), SPAN_WARNING("You stop emptying \the [src]..."))
+		H.visible_message(SPAN_WARNING("[H]停止清空\the [src]..."), SPAN_WARNING("You stop emptying \the [src]..."))
 		return
 
 	for(var/mob/M in container.content_watchers)
 		container.storage_close(M)
 	for (var/obj/item/I in container.contents)
 		container.remove_from_storage(I, T)
-	H.visible_message(SPAN_NOTICE("[H] empties \the [src]."), SPAN_NOTICE("You empty \the [src]."))
+	H.visible_message(SPAN_NOTICE("[H]清空了\the [src]。"), SPAN_NOTICE("You empty \the [src]."))
 
 	container.empty(H, get_turf(H))
 
@@ -81,7 +81,7 @@
 		return ..()
 
 	if(!role_restriction.Find(user.job))
-		to_chat(user, SPAN_WARNING("You cannot access \the [name]."))
+		to_chat(user, SPAN_WARNING("你无法访问\the [name]。"))
 		return TRUE
 
 	if(Adjacent(user))
@@ -99,7 +99,7 @@
 	if(user.is_mob_incapacitated())
 		return
 	if(!role_restriction.Find(user.job))
-		to_chat(user, SPAN_WARNING("You cannot access \the [name]."))
+		to_chat(user, SPAN_WARNING("你无法访问\the [name]。"))
 		return
 	if (container.handle_mousedrop(user, over_object))
 		..(over_object)
@@ -112,7 +112,7 @@
 	if(!istype(user))
 		return
 	if(!role_restriction.Find(user.job))
-		to_chat(user, SPAN_WARNING("You cannot access \the [name]."))
+		to_chat(user, SPAN_WARNING("你无法访问\the [name]。"))
 		return
 	return container.attackby(W, user)
 
@@ -136,14 +136,14 @@
 		playsound(src.loc, "toolbox", 25, TRUE, 3)
 
 /obj/structure/vehicle_locker/tank
-	name = "storage compartment"
-	desc = "Small storage unit allowing vehicle crewmen to store their personal possessions or weaponry ammunition. Only vehicle crewmen can access these."
+	name = "储物隔间"
+	desc = "小型存储单元，允许载具乘员存放个人物品或武器弹药。只有载具乘员可以访问这些。"
 	icon = 'icons/obj/vehicles/interiors/tank.dmi'
 	icon_state = "locker"
 
 /obj/structure/vehicle_locker/med
-	name = "wall-mounted surgery kit storage"
-	desc = "A small locker that securely stores a full surgical kit. ID-locked to surgeons."
+	name = "壁挂式手术包储存柜"
+	desc = "一个安全存放全套手术器械的小型储物柜。通过身份卡锁定，仅供外科医生使用。"
 	icon_state = "locker_med"
 	role_restriction = list(JOB_CMO, JOB_DOCTOR, JOB_RESEARCHER, JOB_SYNTH, JOB_WO_CMO, JOB_WO_DOCTOR, JOB_WO_RESEARCHER, JOB_SEA, JOB_CLF_MEDIC, "Colonial Doctor", "Sorokyne Strata Doctor", JOB_SYNTH, JOB_WO_SYNTH)
 
@@ -198,7 +198,7 @@
 	if(!istype(user))
 		return
 	if(!role_restriction.Find(user.job))
-		to_chat(user, SPAN_WARNING("You cannot access \the [name]."))
+		to_chat(user, SPAN_WARNING("你无法访问\the [name]。"))
 		return
 	if(istype(W, /obj/item/storage/surgical_tray))
 		add_tray(user, W)
@@ -216,7 +216,7 @@
 		return ..()
 
 	if(!role_restriction.Find(user.job))
-		to_chat(user, SPAN_WARNING("You cannot access \the [name]."))
+		to_chat(user, SPAN_WARNING("你无法访问\the [name]。"))
 		return TRUE
 
 	if(!has_tray)
@@ -234,7 +234,7 @@
 	if(user.is_mob_incapacitated())
 		return
 	if(!role_restriction.Find(user.job))
-		to_chat(user, SPAN_WARNING("You cannot access \the [name]."))
+		to_chat(user, SPAN_WARNING("你无法访问\the [name]。"))
 		return
 	if(!has_tray)
 		to_chat(user, SPAN_WARNING("\The [name] doesn't have a surgical tray installed!"))
@@ -257,19 +257,19 @@
 		return
 
 	if(!role_restriction.Find(H.job))
-		to_chat(H, SPAN_WARNING("You cannot access \the [name]."))
+		to_chat(H, SPAN_WARNING("你无法访问\the [name]。"))
 		return
 
 	remove_tray(H)
 
 /obj/structure/vehicle_locker/med/proc/remove_tray(mob/living/carbon/human/H)
 	if(!has_tray)
-		to_chat(H, SPAN_WARNING("The surgical tray was already removed!"))
+		to_chat(H, SPAN_WARNING("手术托盘已被移除！"))
 		return
 
-	H.visible_message(SPAN_NOTICE("[H] starts removing the surgical tray from \the [src]."), SPAN_NOTICE("You start removing the surgical tray from \the [src]."))
+	H.visible_message(SPAN_NOTICE("[H]开始从\the [src]中移除手术托盘。"), SPAN_NOTICE("You start removing the surgical tray from \the [src]."))
 	if(!do_after(H, 2 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
-		H.visible_message(SPAN_NOTICE("[H] stops removing the surgical tray from \the [src]."), SPAN_WARNING("You stop removing the surgical tray from \the [src]."))
+		H.visible_message(SPAN_NOTICE("[H]停止从\the [src]中移除手术托盘。"), SPAN_WARNING("You stop removing the surgical tray from \the [src]."))
 		return
 
 	var/obj/item/storage/surgical_tray/empty/tray = new(loc)
@@ -282,16 +282,16 @@
 	update_icon()
 	H.put_in_hands(tray)
 	container.storage_close(H)
-	H.visible_message(SPAN_NOTICE("[H] removes the surgical tray from \the [src]."), SPAN_NOTICE("You remove the surgical tray from \the [src]."))
+	H.visible_message(SPAN_NOTICE("[H]从\the [src]中移除了手术托盘。"), SPAN_NOTICE("You remove the surgical tray from \the [src]."))
 
 /obj/structure/vehicle_locker/med/proc/add_tray(mob/living/carbon/human/H, obj/item/storage/surgical_tray/tray)
 	if(has_tray)
 		to_chat(H, SPAN_WARNING("\The [src] already has a surgical tray installed!"))
 		return
 
-	H.visible_message(SPAN_NOTICE("[H] starts installing \the [tray] into \the [src]."), SPAN_NOTICE("You start installing \the [tray] into \the [src]."))
+	H.visible_message(SPAN_NOTICE("[H]开始将\the [tray]安装到\the [src]中。"), SPAN_NOTICE("You start installing \the [tray] into \the [src]."))
 	if(!do_after(H, 2 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
-		H.visible_message(SPAN_NOTICE("[H] stops installing \the [tray] into \the [src]."), SPAN_WARNING("You stop installing \the [tray] into \the [src]."))
+		H.visible_message(SPAN_NOTICE("[H]停止将\the [tray]安装到\the [src]中。"), SPAN_WARNING("You stop installing \the [tray] into \the [src]."))
 		return
 
 	var/turf/T = get_turf(src)
@@ -302,7 +302,7 @@
 	qdel(tray)
 	has_tray = TRUE
 	update_icon()
-	H.visible_message(SPAN_NOTICE("[H] installs \the [tray] into \the [src]."), SPAN_NOTICE("You install \the [tray] into \the [src]."))
+	H.visible_message(SPAN_NOTICE("[H]将\the [tray]安装到了\the [src]中。"), SPAN_NOTICE("You install \the [tray] into \the [src]."))
 
 /obj/structure/vehicle_locker/pmc
 	icon = 'icons/obj/vehicles/interiors/general_wy.dmi'

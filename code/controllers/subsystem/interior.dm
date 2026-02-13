@@ -1,7 +1,7 @@
 #define INTERIOR_BORDER_SIZE 2
 
 SUBSYSTEM_DEF(interior)
-	name = "Interiors"
+	name = "内部"
 	flags = SS_NO_FIRE|SS_NO_INIT
 	var/list/datum/interior/interiors = list()
 

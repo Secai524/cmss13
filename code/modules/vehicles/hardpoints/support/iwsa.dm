@@ -1,6 +1,6 @@
 /obj/item/hardpoint/support/weapons_sensor
 	name = "\improper Integrated Weapons Sensor Array"
-	desc = "Improves the accuracy and fire rate of all onboard weapons."
+	desc = "提升所有车载武器的精度与射速。"
 
 	icon_state = "warray"
 	disp_icon = "tank"

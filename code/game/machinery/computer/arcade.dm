@@ -1,6 +1,6 @@
 /obj/structure/machinery/computer/arcade
-	name = "Black Donnovan II: Double Revenge"
-	desc = "Two years after the average high school teenager Josh transformed into the powerful ninja 'Black Donnovan' and defeated the evil forces of Colonel Ranchenko and his UPP experiments to save his captured ninja girlfriend Reino, chaos is unleashed again on the world. Josh's Canadian cousin, transforming into the powerful ninja 'Fury Fuhrer', has created a world in Florida no longer exists. Josh once again transforms into 'Black Donnovan' to fight against Fury Fuhrer's legions of goons and restore the hellscape world to its former glory."
+	name = "黑色多诺万II：双重复仇"
+	desc = "普通高中生乔什化身为强大的忍者‘黑色多诺万’，击败了兰琴科上校及其UPP实验的邪恶势力，救出被俘的忍者女友雷诺。两年后，世界再次陷入混乱。乔什的加拿大表亲化身为强大的忍者‘狂怒元首’，将佛罗里达变成了不复存在的世界。乔什再次化身为‘黑色多诺万’，对抗狂怒元首的爪牙大军，将这片地狱般的世界恢复往日的荣光。"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "arcade"
 	circuit = /obj/item/circuitboard/computer/arcade

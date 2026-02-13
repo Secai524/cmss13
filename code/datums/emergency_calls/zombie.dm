@@ -1,6 +1,6 @@
 
 /datum/emergency_call/zombie
-	name = "Zombies"
+	name = "僵尸"
 	mob_max = 8
 	mob_min = 1
 	probability = 0
@@ -22,5 +22,5 @@
 
 	sleep(20)
 	if(H && H.loc)
-		to_chat(H, SPAN_ROLE_HEADER("You are a Zombie!"))
-		to_chat(H, SPAN_ROLE_BODY("Spread... Consume... Infect..."))
+		to_chat(H, SPAN_ROLE_HEADER("你是一只僵尸！"))
+		to_chat(H, SPAN_ROLE_BODY("传播……吞噬……感染……"))

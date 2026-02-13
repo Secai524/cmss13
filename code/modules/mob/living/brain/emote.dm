@@ -10,38 +10,38 @@
 
 /datum/emote/living/brain/alarm
 	key = "alarm"
-	message = "sounds an alarm."
+	message = "发出警报。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/brain/alert
 	key = "alert"
-	message = "lets out a distressed noise."
+	message = "发出痛苦的声响。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/brain/notice
 	key = "notice"
-	message = "plays a loud tone."
+	message = "播放响亮的提示音。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/brain/flash
 	key = "flash"
-	message = "light's flash quickly!"
+	message = "灯光快速闪烁！"
 
 /datum/emote/living/brain/blink
 	key = "blink"
-	message = "blinks."
+	message = "闪烁。"
 
 /datum/emote/living/brain/whistle
 	key = "whistle"
-	message = "whistles."
+	message = "发出哨声。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/brain/beep
 	key = "beep"
-	message = "beeps."
+	message = "发出哔哔声。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/brain/boop
 	key = "boop"
-	message = "boops."
+	message = "发出嘟嘟声。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE

@@ -1,6 +1,6 @@
 /datum/species/monkey
 	group = SPECIES_MONKEY
-	name = "Monkey"
+	name = "猴子"
 	name_plural = "Monkeys"
 	icobase = 'icons/mob/humans/species/monkeys/r_monkey.dmi'
 	deform = 'icons/mob/humans/species/monkeys/r_monkey.dmi'
@@ -88,7 +88,7 @@
 			var/obj/container = monkey.loc
 			if(prob(50))
 				var/list/heard = get_mobs_in_view(GLOB.world_view_size, container)
-				var/message = pick("rocks about.", "creaks.", "chimpers.")
+				var/message = pick("rocks about.", "creaks.", "吱吱叫。")
 				container.langchat_speech(message, heard, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small", "emote"))
 				container.visible_message("<b>[container]</b> [message]")
 			else
@@ -101,8 +101,8 @@
 	INVOKE_ASYNC(humanoidmob, TYPE_PROC_REF(/mob, emote), pick("pain", "scream"))
 
 /datum/species/monkey/yiren
-	name = "Yiren"
-	name_plural = "Yiren"
+	name = "伊伦"
+	name_plural = "伊伦"
 
 	icobase = 'icons/mob/humans/species/monkeys/r_yiren.dmi'
 	deform = 'icons/mob/humans/species/monkeys/r_yiren.dmi'
@@ -129,8 +129,8 @@
 	)
 
 /datum/species/monkey/farwa
-	name = "Farwa"
-	name_plural = "Farwa"
+	name = "法瓦"
+	name_plural = "法瓦"
 
 	icobase = 'icons/mob/humans/species/monkeys/r_farwa.dmi'
 	deform = 'icons/mob/humans/species/monkeys/r_farwa.dmi'
@@ -153,8 +153,8 @@
 	)
 
 /datum/species/monkey/neaera
-	name = "Neaera"
-	name_plural = "Neaera"
+	name = "尼艾拉"
+	name_plural = "尼艾拉"
 
 	icobase = 'icons/mob/humans/species/monkeys/r_neaera.dmi'
 	deform = 'icons/mob/humans/species/monkeys/r_neaera.dmi'
@@ -176,8 +176,8 @@
 	)
 
 /datum/species/monkey/stok
-	name = "Stok"
-	name_plural = "Stok"
+	name = "斯托克"
+	name_plural = "斯托克"
 
 	icobase = 'icons/mob/humans/species/monkeys/r_stok.dmi'
 	deform = 'icons/mob/humans/species/monkeys/r_stok.dmi'

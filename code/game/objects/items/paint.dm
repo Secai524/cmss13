@@ -3,8 +3,8 @@
 GLOBAL_LIST_EMPTY(cached_icons)
 
 /obj/item/reagent_container/glass/paint
-	desc = "It's a paint bucket."
-	name = "paint bucket"
+	desc = "这是一个油漆桶。"
+	name = "油漆桶"
 	icon = 'icons/obj/items/paint.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/paint_lefthand.dmi',
@@ -34,7 +34,7 @@ GLOBAL_LIST_EMPTY(cached_icons)
 
 /obj/item/reagent_container/glass/paint/Initialize()
 	if(paint_type == "remover")
-		name = "paint remover bucket"
+		name = "脱漆剂桶"
 	else if(paint_type && length(paint_type) > 0)
 		name = "[paint_type] [name]"
 	. = ..()
@@ -77,7 +77,7 @@ GLOBAL_LIST_EMPTY(cached_icons)
 	paint_type = "remover"
 
 /datum/reagent/paint
-	name = "Paint"
+	name = "油漆"
 	id = "paint_"
 	reagent_state = 2
 	color = COLOR_GRAY
@@ -94,42 +94,42 @@ GLOBAL_LIST_EMPTY(cached_icons)
 		O.color = color
 
 /datum/reagent/paint/red
-	name = "Red Paint"
+	name = "红色油漆"
 	id = "paint_red"
 	color = "#FE191A"
 
 /datum/reagent/paint/green
-	name = "Green Paint"
+	name = "绿色油漆"
 	color = "#18A31A"
 	id = "paint_green"
 
 /datum/reagent/paint/blue
-	name = "Blue Paint"
+	name = "蓝色油漆"
 	color = "#247CFF"
 	id = "paint_blue"
 
 /datum/reagent/paint/yellow
-	name = "Yellow Paint"
+	name = "黄色油漆"
 	color = "#FDFE7D"
 	id = "paint_yellow"
 
 /datum/reagent/paint/violet
-	name = "Violet Paint"
+	name = "紫色油漆"
 	color = "#CC0099"
 	id = "paint_violet"
 
 /datum/reagent/paint/black
-	name = "Black Paint"
+	name = "黑色油漆"
 	color = "#333333"
 	id = "paint_black"
 
 /datum/reagent/paint/white
-	name = "White Paint"
+	name = "白色油漆"
 	color = "#F0F8FF"
 	id = "paint_white"
 
 /datum/reagent/paint_remover
-	name = "Paint Remover"
+	name = "油漆去除剂"
 	id = "paint_remover"
 	description = "Paint remover is used to remove floor paint from floor tiles."
 	reagent_state = 2

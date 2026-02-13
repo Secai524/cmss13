@@ -17,7 +17,7 @@
 		client?.set_right_click_menu_mode(shift_only = TRUE)
 
 /datum/action/xeno_action/onclick/plant_weeds
-	name = "Plant Weeds (75)"
+	name = "铺设菌毯 (75)"
 	action_icon_state = "plant_weeds"
 	plasma_cost = 75
 	macro_path = /datum/action/xeno_action/verb/verb_plant_weeds
@@ -30,7 +30,7 @@
 
 // Resting
 /datum/action/xeno_action/onclick/xeno_resting
-	name = "Rest"
+	name = "休息"
 	action_icon_state = "resting"
 	action_type = XENO_ACTION_CLICK
 
@@ -47,7 +47,7 @@
 
 // Shift Spits
 /datum/action/xeno_action/onclick/shift_spits
-	name = "Toggle Spit Type"
+	name = "切换喷吐类型"
 	action_icon_state = "shift_spit_neurotoxin"
 	plasma_cost = 0
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_gas_type
@@ -61,7 +61,7 @@
 
 // release_haul
 /datum/action/xeno_action/onclick/release_haul
-	name = "Release"
+	name = "释放"
 	action_icon_state = "release_haul"
 	plasma_cost = 0
 	macro_path = /datum/action/xeno_action/verb/verb_release_haul
@@ -69,7 +69,7 @@
 
 // Choose Resin
 /datum/action/xeno_action/onclick/choose_resin
-	name = "Choose Resin Structure"
+	name = "选择树脂结构"
 	action_icon_state = "retrieve_egg"
 	plasma_cost = 0
 	macro_path = /datum/action/xeno_action/verb/verb_choose_resin_structure
@@ -81,7 +81,7 @@
 
 // Secrete Resin
 /datum/action/xeno_action/activable/secrete_resin
-	name = "Secrete Resin"
+	name = "分泌树脂"
 	action_icon_state = "secrete_resin"
 	var/thick = FALSE
 	var/make_message = TRUE
@@ -113,12 +113,12 @@
 	ability_primacy = XENO_PRIMARY_ACTION_5
 
 /datum/action/xeno_action/activable/secrete_resin/hivelord
-	name = "Secrete Thick Resin"
+	name = "分泌厚树脂"
 	thick = TRUE
 
 //resin marker
 /datum/action/xeno_action/activable/info_marker
-	name = "Mark Resin"
+	name = "标记树脂"
 	action_icon_state = "mark"
 	macro_path = /datum/action/xeno_action/verb/verb_mark_resin
 	action_type = XENO_ACTION_CLICK
@@ -138,7 +138,7 @@
 
 // Corrosive Acid
 /datum/action/xeno_action/activable/corrosive_acid
-	name = "Corrosive Acid (100)"
+	name = "腐蚀酸液 (100)"
 	action_icon_state = "corrosive_acid"
 	var/acid_plasma_cost = 100
 	var/level = 2 //level of the acid strength
@@ -155,32 +155,32 @@
 /datum/action/xeno_action/activable/corrosive_acid/proc/update_level()
 	switch(level)
 		if(1)
-			name = "Corrosive Acid (75)"
+			name = "腐蚀酸液 (75)"
 			acid_plasma_cost = 75
 			acid_type = /obj/effect/xenomorph/acid/weak
 		if(2)
-			name = "Corrosive Acid (100)"
+			name = "腐蚀酸液 (100)"
 			acid_plasma_cost = 100
 			acid_type = /obj/effect/xenomorph/acid
 		if(3)
-			name = "Corrosive Acid (125)"
+			name = "腐蚀酸液 (125)"
 			acid_plasma_cost = 125
 			acid_type = /obj/effect/xenomorph/acid/strong
 
 /datum/action/xeno_action/activable/corrosive_acid/weak
-	name = "Corrosive Acid (75)"
+	name = "腐蚀酸液 (75)"
 	acid_plasma_cost = 75
 	level = 1
 	acid_type = /obj/effect/xenomorph/acid/weak
 
 /datum/action/xeno_action/activable/corrosive_acid/strong
-	name = "Corrosive Acid (125)"
+	name = "腐蚀酸液 (125)"
 	acid_plasma_cost = 125
 	level = 3
 	acid_type = /obj/effect/xenomorph/acid/strong
 
 /datum/action/xeno_action/onclick/emit_pheromones
-	name = "Emit Pheromones (30)"
+	name = "释放信息素 (30)"
 	action_icon_state = "emit_pheromones"
 	plasma_cost = 30
 	macro_path = /datum/action/xeno_action/verb/verb_pheremones
@@ -194,7 +194,7 @@
 // Pounce
 // Subtype this to customize behavior, or do it at runtime
 /datum/action/xeno_action/activable/pounce
-	name = "Pounce"
+	name = "猛扑"
 	action_icon_state = "pounce"
 	var/action_text = "pounce"
 	macro_path = /datum/action/xeno_action/verb/verb_pounce
@@ -262,10 +262,10 @@
 	if(freeze_timer_id == TIMER_ID_NULL)
 		return
 	var/mob/living/carbon/xenomorph/X = owner
-	REMOVE_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
+	REMOVE_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("猛扑"))
 	deltimer(freeze_timer_id)
 	freeze_timer_id = TIMER_ID_NULL
-	to_chat(X, SPAN_XENONOTICE("Slashing frenzies us! We feel free to move immediately!"))
+	to_chat(X, SPAN_XENONOTICE("劈砍让我们陷入狂热！我们可以立即自由移动！"))
 
 /// Any effects to apply to the xenomorph before the windup occurs
 /datum/action/xeno_action/activable/pounce/proc/pre_windup_effects()
@@ -279,7 +279,7 @@
 	owner.flags_atom &= ~DIRLOCK
 
 /datum/action/xeno_action/onclick/toggle_long_range
-	name = "Toggle Long-Range Sight"
+	name = "切换远程瞄准"
 	action_icon_state = "toggle_long_range"
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_long_range
 	action_type = XENO_ACTION_ACTIVATE
@@ -316,7 +316,7 @@
 	if(xeno.is_zoomed)
 		xeno.zoom_out() // will call on_zoom_out()
 		return
-	xeno.visible_message(SPAN_NOTICE("[xeno] starts looking off into the distance."),
+	xeno.visible_message(SPAN_NOTICE("[xeno]开始向远处眺望。"),
 		SPAN_NOTICE("We start focusing our sight to look off into the distance."), null, 5)
 	if (should_delay)
 		if(!do_after(xeno, delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
@@ -334,7 +334,7 @@
 
 /datum/action/xeno_action/onclick/toggle_long_range/proc/on_zoom_out()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	xeno.visible_message(SPAN_NOTICE("[xeno] stops looking off into the distance."),
+	xeno.visible_message(SPAN_NOTICE("[xeno]停止了向远处眺望。"),
 	SPAN_NOTICE("We stop looking off into the distance."), null, 5)
 	if(movement_slowdown)
 		xeno.speed_modifier -= movement_slowdown
@@ -358,7 +358,7 @@
 // ... or mutated at runtime by another action that retrieves and edits these values
 // ... as they are all safely mutable. (Except possibly xeno_cooldown)
 /datum/action/xeno_action/activable/spray_acid
-	name = "Spray Acid"
+	name = "喷洒酸液"
 	action_icon_state = "spray_acid"
 	var/action_text = "spray acid"
 	macro_path = /datum/action/xeno_action/verb/verb_spray_acid
@@ -380,7 +380,7 @@
 
 
 /datum/action/xeno_action/activable/transfer_plasma
-	name = "Transfer Plasma"
+	name = "转移等离子体"
 	action_icon_state = "transfer_plasma"
 	var/plasma_transfer_amount = 50
 	var/transfer_delay = 20
@@ -395,7 +395,7 @@
 	return ..()
 
 /datum/action/xeno_action/onclick/xenohide
-	name = "Hide"
+	name = "隐藏"
 	action_icon_state = "xenohide"
 	plasma_cost = 0
 	xeno_cooldown = 0.5 SECONDS
@@ -427,7 +427,7 @@
 		button.icon_state = "template_active"
 
 /datum/action/xeno_action/onclick/place_trap
-	name = "Place resin hole (200)"
+	name = "放置树脂孔 (200)"
 	action_icon_state = "place_trap"
 	plasma_cost = 200
 	macro_path = /datum/action/xeno_action/verb/verb_resin_hole
@@ -435,7 +435,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_2
 
 /datum/action/xeno_action/activable/place_construction
-	name = "Order Construction (400)"
+	name = "下令建造 (400)"
 	action_icon_state = "morph_resin"
 	macro_path = /datum/action/xeno_action/verb/place_construction
 	action_type = XENO_ACTION_CLICK
@@ -445,7 +445,7 @@
 	ability_primacy = XENO_NOT_PRIMARY_ACTION
 
 /datum/action/xeno_action/activable/xeno_spit
-	name = "Xeno Spit"
+	name = "异形吐息"
 	action_icon_state = "xeno_spit"
 	macro_path = /datum/action/xeno_action/verb/verb_xeno_spit
 	action_type = XENO_ACTION_CLICK
@@ -463,7 +463,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_3
 
 /datum/action/xeno_action/activable/bombard
-	name = "Bombard"
+	name = "轰炸"
 	action_icon_state = "bombard"
 	plasma_cost = 75
 	macro_path = /datum/action/xeno_action/verb/verb_bombard
@@ -480,7 +480,7 @@
 	var/interrupt_flags = INTERRUPT_ALL|BEHAVIOR_IMMOBILE
 
 /datum/action/xeno_action/activable/tail_stab
-	name = "Tail Stab"
+	name = "尾刺"
 	action_icon_state = "tail_attack"
 	action_type = XENO_ACTION_CLICK
 	charge_time = 1 SECONDS
@@ -491,7 +491,7 @@
 	var/blunt_stab = FALSE
 
 /datum/action/xeno_action/onclick/evolve
-	name = "Evolve"
+	name = "进化"
 	action_icon_state = "evolve"
 	action_type = XENO_ACTION_CLICK
 	listen_signal = COMSIG_KB_XENO_EVOLVE
@@ -510,7 +510,7 @@
 		return TRUE
 
 /datum/action/xeno_action/onclick/transmute
-	name = "Transmute"
+	name = "嬗变"
 	action_icon_state = "transmute"
 	action_type = XENO_ACTION_CLICK
 
@@ -528,7 +528,7 @@
 		return TRUE
 
 /datum/action/xeno_action/active_toggle/toggle_meson_vision
-	name = "Toggle Meson Vision"
+	name = "切换介子视觉"
 	action_icon_state = "project_xeno"
 	plasma_cost = 0
 	action_type = XENO_ACTION_CLICK
@@ -550,7 +550,7 @@
 
 
 /datum/action/xeno_action/onclick/toggle_seethrough
-	name = "Toggle Seethrough"
+	name = "切换透视"
 	action_icon_state = "xenohide"
 	xeno_cooldown = 5 SECONDS
 	ability_primacy = XENO_BECOME_SEETHROUGH

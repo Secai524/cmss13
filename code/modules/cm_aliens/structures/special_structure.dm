@@ -2,7 +2,7 @@
  * Special Structures
  */
 /obj/effect/alien/resin/special
-	name = "Special Resin Structure"
+	name = "特殊树脂结构"
 	icon = 'icons/mob/xenos/structures64x64.dmi'
 	icon_state = ""
 	pixel_x = -16

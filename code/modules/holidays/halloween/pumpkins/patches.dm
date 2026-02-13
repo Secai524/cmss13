@@ -1,7 +1,7 @@
 /// Patches of pumpkins spawned at roundstart from where marines can get their carvable pumpkins
 /obj/structure/pumpkin_patch
 	icon = 'icons/misc/events/pumpkins.dmi'
-	name = "patch of pumpkins"
+	name = "南瓜地"
 	var/empty_name = "\proper vines"
 
 	can_block_movement = FALSE
@@ -34,7 +34,7 @@
 
 /obj/structure/pumpkin_patch/attack_hand(mob/user)
 	if(pumpkin_count < 1)
-		to_chat(user, SPAN_WARNING("No more pumpkins here..."))
+		to_chat(user, SPAN_WARNING("这里没有南瓜了..."))
 		return
 	if(!user.get_active_hand()) //if active hand is empty
 		pumpkin_count--
@@ -52,7 +52,7 @@
 
 /obj/structure/pumpkin_patch/attackby(obj/item/tool, mob/user)
 	if(has_vines && (tool.sharp == IS_SHARP_ITEM_ACCURATE || tool.sharp == IS_SHARP_ITEM_BIG))
-		to_chat(user, SPAN_NOTICE("You cut down the vines."))
+		to_chat(user, SPAN_NOTICE("你砍断了藤蔓。"))
 		playsound(loc, "alien_resin_break", 25)
 		has_vines = FALSE
 		update_icon()
@@ -63,6 +63,6 @@
 
 /obj/structure/pumpkin_patch/corrupted
 	icon_prefix = "cor_"
-	name = "patch of corrupted pumpkins"
+	name = "腐化南瓜地"
 	empty_name = "\proper corrupted vines"
 	pumpkin_type = /obj/item/clothing/head/pumpkin/corrupted

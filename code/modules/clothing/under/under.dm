@@ -112,7 +112,7 @@
 		if((flags_item & NODROP) || loc != human_user)
 			return
 		if(human_user.wear_suit)
-			to_chat(human_user, SPAN_WARNING("Remove your suit first."))
+			to_chat(human_user, SPAN_WARNING("先脱下你的防护服。"))
 			return
 		if(!human_user.is_mob_incapacitated() && !human_user.buckled)
 			if(over_object)
@@ -143,16 +143,16 @@
 	if (istype(user, /mob/dead/)) return
 	if (user.stat || user.is_mob_restrained()) return
 	if(has_sensor >= UNIFORM_FORCED_SENSORS)
-		to_chat(user, "The controls are locked.")
+		to_chat(user, "控制装置已锁定。")
 		return 0
 	if(has_sensor <= UNIFORM_NO_SENSORS)
-		to_chat(user, "This suit does not have any sensors.")
+		to_chat(user, "这套防护服没有任何传感器。")
 		return 0
 
 	var/list/modes = list("Off", "Binary sensors", "Vitals tracker", "Tracking beacon")
-	var/switchMode = tgui_input_list(usr, "Select a sensor mode:", "Suit Sensor Mode", modes)
+	var/switchMode = tgui_input_list(usr, "选择传感器模式：", "Suit Sensor Mode", modes)
 	if(get_dist(user, src) > 1)
-		to_chat(user, "You have moved too far away.")
+		to_chat(user, "你移动得太远了。")
 		return
 	sensor_mode = modes.Find(switchMode) - 1
 
@@ -164,27 +164,27 @@
 	if (loc == user)
 		switch(sensor_mode)
 			if(SENSOR_MODE_OFF)
-				to_chat(user, "You disable your suit's remote sensing equipment.")
+				to_chat(user, "你关闭了防护服的远程传感设备。")
 			if(SENSOR_MODE_BINARY)
-				to_chat(user, "Your suit will now report whether you are live or dead.")
+				to_chat(user, "你的防护服现在将报告你是生是死。")
 			if(SENSOR_MODE_DAMAGE)
-				to_chat(user, "Your suit will now report your vital lifesigns.")
+				to_chat(user, "你的防护服现在将报告你的生命体征。")
 			if(SENSOR_MODE_LOCATION)
-				to_chat(user, "Your suit will now report your vital lifesigns as well as your coordinate position.")
+				to_chat(user, "你的防护服现在将报告你的生命体征以及坐标位置。")
 	else if (ismob(loc))
 		switch(sensor_mode)
 			if(SENSOR_MODE_OFF)
 				for(var/mob/V in viewers(usr, 1))
-					V.show_message(SPAN_DANGER("[user] disables [src.loc]'s remote sensing equipment."), SHOW_MESSAGE_VISIBLE)
+					V.show_message(SPAN_DANGER("[user]关闭了[src.loc]的远程传感设备。"), SHOW_MESSAGE_VISIBLE)
 			if(SENSOR_MODE_BINARY)
 				for(var/mob/V in viewers(usr, 1))
-					V.show_message("[user] turns [src.loc]'s remote sensors to binary.", SHOW_MESSAGE_VISIBLE)
+					V.show_message("[user]将[src.loc]的远程传感器切换为二进制模式。", SHOW_MESSAGE_VISIBLE)
 			if(SENSOR_MODE_DAMAGE)
 				for(var/mob/V in viewers(usr, 1))
-					V.show_message("[user] sets [src.loc]'s sensors to track vitals.", SHOW_MESSAGE_VISIBLE)
+					V.show_message("[user]将[src.loc]的传感器设置为追踪生命体征。", SHOW_MESSAGE_VISIBLE)
 			if(SENSOR_MODE_LOCATION)
 				for(var/mob/V in viewers(usr, 1))
-					V.show_message("[user] sets [src.loc]'s sensors to maximum.", SHOW_MESSAGE_VISIBLE)
+					V.show_message("[user]将[src.loc]的传感器设置为最大功率。", SHOW_MESSAGE_VISIBLE)
 
 /obj/item/clothing/under/verb/toggle()
 	set name = "Toggle Suit Sensors"
@@ -198,7 +198,7 @@
 		flags_jumpsuit ^= UNIFORM_SLEEVE_ROLLED
 		if(flags_jumpsuit & UNIFORM_JACKET_REMOVED)
 			if(show_message)
-				to_chat(user, SPAN_NOTICE("You roll the jacket's sleeves in your hands.")) //visual representation that the sleeves have been rolled while jacket has been removed.
+				to_chat(user, SPAN_NOTICE("你将夹克的袖子在手中卷起。")) //visual representation that the sleeves have been rolled while jacket has been removed.
 		else if(flags_jumpsuit & UNIFORM_SLEEVE_ROLLED)
 			LAZYSET(item_state_slots, WEAR_BODY, "[worn_state]_d")
 			flags_bodypart_hidden &= ~(BODY_FLAG_ARMS)
@@ -208,7 +208,7 @@
 			flags_bodypart_hidden |= BODY_FLAG_ARMS
 			update_clothing_icon()
 	else if(show_message)
-		to_chat(user, SPAN_WARNING("You cannot roll your sleeves!"))
+		to_chat(user, SPAN_WARNING("你无法卷起袖子！"))
 
 /obj/item/clothing/under/proc/roll_suit_jacket(show_message = TRUE, mob/user)
 	update_removejacket_status()
@@ -239,15 +239,15 @@
 /obj/item/clothing/under/proc/cut_suit_jacket(show_message = TRUE, mob/user, obj/item/item_using)
 	if(!(flags_jumpsuit & UNIFORM_SLEEVE_CUTTABLE))
 		if(show_message)
-			to_chat(user, SPAN_NOTICE("You can't cut up [src]."))
+			to_chat(user, SPAN_NOTICE("你无法切割[src]。"))
 			return
 	else if(flags_jumpsuit & UNIFORM_JACKET_REMOVED)
 		if(show_message)
-			to_chat(user, SPAN_NOTICE("You can't dice up [src] while the jacket is removed."))
+			to_chat(user, SPAN_NOTICE("夹克脱下时，你无法切割[src]。"))
 			return
 	else if(flags_jumpsuit & UNIFORM_SLEEVE_ROLLED)
 		if(show_message)
-			to_chat(user, SPAN_NOTICE("You can't dice up [src] while it's rolled."))
+			to_chat(user, SPAN_NOTICE("袖子卷起时，你无法切割[src]。"))
 			return
 	else
 		flags_jumpsuit &= ~(UNIFORM_SLEEVE_ROLLABLE|UNIFORM_SLEEVE_CUTTABLE)
@@ -258,7 +258,7 @@
 		update_rollsuit_status()
 		update_removejacket_status()
 		if(show_message && item_using)
-			user.visible_message("[user] slices up \the [src]'s sleeves with \the [item_using].")
+			user.visible_message("[user]用\the [item_using]切开了\the [src]的袖子。")
 
 /obj/item/clothing/under/proc/update_rollsuit_status()
 	var/human_bodytype
@@ -327,7 +327,7 @@
 	roll_suit_jacket(TRUE, usr)
 
 /obj/item/clothing/under/verb/togglehood()
-	set name = "Toggle Hood"
+	set name = "切换兜帽"
 	set category = "Object"
 	set src in usr
 	if(!isliving(usr))
@@ -339,15 +339,15 @@
 /obj/item/clothing/under/proc/toggle_uniform_hood(show_message = TRUE, mob/living/carbon/human/user)
 	if(!hood_state)
 		if(show_message)
-			to_chat(user, SPAN_WARNING("Your uniform doesn't have a hood!"))
+			to_chat(user, SPAN_WARNING("你的制服没有兜帽！"))
 		return
 	update_rollsuit_status() //we need the _d version of the sprite anyways. In the future we might need to make a different version of the sprite to accomodate for rolling sleeves and hoods.
 	if(user.head && !istype(user.head, hood_state))
-		to_chat(user, SPAN_WARNING("You can't wear a hood while also wearing [user.head]!"))
+		to_chat(user, SPAN_WARNING("你无法在戴着[user.head]的同时戴上兜帽！"))
 		return
 
 	if(!HAS_TRAIT(src, TRAIT_CLOTHING_HOOD))
-		to_chat(user, SPAN_NOTICE("You pull your hood up."))
+		to_chat(user, SPAN_NOTICE("你拉上了兜帽。"))
 		user.equip_to_slot_if_possible(new hood_state(user), WEAR_HEAD) //This is a 'phantom' hood. It disappears if the jumpsuit is unequipped/if it's toggled.
 		LAZYSET(item_state_slots, WEAR_BODY, "[worn_state]_d")
 		RegisterSignal(src, COMSIG_ITEM_UNEQUIPPED, PROC_REF(toggle_uniform_hood)) //These will unequip the phantom hood and toggle the state of the suit
@@ -359,7 +359,7 @@
 		ADD_TRAIT(src, TRAIT_CLOTHING_HOOD, TRAIT_SOURCE_CLOTHING)
 		return
 
-	to_chat(user, SPAN_NOTICE("You pull your hood down."))
+	to_chat(user, SPAN_NOTICE("你放下了兜帽。"))
 	UnregisterSignal(src, COMSIG_ITEM_UNEQUIPPED) //See above, these deregister the signals so that it doesn't fire twice.
 	UnregisterSignal(user.head, COMSIG_ITEM_UNEQUIPPED)
 	qdel(user.head) //This will only delete the hood, see the typecheck above.

@@ -7,7 +7,7 @@
  * almost guaranteed to be doing something wrong.
  */
 /atom/movable/emissive_blocker
-	name = "emissive blocker"
+	name = "发射阻挡器"
 	plane = EMISSIVE_PLANE
 	layer = FLOAT_LAYER
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

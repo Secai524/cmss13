@@ -1,6 +1,6 @@
 /obj/item/weapon/baton
 	name = "stunbaton"
-	desc = "A stun baton for incapacitating people with."
+	desc = "一种用于使人丧失行动能力的眩晕警棍。"
 	icon_state = "stunbaton"
 	item_state = "baton"
 	icon = 'icons/obj/items/weapons/melee/non_lethal.dmi'
@@ -72,17 +72,17 @@
 			if(user.drop_held_item())
 				W.forceMove(src)
 				bcell = W
-				to_chat(user, SPAN_NOTICE("You install a cell in [src]."))
+				to_chat(user, SPAN_NOTICE("你在[src]中安装了一块电池。"))
 				update_icon()
 		else
-			to_chat(user, SPAN_NOTICE("[src] already has a cell."))
+			to_chat(user, SPAN_NOTICE("[src]已经有一块电池了。"))
 
 	else if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		if(bcell)
 			bcell.update_icon()
 			bcell.forceMove(get_turf(src.loc))
 			bcell = null
-			to_chat(user, SPAN_NOTICE("You remove the cell from [src]."))
+			to_chat(user, SPAN_NOTICE("你从[src]中取出了电池。"))
 			status = 0
 			update_icon()
 			return
@@ -92,19 +92,19 @@
 	..()
 
 	if(has_user_lock && !skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
-		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
+		to_chat(user, SPAN_WARNING("你似乎不知道如何使用 [src]..."))
 		return
 	if(bcell && bcell.charge > hitcost)
 		status = !status
-		to_chat(user, SPAN_NOTICE("[src] is now [status ? "on" : "off"]."))
+		to_chat(user, SPAN_NOTICE("[src]现在[status ? "on" : "off"]."))
 		playsound(loc, "sparks", 25, 1, 6)
 		update_icon()
 	else
 		status = 0
 		if(!bcell)
-			to_chat(user, SPAN_WARNING("[src] does not have a power source!"))
+			to_chat(user, SPAN_WARNING("[src]没有电源！"))
 		else
-			to_chat(user, SPAN_WARNING("[src] is out of charge."))
+			to_chat(user, SPAN_WARNING("[src]电量耗尽。"))
 	add_fingerprint(user)
 
 
@@ -113,12 +113,12 @@
 	var/mob/living/carbon/human/human_target = target
 	if(has_user_lock && !skillcheck(real_user, SKILL_POLICE, SKILL_POLICE_SKILLED))
 		if(prob(70) && status)
-			to_chat(real_user, SPAN_WARNING("You hit yourself with the [src] during the struggle..."))
+			to_chat(real_user, SPAN_WARNING("你在挣扎中用[src]打到了自己..."))
 			real_user.drop_held_item()
 			real_user.apply_effect(1,STUN)
 			human_target = real_user
 		if(prob(20) && !status) //a relatively reliable melee weapon when turned off.
-			to_chat(real_user, SPAN_WARNING("You grab the [src] incorrectly twisting your hand in the process."))
+			to_chat(real_user, SPAN_WARNING("你抓取[src]时姿势不当，扭伤了手。"))
 			real_user.drop_held_item()
 			real_user.apply_effect(1,STUN)
 			real_user.apply_damage(force, BRUTE, pick("l_hand","r_hand"), no_limb_loss = TRUE)
@@ -136,23 +136,23 @@
 		if (ishuman(human_target))
 
 			if(!target_zone) //shouldn't ever happen
-				human_target.visible_message(SPAN_DANGER("<B>[user] misses [human_target] with \the [src]!"))
+				human_target.visible_message(SPAN_DANGER("<B>[user]用\the [src]攻击[human_target]但没打中！"))
 				return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 
 			var/mob/living/carbon/human/H = human_target
 			var/obj/limb/affecting = H.get_limb(target_zone)
 			if (affecting)
 				if(!status)
-					human_target.visible_message(SPAN_WARNING("[human_target] has been prodded in the [affecting.display_name] with [src] by [user]. Luckily it was off."))
+					human_target.visible_message(SPAN_WARNING("[user]用[src]戳了[human_target]的[affecting.display_name]。幸好它没开。"))
 					return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 				else
-					H.visible_message(SPAN_DANGER("[human_target] has been prodded in the [affecting.display_name] with [src] by [user]!"))
+					H.visible_message(SPAN_DANGER("[user]用[src]戳了[human_target]的[affecting.display_name]！"))
 		else
 			if(!status)
-				human_target.visible_message(SPAN_WARNING("[human_target] has been prodded with [src] by [user]. Luckily it was off."))
+				human_target.visible_message(SPAN_WARNING("[user]用[src]戳了[human_target]。幸好它没开。"))
 				return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 			else
-				human_target.visible_message(SPAN_DANGER("[human_target] has been prodded with [src] by [user]!"))
+				human_target.visible_message(SPAN_DANGER("[user]用[src]戳了[human_target]！"))
 
 	//stun effects
 
@@ -185,7 +185,7 @@
 //Makeshift stun baton. Replacement for stun gloves.
 /obj/item/weapon/baton/cattleprod
 	name = "stunprod"
-	desc = "An improvised stun baton."
+	desc = "一根临时制作的眩晕警棍。"
 	icon_state = "stunprod"
 	item_state = "prod"
 	icon = 'icons/obj/items/weapons/melee/spears.dmi'

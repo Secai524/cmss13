@@ -56,7 +56,7 @@
 			return
 		if(STATE_REINFORCED_WALL)
 			if(step_state == STATE_PLASTEEL)
-				. += SPAN_NOTICE("Plasteel added. Add [SPAN_HELPFUL("metal rods")] to stengthen.")
+				. += SPAN_NOTICE("Plasteel added. Add [SPAN_HELPFUL("金属棒")] to stengthen.")
 			else if(step_state == STATE_RODS)
 				. += SPAN_NOTICE("Metal rods added. [SPAN_HELPFUL("Screwdrivers")] to attach.")
 			else if(step_state == STATE_SCREWDRIVER)
@@ -76,7 +76,7 @@
 /obj/structure/girder/attackby(obj/item/W, mob/user)
 	for(var/obj/effect/xenomorph/acid/A in src.loc)
 		if(A.acid_t == src)
-			to_chat(user, "You can't get near that, it's melting!")
+			to_chat(user, "你无法靠近，它正在融化！")
 			return
 
 	if(user.action_busy)
@@ -87,21 +87,21 @@
 		if(user.action_busy)
 			return
 		if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG) || !current_hammer.really_heavy))
-			to_chat(user, SPAN_WARNING("You can't use \the [current_hammer] properly!"))
+			to_chat(user, SPAN_WARNING("你无法正常使用\the [current_hammer]！"))
 			return
 
-		to_chat(user, SPAN_NOTICE("You start taking down \the [src]."))
+		to_chat(user, SPAN_NOTICE("你开始拆除\the [src]。"))
 		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL_OUT_OF_RANGE, BUSY_ICON_BUILD))
-			to_chat(user, SPAN_NOTICE("You stop taking down \the [src]."))
+			to_chat(user, SPAN_NOTICE("你停止拆除\the [src]。"))
 			return
-		to_chat(user, SPAN_NOTICE("You tear down \the [src]."))
+		to_chat(user, SPAN_NOTICE("你拆除了\the [src]。"))
 
 		playsound(loc, 'sound/effects/metal_shatter.ogg', 40, 1)
 		dismantle()
 		return
 
 	if(istool(W) && !skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
-		to_chat(user, SPAN_WARNING("You are not trained to configure [src]..."))
+		to_chat(user, SPAN_WARNING("你没有接受过配置[src]的训练..."))
 		return TRUE
 
 	if(health > 0)
@@ -109,16 +109,16 @@
 			return
 	else if(iswelder(W))
 		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
-			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			to_chat(user, SPAN_WARNING("你需要一把更强的喷枪！"))
 			return
 		for(var/obj/object in loc)
 			if(object.density)
-				to_chat(user, SPAN_WARNING("[object] is blocking you from welding [src] together!"))
+				to_chat(user, SPAN_WARNING("[object]阻挡了你将[src]焊接在一起！"))
 				return
 		if(do_after(user, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			if(QDELETED(src))
 				return
-			to_chat(user, SPAN_NOTICE("You weld the girder together!"))
+			to_chat(user, SPAN_NOTICE("你将大梁焊接好了！"))
 			repair()
 			return
 	. = ..()
@@ -128,46 +128,46 @@
 		if(STATE_STANDARD)
 			if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
-				to_chat(user, SPAN_NOTICE("Now unsecuring support struts."))
+				to_chat(user, SPAN_NOTICE("正在解除支撑杆的固定。"))
 				if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					return TRUE
-				to_chat(user, SPAN_NOTICE("You unsecured the support struts!"))
+				to_chat(user, SPAN_NOTICE("你解除了支撑杆的固定！"))
 				state = STATE_DISMANTLING
 				step_state = STATE_SCREWDRIVER
 				return TRUE
 
 			else if(istype(W, /obj/item/stack/sheet/metal))
 				if(istype(get_area(loc), /area/shuttle))
-					to_chat(user, SPAN_WARNING("No. This area is needed for the dropships and personnel."))
+					to_chat(user, SPAN_WARNING("不行。这片区域是运输机和人员必需的。"))
 					return TRUE
 
 				var/obj/item/stack/sheet/metal/M = W
-				to_chat(user, SPAN_NOTICE("You start adding the metal to the internals."))
+				to_chat(user, SPAN_NOTICE("你开始将金属添加到内部结构中。"))
 				if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					return TRUE
 				if(M.use(GIRDER_UPGRADE_MATERIAL_COST))
 					state = STATE_WALL
 					step_state = STATE_METAL
-					to_chat(user, SPAN_NOTICE("You added the metal to the internals!"))
+					to_chat(user, SPAN_NOTICE("你已将金属添加到内部结构中！"))
 				else
-					to_chat(user, SPAN_NOTICE("Not enough metal!"))
+					to_chat(user, SPAN_NOTICE("金属不足！"))
 				return TRUE
 
 			else if(istype(W, /obj/item/stack/sheet/plasteel))
 				if(istype(get_area(loc), /area/shuttle))
-					to_chat(user, SPAN_WARNING("No. This area is needed for the dropships and personnel."))
+					to_chat(user, SPAN_WARNING("不行。这片区域是运输机和人员必需的。"))
 					return TRUE
 
 				var/obj/item/stack/sheet/plasteel/P = W
-				to_chat(user, SPAN_NOTICE("You start adding the plates to the internals."))
+				to_chat(user, SPAN_NOTICE("你开始将板材安装到内部结构上。"))
 				if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					return TRUE
 				if(P.use(GIRDER_UPGRADE_MATERIAL_COST))
 					state = STATE_REINFORCED_WALL
 					step_state = STATE_PLASTEEL
-					to_chat(user, SPAN_NOTICE("You added the plates to the internals!"))
+					to_chat(user, SPAN_NOTICE("你已将板材安装到内部结构上！"))
 				else
-					to_chat(user, SPAN_NOTICE("Not enough plasteel!"))
+					to_chat(user, SPAN_NOTICE("塑钢不足！"))
 				return TRUE
 
 		if(STATE_DISMANTLING)
@@ -180,21 +180,21 @@
 			if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 				var/area/area = get_area(W)
 				if(!area.allow_construction)
-					to_chat(user, SPAN_WARNING("The girder must be secured on a proper surface!"))
+					to_chat(user, SPAN_WARNING("大梁必须固定在合适的表面上！"))
 					return
 				var/turf/open/floor = loc
 				if(!floor.allow_construction)
-					to_chat(user, SPAN_WARNING("The girder must be secured on a proper surface!"))
+					to_chat(user, SPAN_WARNING("大梁必须固定在合适的表面上！"))
 					return
 				var/obj/structure/tunnel/tunnel = locate(/obj/structure/tunnel) in loc
 				if(tunnel)
-					to_chat(user, SPAN_WARNING("The girder cannot be secured on a tunnel!"))
+					to_chat(user, SPAN_WARNING("大梁无法固定在隧道上！"))
 					return
 				playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
-				to_chat(user, SPAN_NOTICE("Now securing the girder..."))
+				to_chat(user, SPAN_NOTICE("正在固定大梁..."))
 				if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					return TRUE
-				to_chat(user, SPAN_NOTICE("You secured the girder!"))
+				to_chat(user, SPAN_NOTICE("你固定好了大梁！"))
 				anchored = TRUE
 				state = STATE_STANDARD
 				step_state = STATE_STANDARD
@@ -208,19 +208,19 @@
 
 	else if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) && step_state == STATE_SCREWDRIVER)
 		playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
-		to_chat(user, SPAN_NOTICE("Now removing support struts."))
+		to_chat(user, SPAN_NOTICE("正在移除支撑杆。"))
 		if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return TRUE
-		to_chat(user, SPAN_NOTICE("You removed the support struts!"))
+		to_chat(user, SPAN_NOTICE("你移除了支撑杆！"))
 		step_state = STATE_WIRECUTTER
 		return TRUE
 
 	else if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR) && step_state == STATE_WIRECUTTER)
 		playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
-		to_chat(user, SPAN_NOTICE("Now dislodging the girder..."))
+		to_chat(user, SPAN_NOTICE("正在撬动大梁..."))
 		if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return TRUE
-		to_chat(user, SPAN_NOTICE("You dislodged the girder!"))
+		to_chat(user, SPAN_NOTICE("你撬动了大梁！"))
 		anchored = FALSE
 		state = STATE_DISPLACED
 		step_state = STATE_STANDARD
@@ -228,11 +228,11 @@
 		return TRUE
 
 	else if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && step_state == STATE_WIRECUTTER)
-		to_chat(user, SPAN_NOTICE("You start wrenching it apart."))
+		to_chat(user, SPAN_NOTICE("你开始用扳手将其拆开。"))
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 		if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 			return TRUE
-		to_chat(user, SPAN_NOTICE("You wrenched it apart!"))
+		to_chat(user, SPAN_NOTICE("你用扳手把它拆开了！"))
 		deconstruct(TRUE)
 
 		return TRUE
@@ -249,20 +249,20 @@
 
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && step_state == STATE_METAL)
 		playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
-		to_chat(user, SPAN_NOTICE("You are attaching the metal to the internal structure."))
+		to_chat(user, SPAN_NOTICE("你正在将金属固定到内部结构上。"))
 		if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
 			return TRUE
-		to_chat(user, SPAN_NOTICE("You have attached the metal to the internal structure!"))
+		to_chat(user, SPAN_NOTICE("你已将金属固定到内部结构上！"))
 		step_state = STATE_SCREWDRIVER
 		return TRUE
 
 	if(iswelder(W) && step_state == STATE_SCREWDRIVER)
 		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
-			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			to_chat(user, SPAN_WARNING("你需要一把更强的喷枪！"))
 			return
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.remove_fuel(5, user))
-			to_chat(user, SPAN_NOTICE("You start welding the new additions."))
+			to_chat(user, SPAN_NOTICE("你开始焊接新部件。"))
 			playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 			if(!do_after(user, 5 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
 				WT.remove_fuel(-5)
@@ -271,7 +271,7 @@
 			if(QDELETED(src))
 				return
 
-			to_chat(user, SPAN_NOTICE("You have welded the new additions!"))
+			to_chat(user, SPAN_NOTICE("你已焊接好新部件！"))
 			playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 			var/turf/T = get_turf(src)
 			if(is_mainship_level(z))
@@ -295,28 +295,28 @@
 	if(istype(W, /obj/item/stack/rods) && step_state == STATE_PLASTEEL)
 		var/obj/item/stack/rods/R = W
 		if(R.use(2))
-			to_chat(user, SPAN_NOTICE("You strengthened the connection rods."))
+			to_chat(user, SPAN_NOTICE("你加固了连接杆。"))
 			step_state = STATE_RODS
 		else
-			to_chat(user, SPAN_NOTICE("You failed to strengthen the connection rods. You need more rods."))
+			to_chat(user, SPAN_NOTICE("你未能加固连接杆。需要更多连接杆。"))
 		return TRUE
 
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && step_state == STATE_RODS)
 		playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
-		to_chat(user, SPAN_NOTICE("You are attaching the plasteel to the internal structure."))
+		to_chat(user, SPAN_NOTICE("你正在将塑钢固定到内部结构上。"))
 		if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
 			return TRUE
-		to_chat(user, SPAN_NOTICE("You have attached the plasteel to the internal structure!"))
+		to_chat(user, SPAN_NOTICE("你已将塑钢固定到内部结构上！"))
 		step_state = STATE_SCREWDRIVER
 		return TRUE
 
 	if(iswelder(W) && step_state == STATE_SCREWDRIVER)
 		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
-			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			to_chat(user, SPAN_WARNING("你需要一把更强的喷枪！"))
 			return
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.remove_fuel(5, user))
-			to_chat(user, SPAN_NOTICE("You start welding the new additions."))
+			to_chat(user, SPAN_NOTICE("你开始焊接新部件。"))
 			playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 			if(!do_after(user, 5 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
 				WT.remove_fuel(-5)
@@ -325,7 +325,7 @@
 			if(QDELETED(src))
 				return
 
-			to_chat(user, SPAN_NOTICE("You have welded the new additions!"))
+			to_chat(user, SPAN_NOTICE("你已焊接好新部件！"))
 			playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 			var/turf/T = get_turf(src)
 			if(is_mainship_level(z))
@@ -388,7 +388,7 @@
 
 /obj/structure/girder/attack_animal(mob/living/simple_animal/user)
 	if(user.wall_smash)
-		visible_message(SPAN_DANGER("[user] smashes [src] apart!"))
+		visible_message(SPAN_DANGER("[user]砸碎了[src]！"))
 		dismantle()
 		return
 	return ..()
@@ -415,19 +415,19 @@
 
 /obj/structure/girder/attack_alien(mob/living/carbon/xenomorph/M)
 	if((M.caste && M.caste.tier < 2 && M.claw_type < CLAW_TYPE_VERY_SHARP) || unacidable)
-		to_chat(M, SPAN_WARNING("Our claws aren't sharp enough to damage [src]."))
+		to_chat(M, SPAN_WARNING("我们的爪子不够锋利，无法破坏[src]。"))
 		return XENO_NO_DELAY_ACTION
 	M.animation_attack_on(src)
 	health -= floor(rand(M.melee_damage_lower, M.melee_damage_upper) * 0.5)
 	if(health <= 0)
-		M.visible_message(SPAN_DANGER("[M] smashes [src] apart!"),
+		M.visible_message(SPAN_DANGER("[M]砸碎了[src]！"),
 		SPAN_DANGER("We slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		playsound(loc, 'sound/effects/metalhit.ogg', 25, TRUE)
 		dismantle()
 	if(state == STATE_DESTROYED)
 		qdel(src)
 	else
-		M.visible_message(SPAN_DANGER("[M] smashes [src]!"),
+		M.visible_message(SPAN_DANGER("[M]砸碎了[src]！"),
 		SPAN_DANGER("We [M.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		playsound(loc, 'sound/effects/metalhit.ogg', 25, TRUE)
 	return XENO_ATTACK_ACTION
@@ -441,13 +441,13 @@
 	update_health(xeno.melee_damage_upper)
 	health -= xeno.melee_damage_upper
 	if(health <= 0)
-		xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno]用它的尾巴摧毁了[src]！"),
 		SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		dismantle()
 	if(state == STATE_DESTROYED)
 		qdel(src)
 	else
-		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno] 用它的尾巴抽打 [src]！"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL

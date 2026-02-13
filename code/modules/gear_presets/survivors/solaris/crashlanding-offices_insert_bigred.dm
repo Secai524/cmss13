@@ -2,7 +2,7 @@
 // /obj/effect/landmark/survivor_spawner/bigred_crashed_pmc
 
 /datum/equipment_preset/survivor/pmc
-	name = "Survivor - PMC"
+	name = "幸存者 - PMC"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = JOB_PMC_STANDARD
 	job_title = JOB_PMC_STANDARD
@@ -36,7 +36,7 @@
 	return
 
 /datum/equipment_preset/survivor/pmc/standard
-	name = "Survivor - PMC Standard"
+	name = "幸存者 - PMC 标准队员"
 
 /datum/equipment_preset/survivor/pmc/standard/load_gear(mob/living/carbon/human/new_human)
 	//uniform
@@ -81,7 +81,7 @@
 // /obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_medic
 
 /datum/equipment_preset/survivor/pmc/medic
-	name = "Survivor - PMC Medic"
+	name = "幸存者 - PMC 医疗兵"
 	assignment = JOB_PMC_MEDIC
 	job_title = JOB_PMC_MEDIC
 	paygrades = list(PAY_SHORT_PMC_MS = JOB_PLAYTIME_TIER_0)
@@ -127,7 +127,7 @@
 // /obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_engineer
 
 /datum/equipment_preset/survivor/pmc/engineer
-	name = "Survivor - PMC Engineer"
+	name = "幸存者 - PMC 工程师"
 	assignment = JOB_PMC_ENGINEER
 	job_title = JOB_PMC_ENGINEER
 	paygrades = list(PAY_SHORT_PMC_TEC = JOB_PLAYTIME_TIER_0)
@@ -167,7 +167,7 @@
 // /obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_leader
 
 /datum/equipment_preset/survivor/pmc/pmc_leader
-	name = "Survivor - PMC Leader"
+	name = "幸存者 - PMC 队长"
 	assignment = JOB_PMC_LEADER
 	job_title = JOB_PMC_LEADER
 	paygrades = list(PAY_SHORT_PMC_TL = JOB_PLAYTIME_TIER_0)
@@ -207,7 +207,7 @@
 // /obj/effect/landmark/survivor_spawner/bigred_crashed_cl
 
 /datum/equipment_preset/survivor/corporate/manager
-	name = "Survivor - Corporate Supervisor"
+	name = "幸存者 - 公司主管"
 	flags = EQUIPMENT_PRESET_EXTRA
 	paygrades = list(PAY_SHORT_WYC6 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian/survivor/manager
@@ -257,7 +257,7 @@
 
 // only used on the spawner of all of those above...
 /datum/equipment_preset/synth/survivor/pmc
-	name = "Survivor - Synthetic - PMC Support Synth"
+	name = "幸存者 - 合成人 - PMC支援合成人"
 	faction = FACTION_PMC
 	faction_group = list(FACTION_WY, FACTION_SURVIVOR, FACTION_PMC)
 	access = list(
@@ -335,7 +335,7 @@
 
 // only used on the spawner of all of those above...
 /datum/equipment_preset/survivor/pmc/pmc_commander
-	name = "Survivor - PMC Field Operations Leader"
+	name = "幸存者 - PMC野战行动队长"
 	assignment = JOB_PMC_FIELD_OP_LEADER
 	job_title = JOB_PMC_FIELD_OP_LEADER
 	paygrades = list(PAY_SHORT_PMC_FOL = JOB_PLAYTIME_TIER_0)

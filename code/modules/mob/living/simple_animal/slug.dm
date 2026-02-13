@@ -1,6 +1,6 @@
 /mob/living/simple_animal/small/alien_slug
-	name = "odd slug"
-	desc = "A weird looking slug like creature with tiny limbs."
+	name = "奇怪的蛞蝓"
+	desc = "一种长相怪异、长着小肢体的蛞蝓状生物。"
 	icon = 'icons/mob/animal.dmi'
 	icon_state = "slug_movement"
 	icon_living = "slug_movement"
@@ -8,7 +8,7 @@
 	speak = list("Blurb.","Blub.","BLURP!")
 	speak_emote = list("blurps")
 	emote_hear = list("blurps.")
-	emote_see = list("wiggles.")
+	emote_see = list("扭动。")
 	attacktext = "bites"
 	response_help  = "pets"
 	response_disarm = "shoos"
@@ -41,5 +41,5 @@
 	))
 
 /mob/living/simple_animal/small/alien_slug/start_pulling(atom/movable/AM)//Prevents it from pulling things
-	to_chat(src, SPAN_WARNING("You are too small to pull anything."))
+	to_chat(src, SPAN_WARNING("你太小了，拉不动任何东西。"))
 	return

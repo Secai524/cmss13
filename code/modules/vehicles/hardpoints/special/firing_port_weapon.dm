@@ -1,7 +1,7 @@
 //this is Cupola guns that are fired from the sides of APC by support gunners
 /obj/item/hardpoint/special/firing_port_weapon
 	name = "\improper M56 FPW"
-	desc = "A modified M56A2 Smartgun installed on the sides of M577 Armored Personnel Carrier as a Firing Port Weapon. Used by support gunners to cover friendly infantry at APC sides."
+	desc = "一款改装后的M56A2智能枪，作为射击口武器安装在M577装甲运兵车侧面。供支援射手使用，为装甲运兵车侧翼的友军步兵提供掩护。"
 
 	icon = 'icons/obj/vehicles/hardpoints/apc.dmi'
 	icon_state = "m56_FPW"
@@ -84,11 +84,11 @@
 
 	//FPW stop working at 50% hull
 	if(owner.health < initial(owner.health) * 0.5)
-		to_chat(user, SPAN_WARNING("<b>\The [owner]'s hull is too damaged!</b>"))
+		to_chat(user, SPAN_WARNING("<b>\The [owner]的船体受损过重！</b>"))
 		return NONE
 
 	if(user.get_active_hand())
-		to_chat(user, SPAN_WARNING("You need a free hand to use \the [name]."))
+		to_chat(user, SPAN_WARNING("你需要空出一只手来使用\the [name]。"))
 		return NONE
 
 	if(reloading)
@@ -97,13 +97,13 @@
 
 	if(ammo && ammo.current_rounds <= 0)
 		if(reloading)
-			to_chat(user, SPAN_WARNING("<b>\The [name] is out of ammo! You have to wait [(reload_time_started + reload_time - world.time) / 10] seconds before it reloads!"))
+			to_chat(user, SPAN_WARNING("<b>\The [name]弹药耗尽！你还需要等待[(reload_time_started + reload_time - world.time) / 10]秒才能完成装弹！"))
 		else
 			start_auto_reload(user)
 		return NONE
 
 	if(!in_firing_arc(target))
-		to_chat(user, SPAN_WARNING("<b>The target is not within your firing arc!</b>"))
+		to_chat(user, SPAN_WARNING("<b>目标不在你的射击扇区内！</b>"))
 		return NONE
 
 	return handle_fire(target, user, params)

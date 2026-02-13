@@ -8,13 +8,13 @@
 
 //Used for logging people entering cryosleep and important items they are carrying.
 GLOBAL_LIST_EMPTY(frozen_crew)
-GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = list(), SQUAD_MARINE_3 = list(), SQUAD_MARINE_4 = list(), "MP" = list(), "REQ" = list(), "Eng" = list(), "Med" = list(), "Yautja" = list(), "Responders" = list()))
+GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = list(), SQUAD_MARINE_3 = list(), SQUAD_MARINE_4 = list(), "MP" = list(), "REQ" = list(), "Eng" = list(), "Med" = list(), "铁血战士" = list(), "Responders" = list()))
 
 //Main cryopod console.
 
 /obj/structure/machinery/computer/cryopod
-	name = "hypersleep bay console"
-	desc = "A large console controlling the ship's hypersleep bay. Most of the options are disabled and locked, although it allows recovery of items from long-term hypersleeping crew."
+	name = "超光速休眠舱控制台"
+	desc = "一个控制舰船超光速休眠舱的大型控制台。大部分选项已被禁用并锁定，但它允许取回长期休眠船员的物品。"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "cellconsole"
 	circuit = /obj/item/circuitboard/computer/cryopodcontrol
@@ -47,7 +47,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	cryotype = SQUAD_MARINE_4
 
 /obj/structure/machinery/computer/cryopod/yautja
-	cryotype = "Yautja"
+	cryotype = "铁血战士"
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	icon_state = "terminal"
 	z_restricted = FALSE
@@ -109,18 +109,18 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	else if(href_list["item"])
 
 		if(length(frozen_items_for_type) == 0)
-			to_chat(user, SPAN_WARNING("There is nothing to recover from storage."))
+			to_chat(user, SPAN_WARNING("存储中没有任何物品可回收。"))
 			return
 
-		var/obj/item/I = tgui_input_list(usr, "Please choose which object to retrieve.", "Object recovery", frozen_items_for_type)
+		var/obj/item/I = tgui_input_list(usr, "请选择要取回的对象。", "Object recovery", frozen_items_for_type)
 		if(!I)
 			return
 
 		if(!(I in frozen_items_for_type))
-			to_chat(user, SPAN_WARNING("[I] is no longer in storage."))
+			to_chat(user, SPAN_WARNING("[I]已不在存储中。"))
 			return
 
-		visible_message(SPAN_NOTICE("[src] beeps happily as it disgorges [I]."))
+		visible_message(SPAN_NOTICE("[src]发出愉快的哔哔声，吐出了[I]。"))
 
 		I.forceMove(get_turf(src))
 		frozen_items_for_type -= I
@@ -128,10 +128,10 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	else if(href_list["allitems"])
 
 		if(length(frozen_items_for_type) == 0)
-			to_chat(user, SPAN_WARNING("There is nothing to recover from storage."))
+			to_chat(user, SPAN_WARNING("存储中没有任何物品可回收。"))
 			return
 
-		visible_message(SPAN_NOTICE("[src] beeps happily as it disgorges the desired objects."))
+		visible_message(SPAN_NOTICE("[src]发出愉快的哔哔声，吐出了所需物品。"))
 
 		for(var/obj/item/I in frozen_items_for_type)
 			I.forceMove(get_turf(src))
@@ -144,8 +144,8 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 //Decorative structures to go alongside cryopods.
 /obj/structure/cryofeed
 
-	name = "hypersleep chamber feed"
-	desc = "A bewildering tangle of machinery and pipes linking the hypersleep chambers to the hypersleep bay."
+	name = "超光速休眠舱供给口"
+	desc = "连接着超眠舱与下层长期超眠区的，是一团令人困惑的机器与管道网络。"
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "cryo_rear"
 	anchored = TRUE
@@ -167,8 +167,8 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 
 //Cryopods themselves.
 /obj/structure/machinery/cryopod
-	name = "hypersleep chamber"
-	desc = "A large automated capsule with LED displays intended to put anyone inside into 'hypersleep', a form of non-cryogenic statis used on most ships, linked to a long-term hypersleep bay on a lower level."
+	name = "超眠舱"
+	desc = "一个带有LED显示屏的大型自动化胶囊，旨在将内部人员置于‘超眠’状态——这是大多数舰船上使用的一种非低温静滞形式，与下层的长期超眠区相连。"
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "body_scanner_open"
 	density = TRUE
@@ -382,7 +382,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 
 	if(!gearless_role(occupant))
 		ai_silent_announcement("[occupant.real_name], [occupant.job], has entered long-term hypersleep storage. Belongings moved to hypersleep inventory.")
-	visible_message(SPAN_NOTICE("[src] hums and hisses as it moves [occupant.real_name] into hypersleep storage."))
+	visible_message(SPAN_NOTICE("[src]嗡嗡作响并嘶嘶作响，将[occupant.real_name]移入超眠存储。"))
 
 	//Delete the mob.
 
@@ -395,7 +395,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 	if(istype(W, /obj/item/grab))
 		var/obj/item/grab/G = W
 		if(occupant)
-			to_chat(user, SPAN_WARNING("[src] is occupied."))
+			to_chat(user, SPAN_WARNING("[src]已被占用。"))
 			return FALSE
 
 		if(!isliving(G.grabbed_thing))
@@ -409,11 +409,11 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 			return FALSE
 
 		if(isxeno(M))
-			to_chat(user, SPAN_WARNING("There is no way [src] will accept [M]!"))
+			to_chat(user, SPAN_WARNING("[src]不可能接受[M]！"))
 			return FALSE
 
 		if(M.client)
-			if(alert(M,"Would you like to enter cryosleep?", , "Yes", "No") == "Yes")
+			if(alert(M,"是否要进入低温睡眠？", , "Yes", "No") == "Yes")
 				if(!M || !G || !G.grabbed_thing)
 					return FALSE
 				willing = TRUE
@@ -422,7 +422,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 
 		if(willing)
 
-			visible_message(SPAN_NOTICE("[user] starts putting [M] into [src]."),
+			visible_message(SPAN_NOTICE("[user]开始将[M]放入[src]。"),
 			SPAN_NOTICE("You start putting [M] into [src]."))
 
 			if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
@@ -430,7 +430,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 			if(!M || !G || !G.grabbed_thing)
 				return
 			if(occupant)
-				to_chat(user, SPAN_WARNING("[src] is occupied."))
+				to_chat(user, SPAN_WARNING("[src]已被占用。"))
 				return FALSE
 
 			go_in_cryopod(M)
@@ -456,16 +456,16 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		return
 
 	if(occupant != usr)
-		to_chat(usr, SPAN_WARNING("You can't drag people out of hypersleep!"))
+		to_chat(usr, SPAN_WARNING("你不能把人从超眠中拖出来！"))
 		return
 
-	if(!silent_exit && alert(usr, "Would you like eject out of the hypersleep chamber?", "Confirm", "Yes", "No") != "Yes")
+	if(!silent_exit && alert(usr, "是否要从超眠舱中弹出？", "确认", "Yes", "No") != "Yes")
 		return
 
 	go_out() //Not adding a delay for this because for some reason it refuses to work. Not a big deal imo
 	add_fingerprint(usr)
 
-	to_chat(usr, SPAN_NOTICE("You get out of \the [src]."))
+	to_chat(usr, SPAN_NOTICE("你从\the [src]中出来了。"))
 	if(!silent_exit)
 		visible_message(SPAN_WARNING("\The [src]'s casket starts moving!"))
 		var/mob/living/M = usr
@@ -490,14 +490,14 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		return
 
 	if(occupant)
-		to_chat(usr, SPAN_WARNING("[src] is occupied."))
+		to_chat(usr, SPAN_WARNING("[src]已被占用。"))
 		return
 
 	if(isxeno(usr))
-		to_chat(usr, SPAN_WARNING("There is no way [src] will accept you!"))
+		to_chat(usr, SPAN_WARNING("[src]不可能接受你！"))
 		return
 
-	usr.visible_message(SPAN_NOTICE("[usr] starts climbing into [src]."),
+	usr.visible_message(SPAN_NOTICE("[usr]开始爬进[src]。"),
 	SPAN_NOTICE("You start climbing into [src]."))
 
 	if(do_after(usr, 20, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
@@ -506,7 +506,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 			return
 
 		if(occupant)
-			to_chat(usr, SPAN_WARNING("[src] is occupied."))
+			to_chat(usr, SPAN_WARNING("[src]已被占用。"))
 			return
 
 		go_in_cryopod(usr)
@@ -525,8 +525,8 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 
 	if(!silent)
 		if(mob.client)
-			to_chat(mob, SPAN_NOTICE("You feel cool air surround you. You go numb as your senses turn inward."))
-			to_chat(mob, SPAN_BOLDNOTICE("If you log out or close your client now, your character will permanently removed from the round in 10 minutes. If you ghost, timer will be decreased to 2 minutes."))
+			to_chat(mob, SPAN_NOTICE("你感到冰冷的空气包围了你。随着感官向内收敛，你逐渐麻木。"))
+			to_chat(mob, SPAN_BOLDNOTICE("如果你现在登出或关闭客户端，你的角色将在10分钟后被永久移出本轮游戏。如果你进入观察者模式，计时器将缩短至2分钟。"))
 			if(!should_block_game_interaction(src)) // Set their queue time now because the client has to actually leave to despawn and at that point the client is lost
 				mob.client.player_details.larva_pool_time = max(mob.client.player_details.larva_pool_time, world.time)
 		var/area/location = get_area(src)

@@ -135,8 +135,8 @@
 
 /turf/open/hybrisa/street/CMB_4x4_emblem
 	icon_state = "marshallsemblem_concrete_2x2"
-	name = "Office of the Colonial Marshals - Concrete Emblem"
-	desc = "A small inscription reads - The laws of Earth stretch beyond the Sol. To live, to serve, wherever humanity roams."
+	name = "殖民地执法官办公室 - 混凝土徽章"
+	desc = "一行小字写着：地球的法律延伸至太阳系之外。生存，服务，无论人类去往何方。"
 
 /turf/open/hybrisa/street/CMB_4x4_emblem/north
 	dir = NORTH
@@ -151,8 +151,8 @@
 
 /turf/open/hybrisa/street/NSPA_2x2_emblem
 	icon_state = "NSPA_emblem_concrete_2x2"
-	name = "NSPA - Concrete Sakrua Emblem"
-	desc = "A concrete emblem resembling a (Sakura Flower), the symbol of the NSPA, below is is an inscription reading - (Empire and Honor, Bound by Duty. Duty Beyond Borders, Justice Across Worlds)."
+	name = "NSPA - 混凝土樱花徽章"
+	desc = "一个混凝土徽章，形似（樱花），这是NSPA的象征，下方刻有铭文：（帝国与荣耀，以责任相连。责任超越边界，正义遍及寰宇）。"
 
 /turf/open/hybrisa/street/NSPA_2x2_emblem/north
 	dir = NORTH
@@ -182,8 +182,8 @@
 // Engineer Ship Hull
 
 /turf/open/floor/hybrisa/engineership/ship_hull
-	name = "strange metal wall"
-	desc = "Nigh indestructible walls that make up the hull of an unknown ancient ship, looks like nothing you can do will penetrate the hull."
+	name = "奇异金属墙"
+	desc = "构成一艘未知古老飞船船体的近乎坚不可摧的墙壁，看起来你无法穿透这层船体。"
 	icon = 'icons/turf/floors/engineership.dmi'
 	icon_state = "engineerwallfloor1"
 	allow_construction = FALSE
@@ -857,16 +857,16 @@
 
 /turf/open/floor/hybrisa/misc/marshallsemblem
 	icon_state = "marshallsemblem"
-	desc = "A small inscription reads - The laws of Earth stretch beyond the Sol. To live, to serve, wherever humanity roams."
-	name = "Office of the Colonial Marshals Emblem"
+	desc = "一行小字写着：地球的法律延伸至太阳系之外。生存，服务，无论人类去往何方。"
+	name = "殖民地执法官办公室徽章"
 
 /turf/open/floor/hybrisa/misc/NSPA_emblem
 	icon_state = "NSPAemblem"
-	desc = "A golden emblem resembling a (Sakura Flower), the symbol of the NSPA."
-	name = "NSPA - Golden Sakura Emblem"
+	desc = "一个金色的徽章，形似（樱花），这是NSPA的象征。"
+	name = "NSPA - 金色樱花徽章"
 
 /turf/open/floor/hybrisa/misc/wybiglogo
-	name = "Weyland-Yutani corp. - bulding better worlds."
+	name = "维兰德-汤谷公司 - 建设更美好的世界。"
 	icon_state = "big8x8wylogo"
 
 /turf/open/floor/hybrisa/misc/wybiglogo/southwest
@@ -948,7 +948,7 @@
 
 /turf/open/floor/hybrisa/engineership
 	name = "floor"
-	desc = "A strange metal floor, unlike any metal you've seen before."
+	desc = "一种奇异的金属地板，与你见过的任何金属都不同。"
 	icon = 'icons/turf/floors/engineership.dmi'
 	icon_state = "hybrisa"
 	plating_type = /turf/open/floor/plating/engineer_ship
@@ -1025,8 +1025,8 @@
 // Pillars
 
 /turf/open/floor/hybrisa/engineership/pillars
-	name = "strange metal pillar"
-	desc = "A strange metal pillar, unlike any metal you've seen before."
+	name = "奇异金属柱"
+	desc = "一根奇异的金属柱，与你见过的任何金属都不同。"
 	icon_state = "eng_pillar1"
 	allow_construction = FALSE
 	is_weedable = NOT_WEEDABLE
@@ -1069,15 +1069,15 @@
 // Derelict Ship
 
 /turf/closed/wall/engineership
-	name = "strange metal wall"
-	desc = "Nigh indestructible walls that make up the hull of an unknown ancient ship, looks like nothing you can do will penetrate the hull."
+	name = "奇异金属墙"
+	desc = "构成一艘未知古老飞船船体的近乎坚不可摧的墙壁，看起来你无法穿透这层船体。"
 	icon = 'icons/turf/walls/engineership.dmi'
 	icon_state = "metal"
 	walltype = WALL_HUNTERSHIP
 	turf_flags = TURF_HULL
 
 /turf/closed/wall/engineership/destructible
-	desc = "Nigh indestructible walls that make up the hull of an unknown ancient ship, with enough force they could break."
+	desc = "构成未知远古飞船船体的近乎坚不可摧的墙壁，但足够的力量仍能将其破坏。"
 	turf_flags = NO_FLAGS
 	damage_cap = HEALTH_WALL_ULTRA_REINFORCED
 	baseturfs = /turf/open/floor/plating/engineer_ship
@@ -1085,8 +1085,8 @@
 // Rock
 
 /turf/closed/wall/hybrisa/rock
-	name = "rock wall"
-	desc = "Massive columns comprised of anicent sedimentary rocks loom before you."
+	name = "岩壁"
+	desc = "由远古沉积岩构成的巨大石柱耸立在你面前。"
 	icon = 'icons/turf/walls/kutjevorockdark.dmi'
 	icon_state = "rock"
 	walltype = WALL_KUTJEVO_ROCK
@@ -1096,19 +1096,19 @@
 // Marshalls
 
 /turf/closed/wall/hybrisa/marhsalls
-	name = "metal wall"
+	name = "金属墙"
 	icon = 'icons/turf/walls/hybrisa_marshalls.dmi'
 	icon_state = "metal"
 	walltype = WALL_METAL
 
 /turf/closed/wall/hybrisa/marhsalls/reinforced
-	name = "reinforced metal wall"
+	name = "强化金属墙"
 	icon_state = "rwall"
 	walltype = WALL_REINFORCED
 
 /turf/closed/wall/hybrisa/marhsalls/unmeltable
-	name = "heavy reinforced wall"
-	desc = "A huge chunk of ultra-reinforced metal used to separate rooms. Looks virtually indestructible."
+	name = "重型强化墙"
+	desc = "一大块用于分隔房间的超强化金属。看起来几乎坚不可摧。"
 	icon_state = "hwall"
 	walltype = WALL_REINFORCED
 	turf_flags = TURF_HULL
@@ -1116,165 +1116,165 @@
 // Research
 
 /turf/closed/wall/hybrisa/research/ribbed //this guy is our reinforced replacement
-	name = "ribbed facility walls"
+	name = "肋状设施墙壁"
 	icon = 'icons/turf/walls/hybrisaresearchbrownwall.dmi'
 	icon_state = "strata_ribbed_outpost_"
-	desc = "A thick and chunky metal wall covered in jagged ribs."
+	desc = "一面厚重、布满锯齿状肋骨的金属墙。"
 	walltype = WALL_STRATA_OUTPOST_RIBBED
 	damage_cap = HEALTH_WALL_REINFORCED
 
 /turf/closed/wall/hybrisa/research
-	name = "bare facility walls"
+	name = "光秃的设施墙壁"
 	icon = 'icons/turf/walls/hybrisaresearchbrownwall.dmi'
 	icon_state = "strata_bare_outpost_"
-	desc = "A thick and chunky metal wall. The surface is barren and imposing."
+	desc = "一面厚重、光秃且气势逼人的金属墙。"
 	walltype = WALL_STRATA_OUTPOST_BARE
 
 /turf/closed/wall/hybrisa/research/reinforced
-	name = "ribbed facility walls"
+	name = "肋状设施墙壁"
 	icon_state = "strata_ribbed_outpost_"
-	desc = "A thick and chunky metal wall covered in jagged ribs."
+	desc = "一面厚重、布满锯齿状肋骨的金属墙。"
 	walltype = WALL_STRATA_OUTPOST_RIBBED
 	damage_cap = HEALTH_WALL_REINFORCED
 
 /turf/closed/wall/hybrisa/research/reinforced/hull
 	icon_state = "strata_hull"
-	desc = "A thick and chunky metal wall that is, just by virtue of its placement and imposing presence, entirely indestructible."
+	desc = "一面厚重、仅凭其位置和压迫感就完全坚不可摧的金属墙。"
 	turf_flags = TURF_HULL
 
 // Colony Walls
 
 /turf/closed/wall/hybrisa/colony/ribbed //this guy is our reinforced replacement
-	name = "ribbed metal walls"
+	name = "肋状金属墙"
 	icon = 'icons/turf/walls/hybrisa_colonywall.dmi'
 	icon_state = "strata_ribbed_outpost_"
-	desc = "A thick and chunky metal wall covered in jagged ribs."
+	desc = "一面厚重、布满锯齿状肋骨的金属墙。"
 	walltype = WALL_STRATA_OUTPOST_RIBBED
 	damage_cap = HEALTH_WALL_REINFORCED
 
 /turf/closed/wall/hybrisa/colony
-	name = "bare metal walls"
+	name = "光秃金属墙"
 	icon = 'icons/turf/walls/hybrisa_colonywall.dmi'
 	icon_state = "strata_bare_outpost_"
-	desc = "A thick and chunky metal wall. The surface is barren and imposing."
+	desc = "一面厚重、光秃且气势逼人的金属墙。"
 	walltype = WALL_STRATA_OUTPOST_BARE
 
 /turf/closed/wall/hybrisa/colony/reinforced
-	name = "ribbed metal walls"
+	name = "肋状金属墙"
 	icon_state = "strata_ribbed_outpost_"
-	desc = "A thick and chunky metal wall covered in jagged ribs."
+	desc = "一面厚重、布满锯齿状肋骨的金属墙。"
 	walltype = WALL_STRATA_OUTPOST_RIBBED
 	damage_cap = HEALTH_WALL_REINFORCED
 
 /turf/closed/wall/hybrisa/colony/reinforced/hull
 	icon_state = "strata_hull"
-	desc = "A thick and chunky metal wall that is, just by virtue of its placement and imposing presence, entirely indestructible."
+	desc = "一面厚重、仅凭其位置和压迫感就完全坚不可摧的金属墙。"
 	turf_flags = TURF_HULL
 
 // Hospital
 
 /turf/closed/wall/hybrisa/colony/hospital/ribbed //this guy is our reinforced replacement
-	name = "ribbed metal walls"
+	name = "肋状金属墙"
 	icon = 'icons/turf/walls/hybrisa_colonywall_hospital.dmi'
 	icon_state = "strata_ribbed_outpost_"
-	desc = "A thick and chunky metal wall covered in jagged ribs."
+	desc = "一面厚重、布满锯齿状肋骨的金属墙。"
 	walltype = WALL_STRATA_OUTPOST_RIBBED
 	damage_cap = HEALTH_WALL_REINFORCED
 
 /turf/closed/wall/hybrisa/colony/hospital
-	name = "bare metal walls"
+	name = "光秃金属墙"
 	icon = 'icons/turf/walls/hybrisa_colonywall_hospital.dmi'
 	icon_state = "strata_bare_outpost_"
-	desc = "A thick and chunky metal wall. The surface is barren and imposing."
+	desc = "一面厚重、光秃且气势逼人的金属墙。"
 	walltype = WALL_STRATA_OUTPOST_BARE
 
 /turf/closed/wall/hybrisa/colony/hospital/reinforced
-	name = "ribbed metal walls"
+	name = "肋状金属墙"
 	icon_state = "strata_ribbed_outpost_"
-	desc = "A thick and chunky metal wall covered in jagged ribs."
+	desc = "一面厚重、布满锯齿状肋骨的金属墙。"
 	walltype = WALL_STRATA_OUTPOST_RIBBED
 	damage_cap = HEALTH_WALL_REINFORCED
 
 /turf/closed/wall/hybrisa/colony/hospital/reinforced/hull
 	icon_state = "strata_hull"
-	desc = "A thick and chunky metal wall that is, just by virtue of its placement and imposing presence, entirely indestructible."
+	desc = "一面厚重、仅凭其位置和压迫感就完全坚不可摧的金属墙。"
 	turf_flags = TURF_HULL
 
 // Offices
 
 /turf/closed/wall/hybrisa/colony/office/ribbed //this guy is our reinforced replacement
-	name = "ribbed metal walls"
+	name = "肋状金属墙"
 	icon = 'icons/turf/walls/hybrisa_offices_colonywall.dmi'
 	icon_state = "strata_ribbed_outpost_"
-	desc = "A thick and chunky metal wall covered in jagged ribs."
+	desc = "一面厚重、布满锯齿状肋骨的金属墙。"
 	walltype = WALL_STRATA_OUTPOST_RIBBED
 	damage_cap = HEALTH_WALL_REINFORCED
 
 /turf/closed/wall/hybrisa/colony/office
-	name = "bare metal walls"
+	name = "光秃金属墙"
 	icon = 'icons/turf/walls/hybrisa_offices_colonywall.dmi'
 	icon_state = "strata_bare_outpost_"
-	desc = "A thick and chunky metal wall. The surface is barren and imposing."
+	desc = "一面厚重、光秃且气势逼人的金属墙。"
 	walltype = WALL_STRATA_OUTPOST_BARE
 
 /turf/closed/wall/hybrisa/colony/office/reinforced
-	name = "ribbed metal walls"
+	name = "肋状金属墙"
 	icon_state = "strata_ribbed_outpost_"
-	desc = "A thick and chunky metal wall covered in jagged ribs."
+	desc = "一面厚重、布满锯齿状肋骨的金属墙。"
 	walltype = WALL_STRATA_OUTPOST_RIBBED
 	damage_cap = HEALTH_WALL_REINFORCED
 
 /turf/closed/wall/hybrisa/colony/office/reinforced/hull
 	icon_state = "strata_hull"
-	desc = "A thick and chunky metal wall that is, just by virtue of its placement and imposing presence, entirely indestructible."
+	desc = "一面厚重、仅凭其位置和压迫感就完全坚不可摧的金属墙。"
 	turf_flags = TURF_HULL
 
 // Engineering
 
 /turf/closed/wall/hybrisa/colony/engineering/ribbed //this guy is our reinforced replacement
-	name = "ribbed metal walls"
+	name = "肋状金属墙"
 	icon = 'icons/turf/walls/hybrisa_engineering_wall.dmi'
 	icon_state = "strata_ribbed_outpost_"
-	desc = "A thick and chunky metal wall covered in jagged ribs."
+	desc = "一面厚重、布满锯齿状肋骨的金属墙。"
 	walltype = WALL_STRATA_OUTPOST_RIBBED
 	damage_cap = HEALTH_WALL_REINFORCED
 
 /turf/closed/wall/hybrisa/colony/engineering
-	name = "bare metal walls"
+	name = "光秃金属墙"
 	icon = 'icons/turf/walls/hybrisa_engineering_wall.dmi'
 	icon_state = "strata_bare_outpost_"
-	desc = "A thick and chunky metal wall. The surface is barren and imposing."
+	desc = "一面厚重、光秃且气势逼人的金属墙。"
 	walltype = WALL_STRATA_OUTPOST_BARE
 
 /turf/closed/wall/hybrisa/colony/engineering/reinforced
-	name = "ribbed metal walls"
+	name = "肋状金属墙"
 	icon_state = "strata_ribbed_outpost_"
-	desc = "A thick and chunky metal wall covered in jagged ribs."
+	desc = "一面厚重、布满锯齿状肋骨的金属墙。"
 	walltype = WALL_STRATA_OUTPOST_RIBBED
 	damage_cap = HEALTH_WALL_REINFORCED
 
 /turf/closed/wall/hybrisa/colony/engineering/reinforced/hull
 	icon_state = "strata_hull"
-	desc = "A thick and chunky metal wall that is, just by virtue of its placement and imposing presence, entirely indestructible."
+	desc = "一面厚重、仅凭其位置和压迫感就完全坚不可摧的金属墙。"
 	turf_flags = TURF_HULL
 
 // Space-Port
 
 /turf/closed/wall/hybrisa/spaceport
-	name = "metal wall"
+	name = "金属墙"
 	icon = 'icons/turf/walls/hybrisa_spaceport_walls.dmi'
 	icon_state = "metal"
 	walltype = WALL_METAL
 
 /turf/closed/wall/hybrisa/spaceport/reinforced
-	name = "reinforced metal wall"
+	name = "强化金属墙"
 	icon = 'icons/turf/walls/hybrisa_spaceport_walls.dmi'
 	icon_state = "rwall"
 	walltype = WALL_REINFORCED
 
 /turf/closed/wall/hybrisa/spaceport/unmeltable
-	name = "heavy reinforced wall"
-	desc = "A huge chunk of ultra-reinforced metal used to separate rooms. Looks virtually indestructible."
+	name = "重型强化墙"
+	desc = "一大块用于分隔房间的超强化金属。看起来几乎坚不可摧。"
 	icon = 'icons/turf/walls/hybrisa_spaceport_walls.dmi'
 	icon_state = "hwall"
 	walltype = WALL_REINFORCED

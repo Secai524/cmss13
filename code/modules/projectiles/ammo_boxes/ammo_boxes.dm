@@ -24,7 +24,7 @@
 /obj/item/ammo_box/attack_self(mob/living/user)
 	..()
 	if(burning)
-		to_chat(user, SPAN_DANGER("It's on fire and might explode!"))
+		to_chat(user, SPAN_DANGER("它着火了，可能会爆炸！"))
 		return
 
 	if(user.a_intent == INTENT_HARM)
@@ -34,7 +34,7 @@
 
 /obj/item/ammo_box/proc/unfold_box(mob/user)
 	if(is_loaded())
-		to_chat(user, SPAN_WARNING("You need to empty the box before unfolding it!"))
+		to_chat(user, SPAN_WARNING("你需要清空箱子才能展开它！"))
 		return
 	new /obj/item/stack/sheet/cardboard(user.loc)
 	qdel(src)
@@ -76,7 +76,7 @@
 	return
 
 /obj/item/ammo_box/magazine
-	name = "magazine box (M41A x 10)"
+	name = "弹匣箱 (M41A x 10)"
 	icon_state = "base_m41" //base color of box
 	var/overlay_ammo_type = "_reg" //used for ammo type color overlay
 	var/overlay_gun_type = "_m41" //used for text overlay
@@ -147,7 +147,7 @@
 				return
 			. += SPAN_INFO("It feels almost full.")
 	if(burning)
-		. += SPAN_DANGER("It's on fire and might explode!")
+		. += SPAN_DANGER("它着火了，可能会爆炸！")
 
 /obj/item/ammo_box/magazine/is_loaded()
 	if(handfuls)
@@ -157,24 +157,24 @@
 
 /obj/item/ammo_box/magazine/deploy_ammo_box(mob/living/user, turf/T)
 	if(burning)
-		to_chat(user, SPAN_DANGER("It's on fire and might explode!"))
+		to_chat(user, SPAN_DANGER("它着火了，可能会爆炸！"))
 		return
 
 	var/box_on_tile = 0
 	for(var/obj/structure/magazine_box/found_MB in T.contents)
 		if(limit_per_tile != found_MB.limit_per_tile)
-			to_chat(user, SPAN_WARNING("You can't deploy different size boxes in one place!"))
+			to_chat(user, SPAN_WARNING("你不能在同一位置部署不同尺寸的箱子！"))
 			return
 		box_on_tile++
 		if(box_on_tile >= limit_per_tile)
-			to_chat(user, SPAN_WARNING("You can't cram any more boxes in here!"))
+			to_chat(user, SPAN_WARNING("这里塞不下更多箱子了！"))
 			return
 
 	// Make sure a platform wouldn't block it
 	if(box_on_tile * 2 >= limit_per_tile) // Allow 2 if limit is 4
 		var/obj/structure/platform/platform = locate() in T
 		if(platform?.dir == NORTH)
-			to_chat(user, SPAN_WARNING("You can't cram any more boxes in here!"))
+			to_chat(user, SPAN_WARNING("这里塞不下更多箱子了！"))
 			return
 
 	var/obj/structure/magazine_box/M = new /obj/structure/magazine_box(T)
@@ -192,7 +192,7 @@
 
 /obj/item/ammo_box/magazine/afterattack(atom/target, mob/living/user, proximity)
 	if(burning)
-		to_chat(user, SPAN_DANGER("It's on fire and might explode!"))
+		to_chat(user, SPAN_DANGER("它着火了，可能会爆炸！"))
 		return
 	if(!proximity)
 		return
@@ -266,7 +266,7 @@
 
 /obj/item/ammo_box/rounds
 	name = "\improper rifle ammunition box (10x24mm)"
-	desc = "A 10x24mm ammunition box. Used to refill M41A MK1, MK2, M4RA and M41AE2 HPR magazines. It comes with a leather strap allowing to wear it on the back."
+	desc = "一个10x24毫米弹药箱。用于补充M41A MK1、MK2、M4RA和M41AE2 HPR弹匣。配有皮背带，可背在背上。"
 	icon_state = "base_m41"
 	item_state = "base_m41"
 	flags_equip_slot = SLOT_BACK
@@ -311,9 +311,9 @@
 	if(bullet_amount)
 		. +=  "It contains [bullet_amount] round\s."
 	else
-		. +=  "It's empty."
+		. +=  "它是空的。"
 	if(burning)
-		. += SPAN_DANGER("It's on fire and might explode!")
+		. += SPAN_DANGER("它着火了，可能会爆炸！")
 
 
 
@@ -322,7 +322,7 @@
 
 /obj/item/ammo_box/rounds/attackby(obj/item/I, mob/user)
 	if(burning)
-		to_chat(user, SPAN_DANGER("It's on fire and might explode!"))
+		to_chat(user, SPAN_DANGER("它着火了，可能会爆炸！"))
 		return
 	if(istype(I, /obj/item/ammo_magazine))
 		var/obj/item/ammo_magazine/AM = I
@@ -331,16 +331,16 @@
 			return
 		if(AM.flags_magazine & AMMUNITION_REFILLABLE)
 			if(default_ammo != AM.default_ammo)
-				to_chat(user, SPAN_WARNING("Those aren't the same rounds. Better not mix them up."))
+				to_chat(user, SPAN_WARNING("那些不是同种弹药。最好不要混在一起。"))
 				return
 			if(caliber != AM.caliber)
-				to_chat(user, SPAN_WARNING("The rounds don't match up. Better not mix them up."))
+				to_chat(user, SPAN_WARNING("弹药不匹配。最好不要混在一起。"))
 				return
 
 			var/dumping = FALSE // we REFILL BOX (dump to it) on harm intent, otherwise we refill FROM box
 			if(user.a_intent == INTENT_HARM)
 				if(AM.flags_magazine & AMMUNITION_CANNOT_REMOVE_BULLETS)
-					to_chat(user, SPAN_WARNING("You can't remove ammo from \the [AM]!"))
+					to_chat(user, SPAN_WARNING("你无法从\the [AM]中取出弹药！"))
 					return
 				dumping = TRUE
 
@@ -353,13 +353,13 @@
 				else
 					transferable = min(bullet_amount, AM.max_rounds - AM.current_rounds)
 				if(transferable < 1)
-					to_chat(user, SPAN_NOTICE("You cannot transfer any more rounds."))
+					to_chat(user, SPAN_NOTICE("无法转移更多弹药。"))
 
 				// Half-Loop 1: Start transfering
 				else if(!transfering)
 					transfering = min(transferable, 48) // Max per transfer
 					if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, dumping ? BUSY_ICON_HOSTILE : BUSY_ICON_FRIENDLY))
-						to_chat(user, SPAN_NOTICE("You stop transferring rounds."))
+						to_chat(user, SPAN_NOTICE("你停止了弹药转移。"))
 						transferable = 0
 
 				// Half-Loop 2: Process transfer
@@ -371,7 +371,7 @@
 					AM.current_rounds += transfering
 					bullet_amount  -= transfering
 					playsound(src, pick('sound/weapons/handling/mag_refill_1.ogg', 'sound/weapons/handling/mag_refill_2.ogg', 'sound/weapons/handling/mag_refill_3.ogg'), 20, TRUE, 6)
-					to_chat(user, SPAN_NOTICE("You have transferred [abs(transfering)] round\s to [dumping ? src : AM]."))
+					to_chat(user, SPAN_NOTICE("你已将[abs(transfering)]发弹药转移至[dumping ? src : AM]。"))
 					transfering = 0
 
 			while(transferable >= 1)
@@ -381,10 +381,10 @@
 
 		else if(AM.flags_magazine & AMMUNITION_HANDFUL)
 			if(default_ammo != AM.default_ammo)
-				to_chat(user, SPAN_WARNING("Those aren't the same rounds. Better not mix them up."))
+				to_chat(user, SPAN_WARNING("那些不是同种弹药。最好不要混在一起。"))
 				return
 			if(caliber != AM.caliber)
-				to_chat(user, SPAN_WARNING("The rounds don't match up. Better not mix them up."))
+				to_chat(user, SPAN_WARNING("弹药不匹配。最好不要混在一起。"))
 				return
 			if(bullet_amount == max_bullet_amount)
 				to_chat(user, SPAN_WARNING("\The [src] is already full."))
@@ -396,7 +396,7 @@
 			bullet_amount += S
 			AM.update_icon()
 			update_icon()
-			to_chat(user, SPAN_NOTICE("You put [S] round\s into [src]."))
+			to_chat(user, SPAN_NOTICE("你将[S]发弹药放入[src]。"))
 			if(AM.current_rounds <= 0)
 				user.temp_drop_inv_item(AM)
 				qdel(AM)

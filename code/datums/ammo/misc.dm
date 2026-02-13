@@ -5,7 +5,7 @@
 */
 
 /datum/ammo/alloy_spike
-	name = "alloy spike"
+	name = "合金尖刺"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 	ping = "ping_s"
 	icon_state = "MSpearFlight"
@@ -100,7 +100,7 @@
 	return ..()
 
 /datum/ammo/flamethrower/sentry_flamer/mini
-	name = "normal fire"
+	name = "普通火焰"
 
 /datum/ammo/flamethrower/sentry_flamer/mini/drop_flame(turf/T, datum/cause_data/cause_data)
 	if(!istype(T))
@@ -110,12 +110,12 @@
 	new /obj/flamer_fire(T, cause_data, R, 0)
 
 /datum/ammo/flamethrower/sentry_flamer/wy
-	name = "sticky fire"
+	name = "粘性火焰"
 	flamer_reagent_id = "stickynapalm"
 	shell_speed = AMMO_SPEED_TIER_4
 
 /datum/ammo/flamethrower/sentry_flamer/upp
-	name = "gel fire"
+	name = "凝胶火焰"
 	flamer_reagent_id = "napalmgel"
 
 /datum/ammo/flare
@@ -169,7 +169,7 @@
 	return G
 
 /datum/ammo/flare/signal
-	name = "signal flare"
+	name = "信号弹"
 	icon_state = "flare_signal"
 	flare_type = /obj/item/device/flashlight/flare/signal/gun
 	handful_type = /obj/item/device/flashlight/flare/signal
@@ -266,7 +266,7 @@
 	smoke.start()
 
 /datum/ammo/flare/starshell
-	name = "starshell ash"
+	name = "星壳灰烬"
 	icon_state = "starshell_bullet"
 	max_range = 5
 	damage = 2.5
@@ -279,7 +279,7 @@
 	))
 
 /datum/ammo/souto
-	name = "Souto Can"
+	name = "索托汽水罐"
 	ping = null //no bounce off.
 	damage_type = BRUTE
 	shrapnel_type = /obj/item/reagent_container/food/drinks/cans/souto/classic
@@ -307,11 +307,11 @@
 				for(var/obj/item/reagent_container/food/drinks/cans/souto/S in P.contents)
 					M.put_in_active_hand(S)
 					for(var/mob/O in viewers(GLOB.world_view_size, P)) //find all people in view.
-						O.show_message(SPAN_DANGER("[M] catches [S]!"), SHOW_MESSAGE_VISIBLE) //Tell them the can was caught.
+						O.show_message(SPAN_DANGER("[M]接住了[S]！"), SHOW_MESSAGE_VISIBLE) //Tell them the can was caught.
 					return //Can was caught.
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if(H.species.name == "Human") //no effect on synths or preds.
+		if(H.species.name == "人类") //no effect on synths or preds.
 			H.apply_effect(6, STUN)
 			H.apply_effect(8, WEAKEN)
 			H.apply_effect(15, DAZE)
@@ -342,7 +342,7 @@
 	shrapnel_type = pick(typesof(/obj/item/reagent_container/food/drinks/cans/souto)-/obj/item/reagent_container/food/drinks/cans/souto)
 
 /datum/ammo/grenade_container
-	name = "grenade shell"
+	name = "榴弹炮弹"
 	ping = null
 	damage_type = BRUTE
 	var/nade_type = /obj/item/explosive/grenade/high_explosive
@@ -377,7 +377,7 @@
 	flags_ammo_behavior = NO_FLAGS
 
 /datum/ammo/grenade_container/smoke
-	name = "smoke grenade shell"
+	name = "烟雾弹炮弹"
 	nade_type = /obj/item/explosive/grenade/smokebomb
 	icon_state = "smoke_shell"
 
@@ -385,7 +385,7 @@
 	max_range = 8
 
 /datum/ammo/hugger_container
-	name = "hugger shell"
+	name = "抱脸虫炮弹"
 	ping = null
 	damage_type = BRUTE
 	var/hugger_hive = XENO_HIVE_NORMAL

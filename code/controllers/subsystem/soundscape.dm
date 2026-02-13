@@ -5,7 +5,7 @@
 
 */
 SUBSYSTEM_DEF(soundscape)
-	name = "Soundscape"
+	name = "声景"
 	wait = 1 SECONDS
 	priority = SS_PRIORITY_SOUNDSCAPE
 	var/list/currentrun = list()

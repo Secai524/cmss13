@@ -99,7 +99,7 @@
 
 	var/tmp_sound = get_sound(user)
 	if(TIMER_COOLDOWN_CHECK(user, type))
-		to_chat(user, SPAN_NOTICE("You just did an emote. Wait awhile."))
+		to_chat(user, SPAN_NOTICE("您刚刚做了一个表情。请稍等片刻。"))
 		return
 	else if(tmp_sound && should_play_sound(user, intentional))
 		if(TIMER_COOLDOWN_CHECK(user, COOLDOWN_MOB_AUDIO))
@@ -191,7 +191,7 @@
 	if(user.emotes_used && user.emotes_used[src] + cooldown > world.time)
 		var/datum/emote/default_emote = /datum/emote
 		if(cooldown > initial(default_emote.cooldown)) // only worry about longer-than-normal emotes
-			to_chat(user, SPAN_DANGER("You must wait another [DisplayTimeText(user.emotes_used[src] - world.time + cooldown)] before using that emote."))
+			to_chat(user, SPAN_DANGER("你必须再等待 [DisplayTimeText(user.emotes_used[src] - world.time + cooldown)] 才能使用该表情动作。"))
 		return FALSE
 	if(!user.emotes_used)
 		user.emotes_used = list()
@@ -279,14 +279,14 @@
 				return FALSE
 			switch(user.stat)
 				if(UNCONSCIOUS)
-					to_chat(user, SPAN_WARNING("You cannot [key] while unconscious!"))
+					to_chat(user, SPAN_WARNING("昏迷时无法 [key]！"))
 				if(DEAD)
-					to_chat(user, SPAN_WARNING("You cannot [key] while dead!"))
+					to_chat(user, SPAN_WARNING("死亡时无法 [key]！"))
 			return FALSE
 		if(hands_use_check && (user.r_hand && user.l_hand))
 			if(!intentional)
 				return FALSE
-			to_chat(user, SPAN_WARNING("You cannot use your hands to [key] right now!"))
+			to_chat(user, SPAN_WARNING("你现在无法用手 [key]！"))
 			return FALSE
 
 	return TRUE

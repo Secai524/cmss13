@@ -1,5 +1,5 @@
 /obj/structure/machinery/robotic_fabricator
-	name = "Robotic Fabricator"
+	name = "机器人制造机"
 	icon = 'icons/obj/structures/machinery/robotics.dmi'
 	icon_state = "fab-idle"
 	density = TRUE
@@ -26,11 +26,11 @@
 						M.use(1)
 						count++
 
-					to_chat(user, "You insert [count] metal sheet\s into the fabricator.")
+					to_chat(user, "你将[count]张金属板插入制造机。")
 					src.overlays -= "fab-load-metal"
 					updateDialog()
 		else
-			to_chat(user, "The robot part maker is full. Please remove metal from the robot part maker in order to insert more.")
+			to_chat(user, "机器人部件制造机已满。请先取出金属板以放入更多。")
 
 /obj/structure/machinery/robotic_fabricator/attack_hand(user as mob)
 	var/dat

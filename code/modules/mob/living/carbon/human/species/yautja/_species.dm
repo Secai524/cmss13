@@ -1,7 +1,7 @@
 /datum/species/yautja
 	group = SPECIES_YAUTJA
-	name = "Yautja"
-	name_plural = "Yautja"
+	name = "铁血战士"
+	name_plural = "铁血战士"
 	brute_mod = 0.28 //Beefy!
 	burn_mod = 0.65
 	reagent_tag = IS_YAUTJA
@@ -173,14 +173,14 @@
 		if(H.persistent_username in GM.predators)
 			GM.predators[H.persistent_username]["Status"] = status
 		else
-			GM.predators[H.persistent_username] = list("Name" = H.real_name, "Status" = status)
+			GM.predators[H.persistent_username] = list("姓名" = H.real_name, "Status" = status)
 
 /datum/species/yautja/post_species_loss(mob/living/carbon/human/H)
 	..()
 	var/datum/mob_hud/medical/advanced/A = GLOB.huds[MOB_HUD_MEDICAL_ADVANCED]
 	A.add_to_hud(H)
 	H.blood_type = pick("A+","A-","B+","B-","O-","O+","AB+","AB-")
-	H.h_style = "Bald"
+	H.h_style = "光头"
 	GLOB.yautja_mob_list -= H
 	for(var/obj/limb/limb in H.limbs)
 		switch(limb.name)
@@ -203,7 +203,7 @@
 	hunter.universal_understand = 1
 
 	hunter.blood_type = "Y*"
-	hunter.h_style = "Standard"
+	hunter.h_style = "标准型"
 	#ifndef UNIT_TESTS // Since this is a hard ref, we shouldn't confuse create_and_destroy
 	GLOB.yautja_mob_list += hunter
 	#endif

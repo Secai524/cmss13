@@ -1,5 +1,5 @@
 /obj/docking_port/mobile/crashable
-	name = "crashable shuttle"
+	name = "可坠毁穿梭机"
 
 	/// Whether or not this shuttle is crash landing
 	var/crash_land = FALSE
@@ -163,7 +163,7 @@
 	return
 
 /obj/docking_port/stationary/crashable
-	name = "Crashable Dock"
+	name = "可坠毁泊位"
 
 /obj/docking_port/stationary/crashable/on_arrival(obj/docking_port/mobile/arriving_shuttle)
 	. = ..()

@@ -1,5 +1,5 @@
 /obj/vehicle/multitile/arc/proc/toggle_antenna(mob/toggler)
-	set name = "Toggle Sensor Antenna"
+	set name = "切换传感器天线"
 	set desc = "Raises or lowers the external sensor antenna. While raised, the ARC cannot move."
 	set category = "Vehicle"
 
@@ -21,26 +21,26 @@
 		return
 
 	if(vehicle.health < initial(vehicle.health) * 0.5)
-		to_chat(user, SPAN_WARNING("[vehicle]'s hull is too damaged to operate!"))
+		to_chat(user, SPAN_WARNING("[vehicle]的车体损坏严重，无法操作！"))
 		return
 
 	var/obj/item/hardpoint/support/arc_antenna/antenna = locate() in vehicle.hardpoints
 	if(!antenna)
-		to_chat(user, SPAN_WARNING("[vehicle] has no antenna mounted!"))
+		to_chat(user, SPAN_WARNING("[vehicle]未安装天线！"))
 		return
 
 	if(antenna.deploying)
 		return
 
 	if(antenna.health <= 0)
-		to_chat(user, SPAN_WARNING("[antenna] is broken!"))
+		to_chat(user, SPAN_WARNING("[antenna]已损坏！"))
 		return
 
 	if(vehicle.antenna_deployed)
-		to_chat(user, SPAN_NOTICE("You begin to retract [antenna]..."))
+		to_chat(user, SPAN_NOTICE("你开始收回[antenna]..."))
 		antenna.deploying = TRUE
 		if(!do_after(user, max(vehicle.antenna_toggle_time - antenna.deploy_animation_time, 1 SECONDS), target = vehicle))
-			to_chat(user, SPAN_NOTICE("You stop retracting [antenna]."))
+			to_chat(user, SPAN_NOTICE("你停止收回[antenna]。"))
 			antenna.deploying = FALSE
 			return
 
@@ -48,10 +48,10 @@
 		addtimer(CALLBACK(vehicle, PROC_REF(finish_antenna_retract), user), antenna.deploy_animation_time)
 
 	else
-		to_chat(user, SPAN_NOTICE("You begin to extend [antenna]..."))
+		to_chat(user, SPAN_NOTICE("你开始展开[antenna]..."))
 		antenna.deploying = TRUE
 		if(!do_after(user, max(vehicle.antenna_toggle_time - antenna.deploy_animation_time, 1 SECONDS), target = vehicle))
-			to_chat(user, SPAN_NOTICE("You stop extending [antenna]."))
+			to_chat(user, SPAN_NOTICE("你停止展开[antenna]。"))
 			antenna.deploying = FALSE
 			return
 
@@ -65,7 +65,7 @@
 		return
 
 	if(user)
-		to_chat(user, SPAN_NOTICE("You retract [antenna], enabling the ARC to move again."))
+		to_chat(user, SPAN_NOTICE("你收回了[antenna]，ARC可以再次移动。"))
 		playsound(user, 'sound/machines/hydraulics_2.ogg', 80, TRUE)
 	antenna_deployed = !antenna_deployed
 	antenna.deploying = FALSE
@@ -79,7 +79,7 @@
 		return
 
 	if(user)
-		to_chat(user, SPAN_NOTICE("You extend [antenna], locking the ARC in place."))
+		to_chat(user, SPAN_NOTICE("你展开了[antenna]，将ARC锁定在原地。"))
 		playsound(user, 'sound/machines/hydraulics_2.ogg', 80, TRUE)
 	antenna_deployed = !antenna_deployed
 	antenna.deploying = FALSE

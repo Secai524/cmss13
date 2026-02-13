@@ -4,8 +4,8 @@
 // ###############################################################################
 
 /obj/structure/machinery/power/fractal_reactor
-	name = "Fractal Energy Reactor"
-	desc = "This thing drains power from fractal-subspace. (DEBUG ITEM: INFINITE POWERSOURCE FOR MAP TESTING. CONTACT DEVELOPERS IF FOUND.)"
+	name = "分形能量反应堆"
+	desc = "这东西从分形子空间汲取能量。（调试物品：用于地图测试的无限电源。如果发现请联系开发者。）"
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "bbox_on"
 	anchored = TRUE

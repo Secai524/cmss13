@@ -144,8 +144,8 @@
 	var/datum/beam/owner
 
 /obj/effect/ebeam/laser
-	name = "laser beam"
-	desc = "A laser beam!"
+	name = "激光束"
+	desc = "一道激光束！"
 	alpha = 200
 	var/strength = EYE_PROTECTION_FLAVOR
 	var/probability = 20
@@ -160,21 +160,21 @@
 	if(rand_laser_power > laser_protection)
 		//ouch!
 		INVOKE_ASYNC(moving_human, /mob/proc/emote, "pain")
-		visible_message(SPAN_DANGER("[moving_human] screams out in pain as \the [src] moves across their eyes!"), SPAN_NOTICE("Aurgh!!! \The [src] moves across your unprotected eyes for a split-second!"))
+		visible_message(SPAN_DANGER("[moving_human]痛苦地尖叫，因为\the [src]扫过了他们的眼睛！"), SPAN_NOTICE("Aurgh!!! \The [src] moves across your unprotected eyes for a split-second!"))
 	else
 		if(HAS_TRAIT(moving_human, TRAIT_BIMEX))
-			visible_message(SPAN_NOTICE("[moving_human]'s BiMex© personal shades shine as \the [src] passes over them."), SPAN_NOTICE("Your BiMex© personal shades as \the [src] passes over them."))
+			visible_message(SPAN_NOTICE("[moving_human]的BiMex©个人护目镜在\the [src]扫过时闪烁。"), SPAN_NOTICE("Your BiMex© personal shades as \the [src] passes over them."))
 		else
-			visible_message(SPAN_NOTICE("[moving_human]'s headgear protects them from \the [src]."), SPAN_NOTICE("Your headgear protects you from  \the [src]."))
+			visible_message(SPAN_NOTICE("[moving_human]的头盔保护了他们免受\the [src]的伤害。"), SPAN_NOTICE("Your headgear protects you from  \the [src]."))
 
 /obj/effect/ebeam/laser/intense
-	name = "intense laser beam"
+	name = "强激光束"
 	alpha = 255
 	strength = EYE_PROTECTION_FLASH
 	probability = 35
 
 /obj/effect/ebeam/laser/weak
-	name = "weak laser beam"
+	name = "弱激光束"
 	alpha = 150
 	strength = EYE_PROTECTION_FLAVOR
 	probability = 5

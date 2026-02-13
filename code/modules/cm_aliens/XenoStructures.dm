@@ -2,8 +2,8 @@
  * effect/alien
  */
 /obj/effect/alien
-	name = "alien thing"
-	desc = "There's something alien about this."
+	name = "异形物体"
+	desc = "这东西有种异形的感觉。"
 	icon = 'icons/mob/xenos/effects.dmi'
 	unacidable = TRUE
 	health = 1
@@ -14,7 +14,7 @@
  */
 /obj/effect/alien/resin
 	name = "resin"
-	desc = "Looks like some kind of slimy growth."
+	desc = "看起来像是某种黏滑的增生组织。"
 	icon_state = "weeds"
 	anchored = TRUE
 	health = 200
@@ -102,7 +102,7 @@
 	return XENO_ATTACK_ACTION
 
 /obj/effect/alien/resin/attack_animal(mob/living/M as mob)
-	M.visible_message(SPAN_DANGER("[M] tears \the [src]!"),
+	M.visible_message(SPAN_DANGER("[M]撕开了\the [src]！"),
 	SPAN_DANGER("You tear \the [name]."))
 	if(istype(src, /obj/effect/alien/resin/sticky))
 		playsound(loc, "alien_resin_move", 25)
@@ -112,7 +112,7 @@
 	healthcheck()
 
 /obj/effect/alien/resin/attack_hand()
-	to_chat(usr, SPAN_WARNING("You scrape ineffectively at \the [src]."))
+	to_chat(usr, SPAN_WARNING("你徒劳地刮擦着\the [src]。"))
 
 /obj/effect/alien/resin/attackby(obj/item/W, mob/user)
 	if(!(W.flags_item & NOBLUDGEON))
@@ -147,8 +147,8 @@
 	return ..()
 
 /obj/effect/alien/resin/sticky
-	name = "sticky resin"
-	desc = "A layer of disgusting sticky slime."
+	name = "粘性树脂"
+	desc = "一层令人作呕的粘稠粘液。"
 	icon_state = "sticky"
 	density = FALSE
 	opacity = FALSE
@@ -186,8 +186,8 @@
 	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 
 /obj/effect/alien/resin/spike
-	name = "resin spike"
-	desc = "A small cluster of bone spikes. Ouch."
+	name = "树脂尖刺"
+	desc = "一小簇骨刺。真疼。"
 	icon = 'icons/obj/structures/alien/structures.dmi'
 	icon_state = "resin_spike"
 	density = FALSE
@@ -240,15 +240,15 @@
 
 // Praetorian Sticky Resin spit uses this.
 /obj/effect/alien/resin/sticky/thin
-	name = "thin sticky resin"
-	desc = "A thin layer of disgusting sticky slime."
+	name = "稀薄粘性树脂"
+	desc = "一层稀薄的、令人作呕的粘稠粘液。"
 	health = 7
 	slow_amt = 4
 
 // Gardener drone uses this.
 /obj/effect/alien/resin/sticky/thin/weak
-	name = "Weak sticky resin"
-	desc = "A thin and weak layer of disgusting sticky slime. It looks like it's already melting..."
+	name = "脆弱粘性树脂"
+	desc = "一层稀薄脆弱的、令人作呕的粘稠粘液。看起来它已经开始融化了..."
 	var/duration = 20 SECONDS
 
 /obj/effect/alien/resin/sticky/thin/weak/Initialize(...)
@@ -256,8 +256,8 @@
 	QDEL_IN(src, duration)
 
 /obj/effect/alien/resin/sticky/fast
-	name = "fast resin"
-	desc = "A layer of disgusting sleek slime."
+	name = "快速树脂"
+	desc = "一层令人作呕的光滑粘液。"
 	icon_state = "fast"
 	health = HEALTH_RESIN_XENO_FAST
 	var/speed_amt = 0.7
@@ -268,8 +268,8 @@
 
 //xeno marker :0)
 /obj/effect/alien/resin/marker
-	name = "Resin Mark"
-	desc = "Something has made its mark on the world, and there it is..."
+	name = "树脂标记"
+	desc = "有什么东西在世界上留下了它的印记，就在那里..."
 	icon = 'icons/mob/hud/xeno_markers.dmi'
 	icon_state = "marker_nub"
 	health = HEALTH_RESIN_XENO_SPIKE
@@ -354,7 +354,7 @@
 
 //Resin Doors
 /obj/structure/mineral_door/resin
-	name = "resin door"
+	name = "树脂门"
 	icon = 'icons/mob/xenos/effects.dmi'
 	icon_state = "resin"
 	mineralType = "resin"
@@ -407,7 +407,7 @@
 	if(!(W.flags_item & NOBLUDGEON) && W.force)
 		user.animation_attack_on(src)
 		health -= W.force * RESIN_MELEE_DAMAGE_MULTIPLIER * W.demolition_mod
-		to_chat(user, "You hit the [name] with your [W.name]!")
+		to_chat(user, "你用你的[W.name]击中了[name]！")
 		playsound(loc, "alien_resin_move", 25)
 		healthcheck()
 		return ATTACKBY_HINT_UPDATE_NEXT_MOVE
@@ -540,7 +540,7 @@
 			. = 1
 			break
 	if(!.)
-		visible_message(SPAN_NOTICE("[src] collapses from the lack of support."))
+		visible_message(SPAN_NOTICE("[src]因失去支撑而坍塌。"))
 		qdel(src)
 
 /obj/structure/mineral_door/resin/proc/forsaken_handling()
@@ -551,15 +551,15 @@
 
 	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 /obj/structure/mineral_door/resin/thick
-	name = "thick resin door"
+	name = "厚重树脂门"
 	icon_state = "thick resin"
 	health = HEALTH_DOOR_XENO_THICK
 	hardness = 2
 	mineralType = "thick resin"
 
 /obj/effect/alien/resin/acid_pillar
-	name = "acid pillar"
-	desc = "A resin pillar that is oozing with acid."
+	name = "酸液柱"
+	desc = "一根渗出酸液的树脂柱。"
 	icon = 'icons/obj/structures/alien/structures.dmi'
 	icon_state = "acid_pillar_idle"
 
@@ -682,8 +682,8 @@
 		qdel(src)
 
 /obj/effect/alien/resin/acid_pillar/strong
-	name = "acid pillar"
-	desc = "A resin pillar that is oozing with acid."
+	name = "酸液柱"
+	desc = "一根渗出酸液的树脂柱。"
 	icon = 'icons/obj/structures/alien/structures64x64.dmi'
 	icon_state = "resin_pillar_strong"
 
@@ -694,8 +694,8 @@
 	acid_type = /obj/effect/xenomorph/spray/strong
 
 /obj/effect/alien/resin/shield_pillar
-	name = "shield pillar"
-	desc = "A resin pillar that is oozing with acid."
+	name = "护盾柱"
+	desc = "一根渗出酸液的树脂柱。"
 	icon = 'icons/obj/structures/alien/structures64x64.dmi'
 	icon_state = "pillar_shield"
 
@@ -730,8 +730,8 @@
 	return ..()
 
 /obj/effect/alien/resin/resin_pillar
-	name = "resin pillar"
-	desc = "This massive structure arose out of some weeds coating the ground, somehow... It seems to be doing nothing but blocking the way."
+	name = "树脂柱"
+	desc = "这个巨大的结构不知怎地从覆盖地面的菌毯中升起...它似乎除了挡路之外别无他用。"
 	health = HEALTH_RESIN_PILLAR
 	var/vulnerable_health = HEALTH_RESIN_PILLAR
 	icon = 'icons/obj/structures/alien/structures96x96.dmi'
@@ -757,8 +757,8 @@
 	bound_height = height * world.icon_size
 	playsound(loc, 'sound/effects/stonedoor_openclose.ogg', 25, FALSE)
 	if(mapload) //this should never be called in mapload, but in case it is
-		name = "calcified resin pillar"
-		desc = "This massive structure seems to be inert."
+		name = "钙化树脂柱"
+		desc = "这个巨大的结构似乎是惰性的。"
 
 	var/turf/closed/wall/T
 	for(var/i in locs)
@@ -817,7 +817,7 @@
 
 /obj/effect/alien/resin/resin_pillar/proc/brittle()
 	//playsound(granite cracking)
-	visible_message(SPAN_DANGER("You hear cracking sounds from [src] as splinters start falling off from the structure! It seems brittle now."))
+	visible_message(SPAN_DANGER("你听到[src]传来碎裂声，碎片开始从结构上剥落！它现在看起来很脆弱。"))
 	health = vulnerable_health
 	for(var/i in walls)
 		var/turf/closed/wall/T = i
@@ -839,9 +839,9 @@
 /obj/effect/alien/resin/resin_pillar/proc/collapse(decayed = FALSE)
 	//playsound granite collapsing
 	if(decayed)
-		visible_message(SPAN_DANGER("[src]'s failing structure suddenly collapses!"))
+		visible_message(SPAN_DANGER("[src]摇摇欲坠的结构突然坍塌了！"))
 	else
-		visible_message(SPAN_DANGER("[src]'s structure collapses under the blow!"))
+		visible_message(SPAN_DANGER("[src]的结构在重击下坍塌了！"))
 
 	playsound(loc, "alien_resin_break", 25, TRUE)
 	qdel(src)
@@ -850,7 +850,7 @@
 
 /obj/effect/alien/resin/resin_pillar/hitby(atom/movable/AM)
 	if(!brittle)
-		visible_message(SPAN_DANGER("[AM] harmlessly bounces off [src]!"))
+		visible_message(SPAN_DANGER("[AM]无害地从[src]上弹开了！"))
 		return
 	return ..()
 
@@ -867,15 +867,15 @@
 /obj/effect/alien/resin/resin_pillar/attackby(obj/item/W, mob/living/user)
 	user.animation_attack_on(src)
 	if(!brittle)
-		user.visible_message(SPAN_DANGER("[user] hits \the [src], but \the [W] bounces off!"),
+		user.visible_message(SPAN_DANGER("[user]击中了\the [src]，但\the [W]弹开了！"),
 			SPAN_DANGER("You hit \the [name], but \the [W] bounces off!"))
 		return
 
 	return ..()
 
 /obj/effect/alien/resin/king_cocoon
-	name = "alien cocoon"
-	desc = "A large pulsating cocoon."
+	name = "异形茧"
+	desc = "一个巨大的、脉动着的茧。"
 	icon = 'icons/obj/structures/alien/xenoKingHatchery.dmi'
 	icon_state = "static"
 	health = 4000
@@ -905,7 +905,7 @@
 
 /obj/effect/alien/resin/king_cocoon/Destroy()
 	if(!hatched)
-		marine_announcement("ALERT.\n\nUNUSUAL ENERGY BUILDUP IN [uppertext(get_area_name(loc))] HAS BEEN STOPPED.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
+		marine_announcement("警报。\n\n在[uppertext(get_area_name(loc))]检测到的不寻常能量积聚已停止。", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
 		elder_overseer_message("The Serpent King's hatchery was destroyed.")
 		var/datum/hive_status/hive
 		for(var/cur_hive_num in GLOB.hive_datum)
@@ -945,7 +945,7 @@
 
 	START_PROCESSING(SSobj, src)
 
-	marine_announcement("ALERT.\n\nUNUSUAL ENERGY BUILDUP DETECTED IN [uppertext(get_area_name(loc))].\n\nESTIMATED TIME UNTIL COMPLETION - 10 MINUTES. RECOMMEND TERMINATION OF XENOMORPH STRUCTURE AT THIS LOCATION, OR TERMINATION OF XENOMORPH PYLON AT EITHER COMMUNICATIONS RELAY.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
+	marine_announcement("警报。\n\n在[uppertext(get_area_name(loc))]检测到不寻常能量积聚。\n\n预计完成时间 - 10分钟。建议摧毁该位置的异形结构，或摧毁任一通讯中继站的异形塔。", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
 	elder_overseer_message("The Serpent King is now growing at [get_area_name(loc)].")
 	var/datum/hive_status/hive
 	for(var/cur_hive_num in GLOB.hive_datum)
@@ -970,7 +970,7 @@
 
 	if(length(hive.active_endgame_pylons) < 2)
 		if(!announced_paused)
-			marine_announcement("ALERT.\n\nUNUSUAL ENERGY BUILDUP IN [uppertext(get_area_name(loc))] HAS BEEN PAUSED.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
+			marine_announcement("警报。\n\n在[uppertext(get_area_name(loc))]检测到的不寻常能量积聚已暂停。", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
 			elder_overseer_message("The progress of the Serpent King's hatchery has been paused.")
 			for(var/cur_hive_num in GLOB.hive_datum)
 				hive = GLOB.hive_datum[cur_hive_num]
@@ -994,7 +994,7 @@
 			else
 				xeno_announcement(SPAN_XENOANNOUNCE("Another hive's hatchery progress has resumed! We must stop it!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 		elder_overseer_message("The progress of the Serpent King's hatchery has resumed.")
-		marine_announcement("ALERT.\n\nUNUSUAL ENERGY BUILDUP IN [uppertext(get_area_name(loc))] HAS BEEN RESUMED.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
+		marine_announcement("警报。\n\n在[uppertext(get_area_name(loc))]检测到的不寻常能量积聚已恢复。", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
 		announced_paused = FALSE
 		icon_state = "growing"
 
@@ -1056,7 +1056,7 @@
 
 /// Causes the halfway announcements and initiates the next timer.
 /obj/effect/alien/resin/king_cocoon/proc/announce_halfway()
-	marine_announcement("ALERT.\n\nUNUSUAL ENERGY BUILDUP DETECTED IN [uppertext(get_area_name(loc))].\n\nESTIMATED TIME UNTIL COMPLETION - 5 MINUTES. RECOMMEND TERMINATION OF XENOMORPH STRUCTURE AT THIS LOCATION, OR TERMINATION OF XENOMORPH PYLON AT EITHER COMMUNICATIONS RELAY.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
+	marine_announcement("警报。\n\n在[uppertext(get_area_name(loc))]检测到不寻常能量积聚。\n\n预计完成时间 - 5分钟。建议摧毁该位置的异形结构，或摧毁任一通讯中继站的异形塔。", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
 	elder_overseer_message("The Serpent King will hatch in 5 minutes.")
 	var/datum/hive_status/hive
 	for(var/cur_hive_num in GLOB.hive_datum)
@@ -1121,7 +1121,7 @@
  * * voting_candidates: A list of xenomorph mobs that are candidates
  */
 /obj/effect/alien/resin/king_cocoon/proc/cast_vote(mob/candidate, list/mob/living/carbon/xenomorph/voting_candidates)
-	var/mob/living/carbon/xenomorph/choice = tgui_input_list(candidate, "Vote for a sister you wish to become the King.", "Choose a xeno", voting_candidates , 20 SECONDS)
+	var/mob/living/carbon/xenomorph/choice = tgui_input_list(candidate, "投票选举你希望成为国王的姐妹。", "Choose a xeno", voting_candidates , 20 SECONDS)
 
 	if(votes[choice])
 		votes[choice] += 1
@@ -1231,7 +1231,7 @@
 		return
 
 	elder_overseer_message("The Serpent King will hatch in twenty seconds.")
-	marine_announcement("ALERT.\n\nUNUSUAL ENERGY BUILDUP DETECTED IN [get_area_name(loc)].\n\nESTIMATED TIME UNTIL COMPLETION - 20 SECONDS. RECOMMEND TERMINATION OF XENOMORPH STRUCTURE AT THIS LOCATION, OR TERMINATION OF XENOMORPH PYLON AT EITHER COMMUNICATIONS RELAY.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
+	marine_announcement("警报。\n\n在[get_area_name(loc)]检测到不寻常能量积聚。\n\n预计完成时间 - 20秒。建议摧毁该位置的异形结构，或摧毁任一通讯中继站的异形塔。", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
 	var/datum/hive_status/hive
 	for(var/cur_hive_num in GLOB.hive_datum)
 		hive = GLOB.hive_datum[cur_hive_num]
@@ -1248,7 +1248,7 @@
 	addtimer(CALLBACK(src, PROC_REF(hatch_king)), 2 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE)
 
 	elder_overseer_message("The Serpent King has hatched; I advise caution.")
-	marine_announcement("ALERT.\n\nEXTREME ENERGY INFLUX DETECTED IN [get_area_name(loc)].\n\nCAUTION IS ADVISED.", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
+	marine_announcement("警报。\n\n在[get_area_name(loc)]检测到极端能量涌入。\n\n建议保持警惕。", "[MAIN_AI_SYSTEM] Biological Scanner", 'sound/misc/notice1.ogg')
 	var/datum/hive_status/hive
 	for(var/cur_hive_num in GLOB.hive_datum)
 		hive = GLOB.hive_datum[cur_hive_num]
@@ -1296,8 +1296,8 @@
 	return XENO_NO_DELAY_ACTION
 
 /obj/item/explosive/grenade/alien
-	name = "alien grenade"
-	desc = "An alien grenade."
+	name = "异形手榴弹"
+	desc = "一枚异形手榴弹。"
 	icon_state = "neuro_nade_greyscale"
 	item_state = "neuro_nade_greyscale"
 
@@ -1321,7 +1321,7 @@
 
 /obj/item/explosive/grenade/alien/try_to_throw(mob/living/user)
 	if(isxeno(user))
-		to_chat(user, SPAN_NOTICE("You prepare to throw [src]."))
+		to_chat(user, SPAN_NOTICE("你准备投掷[src]。"))
 		if(!do_after(user, xeno_throw_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 			return FALSE
 		activate(user)
@@ -1329,10 +1329,10 @@
 
 /obj/item/explosive/grenade/alien/can_use_grenade(mob/user)
 	if(!isxeno(user))
-		to_chat(user, SPAN_WARNING("You don't know how to activate this!"))
+		to_chat(user, SPAN_WARNING("你不知道如何激活这个！"))
 		return FALSE
 
-	to_chat(user, SPAN_XENOWARNING("You need to throw this to activate it!"))
+	to_chat(user, SPAN_XENOWARNING("你需要投掷这个来激活它！"))
 	return FALSE
 
 /obj/item/explosive/grenade/alien/update_icon()
@@ -1350,12 +1350,12 @@
 	if(!active)
 		attack_hand(M)
 	else
-		to_chat(M, SPAN_XENOWARNING("It's about to burst!"))
+		to_chat(M, SPAN_XENOWARNING("它快要爆了！"))
 	return XENO_NO_DELAY_ACTION
 
 /obj/item/explosive/grenade/alien/acid
-	name = "acid grenade"
-	desc = "Sprays acid projectiles outwards when detonated."
+	name = "酸液手榴弹"
+	desc = "引爆时向外喷射酸液弹。"
 
 	color = "#00ff00"
 

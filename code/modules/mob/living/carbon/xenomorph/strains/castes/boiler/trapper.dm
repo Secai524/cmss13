@@ -37,7 +37,7 @@
 	boiler.recalculate_everything()
 
 /datum/behavior_delegate/boiler_trapper
-	name = "Boiler Trapper Behavior Delegate"
+	name = "沸腾者陷阱行为委托"
 
 	// Config
 	var/temp_movespeed_amount = 1.25
@@ -90,7 +90,7 @@
 	if(!trap_ability.empowered && trap_ability.empowering_charge_counter >= trap_ability.empower_charge_max)
 		trap_ability.empowered = TRUE
 		trap_ability.button.overlays += image('icons/mob/hud/actions_xeno.dmi', "+empowered")
-		to_chat(bound_xeno, SPAN_XENODANGER("You have gained sufficient insight in your prey to empower your next [trap_ability.name]."))
+		to_chat(bound_xeno, SPAN_XENODANGER("你已从猎物身上获得足够洞察，足以强化你的下一个[trap_ability.name]。"))
 
 	if(trap_ability.empowering_charge_counter > trap_ability.empower_charge_max)
 		trap_ability.empowering_charge_counter = trap_ability.empower_charge_max
@@ -98,7 +98,7 @@
 /datum/behavior_delegate/boiler_trapper/on_life()
 	if ((temp_movespeed_time_used + temp_movespeed_cooldown) < world.time)
 		if (!temp_movespeed_messaged)
-			to_chat(bound_xeno, SPAN_XENODANGER("You feel your adrenaline glands refill! Your speedboost will activate again."))
+			to_chat(bound_xeno, SPAN_XENODANGER("你感到肾上腺素腺体重新充盈！你的速度提升将再次激活。"))
 			temp_movespeed_messaged = TRUE
 		temp_movespeed_usable = TRUE
 		return
@@ -123,7 +123,7 @@
 		return
 
 	if (!can_see(xeno, affected_atom, TRAPPER_VIEWRANGE))
-		to_chat(xeno, SPAN_XENODANGER("We cannot see that location!"))
+		to_chat(xeno, SPAN_XENODANGER("我们无法看见那个位置！"))
 		return
 
 	if (!check_and_use_plasma_owner())
@@ -168,7 +168,7 @@
 		if(!mine.empowered)
 			mine.empowered = TRUE
 			mine.button.overlays += image('icons/mob/hud/actions_xeno.dmi', "+empowered")
-			to_chat(xeno, SPAN_XENODANGER("We tap into our reserves to prepare a stronger [mine.name]!"))
+			to_chat(xeno, SPAN_XENODANGER("我们动用储备来准备一个更强的[mine.name]！"))
 
 	apply_cooldown()
 	return ..()
@@ -189,7 +189,7 @@
 		return
 
 	if(!check_clear_path_to_target(xeno, affected_atom, TRUE, TRAPPER_VIEWRANGE))
-		to_chat(xeno, SPAN_XENOWARNING("Something is in the way!"))
+		to_chat(xeno, SPAN_XENOWARNING("有东西挡路！"))
 		return
 
 	if (!check_and_use_plasma_owner())
@@ -200,7 +200,7 @@
 	if(empowered)
 		acid_bolt_message = "a powerful bolt of acid"
 
-	xeno.visible_message(SPAN_XENODANGER("[xeno] fires " + acid_bolt_message + " at [affected_atom]!"), SPAN_XENODANGER("We fire " + acid_bolt_message + " at [affected_atom]!"))
+	xeno.visible_message(SPAN_XENODANGER("[xeno]开火" + acid_bolt_message + " at [affected_atom]!"), SPAN_XENODANGER("We fire " + acid_bolt_message + " at [affected_atom]!"))
 	new /obj/effect/xenomorph/acid_damage_delay/boiler_landmine(turf, damage, delay, empowered, "You are blasted with " + acid_bolt_message + "!", xeno)
 
 	for (var/turf/target_turf in orange(1, turf))
@@ -224,7 +224,7 @@
 	if(!affected_atom || affected_atom.layer >= FLY_LAYER || !isturf(xeno.loc) || !xeno.check_state())
 		return
 
-	xeno.visible_message(SPAN_XENOWARNING("[xeno] fires a blast of acid at [affected_atom]!"), SPAN_XENOWARNING("We fire a blast of acid at [affected_atom]!"))
+	xeno.visible_message(SPAN_XENOWARNING("[xeno]向[affected_atom]喷射出一股酸液！"), SPAN_XENOWARNING("We fire a blast of acid at [affected_atom]!"))
 
 	var/turf/target_turf = locate(affected_atom.x, affected_atom.y, affected_atom.z)
 	var/obj/projectile/proj = new(xeno.loc, create_cause_data("acid shotgun", xeno))
@@ -237,7 +237,7 @@
 	return ..()
 
 /datum/ammo/xeno/acid_shotgun
-	name = "acid ball"
+	name = "酸液球"
 	ping = null
 	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR|AMMO_ACIDIC
 	bonus_projectiles_type = /datum/ammo/xeno/acid_shotgun/spread
@@ -256,7 +256,7 @@
 	shrapnel_chance = 100
 
 /datum/ammo/xeno/acid_shotgun/spread
-	name = "acid ball"
+	name = "酸液球"
 
 /datum/ammo/xeno/acid_shotgun/spread/New()
 	..()

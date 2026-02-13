@@ -21,7 +21,7 @@
 	var/string_paygrade = preset.load_rank(target)
 	var/datum/paygrade/paygrade_datum = GLOB.paygrades[string_paygrade]
 	if(paygrade_datum?.ranking < minimum_ranking)
-		to_chat(target, SPAN_WARNING("You aren't a high enough rank to be eligible to have a prosthetic [robo_limb_name]!"))
+		to_chat(target, SPAN_WARNING("你的军衔不够高，没有资格安装[robo_limb_name]！"))
 		return
 	var/obj/limb/limb = target.get_limb(code_limb)
 	limb.robotize()

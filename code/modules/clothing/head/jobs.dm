@@ -1,17 +1,17 @@
 
 //Bartender
 /obj/item/clothing/head/chefhat
-	name = "chef's hat"
-	desc = "It's a hat used by chefs to keep hair out of your food. Judging by the food in the mess, they don't work."
+	name = "厨师帽"
+	desc = "这是厨师用来防止头发掉进食物里的帽子。从食堂的食物来看，这玩意儿没什么用。"
 	icon_state = "chefhat"
 	item_state = "chefhat"
-	desc = "The commander in chef's head wear."
+	desc = "厨师长的头部装备。"
 	siemens_coefficient = 0.9
 
 //Cult
 /obj/item/clothing/head/cultist_hood
-	name = "black hood"
-	desc = "It's hood that covers the head."
+	name = "黑色兜帽"
+	desc = "一个覆盖头部的兜帽。"
 	icon_state = "chaplain_hood"
 	flags_inventory = COVEREYES
 	flags_inv_hide = HIDEEARS|HIDEALLHAIR
@@ -32,8 +32,8 @@
 
 //Chaplain
 /obj/item/clothing/head/nun_hood
-	name = "nun hood"
-	desc = "Maximum piety in this star system."
+	name = "修女兜帽"
+	desc = "本星系最虔诚的象征。"
 	icon_state = "nun_hood"
 	flags_inventory = COVEREYES
 	flags_inv_hide = HIDEEARS|HIDEALLHAIR
@@ -42,7 +42,7 @@
 //Mime
 /obj/item/clothing/head/beret
 	name = "beret"
-	desc = "A beret, an artist's favorite headwear."
+	desc = "一顶贝雷帽，艺术家的最爱。"
 	icon_state = "beret"
 	siemens_coefficient = 0.9
 	flags_armor_protection = 0
@@ -57,40 +57,40 @@
 
 //Security
 /obj/item/clothing/head/beret/sec
-	name = "security beret"
-	desc = "A beret with the security insignia emblazoned on it. For officers that are more inclined towards style than safety."
+	name = "安保贝雷帽"
+	desc = "一顶印有安保徽章的贝雷帽。适合那些更注重风格而非安全的军官。"
 	icon_state = "beret_badge"
 
 /obj/item/clothing/head/beret/sec/alt
-	name = "officer beret"
-	desc = "A navy-blue beret with an officer's rank emblem. For officers that are more inclined towards style than safety."
+	name = "军官贝雷帽"
+	desc = "一顶藏青色贝雷帽，带有军官军衔徽章。适合那些更注重风格而非安全的军官。"
 	icon_state = "officerberet"
 
 /obj/item/clothing/head/beret/sec/hos
-	name = "officer beret"
-	desc = "A navy-blue beret with a captain's rank emblem. For officers that are more inclined towards style than safety."
+	name = "军官贝雷帽"
+	desc = "一顶藏青色贝雷帽，带有上尉军衔徽章。适合那些更注重风格而非安全的军官。"
 	icon_state = "hosberet"
 
 /obj/item/clothing/head/beret/sec/warden
-	name = "warden beret"
-	desc = "A navy-blue beret with a warden's rank emblem. For officers that are more inclined towards style than safety."
+	name = "典狱长贝雷帽"
+	desc = "一顶藏青色贝雷帽，带有典狱长军衔徽章。适合那些更注重风格而非安全的军官。"
 	icon_state = "wardenberet"
 
 /obj/item/clothing/head/beret/eng
-	name = "engineering beret"
-	desc = "A beret with the engineering insignia emblazoned on it. For engineers that are more inclined towards style than safety."
+	name = "工程部贝雷帽"
+	desc = "一顶印有工程部徽章的贝雷帽。适合那些更注重风格而非安全的工程师。"
 	icon_state = "e_beret_badge"
 
 /obj/item/clothing/head/beret/jan
-	name = "purple beret"
-	desc = "A stylish, if purple, beret."
+	name = "紫色贝雷帽"
+	desc = "一顶时髦的，尽管是紫色的，贝雷帽。"
 	icon_state = "purpleberet"
 
 
 //Medical
 /obj/item/clothing/head/surgery
-	name = "surgical cap"
-	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs."
+	name = "手术帽"
+	desc = "外科医生在手术时佩戴的帽子。防止他们的头发搔到你的内脏。"
 	icon_state = "surgcap_blue"
 	icon = 'icons/obj/items/clothing/hats/surgical_caps.dmi'
 	item_icons = list(
@@ -99,65 +99,65 @@
 	flags_inv_hide = HIDETOPHAIR
 
 /obj/item/clothing/head/surgery/blue
-	name = "doctor's surgical cap"
-	desc = "A cap doctors wear during operations. Keeps their hair from tickling your internal organs. Typically worn by doctors, this one reminds you of blueberries."
+	name = "医生手术帽"
+	desc = "医生在手术时佩戴的帽子。防止他们的头发搔到你的内脏。通常由医生佩戴，这顶帽子让你想起蓝莓。"
 	icon_state = "surgcap_blue"
 
 /obj/item/clothing/head/surgery/lightblue
-	name = "nurse's surgical cap"
-	desc = "A cap nurses wear while they assist during operations. Keeps their hair from tickling your internal organs. Typically worn by nurses, this one is baby blue."
+	name = "护士手术帽"
+	desc = "护士在协助手术时佩戴的帽子。防止她们的头发搔到你的内脏。通常由护士佩戴，这顶是浅蓝色的。"
 	icon_state = "surgcap_lightblue"
 
 /obj/item/clothing/head/surgery/green
-	name = "surgeon's surgical cap"
-	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. Typically worn by surgeons, this one is jade green."
+	name = "外科医生手术帽"
+	desc = "外科医生在手术时佩戴的帽子。防止他们的头发搔到你的内脏。通常由外科医生佩戴，这顶是翡翠绿色的。"
 	icon_state = "surgcap_green"
 
 /obj/item/clothing/head/surgery/morgue
-	name = "morgue surgical cap"
-	desc = "A cap doctors wear while making autopsies, rather than during operations. Keeps their hair from dropping and interfering with incision scans. This one is a black as coal."
+	name = "停尸房手术帽"
+	desc = "医生在进行尸检而非手术时佩戴的帽子。防止他们的头发掉落并干扰切口扫描。这顶帽子黑如煤炭。"
 	icon_state = "surgcap_morgue"
 
 /obj/item/clothing/head/surgery/pharmacist
-	name = "pharmaceutical physician's surgical cap"
-	desc = "A cap pharmaceutical physicians wear during to protect their scalp from chemical mishaps. It also keeps their hair from tickling your internal organs while they operate. It's white with an orange rim."
+	name = "药剂医师手术帽"
+	desc = "药剂医师佩戴的帽子，用于保护头皮免受化学事故伤害。在他们手术时也能防止头发搔到你的内脏。它是白色的，带有橙色边缘。"
 	icon_state = "surgcap_pharm"
 
 /obj/item/clothing/head/surgery/cmo
-	name = "chief medical officer's surgical cap"
-	desc = "A striped cap the Chief Medical Officer wears during operations. Keeps their hair from tickling your internal organs. It's green with peach stripes to match the stripes on their lab coat."
+	name = "医疗长手术帽"
+	desc = "医疗长在手术时佩戴的条纹帽。防止他们的头发搔到你的内脏。它是绿色的，带有桃色条纹，以匹配他们实验袍上的条纹。"
 	icon_state = "surgcap_cmo"
 
 /obj/item/clothing/head/surgery/purple
-	name = "purple surgical cap"
-	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is a rich wine color."
+	name = "紫色手术帽"
+	desc = "外科医生在手术时佩戴的帽子。防止他们的头发搔到你的内脏。这顶是浓郁的酒红色。"
 	icon_state = "surgcap_purple"
 
 /obj/item/clothing/head/surgery/olive
-	name = "olive surgical cap"
-	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is olive green."
+	name = "橄榄绿手术帽"
+	desc = "外科医生在手术时佩戴的帽子。防止他们的头发搔到你的内脏。这顶是橄榄绿色的。"
 	icon_state = "surgcap_olive"
 
 /obj/item/clothing/head/surgery/brown
-	name = "brown surgical cap"
-	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is a rusty brown color."
+	name = "棕色手术帽"
+	desc = "外科医生在手术时佩戴的帽子。防止他们的头发搔到你的内脏。这顶是铁锈棕色的。"
 	icon_state = "surgcap_brown"
 
 /obj/item/clothing/head/surgery/grey
-	name = "grey surgical cap"
-	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is a mundane grey color."
+	name = "灰色手术帽"
+	desc = "外科医生在手术时佩戴的帽子。防止他们的头发搔到你的内脏。这顶是普通的灰色。"
 	icon_state = "surgcap_grey"
 
 /obj/item/clothing/head/surgery/white
-	name = "white surgical cap"
-	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is snow white."
+	name = "白色手术帽"
+	desc = "外科医生在手术时佩戴的帽子。防止他们的头发搔到你的内脏。这顶是雪白色的。"
 	icon_state = "surgcap_white"
 
 //Detective
 
 /obj/item/clothing/head/fedora
 	name = "\improper tan fedora"
-	desc = "A classic tan fedora."
+	desc = "一顶经典的棕褐色软呢帽。"
 	icon = 'icons/obj/items/clothing/hats/formal_hats.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi'
@@ -178,12 +178,12 @@
 
 /obj/item/clothing/head/fedora/brown
 	name = "\improper brown fedora"
-	desc = "A classic brown fedora."
+	desc = "一顶经典的棕色软呢帽。"
 	icon_state = "fedora_brown"
 	item_state = "fedora_brown"
 
 /obj/item/clothing/head/fedora/grey
 	name = "\improper grey fedora"
-	desc = "A classic grey fedora."
+	desc = "一顶经典的灰色软呢帽。"
 	icon_state = "fedora_grey"
 	item_state = "fedora_grey"

@@ -11,7 +11,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 		return
 
 	if(!GLOB.gene_tag_masks)
-		to_chat(usr, "Gene masks not set.")
+		to_chat(usr, "基因掩码未设置。")
 		return
 
 	for(var/mask in GLOB.gene_tag_masks)
@@ -126,7 +126,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 
 	roundstart = 0
 	seed_name = "strange plant"  // TODO: name generator.
-	display_name = "strange plants" // TODO: name generator.
+	display_name = "奇异植物" // TODO: name generator.
 	mysterious = 1
 
 	seed_noun = pick("spores","nodes","cuttings","seeds")
@@ -611,7 +611,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 		got_product = 1
 	if(!got_product && !harvest_sample)
 		if(!autoharvest)
-			to_chat(user, SPAN_DANGER("You fail to harvest anything useful."))
+			to_chat(user, SPAN_DANGER("你未能收获任何有用的东西。"))
 		return
 	else
 
@@ -648,7 +648,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 
 			//Handle spawning in living, mobile products (like dionaea).
 			if(istype(product,/mob/living))
-				product.visible_message(SPAN_NOTICE("The pod disgorges [product]!"))
+				product.visible_message(SPAN_NOTICE("舱体弹射出[product]！"))
 
 			// Make sure the product is inheriting the correct seed type reference.
 			else if(istype(product,/obj/item/reagent_container/food/snacks/grown))
@@ -658,7 +658,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 				var/obj/item/grown/current_product = product
 				current_product.plantname = name
 		if(!autoharvest)
-			to_chat(user, "You [harvest_sample ? "take a sample" : "harvest"] from the [display_name].")
+			to_chat(user, "你[harvest_sample ? "take a sample" : "harvest"] from the [display_name].")
 
 
 // When the seed in this machine mutates/is modified, the tray seed value
@@ -735,7 +735,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 
 	name = "chili"
 	seed_name = "chili"
-	display_name = "chili plants"
+	display_name = "辣椒植株"
 	products = list(/obj/item/reagent_container/food/snacks/grown/chili)
 	chems = list("capsaicin" = list(3,5), "vegetable" = list(1,25))
 	mutants = list("icechili")
@@ -752,7 +752,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 /datum/seed/chili/ice
 	name = "icechili"
 	seed_name = "ice pepper"
-	display_name = "ice-pepper plants"
+	display_name = "冰椒植株"
 	mutants = null
 	products = list(/obj/item/reagent_container/food/snacks/grown/icepepper)
 	chems = list("frostoil" = list(3,5), "vegetable" = list(1,50))
@@ -766,7 +766,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 /datum/seed/berry
 	name = "berries"
 	seed_name = "berry"
-	display_name = "berry bush"
+	display_name = "浆果灌木"
 	products = list(/obj/item/reagent_container/food/snacks/grown/berries)
 	mutants = list("glowberries","poisonberries","deathberries")
 	packet_icon = "seed-berry"
@@ -783,7 +783,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 /datum/seed/berry/glow
 	name = "glowberries"
 	seed_name = "glowberry"
-	display_name = "glowberry bush"
+	display_name = "荧光浆果灌木"
 	products = list(/obj/item/reagent_container/food/snacks/grown/glowberries)
 	mutants = null
 	packet_icon = "seed-glowberry"
@@ -799,7 +799,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 /datum/seed/berry/poison
 	name = "poisonberries"
 	seed_name = "poison berry"
-	display_name = "poison berry bush"
+	display_name = "毒浆果灌木"
 	products = list(/obj/item/reagent_container/food/snacks/grown/poisonberries)
 	mutants = null
 	packet_icon = "seed-poisonberry"
@@ -810,7 +810,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 /datum/seed/berry/poison/death
 	name = "deathberries"
 	seed_name = "death berry"
-	display_name = "death berry bush"
+	display_name = "死亡浆果灌木"
 	mutants = null
 	products = list(/obj/item/reagent_container/food/snacks/grown/deathberries)
 	packet_icon = "seed-deathberry"
@@ -842,7 +842,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 /datum/seed/nettle/death
 	name = "deathnettle"
 	seed_name = "death nettle"
-	display_name = "death nettles"
+	display_name = "死亡荨麻"
 	products = list(/obj/item/reagent_container/food/snacks/grown/nettle/death )
 	mutants = null
 	packet_icon = "seed-deathnettle"
@@ -856,7 +856,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 /datum/seed/tomato
 	name = "tomato"
 	seed_name = "tomato"
-	display_name = "tomato plant"
+	display_name = "番茄植株"
 	products = list(/obj/item/reagent_container/food/snacks/grown/tomato)
 	mutants = list("bluetomato","bloodtomato")
 	packet_icon = "seed-tomato"
@@ -873,7 +873,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 /datum/seed/tomato/blood
 	name = "bloodtomato"
 	seed_name = "blood tomato"
-	display_name = "blood tomato plant"
+	display_name = "血番茄植株"
 	products = list(/obj/item/reagent_container/food/snacks/grown/bloodtomato)
 	mutants = list("bluetomato")
 	packet_icon = "seed-bloodtomato"
@@ -885,7 +885,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 /datum/seed/tomato/killer
 	name = "killertomato"
 	seed_name = "killer tomato"
-	display_name = "killer tomato plant"
+	display_name = "杀手番茄植株"
 	products = list(/obj/item/reagent_container/food/snacks/grown/killertomato)
 	mutants = null
 	packet_icon = "seed-killertomato"
@@ -897,7 +897,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 /datum/seed/tomato/blue
 	name = "bluetomato"
 	seed_name = "blue tomato"
-	display_name = "blue tomato plant"
+	display_name = "蓝番茄植株"
 	products = list(/obj/item/reagent_container/food/snacks/grown/bluetomato)
 	mutants = list("bloodtomato")
 	packet_icon = "seed-bluetomato"
@@ -907,7 +907,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 /datum/seed/tomato/blue/teleport
 	name = "bluespacetomato"
 	seed_name = "bluespace tomato"
-	display_name = "bluespace tomato plant"
+	display_name = "蓝空番茄植株"
 	products = list(/obj/item/reagent_container/food/snacks/grown/bluespacetomato)
 	mutants = null
 	packet_icon = "seed-bluespacetomato"
@@ -935,7 +935,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 /datum/seed/eggplant/eggs
 	name = "realeggplant"
 	seed_name = "egg-plant"
-	display_name = "egg-plants"
+	display_name = "蛋茄植株"
 	products = list(/obj/item/reagent_container/food/snacks/egg)
 	mutants = null
 	packet_icon = "seed-eggy"
@@ -949,7 +949,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 /datum/seed/apple
 	name = "apple"
 	seed_name = "apple"
-	display_name = "apple tree"
+	display_name = "苹果树"
 	products = list(/obj/item/reagent_container/food/snacks/grown/apple)
 	mutants = list("poisonapple","goldapple")
 	packet_icon = "seed-apple"
@@ -971,8 +971,8 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 
 /datum/seed/apple/gold
 	name = "goldapple"
-	seed_name = "golden apple"
-	display_name = "gold apple tree"
+	seed_name = "金苹果"
+	display_name = "金苹果树"
 	products = list(/obj/item/reagent_container/food/snacks/grown/goldapple)
 	mutants = null
 	packet_icon = "seed-goldapple"
@@ -986,8 +986,8 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 //Ambrosia/varieties.
 /datum/seed/ambrosia
 	name = "ambrosia"
-	seed_name = "ambrosia vulgaris"
-	display_name = "ambrosia vulgaris"
+	seed_name = "普通神饈"
+	display_name = "普通神饈"
 	products = list(/obj/item/reagent_container/food/snacks/grown/ambrosiavulgaris)
 	mutants = list("ambrosiadeus")
 	packet_icon = "seed-ambrosiavulgaris"
@@ -1003,8 +1003,8 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 
 /datum/seed/ambrosia/deus
 	name = "ambrosiadeus"
-	seed_name = "ambrosia deus"
-	display_name = "ambrosia deus"
+	seed_name = "神圣神饈"
+	display_name = "神圣神饈"
 	products = list(/obj/item/reagent_container/food/snacks/grown/ambrosiadeus)
 	mutants = null
 	packet_icon = "seed-ambrosiadeus"
@@ -1016,7 +1016,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	name = "mushrooms"
 	seed_name = "chanterelle"
 	seed_noun = "spores"
-	display_name = "chanterelle mushrooms"
+	display_name = "鸡油菌"
 	products = list(/obj/item/reagent_container/food/snacks/grown/mushroom/chanterelle)
 	mutants = list("reishi","amanita","plumphelmet")
 	packet_icon = "mycelium-chanter"
@@ -1032,8 +1032,8 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 
 /datum/seed/mushroom/mold
 	name = "mold"
-	seed_name = "brown mold"
-	display_name = "brown mold"
+	seed_name = "褐霉"
+	display_name = "褐霉"
 	products = null
 	mutants = null
 	//mutants = list("wallrot") //TBD.
@@ -1046,7 +1046,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 /datum/seed/mushroom/plump
 	name = "plumphelmet"
 	seed_name = "plump helmet"
-	display_name = "plump helmet mushrooms"
+	display_name = "胖头盔蘑菇"
 	products = list(/obj/item/reagent_container/food/snacks/grown/mushroom/plumphelmet)
 	mutants = list("towercap")
 	packet_icon = "mycelium-plump"
@@ -1078,7 +1078,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 /datum/seed/mushroom/hallucinogenic/strong
 	name = "libertycap"
 	seed_name = "liberty cap"
-	display_name = "liberty cap mushrooms"
+	display_name = "自由帽蘑菇"
 	products = list(/obj/item/reagent_container/food/snacks/grown/mushroom/libertycap)
 	mutants = null
 	packet_icon = "mycelium-liberty"
@@ -1092,8 +1092,8 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 
 /datum/seed/mushroom/poison
 	name = "amanita"
-	seed_name = "fly amanita"
-	display_name = "fly amanita mushrooms"
+	seed_name = "毒蝇伞"
+	display_name = "毒蝇伞"
 	products = list(/obj/item/reagent_container/food/snacks/grown/mushroom/amanita)
 	mutants = list("destroyingangel")
 	packet_icon = "mycelium-amanita"
@@ -1108,8 +1108,8 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 
 /datum/seed/mushroom/poison/death
 	name = "destroyingangel"
-	seed_name = "destroying angel"
-	display_name = "destroying angel mushrooms"
+	seed_name = "毁灭天使"
+	display_name = "毁灭天使蘑菇"
 	mutants = null
 	products = list(/obj/item/reagent_container/food/snacks/grown/mushroom/angel)
 	packet_icon = "mycelium-angel"
@@ -1123,7 +1123,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 /datum/seed/mushroom/towercap
 	name = "towercap"
 	seed_name = "tower cap"
-	display_name = "tower caps"
+	display_name = "塔菇"
 	mutants = null
 	products = list(/obj/item/grown/log)
 	packet_icon = "mycelium-tower"
@@ -1233,7 +1233,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 /datum/seed/grapes/green
 	name = "greengrapes"
 	seed_name = "green grape"
-	display_name = "green grapevines"
+	display_name = "绿葡萄藤"
 	packet_icon = "seed-greengrapes"
 	products = list(/obj/item/reagent_container/food/snacks/grown/greengrapes)
 	mutants = null
@@ -1244,7 +1244,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 /datum/seed/peanuts
 	name = "peanut"
 	seed_name = "peanut"
-	display_name = "peanut vines"
+	display_name = "花生藤"
 	packet_icon = "seed-peanut"
 	products = list(/obj/item/reagent_container/food/snacks/grown/peanut)
 	plant_icon = "peanut"
@@ -1278,7 +1278,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 /datum/seed/shand
 	name = "shand"
 	seed_name = "S'randar's hand"
-	display_name = "S'randar's hand leaves"
+	display_name = "斯兰达之手叶"
 	packet_icon = "seed-shand"
 	products = list(/obj/item/reagent_container/food/snacks/grown/shand)
 	plant_icon = "shand"
@@ -1294,7 +1294,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 /datum/seed/mtear
 	name = "mtear"
 	seed_name = "Messa's tear"
-	display_name = "Messa's tear leaves"
+	display_name = "梅萨之泪叶"
 	packet_icon = "seed-mtear"
 	products = list(/obj/item/reagent_container/food/snacks/grown/mtear)
 	plant_icon = "mtear"
@@ -1311,7 +1311,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 /datum/seed/banana
 	name = "banana"
 	seed_name = "banana"
-	display_name = "banana tree"
+	display_name = "香蕉树"
 	packet_icon = "seed-banana"
 	products = list(/obj/item/reagent_container/food/snacks/grown/banana)
 	plant_icon = "banana"
@@ -1326,7 +1326,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 /datum/seed/corn
 	name = "corn"
 	seed_name = "corn"
-	display_name = "ears of corn"
+	display_name = "玉米穗"
 	packet_icon = "seed-corn"
 	products = list(/obj/item/reagent_container/food/snacks/grown/corn)
 	plant_icon = "corn"
@@ -1374,7 +1374,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 /datum/seed/wheat
 	name = "wheat"
 	seed_name = "wheat"
-	display_name = "wheat stalks"
+	display_name = "小麦秆"
 	packet_icon = "seed-wheat"
 	products = list(/obj/item/reagent_container/food/snacks/grown/wheat)
 	plant_icon = "wheat"
@@ -1389,7 +1389,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 /datum/seed/rice
 	name = "rice"
 	seed_name = "rice"
-	display_name = "rice stalks"
+	display_name = "水稻秆"
 	packet_icon = "seed-rice"
 	products = list(/obj/item/reagent_container/food/snacks/grown/ricestalk)
 	plant_icon = "rice"
@@ -1436,8 +1436,8 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 
 /datum/seed/whitebeets
 	name = "whitebeet"
-	seed_name = "white-beet"
-	display_name = "white-beets"
+	seed_name = "白甜菜"
+	display_name = "白甜菜"
 	packet_icon = "seed-whitebeet"
 	products = list(/obj/item/reagent_container/food/snacks/grown/whitebeet)
 	plant_icon = "whitebeet"
@@ -1469,7 +1469,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 /datum/seed/watermelon
 	name = "watermelon"
 	seed_name = "watermelon"
-	display_name = "watermelon vine"
+	display_name = "西瓜藤"
 	packet_icon = "seed-watermelon"
 	products = list(/obj/item/reagent_container/food/snacks/grown/watermelon)
 	plant_icon = "watermelon"
@@ -1485,7 +1485,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 /datum/seed/pumpkin
 	name = "pumpkin"
 	seed_name = "pumpkin"
-	display_name = "pumpkin vine"
+	display_name = "南瓜藤"
 	packet_icon = "seed-pumpkin"
 	products = list(/obj/item/reagent_container/food/snacks/grown/pumpkin)
 	plant_icon = "pumpkin"
@@ -1502,7 +1502,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 /datum/seed/lime
 	name = "lime"
 	seed_name = "lime"
-	display_name = "lime trees"
+	display_name = "酸橙树"
 	packet_icon = "seed-lime"
 	products = list(/obj/item/reagent_container/food/snacks/grown/lime)
 	plant_icon = "lime"
@@ -1518,7 +1518,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 /datum/seed/lemon
 	name = "lemon"
 	seed_name = "lemon"
-	display_name = "lemon trees"
+	display_name = "柠檬树"
 	packet_icon = "seed-lemon"
 	products = list(/obj/item/reagent_container/food/snacks/grown/lemon)
 	plant_icon = "lemon"
@@ -1534,7 +1534,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 /datum/seed/orange
 	name = "orange"
 	seed_name = "orange"
-	display_name = "orange trees"
+	display_name = "橙树"
 	packet_icon = "seed-orange"
 	products = list(/obj/item/reagent_container/food/snacks/grown/orange)
 	plant_icon = "orange"
@@ -1565,7 +1565,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 /datum/seed/cocoa
 	name = "cocoa"
 	seed_name = "cacao"
-	display_name = "cacao tree"
+	display_name = "可可树"
 	packet_icon = "seed-cocoapod"
 	products = list(/obj/item/reagent_container/food/snacks/grown/cocoapod)
 	plant_icon = "cocoapod"
@@ -1583,7 +1583,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	name = "cherry"
 	seed_name = "cherry"
 	seed_noun = "pits"
-	display_name = "cherry tree"
+	display_name = "樱桃树"
 	packet_icon = "seed-cherry"
 	products = list(/obj/item/reagent_container/food/snacks/grown/cherries)
 	plant_icon = "cherry"
@@ -1600,7 +1600,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 /datum/seed/kudzu
 	name = "kudzu"
 	seed_name = "kudzu"
-	display_name = "kudzu vines"
+	display_name = "葛藤"
 	packet_icon = "seed-kudzu"
 	products = list(/obj/item/reagent_container/food/snacks/grown/kudzupod)
 	plant_icon = "kudzu"

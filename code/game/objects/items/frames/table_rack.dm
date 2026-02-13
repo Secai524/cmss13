@@ -6,8 +6,8 @@
  */
 
 /obj/item/frame/table
-	name = "tan table parts"
-	desc = "A kit for a table, including a large, flat metal surface and four legs. Some assembly required."
+	name = "土黄色桌子部件"
+	desc = "一套桌子组件，包括一块大型平坦金属面板和四条桌腿。需要自行组装。"
 	gender = PLURAL
 	icon = 'icons/obj/items/table_parts.dmi'
 	item_icons = list(
@@ -32,47 +32,47 @@
 		var/obj/item/stack/rods/R = W
 		if(R.use(4))
 			new /obj/item/frame/table/reinforced(get_turf(src))
-			to_chat(user, SPAN_NOTICE("You reinforce [src]."))
+			to_chat(user, SPAN_NOTICE("你加固了[src]。"))
 			user.temp_drop_inv_item(src)
 			qdel(src)
 		else
-			to_chat(user, SPAN_WARNING("You need at least four rods to reinforce [src]."))
+			to_chat(user, SPAN_WARNING("你至少需要四根金属棒来加固[src]。"))
 
 	if(istype(W, /obj/item/stack/sheet/wood))
 		var/obj/item/stack/sheet/wood/S = W
 		if(S.use(2))
 			new /obj/item/frame/table/wood(get_turf(src))
 			new /obj/item/stack/sheet/metal(get_turf(src))
-			to_chat(user, SPAN_NOTICE("You replace the metal parts of [src]."))
+			to_chat(user, SPAN_NOTICE("你更换了[src]的金属部件。"))
 			user.temp_drop_inv_item(src)
 			qdel(src)
 		else
-			to_chat(user, SPAN_WARNING("You need at least two wood sheets to swap the metal parts of [src]."))
+			to_chat(user, SPAN_WARNING("你至少需要两块木板来更换[src]的金属部件。"))
 
 /obj/item/frame/table/attack_self(mob/user)
 	..()
 
 	var/obj/structure/blocker/anti_cade/AC = locate(/obj/structure/blocker/anti_cade) in usr.loc  // for M2C HMG, look at smartgun_mount.dm
 	if(AC)
-		to_chat(user, SPAN_WARNING("You can't construct the table here!"))
+		to_chat(user, SPAN_WARNING("你无法在此处建造桌子！"))
 		return
 	var/area/area = get_area(user)
 	if(!area.allow_construction)
-		to_chat(user, SPAN_WARNING("[src] must be assembled on a proper surface!"))
+		to_chat(user, SPAN_WARNING("[src]必须在合适的表面上组装！"))
 		return
 	var/turf/open/OT = user.loc
 	if(!(istype(OT) && OT.allow_construction))
-		to_chat(user, SPAN_WARNING("[src] must be assembled on a proper surface!"))
+		to_chat(user, SPAN_WARNING("[src]必须在合适的表面上组装！"))
 		return
 	if(istype(get_area(loc), /area/shuttle))  //HANGAR/SHUTTLE BUILDING
-		to_chat(user, SPAN_WARNING("No. This area is needed for the dropship."))
+		to_chat(user, SPAN_WARNING("不行。此区域是运输机所需空间。"))
 		return
 	for(var/obj/object in OT)
 		if(object.density)
-			to_chat(user, SPAN_WARNING("[object] is blocking you from constructing [src]!"))
+			to_chat(user, SPAN_WARNING("[object]阻挡了你建造[src]！"))
 			return
 	if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
-		to_chat(user, SPAN_WARNING("Hold still while you're constructing a table!"))
+		to_chat(user, SPAN_WARNING("建造桌子时请保持静止！"))
 		return
 
 	var/obj/structure/surface/table/T = new table_type(user.loc)
@@ -85,8 +85,8 @@
  */
 
 /obj/item/frame/table/reinforced
-	name = "reinforced table parts"
-	desc = "A kit for a table, including a large, flat metal surface and four legs. This kit has side panels. Some assembly required."
+	name = "加固桌部件"
+	desc = "一套桌子组件，包括一块大型平坦金属面板、四条桌腿以及侧板。需要自行组装。"
 	icon = 'icons/obj/items/table_parts.dmi'
 	icon_state = "reinf_tableparts"
 	item_state = "reinf_tableparts"
@@ -108,8 +108,8 @@
  */
 
 /obj/item/frame/table/wood
-	name = "wooden table parts"
-	desc = "A kit for a table, including a large, flat wooden surface and four legs. Some assembly required."
+	name = "木制桌子部件"
+	desc = "一套桌子组件，包括一块大型平坦木质面板和四条桌腿。需要自行组装。"
 	icon_state = "wood_tableparts"
 	item_state = "wood_tableparts"
 	flags_atom = FPRINT
@@ -124,7 +124,7 @@
 	if(istype(W, /obj/item/stack/tile/carpet) && table_type == /obj/structure/surface/table/woodentable)
 		var/obj/item/stack/tile/carpet/C = W
 		if(C.use(1))
-			to_chat(user, SPAN_NOTICE("You put a layer of carpet on [src]."))
+			to_chat(user, SPAN_NOTICE("你在[src]上铺了一层地毯。"))
 			new /obj/item/frame/table/gambling(get_turf(src))
 			qdel(src)
 
@@ -134,15 +134,15 @@
 	return ..()
 
 /obj/item/frame/table/wood/poor
-	name = "poor wooden table parts"
-	desc = "A kit for a poorly crafted table, including a large, flat wooden surface and four legs. Some assembly required."
+	name = "劣质木制桌子部件"
+	desc = "一套工艺粗糙的桌子组件，包括一块大型平坦木质面板和四条桌腿。需要自行组装。"
 	icon_state = "pwood_tableparts"
 	item_state = "pwood_tableparts"
 	table_type = /obj/structure/surface/table/woodentable/poor
 
 /obj/item/frame/table/wood/fancy
-	name = "fancy wooden table parts"
-	desc = "A kit for a finely crafted mahogany table, including a large, flat wooden surface and four legs. Some assembly required."
+	name = "精美木制桌子部件"
+	desc = "一套精制红木桌的组件，包含一块大型平整木质桌面和四条桌腿。需要自行组装。"
 	icon_state = "fwood_tableparts"
 	item_state = "fwood_tableparts"
 	table_type = /obj/structure/surface/table/woodentable/fancy
@@ -152,8 +152,8 @@
  */
 
 /obj/item/frame/table/gambling
-	name = "gamble table parts"
-	desc = "A kit for a table, including a large, flat wooden and carpet surface and four legs. Some assembly required."
+	name = "赌桌组件"
+	desc = "一套桌子的组件，包含一块大型平整的木质与地毯表面以及四条桌腿。需要自行组装。"
 	icon_state = "gamble_tableparts"
 	item_state = "gamble_tableparts"
 	flags_atom = null
@@ -165,7 +165,7 @@
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		deconstruct()
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
-		to_chat(user, SPAN_NOTICE("You pry the carpet out of [src]."))
+		to_chat(user, SPAN_NOTICE("你从[src]中撬出了地毯。"))
 		new /obj/item/stack/tile/carpet(get_turf(src))
 		new /obj/item/frame/table/wood(get_turf(src))
 		qdel(src)
@@ -180,7 +180,7 @@
  * Almayer Tables
  */
 /obj/item/frame/table/almayer
-	name = "gray table parts"
+	name = "灰色桌子组件"
 	icon_state = "table_parts"
 	item_state = "table_parts"
 	table_type = /obj/structure/surface/table/almayer
@@ -190,9 +190,9 @@
  */
 
 /obj/item/frame/rack
-	name = "rack parts"
+	name = "机架部件"
 	gender = PLURAL
-	desc = "A kit for a storage rack with multiple metal shelves. Relatively cheap, useful for mass storage. Some assembly required."
+	desc = "一套带有多层金属搁板的储物架组件。相对廉价，适合大规模存储。需要自行组装。"
 	icon = 'icons/obj/items/table_parts.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/construction_lefthand.dmi',
@@ -212,23 +212,23 @@
 	..()
 	var/area/area = get_area(user)
 	if(!area.allow_construction)
-		to_chat(user, SPAN_WARNING("[src] must be assembled on a proper surface!"))
+		to_chat(user, SPAN_WARNING("[src]必须在合适的表面上组装！"))
 		return
 	var/turf/open/OT = user.loc
 	if(!(istype(OT) && OT.allow_construction))
-		to_chat(user, SPAN_WARNING("[src] must be assembled on a proper surface!"))
+		to_chat(user, SPAN_WARNING("[src]必须在合适的表面上组装！"))
 		return
 
 	if(istype(get_area(loc), /area/shuttle))  //HANGAR/SHUTTLE BUILDING
-		to_chat(user, SPAN_WARNING("No. This area is needed for the dropship."))
+		to_chat(user, SPAN_WARNING("不行。此区域是运输机所需空间。"))
 		return
 
 	if(locate(/obj/structure/surface/table) in user.loc || locate(/obj/structure/barricade) in user.loc)
-		to_chat(user, SPAN_WARNING("There is already a structure here."))
+		to_chat(user, SPAN_WARNING("此处已有结构。"))
 		return
 
 	if(locate(/obj/structure/surface/rack) in user.loc)
-		to_chat(user, SPAN_WARNING("There already is a rack here."))
+		to_chat(user, SPAN_WARNING("此处已有一个架子。"))
 		return
 
 	var/obj/structure/surface/rack/R = new /obj/structure/surface/rack(user.loc)

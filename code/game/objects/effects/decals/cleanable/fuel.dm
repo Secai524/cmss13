@@ -1,6 +1,6 @@
 /obj/effect/decal/cleanable/liquid_fuel
 	//Liquid fuel is used for things that used to rely on volatile fuels or phoron being contained to a couple tiles.
-	name = "fuel residue"
+	name = "燃料残渣"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "fuel"
 	layer = ABOVE_WEED_LAYER

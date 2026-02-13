@@ -109,13 +109,13 @@ you will have to do something like if(client.admin_holder.rights & R_ADMIN) your
 				return TRUE
 			else
 				if(show_msg && C.prefs.show_permission_errors)
-					to_chat(C, SPAN_DANGER("Error: You do not have sufficient rights to do that. You require one of the following flags:[rights2text(rights_required,"")]."))
+					to_chat(C, SPAN_DANGER("错误：你没有足够的权限执行此操作。你需要以下权限之一：[rights2text(rights_required,"")]."))
 	else
 		if(C.admin_holder)
 			return TRUE
 		else
 			if(show_msg && C.prefs.show_permission_errors)
-				to_chat(C, SPAN_DANGER("Error: You are not an admin."))
+				to_chat(C, SPAN_DANGER("错误：你不是管理员。"))
 	return FALSE
 
 /proc/check_rights(rights_required, show_msg=TRUE)
@@ -130,12 +130,12 @@ you will have to do something like if(client.admin_holder.rights & R_ADMIN) your
 		if(check_client_rights(usr.client, rights_required, show_msg))
 			return TRUE
 		else if(show_msg)
-			to_chat(usr, SPAN_WARNING("You do not have sufficient rights to do that. You require one of the following flags:[rights2text(rights_required," ")]."))
+			to_chat(usr, SPAN_WARNING("你没有足够的权限执行此操作。你需要以下权限之一：[rights2text(rights_required," ")]."))
 	else
 		if(other.admin_holder)
 			return TRUE
 		else if(show_msg)
-			to_chat(usr, SPAN_WARNING("You are not a holder."))
+			to_chat(usr, SPAN_WARNING("你不是持有者。"))
 	return FALSE
 
 //probably a bit iffy - will hopefully figure out a better solution
@@ -147,7 +147,7 @@ you will have to do something like if(client.admin_holder.rights & R_ADMIN) your
 			if(usr.client.admin_holder.rights != other.admin_holder.rights)
 				if( (usr.client.admin_holder.rights & other.admin_holder.rights) == other.admin_holder.rights )
 					return 1 //we have all the rights they have and more
-		to_chat(usr, "<font color='red'>Error: Cannot proceed. They have more or equal rights to us.</font>")
+		to_chat(usr, "<font color='red'>错误：无法继续。他们的权限高于或等于我们。</font>")
 	return 0
 
 /client/proc/deadmin()

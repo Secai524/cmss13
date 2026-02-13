@@ -6,29 +6,29 @@
 	var/r_hair = 0
 	var/g_hair = 0
 	var/b_hair = 0
-	var/h_style = "Crewcut"
+	var/h_style = "平头"
 
 	//Hair gradient color and style
 	var/r_gradient = 0
 	var/g_gradient = 0
 	var/b_gradient = 0
 	///Style used for the hair gradient.
-	var/grad_style = "None"
+	var/grad_style = "无"
 
 	//Facial hair color and style
 	var/r_facial = 0
 	var/g_facial = 0
 	var/b_facial = 0
-	var/f_style = "Shaved"
+	var/f_style = "剃光"
 
 	//Eye color
 	var/r_eyes = 0
 	var/g_eyes = 0
 	var/b_eyes = 0
 
-	var/skin_color = "Pale 2" // Skin color
-	var/body_size = "Average" // Body Size
-	var/body_type = "Lean" // Body Buffness
+	var/skin_color = "苍白2号" // Skin color
+	var/body_size = "普通" // Body Size
+	var/body_type = "精瘦" // Body Buffness
 	var/body_presentation
 
 	//Skin color
@@ -219,15 +219,15 @@
 		if(!check_rights(R_SPAWN))
 			return
 
-		var/new_species = tgui_input_list(usr, "Please choose a new species.","Species",GLOB.all_species)
+		var/new_species = tgui_input_list(usr, "请选择一个新的物种。","Species",GLOB.all_species)
 
 		if(!new_species)
 			return
 
 		if(set_species(new_species))
-			to_chat(usr, "Set species of [src] to [src.species].")
+			to_chat(usr, "将[src]的物种设置为[src.species]。")
 		else
-			to_chat(usr, "Failed! Something went wrong.")
+			to_chat(usr, "失败！出了点问题。")
 
 
 	if(href_list[VV_HK_EDIT_SKILL])
@@ -243,18 +243,18 @@
 		if(!check_rights(R_SPAWN))
 			return
 
-		var/new_organ = tgui_input_list(usr, "Please choose an organ to add.","Organ",null, typesof(/datum/internal_organ)-/datum/internal_organ)
+		var/new_organ = tgui_input_list(usr, "请选择一个要添加的器官。","Organ",null, typesof(/datum/internal_organ)-/datum/internal_organ)
 
 		if(!new_organ)
 			return FALSE
 
 		if(locate(new_organ) in internal_organs)
-			to_chat(usr, "Mob already has that organ.")
+			to_chat(usr, "该生物已拥有该器官。")
 			return
 
 		var/datum/internal_organ/I = new new_organ(src)
 
-		var/organ_slot = input(usr, "Which slot do you want the organ to go in ('default' for default)?")  as text|null
+		var/organ_slot = input(usr, "你希望器官放置在哪个槽位（'default'表示默认）？")  as text|null
 
 		if(!organ_slot)
 			return
@@ -270,23 +270,23 @@
 				organ_slot = "unknown organ"
 
 		if(internal_organs_by_name[organ_slot])
-			to_chat(usr, "[src] already has an organ in that slot.")
+			to_chat(usr, "[src]在该槽位已有一个器官。")
 			qdel(I)
 			return
 
 		internal_organs_by_name[organ_slot] = I
-		to_chat(usr, "Added new [new_organ] to [src] as slot [organ_slot].")
+		to_chat(usr, "已将新的[new_organ]作为槽位[organ_slot]添加到[src]。")
 
 	if(href_list[VV_HK_REMOVE_ORGAN])
 		if(!check_rights(R_SPAWN))
 			return
 
-		var/rem_organ = tgui_input_list(usr, "Please choose an organ to remove.","Organ",null, internal_organs)
+		var/rem_organ = tgui_input_list(usr, "请选择要移除的器官。","Organ",null, internal_organs)
 
 		if(!(locate(rem_organ) in internal_organs))
-			to_chat(usr, "Mob does not have that organ.")
+			to_chat(usr, "目标没有该器官。")
 			return
 
-		to_chat(usr, "Removed [rem_organ] from [src].")
+		to_chat(usr, "已从[src]移除[rem_organ]。")
 		qdel(rem_organ)
 

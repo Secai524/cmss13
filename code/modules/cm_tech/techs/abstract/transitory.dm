@@ -1,6 +1,6 @@
 /datum/tech/transitory
-	name = "Transitory tech"
-	desc = "Transitions the tree to another tier."
+	name = "过渡技术"
+	desc = "将科技树过渡到另一层级。"
 	icon_state = "upgrade"
 
 	var/datum/tier/before
@@ -11,14 +11,14 @@
 
 /datum/tech/transitory/check_tier_level(mob/M)
 	if(before && before != holder.tier.type)
-		to_chat(M, SPAN_WARNING("You can't unlock this node!"))
+		to_chat(M, SPAN_WARNING("你无法解锁此节点！"))
 		return
 
 	if(techs_to_unlock > 0)
 		var/amount_of_unlocked_techs = LAZYLEN(holder.unlocked_techs[before])
 
 		if(amount_of_unlocked_techs < techs_to_unlock)
-			to_chat(M, SPAN_WARNING("You must unlock [techs_to_unlock] techs from [initial(before.name)] before you can unlock this tech!"))
+			to_chat(M, SPAN_WARNING("你必须先解锁[initial(before.name)]中的[techs_to_unlock]项技术，才能解锁此项技术！"))
 			return FALSE
 
 	return TRUE
@@ -48,7 +48,7 @@
 	return I
 
 /datum/tech/transitory/tier1
-	name = "Unlock Tier 1"
+	name = "解锁第一级"
 	tier = /datum/tier/free
 
 	flags = TREE_FLAG_MARINE|TREE_FLAG_XENO
@@ -56,7 +56,7 @@
 	next = /datum/tier/one
 
 /datum/tech/transitory/tier2
-	name = "Unlock Tier 2"
+	name = "解锁第二级"
 	tier = /datum/tier/one_transition_two
 
 	before = /datum/tier/one
@@ -75,7 +75,7 @@
 	flags = TREE_FLAG_MARINE
 
 /datum/tech/transitory/tier3
-	name = "Unlock Tier 3"
+	name = "解锁第三级"
 	tier = /datum/tier/two_transition_three
 
 	before = /datum/tier/two
@@ -94,7 +94,7 @@
 	flags = TREE_FLAG_MARINE
 
 /datum/tech/transitory/tier4
-	name = "Unlock Tier 4"
+	name = "解锁第四级"
 	tier = /datum/tier/three_transition_four
 
 	before = /datum/tier/three

@@ -1,5 +1,5 @@
 /datum/surgery/mcomp_wounds
-	name = "Tend Wounds"
+	name = "处理伤口"
 	possible_locs = DEFENSE_ZONES_LIVING //all hud aiming locations are suitable for yautja to target.
 	invasiveness = list(SURGERY_DEPTH_SURFACE)
 	required_surgery_skill = SKILL_SURGERY_TRAINED
@@ -20,7 +20,7 @@
 
 	for(var/zone in surgery_limbs) //Loops through the limbs of the patient
 		if(istype(patient.active_surgeries[zone], /datum/surgery/mcomp_wounds)) //Checks if there is already a surgery of this type existing elsewhere.
-			to_chat(user, SPAN_WARNING("The [zone] is already being worked on and you have to finish that first!"))//gives a message to the person trying to perform the action
+			to_chat(user, SPAN_WARNING("[zone]已经在处理中，你必须先完成那个！"))//gives a message to the person trying to perform the action
 			return FALSE
 
 	if(istype(user) && HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
@@ -41,8 +41,8 @@
 //------------------------------------
 
 /datum/surgery_step/mstabilize_wounds
-	name = "stabilize wounds"
-	desc = "stabilize the wounds"
+	name = "稳定伤势"
+	desc = "稳定伤势"
 	tools = SURGERY_TOOLS_MEDICOMP_STABILIZE_WOUND
 	time = 5 SECONDS
 	preop_sound = 'sound/handling/clothingrustle1.ogg'
@@ -51,7 +51,7 @@
 
 /datum/surgery_step/mstabilize_wounds/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(user == target)
-		user.visible_message(SPAN_NOTICE("[user] begins to stabilize wounds on their body with [tool]."),
+		user.visible_message(SPAN_NOTICE("[user]开始用[tool]稳定自己身上的伤势。"),
 		SPAN_HELPFUL("You begin to stabilize your wounds with [tool]."))
 	else
 		user.affected_message(target,
@@ -70,7 +70,7 @@
 		target.emote("pain")
 
 	if(user == target)
-		user.visible_message(SPAN_NOTICE("[user] finishes stabilizing the wounds on their body with [tool]."),
+		user.visible_message(SPAN_NOTICE("[user]完成了用[tool]稳定自己身上伤势的工作。"),
 			SPAN_HELPFUL("You finish stabilizing your wounds with [tool]."))
 	else
 		user.affected_message(target,
@@ -85,8 +85,8 @@
 	return FALSE
 
 /datum/surgery_step/mtend_wounds
-	name = "Tend Wounds"
-	desc = "tend the wounds"
+	name = "处理伤口"
+	desc = "处理伤口"
 	tools = SURGERY_TOOLS_MEDICOMP_MEND_WOUND
 	time = 15 SECONDS
 	preop_sound = 'sound/surgery/retractor1.ogg'
@@ -96,7 +96,7 @@
 /datum/surgery_step/mtend_wounds/extra_checks(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, repeating, skipped)
 	var/obj/item/tool/surgery/healing_gun/gun = tool
 	if(!gun.loaded)
-		to_chat(user, SPAN_WARNING("You can't heal yourself without a capsule in the gun!"))
+		to_chat(user, SPAN_WARNING("枪里没有胶囊你无法治疗自己！"))
 		return FALSE
 	return TRUE
 
@@ -104,7 +104,7 @@
 	playsound(target,'sound/misc/heal_gun.ogg',25)
 
 	if(user == target)
-		user.visible_message(SPAN_NOTICE("[user] begins to treat the stabilized wounds on their body with [tool]."),
+		user.visible_message(SPAN_NOTICE("[user]开始用[tool]处理自己身上已稳定的伤口。"),
 		SPAN_HELPFUL("You begin to treat your stabilized wounds with [tool]."))
 	else
 		user.affected_message(target,
@@ -129,7 +129,7 @@
 		target.emote("pain")
 
 	if(user == target)
-		user.visible_message(SPAN_NOTICE("[user] finishes treating the stabilized wounds on their body with [tool]."),
+		user.visible_message(SPAN_NOTICE("[user]完成了用[tool]处理自己身上已稳定伤口的工作。"),
 			SPAN_HELPFUL("You finish treating the stabilized wounds on your body with [tool]."))
 	else
 		user.affected_message(target,
@@ -149,8 +149,8 @@
 	return FALSE
 
 /datum/surgery_step/cauterize/mclamp_wound
-	name = "Clamp Wounds"
-	desc = "clamp the wounds"
+	name = "夹合伤口"
+	desc = "夹合伤口"
 	tools = SURGERY_TOOLS_MEDICOMP_CLAMP_WOUND
 	time = 10 SECONDS
 
@@ -161,7 +161,7 @@
 
 /datum/surgery_step/cauterize/mclamp_wound/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(user == target)
-		user.visible_message(SPAN_NOTICE("[user] begins to close the treated wounds on their body with [tool]."),
+		user.visible_message(SPAN_NOTICE("[user]开始用[tool]闭合自己身上已处理的伤口。"),
 			SPAN_HELPFUL("You begin to close your treated wounds with [tool]."))
 	else
 		user.affected_message(target,
@@ -179,7 +179,7 @@
 			limb.status &= ~(LIMB_THIRD_DEGREE_BURNS|LIMB_ESCHAR)
 
 	if(user == target)
-		user.visible_message(SPAN_NOTICE("[user] finshes closing the treated wounds on their body with [tool]."),
+		user.visible_message(SPAN_NOTICE("[user]完成了用[tool]闭合自己身上已处理伤口的工作。"),
 			SPAN_HELPFUL("You finish closing the treated wounds on your body with [tool]"))
 	else
 		user.affected_message(target,

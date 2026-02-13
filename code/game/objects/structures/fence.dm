@@ -1,6 +1,6 @@
 /obj/structure/fence
 	name = "fence"
-	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
+	desc = "一张铺设在两根柱子之间的大型金属网。作为一种廉价的分隔区域方式，同时允许视线穿透。"
 	icon = 'icons/obj/structures/props/fences/fence.dmi'
 	icon_state = "fence0"
 	throwpass = TRUE
@@ -38,7 +38,7 @@
 		return
 	if(health <= 0)
 		if(user)
-			user.visible_message(SPAN_DANGER("[user] smashes through [src][AM ? " with [AM]":""]!"))
+			user.visible_message(SPAN_DANGER("[user]撞穿了[src][AM ? " with [AM]":""]!"))
 		playsound(loc, 'sound/effects/fencehit.ogg', 25, 1)
 		cut_grille()
 	if(make_hit_sound)
@@ -65,7 +65,7 @@
 
 /obj/structure/fence/hitby(atom/movable/AM)
 	..()
-	visible_message(SPAN_DANGER("[src] was hit by [AM]."))
+	visible_message(SPAN_DANGER("[src]被[AM]击中了。"))
 	var/tforce = 0
 	if(ismob(AM))
 		tforce = 40
@@ -100,7 +100,7 @@
 /obj/structure/fence/proc/attack_generic(mob/living/user, damage = 0)
 	health -= damage
 	user.animation_attack_on(src)
-	user.visible_message(SPAN_DANGER("[user] smashes into [src]!"))
+	user.visible_message(SPAN_DANGER("[user]撞上了[src]！"))
 	healthcheck(1, 1, user)
 
 /obj/structure/fence/attack_animal(mob/user as mob)
@@ -115,19 +115,19 @@
 
 	if(istype(W, /obj/item/stack/barbed_wire) && health < health_max)
 		if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_ENGI))
-			to_chat(user, SPAN_WARNING("You don't have the skill needed to fix [src]'s wiring."))
+			to_chat(user, SPAN_WARNING("你没有修复[src]线路所需的技能。"))
 			return
 		var/obj/item/stack/barbed_wire/wire = W
 		var/amount_needed = 2
 		if(health)
 			amount_needed = 1
 		if(wire.amount >= amount_needed)
-			user.visible_message(SPAN_NOTICE("[user] starts repairing [src] with [wire]."),
+			user.visible_message(SPAN_NOTICE("[user]开始用[wire]修复[src]。"),
 			SPAN_NOTICE("You start repairing [src] with [wire]."))
 			playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 			if(do_after(user, 30 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 				if(wire.amount < amount_needed)
-					to_chat(user, SPAN_WARNING("You need more barbed wire to repair [src]."))
+					to_chat(user, SPAN_WARNING("你需要更多铁丝网来修复[src]。"))
 					return
 				wire.use(amount_needed)
 				health = health_max
@@ -135,20 +135,20 @@
 				density = TRUE
 				update_icon()
 				playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
-				user.visible_message(SPAN_NOTICE("[user] repairs [src] with [wire]."),
+				user.visible_message(SPAN_NOTICE("[user]用[wire]修复了[src]。"),
 				SPAN_NOTICE("You repair [src] with [wire]."))
 				return
 		else
-			to_chat(user, SPAN_WARNING("You need more barbed wire to repair [src]."))
+			to_chat(user, SPAN_WARNING("你需要更多铁丝网来修复[src]。"))
 			return
 
 	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) && cut)
-		user.visible_message(SPAN_NOTICE("[user] starts cutting away the remains of [src] with [W]."),
+		user.visible_message(SPAN_NOTICE("[user]开始用[W]清理[src]的残余部分。"),
 		SPAN_NOTICE("You start cutting away the remains of [src] with [W]."))
 		playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 		if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
-			user.visible_message(SPAN_NOTICE("[user] cuts away the remains of [src] with [W]."),
+			user.visible_message(SPAN_NOTICE("[user]用[W]清理了[src]的残余部分。"),
 			SPAN_NOTICE("You cut away the remains of [src] with [W]."))
 			deconstruct()
 			return
@@ -164,17 +164,17 @@
 			user.drop_held_item()
 			switch(state)
 				if(GRAB_PASSIVE)
-					grabbed_mob.visible_message(SPAN_WARNING("[user] slams [grabbed_mob] against \the [src]!"))
+					grabbed_mob.visible_message(SPAN_WARNING("[user]将[grabbed_mob]猛撞在\the [src]上！"))
 					grabbed_mob.apply_damage(7)
 					health -= 10
 				if(GRAB_AGGRESSIVE)
-					grabbed_mob.visible_message(SPAN_DANGER("[user] bashes [grabbed_mob] against \the [src]!"))
+					grabbed_mob.visible_message(SPAN_DANGER("[user]将[grabbed_mob]猛砸在\the [src]上！"))
 					if(prob(50))
 						grabbed_mob.apply_effect(1, WEAKEN)
 					grabbed_mob.apply_damage(10)
 					health -= 25
 				if(GRAB_CHOKE)
-					grabbed_mob.visible_message(SPAN_DANGER("[user] crushes [grabbed_mob] against \the [src]!"))
+					grabbed_mob.visible_message(SPAN_DANGER("[user]将[grabbed_mob]猛压在\the [src]上！"))
 					grabbed_mob.apply_effect(5, WEAKEN)
 					grabbed_mob.apply_damage(20)
 					health -= 50
@@ -190,7 +190,7 @@
 		return
 
 	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) || istype(W, /obj/item/attachable/bayonet) || istype(W, /obj/item/weapon/bracer_attachment))
-		user.visible_message(SPAN_NOTICE("[user] starts cutting through [src] with [W]."),
+		user.visible_message(SPAN_NOTICE("[user]开始用[W]切割[src]。"),
 		SPAN_NOTICE("You start cutting through [src] with [W]."))
 		playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 
@@ -201,7 +201,7 @@
 
 		if(do_after(user, duration, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
-			user.visible_message(SPAN_NOTICE("[user] cuts through [src] with [W]."),
+			user.visible_message(SPAN_NOTICE("[user]用[W]切开了[src]。"),
 			SPAN_NOTICE("You cut through [src] with [W]."))
 			cut_grille()
 		return
@@ -301,8 +301,8 @@ GLOBAL_LIST_INIT(all_electric_fences, list())
 // Hybrisa Electric Fence
 
 /obj/structure/fence/electrified
-	name = "electrified grille"
-	desc = "A dark reinforced mesh grille with warning stripes, equipped with Tesla-like coils to regulate high voltage current. It is highly electrified and dangerous when powered."
+	name = "通电格栅"
+	desc = "一个带有警示条纹的深色加固网状格栅，配备了类似特斯拉线圈的装置来调节高压电流。通电时高度带电，非常危险。"
 	icon = 'icons/obj/structures/props/hybrisa/piping_wiring.dmi'
 	icon_state = "highvoltagegrille_off"
 	basestate = "highvoltagegrille"
@@ -316,7 +316,7 @@ GLOBAL_LIST_INIT(all_electric_fences, list())
 	var/obj/structure/machinery/colony_floodlight_switch/electrified_fence_switch/breaker_switch = null
 
 /obj/structure/fence/electrified/hitby(atom/movable/AM)
-	visible_message(SPAN_DANGER("[src] was hit by [AM]."))
+	visible_message(SPAN_DANGER("[src]被[AM]击中了。"))
 	var/tforce = 0
 	if(ismob(AM))
 		if(electrified && !cut)
@@ -365,40 +365,40 @@ GLOBAL_LIST_INIT(all_electric_fences, list())
 // Classic Style Fences
 
 /obj/structure/fence/overgrown
-	name = "overgrown fence"
-	desc = "A large metal mesh strewn between two poles, tangled with vines and creeping growth. Still separates areas, but nature is reclaiming it."
+	name = "蔓生围栏"
+	desc = "一张铺设在两根柱子之间的大型金属网，缠绕着藤蔓和蔓延的植物。仍然分隔着区域，但大自然正在将其回收。"
 	icon = 'icons/obj/structures/props/fences/overgrown_fence.dmi'
 
 /obj/structure/fence/dark
 	name = "fence"
-	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
+	desc = "一张铺设在两根柱子之间的大型金属网。作为一种廉价的分隔区域方式，同时允许视线穿透。"
 	icon = 'icons/obj/structures/props/fences/dark_fence.dmi'
 
 /obj/structure/fence/dark/overgrown
-	name = "overgrown fence"
-	desc = "A large metal mesh strewn between two poles, tangled with vines and creeping growth. Still separates areas, but nature is reclaiming it."
+	name = "蔓生围栏"
+	desc = "一张铺设在两根柱子之间的大型金属网，缠绕着藤蔓和蔓延的植物。仍然分隔着区域，但大自然正在将其回收。"
 	icon = 'icons/obj/structures/props/fences/overgrown_dark_fence.dmi'
 
 /obj/structure/fence/dark/warning
 	name = "fence"
-	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
+	desc = "一张铺设在两根柱子之间的大型金属网。作为一种廉价的分隔区域方式，同时允许视线穿透。"
 	icon = 'icons/obj/structures/props/fences/electric_fence.dmi'
 
 /obj/structure/fence/dark/warning/overgrown
-	name = "overgrown fence"
-	desc = "A large metal mesh strewn between two poles, tangled with vines and creeping growth. Still separates areas, but nature is reclaiming it."
+	name = "蔓生围栏"
+	desc = "一张铺设在两根柱子之间的大型金属网，缠绕着藤蔓和蔓延的植物。仍然分隔着区域，但大自然正在将其回收。"
 	icon = 'icons/obj/structures/props/fences/overgrown_electric_fence.dmi'
 
 // Alternative Fences - New Design
 
 /obj/structure/fence/slim
 	name = "fence"
-	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
+	desc = "一张铺设在两根柱子之间的大型金属网。作为一种廉价的分隔区域方式，同时允许视线穿透。"
 	icon = 'icons/obj/structures/props/fences/fence_alt.dmi'
 
 /obj/structure/fence/slim/door
-	name = "fence door"
-	desc = "A sturdy chainlink door set between two metal poles. A cheap way to section off areas while still allowing visibility through it."
+	name = "围栏门"
+	desc = "一扇安装在两根金属柱之间的坚固链式门。一种廉价的分隔区域方式，同时仍允许视线穿透。"
 	icon_state = "door_closed"
 	door = TRUE
 	forms_junctions = FALSE
@@ -406,12 +406,12 @@ GLOBAL_LIST_INIT(all_electric_fences, list())
 
 /obj/structure/fence/slim/dark
 	name = "fence"
-	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
+	desc = "一张铺设在两根柱子之间的大型金属网。作为一种廉价的分隔区域方式，同时允许视线穿透。"
 	icon = 'icons/obj/structures/props/fences/dark_fence_alt.dmi'
 
 /obj/structure/fence/slim/dark/door
-	name = "fence door"
-	desc = "A sturdy chainlink door set between two metal poles. A cheap way to section off areas while still allowing visibility through it."
+	name = "围栏门"
+	desc = "一扇安装在两根金属柱之间的坚固链式门。一种廉价的分隔区域方式，同时仍允许视线穿透。"
 	icon_state = "door_closed"
 	door = TRUE
 	forms_junctions = FALSE
@@ -419,12 +419,12 @@ GLOBAL_LIST_INIT(all_electric_fences, list())
 
 /obj/structure/fence/slim/warning
 	name = "fence"
-	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
+	desc = "一张铺设在两根柱子之间的大型金属网。作为一种廉价的分隔区域方式，同时允许视线穿透。"
 	icon = 'icons/obj/structures/props/fences/electric_fence_alt.dmi'
 
 /obj/structure/fence/slim/warning/door
-	name = "fence door"
-	desc = "A sturdy chainlink door set between two metal poles. A cheap way to section off areas while still allowing visibility through it."
+	name = "围栏门"
+	desc = "一扇安装在两根金属柱之间的坚固链式门。一种廉价的分隔区域方式，同时仍允许视线穿透。"
 	icon_state = "door_closed"
 	door = TRUE
 	forms_junctions = FALSE
@@ -432,12 +432,12 @@ GLOBAL_LIST_INIT(all_electric_fences, list())
 
 /obj/structure/fence/slim/upp
 	name = "fence"
-	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
+	desc = "一张铺设在两根柱子之间的大型金属网。作为一种廉价的分隔区域方式，同时允许视线穿透。"
 	icon = 'icons/obj/structures/props/fences/upp_fence.dmi'
 
 /obj/structure/fence/slim/upp/door
-	name = "fence door"
-	desc = "A sturdy chainlink door set between two metal poles. A cheap way to section off areas while still allowing visibility through it."
+	name = "围栏门"
+	desc = "一扇安装在两根金属柱之间的坚固链式门。一种廉价的分隔区域方式，同时仍允许视线穿透。"
 	icon_state = "door_closed"
 	door = TRUE
 	forms_junctions = FALSE

@@ -1,6 +1,6 @@
 
 /datum/equipment_preset/corpse
-	name = "Corpse"
+	name = "尸体"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_COLONIST
 	job_title = JOB_COLONIST
@@ -11,7 +11,7 @@
 	skills = /datum/skills/civilian
 	idtype = /obj/item/card/id/lanyard
 	var/xenovictim = FALSE //Set to true to make the corpse spawn as a victim of a xeno burst
-	selection_categories = list("Corpse")
+	selection_categories = list("尸体")
 
 /datum/equipment_preset/corpse/load_languages(mob/living/carbon/human/new_human)
 	return
@@ -62,8 +62,8 @@
 // Civilians
 
 /datum/equipment_preset/corpse/prisoner
-	name = "Corpse - Prisoner"
-	assignment = "Prisoner"
+	name = "尸体 - 囚犯"
+	assignment = "囚犯"
 
 /datum/equipment_preset/corpse/prisoner/load_gear(mob/living/carbon/human/new_human)
 	add_ice_colony_survivor_equipment(new_human)
@@ -76,8 +76,8 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/chef
-	name = "Corpse - Chef"
-	assignment = "Chef"
+	name = "尸体 - 厨师"
+	assignment = "厨师"
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /datum/equipment_preset/corpse/chef/load_gear(mob/living/carbon/human/new_human)
@@ -93,8 +93,8 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/doctor
-	name = "Corpse - Doctor"
-	assignment = "Doctor"
+	name = "尸体 - 医生"
+	assignment = "医生"
 	idtype = /obj/item/card/id/silver/clearance_badge
 	xenovictim = TRUE
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY)
@@ -116,8 +116,8 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/engineer
-	name = "Corpse - Engineer"
-	assignment = "Engineer"
+	name = "尸体 - 工程师"
+	assignment = "工程师"
 	xenovictim = TRUE
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_LOGISTICS, ACCESS_CIVILIAN_ENGINEERING)
 
@@ -137,8 +137,8 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/scientist
-	name = "Corpse - Scientist"
-	assignment = "Scientist"
+	name = "尸体 - 科学家"
+	assignment = "科学家"
 	idtype = /obj/item/card/id/silver/clearance_badge/scientist
 	xenovictim = TRUE
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_LOGISTICS, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY)
@@ -162,7 +162,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/miner
-	name = "Corpse - KMCC - Shaft Miner"
+	name = "尸体 - KMCC - 矿井矿工"
 	assignment = "KMCC - Miner"
 	xenovictim = TRUE
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_LOGISTICS, ACCESS_CIVILIAN_ENGINEERING)
@@ -223,8 +223,8 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/security
-	name = "Corpse - Security"
-	assignment = "Security Officer"
+	name = "尸体 - 安保"
+	assignment = "安保官"
 	xenovictim = TRUE
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_COMMAND)
 	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
@@ -249,7 +249,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/security/cmb
-	name = "Corpse - Colonial Marshal Deputy"
+	name = "尸体 - 殖民地执法官副手"
 	job_title = JOB_CMB
 	paygrades = list(PAY_SHORT_CMBD = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/deputy
@@ -280,7 +280,7 @@
 	. = ..()
 
 /datum/equipment_preset/corpse/security/cmb/riot
-	name = "Corpse - CMB Riot Control Officer"
+	name = "尸体 - CMB防暴控制官"
 	job_title = JOB_CMB_RIOT
 	paygrades = list(PAY_SHORT_CMBR = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/deputy/riot
@@ -312,7 +312,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/liaison
-	name = "Corpse - Corporate Liaison"
+	name = "尸体 - 公司联络官"
 	assignment = JOB_EXECUTIVE
 	job_title = JOB_EXECUTIVE
 	faction_group = FACTION_LIST_WY
@@ -361,8 +361,8 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/prison_guard
-	name = "Corpse - Prison Guard"
-	assignment = "Prison Guard"
+	name = "尸体 - 监狱守卫"
+	assignment = "监狱守卫"
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_LOGISTICS,
@@ -389,7 +389,7 @@
 								/////////////////Officers//////////////////////
 
 /datum/equipment_preset/corpse/manager
-	name = "Corpse - Colony Division Manager"
+	name = "尸体 - 殖民地部门经理"
 	assignment = "Colonial Division Manager"
 	job_title = JOB_DIVISION_MANAGER
 	faction_group = FACTION_LIST_WY
@@ -425,7 +425,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/administrator
-	name = "Corpse - Colony Administrator"
+	name = "尸体 - 殖民地行政官"
 	assignment = "Colonial Administrator"
 	job_title = JOB_DEPUTY_DIRECTOR
 	faction_group = FACTION_LIST_WY
@@ -470,13 +470,13 @@
 	add_random_cl_survivor_loot(new_human)
 
 /datum/equipment_preset/corpse/administrator/burst
-	name = "Corpse - Burst Colony Administrator"
+	name = "尸体 - 破胸殖民地行政官"
 	xenovictim = TRUE
 
 //*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/wysec
-	name = "Corpse - Weyland-Yutani Corporate Security Guard"
+	name = "尸体 - 维兰德-汤谷公司安保警卫"
 	idtype = /obj/item/card/id/pmc
 	assignment = JOB_WY_SEC
 	access = list(
@@ -508,7 +508,7 @@
 //Colonists
 
 /datum/equipment_preset/corpse/colonist
-	name = "Corpse - Colonist"
+	name = "尸体 - 殖民者"
 
 /datum/equipment_preset/corpse/colonist/load_gear(mob/living/carbon/human/new_human)
 	add_ice_colony_survivor_equipment(new_human)
@@ -519,13 +519,13 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(new_human), WEAR_FEET)
 
 /datum/equipment_preset/corpse/colonist/burst
-	name = "Corpse - Burst Colonist"
+	name = "尸体 - 破胸殖民者"
 	xenovictim = TRUE
 
 //*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/colonist/random
-	name = "Corpse - Colonist Random"
+	name = "尸体 - 随机殖民者"
 
 /datum/equipment_preset/corpse/colonist/random/load_gear(mob/living/carbon/human/new_human)
 	var/random_surv_type = pick(SSmapping.configs[GROUND_MAP].survivor_types)
@@ -533,13 +533,13 @@
 	surv_equipment.load_gear(new_human)
 
 /datum/equipment_preset/corpse/colonist/random/burst
-	name = "Corpse - Burst Colonist Random"
+	name = "尸体 - 破胸随机殖民者"
 	xenovictim = TRUE
 
 //*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/colonist/kutjevo
-	name = "Corpse - Colonist Kutjevo"
+	name = "尸体 - 库特耶沃殖民者"
 
 /datum/equipment_preset/corpse/colonist/kutjevo/load_gear(mob/living/carbon/human/new_human)
 
@@ -552,7 +552,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(new_human), WEAR_FEET)
 
 /datum/equipment_preset/corpse/colonist/kutjevo/burst
-	name = "Corpse - Burst Colonist Kutjevo"
+	name = "尸体 - 破胸库特耶沃殖民者"
 	xenovictim = TRUE
 
 //*****************************************************************************************************/
@@ -560,7 +560,7 @@
 //UA Riot Control Officer
 
 /datum/equipment_preset/corpse/ua_riot
-	name = "Corpse - UA Officer"
+	name = "尸体 - UA官员"
 	assignment = "United Americas Riot Officer"
 	idtype = /obj/item/card/id/silver
 	access = list(
@@ -601,7 +601,7 @@
 
 
 /datum/equipment_preset/corpse/ua_riot/burst
-	name = "Corpse - Burst UA Officer"
+	name = "尸体 - 破胸UA官员"
 	xenovictim = TRUE
 
 //*****************************************************************************************************/
@@ -612,7 +612,7 @@
 	flags = EQUIPMENT_PRESET_STUB
 
 /datum/equipment_preset/corpse/wy/manager
-	name = "Corpse - Corporate Supervisor"
+	name = "尸体 - 公司主管"
 	assignment = "Colony Supervisor"
 	flags = EQUIPMENT_PRESET_EXTRA
 	paygrades = list(PAY_SHORT_WYC6 = JOB_PLAYTIME_TIER_0)
@@ -645,7 +645,7 @@
 	add_random_cl_survivor_loot(new_human)
 
 /datum/equipment_preset/corpse/wy/manager/burst
-	name = "Corpse - Burst Corporate Supervisor"
+	name = "尸体 - 破胸公司主管"
 	xenovictim = TRUE
 
 //*****************************************************************************************************/
@@ -655,7 +655,7 @@
 //CLF
 
 /datum/equipment_preset/corpse/clf
-	name = "Corpse - Colonial Liberation Front Soldier"
+	name = "尸体 - 殖民地解放阵线士兵"
 	assignment = JOB_CLF
 	idtype = /obj/item/card/id/data
 	job_title = JOB_CLF
@@ -686,7 +686,7 @@
 	add_survivor_weapon_pistol(new_human)
 
 /datum/equipment_preset/corpse/clf/burst
-	name = "Corpse - Burst Colonial Liberation Front Soldier"
+	name = "尸体 - 破胸殖民地解放阵线士兵"
 	xenovictim = TRUE
 
 //*****************************************************************************************************/
@@ -694,7 +694,7 @@
 //UPP
 
 /datum/equipment_preset/corpse/upp
-	name = "Corpse - Union of Progressive Peoples Soldier"
+	name = "尸体 - 进步人民联盟士兵"
 	assignment = JOB_UPP
 	idtype = /obj/item/card/id/dogtag/upp
 	paygrades = list(PAY_SHORT_UE2 = JOB_PLAYTIME_TIER_0)
@@ -720,7 +720,7 @@
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green, WEAR_FACE)
 
 /datum/equipment_preset/corpse/upp/burst
-	name = "Corpse - Burst Union of Progressive Peoples Soldier"
+	name = "尸体 - 破胸进步人民联盟士兵"
 	xenovictim = TRUE
 
 //*****************************************************************************************************/
@@ -728,7 +728,7 @@
 //PMC
 
 /datum/equipment_preset/corpse/pmc
-	name = "Corpse - Weyland-Yutani PMC (Standard)"
+	name = "尸体 - 维兰德-汤谷PMC（标准）"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = JOB_PMC_STANDARD
 	faction = FACTION_PMC
@@ -773,7 +773,7 @@
 	add_random_survivor_equipment(new_human)
 
 /datum/equipment_preset/corpse/pmc/burst
-	name = "Corpse - Burst Weyland-Yutani PMC (Standard)"
+	name = "尸体 - 破胸维兰德-汤谷PMC（标准）"
 	xenovictim = TRUE
 
 //*****************************************************************************************************/
@@ -781,7 +781,7 @@
 //Goon
 
 /datum/equipment_preset/corpse/pmc/goon
-	name = "Corpse - Weyland-Yutani Corporate (Goon)"
+	name = "尸体 - 维兰德-汤谷公司人员（打手）"
 	languages = list(LANGUAGE_ENGLISH)
 	assignment = JOB_WY_GOON
 	job_title = JOB_WY_GOON
@@ -806,7 +806,7 @@
 //Lead Goon
 
 /datum/equipment_preset/corpse/pmc/goon/lead
-	name = "Corpse - Weyland-Yutani Corporate Security Lead (Goon Lead)"
+	name = "尸体 - 维兰德-汤谷公司安保主管（打手头目）"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_WY_GOON_LEAD
 	job_title = JOB_WY_GOON_LEAD
@@ -827,7 +827,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/black, WEAR_R_STORE)
 
 /datum/equipment_preset/corpse/pmc/goon/lead/burst
-	name = "Corpse - Burst Weyland-Yutani Corporate Security Lead (Goon Lead)"
+	name = "尸体 - 爆裂的维兰德-汤谷公司安保队长（打手队长）"
 	xenovictim = TRUE
 
 //*****************************************************************************************************/
@@ -835,7 +835,7 @@
 //Kutjevo Goon
 
 /datum/equipment_preset/corpse/pmc/goon/kutjevo
-	name = "Corpse - Weyland-Yutani Corporate Security (Kutjevo Goon)"
+	name = "尸体 - 维兰德-汤谷公司安保（库特耶沃打手）"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_WY_GOON
 	job_title = JOB_WY_GOON
@@ -862,7 +862,7 @@
 //Trijent Goon
 
 /datum/equipment_preset/corpse/pmc/goon/trijent
-	name = "Corpse - Weyland-Yutani Corporate Security (Trijent Goon)"
+	name = "尸体 - 维兰德-汤谷公司安保（特里金特打手）"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_WY_GOON
 	job_title = JOB_WY_GOON
@@ -891,7 +891,7 @@
 	//Lead Goon
 
 /datum/equipment_preset/corpse/pmc/goon/lead/trijent
-	name = "Corpse - Weyland-Yutani Corporate Security Lead (Trijent Goon Lead)"
+	name = "尸体 - 维兰德-汤谷公司安保队长（特里金特打手队长）"
 
 /datum/equipment_preset/corpse/pmc/goon/lead/trijent/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
@@ -913,7 +913,7 @@
 //Freelancer
 
 /datum/equipment_preset/corpse/freelancer
-	name = "Corpse - Freelancer"
+	name = "尸体 - 自由佣兵"
 	paygrades = list(PAY_SHORT_FL_S = JOB_PLAYTIME_TIER_0)
 	job_title = FACTION_FREELANCER
 	idtype = /obj/item/card/id/data
@@ -938,7 +938,7 @@
 	spawn_merc_helmet(new_human)
 
 /datum/equipment_preset/corpse/freelancer/burst
-	name = "Corpse - Burst Freelancer"
+	name = "尸体 - 爆裂的自由佣兵"
 	xenovictim = TRUE
 
 //*****************************************************************************************************/
@@ -948,7 +948,7 @@
 //Pirates
 
 /datum/equipment_preset/corpse/realpirate
-	name = "Corpse - Pirate"
+	name = "尸体 - 海盗"
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_LOGISTICS,
@@ -972,7 +972,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/realpirate/ranged
-	name = "Corpse - Pirate Gunner"
+	name = "尸体 - 海盗炮手"
 
 /datum/equipment_preset/corpse/realpirate/ranged/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/pirate(new_human), WEAR_JACKET)
@@ -984,7 +984,7 @@
 //Russian(?)
 
 /datum/equipment_preset/corpse/russian
-	name = "Corpse - Russian"
+	name = "尸体 - 俄罗斯人"
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_LOGISTICS,
@@ -1017,8 +1017,8 @@
 //Dutch Dozen
 
 /datum/equipment_preset/corpse/dutchrifle
-	name = "Corpse - Dutch Dozen Rifleman"
-	assignment = "Dutch Dozen Rifleman"
+	name = "尸体 - 荷兰十二人步枪兵"
+	assignment = "荷兰十二人步枪兵"
 	idtype = /obj/item/card/id/silver
 	faction = FACTION_DUTCH
 	xenovictim = FALSE
@@ -1042,7 +1042,7 @@
 	spawn_merc_helmet(new_human)
 
 /datum/equipment_preset/corpse/dutchrifle/burst
-	name = "Corpse - Burst Dutch Dozen Rifleman"
+	name = "尸体 - 爆裂的荷兰十二人步枪兵"
 	xenovictim = TRUE
 
 //*****************************************************************************************************/
@@ -1050,8 +1050,8 @@
 //Pizza Planet
 
 /datum/equipment_preset/corpse/pizza
-	name = "Corpse - Pizza Deliverer"
-	assignment = "Pizza Deliverer"
+	name = "尸体 - 披萨配送员"
+	assignment = "披萨配送员"
 	idtype = /obj/item/card/id/silver
 	faction = FACTION_PIZZA
 	xenovictim = FALSE
@@ -1080,7 +1080,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/cans/thirteenloko, WEAR_IN_BACK)
 
 /datum/equipment_preset/corpse/pizza/burst
-	name = "Corpse - Burst Pizza Deliverer"
+	name = "尸体 - 爆裂的披萨配送员"
 	xenovictim = TRUE
 
 //*****************************************************************************************************/
@@ -1088,8 +1088,8 @@
 //Gladiator
 
 /datum/equipment_preset/corpse/gladiator
-	name = "Corpse - Gladiator"
-	assignment = "Gladiator"
+	name = "尸体 - 角斗士"
+	assignment = "角斗士"
 	idtype = /obj/item/card/id/dogtag
 	faction = FACTION_GLADIATOR
 	xenovictim = FALSE
@@ -1120,7 +1120,7 @@
 	lantern.name = "Beacon of Holy Light"
 
 /datum/equipment_preset/corpse/gladiator/burst
-	name = "Corpse - Burst Gladiator"
+	name = "尸体 - 爆裂的角斗士"
 	xenovictim = TRUE
 
 //*****************************************************************************************************/
@@ -1128,7 +1128,7 @@
 //FORECON
 
 /datum/equipment_preset/corpse/forecon_spotter
-	name = "Corpse - USCM Reconnaissance Spotter"
+	name = "尸体 - USCM侦察观测员"
 	assignment = "Reconnaissance Spotter"
 	xenovictim = FALSE
 	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0)
@@ -1172,7 +1172,7 @@
 // Hybrisa Goon
 
 /datum/equipment_preset/corpse/pmc/hybrisa_goon
-	name = "Corpse - Weyland-Yutani - Corporate Security"
+	name = "尸体 - 维兰德-汤谷 - 公司安保"
 	languages = list(LANGUAGE_ENGLISH)
 	assignment = JOB_WY_GOON
 	job_title = JOB_WY_GOON
@@ -1197,13 +1197,13 @@
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/p90, WEAR_IN_L_STORE)
 
 /datum/equipment_preset/corpse/pmc/hybrisa_goon/burst
-	name = "Corpse - Burst Weyland-Yutani - Corporate Security (Goon)"
+	name = "尸体 - 爆裂的维兰德-汤谷 - 公司安保（打手）"
 	xenovictim = TRUE
 
 // Hybrisa Lead Goon
 
 /datum/equipment_preset/corpse/pmc/hybrisa_goon/lead
-	name = "Corpse - Weyland-Yutani - Corporate Security Lead"
+	name = "尸体 - 维兰德-汤谷 - 公司安保队长"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_WY_GOON_LEAD
 	job_title = JOB_WY_GOON_LEAD
@@ -1225,7 +1225,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/wy/pmc_p90, WEAR_L_STORE)
 
 /datum/equipment_preset/corpse/pmc/hybrisa_goon/lead/burst
-	name = "Corpse - Burst Weyland-Yutani - Corporate Security Lead (Goon Lead)"
+	name = "尸体 - 爆裂的维兰德-汤谷 - 公司安保队长（打手队长）"
 	xenovictim = TRUE
 
 //*****************************************************************************************************/
@@ -1237,8 +1237,8 @@
 	flags = EQUIPMENT_PRESET_STUB
 
 /datum/equipment_preset/corpse/hybrisa/civilian
-	name = "Corpse - Civilian"
-	assignment = "Civilian"
+	name = "尸体 - 平民"
+	assignment = "平民"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 /datum/equipment_preset/corpse/hybrisa/civilian/load_gear(mob/living/carbon/human/new_human)
@@ -1302,14 +1302,14 @@
 	..()
 
 /datum/equipment_preset/corpse/hybrisa/civilian/burst
-	name = "Corpse - Burst - Civilian"
-	assignment = "Civilian"
+	name = "尸体 - 爆裂 - 平民"
+	assignment = "平民"
 	xenovictim = TRUE
 
 // Office Workers
 
 /datum/equipment_preset/corpse/hybrisa/civilian_office
-	name = "Corpse - Civilian - Office Worker"
+	name = "尸体 - 平民 - 办公室职员"
 	assignment = "Civilian - Office Worker"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
@@ -1350,14 +1350,14 @@
 	..()
 
 /datum/equipment_preset/corpse/hybrisa/civilian_office/burst
-	name = "Corpse - Burst - Civilian - Office Worker"
-	assignment = "Civilian"
+	name = "尸体 - 爆裂 - 平民 - 办公室职员"
+	assignment = "平民"
 	xenovictim = TRUE
 
 // Weymart
 
 /datum/equipment_preset/corpse/hybrisa/weymart
-	name = "Corpse - Civilian - Weymart Employee"
+	name = "尸体 - 平民 - 维玛特员工"
 	assignment = "Civilian - Weymart Employee"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
@@ -1369,14 +1369,14 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
 
 /datum/equipment_preset/corpse/hybrisa/weymart/burst
-	name = "Corpse - Burst - Civilian - Weymart Employee"
+	name = "尸体 - 爆裂 - 平民 - 维玛特员工"
 	assignment = "Civilian - Weymart Employee"
 	xenovictim = TRUE
 
 // Sanitation
 
 /datum/equipment_preset/corpse/hybrisa/sanitation
-	name = "Corpse - Civilian - Material Reprocessing Technician"
+	name = "尸体 - 平民 - 材料回收技术员"
 	assignment = "Civilian - Material Reprocessing Technician"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
@@ -1415,14 +1415,14 @@
 	..()
 
 /datum/equipment_preset/corpse/hybrisa/sanitation/burst
-	name = "Corpse - Burst - Civilian - Material Reprocessing Technician"
+	name = "尸体 - 爆裂 - 平民 - 材料回收技术员"
 	assignment = "Civilian - Material Reprocessing Technician"
 	xenovictim = TRUE
 
 // Pizza Galaxy
 
 /datum/equipment_preset/corpse/hybrisa/pizza_galaxy
-	name = "Corpse - Civilian - Pizza Galaxy Delivery Driver"
+	name = "尸体 - 平民 - 银河披萨送货司机"
 	assignment = "Civilian - Pizza Galaxy Delivery Driver"
 	idtype = /obj/item/card/id/pizza
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -1435,19 +1435,19 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/red(new_human), WEAR_FEET)
 
 /datum/equipment_preset/corpse/hybrisa/pizza_galaxy/burst
-	name = "Corpse - Burst - Civilian - Pizza Galaxy Delivery Driver"
+	name = "尸体 - 爆裂 - 平民 - 银河披萨送货司机"
 	assignment = "Civilian - Pizza Galaxy Delivery Driver"
 	xenovictim = TRUE
 
 // NSPA - Constables
 
 /datum/job/nspa_constable
-	title = "NSPA Constable"
+	title = "NSPA警官"
 
 /datum/equipment_preset/corpse/hybrisa/nspa_constable
 
-	name = "Corpse - NSPA Constable"
-	assignment = "NSPA Constable"
+	name = "尸体 - NSPA警官"
+	assignment = "NSPA警官"
 	faction_group = FACTION_LIST_SURVIVOR_NSPA
 	paygrades = list(PAY_SHORT_CST = JOB_PLAYTIME_TIER_0, PAY_SHORT_SC = JOB_PLAYTIME_TIER_3, PAY_SHORT_SGT = JOB_PLAYTIME_TIER_4)
 	skills = /datum/skills/civilian/survivor/marshal
@@ -1500,13 +1500,13 @@
 
 /datum/equipment_preset/corpse/hybrisa/nspa_constable/burst
 
-	name = "Corpse - Burst - NSPA Constable"
-	assignment = "NSPA Constable"
+	name = "尸体 - 爆裂 - NSPA警官"
+	assignment = "NSPA警官"
 	xenovictim = TRUE
 
 /datum/equipment_preset/corpse/hybrisa/nspa_constable/trijent
 
-	name = "Corpse - Trijent NSPA Constable"
+	name = "尸体 - 特里金特NSPA警官"
 
 /datum/equipment_preset/corpse/hybrisa/nspa_constable/trijent/load_gear(mob/living/carbon/human/new_human)
 
@@ -1567,14 +1567,14 @@
 
 /datum/equipment_preset/corpse/hybrisa/nspa_constable/trijent/burst
 
-	name = "Corpse - Burst - Trijent NSPA Constable"
-	assignment = "NSPA Constable"
+	name = "尸体 - 爆裂 - 特里金特NSPA警官"
+	assignment = "NSPA警官"
 	xenovictim = TRUE
 
 // KMCC Mining
 
 /datum/equipment_preset/corpse/hybrisa/kelland_miner
-	name = "Corpse - KMCC - Miner"
+	name = "尸体 - KMCC - 矿工"
 	assignment = "KMCC - Miner"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
@@ -1630,14 +1630,14 @@
 	..()
 
 /datum/equipment_preset/corpse/hybrisa/kelland_miner/burst
-	name = "Corpse - Burst - KMCC - Miner"
+	name = "尸体 - 爆裂 - KMCC - 矿工"
 	assignment = "KMCC - Miner"
 	xenovictim = TRUE
 
 // Medical
 
 /datum/equipment_preset/corpse/hybrisa/medical_doctor_corpse
-	name = "Corpse - Civilian - Medical Doctor"
+	name = "尸体 - 平民 - 医生"
 	assignment = "Civilian - Medical Doctor"
 	idtype = /obj/item/card/id/silver/clearance_badge
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -1666,7 +1666,7 @@
 	..()
 
 /datum/equipment_preset/corpse/hybrisa/medical_doctor_corpse/burst
-	name = "Corpse - Burst - Civilian - Medical Doctor"
+	name = "尸体 - 爆裂 - 平民 - 医生"
 	assignment = "Civilian - Medical Doctor"
 	xenovictim = TRUE
 
@@ -1675,7 +1675,7 @@
 // Xenobiologist
 
 /datum/equipment_preset/corpse/hybrisa/scientist_xenobiologist
-	name = "Corpse - Xenobiologist"
+	name = "尸体 - 异形生物学家"
 	assignment = "Xenobiologist"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/clearance_badge/scientist
@@ -1707,14 +1707,14 @@
 	..()
 
 /datum/equipment_preset/corpse/hybrisa/scientist_xenobiologist/burst
-	name = "Corpse - Burst - Xenobiologist"
+	name = "尸体 - 爆裂 - 异形生物学家"
 	assignment = "Xenobiologist"
 	xenovictim = TRUE
 
 // Xenoarchaeologist
 
 /datum/equipment_preset/corpse/hybrisa/scientist_xenoarchaeologist
-	name = "Corpse - Xenoarchaeologist"
+	name = "尸体 - 异形考古学家"
 	assignment = "Xenoarchaeologist"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/clearance_badge/scientist
@@ -1764,7 +1764,7 @@
 	..()
 
 /datum/equipment_preset/corpse/hybrisa/scientist_xenoarchaeologist/burst
-	name = "Corpse - Burst - Xenoarchaeologist"
+	name = "尸体 - 爆裂 - 异形考古学家"
 	assignment = "Xenoarchaeologist"
 	xenovictim = TRUE
 

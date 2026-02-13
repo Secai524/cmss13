@@ -1,5 +1,5 @@
 /datum/action/xeno_action/activable/pounce/runner
-	name = "Pounce"
+	name = "猛扑"
 	action_icon_state = "pounce"
 	macro_path = /datum/action/xeno_action/verb/verb_pounce
 	action_type = XENO_ACTION_CLICK
@@ -21,7 +21,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_3
 
 /datum/action/xeno_action/activable/runner_skillshot
-	name = "Bone Spur"
+	name = "骨刺"
 	action_icon_state = "runner_bonespur"
 	macro_path = /datum/action/xeno_action/verb/verb_runner_bonespurs
 	action_type = XENO_ACTION_CLICK
@@ -32,7 +32,7 @@
 	var/ammo_type = /datum/ammo/xeno/bone_chips/spread/runner_skillshot
 
 /datum/action/xeno_action/activable/acider_acid
-	name = "Corrosive Acid"
+	name = "腐蚀酸液"
 	action_icon_state = "corrosive_acid"
 	var/acid_type = /obj/effect/xenomorph/acid/strong
 	macro_path = /datum/action/xeno_action/verb/verb_acider_acid
@@ -41,7 +41,7 @@
 	var/acid_cost = 100
 
 /datum/action/xeno_action/activable/acider_for_the_hive
-	name = "For the Hive!"
+	name = "为了巢穴！"
 	action_icon_state = "screech"
 	macro_path = /datum/action/xeno_action/verb/verb_acider_sacrifice
 	action_type = XENO_ACTION_CLICK

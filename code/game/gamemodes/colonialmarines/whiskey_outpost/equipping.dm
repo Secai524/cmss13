@@ -19,7 +19,7 @@ Stay alive, and Godspeed, commander!"}
 		return
 	sleep(15)
 	if(H?.loc)
-		marine_announcement("All forces, Ground Commander [H.real_name] is in command!")
+		marine_announcement("所有部队，地面指挥官[H.real_name]现在接管指挥！")
 
 
 

@@ -1,6 +1,6 @@
 /datum/player_action/delimb
 	action_tag = "mob_delimb"
-	name = "Delimb"
+	name = "移除肢体"
 	permissions_required = R_VAREDIT
 
 /datum/player_action/delimb/act(client/user, mob/target, list/params)
@@ -26,7 +26,7 @@
 
 /datum/player_action/relimb
 	action_tag = "mob_relimb"
-	name = "Relimb"
+	name = "再生肢体"
 	permissions_required = R_VAREDIT
 
 /datum/player_action/relimb/act(client/user, mob/target, list/params)
@@ -60,13 +60,13 @@
 
 	H.pain.recalculate_pain()
 
-	to_chat(target, SPAN_HELPFUL("You feel your limbs regrow back."))
+	to_chat(target, SPAN_HELPFUL("你感觉你的肢体重新生长了出来。"))
 
 	return TRUE
 
 /datum/player_action/cryo_human
 	action_tag = "cryo_human"
-	name = "Cryo Human"
+	name = "冷冻人类"
 
 
 /datum/player_action/cryo_human/act(client/user, mob/target, list/params)
@@ -109,7 +109,7 @@
 
 /datum/player_action/set_speed
 	action_tag = "set_speed"
-	name = "Set Speed"
+	name = "设置速度"
 	permissions_required = R_VAREDIT
 
 /datum/player_action/set_speed/act(client/user, mob/target, list/params)
@@ -122,7 +122,7 @@
 
 /datum/player_action/set_status_flags
 	action_tag = "set_status_flags"
-	name = "Set Status Flags"
+	name = "设置状态标志"
 	permissions_required = R_VAREDIT
 
 /datum/player_action/set_status_flags/act(client/user, mob/target, list/params)
@@ -135,7 +135,7 @@
 
 /datum/player_action/set_pain
 	action_tag = "set_pain"
-	name = "Set Pain"
+	name = "设置疼痛"
 	permissions_required = R_VAREDIT
 
 /datum/player_action/set_pain/act(client/user, mob/target, list/params)
@@ -152,7 +152,7 @@
 
 /datum/player_action/select_equipment
 	action_tag = "select_equipment"
-	name = "Select Equipment"
+	name = "选择装备"
 	permissions_required = R_SPAWN
 
 /datum/player_action/select_equipment/act(client/user, mob/target, list/params)
@@ -161,7 +161,7 @@
 
 /datum/player_action/strip_equipment
 	action_tag = "strip_equipment"
-	name = "Strip Equipment"
+	name = "卸除装备"
 	permissions_required = R_SPAWN
 
 /datum/player_action/strip_equipment/act(client/user, mob/target, list/params)
@@ -180,7 +180,7 @@
 
 /datum/player_action/set_squad
 	action_tag = "set_squad"
-	name = "Set Squad"
+	name = "设置小队"
 	permissions_required = R_VAREDIT
 
 /datum/player_action/set_squad/act(client/user, mob/living/carbon/human/target, list/params)
@@ -188,7 +188,7 @@
 	for(var/datum/squad/S in GLOB.RoleAuthority.squads)
 		squads[S.name] = S
 
-	var/selected_squad = tgui_input_list(user, "Select a squad.", "Squad Selection", squads)
+	var/selected_squad = tgui_input_list(user, "选择一个小队。", "Squad Selection", squads)
 	if(!selected_squad)
 		return
 
@@ -199,11 +199,11 @@
 
 /datum/player_action/set_faction
 	action_tag = "set_faction"
-	name = "Set Faction"
+	name = "设置阵营"
 	permissions_required = R_VAREDIT
 
 /datum/player_action/set_faction/act(client/user, mob/living/carbon/human/target, list/params)
-	var/new_faction = tgui_input_list(usr, "Select faction.", "Faction Choice", FACTION_LIST_HUMANOID)
+	var/new_faction = tgui_input_list(usr, "选择阵营。", "Faction Choice", FACTION_LIST_HUMANOID)
 	if(!new_faction)
 		new_faction = FACTION_NEUTRAL
 	target.faction = new_faction

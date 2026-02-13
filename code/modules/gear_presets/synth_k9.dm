@@ -1,5 +1,5 @@
 /datum/equipment_preset/synth_k9
-	name = "K9 Synthetic"
+	name = "K9合成人"
 	uses_special_name = TRUE
 	languages = ALL_SYNTH_LANGUAGES
 	skills = /datum/skills/synth_k9
@@ -18,8 +18,8 @@
 
 /datum/equipment_preset/synth_k9/load_race(mob/living/carbon/human/new_human)
 	. = ..()
-	new_human.h_style = "Bald"
-	new_human.f_style = "Shaved"
+	new_human.h_style = "光头"
+	new_human.f_style = "剃光"
 	if(new_human.client?.prefs?.synthetic_type)
 		new_human.set_species(new_human.client.prefs.synthetic_type)
 		return

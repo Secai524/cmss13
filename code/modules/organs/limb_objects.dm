@@ -56,35 +56,35 @@
 
 
 /obj/item/limb/arm/l_arm
-	name = "left arm"
+	name = "左臂"
 	icon_state = "l_arm"
 	bone_type = /obj/item/clothing/accessory/limb/skeleton/l_arm
 /obj/item/limb/foot/l_foot
-	name = "left foot"
+	name = "左脚"
 	icon_state = "l_foot"
 	bone_type = /obj/item/clothing/accessory/limb/skeleton/l_foot
 /obj/item/limb/hand/l_hand
-	name = "left hand"
+	name = "左手"
 	icon_state = "l_hand"
 	bone_type = /obj/item/clothing/accessory/limb/skeleton/l_hand
 /obj/item/limb/leg/l_leg
-	name = "left leg"
+	name = "左腿"
 	icon_state = "l_leg"
 	bone_type = /obj/item/clothing/accessory/limb/skeleton/l_leg
 /obj/item/limb/arm/r_arm
-	name = "right arm"
+	name = "右臂"
 	icon_state = "r_arm"
 	bone_type = /obj/item/clothing/accessory/limb/skeleton/r_arm
 /obj/item/limb/foot/r_foot
-	name = "right foot"
+	name = "右脚"
 	icon_state = "r_foot"
 	bone_type = /obj/item/clothing/accessory/limb/skeleton/r_foot
 /obj/item/limb/hand/r_hand
-	name = "right hand"
+	name = "右手"
 	icon_state = "r_hand"
 	bone_type = /obj/item/clothing/accessory/limb/skeleton/r_hand
 /obj/item/limb/leg/r_leg
-	name = "right leg"
+	name = "右腿"
 	icon_state = "r_leg"
 	bone_type = /obj/item/clothing/accessory/limb/skeleton/r_leg
 
@@ -138,7 +138,7 @@
 
 	transfer_identity(H)
 
-	name = "[H.real_name]'s head"
+	name = "[H.real_name]的头部"
 
 	H.regenerate_icons()
 
@@ -167,16 +167,16 @@
 	if(istype(W,/obj/item/tool/surgery/scalpel))
 		switch(brain_op_stage)
 			if(0)
-				user.visible_message(SPAN_WARNING("[brainmob] is beginning to have \his head cut open with [W] by [user]."),
+				user.visible_message(SPAN_WARNING("[user]正开始用[W]切开[brainmob]的头颅。"),
 									SPAN_WARNING("You cut [brainmob]'s head open with [W]!"))
-				to_chat(brainmob, SPAN_WARNING("[user] begins to cut open your head with [W]!"))
+				to_chat(brainmob, SPAN_WARNING("[user]开始用[W]切开你的头颅！"))
 
 				brain_op_stage = 1
 
 			if(2)
-				user.visible_message(SPAN_WARNING("[brainmob] is having \his connections to the brain delicately severed with [W] by [user]."),
+				user.visible_message(SPAN_WARNING("[user]正用[W]小心翼翼地切断[brainmob]与大脑的连接。"),
 									SPAN_WARNING("You cut [brainmob]'s head open with [W]!"))
-				to_chat(brainmob, SPAN_WARNING("[user] begins to cut open your head with [W]!"))
+				to_chat(brainmob, SPAN_WARNING("[user]开始用[W]切开你的头颅！"))
 
 				brain_op_stage = 3
 			else
@@ -184,14 +184,14 @@
 	else if(istype(W,/obj/item/tool/surgery/circular_saw))
 		switch(brain_op_stage)
 			if(1)
-				user.visible_message(SPAN_WARNING("[brainmob] has \his head sawed open with [W] by [user]."),
+				user.visible_message(SPAN_WARNING("[user]用[W]锯开了[brainmob]的头颅。"),
 							SPAN_WARNING("You saw [brainmob]'s head open with [W]!"))
-				to_chat(brainmob, SPAN_WARNING("[user] saw open your head with [W]!"))
+				to_chat(brainmob, SPAN_WARNING("[user]用[W]锯开了你的头颅！"))
 				brain_op_stage = 2
 			if(3)
-				user.visible_message(SPAN_WARNING("[brainmob] has \his spine's connection to the brain severed with [W] by [user]."),
+				user.visible_message(SPAN_WARNING("[user]用[W]切断了[brainmob]大脑与脊柱的连接。"),
 									SPAN_WARNING("You sever [brainmob]'s brain's connection to the spine with [W]!"))
-				to_chat(brainmob, SPAN_WARNING("[user] severs your brain's connection to the spine with [W]!"))
+				to_chat(brainmob, SPAN_WARNING("[user]用[W]切断了你大脑与脊柱的连接！"))
 
 				user.attack_log += "\[[time_stamp()]\]<font color='red'> Debrained [brainmob.name] ([brainmob.ckey]) with [W.name] (INTENT: [uppertext(intent_text(user.a_intent))])</font>"
 				brainmob.attack_log += "\[[time_stamp()]\]<font color='orange'> Debrained by [user.name] ([user.ckey]) with [W.name] (INTENT: [uppertext(intent_text(user.a_intent))])</font>"
@@ -212,7 +212,7 @@
 
 //synthetic head, allowing brain mob inside to talk
 /obj/item/limb/head/synth
-	name = "synthetic head"
+	name = "合成人头颅"
 	brain_item_type = /obj/item/organ/brain/prosthetic
 	brain_mob_type = /mob/living/brain/synth
 	braindeath_on_decap = 0

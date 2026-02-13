@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(predships)
-	name   = "PredShips"
+	name   = "铁血战士飞船"
 	init_order = SS_INIT_PREDSHIPS
 	flags  = SS_NO_FIRE
 

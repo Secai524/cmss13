@@ -1,6 +1,6 @@
 /obj/structure/machinery/camera
-	name = "security camera"
-	desc = "It's used to monitor rooms."
+	name = "监控摄像头"
+	desc = "用于监控房间。"
 	icon = 'icons/obj/structures/machinery/monitors.dmi'
 	icon_state = "autocam_editor"
 	needs_power = FALSE
@@ -162,7 +162,7 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 		//to_chat(user, SPAN_NOTICE("You start to [panel_open ? ")close" : "open"] the camera's panel.")
 		//if(toggle_panel(user)) // No delay because no one likes screwdrivers trying to be hip and have a duration cooldown
 		panel_open = !panel_open
-		user.visible_message(SPAN_WARNING("[user] screws the camera's panel [panel_open ? "open" : "closed"]!"),
+		user.visible_message(SPAN_WARNING("[user]拧动摄像头的面板[panel_open ? "open" : "closed"]!"),
 		SPAN_NOTICE("You screw the camera's panel [panel_open ? "open" : "closed"]."))
 		playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 
@@ -171,7 +171,7 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 
 	else if(iswelder(W) && canDeconstruct())
 		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
-			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			to_chat(user, SPAN_WARNING("你需要一把更强的喷枪！"))
 			return
 		if(weld(W, user))
 			if(assembly)
@@ -191,20 +191,20 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 			X = W
 			itemname = X.name
 			info = X.info
-		to_chat(U, "You hold \a [itemname] up to the camera ...")
+		to_chat(U, "你将\a [itemname]举到摄像头前……")
 		for(var/mob/living/silicon/ai/O in GLOB.alive_mob_list)
 			if(!O.client)
 				continue
-			if(U.name == "Unknown")
-				to_chat(O, "<b>[U]</b> holds \a [itemname] up to one of your cameras ...")
+			if(U.name == "未知")
+				to_chat(O, "<b>[U]</b>将\a [itemname]举到你的一个摄像头前……")
 			else
-				to_chat(O, "<b><a href='byond://?src=\ref[O];track2=\ref[O];track=\ref[U]'>[U]</a></b> holds \a [itemname] up to one of your cameras ...")
+				to_chat(O, "<b><a href='byond://?src=\ref[O];track2=\ref[O];track=\ref[U]'>[U]</a></b>将\a [itemname]举到你的一个摄像头前……")
 			show_browser(O, info, itemname, itemname)
 		for(var/mob/O in GLOB.player_list)
 			if (istype(O.interactee, /obj/structure/machinery/computer/cameras))
 				var/obj/structure/machinery/computer/cameras/S = O.interactee
 				if (S.current == src)
-					to_chat(O, "[U] holds \a [itemname] up to one of the cameras ...")
+					to_chat(O, "[U]将\a [itemname]举到一个摄像头前……")
 					show_browser(O, info, itemname, itemname)
 	else
 		. = ..()
@@ -216,9 +216,9 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 	if(!silent)
 		playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 		if(status)
-			visible_message(SPAN_WARNING("[user] has reactivated [src]!"))
+			visible_message(SPAN_WARNING("[user]已重新激活[src]！"))
 		else
-			visible_message(SPAN_WARNING("[user] has deactivated [src]!"))
+			visible_message(SPAN_WARNING("[user]已停用[src]！"))
 	update_icon()
 	// now disconnect anyone using the camera
 	//Apparently, this will disconnect anyone even if the camera was re-activated.
@@ -233,7 +233,7 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 			if (S.current == src)
 				O.unset_interaction()
 				O.reset_view(null)
-				to_chat(O, "The screen bursts into static.")
+				to_chat(O, "屏幕爆出一片雪花。")
 
 /obj/structure/machinery/camera/proc/triggerCameraAlarm()
 	alarm_on = TRUE
@@ -294,7 +294,7 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 		return 0
 
 	//Do after stuff here
-	user.visible_message(SPAN_NOTICE("[user] starts to weld [src]."),
+	user.visible_message(SPAN_NOTICE("[user]开始焊接[src]。"),
 	SPAN_NOTICE("You start to weld [src]."))
 	playsound(loc, 'sound/items/weldingtool_weld.ogg', 25)
 	WT.eyecheck(user)
@@ -303,7 +303,7 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 			to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
 			return 0
 		playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
-		user.visible_message(SPAN_NOTICE("[user] welds [src]."),
+		user.visible_message(SPAN_NOTICE("[user]焊接了[src]。"),
 		SPAN_NOTICE("You weld [src]."))
 		return 1
 	return 0
@@ -344,7 +344,7 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 	return TRUE
 
 /obj/structure/machinery/camera/cas
-	name = "cas camera"
+	name = "CAS摄像头"
 	invisibility = 101
 	invuln = TRUE
 	unslashable = TRUE
@@ -378,5 +378,5 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 	return TRUE
 
 /obj/structure/machinery/camera/overwatch
-	name = "overwatch camera"
+	name = "监控摄像头"
 	network = list(CAMERA_NET_OVERWATCH)

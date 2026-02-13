@@ -4,7 +4,7 @@
 
 /obj/item/device/portable_vendor
 	name = "\improper Automated Storage Briefcase"
-	desc = "A suitcase-sized automated storage and retrieval system. Designed to efficiently store and selectively dispense small items."
+	desc = "一个手提箱大小的自动化存储和检索系统。旨在高效存储并有选择地分发小型物品。"
 	icon = 'icons/obj/items/storage/briefcases.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/briefcases_lefthand.dmi',
@@ -57,24 +57,24 @@
 	src.add_fingerprint(usr)
 
 	if(broken)
-		to_chat(user, SPAN_NOTICE("[src] is irrepairably broken."))
+		to_chat(user, SPAN_NOTICE("[src]已无法修复。"))
 		return
 
 	if(!allowed(user))
-		to_chat(user, SPAN_WARNING("Access denied."))
+		to_chat(user, SPAN_WARNING("权限被拒绝。"))
 		return
 
 	var/obj/item/card/id/idcard = human_user.get_idcard()
 	if(!idcard) //not wearing an ID
-		to_chat(human_user, SPAN_WARNING("Access denied. No ID card detected."))
+		to_chat(human_user, SPAN_WARNING("权限被拒绝。未检测到身份卡。"))
 		return
 
 	if(!idcard.check_biometrics(human_user))
-		to_chat(human_user, SPAN_WARNING("Wrong ID card owner detected."))
+		to_chat(human_user, SPAN_WARNING("检测到错误的身份卡所有者。"))
 		return
 
 	if(req_role && idcard.rank != req_role)
-		to_chat(human_user, SPAN_WARNING("This device isn't for you."))
+		to_chat(human_user, SPAN_WARNING("这个设备不是给你的。"))
 		return
 
 
@@ -150,18 +150,18 @@
 	user.set_interaction(src)
 
 	if(!allowed(user))
-		to_chat(user, SPAN_WARNING("Access denied."))
+		to_chat(user, SPAN_WARNING("权限被拒绝。"))
 		return
 
 	var/mob/living/carbon/human/human_user = user
 	var/obj/item/card/id/id = human_user.get_idcard()
 
 	if(!istype(id))
-		to_chat(human_user, SPAN_WARNING("Access denied. No ID card detected."))
+		to_chat(human_user, SPAN_WARNING("权限被拒绝。未检测到身份卡。"))
 		return
 
 	if(req_role && req_role != id.rank)
-		to_chat(human_user, SPAN_WARNING("This device isn't for you."))
+		to_chat(human_user, SPAN_WARNING("这个设备不是给你的。"))
 
 	var/list/product
 	var/non_contraband_product_count = length(listed_products)
@@ -174,17 +174,17 @@
 	var/cost = product[2]
 
 	if(use_points && points < cost)
-		to_chat(human_user, SPAN_WARNING("Not enough points."))
+		to_chat(human_user, SPAN_WARNING("点数不足。"))
 		return
 
 	var/turf/current_turf = get_turf(src)
 	if(length(current_turf.contents) > 25)
-		to_chat(human_user, SPAN_WARNING("The floor is too cluttered, make some space."))
+		to_chat(human_user, SPAN_WARNING("地面太杂乱，清理出一些空间。"))
 		return
 
 	if(special_prod_time_lock && (product[3] in special_prods))
 		if(ROUND_TIME < special_prod_time_lock)
-			to_chat(usr, SPAN_WARNING("[src] is still fabricating [product[1]]. Please wait another [floor((SSticker.mode.round_time_lobby + special_prod_time_lock-world.time)/600)] minutes before trying again."))
+			to_chat(usr, SPAN_WARNING("[src]仍在制造[product[1]]。请再等待[floor((SSticker.mode.round_time_lobby + special_prod_time_lock-world.time)/600)]分钟后再试。"))
 			return
 
 	if(use_points)
@@ -234,7 +234,7 @@
 
 /obj/item/device/portable_vendor/proc/malfunction()
 	var/turf/T = get_turf(src)
-	T.visible_message(SPAN_WARNING("[src] shudders as its internal components break apart!"))
+	T.visible_message(SPAN_WARNING("[src]的内部组件碎裂，剧烈震动！"))
 	broken = 1
 	STOP_PROCESSING(SSobj, src)
 	update_overlays()
@@ -269,7 +269,7 @@
 
 /obj/item/device/portable_vendor/corporate
 	name = "\improper Weyland-Yutani Automated Storage Briefcase"
-	desc = "A suitcase-sized automated storage and retrieval system. Designed to efficiently store and selectively dispense small items. This one has the Weyland-Yutani logo stamped on its side."
+	desc = "一个手提箱大小的自动化存储和检索系统。旨在高效存储并有选择地分发小型物品。侧面印有维兰德-汤谷的标识。"
 
 	special_prod_time_lock = CL_BRIEFCASE_TIME_LOCK
 	special_prods = list(/obj/item/implanter/neurostim, /obj/item/reagent_container/hypospray/autoinjector/ultrazine/liaison)
@@ -294,8 +294,8 @@
 		list("Zippo", 5, /obj/item/tool/lighter/zippo/executive, "white", "A Weyland-Yutani brand Zippo lighter, for those smoking in style."),
 
 		list("DRINKABLES", 0, null, null, null),
-		list("Sake", 5, /obj/item/reagent_container/food/drinks/bottle/sake, "white", "Weyland-Yutani Sake, for a proper business dinner."),
-		list("Beer", 5, /obj/item/reagent_container/food/drinks/cans/aspen, "white", "Weyland-Yutani Aspen Beer, for a more casual night."),
+		list("清酒", 5, /obj/item/reagent_container/food/drinks/bottle/sake, "white", "Weyland-Yutani Sake, for a proper business dinner."),
+		list("啤酒", 5, /obj/item/reagent_container/food/drinks/cans/aspen, "white", "Weyland-Yutani Aspen Beer, for a more casual night."),
 		list("Drinking Glass", 1, /obj/item/reagent_container/food/drinks/drinkingglass, "white", "A Drinking Glass, because you have class."),
 		list("Weyland-Yutani Coffee Mug", 1, /obj/item/reagent_container/food/drinks/coffeecup/wy, "white", "A Weyland-Yutani coffee mug, for any Marines who want a Company souvenir."),
 
@@ -307,7 +307,7 @@
 		list("Paper", 1, /obj/item/paper, "white", "A fresh piece of paper, for writing on."),
 		list("WY Paper", 1, /obj/item/paper/wy, "white", "A fresh piece of WY-branded paper, for writing important things on."),
 		list("Carbon Paper", 1, /obj/item/paper/carbon, "white", "A piece of carbon paper, to double the writing output."),
-		list("Clipboard", 1, /obj/item/clipboard, "white", "A clipboard, for storing all that writing."),
+		list("写字板", 1, /obj/item/clipboard, "white", "A clipboard, for storing all that writing."),
 
 		list("MISC", 0, null, null, null),
 		list("Hollow Cane", 15, /obj/item/weapon/pole/fancy_cane/this_is_a_knife, "white", "A hollow cane that can store any commonplace sharp weaponry. Said weapon not included."),

@@ -1,6 +1,6 @@
 // Clickable stat() button.
 /obj/effect/statclick
-	name = "Initializing..."
+	name = "初始化中..."
 	blocks_emissive = EMISSIVE_BLOCK_NONE
 	var/target
 
@@ -47,7 +47,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 
 
 // Debug verbs.
-/client/proc/restart_controller(controller in list("Master", "Failsafe"))
+/client/proc/restart_controller(controller in list("主控", "故障保险"))
 	set category = "Debug.Controllers"
 	set name = "Restart Controller"
 	set desc = "Restart one of the various periodic loop controllers for the game (be careful!)"
@@ -55,10 +55,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 	if(!admin_holder)
 		return
 	switch(controller)
-		if("Master")
+		if("主控")
 			Recreate_MC()
 			//SSblackbox.record_feedback("tally", "admin_verb", 1, "Restart Master Controller")
-		if("Failsafe")
+		if("故障保险")
 			new /datum/controller/failsafe()
 			//SSblackbox.record_feedback("tally", "admin_verb", 1, "Restart Failsafe Controller")
 
@@ -66,7 +66,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 
 /client/proc/debug_controller()
 	set category = "Debug.Controllers"
-	set name = "Debug Controller"
+	set name = "调试控制器"
 	set desc = "Debug the various periodic loop controllers for the game (be careful!)"
 
 	if(!admin_holder)
@@ -81,7 +81,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 		controllers["[controller] (controller.type)"] = controller //we use an associated list to ensure clients can't hold references to controllers
 		controller_choices += "[controller] (controller.type)"
 
-	var/datum/controller/controller_string = input("Select controller to debug", "Debug Controller") as null|anything in controller_choices
+	var/datum/controller/controller_string = input("Select controller to debug", "调试控制器") as null|anything in controller_choices
 	var/datum/controller/controller = controllers[controller_string]
 
 	if (!istype(controller))
@@ -98,7 +98,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 	set name = "Debug Role Authority"
 
 	if(!GLOB.RoleAuthority)
-		to_chat(usr, "RoleAuthority not found!")
+		to_chat(usr, "未找到角色权限！")
 		return
 	debug_variables(GLOB.RoleAuthority)
 	message_admins("Admin [key_name_admin(usr)] is debugging the Role Authority.")

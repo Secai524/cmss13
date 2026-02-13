@@ -19,11 +19,11 @@
 	set category = null
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return
 	var/list/targets = get_multi_vehicles_admin()
 
-	var/choice = tgui_input_list(usr, "Select a vehicle.", "Remove Clamp", targets)
+	var/choice = tgui_input_list(usr, "选择载具。", "Remove Clamp", targets)
 	var/obj/vehicle/multitile/Vehicle = targets[choice]
 
 	if(!istype(Vehicle))
@@ -39,13 +39,13 @@
 	set category = null
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return
 	var/list/targets = get_multi_vehicles_admin()
 
-	alert("[length(targets)], [targets[1]] and [targets[targets[1]]]","Warning", "OK")
+	alert("[length(targets)], [targets[1]] 和 [targets[targets[1]]]","Warning", "OK")
 
-	var/choice = tgui_input_list(usr, "Select a vehicle.", "Repair Vehicle", targets)
+	var/choice = tgui_input_list(usr, "选择载具。", "Repair Vehicle", targets)
 	var/obj/vehicle/multitile/Vehicle = targets[choice]
 
 	if(!istype(Vehicle))

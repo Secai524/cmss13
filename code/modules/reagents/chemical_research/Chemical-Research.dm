@@ -192,7 +192,7 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 
 /datum/chemical_data/proc/give_notification(obj/structure/machinery/comp, list/group, message)
 	comp.langchat_speech(message, group, GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("langchat_small"))
-	comp.visible_message("[icon2html(comp, viewers(comp))] \The <b>[comp]</b> speaks: [message]")
+	comp.visible_message("[icon2html(comp, viewers(comp))] \The <b>[comp]</b> 说道: [message]")
 	playsound(comp.loc, 'sound/machines/twobeep.ogg', 50, 1, 7)
 
 ///Makes the chemical "exist", given a proper ID, proper reaction, and added to global lists. Used when contract chemical is picked and it needs to be completed.

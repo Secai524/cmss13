@@ -21,8 +21,8 @@ GLOBAL_LIST_EMPTY(codebook_data)
 	return code_data
 
 /obj/item/book/codebook
-	name = "USS Almayer Code Book"
-	author = "United States Colonial Marines"
+	name = "阿尔迈耶号密码本"
+	author = "美国殖民地海军陆战队"
 	unique = 1
 	dat = ""
 	var/faction = FACTION_MARINE
@@ -33,22 +33,22 @@ GLOBAL_LIST_EMPTY(codebook_data)
 	create_codebook(faction)
 
 /obj/item/book/codebook/clf
-	name = "Liberation Front Authenticators"
+	name = "解放阵线认证器"
 	faction = FACTION_CLF
 	author = "\[Obscured Ink\]"
 
 /obj/item/book/codebook/twe
-	name = "Imperial Authentication Codes"
+	name = "帝国认证码"
 	faction = FACTION_TWE
 	author = "Royal Marines"
 
 /obj/item/book/codebook/upp
-	name = "Union Authentication Codes"
+	name = "联盟认证码"
 	faction = FACTION_UPP
 	author = "People's Army"
 
 /obj/item/book/codebook/wey_yu
-	name = "Corporate Authentication Codes"
+	name = "公司认证码"
 	faction = FACTION_WY
 	author = "Weyland-Yutani Communications Division"
 

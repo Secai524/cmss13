@@ -55,7 +55,7 @@
 	if(!kick_us_off)
 		return TRUE
 
-	rider.visible_message(SPAN_WARNING("[rider] falls off of [living_parent]!"), \
+	rider.visible_message(SPAN_WARNING("[rider]从[living_parent]身上摔了下来！"), \
 					SPAN_WARNING("You fall off of [living_parent]!"))
 	rider.KnockOut(1)
 	rider.KnockDown(4)
@@ -71,7 +71,7 @@
 	if(!keycheck(user))
 		if(ispath(keytype, /obj/item))
 			var/obj/item/key = keytype
-			to_chat(user, SPAN_WARNING("You need a [initial(key.name)] to ride [movable_parent]!"))
+			to_chat(user, SPAN_WARNING("你需要一个[initial(key.name)]来骑乘[movable_parent]！"))
 		return COMPONENT_DRIVER_BLOCK_MOVE
 	var/mob/living/living_parent = parent
 	var/turf/next = get_step(living_parent, direction)
@@ -92,11 +92,11 @@
 	rider.Move(targetm)
 	rider.KnockDown(3)
 	if(gentle)
-		rider.visible_message(SPAN_WARNING("[rider] is thrown clear of [movable_parent]!"), \
+		rider.visible_message(SPAN_WARNING("[rider]被从[movable_parent]上甩了出去！"), \
 		SPAN_WARNING("You're thrown clear of [movable_parent]!"))
 		rider.throw_atom(target, 3, SPEED_FAST, movable_parent)
 	else
-		rider.visible_message(SPAN_WARNING("[rider] is thrown violently from [movable_parent]!"), \
+		rider.visible_message(SPAN_WARNING("[rider]被猛烈地从[movable_parent]上甩了出去！"), \
 		SPAN_WARNING("You're thrown violently from [movable_parent]!"))
 		rider.throw_atom(target, 5, SPEED_FAST, movable_parent)
 
@@ -106,7 +106,7 @@
 	for(var/mob/living/rider in carrying.buckled_mobs)
 		carrying.unbuckle(rider)
 		rider.KnockDown(1)
-		carrying.visible_message(SPAN_DANGER("[rider] topples off of [carrying] as they both fall to the ground!"), \
+		carrying.visible_message(SPAN_DANGER("[rider]从[carrying]身上摔了下来，两人都倒在了地上！"), \
 					SPAN_DANGER("You fall to the ground, bringing [rider] with you!</span>"), \
 					"You hear two consecutive thuds.")
 
@@ -140,6 +140,6 @@
 	for(var/mob/living/rider in carrying_runner.buckled_mobs)
 		carrying_runner.unbuckle(rider)
 		rider.KnockDown(1)
-		carrying_runner.visible_message(SPAN_DANGER("[rider] topples off of [carrying_runner] as they both fall to the ground!"), \
+		carrying_runner.visible_message(SPAN_DANGER("[rider]从[carrying_runner]身上摔了下来，两人都倒在了地上！"), \
 					SPAN_DANGER("You fall to the ground, bringing [rider] with you!"), SPAN_NOTICE("You hear two consecutive thuds."))
-		to_chat(rider, SPAN_DANGER("[carrying_runner] falls to the ground, bringing you with [carrying_runner.p_them()]!"))
+		to_chat(rider, SPAN_DANGER("[carrying_runner]摔倒在地，把你也带倒了！"))

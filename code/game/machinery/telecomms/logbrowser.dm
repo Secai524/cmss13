@@ -1,5 +1,5 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
 /obj/structure/machinery/computer/telecomms/server
-	name = "Telecommunications Server Monitor"
+	name = "电信服务器监视器"
 	icon_state = "comm_logs"

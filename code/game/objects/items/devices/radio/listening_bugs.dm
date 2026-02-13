@@ -1,6 +1,6 @@
 /obj/item/device/radio/listening_bug
-	name = "listening device"
-	desc = "A small, and disguisable, listening device."
+	name = "监听设备"
+	desc = "一个可伪装的小型窃听装置。"
 
 	icon = 'icons/obj/items/devices.dmi'
 	icon_state = "voice0"
@@ -56,7 +56,7 @@
 	switch(action)
 		if("listen")
 			if(prevent_snooping)
-				to_chat(usr, SPAN_WARNING("This device cannot receive transmissions!"))
+				to_chat(usr, SPAN_WARNING("此装置无法接收信号！"))
 				return
 			listening = !listening
 			return
@@ -65,7 +65,7 @@
 				return
 			var/mob/living/carbon/human/user = usr
 			if(!check_access(user.wear_id) && !check_access(user.get_active_hand()))
-				to_chat(user, SPAN_WARNING("You need an authenticated ID card to change this function!"))
+				to_chat(user, SPAN_WARNING("你需要一张已认证的身份卡来更改此功能！"))
 				return
 			if(subspace_switchable)
 				subspace_transmission = !subspace_transmission
@@ -90,10 +90,10 @@
 
 	var/obj/item/target_item = target_atom
 	if(!istype(target_item) || target_item.anchored || target_item.w_class >= SIZE_LARGE)
-		to_chat(user, SPAN_WARNING("You cannot disguise the listening device as this object."))
+		to_chat(user, SPAN_WARNING("你无法将窃听装置伪装成此物品。"))
 		return FALSE
 
-	var/confirm = tgui_alert(user, "Are you sure you wish to disguise the listening device as '[target_item]'?", "Confirm Choice", list("Yes","No"), 20 SECONDS)
+	var/confirm = tgui_alert(user, "你确定要将窃听装置伪装成'[target_item]'吗？", "Confirm Choice", list("Yes","No"), 20 SECONDS)
 	if(confirm != "Yes")
 		return FALSE
 
@@ -135,14 +135,14 @@
 	set src in usr
 
 	if(usr.is_mob_incapacitated())
-		to_chat(usr, SPAN_WARNING("You cannot do this while incapacitated!"))
+		to_chat(usr, SPAN_WARNING("你无法在丧失行动能力时这样做！"))
 		return FALSE
 
-	var/check = tgui_alert(usr, "Do you wish to change the disguise of this listening bug?", "Change Disguise?", list("Yes", "No"))
+	var/check = tgui_alert(usr, "你想要更改此窃听器的伪装吗？", "Change Disguise?", list("Yes", "No"))
 	if(check != "Yes")
 		return FALSE
 	if(disguised)
-		var/remove_check = tgui_alert(usr, "Do you wish to remove the current disguise?", "Remove Disguise?", list("Yes","No"))
+		var/remove_check = tgui_alert(usr, "你想要移除当前的伪装吗？", "Remove Disguise?", list("Yes","No"))
 		if(remove_check == "Yes")
 			icon = initial(icon)
 			name = initial(name)
@@ -154,7 +154,7 @@
 			disguised = FALSE
 			return TRUE
 
-	to_chat(usr, SPAN_HELPFUL("You can now change the disguise of the device by selecting a normal, or smaller, sized object."))
+	to_chat(usr, SPAN_HELPFUL("你现在可以通过选择一个正常或更小尺寸的物品来更改装置的伪装。"))
 	ready_to_disguise = TRUE
 	return TRUE
 
@@ -188,10 +188,10 @@
 	set src in usr
 
 	if(usr.is_mob_incapacitated())
-		to_chat(usr, SPAN_WARNING("You cannot do this while incapacitated!"))
+		to_chat(usr, SPAN_WARNING("你无法在丧失行动能力时这样做！"))
 		return FALSE
 
-	var/check = tgui_alert(usr, "Do you wish to change the name tag of this listening bug?", "Change Name tag?", list("Yes", "No"))
+	var/check = tgui_alert(usr, "你想要更改此窃听器的名称标签吗？", "Change Name tag?", list("Yes", "No"))
 	if(check != "Yes")
 		return FALSE
 
@@ -199,11 +199,11 @@
 	var/new_nametag
 	var/remove
 	if(nametag != initial(nametag))
-		remove = tgui_alert(usr, "Do you wish to remove the current nametag?", "Remove Nametag", list("Yes", "No"))
+		remove = tgui_alert(usr, "你想要移除当前的名称标签吗？", "Remove Nametag", list("Yes", "No"))
 	if(remove == "Yes")
 		new_nametag = initial(nametag)
 	else
-		new_nametag = tgui_input_text(usr, "What new name tag do you wish to use?", "New Name", initial(nametag), 6)
+		new_nametag = tgui_input_text(usr, "你想要使用什么新的名称标签？", "New Name", initial(nametag), 6)
 
 	if(!new_nametag || (new_nametag == nametag))
 		return FALSE
@@ -260,22 +260,22 @@
 // ENCRYPTION KEYS FOR LISTENING IN!
 //REQURIES SUBSPACE ACTIVATION ON THE BUGS FIRST!
 /obj/item/device/encryptionkey/listening_bug
-	desc = "A small encryption key for listening to a secret broadcasting device! Unlikely to work if the device is not using subspace communications!"
+	desc = "用于监听秘密广播装置的小型加密密钥！如果该装置未使用子空间通信，则很可能无效！"
 	icon_state = "stripped_key"
 
 /obj/item/device/encryptionkey/listening_bug/freq_a
-	name = "Listening Bug Encryption Key (A)"
+	name = "窃听器加密密钥 (A)"
 	channels = list(RADIO_CHANNEL_BUG_A = TRUE)
 
 /obj/item/device/encryptionkey/listening_bug/freq_b
-	name = "Listening Bug Encryption Key (B)"
+	name = "窃听器加密密钥 (B)"
 	channels = list(RADIO_CHANNEL_BUG_B = TRUE)
 
 
 
 ///An automatically active bug used to listen to things by a Fax Responder. Mapping side, not intended for spawning in manually.
 /obj/item/device/radio/listening_bug/radio_linked/fax
-	name = "Comms Relay Device"
+	name = "通讯中继装置"
 	subspace_switchable = FALSE
 	broadcasting = TRUE
 	bug_broadcast_level = LISTENING_BUG_NEVER //Don't want fax responder devices broadcasting to ghosts because it will duplicate a lot of messages every round all the time.

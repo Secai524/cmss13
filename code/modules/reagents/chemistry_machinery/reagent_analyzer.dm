@@ -1,6 +1,6 @@
 /obj/structure/machinery/reagent_analyzer
 	name = "\improper XRF scanner"
-	desc = "A spectrometer that bombards a sample in high energy radiation to detect emitted fluorescent x-ray patterns. By using the emission spectrum of the sample it can identify its chemical composition."
+	desc = "一种光谱仪，通过高能辐射轰击样本以检测其发出的荧光X射线图谱。利用样本的发射光谱，可以识别其化学成分。"
 	icon = 'icons/obj/structures/machinery/science_machines.dmi'
 	icon_state = "reagent_analyzer"
 	active_power_usage = 5000 //This is how many watts the big XRF machines usually take
@@ -14,24 +14,24 @@
 
 /obj/structure/machinery/reagent_analyzer/attackby(obj/item/B, mob/living/user)
 	if(processing)
-		to_chat(user, SPAN_WARNING("[src] is still processing!"))
+		to_chat(user, SPAN_WARNING("[src]仍在处理中！"))
 		return
 	if(!skillcheck(usr, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
-		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
+		to_chat(user, SPAN_WARNING("你不知道如何使用这个。"))
 		return
 	if(istype(B, /obj/item/reagent_container/glass/beaker/vial))
 		if(sample || status)
-			to_chat(user, SPAN_WARNING("Something is already loaded into [src]."))
+			to_chat(user, SPAN_WARNING("[src]内已装有物品。"))
 			return
 		if(user.drop_inv_item_to_loc(B, src))
 			sample = B
 			icon_state = "reagent_analyzer_sample"
-			to_chat(user, SPAN_NOTICE("You insert [B] and start configuring [src]."))
+			to_chat(user, SPAN_NOTICE("你将[B]插入并开始配置[src]。"))
 			updateUsrDialog()
 			if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 				return
 			if(!sample)
-				to_chat(user, SPAN_WARNING("Someone else removed the sample. Make up your mind!"))
+				to_chat(user, SPAN_WARNING("样本已被他人移除。想清楚点！"))
 				return
 			processing = TRUE
 			if(sample.reagents.total_volume < 30 || length(sample.reagents.reagent_list) > 1)
@@ -43,7 +43,7 @@
 			last_used = user
 		return
 	else
-		to_chat(user, SPAN_WARNING("[src] only accepts samples in vials."))
+		to_chat(user, SPAN_WARNING("[src]仅接受瓶装样本。"))
 		return
 
 /obj/structure/machinery/reagent_analyzer/proc/reagent_process()
@@ -76,12 +76,12 @@
 
 /obj/structure/machinery/reagent_analyzer/attack_hand(mob/user as mob)
 	if(processing)
-		to_chat(user, SPAN_WARNING("[src] is still processing!"))
+		to_chat(user, SPAN_WARNING("[src]仍在处理中！"))
 		return
 	if(!sample)
-		to_chat(user, SPAN_WARNING("[src] is empty."))
+		to_chat(user, SPAN_WARNING("[src]是空的。"))
 		return
-	to_chat(user, SPAN_NOTICE("You remove [sample] from [src]."))
+	to_chat(user, SPAN_NOTICE("你从[src]中移除了[sample]。"))
 	user.put_in_active_hand(sample)
 	sample = null
 	icon_state = "reagent_analyzer"

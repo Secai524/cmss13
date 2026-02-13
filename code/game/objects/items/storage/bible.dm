@@ -1,6 +1,6 @@
 /obj/item/storage/bible
-	name = "Holy Bible"
-	desc = "A book containing the sacred texts of that one popular guy you heard a lot about."
+	name = "圣经"
+	desc = "一本包含那位你耳熟能详的知名人物神圣经文的书。"
 	icon = 'icons/obj/items/books.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/books_lefthand.dmi',
@@ -33,8 +33,8 @@
 	var/deity_name = "Christ"
 
 /obj/item/storage/bible/booze
-	name = "Mister Booze's Holy Bible"
-	desc = "You will wind up wearing tattered shoes if you mess with Mister Booze, so if you've been so stiff you thought you died, you'll feel better once you have testified! All spirits contained within this bible are for medicinal purposes only."
+	name = "Booze先生的圣经"
+	desc = "如果你招惹Booze先生，你最终会穿着破烂的鞋子，所以如果你一直僵硬到以为自己死了，在你作证之后就会感觉好多了！这本圣经中包含的所有烈酒仅用于医疗目的。"
 
 /obj/item/storage/bible/booze/fill_preset_inventory()
 	new /obj/item/reagent_container/food/drinks/bottle/whiskey(src)
@@ -43,8 +43,8 @@
 	new /obj/item/reagent_container/food/drinks/cans/beer(src)
 
 /obj/item/storage/bible/hefa
-	name = "Holy texts of the High Explosive Fragmenting Anti-personnel hand grenade."
-	desc = "Praised be thee, reverend Clearsmire who has brought us into the light of the shrapnel! Sworn to the holy service of the HEFA lord are we, and while few, we are the voices of the silent many! Printed in the RESS."
+	name = "高爆破片杀伤手榴弹的圣典。"
+	desc = "赞美您，Clearsmire牧师，您将我们带入弹片的光芒之中！我们宣誓效忠于HEFA之主的圣职，虽然人数不多，但我们代表沉默的大多数发声！由RESS印制。"
 	icon_state ="tome_hefa"
 
 /obj/item/storage/bible/hefa/Initialize()
@@ -58,7 +58,7 @@
 		return
 	if(user.job == "Chaplain")
 		if(A.reagents && A.reagents.has_reagent("water")) //blesses all the water in the holder
-			to_chat(user, SPAN_NOTICE("You bless [A]."))
+			to_chat(user, SPAN_NOTICE("你祝福了[A]。"))
 			var/water2holy = A.reagents.get_reagent_amount("water")
 			A.reagents.del_reagent("water")
 			A.reagents.add_reagent("holywater",water2holy)

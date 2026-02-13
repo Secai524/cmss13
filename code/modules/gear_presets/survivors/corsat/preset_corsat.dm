@@ -1,5 +1,5 @@
 /datum/equipment_preset/survivor/security/corsat
-	name = "Survivor - CORSAT Security Guard"
+	name = "幸存者 - CORSAT安保警卫"
 	assignment = JOB_WY_SEC
 	job_title = JOB_WY_SEC
 	minimap_background = "background_goon"
@@ -24,7 +24,7 @@
 	..()
 
 /datum/equipment_preset/survivor/doctor/corsat
-	name = "Survivor - CORSAT Doctor"
+	name = "幸存者 - CORSAT医生"
 	assignment = "CORSAT Doctor"
 
 /datum/equipment_preset/survivor/doctor/corsat/load_gear(mob/living/carbon/human/new_human)
@@ -33,7 +33,7 @@
 	..()
 
 /datum/equipment_preset/survivor/scientist/corsat
-	name = "Survivor - CORSAT Researcher"
+	name = "幸存者 - CORSAT研究员"
 	assignment = "CORSAT Researcher"
 
 /datum/equipment_preset/survivor/scientist/corsat/load_gear(mob/living/carbon/human/new_human)
@@ -43,8 +43,8 @@
 	..()
 
 /datum/equipment_preset/survivor/interstellar_commerce_commission_liaison/corsat
-	name = "Survivor - Interstellar Commerce Commission Liaison CORSAT"
-	assignment = "Interstellar Commerce Commission Corporate Liaison"
+	name = "幸存者 - 星际商业委员会联络官 CORSAT"
+	assignment = "星际商业委员会公司联络官"
 
 /datum/equipment_preset/survivor/interstellar_commerce_commission_liaison/corsat/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/corporate_formal(new_human), WEAR_BODY)
@@ -54,7 +54,7 @@
 	..()
 
 /datum/equipment_preset/survivor/engineer/corsat
-	name = "Survivor - Corsat Station Engineer"
+	name = "幸存者 - 科萨特空间站工程师"
 	assignment = "Corsat Station Engineer"
 
 /datum/equipment_preset/survivor/engineer/corsat/load_gear(mob/living/carbon/human/new_human)

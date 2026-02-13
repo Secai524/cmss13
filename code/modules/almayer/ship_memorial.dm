@@ -12,8 +12,8 @@
 #define REQUIRED_DEAD_SQUADDIES 4
 
 /obj/structure/prop/almayer/ship_memorial
-	name = "slab of victory"
-	desc = "A ship memorial dedicated to the triumphs of the USCM and the fallen marines of this ship. On the left there are grand tales of victory etched into the slab. On the right there is a list of famous marines who have fallen in combat serving the USCM."
+	name = "胜利之碑"
+	desc = "一座纪念USCM的胜利以及本舰阵亡陆战队员的舰船纪念碑。左侧铭刻着辉煌的胜利史诗。右侧则是一份为USCM服役而战死的著名陆战队员名单。"
 	icon = 'icons/obj/structures/props/almayer/almayer_props64.dmi'
 	icon_state = "ship_memorial"
 	bound_width = 64
@@ -59,17 +59,17 @@
 	var/list/datum/weakref/fallen_personnel = list()
 
 /obj/structure/prop/almayer/ship_memorial/centcomm
-	name = "slab of remembrance"
-	desc = "A memorial to all Maintainer Team members that have retired from working on CM. No mentor names are present."
+	name = "纪念之碑"
+	desc = "纪念所有从CM维护团队退休的成员。未列出导师姓名。"
 
 /obj/structure/prop/almayer/ship_memorial/centcomm/admin
-	desc = "A memorial to all Admins and Moderators who have retired from CM. No mentor names are present."
+	desc = "纪念所有从CM退休的管理员和版主。未列出导师姓名。"
 
 /obj/structure/prop/almayer/ship_memorial/attackby(obj/item/attacking_item, mob/user)
 	if(istype(attacking_item, /obj/item/dogtag))
 		var/obj/item/dogtag/attacking_dogtag = attacking_item
 		if(attacking_dogtag.fallen_names)
-			to_chat(user, SPAN_NOTICE("You add [attacking_dogtag] to [src]."))
+			to_chat(user, SPAN_NOTICE("你将[attacking_dogtag]添加到[src]上。"))
 			GLOB.fallen_list += attacking_dogtag.fallen_names
 			fallen_personnel += attacking_dogtag.fallen_references
 			qdel(attacking_dogtag)
@@ -94,11 +94,11 @@
 		return ..()
 
 	if(user in went_through_flashback)
-		to_chat(user, SPAN_NOTICE("It's all in the past now. You need to keep looking forward. It's what they would have wanted."))
+		to_chat(user, SPAN_NOTICE("一切都过去了。你需要继续向前看。这才是他们希望看到的。"))
 		return ..()
 
 	if(TIMER_COOLDOWN_CHECK(user, COOLDOWN_SLAB_CHECK))
-		to_chat(user, SPAN_DANGER("You can't bring yourself to look at this right now."))
+		to_chat(user, SPAN_DANGER("你现在无法鼓起勇气去看这个。"))
 		return ..()
 
 	///References of all fallen personnel whose mobs still exist.
@@ -106,12 +106,12 @@
 	resolve_refs(fallen_personnel_resolved)
 
 	if(!length(fallen_personnel) || !length(fallen_personnel_resolved) || user.faction != FACTION_MARINE)
-		to_chat(user, SPAN_NOTICE("You start looking through the names on the slab but nothing catches your attention."))
+		to_chat(user, SPAN_NOTICE("你开始浏览石碑上的名字，但没有一个引起你的注意。"))
 		return ..()
 
 	fallen_personnel_resolved = shuffle(fallen_personnel_resolved)
 
-	to_chat(user, SPAN_NOTICE("You start looking through the names on the slab..."))
+	to_chat(user, SPAN_NOTICE("你开始浏览石碑上的名字……"))
 	///Text that's prefixed everytime a name is listed.
 	var/list/inspection_text = list("A name catches your eyes,",
 		"You know this name,",
@@ -169,10 +169,10 @@
 
 		//If we somehow lose a mob reference, we need to account for it.
 		if(!person)
-			to_chat(user, SPAN_NOTICE("You can't bring yourself to read this name... you press on."))
+			to_chat(user, SPAN_NOTICE("你无法鼓起勇气读这个名字……你继续往下看。"))
 			continue
 
-		to_chat(user, SPAN_NOTICE("[pick_n_take(inspection_text)] <b>[person]</b>, [GET_DEFAULT_ROLE(person.job)]."))
+		to_chat(user, SPAN_NOTICE("[pick_n_take(inspection_text)] <b>[person]</b>，[GET_DEFAULT_ROLE(person.job)]。"))
 
 		if(interrupted_by_mob || !user.client)
 			continue
@@ -218,13 +218,13 @@
 /obj/structure/prop/almayer/ship_memorial/proc/cancel_flashback(mob/user, list/ghosts, flashback_type)
 	switch(flashback_type)
 		if(FLASHBACK_DEFAULT)
-			to_chat(user, SPAN_DANGER("<b>You turn away from the slab. You turn away from them all...</b>"))
+			to_chat(user, SPAN_DANGER("<b>你转身离开了石碑。你转身离开了他们所有人……</b>"))
 			TIMER_COOLDOWN_START(user, COOLDOWN_SLAB_CHECK, 25 SECONDS)
 		if(FLASHBACK_SQUAD)
-			to_chat(user, SPAN_DANGER("<b>You turn your back on your squad. You just can't. Not now.</b>"))
+			to_chat(user, SPAN_DANGER("<b>你背弃了你的小队。你做不到。现在不行。</b>"))
 			TIMER_COOLDOWN_START(user, COOLDOWN_SLAB_CHECK, 10 SECONDS)
 		else
-			to_chat(user, SPAN_NOTICE("...maybe it's better to forget."))
+			to_chat(user, SPAN_NOTICE("……也许遗忘更好。"))
 
 	if(length(ghosts))
 		for(var/obj/effect/client_image_holder/memorial_ghost/ghost in ghosts)
@@ -271,7 +271,7 @@
 ///Proc that handles special flashback events.
 /obj/structure/prop/almayer/ship_memorial/proc/flashback_trigger(mob/living/carbon/human/user, flashback_type = FLASHBACK_DEFAULT, list/mob_references)
 	playsound_client(user.client, 'sound/hallucinations/ears_ringing.ogg', user.loc, 40)
-	to_chat(user, SPAN_DANGER("<b>It's like time has stopped. All you can focus on are the names on that list.</b>"))
+	to_chat(user, SPAN_DANGER("<b>时间仿佛静止了。你只能专注于名单上的那些名字。</b>"))
 	user.apply_effect(6, ROOT)
 	user.apply_effect(6, STUTTER)
 
@@ -338,7 +338,7 @@
 				else
 					playsound_client(user.client, pick_n_take(voicelines), generated_ghost.loc, 100)
 
-				to_chat(user, SPAN_DANGER("[pick_n_take(inspection_text)] <b>[picked_member]</b>, [GET_DEFAULT_ROLE(picked_member.job)]."))
+				to_chat(user, SPAN_DANGER("[pick_n_take(inspection_text)] <b>[picked_member]</b>，[GET_DEFAULT_ROLE(picked_member.job)]。"))
 				sleep(rand(0.5 SECONDS, 0.7 SECONDS))
 
 			went_through_flashback += user
@@ -349,7 +349,7 @@
 
 			///Name of the user, split so we can retrieve their first name.
 			var/list/split_name = splittext(user.name, " ")
-			to_chat(user, SPAN_NOTICE("<b>You hear someone whisper 'Thank you, [split_name[1]]. Goodbye.' into your ear.</b>"))
+			to_chat(user, SPAN_NOTICE("<b>你听到有人在耳边低语：‘谢谢你，[split_name[1]]。永别了。’</b>"))
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), user, SPAN_NOTICE("<b>It feels final. Maybe it's time to look forward now.</b>")), 3 SECONDS)
 
 #undef COOLDOWN_SLAB_CHECK
@@ -358,7 +358,7 @@
 #undef REQUIRED_DEAD_SQUADDIES
 
 /obj/effect/client_image_holder/memorial_ghost
-	desc = "May we never forget freedom isn't free."
+	desc = "愿我们永不忘记自由并非无价。"
 	var/mob/living/mob_reference
 
 /obj/effect/client_image_holder/memorial_ghost/proc/disappear()

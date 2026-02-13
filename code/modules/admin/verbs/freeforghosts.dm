@@ -3,7 +3,7 @@
 	set name = "Free for Ghosts"
 
 	if(!src.admin_holder || !(admin_holder.rights & R_ADMIN))
-		to_chat(src, "Only staff members may use this.")
+		to_chat(src, "仅限管理员使用此功能。")
 		return
 
 	free_for_ghosts(M, notify = TRUE)
@@ -32,7 +32,7 @@
 	set category = "Admin.InView"
 
 	if(!admin_holder || !(admin_holder.rights & R_ADMIN))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return
 
 	if(alert("This will free ALL mobs within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")

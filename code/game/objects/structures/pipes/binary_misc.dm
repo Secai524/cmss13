@@ -16,8 +16,8 @@
 /obj/structure/pipes/binary/pump
 	icon = 'icons/obj/pipes/pump.dmi'
 	icon_state = "map_off"
-	name = "gas pump"
-	desc = "A pump."
+	name = "气泵"
+	desc = "一个泵。"
 
 /obj/structure/pipes/binary/pump/on
 	icon_state = "map_on"
@@ -38,8 +38,8 @@
 	icon = 'icons/obj/pipes/volume_pump.dmi'
 	icon_state = "map_off"
 	level = 1
-	name = "high power gas pump"
-	desc = "A pump. Has double the power rating of the standard gas pump."
+	name = "高功率气体泵"
+	desc = "一台泵。其额定功率是标准气体泵的两倍。"
 
 /obj/structure/pipes/binary/pump/high_power/on
 	icon_state = "map_on"
@@ -48,8 +48,8 @@
 /obj/structure/pipes/binary/passive_gate
 	icon = 'icons/obj/pipes/passive_gate.dmi'
 	icon_state = "map"
-	name = "pressure regulator"
-	desc = "A one-way air valve that can be used to regulate input or output pressure, and flow rate. Does not require power."
+	name = "压力调节器"
+	desc = "一个单向气阀，可用于调节输入或输出压力以及流速。无需电力。"
 
 /obj/structure/pipes/binary/passive_gate/update_underlays()
 	if(..())
@@ -65,8 +65,8 @@
 
 
 /obj/structure/pipes/binary/circulator
-	name = "circulator/heat exchanger"
-	desc = "A gas circulator pump and heat exchanger."
+	name = "循环器/热交换器"
+	desc = "一台气体循环泵和热交换器。"
 	icon = 'icons/obj/pipes/pipes3.dmi'
 	icon_state = "circ-off"
 	anchored = FALSE
@@ -85,7 +85,7 @@
 /obj/structure/pipes/binary/circulator/attackby(obj/item/W as obj, mob/user as mob)
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		anchored = !anchored
-		to_chat(user, SPAN_NOTICE("You [anchored ? "secure" : "unsecure"] the bolts holding [src] to the floor."))
+		to_chat(user, SPAN_NOTICE("你[anchored ? "secure" : "unsecure"] the bolts holding [src] to the floor."))
 
 		if(anchored)
 			if(dir & (NORTH|SOUTH))

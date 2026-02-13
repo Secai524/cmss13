@@ -1,6 +1,6 @@
 /obj/item/falcon_drone
-	name = "falcon drone"
-	desc = "An agile drone used by Yautja to survey the hunting grounds."
+	name = "猎鹰无人机"
+	desc = "铁血战士用来勘察猎场的敏捷无人机。"
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "falcon_drone"
 	item_icons = list(
@@ -22,7 +22,7 @@
 	if(!ishuman(user) || user == sourcemob)
 		return FALSE
 
-	to_chat(user, SPAN_YAUTJABOLD("Falcon Relay: [sourcemob.name] [verb], <span class='[language.color]'>\"[message]\"</span>"))
+	to_chat(user, SPAN_YAUTJABOLD("猎鹰中继：[sourcemob.name] [verb]，<span class='[language.color]'>\"[message]\"</span>"))
 	if(user && user.client && user.client.prefs && !user.client.prefs.lang_chat_disabled \
 	   && !user.ear_deaf && user.say_understands(sourcemob, language))
 		sourcemob.langchat_display_image(user)
@@ -53,7 +53,7 @@
 	can_control_falcon_drone()
 
 /obj/item/falcon_drone/proc/can_control_falcon_drone()
-	set name = "Control Falcon Drone"
+	set name = "控制猎鹰无人机"
 	set desc = "Activates your falcon drone."
 	set category = "Yautja.Misc"
 
@@ -62,11 +62,11 @@
 
 	var/mob/living/carbon/human/human = usr
 	if(!istype(human) || !HAS_TRAIT(usr, TRAIT_YAUTJA_TECH))
-		to_chat(usr, SPAN_WARNING("You do not know how to use this."))
+		to_chat(usr, SPAN_WARNING("你不知道如何使用这个。"))
 		return
 
 	if(!istype(human.gloves, /obj/item/clothing/gloves/yautja))
-		to_chat(usr, SPAN_WARNING("You need your bracers to control \the [src]!"))
+		to_chat(usr, SPAN_WARNING("你需要你的腕带来控制\the [src]！"))
 		return
 	control_falcon_drone(human, human.gloves)
 
@@ -75,8 +75,8 @@
 	user.drop_inv_item_to_loc(src, hologram)
 
 /mob/hologram/falcon
-	name = "falcon drone"
-	desc = "An agile drone used by Yautja to survey the hunting grounds."
+	name = "猎鹰无人机"
+	desc = "铁血战士用来勘察猎场的敏捷无人机。"
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	action_icon_state = "falcon_drone"
 	icon_state = "falcon_drone_active"
@@ -152,13 +152,13 @@
 	action_icon_state = "falcon_drone"
 
 /obj/item/trash/falcon_drone
-	name = "destroyed falcon drone"
-	desc = "The wreckage of a Yautja drone."
+	name = "被摧毁的猎鹰无人机"
+	desc = "一架铁血战士无人机的残骸。"
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "falcon_drone_destroyed"
 	flags_item = ITEM_PREDATOR
 
 /obj/item/trash/falcon_drone/emp
-	name = "disabled falcon drone"
-	desc = "An intact Yautja drone. The internal electronics are completely fried."
+	name = "失效的猎鹰无人机"
+	desc = "一架完好的铁血战士无人机。内部电子元件已完全烧毁。"
 	icon_state = "falcon_drone_emped"

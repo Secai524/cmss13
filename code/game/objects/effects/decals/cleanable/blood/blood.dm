@@ -1,6 +1,6 @@
 /obj/effect/decal/cleanable/blood
 	name = "blood"
-	desc = "It's thick and gooey. This probably isn't a safe place to be."
+	desc = "它又厚又粘稠。这里可能不安全。"
 	gender = PLURAL
 	density = FALSE
 	anchored = TRUE
@@ -92,8 +92,8 @@
 	cleanable_type = CLEANABLE_BLOOD_SPLATTER
 
 /obj/effect/decal/cleanable/blood/drip
-	name = "drips of blood"
-	desc = "Some small drips of blood."
+	name = "血迹"
+	desc = "一些细小的血迹。"
 	gender = PLURAL
 	icon = 'icons/effects/drip.dmi'
 	icon_state = "1"
@@ -104,7 +104,7 @@
 
 /obj/effect/decal/cleanable/blood/writing
 	icon_state = "tracks"
-	desc = "It looks like a writing in blood."
+	desc = "看起来像是用血写成的字迹。"
 	gender = NEUTER
 	random_icon_states = list("writing1","writing2","writing3","writing4","writing5")
 	amount = 0
@@ -125,7 +125,7 @@
 
 /obj/effect/decal/cleanable/blood/gibs
 	name = "gibs"
-	desc = "They look bloody and gruesome."
+	desc = "它们看起来血迹斑斑，令人毛骨悚然。"
 	gender = PLURAL
 	density = FALSE
 	anchored = TRUE

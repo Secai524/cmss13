@@ -1,6 +1,6 @@
 // Camera mob, used by AI camera.
 /mob/camera
-	name = "camera mob"
+	name = "摄像机实体"
 	density = FALSE
 	status_flags = GODMODE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

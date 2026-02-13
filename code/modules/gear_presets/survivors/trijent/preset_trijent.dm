@@ -3,7 +3,7 @@
 ///////////////////////
 
 /datum/equipment_preset/survivor/chaplain/trijent
-	name = "Survivor - Trijent Chaplain"
+	name = "幸存者 - 特里金特牧师"
 	assignment = "Trijent Dam Chaplain"
 
 /datum/equipment_preset/survivor/chaplain/trijent/load_gear(mob/living/carbon/human/new_human)
@@ -14,7 +14,7 @@
 	..()
 
 /datum/equipment_preset/survivor/goon/trijent
-	name = "Survivor - Trijent Corporate Security Guard"
+	name = "幸存者 - 特里金特公司保安"
 
 /datum/equipment_preset/survivor/goon/trijent/load_gear(mob/living/carbon/human/new_human)
 
@@ -54,8 +54,8 @@
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/m39/corporate/no_lock(new_human), WEAR_J_STORE)
 
 /datum/equipment_preset/survivor/nspa/trijent
-	name = "Survivor - Trijent NSPA Constable"
-	assignment = "NSPA Constable"
+	name = "幸存者 - 特里金特NSPA警官"
+	assignment = "NSPA警官"
 	faction_group = FACTION_LIST_SURVIVOR_NSPA
 	paygrades = list(PAY_SHORT_CST = JOB_PLAYTIME_TIER_0, PAY_SHORT_SC = JOB_PLAYTIME_TIER_3, PAY_SHORT_SGT = JOB_PLAYTIME_TIER_4)
 	skills = /datum/skills/civilian/survivor/marshal
@@ -150,7 +150,7 @@
 	..()
 
 /datum/equipment_preset/survivor/doctor/trijent
-	name = "Survivor - Trijent Doctor"
+	name = "幸存者 - 特里金特医生"
 	assignment = "Trijent Dam Doctor"
 
 /datum/equipment_preset/survivor/doctor/trijent/load_gear(mob/living/carbon/human/new_human)
@@ -160,7 +160,7 @@
 	..()
 
 /datum/equipment_preset/survivor/scientist/trijent
-	name = "Survivor - Trijent Researcher"
+	name = "幸存者 - 特里金特研究员"
 	assignment = "Trijent Dam Researcher"
 
 /datum/equipment_preset/survivor/scientist/trijent/load_gear(mob/living/carbon/human/new_human)
@@ -172,7 +172,7 @@
 	..()
 
 /datum/equipment_preset/survivor/trucker/trijent
-	name = "Survivor - Trijent Heavy Vehicle Operator"
+	name = "幸存者 - 特里金特重型载具操作员"
 	assignment = "Trijent Dam Heavy Vehicle Operator"
 	skills = /datum/skills/civilian/survivor/trucker
 
@@ -186,7 +186,7 @@
 	..()
 
 /datum/equipment_preset/survivor/engineer/trijent/hydro
-	name = "Survivor - Hydro Electric Engineer"
+	name = "幸存者 - 水电工程师"
 	assignment = "Hydro Electric Engineer"
 
 /datum/equipment_preset/survivor/engineer/trijent/hydro/load_gear(mob/living/carbon/human/new_human)
@@ -198,7 +198,7 @@
 	..()
 
 /datum/equipment_preset/survivor/engineer/trijent
-	name = "Survivor - Dam Maintenance Technician"
+	name = "幸存者 - 大坝维护技术员"
 	assignment = "Dam Maintenance Technician"
 
 /datum/equipment_preset/survivor/engineer/trijent/load_gear(mob/living/carbon/human/new_human)
@@ -210,7 +210,7 @@
 	..()
 
 /datum/equipment_preset/survivor/corporate/trijent
-	name = "Survivor - Trijent Corporate Liaison"
+	name = "幸存者 - 特里金特公司联络官"
 	assignment = "Trijent Dam Corporate Liaison"
 
 /datum/equipment_preset/survivor/corporate/trijent/load_gear(mob/living/carbon/human/new_human)
@@ -225,7 +225,7 @@
 ///////////////////////
 
 /datum/equipment_preset/synth/survivor/nspa_synth
-	name = "Survivor - Synthetic - NSPA Investigative Synthetic"
+	name = "幸存者 - 合成人 - NSPA调查型合成人"
 	idtype = /obj/item/card/id/nspa_silver
 	role_comm_title = "NSPA Syn"
 	paygrades = list(PAY_SHORT_CST = JOB_PLAYTIME_TIER_0)

@@ -21,7 +21,7 @@
 	dress_shoes = list(/obj/item/clothing/shoes/dress)
 
 /datum/equipment_preset/uscm_ship/uscm_medical/cmo
-	name = "USCM Chief Medical Officer (CMO)"
+	name = "USCM首席医疗官 (CMO)"
 
 	idtype = /obj/item/card/id/silver
 	access = list(
@@ -65,12 +65,12 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/uscm_medical/doctor
-	name = "USCM Doctor"
+	name = "USCM医生"
 
 	assignment = JOB_DOCTOR
 	job_title = JOB_DOCTOR
 	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
-	role_comm_title = "Doc"
+	role_comm_title = "博士"
 	skills = /datum/skills/doctor
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE, ACCESS_MARINE_DATABASE)
 
@@ -91,7 +91,7 @@
 //Surgeon this part of the code is to change the name on your ID
 
 /datum/equipment_preset/uscm_ship/uscm_medical/doctor/surgeon
-	name = "USCM Surgeon"
+	name = "USCM外科医生"
 	assignment = JOB_SURGEON
 
 /datum/equipment_preset/uscm_ship/uscm_medical/doctor/surgeon/load_gear(mob/living/carbon/human/new_human)
@@ -106,7 +106,7 @@
 
 
 /datum/equipment_preset/uscm_ship/uscm_medical/doctor/pharmacist
-	name = "USCM Pharmaceutical Physician"
+	name = "USCM药剂医师"
 	assignment = JOB_PHARMACIST
 
 /datum/equipment_preset/uscm_ship/uscm_medical/doctor/pharmacist/load_gear(mob/living/carbon/human/new_human)
@@ -123,7 +123,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/uscm_medical/field_doctor
-	name = "USCM Field Doctor"
+	name = "USCM野战医生"
 
 	assignment = JOB_FIELD_DOCTOR
 	job_title = JOB_FIELD_DOCTOR
@@ -149,12 +149,12 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/uscm_medical/nurse
-	name = "USCM Nurse"
+	name = "USCM护士"
 
 	assignment = JOB_NURSE
 	job_title = JOB_NURSE
 	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_1)
-	role_comm_title = "Nurse"
+	role_comm_title = "护士"
 	skills = /datum/skills/nurse
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE, ACCESS_MARINE_DATABASE)
 
@@ -179,7 +179,7 @@
 
 //*****************************************************************************************************/
 /datum/equipment_preset/uscm_ship/uscm_medical/researcher
-	name = "USCM Researcher"
+	name = "USCM研究员"
 
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_RESEARCH, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_RESEARCHER

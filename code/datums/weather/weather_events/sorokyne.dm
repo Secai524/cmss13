@@ -1,9 +1,9 @@
 // Weather events for Sorokyne
 
 /datum/weather_event/soro/very_light_rain
-	name = "Soro Light Rain"
+	name = "索罗小雨"
 
-	display_name = "Light Rain"
+	display_name = "小雨"
 
 	length = 3 MINUTES
 
@@ -20,8 +20,8 @@
 	ambience = 'sound/ambience/rainandthunderlong.ogg'
 
 /datum/weather_event/soro/light_rain
-	name = "Tropical Storm"
-	display_name = "Tropical Storm"
+	name = "热带风暴"
+	display_name = "热带风暴"
 	length = 3 MINUTES
 	fullscreen_type = /atom/movable/screen/fullscreen/weather/low
 
@@ -39,8 +39,8 @@
 	fire_smothering_strength = 1
 
 /datum/weather_event/soro/monsoon
-	name = "Monsoon Warning"
-	display_name = "Monsoon Warning"
+	name = "季风警报"
+	display_name = "季风警报"
 
 	should_sound_weather_alarm = TRUE
 

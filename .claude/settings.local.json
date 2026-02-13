@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(wc:*)",
+      "Bash(ls:*)",
+      "Bash(python tools/localization/dm_text_extractor.py:*)",
+      "Bash(set DEEPSEEK_API_KEY=sk-cac51235c53d4e8f962abb7d5fc971ac)",
+      "Bash(python -c:*)",
+      "Bash(python tools/localization/ai_translator.py:*)",
+      "Bash(python run_full_translation.py:*)",
+      "Bash(cmd /c type \"C:\\\\Users\\\\ADMINI~1\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\d--ss13-cmss13\\\\tasks\\\\bfa72e4.output\")",
+      "Bash(dir:*)",
+      "Bash(python:*)",
+      "Bash(powershell -ExecutionPolicy Bypass -File:*)"
+    ]
+  }
+}

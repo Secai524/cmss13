@@ -45,8 +45,8 @@
 			apply_effect(rand(1,5), STUN)
 	flash_eyes(EYE_PROTECTION_FLAVOR, TRUE, light_type = /atom/movable/screen/fullscreen/flash/noise)
 
-	to_chat(src, SPAN_DANGER("<B>*BZZZT*</B>"))
-	to_chat(src, SPAN_DANGER("Warning: Electromagnetic pulse detected."))
+	to_chat(src, SPAN_DANGER("<B>*哔兹特*</B>"))
+	to_chat(src, SPAN_DANGER("警告：检测到电磁脉冲。"))
 	log_emp(src, cause_data)
 
 /mob/living/silicon/stun_effect_act(stun_amount, agony_amount)
@@ -89,7 +89,7 @@
 //can't inject synths
 /mob/living/silicon/can_inject(mob/user, error_msg)
 	if(error_msg)
-		to_chat(user, SPAN_WARNING("The armored plating is too tough."))
+		to_chat(user, SPAN_WARNING("装甲板太坚固了。"))
 	return 0
 
 
@@ -129,7 +129,7 @@
 	if(!client)
 		return
 	var/list/listed_huds = list("Medical HUD", "Security HUD", "Squad HUD")
-	var/hud_choice = tgui_input_list(usr, "Choose a HUD to toggle", "Toggle HUD", listed_huds)
+	var/hud_choice = tgui_input_list(usr, "选择要切换的HUD", "Toggle HUD", listed_huds)
 	if(!client)
 		return
 	var/datum/mob_hud/H
@@ -149,25 +149,25 @@
 	if(HUD_toggled[HUD_nbr])
 		HUD_toggled[HUD_nbr] = 0
 		H.remove_hud_from(src, src)
-		to_chat(src, SPAN_NOTICE("<B>[hud_choice] Disabled</B>"))
+		to_chat(src, SPAN_NOTICE("<B>[hud_choice] 已禁用</B>"))
 	else
 		HUD_toggled[HUD_nbr] = 1
 		H.add_hud_to(src, src)
-		to_chat(src, SPAN_NOTICE("<B>[hud_choice] Enabled</B>"))
+		to_chat(src, SPAN_NOTICE("<B>[hud_choice] 已启用</B>"))
 
 /mob/living/silicon/verb/pose()
 	set name = "Set Pose"
 	set desc = "Sets a description which will be shown when someone examines you."
 	set category = "IC"
 
-	pose =  strip_html(input(usr, "This is [src]. It is...", "Pose", null)  as text)
+	pose =  strip_html(input(usr, "这是[src]。它是...", "Pose", null)  as text)
 
 /mob/living/silicon/verb/set_flavor()
 	set name = "Set Flavour Text"
 	set desc = "Sets an extended description of your character's features."
 	set category = "IC"
 
-	flavor_text =  strip_html(input(usr, "Please enter your new flavour text.", "Flavour text", null)  as text)
+	flavor_text =  strip_html(input(usr, "请输入你的新描述文本。", "Flavour text", null)  as text)
 
 /mob/living/silicon/hear_apollo()
 	return TRUE

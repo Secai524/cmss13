@@ -17,7 +17,7 @@
 	var/ckey
 	/// How much damage this marine
 	var/damage_taken
-	/// What killed this marine ("Ravager")
+	/// What killed this marine ("掠夺者")
 	var/killed_by
 	/// Round ID that this marine died in
 	var/round_id
@@ -39,7 +39,7 @@
 	role = dead_marine.job
 	ckey = dead_marine.ckey || dead_marine.persistent_ckey || ""
 	damage_taken = dead_marine.life_damage_taken_total || 0
-	killed_by = strip_improper(death_cause?.cause_name) || "Unknown"
+	killed_by = strip_improper(death_cause?.cause_name) || "未知"
 	round_id = GLOB.round_id || -1
 	kill_count = dead_marine.life_kills_total || 0
 	if(isgun(dead_marine.s_store))

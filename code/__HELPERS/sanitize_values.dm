@@ -52,19 +52,19 @@
 			return gender
 	return default
 
-/proc/sanitize_skin_color(skin_color, default = "Pale 2")
+/proc/sanitize_skin_color(skin_color, default = "苍白2号")
 	if(skin_color in GLOB.skin_color_list)
 		return skin_color
 
 	return default
 
-/proc/sanitize_body_type(body_type, default = "Lean")
+/proc/sanitize_body_type(body_type, default = "精瘦")
 	if(body_type in GLOB.body_type_list)
 		return body_type
 
 	return default
 
-/proc/sanitize_body_size(body_size, default = "Average")
+/proc/sanitize_body_size(body_size, default = "普通")
 	if(body_size in GLOB.body_size_list)
 		return body_size
 
@@ -98,18 +98,18 @@
 		if(!gear_type)
 			var/datum/gear/attempted_gear = GLOB.gear_datums_by_name[gear_option]
 			if(!attempted_gear)
-				to_chat(user, SPAN_WARNING("Your [gear_option] was removed from your cosmetic gear as it is no longer a valid gear option."))
+				to_chat(user, SPAN_WARNING("你的[gear_option]已从你的装饰装备中移除，因为它不再是有效的装备选项。"))
 				continue
 			gear_type = attempted_gear.type
 		if(!GLOB.gear_datums_by_type[gear_type])
-			to_chat(user, SPAN_WARNING("Your [gear_option] was removed from your cosmetic gear as it is no longer a valid gear option."))
+			to_chat(user, SPAN_WARNING("你的[gear_option]已从你的装饰装备中移除，因为它不再是有效的装备选项。"))
 			continue
 
 		var/datum/gear/gear_datum = GLOB.gear_datums_by_type[gear_type]
 		var/new_total = running_cost + gear_datum.fluff_cost
 
 		if(new_total > MAX_GEAR_COST)
-			to_chat(user, SPAN_WARNING("Your [gear_datum.display_name] was removed from your cosmetic gear as it exceeded the point limit."))
+			to_chat(user, SPAN_WARNING("你的[gear_datum.display_name]已从你的装饰装备中移除，因为它超出了点数限制。"))
 			continue
 
 		running_cost = new_total
@@ -146,18 +146,18 @@
 			for(var/gear_entry in loadout[job][slot])
 				var/gear_type = text2path(gear_entry)
 				if(!gear_type)
-					to_chat(user, SPAN_WARNING("Your [gear_entry] was removed from your loadout as it is no longer a valid job loadout option."))
+					to_chat(user, SPAN_WARNING("你的[gear_entry]已从你的配装中移除，因为它不再是有效的职务配装选项。"))
 					continue
 
 				var/datum/gear/gear_datum = GLOB.gear_datums_by_type[gear_type]
 				if(!gear_datum)
-					to_chat(user, SPAN_WARNING("Your [gear_entry] was removed from your loadout as it is no longer a valid job loadout option."))
+					to_chat(user, SPAN_WARNING("你的[gear_entry]已从你的配装中移除，因为它不再是有效的职务配装选项。"))
 					continue
 
 				var/new_total = running_total + gear_datum.loadout_cost
 
 				if(new_total > job_datum.loadout_points)
-					to_chat(user, SPAN_WARNING("Your [gear_datum.display_name] was removed from your loadout as it exceeded the point limit for [job_datum.title]."))
+					to_chat(user, SPAN_WARNING("你的[gear_datum.display_name]已从你的配装中移除，因为它超出了[job_datum.title]的点数限制。"))
 					continue
 
 				running_total = new_total

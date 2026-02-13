@@ -15,8 +15,8 @@ log transactions
 /obj/item/card/id/var/money = 2000
 
 /obj/structure/machinery/atm
-	name = "Wey-Yu Automatic Teller Machine"
-	desc = "For all your monetary needs!"
+	name = "维兰-汤谷自动取款机"
+	desc = "满足你的一切金钱需求！"
 	icon = 'icons/obj/structures/machinery/terminals.dmi'
 	icon_state = "atm"
 	anchored = TRUE
@@ -49,7 +49,7 @@ log transactions
 
 /obj/structure/machinery/atm/attackby(obj/item/I as obj, mob/user as mob)
 	if(inoperable())
-		to_chat(user, SPAN_NOTICE("You try to use it ,but it appears to be unpowered!"))
+		to_chat(user, SPAN_NOTICE("你试图使用它，但它似乎没有通电！"))
 		return //so it doesn't brazil IDs when unpowered
 	if(istype(I, /obj/item/card))
 		var/obj/item/card/id/idcard = I
@@ -65,7 +65,7 @@ log transactions
 			//consume the money
 			if(spacecash.counterfeit)
 				authenticated_account.money += floor(spacecash.worth * 0.25)
-				visible_message(SPAN_DANGER("[src] starts sparking and making error noises as you load [I] into it!"))
+				visible_message(SPAN_DANGER("当你将[I]装入[src]时，[src]开始冒出火花并发出错误噪音！"))
 				spark_system.start()
 			else
 				authenticated_account.money += spacecash.worth
@@ -84,7 +84,7 @@ log transactions
 			T.time = worldtime2text()
 			authenticated_account.transaction_log.Add(T)
 
-			to_chat(user, SPAN_INFO("You insert [I] into [src]."))
+			to_chat(user, SPAN_INFO("你将[I]插入[src]。"))
 			src.attack_hand(user)
 			qdel(I)
 	else
@@ -96,7 +96,7 @@ log transactions
 
 /obj/structure/machinery/atm/attack_hand(mob/user as mob)
 	if(isRemoteControlling(user))
-		to_chat(user, SPAN_DANGER("[icon2html(src, usr)] Artificial unit recognized. Artificial units do not currently receive monetary compensation, as per Weyland-Yutani regulation #1005."))
+		to_chat(user, SPAN_DANGER("[icon2html(src, usr)] 识别到人造单位。根据维兰德-汤谷条例第1005条，人造单位目前不享受货币补偿。"))
 		return
 	if(get_dist(src,user) <= 1)
 
@@ -200,12 +200,12 @@ log transactions
 					var/transfer_amount = text2num(href_list["funds_amount"])
 					transfer_amount = round(transfer_amount, 0.01)
 					if(transfer_amount <= 0)
-						alert("That is not a valid amount.")
+						alert("这不是一个有效的金额。")
 					else if(transfer_amount <= authenticated_account.money)
 						var/target_account_number = text2num(href_list["target_acc_number"])
 						var/transfer_purpose = href_list["purpose"]
 						if(charge_to_account(target_account_number, authenticated_account.owner_name, transfer_purpose, machine_id, transfer_amount))
-							to_chat(usr, "[icon2html(src, usr)]<span class='info'>Funds transfer successful.</span>")
+							to_chat(usr, "[icon2html(src, usr)]<span class='info'>资金转账成功。</span>")
 							authenticated_account.money -= transfer_amount
 
 							//create an entry in the account transaction log
@@ -259,11 +259,11 @@ log transactions
 									T.time = worldtime2text()
 									failed_account.transaction_log.Add(T)
 							else
-								to_chat(usr, SPAN_DANGER("[icon2html(src, usr)] Incorrect pin/account combination entered, [max_pin_attempts - number_incorrect_tries] attempts remaining."))
+								to_chat(usr, SPAN_DANGER("[icon2html(src, usr)] 输入的PIN码/账户组合不正确，还剩[max_pin_attempts - number_incorrect_tries]次尝试机会。"))
 								previous_account_number = tried_account_num
 								playsound(src, 'sound/machines/buzz-sigh.ogg', 25, 1)
 						else
-							to_chat(usr, SPAN_DANGER("[icon2html(src, usr)] incorrect pin/account combination entered."))
+							to_chat(usr, SPAN_DANGER("[icon2html(src, usr)] 输入的PIN码/账户组合不正确。"))
 							number_incorrect_tries = 0
 					else
 						playsound(src, 'sound/machines/twobeep.ogg', 25, 1)
@@ -280,17 +280,17 @@ log transactions
 						T.time = worldtime2text()
 						authenticated_account.transaction_log.Add(T)
 
-						to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] Access granted. Welcome user '[authenticated_account.owner_name].'"))
+						to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] 访问已授权。欢迎用户'[authenticated_account.owner_name]'。"))
 
 					previous_account_number = tried_account_num
 			if("e_withdrawal")
 				if(withdrawal_timer > world.time)
-					alert("Please wait [floor((withdrawal_timer-world.time)/10)] seconds before attempting to make another withdrawal.")
+					alert("请等待[floor((withdrawal_timer-world.time)/10)]秒后再尝试进行下一次取款。")
 					return
 				var/amount = max(text2num(href_list["funds_amount"]),0)
 				amount = round(amount, 0.01)
 				if(amount <= 0)
-					alert("That is not a valid amount.")
+					alert("这不是一个有效的金额。")
 					withdrawal_timer = world.time + 20
 				else if(authenticated_account && amount > 0)
 					if(amount <= authenticated_account.money)
@@ -317,12 +317,12 @@ log transactions
 						withdrawal_timer = world.time + 20
 			if("withdrawal")
 				if(withdrawal_timer > world.time)
-					alert("Please wait [floor((withdrawal_timer-world.time)/10)] seconds before attempting to make another withdrawal.")
+					alert("请等待[floor((withdrawal_timer-world.time)/10)]秒后再尝试进行下一次取款。")
 					return
 				var/amount = max(text2num(href_list["funds_amount"]),0)
 				amount = round(amount, 0.01)
 				if(amount <= 0)
-					alert("That is not a valid amount.")
+					alert("这不是一个有效的金额。")
 					withdrawal_timer = world.time + 20
 				else if(authenticated_account && amount > 0)
 					if(amount <= authenticated_account.money)
@@ -439,7 +439,7 @@ log transactions
 	if(!authenticated_account)
 		return
 
-	to_chat(human_user, SPAN_NOTICE("[icon2html(src, human_user)] Access granted. Welcome user '[authenticated_account.owner_name].'"))
+	to_chat(human_user, SPAN_NOTICE("[icon2html(src, human_user)] 访问已授权。欢迎用户'[authenticated_account.owner_name]'。"))
 
 	//create a transaction log entry
 	var/datum/transaction/log = new()
@@ -472,14 +472,14 @@ log transactions
 		return
 
 	if(ishuman(usr) && held_card)
-		to_chat(usr, "You remove \the [held_card] from \the [src].")
+		to_chat(usr, "你从\the [src]中取出了\the [held_card]。")
 		held_card.forceMove(get_turf(src))
 		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
 			usr.put_in_hands(held_card)
 		held_card = null
 		authenticated_account = null
 	else
-		to_chat(usr, "There is nothing to remove from \the [src].")
+		to_chat(usr, "\the [src]内没有可移除的物品。")
 	return
 
 /obj/structure/machinery/atm/proc/spawn_ewallet(sum, loc, mob/living/carbon/human/human_user as mob)

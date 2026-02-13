@@ -44,17 +44,17 @@
 	available_xenos += unique_xenos
 
 	if(!length(available_xenos))
-		to_chat(xeno_candidate, SPAN_WARNING("There aren't any available xenomorphs."))
+		to_chat(xeno_candidate, SPAN_WARNING("没有可用的异形。"))
 		return FALSE
 
-	var/userInput = tgui_input_list(usr, "Available Xenomorphs", "Join as Xeno", available_xenos, theme="hive_status")
+	var/userInput = tgui_input_list(usr, "可用异形", "以异形加入", available_xenos, theme="hive_status")
 
 	if(!xeno_candidate)
 		return FALSE
 
 	if(GLOB.RoleAuthority.castes_by_name[userInput])
 		if(!(userInput in xeno_pool))
-			to_chat(xeno_candidate, SPAN_WARNING("The caste type you chose was occupied by someone else."))
+			to_chat(xeno_candidate, SPAN_WARNING("你选择的阶级类型已被他人占用。"))
 			return FALSE
 		var/spawn_loc = pick(xeno_spawns)
 		var/xeno_type = GLOB.RoleAuthority.get_caste_by_text(userInput)
@@ -74,11 +74,11 @@
 
 		var/mob/living/carbon/xenomorph/new_xeno = userInput
 		if(!(new_xeno in GLOB.living_xeno_list) || new_xeno.stat == DEAD)
-			to_chat(xeno_candidate, SPAN_WARNING("You cannot join if the xenomorph is dead."))
+			to_chat(xeno_candidate, SPAN_WARNING("如果该异形已死亡，你无法加入。"))
 			return FALSE
 
 		if(new_xeno.client)
-			to_chat(xeno_candidate, SPAN_WARNING("That xenomorph has been occupied."))
+			to_chat(xeno_candidate, SPAN_WARNING("该异形已被占用。"))
 			return FALSE
 
 		if(!xeno_bypass_timer)
@@ -86,12 +86,12 @@
 				var/to_wait = XENO_LEAVE_TIMER - new_xeno.away_timer
 				if(islarva(new_xeno))
 					to_wait = XENO_LEAVE_TIMER_LARVA - new_xeno.away_timer
-				to_chat(xeno_candidate, SPAN_WARNING("That player hasn't been away long enough. Please wait [to_wait] second\s longer."))
+				to_chat(xeno_candidate, SPAN_WARNING("该玩家离开的时间还不够长。请再等待[to_wait]秒。"))
 				return FALSE
 
-		if(alert(xeno_candidate, "Everything checks out. Are you sure you want to transfer yourself into [new_xeno]?", "Confirm Transfer", "Yes", "No") == "Yes")
+		if(alert(xeno_candidate, "一切检查完毕。你确定要将自己转移到[new_xeno]吗？", "Confirm Transfer", "Yes", "No") == "Yes")
 			if(new_xeno.client || !(new_xeno in GLOB.living_xeno_list) || new_xeno.stat == DEAD || !xeno_candidate) // Do it again, just in case
-				to_chat(xeno_candidate, SPAN_WARNING("That xenomorph can no longer be controlled. Please try another."))
+				to_chat(xeno_candidate, SPAN_WARNING("该异形已无法控制。请尝试另一个。"))
 				return FALSE
 		else
 			return FALSE
@@ -102,7 +102,7 @@
 				N.close_spawn_windows()
 			if(transfer_xeno(xeno_candidate, new_xeno))
 				return TRUE
-	to_chat(xeno_candidate, "JAS01: Something went wrong, tell a coder.")
+	to_chat(xeno_candidate, "JAS01：出现错误，请通知程序员。")
 
 
 

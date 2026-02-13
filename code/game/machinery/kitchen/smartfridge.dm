@@ -96,7 +96,7 @@ GLOBAL_LIST_INIT(fridge_wire_descriptions, flatten_numeric_alist(alist(
 
 	if(HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER))
 		panel_open = !panel_open
-		to_chat(user, "You [panel_open ? "open" : "close"] the maintenance panel.")
+		to_chat(user, "你[panel_open ? "open" : "close"] the maintenance panel.")
 		overlays.Cut()
 		if(panel_open)
 			overlays += image(icon, icon_panel)
@@ -115,7 +115,7 @@ GLOBAL_LIST_INIT(fridge_wire_descriptions, flatten_numeric_alist(alist(
 	if(accept_check(O))
 		if(user.drop_held_item())
 			add_local_item(O)
-			user.visible_message(SPAN_NOTICE("[user] has added \the [O] to \the [src]."),
+			user.visible_message(SPAN_NOTICE("[user]已将\the [O]加入\the [src]。"),
 								SPAN_NOTICE("You add \the [O] to \the [src]."))
 
 	else if(istype(O, /obj/item/storage/bag/plants))
@@ -132,7 +132,7 @@ GLOBAL_LIST_INIT(fridge_wire_descriptions, flatten_numeric_alist(alist(
 				SPAN_NOTICE("[user] loads \the [src] with \the [P]."),
 				SPAN_NOTICE("You load \the [src] with \the [P]."))
 			if(length(P.contents) > 0)
-				to_chat(user, SPAN_NOTICE("Some items are refused."))
+				to_chat(user, SPAN_NOTICE("部分物品被拒绝。"))
 
 	else if(!(O.flags_item & NOBLUDGEON)) //so we can spray, scan, c4 the machine.
 		to_chat(user, SPAN_NOTICE("\The [src] smartly refuses [O]."))
@@ -143,7 +143,7 @@ GLOBAL_LIST_INIT(fridge_wire_descriptions, flatten_numeric_alist(alist(
 
 /obj/structure/machinery/smartfridge/attack_hand(mob/user)
 	if(!ispowered)
-		to_chat(user, SPAN_WARNING("[src] has no power."))
+		to_chat(user, SPAN_WARNING("[src]没有电力。"))
 		return
 	if(!COOLDOWN_FINISHED(src, electrified_cooldown))
 		if(shock(user, 100))
@@ -290,10 +290,10 @@ GLOBAL_LIST_INIT(fridge_wire_descriptions, flatten_numeric_alist(alist(
 				return FALSE
 			if(is_secure_fridge)
 				if(locked == FRIDGE_LOCK_COMPLETE)
-					to_chat(usr, SPAN_DANGER("Access denied."))
+					to_chat(usr, SPAN_DANGER("权限被拒绝。"))
 					return FALSE
 				if(!allowed(usr) && locked == FRIDGE_LOCK_ID)
-					to_chat(usr, SPAN_DANGER("Access denied."))
+					to_chat(usr, SPAN_DANGER("权限被拒绝。"))
 					return FALSE
 			var/index=params["index"]
 			var/amount=params["amount"]
@@ -324,10 +324,10 @@ GLOBAL_LIST_INIT(fridge_wire_descriptions, flatten_numeric_alist(alist(
 				return FALSE
 			if(is_secure_fridge)
 				if(locked == FRIDGE_LOCK_COMPLETE)
-					to_chat(usr, SPAN_DANGER("Access denied."))
+					to_chat(usr, SPAN_DANGER("权限被拒绝。"))
 					return FALSE
 				if(!allowed(usr) && locked == FRIDGE_LOCK_ID)
-					to_chat(usr, SPAN_DANGER("Access denied."))
+					to_chat(usr, SPAN_DANGER("权限被拒绝。"))
 					return FALSE
 			var/index=params["index"]
 			var/amount=params["amount"]
@@ -356,11 +356,11 @@ GLOBAL_LIST_INIT(fridge_wire_descriptions, flatten_numeric_alist(alist(
 			if(!panel_open)
 				return FALSE
 			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
+				to_chat(usr, SPAN_WARNING("你对这些线路一窍不通..."))
 				return FALSE
 			var/obj/item/held_item = user.get_held_item()
 			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
-				to_chat(user, SPAN_WARNING("You need wirecutters!"))
+				to_chat(user, SPAN_WARNING("你需要剪线钳！"))
 				return TRUE
 
 			var/wire = params["wire"]
@@ -370,11 +370,11 @@ GLOBAL_LIST_INIT(fridge_wire_descriptions, flatten_numeric_alist(alist(
 			if(!panel_open)
 				return FALSE
 			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
+				to_chat(usr, SPAN_WARNING("你对这些线路一窍不通..."))
 				return FALSE
 			var/obj/item/held_item = user.get_held_item()
 			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
-				to_chat(user, SPAN_WARNING("You need wirecutters!"))
+				to_chat(user, SPAN_WARNING("你需要剪线钳！"))
 				return TRUE
 			var/wire = params["wire"]
 			mend(wire)
@@ -383,15 +383,15 @@ GLOBAL_LIST_INIT(fridge_wire_descriptions, flatten_numeric_alist(alist(
 			if(!panel_open)
 				return FALSE
 			if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
+				to_chat(usr, SPAN_WARNING("你对这些线路一窍不通..."))
 				return FALSE
 			var/obj/item/held_item = user.get_held_item()
 			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
-				to_chat(user, "You need multitool!")
+				to_chat(user, "你需要万用工具！")
 				return TRUE
 			var/wire = params["wire"]
 			if (isWireCut(wire))
-				to_chat(usr, SPAN_WARNING("You can't pulse a cut wire."))
+				to_chat(usr, SPAN_WARNING("你无法激活一根已切断的线缆。"))
 				return TRUE
 			pulse(wire)
 			return TRUE
@@ -407,7 +407,7 @@ GLOBAL_LIST_INIT(fridge_wire_descriptions, flatten_numeric_alist(alist(
 	switch(wire)
 		if(FRIDGE_WIRE_SHOCK)
 			COOLDOWN_START(src, electrified_cooldown, 12 HOURS)
-			visible_message(SPAN_DANGER("Electric arcs shoot off from \the [src]!"))
+			visible_message(SPAN_DANGER("电弧从\the [src]迸射而出！"))
 		if (FRIDGE_WIRE_SHOOT_INV)
 			if(!shoot_inventory)
 				shoot_inventory = TRUE
@@ -432,7 +432,7 @@ GLOBAL_LIST_INIT(fridge_wire_descriptions, flatten_numeric_alist(alist(
 	switch(wire)
 		if(FRIDGE_WIRE_SHOCK)
 			COOLDOWN_START(src, electrified_cooldown, 30 SECONDS)
-			visible_message(SPAN_DANGER("Electric arcs shoot off from \the [src]!"))
+			visible_message(SPAN_DANGER("电弧从\the [src]迸射而出！"))
 		if(FRIDGE_WIRE_SHOOT_INV)
 			shoot_inventory = !shoot_inventory
 			if(shoot_inventory)
@@ -464,7 +464,7 @@ GLOBAL_LIST_INIT(fridge_wire_descriptions, flatten_numeric_alist(alist(
 	if(!throw_item)
 		return 0
 	INVOKE_ASYNC(throw_item, /atom/movable/proc/throw_atom, target, 16, SPEED_AVERAGE, src)
-	src.visible_message(SPAN_DANGER("<b>[src] launches [throw_item.name] at [target.name]!</b>"))
+	src.visible_message(SPAN_DANGER("<b>[src]向[target.name]发射了[throw_item.name]！</b>"))
 	return 1
 
 /obj/structure/machinery/smartfridge/proc/is_in_network()
@@ -478,7 +478,7 @@ GLOBAL_LIST_INIT(fridge_wire_descriptions, flatten_numeric_alist(alist(
 
 /obj/structure/machinery/smartfridge/seeds
 	name = "\improper MegaSeed Servitor"
-	desc = "When you need seeds fast!"
+	desc = "当你急需种子时！"
 	icon = 'icons/obj/structures/machinery/vending.dmi'
 	icon_state = "seeds"
 	icon_on = "seeds"
@@ -492,7 +492,7 @@ GLOBAL_LIST_INIT(fridge_wire_descriptions, flatten_numeric_alist(alist(
 //the secure subtype does nothing, I'm only keeping it to avoid conflicts with maps.
 /obj/structure/machinery/smartfridge/secure/medbay
 	name = "\improper Refrigerated Medicine Storage"
-	desc = "A refrigerated storage unit for storing medicine and chemicals."
+	desc = "用于储存药品和化学品的冷藏储存单元。"
 	icon_state = "smartfridge" //To fix the icon in the map editor.
 	icon_on = "smartfridge_chem"
 	is_secure_fridge = TRUE
@@ -510,7 +510,7 @@ GLOBAL_LIST_INIT(fridge_wire_descriptions, flatten_numeric_alist(alist(
 
 /obj/structure/machinery/smartfridge/secure/virology
 	name = "\improper Refrigerated Virus Storage"
-	desc = "A refrigerated storage unit for storing viral material."
+	desc = "用于储存病毒材料的冷藏储存单元。"
 	is_secure_fridge = TRUE
 	req_access = list(39)
 	icon_state = "smartfridge_virology"
@@ -525,7 +525,7 @@ GLOBAL_LIST_INIT(fridge_wire_descriptions, flatten_numeric_alist(alist(
 
 /obj/structure/machinery/smartfridge/chemistry
 	name = "\improper Smart Chemical Storage"
-	desc = "A refrigerated storage unit for medicine and chemical storage."
+	desc = "用于药品和化学品储存的冷藏储存单元。"
 	is_secure_fridge = TRUE
 	req_one_access = list(ACCESS_MARINE_CMO, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MEDPREP)
 	networked = TRUE
@@ -540,12 +540,12 @@ GLOBAL_LIST_INIT(fridge_wire_descriptions, flatten_numeric_alist(alist(
 
 /obj/structure/machinery/smartfridge/chemistry/virology
 	name = "\improper Smart Virus Storage"
-	desc = "A refrigerated storage unit for volatile sample storage."
+	desc = "用于储存易挥发样本的冷藏储存单元。"
 
 
 /obj/structure/machinery/smartfridge/drinks
 	name = "\improper Drink Showcase"
-	desc = "A refrigerated storage unit for tasty tasty alcohol."
+	desc = "用于储存美味酒精的冷藏储存单元。"
 
 /obj/structure/machinery/smartfridge/drinks/accept_check(obj/item/O as obj)
 	if(istype(O,/obj/item/reagent_container/glass) || istype(O,/obj/item/reagent_container/food/drinks) || istype(O,/obj/item/reagent_container/food/condiment))

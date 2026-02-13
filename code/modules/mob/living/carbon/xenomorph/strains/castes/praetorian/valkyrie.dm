@@ -30,7 +30,7 @@
 	prae.recalculate_everything()
 
 /datum/behavior_delegate/praetorian_valkyrie
-	name = "Praetorian Valkyrie Behavior Delegate"
+	name = "禁卫军女武神行为代表"
 
 	// Config
 	var/fury_max = 200
@@ -96,12 +96,12 @@
 	if (amount > 0)
 		if (base_fury >= fury_max)
 			return
-		to_chat(bound_xeno, SPAN_XENODANGER("We are overcome with rage."))
+		to_chat(bound_xeno, SPAN_XENODANGER("我们被狂怒所淹没。"))
 	base_fury = clamp(base_fury + amount, 0, fury_max)
 
 /datum/behavior_delegate/praetorian_valkyrie/proc/use_internal_fury_ability(cost)
 	if (cost > base_fury)
-		to_chat(bound_xeno, SPAN_XENODANGER("We dont feel angry enough to do this!"))
+		to_chat(bound_xeno, SPAN_XENODANGER("我们的愤怒不足以这样做！"))
 		return FALSE
 
 	add_base_fury(-cost)
@@ -120,23 +120,23 @@
 		return
 
 	if (!buffing_target.ally_of_hivenumber(raging_valkyrie.hivenumber))
-		to_chat(raging_valkyrie, SPAN_XENOWARNING("Why would we help our enemies?!"))
+		to_chat(raging_valkyrie, SPAN_XENOWARNING("我们为什么要帮助敌人？！"))
 		return
 
 	if (buffing_target.is_dead())
-		to_chat(raging_valkyrie, SPAN_XENOWARNING("No amount of anger can bring our sister back."))
+		to_chat(raging_valkyrie, SPAN_XENOWARNING("再多的愤怒也无法让我们的姐妹回来。"))
 		return
 
 	if (istype(buffing_target.strain, /datum/xeno_strain/valkyrie))
-		to_chat(raging_valkyrie, SPAN_XENOWARNING("We can't order another valkyrie with our rage."))
+		to_chat(raging_valkyrie, SPAN_XENOWARNING("我们的愤怒无法再召唤另一位女武神。"))
 		return
 
 	if (HAS_TRAIT(buffing_target, TRAIT_VALKYRIE_ARMORED))
-		to_chat(raging_valkyrie, SPAN_XENOWARNING("[buffing_target] is already enraged!"))
+		to_chat(raging_valkyrie, SPAN_XENOWARNING("[buffing_target]已经处于狂怒状态了！"))
 		return
 
 	if(get_dist(raging_valkyrie, buffing_target) > max_range) // an edge case where you watch somebody from hive status, and move while observing somebody so the buff applies since theres no actual range check.
-		to_chat(raging_valkyrie, SPAN_XENOWARNING("We need to be closer."))
+		to_chat(raging_valkyrie, SPAN_XENOWARNING("我们需要再靠近些。"))
 		return
 
 	if (!action_cooldown_check())
@@ -155,12 +155,12 @@
 	behavior.raging = TRUE
 
 	playsound(get_turf(raging_valkyrie), "alien_roar", 40)
-	to_chat(raging_valkyrie, SPAN_XENODANGER("Our rage drives us forward, our healing and armor is increased."))
+	to_chat(raging_valkyrie, SPAN_XENODANGER("我们的狂怒驱使我们前进，我们的治疗和护甲得到了提升。"))
 	raging_valkyrie.create_custom_empower(icolor = "#a31010", ialpha = 200, small_xeno = TRUE)
 	raging_valkyrie.add_filter("raging", 1, list("type" = "outline", "color" = "#a31010", "size" = 1))
-	raging_valkyrie.balloon_alert(raging_valkyrie, "we feel an overwhelming rage", text_color = "#93ec78")
+	raging_valkyrie.balloon_alert(raging_valkyrie, "我们感到一股压倒性的狂怒", text_color = "#93ec78")
 	raging_valkyrie.armor_modifier += armor_buff
-	ADD_TRAIT(raging_valkyrie, TRAIT_VALKYRIE_ARMORED, TRAIT_SOURCE_ABILITY("Tantrum"))
+	ADD_TRAIT(raging_valkyrie, TRAIT_VALKYRIE_ARMORED, TRAIT_SOURCE_ABILITY("暴怒"))
 	raging_valkyrie.recalculate_armor()
 	RegisterSignal(raging_valkyrie, list(COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE), PROC_REF(calculate_damage_mitigation_self))
 
@@ -169,7 +169,7 @@
 		buffing_target.create_custom_empower(icolor = "#a31010", ialpha = 200, small_xeno = TRUE)
 		buffing_target.add_filter("raging", 1, list("type" = "outline", "color" = "#a31010", "size" = 1))
 		buffing_target.speed_modifier -= speed_buff_amount
-		ADD_TRAIT(buffing_target, TRAIT_VALKYRIE_ARMORED, TRAIT_SOURCE_ABILITY("Tantrum"))
+		ADD_TRAIT(buffing_target, TRAIT_VALKYRIE_ARMORED, TRAIT_SOURCE_ABILITY("暴怒"))
 		buffing_target.recalculate_speed()
 		addtimer(CALLBACK(src, PROC_REF(remove_target_speed)), speed_buff_dur)
 	else
@@ -177,7 +177,7 @@
 		buffing_target.create_custom_empower(icolor = "#a31010", ialpha = 200, small_xeno = TRUE)
 		buffing_target.add_filter("raging", 1, list("type" = "outline", "color" = "#a31010", "size" = 1))
 		buffing_target.armor_modifier += target_armor_buff
-		ADD_TRAIT(buffing_target, TRAIT_VALKYRIE_ARMORED, TRAIT_SOURCE_ABILITY("Tantrum"))
+		ADD_TRAIT(buffing_target, TRAIT_VALKYRIE_ARMORED, TRAIT_SOURCE_ABILITY("暴怒"))
 		buffing_target.recalculate_armor()
 		addtimer(CALLBACK(src, PROC_REF(remove_target_rage)), armor_buffs_targer_dur)
 		RegisterSignal(buffing_target, list(COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE), PROC_REF(calculate_damage_mitigation_target))
@@ -195,10 +195,10 @@
 	raging_valkyrie.armor_modifier -= armor_buff
 	armor_buffs_active = FALSE
 	behavior.raging = FALSE
-	REMOVE_TRAIT(raging_valkyrie, TRAIT_VALKYRIE_ARMORED, TRAIT_SOURCE_ABILITY("Tantrum"))
+	REMOVE_TRAIT(raging_valkyrie, TRAIT_VALKYRIE_ARMORED, TRAIT_SOURCE_ABILITY("暴怒"))
 	raging_valkyrie.recalculate_armor()
 	UnregisterSignal(raging_valkyrie, list(COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE))
-	to_chat(raging_valkyrie, SPAN_XENOHIGHDANGER("We feel ourselves calm down."))
+	to_chat(raging_valkyrie, SPAN_XENOHIGHDANGER("我们感到自己平静下来。"))
 
 
 
@@ -207,9 +207,9 @@
 	if(target_xeno) //if the target was qdeleted it would be null so you need to check for it
 		target_xeno.speed_modifier += speed_buff_amount
 		target_xeno.remove_filter("raging")
-		REMOVE_TRAIT(target_xeno, TRAIT_VALKYRIE_ARMORED, TRAIT_SOURCE_ABILITY("Tantrum"))
+		REMOVE_TRAIT(target_xeno, TRAIT_VALKYRIE_ARMORED, TRAIT_SOURCE_ABILITY("暴怒"))
 		target_xeno.recalculate_speed()
-		to_chat(target_xeno, SPAN_XENOHIGHDANGER("We feel ourselves calm down."))
+		to_chat(target_xeno, SPAN_XENOHIGHDANGER("我们感到自己平静下来。"))
 	armor_buffs_speed_target = FALSE
 
 /datum/action/xeno_action/activable/valkyrie_rage/proc/remove_target_rage()
@@ -217,10 +217,10 @@
 	if(target_xeno) //if the target was qdeleted it would be null so you need to check for it
 		target_xeno.armor_modifier -= target_armor_buff
 		target_xeno.remove_filter("raging")
-		REMOVE_TRAIT(target_xeno, TRAIT_VALKYRIE_ARMORED, TRAIT_SOURCE_ABILITY("Tantrum"))
+		REMOVE_TRAIT(target_xeno, TRAIT_VALKYRIE_ARMORED, TRAIT_SOURCE_ABILITY("暴怒"))
 		target_xeno.recalculate_armor()
 		UnregisterSignal(target_xeno, list(COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE))
-		to_chat(target_xeno, SPAN_XENOHIGHDANGER("We feel ourselves calm down."))
+		to_chat(target_xeno, SPAN_XENOHIGHDANGER("我们感到自己平静下来。"))
 	armor_buffs_active_target = FALSE
 
 /datum/action/xeno_action/activable/valkyrie_rage/proc/calculate_damage_mitigation_self(mob/living/carbon/xenomorph/source, list/damagedata)
@@ -313,7 +313,7 @@
 		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/red(next_turf, 0.25 SECONDS)
 
 	if(!length(target_turfs))
-		to_chat(valkyrie, SPAN_XENOWARNING("We don't have enough room!"))
+		to_chat(valkyrie, SPAN_XENOWARNING("我们没有足够的空间！"))
 		return
 
 	if(!action_cooldown_check() || !check_and_use_plasma_owner())
@@ -321,7 +321,7 @@
 
 	apply_cooldown()
 
-	valkyrie.visible_message(SPAN_XENODANGER("[valkyrie] stomps its feet furiously, breaking the ground underneath!"), SPAN_XENODANGER("We send a shockwave through the ground, breaking the balance of anyone infront of us!"))
+	valkyrie.visible_message(SPAN_XENODANGER("[valkyrie]愤怒地跺脚，震碎了脚下的地面！"), SPAN_XENODANGER("We send a shockwave through the ground, breaking the balance of anyone infront of us!"))
 	valkyrie.emote("roar")
 	playsound(valkyrie, 'sound/effects/alien_footstep_charge3.ogg', 35, 0)
 
@@ -371,7 +371,7 @@
 	for(var/mob/living/carbon/xenomorph/allied_xenomorphs in range(range, valkyrie_flight))
 		if(!allied_xenomorphs.ally_of_hivenumber(valkyrie_flight.hivenumber))
 			continue
-		to_chat(allied_xenomorphs, SPAN_XENOWARNING("Every single inch in our body moves on its own to fight."))
+		to_chat(allied_xenomorphs, SPAN_XENOWARNING("我们身体的每一寸都在自主战斗。"))
 		valkyrie_flight.create_shriekwave(3)
 		allied_xenomorphs.xeno_jitter(1 SECONDS,)
 		allied_xenomorphs.flick_heal_overlay(3 SECONDS, "#F5007A")
@@ -388,15 +388,15 @@
 	var/distance = get_dist(extinguisher_tail, target)
 
 	if (distance > 2)
-		to_chat(extinguisher_tail, SPAN_XENOWARNING("We need to be closer to our target."))
+		to_chat(extinguisher_tail, SPAN_XENOWARNING("我们需要更接近目标。"))
 		return
 
 	if(atom	== extinguisher_tail)
-		to_chat(extinguisher_tail, SPAN_XENOWARNING("We can't extinguish ourselves."))
+		to_chat(extinguisher_tail, SPAN_XENOWARNING("我们无法熄灭自己。"))
 		return
 
 	if(!iscarbon(atom))
-		to_chat(extinguisher_tail, SPAN_XENOWARNING("We need to target something."))
+		to_chat(extinguisher_tail, SPAN_XENOWARNING("我们需要锁定一个目标。"))
 		return
 
 	if (!action_cooldown_check())
@@ -411,7 +411,7 @@
 	playsound(extinguisher_tail, 'sound/effects/splat.ogg', 40, FALSE)
 	target.ExtinguishMob() // This can both help your allies, or help caps that are on fire.
 	apply_cooldown()
-	extinguisher_tail.visible_message(SPAN_XENODANGER("[extinguisher_tail] pours acid all over [target] using its tail."), SPAN_XENOHIGHDANGER("We use our tail to pour acid over [target]"))
+	extinguisher_tail.visible_message(SPAN_XENODANGER("[extinguisher_tail]用它的尾巴向[target]泼洒酸液。"), SPAN_XENOHIGHDANGER("We use our tail to pour acid over [target]"))
 	xeno_attack_delay(extinguisher_tail)
 	return ..()
 
@@ -428,34 +428,34 @@
 		return
 
 	if(valkyrie.observed_xeno != null)
-		to_chat(valkyrie, SPAN_XENOHIGHDANGER("We cannot retrieve sisters through overwatch!"))
+		to_chat(valkyrie, SPAN_XENOHIGHDANGER("我们无法通过监控召回姐妹！"))
 		return
 
 	if(!isxeno(A) || !valkyrie.can_not_harm(A))
-		to_chat(valkyrie, SPAN_XENODANGER("We must target one of our sisters!"))
+		to_chat(valkyrie, SPAN_XENODANGER("我们必须锁定一位姐妹！"))
 		return
 
 	if(A == valkyrie)
-		to_chat(valkyrie, SPAN_XENODANGER("We cannot retrieve ourself!"))
+		to_chat(valkyrie, SPAN_XENODANGER("我们无法召回自己！"))
 		return
 
 	if(!(A in view(7, valkyrie)))
-		to_chat(valkyrie, SPAN_XENODANGER("That sister is too far away!"))
+		to_chat(valkyrie, SPAN_XENODANGER("那位姐妹太远了！"))
 		return
 
 	var/mob/living/carbon/xenomorph/targetXeno = A
 
 	if(targetXeno.anchored)
-		to_chat(valkyrie, SPAN_XENODANGER("That sister cannot move!"))
+		to_chat(valkyrie, SPAN_XENODANGER("那位姐妹无法移动！"))
 		return
 
 	if(!(targetXeno.resting || targetXeno.stat == UNCONSCIOUS))
 		if(targetXeno.mob_size > MOB_SIZE_BIG)
-			to_chat(valkyrie, SPAN_WARNING("[targetXeno] is too big to retrieve while standing up!"))
+			to_chat(valkyrie, SPAN_WARNING("[targetXeno]体型太大，无法在站立状态下召回！"))
 			return
 
 	if(targetXeno.stat == DEAD)
-		to_chat(valkyrie, SPAN_WARNING("[targetXeno] is already dead!"))
+		to_chat(valkyrie, SPAN_WARNING("[targetXeno]已经死了！"))
 		return
 
 	if(!action_cooldown_check() || valkyrie.action_busy)
@@ -497,7 +497,7 @@
 				blocked = TRUE
 				break
 		if(blocked)
-			to_chat(valkyrie, SPAN_XENOWARNING("We can't reach [targetXeno] with our resin retrieval hook!"))
+			to_chat(valkyrie, SPAN_XENOWARNING("我们的树脂回收钩够不到[targetXeno]！"))
 			return
 
 		T = temp
@@ -510,10 +510,10 @@
 		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/green(T, windup)
 
 	if(!length(turflist))
-		to_chat(valkyrie, SPAN_XENOWARNING("We don't have any room to do our retrieve!"))
+		to_chat(valkyrie, SPAN_XENOWARNING("我们没有空间进行召回！"))
 		return
 
-	valkyrie.visible_message(SPAN_XENODANGER("[valkyrie] prepares to fire its resin retrieval hook at [A]!"), SPAN_XENODANGER("We prepare to fire our resin retrieval hook at [A]!"))
+	valkyrie.visible_message(SPAN_XENODANGER("[valkyrie]准备向[A]发射树脂回收钩！"), SPAN_XENODANGER("We prepare to fire our resin retrieval hook at [A]!"))
 	valkyrie.emote("roar")
 
 	var/throw_target_turf = get_step(valkyrie, facing)
@@ -524,7 +524,7 @@
 	ADD_TRAIT(valkyrie, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Praetorian Retrieve"))
 	if(windup)
 		if(!do_after(valkyrie, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 1))
-			to_chat(valkyrie, SPAN_XENOWARNING("We cancel our retrieve."))
+			to_chat(valkyrie, SPAN_XENOWARNING("我们取消了召回。"))
 			apply_cooldown()
 
 			for (var/obj/effect/xenomorph/xeno_telegraph/XT in telegraph_atom_list)
@@ -546,18 +546,18 @@
 			break
 
 	if(!successful_retrieve)
-		to_chat(valkyrie, SPAN_XENOWARNING("We can't reach [targetXeno] with our resin retrieval hook!"))
+		to_chat(valkyrie, SPAN_XENOWARNING("我们的树脂回收钩够不到[targetXeno]！"))
 		return
 
-	to_chat(targetXeno, SPAN_XENOBOLDNOTICE("We are pulled toward [valkyrie]!"))
+	to_chat(targetXeno, SPAN_XENOBOLDNOTICE("我们被拉向[valkyrie]！"))
 
 	shake_camera(targetXeno, 10, 1)
 	var/throw_dist = get_dist(throw_target_turf, targetXeno)-1
 	if(throw_target_turf == behind_turf)
 		throw_dist++
-		to_chat(valkyrie, SPAN_XENOBOLDNOTICE("We fling [targetXeno] over our head with our resin hook, and they land behind us!"))
+		to_chat(valkyrie, SPAN_XENOBOLDNOTICE("我们用树脂钩将[targetXeno]甩过头顶，使其落在我们身后！"))
 	else
-		to_chat(valkyrie, SPAN_XENOBOLDNOTICE("We fling [targetXeno] towards us with our resin hook, and they land in front of us!"))
+		to_chat(valkyrie, SPAN_XENOBOLDNOTICE("我们用树脂钩将[targetXeno]拉向我们，使其落在我们面前！"))
 	targetXeno.throw_atom(throw_target_turf, throw_dist, SPEED_VERY_FAST, pass_flags = PASS_MOB_THRU)
 	apply_cooldown()
 	return ..()

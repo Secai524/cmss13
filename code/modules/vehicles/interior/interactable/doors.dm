@@ -1,6 +1,6 @@
 /obj/structure/interior_exit
-	name = "interior door"
-	desc = "I can get out of here if I go through this."
+	name = "内部舱门"
+	desc = "通过这里我就能出去。"
 	icon = 'icons/effects/blood.dmi'
 	icon_state = "vomit_1"
 	layer = INTERIOR_DOOR_LAYER
@@ -33,9 +33,9 @@
 	if(dragged_atom)
 		exit_time = 2 SECONDS
 
-	to_chat(M, SPAN_NOTICE("You start climbing out of \the [interior.exterior]."))
+	to_chat(M, SPAN_NOTICE("你开始从\the [interior.exterior]向外爬。"))
 	if(!do_after(M, exit_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
-		to_chat(M, SPAN_WARNING("Something has interrupted you."))
+		to_chat(M, SPAN_WARNING("有什么事情打断了你。"))
 		return
 
 	//Dragged stuff comes with us only if properly waited 2 seconds. No cheating!
@@ -51,9 +51,9 @@
 	interior.exit(M)
 
 /obj/structure/interior_exit/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus)
-	to_chat(M, SPAN_NOTICE("You start climbing out of \the [interior.exterior]."))
+	to_chat(M, SPAN_NOTICE("你开始从\the [interior.exterior]向外爬。"))
 	if(!do_after(M, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
-		to_chat(M, SPAN_WARNING("Something has interrupted you."))
+		to_chat(M, SPAN_WARNING("有什么事情打断了你。"))
 	else
 		interior.exit(M)
 	return XENO_NO_DELAY_ACTION
@@ -72,7 +72,7 @@
 	user.forceMove(vehicle_turf)
 
 /obj/structure/interior_exit/vehicle
-	name = "vehicle door"
+	name = "载具舱门"
 
 /obj/structure/interior_exit/vehicle/Initialize()
 	. = ..()
@@ -107,9 +107,9 @@
 	if(dragged_atom)
 		exit_time = 2 SECONDS
 
-	to_chat(M, SPAN_NOTICE("You start climbing out of \the [interior.exterior]."))
+	to_chat(M, SPAN_NOTICE("你开始从\the [interior.exterior]向外爬。"))
 	if(!do_after(M, exit_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
-		to_chat(M, SPAN_WARNING("Something has interrupted you."))
+		to_chat(M, SPAN_WARNING("有什么事情打断了你。"))
 		return
 
 	var/turf/exit_turf = get_exit_turf()
@@ -127,9 +127,9 @@
 	interior.exit(M, exit_turf)
 
 /obj/structure/interior_exit/vehicle/attack_alien(mob/living/carbon/xenomorph/M, dam_bonus)
-	to_chat(M, SPAN_NOTICE("You start climbing out of \the [interior.exterior]."))
+	to_chat(M, SPAN_NOTICE("你开始从\the [interior.exterior]向外爬。"))
 	if(!do_after(M, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
-		to_chat(M, SPAN_WARNING("Something has interrupted you."))
+		to_chat(M, SPAN_WARNING("有什么事情打断了你。"))
 	else
 		interior.exit(M, get_exit_turf())
 	return XENO_NO_DELAY_ACTION

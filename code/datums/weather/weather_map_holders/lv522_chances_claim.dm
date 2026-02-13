@@ -1,5 +1,5 @@
 /datum/weather_ss_map_holder/lv522_chances_claim
-	name = "LV-522 Map Holder"
+	name = "LV-522地图架"
 
 	warn_time = 1 MINUTES
 	min_time_between_events = 30 MINUTES

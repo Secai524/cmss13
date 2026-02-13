@@ -1,5 +1,5 @@
 /datum/asset/spritesheet/stack_receipts
-	name = "stack-receipts"
+	name = "堆叠收据"
 
 /datum/asset/spritesheet/stack_receipts/register()
 	// initialising the list of items we need

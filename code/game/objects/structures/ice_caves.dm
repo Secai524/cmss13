@@ -7,10 +7,10 @@
 	unacidable = TRUE
 
 /obj/structure/ice/thin
-	name = "thin ice wall"
+	name = "薄冰墙"
 	icon = 'icons/turf/walls/icewalllight.dmi'
 	icon_state = "Single"
-	desc = "It is very thin."
+	desc = "它非常薄。"
 	opacity = FALSE
 
 /obj/structure/ice/thin/indestructible/ex_act(severity, direction)
@@ -37,7 +37,7 @@
 
 //ROCK WALLS------------------------------//
 /obj/structure/ice/ice_rock
-	name = "Icy rock"
+	name = "冰岩"
 	icon = 'icons/turf/walls/rockwall.dmi'
 
 /obj/structure/ice/ice_rock/cornerOverlay

@@ -33,15 +33,15 @@
 	var/value = SStechtree.trees[1]
 
 	if(length(trees) > 1)
-		value = tgui_input_list(src, "Choose which tree to enter", "Enter Tree", trees)
+		value = tgui_input_list(src, "选择进入哪棵树", "Enter Tree", trees)
 
 	if(!value)
-		to_chat(src, SPAN_WARNING("Something went wrong."))
+		to_chat(src, SPAN_WARNING("出了点问题。"))
 		return
 
 	var/datum/techtree/tree = trees[value]
 
-	var/should_force = tgui_alert(src, "Do you want to force yourself into the tree?", "Force Enter", list("Yes", "No"))
+	var/should_force = tgui_alert(src, "是否要强制将自己加入科技树？", "Force Enter", list("Yes", "No"))
 
 	tree.enter_mob(src.mob, should_force == "Yes")
 
@@ -61,15 +61,15 @@
 	var/value = SStechtree.trees[1]
 
 	if(length(trees) > 1)
-		value = tgui_input_list(src, "Choose which tree to give points to", "Give Points", trees)
+		value = tgui_input_list(src, "选择要分配点数的科技树", "Give Points", trees)
 
 	if(!value)
-		to_chat(src, SPAN_WARNING("Something went wrong."))
+		to_chat(src, SPAN_WARNING("出了点问题。"))
 		return
 
 	var/datum/techtree/tree = trees[value]
 
-	var/number_to_set = tgui_input_number(src, "How many points should this tech tree be at?", "", tree.points)
+	var/number_to_set = tgui_input_number(src, "该科技树应设置多少点数？", "", tree.points)
 
 	if(number_to_set == null)
 		return
@@ -80,7 +80,7 @@
 	set category = "Debug"
 	set name = "Reset Intel Data Tab"
 
-	if(tgui_alert(src, "Clear the data tab?", "Confirm", list("Yes", "No"), 10 SECONDS) == "Yes")
+	if(tgui_alert(src, "清空数据标签？", "确认", list("Yes", "No"), 10 SECONDS) == "Yes")
 		for(var/datum/cm_objective/Objective in GLOB.intel_system.oms.disks)
 			GLOB.intel_system.oms.disks -= Objective
 
@@ -97,10 +97,10 @@
 	set name = "Delete"
 
 	if (!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return
 
-	if (alert(src, "Are you sure you want to delete:\n[O]\nat ([O.x], [O.y], [O.z])?", "Confirmation", "Yes", "No") == "Yes")
+	if (alert(src, "确定要删除：\n[O]\n位于 ([O.x], [O.y], [O.z]) 吗？", "确认", "Yes", "No") == "Yes")
 		message_admins("[key_name_admin(usr)] deleted [O] at ([O.x],[O.y],[O.z])")
 		if(isturf(O))
 			var/turf/T = O
@@ -115,20 +115,20 @@
 
 	if(!check_rights(R_DEBUG))
 		return
-	if(!ishost(usr) || alert("Are you sure you want to do this?",, "Yes", "No") != "Yes")
+	if(!ishost(usr) || alert("你确定要执行此操作吗？",, "Yes", "No") != "Yes")
 		return
-	var/newtick = tgui_input_number(src, "Sets a new tick lag. Please don't mess with this too much! The stable, time-tested ticklag value is 0.9","Lag of Tick", world.tick_lag)
+	var/newtick = tgui_input_number(src, "设置新的Tick延迟。请勿过多改动！稳定且经过时间验证的Tick延迟值为0.9","Lag of Tick", world.tick_lag)
 	//I've used ticks of 2 before to help with serious singulo lags
 	if(newtick && newtick <= 2 && newtick > 0)
 		message_admins("[key_name(src)] has modified world.tick_lag to [newtick]")
 		world.change_tick_lag(newtick)
 	else
-		to_chat(src, SPAN_DANGER("Error: ticklag(): Invalid world.ticklag value. No changes made."))
+		to_chat(src, SPAN_DANGER("错误：ticklag()：无效的world.ticklag值。未作任何更改。"))
 
 /client/proc/fix_next_move()
 	set category = "Debug"
 	set name = "Unfreeze Everyone"
-	if(alert("Are you sure you want to do this?",, "Yes", "No") != "Yes")
+	if(alert("你确定要执行此操作吗？",, "Yes", "No") != "Yes")
 		return
 	var/largest_move_time = 0
 	var/largest_click_time = 0
@@ -158,7 +158,7 @@
 /client/proc/reload_admins()
 	set name = "Reload Admins"
 	set category = "Debug"
-	if(alert("Are you sure you want to do this?",, "Yes", "No") != "Yes")
+	if(alert("你确定要执行此操作吗？",, "Yes", "No") != "Yes")
 		return
 	if(!check_rights(R_SERVER))
 		return

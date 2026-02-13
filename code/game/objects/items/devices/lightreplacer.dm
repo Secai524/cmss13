@@ -40,8 +40,8 @@
 
 /obj/item/device/lightreplacer
 
-	name = "light replacer"
-	desc = "A device to automatically replace lights. Can be refill with working lightbulbs and sheets of glass, and can recycle broken lightbulbs."
+	name = "灯泡更换器"
+	desc = "一种自动更换灯泡的设备。可用完好的灯泡和玻璃板补充，并可回收损坏的灯泡。"
 
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "lightreplacer0"
@@ -78,27 +78,27 @@
 	if(istype(W, /obj/item/stack/sheet/glass))
 		var/obj/item/stack/sheet/glass/glass = W
 		if(uses >= max_uses)
-			to_chat(user, SPAN_WARNING("[src] is full."))
+			to_chat(user, SPAN_WARNING("[src]已满。"))
 			return
 		else if(glass.use(1))
 			AddUses(5)
-			to_chat(user, SPAN_NOTICE("You insert a piece of glass into the [src]. You have [uses] lights remaining."))
+			to_chat(user, SPAN_NOTICE("你将一片玻璃插入[src]。剩余[uses]个灯泡。"))
 			return
 		else
-			to_chat(user, SPAN_WARNING("You need one sheet of glass to replace lights."))
+			to_chat(user, SPAN_WARNING("更换灯泡需要一片玻璃。"))
 
 	if(istype(W, /obj/item/light_bulb))
 		var/obj/item/light_bulb/bulb = W
 		if(bulb.status == 0) // LIGHT OKAY
 			if(uses < max_uses)
 				AddUses(1)
-				to_chat(user, SPAN_NOTICE("You insert the [bulb] into [src]. You have [uses] lights remaining."))
+				to_chat(user, SPAN_NOTICE("你将[bulb]插入[src]。剩余[uses]个灯泡。"))
 				user.drop_held_item()
 				qdel(bulb)
 				return
 		else
 			Recycle()
-			to_chat(user, SPAN_NOTICE("You insert the [bulb] into [src] for recycling."))
+			to_chat(user, SPAN_NOTICE("你将[bulb]插入[src]进行回收。"))
 			user.drop_held_item()
 			qdel(bulb)
 			return
@@ -106,7 +106,7 @@
 
 /obj/item/device/lightreplacer/attack_self(mob/user)
 	..()
-	to_chat(usr, "It has [uses] lights remaining, and has [recycle] broken lights stored.")
+	to_chat(usr, "剩余[uses]个灯泡，并储存了[recycle]个损坏灯泡。")
 
 /obj/item/device/lightreplacer/update_icon()
 	icon_state = "lightreplacer0"
@@ -144,7 +144,7 @@
 		if(CanUse(U))
 			if(!Use(U))
 				return
-			to_chat(U, SPAN_NOTICE("You replace the [target.fitting] with [src]."))
+			to_chat(U, SPAN_NOTICE("你用[src]替换了[target.fitting]。"))
 
 			if(target.status != LIGHT_EMPTY)
 
@@ -172,7 +172,7 @@
 			to_chat(U, SPAN_DANGER(failmsg))
 			return
 	else
-		to_chat(U, "There is a working [target.fitting] already inserted.")
+		to_chat(U, "已插入一个完好的[target.fitting]。")
 		return
 
 //Can you use it?

@@ -1,5 +1,5 @@
 /datum/faction/iasf
-	name = "TWE - Imperial Armed Space Force"
+	name = "TWE - 帝国太空武装部队"
 	faction_tag = FACTION_IASF
 	base_icon_file = 'icons/mob/hud/factions/twe.dmi'
 

@@ -145,7 +145,7 @@
 
 	// Push mobs
 	for(var/mob/living/blocking_mob in door_turf)
-		to_chat(blocking_mob, SPAN_HIGHDANGER("You get thrown back as the [label] doors slam shut!"))
+		to_chat(blocking_mob, SPAN_HIGHDANGER("当[label]舱门猛地关闭时，你被甩了回去！"))
 		blocking_mob.KnockDown(4)
 		blocking_mob.forceMove(target_turf)
 

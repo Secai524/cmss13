@@ -167,7 +167,7 @@
 	/*Stores the image()'s for the xeno evolution radial menu
 	To add an image for your caste - add an icon to icons/mob/xenos/radial_xenos.dmi
 	Icon size should be 32x32, to make them fit within the radial menu border size your icon 22x22 and leave 10px transparent border.
-	The name of the icon should be the same as the XENO_CASTE_ define for that caste eg. #define XENO_CASTE_DRONE "Drone"
+	The name of the icon should be the same as the XENO_CASTE_ define for that caste eg. #define XENO_CASTE_DRONE "工蜂"
 	*/
 	var/static/list/evolution_menu_images
 
@@ -270,10 +270,10 @@
 		playsound_client(current_mob.client, get_sfx("evo_screech"), current_mob.loc, 70, "minor")
 
 		if(ishuman(current_mob))
-			to_chat(current_mob, SPAN_HIGHDANGER("You hear a distant screech and feel your insides freeze up... something new is with you in this colony."))
+			to_chat(current_mob, SPAN_HIGHDANGER("你听到远处传来一声尖啸，感到内脏都冻结了……这个殖民地里有新的东西与你同在。"))
 
 		if(issynth(current_mob))
-			to_chat(current_mob, SPAN_HIGHDANGER("You hear the distant call of an unknown bioform, it sounds like they're informing others to change form. You begin to analyze and decrypt the strange vocalization."))
+			to_chat(current_mob, SPAN_HIGHDANGER("你听到远处传来未知生物形态的呼唤，听起来像是在通知其他个体改变形态。你开始分析并破译这奇怪的发声。"))
 
 /datum/hive_status/proc/setup_banned_allies()
 	banned_allies = DEFAULT_ALLY_BAN_LIST
@@ -678,7 +678,7 @@
 			continue
 
 		var/area/cur_area = get_area(xeno)
-		var/area_name = "Unknown"
+		var/area_name = "未知"
 		if(cur_area)
 			area_name = cur_area.name
 
@@ -827,14 +827,14 @@
 	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
 		if(get_area(xeno) != hijacked_dropship && xeno.loc && is_ground_level(xeno.loc.z))
 			if(isfacehugger(xeno) || islesserdrone(xeno))
-				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
+				to_chat(xeno, SPAN_XENOANNOUNCE("女王已离你而去，随着你与蜂巢思维失去联系，你迅速找到一个藏身之处进入休眠。"))
 				qdel(xeno)
 				continue
 			if(xeno.hunter_data.hunted && !isqueen(xeno))
-				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, separating you from her hive! You must defend yourself from the headhunter before you can enter hibernation..."))
+				to_chat(xeno, SPAN_XENOANNOUNCE("女王已离你而去，将你与她的蜂巢分离！你必须在进入休眠前，抵御猎头者的攻击……"))
 				xeno.set_hive_and_update(XENO_HIVE_FORSAKEN)
 			else
-				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
+				to_chat(xeno, SPAN_XENOANNOUNCE("女王已离你而去，随着你与蜂巢思维失去联系，你迅速找到一个藏身之处进入休眠。"))
 				if(xeno.hauled_mob?.resolve())
 					xeno.release_haul(xeno.hauled_mob.resolve())
 				qdel(xeno)
@@ -889,7 +889,7 @@
 		qdel(new_xeno)
 		return FALSE
 
-	new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly emerges from a dead husk!"),
+	new_xeno.visible_message(SPAN_XENODANGER("一只幼虫突然从一具死去的躯壳中钻出！"),
 	SPAN_XENOANNOUNCE("The hive has no core! You manage to emerge from your old husk as a larva!"))
 	msg_admin_niche("[key_name(new_xeno)] respawned at \a [spawning_turf]. [ADMIN_JMP(spawning_turf)]")
 	playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 50, 1)
@@ -927,11 +927,11 @@
 	if(!SSticker.mode.transfer_xeno(xeno_candidate, new_xeno))
 		qdel(new_xeno)
 		return FALSE
-	new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly burrows out of \the [spawning_turf]!"),
+	new_xeno.visible_message(SPAN_XENODANGER("一只幼虫突然从\the [spawning_turf]中钻出！"),
 	SPAN_XENODANGER("You burrow out of \the [spawning_turf] and awaken from your slumber. For the Hive!"))
 	msg_admin_niche("[key_name(new_xeno)] burrowed out from \a [spawning_turf]. [ADMIN_JMP(spawning_turf)]")
 	playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 50, 1)
-	to_chat(new_xeno, SPAN_XENOANNOUNCE("You are a xenomorph larva awakened from slumber!"))
+	to_chat(new_xeno, SPAN_XENOANNOUNCE("你是一只从沉睡中苏醒的异形幼虫！"))
 	if(new_xeno.client)
 		if(new_xeno.client?.prefs?.toggles_flashing & FLASH_POOLSPAWN)
 			window_flash(new_xeno.client)
@@ -983,37 +983,37 @@
 		return FALSE
 
 	if(jobban_isbanned(user, JOB_XENOMORPH)) // User is jobbanned
-		to_chat(user, SPAN_WARNING("You are banned from playing aliens and cannot spawn as a xenomorph."))
+		to_chat(user, SPAN_WARNING("你被禁止扮演异形，无法以异形身份生成。"))
 		return FALSE
 
 	if(world.time < hugger_timelock)
-		to_chat(user, SPAN_WARNING("The hive cannot support facehuggers yet..."))
+		to_chat(user, SPAN_WARNING("蜂巢目前尚无法支持抱脸虫……"))
 		return FALSE
 
 	if(!user.bypass_time_of_death_checks_hugger)
 		var/mob/living/carbon/human/original_human = user.mind?.original
 		if(istype(original_human) && !original_human.undefibbable && !original_human.chestburst && HAS_TRAIT_FROM(original_human, TRAIT_NESTED, TRAIT_SOURCE_BUCKLE))
-			to_chat(user, SPAN_WARNING("You cannot become a facehugger until you are no longer alive in a nest."))
+			to_chat(user, SPAN_WARNING("你必须先脱离巢穴中的存活状态，才能成为抱脸虫。"))
 			return FALSE
 
 		if(world.time - user.client?.player_details.larva_pool_time < XENO_JOIN_DEAD_TIME)
 			var/time_left = floor((user.client.player_details.larva_pool_time + XENO_JOIN_DEAD_TIME - world.time) / 10)
-			to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a facehugger until [XENO_JOIN_DEAD_TIME / 600] minutes have passed ([time_left] seconds remaining)."))
+			to_chat(user, SPAN_WARNING("你最近刚脱离游戏。你必须等待[XENO_JOIN_DEAD_TIME / 600]分钟（还剩[time_left]秒）才能成为抱脸虫。"))
 			return FALSE
 
 		if(world.time - user.timeofdeath < JOIN_AS_FACEHUGGER_DELAY)
 			var/time_left = floor((user.timeofdeath + JOIN_AS_FACEHUGGER_DELAY - world.time) / 10)
-			to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a facehugger until [JOIN_AS_FACEHUGGER_DELAY / 600] minutes have passed ([time_left] seconds remaining)."))
+			to_chat(user, SPAN_WARNING("你最近刚脱离游戏。你必须等待[JOIN_AS_FACEHUGGER_DELAY / 600]分钟（还剩[time_left]秒）才能成为抱脸虫。"))
 			return FALSE
 
 	if(length(totalXenos) <= 0)
 		//This is to prevent people from joining as Forsaken Huggers on the pred ship
-		to_chat(user, SPAN_WARNING("The hive has fallen, you can't join it!"))
+		to_chat(user, SPAN_WARNING("巢穴已沦陷，你无法加入！"))
 		return FALSE
 
 	for(var/mob_name in banished_ckeys)
 		if(banished_ckeys[mob_name] == user.ckey)
-			to_chat(user, SPAN_WARNING("You are banished from the [name], you may not rejoin unless the Queen re-admits you or dies."))
+			to_chat(user, SPAN_WARNING("你已被[name]驱逐，除非女王重新接纳你或死亡，否则不得重新加入。"))
 			return FALSE
 
 	update_hugger_limit()
@@ -1026,7 +1026,7 @@
 		to_chat(user, SPAN_WARNING("\The [GLOB.hive_datum[hivenumber]] cannot support more facehuggers! Limit: <b>[current_hugger_count]/[playable_hugger_limit]</b>"))
 		return FALSE
 
-	if(tgui_alert(user, "Are you sure you want to become a facehugger?", "Confirmation", list("Yes", "No")) != "Yes")
+	if(tgui_alert(user, "你确定要成为抱脸虫吗？", "确认", list("Yes", "No")) != "Yes")
 		return FALSE
 
 	if(!user.client)
@@ -1044,7 +1044,7 @@
 /datum/hive_status/proc/spawn_as_hugger(mob/dead/observer/user, atom/A)
 	var/mob/living/carbon/xenomorph/facehugger/hugger = new /mob/living/carbon/xenomorph/facehugger(A.loc, null, hivenumber)
 	user.mind.transfer_to(hugger, TRUE)
-	hugger.visible_message(SPAN_XENODANGER("A facehugger suddenly emerges out of \the [A]!"), SPAN_XENODANGER("You emerge out of \the [A] and awaken from your slumber. For the Hive!"))
+	hugger.visible_message(SPAN_XENODANGER("一只抱脸虫突然从\the [A]中钻出！"), SPAN_XENODANGER("You emerge out of \the [A] and awaken from your slumber. For the Hive!"))
 	playsound(hugger, 'sound/effects/xeno_newlarva.ogg', 25, TRUE)
 	hugger.generate_name()
 	hugger.timeofdeath = user.timeofdeath // Keep old death time
@@ -1063,39 +1063,39 @@
 		return FALSE
 
 	if(jobban_isbanned(user, JOB_XENOMORPH)) // User is jobbanned
-		to_chat(user, SPAN_WARNING("You are banned from playing aliens and cannot spawn as a xenomorph."))
+		to_chat(user, SPAN_WARNING("你被禁止扮演异形，无法以异形身份生成。"))
 		return FALSE
 
 	for(var/mob_name in banished_ckeys)
 		if(banished_ckeys[mob_name] == user.ckey)
-			to_chat(user, SPAN_WARNING("You are banished from the [src], you may not rejoin unless the Queen re-admits you or dies."))
+			to_chat(user, SPAN_WARNING("你已被[src]驱逐，除非女王重新接纳你或死亡，否则不得重新加入。"))
 			return FALSE
 
 	var/mob/living/carbon/human/original_human = user.mind?.original
 	if(istype(original_human) && !original_human.undefibbable && !original_human.chestburst && HAS_TRAIT_FROM(original_human, TRAIT_NESTED, TRAIT_SOURCE_BUCKLE))
-		to_chat(user, SPAN_WARNING("You cannot become a lesser drone until you are no longer alive in a nest."))
+		to_chat(user, SPAN_WARNING("你必须先脱离巢穴中的存活状态，才能成为次级工蜂。"))
 		return FALSE
 
 	if(world.time - user.client?.player_details.larva_pool_time < XENO_JOIN_DEAD_TIME)
 		var/time_left = floor((user.client.player_details.larva_pool_time + XENO_JOIN_DEAD_TIME - world.time) / 10)
-		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a lesser drone until [XENO_JOIN_DEAD_TIME / 600] minutes have passed ([time_left] seconds remaining)."))
+		to_chat(user, SPAN_WARNING("你最近刚脱离。在[XENO_JOIN_DEAD_TIME / 600]分钟后才能成为次级工蜂（剩余[time_left]秒）。"))
 		return FALSE
 
 	if(world.time - user.timeofdeath < JOIN_AS_LESSER_DRONE_DELAY)
 		var/time_left = floor((user.timeofdeath + JOIN_AS_LESSER_DRONE_DELAY - world.time) / 10)
-		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a lesser drone until [JOIN_AS_LESSER_DRONE_DELAY / 10] seconds have passed ([time_left] seconds remaining)."))
+		to_chat(user, SPAN_WARNING("你最近刚脱离。在[JOIN_AS_LESSER_DRONE_DELAY / 10]秒后才能成为次级工蜂（剩余[time_left]秒）。"))
 		return FALSE
 
 	if(length(totalXenos) <= 0)
-		to_chat(user, SPAN_WARNING("The hive has fallen, you can't join it!"))
+		to_chat(user, SPAN_WARNING("巢穴已沦陷，你无法加入！"))
 		return FALSE
 
 	if(!living_xeno_queen)
-		to_chat(user, SPAN_WARNING("The selected hive does not have a Queen!"))
+		to_chat(user, SPAN_WARNING("所选巢穴没有女王！"))
 		return FALSE
 
 	if(spawning_pylon.lesser_drone_spawns < 1)
-		to_chat(user, SPAN_WARNING("The selected core or pylon does not have enough power for a lesser drone!"))
+		to_chat(user, SPAN_WARNING("所选核心或塔柱没有足够能量支持次级工蜂！"))
 		return FALSE
 
 	update_lesser_drone_limit()
@@ -1106,7 +1106,7 @@
 			current_lesser_drone_count++
 
 	if(lesser_drone_limit <= current_lesser_drone_count)
-		to_chat(user, SPAN_WARNING("[GLOB.hive_datum[hivenumber]] cannot support more lesser drones! Limit: <b>[current_lesser_drone_count]/[lesser_drone_limit]</b>"))
+		to_chat(user, SPAN_WARNING("[GLOB.hive_datum[hivenumber]]无法支持更多次级工蜂！上限：<b>[current_lesser_drone_count]/[lesser_drone_limit]</b>"))
 		return FALSE
 
 	if(!user.client)
@@ -1458,7 +1458,7 @@
 	banned_allies = FACTION_LIST_XENOMORPH
 
 /datum/hive_status/corrupted/renegade/can_spawn_as_hugger(mob/dead/observer/user)
-	to_chat(user, SPAN_WARNING("The [name] cannot support facehuggers."))
+	to_chat(user, SPAN_WARNING("[name]无法支持抱脸虫。"))
 	return FALSE
 
 /datum/hive_status/corrupted/renegade/proc/iff_protection_check(mob/living/carbon/xenomorph/xeno, mob/living/carbon/attempt_harm_mob)
@@ -1547,16 +1547,16 @@
 	addtimer(CALLBACK(src, PROC_REF(handle_defectors), faction), 11 SECONDS)
 
 /datum/hive_status/corrupted/proc/give_defection_choice(mob/living/carbon/xenomorph/xeno, faction)
-	if(tgui_alert(xeno, "Our Queen has broken the alliance with the [faction]. The device inside our carapace begins to suppress our connection with the Hive. Do we remove it and follow the Queen?", "Alliance broken!", list("Obey the Queen", "Obey the talls"), 10 SECONDS) == "Obey the talls")
+	if(tgui_alert(xeno, "我们的女王已与[faction]解除联盟。我们甲壳内的装置开始压制我们与巢穴的连接。我们要移除它并追随女王吗？", "Alliance broken!", list("Obey the Queen", "Obey the talls"), 10 SECONDS) == "Obey the talls")
 		if(!xeno.iff_tag)
-			to_chat(xeno, SPAN_XENOWARNING("It's too late now. The device is gone and our service to the Queen continues."))
+			to_chat(xeno, SPAN_XENOWARNING("现在为时已晚。装置已消失，我们继续为女王效命。"))
 			return
 		defectors += xeno
 		xeno.set_hive_and_update(XENO_HIVE_RENEGADE)
-		to_chat(xeno, SPAN_XENOANNOUNCE("You lost the connection with your Hive. Now you have no Queen, only your masters."))
-		to_chat(xeno, SPAN_NOTICE("Your instincts have changed, you seem compelled to protect [english_list(xeno.iff_tag.faction_groups, "no one")]."))
+		to_chat(xeno, SPAN_XENOANNOUNCE("你与巢穴的连接已中断。现在你没有了女王，只有你的主人。"))
+		to_chat(xeno, SPAN_NOTICE("你的本能已改变，你似乎被迫要保护[english_list(xeno.iff_tag.faction_groups, "no one")]."))
 		return
-	xeno.visible_message(SPAN_XENOWARNING("[xeno] rips out [xeno.iff_tag]!"), SPAN_XENOWARNING("We rip out [xeno.iff_tag]! For the Hive!"))
+	xeno.visible_message(SPAN_XENOWARNING("[xeno]扯出了[xeno.iff_tag]！"), SPAN_XENOWARNING("We rip out [xeno.iff_tag]! For the Hive!"))
 	xeno.adjustBruteLoss(50)
 	xeno.iff_tag.forceMove(get_turf(xeno))
 	xeno.iff_tag = null
@@ -1569,7 +1569,7 @@
 			continue
 		if(!(faction in xeno.iff_tag.faction_groups))
 			continue
-		xeno.visible_message(SPAN_XENOWARNING("[xeno] rips out [xeno.iff_tag]!"), SPAN_XENOWARNING("We rip out [xeno.iff_tag]! For the hive!"))
+		xeno.visible_message(SPAN_XENOWARNING("[xeno]扯出了[xeno.iff_tag]！"), SPAN_XENOWARNING("We rip out [xeno.iff_tag]! For the hive!"))
 		xeno.adjustBruteLoss(50)
 		xeno.iff_tag.forceMove(get_turf(xeno))
 		xeno.iff_tag = null
@@ -1690,56 +1690,56 @@
 	var/desc = "Xenos make psychic markers with this meaning as positional lasting communication to eachother."
 
 /datum/xeno_mark_define/fortify
-	name = "Fortify"
-	desc = "Fortify this area!"
+	name = "加固"
+	desc = "加固此区域！"
 	icon_state = "fortify"
 
 /datum/xeno_mark_define/weeds
-	name = "Need Weeds"
-	desc = "Need weeds here!"
+	name = "需要菌毯"
+	desc = "这里需要菌毯！"
 	icon_state = "weed"
 
 /datum/xeno_mark_define/nest
-	name = "Nest"
-	desc = "Nest enemies here!"
+	name = "筑巢"
+	desc = "在此处为敌人筑巢！"
 	icon_state = "nest"
 
 /datum/xeno_mark_define/hosts
-	name = "Hosts"
-	desc = "Hosts here!"
+	name = "宿主"
+	desc = "宿主在此！"
 	icon_state = "hosts"
 
 /datum/xeno_mark_define/aide
-	name = "Aide"
-	desc = "Aide here!"
+	name = "支援"
+	desc = "支援在此！"
 	icon_state = "aide"
 
 /datum/xeno_mark_define/defend
-	name = "Defend"
-	desc = "Defend the hive here!"
+	name = "防御"
+	desc = "在此防御巢穴！"
 	icon_state = "defend"
 
 /datum/xeno_mark_define/danger
-	name = "Danger Warning"
-	desc = "Caution, danger here!"
+	name = "危险警告"
+	desc = "警告，此处危险！"
 	icon_state = "danger"
 
 /datum/xeno_mark_define/rally
-	name = "Rally"
-	desc = "Group up here!"
+	name = "集结"
+	desc = "在此集结！"
 	icon_state = "rally"
 
 /datum/xeno_mark_define/hold
-	name = "Hold"
-	desc = "Hold this area!"
+	name = "坚守"
+	desc = "坚守此区域！"
 	icon_state = "hold"
 
 /datum/xeno_mark_define/ambush
-	name = "Ambush"
-	desc = "Ambush the enemy here!"
+	name = "伏击"
+	desc = "在此伏击敌人！"
 	icon_state = "ambush"
 /datum/xeno_mark_define/attack
-	name = "Attack"
-	desc = "Attack the enemy here!"
+	name = "进攻"
+	desc = "在此进攻敌人！"
 	icon_state = "attack"
 

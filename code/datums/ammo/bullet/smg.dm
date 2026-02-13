@@ -12,7 +12,7 @@
 //in comparison to armor-piercing rounds.
 
 /datum/ammo/bullet/smg
-	name = "submachinegun bullet"
+	name = "冲锋枪子弹"
 	damage = 34
 	accurate_range = 4
 	effective_range_max = 4
@@ -23,17 +23,17 @@
 	accuracy = HIT_ACCURACY_TIER_3
 
 /datum/ammo/bullet/smg/m39
-	name = "high-velocity submachinegun bullet" //i don't want all smgs to inherit 'high velocity'
+	name = "高速冲锋枪子弹" //i don't want all smgs to inherit 'high velocity'
 
 /datum/ammo/bullet/smg/ap
-	name = "armor-piercing submachinegun bullet"
+	name = "穿甲冲锋枪子弹"
 
 	damage = 26
 	penetration = ARMOR_PENETRATION_TIER_6
 	shell_speed = AMMO_SPEED_TIER_4
 
 /datum/ammo/bullet/smg/heap
-	name = "high-explosive armor-piercing submachinegun bullet"
+	name = "高爆穿甲冲锋枪子弹"
 
 	damage = 45
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
@@ -41,7 +41,7 @@
 	shell_speed = AMMO_SPEED_TIER_4
 
 /datum/ammo/bullet/smg/ap/toxin
-	name = "toxic submachinegun bullet"
+	name = "剧毒冲锋枪子弹"
 	var/acid_per_hit = 5
 	var/organic_damage_mult = 3
 
@@ -60,7 +60,7 @@
 		P.damage *= organic_damage_mult
 
 /datum/ammo/bullet/smg/nail
-	name = "7x45mm plasteel nail"
+	name = "7x45毫米塑钢钉弹"
 	icon_state = "nail-projectile"
 
 	damage = 25
@@ -70,7 +70,7 @@
 	shell_speed = AMMO_SPEED_TIER_4
 
 /datum/ammo/bullet/smg/incendiary
-	name = "incendiary submachinegun bullet"
+	name = "燃烧冲锋枪子弹"
 	damage_type = BURN
 	shrapnel_chance = 0
 	flags_ammo_behavior = AMMO_BALLISTIC
@@ -85,7 +85,7 @@
 	))
 
 /datum/ammo/bullet/smg/ap/penetrating
-	name = "wall-penetrating submachinegun bullet"
+	name = "穿墙冲锋枪子弹"
 	shrapnel_chance = 0
 
 	damage = 30
@@ -98,7 +98,7 @@
 	))
 
 /datum/ammo/bullet/smg/le
-	name = "armor-shredding submachinegun bullet"
+	name = "碎甲冲锋枪子弹"
 
 	scatter = SCATTER_AMOUNT_TIER_10
 	damage = 20
@@ -108,7 +108,7 @@
 	pen_armor_punch = 4
 
 /datum/ammo/bullet/smg/rubber
-	name = "rubber submachinegun bullet"
+	name = "橡胶冲锋枪子弹"
 	sound_override = 'sound/weapons/gun_c99.ogg'
 
 	damage = 0
@@ -116,7 +116,7 @@
 	shrapnel_chance = 0
 
 /datum/ammo/bullet/smg/mp27
-	name = "simple submachinegun bullet"
+	name = "简易冲锋枪子弹"
 	damage = 40
 	accurate_range = 5
 	effective_range_max = 7
@@ -129,7 +129,7 @@
 // less damage than the m39, but better falloff, range, and AP
 
 /datum/ammo/bullet/smg/ppsh
-	name = "crude submachinegun bullet"
+	name = "粗制冲锋枪子弹"
 	damage = 26
 	accurate_range = 7
 	effective_range_max = 7
@@ -138,7 +138,7 @@
 	scatter = SCATTER_AMOUNT_TIER_5
 
 /datum/ammo/bullet/smg/pps43
-	name = "simple submachinegun bullet"
+	name = "简易冲锋枪子弹"
 	damage = 35
 	accurate_range = 7
 	effective_range_max = 10
@@ -147,7 +147,7 @@
 	scatter = SCATTER_AMOUNT_TIER_6
 
 /datum/ammo/bullet/smg/p90
-	name = "submachinegun bullet"
+	name = "冲锋枪子弹"
 
 	damage = 22
 	accurate_range = 5
@@ -157,7 +157,7 @@
 	scatter = SCATTER_AMOUNT_TIER_6
 
 /datum/ammo/bullet/smg/p90/ap
-	name = "armor-piercing submachinegun bullet"
+	name = "穿甲冲锋枪子弹"
 
 	damage = 20
 	accurate_range = 5

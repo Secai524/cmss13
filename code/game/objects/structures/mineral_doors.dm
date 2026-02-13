@@ -2,7 +2,7 @@
 //machineryness
 
 /obj/structure/mineral_door
-	name = "mineral door"
+	name = "矿物门"
 	density = TRUE
 	anchored = TRUE
 	opacity = TRUE
@@ -20,7 +20,7 @@
 /obj/structure/mineral_door/New(location)
 	..()
 	icon_state = mineralType
-	name = "[mineralType] door"
+	name = "[mineralType]门"
 
 
 /obj/structure/mineral_door/Collided(atom/user)
@@ -112,14 +112,14 @@
 /obj/structure/mineral_door/attackby(obj/item/W, mob/living/user)
 	if(istype(W,/obj/item/tool/pickaxe))
 		var/obj/item/tool/pickaxe/digTool = W
-		to_chat(user, "You start digging the [name].")
+		to_chat(user, "你开始挖掘[name]。")
 		if(do_after(user,digTool.digspeed*hardness, INTERRUPT_ALL, BUSY_ICON_GENERIC) && src)
-			to_chat(user, "You finished digging.")
+			to_chat(user, "你完成了挖掘。")
 			Dismantle()
 	else if(!(W.flags_item & NOBLUDGEON) && W.force)
 		user.animation_attack_on(src)
 		hardness -= W.force/100 * W.demolition_mod
-		to_chat(user, "You hit the [name] with your [W.name]!")
+		to_chat(user, "你用你的[W.name]击中了[name]！")
 		CheckHardness()
 	else
 		attack_hand(user)
@@ -221,7 +221,7 @@
 	hardness = 10
 
 /obj/structure/mineral_door/wood
-	name = "wooden door"
+	name = "木门"
 	icon_state = "wood"
 	mineralType = "wood"
 	hardness = 1

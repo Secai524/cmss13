@@ -1,5 +1,5 @@
 /datum/equipment_preset/survivor/security/nv
-	name = "Survivor - New Varadero Security Guard"
+	name = "幸存者 - 新瓦拉德罗保安"
 	assignment = "United Americas Peacekeeper"
 
 /datum/equipment_preset/survivor/security/nv/load_gear(mob/living/carbon/human/new_human)
@@ -13,7 +13,7 @@
 	..()
 
 /datum/equipment_preset/survivor/doctor/nv
-	name = "Survivor - New Varadero Medical Technician"
+	name = "幸存者 - 新瓦拉德罗医疗技术员"
 	assignment = "New Varadero Medical Technician"
 
 /datum/equipment_preset/survivor/doctor/nv/load_gear(mob/living/carbon/human/new_human)
@@ -24,7 +24,7 @@
 	..()
 
 /datum/equipment_preset/survivor/scientist/nv
-	name = "Survivor - New Varadero Researcher"
+	name = "幸存者 - 新瓦拉德罗研究员"
 	assignment = "New Varadero Researcher"
 
 /datum/equipment_preset/survivor/scientist/nv/load_gear(mob/living/carbon/human/new_human)
@@ -39,8 +39,8 @@
 	..()
 
 /datum/equipment_preset/survivor/interstellar_commerce_commission_liaison/nv
-	name = "Survivor - Interstellar Commerce Commission Liaison New Varadero"
-	assignment = "Interstellar Commerce Commission Corporate Liaison"
+	name = "幸存者 - 星际商业委员会联络官 新瓦拉德罗"
+	assignment = "星际商业委员会公司联络官"
 
 /datum/equipment_preset/survivor/interstellar_commerce_commission_liaison/nv/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/corporate_formal(new_human), WEAR_BODY)
@@ -52,7 +52,7 @@
 	..()
 
 /datum/equipment_preset/survivor/trucker/nv
-	name = "Survivor - New Varadero Cargo Technician"
+	name = "幸存者 - 新瓦拉德罗货物技术员"
 	assignment = "New Varadero Cargo Technician"
 
 /datum/equipment_preset/survivor/trucker/nv/load_gear(mob/living/carbon/human/new_human)
@@ -65,7 +65,7 @@
 	..()
 
 /datum/equipment_preset/survivor/engineer/nv
-	name = "Survivor - New Varadero Technician"
+	name = "幸存者 - 新瓦拉德罗技术员"
 	assignment = "New Varadero Engineer"
 
 /datum/equipment_preset/survivor/engineer/nv/load_gear(mob/living/carbon/human/new_human)
@@ -77,7 +77,7 @@
 	..()
 
 /datum/equipment_preset/survivor/chaplain/nv
-	name = "Survivor - New Varadero Priest"
+	name = "幸存者 - 新瓦拉德罗牧师"
 	assignment = "New Varadero Priest"
 
 /datum/equipment_preset/survivor/chaplain/nv/load_gear(mob/living/carbon/human/new_human)

@@ -1,5 +1,5 @@
 /datum/supply_packs/upp/ammo_mortar_he
-	name = "UPP M402 mortar shells crate (x6 HE)"
+	name = "UPP M402迫击炮弹箱（x6高爆弹）"
 	cost = 20
 	contains = list(
 		/obj/item/mortar_shell/he,
@@ -14,7 +14,7 @@
 	group = "UPP Mortar"
 
 /datum/supply_packs/upp/ammo_mortar_incend
-	name = "UPP M402 mortar shells crate (x6 Incend)"
+	name = "UPP M402迫击炮弹箱（x6燃烧弹）"
 	cost = 20
 	contains = list(
 		/obj/item/mortar_shell/incendiary,
@@ -29,7 +29,7 @@
 	group = "UPP Mortar"
 
 /datum/supply_packs/upp/ammo_mortar_flare
-	name = "UPP M402 mortar shells crate (x6 Flare/Camera)"
+	name = "UPP M402迫击炮弹箱（x6照明/摄像弹）"
 	cost = 20
 	contains = list(
 		/obj/item/mortar_shell/flare,

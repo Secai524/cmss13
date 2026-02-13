@@ -3,7 +3,7 @@
 	var/message_range = GLOB.world_view_size
 
 	if(client?.prefs?.muted & MUTE_IC)
-		to_chat(src, SPAN_WARNING("You cannot speak in IC (Muted)."))
+		to_chat(src, SPAN_WARNING("你无法进行角色内发言（已被禁言）。"))
 		return
 
 	message = trim(strip_html(message))
@@ -80,7 +80,7 @@
 //General proc for hivemind. Lame, but effective.
 /mob/living/carbon/xenomorph/proc/hivemind_talk(message)
 	if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
-		to_chat(src, SPAN_WARNING("Our psychic connection has been temporarily disabled!"))
+		to_chat(src, SPAN_WARNING("我们的心灵连接已被暂时禁用！"))
 		return
 
 	if(SEND_SIGNAL(src, COMSIG_XENO_TRY_HIVEMIND_TALK, message) & COMPONENT_OVERRIDE_HIVEMIND_TALK)
@@ -93,7 +93,7 @@
 		return
 
 	if(!hive.living_xeno_queen && !SSticker?.mode?.hardcore && !hive.allow_no_queen_actions && SSticker.mode.evolution_ovipositor_threshold)
-		to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
+		to_chat(src, SPAN_WARNING("没有女王。你是孤身一人。"))
 		return
 
 	if(!filter_message(src, message))

@@ -1,6 +1,6 @@
 /obj/structure/machinery/prop/almayer/CICmap/yautja
-	name = "hunter globe"
-	desc = "A globe designed by the hunters to show them the location of prey across the hunting grounds."
+	name = "猎手球体"
+	desc = "由猎手设计的球体，用于显示猎物在整个猎场中的位置。"
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	icon_state = "globe"
 	breakable = FALSE
@@ -8,15 +8,15 @@
 	drawing = FALSE
 
 /obj/structure/machinery/autolathe/yautja
-	name = "yautja autolathe"
-	desc = "It produces items using metal and glass."
+	name = "铁血战士自动制造机"
+	desc = "它使用金属和玻璃生产物品。"
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	stored_material =  list("metal" = 40000, "glass" = 20000)
 	breakable = FALSE
 
 /obj/structure/machinery/prop/yautja/bubbler
-	name = "yautja cauldron"
-	desc = "A large, black machine emitting an ominous hum with an attached pot of boiling fluid. Bits of what appears to be leftover lard and balls of hair can be seen floating inside of it."
+	name = "铁血战士熔炉"
+	desc = "一台发出不祥嗡鸣的大型黑色机器，附有一个沸腾液体的锅。可以看到里面漂浮着似乎是残留的油脂和毛发团。"
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	icon_state = "vat"
 	density = TRUE
@@ -32,24 +32,24 @@
 
 /obj/structure/machinery/prop/yautja/bubbler/attackby(obj/potential_limb, mob/living/user)
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		to_chat(user, SPAN_NOTICE("You have no idea what this does, and you figure it is not time to find out."))
+		to_chat(user, SPAN_NOTICE("你完全不知道这东西是干什么用的，而且你觉得现在不是弄清楚的时候。"))
 		return
 
 	if(user.action_busy)
 		return
 
 	if(!istype(potential_limb, /obj/item/limb))
-		to_chat(user, SPAN_NOTICE("You cannot put this in [src]."))
+		to_chat(user, SPAN_NOTICE("你无法将此物放入[src]。"))
 		return
 	var/obj/item/limb/current_limb = potential_limb
 
 	if(!current_limb.flayed)
-		to_chat(user, SPAN_NOTICE("This limb is not ready."))
+		to_chat(user, SPAN_NOTICE("此肢体尚未就绪。"))
 		return
 	icon_state = "vat_boiling"
-	to_chat(user, SPAN_WARNING("You place [current_limb] in and start the cauldron."))
+	to_chat(user, SPAN_WARNING("你将[current_limb]放入并启动了熔炉。"))
 	if(!do_after(user, 15 SECONDS, INTERRUPT_NONE, BUSY_ICON_HOSTILE, current_limb))
-		to_chat(user, SPAN_NOTICE("You pull [current_limb] back out of the cauldron."))
+		to_chat(user, SPAN_NOTICE("你将[current_limb]从熔炉中拉了出来。"))
 		icon_state = initial(icon_state)
 		return
 	icon_state = initial(icon_state)

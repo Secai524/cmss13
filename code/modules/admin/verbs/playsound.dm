@@ -4,7 +4,7 @@
 	if(!check_rights(R_SOUNDS))
 		return
 
-	var/sound_mode = tgui_input_list(src, "Play a sound from which source?", "Select Source", list("Web", "Upload"))
+	var/sound_mode = tgui_input_list(src, "播放哪个来源的声音？", "Select Source", list("Web", "Upload"))
 	if(!sound_mode)
 		return
 
@@ -25,10 +25,10 @@
 			media_players += new /datum/internet_media/cobalt
 
 		if(!length(media_players))
-			to_chat(src, SPAN_BOLDWARNING("Your server host has not set up any web media players."))
+			to_chat(src, SPAN_BOLDWARNING("你的服务器主机未设置任何网络媒体播放器。"))
 			return
 
-		web_sound_input = input("Enter content URL (supported sites only)", "Play Internet Sound") as text|null
+		web_sound_input = input("Enter content URL (supported sites only)", "播放网络声音") as text|null
 		if(!istext(web_sound_input) || !length(web_sound_input))
 			return
 
@@ -42,9 +42,9 @@
 				break
 
 		if(!istype(response))
-			to_chat(src, SPAN_BOLDWARNING("All configured web media players failed to provide a valid response:"))
+			to_chat(src, SPAN_BOLDWARNING("所有配置的网络媒体播放器均未能提供有效响应："))
 			for(var/datum/internet_media/player as anything in media_players)
-				to_chat(src, SPAN_WARNING("[player.type] error: [player.error]"))
+				to_chat(src, SPAN_WARNING("[player.type] 错误：[player.error]"))
 			return
 
 		data = response.get_list()
@@ -52,18 +52,18 @@
 	else if(sound_mode == "Upload")
 		var/current_transport = CONFIG_GET(string/asset_transport)
 		if(!current_transport || current_transport == "simple")
-			if(tgui_alert(usr, "WARNING: Your server is using simple asset transport. Sounds will have to be sent directly to players, which may freeze the game for long durations. Are you SURE?", "Really play direct sound?", list("Yes", "No")) != "Yes")
+			if(tgui_alert(usr, "警告：你的服务器正在使用简单资源传输。声音将必须直接发送给玩家，这可能导致游戏长时间卡顿。你确定吗？", "Really play direct sound?", list("Yes", "No")) != "Yes")
 				return
 			must_send_assets = TRUE
 
-		var/soundfile = input(usr, "Choose a sound file to play", "Upload Sound") as null|file
+		var/soundfile = input(usr, "选择要播放的音频文件", "Upload Sound") as null|file
 		if(!soundfile)
 			return
 
 		var/static/regex/only_extension = regex(@{"^.*\.([a-z0-9]{1,5})$"}, "gi")
 		var/extension = only_extension.Replace("[soundfile]", "$1")
 		if(!length(extension))
-			to_chat(src, SPAN_WARNING("Invalid filename extension."))
+			to_chat(src, SPAN_WARNING("无效的文件扩展名。"))
 			return
 
 		var/static/playsound_notch = 1
@@ -87,17 +87,17 @@
 		music_extra_data["end"] = data["end_time"]
 
 		if(isnull(data["title"]))
-			data["title"] = tgui_input_text(src, "What is the title of this media?", "Media Title")
+			data["title"] = tgui_input_text(src, "此媒体的标题是什么？", "Media Title")
 		title = data["title"]
 		music_extra_data["title"] = data["title"]
 
 	if(!must_send_assets && web_sound_url && !findtext(web_sound_url, GLOB.is_http_protocol))
-		to_chat(src, SPAN_BOLDWARNING("BLOCKED: Content URL not using http(s) protocol."), confidential = TRUE)
-		to_chat(src, SPAN_WARNING("The media provider returned a content URL that isn't using the HTTP or HTTPS protocol."), confidential = TRUE)
+		to_chat(src, SPAN_BOLDWARNING("已阻止：内容URL未使用HTTP(S)协议。"), confidential = TRUE)
+		to_chat(src, SPAN_WARNING("媒体提供商返回的内容URL未使用HTTP或HTTPS协议。"), confidential = TRUE)
 		return
 
 
-	switch(tgui_alert(src, "Show the name of this sound to the players?", "Sound Name", list("Yes","No","Cancel")))
+	switch(tgui_alert(src, "向玩家显示此音频的名称？", "Sound Name", list("Yes","No","Cancel")))
 		if("No")
 			music_extra_data["title"] = "Admin sound"
 			announce_title = FALSE
@@ -110,8 +110,8 @@
 		"Atmospheric" = SOUND_ADMIN_ATMOSPHERIC
 	)
 
-	var/style = tgui_input_list(src, "Who do you want to play this to?", "Select Listeners", list("Globally", "Xenos", "Marines", "Ghosts", "All In View Range", "Single Mob"))
-	var/sound_type = tgui_input_list(src, "What kind of sound is this?", "Select Sound Type", sound_type_list)
+	var/style = tgui_input_list(src, "你想向谁播放？", "Select Listeners", list("Globally", "Xenos", "Marines", "Ghosts", "All In View Range", "Single Mob"))
+	var/sound_type = tgui_input_list(src, "这是什么类型的音频？", "Select Sound Type", sound_type_list)
 	sound_type = sound_type_list[sound_type]
 
 	switch(style)
@@ -133,7 +133,7 @@
 			for(var/mob/mob in all_mobs)
 				if(mob.client)
 					all_client_mobs += mob
-			var/mob/choice = tgui_input_list(src, "Select the mob to play to:","Select Mob", all_client_mobs)
+			var/mob/choice = tgui_input_list(src, "选择播放目标：","Select Mob", all_client_mobs)
 			if(QDELETED(choice))
 				return
 			targets.Add(choice)
@@ -147,7 +147,7 @@
 				SSassets.transport.send_assets(client, asset_name)
 			client?.tgui_panel?.play_music(web_sound_url, music_extra_data)
 			if(announce_title)
-				to_chat(client, SPAN_BOLDANNOUNCE("An admin played: [music_extra_data["title"]]"), confidential = TRUE)
+				to_chat(client, SPAN_BOLDANNOUNCE("管理员播放了：[music_extra_data["title"]]"), confidential = TRUE)
 		else
 			client?.tgui_panel?.stop_music()
 

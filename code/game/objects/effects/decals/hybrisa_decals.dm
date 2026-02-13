@@ -115,19 +115,19 @@
 
 // Angled Warning-Stripes
 /obj/effect/decal/hybrisa/warningstripes_angled
-	name = "warning stripes"
+	name = "警示条纹"
 	icon = 'icons/effects/hybrisa_decals.dmi'
 	icon_state = "warningstripes_angled"
 /obj/effect/decal/hybrisa/warningstripes_angled_corner
-	name = "warning stripes"
+	name = "警示条纹"
 	icon = 'icons/effects/hybrisa_decals.dmi'
 	icon_state = "warningstripes_angled_corner"
 
 // Grate
 
 /obj/effect/decal/hybrisa/grate
-	name = "solid metal grate"
-	desc = "A metal grate."
+	name = "实心金属格栅"
+	desc = "一个金属格栅。"
 	icon = 'icons/effects/hybrisa_decals.dmi'
 	icon_state = "zhalfgrate1"
 
@@ -154,7 +154,7 @@
 // 128 x 64 Decals
 
 /obj/effect/decal/hybrisa/wy_huge_logo
-	name = "Weyland-Yutani Corp. - Building Better Worlds"
+	name = "维兰德-汤谷公司 - 建设更美好的世界"
 	icon = 'icons/effects/WY_huge_logo.dmi'
 	icon_state = "wy_huge_logo"
 
@@ -210,7 +210,7 @@
 	icon_state = "plating_angled"
 
 /obj/effect/decal/hybrisa/egg_base
-	name = "strange goop"
+	name = "奇怪的粘稠物"
 	desc = null
 	icon = 'icons/obj/structures/props/hybrisa/misc_props.dmi'
 	icon_state = "egg_base"

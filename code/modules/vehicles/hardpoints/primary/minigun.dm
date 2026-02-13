@@ -1,6 +1,6 @@
 /obj/item/hardpoint/primary/minigun
 	name = "\improper LTAA-AP Minigun"
-	desc = "A primary LTAA Minigun utelizing AP ammo for tanks. Its six barrels are heavy and take a bit to fully spin up."
+	desc = "坦克的主武器，一门使用穿甲弹药的LTAA加特林机炮。其六根枪管沉重，需要一点时间才能完全达到最高射速。"
 
 	icon_state = "ltaaap_minigun"
 	disp_icon = "tank"

@@ -2,8 +2,8 @@
 //Guest pass ////////////////////////////////
 /////////////////////////////////////////////
 /obj/item/card/id/guest
-	name = "guest pass"
-	desc = "Allows temporary access to station areas."
+	name = "访客通行证"
+	desc = "允许临时访问空间站区域。"
 	icon_state = "guest"
 
 	var/temp_access = list() //to prevent agent cards stealing access as permanent
@@ -19,20 +19,20 @@
 /obj/item/card/id/guest/get_examine_text(mob/user)
 	. = ..()
 	if (world.time < expiration_time)
-		. += SPAN_NOTICE("This pass expires at [worldtime2text(expiration_time)].")
+		. += SPAN_NOTICE("此通行证将于 [worldtime2text(expiration_time)] 过期。")
 	else
 		. += SPAN_WARNING("It expired at [worldtime2text(expiration_time)].")
 
 /obj/item/card/id/guest/read()
 	if (world.time > expiration_time)
-		to_chat(usr, SPAN_NOTICE("This pass expired at [worldtime2text(expiration_time)]."))
+		to_chat(usr, SPAN_NOTICE("此通行证已于 [worldtime2text(expiration_time)] 过期。"))
 	else
-		to_chat(usr, SPAN_NOTICE("This pass expires at [worldtime2text(expiration_time)]."))
+		to_chat(usr, SPAN_NOTICE("此通行证将于 [worldtime2text(expiration_time)] 过期。"))
 
-	to_chat(usr, SPAN_NOTICE("It grants access to following areas:"))
+	to_chat(usr, SPAN_NOTICE("它授予以下区域的访问权限："))
 	for (var/A in temp_access)
-		to_chat(usr, SPAN_NOTICE("[get_access_desc(A)]."))
-	to_chat(usr, SPAN_NOTICE("Issuing reason: [reason]."))
+		to_chat(usr, SPAN_NOTICE("[get_access_desc(A)]。"))
+	to_chat(usr, SPAN_NOTICE("签发理由：[reason]。"))
 	return
 
 /////////////////////////////////////////////
@@ -40,7 +40,7 @@
 /////////////////////////////////////////////
 
 /obj/structure/machinery/computer/guestpass
-	name = "guest pass terminal"
+	name = "访客通行证终端"
 	icon_state = "guest"
 	density = FALSE
 
@@ -62,7 +62,7 @@
 				giver = O
 				updateUsrDialog()
 		else
-			to_chat(user, SPAN_WARNING("There is already ID card inside."))
+			to_chat(user, SPAN_WARNING("内部已有身份卡。"))
 
 /obj/structure/machinery/computer/guestpass/attack_remote(mob/user as mob)
 	return attack_hand(user)
@@ -110,20 +110,20 @@
 	if (href_list["choice"])
 		switch(href_list["choice"])
 			if ("giv_name")
-				var/nam = stripped_input("Person pass is issued to", "Name", giv_name)
+				var/nam = stripped_input("Person pass is issued to", "姓名", giv_name)
 				if (nam)
 					giv_name = nam
 			if ("reason")
-				var/reas = stripped_input(usr,"Reason why pass is issued", "Reason", reason)
+				var/reas = stripped_input(usr,"通行证签发理由", "Reason", reason)
 				if(reas)
 					reason = reas
 			if ("duration")
-				var/dur = tgui_input_number(usr, "Duration (in minutes) during which pass is valid (up to 30 minutes).", "Duration", 5, 30, 1)
+				var/dur = tgui_input_number(usr, "通行证有效时长（分钟）（最长30分钟）。", "Duration", 5, 30, 1)
 				if (dur)
 					if (dur > 0 && dur <= 30)
 						duration = dur
 					else
-						to_chat(usr, SPAN_WARNING("Invalid duration."))
+						to_chat(usr, SPAN_WARNING("无效时长。"))
 			if ("access")
 				var/A = text2num(href_list["access"])
 				if (A in accesses)
@@ -180,6 +180,6 @@
 					pass.reason = reason
 					pass.name = "guest pass #[number]"
 				else
-					to_chat(usr, SPAN_DANGER("Cannot issue pass without issuing ID."))
+					to_chat(usr, SPAN_DANGER("未签发身份卡，无法签发通行证。"))
 	updateUsrDialog()
 	return

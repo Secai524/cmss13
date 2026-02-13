@@ -1,6 +1,6 @@
 /turf/closed/wall/r_wall
-	name = "reinforced wall"
-	desc = "A huge chunk of reinforced metal used to separate rooms."
+	name = "强化墙"
+	desc = "一大块用于分隔房间的强化金属。"
 	icon_state = "r_wall_mapicon"
 	opacity = TRUE
 	density = TRUE
@@ -21,14 +21,14 @@
 
 	if(busy)
 		if(ishuman(user))
-			to_chat(user, SPAN_WARNING("Someone else is already working on [src]."))
+			to_chat(user, SPAN_WARNING("其他人已经在处理[src]了。"))
 		return
 
 	//THERMITE related stuff. Calls src.thermitemelt() which handles melting walls and the relevant effects
 	if(thermite)
 		if(W.heat_source >= 1000)
 			if(turf_flags & TURF_HULL)
-				to_chat(user, SPAN_WARNING("[src] is much too tough for you to do anything to it with [W]."))
+				to_chat(user, SPAN_WARNING("[src]过于坚固，你无法用[W]对其造成任何影响。"))
 			else
 				if(iswelder(W))
 					var/obj/item/tool/weldingtool/WT = W
@@ -44,17 +44,17 @@
 		if(user.action_busy)
 			return
 		if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG) || !current_hammer.really_heavy))
-			to_chat(user, SPAN_WARNING("You can't use [current_hammer] properly!"))
+			to_chat(user, SPAN_WARNING("你无法正确使用[current_hammer]！"))
 			return
 
-		to_chat(user, SPAN_NOTICE("You start taking down [src]."))
+		to_chat(user, SPAN_NOTICE("你开始拆除[src]。"))
 		busy = TRUE
 		if(!do_after(user, 10 SECONDS, INTERRUPT_ALL_OUT_OF_RANGE, BUSY_ICON_BUILD))
 			busy = FALSE
-			to_chat(user, SPAN_NOTICE("You stop taking down [src]."))
+			to_chat(user, SPAN_NOTICE("你停止拆除[src]。"))
 			return
 		busy = FALSE
-		to_chat(user, SPAN_NOTICE("You tear down [src]."))
+		to_chat(user, SPAN_NOTICE("你拆除了[src]。"))
 
 		playsound(src, 'sound/effects/meteorimpact.ogg', 40, 1)
 		playsound(src, 'sound/effects/ceramic_shatter.ogg', 40, 1)
@@ -67,7 +67,7 @@
 		if(WALL_STATE_WELD)
 			if(iswelder(W))
 				if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
-					to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+					to_chat(user, SPAN_WARNING("你需要一把更强的喷枪！"))
 					return
 				var/obj/item/tool/weldingtool/WT = W
 				try_weldingtool_deconstruction(WT, user)
@@ -75,7 +75,7 @@
 
 		if(WALL_STATE_SCREW)
 			if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
-				user.visible_message(SPAN_NOTICE("[user] begins removing the support lines."),
+				user.visible_message(SPAN_NOTICE("[user]开始移除支撑线。"),
 				SPAN_NOTICE("You begin removing the support lines."))
 				playsound(src, 'sound/items/Screwdriver.ogg', 25, 1)
 				busy = TRUE
@@ -84,12 +84,12 @@
 					return
 				busy = FALSE
 				d_state = WALL_STATE_WIRECUTTER
-				user.visible_message(SPAN_NOTICE("[user] removes the support lines."), SPAN_NOTICE("You remove the support lines."))
+				user.visible_message(SPAN_NOTICE("[user]移除了支撑线。"), SPAN_NOTICE("You remove the support lines."))
 				return
 
 		if(WALL_STATE_WIRECUTTER)
 			if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
-				user.visible_message(SPAN_NOTICE("[user] begins uncrimping the hydraulic lines."),
+				user.visible_message(SPAN_NOTICE("[user]开始松开液压管路。"),
 				SPAN_NOTICE("You begin uncrimping the hydraulic lines."))
 				playsound(src, 'sound/items/Wirecutter.ogg', 25, 1)
 				busy = TRUE
@@ -98,12 +98,12 @@
 					return
 				busy = FALSE
 				d_state = WALL_STATE_WRENCH
-				user.visible_message(SPAN_NOTICE("[user] finishes uncrimping the hydraulic lines."), SPAN_NOTICE("You finish uncrimping the hydraulic lines."))
+				user.visible_message(SPAN_NOTICE("[user]完成了液压管路的松开工作。"), SPAN_NOTICE("You finish uncrimping the hydraulic lines."))
 				return
 
 		if(WALL_STATE_WRENCH)
 			if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
-				user.visible_message(SPAN_NOTICE("[user] starts loosening the anchoring bolts securing the support rods."),
+				user.visible_message(SPAN_NOTICE("[user]开始拧松固定支撑杆的锚固螺栓。"),
 				SPAN_NOTICE("You start loosening the anchoring bolts securing the support rods."))
 				playsound(src, 'sound/items/Ratchet.ogg', 25, 1)
 				busy = TRUE
@@ -112,12 +112,12 @@
 					return
 				busy = FALSE
 				d_state = WALL_STATE_CROWBAR
-				user.visible_message(SPAN_NOTICE("[user] removes the bolts anchoring the support rods."), SPAN_NOTICE("You remove the bolts anchoring the support rods."))
+				user.visible_message(SPAN_NOTICE("[user]移除了固定支撑杆的螺栓。"), SPAN_NOTICE("You remove the bolts anchoring the support rods."))
 				return
 
 		if(WALL_STATE_CROWBAR)
 			if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
-				user.visible_message(SPAN_NOTICE("[user] struggles to pry apart the connecting rods."),
+				user.visible_message(SPAN_NOTICE("[user]奋力撬开连接杆。"),
 				SPAN_NOTICE("You struggle to pry apart the connecting rods."))
 				playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
 				busy = TRUE
@@ -127,7 +127,7 @@
 				busy = FALSE
 				if(!istype(src, /turf/closed/wall/r_wall))
 					return
-				user.visible_message(SPAN_NOTICE("[user] pries apart the connecting rods."), SPAN_NOTICE("You pry apart the connecting rods."))
+				user.visible_message(SPAN_NOTICE("[user]撬开了连接杆。"), SPAN_NOTICE("You pry apart the connecting rods."))
 				new /obj/item/stack/rods(src)
 				dismantle_wall()
 				return
@@ -136,13 +136,13 @@
 
 	//DRILLING
 	if (istype(W, /obj/item/tool/pickaxe/diamonddrill))
-		to_chat(user, SPAN_NOTICE("You begin to drill though the wall."))
+		to_chat(user, SPAN_NOTICE("你开始钻穿墙壁。"))
 		busy = TRUE
 		if(do_after(user, 200 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			busy = FALSE
 			if(!istype(src, /turf/closed/wall/r_wall))
 				return
-			to_chat(user, SPAN_NOTICE("Your drill tears though the last of the reinforced plating."))
+			to_chat(user, SPAN_NOTICE("你的钻头撕裂了最后一块加固板。"))
 			dismantle_wall()
 		busy = FALSE
 		return
@@ -150,13 +150,13 @@
 	//REPAIRING
 	else if(damage && istype(W, /obj/item/stack/sheet/metal))
 		var/obj/item/stack/sheet/metal/MS = W
-		user.visible_message(SPAN_NOTICE("[user] starts repairing the damage to [src]."),
+		user.visible_message(SPAN_NOTICE("[user]开始修复[src]的损伤。"),
 		SPAN_NOTICE("You start repairing the damage to [src]."))
 		playsound(src, 'sound/items/Welder.ogg', 25, 1)
 		busy = TRUE
 		if(do_after(user, max(5, floor(damage / 5) * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION)), INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && istype(src, /turf/closed/wall/r_wall))
 			busy = FALSE
-			user.visible_message(SPAN_NOTICE("[user] finishes repairing the damage to [src]."),
+			user.visible_message(SPAN_NOTICE("[user]完成了对[src]损伤的修复。"),
 			SPAN_NOTICE("You finish repairing the damage to [src]."))
 			take_damage(-damage)
 			MS.use(1)
@@ -213,8 +213,8 @@
 	turf_flags = TURF_HULL
 
 /turf/closed/wall/r_wall/unmeltable
-	name = "heavy reinforced wall"
-	desc = "A huge chunk of ultra-reinforced metal used to separate rooms. Looks virtually indestructible."
+	name = "重型强化墙"
+	desc = "一大块用于分隔房间的超强化金属。看起来几乎坚不可摧。"
 	icon_state = "heavy_r_wall_mapicon"
 	walltype = WALL_REINFORCED
 	turf_flags = TURF_HULL
@@ -225,7 +225,7 @@
 //Chigusa
 
 /turf/closed/wall/r_wall/chigusa
-	name = "facility wall"
+	name = "设施墙壁"
 	icon = 'icons/turf/walls/chigusa.dmi'
 	icon_state = "chigusa"
 	walltype = WALL_REINFORCED_CHIGUSA
@@ -243,7 +243,7 @@
 //Bunker Walls
 
 /turf/closed/wall/r_wall/bunker
-	name = "bunker wall"
+	name = "地堡墙壁"
 	icon = 'icons/turf/walls/bunker.dmi'
 	icon_state = "bunker"
 	walltype = WALL_REINFORCED_BUNKER
@@ -251,14 +251,14 @@
 //Prison
 
 /turf/closed/wall/r_wall/prison
-	name = "reinforced metal wall"
+	name = "强化金属墙"
 	icon = 'icons/turf/walls/prison.dmi'
 	icon_state = "rwall"
 	walltype = WALL_REINFORCED
 
 /turf/closed/wall/r_wall/prison_unmeltable
-	name = "heavy reinforced wall"
-	desc = "A huge chunk of ultra-reinforced metal used to separate rooms. Looks virtually indestructible."
+	name = "重型强化墙"
+	desc = "一大块用于分隔房间的超强化金属。看起来几乎坚不可摧。"
 	icon = 'icons/turf/walls/prison.dmi'
 	icon_state = "hwall"
 	walltype = WALL_REINFORCED
@@ -276,14 +276,14 @@
 //Biodome
 
 /turf/closed/wall/r_wall/biodome
-	name = "reinforced metal wall"
+	name = "强化金属墙"
 	icon = 'icons/turf/walls/corsat.dmi'
 	icon_state = "r_dome"
 	walltype = WALL_DOMER
 
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable
-	name = "heavy reinforced wall"
-	desc = "A huge chunk of ultra-reinforced metal used to separate rooms. Looks virtually indestructible."
+	name = "重型强化墙"
+	desc = "一大块用于分隔房间的超强化金属。看起来几乎坚不可摧。"
 	icon_state = "h_dome"
 	turf_flags = TURF_HULL
 
@@ -322,7 +322,7 @@
 
 // Elevator Buttons
 /turf/closed/wall/r_wall/elevator/button
-	name = "elevator buttons"
+	name = "电梯按钮"
 
 /turf/closed/wall/r_wall/elevator/button/research
 	icon_state = "wall_button_research"

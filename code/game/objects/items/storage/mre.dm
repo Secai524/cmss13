@@ -1,7 +1,7 @@
 ///CORE MRE, ALSO JUST SO HAPPEN TO BE USCM MRE
 /obj/item/storage/box/mre
 	name = "\improper USCM MRE"
-	desc = "A Meal, Ready-to-Eat. A single-meal combat ration designed to provide a soldier with enough nutrients for a day of strenuous work. Its expiration date is at least 20 years ahead of your combat life expectancy."
+	desc = "一份即食口粮。一种单餐份战斗口粮，旨在为士兵提供一天高强度工作所需的足够营养。它的保质期至少比你的战斗预期寿命长20年。"
 	icon = 'icons/obj/items/storage/mre.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/mres_lefthand.dmi',
@@ -140,7 +140,7 @@
 
 	UnregisterSignal(src, COMSIG_ITEM_DROPPED)
 	storage_close(user)
-	to_chat(user, SPAN_NOTICE("You throw away [src]."))
+	to_chat(user, SPAN_NOTICE("你扔掉了[src]。"))
 	new trash_item(user.loc)
 	qdel(src)
 
@@ -153,7 +153,7 @@
 
 /obj/item/storage/box/mre/pmc
 	name = "\improper PMC CFR ration"
-	desc = "A Combat Field Ration. Uses similar to USCM MRE format, but utilizes expensive preserving materials and methods and not less expensive foods, not much different from going to a restaurant. Eating better worlds."
+	desc = "一份战斗野战口粮。形式类似USCM的MRE，但采用了昂贵的保鲜材料和方法，而非廉价的食材，和去餐馆吃饭没太大区别。吃得更好，世界更好。"
 	icon_state = "pmc_mealpack"
 	icon_closed = "pmc_mealpack"
 	icon_opened = "pmc_mealpackopened"
@@ -199,7 +199,7 @@
 
 /obj/item/storage/box/mre/twe
 	name = "\improper TWE ORP ration"
-	desc = "An Operation Ration Pack. Uses similar to USCM MRE format, but utilizes expensive preserving materials and methods and not less expensive meals from TWE cuisine."
+	desc = "一份行动口粮包。形式类似USCM的MRE，但采用了昂贵的保鲜材料和方法，而非TWE菜系中较为廉价的餐食。"
 	icon_state = "twe_mealpack"
 	icon_closed = "twe_mealpack"
 	icon_opened = "twe_mealpackopened"
@@ -248,7 +248,7 @@
 
 /obj/item/storage/box/mre/fsr
 	name = "\improper FSR combat ration"
-	desc = "First Strike Ration, produced by the same manufacturere that produces MREs for UA militaries, but oriented on a civilian and private markets."
+	desc = "‘先发制人’口粮，由为UA军队生产MRE的同一制造商生产，但面向民用和私人市场。"
 	icon_state = "merc_mealpack"
 	icon_closed = "merc_mealpack"
 	icon_opened = "merc_mealpackopened"
@@ -266,7 +266,7 @@
 
 /obj/item/storage/box/mre/wy
 	name = "\improper W-Y brand ration pack"
-	desc = "A more or less cohesive ration, intended for colonist and corporate security, packed with a medium quality foods with a long shelf life. \nOn the box is the Weyland-Yutani logo, with a slogan surrounding it: \n<b>WEYLAND-YUTANI. FEEDING BETTER WORLDS</b>."
+	desc = "一份还算完整的口粮，专为殖民者和公司安保人员设计，内含保质期长的中等品质食品。盒子上印有维兰德-汤谷的标识，周围环绕着一句标语：<b>维兰德-汤谷。滋养更美好的世界</b>。"
 	icon_state = "wy_mealpack"
 	icon_closed = "wy_mealpack"
 	icon_opened = "wy_mealpackopened"
@@ -305,7 +305,7 @@
 
 /obj/item/storage/box/mre/upp
 	name = "\improper UPP IRP ration pack"
-	desc = "An Individual Meal Ration, mainly composed of a selection of canned food, despite being heavier, it has proven to be a lot more reliable."
+	desc = "一份单兵口粮，主要由精选罐头食品组成，虽然更重，但已被证明可靠得多。"
 	icon_state = "upp_mealpack"
 	icon_closed = "upp_mealpack"
 	icon_opened = "upp_mealpackopened"

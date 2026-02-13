@@ -2,7 +2,7 @@
 
 //Blank colonist ERT for admin stuff.
 /datum/emergency_call/colonist
-	name = "Colonists"
+	name = "殖民者"
 	mob_max = 8
 	mob_min = 1
 	arrival_message = "'This is the *static*. We are *static*.'"
@@ -24,17 +24,17 @@
 
 	sleep(20)
 	if(H && H.loc)
-		to_chat(H, SPAN_ROLE_HEADER("You are a colonist!"))
-		to_chat(H, SPAN_ROLE_BODY("You have been put into the game by a staff member. Please follow all staff instructions."))
+		to_chat(H, SPAN_ROLE_HEADER("你是一名殖民者！"))
+		to_chat(H, SPAN_ROLE_BODY("你已被管理员加入游戏。请遵守所有管理员指示。"))
 
 /datum/emergency_call/colonist/engineers
-	name = "Colonists - Engineers"
+	name = "殖民者 - 工程师"
 	preset = /datum/equipment_preset/colonist/engineer
 
 /datum/emergency_call/colonist/security
-	name = "Colonists - Security"
+	name = "殖民者 - 安保人员"
 	preset = /datum/equipment_preset/colonist/security
 
 /datum/emergency_call/colonist/doctors
-	name = "Colonists - Doctors"
+	name = "殖民者 - 医生"
 	preset = /datum/equipment_preset/colonist/doctor

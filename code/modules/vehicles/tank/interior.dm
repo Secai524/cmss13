@@ -8,7 +8,7 @@
 
 // Props
 /obj/structure/prop/tank
-	name = "tank machinery"
+	name = "坦克机械装置"
 	mouse_opacity = FALSE
 	density = TRUE
 
@@ -21,7 +21,7 @@
 
 // Hatch
 /obj/structure/interior_exit/vehicle/tank
-	name = "tank hatch"
+	name = "坦克舱盖"
 	icon = 'icons/obj/vehicles/interiors/tank.dmi'
 	icon_state = "hatch"
 

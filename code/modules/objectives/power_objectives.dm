@@ -3,7 +3,7 @@
 // Parent objective for power-related objectives, tracks APCs and such
 // Tracks APCs/SMESes here so we don't have to check every APC/SMES every time we want to score an objective
 /datum/cm_objective/power
-	name = "Something power-related"
+	name = "与电力相关的东西"
 	objective_flags = OBJECTIVE_DO_NOT_TREE
 	value = OBJECTIVE_NO_VALUE
 	state = OBJECTIVE_ACTIVE

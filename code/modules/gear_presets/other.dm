@@ -1,14 +1,14 @@
 /datum/equipment_preset/other
-	name = "Other"
+	name = "其他"
 	languages = list(LANGUAGE_ENGLISH)
 	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
 
 //*****************************************************************************************************/
 
 /datum/equipment_preset/other/freelancer
-	name = "Freelancer"
+	name = "自由佣兵"
 
-	assignment = "Freelancer"
+	assignment = "自由佣兵"
 	job_title = FACTION_FREELANCER
 	idtype = /obj/item/card/id/data
 	faction = FACTION_FREELANCER
@@ -32,7 +32,7 @@
 			first_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male_colonist) : pick(GLOB.first_names_female_colonist))
 		else // MALE
 			first_name = capitalize(pick(GLOB.first_names_male_colonist))
-			new_human.f_style = "5 O'clock Shadow"
+			new_human.f_style = "五点钟胡茬"
 
 	new_human.change_real_name(new_human, "[first_name] [last_name]")
 	new_human.age = rand(20,45)
@@ -43,7 +43,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/other/freelancer/standard
-	name = "Freelancer (Standard)"
+	name = "自由佣兵（标准）"
 	paygrades = list(PAY_SHORT_FL_S = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -119,10 +119,10 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/other/freelancer/medic
-	name = "Freelancer (Medic)"
+	name = "自由佣兵（医疗兵）"
 	paygrades = list(PAY_SHORT_FL_M = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_EXTRA
-	assignment = "Freelancer Medic"
+	assignment = "自由佣兵医疗兵"
 	skills = /datum/skills/freelancer/combat_medic
 
 /datum/equipment_preset/other/freelancer/medic/load_gear(mob/living/carbon/human/new_human)
@@ -192,7 +192,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/other/freelancer/leader
-	name = "Freelancer (Leader)"
+	name = "自由佣兵（领袖）"
 	paygrades = list(PAY_SHORT_FL_WL = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Freelancer Warlord"
@@ -229,7 +229,7 @@
 ///Hunting Grounds Freelancers///
 
 /datum/equipment_preset/other/freelancer/standard/hunted
-	name = "Freelancer (Hunted)"
+	name = "自由佣兵（被猎杀）"
 	faction = FACTION_HUNTED_MERC
 
 /datum/equipment_preset/other/freelancer/standard/hunted/load_gear(mob/living/carbon/human/new_human)
@@ -246,7 +246,7 @@
 
 
 /datum/equipment_preset/other/freelancer/leader/hunted
-	name = "Freelancer Leader (Hunted)"
+	name = "自由佣兵领袖（被猎杀）"
 	faction = FACTION_HUNTED_MERC
 
 
@@ -273,10 +273,10 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/other/elite_merc
-	name = "Elite Mercenary"
+	name = "精英雇佣兵"
 
-	assignment = "Elite Mercenary"
-	job_title = "Mercenary"
+	assignment = "精英雇佣兵"
+	job_title = "雇佣兵"
 	idtype = /obj/item/card/id/centcom
 	faction = FACTION_MERCENARY
 
@@ -299,7 +299,7 @@
 			first_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male_colonist) : pick(GLOB.first_names_female_colonist))
 		else // MALE
 			first_name = capitalize(pick(GLOB.first_names_male_colonist))
-			new_human.f_style = "5 O'clock Shadow"
+			new_human.f_style = "五点钟胡茬"
 
 	new_human.change_real_name(new_human, "[first_name] [last_name]")
 	new_human.age = rand(20,45)
@@ -310,13 +310,13 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/other/elite_merc/standard
-	name = "Elite Mercenary (Standard Miner)"
+	name = "精英雇佣兵（标准矿工）"
 	paygrades = list(PAY_SHORT_EFL_S = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/centcom
 	assignment = "Mercenary Miner"
-	job_title = "Mercenary"
+	job_title = "雇佣兵"
 	skills = /datum/skills/mercenary/elite
 	faction = FACTION_MERCENARY
 
@@ -347,13 +347,13 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/other/elite_merc/heavy
-	name = "Elite Mercenary (Heavy)"
+	name = "精英雇佣兵（重装）"
 	paygrades = list(PAY_SHORT_EFL_H = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/centcom
 	assignment = "Mercenary Heavy"
-	job_title = "Mercenary"
+	job_title = "雇佣兵"
 	skills = /datum/skills/mercenary/elite/heavy
 	faction = FACTION_MERCENARY
 
@@ -387,13 +387,13 @@
 
 //*****************************************************************************************************/
 /datum/equipment_preset/other/elite_merc/engineer
-	name = "Elite Mercenary (Engineer)"
+	name = "精英雇佣兵（工程师）"
 	paygrades = list(PAY_SHORT_EFL_E = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/data
 	assignment = "Mercenary Engineer"
-	job_title = "Mercenary"
+	job_title = "雇佣兵"
 	skills = /datum/skills/mercenary/elite/engineer
 	faction = FACTION_MERCENARY
 
@@ -441,13 +441,13 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/other/elite_merc/medic
-	name = "Elite Mercenary (Medic)"
+	name = "精英雇佣兵（医疗兵）"
 	paygrades = list(PAY_SHORT_EFL_M = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/centcom
 	assignment = "Mercenary Medic"
-	job_title = "Mercenary"
+	job_title = "雇佣兵"
 	skills = /datum/skills/mercenary/elite/medic
 	faction = FACTION_MERCENARY
 
@@ -487,13 +487,13 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/other/elite_merc/leader
-	name = "Elite Mercenary (Leader)"
+	name = "精英雇佣兵（领袖）"
 	paygrades = list(PAY_SHORT_EFL_TL = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/centcom
 	assignment = "Mercenary Warlord"
-	job_title = "Mercenary"
+	job_title = "雇佣兵"
 	skills = /datum/skills/mercenary/elite/leader
 	faction = FACTION_MERCENARY
 
@@ -525,12 +525,12 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/other/pizza
-	name = "Pizza"
+	name = "披萨"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_CHINESE) //Just in case they are delivering to UPP or CLF...
 	idtype = /obj/item/card/id/pizza
-	assignment = "Pizza Deliverer"
+	assignment = "披萨配送员"
 	job_title = FACTION_PIZZA
 	skills = /datum/skills/civilian
 	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
@@ -569,13 +569,13 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/other/souto
-	name = "Souto Man"
+	name = "索托人"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_CHINESE) //Just in case they are delivering to UPP or CLF...
 	idtype = /obj/item/card/id/souto
 	assignment = FACTION_SOUTO
-	job_title = "Souto Man"
+	job_title = "索托人"
 	skills = /datum/skills/souto
 	faction = FACTION_SOUTO
 
@@ -585,7 +585,7 @@
 
 /datum/equipment_preset/other/souto/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = MALE
-	new_human.change_real_name(new_human, "Souto Man")
+	new_human.change_real_name(new_human, "索托人")
 	new_human.age = 40
 
 /datum/equipment_preset/other/souto/load_gear(mob/living/carbon/human/new_human)
@@ -609,10 +609,10 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/other/zombie
-	name = "Zombie"
+	name = "僵尸"
 	flags = EQUIPMENT_PRESET_EXTRA
 	job_title = FACTION_ZOMBIE
-	languages = list("Zombie")
+	languages = list("僵尸")
 	skills = null //no restrictions
 	faction = FACTION_ZOMBIE
 
@@ -642,7 +642,7 @@
 	var/obj/item/clothing/under/uniform = new_human.w_uniform
 	if(istype(uniform))
 		uniform.has_sensor = UNIFORM_HAS_SENSORS
-	new_human.job = "Zombie"
+	new_human.job = "僵尸"
 	new_human.faction = faction
 	return ..()
 
@@ -659,7 +659,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/other/gladiator
-	name = "Gladiator"
+	name = "角斗士"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/dogtag
@@ -708,7 +708,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/other/gladiator/champion
-	name = "Gladiator Champion"
+	name = "角斗士冠军"
 	flags = EQUIPMENT_PRESET_EXTRA
 	skills = /datum/skills/gladiator/champion
 	assignment = "Samnite"
@@ -734,7 +734,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/other/gladiator/leader
-	name = "Gladiator Leader"
+	name = "角斗士首领"
 	flags = EQUIPMENT_PRESET_EXTRA
 	skills = /datum/skills/gladiator/champion/leader
 	assignment = "Spartacus"
@@ -760,7 +760,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/other/xeno_cultist
-	name = "Cultist - Xeno Cultist"
+	name = "异形教徒"
 	faction = FACTION_XENOMORPH
 	flags = EQUIPMENT_PRESET_EXTRA
 	idtype = /obj/item/card/id/lanyard
@@ -827,13 +827,13 @@
 	new_human.update_sight()
 
 /datum/equipment_preset/other/xeno_cultist/leader
-	name = "Cultist - Xeno Cultist Leader"
+	name = "异形教派领袖"
 	uses_special_name = TRUE
 	flags = EQUIPMENT_PRESET_EXTRA
 	skills = /datum/skills/cultist_leader
 
-	assignment = "Cultist Leader"
-	job_title = "Cultist Leader"
+	assignment = "邪教头目"
+	job_title = "邪教头目"
 
 	minimap_icon = "cult_leader"
 
@@ -885,7 +885,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/other/tank
-	name = "Event Vehicle Crewman (CRMN)"
+	name = "事件载具乘员（CRMN）"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/dogtag
@@ -925,7 +925,7 @@
 //*****************************************************************************************************/
 //adding one for VC training camp, cause I really need these
 /datum/equipment_preset/other/tank/trainee
-	name = "Vehicle Crewman Trainee (CRTR)"
+	name = "载具乘员学员（CRTR）"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/dogtag
@@ -962,7 +962,7 @@
 
 
 /datum/equipment_preset/tutorial
-	name = "Tutorial"
+	name = "教程"
 	faction = FACTION_MARINE
 	flags = EQUIPMENT_PRESET_EXTRA
 	faction_group = FACTION_LIST_MARINE
@@ -976,12 +976,12 @@
 		new_human.nutrition = NUTRITION_LOW
 
 /datum/equipment_preset/tutorial/fed
-	name = "Tutorial (Fed)"
+	name = "教程（联邦）"
 	underfed = FALSE
 	paygrades = list(PAY_SHORT_ME1 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/uscm/tutorial_rifleman
-	name = "Tutorial Rifleman"
+	name = "教程步枪兵"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_SQUAD_MARINE
 	job_title = JOB_SQUAD_MARINE
@@ -1008,14 +1008,14 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 
 /datum/equipment_preset/uscm/tutorial_rifleman/mrdummy
-	name = "Tutorial Rifleman (Dummy)"
+	name = "教程步枪兵（假人）"
 	uses_special_name = TRUE
 
 /datum/equipment_preset/uscm/tutorial_rifleman/mrdummy/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.change_real_name(new_human, "Dummy")
 
 /datum/equipment_preset/uscm_ship/uscm_medical/cmo/npc
-	name = "Chief Medical Officer (NPC)"
+	name = "医疗长（NPC）"
 	uses_special_name = TRUE
 
 /datum/equipment_preset/uscm_ship/uscm_medical/cmo/npc/load_name(mob/living/carbon/human/new_human, randomise)
@@ -1028,13 +1028,13 @@
 ///Hunting Grounds Historical Prey///
 
 /datum/equipment_preset/other/hunted
-	name = "Hunted Warrior"
+	name = "被猎杀的战士"
 	faction = FACTION_HUNTED_MISC
 	faction_group = FACTION_LIST_HUNTED
 	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/other/hunted/roman
-	name = "Roman Legionary (Hunted)"
+	name = "罗马军团兵（被猎杀）"
 	languages = list(LANGUAGE_FORGOTTEN)
 	idtype = null
 	skills = /datum/skills/gladiator/legionary
@@ -1075,13 +1075,13 @@
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/sword/gladius, WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/hunted, WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern/on, WEAR_R_STORE)
-	new_human.set_species("Human Hero")
+	new_human.set_species("人类英雄")
 	new_human.universal_understand = FALSE
 	new_human.status_flags &= ~NO_PERMANENT_DAMAGE
 	new_human.status_flags |= STATUS_FLAGS_DEBILITATE
 
 /datum/equipment_preset/other/hunted/roman/centurion
-	name = "Roman Centurion (Hunted)"
+	name = "罗马百夫长（被猎杀）"
 	assignment = "Centurion"
 	job_title = "Legionnaire"
 
@@ -1095,13 +1095,13 @@
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/sword/gladius, WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/hunted, WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern/on, WEAR_R_STORE)
-	new_human.set_species("Human Hero")
+	new_human.set_species("人类英雄")
 	new_human.universal_understand = FALSE
 	new_human.status_flags &= ~NO_PERMANENT_DAMAGE
 	new_human.status_flags |= STATUS_FLAGS_DEBILITATE
 
 /datum/equipment_preset/other/hunted/roman/eaglebearer
-	name = "Roman Aquilifer (Hunted)"
+	name = "罗马鹰旗手（被猎杀）"
 	assignment = "Aquilifer"
 	job_title = "Legionnaire"
 	skills = /datum/skills/gladiator/legionary/eaglebearer
@@ -1114,13 +1114,13 @@
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/aquilastaff, WEAR_R_HAND)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/hunted, WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern/on, WEAR_R_STORE)
-	new_human.set_species("Human Hero")
+	new_human.set_species("人类英雄")
 	new_human.universal_understand = FALSE
 	new_human.status_flags &= ~NO_PERMANENT_DAMAGE
 	new_human.status_flags |= STATUS_FLAGS_DEBILITATE
 
 /datum/equipment_preset/other/hunted/vietnam
-	name = "Vietnam US Army Rifleman (Hunted)"
+	name = "越战美军步枪兵（被猎杀）"
 	idtype = /obj/item/card/id/dogtag
 	skills = /datum/skills/dutchmerc
 	assignment = JOB_SQUAD_MARINE
@@ -1143,7 +1143,7 @@
 			first_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male_colonist) : pick(GLOB.first_names_female_colonist))
 		else // MALE
 			first_name = capitalize(pick(GLOB.first_names_male_colonist))
-			new_human.f_style = "5 O'clock Shadow"
+			new_human.f_style = "五点钟胡茬"
 
 	new_human.change_real_name(new_human, "[first_name] [last_name]")
 	new_human.age = rand(20,45)

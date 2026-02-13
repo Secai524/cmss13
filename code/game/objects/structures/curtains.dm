@@ -14,7 +14,7 @@
 
 /obj/structure/curtain/bullet_act(obj/projectile/P, def_zone)
 	if(P.damage)
-		visible_message(SPAN_WARNING("[P] tears [src] down!"))
+		visible_message(SPAN_WARNING("[P]撕毁了[src]！"))
 		qdel(src)
 	return 0
 
@@ -33,7 +33,7 @@
 /obj/structure/curtain/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	if(unslashable)
 		return TAILSTAB_COOLDOWN_NONE
-	xeno.visible_message(SPAN_DANGER("[xeno] slices [src] apart with its tail!"),
+	xeno.visible_message(SPAN_DANGER("[xeno]用它的尾巴将[src]切碎！"),
 	SPAN_DANGER("We slice [src] apart with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	xeno.tail_stab_animation(src, blunt_stab)
 	qdel(src)
@@ -51,52 +51,52 @@
 		layer = ABOVE_MOB_LAYER
 
 /obj/structure/curtain/shower
-	name = "shower curtain"
+	name = "浴帘"
 	color = "#ACD1E9"
 	alpha = 200
 
 /obj/structure/curtain/black
-	name = "black curtain"
+	name = "黑色帘子"
 	color = "#222222"
 
 /obj/structure/curtain/medical
-	name = "plastic curtain"
+	name = "塑料帘子"
 	color = "#B8F5E3"
 	alpha = 200
 
 /obj/structure/curtain/open/shower
-	name = "shower curtain"
+	name = "浴帘"
 	icon_state = "shower"
 	alpha = 200
 
 /obj/structure/curtain/open/black
-	name = "black curtain"
+	name = "黑色帘子"
 	color = "#222222"
 
 /obj/structure/curtain/open/medical
-	name = "plastic curtain"
+	name = "塑料帘子"
 	color = "#B8F5E3"
 	alpha = 200
 
 /obj/structure/curtain/red
-	name = "red curtain"
+	name = "红色帘子"
 	icon_state = "red"
 
 /obj/structure/curtain/leather
-	name = "leather curtain"
+	name = "皮革帘子"
 	icon_state = "leather_curtain"
 	alpha = 200
 
 /obj/structure/curtain/leather/alt
-	name = "leather curtain"
+	name = "皮革帘子"
 	icon_state = "leather_curtain_2"
 
 /obj/structure/curtain/leather/alt_1
-	name = "leather curtain"
+	name = "皮革帘子"
 	icon_state = "leather_curtain_3"
 
 /obj/structure/curtain/leather/alt_2
-	name = "leather curtain"
+	name = "皮革帘子"
 	icon_state = "leather_curtain_4"
 
 // Colorable
@@ -124,24 +124,24 @@
 	transparent = TRUE
 
 /obj/structure/curtain/open/red
-	name = "red curtain"
+	name = "红色帘子"
 	icon_state = "red"
 
 /obj/structure/curtain/open/leather
-	name = "leather curtain"
+	name = "皮革帘子"
 	icon_state = "leather_curtain"
 	alpha = 200
 
 /obj/structure/curtain/open/leather/alt
-	name = "leather curtain"
+	name = "皮革帘子"
 	icon_state = "leather_curtain_2"
 
 /obj/structure/curtain/open/leather/alt_1
-	name = "leather curtain"
+	name = "皮革帘子"
 	icon_state = "leather_curtain_3"
 
 /obj/structure/curtain/open/leather/alt_2
-	name = "leather curtain"
+	name = "皮革帘子"
 	icon_state = "leather_curtain_4"
 
 /obj/structure/curtain/Initialize()

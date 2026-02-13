@@ -3,8 +3,8 @@
  */
 
 /obj/effect/alien/resin/construction
-	name = "construction node"
-	desc = "A strange wriggling lump. Looks like a marker for something."
+	name = "建筑节点"
+	desc = "一个奇怪扭动的肿块。看起来像是某种标记。"
 	icon = 'icons/mob/xenos/weeds.dmi'
 	icon_state = "constructionnode"
 	density = FALSE
@@ -48,7 +48,7 @@
 	if(!linked_hive || (linked_hive && (M.hivenumber != linked_hive.hivenumber)) || (M.a_intent == INTENT_HARM && M.can_destroy_special()))
 		return ..()
 	if(!template)
-		to_chat(M, SPAN_XENOWARNING("There is no template!"))
+		to_chat(M, SPAN_XENOWARNING("没有模板！"))
 	else
 		template.add_crystal(M) //This proc handles attack delay itself.
 	return XENO_NO_DELAY_ACTION

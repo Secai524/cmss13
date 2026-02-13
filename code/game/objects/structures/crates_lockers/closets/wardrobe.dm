@@ -1,12 +1,12 @@
 /obj/structure/closet/wardrobe
 	name = "wardrobe"
-	desc = "It's a storage unit for standard-issue attire."
+	desc = "这是一个存放标准制服的储物单元。"
 	icon_state = "blue"
 	icon_closed = "blue"
 	icon_opened = "blue_open"
 
 /obj/structure/closet/wardrobe/red
-	name = "security wardrobe"
+	name = "安保衣柜"
 	icon_state = "red"
 	icon_closed = "red"
 	icon_opened = "red_open"
@@ -34,7 +34,7 @@
 	return
 
 /obj/structure/closet/wardrobe/black
-	name = "black wardrobe"
+	name = "黑色衣柜"
 	icon_state = "black"
 	icon_closed = "black"
 	icon_opened = "black_open"
@@ -54,8 +54,8 @@
 
 
 /obj/structure/closet/wardrobe/chaplain_black
-	name = "chapel wardrobe"
-	desc = "It's a storage unit for religious attire."
+	name = "礼拜堂衣柜"
+	desc = "这是一个存放宗教服饰的储物单元。"
 	icon_state = "black"
 	icon_closed = "black"
 	icon_opened = "black_open"
@@ -75,7 +75,7 @@
 
 
 /obj/structure/closet/wardrobe/green
-	name = "green wardrobe"
+	name = "绿色衣柜"
 	icon_state = "green"
 	icon_closed = "green"
 	icon_opened = "green_open"
@@ -91,8 +91,8 @@
 	return
 
 /obj/structure/closet/wardrobe/orange
-	name = "prison wardrobe"
-	desc = "It's a storage unit for prisoner attire."
+	name = "监狱衣柜"
+	desc = "这是一个存放囚犯服饰的储物单元。"
 	icon_state = "orange"
 	icon_closed = "orange"
 	icon_opened = "orange_open"
@@ -109,7 +109,7 @@
 
 
 /obj/structure/closet/wardrobe/atmospherics_yellow
-	name = "atmospherics wardrobe"
+	name = "大气部门衣柜"
 	icon_state = "yellow"
 	icon_closed = "yellow"
 	icon_opened = "yellow_open"
@@ -133,7 +133,7 @@
 
 
 /obj/structure/closet/wardrobe/engineering_yellow
-	name = "engineering wardrobe"
+	name = "工程部衣柜"
 	icon_state = "yellow"
 	icon_closed = "yellow"
 	icon_opened = "yellow_open"
@@ -156,7 +156,7 @@
 
 
 /obj/structure/closet/wardrobe/white
-	name = "white wardrobe"
+	name = "白色衣柜"
 	icon_state = "white"
 	icon_closed = "white"
 	icon_opened = "white_open"
@@ -173,7 +173,7 @@
 
 
 /obj/structure/closet/wardrobe/pjs
-	name = "Pajama wardrobe"
+	name = "睡衣衣柜"
 	icon_state = "white"
 	icon_closed = "white"
 	icon_opened = "white_open"
@@ -192,7 +192,7 @@
 
 
 /obj/structure/closet/wardrobe/science_white
-	name = "science wardrobe"
+	name = "科研部衣柜"
 	icon_state = "purple"
 	icon_closed = "purple"
 	icon_opened = "purple_open"
@@ -215,7 +215,7 @@
 
 
 /obj/structure/closet/wardrobe/robotics_black
-	name = "robotics wardrobe"
+	name = "机器人学衣柜"
 	icon_state = "black"
 	icon_closed = "black"
 	icon_opened = "black_open"
@@ -234,7 +234,7 @@
 
 
 /obj/structure/closet/wardrobe/chemistry_white
-	name = "pharmaceutical physician's wardrobe"
+	name = "药剂医师衣柜"
 	icon_state = "orange"
 	icon_closed = "orange"
 	icon_opened = "orange_open"
@@ -255,7 +255,7 @@
 	new /obj/item/storage/pouch/chem(src)
 
 /obj/structure/closet/wardrobe/morgue
-	name = "morgue wardrobe"
+	name = "停尸房衣柜"
 	icon_state = "black"
 	icon_closed = "black"
 	icon_opened = "black_open"
@@ -272,7 +272,7 @@
 	new /obj/item/clothing/suit/storage/labcoat(src)
 
 /obj/structure/closet/wardrobe/genetics_white
-	name = "genetics wardrobe"
+	name = "遗传学衣柜"
 	icon_state = "green"
 	icon_closed = "green"
 	icon_opened = "green_open"
@@ -289,7 +289,7 @@
 
 
 /obj/structure/closet/wardrobe/virology_white
-	name = "virology wardrobe"
+	name = "病毒学衣柜"
 	icon_state = "green"
 	icon_closed = "green"
 	icon_opened = "green_open"
@@ -308,7 +308,7 @@
 
 
 /obj/structure/closet/wardrobe/medic_white
-	name = "medical wardrobe"
+	name = "医疗衣柜"
 	icon_state = "white"
 	icon_closed = "white"
 	icon_opened = "white_open"
@@ -336,7 +336,7 @@
 
 
 /obj/structure/closet/wardrobe/grey
-	name = "grey wardrobe"
+	name = "灰色衣柜"
 	icon_state = "white"
 	icon_closed = "white"
 	icon_opened = "white_open"
@@ -356,7 +356,7 @@
 
 
 /obj/structure/closet/wardrobe/mixed
-	name = "mixed wardrobe"
+	name = "混合衣柜"
 	icon_state = "purple"
 	icon_closed = "purple"
 	icon_opened = "purple_open"
@@ -377,7 +377,7 @@
 	return
 
 /obj/structure/closet/wardrobe/suit
-	name = "suit locker"
+	name = "制服柜"
 	icon_state = "black"
 	icon_closed = "black"
 	icon_opened = "black_open"

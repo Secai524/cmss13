@@ -2,7 +2,7 @@
 FIRE ALARM
 */
 /obj/structure/machinery/firealarm
-	name = "fire alarm"
+	name = "火警警报器"
 	desc = "<i>\"Pull this in case of emergency\"</i>. Thus, keep pulling it forever."
 	icon = 'icons/obj/structures/machinery/monitors.dmi'
 	icon_state = "fire0"
@@ -98,11 +98,11 @@ FIRE ALARM
 				if (HAS_TRAIT(held_object, TRAIT_TOOL_MULTITOOL))
 					src.detecting = !( src.detecting )
 					if (src.detecting)
-						user.visible_message(SPAN_DANGER("[user] has reconnected [src]'s detecting unit!"), "You have reconnected [src]'s detecting unit.")
+						user.visible_message(SPAN_DANGER("[user]重新连接了[src]的探测单元！"), "You have reconnected [src]'s detecting unit.")
 					else
-						user.visible_message(SPAN_DANGER("[user] has disconnected [src]'s detecting unit!"), "You have disconnected [src]'s detecting unit.")
+						user.visible_message(SPAN_DANGER("[user]断开了[src]的探测单元！"), "You have disconnected [src]'s detecting unit.")
 				else if (HAS_TRAIT(held_object, TRAIT_TOOL_WIRECUTTERS))
-					user.visible_message(SPAN_DANGER("[user] has cut the wires inside \the [src]!"), "You have cut the wires inside \the [src].")
+					user.visible_message(SPAN_DANGER("[user]切断了\the [src]内部的线路！"), "You have cut the wires inside \the [src].")
 					playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 					buildstage = 1
 					update_icon()
@@ -110,15 +110,15 @@ FIRE ALARM
 				if(istype(held_object, /obj/item/stack/cable_coil))
 					var/obj/item/stack/cable_coil/cable = held_object
 					if (cable.use(5))
-						to_chat(user, SPAN_NOTICE("You wire \the [src]."))
+						to_chat(user, SPAN_NOTICE("你给\the [src]接线。"))
 						buildstage = 2
 						update_icon()
 						return
 					else
-						to_chat(user, SPAN_WARNING("You need 5 pieces of cable to do wire \the [src]."))
+						to_chat(user, SPAN_WARNING("你需要5段线缆来给\the [src]接线。"))
 						return
 				else if(HAS_TRAIT(held_object, TRAIT_TOOL_CROWBAR))
-					to_chat(user, "You pry out the circuit!")
+					to_chat(user, "你撬出了电路板！")
 					playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 					spawn(20)
 						var/obj/item/circuitboard/firealarm/circuit = new()
@@ -127,13 +127,13 @@ FIRE ALARM
 						update_icon()
 			if(0)
 				if(istype(held_object, /obj/item/circuitboard/firealarm))
-					to_chat(user, "You insert the circuit!")
+					to_chat(user, "你插入了电路板！")
 					qdel(held_object)
 					buildstage = 1
 					update_icon()
 
 				else if(HAS_TRAIT(held_object, TRAIT_TOOL_WRENCH))
-					to_chat(user, "You remove the fire alarm assembly from the wall!")
+					to_chat(user, "你从墙上拆下了火灾警报组件！")
 					var/obj/item/frame/fire_alarm/frame = new /obj/item/frame/fire_alarm()
 					frame.forceMove(user.loc)
 					playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -153,10 +153,10 @@ FIRE ALARM
 	var/area/area = get_area(src)
 
 	if (area.flags_alarm_state & ALARM_WARNING_FIRE)
-		user.visible_message("[user] deactivates [src].", "You deactivate [src].")
+		user.visible_message("[user]关闭了[src]。", "你关闭了[src]。")
 		reset()
 	else
-		user.visible_message("[user] activates [src].", "You activate [src].")
+		user.visible_message("[user]启动了[src]。", "你启动了[src]。")
 		alarm()
 
 	return

@@ -200,7 +200,7 @@
 				if(ishuman(M))
 					M_job = M.job
 				else if(ismonkey(M))
-					M_job = "Monkey"
+					M_job = "猴子"
 				else if(isxeno(M))
 					M_job = "Alien"
 				else
@@ -209,7 +209,7 @@
 				M_job = "Silicon-based"
 			else if(isanimal(M)) //simple animals
 				if(iscorgi(M))
-					M_job = "Corgi"
+					M_job = "柯基犬"
 				else
 					M_job = "Animal"
 			else
@@ -219,7 +219,7 @@
 		else if(istype(M,/mob/camera/imaginary_friend))
 			M_job = "Imaginary Friend"
 		else if(isobserver(M))
-			M_job = "Ghost"
+			M_job = "幽灵"
 
 		M_job = replacetext(M_job, "'", "")
 		M_job = replacetext(M_job, "\"", "")
@@ -319,7 +319,7 @@
 
 /datum/admins/proc/check_antagonists()
 	if(!SSticker || !(SSticker.current_state >= GAME_STATE_PLAYING))
-		alert("The game hasn't started yet!")
+		alert("游戏尚未开始！")
 		return
 
 	var/dat = {"
@@ -397,7 +397,7 @@
 		dat += "</body></html>"
 		show_browser(usr, dat, "Round Status", "roundstatus", width = 600, height = 500)
 	else
-		alert("The game hasn't started yet!")
+		alert("游戏尚未开始！")
 
 /proc/check_role_table(name, list/members, admins, show_objectives=1)
 	var/txt = "<br><table cellspacing=5><tr><td><b>[name]</b></td><td></td></tr>"
@@ -506,9 +506,9 @@ GLOBAL_LIST_INIT(mute_bits, list(
 GLOBAL_LIST_INIT(narrate_span, list(
 	list(name = "Notice", span = "notice"),
 	list(name = "Warning", span = "warning"),
-	list(name = "Alert", span = "alert"),
+	list(name = "警报", span = "alert"),
 	list(name = "Info", span = "info"),
-	list(name = "Danger", span = "danger"),
+	list(name = "危险", span = "danger"),
 	list(name = "Helpful", span = "helpful")
 ))
 
@@ -577,7 +577,7 @@ GLOBAL_LIST_INIT(pp_status_flags, list(
 	set category = null
 
 	if(!M)
-		to_chat(owner, "You seem to be selecting a mob that doesn't exist anymore.")
+		to_chat(owner, "你似乎选择了一个已不存在的生物。")
 		return
 
 	// this is stupid, thanks byond
@@ -586,7 +586,7 @@ GLOBAL_LIST_INIT(pp_status_flags, list(
 		src = C.admin_holder
 
 	if (!istype(src,/datum/admins) || !(src.rights & R_MOD))
-		to_chat(owner, "Error: you are not an admin!")
+		to_chat(owner, "错误：你不是管理员！")
 		return
 
 	if(!M.mob_panel)

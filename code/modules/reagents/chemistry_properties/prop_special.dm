@@ -96,12 +96,12 @@
 		H.contract_disease(new /datum/disease/xeno_transformation(0),1) //This is the real reason PMCs are being sent to retrieve it.
 
 /datum/chem_property/special/DNA_Disintegrating/trigger()
-	SSticker.mode.get_specific_call(/datum/emergency_call/goon/chem_retrieval, TRUE, FALSE, holder.name) // "Weyland-Yutani Goon (Chemical Investigation Squad)"
+	SSticker.mode.get_specific_call(/datum/emergency_call/goon/chem_retrieval, TRUE, FALSE, holder.name) // "维兰德-汤谷打手（化学调查小队）"
 	GLOB.chemical_data.update_credits(10)
 	message_admins("The research department has discovered DNA_Disintegrating in [holder.name] adding 10 bonus tech points.")
 	var/datum/techtree/tree = GET_TREE(TREE_MARINE)
 	tree.add_points(10)
-	ai_announcement("NOTICE: Encrypted data transmission received from USCSS Royce. Shuttle inbound.")
+	ai_announcement("注意：收到来自USCSS罗伊斯号的加密数据传输。穿梭机即将抵达。")
 
 /datum/chem_property/special/regulating
 	name = PROPERTY_REGULATING
@@ -262,9 +262,9 @@
 				D.cure()
 				zs.remove_from_revive(H)
 			else
-				if(D.name == "Unknown Mutagenic Disease" && (potency == 0.5 || potency > 1.5))
+				if(D.name == "未知诱变疾病" && (potency == 0.5 || potency > 1.5))
 					D.cure()
-				if(D.name == "Black Goo" && potency >= 1)
+				if(D.name == "黑水" && potency >= 1)
 					D.cure()
 					zs.remove_from_revive(H)
 

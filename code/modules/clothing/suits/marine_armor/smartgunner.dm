@@ -1,6 +1,6 @@
 /obj/item/clothing/suit/storage/marine/smartgunner
 	name = "\improper M56 combat harness"
-	desc = "A heavy protective vest designed to be worn with the M56 Smartgun System. \nIt has specially designed straps and reinforcement to carry the Smartgun and accessories."
+	desc = "一款设计用于与M56智能枪系统搭配穿戴的重型防护背心。\n它拥有专门设计的背带和加固结构，用于携带智能枪及其配件。"
 	icon_state = "8"
 	item_state = "armor"
 	armor_laser = CLOTHING_ARMOR_LOW
@@ -23,17 +23,17 @@
 
 /obj/item/clothing/suit/storage/marine/smartgunner/Initialize()
 	. = ..()
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD] && name == "M56 combat harness")
-		name = "M56 snow combat harness"
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD] && name == "M56作战背带")
+		name = "M56雪地作战背带"
 	else
-		name = "M56 combat harness"
+		name = "M56作战背带"
 
 /obj/item/clothing/suit/storage/marine/smartgunner/mob_can_equip(mob/equipping_mob, slot, disable_warning = FALSE)
 	. = ..()
 
 	if(equipping_mob.back && !(equipping_mob.back.flags_item & SMARTGUNNER_BACKPACK_OVERRIDE))
 		if(!disable_warning)
-			to_chat(equipping_mob, SPAN_WARNING("You can't equip [src] while wearing a backpack."))
+			to_chat(equipping_mob, SPAN_WARNING("穿戴背包时无法装备[src]。"))
 		return FALSE
 
 /obj/item/clothing/suit/storage/marine/smartgunner/equipped(mob/user, slot, silent)
@@ -54,7 +54,7 @@
 	. = COMPONENT_HUMAN_CANCEL_ATTEMPT_EQUIP
 
 	if(equipping_item.flags_equip_slot == SLOT_BACK)
-		to_chat(equipping_human, SPAN_WARNING("You can't equip [equipping_item] on your back while wearing [src]."))
+		to_chat(equipping_human, SPAN_WARNING("穿戴[src]时无法在背部装备[equipping_item]。"))
 		return
 
 /obj/item/clothing/suit/storage/marine/smartgunner/unequipped(mob/user, slot)
@@ -64,7 +64,7 @@
 
 /obj/item/clothing/suit/storage/marine/smartgunner/reinforced
 	name = "\improper M56 reinforced combat harness"
-	desc = "A heavy protective vest designed to be worn with the M56 Smartgun System, this one also has a bulky reinforced plate attached to it, hurting agility but providing more armor. \nIt has specially designed straps and reinforcement to carry the Smartgun and accessories."
+	desc = "一款设计用于与M56智能枪系统搭配穿戴的重型防护背心，此型号还附有一块笨重的加固板，牺牲了敏捷性但提供了更多护甲。\n它拥有专门设计的背带和加固结构，用于携带智能枪及其配件。"
 	icon_state = "sg"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
@@ -74,7 +74,7 @@
 
 /obj/item/clothing/suit/storage/marine/smartgunner/reinforced/Initialize()
 	. = ..()
-	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD] && name == "M56 reinforced combat harness")
-		name = "M56 reinforced snow combat harness"
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD] && name == "M56强化作战背带")
+		name = "M56强化雪地作战背带"
 	else
-		name = "M56 reinforced combat harness"
+		name = "M56强化作战背带"

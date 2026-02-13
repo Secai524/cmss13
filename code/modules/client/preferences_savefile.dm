@@ -186,9 +186,9 @@
 
 		switch(hair_style)
 			if("Shoulder-length Hair Alt")
-				hair_style = "Long Fringe"
+				hair_style = "长刘海"
 			if("Long Hair Alt")
-				hair_style = "Longer Fringe"
+				hair_style = "更长刘海"
 
 		S["hair_style_name"] << hair_style
 
@@ -480,7 +480,7 @@
 
 	synthetic_name = synthetic_name ? sanitize_text(synthetic_name, initial(synthetic_name)) : initial(synthetic_name)
 	synthetic_type = sanitize_inlist(synthetic_type, PLAYER_SYNTHS, initial(synthetic_type))
-	synth_specialisation = sanitize_inlist(synth_specialisation, list("Generalised", "Engineering", "Medical", "Intel", "Military Police", "Command"), initial(synth_specialisation))
+	synth_specialisation = sanitize_inlist(synth_specialisation, list("Generalised", "工程部", "医疗区", "Intel", "宪兵", "Command"), initial(synth_specialisation))
 	predator_name = predator_name ? sanitize_text(predator_name, initial(predator_name)) : initial(predator_name)
 	predator_gender = sanitize_text(predator_gender, initial(predator_gender))
 	predator_age = sanitize_integer(predator_age, 100, 10000, initial(predator_age))
@@ -502,7 +502,7 @@
 	predator_flavor_text = predator_flavor_text ? sanitize_text(predator_flavor_text, initial(predator_flavor_text)) : initial(predator_flavor_text)
 	commander_status = sanitize_inlist(commander_status, GLOB.whitelist_hierarchy, initial(commander_status))
 	commander_sidearm   = sanitize_inlist(commander_sidearm, (CO_GUNS + COUNCIL_CO_GUNS), initial(commander_sidearm))
-	co_career_path = sanitize_inlist(co_career_path, list("Infantry", "Engineering", "Medical", "Intel", "Logistics", "Aviation", "Tanker"), initial(co_career_path))
+	co_career_path = sanitize_inlist(co_career_path, list("Infantry", "工程部", "医疗区", "Intel", "Logistics", "Aviation", "Tanker"), initial(co_career_path))
 	affiliation = sanitize_inlist(affiliation, FACTION_ALLEGIANCE_USCM_COMMANDER, initial(affiliation))
 	yautja_status = sanitize_inlist(yautja_status, GLOB.whitelist_hierarchy + list("Elder"), initial(yautja_status))
 	synth_status = sanitize_inlist(synth_status, GLOB.whitelist_hierarchy, initial(synth_status))
@@ -778,7 +778,7 @@
 	real_name = reject_bad_name(real_name)
 
 	if(isnull(language))
-		language = "None"
+		language = "无"
 	if(isnull(spawnpoint))
 		spawnpoint = "Arrivals Shuttle"
 	if(isnull(weyland_yutani_relation))
@@ -846,11 +846,11 @@
 
 	if(!origin)
 		origin = ORIGIN_USCM
-	if(!faction)  faction =  "None"
+	if(!faction)  faction =  "无"
 	if(!religion)
 		religion = RELIGION_AGNOSTICISM
 	if(!preferred_squad)
-		preferred_squad = "None"
+		preferred_squad = "无"
 	preferred_spec = sanitize_list(preferred_spec, allow=GLOB.specialist_set_name_dict)
 
 	return 1
@@ -985,10 +985,10 @@
 		errors += "Job [job] has loadout available, but none has been selected."
 
 /datum/preferences/proc/announce_conflict(list/notadded)
-	to_chat(owner, SPAN_ALERTWARNING("<u>Keybinding Conflict</u>"))
-	to_chat(owner, SPAN_ALERTWARNING("There are new <a href='byond://?_src_=prefs;preference=viewmacros'>keybindings</a> that default to keys you've already bound. The new ones will be unbound."))
+	to_chat(owner, SPAN_ALERTWARNING("<u>按键绑定冲突</u>"))
+	to_chat(owner, SPAN_ALERTWARNING("有新的<a href='byond://?_src_=prefs;preference=viewmacros'>按键绑定</a>默认使用了您已绑定的按键。新的绑定将被取消。"))
 	for(var/datum/keybinding/conflicted as anything in notadded)
-		to_chat(owner, SPAN_DANGER("[conflicted.category]: [conflicted.full_name] needs updating."))
+		to_chat(owner, SPAN_DANGER("[conflicted.category]: [conflicted.full_name]需要更新。"))
 
 		if(hotkeys)
 			for(var/entry in conflicted.hotkey_keys)

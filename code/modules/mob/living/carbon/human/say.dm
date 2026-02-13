@@ -61,12 +61,12 @@
 	var/italics = 0
 
 	if(!able_to_speak)
-		to_chat(src, SPAN_DANGER("You try to speak, but nothing comes out!"))
+		to_chat(src, SPAN_DANGER("你试图说话，但发不出任何声音！"))
 		return
 
 	if(client)
 		if(client.prefs.muted & MUTE_IC)
-			to_chat(src, SPAN_DANGER("You cannot speak in IC (Muted)."))
+			to_chat(src, SPAN_DANGER("你无法进行角色内发言（已被禁言）。"))
 			return
 
 	message = trim(strip_html(message))
@@ -82,7 +82,7 @@
 			return emote(lowertext(copytext(message,2)), intentional = TRUE) //TRUE arg means emote was caused by player (e.g. no an auto scream when hurt).
 
 	if(name != GetVoice())
-		alt_name = "(as [get_id_name("Unknown")])"
+		alt_name = "(as [get_id_name("未知")])"
 
 	var/list/parsed = parse_say(message)
 	var/fail_message = parsed["fail_with"]

@@ -2,8 +2,8 @@
 #define ROUND_END_DELAY (2 MINUTES)
 
 /datum/game_mode/extended/faction_clash/cm_vs_upp
-	name = "Faction Clash UPP CM"
-	config_tag = "Faction Clash UPP CM"
+	name = "阵营冲突 UPP CM"
+	config_tag = "阵营冲突 UPP CM"
 	flags_round_type = MODE_THUNDERSTORM|MODE_FACTION_CLASH
 	starting_round_modifiers = list(
 		/datum/gamemode_modifier/blood_optimization,
@@ -91,20 +91,20 @@
 	set_gamemode_modifier(/datum/gamemode_modifier/ceasefire, enabled = TRUE)
 	switch(round_finished)
 		if(MODE_FACTION_CLASH_UPP_MAJOR)
-			marine_announcement("ALERT: USCM ground force overrun scenario in progress. Automated command directive issued, all USCM personnel are ordered to evacuate combat zone.\n\nOpposing Force have issued a ceasefire, risk of capture of USCM personnel by opposing force is high, avoid contact and evade capture.\n\nFinal report being prepared in two minutes.", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
-			marine_announcement("ALERT: Enemy force are combat inoperative, enemy force are conducting an evacuation of the operations zone.\n\nA ceasefire is in effect. Union forces are directed to attempt to capture fleeing enemy force personnel.\n\nFinal report being prepared in two minutes.", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
+			marine_announcement("警报：USCM地面部队正处于被击溃状态。自动指挥命令已发布，所有USCM人员被命令撤离战斗区域。\n\n敌对势力已宣布停火，USCM人员被敌方俘获的风险很高，请避免接触并躲避俘获。\n\n最终报告将在两分钟内准备完毕。", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
+			marine_announcement("警报：敌军已丧失战斗力，敌军正在撤离作战区域。\n\n停火协议现已生效。联盟部队被指示尝试俘获逃离的敌方人员。\n\n最终报告将在两分钟内准备完毕。", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
 		if(MODE_FACTION_CLASH_UPP_MINOR)
-			marine_announcement("ALERT: USCM ground force overrun scenario in progress. Automated command directive issued, all USCM personnel are ordered to evacuate combat zone.\n\nOpposing Force have issued a ceasefire, risk of capture of USCM personnel by opposing force is high, avoid contact and evade capture.\n\nFinal report being prepared in two minutes.", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
-			marine_announcement("ALERT: Enemy force are combat inoperative, enemy force are conducting an evacuation of the operations zone.\n\nA ceasefire is in effect. Union forces are directed to attempt to capture fleeing enemy force personnel.\n\nFinal report being prepared in two minutes.", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
+			marine_announcement("警报：USCM地面部队正处于被击溃状态。自动指挥命令已发布，所有USCM人员被命令撤离战斗区域。\n\n敌对势力已宣布停火，USCM人员被敌方俘获的风险很高，请避免接触并躲避俘获。\n\n最终报告将在两分钟内准备完毕。", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
+			marine_announcement("警报：敌军已丧失战斗力，敌军正在撤离作战区域。\n\n停火协议现已生效。联盟部队被指示尝试俘获逃离的敌方人员。\n\n最终报告将在两分钟内准备完毕。", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
 		if(MODE_INFESTATION_M_MAJOR)
-			marine_announcement("ALERT: Opposing force are conducting emergency evacuation of the operations zone. Confidence is high that opposing forces are retreating from the planet.\n\nCeasefire is in effect to minimise non-combatant casualties, ground forces are directed to intercept and detain retreating opposing forces\n\nFinal report being prepared in two minutes.", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
-			marine_announcement("ALERT: Unsustainable combat losses noted. Automated strategic reposition order is now in effect. All Union combat personnel are to return to dropships and re-deploy to the SSV Rostock.\n\nEnemy force have instituted a ceasefire, exploit this to assist in evading capture.\n\nFinal report being prepared in two minutes.", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
+			marine_announcement("警报：敌对势力正在紧急撤离作战区域。高度确信敌军正在从星球撤退。\n\n停火协议现已生效以减少非战斗人员伤亡，地面部队被指示拦截并扣押撤退的敌军。\n\n最终报告将在两分钟内准备完毕。", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
+			marine_announcement("警报：检测到不可持续的战斗损失。自动战略重新部署命令现已生效。所有联盟作战人员必须返回登陆艇并重新部署至SSV罗斯托克号。\n\n敌军已实施停火，利用这一点协助躲避俘获。\n\n最终报告将在两分钟内准备完毕。", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
 		if(MODE_INFESTATION_M_MINOR)
-			marine_announcement("ALERT: Opposing force are conducting emergency evacuation of the operations zone. Confidence is high that opposing forces are retreating from the planet.\n\nCeasefire is in effect to minimise non-combatant casualties, ground forces are directed to intercept and detain retreating opposing forces.\n\nFinal report being prepared in two minutes.", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
-			marine_announcement("ALERT: Unsustainable combat losses noted. Automated strategic reposition order is now in effect. All Union combat personnel are to return to dropships and re-deploy to the SSV Rostock.\n\nEnemy force have instituted a ceasefire, exploit this to assist in evading capture.\n\nFinal report being prepared in two minutes.", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
+			marine_announcement("警报：敌对势力正在紧急撤离作战区域。高度确信敌军正在从星球撤退。\n\n停火协议现已生效以减少非战斗人员伤亡，地面部队被指示拦截并扣押撤退的敌军。\n\n最终报告将在两分钟内准备完毕。", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
+			marine_announcement("警报：检测到不可持续的战斗损失。自动战略重新部署命令现已生效。所有联盟作战人员必须返回登陆艇并重新部署至SSV罗斯托克号。\n\n敌军已实施停火，利用这一点协助躲避俘获。\n\n最终报告将在两分钟内准备完毕。", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
 		if(MODE_BATTLEFIELD_DRAW_STALEMATE)
-			marine_announcement("ALERT: A ceasefire is now in effect. Further details pending. All combat operations are to cease. Further information pending in two minutes.", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
-			marine_announcement("ALERT: A ceasefire is now in effect. Further details pending. All combat operations are to cease. Additional facts pending in two minutes.", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
+			marine_announcement("警报：停火协议现已生效。更多细节待定。所有作战行动必须停止。更多信息将在两分钟内公布。", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
+			marine_announcement("警报：停火协议现已生效。更多细节待定。所有作战行动必须停止。更多事实将在两分钟内公布。", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
 
 
 /datum/game_mode/extended/faction_clash/cm_vs_upp/declare_completion()
@@ -128,13 +128,13 @@
 			musical_track = pick('sound/theme/winning_triumph1.ogg','sound/theme/winning_triumph2.ogg','sound/theme/winning_triumph3.ogg')
 			end_icon = "marine_major"
 		if(MODE_INFESTATION_M_MINOR)
-			marine_announcement("ALERT: Opposing Force landing zone under USCM force control. Orbital scans concludes all opposing force combat personnel are combat inoperative.\n\nMission Accomplished!\n\nSaving operational report to archive, commencing final systems scan.", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
-			marine_announcement("ALERT: Union landing zone compromised. Union ground forces are non-responsive. Further combat operations impossible.\n\nMission Abort Authorized\n\nConcluding operational report for dispatch, commencing final data entry and systems scan.", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
+			marine_announcement("警报：敌方登陆区已处于USCM部队控制之下。轨道扫描确认所有敌方作战人员已丧失战斗力。\n\n任务完成！\n\n正在将行动报告保存至档案，开始最终系统扫描。", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
+			marine_announcement("警报：联盟登陆区失守。联盟地面部队无响应。无法继续作战行动。\n\n任务中止已授权\n\n正在完成待发送的行动报告，开始最终数据录入和系统扫描。", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
 			musical_track = pick('sound/theme/neutral_hopeful1.ogg','sound/theme/neutral_hopeful2.ogg')
 			end_icon = "marine_minor"
 		if(MODE_BATTLEFIELD_DRAW_STALEMATE)
-			marine_announcement("ALERT: Inconclusive combat outcome. Unable to assess tactical or strategic situation.\n\nDispatching automated request to High Command for further directives.\n\nSaving operational report to archive, commencing final systems scan.", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
-			marine_announcement("ALERT: Battle situation has developed not necessarily to the Unions advantage\n\nDispatching request for new directives to Sector Command.\n\nConcluding operational report for dispatch, commencing final data entry and systems scan.", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
+			marine_announcement("警报：战斗结果无法判定。无法评估战术或战略态势。\n\n正在向最高指挥部发送自动化请求以获取进一步指令。\n\n正在将行动报告保存至档案，开始最终系统扫描。", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
+			marine_announcement("警报：战局发展未必对联盟有利\n\n正在向战区司令部发送新指令请求。\n\n正在完成待发送的行动报告，开始最终数据录入和系统扫描。", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
 			end_icon = "draw"
 			musical_track = 'sound/theme/neutral_hopeful2.ogg'
 		else
@@ -158,20 +158,20 @@
 	if(round_started > 0) //we enter here on shipspawn but do not want this
 		return
 	.=..()
-	marine_announcement("First troops have landed on the colony! Five minute long ceasefire is in effect to allow evacuation of civilians.", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
-	marine_announcement("First troops have landed on the colony! Five minute long ceasefire is in effect to allow evacuation of civilians.", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
+	marine_announcement("首批部队已在殖民地登陆！五分钟停火生效，以便平民撤离。", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
+	marine_announcement("首批部队已在殖民地登陆！五分钟停火生效，以便平民撤离。", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
 	set_gamemode_modifier(/datum/gamemode_modifier/ceasefire, enabled = TRUE)
 	addtimer(CALLBACK(src,PROC_REF(ceasefire_warning)), 4 MINUTES)
 	addtimer(CALLBACK(src,PROC_REF(ceasefire_end)), 5 MINUTES)
 	addtimer(VARSET_CALLBACK(GLOB, round_should_check_for_win, TRUE), 15 MINUTES)
 
 /datum/game_mode/extended/faction_clash/cm_vs_upp/proc/ceasefire_warning()
-	marine_announcement("Ceasefire ends in one minute.", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
-	marine_announcement("Ceasefire ends in one minute.", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
+	marine_announcement("停火一分钟后结束。", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
+	marine_announcement("停火一分钟后结束。", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
 
 /datum/game_mode/extended/faction_clash/cm_vs_upp/proc/ceasefire_end()
-	marine_announcement("Ceasefire is over. Combat operations may commence.", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
-	marine_announcement("Ceasefire is over. Combat operations may commence.", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
+	marine_announcement("停火结束。可以开始作战行动。", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
+	marine_announcement("停火结束。可以开始作战行动。", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
 	set_gamemode_modifier(/datum/gamemode_modifier/ceasefire, enabled = FALSE)
 	GLOB.round_should_check_for_win = TRUE
 
@@ -182,8 +182,8 @@
 	addtimer(CALLBACK(src,PROC_REF(deleyed_announce)), 10 SECONDS)
 
 /datum/game_mode/extended/faction_clash/cm_vs_upp/proc/deleyed_announce()
-	marine_announcement("An automated distress call has been received from the local colony.\n\nAlert! Sensors have detected a Union of Progressive People's warship in orbit of colony. Enemy Vessel has refused automated hails and is entering lower-planetary orbit. High likelihood enemy vessel is preparing to deploy dropships to local colony. Authorization to interdict and repel hostile force from allied territory has been granted. Automated thawing of cryostasis marine reserves in progress.", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
-	marine_announcement("Alert! Sensors have detected encroaching USCM vessel on an intercept course with local colony.\n\nIntelligence suggests this is the [MAIN_SHIP_NAME]. Confidence is high that USCM force is acting counter to Union interests in this area. Authorization to deploy ground forces to disrupt foreign power attempt to encroach on Union interests has been granted. Emergency awakening of cryostasis troop reserves in progress.", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
+	marine_announcement("已收到来自当地殖民地的自动化求救信号。\n\n警报！传感器探测到一艘进步人民联盟的战舰在殖民地轨道上。敌舰已拒绝自动化呼叫，并正在进入低行星轨道。敌舰极有可能准备向当地殖民地部署运输机。已授权拦截并将敌对势力从盟军领土驱逐。正在自动化解冻冷冻舱内的陆战队员储备。", "ARES 3.2", 'sound/AI/commandreport.ogg', FACTION_MARINE)
+	marine_announcement("警报！传感器探测到一艘逼近的USCM舰船，其航线正拦截当地殖民地。\n\n情报表明这是[MAIN_SHIP_NAME]。USCM部队极有可能在此区域采取有悖于联盟利益的行动。已授权部署地面部队，以阻挠外国势力企图侵犯联盟利益的行为。正在紧急唤醒冷冻舱内的部队储备。", "1VAN/3", 'sound/AI/commandreport.ogg', FACTION_UPP)
 
 
 #undef ROUND_END_DELAY

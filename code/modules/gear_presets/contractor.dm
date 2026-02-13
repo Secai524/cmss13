@@ -1,5 +1,5 @@
 /datum/equipment_preset/contractor
-	name = "Military Contractor"
+	name = "军事承包商"
 	faction = FACTION_CONTRACTOR
 	job_title = JOB_CONTRACTOR
 	idtype = /obj/item/card/id/data
@@ -38,10 +38,10 @@
 	new_human.b_eyes = colors[eye_color][3]
 	idtype = /obj/item/card/id/data
 	if(new_human.gender == MALE)
-		new_human.h_style = pick("Crewcut", "Shaved Head", "Buzzcut", "Undercut", "Side Undercut", "Pvt. Joker", "Marine Fade", "Low Fade", "Medium Fade", "High Fade", "No Fade", "Coffee House Cut", "Flat Top",)
-		new_human.f_style = pick("5 O'clock Shadow", "Shaved", "Full Beard", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache", "7 O'clock Shadow", "7 O'clock Moustache",)
+		new_human.h_style = pick("平头", "光头", "板寸", "底层剃光", "侧边削短", "列兵 Joker", "陆战队员渐变", "低渐变", "中渐变", "高渐变", "无渐变", "咖啡馆发型", "平头",)
+		new_human.f_style = pick("五点钟胡茬", "剃光", "全脸胡须", "三点钟小胡子", "五点钟胡茬", "五点钟小胡子", "七点钟胡茬", "七点钟小胡子",)
 	else
-		new_human.h_style = pick("Ponytail 1", "Ponytail 2", "Ponytail 3", "Ponytail 4", "Pvt. Redding", "Pvt. Clarison", "Cpl. Dietrich", "Pvt. Vasquez", "Marine Bun", "Marine Bun 2", "Marine Flat Top",)
+		new_human.h_style = pick("马尾辫 1", "马尾辫 2", "马尾辫 3", "马尾辫 4", "列兵 Redding", "列兵 Clarison", "下士 Dietrich", "列兵 Vasquez", "陆战队员发髻", "陆战队员发髻 2", "陆战队员平顶",)
 
 /datum/equipment_preset/contractor/load_id(mob/living/carbon/human/new_human, client/mob_client)
 	if(human_versus_human)
@@ -53,7 +53,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/contractor/duty/standard
-	name = "Military Contractor (Standard)"
+	name = "军事承包商（标准）"
 	paygrades = list(PAY_SHORT_VAI_S = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Merc"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -161,7 +161,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/contractor/duty/heavy
-	name = "Military Contractor (Machinegunner)"
+	name = "军事承包商（机枪手）"
 	paygrades = list(PAY_SHORT_VAI_G = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "MG"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -222,7 +222,7 @@
 
 //*****************************************************************************************************/
 /datum/equipment_preset/contractor/duty/engi
-	name = "Military Contractor (Engineer)"
+	name = "军事承包商（工程师）"
 	paygrades = list(PAY_SHORT_VAI_E = JOB_PLAYTIME_TIER_0)
 
 	role_comm_title = "Eng"
@@ -269,7 +269,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/contractor/duty/medic
-	name = "Military Contractor (Medic)"
+	name = "军事承包商（医疗兵）"
 	paygrades = list(PAY_SHORT_VAI_M = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Med"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -315,7 +315,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/contractor/duty/leader
-	name = "Military Contractor (Leader)"
+	name = "军事承包商（队长）"
 	paygrades = list(PAY_SHORT_VAI_L = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "TL"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -366,7 +366,7 @@
 
 //*****************************************************************************************************/
 /datum/equipment_preset/contractor/duty/synth
-	name = "Military Contractor (Synthetic)"
+	name = "军事承包商（合成人）"
 	paygrades = list(PAY_SHORT_VAI_SN = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Syn"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -394,10 +394,10 @@
 			random_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male) : pick(GLOB.first_names_female))
 		else // MALE
 			random_name = capitalize(pick(GLOB.first_names_male))
-			new_human.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
+			new_human.f_style = pick("三点钟胡茬", "三点钟小胡子", "五点钟胡茬", "五点钟小胡子")
 
 	new_human.change_real_name(new_human, random_name)
-	new_human.h_style = pick("Crewcut", "Shaved Head", "Buzzcut", "Undercut", "Side Undercut")
+	new_human.h_style = pick("平头", "光头", "板寸", "底层剃光", "侧边削短")
 	var/static/list/colors = list("BLACK" = list(15, 15, 25), "BROWN" = list(102, 51, 0), "AUBURN" = list(139, 62, 19))
 	var/static/list/hair_colors = colors.Copy() + list("BLONDE" = list(197, 164, 30), "CARROT" = list(174, 69, 42))
 	var/hair_color = pick(hair_colors)
@@ -459,7 +459,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/contractor/covert/standard
-	name = "Military Contractor (Covert Standard)"
+	name = "军事承包商（隐秘标准）"
 	paygrades = list(PAY_SHORT_VAI_S = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Merc"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -568,7 +568,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/contractor/covert/heavy
-	name = "Military Contractor (Covert Machinegunner)"
+	name = "军事承包商（隐秘机枪手）"
 	paygrades = list(PAY_SHORT_VAI_G = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "MG"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -618,7 +618,7 @@
 
 //*****************************************************************************************************/
 /datum/equipment_preset/contractor/covert/engi
-	name = "Military Contractor (Covert Engineer)"
+	name = "军事承包商（隐秘工程师）"
 	paygrades = list(PAY_SHORT_VAI_E = JOB_PLAYTIME_TIER_0)
 
 	role_comm_title = "Eng"
@@ -666,7 +666,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/contractor/covert/medic
-	name = "Military Contractor (Covert Medic)"
+	name = "军事承包商（隐秘医疗兵）"
 	paygrades = list(PAY_SHORT_VAI_M = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Med"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -713,7 +713,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/contractor/covert/leader
-	name = "Military Contractor (Covert Leader)"
+	name = "军事承包商（隐秘队长）"
 	paygrades = list(PAY_SHORT_VAI_L = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "TL"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -764,7 +764,7 @@
 
 //*****************************************************************************************************/
 /datum/equipment_preset/contractor/covert/synth
-	name = "Military Contractor (Covert Synthetic)"
+	name = "军事承包商（隐秘合成人）"
 	paygrades = list(PAY_SHORT_VAI_SN = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Syn"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -793,10 +793,10 @@
 			random_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male) : pick(GLOB.first_names_female))
 		else // MALE
 			random_name = capitalize(pick(GLOB.first_names_male))
-			new_human.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
+			new_human.f_style = pick("三点钟胡茬", "三点钟小胡子", "五点钟胡茬", "五点钟小胡子")
 
 	new_human.change_real_name(new_human, random_name)
-	new_human.h_style = pick("Crewcut", "Shaved Head", "Buzzcut", "Undercut", "Side Undercut")
+	new_human.h_style = pick("平头", "光头", "板寸", "底层剃光", "侧边削短")
 	var/static/list/colors = list("BLACK" = list(15, 15, 25), "BROWN" = list(102, 51, 0), "AUBURN" = list(139, 62, 19))
 	var/static/list/hair_colors = colors.Copy() + list("BLONDE" = list(197, 164, 30), "CARROT" = list(174, 69, 42))
 	var/hair_color = pick(hair_colors)

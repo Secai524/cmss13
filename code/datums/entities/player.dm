@@ -253,12 +253,12 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	ban_unban_log_save("[key_name_admin(admin)] [duration_text] [ckey] from [total_rank]. reason: [ban_text]")
 	log_admin("[key_name(admin)] [duration_text] [ckey] from [total_rank]")
 
-	to_chat(owning_client, SPAN_WARNING("<BIG><B>You have been jobbanned by [admin.ckey] from: [total_rank].</B></BIG>"))
-	to_chat(owning_client, SPAN_WARNING("<B>The reason is: [ban_text]</B>"))
+	to_chat(owning_client, SPAN_WARNING("<BIG><B>你已被管理员[admin.ckey]从以下职位封禁：[total_rank]。</B></BIG>"))
+	to_chat(owning_client, SPAN_WARNING("<B>封禁理由：[ban_text]</B>"))
 	if(!duration)
-		to_chat(owning_client, SPAN_WARNING("Jobban can be lifted only upon request."))
+		to_chat(owning_client, SPAN_WARNING("职位封禁仅可通过申请解除。"))
 	else
-		to_chat(owning_client, SPAN_WARNING("This jobban is timed and will expire in [duration] minutes."))
+		to_chat(owning_client, SPAN_WARNING("此职位封禁有时限，将在[duration]分钟后过期。"))
 
 	if(!job_bans)
 		job_bans = list()

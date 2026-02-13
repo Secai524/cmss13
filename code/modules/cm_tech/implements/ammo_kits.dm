@@ -1,8 +1,8 @@
 
 /obj/item/ammo_kit
-	name = "ammo kit"
+	name = "弹药改装套件"
 	icon = 'icons/obj/items/devices.dmi'
-	desc = "An ammo kit used to convert regular ammo magazines of various weapons into a different variation."
+	desc = "一种弹药改装套件，用于将各种武器的普通弹匣转换为不同变种。"
 	icon_state = "kit_generic"
 
 	var/list/convert_map
@@ -25,11 +25,11 @@
 
 	var/obj/item/ammo_magazine/M = target
 	if(M.current_rounds < M.max_rounds)
-		to_chat(user, SPAN_WARNING("The magazine needs to be full for you to apply this kit onto it."))
+		to_chat(user, SPAN_WARNING("弹匣必须是满的才能安装此套件。"))
 		return
 
 	if(user.l_hand != M && user.r_hand != M)
-		to_chat(user, SPAN_WARNING("The magazine needs to be in your hands for you to apply this kit onto it."))
+		to_chat(user, SPAN_WARNING("弹匣必须在手中才能安装此套件。"))
 		return
 
 	var/type_to_convert_to = convert_map[target.type]
@@ -49,9 +49,9 @@
 	return list()
 
 /obj/item/ammo_kit/incendiary
-	name = "incendiary ammo kit"
+	name = "燃烧弹药改装套件"
 	icon_state = "kit_incendiary"
-	desc = "Converts magazines into incendiary ammo."
+	desc = "将弹匣转换为燃烧弹药。"
 
 /obj/item/ammo_kit/incendiary/get_convert_map()
 	. = ..()
@@ -66,8 +66,8 @@
 	.[/obj/item/ammo_magazine/revolver] =  /obj/item/ammo_magazine/revolver/incendiary
 
 /obj/item/storage/box/shotgun
-	name = "incendiary shotgun kit"
-	desc = "A kit containing incendiary shotgun shells."
+	name = "燃烧霰弹改装套件"
+	desc = "内含燃烧霰弹的改装套件。"
 	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "incenbuck"
 	storage_slots = 5
@@ -80,16 +80,16 @@
 			new to_hold(src)
 
 /obj/item/storage/box/shotgun/buckshot
-	name = "incendiary buckshot kit"
-	desc = "A box containing 5 handfuls of incendiary buckshot."
+	name = "燃烧鹿弹改装套件"
+	desc = "内含5把燃烧鹿弹的盒子。"
 	can_hold = list(
 		/obj/item/ammo_magazine/handful/shotgun/buckshot/incendiary,
 	)
 	to_hold = /obj/item/ammo_magazine/handful/shotgun/buckshot/incendiary
 
 /obj/item/storage/box/shotgun/slug
-	name = "incendiary slug kit"
-	desc = "A box containing 5 handfuls of incendiary slugs."
+	name = "燃烧独头弹改装套件"
+	desc = "内含5把燃烧独头弹的盒子。"
 	icon_state = "incenslug"
 	can_hold = list(
 		/obj/item/ammo_magazine/handful/shotgun/incendiary,
@@ -98,9 +98,9 @@
 
 //unused due to thermal/wallpìercing combo
 /obj/item/ammo_kit/penetrating
-	name = "wall-penetrating ammo kit"
+	name = "穿墙弹药改装套件"
 	icon_state = "kit_penetrating"
-	desc = "Converts magazines into wall-penetrating ammo."
+	desc = "将弹匣转换为穿墙弹药。"
 
 /obj/item/ammo_kit/penetrating/get_convert_map()
 	. = ..()
@@ -115,9 +115,9 @@
 	.[/obj/item/ammo_magazine/revolver] =  /obj/item/ammo_magazine/revolver/penetrating
 
 /obj/item/ammo_kit/toxin
-	name = "toxin ammo kit"
+	name = "毒素弹药改装套件"
 	icon_state = "kit_toxin"
-	desc = "Converts magazines into toxin ammo. Toxin ammo will poison your target, weakening their defences."
+	desc = "将弹匣转换为毒素弹药。毒素弹药会使目标中毒，削弱其防御。"
 
 /obj/item/ammo_kit/toxin/get_convert_map()
 	. = ..()

@@ -1,6 +1,6 @@
 /obj/structure/barricade/sandbags
-	name = "sandbag barricade"
-	desc = "A bunch of bags filled with sand, stacked into a small wall. Surprisingly sturdy, albeit labour intensive to set up. Trusted to do the job since 1914."
+	name = "沙袋路障"
+	desc = "一堆装满沙子的袋子，堆叠成一道矮墙。出人意料地坚固，尽管搭建起来很费力。自1914年以来就值得信赖。"
 	icon_state = "sandbag1"
 	force_level_absorption = 15
 	health = BARRICADE_SANDBAG_TRESHOLD_1
@@ -69,16 +69,16 @@
 /obj/structure/barricade/sandbags/attackby(obj/item/W, mob/user)
 	for(var/obj/effect/xenomorph/acid/A in src.loc)
 		if(A.acid_t == src)
-			to_chat(user, "You can't get near that, it's melting!")
+			to_chat(user, "你无法靠近，它正在融化！")
 			return
 
 	if(istype(W, /obj/item/tool/shovel) && user.a_intent != INTENT_HARM)
 		var/obj/item/tool/shovel/ET = W
 		if(!ET.folded)
-			user.visible_message(SPAN_NOTICE("[user] starts disassembling [src]."),
+			user.visible_message(SPAN_NOTICE("[user] 开始拆卸 [src]。"),
 			SPAN_NOTICE("You start disassembling [src]."))
 			if(do_after(user, ET.shovelspeed * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
-				user.visible_message(SPAN_NOTICE("[user] disassembles [src]."),
+				user.visible_message(SPAN_NOTICE("[user]拆解了[src]。"),
 				SPAN_NOTICE("You disassemble [src]."))
 				deconstruct(TRUE)
 		return TRUE
@@ -88,10 +88,10 @@
 		if(user.action_busy)
 			return
 		if(build_stage == BARRICADE_SANDBAG_5)
-			to_chat(user, SPAN_WARNING("You can't stack more on [src]."))
+			to_chat(user, SPAN_WARNING("你无法在[src]上堆叠更多。"))
 			return
 
-		user.visible_message(SPAN_NOTICE("[user] starts adding more [SB] to [src]."),
+		user.visible_message(SPAN_NOTICE("[user]开始向[src]添加更多[SB]。"),
 			SPAN_NOTICE("You start adding sandbags to [src]."))
 		for(var/i = build_stage to BARRICADE_SANDBAG_5)
 			if(build_stage >= BARRICADE_SANDBAG_5 || !do_after(user, 5, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, src) || build_stage >= BARRICADE_SANDBAG_5 || SB.amount == 0)
@@ -99,7 +99,7 @@
 			SB.use(1)
 			increment_build_stage()
 			update_icon()
-		user.visible_message(SPAN_NOTICE("[user] finishes stacking [SB] onto [src]."),
+		user.visible_message(SPAN_NOTICE("[user]完成了将[SB]堆叠到[src]上。"),
 			SPAN_NOTICE("You stack [SB] onto [src]."))
 		return
 	else

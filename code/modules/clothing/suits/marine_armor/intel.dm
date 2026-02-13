@@ -2,7 +2,7 @@
 	name = "\improper XM4 pattern intelligence officer armor"
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/intel)
 	specialty = "XM4 pattern intel"
-	desc = "Tougher than steel, quieter than whispers, the XM4 Intel Armor provides capable protection combined with an experimental integrated motion tracker. It took an R&D team a weekend to develop and costs more than the Chinook Station... probably. When worn, uniform accessories such as webbing cannot be attached due to the motion sensors occupying the clips."
+	desc = "比钢更坚韧，比耳语更安静，XM4情报护甲提供了可靠的防护，并集成了实验性的动态追踪器。一个研发团队花了一个周末开发它，其成本可能超过了奇努克空间站……大概吧。穿戴时，由于动态传感器占据了挂点，无法附加诸如战术背心之类的制服配件。"
 	desc_lore = "Armat Perfection. The XM4 Soldier Awareness System mixes M4-style hard armor and a distributed series of motion sensors clipped onto the breastplate. When connected to any HUD optic, it replicates the effects of an M314 Motion Detector unit, increasing user situational awareness. It is currently undergoing field trials by intelligence operatives."
 	storage_slots = 5
 	/// XM4 Integral Motion Detector Ability
@@ -31,7 +31,7 @@
 
 /datum/action/item_action/intel/toggle_motion_detector/New(Target, obj/item/holder)
 	. = ..()
-	name = "Toggle Motion Detector"
+	name = "切换动态探测器"
 	action_icon_state = "motion_detector"
 	button.name = name
 	button.overlays.Cut()
@@ -68,7 +68,7 @@
 		proximity.scan()
 
 /obj/item/clothing/suit/storage/marine/medium/rto/intel/proc/toggle_motion_detector(mob/user)
-	to_chat(user,SPAN_NOTICE("You [motion_detector? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s motion detector."))
+	to_chat(user,SPAN_NOTICE("你[motion_detector? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s motion detector."))
 	if(!motion_detector)
 		playsound(loc,'sound/items/detector_turn_on.ogg', 25, 1)
 	else
@@ -92,11 +92,11 @@
 	var/obj/item/clothing/under/uniform = user.w_uniform
 	var/accessory = locate(/obj/item/clothing/accessory/storage) in uniform.accessories
 	if(accessory)
-		to_chat(user, SPAN_WARNING("[src] can't be worn with [accessory]."))
+		to_chat(user, SPAN_WARNING("[src]无法与[accessory]同时穿戴。"))
 		return FALSE
 	// Only equip if user has expert intel skill level
 	if(!skillcheck(user, SKILL_INTEL, SKILL_INTEL_EXPERT))
-		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
+		to_chat(user, SPAN_WARNING("你似乎不知道如何使用 [src]..."))
 		return FALSE
 	return TRUE
 

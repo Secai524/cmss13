@@ -60,11 +60,11 @@
 		reagents.trans_to_ingest(M, reagents.total_volume)
 		if(M == user)
 			for(var/mob/O in viewers(M, null))
-				O.show_message(SPAN_NOTICE("[user] eats some [loaded] from \the [src]."), SHOW_MESSAGE_VISIBLE)
+				O.show_message(SPAN_NOTICE("[user]从\the [src]中吃了一些[loaded]。"), SHOW_MESSAGE_VISIBLE)
 				M.reagents.add_reagent("nutriment", 1)
 		else
 			for(var/mob/O in viewers(M, null))
-				O.show_message(SPAN_NOTICE("[user] feeds [M] some [loaded] from \the [src]"), SHOW_MESSAGE_VISIBLE)
+				O.show_message(SPAN_NOTICE("[user]从\the [src]中喂给[M]一些[loaded]。"), SHOW_MESSAGE_VISIBLE)
 				M.reagents.add_reagent("nutriment", 1)
 		playsound(M.loc,'sound/items/eatfood.ogg', 15, 1)
 		overlays.Cut()
@@ -74,46 +74,46 @@
 
 /obj/item/tool/kitchen/utensil/fork
 	name = "fork"
-	desc = "It's a fork. Sure is pointy."
+	desc = "这是一把叉子。确实很尖。"
 	icon_state = "fork"
 	item_state = "fork"
 
 /obj/item/tool/kitchen/utensil/pfork
-	name = "plastic fork"
-	desc = "Yay, no washing up to do."
+	name = "塑料叉"
+	desc = "太好了，不用洗碗。"
 	icon_state = "pfork"
 	item_state = "pfork"
 
 /obj/item/tool/kitchen/utensil/spoon
 	name = "spoon"
-	desc = "It's a spoon. You can see your own upside-down face in it."
+	desc = "这是一把勺子。你可以在里面看到自己倒过来的脸。"
 	icon_state = "spoon"
 	item_state = "spoon"
 	attack_verb = list("attacked", "poked")
 
 /obj/item/tool/kitchen/utensil/pspoon
-	name = "plastic spoon"
-	desc = "It's a plastic spoon. How dull."
+	name = "塑料勺"
+	desc = "这是一把塑料勺。真没劲。"
 	icon_state = "pspoon"
 	item_state = "pspoon"
 	attack_verb = list("attacked", "poked")
 
 /obj/item/tool/kitchen/utensil/mre_spork
-	name = "MRE spork"
-	desc = "It's a plastic brown spork. Very robust for what it is, legends tell about stranded marines who dug trenches with those."
+	name = "MRE叉勺"
+	desc = "这是一把棕色的塑料叉勺。就其本身而言非常坚固，传说有被困陆战队员用它挖过战壕。"
 	icon_state = "mre_spork"
 	attack_verb = list("attacked", "poked")
 
 /obj/item/tool/kitchen/utensil/mre_spork/fsr
-	name = "FSR spork"
-	desc = "It's a plastic brown spork. Very robust for what it is, legends tell about stranded marines who dug trenches with those."
+	name = "FSR叉勺"
+	desc = "这是一把棕色的塑料叉勺。就其本身而言非常坚固，传说有被困陆战队员用它挖过战壕。"
 
 /*
  * Knives
  */
 /obj/item/tool/kitchen/utensil/knife
 	name = "knife"
-	desc = "Can cut through any food."
+	desc = "可以切开任何食物。"
 	icon_state = "knife"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
@@ -131,8 +131,8 @@
 		playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1, 5)
 
 /obj/item/tool/kitchen/utensil/pknife
-	name = "plastic knife"
-	desc = "The bluntest of blades."
+	name = "塑料刀"
+	desc = "最钝的刀刃。"
 	icon_state = "pknife"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
@@ -151,8 +151,8 @@
  * Kitchen knives
  */
 /obj/item/tool/kitchen/knife
-	name = "kitchen knife"
-	desc = "A general purpose Chef's Knife made by SpaceCook Incorporated. Guaranteed to stay sharp for years to come."
+	name = "厨刀"
+	desc = "一把由SpaceCook公司制造的通用厨师刀。保证在未来几年内保持锋利。"
 	icon_state = "knife"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
@@ -174,8 +174,8 @@
  * Plastic Pizza Cutter
  */
 /obj/item/tool/kitchen/pizzacutter
-	name = "pizza cutter"
-	desc = "A circular blade used for cutting pizzas. This one has a cheap plastic handle."
+	name = "披萨刀"
+	desc = "一种用于切割披萨的圆形刀片。这把有一个廉价的塑料手柄。"
 	icon_state = "plasticpizzacutter"
 	flags_atom = FPRINT|CONDUCT
 	sharp = IS_SHARP_ITEM_ACCURATE
@@ -194,7 +194,7 @@
  * Wood Pizza Cutter
  */
 /obj/item/tool/kitchen/pizzacutter/wood
-	desc = "A circular blade used for cutting pizzas. This one has an authentic wooden handle."
+	desc = "一种用于切割披萨的圆形刀片。这把有一个正宗木制手柄。"
 	icon_state = "woodpizzacutter"
 
 /*
@@ -202,7 +202,7 @@
  */
 /obj/item/tool/kitchen/pizzacutter/holyrelic
 	name = "\improper PIZZA TIME"
-	desc = "Before you is a holy relic of a bygone era when the great Pizza Lords reigned supreme. You know either that or it's just a big damn pizza cutter."
+	desc = "在你面前的是一个逝去时代的圣物，那时伟大的披萨领主至高无上。你知道，要么是这样，要么它就是个该死的大号披萨刀。"
 	icon_state = "holyrelicpizzacutter"
 	force = MELEE_FORCE_VERY_STRONG
 
@@ -210,8 +210,8 @@
  * Bucher's cleaver
  */
 /obj/item/tool/kitchen/knife/butcher
-	name = "butcher's cleaver"
-	desc = "A huge thing used for chopping and chopping up meat. This includes clowns and clown-by-products."
+	name = "屠夫砍刀"
+	desc = "一个用于切碎肉块的大玩意儿。这包括小丑和小丑副产品。"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/kitchen_tools_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/kitchen_tools_righthand.dmi',
@@ -239,8 +239,8 @@
  */
 
 /obj/item/tool/kitchen/rollingpin
-	name = "rolling pin"
-	desc = "Used to knock out the Bartender."
+	name = "擀面杖"
+	desc = "用来敲晕酒保。"
 	icon_state = "rolling_pin"
 	force = 8
 	throwforce = 10
@@ -279,7 +279,7 @@
  */
 /obj/item/tool/kitchen/tray
 	name = "tray"
-	desc = "A metal tray to lay food on."
+	desc = "一个用来放置食物的金属托盘。"
 	icon = 'icons/obj/items/kitchen_tools.dmi'
 	icon_state = "tray"
 	throwforce = 12
@@ -293,7 +293,7 @@
 	var/cooldown = 0
 
 /obj/item/tool/kitchen/tray/attack(mob/living/carbon/M, mob/living/carbon/user)
-	to_chat(user, SPAN_WARNING("You accidentally slam yourself with [src]!"))
+	to_chat(user, SPAN_WARNING("你不小心用[src]砸到了自己！"))
 	user.apply_effect(1, WEAKEN)
 	user.take_limb_damage(2)
 
@@ -303,7 +303,7 @@
 /obj/item/tool/kitchen/tray/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/tool/kitchen/rollingpin))
 		if(cooldown < world.time - 25)
-			user.visible_message(SPAN_WARNING("[user] bashes [src] with [W]!"))
+			user.visible_message(SPAN_WARNING("[user]用[W]猛击[src]！"))
 			playsound(user.loc, 'sound/effects/shieldbash.ogg', 25, 1)
 			cooldown = world.time
 	else
@@ -313,8 +313,8 @@
  * Can opener
  */
 /obj/item/tool/kitchen/can_opener //it has code connected to it in /obj/item/reagent_container/food/drinks/cans/attackby
-	name = "can opener"
-	desc = "A simple can opener, popular tool among UPP due to their doctrine of food preservation."
+	name = "开罐器"
+	desc = "一个简单的开罐器，因其食物保存理念而在UPP中广受欢迎的工具。"
 	icon = 'icons/obj/items/kitchen_tools.dmi'
 	icon_state = "can_opener"
 	w_class = SIZE_SMALL
@@ -325,8 +325,8 @@
 	attack_verb = list("pinched", "nipped", "cut")
 
 /obj/item/tool/kitchen/can_opener/compact
-	name = "folding can opener"
-	desc = "A small compact can opener, can be folded into a safe and easy to store form, popular tool among UPP due to their doctrine of food preservation."
+	name = "折叠开罐器"
+	desc = "一个小巧紧凑的开罐器，可以折叠成安全易存放的形态，因其食物保存理念而在UPP中广受欢迎的工具。"
 	icon_state = "can_opener_compact"
 	w_class = SIZE_TINY
 	var/active = 0
@@ -341,7 +341,7 @@
 
 	active = !active
 	if(active)
-		to_chat(user, SPAN_NOTICE("You flip out your [src]."))
+		to_chat(user, SPAN_NOTICE("你甩出了你的[src]。"))
 		playsound(user, 'sound/weapons/flipblade.ogg', 15, 1)
 		force = MELEE_FORCE_TIER_2
 		edge = 1
@@ -351,7 +351,7 @@
 		w_class = SIZE_SMALL
 		attack_verb = list("pinched", "nipped", "cut")
 	else
-		to_chat(user, SPAN_NOTICE("[src] can now be concealed."))
+		to_chat(user, SPAN_NOTICE("[src]现在可以隐藏了。"))
 		force = initial(force)
 		edge = 0
 		sharp = 0

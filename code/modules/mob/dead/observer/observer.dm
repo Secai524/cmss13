@@ -21,7 +21,7 @@
 
 /mob/dead/observer
 	name = "ghost"
-	desc = "It's a g-g-g-g-ghooooost!" //jinkies!
+	desc = "是…是…是…是鬼魂！" //jinkies!
 	icon = 'icons/mob/mob.dmi'
 	icon_state = "ghost"
 	density = FALSE
@@ -79,7 +79,7 @@
 		see_invisible = INVISIBILITY_OBSERVER
 	else
 		see_invisible = HIDE_INVISIBLE_OBSERVER
-	to_chat(usr, SPAN_NOTICE("You [(ghostvision?"now":"no longer")] have ghost vision."))
+	to_chat(usr, SPAN_NOTICE("你[(ghostvision?"now":"no longer")] have ghost vision."))
 
 /mob/dead/observer/Initialize(mapload, mob/body)
 	. = ..()
@@ -107,7 +107,7 @@
 
 	if(!name) //To prevent nameless ghosts
 		name = capitalize(pick(GLOB.first_names_male)) + " " + capitalize(pick(GLOB.last_names))
-	if(name == "Unknown")
+	if(name == "未知")
 		if(body)
 			name = body.real_name
 	change_real_name(src, name)
@@ -528,7 +528,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 */
 /mob/living/verb/ghost()
 	set category = "OOC"
-	set name = "Ghost"
+	set name = "幽灵"
 	set desc = "Relinquish your life and enter the land of the dead."
 
 	do_ghost()
@@ -539,9 +539,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			mind.player_entity.update_panel_data(GLOB.round_statistics)
 		ghostize(TRUE)
 	else
-		var/list/options = list("Ghost", "Stay in body")
+		var/list/options = list("幽灵", "Stay in body")
 		if(check_other_rights(client, R_MOD, FALSE))
-			options = list("Aghost") + options
+			options = list("幽灵模式") + options
 		var/text_prompt = "Are you -sure- you want to ghost?\n(You are alive. If you ghost, you won't be able to return to your body. You can't change your mind so choose wisely!)"
 		var/is_nested = (buckled && istype(buckled, /obj/structure/bed/nest)) ? TRUE : FALSE
 		var/obj/structure/bed/nest/nest = FALSE
@@ -549,10 +549,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			text_prompt += "\nSince you're nested, you will get a chance to reenter your body if freed."
 			nest = buckled
 		var/response = tgui_alert(src, text_prompt, "Are you sure you want to ghost?", options)
-		if(response == "Aghost")
+		if(response == "幽灵模式")
 			client.admin_ghost()
 			return
-		if(response != "Ghost")
+		if(response != "幽灵")
 			return //didn't want to ghost after-all
 		AdjustSleeping(2) // Sleep so you will be properly recognized as ghosted
 		var/turf/location = get_turf(src)
@@ -632,11 +632,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	if(!mind || !mind.original || QDELETED(mind.original) || !can_reenter_corpse)
-		to_chat(src, "<span style='color: red;'>You have no body.</span>")
+		to_chat(src, "<span style='color: red;'>你没有身体。</span>")
 		return
 
 	if(mind.original.key && copytext(mind.original.key,1,2)!="@") //makes sure we don't accidentally kick any clients
-		to_chat(src, "<span style='color: red;'>Another consciousness is in your body...It is resisting you.</span>")
+		to_chat(src, "<span style='color: red;'>另一个意识在你的身体里……它正在抵抗你。</span>")
 		return
 
 	mind.transfer_to(mind.original, TRUE)
@@ -644,7 +644,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	return TRUE
 
 /mob/dead/observer/verb/enter_tech_tree()
-	set category = "Ghost"
+	set category = "幽灵"
 	set name = "Teleport to Techtree"
 
 	var/list/trees = list()
@@ -655,7 +655,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	var/value = SStechtree.trees[1]
 
 	if(length(trees) > 1)
-		value = tgui_input_list(src, "Choose which tree to enter", "Enter Tree", trees)
+		value = tgui_input_list(src, "选择进入哪棵树", "Enter Tree", trees)
 
 	if(!value)
 		return
@@ -685,15 +685,15 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		usr.forceMove(below)
 
 /mob/dead/observer/verb/dead_teleport_area()
-	set category = "Ghost"
+	set category = "幽灵"
 	set name = "Teleport to Area"
 	set desc= "Teleport to a location"
 
 	if(!istype(usr, /mob/dead/observer))
-		to_chat(src, "<span style='color: red;'>Not when you're not dead!</span>")
+		to_chat(src, "<span style='color: red;'>你没死的时候不行！</span>")
 		return
 
-	var/area/thearea = tgui_input_list(usr, "Area to jump to", "BOOYEA", return_sorted_areas())
+	var/area/thearea = tgui_input_list(usr, "跳跃至区域", "BOOYEA", return_sorted_areas())
 	if(!thearea)
 		return
 
@@ -702,7 +702,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		L+=T
 
 	if(!LAZYLEN(L))
-		to_chat(src, "<span style='color: red;'>No area available.</span>")
+		to_chat(src, "<span style='color: red;'>无可用区域。</span>")
 		return
 
 	usr.forceMove(pick(L))
@@ -732,7 +732,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		view_health_scan(target)
 		return
 
-	to_chat(src, SPAN_NOTICE("You must be permanently unrevivable or unable to reenter your body to use the scan health verb."))
+	to_chat(src, SPAN_NOTICE("你必须处于永久无法复活或无法返回身体的状态，才能使用扫描生命体征指令。"))
 
 /mob/dead/observer/proc/view_health_scan(mob/living/target)
 	if (!last_health_display)
@@ -747,7 +747,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set desc = "Restore your ghost character's name and appearance from your preferences."
 
 	if(!client?.prefs)
-		to_chat(src, SPAN_NOTICE("Somehow, you have no preferences."))
+		to_chat(src, SPAN_NOTICE("不知为何，你没有偏好设置。"))
 		return
 
 	if(!client.prefs.preview_dummy)
@@ -759,7 +759,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	name = preferences_real_name
 	real_name = preferences_real_name
 
-	to_chat(client, SPAN_NOTICE("Appearance reset."))
+	to_chat(client, SPAN_NOTICE("外观已重置。"))
 
 /mob/dead/observer/verb/follow_local(mob/target in GLOB.mob_list)
 	set category = "Ghost.Follow"
@@ -770,7 +770,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 /mob/dead/observer/verb/follow()
 	set category = "Ghost.Follow"
-	set name = "Follow"
+	set name = "跟随"
 
 	if(!orbit_menu)
 		orbit_menu = new(src)
@@ -820,7 +820,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	forceMove(locate(tx, ty, tz))
 
 /mob/dead/observer/verb/dead_teleport_mob() //Moves the ghost instead of just changing the ghosts's eye -Nodrak
-	set category = "Ghost"
+	set category = "幽灵"
 	set name = "Teleport to Mob"
 	set desc = "Teleport to a mob."
 
@@ -831,7 +831,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		var/target = null    //Chosen target.
 
 		dest += getmobs() //Fill list, prompt user with list
-		target = tgui_input_list(usr, "Please, select a player!", "Jump to Mob", dest)
+		target = tgui_input_list(usr, "请选择一名玩家！", "Jump to Mob", dest)
 
 		if (!target)//Make sure we actually have a target
 			return
@@ -844,19 +844,19 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 				A.forceMove(T)
 				following = null
 			else
-				to_chat(A, "<span style='color: red;'>This mob is not located in the game world.</span>")
+				to_chat(A, "<span style='color: red;'>该生物不在游戏世界内。</span>")
 
 /mob/dead/observer/memory()
 	set hidden = TRUE
-	to_chat(src, "<span style='color: red;'>You are dead! You have no mind to store memory!</span>")
+	to_chat(src, "<span style='color: red;'>你已死亡！没有可以存储记忆的意识！</span>")
 
 /mob/dead/observer/add_memory()
 	set hidden = TRUE
-	to_chat(src, "<span style='color: red;'>You are dead! You have no mind to store memory!</span>")
+	to_chat(src, "<span style='color: red;'>你已死亡！没有可以存储记忆的意识！</span>")
 
 /mob/dead/observer/verb/analyze_air()
 	set name = "Analyze Air"
-	set category = "Ghost"
+	set category = "幽灵"
 
 	if(!istype(usr, /mob/dead/observer))
 		return
@@ -871,14 +871,14 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	var/env_temperature = T.return_temperature()
 	var/env_gas = T.return_gas()
 
-	to_chat(src, SPAN_INFO("<B>Results:</B>"))
+	to_chat(src, SPAN_INFO("<B>结果：</B>"))
 	if(abs(pressure - ONE_ATMOSPHERE) < 10)
-		to_chat(src, "<span style='color: blue;'>Pressure: [round(pressure,0.1)] kPa</span>")
+		to_chat(src, "<span style='color: blue;'>压力：[round(pressure,0.1)] 千帕</span>")
 	else
-		to_chat(src, "<span style='color: red;'>Pressure: [round(pressure,0.1)] kPa</span>")
+		to_chat(src, "<span style='color: red;'>气压：[round(pressure,0.1)] 千帕</span>")
 
-	to_chat(src, "<span style='color: blue;'>Gas type: [env_gas]</span>")
-	to_chat(src, "<span style='color: blue;'>Temperature: [round(env_temperature-T0C,0.1)]&deg;C</span>")
+	to_chat(src, "<span style='color: blue;'>气体类型：[env_gas]</span>")
+	to_chat(src, "<span style='color: blue;'>温度：[round(env_temperature-T0C,0.1)]&deg;C</span>")
 
 /mob/dead/observer/verb/toggle_zoom()
 	set name = "Toggle Zoom"
@@ -917,7 +917,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			level_message = "no night vision"
 			src?.client?.prefs?.ghost_vision_pref = GHOST_VISION_LEVEL_NO_NVG
 	src.client.prefs.save_preferences()
-	to_chat(src, SPAN_BOLDNOTICE("Night Vision mode switched and saved to [level_message]."))
+	to_chat(src, SPAN_BOLDNOTICE("夜视模式已切换并保存至[level_message]。"))
 	sync_lighting_plane_alpha()
 
 /mob/dead/observer/verb/toggle_self_visibility()
@@ -928,10 +928,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		alpha = initial(alpha)
 	else
 		alpha = 0
-	to_chat(usr, SPAN_NOTICE("You are now [(self_visibility?"visible":"invisible")]."))
+	to_chat(usr, SPAN_NOTICE("你现在[(self_visibility?"visible":"invisible")]."))
 
 /mob/dead/observer/verb/view_manifest()
-	set name = "View Crew Manifest"
+	set name = "查看船员名单"
 	set category = "Ghost.View"
 	GLOB.crew_manifest.open_ui(src)
 
@@ -941,7 +941,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	GLOB.tacmap_viewer.tgui_interact(src)
 
 /mob/dead/verb/hive_status()
-	set name = "Hive Status"
+	set name = "巢穴状态"
 	set desc = "Check the status of the hive."
 	set category = "Ghost.View"
 
@@ -956,14 +956,14 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			last_hive_checked = hive
 
 	if(!length(hives))
-		to_chat(src, SPAN_ALERT("There seem to be no living hives at the moment."))
+		to_chat(src, SPAN_ALERT("目前似乎没有存活的巢穴。"))
 		return
 	else if(length(hives) == 1) // Only one hive, don't need an input menu for that
 		last_hive_checked.hive_ui.open_hive_status(src)
 	else
-		faction = tgui_input_list(src, "Select which hive status menu to open up", "Hive Choice", hives, theme="hive_status")
+		faction = tgui_input_list(src, "选择要打开的巢穴状态菜单", "Hive Choice", hives, theme="hive_status")
 		if(!faction)
-			to_chat(src, SPAN_ALERT("Hive choice error. Aborting."))
+			to_chat(src, SPAN_ALERT("巢穴选择错误。中止。"))
 			return
 
 		GLOB.hive_datum[hives[faction]].hive_ui.open_hive_status(src)
@@ -974,11 +974,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set category = "Ghost.View"
 
 	var/list/options = list(
-		"Weyland-Yutani", "High Command", "Provost", "Press",
-		"Colonial Marshal Bureau", "Union of Progressive Peoples",
-		"Three World Empire", "Colonial Liberation Front",
-		"Other", "Cancel")
-	var/answer = tgui_input_list(src, "Which kind of faxes would you like to see?", "Faxes", options)
+		"Weyland-Yutani", "High Command", "宪兵总监", "Press",
+		"殖民地执法局", "进步人民联盟",
+		"三世界帝国", "殖民地解放阵线",
+		"其他", "Cancel")
+	var/answer = tgui_input_list(src, "你想查看哪种传真？", "Faxes", options)
 	switch(answer)
 		if("Weyland-Yutani")
 			var/body = "<body>"
@@ -1000,7 +1000,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			body += "<br><br></body>"
 			show_browser(src, body, "Faxes to High Command", "uscmfaxviewer", width = 300, height = 600)
 
-		if("Provost")
+		if("宪兵总监")
 			var/body = "<body>"
 
 			for(var/text in GLOB.ProvostFaxes)
@@ -1020,7 +1020,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			body += "<br><br></body>"
 			show_browser(src, body, "Faxes to Press organizations", "pressfaxviewer", width = 300, height = 600)
 
-		if("Colonial Marshal Bureau")
+		if("殖民地执法局")
 			var/body = "<body>"
 
 			for(var/text in GLOB.CMBFaxes)
@@ -1030,7 +1030,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			body += "<br><br></body>"
 			show_browser(src, body, "Faxes to the Colonial Marshal Bureau", "cmbfaxviewer", width = 300, height = 600)
 
-		if("Union of Progressive Peoples")
+		if("进步人民联盟")
 			var/body = "<body>"
 
 			for(var/text in GLOB.UPPFaxes)
@@ -1040,7 +1040,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			body += "<br><br></body>"
 			show_browser(src, body, "Faxes to the Union of Progressive Peoples", "uppfaxviewer", width = 300, height = 600)
 
-		if("Three World Empire")
+		if("三世界帝国")
 			var/body = "<body>"
 
 			for(var/text in GLOB.TWEFaxes)
@@ -1050,7 +1050,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			body += "<br><br></body>"
 			show_browser(src, body, "Faxes to the Three World Empire", "twefaxviewer", width = 300, height = 600)
 
-		if("Colonial Liberation Front")
+		if("殖民地解放阵线")
 			var/body = "<body>"
 
 			for(var/text in GLOB.CLFFaxes)
@@ -1060,7 +1060,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			body += "<br><br></body>"
 			show_browser(src, body, "Faxes to the Colonial Liberation Front", "clffaxviewer", width = 300, height = 600)
 
-		if("Other")
+		if("其他")
 			var/body = "<body>"
 
 			for(var/text in GLOB.GeneralFaxes)
@@ -1074,14 +1074,14 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 /mob/dead/verb/join_as_alien()
 	set category = "Ghost.Join"
-	set name = "Join as Xeno"
+	set name = "以异形加入"
 	set desc = "Select an alive but logged-out Xenomorph to rejoin the game."
 
 	if (!client)
 		return
 
 	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
-		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
+		to_chat(src, SPAN_WARNING("游戏尚未开始！"))
 		return
 
 	if(SSticker.mode.check_xeno_late_join(src))
@@ -1096,7 +1096,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
-		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
+		to_chat(src, SPAN_WARNING("游戏尚未开始！"))
 		return
 
 	if(SSticker.mode.check_xeno_late_join(src))
@@ -1111,7 +1111,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
-		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
+		to_chat(src, SPAN_WARNING("游戏尚未开始！"))
 		return
 
 	if(SSticker.mode.check_xeno_late_join(src))
@@ -1126,7 +1126,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
-		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
+		to_chat(src, SPAN_WARNING("游戏尚未开始！"))
 		return
 
 	var/list/zombie_list = list()
@@ -1137,10 +1137,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			zombie_list += list(A.real_name = A)
 
 	if(!length(zombie_list))
-		to_chat(src, SPAN_DANGER("There are no available zombies."))
+		to_chat(src, SPAN_DANGER("没有可用的僵尸。"))
 		return
 
-	var/choice = tgui_input_list(usr, "Pick a Zombie:", "Join as Zombie", zombie_list)
+	var/choice = tgui_input_list(usr, "选择一个僵尸：", "Join as Zombie", zombie_list)
 	if(!choice)
 		return
 
@@ -1149,7 +1149,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	if(choice == "Underground Zombie")
 		if(!length(GLOB.zombie_landmarks))
-			to_chat(src, SPAN_WARNING("Sorry, the last underground zombie just got taken."))
+			to_chat(src, SPAN_WARNING("抱歉，最后一个地下僵尸刚被选走了。"))
 			return
 		var/obj/effect/landmark/zombie/spawn_point = pick(GLOB.zombie_landmarks)
 		spawn_point.spawn_zombie(src)
@@ -1161,11 +1161,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	if(Z.stat == DEAD)
-		to_chat(src, SPAN_WARNING("This zombie is dead!"))
+		to_chat(src, SPAN_WARNING("这个僵尸已经死了！"))
 		return
 
 	if(Z.client)
-		to_chat(src, SPAN_WARNING("That player is still connected."))
+		to_chat(src, SPAN_WARNING("那名玩家仍在连接中。"))
 		return
 
 	mind.transfer_to(Z, TRUE)
@@ -1182,7 +1182,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
-		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
+		to_chat(src, SPAN_WARNING("游戏尚未开始！"))
 		return
 
 	var/list/mobs_by_role = list() // the list the mobs are assigned to first, for sorting purposes
@@ -1198,9 +1198,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		for(var/freed_mob in mobs_by_role[role])
 			freed_mob_choices["[freed_mob] ([role])"] = freed_mob
 	if(!length(freed_mob_choices))
-		to_chat(src, SPAN_WARNING("There are no Freed Mobs available."))
+		to_chat(src, SPAN_WARNING("没有可用的已释放实体。"))
 		return
-	var/choice = tgui_input_list(usr, "Pick a Freed Mob:", "Join as Freed Mob", freed_mob_choices)
+	var/choice = tgui_input_list(usr, "选择一个已释放实体：", "Join as Freed Mob", freed_mob_choices)
 	if(!choice)
 		return
 
@@ -1214,7 +1214,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	if(QDELETED(freed_mob) || freed_mob.client)
 		GLOB.freed_mob_list -= freed_mob
-		to_chat(src, SPAN_WARNING("Something went wrong."))
+		to_chat(src, SPAN_WARNING("出了点问题。"))
 		return
 
 	GLOB.freed_mob_list -= freed_mob
@@ -1230,7 +1230,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
-		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
+		to_chat(src, SPAN_WARNING("游戏尚未开始！"))
 		return
 
 	var/list/hellhound_mob_list = list() // the list we'll be choosing from
@@ -1240,7 +1240,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		if(Hellhound.aghosted)
 			continue
 		hellhound_mob_list[Hellhound.name] = Hellhound
-	var/choice = tgui_input_list(usr, "Pick a Hellhound:", "Join as Hellhound", hellhound_mob_list)
+	var/choice = tgui_input_list(usr, "选择一个地狱犬：", "Join as Hellhound", hellhound_mob_list)
 	if(!choice)
 		return
 
@@ -1249,11 +1249,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	if(QDELETED(Hellhound) || Hellhound.client)
-		to_chat(src, SPAN_WARNING("Something went wrong."))
+		to_chat(src, SPAN_WARNING("出了点问题。"))
 		return
 
 	if(Hellhound.stat == DEAD)
-		to_chat(src, SPAN_WARNING("That Hellhound has died."))
+		to_chat(src, SPAN_WARNING("那只地狱犬已经死了。"))
 		return
 
 	current_mob.mind.transfer_to(Hellhound, TRUE)
@@ -1261,14 +1261,14 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 /mob/dead/verb/join_as_yautja()
 	set category = "Ghost.Join"
-	set name = "Join the Hunt"
+	set name = "加入狩猎"
 	set desc = "If you are whitelisted, and it is the right type of round, join in."
 
 	if (!client)
 		return
 
 	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
-		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
+		to_chat(src, SPAN_WARNING("游戏尚未开始！"))
 		return
 
 	if(SSticker.mode.check_predator_late_join(src))
@@ -1283,7 +1283,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
-		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
+		to_chat(src, SPAN_WARNING("游戏尚未开始！"))
 		return
 
 	if(SSticker.mode.check_joe_late_join(src))
@@ -1298,33 +1298,33 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
-		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
+		to_chat(src, SPAN_WARNING("游戏尚未开始！"))
 		return
 
 	if(SSticker.mode.check_fax_responder_late_join(src))
 		SSticker.mode.attempt_to_join_as_fax_responder(src)
 
 /mob/dead/verb/drop_vote()
-	set category = "Ghost"
+	set category = "幽灵"
 	set name = "Spectator Vote"
 	set desc = "If it's on Hunter Games gamemode, vote on who gets a supply drop!"
 
 	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
-		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
+		to_chat(src, SPAN_WARNING("游戏尚未开始！"))
 		return
 
 	if(!istype(SSticker.mode,/datum/game_mode/huntergames))
-		to_chat(src, SPAN_INFO("Wrong game mode. You have to be observing a Hunter Games round."))
+		to_chat(src, SPAN_INFO("游戏模式错误。你必须正在观察一场猎人游戏回合。"))
 		return
 
 	var/datum/game_mode/huntergames/mode = SSticker.mode
 
 	if(!mode.waiting_for_drop_votes)
-		to_chat(src, SPAN_INFO("There's no drop vote currently in progress. Wait for a supply drop to be announced!"))
+		to_chat(src, SPAN_INFO("当前没有进行中的补给投放投票。请等待补给投放宣布！"))
 		return
 
 	if(voted_this_drop)
-		to_chat(src, SPAN_INFO("You voted for this one already. Only one please!"))
+		to_chat(src, SPAN_INFO("你已经投过票了。请只投一次！"))
 		return
 
 	var/list/mobs = GLOB.alive_mob_list
@@ -1335,12 +1335,12 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			mobs -= M
 
 
-	target = tgui_input_list(usr, "Please, select a contestant!", "Cake Time", mobs)
+	target = tgui_input_list(usr, "请选择一名参赛者！", "Cake Time", mobs)
 
 	if (!target)//Make sure we actually have a target
 		return
 	else
-		to_chat(src, SPAN_INFO("Your vote for [target] has been counted!"))
+		to_chat(src, SPAN_INFO("你为[target]投的票已计入！"))
 		SSticker.mode:supply_votes += target
 		voted_this_drop = 1
 		addtimer(VARSET_CALLBACK(src, voted_this_drop, FALSE), 20 SECONDS)
@@ -1350,7 +1350,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Go DNR"
 	set desc = "Prevent your character from being revived."
 
-	if(alert("Do you want to go DNR?", "Choose to go DNR", "Yes", "No") == "Yes")
+	if(alert("Do you want to go DNR?", "选择进入DNR状态", "Yes", "No") == "Yes")
 		can_reenter_corpse = FALSE
 		var/ref
 		var/mob/living/carbon/human/H = mind.original
@@ -1451,7 +1451,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		// We check observer view range specifically to also show the message to zoomed out ghosts. Double check Z as get_dist goes thru levels.
 		if((observer_client?.prefs?.toggles_chat & CHAT_DEAD) \
 			&& src.z == nearby_observer.z && get_dist(src, nearby_observer) <= observer_client.view)
-			to_chat(observer_client, SPAN_DEADSAY("<b>[src]</b> points to [A] [nearby_observer.format_jump(A)]"))
+			to_chat(observer_client, SPAN_DEADSAY("<b>[src]</b>指向[A][nearby_observer.format_jump(A)]"))
 	return TRUE
 
 /// This proc is called when a predator round is toggled by the admin verb, as well as when a ghost logs in

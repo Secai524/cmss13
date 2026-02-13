@@ -6,7 +6,7 @@
 
 	if (src.client)
 		if (src.client.prefs.muted & MUTE_IC)
-			to_chat(src, SPAN_DANGER("You cannot whisper (muted)."))
+			to_chat(src, SPAN_DANGER("你无法低语（被禁言）。"))
 			return
 
 		if (src.client.handle_spam_prevention(message,MUTE_IC))
@@ -21,7 +21,7 @@
 	message =  trim(strip_html(message)) //made consistent with say
 
 	if(name != GetVoice())
-		alt_name = "(as [get_id_name("Unknown")])"
+		alt_name = "(as [get_id_name("未知")])"
 
 	//parse the language code and consume it
 	var/datum/language/speaking = parse_language(message)
@@ -115,7 +115,7 @@
 
 	spawn(30)
 		if(not_dead_speaker)
-			log_say("[name != "Unknown" ? name : "([real_name])"] \[Whisper\]: [message] (CKEY: [key]) (JOB: [job]) (AREA: [get_area_name(loc)])")
+			log_say("[name != "未知" ? name : "([real_name])"] \[Whisper\]: [message] (CKEY: [key]) (JOB: [job]) (AREA: [get_area_name(loc)])")
 
 	if (length(watching))
 		var/rendered = "<span class='game say'><span class='name'>[src.name]</span> whispers something.</span>"

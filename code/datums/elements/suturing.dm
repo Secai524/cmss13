@@ -139,7 +139,7 @@ YOU TO 200 DAMAGE. I ASK NOT FOR MY OWN MEDIC EGOSTROKING, BUT FOR THE GOOD OF T
 		do_after(user, max(rand(suture_time * 0.1, suture_time * 0.5), 0.5), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL)
 		if(user != target)
 			to_chat(user, SPAN_DANGER("[target] couldn't hold still through the pain of the [description_verbing]!"))
-		to_chat(target, SPAN_DANGER("The pain was too much, you couldn't hold still!"))
+		to_chat(target, SPAN_DANGER("疼痛过于剧烈，你无法保持静止！"))
 		INVOKE_ASYNC(target, TYPE_PROC_REF(/mob, emote), "pain")
 		return
 
@@ -150,7 +150,7 @@ YOU TO 200 DAMAGE. I ASK NOT FOR MY OWN MEDIC EGOSTROKING, BUT FOR THE GOOD OF T
 	//Timer and redo checks in case something funny happened during the do_after().
 	if(!do_after(user, suture_time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL)\
 		|| target_limb.status & (LIMB_DESTROYED|LIMB_ROBOT|LIMB_SYNTHSKIN) || target_limb.get_incision_depth())
-		to_chat(user, SPAN_WARNING("You were interrupted before you could finish!"))
+		to_chat(user, SPAN_WARNING("你在完成前被打断了！"))
 		return
 
 	//Add the sutures.

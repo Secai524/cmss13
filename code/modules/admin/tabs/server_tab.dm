@@ -6,7 +6,7 @@
 	if (!usr.client.admin_holder || !(usr.client.admin_holder.rights & R_MOD))
 		return
 
-	var/confirm = alert("Restart the game world?", "Restart", "Yes", "Cancel")
+	var/confirm = alert("Restart the game world?", "重启", "Yes", "Cancel")
 	if(confirm == "Cancel")
 		return
 	if(confirm == "Yes")

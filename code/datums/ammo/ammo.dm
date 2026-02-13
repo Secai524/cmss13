@@ -169,7 +169,7 @@
 	if(!step(living_mob, direction))
 		living_mob.animation_attack_on(get_step(living_mob, direction))
 		playsound(living_mob.loc, "punch", 25, 1)
-		living_mob.visible_message(SPAN_DANGER("[living_mob] slams into an obstacle!"),
+		living_mob.visible_message(SPAN_DANGER("[living_mob]猛地撞上了障碍物！"),
 			isxeno(living_mob) ? SPAN_XENODANGER("You slam into an obstacle!") : SPAN_HIGHDANGER("You slam into an obstacle!"), null, 4, CHAT_TYPE_TAKING_HIT)
 		living_mob.apply_damage(MELEE_FORCE_TIER_2, enviro=damage_enviro)
 
@@ -181,7 +181,7 @@
 		target.KnockDown(0.7)
 		target.apply_effect(1, SUPERSLOW)
 		target.apply_effect(2, SLOW)
-		to_chat(target, SPAN_XENODANGER("You are shaken by the sudden impact!"))
+		to_chat(target, SPAN_XENODANGER("你被这突如其来的冲击震得头晕目眩！"))
 	else
 		living_mob.apply_stamina_damage(fired_projectile.ammo.damage, fired_projectile.def_zone, ARMOR_BULLET)
 
@@ -194,7 +194,7 @@
 		var/mob/living/carbon/xenomorph/target = living_mob
 		target.apply_effect(1, SUPERSLOW)
 		target.apply_effect(2, SLOW)
-		to_chat(target, SPAN_XENODANGER("You are slowed by the sudden impact!"))
+		to_chat(target, SPAN_XENODANGER("突如其来的冲击让你行动迟缓！"))
 	else
 		living_mob.apply_stamina_damage(fired_projectile.ammo.damage, fired_projectile.def_zone, ARMOR_BULLET)
 
@@ -216,7 +216,7 @@
 			continue
 		if(show_message)
 			var/msg = "You are hit by backlash from \a </b>[P.name]</b>!"
-			M.visible_message(SPAN_DANGER("[M] is hit by backlash from \a [P.name]!"),isxeno(M) ? SPAN_XENODANGER("[msg]"):SPAN_HIGHDANGER("[msg]"))
+			M.visible_message(SPAN_DANGER("[M]被\a [P.name]的反冲力击中了！"),isxeno(M) ? SPAN_XENODANGER("[msg]"):SPAN_HIGHDANGER("[msg]"))
 		var/damage = P.damage/damage_div
 
 		var/mob/living/carbon/xenomorph/XNO = null

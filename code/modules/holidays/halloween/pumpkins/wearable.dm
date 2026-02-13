@@ -5,7 +5,7 @@
 	item_icons = list(
 		WEAR_HEAD = 'icons/misc/events/pumpkins.dmi',
 	)
-	desc = "An ominous looking pumpkin. Would look pretty spooky if worn on your head..."
+	desc = "一个看起来不祥的南瓜。如果戴在头上会看起来很吓人..."
 	w_class = SIZE_MEDIUM
 	flags_inv_hide = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEALLHAIR
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_EYES
@@ -44,22 +44,22 @@
 
 /obj/item/clothing/head/pumpkin/mob_can_equip(mob/user, slot, disable_warning)
 	if(slot == WEAR_HEAD && !carved_icon)
-		to_chat(user, SPAN_WARNING("You can't put on a full pumpkin! Empty and carve it with a sharp object first."))
+		to_chat(user, SPAN_WARNING("你不能戴一整个南瓜！先用锋利物体掏空并雕刻它。"))
 		return FALSE
 	. = ..()
 
 /obj/item/clothing/head/pumpkin/attackby(obj/item/tool, mob/user)
 	if(!carved_icon && (tool.sharp == IS_SHARP_ITEM_ACCURATE || tool.sharp == IS_SHARP_ITEM_BIG))
-		var/choice = tgui_input_list(user, "Select the pattern to carve on your pumpkin!", "Pumpkin Carving", carvable_icons)
+		var/choice = tgui_input_list(user, "选择要在南瓜上雕刻的图案！", "Pumpkin Carving", carvable_icons)
 		if(choice)
 			playsound(loc, 'sound/effects/vegetation_hit.ogg', 25, 1)
 			carved_icon = choice
-			name = "carved pumpkin"
+			name = "雕刻过的南瓜"
 			update_icon()
 	else
 		return ..()
 
-/obj/item/clothing/head/pumpkin/get_mob_overlay(mob/user_mob, slot, default_bodytype = "Default")
+/obj/item/clothing/head/pumpkin/get_mob_overlay(mob/user_mob, slot, default_bodytype = "默认")
 	var/image/pumpkin = ..()
 	if(carved_icon && slot == WEAR_HEAD)
 		var/image/overlay = overlay_image(icon, "[prefix]pumpkin_[carved_icon]")
@@ -67,6 +67,6 @@
 	return pumpkin
 
 /obj/item/clothing/head/pumpkin/corrupted
-	name = "corrupted pumpkin"
+	name = "腐化南瓜"
 	prefix = "cor_"
 	carvable_icons = list("cry", "sob", "sad", "why", "spooky", "ff")

@@ -61,10 +61,10 @@
 /obj/item/storage/proc/storage_draw_logic(name)
 	if (!(storage_flags & STORAGE_USING_DRAWING_METHOD))
 		storage_flags |= STORAGE_USING_DRAWING_METHOD
-		to_chat(usr, "Clicking [name] with an empty hand now puts the last stored item in your hand.")
+		to_chat(usr, "现在用空手点击[name]会将最后存放的物品放入你手中。")
 	else if(!(storage_flags & STORAGE_USING_FIFO_DRAWING))
 		storage_flags |= STORAGE_USING_FIFO_DRAWING
-		to_chat(usr, "Clicking [name] with an empty hand now puts the first stored item in your hand.")
+		to_chat(usr, "现在用空手点击[name]会将第一个存放的物品放入你手中。")
 	else
 		storage_flags &= ~(STORAGE_USING_DRAWING_METHOD|STORAGE_USING_FIFO_DRAWING)
-		to_chat(usr, "Clicking [name] with an empty hand now opens the storage menu. Holding Alt will draw the last stored item instead.")
+		to_chat(usr, "现在用空手点击[name]会打开存储菜单。按住Alt键则会取出最后存放的物品。")

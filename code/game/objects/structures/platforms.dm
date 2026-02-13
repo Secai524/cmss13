@@ -3,7 +3,7 @@
  */
 /obj/structure/platform
 	name = "platform"
-	desc = "A square metal surface resting on four legs."
+	desc = "一个方形金属表面，由四条腿支撑。"
 	icon = 'icons/obj/structures/props/platforms.dmi'
 	icon_state = "platform"
 	climbable = TRUE
@@ -93,7 +93,7 @@
 	if(user.pulling)
 		if(!can_climb(user))
 			return
-		user.visible_message(SPAN_WARNING("[user] starts dragging \the [user.pulling] onto \the [src]"),
+		user.visible_message(SPAN_WARNING("[user]开始将\the [user.pulling]拖到\the [src]上"),
 		SPAN_WARNING("You start dragging \the [user.pulling] onto \the [src]."))
 		if(!do_after(user, 3 SECONDS * user.get_skill_duration_multiplier(SKILL_FIREMAN), INTERRUPT_ALL, BUSY_ICON_HOSTILE, user.pulling, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 			return
@@ -101,7 +101,7 @@
 			if(!can_climb(user))
 				return
 			var/turf/move_to_turf = get_step(get_turf(src), dir)
-			user.visible_message(SPAN_WARNING("[user] finishes dragging \the [user.pulling] onto \the [src]"),
+			user.visible_message(SPAN_WARNING("[user]将\the [user.pulling]拖到了\the [src]上"),
 			SPAN_WARNING("You finish dragging \the [user.pulling] onto \the [src]."))
 			user.pulling.forceMove(move_to_turf)
 
@@ -112,14 +112,14 @@
 		return XENO_NO_DELAY_ACTION
 
 	if(stat & BROKEN)
-		to_chat(user, SPAN_WARNING("Its already destroyed!"))
+		to_chat(user, SPAN_WARNING("它已经被摧毁了！"))
 		return XENO_NO_DELAY_ACTION
 
 	if(explo_proof)
-		to_chat(user, SPAN_WARNING("Its too strong for us!"))
+		to_chat(user, SPAN_WARNING("它对我们来说太强了！"))
 		return XENO_NO_DELAY_ACTION
 
-	user.visible_message(SPAN_WARNING("[user] begins to lean against [src]."),
+	user.visible_message(SPAN_WARNING("[user]开始靠在[src]上。"),
 	SPAN_WARNING("You start to stomp and pressure [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
 	playsound(loc, creaking_sound, 30, 1)
 
@@ -141,7 +141,7 @@
 	if(!do_after(user, shove_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE, numticks = shove_time * 0.1))
 		return
 	user.animation_attack_on(src)
-	user.visible_message(SPAN_DANGER("[user] collapses [src] down!"),
+	user.visible_message(SPAN_DANGER("[user]将[src]放倒了！"),
 	SPAN_DANGER("You collapse [src] down!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	playsound(loc, breaking_sound, 25, 1)
 	broken()
@@ -149,7 +149,7 @@
 
 /obj/structure/platform_decoration
 	name = "platform"
-	desc = "A square metal surface resting on four legs."
+	desc = "一个方形金属表面，由四条腿支撑。"
 	icon = 'icons/obj/structures/props/platforms.dmi'
 	icon_state = "platform_deco"
 	anchored = TRUE
@@ -314,8 +314,8 @@
 
 /obj/structure/platform/metal/kutjevo
 	icon_state = "kutjevo_platform"
-	name = "raised metal edge"
-	desc =  "A raised level of metal, often used to elevate areas above others, or construct bridges. You could probably climb it."
+	name = "凸起的金属边缘"
+	desc =  "一层抬高的金属平台，常用于将区域抬高或建造桥梁。你或许可以爬上去。"
 
 /obj/structure/platform/metal/kutjevo/north
 	dir = NORTH
@@ -327,8 +327,8 @@
 
 /obj/structure/platform/metal/kutjevo_smooth
 	icon_state = "kutjevo_platform_sm"
-	name = "raised metal edge"
-	desc =  "A raised level of metal, often used to elevate areas above others, or construct bridges. You could probably climb it."
+	name = "凸起的金属边缘"
+	desc =  "一层抬高的金属平台，常用于将区域抬高或建造桥梁。你或许可以爬上去。"
 
 /obj/structure/platform/metal/kutjevo_smooth/north
 	dir = NORTH
@@ -339,8 +339,8 @@
 
 /obj/structure/platform/metal/kutjevo_smooth_immune
 	icon_state = "kutjevo_platform_sm"
-	name = "raised metal edge"
-	desc =  "A raised level of metal, often used to elevate areas above others, or construct bridges. You could probably climb it."
+	name = "凸起的金属边缘"
+	desc =  "一层抬高的金属平台，常用于将区域抬高或建造桥梁。你或许可以爬上去。"
 	explo_proof = TRUE
 
 /obj/structure/platform/metal/kutjevo_smooth_immune/north
@@ -357,8 +357,8 @@
 
 /obj/structure/platform/metal/shiva
 	icon_state = "shiva"
-	name = "raised rubber cord platform"
-	desc = "Reliable steel and a polymer rubber substitute. Doesn't crack under cold weather."
+	name = "高架橡胶平台"
+	desc = "可靠的钢材与聚合物橡胶替代品。在严寒天气下不会开裂。"
 
 /obj/structure/platform/metal/shiva/north
 	dir = NORTH
@@ -369,8 +369,8 @@
 
 
 /obj/structure/platform/metal/strata
-	name = "raised metal edge"
-	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
+	name = "凸起的金属边缘"
+	desc = "一个抬高的金属平台，通常用于将区域提升到其他区域之上。你或许可以爬上去。"
 	icon_state = "strata_metalplatform"
 
 /obj/structure/platform/metal/strata/north
@@ -384,8 +384,8 @@
 
 /obj/structure/platform/metal/hunter
 	icon_state = "hunter_platform"
-	name = "raised metal edge"
-	desc =  "A raised level of metal, often used to elevate areas above others, or construct bridges. You could probably climb it."
+	name = "凸起的金属边缘"
+	desc =  "一层抬高的金属平台，常用于将区域抬高或建造桥梁。你或许可以爬上去。"
 
 /obj/structure/platform/metal/hunter/north
 	dir = NORTH
@@ -405,8 +405,8 @@
 //------------------------------------//
 
 /obj/structure/platform/stone/kutjevo
-	name = "raised rock edges"
-	desc = "A collection of stones and rocks that provide ample grappling and vaulting opportunity. Indicates a change in elevation. You could probably climb it."
+	name = "高架岩石边缘"
+	desc = "一堆石头和岩石，提供了充足的抓握和翻越机会。表明此处有高度变化。你或许可以爬上去。"
 
 /obj/structure/platform/stone/kutjevo/north
 	dir = NORTH
@@ -417,8 +417,8 @@
 
 
 /obj/structure/platform/stone/strata
-	name = "ice rock edge"
-	desc = "A solid chunk of desolate rocks and ice. Looks like you could climb it with some difficulty."
+	name = "冰岩边缘"
+	desc = "一大块荒凉的岩石与冰。看起来你费点劲就能爬上去。"
 	icon_state = "strata_platform"
 
 /obj/structure/platform/stone/strata/north
@@ -431,8 +431,8 @@
 // Soro Rock
 
 /obj/structure/platform/stone/soro
-	name = "rock edge"
-	desc = "A solid chunk of desolate rocks. Looks like you could climb it."
+	name = "岩石边缘"
+	desc = "一大块荒凉的岩石。看起来你可以爬上去。"
 	icon_state = "strata_rock_platform"
 
 /obj/structure/platform/stone/soro/north
@@ -454,8 +454,8 @@
 
 
 /obj/structure/platform/stone/sandstone
-	name = "sandstone platform"
-	desc = "A platform supporting elevated ground, made of sandstone. Has what seem to be ancient hieroglyphs on its side."
+	name = "砂岩平台"
+	desc = "一个支撑高地面的平台，由砂岩制成。侧面似乎刻有古老的象形文字。"
 	icon_state = "sandstone"
 	color = "#c6a480"
 
@@ -468,7 +468,7 @@
 
 
 /obj/structure/platform/stone/runed_sandstone
-	name = "sandstone temple platform"
+	name = "砂岩神庙平台"
 	icon_state = "stone"
 	color = "#b29082"
 
@@ -524,8 +524,8 @@
 	dir = SOUTHWEST
 
 /obj/structure/platform_decoration/metal/kutjevo
-	name = "raised metal corner"
-	desc = "The corner of what appears to be raised piece of metal, often used to imply the illusion of elevation in non-Euclidean 2d spaces. But you don't know that, you're just a spaceman with a rifle."
+	name = "金属转角平台"
+	desc = "看起来像是一块凸起金属板的角落，常用于在非欧几里得二维空间中营造出高度变化的错觉。但你不知道这些，你只是个拿着步枪的太空人。"
 	icon_state = "kutjevo_platform_deco"
 
 /obj/structure/platform_decoration/metal/kutjevo/north
@@ -537,8 +537,8 @@
 
 
 /obj/structure/platform_decoration/metal/kutjevo_smooth
-	name = "raised metal corner"
-	desc = "The corner of what appears to be raised piece of metal, often used to imply the illusion of elevation in non-Euclidean 2d spaces. But you don't know that, you're just a spaceman with a rifle."
+	name = "金属转角平台"
+	desc = "看起来像是一块凸起金属板的角落，常用于在非欧几里得二维空间中营造出高度变化的错觉。但你不知道这些，你只是个拿着步枪的太空人。"
 	icon_state = "kutjevo_platform_sm_deco"
 
 /obj/structure/platform_decoration/metal/kutjevo_smooth/north
@@ -549,8 +549,8 @@
 	dir = WEST
 
 /obj/structure/platform_decoration/metal/kutjevo_smooth_immune
-	name = "raised metal corner"
-	desc = "The corner of what appears to be raised piece of metal, often used to imply the illusion of elevation in non-Euclidean 2d spaces. But you don't know that, you're just a spaceman with a rifle."
+	name = "金属转角平台"
+	desc = "看起来像是一块凸起金属板的角落，常用于在非欧几里得二维空间中营造出高度变化的错觉。但你不知道这些，你只是个拿着步枪的太空人。"
 	icon_state = "kutjevo_platform_sm_deco"
 	explo_proof = TRUE
 
@@ -564,8 +564,8 @@
 
 /obj/structure/platform_decoration/metal/shiva
 	icon_state = "shiva_deco"
-	name = "raised rubber cord platform"
-	desc = "Reliable steel and a polymer rubber substitute. Doesn't crack under cold weather."
+	name = "高架橡胶平台"
+	desc = "可靠的钢材与聚合物橡胶替代品。在严寒天气下不会开裂。"
 
 /obj/structure/platform_decoration/metal/shiva/north
 	dir = NORTH
@@ -576,8 +576,8 @@
 
 
 /obj/structure/platform_decoration/metal/strata
-	name = "raised metal corner"
-	desc = "A raised level of metal, often used to elevate areas above others. This is the corner."
+	name = "金属转角平台"
+	desc = "一个抬高的金属层，常用于将区域抬高。这是其角落。"
 	icon_state = "strata_metalplatform_deco"
 
 /obj/structure/platform_decoration/metal/strata/north
@@ -590,8 +590,8 @@
 // Hunter Deco
 
 /obj/structure/platform_decoration/metal/hunter
-	name = "raised metal corner"
-	desc = "The corner of what appears to be raised piece of metal, often used to imply the illusion of elevation in non-Euclidean 2d spaces. But you don't know that, you're just a spaceman with a rifle."
+	name = "金属转角平台"
+	desc = "看起来像是一块凸起金属板的角落，常用于在非欧几里得二维空间中营造出高度变化的错觉。但你不知道这些，你只是个拿着步枪的太空人。"
 	icon_state = "hunter_platform_deco"
 	layer = LOWER_ITEM_LAYER
 
@@ -607,8 +607,8 @@
 //------------------------------------//
 
 /obj/structure/platform_decoration/stone/kutjevo
-	name = "raised rock corner"
-	desc = "A collection of stones and rocks that cap the edge of some conveniently 1-meter-long lengths of perfectly climbable chest high walls."
+	name = "高架岩石角落"
+	desc = "一堆石头和岩石，覆盖在一些恰好一米长、齐胸高、易于攀爬的墙体的边缘。"
 	icon_state = "kutjevo_rock_deco"
 
 /obj/structure/platform_decoration/stone/kutjevo/north
@@ -620,8 +620,8 @@
 
 
 /obj/structure/platform_decoration/stone/strata
-	name = "ice rock corner"
-	desc = "A solid chunk of desolate rocks and ice."
+	name = "冰岩角落"
+	desc = "一大块荒凉的岩石与冰。"
 	icon_state = "strata_platform_deco"
 
 /obj/structure/platform_decoration/stone/strata/north
@@ -632,8 +632,8 @@
 	dir = WEST
 
 /obj/structure/platform_decoration/stone/soro
-	name = "rock corner"
-	desc = "Solid chunks of desolate rocks."
+	name = "岩石角落"
+	desc = "大块荒凉的岩石。"
 	icon_state = "strata_rock_platform_deco"
 
 /obj/structure/platform_decoration/stone/soro/north
@@ -656,8 +656,8 @@
 
 
 /obj/structure/platform_decoration/stone/sandstone
-	name = "sandstone platform corner"
-	desc = "A platform corner supporting elevated ground, made of sandstone. Has what seem to be ancient hieroglyphs on its side."
+	name = "砂岩平台角落"
+	desc = "一个支撑高地面的平台角落，由砂岩制成。侧面似乎刻有古老的象形文字。"
 	icon_state = "sandstone_deco"
 	color = "#c6a480"
 
@@ -669,7 +669,7 @@
 	dir = WEST
 
 /obj/structure/platform_decoration/stone/runed_sandstone
-	name = "sandstone temple platform corner"
+	name = "砂岩神庙平台角落"
 	icon_state = "stone_deco"
 	color = "#b29082"
 
@@ -687,8 +687,8 @@
 
 /obj/structure/platform/metal/hybrisa/engineer
 	icon_state = "engineer_platform"
-	name = "raised metal edge"
-	desc =  "A raised level of metal, often used to elevate areas above others, or construct bridges. You could probably climb it."
+	name = "凸起的金属边缘"
+	desc =  "一层抬高的金属平台，常用于将区域抬高或建造桥梁。你或许可以爬上去。"
 	climb_delay = 10
 	layer = TURF_LAYER
 
@@ -701,8 +701,8 @@
 
 /obj/structure/platform/metal/hybrisa/metalplatform1
 	icon_state = "hybrisametal"
-	name = "raised metal edge"
-	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
+	name = "凸起的金属边缘"
+	desc = "一个抬高的金属平台，通常用于将区域提升到其他区域之上。你或许可以爬上去。"
 
 /obj/structure/platform/metal/hybrisa/metalplatform1/north
 	dir = NORTH
@@ -712,8 +712,8 @@
 	dir = WEST
 
 /obj/structure/platform/metal/hybrisa/metalplatform2
-	name = "raised metal edge"
-	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
+	name = "凸起的金属边缘"
+	desc = "一个抬高的金属平台，通常用于将区域提升到其他区域之上。你或许可以爬上去。"
 	icon_state = "strata_metalplatform2"
 
 /obj/structure/platform/metal/hybrisa/metalplatform2/north
@@ -724,8 +724,8 @@
 	dir = WEST
 
 /obj/structure/platform/metal/hybrisa/metalplatform3
-	name = "raised metal edge"
-	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
+	name = "凸起的金属边缘"
+	desc = "一个抬高的金属平台，通常用于将区域提升到其他区域之上。你或许可以爬上去。"
 	icon_state = "strata_metalplatform3"
 
 /obj/structure/platform/metal/hybrisa/metalplatform3/north
@@ -737,8 +737,8 @@
 
 /obj/structure/platform/metal/hybrisa/metalplatform4
 	icon_state = "hybrisaplatform"
-	name = "raised metal platform"
-	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
+	name = "高架金属平台"
+	desc = "一个抬高的金属平台，通常用于将区域提升到其他区域之上。你或许可以爬上去。"
 
 /obj/structure/platform/metal/hybrisa/metalplatform4/north
 	dir = NORTH
@@ -749,8 +749,8 @@
 
 /obj/structure/platform/metal/hybrisa/metalplatform5
 	icon_state = "hybrisaplatform2"
-	name = "raised metal platform"
-	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
+	name = "高架金属平台"
+	desc = "一个抬高的金属平台，通常用于将区域提升到其他区域之上。你或许可以爬上去。"
 
 /obj/structure/platform/metal/hybrisa/metalplatform5/north
 	dir = NORTH
@@ -761,8 +761,8 @@
 
 /obj/structure/platform/metal/hybrisa/metalplatform6
 	icon_state = "hybrisaplatform3"
-	name = "raised metal platform"
-	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
+	name = "高架金属平台"
+	desc = "一个抬高的金属平台，通常用于将区域提升到其他区域之上。你或许可以爬上去。"
 
 /obj/structure/platform/metal/hybrisa/metalplatform6/north
 	dir = NORTH
@@ -777,8 +777,8 @@
 
 /obj/structure/platform/stone/hybrisa/rockdark
 	icon_state = "kutjevo_rockdark"
-	name = "raised rock edges"
-	desc = "A collection of stones and rocks that provide ample grappling and vaulting opportunity. Indicates a change in elevation. You could probably climb it."
+	name = "高架岩石边缘"
+	desc = "一堆石头和岩石，提供了充足的抓握和翻越机会。表明此处有高度变化。你或许可以爬上去。"
 
 /obj/structure/platform/stone/hybrisa/rockdark/north
 	dir = NORTH
@@ -793,8 +793,8 @@
 	icon_state = "hybrisa"
 
 /obj/structure/platform_decoration/metal/hybrisa/engineer_corner
-	name = "raised metal corner"
-	desc = "The corner of what appears to be raised piece of metal, often used to imply the illusion of elevation in non-Euclidean 2d spaces. But you don't know that, you're just a spaceman with a rifle."
+	name = "金属转角平台"
+	desc = "看起来像是一块凸起金属板的角落，常用于在非欧几里得二维空间中营造出高度变化的错觉。但你不知道这些，你只是个拿着步枪的太空人。"
 	icon_state = "engineer_platform_deco"
 	layer = TURF_LAYER
 
@@ -807,8 +807,8 @@
 
 
 /obj/structure/platform_decoration/metal/hybrisa/engineer_cornerbits
-	name = "raised metal corner"
-	desc = "The corner of what appears to be raised piece of metal, often used to imply the illusion of elevation in non-Euclidean 2d spaces. But you don't know that, you're just a spaceman with a rifle."
+	name = "金属转角平台"
+	desc = "看起来像是一块凸起金属板的角落，常用于在非欧几里得二维空间中营造出高度变化的错觉。但你不知道这些，你只是个拿着步枪的太空人。"
 	icon_state = "engineer_platform_platformcorners"
 	layer = TURF_LAYER
 
@@ -821,8 +821,8 @@
 
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1
 	icon_state = "hybrisametal_deco"
-	name = "raised metal corner"
-	desc = "A raised level of metal, often used to elevate areas above others. This is the corner."
+	name = "金属转角平台"
+	desc = "一个抬高的金属层，常用于将区域抬高。这是其角落。"
 
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/north
 	dir = NORTH
@@ -832,8 +832,8 @@
 	dir = WEST
 
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco2
-	name = "raised metal corner"
-	desc = "A raised level of metal, often used to elevate areas above others. This is the corner."
+	name = "金属转角平台"
+	desc = "一个抬高的金属层，常用于将区域抬高。这是其角落。"
 	icon_state = "strata_metalplatform_deco2"
 
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco2/north
@@ -844,8 +844,8 @@
 	dir = WEST
 
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco3
-	name = "raised metal corner"
-	desc = "A raised level of metal, often used to elevate areas above others. This is the corner."
+	name = "金属转角平台"
+	desc = "一个抬高的金属层，常用于将区域抬高。这是其角落。"
 	icon_state = "strata_metalplatform_deco3"
 
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco3/north
@@ -857,8 +857,8 @@
 
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4
 	icon_state = "hybrisaplatform_deco"
-	name = "raised metal corner"
-	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
+	name = "金属转角平台"
+	desc = "一个抬高的金属平台，通常用于将区域提升到其他区域之上。你或许可以爬上去。"
 
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco4/north
 	dir = NORTH
@@ -869,8 +869,8 @@
 
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5
 	icon_state = "hybrisaplatform_deco2"
-	name = "raised metal corner"
-	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
+	name = "金属转角平台"
+	desc = "一个抬高的金属平台，通常用于将区域提升到其他区域之上。你或许可以爬上去。"
 
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/north
 	dir = NORTH
@@ -881,8 +881,8 @@
 
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco6
 	icon_state = "hybrisaplatform_deco3"
-	name = "raised metal corner"
-	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
+	name = "金属转角平台"
+	desc = "一个抬高的金属平台，通常用于将区域提升到其他区域之上。你或许可以爬上去。"
 
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco6/north
 	dir = NORTH
@@ -896,8 +896,8 @@
 	icon_state = "hybrisa"
 
 /obj/structure/platform_decoration/stone/hybrisa/rockdark
-	name = "raised rock corner"
-	desc = "A collection of stones and rocks that cap the edge of some conveniently 1-meter-long lengths of perfectly climbable chest high walls."
+	name = "高架岩石角落"
+	desc = "一堆石头和岩石，覆盖在一些恰好一米长、齐胸高、易于攀爬的墙体的边缘。"
 	icon_state = "kutjevo_rock_decodark"
 
 /obj/structure/platform_decoration/stone/hybrisa/rockdark/north
@@ -911,14 +911,14 @@
 
 /obj/structure/platform/metal/stair_cut/hybrisa_metal_left
 	icon_state = "hybrisaplatform_stair"
-	name = "raised metal platform"
-	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
+	name = "高架金属平台"
+	desc = "一个抬高的金属平台，通常用于将区域提升到其他区域之上。你或许可以爬上去。"
 	dir = NORTH
 
 /obj/structure/platform/metal/stair_cut/hybrisa_metal_right
 	icon_state = "hybrisaplatform_stair_alt"
-	name = "raised metal platform"
-	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
+	name = "高架金属平台"
+	desc = "一个抬高的金属平台，通常用于将区域提升到其他区域之上。你或许可以爬上去。"
 	dir = NORTH
 
 /obj/structure/platform_decoration/stone/runed_sandstone/north
@@ -932,8 +932,8 @@
 // strata rocks
 
 /obj/structure/platform/stone/soro_colorable
-	name = "rock edge"
-	desc = "A solid chunk of desolate rocks. Looks like you could climb it."
+	name = "岩石边缘"
+	desc = "一大块荒凉的岩石。看起来你可以爬上去。"
 	icon_state = "colorable_strata_rock_platform"
 
 /obj/structure/platform/stone/soro_colorable/north
@@ -944,8 +944,8 @@
 	dir = WEST
 
 /obj/structure/platform_decoration/stone/soro_colorable
-	name = "rock corner"
-	desc = "Solid chunks of desolate rocks."
+	name = "岩石角落"
+	desc = "大块荒凉的岩石。"
 	icon_state = "colorable_strata_rock_platform_deco"
 
 /obj/structure/platform_decoration/stone/soro_colorable/north
@@ -964,8 +964,8 @@
 //strata rocks immune (used for z level transitions)
 
 /obj/structure/platform/stone/soro_colorable_immune
-	name = "rock edge"
-	desc = "A solid chunk of desolate rocks. Looks like you could climb it."
+	name = "岩石边缘"
+	desc = "一大块荒凉的岩石。看起来你可以爬上去。"
 	icon_state = "colorable_strata_rock_platform"
 	explo_proof = TRUE
 
@@ -977,8 +977,8 @@
 	dir = WEST
 
 /obj/structure/platform_decoration/stone/soro_colorable_immune
-	name = "rock corner"
-	desc = "Solid chunks of desolate rocks."
+	name = "岩石角落"
+	desc = "大块荒凉的岩石。"
 	icon_state = "colorable_strata_rock_platform_deco"
 	explo_proof = TRUE
 
@@ -1000,8 +1000,8 @@
 //kutjevo rocks
 
 /obj/structure/platform/stone/kutjevo_colorable
-	name = "rock edge"
-	desc = "A solid chunk of desolate rocks. Looks like you could climb it."
+	name = "岩石边缘"
+	desc = "一大块荒凉的岩石。看起来你可以爬上去。"
 	icon_state = "colorable_kutjevo_rock"
 
 /obj/structure/platform/stone/kutjevo_colorable/north
@@ -1012,8 +1012,8 @@
 	dir = WEST
 
 /obj/structure/platform_decoration/stone/kutjevo_colorable
-	name = "rock corner"
-	desc = "Solid chunks of desolate rocks."
+	name = "岩石角落"
+	desc = "大块荒凉的岩石。"
 	icon_state = "colorable_kutjevo_rock_deco"
 
 /obj/structure/platform_decoration/stone/kutjevo_colorable/north
@@ -1032,8 +1032,8 @@
 //kutjevo rocks immune (used for z level transitions)
 
 /obj/structure/platform/stone/kutjevo_colorable_immune
-	name = "rock edge"
-	desc = "A solid chunk of desolate rocks. Looks like you could climb it."
+	name = "岩石边缘"
+	desc = "一大块荒凉的岩石。看起来你可以爬上去。"
 	icon_state = "colorable_kutjevo_rock"
 	explo_proof = TRUE
 
@@ -1045,8 +1045,8 @@
 	dir = WEST
 
 /obj/structure/platform_decoration/stone/kutjevo_colorable_immune
-	name = "rock corner"
-	desc = "Solid chunks of desolate rocks."
+	name = "岩石角落"
+	desc = "大块荒凉的岩石。"
 	icon_state = "colorable_kutjevo_rock_deco"
 	explo_proof = TRUE
 

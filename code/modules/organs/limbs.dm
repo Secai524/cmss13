@@ -75,13 +75,13 @@
 	var/processing = FALSE
 
 	/// skin color of the owner, used for limb appearance, set in [/obj/limb/proc/update_limb()]
-	var/skin_color = "Pale 2"
+	var/skin_color = "苍白2号"
 
 	/// body size of the owner, used for limb appearance, set in [/obj/limb/proc/update_limb()]
-	var/body_size = "Average"
+	var/body_size = "普通"
 
 	/// body muscularity of the owner, used for limb appearance, set in [/obj/limb/proc/update_limb()]
-	var/body_type = "Lean"
+	var/body_type = "精瘦"
 
 	/// species of the owner, used for limb appearance, set in [/obj/limb/proc/update_limb()]
 	var/datum/species/species
@@ -525,7 +525,7 @@ This function completely restores a damaged organ to perfect condition.
 	if((type != BURN) && !(status & LIMB_SPLINTED_INDESTRUCTIBLE) && (status & LIMB_SPLINTED) && damage > 5 && prob(50 + damage * 2.5)) //If they have it splinted, the splint won't hold.
 		status &= ~LIMB_SPLINTED
 		playsound(get_turf(loc), 'sound/items/splintbreaks.ogg', 20)
-		to_chat(owner, SPAN_HIGHDANGER("The splint on your [display_name] comes apart!"))
+		to_chat(owner, SPAN_HIGHDANGER("你[display_name]上的夹板散开了！"))
 		owner.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
 		owner.update_med_icon()
 
@@ -547,7 +547,7 @@ This function completely restores a damaged organ to perfect condition.
 					owner.add_splatter_floor(get_turf(loc))
 				if(prob(25))
 					//maybe have a separate message for BRUISE type damage?
-					owner.visible_message(SPAN_WARNING("The wound on [owner.name]'s [display_name] widens with a nasty ripping noise."),
+					owner.visible_message(SPAN_WARNING("[owner.name]的[display_name]上的伤口随着一声难听的撕裂声扩大了。"),
 					SPAN_WARNING("The wound on your [display_name] widens with a nasty ripping noise."),
 					SPAN_WARNING("You hear a nasty ripping noise, as if flesh is being torn apart."))
 				return
@@ -656,7 +656,7 @@ This function completely restores a damaged organ to perfect condition.
 		perma_injury = 0
 	if(knitting_time > 0)
 		if(world.time > knitting_time)
-			to_chat(owner, SPAN_WARNING("The bones in your [display_name] feel fully knitted."))
+			to_chat(owner, SPAN_WARNING("你感到[display_name]里的骨头已经完全愈合了。"))
 			owner.pain.apply_pain(-PAIN_BONE_BREAK)
 			status &= ~LIMB_BROKEN //Let it be known that this code never unbroke the limb.
 			knitting_time = -1
@@ -1034,7 +1034,7 @@ This function completely restores a damaged organ to perfect condition.
 		if(delete_limb)
 			qdel(organ)
 		else
-			owner.visible_message(SPAN_WARNING("[owner.name]'s [display_name] flies off in an arc!"),
+			owner.visible_message(SPAN_WARNING("[owner.name]的[display_name]呈弧线飞了出去！"),
 			SPAN_HIGHDANGER("<b>Your [display_name] goes flying off!</b>"),
 			SPAN_WARNING("You hear a terrible sound of ripping tendons and flesh!"), 3)
 
@@ -1167,7 +1167,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	if(status & (LIMB_BROKEN|LIMB_DESTROYED|LIMB_UNCALIBRATED_PROSTHETIC|LIMB_SYNTHSKIN))
 		if (knitting_time != -1)
 			knitting_time = -1
-			to_chat(owner, SPAN_WARNING("You feel your [display_name] stop knitting together as it absorbs damage!"))
+			to_chat(owner, SPAN_WARNING("你感到[display_name]在承受伤害时停止了愈合！"))
 		return
 
 	if(owner.status_flags & NO_PERMANENT_DAMAGE)
@@ -1368,7 +1368,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	if(!(status & LIMB_DESTROYED) && !(status & LIMB_SPLINTED))
 		var/time_to_take = 5 SECONDS
 		if (target == user)
-			user.visible_message(SPAN_WARNING("[user] fumbles with [splint]"), SPAN_WARNING("You fumble with [splint]..."))
+			user.visible_message(SPAN_WARNING("[user]笨拙地摆弄着[splint]"), SPAN_WARNING("You fumble with [splint]..."))
 			time_to_take = 15 SECONDS
 
 		if(do_after(user, time_to_take * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
@@ -1478,18 +1478,18 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 
 /obj/limb/arm/l_arm
 	name = "l_arm"
-	display_name = "left arm"
+	display_name = "左臂"
 	icon_name = "l_arm"
 	body_part = BODY_FLAG_ARM_LEFT
 	has_stump_icon = TRUE
 
 /obj/limb/arm/l_arm/process()
 	..()
-	process_grasp(owner.l_hand, "left hand")
+	process_grasp(owner.l_hand, "左手")
 
 /obj/limb/leg/l_leg
 	name = "l_leg"
-	display_name = "left leg"
+	display_name = "左腿"
 	icon_name = "l_leg"
 	body_part = BODY_FLAG_LEG_LEFT
 	icon_position = LEFT
@@ -1497,18 +1497,18 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 
 /obj/limb/arm/r_arm
 	name = "r_arm"
-	display_name = "right arm"
+	display_name = "右臂"
 	icon_name = "r_arm"
 	body_part = BODY_FLAG_ARM_RIGHT
 	has_stump_icon = TRUE
 
 /obj/limb/arm/r_arm/process()
 	..()
-	process_grasp(owner.r_hand, "right hand")
+	process_grasp(owner.r_hand, "右手")
 
 /obj/limb/leg/r_leg
 	name = "r_leg"
-	display_name = "right leg"
+	display_name = "右腿"
 	icon_name = "r_leg"
 	body_part = BODY_FLAG_LEG_RIGHT
 	icon_position = RIGHT
@@ -1516,7 +1516,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 
 /obj/limb/foot/l_foot
 	name = "l_foot"
-	display_name = "left foot"
+	display_name = "左脚"
 	icon_name = "l_foot"
 	body_part = BODY_FLAG_FOOT_LEFT
 	icon_position = LEFT
@@ -1524,7 +1524,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 
 /obj/limb/foot/r_foot
 	name = "r_foot"
-	display_name = "right foot"
+	display_name = "右脚"
 	icon_name = "r_foot"
 	body_part = BODY_FLAG_FOOT_RIGHT
 	icon_position = RIGHT
@@ -1532,25 +1532,25 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 
 /obj/limb/hand/r_hand
 	name = "r_hand"
-	display_name = "right hand"
+	display_name = "右手"
 	icon_name = "r_hand"
 	body_part = BODY_FLAG_HAND_RIGHT
 	has_stump_icon = TRUE
 
 /obj/limb/hand/r_hand/process()
 	..()
-	process_grasp(owner.r_hand, "right hand")
+	process_grasp(owner.r_hand, "右手")
 
 /obj/limb/hand/l_hand
 	name = "l_hand"
-	display_name = "left hand"
+	display_name = "左手"
 	icon_name = "l_hand"
 	body_part = BODY_FLAG_HAND_LEFT
 	has_stump_icon = TRUE
 
 /obj/limb/hand/l_hand/process()
 	..()
-	process_grasp(owner.l_hand, "left hand")
+	process_grasp(owner.l_hand, "左手")
 
 /obj/limb/head
 	name = "head"
@@ -1649,7 +1649,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	if(owner_helmet.flags_inventory & FULL_DECAP_PROTECTION)
 		return
 
-	owner.visible_message("[owner]'s [owner_helmet] goes flying off from the impact!", SPAN_USERDANGER("Your [owner_helmet] goes flying off from the impact!"))
+	owner.visible_message("[owner]的[owner_helmet]被冲击力打飞了！", SPAN_USERDANGER("Your [owner_helmet] goes flying off from the impact!"))
 	owner.drop_inv_item_on_ground(owner_helmet)
 	INVOKE_ASYNC(owner_helmet, TYPE_PROC_REF(/atom/movable, throw_atom), pick(RANGE_TURFS(1, get_turf(owner))), 1, SPEED_FAST)
 	playsound(owner, 'sound/effects/helmet_noise.ogg', 100)

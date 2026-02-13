@@ -1,6 +1,6 @@
 /obj/item/restraint/legcuffs
 	name = "legcuffs"
-	desc = "Use this to keep prisoners in line."
+	desc = "用于管束囚犯。"
 	gender = PLURAL
 	icon = 'icons/obj/items/security.dmi'
 	icon_state = "legcuff"
@@ -28,12 +28,12 @@
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to legcuff [key_name(human_target)]</font>")
 		msg_admin_attack("[key_name(user)] attempted to legcuff [key_name(human_target)] in [get_area(src)] ([loc.x],[loc.y],[loc.z]).", loc.x, loc.y, loc.z)
 
-		user.visible_message(SPAN_NOTICE("[user] tries to put [src] on [human_target]."))
+		user.visible_message(SPAN_NOTICE("[user]试图将[src]戴在[human_target]身上。"))
 		if(do_after(user, cuff_delay, INTERRUPT_MOVED, BUSY_ICON_HOSTILE, human_target, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 			if(src == user.get_active_hand() && !human_target.legcuffed && Adjacent(user))
 				if(iscarbon(human_target))
 					if(istype(human_target.buckled, /obj/structure/bed/roller))
-						to_chat(user, SPAN_DANGER("You cannot legcuff someone who is buckled onto a roller bed."))
+						to_chat(user, SPAN_DANGER("你无法给固定在担架床上的人戴上脚镣。"))
 						return FALSE
 				if(human_target.has_limb_for_slot(WEAR_LEGCUFFS))
 					user.drop_inv_item_on_ground(src)
@@ -41,7 +41,7 @@
 					user.count_niche_stat(STATISTICS_NICHE_HANDCUFF)
 
 	else if (ismonkey(target))
-		user.visible_message(SPAN_NOTICE("[user] tries to put [src] on [target]."))
+		user.visible_message(SPAN_NOTICE("[user]试图将[src]戴在[target]身上。"))
 		if(do_after(user, 30, INTERRUPT_MOVED, BUSY_ICON_HOSTILE, target, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 			if(src == user.get_active_hand() && !target.legcuffed && Adjacent(user))
 				user.drop_inv_item_on_ground(src)
@@ -49,11 +49,11 @@
 	return TRUE
 
 /obj/item/restraint/legcuffs/beartrap
-	name = "bear trap"
+	name = "捕熊夹"
 	throw_speed = SPEED_FAST
 	throw_range = 1
 	icon_state = "beartrap0"
-	desc = "A trap used to catch bears and other legged creatures."
+	desc = "一种用于捕捉熊和其他有腿生物的陷阱。"
 	breakouttime = 20 SECONDS
 	var/armed = FALSE
 	manual = FALSE
@@ -66,7 +66,7 @@
 	if(ishuman(user) && !user.stat && !user.is_mob_restrained())
 		armed = !armed
 		icon_state = "beartrap[armed]"
-		to_chat(user, SPAN_NOTICE("[src] is now [armed ? "armed" : "disarmed"]"))
+		to_chat(user, SPAN_NOTICE("[src]现在已[armed ? "armed" : "disarmed"]"))
 
 /obj/item/restraint/legcuffs/beartrap/Crossed(atom/movable/AM)
 	if(armed)
@@ -83,11 +83,11 @@
 						armed = 0
 						icon_state = "beartrap0"
 						playsound(loc, 'sound/effects/snap.ogg', 25, 1)
-						to_chat(H, SPAN_DANGER("<B>You step on \the [src]!</B>"))
+						to_chat(H, SPAN_DANGER("<B>你踩到了\the [src]！</B>"))
 						for(var/mob/O in viewers(H, null))
 							if(O == H)
 								continue
-							O.show_message(SPAN_DANGER("<B>[H] steps on \the [src].</B>"), SHOW_MESSAGE_VISIBLE)
+							O.show_message(SPAN_DANGER("<B>[H]踩到了\the [src]。</B>"), SHOW_MESSAGE_VISIBLE)
 				if(isanimal(AM) && !istype(AM, /mob/living/simple_animal/small/parrot))
 					armed = 0
 					var/mob/living/simple_animal/SA = AM
@@ -96,8 +96,8 @@
 
 
 /obj/item/restraint/legcuffs/xeno_restraints
-	name = "xeno restraints"
-	desc = "Use this to hold xenomorphic creatures moderately-safely."
+	name = "异形拘束器"
+	desc = "用于相对安全地拘束异形生物。"
 	flags_equip_slot = SLOT_WAIST
 	throwforce = 5
 	w_class = SIZE_SMALL
@@ -111,16 +111,16 @@
 
 /obj/item/restraint/legcuffs/xeno_restraints/attack(mob/living/carbon/target_mob, mob/user as mob)
 	if(!istype(target_mob, /mob/living/carbon/xenomorph))
-		to_chat(user, SPAN_DANGER("The cuffs do not fit!"))
+		to_chat(user, SPAN_DANGER("手铐尺寸不符！"))
 		return FALSE
 	if(target_mob.legcuffed)
-		to_chat(user, SPAN_DANGER("They're already cuffed!"))
+		to_chat(user, SPAN_DANGER("他们已经被铐住了！"))
 		return FALSE
 
 	var/turf/user_loc = get_turf(user)
 	var/turf/target_loc = get_turf(target_mob)
 	playsound(src.loc, 'sound/weapons/handcuffs.ogg', 25, 1, 6)
-	target_mob.visible_message(SPAN_DANGER("<B>[user] is trying to put restraints on [target_mob]!</B>"))
+	target_mob.visible_message(SPAN_DANGER("<B>[user]正试图给[target_mob]戴上拘束器！</B>"))
 	if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, target_mob, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 		return FALSE
 	if(!target_mob)
@@ -130,12 +130,12 @@
 	target_mob.legcuffed = src
 	forceMove(target_mob)
 	target_mob.legcuff_update()
-	target_mob.visible_message(SPAN_DANGER("[target_mob] has been successfully restrained by [user]!"))
+	target_mob.visible_message(SPAN_DANGER("[user]成功拘束了[target_mob]！"))
 	return TRUE
 
 /obj/item/restraint/legcuffs/xeno_restraints/strong
-	name = "strong xeno restraints"
-	desc = "Use this to hold xenomorphic creatures safely."
+	name = "强化型异形拘束器"
+	desc = "用于安全地拘束异形生物。"
 	color = "#ff0000"
 
 	breakouttime = 3 MINUTES

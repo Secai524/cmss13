@@ -3,8 +3,8 @@
  */
 
 /obj/item/clothing/under/rank/rd
-	desc = "It's made of a special fiber that provides minor protection against biohazards. It has markings that denote the wearer is a Research Director."
-	name = "research director's uniform"
+	desc = "由特殊纤维制成，提供对生物危害的轻微防护。带有标识，表明穿着者是研究主管。"
+	name = "研究主管制服"
 	icon_state = "rdalt_s"
 	worn_state = "rdalt_s"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/research.dmi'
@@ -22,8 +22,8 @@
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/rdalt
-	desc = "It's made of a special fiber that provides minor protection against biohazards. It has markings that denote the wearer is a Research Director."
-	name = "research director's jumpsuit"
+	desc = "由特殊纤维制成，提供对生物危害的轻微防护。带有标识，表明穿着者是研究主管。"
+	name = "研究主管连体服"
 	icon_state = "rdalt"
 	icon = 'icons/obj/items/clothing/uniforms/synthetic_uniforms.dmi'
 	item_icons = list(
@@ -40,8 +40,8 @@
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/scientist
-	desc = "It's made of a special fiber that provides minor protection against biohazards. It has markings that denote the wearer as a scientist."
-	name = "scientist's jumpsuit"
+	desc = "由特殊纤维制成，提供对生物危害的轻微防护。其标记表明穿着者为科学家。"
+	name = "科学家连体服"
 	icon_state = "science"
 	item_state = "w_suit"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/research.dmi'
@@ -63,8 +63,8 @@
  * Medical
  */
 /obj/item/clothing/under/rank/cmo
-	desc = "It's a jumpsuit worn by those with the experience to be \"Chief Medical Officer\". It provides minor biological protection."
-	name = "chief medical officer's jumpsuit"
+	desc = "这是由那些有经验成为 \"Chief Medical Officer\". It provides minor biological protection."
+	name = "首席医疗官连体服"
 	icon_state = "cmo"
 	item_state = "w_suit"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
@@ -83,8 +83,8 @@
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 
 /obj/item/clothing/under/rank/geneticist
-	desc = "It's made of a special fiber that gives special protection against biohazards. It has a genetics rank stripe on it."
-	name = "geneticist's jumpsuit"
+	desc = "由特殊纤维制成，提供对生物危害的特殊防护。上面有一条遗传学等级条纹。"
+	name = "遗传学家连体服"
 	icon_state = "genetics"
 	item_state = "w_suit"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
@@ -103,8 +103,8 @@
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 
 /obj/item/clothing/under/rank/virologist
-	desc = "It's made of a special fiber that gives special protection against biohazards. It has a virologist rank stripe on it."
-	name = "virologist's jumpsuit"
+	desc = "由特殊纤维制成，提供对生物危害的特殊防护。上面有一条病毒学家等级条纹。"
+	name = "病毒学家连体服"
 	icon_state = "virology"
 	item_state = "w_suit"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
@@ -124,8 +124,8 @@
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/nursesuit
-	desc = "It's a jumpsuit commonly worn by nursing staff in the medical department."
-	name = "nurse's suit"
+	desc = "这是医疗部门护理人员常穿的连体服。"
+	name = "护士服"
 	icon_state = "nursesuit"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
 	item_icons = list(
@@ -143,8 +143,8 @@
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/nurse
-	desc = "A dress commonly worn by the nursing staff in the medical department."
-	name = "nurse's dress"
+	desc = "医疗部护理人员常穿的一种制服。"
+	name = "护士裙装"
 	icon_state = "nurse"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
 	item_icons = list(
@@ -162,8 +162,8 @@
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/medical
-	desc = "They're made of a special fiber that provides minor protection against biohazards. They have a cross on the chest denoting that the wearer is trained medical personnel."
-	name = "medical doctor's uniform"
+	desc = "由特殊纤维制成，能提供对生物危害的轻微防护。胸前有十字标识，表明穿着者是受过训练的医疗人员。"
+	name = "医生制服"
 	icon_state = "medical"
 	item_state = "w_suit"
 	icon = 'icons/obj/items/clothing/uniforms/jumpsuits.dmi'
@@ -183,8 +183,8 @@
 	item_state_slots = list(WEAR_BODY = "medical")
 
 /obj/item/clothing/under/rank/medical/lightblue
-	name = "nurse's medical scrubs"
-	desc = "They're made of a special fiber that provides minor protection against biohazards. Associated with nurses, these are in a calming sky blue."
+	name = "护士手术服"
+	desc = "由特殊纤维制成，能提供对生物危害的轻微防护。与护士相关，采用令人平静的天蓝色。"
 	icon_state = "scrubslightblue"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
 	item_icons = list(
@@ -194,8 +194,8 @@
 	item_state_slots = list(WEAR_BODY = "scrubslightblue")
 
 /obj/item/clothing/under/rank/medical/blue
-	name = "doctor's medical scrubs"
-	desc = "They're made of a special fiber that provides minor protection against biohazards. Doctors without specialties wear these. These remind you of blueberries."
+	name = "医生手术服"
+	desc = "由特殊纤维制成，能提供对生物危害的轻微防护。无专科的医生穿着此款。这让你想起了蓝莓。"
 	icon_state = "scrubsblue"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
 	item_icons = list(
@@ -205,8 +205,8 @@
 	item_state_slots = list(WEAR_BODY = "scrubsblue")
 
 /obj/item/clothing/under/rank/medical/green
-	name = "surgeon's medical scrubs"
-	desc = "They're made of a special fiber that provides minor protection against biohazards. These are worn by doctors specializing in surgery, represented by jade green."
+	name = "外科医生手术服"
+	desc = "由特殊纤维制成，能提供对生物危害的轻微防护。由专攻外科手术的医生穿着，以翡翠绿为代表色。"
 	icon_state = "scrubsgreen"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
 	item_icons = list(
@@ -216,8 +216,8 @@
 	item_state_slots = list(WEAR_BODY = "scrubsgreen")
 
 /obj/item/clothing/under/rank/medical/purple
-	name = "purple medical scrubs"
-	desc = "They're made of a special fiber that provides minor protection against biohazards. Fancy doctors like to wear these wine-colored scrubs."
+	name = "紫色手术服"
+	desc = "由特殊纤维制成，能提供对生物危害的轻微防护。讲究的医生喜欢穿这种酒红色的手术服。"
 	icon_state = "scrubspurple"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
 	item_icons = list(
@@ -227,8 +227,8 @@
 	item_state_slots = list(WEAR_BODY = "scrubspurple")
 
 /obj/item/clothing/under/rank/medical/olive
-	name = "olive green medical scrubs"
-	desc = "They're made of a special fiber that provides minor protection against biohazards. Doctors without specialties wear these to calm and ground patients. These are in olive green."
+	name = "橄榄绿手术服"
+	desc = "由特殊纤维制成，能提供对生物危害的轻微防护。无专科的医生穿着此款以安抚和稳定患者情绪。采用橄榄绿色。"
 	icon_state = "scrubsolive"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
 	item_icons = list(
@@ -238,8 +238,8 @@
 	item_state_slots = list(WEAR_BODY = "scrubsolive")
 
 /obj/item/clothing/under/rank/medical/grey
-	name = "grey medical scrubs"
-	desc = "They're made of a special fiber that provides minor protection against biohazards. Doctors without specialties wear these to calm patients and to keep professional. These are neutral grey."
+	name = "灰色手术服"
+	desc = "由特殊纤维制成，能提供对生物危害的轻微防护。无专科的医生穿着此款以安抚患者并保持专业形象。采用中性灰色。"
 	icon_state = "scrubsgrey"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
 	item_icons = list(
@@ -249,8 +249,8 @@
 	item_state_slots = list(WEAR_BODY = "scrubsgrey")
 
 /obj/item/clothing/under/rank/medical/brown
-	name = "brown medical scrubs"
-	desc = "They're made of a special fiber that provides minor protection against biohazards. Doctors without specialties wear these to calm and ground patients. These are a ruddy brown."
+	name = "棕色手术服"
+	desc = "由特殊纤维制成，能提供对生物危害的轻微防护。无专科的医生穿着此款以安抚和稳定患者情绪。采用红棕色。"
 	icon_state = "scrubsbrown"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
 	item_icons = list(
@@ -260,8 +260,8 @@
 	item_state_slots = list(WEAR_BODY = "scrubsbrown")
 
 /obj/item/clothing/under/rank/medical/morgue
-	name = "morgue medical scrubs"
-	desc = "They're made of a special fiber that provides minor protection against biohazards. They're worn by doctors who are making autopsies. These are black as coal. Morbid."
+	name = "停尸房手术服"
+	desc = "由特殊纤维制成，能提供对生物危害的轻微防护。由进行尸检的医生穿着。漆黑如煤。令人毛骨悚然。"
 	icon_state = "scrubsblack"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
 	item_icons = list(
@@ -271,8 +271,8 @@
 	item_state_slots = list(WEAR_BODY = "scrubsblack")
 
 /obj/item/clothing/under/rank/medical/white
-	name = "white medical scrubs"
-	desc = "They're made of a special fiber that provides minor protection against biohazards. Cherished by all doctors who enjoy cleanliness, these are white as snow."
+	name = "白色手术服"
+	desc = "由特殊纤维制成，能提供对生物危害的轻微防护。深受所有喜爱洁净的医生珍视，洁白如雪。"
 	icon_state = "scrubswhite"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
 	item_icons = list(
@@ -282,8 +282,8 @@
 	item_state_slots = list(WEAR_BODY = "scrubswhite")
 
 /obj/item/clothing/under/rank/medical/orange
-	name = "brig medical scrubs"
-	desc = "They're made of a special fiber that provides minor protection against biohazards. These are in prisoner orange."
+	name = "禁闭室手术服"
+	desc = "由特殊纤维制成，能提供对生物危害的轻微防护。采用囚犯橙色。"
 	icon_state = "scrubsorange"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
 	item_icons = list(
@@ -293,8 +293,8 @@
 	item_state_slots = list(WEAR_BODY = "scrubsorange")
 
 /obj/item/clothing/under/rank/medical/pharmacist
-	name = "pharmaceutical physician's medical scrubs"
-	desc = "They're made of a special fiber that provides minor protection against biohazards. Doctors with a specialty in pharmaceuticals wear these. These are white with orange shoulder stripes."
+	name = "药剂医师医疗服"
+	desc = "由特殊纤维制成，提供对生物危害的轻微防护。专攻药学的医师穿着此款。白色为主，带有橙色肩章条纹。"
 	icon_state = "scrubspharm"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
 	item_icons = list(
@@ -304,8 +304,8 @@
 	item_state_slots = list(WEAR_BODY = "scrubspharm")
 
 /obj/item/clothing/under/rank/medical/cmo
-	name = "chief medical officer's medical scrubs"
-	desc = "They're made of a special fiber that provides minor protection against biohazards. These are jade green and adorned with peach stripes that denote the wearer is the Chief Medical Officer."
+	name = "医疗长医疗服"
+	desc = "由特殊纤维制成，提供对生物危害的轻微防护。翡翠绿色，饰有桃红色条纹，表明穿着者为医疗长。"
 	icon_state = "scrubscmo"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
 	item_icons = list(

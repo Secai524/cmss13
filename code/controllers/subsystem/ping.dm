@@ -4,7 +4,7 @@
  */
 
 SUBSYSTEM_DEF(ping)
-	name = "Ping"
+	name = "延迟"
 	priority = SS_PRIORITY_PING
 	init_stage = INITSTAGE_EARLY
 	wait = 4 SECONDS

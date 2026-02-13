@@ -1,6 +1,6 @@
 /datum/weather_event/light_rain
-	name = "Light Rain"
-	display_name = "Light Rain"
+	name = "小雨"
+	display_name = "小雨"
 	length = 8 MINUTES
 	fullscreen_type = /atom/movable/screen/fullscreen/weather/low
 
@@ -15,8 +15,8 @@
 	fire_smothering_strength = 1
 
 /datum/weather_event/heavy_rain
-	name = "Heavy Rain"
-	display_name = "Heavy Rain"
+	name = "大雨"
+	display_name = "大雨"
 	length = 12 MINUTES
 	fullscreen_type = /atom/movable/screen/fullscreen/weather/medium
 

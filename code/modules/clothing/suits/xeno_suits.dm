@@ -1,6 +1,6 @@
 /obj/item/clothing/suit/xenos
-	name = "drone suit"
-	desc = "A suit made to resemble a chitinous alien hide. Who the hell made this, and most importantly, why?..."
+	name = "工蜂装束"
+	desc = "一套模仿几丁质异形外皮制作的服装。这到底是谁做的，最重要的是，为什么？……"
 	icon_state = "drone_suit"
 	item_state = "xenos_suit"
 	icon = 'icons/obj/items/clothing/suits/xeno_suits.dmi'
@@ -14,65 +14,65 @@
 	siemens_coefficient = 2
 
 /obj/item/clothing/suit/xenos/runner
-	name = "runner suit"
+	name = "奔跑者装束"
 	icon_state = "runner_suit"
 
 /obj/item/clothing/suit/xenos/lesser
-	name = "lesser drone suit"
+	name = "次级工蜂装束"
 	icon_state = "lesser_drone_suit"
 
 /obj/item/clothing/suit/xenos/ravager
-	name = "ravager suit"
+	name = "掠夺者装束"
 	icon_state = "ravager_suit"
 
 /obj/item/clothing/suit/xenos/king
-	name = "king suit"
+	name = "王者装束"
 	icon_state = "king_suit"
 
 /obj/item/clothing/suit/xenos/queen
-	name = "queen suit"
+	name = "女王护甲"
 	icon_state = "queen_suit"
 
 /obj/item/clothing/suit/xenos/burrower
-	name = "burrower suit"
+	name = "掘地者护甲"
 	icon_state = "burrower_suit"
 
 /obj/item/clothing/suit/xenos/warrior
-	name = "warrior suit"
+	name = "战士护甲"
 	icon_state = "warrior_suit"
 
 /obj/item/clothing/suit/xenos/defender
-	name = "defender suit"
+	name = "防御者护甲"
 	icon_state = "defender_suit"
 
 /obj/item/clothing/suit/xenos/crusher
-	name = "crusher suit"
+	name = "碾压者护甲"
 	icon_state = "crusher_suit"
 
 /obj/item/clothing/suit/xenos/carrier
-	name = "carrier suit"
+	name = "携带者护甲"
 	icon_state = "carrier_suit"
 
 /obj/item/clothing/suit/xenos/boiler
-	name = "boiler suit"
+	name = "沸腾者护甲"
 	icon_state = "boiler_suit"
 
 /obj/item/clothing/suit/xenos/spitter
-	name = "spitter suit"
+	name = "喷吐者护甲"
 	icon_state = "spitter_suit"
 
 /obj/item/clothing/suit/xenos/sentinel
-	name = "sentinel suit"
+	name = "哨兵护甲"
 	icon_state = "sentinel_suit"
 
 /obj/item/clothing/suit/xenos/praetorian
-	name = "praetorian suit"
+	name = "禁卫军护甲"
 	icon_state = "praetorian_suit"
 
 /obj/item/clothing/suit/xenos/lurker
-	name = "lurker suit"
+	name = "潜伏者护甲"
 	icon_state = "lurker_suit"
 
 /obj/item/clothing/suit/xenos/hivelord
-	name = "hivelord suit"
+	name = "巢穴领主护甲"
 	icon_state = "hivelord_suit"

@@ -24,7 +24,7 @@
 	options += "Delete Shuttle"
 	options += "Into The Sunset (delete & greentext 'escape')"
 
-	var/selection = input(user, "Select where to fly [name || id]:", "Fly Shuttle") as null|anything in options
+	var/selection = input(user, "选择飞往何处 [name || id]:", "飞行穿梭机") as null|anything in options
 	if(!selection)
 		return
 
@@ -36,12 +36,12 @@
 			setTimer(ignitionTime)
 
 		if("Delete Shuttle")
-			if(alert(user, "Really delete [name || id]?", "Delete Shuttle", "Cancel", "Really!") != "Really!")
+			if(alert(user, "确定删除[name || id]？", "Delete Shuttle", "Cancel", "Really!") != "Really!")
 				return
 			jumpToNullSpace()
 
 		if("Into The Sunset (delete & greentext 'escape')")
-			if(alert(user, "Really delete [name || id] and greentext escape objectives?", "Delete Shuttle", "Cancel", "Really!") != "Really!")
+			if(alert(user, "确定删除[name || id]并放弃绿色目标文本？", "Delete Shuttle", "Cancel", "Really!") != "Really!")
 				return
 			intoTheSunset()
 

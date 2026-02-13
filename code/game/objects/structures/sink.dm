@@ -2,7 +2,7 @@
 	name = "sink"
 	icon = 'icons/obj/structures/props/watercloset.dmi'
 	icon_state = "sink_emptied_animation"
-	desc = "A sink used for washing one's hands and face."
+	desc = "一个用来洗手洗脸的水槽。"
 	anchored = TRUE
 	/// if something's being washed at the moment
 	var/busy = FALSE
@@ -31,10 +31,10 @@
 		return
 
 	if(busy)
-		to_chat(user, SPAN_DANGER("Someone's already washing here."))
+		to_chat(user, SPAN_DANGER("已经有人在这里洗了。"))
 		return
 
-	to_chat(usr, SPAN_NOTICE("You start washing your hands."))
+	to_chat(usr, SPAN_NOTICE("你开始洗手。"))
 	flick("sink_animation_fill", src) //<- play the filling animation then automatically switch back to the loop
 	icon_state = "sink_animation_fill_loop" //<- set it to the loop
 	addtimer(CALLBACK(src, PROC_REF(stop_flow)), 6 SECONDS)
@@ -51,18 +51,18 @@
 	if(ishuman(user))
 		user:update_inv_gloves()
 	for(var/mob/V in viewers(src, null))
-		V.show_message(SPAN_NOTICE("[user] washes their hands using \the [src]."), SHOW_MESSAGE_VISIBLE)
+		V.show_message(SPAN_NOTICE("[user] 使用 \the [src] 洗手。"), SHOW_MESSAGE_VISIBLE)
 
 
 /obj/structure/sink/attackby(obj/item/O as obj, mob/user as mob)
 	if(busy)
-		to_chat(user, SPAN_DANGER("Someone's already washing here."))
+		to_chat(user, SPAN_DANGER("已经有人在这里洗了。"))
 		return
 
 	var/obj/item/reagent_container/RG = O
 	if (istype(RG) && RG.is_open_container())
 		RG.reagents.add_reagent("water", min(RG.volume - RG.reagents.total_volume, RG.amount_per_transfer_from_this))
-		user.visible_message(SPAN_NOTICE("[user] fills \the [RG] using \the [src]."),SPAN_NOTICE("You fill \the [RG] using \the [src]."))
+		user.visible_message(SPAN_NOTICE("[user] 使用 \the [src] 将 \the [RG] 装满。"),SPAN_NOTICE("You fill \the [RG] using \the [src]."))
 		return
 
 	else if (istype(O, /obj/item/weapon/baton))
@@ -87,7 +87,7 @@
 	if(!I || !istype(I,/obj/item))
 		return
 
-	to_chat(usr, SPAN_NOTICE("You start washing \the [I]."))
+	to_chat(usr, SPAN_NOTICE("你开始清洗 \the [I]。"))
 
 	busy = TRUE
 	sleep(40)
@@ -112,7 +112,7 @@
 
 	var/obj/item/held_item = user.get_active_hand()
 	if(!held_item)
-		user.visible_message(SPAN_NOTICE("[user] runs their hand along \the [src]."))
+		user.visible_message(SPAN_NOTICE("[user]用手拂过\the [src]。"))
 		return TRUE
 
 	// Check if it's a reagent container
@@ -123,14 +123,14 @@
 	var/remaining_space = RG.volume - RG.reagents.total_volume
 	if(remaining_space > 0)
 		RG.reagents.add_reagent("water", remaining_space)
-		user.visible_message(SPAN_NOTICE("[user] fills \the [RG] completely using \the [src]."), SPAN_NOTICE("You fill \the [RG] completely using \the [src]."))
+		user.visible_message(SPAN_NOTICE("[user] 使用 \the [src] 将 \the [RG] 完全装满。"), SPAN_NOTICE("You fill \the [RG] completely using \the [src]."))
 	else
-		user.visible_message(SPAN_NOTICE("[user] tries to fill \the [RG] but it's already full."), SPAN_NOTICE("The [RG] is already full."))
+		user.visible_message(SPAN_NOTICE("[user] 试图装满 \the [RG]，但它已经满了。"), SPAN_NOTICE("The [RG] is already full."))
 
 	return TRUE
 
 /obj/structure/sink/kitchen
-	name = "kitchen sink"
+	name = "厨房水槽"
 	icon_state = "sink_alt"
 
 

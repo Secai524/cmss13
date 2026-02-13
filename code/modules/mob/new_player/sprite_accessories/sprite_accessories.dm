@@ -29,10 +29,10 @@
 
 	// Restrict some styles to specific species
 	var/list/species_allowed = list(
-		"Human",
+		"人类",
 		"Machine",
-		"Human Hero",
-		"Thrall",
+		"人类英雄",
+		"奴仆",
 		SYNTH_COLONY,
 		SYNTH_COLONY_GEN_ONE,
 		SYNTH_COLONY_GEN_TWO,

@@ -1,10 +1,10 @@
 /datum/action/xeno_action/onclick/remove_eggsac
-	name = "Remove Eggsac"
+	name = "移除卵囊"
 	action_icon_state = "grow_ovipositor"
 	plasma_cost = 0
 
 /datum/action/xeno_action/onclick/grow_ovipositor
-	name = "Grow Ovipositor (500)"
+	name = "生长产卵器（500）"
 	action_icon_state = "grow_ovipositor"
 	plasma_cost = 500
 	xeno_cooldown = 5 MINUTES
@@ -12,13 +12,13 @@
 	no_cooldown_msg = FALSE // Needed for onclick actions
 
 /datum/action/xeno_action/onclick/set_xeno_lead
-	name = "Choose/Follow Xenomorph Leaders"
+	name = "选择/跟随异形领袖"
 	action_icon_state = "xeno_lead"
 	plasma_cost = 0
 	xeno_cooldown = 3 SECONDS
 
 /datum/action/xeno_action/activable/queen_heal
-	name = "Heal Xenomorph (600)"
+	name = "治疗异形（600）"
 	action_icon_state = "heal_xeno"
 	plasma_cost = 600
 	macro_path = /datum/action/xeno_action/verb/verb_heal_xeno
@@ -27,18 +27,18 @@
 	xeno_cooldown = 8 SECONDS
 
 /datum/action/xeno_action/onclick/screech
-	name = "Screech (250)"
+	name = "尖啸（250）"
 	action_icon_state = "screech"
 	macro_path = /datum/action/xeno_action/verb/verb_screech
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 50 SECONDS
 	plasma_cost = 250
-	cooldown_message = "You feel your throat muscles vibrate. You are ready to screech again."
+	cooldown_message = "你感到喉部肌肉震动。你准备好再次尖啸了。"
 	no_cooldown_msg = FALSE // Needed for onclick actions
 	ability_primacy = XENO_SCREECH
 
 /datum/action/xeno_action/activable/queen_give_plasma
-	name = "Give Plasma (400)"
+	name = "给予等离子体（400）"
 	action_icon_state = "queen_give_plasma"
 	plasma_cost = 400
 	macro_path = /datum/action/xeno_action/verb/verb_plasma_xeno
@@ -47,13 +47,13 @@
 	xeno_cooldown = 12 SECONDS
 
 /datum/action/xeno_action/onclick/queen_word
-	name = "Word of the Queen (50)"
+	name = "女王之令（50）"
 	action_icon_state = "queen_word"
 	plasma_cost = 50
 	xeno_cooldown = 10 SECONDS
 
 /datum/action/xeno_action/activable/gut
-	name = "Gut (200)"
+	name = "开膛（200）"
 	action_icon_state = "gut"
 	macro_path = /datum/action/xeno_action/verb/verb_gut
 	action_type = XENO_ACTION_CLICK
@@ -62,7 +62,7 @@
 	cooldown_message = "You feel your anger return. You are ready to gut again."
 
 /datum/action/xeno_action/activable/expand_weeds
-	name = "Expand Weeds (50)"
+	name = "扩张菌毯（50）"
 	action_icon_state = "plant_weeds"
 	plasma_cost = 50
 	ability_primacy = XENO_PRIMARY_ACTION_3
@@ -74,17 +74,17 @@
 	var/turf_build_cooldown = 10 SECONDS
 
 /datum/action/xeno_action/onclick/manage_hive
-	name = "Manage The Hive"
+	name = "管理巢穴"
 	action_icon_state = "xeno_readmit"
 	plasma_cost = 0
 
 /datum/action/xeno_action/onclick/send_thoughts // and prayers
-	name = "Psychic Communication"
+	name = "心灵感应"
 	action_icon_state = "psychic_whisper"
 	plasma_cost = 0
 
 /datum/action/xeno_action/activable/secrete_resin/remote/queen
-	name = "Projected Resin (100)"
+	name = "投射树脂 (100)"
 	action_icon_state = "secrete_resin"
 	plasma_cost = 100
 	xeno_cooldown = 2 SECONDS
@@ -102,7 +102,7 @@
 			return
 
 		if(target_area.linked_lz && istype(SSticker.mode, /datum/game_mode/colonialmarines))
-			to_chat(owner, SPAN_XENONOTICE("It's too early to spread the hive this far."))
+			to_chat(owner, SPAN_XENONOTICE("现在将巢穴扩张至此还为时过早。"))
 			return
 
 	return ..()
@@ -137,7 +137,7 @@
 	UnregisterSignal(owner, COMSIG_XENO_THICK_RESIN_BYPASS)
 
 	if(owner)
-		to_chat(owner, SPAN_XENOHIGHDANGER("Your boosted building has been disabled!"))
+		to_chat(owner, SPAN_XENOHIGHDANGER("你的强化建造能力已被禁用！"))
 
 /datum/action/xeno_action/activable/secrete_resin/remote/queen/proc/override_secrete_thick_resin()
 	return COMPONENT_THICK_BYPASS
@@ -178,7 +178,7 @@
 	return owner
 
 /datum/action/xeno_action/activable/place_queen_beacon
-	name = "Place Queen Beacon"
+	name = "部署女王信标"
 	action_icon_state = "place_queen_beacon"
 	plasma_cost = 0
 	action_type = XENO_ACTION_CLICK
@@ -214,7 +214,7 @@
 
 
 /datum/action/xeno_action/activable/blockade
-	name = "Place Blockade"
+	name = "部署封锁"
 	action_icon_state = "place_blockade"
 	plasma_cost = 300
 	action_type = XENO_ACTION_CLICK

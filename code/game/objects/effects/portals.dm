@@ -1,6 +1,6 @@
 /obj/effect/portal
 	name = "portal"
-	desc = "Looks unstable. Best to test it with the clown."
+	desc = "看起来不稳定。最好用小丑来测试它。"
 	icon = 'icons/effects/portals.dmi'
 	icon_state = "portal"
 	density = TRUE

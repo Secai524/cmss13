@@ -1,6 +1,6 @@
 /obj/item/device/helmet_visor
-	name = "squad optic"
-	desc = "An insertable visor HUD into a standard USCM helmet."
+	name = "班用战术目镜"
+	desc = "一种可插入标准USCM头盔的护目镜式抬头显示器。"
 	icon = 'icons/obj/items/clothing/helmet_visors.dmi'
 	icon_state = "hud_sight"
 	w_class = SIZE_TINY
@@ -51,7 +51,7 @@
 		activate_visor(attached_helmet, user)
 
 		if(!silent)
-			to_chat(user, SPAN_NOTICE("You activate [src] on the [attached_helmet]."))
+			to_chat(user, SPAN_NOTICE("你在[attached_helmet]上激活了[src]。"))
 			playsound_client(user.client, toggle_on_sound, null, 75)
 
 		return TRUE
@@ -59,7 +59,7 @@
 	deactivate_visor(attached_helmet, user)
 
 	if(!silent)
-		to_chat(user, SPAN_NOTICE("You deactivate [src] on the [attached_helmet]."))
+		to_chat(user, SPAN_NOTICE("你在[attached_helmet]上关闭了[src]。"))
 		playsound_client(user.client, toggle_off_sound, null, 75)
 
 	return TRUE
@@ -79,14 +79,14 @@
 	return SPAN_NOTICE("\A [name] is flipped down.")
 
 /obj/item/device/helmet_visor/medical
-	name = "basic medical optic"
+	name = "基础医疗目镜"
 	icon_state = "med_sight"
 	hud_type = MOB_HUD_MEDICAL_ADVANCED
 	action_icon_string = "med_sight_down"
 	helmet_overlay = "med_sight_right"
 
 /obj/item/device/helmet_visor/medical/advanced
-	name = "advanced medical optic"
+	name = "高级医疗目镜"
 	helmet_overlay = "med_sight_right"
 
 /obj/item/device/helmet_visor/medical/advanced/activate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
@@ -107,7 +107,7 @@
 		return
 
 	if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-		to_chat(user, SPAN_NOTICE("You are not skilled enough to use [src]."))
+		to_chat(user, SPAN_NOTICE("你的技能不足以使用[src]。"))
 		return FALSE
 
 	return TRUE
@@ -160,14 +160,14 @@
 	medical_visor.tgui_interact(owner)
 
 /obj/item/device/helmet_visor/security
-	name = "security optic"
+	name = "安保目镜"
 	icon_state = "sec_sight"
 	hud_type = MOB_HUD_SECURITY_ADVANCED
 	action_icon_string = "sec_sight_down"
 	helmet_overlay = "sec_sight_right"
 
 /obj/item/device/helmet_visor/welding_visor
-	name = "welding visor"
+	name = "焊接护目镜"
 	icon_state = "sight_empty"
 	hud_type = null
 	action_icon_string = "blank_hud_sight_down"
@@ -199,8 +199,8 @@
 #define NVG_VISOR_USAGE(delta_time) (power_cell.use(power_use * (delta_time ? delta_time : 1)))
 
 /obj/item/device/helmet_visor/night_vision
-	name = "night vision optic"
-	desc = "An insertable visor HUD into a standard USCM helmet. This type gives a form of night vision and is standard issue in units with regular funding."
+	name = "夜视目镜"
+	desc = "一种可插入标准USCM头盔的护目镜式抬头显示器。此型号提供夜视功能，是常规预算部队的标准配置。"
 	icon_state = "nvg_sight"
 	hud_type = null
 	action_icon_string = "nvg_sight_down"
@@ -275,7 +275,7 @@
 
 		var/obj/item/clothing/head/helmet/marine/attached_helmet = loc
 		var/mob/living/carbon/human/user = loc.loc
-		to_chat(user, SPAN_NOTICE("[src] deactivates as the battery goes out."))
+		to_chat(user, SPAN_NOTICE("[src]因电池耗尽而关闭。"))
 		deactivate_visor(attached_helmet, user)
 		return PROCESS_KILL
 
@@ -285,11 +285,11 @@
 		return
 
 	if(user.client.view > 7)
-		to_chat(user, SPAN_WARNING("You cannot use [src] while using optics."))
+		to_chat(user, SPAN_WARNING("使用目镜时无法使用[src]。"))
 		return FALSE
 
 	if(!NVG_VISOR_USAGE(FALSE))
-		to_chat(user, SPAN_NOTICE("Your [src] is out of power! You'll need to recharge it."))
+		to_chat(user, SPAN_NOTICE("你的[src]没电了！需要充电。"))
 		return FALSE
 
 	return TRUE
@@ -314,7 +314,7 @@
 		if(!istype(attached_helmet))
 			return
 		deactivate_visor(attached_helmet, user)
-		to_chat(user, SPAN_NOTICE("You deactivate [src] on [attached_helmet]."))
+		to_chat(user, SPAN_NOTICE("你在[attached_helmet]上关闭了[src]。"))
 		playsound_client(user.client, toggle_off_sound, null, 75)
 		attached_helmet.active_visor = null
 		attached_helmet.update_icon()
@@ -332,8 +332,8 @@
 	light_flags = LIGHT_ATTACHED
 
 /obj/item/device/helmet_visor/night_vision/marine_raider
-	name = "advanced night vision optic"
-	desc = "An insertable visor HUD into a standard USCM helmet. This type gives a form of night vision and is standard issue in special forces units."
+	name = "高级夜视目镜"
+	desc = "一种可插入标准USCM头盔的护目镜式抬头显示器。此型号提供夜视功能，是特种部队的标准配置。"
 	hud_type = list(MOB_HUD_FACTION_MARINE, MOB_HUD_MEDICAL_ADVANCED)
 	helmet_overlay = "nvg_sight_right_raider"
 	power_use = 0
@@ -357,8 +357,8 @@
 	return PROCESS_KILL
 
 /obj/item/device/helmet_visor/leader
-	name = "leader optic"
-	desc = "An insertable visor HUD loaded with tacmap data into a standard USCM helmet."
+	name = "指挥官目镜"
+	desc = "一种加载了战术地图数据、可插入标准USCM头盔的护目镜式抬头显示器。"
 	hud_type = null
 	///The type of minimap this visor gives access to
 	var/datum/action/minimap/minimap_type = /datum/action/minimap/marine
@@ -382,16 +382,16 @@
 
 /obj/item/device/helmet_visor/leader/upp
 	minimap_type = /datum/action/minimap/upp
-	desc = "An insertable visor HUD loaded with tacmap data into a standard UPP helmet."
+	desc = "一种加载了战术地图数据、可插入标准UPP头盔的护目镜式抬头显示器。"
 
 /obj/item/device/helmet_visor/leader/pmc
 	minimap_type = /datum/action/minimap/pmc
-	desc = "An insertable visor HUD loaded with tacmap data into a standard PMC helmet."
+	desc = "一种加载了战术地图数据、可插入标准PMC头盔的护目镜式抬头显示器。"
 /////////////////////// PO VISOR ///////////////////////
 
 /obj/item/device/helmet_visor/po_visor
-	name = "MK30 flight visor, black"
-	desc = "A standard issue snap-on visor used by USCM dropship pilots. Polarized to reduce glare and protect the eyes during atmospheric re-entry and orbital deployment."
+	name = "MK30飞行护目镜，黑色"
+	desc = "USCM运输机飞行员使用的标准快拆式护目镜。经过偏振处理以减少眩光，并在大气层再入和轨道部署时保护眼睛。"
 	icon_state = "po_visor"
 	action_icon_string = "po_visor_down"
 	helmet_overlay = "po_visor_black"
@@ -417,31 +417,31 @@
 	user.update_tint()
 
 /obj/item/device/helmet_visor/po_visor/purple
-	name = "MK30 flight visor, purple"
+	name = "MK30飞行护目镜，紫色"
 	icon_state = "po_visor_purple"
 	action_icon_string = "po_visor_purple_down"
 	helmet_overlay = "po_visor_purple"
 
 /obj/item/device/helmet_visor/po_visor/lightblue
-	name = "MK30 flight visor, light-blue"
+	name = "MK30飞行护目镜，浅蓝色"
 	icon_state = "po_visor_lightblue"
 	action_icon_string = "po_visor_lightblue_down"
 	helmet_overlay = "po_visor_lightblue"
 
 /obj/item/device/helmet_visor/po_visor/red
-	name = "MK30 flight visor, red"
+	name = "MK30飞行护目镜，红色"
 	icon_state = "po_visor_red"
 	action_icon_string = "po_visor_red_down"
 	helmet_overlay = "po_visor_red"
 
 /obj/item/device/helmet_visor/po_visor/darkblue
-	name = "MK30 flight visor, dark-blue"
+	name = "MK30飞行护目镜，深蓝色"
 	icon_state = "po_visor_darkblue"
 	action_icon_string = "po_visor_darkblue_down"
 	helmet_overlay = "po_visor_darkblue"
 
 /obj/item/device/helmet_visor/po_visor/yellow
-	name = "MK30 flight visor, yellow"
+	name = "MK30飞行护目镜，黄色"
 	icon_state = "po_visor_yellow"
 	action_icon_string = "po_visor_yellow_down"
 	helmet_overlay = "po_visor_yellow"

@@ -1,7 +1,7 @@
 #define QUEEN_OVIPOSITOR_DECAY_TIME 500
 
 /obj/ovipositor
-	name = "Egg Sac"
+	name = "虫卵囊"
 	icon = 'icons/mob/xenos/castes/tier_4/ovipositor.dmi'
 	icon_state = "ovipositor"
 	unacidable = TRUE
@@ -85,7 +85,7 @@
 	return XENO_ATTACK_ACTION
 
 /obj/ovipositor/attack_larva(mob/living/carbon/xenomorph/larva/M)
-	M.visible_message(SPAN_DANGER("[M] nudges its head against [src]."),
+	M.visible_message(SPAN_DANGER("[M]用头轻轻蹭了蹭[src]。"),
 	SPAN_DANGER("You nudge your head against [src]."))
 
 // Density override

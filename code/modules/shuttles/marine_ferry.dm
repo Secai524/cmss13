@@ -411,7 +411,7 @@
 		// At halftime, we announce whether or not the AA forced the dropship to divert
 		// The rounding is because transit time is decreased by 10 each loop. Travel time, however, might not be a multiple of 10
 		if(in_transit_time_left == round(travel_time / 2, 10) && true_crash_target_section != crash_target_section)
-			marine_announcement("A hostile aircraft on course for the [true_crash_target_section] has been successfully deterred.", "IX-50 MGAD System", logging = ARES_LOG_SECURITY)
+			marine_announcement("一架飞往[true_crash_target_section]的敌机已被成功拦截。", "IX-50 MGAD System", logging = ARES_LOG_SECURITY)
 
 			var/area/shuttle_area
 			for(var/turf/T in turfs_int)
@@ -419,8 +419,8 @@
 					shuttle_area = get_area(T)
 
 				for(var/mob/M in T)
-					to_chat(M, SPAN_DANGER("The ship jostles violently as explosions rock the ship!"))
-					to_chat(M, SPAN_DANGER("You feel the ship turning sharply as it adjusts its course!"))
+					to_chat(M, SPAN_DANGER("爆炸撼动舰船，船体剧烈摇晃！"))
+					to_chat(M, SPAN_DANGER("你感觉到舰船正在急剧转向以调整航向！"))
 					shake_camera(M, 60, 2)
 
 			playsound_area(shuttle_area, 'sound/effects/antiair_explosions.ogg')
@@ -432,7 +432,7 @@
 
 	//This is where things change and shit gets real
 
-	marine_announcement("DROPSHIP ON COLLISION COURSE. CRASH IMMINENT." , "EMERGENCY", 'sound/AI/dropship_emergency.ogg', logging = ARES_LOG_SECURITY)
+	marine_announcement("运输机处于碰撞航向。撞击即将发生。" , "EMERGENCY", 'sound/AI/dropship_emergency.ogg', logging = ARES_LOG_SECURITY)
 
 	for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
 		to_chat(observer, SPAN_DEADSAY(FONT_SIZE_LARGE("The dropship is about to impact [get_area_name(T_trg)]" + " [OBSERVER_JMP(observer, T_trg)]")))
@@ -481,10 +481,10 @@
 		if(affected_mob.z != T_trg.z)
 			continue
 		if(affected_mob.buckled)
-			to_chat(affected_mob, SPAN_WARNING("You are jolted against [affected_mob.buckled]!"))
+			to_chat(affected_mob, SPAN_WARNING("你猛地撞向[affected_mob.buckled]！"))
 			shake_camera(affected_mob, 3, 1)
 		else
-			to_chat(affected_mob, SPAN_WARNING("The floor jolts under your feet!"))
+			to_chat(affected_mob, SPAN_WARNING("脚下的地板猛地一震！"))
 			shake_camera(affected_mob, 10, 1)
 			affected_mob.apply_effect(3, WEAKEN)
 
@@ -536,7 +536,7 @@
 		SSticker.mode.force_end_at = world.time + 15000 // 25 mins
 		if(istype(SSticker.mode, /datum/game_mode/colonialmarines))
 			var/datum/game_mode/colonialmarines/colonial_marines = SSticker.mode
-			colonial_marines.add_current_round_status_to_end_results("Hijack")
+			colonial_marines.add_current_round_status_to_end_results("劫持")
 
 /datum/shuttle/ferry/marine/proc/disable_latejoin()
 	GLOB.enter_allowed = FALSE
@@ -602,7 +602,7 @@
 /datum/shuttle/ferry/marine/force_close_launch(obj/structure/machinery/door/AL)
 	if(!iselevator)
 		for(var/mob/living/M in AL.loc) // Bump all mobs outta the way for outside airlocks of shuttles
-			to_chat(M, SPAN_HIGHDANGER("You get thrown back as the dropship doors slam shut!"))
+			to_chat(M, SPAN_HIGHDANGER("运输机舱门猛地关上，将你甩了回去！"))
 			M.KnockDown(4)
 			for(var/turf/T in orange(1, AL)) // Forcemove to a non shuttle turf
 				if(!istype(T, /turf/open/shuttle) && !istype(T, /turf/closed/shuttle))

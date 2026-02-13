@@ -96,7 +96,7 @@ can cause issues with ammo types getting mixed up during the burst.
 					to_chat(user, SPAN_DANGER("[current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] ROUNDS REMAINING."))
 		else
 			if(user && !silent)
-				to_chat(user, SPAN_WARNING("[src] is already empty."))
+				to_chat(user, SPAN_WARNING("[src]已经是空的。"))
 		return
 
 	unload_shell(user)
@@ -136,11 +136,11 @@ can cause issues with ammo types getting mixed up during the burst.
 		return
 
 	if(!magazine || !istype(magazine,/obj/item/ammo_magazine/handful)) //Can only reload with handfuls.
-		to_chat(user, SPAN_WARNING("You can't use that to reload!"))
+		to_chat(user, SPAN_WARNING("你不能用那个来装填！"))
 		return
 
 	if(!check_chamber_position()) //For the double barrel.
-		to_chat(user, SPAN_WARNING("[src] has to be open!"))
+		to_chat(user, SPAN_WARNING("[src]必须处于打开状态！"))
 		return
 
 	//From here we know they are using shotgun type ammo and reloading via handful.
@@ -187,8 +187,8 @@ can cause issues with ammo types getting mixed up during the burst.
 //GENERIC MERC SHOTGUN //Not really based on anything.
 
 /obj/item/weapon/gun/shotgun/merc
-	name = "custom built shotgun"
-	desc = "A cobbled-together pile of scrap and alien wood. Point end towards things you want to die. Has a burst fire feature, as if it needed it."
+	name = "定制霰弹枪"
+	desc = "一堆胡乱拼凑的废料和异星木材。把枪口对准你想干掉的东西。具备连发功能，好像它真需要似的。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/shotguns.dmi'
 	icon_state = "cshotgun"
 	item_state = "cshotgun"
@@ -230,8 +230,8 @@ can cause issues with ammo types getting mixed up during the burst.
 	if(in_chamber) . += "It has a chambered round."
 
 /obj/item/weapon/gun/shotgun/merc/damaged
-	name = "damaged custom built shotgun"
-	desc = "A cobbled-together pile of scrap and alien wood. Point end towards things you want to die. Has a burst fire feature, as if it needed it. Well, it had one, this one's barrel has apparently exploded outwards like an overripe grape. Guess that's what happens when you DIY a shotgun."
+	name = "损坏的定制霰弹枪"
+	desc = "一堆胡乱拼凑的废料和异星木材。把枪口对准你想干掉的东西。具备连发功能，好像它真需要似的。好吧，它曾经有，这把的枪管显然像过熟的葡萄一样向外炸开了。看来这就是DIY霰弹枪的下场。"
 	icon_state = "cshotgun_bad"
 
 /obj/item/weapon/gun/shotgun/merc/damaged/set_gun_config_values()
@@ -251,7 +251,7 @@ can cause issues with ammo types getting mixed up during the burst.
 //SHOCKGUN - Non-Lethal Fast firing shotgun
 /obj/item/weapon/gun/shotgun/es7
 	name = "\improper ES-7 Supernova Electrostatic Shockgun"
-	desc = "An archaic electrostatic 20ga shotgun design based on old Earth designs, albeit modernized for its time period. Being a dual-mode system, it is capable of firing semi-auto and pump-action modes, although this particular model is strictly semi-auto only. It can only accept X21 slugs."
+	desc = "一种基于旧地球设计的古老静电式20号径霰弹枪，尽管在其时代经过了现代化改造。作为双模式系统，它能够进行半自动和泵动模式射击，不过此特定型号严格限定为仅半自动。它只能使用X21独头弹。"
 	desc_lore = "Despite receiving very little upgrades over its service period both within the Weyland Corporation and later the Weyland-Yutani Corporation, it remains popular with mercenaries and security firms because it was designed with security and law enforcement use in mind."
 	icon_state = "es7"
 	item_state = "es7"
@@ -314,7 +314,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/combat
 	name = "\improper MK221 tactical shotgun"
-	desc = "The Weyland-Yutani MK221 Shotgun, a semi-automatic shotgun with a quick fire rate."
+	desc = "维兰德-汤谷MK221霰弹枪，一款射速快的半自动霰弹枪。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/shotguns.dmi'
 	icon_state = "mk221"
 	item_state = "mk221"
@@ -388,12 +388,12 @@ can cause issues with ammo types getting mixed up during the burst.
 	name = "\improper MK221 riot shotgun"
 	icon_state = "mp220"
 	item_state = "mp220"
-	desc = "The Weyland-Yutani MK221 Shotgun, a semi-automatic shotgun with a quick fire rate. Equipped with a steel blue finish to signify use in riot control. It has been modified to only fire 20G beanbags."
+	desc = "维兰德-汤谷MK221霰弹枪，一款射速快的半自动霰弹枪。配备钢蓝色涂装，表明用于防暴控制。经过改装，只能发射20号径豆袋弹。"
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/combat/riot
 	gauge = "20g"
 
 /obj/item/weapon/gun/shotgun/combat/guard
-	desc = "The Weyland-Yutani MK221 Shotgun, a semi-automatic shotgun with a quick fire rate. Equipped with a red handle to signify its use with Military Police Honor Guards."
+	desc = "维兰德-汤谷MK221霰弹枪，一款射速快的半自动霰弹枪。配备红色握把，表明其用于宪兵仪仗队。"
 	icon_state = "mp221"
 	item_state = "mp221"
 	starting_attachment_types = list(/obj/item/attachable/magnetic_harness, /obj/item/attachable/bayonet)
@@ -406,7 +406,7 @@ can cause issues with ammo types getting mixed up during the burst.
 //SOF MK210, an earlier developmental variant of the MK211 tactical used by USCM SOF.
 /obj/item/weapon/gun/shotgun/combat/marsoc
 	name = "\improper XM38 tactical shotgun"
-	desc = "Way back in 2168, Wey-Yu began testing the MK221. The USCM picked up an early prototype, and later adopted it with a limited military contract. But the USCM Special Operations Forces wasn't satisfied, and iterated on the early prototypes they had access to; eventually, their internal armorers and tinkerers produced the MK210, designated XM38, a lightweight folding shotgun that snaps to the belt. And to boot, it's fully automatic, made of stamped medal, and keeps the UGL. Truly an engineering marvel."
+	desc = "早在2168年，维兰德-汤谷就开始测试MK221。USCM获得了一个早期原型，后来通过一份有限的军事合同采用了它。但USCM特种作战部队并不满意，并对他们能接触到的早期原型进行了迭代；最终，他们内部的军械师和修补匠制造出了MK210，命名为XM38，一款可折叠到腰带上的轻型霰弹枪。而且，它是全自动的，由冲压金属制成，并保留了枪挂榴弹发射器。真是个工程奇迹。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/shotguns.dmi'
 	icon_state = "mk210"
 	item_state = "mk210"
@@ -455,7 +455,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/type23
 	name = "\improper Type 23 riot shotgun"
-	desc = "As UPP soldiers frequently reported being outmatched by enemy combatants, UPP High Command commissioned a large amount of Type 23 shotguns, originally used for quelling defector colony riots. This slow semi-automatic shotgun chambers 8 gauge, and packs a mean punch."
+	desc = "由于UPP士兵经常报告在战斗中处于劣势，UPP最高统帅部采购了大量23型霰弹枪，该枪最初用于镇压叛逃殖民地骚乱。这款缓慢的半自动霰弹枪使用8号径弹药，威力巨大。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/shotguns.dmi'
 	icon_state = "type23"
 	item_state = "type23"
@@ -558,7 +558,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/type23/riot_control
 	name = "\improper Type 23-R riot control shotgun"
-	desc = "This slow semi-automatic shotgun chambers 8 gauge, and packs a mean punch. The -R version is designed for UPP colony security personnel and handling colony rioting, sporting an integrated vertical grip but lacking in attachment choices."
+	desc = "这款缓慢的半自动霰弹枪使用8号径弹药，威力巨大。-R型专为UPP殖民地安保人员设计，用于处理殖民地骚乱，配有集成垂直握把，但缺少附件选择。"
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/type23/beanbag
 	attachable_allowed = list(
 		/obj/item/attachable/reddot, //Rail
@@ -587,7 +587,7 @@ can cause issues with ammo types getting mixed up during the burst.
 //
 /obj/item/weapon/gun/shotgun/double
 	name = "\improper Spearhead Rival 78"
-	desc = "A double barrel shotgun produced by Spearhead. Archaic, sturdy, affordable. Only holds two 12g shells at a time."
+	desc = "矛头公司生产的双管霰弹枪。古老、坚固、实惠。一次只能装填两发12号径霰弹。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/shotguns.dmi'
 	icon_state = "dshotgun"
 	item_state = "dshotgun"
@@ -680,7 +680,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		if(!current_mag)
 			return
 		if(!current_mag.chamber_closed)
-			to_chat(user, SPAN_DANGER("Close the chamber!"))
+			to_chat(user, SPAN_DANGER("关闭枪膛！"))
 			return 0
 
 /obj/item/weapon/gun/shotgun/double/empty_chamber(mob/user)
@@ -742,8 +742,8 @@ can cause issues with ammo types getting mixed up during the burst.
 	update_attachable(S.slot)
 
 /obj/item/weapon/gun/shotgun/double/damaged
-	name = "semi-sawn-off Spearhead Rival 78"
-	desc = "A double barrel shotgun produced by Spearhead. Archaic, sturdy, affordable. For some reason it seems that someone tried to saw through the barrel and gave up halfway through. This probably isn't going to be the greatest gun for combat.."
+	name = "半截短型矛头竞争者78"
+	desc = "一支由矛头公司生产的双管霰弹枪。古老、坚固、廉价。不知为何，似乎有人曾试图锯断枪管，但中途放弃了。这恐怕不是最理想的战斗用枪。"
 	icon_state = "dshotgun_bad"
 
 /obj/item/weapon/gun/shotgun/double/damaged/set_gun_config_values()
@@ -760,7 +760,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/double/sawn
 	name = "\improper sawn-off Spearhead Rival 78"
-	desc = "A double barrel shotgun produced by Spearhead. Archaic, sturdy, affordable. It has been artificially shortened to reduce range but increase damage and spread."
+	desc = "一支由矛头公司生产的双管霰弹枪。古老、坚固、廉价。枪管已被人为截短，以降低射程，但增加了伤害和弹丸散布。"
 	icon_state = "sshotgun"
 	item_state = "sshotgun"
 	flags_equip_slot = SLOT_WAIST
@@ -785,8 +785,8 @@ can cause issues with ammo types getting mixed up during the burst.
 // COULDN'T THINK OF ANOTHER WAY SORRY!!!! SOMEONE ADD A GUN COMPONENT!!
 
 /obj/item/weapon/gun/shotgun/double/cane
-	name = "fancy cane"
-	desc = "An ebony cane with a fancy, seemingly-golden tip. Feels hollow to the touch."
+	name = "花式手杖"
+	desc = "一根乌木手杖，杖头装饰华丽，看似黄金。触摸感觉中空。"
 	icon = 'icons/obj/items/weapons/melee/canes.dmi'
 	icon_state = "fancy_cane"
 	item_state = "fancy_cane"
@@ -828,10 +828,10 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/double/cane/gun_safety_handle(mob/user)
 	if(flags_gun_features & GUN_TRIGGER_SAFETY)
-		to_chat(user, SPAN_NOTICE("You turn [src] back into its normal cane stance."))
+		to_chat(user, SPAN_NOTICE("你将[src]恢复为正常的手杖姿态。"))
 		playsound(user, 'sound/weapons/handling/nsg23_unload.ogg', 25, 1)
 	else
-		to_chat(user, SPAN_DANGER("You unlock the safety and change [src] into its gun stance!"))
+		to_chat(user, SPAN_DANGER("你解开保险，将[src]切换为射击姿态！"))
 		playsound(user, 'sound/weapons/handling/smg_reload.ogg', 25, 1)
 
 	if(current_mag.chamber_closed == FALSE) // close the chamber
@@ -847,12 +847,12 @@ can cause issues with ammo types getting mixed up during the burst.
 		name = initial(name)
 		desc = initial(desc)
 	else
-		name = "cane revolver"
+		name = "手杖左轮枪"
 		desc = initial(desc) + " Apparently, because it's a large revolver. Who'da thunk it?"
 
 /obj/item/weapon/gun/shotgun/double/cane/open_chamber(mob/user, override)
 	if(flags_gun_features & GUN_TRIGGER_SAFETY && !override)
-		to_chat(user, SPAN_WARNING("Not with the safety on!"))
+		to_chat(user, SPAN_WARNING("保险还开着呢！"))
 		return
 	return ..()
 
@@ -869,7 +869,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/double/mou53
 	name = "\improper MOU53 break action shotgun"
-	desc = "A limited production Henjin-Garcia MOU53 triple break action classic. Respectable damage output at medium ranges, while the Armat M37 is the king of CQC, the Henjin-Garcia MOU53 is what hits the broadside of that barn. This specific model cannot safely fire buckshot shells."
+	desc = "一款限量生产的Henjin-Garcia MOU53三折式经典枪型。在中距离拥有可观的伤害输出。如果说Armat M37是近身格斗之王，那么Henjin-Garcia MOU53就是能打中谷仓侧墙的利器。此特定型号无法安全发射鹿弹。"
 	icon_state = "mou"
 	item_state = "mou"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/shotguns.dmi'
@@ -938,7 +938,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/double/mou53/unique_action(mob/user)
 	if(!COOLDOWN_FINISHED(src, breach_action_cooldown))
-		to_chat(user, SPAN_WARNING("You must wait before [current_mag.chamber_closed ? "opening" : "closing"] the chamber again."))
+		to_chat(user, SPAN_WARNING("你必须等待[current_mag.chamber_closed ? "opening" : "closing"] the chamber again."))
 		return
 	COOLDOWN_START(src, breach_action_cooldown, MOU_ACTION_COOLDOWN)
 	. = ..()
@@ -952,7 +952,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /datum/action/item_action/specialist/twobore_brace/New(mob/living/user, obj/item/holder)
 	..()
-	name = "Brace for Recoil"
+	name = "准备承受后坐力"
 	action_icon_state = "twobore_brace"
 	button.name = name
 	button.overlays.Cut()
@@ -963,7 +963,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	if(H.is_mob_incapacitated() || H.get_active_hand() != holder_item)
 		return
 	if(H.action_busy)
-		to_chat(H, SPAN_WARNING("You're already doing something!"))
+		to_chat(H, SPAN_WARNING("你正在做其他事情！"))
 		return
 	return TRUE
 
@@ -979,16 +979,16 @@ can cause issues with ammo types getting mixed up during the burst.
 		return
 	var/mob/living/carbon/human/H = owner
 	if(!do_after(H, 0.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE)) //Takes a moment to brace to fire.
-		to_chat(H, SPAN_WARNING("You were interrupted!"))
+		to_chat(H, SPAN_WARNING("你被打断了！"))
 		return
-	H.visible_message(SPAN_WARNING("[H] braces himself to fire the [initial(G.name)]."),
+	H.visible_message(SPAN_WARNING("[H]稳住身体，准备射击[initial(G.name)]。"),
 			SPAN_WARNING("You brace yourself to fire the [initial(G.name)]."))
 	G.brace(H)
 	update_button_icon()
 
 /obj/item/weapon/gun/shotgun/double/twobore
-	name = "two-bore rifle"
-	desc = "An enormously heavy double-barreled rifle with a bore big enough to fire the Moon. If you want an intact trophy, don't aim for the head. \nThe recoil is apocalyptic: if you aren't highly experienced with it and braced using a Specialist Activation, you won't get a second shot."
+	name = "双膛步枪"
+	desc = "一支极其沉重的双管步枪，其口径大到足以发射月球。如果你想获得完整的战利品，别瞄准头部。\n其后坐力堪称毁灭性：如果你经验不足，且未使用专家技能进行稳固准备，你将无法开出第二枪。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/event.dmi'
 	icon_state = "twobore"
 	item_state = "twobore"
@@ -1042,7 +1042,7 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/double/twobore/proc/unbrace(mob/living/carbon/human/user)
 	SIGNAL_HANDLER
 	if(braced)
-		to_chat(user, SPAN_NOTICE("You relax your stance."))
+		to_chat(user, SPAN_NOTICE("你放松了姿态。"))
 		braced = FALSE
 		UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 		UnregisterSignal(src, list(COMSIG_ITEM_EQUIPPED, COMSIG_ITEM_DROPPED))
@@ -1062,9 +1062,9 @@ can cause issues with ammo types getting mixed up during the burst.
 
 	var/turf/floor = get_turf(src)
 	if(fired_shots == 1)
-		to_chat(user, SPAN_NOTICE("An empty shell falls to [floor] as you open the [initial(name)]."))
+		to_chat(user, SPAN_NOTICE("当你打开[initial(name)]时，一个空弹壳掉落在[floor]上。"))
 	else
-		to_chat(user, SPAN_NOTICE("Two empty shells fall to [floor] as you open the [initial(name)]."))
+		to_chat(user, SPAN_NOTICE("当你打开[initial(name)]时，两个空弹壳掉落在[floor]上。"))
 
 	playsound(user, "gun_casing_shotgun", 25, TRUE)
 
@@ -1110,7 +1110,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 	if(flags_item & WIELDED)
 		if(braced && !suicide) //Recoil and brief stun but nothing more. Gun is huge and you can't brace properly when shooting at extreme (same tile) close range.
-			user.visible_message(SPAN_WARNING("[user] rocks back under the heavy recoil of the [initial(name)]."),
+			user.visible_message(SPAN_WARNING("[user]在[initial(name)]的巨大后坐力下向后踉跄。"),
 				SPAN_DANGER("The [initial(name)] kicks like an elephant!"))
 			unbrace(user)
 			user.apply_effect(1, STUN) //Van Bandolier is a human/hero and stuns last half as long for him.
@@ -1128,12 +1128,12 @@ can cause issues with ammo types getting mixed up during the burst.
 		if(!(shoulder.status & LIMB_SPLINTED_INDESTRUCTIBLE) && (shoulder.status & LIMB_SPLINTED)) //If they have it splinted, the splint won't hold.
 			shoulder.status &= ~LIMB_SPLINTED
 			playsound(get_turf(loc), 'sound/items/splintbreaks.ogg', 20)
-			to_chat(user, SPAN_DANGER("The splint on your [shoulder.display_name] comes apart under the recoil!"))
+			to_chat(user, SPAN_DANGER("你[shoulder.display_name]上的夹板在后坐力作用下崩开了！"))
 			user.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
 			user.update_med_icon()
 
 	//Ruh roh.
-	user.visible_message(SPAN_WARNING("[user] is thrown to the ground by the recoiling [initial(name)]!"),
+	user.visible_message(SPAN_WARNING("[user]被[initial(name)]的后坐力掀翻在地！"),
 		SPAN_HIGHDANGER("The world breaks in half!"))
 	shake_camera(user, RECOIL_AMOUNT_TIER_1 * 0.5, RECOIL_AMOUNT_TIER_1)
 
@@ -1189,10 +1189,10 @@ can cause issues with ammo types getting mixed up during the burst.
 		playsound(user.loc, "punch", 25, TRUE)
 		var/blocker = LinkBlocked(user, start_turf, behind_turf) //returns any objects blocking the user from moving back.
 		if(blocker)
-			user.visible_message(SPAN_DANGER("[user] slams into [blocker]!"),
+			user.visible_message(SPAN_DANGER("[user]撞上了[blocker]！"),
 				SPAN_DANGER("The [initial(name)]'s recoil hammers you against [blocker]!"))
 		else
-			user.visible_message(SPAN_DANGER("[user] slams into an obstacle!"),
+			user.visible_message(SPAN_DANGER("[user]撞上了障碍物！"),
 				SPAN_DANGER("The [initial(name)]'s recoil hammers you against an obstacle!"))
 		user.apply_damage(5, BRUTE)
 
@@ -1203,7 +1203,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/pump
 	name = "\improper M37 pump shotgun"
-	desc = "An Armat Battlefield Systems classic design, the M37 combines close-range firepower with long term reliability. Requires a pump, which is a Unique Action."
+	desc = "Armat战场系统公司的经典设计，M37将近距离火力与长期可靠性相结合。需要泵动上膛，这是一个独特动作。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/shotguns.dmi'
 	icon_state = "m37"
 	item_state = "m37"
@@ -1301,7 +1301,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		return //Don't spam it.
 	if(pumped)
 		if (world.time > (message + pump_delay))
-			to_chat(usr, SPAN_WARNING("<i>[src] already has a shell in the chamber!<i>"))
+			to_chat(usr, SPAN_WARNING("<i>[src]的枪膛里已经有一发霰弹了！<i>"))
 			message = world.time
 		return
 	if(in_chamber) //eject the chambered round
@@ -1331,7 +1331,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/pump/unload(mob/user) //We can't pump it to get rid of the shells, so we'll make it work via the unloading mechanism.
 	if(pumped)
-		to_chat(user, SPAN_WARNING("You release the locking mechanism on [src]."))
+		to_chat(user, SPAN_WARNING("你解开了[src]的锁定机构。"))
 		pumped = FALSE
 	return ..()
 
@@ -1339,7 +1339,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/pump/m37a
 	name = "\improper M37A2 pump shotgun"
-	desc = "An Armat Battlefield Systems modern take on an all-time classic, combining close range firepower with long-term reliability. Requires a pump, which is a Unique Action."
+	desc = "Armat战场系统公司对永恒经典的现代诠释，将近距离火力与长期可靠性相结合。需要泵动上膛，这是一个独特动作。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/shotguns.dmi'
 	icon_state = "m37a"
 	item_state = "m37a"
@@ -1376,8 +1376,8 @@ can cause issues with ammo types getting mixed up during the burst.
 	)
 
 /obj/item/weapon/gun/shotgun/pump/dual_tube
-	name = "generic dual-tube pump shotgun"
-	desc = "A twenty-round pump action shotgun with dual internal tube magazines. You can switch the active internal magazine by toggling the shotgun tube."
+	name = "通用双管泵动式霰弹枪"
+	desc = "一把二十发容量的泵动式霰弹枪，配备双内置管状弹仓。你可以通过切换霰弹枪管来切换激活的内置弹仓。"
 	current_mag = /obj/item/ammo_magazine/internal/shotgun
 	var/obj/item/ammo_magazine/internal/shotgun/primary_tube
 	var/obj/item/ammo_magazine/internal/shotgun/secondary_tube
@@ -1416,7 +1416,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		return FALSE
 	var/obj/item/weapon/gun/shotgun/pump/dual_tube/shotgun = user.get_active_hand()
 	if(shotgun != src)
-		to_chat(user, SPAN_WARNING("You must be holding \the [src] in your active hand to switch the active internal magazine!")) // currently this warning can't show up, but this is incase you get an action button or similar for it instead of current implementation
+		to_chat(user, SPAN_WARNING("你必须将\the [src]握在手中才能切换激活的内置弹仓！")) // currently this warning can't show up, but this is incase you get an action button or similar for it instead of current implementation
 		return
 	if(!current_mag)
 		return
@@ -1425,7 +1425,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	var/obj/item/ammo_magazine/chambered_shell
 	if(chamber_swap && in_chamber)
 		if(current_mag.current_rounds == current_mag.max_rounds)
-			to_chat(user, SPAN_WARNING("The current tube is overloaded! [src] spits out the chambered shell!"))
+			to_chat(user, SPAN_WARNING("当前弹管过载！[src]吐出了已上膛的弹壳！"))
 			empty_chamber(user, TRUE, TRUE)
 		else
 			chambered_shell = retrieve_shell(ammo.type)
@@ -1446,13 +1446,13 @@ can cause issues with ammo types getting mixed up during the burst.
 		if(in_chamber)
 			pumped = TRUE
 
-	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You switch \the [src]'s active magazine to the [(current_mag == primary_tube) ? "<b>first</b>" : "<b>second</b>"] magazine."))
+	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] 你将\the [src]的激活弹仓切换至[(current_mag == primary_tube) ? "<b>first</b>" : "<b>second</b>"] magazine."))
 	playsound(src, 'sound/machines/switch.ogg', 15, TRUE)
 	return TRUE
 
 /obj/item/weapon/gun/shotgun/pump/dual_tube/verb/toggle_tube()
 	set category = "Weapons"
-	set name = "Toggle Shotgun Tube"
+	set name = "切换霰弹枪弹管"
 	set desc = "Toggles which shotgun tube your gun loads from."
 	set src = usr.contents
 
@@ -1463,7 +1463,7 @@ can cause issues with ammo types getting mixed up during the burst.
 //item action for handling switching chambered shells when swapping tubes.
 /datum/action/item_action/dual_tube/toggle_chamber_swap/New(Target, obj/item/holder)
 	. = ..()
-	name = "Toggle Chamber Swap"
+	name = "切换弹膛交换"
 	action_icon_state = "chamber_swap"
 	button.name = name
 	button.overlays.Cut()
@@ -1477,10 +1477,10 @@ can cause issues with ammo types getting mixed up during the burst.
 	playsound(owner, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
 
 	if(holder_gun.chamber_swap)
-		to_chat(owner, SPAN_NOTICE("[icon2html(holder_gun, owner)] You will <b>start swapping</b> the chambered shell with the other tube. <b>Your current tube must be underloaded or it will forcefully eject the shell out of the chamber.</b>"))
+		to_chat(owner, SPAN_NOTICE("[icon2html(holder_gun, owner)] 你将<b>开始交换</b>已上膛的弹壳与另一弹管。<b>你当前的弹管必须处于未满载状态，否则将强制将弹壳从弹膛中弹出。</b>"))
 		action_icon_state = "chamber_swap_off"
 	else
-		to_chat(owner, SPAN_NOTICE("[icon2html(holder_gun, owner)] You will <b>stop swapping</b> the chambered shell with the other tube."))
+		to_chat(owner, SPAN_NOTICE("[icon2html(holder_gun, owner)] 你将<b>停止交换</b>已上膛的弹壳与另一弹管。"))
 		action_icon_state = "chamber_swap"
 
 	button.overlays.Cut()
@@ -1490,7 +1490,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb
 	name = "\improper HG 37-12 pump shotgun"
-	desc = "A Henjin-Garcia Armaments Company eight-round pump action shotgun with four-round capacity dual internal tube magazines allowing for quick reloading and highly accurate fire. You can switch the active internal magazine by toggling the shotgun tube."
+	desc = "一把亨金-加西亚军械公司的八发泵动式霰弹枪，配备四发容量的双内置管状弹仓，可实现快速装填和高精度射击。你可以通过切换霰弹枪管来切换激活的内置弹仓。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/shotguns.dmi'
 	icon_state = "hg3712"
 	item_state = "hg3712"
@@ -1534,7 +1534,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/m3717
 	name = "\improper M37-17 pump shotgun"
-	desc = "A military version of the iconic HG 37-12, this design can fit one extra shell in each of its dual-tube internal magazines, and fires shells with increased velocity, resulting in more damage. Issued to select USCM vessels and stations in the outer veil. A button on the side toggles the internal tubes."
+	desc = "标志性HG 37-12的军用版本，此设计可在其双管内置弹仓中各多容纳一发弹药，并以更高的初速发射弹丸，造成更大伤害。配发给外域特定USCM舰船和空间站。侧面的按钮可切换内置弹管。"
 	icon_state = "m3717"
 	item_state = "m3717"
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/cmb/m3717

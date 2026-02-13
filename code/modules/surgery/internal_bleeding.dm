@@ -3,7 +3,7 @@
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery/internal_bleeding
-	name = "Internal Bleeding Repair"
+	name = "内出血修复"
 	priority = SURGERY_PRIORITY_HIGH
 	possible_locs = ALL_LIMBS
 	invasiveness = list(SURGERY_DEPTH_SHALLOW, SURGERY_DEPTH_DEEP)
@@ -20,8 +20,8 @@
 //------------------------------------
 
 /datum/surgery_step/fix_vein
-	name = "Fix Vein"
-	desc = "mend the damaged blood vessel"
+	name = "修复血管"
+	desc = "修复受损血管"
 	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
 	time = 5 SECONDS
 	preop_sound = 'sound/surgery/hemostat1.ogg'

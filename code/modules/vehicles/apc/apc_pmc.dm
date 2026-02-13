@@ -1,6 +1,6 @@
 /obj/vehicle/multitile/apc_pmc
-	name = "M577-WY Armored Personnel Carrier"
-	desc = "An M577 Armored Personnel Carrier. Designed for transporting forces of the W-Y PMCs. An armored transport with four big wheels. Entrances on the sides and back."
+	name = "M577-WY装甲运兵车"
+	desc = "一辆M577装甲运兵车。设计用于运输维兰德PMC部队。一种四轮重型装甲运输车。侧方和后方有入口。"
 
 	icon = 'icons/obj/vehicles/apc_pmc.dmi'
 	icon_state = "hull_wy"
@@ -161,7 +161,7 @@
 ** PRESETS SPAWNERS
 */
 /obj/effect/vehicle_spawner/apc_pmc
-	name = "APC Transport Spawner"
+	name = "装甲运兵车运输生成器"
 	icon = 'icons/obj/vehicles/apc_pmc.dmi'
 	icon_state = "hull_wy"
 	pixel_x = -48

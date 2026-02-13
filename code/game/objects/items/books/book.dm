@@ -37,19 +37,19 @@
 	..()
 	if(carved)
 		if(store)
-			to_chat(user, SPAN_NOTICE("[store] falls out of [title]!"))
+			to_chat(user, SPAN_NOTICE("[store]从[title]里掉了出来！"))
 			store.forceMove(get_turf(src.loc))
 			store = null
 			return
 		else
-			to_chat(user, SPAN_NOTICE("The pages of [title] have been cut out!"))
+			to_chat(user, SPAN_NOTICE("[title]的书页被切掉了！"))
 			return
 	if(src.dat)
 		show_browser(user, "<body class='paper'><TT><I>Author: [author].</I></TT> <BR>[dat]</body>","[title]", "window=book", width = 800, height = 600)
-		user.visible_message("[user] opens \"[src.title]\".")
+		user.visible_message("[user]打开了\"[src.title]\".")
 		onclose(user, "book")
 	else
-		to_chat(user, "This book is completely blank!")
+		to_chat(user, "这本书完全是空白的！")
 
 /obj/item/book/attackby(obj/item/W as obj, mob/user as mob)
 	if(carved)
@@ -58,41 +58,41 @@
 				user.drop_held_item()
 				W.forceMove(src)
 				store = W
-				to_chat(user, SPAN_NOTICE("You put [W] in [title]."))
+				to_chat(user, SPAN_NOTICE("你将[W]放入了[title]。"))
 				return
 			else
-				to_chat(user, SPAN_NOTICE("[W] won't fit in [title]."))
+				to_chat(user, SPAN_NOTICE("[W]无法放入[title]。"))
 				return
 		else
-			to_chat(user, SPAN_NOTICE("There's already something in [title]!"))
+			to_chat(user, SPAN_NOTICE("[title]里已经有东西了！"))
 			return
 	if(HAS_TRAIT(W, TRAIT_TOOL_PEN))
 		if(unique)
-			to_chat(user, "These pages don't seem to take the ink well. Looks like you can't modify it.")
+			to_chat(user, "这些书页似乎不吸墨。看来你无法修改它。")
 			return
-		var/choice = tgui_input_list(usr, "What would you like to change?", "Change Book", list("Title", "Contents", "Author", "Cancel"))
+		var/choice = tgui_input_list(usr, "你想修改什么？", "Change Book", list("Title", "Contents", "Author", "Cancel"))
 		switch(choice)
 			if("Title")
-				var/newtitle = reject_bad_text(stripped_input(usr, "Write a new title:"))
+				var/newtitle = reject_bad_text(stripped_input(usr, "输入新标题："))
 				if(!newtitle)
-					to_chat(usr, "The title is invalid.")
+					to_chat(usr, "标题无效。")
 					return
 				else
 					src.name = newtitle
 					src.title = newtitle
 					playsound(src, "paper_writing", 15, TRUE)
 			if("Contents")
-				var/content = strip_html(input(usr, "Write your book's contents (HTML NOT allowed):"),8192)
+				var/content = strip_html(input(usr, "输入书籍内容（禁止使用HTML）："),8192)
 				if(!content)
-					to_chat(usr, "The content is invalid.")
+					to_chat(usr, "内容无效。")
 					return
 				else
 					src.dat += content
 					playsound(src, "paper_writing", 15, TRUE)
 			if("Author")
-				var/newauthor = stripped_input(usr, "Write the author's name:")
+				var/newauthor = stripped_input(usr, "输入作者姓名：")
 				if(!newauthor)
-					to_chat(usr, "The name is invalid.")
+					to_chat(usr, "姓名无效。")
 					return
 				else
 					src.author = newauthor
@@ -103,9 +103,9 @@
 	else if(istype(W, /obj/item/tool/kitchen/knife) || HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
 		if(carved)
 			return
-		to_chat(user, SPAN_NOTICE("You begin to carve out [title]."))
+		to_chat(user, SPAN_NOTICE("你开始撰写[title]。"))
 		if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			to_chat(user, SPAN_NOTICE("You carve out the pages from [title]! You didn't want to read it anyway."))
+			to_chat(user, SPAN_NOTICE("你撕掉了[title]的书页！反正你也不想读它。"))
 			carved = 1
 			return
 	else
@@ -113,7 +113,7 @@
 
 /obj/item/book/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	if(user.zone_selected == "eyes")
-		user.visible_message(SPAN_NOTICE("You open up the book and show it to [M]."),
+		user.visible_message(SPAN_NOTICE("你翻开书，展示给[M]看。"),
 			SPAN_NOTICE("[user] opens up a book and shows it to [M]."))
 		show_browser(M, "<body class='paper'><TT><I>Penned by [author].</I></TT> <BR>[dat]</body>", "window=book")
 
@@ -273,7 +273,7 @@
 	live_preview = TRUE
 
 /obj/item/lore_book/punch_out
-	name = "Punch Out! Surviving An Ejection."
+	name = "弹射逃生！幸存者指南。"
 	book_title = "Punch Out!"
 	icon_state = "punch_out"
 	book_author = "Sgt. ███████████████████"

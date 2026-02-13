@@ -17,7 +17,7 @@
 			return
 		xeno.animation_attack_on(src)
 		playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
-		xeno.visible_message(SPAN_DANGER("[xeno] slices [src] apart!"),
+		xeno.visible_message(SPAN_DANGER("[xeno]将[src]切碎！"),
 		SPAN_DANGER("We slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		deconstruct(FALSE)
 		return XENO_ATTACK_ACTION
@@ -30,7 +30,7 @@
 		return TAILSTAB_COOLDOWN_NONE
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	deconstruct(FALSE)
-	xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+	xeno.visible_message(SPAN_DANGER("[xeno]用它的尾巴摧毁了[src]！"),
 	SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
@@ -48,7 +48,7 @@
 		O.forceMove(src)
 		update_icon()
 	else if(HAS_TRAIT(O, TRAIT_TOOL_PEN))
-		var/newname = stripped_input(user, "What would you like to title this bookshelf?")
+		var/newname = stripped_input(user, "你想给这个书架起什么标题？")
 		if(!newname)
 			return
 		else
@@ -57,8 +57,8 @@
 	else if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 		if(do_after(user, 1 SECONDS, INTERRUPT_MOVED, BUSY_ICON_FRIENDLY, src))
-			user.visible_message("[user] deconstructs [src].",
-				"You deconstruct [src].", "You hear a noise.")
+			user.visible_message("[user]拆解了[src]。",
+				"你拆除了[src]。", "You hear a noise.")
 			deconstruct(FALSE)
 	else
 		. = ..()
@@ -101,7 +101,7 @@
 
 
 /obj/structure/bookcase/manuals/medical
-	name = "medical manuals bookcase"
+	name = "医疗手册书架"
 
 /obj/structure/bookcase/manuals/medical/Initialize()
 	. = ..()
@@ -112,7 +112,7 @@
 
 
 /obj/structure/bookcase/manuals/engineering
-	name = "engineering manuals bookcase"
+	name = "工程手册书架"
 
 /obj/structure/bookcase/manuals/engineering/Initialize()
 	. = ..()

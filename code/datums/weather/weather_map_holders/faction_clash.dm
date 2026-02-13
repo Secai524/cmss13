@@ -1,5 +1,5 @@
 /datum/weather_ss_map_holder/faction_clash
-	name = "Faction Clash Map Holder"
+	name = "派系冲突地图架"
 
 	warn_time = 0
 	min_time_between_events = 0

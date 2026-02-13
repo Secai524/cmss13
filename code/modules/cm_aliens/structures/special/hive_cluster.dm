@@ -3,7 +3,7 @@
 
 /obj/effect/alien/resin/special/cluster
 	name = XENO_STRUCTURE_CLUSTER
-	desc = "A large clump of gooey mass. It rhythmically pulses, as if its pumping something into the weeds below..."
+	desc = "一大团粘稠的物质。它有节奏地搏动着，仿佛在将什么东西泵入下方的菌毯..."
 	icon = 'icons/mob/xenos/structures48x48.dmi'
 	icon_state = "hive_cluster_idle"
 
@@ -95,7 +95,7 @@
 		to_chat(xeno, SPAN_XENONOTICE("\The [name] is in good condition, you don't need to repair it."))
 		return
 
-	to_chat(xeno, SPAN_XENONOTICE("We begin adding the plasma to \the [name] to repair it."))
+	to_chat(xeno, SPAN_XENONOTICE("我们开始向\the [name]添加等离子体以修复它。"))
 	xeno_attack_delay(xeno)
 	if(!do_after(xeno, CLUSTER_REPAIR_TIME, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src) || !can_repair)
 		return
@@ -121,7 +121,7 @@
 			continue
 		addtimer(CALLBACK(W, TYPE_PROC_REF(/obj/effect/alien/weeds, weed_expand), node), CLUSTER_WEEDS_REGROWTH_TIME, TIMER_UNIQUE)
 
-	to_chat(xeno, SPAN_XENONOTICE("We have successfully repaired \the [name]."))
+	to_chat(xeno, SPAN_XENONOTICE("我们已成功修复\the [name]。"))
 	playsound(loc, "alien_resin_build", 25)
 
 /obj/effect/alien/resin/special/cluster/proc/place_node()

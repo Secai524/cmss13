@@ -1,7 +1,7 @@
 /datum/equipment_preset/fax_responder
-	name = "Fax Responder"
-	assignment = "Fax Responder"
-	job_title = "Fax Responder"
+	name = "传真应答员"
+	assignment = "传真应答员"
+	job_title = "传真应答员"
 
 	role_comm_title = "Resp."
 
@@ -35,7 +35,7 @@
 /datum/equipment_preset/fax_responder/load_name(mob/living/carbon/human/new_human, randomise)
 	var/final_name = "John Doe"
 	if(new_human.gender == FEMALE)
-		final_name = "Jane Doe"
+		final_name = "无名氏"
 
 	if(new_human.client && new_human.client.prefs)
 		var/new_name = get_fax_responder_name(new_human.client)
@@ -70,7 +70,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/fax_responder/uscm
-	name = "Fax Responder - USCM HC"
+	name = "传真应答员 - USCM总部"
 	assignment = JOB_FAX_RESPONDER_USCM_HC
 	job_title = JOB_FAX_RESPONDER_USCM_HC
 	faction_group = list(FACTION_FAX, FACTION_MARINE)
@@ -94,7 +94,7 @@
 	. = ..()
 
 /datum/equipment_preset/fax_responder/uscm/provost
-	name = "Fax Responder - USCM Provost"
+	name = "传真应答员 - USCM宪兵总监"
 	assignment = JOB_FAX_RESPONDER_USCM_PVST
 	job_title = JOB_FAX_RESPONDER_USCM_PVST
 	faction_group = list(FACTION_FAX, FACTION_MARINE)
@@ -118,7 +118,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/fax_responder/wey_yu
-	name = "Fax Responder - WY"
+	name = "传真应答员 - 维兰德"
 	assignment = JOB_FAX_RESPONDER_WY
 	job_title = JOB_FAX_RESPONDER_WY
 	faction_group = list(FACTION_FAX, FACTION_MARINE, FACTION_WY, FACTION_WY_DEATHSQUAD, FACTION_PMC)
@@ -140,7 +140,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/fax_responder/upp
-	name = "Fax Responder - UPP"
+	name = "传真应答员 - UPP"
 	assignment = JOB_FAX_RESPONDER_UPP
 	job_title = JOB_FAX_RESPONDER_UPP
 	faction_group = list(FACTION_FAX, FACTION_UPP)
@@ -172,7 +172,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/fax_responder/twe
-	name = "Fax Responder - TWE"
+	name = "传真应答员 - TWE"
 	assignment = JOB_FAX_RESPONDER_TWE
 	job_title = JOB_FAX_RESPONDER_TWE
 	faction_group = list(FACTION_FAX, FACTION_MARINE, FACTION_TWE)
@@ -195,7 +195,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/fax_responder/clf
-	name = "Fax Responder - CLF"
+	name = "传真应答员 - CLF"
 	assignment = JOB_FAX_RESPONDER_CLF
 	job_title = JOB_FAX_RESPONDER_CLF
 	faction_group = list(FACTION_FAX, FACTION_CLF)
@@ -221,7 +221,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/fax_responder/cmb
-	name = "Fax Responder - CMB"
+	name = "传真应答员 - CMB"
 	assignment = JOB_FAX_RESPONDER_CMB
 	job_title = JOB_FAX_RESPONDER_CMB
 	faction_group = list(FACTION_FAX, FACTION_MARINE, FACTION_MARSHAL)
@@ -251,7 +251,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/fax_responder/press
-	name = "Fax Responder - Press"
+	name = "传真应答员 - 媒体"
 	assignment = JOB_FAX_RESPONDER_PRESS
 	job_title = JOB_FAX_RESPONDER_PRESS
 	faction_group = list(FACTION_FAX, FACTION_MARINE, FACTION_COLONIST)

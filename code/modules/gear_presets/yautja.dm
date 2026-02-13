@@ -1,5 +1,5 @@
 /datum/equipment_preset/yautja
-	name = "Yautja"
+	name = "铁血战士"
 	idtype = null //No IDs for Yautja!
 	languages = list(LANGUAGE_YAUTJA)
 	job_title = "Predator"
@@ -10,7 +10,7 @@
 
 	minimap_icon = "predator"
 
-	var/default_cape_type = "None"
+	var/default_cape_type = "无"
 	var/clan_rank
 
 /datum/equipment_preset/yautja/load_race(mob/living/carbon/human/new_human, client/mob_client)
@@ -75,7 +75,7 @@
 	new_human.change_real_name(new_human, final_name)
 
 /datum/equipment_preset/yautja/youngblood //normal WL youngblood rank
-	name = "Yautja Young"
+	name = "铁血战士青年"
 	minimap_icon = "predator_young"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	clan_rank = CLAN_RANK_UNBLOODED_INT
@@ -87,14 +87,14 @@
 
 //BLOODED
 /datum/equipment_preset/yautja/blooded
-	name = "Yautja Blooded"
+	name = "铁血战士血徒"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	default_cape_type = PRED_YAUTJA_QUARTER_CAPE
 	clan_rank = CLAN_RANK_BLOODED_INT
 
 // ELITE
 /datum/equipment_preset/yautja/elite
-	name = "Yautja Elite"
+	name = "铁血战士精英"
 	minimap_icon = "predator_elite"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	default_cape_type = PRED_YAUTJA_HALF_CAPE
@@ -107,7 +107,7 @@
 
 // ELDER
 /datum/equipment_preset/yautja/elder
-	name = "Yautja Elder"
+	name = "铁血战士长老"
 	minimap_icon = "predator_elder"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	default_cape_type = PRED_YAUTJA_THIRD_CAPE
@@ -120,7 +120,7 @@
 
 // CLAN LEADER
 /datum/equipment_preset/yautja/leader
-	name = "Yautja Leader"
+	name = "铁血战士领袖"
 	minimap_icon = "predator_leader"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	default_cape_type = PRED_YAUTJA_CAPE
@@ -133,7 +133,7 @@
 
 // ANCIENT
 /datum/equipment_preset/yautja/ancient
-	name = "Yautja Ancient"
+	name = "铁血战士远古者"
 	minimap_icon = "predator_ancient"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	default_cape_type = PRED_YAUTJA_PONCHO
@@ -145,7 +145,7 @@
 	new_human.change_real_name(new_human, new_name)
 
 /datum/equipment_preset/yautja/non_wl //For hunting grounds ONLY
-	name = "Yautja Young (non-WL)"
+	name = "铁血战士青年（非白名单）"
 	minimap_icon = "predator_young"
 	job_title = "Young Blood"
 	faction = FACTION_YAUTJA_YOUNG
@@ -157,7 +157,7 @@
 	new_human.change_real_name(new_human, new_name)
 
 /datum/equipment_preset/yautja/non_wl_leader //The "leader" of the group if a WL player is not on
-	name = "Yautja Youngblood pack leader (non-WL)"
+	name = "铁血战士青年血徒包领袖（非白名单）"
 	minimap_icon = "predator_young"
 	job_title = "Young Blood"
 	faction = FACTION_YAUTJA_YOUNG

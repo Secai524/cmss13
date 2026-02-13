@@ -1,6 +1,6 @@
 /obj/effect/decal/remains/human
 	name = "remains"
-	desc = "They look like human remains. Eerie..."
+	desc = "它们看起来像是人类遗骸。令人不安..."
 	gender = PLURAL
 	icon = 'icons/effects/blood.dmi'
 	icon_state = "remains"
@@ -9,7 +9,7 @@
 
 /obj/effect/decal/remains/xeno
 	name = "remains"
-	desc = "They look like the remains of some horrible creature. They are not pleasant to look at..."
+	desc = "它们看起来像是某种可怕生物的遗骸。看着很不舒服..."
 	gender = PLURAL
 	icon = 'icons/effects/blood.dmi'
 	icon_state = "remainsxeno"
@@ -26,7 +26,7 @@
 
 /obj/effect/decal/remains/robot
 	name = "remains"
-	desc = "They look like the remains of something mechanical. They have a strange aura about them."
+	desc = "它们看起来像是某种机械的残骸。散发着一种奇怪的气息。"
 	gender = PLURAL
 	icon = 'icons/mob/robots.dmi'
 	icon_state = "remainsrobot"

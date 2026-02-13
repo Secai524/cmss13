@@ -3,7 +3,7 @@ GLOBAL_LIST_EMPTY(clones)
 GLOBAL_LIST_EMPTY(clones_t)
 
 SUBSYSTEM_DEF(fz_transitions)
-	name = "Z-Transitions"
+	name = "Z轴过渡"
 	wait = 1 SECONDS
 	priority = SS_PRIORITY_FZ_TRANSITIONS
 	init_order = SS_INIT_FZ_TRANSITIONS

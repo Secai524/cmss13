@@ -5,7 +5,7 @@
 	max_range = 7
 
 /datum/action/xeno_action/active_toggle/toggle_speed
-	name = "Resin Walker (50)"
+	name = "树脂行者 (50)"
 	action_icon_state = "toggle_speed"
 	plasma_cost = 50
 	macro_path = /datum/action/xeno_action/verb/verb_resin_walker
@@ -36,7 +36,7 @@
 
 	if(xeno.plasma_stored <= 0)
 		disable_resin_walker()
-		to_chat(xeno, SPAN_WARNING("We feel dizzy as the world slows down."))
+		to_chat(xeno, SPAN_WARNING("我们感到头晕目眩，世界仿佛慢了下来。"))
 		xeno.recalculate_move_delay = TRUE
 		return
 

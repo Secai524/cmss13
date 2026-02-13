@@ -1,5 +1,5 @@
 /datum/faction/wy
-	name = "Weyland-Yutani Corporation"
+	name = "维兰德-汤谷公司"
 	faction_tag = FACTION_WY
 	base_icon_file = 'icons/mob/hud/factions/wy.dmi'
 

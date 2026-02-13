@@ -9,7 +9,7 @@
 	hotkey_keys = list("C")
 	classic_keys = list("Unbound")
 	name = "primary_attack_one"
-	full_name = "Primary Attack One"
+	full_name = "主攻击一"
 	keybind_signal = COMSIG_KB_XENO_PRIMARY_ATTACK_ONE
 
 /datum/keybinding/xenomorph/primary_attack_one/down(client/user)
@@ -24,7 +24,7 @@
 	hotkey_keys = list("V")
 	classic_keys = list("Unbound")
 	name = "primary_attack_two"
-	full_name = "Primary Attack Two"
+	full_name = "主攻击二"
 	keybind_signal = COMSIG_KB_XENO_PRIMARY_ATTACK_TWO
 
 /datum/keybinding/xenomorph/primary_attack_two/down(client/user)
@@ -39,7 +39,7 @@
 	hotkey_keys = list("G")
 	classic_keys = list("Unbound")
 	name = "primary_attack_three"
-	full_name = "Primary Attack Three"
+	full_name = "主攻击三"
 	keybind_signal = COMSIG_KB_XENO_PRIMARY_ATTACK_THREE
 
 /datum/keybinding/xenomorph/primary_attack_three/down(client/user)
@@ -54,7 +54,7 @@
 	hotkey_keys = list("B")
 	classic_keys = list("Unbound")
 	name = "primary_attack_four"
-	full_name = "Primary Attack Four"
+	full_name = "主攻击四"
 	keybind_signal = COMSIG_KB_XENO_PRIMARY_ATTACK_FOUR
 
 /datum/keybinding/xenomorph/primary_attack_four/down(client/user)
@@ -69,7 +69,7 @@
 	hotkey_keys = list("N")
 	classic_keys = list("Unbound")
 	name = "primary_attack_five"
-	full_name = "Primary Attack Five"
+	full_name = "主攻击五"
 	keybind_signal = COMSIG_KB_XENO_PRIMARY_ATTACK_FIVE
 
 /datum/keybinding/xenomorph/primary_attack_five/down(client/user)
@@ -84,7 +84,7 @@
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
 	name = "emit_pheromones"
-	full_name = "Emit Pheromones"
+	full_name = "释放信息素"
 	description = "Select a pheromone to emit or cease emitting pheromones."
 	keybind_signal = COMSIG_KB_XENO_EMIT_PHEROMONES
 	var/pheromone
@@ -99,21 +99,21 @@
 
 /datum/keybinding/xenomorph/emit_pheromones/frenzy
 	name = "emit_pheromones_fernzy"
-	full_name = "Emit Frenzy pheromone"
+	full_name = "释放狂暴信息素"
 	description = "Increased run speed, damage and chance to knock off headhunter masks."
 	keybind_signal = COMSIG_KB_XENO_EMIT_PHEROMONES_FRENZY
 	pheromone = "frenzy"
 
 /datum/keybinding/xenomorph/emit_pheromones/warding
 	name = "emit_pheromones_warding"
-	full_name = "Emit Warding pheromone"
+	full_name = "释放警戒信息素"
 	description = "Increased maximum negative health, and while in critical state, slower off weed bleedout."
 	keybind_signal = COMSIG_KB_XENO_EMIT_PHEROMONES_WARDING
 	pheromone = "warding"
 
 /datum/keybinding/xenomorph/emit_pheromones/recovery
 	name = "emit_pheromones_recovery"
-	full_name = "Emit Recovery pheromone"
+	full_name = "释放恢复信息素"
 	description = "Increased plasma and health regeneration."
 	keybind_signal = COMSIG_KB_XENO_EMIT_PHEROMONES_RECOVERY
 	pheromone = "recovery"
@@ -122,7 +122,7 @@
 	hotkey_keys = list("Shift+C")
 	classic_keys = list("Unbound")
 	name = "corrosive_acid"
-	full_name = "Corrosive Acid"
+	full_name = "腐蚀酸液"
 	keybind_signal = COMSIG_KB_XENO_CORROSIVE_ACID
 
 /datum/keybinding/xenomorph/corrosive_acid/down(client/user)
@@ -137,7 +137,7 @@
 	hotkey_keys = list("Shift+B")
 	classic_keys = list("Unbound")
 	name = "tech_secrete_resin"
-	full_name = "Secrete Resin (Tech)"
+	full_name = "分泌树脂（科技）"
 	keybind_signal = COMSIG_KB_XENO_TECH_SECRETE_RESIN
 
 /datum/keybinding/xenomorph/tech_secrete_resin/down(client/user)
@@ -152,7 +152,7 @@
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
 	name = "screech"
-	full_name = "Screech"
+	full_name = "尖啸"
 	keybind_signal = COMSIG_KB_XENO_SCREECH
 
 /datum/keybinding/xenomorph/screech/down(client/user)
@@ -167,7 +167,7 @@
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
 	name = "tail_stab"
-	full_name = "Tail Stab"
+	full_name = "尾刺"
 	keybind_signal = COMSIG_KB_TAIL_STAB
 
 /datum/keybinding/xenomorph/tail_stab/down(client/user)
@@ -182,7 +182,7 @@
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
 	name = "hive_status"
-	full_name = "View Hive Status"
+	full_name = "查看巢穴状态"
 	keybind_signal = COMSIG_KB_XENO_HIVE_STATUS
 
 /datum/keybinding/xenomorph/hive_status/down(client/user)
@@ -197,21 +197,21 @@
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
 	name = "hide"
-	full_name = "Hide"
+	full_name = "隐藏"
 	keybind_signal = COMSIG_KB_XENO_HIDE
 
 /datum/keybinding/xenomorph/evolve
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
 	name = "evolve"
-	full_name = "Evolve"
+	full_name = "进化"
 	keybind_signal = COMSIG_KB_XENO_EVOLVE
 
 /datum/keybinding/xenomorph/purchase_strain
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
 	name = "purchase_strain"
-	full_name = "Purchase Strain"
+	full_name = "购买变种"
 	keybind_signal = COMSIG_KB_XENO_PURCHASE_STRAIN
 
 /datum/keybinding/xenomorph/purchase_strain/down(client/user)
@@ -226,7 +226,7 @@
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
 	name = "reset_strain"
-	full_name = "Reset Strain"
+	full_name = "重置变种"
 	keybind_signal = COMSIG_KB_XENO_RESET_STRAIN
 
 /datum/keybinding/xenomorph/reset_strain/down(client/user)
@@ -242,7 +242,7 @@
 	hotkey_keys = list("Shift+Z")
 	classic_keys = list("Unbound")
 	name = "become_seethrough"
-	full_name = "Become Seethrough"
+	full_name = "变为半透明"
 	keybind_signal = COMSIG_KB_XENO_BECOME_SEETHROUGH
 
 /datum/keybinding/xenomorph/toggle_seethrough/down(client/user)

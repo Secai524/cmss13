@@ -30,7 +30,7 @@ CLIENT_VERB(keyDown, _key as text)
 
 	///Check if the key is short enough to even be a real key
 	if(LAZYLEN(_key) > MAX_KEYPRESS_COMMANDLENGTH)
-		to_chat(src, SPAN_USERDANGER("Invalid KeyDown detected! You have been disconnected from the server automatically."))
+		to_chat(src, SPAN_USERDANGER("检测到无效按键！你已被自动断开与服务器的连接。"))
 		log_admin("Client [ckey] just attempted to send an invalid keypress. Keymessage was over [MAX_KEYPRESS_COMMANDLENGTH] characters, autokicking due to likely abuse.")
 		message_admins("Client [ckey] just attempted to send an invalid keypress. Keymessage was over [MAX_KEYPRESS_COMMANDLENGTH] characters, autokicking due to likely abuse.")
 		qdel(src)

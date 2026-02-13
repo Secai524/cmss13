@@ -2,8 +2,8 @@
 // thermal goggles
 
 /obj/item/clothing/glasses/thermal
-	name = "Optical Thermal Scanner"
-	desc = "Thermals in the shape of glasses."
+	name = "光学热成像扫描仪"
+	desc = "眼镜形态的热成像仪。"
 	icon = 'icons/obj/items/clothing/glasses/goggles.dmi'
 	item_icons = list(
 		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/goggles.dmi',
@@ -26,7 +26,7 @@
 	if(blinds_on_emp)
 		if(istype(src.loc, /mob/living/carbon/human))
 			var/mob/living/carbon/human/M = src.loc
-			to_chat(M, SPAN_WARNING("The Optical Thermal Scanner overloads and blinds you!"))
+			to_chat(M, SPAN_WARNING("光学热成像扫描仪过载，使你暂时失明！"))
 			if(M.glasses == src)
 				M.SetEyeBlind(3)
 				M.EyeBlur(5)
@@ -37,8 +37,8 @@
 
 
 /obj/item/clothing/glasses/thermal/syndi //These are now a traitor item, concealed as mesons. -Pete
-	name = "Optical Meson Scanner"
-	desc = "Used for seeing walls, floors, and stuff through anything."
+	name = "光学介子扫描仪"
+	desc = "用于透视墙壁、地板及任何物体。"
 	icon = 'icons/obj/items/clothing/glasses/huds.dmi'
 	item_icons = list(
 		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/huds.dmi',
@@ -48,8 +48,8 @@
 	actions_types = list(/datum/action/item_action/toggle)
 
 /obj/item/clothing/glasses/thermal/syndi/bug_b_gone
-	name = "Bug-B Gone Thermal Goggles"
-	desc = "For all your bug hunting needs!"
+	name = "除虫热成像护目镜"
+	desc = "满足你所有的猎虫需求！"
 	icon = 'icons/obj/items/clothing/glasses/goggles.dmi'
 	item_icons = list(
 		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/goggles.dmi',
@@ -67,8 +67,8 @@
 	)
 
 /obj/item/clothing/glasses/thermal/monocle
-	name = "Thermoncle"
-	desc = "A monocle thermal."
+	name = "热成像单片镜"
+	desc = "一个单片热成像镜。"
 	icon = 'icons/obj/items/clothing/glasses/misc.dmi'
 	item_icons = list(
 		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/misc.dmi',
@@ -79,8 +79,8 @@
 	flags_armor_protection = 0
 
 /obj/item/clothing/glasses/thermal/eyepatch
-	name = "Optical Thermal Eyepatch"
-	desc = "An eyepatch with built-in thermal optics."
+	name = "光学热成像眼罩"
+	desc = "内置热成像光学的眼罩。"
 	icon = 'icons/obj/items/clothing/glasses/misc.dmi'
 	item_icons = list(
 		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/misc.dmi',
@@ -91,5 +91,5 @@
 	flags_armor_protection = 0
 
 /obj/item/clothing/glasses/thermal/empproof
-	desc = "Thermals in the shape of glasses. This one is EMP proof."
+	desc = "眼镜形态的热成像仪。此型号防电磁脉冲。"
 	blinds_on_emp = FALSE

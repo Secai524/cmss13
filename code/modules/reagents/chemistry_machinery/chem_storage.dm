@@ -1,6 +1,6 @@
 /obj/structure/machinery/chem_storage
-	name = "Chemical Storage System"
-	desc = "Storage system for a large supply of chemicals, which slowly recharges."
+	name = "化学品存储系统"
+	desc = "用于大量化学品存储的系统，可缓慢补充。"
 	icon = 'icons/obj/structures/machinery/science_machines_64x32.dmi'
 	icon_state = "chemstorage"
 	active_power_usage = 1000
@@ -8,7 +8,7 @@
 	density = TRUE
 	bound_x = 32
 
-	var/network = "Ground"
+	var/network = "地面"
 	var/recharge_cooldown = 15
 	var/recharge_rate = 10
 	var/energy = 50
@@ -22,16 +22,16 @@
 	unacidable = TRUE
 
 /obj/structure/machinery/chem_storage/medbay
-	name = "Chemical Storage System (Medbay)"
+	name = "化学品存储系统（医疗舱）"
 	network = "Medbay"
 	dynamic_storage = TRUE
 
 /obj/structure/machinery/chem_storage/research
-	name = "Chemical Storage System (Research)"
+	name = "化学品存储系统（研究部）"
 	network = "Research"
 
 /obj/structure/machinery/chem_storage/misc
-	name = "Chemical Storage System (Misc)"
+	name = "化学品存储系统（杂项）"
 	network = "Misc"
 
 /obj/structure/machinery/chem_storage/Initialize()

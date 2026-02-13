@@ -216,7 +216,7 @@
 		message_admins(SPAN_DANGER("ERROR: Non-admin [key_name(usr)] attempted to execute a SDQL query!"))
 		log_admin("non-admin attempted to execute a SDQL query!")
 		return FALSE
-	var/prompt = tgui_alert(usr, "Run SDQL2 Query?", "SDQL2", list("Yes", "Cancel"))
+	var/prompt = tgui_alert(usr, "运行SDQL2查询？", "SDQL2", list("Yes", "Cancel"))
 	if (prompt != "Yes")
 		return
 	var/list/results = world.SDQL2_query(query_text, key_name_admin(usr), "[key_name(usr)]", executor = src)
@@ -292,7 +292,7 @@
 				finished = FALSE
 				if(query.state == SDQL2_STATE_ERROR)
 					if(usr)
-						to_chat(usr, SPAN_ADMIN("SDQL query [query.get_query_text()] errored. It will NOT be automatically garbage collected. Please remove manually."), confidential = TRUE)
+						to_chat(usr, SPAN_ADMIN("SDQL查询[query.get_query_text()]出错。它不会被自动垃圾回收，请手动移除。"), confidential = TRUE)
 					running -= query
 			else
 				if(query.finished)
@@ -314,7 +314,7 @@
 						next_query.ARun()
 				else
 					if(usr)
-						to_chat(usr, SPAN_ADMIN("SDQL query [query.get_query_text()] was halted. It will NOT be automatically garbage collected. Please remove manually."), confidential = TRUE)
+						to_chat(usr, SPAN_ADMIN("SDQL查询[query.get_query_text()]已中止。它不会被自动垃圾回收，请手动移除。"), confidential = TRUE)
 					running -= query
 	while(!finished)
 
@@ -995,7 +995,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 				if("or", "||")
 					result = (result || val)
 				else
-					to_chat(usr, SPAN_DANGER("SDQL2: Unknown op [op]"), confidential = TRUE)
+					to_chat(usr, SPAN_DANGER("SDQL2：未知操作[op]"), confidential = TRUE)
 					result = null
 		else
 			result = val
@@ -1105,7 +1105,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 				querys[querys_pos] = parsed_tree
 				querys_pos++
 			else //There was an error so don't run anything, and tell the user which query has errored.
-				to_chat(usr, SPAN_DANGER("Parsing error on [querys_pos]\th query. Nothing was executed."), confidential = TRUE)
+				to_chat(usr, SPAN_DANGER("在第[querys_pos]\th个查询处解析错误。未执行任何操作。"), confidential = TRUE)
 				return list()
 			query_tree = list()
 			do_parse = 0
@@ -1152,19 +1152,19 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 		D = object
 
 	if (object == world && (!long || expression[start + 1] == ".") && !(expression[start] in exclude) && copytext(expression[start], 1, 3) != "SS") //3 == length("SS") + 1
-		to_chat(usr, SPAN_DANGER("World variables are not allowed to be accessed. Use global."), confidential = TRUE)
+		to_chat(usr, SPAN_DANGER("不允许访问世界变量。请使用全局变量。"), confidential = TRUE)
 		return null
 
 	else if(expression [start] == "{" && long)
 		if(lowertext(copytext(expression[start + 1], 1, 3)) != "0x") //3 == length("0x") + 1
-			to_chat(usr, SPAN_DANGER("Invalid pointer syntax: [expression[start + 1]]"), confidential = TRUE)
+			to_chat(usr, SPAN_DANGER("无效的指针语法：[expression[start + 1]]"), confidential = TRUE)
 			return null
 		var/datum/located = locate("\[[expression[start + 1]]]")
 		if(!istype(located))
-			to_chat(usr, SPAN_DANGER("Invalid pointer: [expression[start + 1]] - null or not datum."), confidential = TRUE)
+			to_chat(usr, SPAN_DANGER("无效的指针：[expression[start + 1]] - 为空或非数据对象。"), confidential = TRUE)
 			return null
 		if(!located.can_vv_mark())
-			to_chat(usr, SPAN_DANGER("Pointer [expression[start+1]] cannot be marked."), confidential = TRUE)
+			to_chat(usr, SPAN_DANGER("指针[expression[start+1]]无法被标记。"), confidential = TRUE)
 			return null
 		v = located
 		start++
@@ -1193,7 +1193,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 			var/list/L = v
 			var/index = query.SDQL_expression(source, expression[start + 2])
 			if(isnum(index) && ((floor(index) != index) || length(L) < index))
-				to_chat(usr, SPAN_DANGER("Invalid list index: [index]"), confidential = TRUE)
+				to_chat(usr, SPAN_DANGER("无效的列表索引：[index]"), confidential = TRUE)
 				return null
 			return L[index]
 	return v
@@ -1293,7 +1293,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 					word += char
 
 			if(i > len)
-				to_chat(usr, SPAN_RED("SDQL2: You have an error in your SDQL syntax, unmatched \" in query: \"<font color=gray>[query_text]</font>\". Please check your syntax, and try again."))
+				to_chat(usr, SPAN_RED("SDQL2：你的SDQL语法有误，存在未匹配的\" in query: \"<font color=gray>[query_text]</font>\". Please check your syntax, and try again."))
 				return null
 
 			query_list += "[word]\""
@@ -1361,7 +1361,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/sdql2_vv_all, new(null
 	Q.action_click()
 
 /obj/effect/statclick/sdql2_vv_all
-	name = "VIEW VARIABLES"
+	name = "查看变量"
 
 /obj/effect/statclick/sdql2_vv_all/clicked()
 	if(!CLIENT_IS_STAFF(usr.client))

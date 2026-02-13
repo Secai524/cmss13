@@ -1,6 +1,6 @@
 /obj/item/device/eftpos
-	name = "EFTPOS scanner"
-	desc = "Swipe your ID card to make purchases electronically."
+	name = "电子资金转账销售点扫描器"
+	desc = "刷你的身份卡以进行电子支付。"
 	icon_state = "eftpos"
 	var/machine_id = ""
 	var/eftpos_name = "Default EFTPOS scanner"
@@ -90,7 +90,7 @@
 
 			dat += "Transaction purpose: <b>[transaction_purpose]</b><br>"
 			dat += "Value: <b>$[transaction_amount]</b><br>"
-			dat += "Linked account: <b>[linked_account ? linked_account.owner_name : "None"]</b><hr>"
+			dat += "Linked account: <b>[linked_account ? linked_account.owner_name : "无"]</b><hr>"
 			if(transaction_paid)
 				dat += "<i>This transaction has been processed successfully.</i><hr>"
 			else
@@ -101,7 +101,7 @@
 
 			dat += "Transaction purpose: <a href='byond://?src=\ref[src];choice=trans_purpose'>[transaction_purpose]</a><br>"
 			dat += "Value: <a href='byond://?src=\ref[src];choice=trans_value'>$[transaction_amount]</a><br>"
-			dat += "Linked account: <a href='byond://?src=\ref[src];choice=link_account'>[linked_account ? linked_account.owner_name : "None"]</a><hr>"
+			dat += "Linked account: <a href='byond://?src=\ref[src];choice=link_account'>[linked_account ? linked_account.owner_name : "无"]</a><hr>"
 			dat += "<a href='byond://?src=\ref[src];choice=change_code'>Change access code</a><br>"
 			dat += "<a href='byond://?src=\ref[src];choice=change_id'>Change EFTPOS ID</a><br>"
 			dat += "Scan card to reset access code <a href='byond://?src=\ref[src];choice=reset'>\[------\]</a>"
@@ -123,7 +123,7 @@
 				if(transaction_locked && !transaction_paid)
 					if(transaction_amount <= E.worth)
 						playsound(src, 'sound/machines/chime.ogg', 25, 1)
-						src.visible_message("[icon2html(src, viewers(src))] The [src] chimes.")
+						src.visible_message("[icon2html(src, viewers(src))] [src]发出了一声提示音。")
 						transaction_paid = 1
 
 						//transfer the money
@@ -156,26 +156,26 @@
 	if(href_list["choice"])
 		switch(href_list["choice"])
 			if("change_code")
-				var/attempt_code = tgui_input_number(usr, "Re-enter the current EFTPOS access code", "Confirm old EFTPOS code", 1000, 999999, 1000)
+				var/attempt_code = tgui_input_number(usr, "重新输入当前EFTPOS访问码", "Confirm old EFTPOS code", 1000, 999999, 1000)
 				if(attempt_code == access_code)
-					var/trycode = tgui_input_number(usr, "Enter a new access code for this device (4-6 digits, numbers only)", "Enter new EFTPOS code", 1000, 999999, 1000)
+					var/trycode = tgui_input_number(usr, "为此设备输入新的访问码（4-6位，仅限数字）", "Enter new EFTPOS code", 1000, 999999, 1000)
 					if(trycode >= 1000 && trycode <= 999999)
 						access_code = trycode
 					else
-						alert("That is not a valid code!")
+						alert("无效代码！")
 					print_reference()
 				else
 					to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Incorrect code entered.")]")
 			if("change_id")
-				var/attempt_code = tgui_input_number(usr, "Re-enter the current EFTPOS access code", "Confirm EFTPOS code", 1000, 999999, 1000)
+				var/attempt_code = tgui_input_number(usr, "重新输入当前EFTPOS访问码", "Confirm EFTPOS code", 1000, 999999, 1000)
 				if(attempt_code == access_code)
-					eftpos_name = input("Enter a new terminal ID for this device", "Enter new EFTPOS ID") + " EFTPOS scanner"
+					eftpos_name = input("Enter a new terminal ID for this device", "输入新的EFTPOS ID") + " 电子资金转账销售点扫描器"
 					print_reference()
 				else
 					to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Incorrect code entered.")]")
 			if("link_account")
-				var/attempt_account_num = tgui_input_number(usr, "Enter account number to pay EFTPOS charges into", "New account number", 111111, 999999, 111111)
-				var/attempt_pin = tgui_input_number(usr, "Enter pin code", "Account pin", 1111, 111111, 1111)
+				var/attempt_account_num = tgui_input_number(usr, "输入接收EFTPOS费用的账户号码", "New account number", 111111, 999999, 111111)
+				var/attempt_pin = tgui_input_number(usr, "输入PIN码", "Account pin", 1111, 111111, 1111)
 				linked_account = attempt_account_access(attempt_account_num, attempt_pin, 1)
 				if(linked_account)
 					if(linked_account.suspended)
@@ -184,13 +184,13 @@
 				else
 					to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Account not found.")]")
 			if("trans_purpose")
-				var/choice = input("Enter reason for EFTPOS transaction", "Transaction purpose")
+				var/choice = input("Enter reason for EFTPOS transaction", "交易目的")
 				if(choice)
 					transaction_purpose = choice
 			if("trans_value")
-				var/try_num = tgui_input_number(usr, "Enter amount for EFTPOS transaction", "Transaction amount")
+				var/try_num = tgui_input_number(usr, "输入EFTPOS交易金额", "Transaction amount")
 				if(try_num < 0)
-					alert("That is not a valid amount!")
+					alert("无效金额！")
 				else
 					transaction_amount = try_num
 			if("toggle_lock")
@@ -199,7 +199,7 @@
 						transaction_locked = 0
 						transaction_paid = 0
 					else
-						var/attempt_code = tgui_input_number(usr, "Enter EFTPOS access code", "Reset Transaction", 1000, 999999, 1000)
+						var/attempt_code = tgui_input_number(usr, "输入EFTPOS访问码", "Reset Transaction", 1000, 999999, 1000)
 						if(attempt_code == access_code)
 							transaction_locked = 0
 							transaction_paid = 0
@@ -221,28 +221,28 @@
 					var/obj/item/card/id/C = I
 					if(ACCESS_MARINE_DATABASE in C.access)
 						access_code = 0
-						to_chat(usr, "[icon2html(src, usr)]<span class='info'>Access code reset to 0.</span>")
+						to_chat(usr, "[icon2html(src, usr)]<span class='info'>访问码已重置为0。</span>")
 
 	src.attack_self(usr)
 
 /obj/item/device/eftpos/proc/scan_card(obj/item/card/I)
 	if (istype(I, /obj/item/card/id))
 		var/obj/item/card/id/C = I
-		visible_message(SPAN_INFO("[usr] swipes a card through [src]."))
+		visible_message(SPAN_INFO("[usr]在[src]上刷卡。"))
 		if(transaction_locked && !transaction_paid)
 			if(linked_account)
 				if(!linked_account.suspended)
 					var/attempt_pin = ""
 					var/datum/money_account/D = get_account(C.associated_account_number)
 					if(D.security_level)
-						attempt_pin = tgui_input_number(usr, "Enter pin code", "EFTPOS transaction", 1111, 111111, 1111)
+						attempt_pin = tgui_input_number(usr, "输入PIN码", "EFTPOS transaction", 1111, 111111, 1111)
 						D = null
 					D = attempt_account_access(C.associated_account_number, attempt_pin, 2)
 					if(D)
 						if(!D.suspended)
 							if(transaction_amount <= D.money)
 								playsound(src, 'sound/machines/chime.ogg', 25, 1)
-								src.visible_message("[icon2html(src, viewers(src))] The [src] chimes.")
+								src.visible_message("[icon2html(src, viewers(src))] [src]发出了一声提示音。")
 								transaction_paid = 1
 
 								//transfer the money

@@ -69,11 +69,11 @@
 			return
 
 		if(!skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_NOVICE))
-			to_chat(user, SPAN_WARNING("You don't know how to [attached ? "disconnect" : "connect"] this!"))
+			to_chat(user, SPAN_WARNING("你不知道如何[attached ? "disconnect" : "connect"] this!"))
 			return
 
 		if(attached)
-			user.visible_message("[user] detaches \the [src] from \the [attached].",
+			user.visible_message("[user]将\the [src]从\the [attached]上拆下。",
 			"You detach \the [src] from \the [attached].")
 			attached.active_transfusions -= src
 			attached = null
@@ -83,7 +83,7 @@
 			return
 
 		if(in_range(src, usr) && iscarbon(over_object) && get_dist(over_object, src) <= 1)
-			user.visible_message("[user] attaches \the [src] to \the [over_object].",
+			user.visible_message("[user]将\the [src]连接到\the [over_object]上。",
 			"You attach \the [src] to \the [over_object].")
 			attached = over_object
 			attached.active_transfusions += src
@@ -94,11 +94,11 @@
 /obj/structure/machinery/iv_drip/attackby(obj/item/container, mob/living/user)
 	if (istype(container, /obj/item/reagent_container))
 		if(beaker)
-			to_chat(user, SPAN_WARNING("There is already a reagent container loaded!"))
+			to_chat(user, SPAN_WARNING("已经装载了一个试剂容器！"))
 			return
 
 		if((!istype(container, /obj/item/reagent_container/blood) && !istype(container, /obj/item/reagent_container/glass)) || istype(container, /obj/item/reagent_container/glass/bucket))
-			to_chat(user, SPAN_WARNING("That won't fit!"))
+			to_chat(user, SPAN_WARNING("那东西装不进去！"))
 			return
 
 		if(user.drop_inv_item_to_loc(container, src))
@@ -111,7 +111,7 @@
 
 			log_admin("[key_name(user)] put \a [beaker] into [src], containing [reagentnames] at ([src.loc.x],[src.loc.y],[src.loc.z]).")
 
-			to_chat(user, "You attach \the [container] to \the [src].")
+			to_chat(user, "你将\the [container]连接到\the [src]上。")
 			update_beam()
 			update_icon()
 		return
@@ -123,7 +123,7 @@
 	if(src.attached)
 
 		if(!(get_dist(src, src.attached) <= 1 && isturf(src.attached.loc)))
-			visible_message("The needle is ripped out of [src.attached], doesn't that hurt?")
+			visible_message("针头从[src.attached]中被扯出，不疼吗？")
 			attached.apply_damage(3, BRUTE, pick("r_arm", "l_arm"))
 			if(attached.pain.feels_pain)
 				attached.emote("scream")
@@ -182,7 +182,7 @@
 
 /obj/structure/machinery/iv_drip/verb/toggle_mode()
 	set category = "Object"
-	set name = "Toggle Mode"
+	set name = "切换模式"
 	set src in view(1)
 
 	if(!istype(usr, /mob/living))
@@ -192,7 +192,7 @@
 		return
 
 	mode = !mode
-	to_chat(usr, "The IV drip is now [mode ? "injecting" : "taking blood"].")
+	to_chat(usr, "静脉滴注现在[mode ? "injecting" : "taking blood"].")
 
 /obj/structure/machinery/iv_drip/get_examine_text(mob/user)
 	. = ..()

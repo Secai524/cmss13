@@ -14,7 +14,7 @@
 	return ..()
 
 /atom/movable/screen/buildmode/mode
-	name = "Toggle Mode"
+	name = "切换模式"
 	icon_state = "buildmode_basic"
 	screen_loc = "NORTH,WEST"
 
@@ -33,7 +33,7 @@
 /atom/movable/screen/buildmode/help
 	icon_state = "buildhelp"
 	screen_loc = "NORTH,WEST+1"
-	name = "Buildmode Help"
+	name = "建造模式帮助"
 
 /atom/movable/screen/buildmode/help/clicked()
 	bd.mode.show_help(usr.client)
@@ -42,7 +42,7 @@
 /atom/movable/screen/buildmode/bdir
 	icon_state = "build"
 	screen_loc = "NORTH,WEST+2"
-	name = "Change Dir"
+	name = "改变方向"
 
 /atom/movable/screen/buildmode/bdir/update_icon()
 	dir = bd.build_dir
@@ -82,7 +82,7 @@
 /atom/movable/screen/buildmode/quit
 	icon_state = "buildquit"
 	screen_loc = "NORTH,WEST+3"
-	name = "Quit Buildmode"
+	name = "退出建造模式"
 
 /atom/movable/screen/buildmode/quit/clicked(client/c)
 	message_admins("[key_name(c)] has left build mode.")

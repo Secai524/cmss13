@@ -1,6 +1,6 @@
 /mob/living/simple_animal/small/bat
 	name = "bat"
-	desc = "It's a spooky bat!"
+	desc = "这是一只吓人的蝙蝠！"
 	icon = 'icons/mob/animal.dmi'
 	icon_state = "bat"
 	icon_living = "bat"

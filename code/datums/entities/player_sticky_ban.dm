@@ -149,7 +149,7 @@ BSQL_PROTECT_DATUM(/datum/entity/stickyban)
 	set name = "Add Known Alt"
 	set category = "Admin.Alt"
 
-	var/player_ckey = ckey(tgui_input_text(src, "What is the player's primary Ckey?", "Player Ckey"))
+	var/player_ckey = ckey(tgui_input_text(src, "玩家的主要Ckey是什么？", "Player Ckey"))
 	if(!player_ckey)
 		return
 
@@ -159,24 +159,24 @@ BSQL_PROTECT_DATUM(/datum/entity/stickyban)
 
 	var/existing_alts = get_player_is_alt(player_ckey)
 	if(existing_alts)
-		var/confirm = tgui_alert(src, "Primary Ckey [player_ckey] is already an alt for [english_list(existing_alts)].", "Primary Ckey", list("Confirm", "Cancel"))
+		var/confirm = tgui_alert(src, "主要Ckey [player_ckey] 已经是 [english_list(existing_alts)] 的备用账号。", "Primary Ckey", list("确认", "Cancel"))
 
-		if(confirm != "Confirm")
+		if(confirm != "确认")
 			return
 
-	var/whitelist_to_add = ckey(tgui_input_text(src, "What is the Ckey that should be added to known alts?", "Alt Ckey"))
+	var/whitelist_to_add = ckey(tgui_input_text(src, "应将哪个Ckey添加到已知备用账号？", "Alt Ckey"))
 	if(!whitelist_to_add)
 		return
 
 	var/alts_existing_primaries = get_player_is_alt(whitelist_to_add)
 	if(alts_existing_primaries)
 		if(player_ckey in alts_existing_primaries)
-			to_chat(src, SPAN_WARNING("The alt '[whitelist_to_add]' is already set as an alt Ckey for '[player_ckey]'."))
+			to_chat(src, SPAN_WARNING("备用账号 '[whitelist_to_add]' 已被设置为 '[player_ckey]' 的备用Ckey。"))
 			return
 
-		var/confirm = tgui_alert(src, "Alt is already an alt for [english_list(alts_existing_primaries)].", "Alt Ckey", list("Confirm", "Cancel"))
+		var/confirm = tgui_alert(src, "该备用账号已是 [english_list(alts_existing_primaries)] 的备用账号。", "Alt Ckey", list("确认", "Cancel"))
 
-		if(confirm != "Confirm")
+		if(confirm != "确认")
 			return
 
 	var/datum/entity/known_alt/alt = DB_ENTITY(/datum/entity/known_alt)
@@ -186,13 +186,13 @@ BSQL_PROTECT_DATUM(/datum/entity/stickyban)
 
 	alt.save()
 
-	to_chat(src, SPAN_NOTICE("[alt.ckey] added to the known alts of [player.ckey]."))
+	to_chat(src, SPAN_NOTICE("[alt.ckey] 已添加到 [player.ckey] 的已知备用账号中。"))
 
 /client/proc/remove_known_alt()
 	set name = "Remove Known Alt"
 	set category = "Admin.Alt"
 
-	var/player_ckey = ckey(tgui_input_text(src, "What is the player's primary Ckey?", "Player Ckey"))
+	var/player_ckey = ckey(tgui_input_text(src, "玩家的主要Ckey是什么？", "Player Ckey"))
 	if(!player_ckey)
 		return
 
@@ -202,21 +202,21 @@ BSQL_PROTECT_DATUM(/datum/entity/stickyban)
 
 	var/existing_alts = get_player_is_alt(player_ckey)
 	if(existing_alts)
-		var/confirm = tgui_alert(src, "Primary Ckey [player_ckey] is already an alt for [english_list(existing_alts)].", "Primary Ckey", list("Confirm", "Cancel"))
+		var/confirm = tgui_alert(src, "主要Ckey [player_ckey] 已经是 [english_list(existing_alts)] 的备用账号。", "Primary Ckey", list("确认", "Cancel"))
 
-		if(confirm != "Confirm")
+		if(confirm != "确认")
 			return
 
 	var/list/datum/view_record/known_alt/alts = DB_VIEW(/datum/view_record/known_alt, DB_COMP("player_id", DB_EQUALS, player.id))
 	if(!length(alts))
-		to_chat(src, SPAN_WARNING("User has no alts on record."))
+		to_chat(src, SPAN_WARNING("用户没有备用账号记录。"))
 		return
 
 	var/options = list()
 	for(var/datum/view_record/known_alt/alt in alts)
 		options[alt.ckey] = alt.id
 
-	var/picked = tgui_input_list(src, "Which known alt should be removed?", "Alt Removal", options)
+	var/picked = tgui_input_list(src, "应移除哪个已知备用账号？", "Alt Removal", options)
 	if(!picked)
 		return
 
@@ -224,7 +224,7 @@ BSQL_PROTECT_DATUM(/datum/entity/stickyban)
 	var/datum/entity/known_alt/to_delete = DB_ENTITY(/datum/entity/known_alt, picked_id)
 	to_delete.delete()
 
-	to_chat(src, SPAN_NOTICE("[picked] removed from the known alts of [player.ckey]."))
+	to_chat(src, SPAN_NOTICE("[picked] 已从 [player.ckey] 的已知备用账号中移除。"))
 
 /datum/entity/known_alt
 	var/player_id

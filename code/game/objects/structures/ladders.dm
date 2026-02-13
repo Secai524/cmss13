@@ -1,6 +1,6 @@
 /obj/structure/ladder
 	name = "ladder"
-	desc = "A sturdy metal ladder."
+	desc = "一架坚固的金属梯子。"
 	icon = 'icons/obj/structures/ladders.dmi'
 	icon_state = "ladder11"
 	anchored = TRUE
@@ -84,7 +84,7 @@
 	if(user.stat || get_dist(user, src) > 1 || user.blinded || user.body_position == LYING_DOWN || user.buckled || user.anchored)
 		return
 	if(busy)
-		to_chat(user, SPAN_WARNING("Someone else is currently using [src]."))
+		to_chat(user, SPAN_WARNING("其他人正在使用[src]。"))
 		return
 
 	var/direction
@@ -110,7 +110,7 @@
 	if(user.stat || get_dist(user, src) > 1 || user.blinded || user.body_position == LYING_DOWN || user.buckled || user.anchored || user.interactee)
 		return FALSE
 	if(busy)
-		to_chat(user, SPAN_WARNING("Someone else is currently using [src]."))
+		to_chat(user, SPAN_WARNING("其他人正在使用[src]。"))
 		return FALSE
 
 	var/ladder_dir_name
@@ -133,13 +133,13 @@
 		return FALSE
 
 	step(user, get_dir(user, src))
-	user.visible_message(SPAN_NOTICE("[user] starts climbing [ladder_dir_name] [src]."),
+	user.visible_message(SPAN_NOTICE("[user]开始向[ladder_dir_name]攀爬[src]。"),
 	SPAN_NOTICE("You start climbing [ladder_dir_name] [src]."))
 	busy = TRUE
 	if(do_after(user, 20, INTERRUPT_INCAPACITATED|INTERRUPT_OUT_OF_RANGE|INTERRUPT_RESIST, BUSY_ICON_GENERIC, src, INTERRUPT_NONE))
 		if(!user.is_mob_incapacitated() && get_dist(user, src) <= 1 && !user.blinded && user.body_position != LYING_DOWN && !user.buckled && !user.anchored)
-			visible_message(SPAN_NOTICE("[user] climbs [ladder_dir_name] [src].")) //Hack to give a visible message to the people here without duplicating user message
-			user.visible_message(SPAN_NOTICE("[user] climbs [ladder_dir_name] [src]."),
+			visible_message(SPAN_NOTICE("[user]向[ladder_dir_name]爬上了[src]。")) //Hack to give a visible message to the people here without duplicating user message
+			user.visible_message(SPAN_NOTICE("[user]向[ladder_dir_name]爬上了[src]。"),
 			SPAN_NOTICE("You climb [ladder_dir_name] [src]."))
 			ladder_dest.add_fingerprint(user)
 			user.trainteleport(ladder_dest.loc)
@@ -235,27 +235,27 @@
 		if(looking_at == "up")
 			looking_at = up
 			is_watching = 2
-			usr.visible_message(SPAN_NOTICE("[usr] looks up [src]!"),
+			usr.visible_message(SPAN_NOTICE("[usr]向上查看[src]！"),
 			SPAN_NOTICE("You look up [src]!"))
 			RegisterSignal(usr, COMSIG_MOVABLE_MOVED, PROC_REF(handle_move))
 			usr.set_interaction(src)
 		if(looking_at == "down")
 			looking_at = down
 			is_watching = 1
-			usr.visible_message(SPAN_NOTICE("[usr] looks down [src]!"), SPAN_NOTICE("You look down [src]!"))
+			usr.visible_message(SPAN_NOTICE("[usr]向下查看[src]！"), SPAN_NOTICE("You look down [src]!"))
 			RegisterSignal(usr, COMSIG_MOVABLE_MOVED, PROC_REF(handle_move))
 			usr.set_interaction(src)
 	else if(up)
 		looking_at = up
 		is_watching = 2
-		usr.visible_message(SPAN_NOTICE("[usr] looks up [src]!"),
+		usr.visible_message(SPAN_NOTICE("[usr]向上查看[src]！"),
 		SPAN_NOTICE("You look up [src]!"))
 		RegisterSignal(usr, COMSIG_MOVABLE_MOVED, PROC_REF(handle_move))
 		usr.set_interaction(src)
 	else if(down)
 		looking_at = down
 		is_watching = 1
-		usr.visible_message(SPAN_NOTICE("[usr] looks down [src]!"),
+		usr.visible_message(SPAN_NOTICE("[usr]向下查看[src]！"),
 		SPAN_NOTICE("You look down [src]!"))
 		RegisterSignal(usr, COMSIG_MOVABLE_MOVED, PROC_REF(handle_move))
 		usr.set_interaction(src)
@@ -299,11 +299,11 @@
 			msg_admin_niche("[key_name(user)] attempted to prime \a [G.name] in [get_area(src)] [ADMIN_JMP(src.loc)]")
 			return FALSE
 
-	user.visible_message(SPAN_WARNING("[user] takes position to throw [item] [ladder_dir_name] [src]."),
+	user.visible_message(SPAN_WARNING("[user]摆好姿势，准备将[item]扔向[ladder_dir_name]的[src]。"),
 	SPAN_WARNING("You take position to throw [item] [ladder_dir_name] [src]."))
 
 	if(do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-		user.visible_message(SPAN_WARNING("[user] throws [item] [ladder_dir_name] [src]!"),
+		user.visible_message(SPAN_WARNING("[user]将[item]扔向[ladder_dir_name]的[src]！"),
 		SPAN_WARNING("You throw [item] [ladder_dir_name] [src]"))
 		user.drop_held_item()
 		item.forceMove(ladder_dest.loc)
@@ -357,8 +357,8 @@
 	throw_item_ladder(W, user, direction)
 
 /obj/structure/ladder/fragile_almayer //goes away on hijack
-	name = "rickety ladder"
-	desc = "A slightly less stable-looking ladder, installed out of dry dock by some enterprising maintenance tech. Looks like it could collapse at any moment."
+	name = "摇晃的梯子"
+	desc = "一架看起来不太稳固的梯子，由某个有进取心的维修技术员在干船坞外安装。看起来随时可能倒塌。"
 
 /obj/structure/ladder/fragile_almayer/Initialize()
 	. = ..()
@@ -370,8 +370,8 @@
 	return ..()
 
 /obj/structure/prop/broken_ladder
-	name = "rickety ladder"
-	desc = "Well, it was only a matter of time."
+	name = "摇晃的梯子"
+	desc = "好吧，这只是时间问题。"
 	icon = 'icons/obj/structures/ladders.dmi'
 	icon_state = "ladder00"
 	anchored = TRUE
@@ -389,5 +389,5 @@
 
 /obj/structure/ladder/yautja
 	name = "ladder"
-	desc = "A sturdy metal ladder, made from an unknown metal, adorned with glowing runes."
+	desc = "一架坚固的金属梯子，由未知金属制成，装饰着发光的符文。"
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'

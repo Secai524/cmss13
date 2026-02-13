@@ -14,13 +14,13 @@
 			** setup a way of opening a single log
 */
 
-#define STUI_TEXT_ATTACK "Attack"
+#define STUI_TEXT_ATTACK "进攻"
 #define STUI_TEXT_STAFF "Staff Logs"
 #define STUI_TEXT_STAFF_CHAT "Staff Chat"
 #define STUI_TEXT_OOC "OOC"
 #define STUI_TEXT_GAME "Game"
 #define STUI_TEXT_DEBUG "Debug"
-#define STUI_TEXT_RUNTIME "Runtime"
+#define STUI_TEXT_RUNTIME "运行时"
 #define STUI_TEXT_TGUI "TGUI"
 
 // STUI

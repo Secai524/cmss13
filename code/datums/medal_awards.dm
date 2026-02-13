@@ -35,7 +35,7 @@ GLOBAL_LIST_EMPTY(medal_recommendations)
 	var/recipient_ckey
 	var/mob/recipient_mob
 	var/list/giver_name // Designation for xenos
-	var/list/giver_rank // "Name" for xenos
+	var/list/giver_rank // "姓名" for xenos
 	var/list/giver_mob
 	var/list/giver_ckey
 
@@ -101,13 +101,13 @@ GLOBAL_LIST_INIT(medal_references, generate_medal_references())
 		var/recipient_name = record.fields["name"]
 		recipient_ranks[recipient_name] = record.fields["rank"]
 		possible_recipients += recipient_name
-	var/chosen_recipient = tgui_input_list(usr, "Who do you want to award a medal to?", "Medal Recipient", possible_recipients)
+	var/chosen_recipient = tgui_input_list(usr, "你想向谁授予勋章？", "Medal Recipient", possible_recipients)
 	if(!chosen_recipient)
 		return FALSE
 
 	var/list/medal_options = GLOB.medal_options["marine_medals_co"]
 	if(as_admin)
-		var/faction = tgui_input_list(usr, "What faction do you wish to give a medal from?", "Medal Faction", list(FACTION_MARINE, FACTION_WY))
+		var/faction = tgui_input_list(usr, "你希望授予哪个派系的勋章？", "Medal Faction", list(FACTION_MARINE, FACTION_WY))
 		switch(faction)
 			if(FACTION_WY)
 				medal_options = GLOB.medal_options["wy_medals_admin"]
@@ -117,12 +117,12 @@ GLOBAL_LIST_INIT(medal_references, generate_medal_references())
 		medal_options = GLOB.medal_options["marine_medals_xo"]
 
 	// Pick a medal
-	var/medal_type = tgui_input_list(usr, "What type of medal do you want to award?", "Medal Type", medal_options)
+	var/medal_type = tgui_input_list(usr, "你想授予何种类型的勋章？", "Medal Type", medal_options)
 	if(!medal_type)
 		return FALSE
 
 	// Write a citation
-	var/citation = strip_html(input("What should the medal citation read?", "Medal Citation", null, null) as message|null, MAX_PAPER_MESSAGE_LEN)
+	var/citation = strip_html(input("勋章嘉奖词应如何撰写？", "勋章嘉奖词", null, null) as message|null, MAX_PAPER_MESSAGE_LEN)
 	if(!citation)
 		return FALSE
 
@@ -164,11 +164,11 @@ GLOBAL_LIST_INIT(medal_references, generate_medal_references())
 
 	// Admin: Offer a medal_location if missing
 	if(as_admin && !medal_location)
-		var/medal_override = tgui_input_list(usr, "Spawn a medal? Press cancel for no item.", "Medal Location", list("On Recipient", "On Me"))
+		var/medal_override = tgui_input_list(usr, "生成一枚勋章？按取消则不生成物品。", "Medal Location", list("On Recipient", "On Me"))
 		if(medal_override == "On Recipient")
 			medal_location = get_turf(recipient_mob)
 			playsound(recipient_mob, 'sound/items/trayhit1.ogg', 15, FALSE)
-			recipient_mob.visible_message(SPAN_DANGER("[recipient_mob] has been hit in the head by the [medal_type]."), null, null, 5)
+			recipient_mob.visible_message(SPAN_DANGER("[recipient_mob]的头部被[medal_type]击中。"), null, null, 5)
 		else if(medal_override == "On Me")
 			medal_location = get_turf(usr)
 
@@ -307,7 +307,7 @@ GLOBAL_LIST_INIT(medal_references, generate_medal_references())
 /proc/open_medal_panel(mob/living/carbon/human/user, obj/printer)
 	var/obj/item/card/id/card = user?.get_idcard()
 	if(!card)
-		to_chat(user, SPAN_WARNING("You must have an authenticated ID Card to award medals."))
+		to_chat(user, SPAN_WARNING("你必须持有已验证的身份卡才能授予勋章。"))
 		return
 
 	var/is_xo_medal
@@ -315,15 +315,15 @@ GLOBAL_LIST_INIT(medal_references, generate_medal_references())
 		is_xo_medal = TRUE
 
 	if(!((card.paygrade in GLOB.co_paygrades) || (card.paygrade in GLOB.uscm_highcom_paygrades) || is_xo_medal))
-		to_chat(user, SPAN_WARNING("Only a Senior Officer can award medals!"))
+		to_chat(user, SPAN_WARNING("只有高级军官才能授予勋章！"))
 		return
 
 	if(!card.registered_ref)
-		user.visible_message("ERROR: ID card not registered in USCM registry. Potential medal fraud detected.")
+		user.visible_message("错误：身份卡未在USCM注册表中登记。检测到潜在的勋章欺诈。")
 		return
 
 	if(!card.check_biometrics(user))
-		user.visible_message("ERROR: ID card not registered for [user.real_name] in USCM registry. Potential medal fraud detected.")
+		user.visible_message("错误：身份卡未在USCM注册表中为[user.real_name]登记。检测到潜在的勋章欺诈。")
 		return
 
 	GLOB.ic_medals_panel.user_locs[WEAKREF(user)] = WEAKREF(printer)
@@ -363,24 +363,24 @@ GLOBAL_LIST_INIT(xeno_medals, list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, 
 		recipient_castes[recipient_name] = xeno.caste_type
 		recipient_mobs[recipient_name] = xeno
 		possible_recipients += recipient_name
-	var/chosen_recipient = tgui_input_list(usr, "Who do you want to award jelly to?", "Jelly Recipient", possible_recipients, theme="hive_status")
+	var/chosen_recipient = tgui_input_list(usr, "你想向谁授予凝胶？", "Jelly Recipient", possible_recipients, theme="hive_status")
 	if(!chosen_recipient)
 		return FALSE
 
 	// Pick a jelly
-	var/medal_type = tgui_input_list(usr, "What type of jelly do you want to award?", "Jelly Type", GLOB.xeno_medals, theme="hive_status")
+	var/medal_type = tgui_input_list(usr, "你想授予何种类型的凝胶？", "Jelly Type", GLOB.xeno_medals, theme="hive_status")
 	if(!medal_type)
 		return FALSE
 
 	// Write the pheromone
-	var/citation = strip_html(input("What should the pheromone read?", "Jelly Pheromone", null, null) as message|null, MAX_PAPER_MESSAGE_LEN)
+	var/citation = strip_html(input("What should the pheromone read?", "凝胶信息素", null, null) as message|null, MAX_PAPER_MESSAGE_LEN)
 	if(!citation)
 		return FALSE
 
 	// Admin: Override attribution
 	var/admin_attribution = null
 	if(as_admin)
-		admin_attribution = strip_html(input("Override the jelly attribution? Press cancel for no attribution.", "Jelly Attribution", "Queen Mother", null) as text|null, MAX_NAME_LEN)
+		admin_attribution = strip_html(input("Override the jelly attribution? Press cancel for no attribution.", "凝胶归属", "Queen Mother", null) as text|null, MAX_NAME_LEN)
 		if(!admin_attribution) // Its actually "" but this also seems to check that
 			admin_attribution = "none"
 
@@ -452,11 +452,11 @@ GLOBAL_LIST_INIT(xeno_medals, list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, 
 	else
 		recipient_award = GLOB.jelly_awards[recipient_name]
 	if(!recipient_award)
-		to_chat(usr, "Error: Could not find the [is_marine_medal ? "marine" : "xeno"] awards for '[recipient_name]'!")
+		to_chat(usr, "错误：无法找到[is_marine_medal ? "marine" : "xeno"] awards for '[recipient_name]'!")
 		return FALSE
 
 	if(index < 1 || index > length(recipient_award.medal_names))
-		to_chat(usr, "Error: Index [index] is out of bounds!")
+		to_chat(usr, "错误：索引[index]越界！")
 		return FALSE
 
 	// Get mob references since we're only working with name
@@ -533,15 +533,15 @@ GLOBAL_LIST_INIT(xeno_medals, list(XENO_SLAUGHTER_MEDAL, XENO_RESILIENCE_MEDAL, 
 		recipient_ranks[recipient_name] = record.fields["rank"]
 		possible_recipients += recipient_name
 	if(length(possible_recipients) == 0)
-		to_chat(recommendation_giver, SPAN_WARNING("It's not possible to give medals when the ship is empty. Tough luck, partner..."))
+		to_chat(recommendation_giver, SPAN_WARNING("舰上空无一人时无法授予勋章。运气真差，伙计..."))
 		return FALSE
 
-	var/chosen_recipient = tgui_input_list(recommendation_giver, "Who do you want to recommend a medal for?", "Medal Recommendation", possible_recipients)
+	var/chosen_recipient = tgui_input_list(recommendation_giver, "你想为谁推荐勋章？", "Medal Recommendation", possible_recipients)
 	if(!chosen_recipient)
 		return FALSE
 
 	// Write a citation
-	var/reason = strip_html(tgui_input_text(recommendation_giver, "Why does this person deserve a medal?", "Medal Recommendation", null, MAX_PAPER_MESSAGE_LEN, TRUE), MAX_PAPER_MESSAGE_LEN)
+	var/reason = strip_html(tgui_input_text(recommendation_giver, "此人为何应得勋章？", "Medal Recommendation", null, MAX_PAPER_MESSAGE_LEN, TRUE), MAX_PAPER_MESSAGE_LEN)
 	if(!reason)
 		return FALSE
 
@@ -648,7 +648,7 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 	var/mob/living/carbon/human/user = ui.user
 	var/obj/item/card/id/card = user?.get_idcard()
 	if(!card)
-		to_chat(user, SPAN_WARNING("You must have an authenticated ID Card to award medals."))
+		to_chat(user, SPAN_WARNING("你必须持有已验证的身份卡才能授予勋章。"))
 		return
 
 	var/is_xo_medal
@@ -656,17 +656,17 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 		is_xo_medal = TRUE
 
 	if(!((card.paygrade in GLOB.co_paygrades) || (card.paygrade in GLOB.uscm_highcom_paygrades) || is_xo_medal))
-		to_chat(user, SPAN_WARNING("Only a Senior Officer can award medals!"))
+		to_chat(user, SPAN_WARNING("只有高级军官才能授予勋章！"))
 		return
 
 	if(!card.registered_ref)
-		user.visible_message("ERROR: ID card not registered in USCM registry. Potential medal fraud detected.")
+		user.visible_message("错误：身份卡未在USCM注册表中登记。检测到潜在的勋章欺诈。")
 		return
 
 	var/real_owner_ref = card.registered_ref
 
 	if(real_owner_ref != WEAKREF(user))
-		user.visible_message("ERROR: ID card not registered for [user.real_name] in USCM registry. Potential medal fraud detected.")
+		user.visible_message("错误：身份卡未在USCM注册表中为[user.real_name]登记。检测到潜在的勋章欺诈。")
 		return
 
 	var/datum/weakref/user_ref = WEAKREF(user)
@@ -686,28 +686,28 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 			if(!(medal_type in GLOB.medal_options["marine_medals_co"]) && !(medal_type in GLOB.medal_options["marine_medals_xo"]))
 				return
 			if((is_xo_medal && !(medal_type in GLOB.medal_options["marine_medals_xo"])) || (!is_xo_medal && !(medal_type in GLOB.medal_options["marine_medals_co"])))
-				to_chat(user, SPAN_WARNING("You cannot award this medal!"))
+				to_chat(user, SPAN_WARNING("你无权授予此勋章！"))
 				return
 			var/datum/medal_recommendation/recommendation = locate(recommendation_ref) in GLOB.medal_recommendations
 			if(!recommendation)
 				return
 			if(recommendation.recipient_name == user.real_name)
-				to_chat(user, SPAN_WARNING("You cannot give medals to yourself!"))
+				to_chat(user, SPAN_WARNING("你不能向自己授予勋章！"))
 				return
 
-			var/choice = tgui_alert(user, "Would you like to change the medal text?", "Medal Citation", list("Yes", "No"))
+			var/choice = tgui_alert(user, "是否要更改勋章文本？", "勋章嘉奖词", list("Yes", "No"))
 			var/medal_citation = recommendation.reason
 			if(choice == "Yes")
-				medal_citation = strip_html(tgui_input_text(user, "What should the medal citation read?", "Medal Citation", recommendation.reason, MAX_PAPER_MESSAGE_LEN, TRUE), MAX_PAPER_MESSAGE_LEN)
+				medal_citation = strip_html(tgui_input_text(user, "勋章嘉奖词应如何撰写？", "勋章嘉奖词", recommendation.reason, MAX_PAPER_MESSAGE_LEN, TRUE), MAX_PAPER_MESSAGE_LEN)
 
-			var/confirm_choice = tgui_alert(user, "Are you sure you want to give a medal to [recommendation.recipient_name]?", "Medal Confirmation", list("Yes", "No"))
+			var/confirm_choice = tgui_alert(user, "你确定要向[recommendation.recipient_name]授予勋章吗？", "Medal Confirmation", list("Yes", "No"))
 			if(confirm_choice != "Yes")
 				return
 
 			if(give_medal_award_prefilled(actual_loc, user, recommendation.recipient_name, recommendation.recipient_rank, recommendation.recipient_ckey, medal_citation, medal_type, recommendation.recommended_by_ckey, recommendation.recommended_by_name))
 				GLOB.medal_recommendations -= recommendation
 				qdel(recommendation)
-				user.visible_message(SPAN_NOTICE("[actual_loc] prints a medal."))
+				user.visible_message(SPAN_NOTICE("[actual_loc]打印了一枚勋章。"))
 				. = TRUE
 
 		if("deny_medal")
@@ -715,7 +715,7 @@ GLOBAL_DATUM_INIT(ic_medals_panel, /datum/ic_medal_panel, new)
 			var/datum/medal_recommendation/recommendation = locate(recommendation_ref) in GLOB.medal_recommendations
 			if(!recommendation)
 				return
-			var/confirm = tgui_alert(user, "Are you sure you want to deny this medal recommendation?", "Medal Confirmation", list("Yes", "No"))
+			var/confirm = tgui_alert(user, "你确定要拒绝这份勋章推荐吗？", "Medal Confirmation", list("Yes", "No"))
 			if(confirm != "Yes")
 				return
 			GLOB.medal_recommendations -= recommendation

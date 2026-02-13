@@ -1,6 +1,6 @@
 /obj/structure/cargo_container
-	name = "Cargo Container"
-	desc = "A huge industrial shipping container.\nYou aren't supposed to see this."
+	name = "货柜"
+	desc = "一个巨大的工业运输货柜。\n你不应该看到这个。"
 	icon = 'icons/obj/structures/props/containers/contain.dmi'
 	bound_width = 32
 	bound_height = 64
@@ -27,7 +27,7 @@
 
 	xenomorph.animation_attack_on(src)
 
-	xenomorph.visible_message(SPAN_DANGER("[xenomorph] slashes [src]!"),
+	xenomorph.visible_message(SPAN_DANGER("[xenomorph]劈砍[src]！"),
 	SPAN_DANGER("You slash [src]!"))
 
 	update_health(damage)
@@ -40,10 +40,10 @@
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	update_health(xeno.melee_damage_upper)
 	if(health <= 0)
-		xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno]用它的尾巴摧毁了[src]！"),
 		SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
-		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno] 用它的尾巴抽打 [src]！"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
@@ -54,8 +54,8 @@
 
 //Note, for Watatsumi, Grant, and Arious, "left" and "leftmid" are both the left end of the container, but "left" is generic and "leftmid" has the Sat Mover mark on it
 /obj/structure/cargo_container/watatsumi
-	name = "Watatsumi Cargo Container"
-	desc = "A huge industrial shipping container.\nThis one is from Watatsumi, a manufacturer of a variety of electronical and mechanical products.\nAt least, that is what is says on the container. You have literally never heard of this company before."
+	name = "Watatsumi货柜"
+	desc = "一个巨大的工业运输货柜。\n这个来自Watatsumi，一家生产各种电子和机械产品的制造商。\n至少，货柜上是这么写的。你以前压根没听说过这家公司。"
 
 /obj/structure/cargo_container/watatsumi/left
 	icon_state = "watatsumi_l"
@@ -73,8 +73,8 @@
 	icon_state = "watatsumi_r"
 
 /obj/structure/cargo_container/grant
-	name = "Grant Corporation Cargo Container"
-	desc = "A huge industrial shipping container.\nThis one is from The Grant Corporation, a manufacturer of medical and biotechnological parts.\nYou remember hearing about one of their latest drugs, and how dangerous it was... though they claimed to be close to finding a solution."
+	name = "格兰特公司货柜"
+	desc = "一个巨大的工业运输货柜。\n这个来自格兰特公司，一家医疗和生物技术部件制造商。\n你记得听说过他们最新的某种药物，以及它有多危险……尽管他们声称已接近找到解决方案。"
 
 /obj/structure/cargo_container/grant/Initialize()
 	. = ..()
@@ -93,8 +93,8 @@
 	icon_state = "grant_r"
 
 /obj/structure/cargo_container/arious
-	name = "Arious Cargo Container"
-	desc = "A huge industrial shipping container.\nThis one is from Arious, a computer parts and motion detector manufacturer.\nYou still wonder why we have a container of old Motion Detectors, and if they even still work."
+	name = "Arious货柜"
+	desc = "一个巨大的工业运输货柜。\n这个来自Arious，一家计算机部件和动态探测器制造商。\n你仍然在想为什么我们有一柜子旧动态探测器，以及它们是否还能用。"
 
 /obj/structure/cargo_container/arious/left
 	icon_state = "arious_l"
@@ -112,8 +112,8 @@
 	icon_state = "arious_r"
 
 /obj/structure/cargo_container/wy
-	name = "Weyland-Yutani Cargo Container"
-	desc = "A huge industrial shipping container.\nThis one is from The Weyland-Yutani Corporation, you have probably heard of them before."
+	name = "维兰德-汤谷货柜"
+	desc = "一个巨大的工业运输货柜。\n这个来自维兰德-汤谷公司，你之前可能听说过他们。"
 
 /obj/structure/cargo_container/wy/Initialize()
 	. = ..()
@@ -129,8 +129,8 @@
 	icon_state = "wy_r"
 
 /obj/structure/cargo_container/wy2
-	name = "Weyland-Yutani Cargo Container"
-	desc = "A huge industrial shipping container.\nThis one is from The Weyland-Yutani Corporation, you have probably heard of them before."
+	name = "维兰德-汤谷货柜"
+	desc = "一个巨大的工业运输货柜。\n这个来自维兰德-汤谷公司，你之前可能听说过他们。"
 
 /obj/structure/cargo_container/wy2/left
 	icon_state = "wy2_l"
@@ -142,8 +142,8 @@
 	icon_state = "wy2_r"
 
 /obj/structure/cargo_container/armat
-	name = "Armat Cargo Container"
-	desc = "A large industrial container. This one is from Armat, the defense contractors behind the M41A and other marine weaponry."
+	name = "阿玛特货柜"
+	desc = "一个大型工业货柜。这个来自阿玛特公司，他们是M41A和其他陆战队武器背后的国防承包商。"
 
 /obj/structure/cargo_container/armat/Initialize()
 	. = ..()
@@ -159,8 +159,8 @@
 	icon_state = "armat_r"
 
 /obj/structure/cargo_container/hd
-	name = "Hyperdyne Systems Cargo Container"
-	desc = "A huge industrial shipping container.\nThis one is from Hyperdyne Systems, a manufacturer of synthetics, prosthetics, and weapons.\nWe don't speak about their former affiliations with the UPP."
+	name = "海珀戴恩系统货柜"
+	desc = "一个巨大的工业运输货柜。\n这个来自海珀戴恩系统公司，一家生产合成人、义肢和武器的制造商。\n我们不会谈论他们以前与UPP的关联。"
 
 /obj/structure/cargo_container/hd/Initialize()
 	. = ..()
@@ -185,8 +185,8 @@
 	icon_state = "hd_r_alt"
 
 /obj/structure/cargo_container/trijent
-	name = "Trijent Corporation Cargo Container"
-	desc = "A huge industrial shipping container.\nThis one is from The Trijent Corporation's mining operations.\nIf this breaks open, you figure you probably shouldn't breathe in what's inside."
+	name = "特里金特公司货柜"
+	desc = "一个巨大的工业运输货柜。\n这个来自特里金特公司的采矿作业。\n如果这个货柜破裂了，你最好别吸入里面的东西。"
 
 /obj/structure/cargo_container/trijent/left
 	icon_state = "trijent_l"
@@ -207,8 +207,8 @@
 	icon_state = "trijent_r_alt"
 
 /obj/structure/cargo_container/kelland //The container formerly known as 'gorg'
-	name = "Kelland Mining Company Cargo Container"
-	desc = "A small industrial shipping container.\nYou haven't heard much about Kelland Mining, besides the incident at LV-178's mining operation."
+	name = "凯兰矿业公司货柜"
+	desc = "一个小型工业运输货柜。\n除了LV-178采矿作业的事故外，你对凯兰矿业公司了解不多。"
 	bound_height = 32 //It's smaller than the rest
 	layer = ABOVE_XENO_LAYER //Due to size, needs to be above player and xenos
 
@@ -223,8 +223,8 @@
 	icon_state = "kelland_r"
 
 /obj/structure/cargo_container/ferret
-	name = "Ferret Heavy Industries Cargo Container"
-	desc = "A huge industrial shipping container.\nThis one is from Ferret Heavy Industries, a manufacturer of terrestrial crawlers and powerloaders.\nUnfortunately, the company went bankrupt. Fortunately, these containers are really cheap now."
+	name = "费雷特重工业货柜"
+	desc = "一个巨大的工业运输货柜。\n这个来自费雷特重工业公司，一家生产陆地爬行器和动力装载机的制造商。\n不幸的是，这家公司破产了。幸运的是，这些货柜现在非常便宜。"
 
 /obj/structure/cargo_container/ferret/left
 	icon_state = "ferret_l"
@@ -236,8 +236,8 @@
 	icon_state = "ferret_r"
 
 /obj/structure/cargo_container/lockmart
-	name = "Lockmart Corporation Cargo Container"
-	desc = "A huge industrial shipping container.\nThis one is from Lockheed Martin, a manufacturer of spaceships and spaceship parts.\nThey made the USCSS Nostromo... whatever happened to that ship, anyways?"
+	name = "洛克马特公司货柜"
+	desc = "一个巨大的工业运输货柜。\n这个来自洛克希德·马丁公司，一家生产飞船和飞船部件的制造商。\n他们制造了USCSS诺斯特罗莫号……那艘船后来到底怎么样了？"
 
 /obj/structure/cargo_container/lockmart/Initialize()
 	. = ..()
@@ -253,8 +253,8 @@
 	icon_state = "lockmart_r"
 
 /obj/structure/cargo_container/seegson
-	name = "Seegson Corporation Cargo Container"
-	desc = "A huge industrial shipping container.\nThis one is from Seegson, they makes just about anything and everything.\nYou notice this container has a peeling note on it, saying all contents were transferred from another station decades ago, how long has it been here?"
+	name = "西格森公司货柜"
+	desc = "一个巨大的工业运输货柜。\n这个来自西格森公司，他们几乎生产所有东西。\n你注意到这个货柜上有一张剥落的便条，上面写着所有物品都是几十年前从另一个空间站转移过来的，它在这里多久了？"
 
 /obj/structure/cargo_container/seegson/Initialize()
 	. = ..()
@@ -278,18 +278,18 @@
 		var/mob/living/carbon/human/H = user
 		if(H.species.can_shred(H))
 
-			user.visible_message(SPAN_WARNING("[user] smashes [src] to no avail."),
+			user.visible_message(SPAN_WARNING("[user]猛砸[src]，但毫无效果。"),
 					SPAN_WARNING("You beat against [src] to no effect."),
 					"You hear twisting metal.")
 
 	if(!damage_dealt)
-		user.visible_message(SPAN_WARNING("[user] beats against the [src] to no avail."),
+		user.visible_message(SPAN_WARNING("[user]猛击[src]，但毫无效果。"),
 					SPAN_WARNING("[user] beats against the [src]."),
 					"You hear twisting metal.")
 
 /obj/structure/cargo_container/horizontal
-	name = "Cargo Container"
-	desc = "A huge industrial shipping container."
+	name = "货柜"
+	desc = "一个巨大的工业运输货柜。"
 	icon = 'icons/obj/structures/props/containers/containHorizont.dmi'
 	bound_width = 64
 	bound_height = 32
@@ -298,8 +298,8 @@
 	opacity = TRUE
 
 /obj/structure/cargo_container/horizontal/blue
-	name = "Generic Cargo Container"
-	desc = "A huge industrial shipping container.\nDespite the logo clearly being on the side, you cannot see it, as the logo is not facing south."
+	name = "通用货柜"
+	desc = "一个巨大的工业运输货柜。\n尽管侧面有明显的标志，但你无法看到它，因为标志没有朝南。"
 
 /obj/structure/cargo_container/horizontal/blue/top
 	icon_state = "blue_t"
@@ -311,8 +311,8 @@
 	icon_state = "blue_b"
 
 /obj/structure/cargo_container/canc
-	name = "CANC Cargo Container"
-	desc = "A huge industrial shipping container.\nThis one is from the Chinese/Asian–Nation Cooperative, which was absorded into the UPP. Their massive industrial output has ensured that cargo containers bearing their symbols and name won't be disappearing any time soon."
+	name = "中亚洲合作组织货柜"
+	desc = "一个巨大的工业运输货柜。\n这个来自中亚洲合作组织，该组织已被UPP吸收。他们庞大的工业产出确保了带有其标志和名称的货柜不会很快消失。"
 
 /obj/structure/cargo_container/canc/left
 	icon_state = "canc_g_l"
@@ -324,8 +324,8 @@
 	icon_state = "canc_g_r"
 
 /obj/structure/cargo_container/canc/tan
-	name = "CANC Cargo Container"
-	desc = "A huge industrial shipping container.\nThis one is from the Chinese/Asian–Nation Cooperative, which was absorded into the UPP. Their massive industrial output has ensured that cargo containers bearing their symbols and name won't be disappearing any time soon."
+	name = "中亚洲合作组织货柜"
+	desc = "一个巨大的工业运输货柜。\n这个来自中亚洲合作组织，该组织已被UPP吸收。他们庞大的工业产出确保了带有其标志和名称的货柜不会很快消失。"
 
 /obj/structure/cargo_container/canc/tan/left
 	icon_state = "canc_t_l"
@@ -337,8 +337,8 @@
 	icon_state = "canc_t_r"
 
 /obj/structure/cargo_container/upp
-	name = "UPP Cargo Container"
-	desc = "A huge industrial shipping container.\nThis one is from the Union of Progressive Peoples, as indicated by the massive symbol on the side."
+	name = "UPP货柜"
+	desc = "一个巨大的工业运输货柜。\n这个来自进步人民联盟，侧面的巨大标志表明了这一点。"
 
 /obj/structure/cargo_container/upp/left
 	icon_state = "upp_l"
@@ -350,8 +350,8 @@
 	icon_state = "upp_r"
 
 /obj/structure/cargo_container/upp/tan
-	name = "UPP Cargo Container"
-	desc = "A huge industrial shipping container.\nThis one is from the Union of Progressive Peoples, as indicated by the massive symbol on the side."
+	name = "UPP货柜"
+	desc = "一个巨大的工业运输货柜。\n这个来自进步人民联盟，侧面的巨大标志表明了这一点。"
 
 /obj/structure/cargo_container/upp/tan/left
 	icon_state = "upp_t_l"
@@ -363,8 +363,8 @@
 	icon_state = "upp_t_r"
 
 /obj/structure/cargo_container/upp/mk6
-	name = "Ministry of Space Security Cargo Container"
-	desc = "A huge industrial shipping container.\nThis one belongs to the UPP's Ministry of Space Security."
+	name = "太空安全部货柜"
+	desc = "一个巨大的工业运输货柜。\n这个属于进步人民联盟的太空安全部。"
 
 /obj/structure/cargo_container/upp/mk6/left
 	icon_state = "mk6_l"
@@ -376,11 +376,11 @@
 	icon_state = "mk6_r"
 
 /obj/structure/cargo_container/uscm
-	name = "United States Colonial Marines Cargo Container"
-	desc = "A huge industrial shipping container.\nThis one belongs to the UA's United States Marine Corps."
+	name = "美国殖民地海军陆战队货柜"
+	desc = "一个巨大的工业运输货柜。\n这个属于美利坚合众国的美国海军陆战队。"
 
 /obj/structure/cargo_container/uscm/sanfran/left
-	name = "United States Colonial Marines Cargo Container"
+	name = "美国殖民地海军陆战队货柜"
 
 	icon_state = "uscm1_l"
 
@@ -388,7 +388,7 @@
 	icon_state = "uscm1_m"
 
 /obj/structure/cargo_container/uscm/borodino/left
-	name = "United States Colonial Marines Cargo Container"
+	name = "美国殖民地海军陆战队货柜"
 
 	icon_state = "uscm2_l"
 
@@ -396,7 +396,7 @@
 	icon_state = "uscm2_m"
 
 /obj/structure/cargo_container/uscm/tartarus/left
-	name = "United States Colonial Marines Cargo Container"
+	name = "美国殖民地海军陆战队货柜"
 
 	icon_state = "uscm3_l"
 
@@ -404,7 +404,7 @@
 	icon_state = "uscm3_m"
 
 /obj/structure/cargo_container/uscm/chinook/left
-	name = "United States Colonial Marines Cargo Container"
+	name = "美国殖民地海军陆战队货柜"
 
 	icon_state = "uscm4_l"
 
@@ -412,7 +412,7 @@
 	icon_state = "uscm4_m"
 
 /obj/structure/cargo_container/uscm/crestus/left
-	name = "United States Colonial Marines Cargo Container"
+	name = "美国殖民地海军陆战队货柜"
 
 	icon_state = "uscm5_l"
 
@@ -420,7 +420,7 @@
 	icon_state = "uscm5_m"
 
 /obj/structure/cargo_container/uscm/micor/left
-	name = "United States Colonial Marines Cargo Container"
+	name = "美国殖民地海军陆战队货柜"
 
 	icon_state = "uscm6_l"
 
@@ -431,8 +431,8 @@
 	icon_state = "uscm_r"
 
 /obj/structure/cargo_container/upp_small
-	name = "UPP Cargo Container"
-	desc = "A small industrial shipping container.\nThis one is from the Union of Progressive Peoples, as indicated by the red star symbol on the side."
+	name = "UPP货柜"
+	desc = "一个小型工业运输货柜。\n这个来自进步人民联盟，侧面有红星标志。"
 	bound_height = 32
 	layer = ABOVE_XENO_LAYER
 

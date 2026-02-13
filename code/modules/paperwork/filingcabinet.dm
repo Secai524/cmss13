@@ -10,8 +10,8 @@
  * Filing Cabinets
  */
 /obj/structure/filingcabinet
-	name = "filing cabinet"
-	desc = "A large cabinet with drawers."
+	name = "文件柜"
+	desc = "一个带抽屉的大柜子。"
 	icon = 'icons/obj/structures/props/furniture/misc.dmi'
 	icon_state = "filingcabinet"
 	density = TRUE
@@ -31,7 +31,7 @@
 	return ..()
 
 /obj/structure/filingcabinet/chestdrawer
-	name = "chest drawer"
+	name = "抽屉柜"
 	icon_state = "chestdrawer"
 
 
@@ -53,7 +53,7 @@
 	else
 		for(var/allowed_type in allowed_types)
 			if(istype(P, allowed_type))
-				to_chat(user, SPAN_NOTICE("You put [P] in [src]."))
+				to_chat(user, SPAN_NOTICE("你将[P]放入[src]。"))
 				if(user.drop_inv_item_to_loc(P, src))
 					icon_state = "[initial(icon_state)]-open"
 					sleep(5)
@@ -61,7 +61,7 @@
 					updateUsrDialog()
 					break
 			else
-				to_chat(user, SPAN_NOTICE("You can't put [P] in [src]!"))
+				to_chat(user, SPAN_NOTICE("你不能把[P]放进[src]里！"))
 
 /obj/structure/filingcabinet/attack_hand(mob/user as mob)
 	if(length(contents) <= 0)
@@ -95,8 +95,8 @@
 				icon_state = initial(icon_state)
 
 /obj/structure/filingcabinet/research
-	name = "automated sorting cabinet"
-	desc = "Marvel of sorting technology. Automatically sorts any research document you place in it."
+	name = "自动分类柜"
+	desc = "分类技术的奇迹。自动分类你放入其中的任何研究文件。"
 	icon_state = "chestdrawer"
 	allowed_types = list(/obj/item/paper/research_report)
 	///contains references to all papers in the cabinet, for ease of looping.
@@ -168,18 +168,18 @@
 				for(var/obj/item/paper/research_report/document_inside in paper_contents)
 					if(document_inside.data.id == document_report.data.id)
 						duplicate = TRUE
-						to_chat(user, SPAN_WARNING("You try to slot a document into a sorting tray, but there is identical document already in the array."))
+						to_chat(user, SPAN_WARNING("你试图将一份文件插入分类槽，但阵列中已存在相同的文件。"))
 						break
 				if(duplicate)
 					return
-				to_chat(user, SPAN_NOTICE("You slot a document into a sorting tray, and [src] whirs to life."))
+				to_chat(user, SPAN_NOTICE("你将一份文件插入分类槽，[src]开始嗡嗡作响。"))
 				user.drop_inv_item_to_loc(attacked_item, src)
 				LAZYADD(paper_contents, attacked_item)
 				icon_state = initial(icon_state)+"-open"
 				addtimer(VARSET_CALLBACK(src, icon_state, initial(icon_state)), 0.5 SECONDS)
 				update_static_data_for_all_viewers()
 			else
-				to_chat(user, SPAN_WARNING("You try to slot a document into a sorting tray, but is refused."))
+				to_chat(user, SPAN_WARNING("你试图将一份文件插入分类槽，但被拒绝了。"))
 				return
 
 /*
@@ -253,11 +253,11 @@
  */
 
 /obj/structure/filingcabinet/seeds
-	name = "seeds cabinet"
-	desc = "A large cabinet with drawers. This one is meant for storing seed packets."
+	name = "种子柜"
+	desc = "一个带抽屉的大柜子。这个用于存放种子包。"
 	allowed_types = list(/obj/item/seeds)
 
 /obj/structure/filingcabinet/disk
-	name = "disk cabinet"
-	desc = "A large cabinet with drawers. This one is meant for storing floral data disks."
+	name = "磁盘柜"
+	desc = "一个带抽屉的大柜子。这个用于存放花卉数据磁盘。"
 	allowed_types = list(/obj/item/disk)

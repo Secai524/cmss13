@@ -1,11 +1,11 @@
 /datum/player_action/fun
 	action_tag = "fun"
-	name = "Fun"
+	name = "娱乐"
 	permissions_required = R_ADMIN
 
 /datum/player_action/fun/narrate
 	action_tag = "mob_narrate"
-	name = "Narrate"
+	name = "旁白"
 
 
 /datum/player_action/fun/narrate/act(client/user, mob/target, list/params)
@@ -18,7 +18,7 @@
 
 /datum/player_action/fun/explode
 	action_tag = "mob_explode"
-	name = "Explode"
+	name = "引爆"
 
 
 /datum/player_action/fun/explode/act(client/user, mob/target, list/params)

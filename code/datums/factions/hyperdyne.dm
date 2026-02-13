@@ -1,5 +1,5 @@
 /datum/faction/hyperdyne
-	name = "Hyperdyne Corporation"
+	name = "海珀戴恩公司"
 	faction_tag = FACTION_HYPERDYNE
 	base_icon_file = 'icons/mob/hud/factions/hyperdyne.dmi'
 

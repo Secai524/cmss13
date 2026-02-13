@@ -1,6 +1,6 @@
 /obj/item/device/radio/intercom
-	name = "station intercom"
-	desc = "Talk through this. To speak directly into an intercom next to you, use :i."
+	name = "空间站内部通话器"
+	desc = "通过此设备通话。要对身旁的内部通话器直接讲话，请使用 :i。"
 	icon_state = "intercom"
 	anchored = TRUE
 	w_class = SIZE_LARGE
@@ -75,27 +75,27 @@
 			icon_state = "intercom"
 
 /obj/item/device/radio/intercom/alamo
-	name = "dropship alamo intercom"
+	name = "运输机阿拉莫号内部通话器"
 	frequency = DS1_FREQ
 
 /obj/item/device/radio/intercom/normandy
-	name = "dropship normandy intercom"
+	name = "运输机诺曼底号内部通话器"
 	frequency = DS2_FREQ
 
 /obj/item/device/radio/intercom/saipan
-	name = "dropship saipan intercom"
+	name = "运输机塞班号内部通话器"
 	frequency = DS3_FREQ
 
 /obj/item/device/radio/intercom/morana
-	name = "dropship morana intercom"
+	name = "运输机莫拉纳号内部通话器"
 	frequency = UPP_DS1_FREQ
 
 /obj/item/device/radio/intercom/devana
-	name = "dropship devana intercom"
+	name = "运输机德瓦纳号内部通话器"
 	frequency = UPP_DS2_FREQ
 
 /obj/item/device/radio/intercom/fax
-	name = "Monitoring Frequency Speaker"
+	name = "监听频率扬声器"
 	canhear_range = 4
 
 /obj/item/device/radio/intercom/fax/wy

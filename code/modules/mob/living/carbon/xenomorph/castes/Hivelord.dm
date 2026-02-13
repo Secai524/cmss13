@@ -49,7 +49,7 @@
 /mob/living/carbon/xenomorph/hivelord
 	caste_type = XENO_CASTE_HIVELORD
 	name = XENO_CASTE_HIVELORD
-	desc = "A builder of really big hives."
+	desc = "一个建造真正巨大巢穴的建造者。"
 	icon = 'icons/mob/xenos/castes/tier_2/hivelord.dmi'
 	icon_size = 64
 	icon_state = "Hivelord Walking"
@@ -93,4 +93,4 @@
 	pelt = /obj/item/pelt/hivelord
 
 /datum/behavior_delegate/hivelord_base
-	name = "Base Hivelord Behavior Delegate"
+	name = "基础巢穴领主行为委托"

@@ -1,6 +1,6 @@
 
 /obj/structure/machinery/juicer
-	name = "Juicer"
+	name = "榨汁机"
 	icon = 'icons/obj/structures/machinery/kitchen.dmi'
 	icon_state = "juicer1"
 	layer = ABOVE_TABLE_LAYER
@@ -54,7 +54,7 @@
 			updateUsrDialog()
 			return 0
 	if (!is_type_in_list(O, allowed_items))
-		to_chat(user, "It looks as not containing any juice.")
+		to_chat(user, "看起来里面没有任何果汁。")
 		return 1
 	if(user.drop_held_item())
 		O.forceMove(src)
@@ -103,7 +103,7 @@
 		dat += "<A href='byond://?src=\ref[src];action=juice'>Turn on!<BR>"
 	if (beaker)
 		dat += "<A href='byond://?src=\ref[src];action=detach'>Detach a beaker!<BR>"
-	show_browser(user, dat, "Juicer", "juicer")
+	show_browser(user, dat, "榨汁机", "juicer")
 	onclose(user, "juicer")
 	return
 
@@ -162,7 +162,7 @@
 			break
 
 /obj/structure/machinery/juicer/yautja
-	name = "bone grinder"
+	name = "碎骨机"
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 
 /obj/structure/closet/crate/juice

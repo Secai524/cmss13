@@ -4,7 +4,7 @@
 
 /obj/item/cell
 	name = "\improper power cell"
-	desc = "A rechargeable electrochemical power cell."
+	desc = "一种可充电的电化学电池。"
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_lefthand.dmi',
@@ -117,7 +117,7 @@
 
 /obj/item/cell/crap
 	name = "\improper W-Y rechargeable mini-battery"
-	desc = "Cheap, throwaway batteries provided by the Weyland-Yutani Corporation. The 'rechargeable' feature was added to be more marketable to independent colonists hell-bent on 'using it till it disintegrates', a common sentiment on the frontier."
+	desc = "由维兰德-汤谷公司提供的廉价一次性电池。“可充电”功能是为了更好地推销给那些一心“用到它解体为止”的独立殖民者，这在边疆地区是一种普遍心态。"
 	icon_state = "mini-cell"
 	w_class = SIZE_TINY
 	charge = 500
@@ -195,7 +195,7 @@
 
 /obj/item/cell/potato
 	name = "\improper potato battery"
-	desc = "A rechargeable starch-based power cell."
+	desc = "一种可充电的淀粉基电池。"
 
 	icon = 'icons/obj/structures/machinery/power.dmi' //'icons/obj/items/harvest.dmi'
 	icon_state = "potato_cell" //"potato_battery"

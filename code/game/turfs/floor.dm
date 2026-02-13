@@ -140,12 +140,12 @@
 
 	if(HAS_TRAIT(hitting_item, TRAIT_TOOL_CROWBAR) && (tool_flags & (REMOVE_CROWBAR|BREAK_CROWBAR)))
 		if(turf_flags & TURF_BROKEN || turf_flags & TURF_BURNT)
-			to_chat(user, SPAN_WARNING("You remove the broken tiles."))
+			to_chat(user, SPAN_WARNING("你移除了破损的瓷砖。"))
 		else
 			if(tool_flags & BREAK_CROWBAR)
-				to_chat(user, SPAN_WARNING("You forcefully pry off the planks, destroying them in the process."))
+				to_chat(user, SPAN_WARNING("你用力撬开了木板，在此过程中将其破坏。"))
 			else
-				to_chat(user, SPAN_WARNING("You remove \the [src]."))
+				to_chat(user, SPAN_WARNING("你移除了\the [src]。"))
 				new tile_type(src, 1, type)
 
 		playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
@@ -153,7 +153,7 @@
 		return
 
 	if(HAS_TRAIT(hitting_item, TRAIT_TOOL_SCREWDRIVER) && (tool_flags & REMOVE_SCREWDRIVER))
-		to_chat(user, SPAN_WARNING("You unscrew the planks."))
+		to_chat(user, SPAN_WARNING("你拧开了木板。"))
 		new tile_type(src, 1, type)
 		playsound(src, 'sound/items/Screwdriver.ogg', 25, 1)
 		make_plating()
@@ -183,11 +183,11 @@
 
 
 /turf/open/floor/sandstone
-	name = "sandstone floor"
+	name = "砂岩地板"
 	icon_state = "whiteyellowfull"
 
 /turf/open/floor/sandstone/runed
-	name = "sandstone temple floor"
+	name = "砂岩神庙地板"
 	icon_state = "runedsandstone"
 
 /turf/open/floor/sandstone/cult
@@ -195,16 +195,16 @@
 	icon_state = "cult"
 
 /turf/open/floor/sandstone/red
-	name = "carved red temple floor"
+	name = "雕刻红色神庙地板"
 	icon = 'icons/turf/floors/hunter_floors.dmi'
 	icon_state = "hunter_red"
 
 /turf/open/floor/sandstone/red2
-	name = "carved red temple floor"
+	name = "雕刻红色神庙地板"
 	icon = 'icons/turf/floors/hunter_floors.dmi'
 	icon_state = "hunter_red_2"
 
 /turf/open/floor/sandstone/red3
-	name = "carved red temple floor"
+	name = "雕刻红色神庙地板"
 	icon = 'icons/turf/floors/hunter_floors.dmi'
 	icon_state = "hunter_red_3"

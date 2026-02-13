@@ -1,7 +1,7 @@
 //The effect when you wrap a dead body in gift wrap
 /obj/effect/spresent
-	name = "strange present"
-	desc = "It's a ... present?"
+	name = "奇怪的礼物"
+	desc = "这是个……礼物？"
 	icon = 'icons/obj/items/gifts.dmi'
 	icon_state = "strangepresent"
 	density = TRUE
@@ -32,7 +32,7 @@
 		PF.flags_pass = PASS_OVER|PASS_THROUGH
 
 /obj/effect/list_container
-	name = "list container"
+	name = "列表容器"
 
 /obj/effect/list_container/mobl
 	name = "mobl"
@@ -41,13 +41,13 @@
 	var/list/container = list(  )
 
 /obj/effect/projection
-	name = "Projection"
-	desc = "This looks like a projection of something."
+	name = "投影"
+	desc = "这看起来像是某物的投影。"
 	anchored = TRUE
 
 
 /obj/effect/shut_controller
-	name = "shut controller"
+	name = "关闭控制器"
 	var/moving = null
 	var/list/parts = list(  )
 
@@ -56,7 +56,7 @@
 
 //Exhaust effect
 /obj/effect/engine_exhaust
-	name = "engine exhaust"
+	name = "引擎排气"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "exhaust"
 	anchored = TRUE

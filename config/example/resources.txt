@@ -24,14 +24,14 @@ EXTERNAL_RSC_URLS http://rsc.cm-ss13.com/
 
 # Uncomment this to have the server passively send all browser assets to each client in the background. (instead of waiting for them to be needed)
 # This should be uncommented in production and commented in development
-#ASSET_SIMPLE_PRELOAD
+ASSET_SIMPLE_PRELOAD
 
 
 # Webroot asset transport configurable values.
 
 # Local folder to save assets to.
 # Assets will be saved in the format of asset.MD5HASH.EXT or in namespaces/hash/ as ASSET_FILE_NAME or asset.MD5HASH.EXT
-#ASSET_CDN_WEBROOT data/asset-store/
+ASSET_CDN_WEBROOT data/asset-store/
 
 # URL the folder from above can be accessed from.
 # for best results the webserver powering this should return a long cache validity time, as all assets sent via this transport use hash based urls

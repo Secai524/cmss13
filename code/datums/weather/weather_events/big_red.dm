@@ -1,6 +1,6 @@
 /datum/weather_event/dust
-	name = "Duststorm"
-	display_name = "Duststorm"
+	name = "尘暴"
+	display_name = "尘暴"
 	length = 10 MINUTES
 	fullscreen_type = /atom/movable/screen/fullscreen/weather/low
 	turf_overlay_icon_state = "bigred_dust"
@@ -16,8 +16,8 @@
 	cleaning = FALSE
 
 /datum/weather_event/sand
-	name = "Sandstorm"
-	display_name = "Sandstorm"
+	name = "沙暴"
+	display_name = "沙暴"
 	length = 6 MINUTES
 	fullscreen_type = /atom/movable/screen/fullscreen/weather/medium
 	turf_overlay_icon_state = "bigred_sand"
@@ -33,8 +33,8 @@
 	cleaning = FALSE
 
 /datum/weather_event/rock
-	name = "Rockstorm"
-	display_name = "Rockstorm"
+	name = "岩暴"
+	display_name = "岩暴"
 	length = 4 MINUTES
 	fullscreen_type = /atom/movable/screen/fullscreen/weather/high
 	turf_overlay_icon_state = "bigred_rocks"

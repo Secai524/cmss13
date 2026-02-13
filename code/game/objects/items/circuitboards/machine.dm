@@ -10,7 +10,7 @@ to destroy them and players will be able to make replacements.
 	var/frame_desc = null
 
 /obj/item/circuitboard/machine/destructive_analyzer
-	name = "Circuit board (Destructive Analyzer)"
+	name = "电路板（破坏性分析仪）"
 	build_path = /obj/structure/machinery/r_n_d/destructive_analyzer
 
 	frame_desc = "Requires 1 Scanning Module, 1 Micro Manipulator, and 1 Micro-Laser."
@@ -21,7 +21,7 @@ to destroy them and players will be able to make replacements.
 	)
 
 /obj/item/circuitboard/machine/autolathe
-	name = "Circuit board (Autolathe)"
+	name = "电路板（自动制造机）"
 	build_path = /obj/structure/machinery/autolathe
 
 	frame_desc = "Requires 2 Matter Bins, 1 Micro Manipulator, and 1 Console Screen."
@@ -32,7 +32,7 @@ to destroy them and players will be able to make replacements.
 	)
 
 /obj/item/circuitboard/machine/autolathe/armylathe
-	name = "Circuit board (Armylathe)"
+	name = "电路板（军用制造机）"
 	build_path = /obj/structure/machinery/autolathe/armylathe
 
 	frame_desc = "Requires 4 Matter Bins, 1 Micro Manipulator, and 1 Console Screen."
@@ -43,7 +43,7 @@ to destroy them and players will be able to make replacements.
 	)
 
 /obj/item/circuitboard/machine/protolathe
-	name = "Circuit board (Protolathe)"
+	name = "电路板（原型制造机）"
 	build_path = /obj/structure/machinery/r_n_d/protolathe
 
 	frame_desc = "Requires 2 Matter Bins, 2 Micro Manipulators, and 2 Beakers."
@@ -55,7 +55,7 @@ to destroy them and players will be able to make replacements.
 
 
 /obj/item/circuitboard/machine/circuit_imprinter
-	name = "Circuit board (Circuit Imprinter)"
+	name = "电路板（电路印刷机）"
 	build_path = /obj/structure/machinery/r_n_d/circuit_imprinter
 
 	frame_desc = "Requires 1 Matter Bin, 1 Micro Manipulator, and 2 Beakers."
@@ -66,7 +66,7 @@ to destroy them and players will be able to make replacements.
 	)
 
 /obj/item/circuitboard/machine/pacman
-	name = "Circuit Board (PACMAN-type Generator)"
+	name = "电路板（PACMAN型发电机）"
 	build_path = /obj/structure/machinery/power/power_generator/port_gen/pacman
 
 	frame_desc = "Requires 1 Matter Bin, 1 Micro-Laser, 2 Pieces of Cable, and 1 Capacitor."
@@ -78,17 +78,17 @@ to destroy them and players will be able to make replacements.
 	)
 
 /obj/item/circuitboard/machine/pacman/super
-	name = "Circuit Board (SUPERPACMAN-type Generator)"
+	name = "电路板（SUPERPACMAN型发电机）"
 	build_path = /obj/structure/machinery/power/power_generator/port_gen/pacman/super
 
 
 /obj/item/circuitboard/machine/pacman/mrs
-	name = "Circuit Board (MRSPACMAN-type Generator)"
+	name = "电路板（MRSPACMAN型发电机）"
 	build_path = /obj/structure/machinery/power/power_generator/port_gen/pacman/mrs
 
 
 /obj/item/circuitboard/machine/rdserver
-	name = "Circuit Board (R&D Server)"
+	name = "电路板（研发服务器）"
 	build_path = /obj/structure/machinery/r_n_d/server
 
 	frame_desc = "Requires 2 pieces of cable, and 1 Scanning Module."
@@ -98,7 +98,7 @@ to destroy them and players will be able to make replacements.
 	)
 
 /obj/item/circuitboard/machine/mechfab
-	name = "Circuit board (Exosuit Fabricator)"
+	name = "电路板（外骨骼装配机）"
 	build_path = /obj/structure/machinery/mecha_part_fabricator
 
 	frame_desc = "Requires 2 Matter Bins, 1 Micro Manipulator, 1 Micro-Laser and 1 Console Screen."
@@ -110,7 +110,7 @@ to destroy them and players will be able to make replacements.
 	)
 
 /obj/item/circuitboard/machine/clonepod
-	name = "Circuit board (Clone Pod)"
+	name = "电路板（克隆舱）"
 
 	frame_desc = "Requires 2 Manipulator, 2 Scanning Module, 2 pieces of cable and 1 Console Screen."
 	req_components = list(
@@ -121,7 +121,7 @@ to destroy them and players will be able to make replacements.
 	)
 
 /obj/item/circuitboard/machine/clonescanner
-	name = "Circuit board (Cloning Scanner)"
+	name = "电路板（克隆扫描仪）"
 
 	frame_desc = "Requires 1 Scanning module, 1 Micro Manipulator, 1 Micro-Laser, 2 pieces of cable and 1 Console Screen."
 	req_components = list(
@@ -141,7 +141,7 @@ to destroy them and players will be able to make replacements.
 	if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
 		machine_dir = turn(machine_dir, 90)
 		init_dirs = machine_dir
-		user.visible_message(SPAN_NOTICE("[user] adjusts the jumper on [src]'s port configuration pins."), SPAN_NOTICE("You adjust the jumper on the port configuration pins. Now set to [dir2text(machine_dir)]."))
+		user.visible_message(SPAN_NOTICE("[user]调整了[src]端口配置引脚上的跳线。"), SPAN_NOTICE("You adjust the jumper on the port configuration pins. Now set to [dir2text(machine_dir)]."))
 	return
 
 /obj/item/circuitboard/machine/unary_atmos/get_examine_text(mob/user)
@@ -154,7 +154,7 @@ to destroy them and players will be able to make replacements.
 	U.valid_directions = list(init_dirs)
 
 /obj/item/circuitboard/machine/unary_atmos/heater
-	name = "Circuit Board (Gas Heating System)"
+	name = "电路板（气体加热系统）"
 	build_path = /obj/structure/pipes/unary/heater
 
 	frame_desc = "Requires 5 Pieces of Cable, 1 Matter Bin, and 2 Capacitors."
@@ -165,7 +165,7 @@ to destroy them and players will be able to make replacements.
 	)
 
 /obj/item/circuitboard/machine/unary_atmos/cooler
-	name = "Circuit Board (Gas Cooling System)"
+	name = "电路板（气体冷却系统）"
 	build_path = /obj/structure/pipes/unary/freezer
 
 	frame_desc = "Requires 2 Pieces of Cable, 1 Matter Bin, 1 Micro Manipulator, and 2 Capacitors."
@@ -179,7 +179,7 @@ to destroy them and players will be able to make replacements.
 // Telecomms circuit boards:
 
 /obj/item/circuitboard/machine/telecomms/receiver
-	name = "Circuit Board (Subspace Receiver)"
+	name = "电路板（子空间接收器）"
 	build_path = /obj/structure/machinery/telecomms/receiver
 
 	frame_desc = "Requires 1 Subspace Ansible, 1 Hyperwave Filter, 2 Micro Manipulators, and 1 Micro-Laser."
@@ -191,7 +191,7 @@ to destroy them and players will be able to make replacements.
 	)
 
 /obj/item/circuitboard/machine/telecomms/hub
-	name = "Circuit Board (Hub Mainframe)"
+	name = "电路板（枢纽主机）"
 	build_path = /obj/structure/machinery/telecomms/hub
 
 	frame_desc = "Requires 2 Micro Manipulators, 2 Cable Coil and 2 Hyperwave Filter."
@@ -202,7 +202,7 @@ to destroy them and players will be able to make replacements.
 	)
 
 /obj/item/circuitboard/machine/telecomms/relay
-	name = "Circuit Board (Relay Mainframe)"
+	name = "电路板（中继主机）"
 	build_path = /obj/structure/machinery/telecomms/relay
 
 	frame_desc = "Requires 2 Micro Manipulators, 2 Cable Coil and 2 Hyperwave Filters."
@@ -225,7 +225,7 @@ to destroy them and players will be able to make replacements.
 	)
 
 /obj/item/circuitboard/machine/telecomms/bus
-	name = "Circuit Board (Bus Mainframe)"
+	name = "电路板（总线主机）"
 	build_path = /obj/structure/machinery/telecomms/bus
 
 	frame_desc = "Requires 2 Micro Manipulators, 1 Cable Coil and 1 Hyperwave Filter."
@@ -236,7 +236,7 @@ to destroy them and players will be able to make replacements.
 	)
 
 /obj/item/circuitboard/machine/telecomms/processor
-	name = "Circuit Board (Processor Unit)"
+	name = "电路板（处理器单元）"
 	build_path = /obj/structure/machinery/telecomms/processor
 
 	frame_desc = "Requires 3 Micro Manipulators, 1 Hyperwave Filter, 2 Treatment Disks, 1 Wavelength Analyzer, 2 Cable Coils and 1 Subspace Amplifier."
@@ -250,7 +250,7 @@ to destroy them and players will be able to make replacements.
 	)
 
 /obj/item/circuitboard/machine/telecomms/server
-	name = "Circuit Board (Telecommunication Server)"
+	name = "电路板（电信服务器）"
 	build_path = /obj/structure/machinery/telecomms/server
 
 	frame_desc = "Requires 2 Micro Manipulators, 1 Cable Coil and 1 Hyperwave Filter."
@@ -261,7 +261,7 @@ to destroy them and players will be able to make replacements.
 	)
 
 /obj/item/circuitboard/machine/telecomms/broadcaster
-	name = "Circuit Board (Subspace Broadcaster)"
+	name = "电路板（子空间广播器）"
 	build_path = /obj/structure/machinery/telecomms/broadcaster
 
 	frame_desc = "Requires 2 Micro Manipulators, 1 Cable Coil, 1 Hyperwave Filter, 1 Ansible Crystal and 2 High-Powered Micro-Lasers."
@@ -277,7 +277,7 @@ to destroy them and players will be able to make replacements.
 
 
 /obj/item/circuitboard/machine/batteryrack
-	name = "Circuit board (Battery rack PSU)"
+	name = "电路板（电池架电源）"
 	build_path = /obj/structure/machinery/power/smes/batteryrack
 
 	frame_desc = "Requires 3 power cells."
@@ -285,8 +285,8 @@ to destroy them and players will be able to make replacements.
 
 
 /obj/item/circuitboard/machine/ghettosmes
-	name = "Circuit board (makeshift PSU)"
-	desc = "An APC circuit repurposed into some power storage device controller."
+	name = "电路板（临时电源）"
+	desc = "一个被改造成某种储能设备控制器的装甲运兵车电路板。"
 	build_path = /obj/structure/machinery/power/smes/batteryrack/makeshift
 	frame_desc = "Requires 3 power cells."
 	req_components = list(/obj/item/cell = 3)
@@ -295,7 +295,7 @@ to destroy them and players will be able to make replacements.
 
 	//Board
 /obj/item/circuitboard/machine/smes
-	name = "Circuit board (SMES Cell)"
+	name = "电路板（SMES电池）"
 	build_path = /obj/structure/machinery/power/smes/buildable
 	// Board itself is high tech. Coils have to be ordered from cargo or salvaged from existing SMESs.
 	frame_desc = "Requires 1 superconducting magnetic coil and 30 wires."

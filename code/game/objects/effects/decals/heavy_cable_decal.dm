@@ -1,8 +1,8 @@
 /// Hybrisa Decals
 
 /obj/effect/decal/heavy_cable
-	name = "large power cable"
-	desc = "This cable is tough. It cannot be cut with simple hand tools."
+	name = "大型电源线"
+	desc = "这条电缆非常坚韧。无法用简单的手动工具剪断。"
 	icon = 'icons/obj/pipes/power_cond_heavy.dmi'
 	icon_state = "node"
 	layer = BELOW_ATMOS_PIPE_LAYER

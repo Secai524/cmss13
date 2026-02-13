@@ -5,15 +5,15 @@
 		if("distress")
 			admin_force_distress()
 		if("selfdestruct")
-			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") != "Yes")
+			if(alert(usr, "你确定要执行此操作吗？", "确认", "Yes", "No") != "Yes")
 				return
 			admin_force_selfdestruct()
 		if("evacuation_start")
-			if(alert(usr, "Are you sure you want to trigger an evacuation?", "Confirmation", "Yes", "No") != "Yes")
+			if(alert(usr, "你确定要触发撤离吗？", "确认", "Yes", "No") != "Yes")
 				return
 			admin_force_evacuation()
 		if("evacuation_cancel")
-			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") != "Yes")
+			if(alert(usr, "你确定要执行此操作吗？", "确认", "Yes", "No") != "Yes")
 				return
 			admin_cancel_evacuation()
 		if("add_req_points")
@@ -33,58 +33,58 @@
 		if("monkify")
 			owner.turn_everyone_into_primitives()
 		if("comms_blackout")
-			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") != "Yes")
+			if(alert(usr, "你确定要执行此操作吗？", "确认", "Yes", "No") != "Yes")
 				return
-			var/answer = alert(usr, "Would you like to alert the crew?", "Alert", "Yes", "No")
+			var/answer = alert(usr, "是否要通知全体船员？", "警报", "Yes", "No")
 			if(answer == "Yes")
 				communications_blackout(0)
 			else
 				communications_blackout(1)
 			message_admins("[key_name_admin(usr)] triggered a communications blackout.")
 		if("destructible_terrain")
-			if(tgui_alert(usr, "Are you sure you want to toggle all ground-level terrain destructible?", "Confirmation", list("Yes", "No"), 20 SECONDS) != "Yes")
+			if(tgui_alert(usr, "你确定要切换所有地面地形的可破坏状态吗？", "确认", list("Yes", "No"), 20 SECONDS) != "Yes")
 				return
 			toggle_destructible_terrain()
 			message_admins("[key_name_admin(usr)] toggled destructible terrain.")
 		if("blackout")
-			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") != "Yes")
+			if(alert(usr, "你确定要执行此操作吗？", "确认", "Yes", "No") != "Yes")
 				return
 			message_admins("[key_name_admin(usr)] broke all lights")
 			lightsout(0,0)
 		if("whiteout")
-			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") != "Yes")
+			if(alert(usr, "你确定要执行此操作吗？", "确认", "Yes", "No") != "Yes")
 				return
 			for(var/obj/structure/machinery/light/L in GLOB.machines)
 				L.fix()
 			message_admins("[key_name_admin(usr)] fixed all lights")
 		if("power")
-			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") != "Yes")
+			if(alert(usr, "你确定要执行此操作吗？", "确认", "Yes", "No") != "Yes")
 				return
 			message_admins("[key_name_admin(usr)] powered all SMESs and APCs")
 			power_restore()
 		if("unpower")
-			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") != "Yes")
+			if(alert(usr, "你确定要执行此操作吗？", "确认", "Yes", "No") != "Yes")
 				return
 			message_admins("[key_name_admin(usr)] unpowered all SMESs and APCs")
 			power_failure()
 		if("quickpower")
-			if(alert(usr, "Are you sure you want to do this? It will laaag.", "Confirmation", "Yes", "No") != "Yes")
+			if(alert(usr, "你确定要执行此操作吗？这会造成卡顿。", "确认", "Yes", "No") != "Yes")
 				return
 			message_admins("[key_name_admin(usr)] powered all SMESs")
 			power_restore_quick()
 		if("powereverything")
-			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") != "Yes")
+			if(alert(usr, "你确定要执行此操作吗？", "确认", "Yes", "No") != "Yes")
 				return
 			message_admins("[key_name_admin(usr)] powered all SMESs and APCs everywhere")
 			power_restore_everything()
 		if("powershipreactors")
-			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") != "Yes")
+			if(alert(usr, "你确定要执行此操作吗？", "确认", "Yes", "No") != "Yes")
 				return
 			message_admins("[key_name_admin(usr)] powered all ship reactors")
 			power_restore_ship_reactors()
 		if("change_clearance")
 			var/list/clearance_levels = list(0,1,2,3,4,5)
-			var/level = tgui_input_list(usr, "Select new clearance level:","Current level: [GLOB.chemical_data.clearance_level]", clearance_levels)
+			var/level = tgui_input_list(usr, "选择新的权限等级：","Current level: [GLOB.chemical_data.clearance_level]", clearance_levels)
 			if(!level)
 				return
 			message_admins("[key_name_admin(usr)] changed research clearance level to [level].")
@@ -95,26 +95,26 @@
 				message_admins("[key_name_admin(usr)] added [amount] research credits.")
 				GLOB.chemical_data.update_credits(amount)
 		if("reroll_contracts")
-			var/confirm = tgui_alert(usr, "This will immediately reroll the contract chemicals, Confirm?", "Reroll Contracts", list("Yes", "No"), 30 SECONDS)
+			var/confirm = tgui_alert(usr, "这将立即重新随机生成合同化学品，确认？", "Reroll Contracts", list("Yes", "No"), 30 SECONDS)
 			if(confirm != "Yes")
 				return
 			GLOB.chemical_data.reroll_chemicals()
 			message_admins("[key_name_admin(usr)] rerolled research contracts.")
 
 		if("xenothumbs")
-			var/grant = tgui_alert(owner, "Do you wish to grant or revoke Xenomorph firearms permits?", "Give or Take", list("Grant", "Revoke", "Cancel"))
+			var/grant = tgui_alert(owner, "你希望授予还是撤销异形的火器许可？", "Give or Take", list("Grant", "Revoke", "Cancel"))
 			if(grant == "Cancel")
 				return
 
 			var/list/mob/living/carbon/xenomorph/permit_recipients = list()
 			var/list/datum/hive_status/permit_hives = list()
-			switch(tgui_alert(owner, "Do you wish to do this for one Xeno or an entire hive?", "Recipients", list("Xeno", "Hive", "All Xenos")))
+			switch(tgui_alert(owner, "你希望对单个异形还是整个巢穴执行此操作？", "Recipients", list("Xeno", "Hive", "All Xenos")))
 				if("Xeno")
-					permit_recipients += tgui_input_list(usr, "Select recipient Xenomorph:", "Armed Xenomorph", GLOB.living_xeno_list)
+					permit_recipients += tgui_input_list(usr, "选择目标异形：", "Armed Xenomorph", GLOB.living_xeno_list)
 					if(isnull(permit_recipients[1])) //Cancel button.
 						return
 				if("Hive")
-					permit_hives += GLOB.hive_datum[tgui_input_list(usr, "Select recipient hive:", "Armed Hive", GLOB.hive_datum)]
+					permit_hives += GLOB.hive_datum[tgui_input_list(usr, "选择目标巢穴：", "Armed Hive", GLOB.hive_datum)]
 					if(isnull(permit_hives[1])) //Cancel button.
 						return
 					permit_recipients = permit_hives[1].totalXenos.Copy()
@@ -127,16 +127,16 @@
 
 			for(var/mob/living/carbon/xenomorph/xeno as anything in permit_recipients)
 				if(QDELETED(xeno) || xeno.stat == DEAD) //Xenos might die before the admin picks them.
-					to_chat(usr, SPAN_HIGHDANGER("[xeno] died before their firearms permit could be issued!"))
+					to_chat(usr, SPAN_HIGHDANGER("[xeno]在其火器许可签发前就已死亡！"))
 					continue
 				if(HAS_TRAIT(xeno, TRAIT_OPPOSABLE_THUMBS))
 					if(grant == "Revoke")
 						REMOVE_TRAIT(xeno, TRAIT_OPPOSABLE_THUMBS, TRAIT_SOURCE_HIVE)
-						to_chat(xeno, SPAN_XENOANNOUNCE("We forget how thumbs work. We feel a terrible sense of loss."))
+						to_chat(xeno, SPAN_XENOANNOUNCE("我们忘记了拇指的工作原理。我们感到一种可怕的失落感。"))
 						handled_xenos += xeno
 				else if(grant == "Grant")
 					ADD_TRAIT(xeno, TRAIT_OPPOSABLE_THUMBS, TRAIT_SOURCE_HIVE)
-					to_chat(xeno, SPAN_XENOANNOUNCE("We suddenly comprehend the magic of opposable thumbs along with surprising kinesthetic intelligence. We could do... <b><i>so much</b></i> with this knowledge."))
+					to_chat(xeno, SPAN_XENOANNOUNCE("我们突然理解了可对生拇指的魔力以及惊人的动觉智能。我们可以用这些知识做... <b><i>很多事情</b></i>。"))
 					handled_xenos += xeno
 
 			for(var/datum/hive_status/permit_hive as anything in permit_hives)
@@ -158,19 +158,19 @@
 
 
 		if("xenocards")
-			var/grant = tgui_alert(owner, "Do you wish to grant or revoke Xenomorph card playing abilities?", "Give or Take", list("Grant", "Revoke", "Cancel"))
+			var/grant = tgui_alert(owner, "你希望授予还是撤销异形的玩牌能力？", "Give or Take", list("Grant", "Revoke", "Cancel"))
 			if(grant == "Cancel")
 				return
 
 			var/list/mob/living/carbon/xenomorph/permit_recipients = list()
 			var/list/datum/hive_status/permit_hives = list()
-			switch(tgui_alert(owner, "Do you wish to do this for one Xeno or an entire hive?", "Recipients", list("Xeno", "Hive", "All Xenos")))
+			switch(tgui_alert(owner, "你希望对单个异形还是整个巢穴执行此操作？", "Recipients", list("Xeno", "Hive", "All Xenos")))
 				if("Xeno")
-					permit_recipients += tgui_input_list(usr, "Select recipient Xenomorph:", "Ace Xenomorph", GLOB.living_xeno_list)
+					permit_recipients += tgui_input_list(usr, "选择目标异形：", "Ace Xenomorph", GLOB.living_xeno_list)
 					if(isnull(permit_recipients[1])) //Cancel button.
 						return
 				if("Hive")
-					permit_hives += GLOB.hive_datum[tgui_input_list(usr, "Select recipient hive:", "Ace Hive", GLOB.hive_datum)]
+					permit_hives += GLOB.hive_datum[tgui_input_list(usr, "选择目标巢穴：", "Ace Hive", GLOB.hive_datum)]
 					if(isnull(permit_hives[1])) //Cancel button.
 						return
 					permit_recipients = permit_hives[1].totalXenos.Copy()
@@ -183,16 +183,16 @@
 
 			for(var/mob/living/carbon/xenomorph/xeno as anything in permit_recipients)
 				if(QDELETED(xeno) || xeno.stat == DEAD) //Xenos might die before the admin picks them.
-					to_chat(usr, SPAN_HIGHDANGER("[xeno] died before they could get a royal flush!"))
+					to_chat(usr, SPAN_HIGHDANGER("[xeno]在拿到皇家同花顺之前就死了！"))
 					continue
 				if(HAS_TRAIT(xeno, TRAIT_CARDPLAYING_THUMBS))
 					if(grant == "Revoke")
 						REMOVE_TRAIT(xeno, TRAIT_CARDPLAYING_THUMBS, TRAIT_SOURCE_HIVE)
-						to_chat(xeno, SPAN_XENOANNOUNCE("We forget how cards work. We feel a terrible sense of loss."))
+						to_chat(xeno, SPAN_XENOANNOUNCE("我们忘记了纸牌怎么玩。我们感到一种可怕的失落感。"))
 						handled_xenos += xeno
 				else if(grant == "Grant")
 					ADD_TRAIT(xeno, TRAIT_CARDPLAYING_THUMBS, TRAIT_SOURCE_HIVE)
-					to_chat(xeno, SPAN_XENOANNOUNCE("We suddenly comprehend the magic of playing cards along with a little kinesthetic intelligence. We could do... <b><i>very little</b></i> with this knowledge."))
+					to_chat(xeno, SPAN_XENOANNOUNCE("我们突然理解了玩牌的魔力以及一点动觉智能。我们可以用这些知识做... <b><i>非常少的事情</b></i>。"))
 					handled_xenos += xeno
 
 			for(var/datum/hive_status/permit_hive as anything in permit_hives)
@@ -214,7 +214,7 @@
 
 /datum/admins/proc/create_humans_list(href_list)
 	if(SSticker?.current_state < GAME_STATE_PLAYING)
-		alert("Please wait until the game has started before spawning humans")
+		alert("请等待游戏开始后再生成人类")
 		return
 
 	var/atom/initial_spot = usr.loc
@@ -224,7 +224,7 @@
 	if (istext(href_list["create_humans_list"]))
 		job_name = href_list["create_humans_list"]
 	else
-		alert("Select fewer paths, (max 1)")
+		alert("请选择更少的路径（最多1条）")
 		return
 
 	var/humans_to_spawn = clamp(text2num(href_list["object_count"]), 1, 100)
@@ -324,19 +324,19 @@
 
 		if (offer_as_ert)
 			var/datum/emergency_call/custom/em_call = new()
-			var/name = input(usr, "Please name your ERT", "ERT Name", "Admin spawned humans")
+			var/name = input(usr, "请为你的紧急响应小组命名", "ERT Name", "Admin spawned humans")
 			em_call.name = name
 			em_call.mob_max = length(humans)
 			em_call.players_to_offer = humans
 			em_call.owner = owner
 
 			var/quiet_launch = TRUE
-			var/ql_prompt = tgui_alert(usr, "Would you like to broadcast the beacon launch? This will reveal the distress beacon to all players.", "Announce distress beacon?", list("Yes", "No"), 20 SECONDS)
+			var/ql_prompt = tgui_alert(usr, "您要广播信标发射吗？这将向所有玩家公开求救信标。", "Announce distress beacon?", list("Yes", "No"), 20 SECONDS)
 			if(ql_prompt == "Yes")
 				quiet_launch = FALSE
 
 			var/announce_receipt = FALSE
-			var/ar_prompt = tgui_alert(usr, "Would you like to announce the beacon received message? This will reveal the distress beacon to all players.", "Announce beacon received?", list("Yes", "No"), 20 SECONDS)
+			var/ar_prompt = tgui_alert(usr, "您要宣布收到信标的消息吗？这将向所有玩家公开求救信标。", "Announce beacon received?", list("Yes", "No"), 20 SECONDS)
 			if(ar_prompt == "Yes")
 				announce_receipt = TRUE
 
@@ -346,7 +346,7 @@
 
 /datum/admins/proc/create_xenos_list(href_list)
 	if(SSticker?.current_state < GAME_STATE_PLAYING)
-		alert("Please wait until the game has started before spawning xenos")
+		alert("请等待游戏开始后再生成异形")
 		return
 
 	var/atom/initial_spot = usr.loc
@@ -356,14 +356,14 @@
 	if (istext(href_list["create_hive_list"]))
 		xeno_hive = href_list["create_hive_list"]
 	else
-		alert("Select fewer hive paths, (max 1)")
+		alert("请选择更少的巢穴路径（最多1条）")
 		return
 
 	var/xeno_caste
 	if (istext(href_list["create_xenos_list"]))
 		xeno_caste = href_list["create_xenos_list"]
 	else
-		alert("Select fewer xeno paths, (max 1)")
+		alert("请选择更少的异形路径（最多1条）")
 		return
 
 	var/xenos_to_spawn = clamp(text2num(href_list["object_count"]), 1, 100)
@@ -420,19 +420,19 @@
 
 		if(offer_as_ert)
 			var/datum/emergency_call/custom/em_call = new()
-			var/name = input(usr, "Please name your ERT", "ERT Name", "Admin spawned xenos")
+			var/name = input(usr, "请为你的紧急响应小组命名", "ERT Name", "Admin spawned xenos")
 			em_call.name = name
 			em_call.mob_max = length(xenos)
 			em_call.players_to_offer = xenos
 			em_call.owner = owner
 
 			var/quiet_launch = TRUE
-			var/ql_prompt = tgui_alert(usr, "Would you like to broadcast the beacon launch? This will reveal the distress beacon to all players.", "Announce distress beacon?", list("Yes", "No"), 20 SECONDS)
+			var/ql_prompt = tgui_alert(usr, "您要广播信标发射吗？这将向所有玩家公开求救信标。", "Announce distress beacon?", list("Yes", "No"), 20 SECONDS)
 			if(ql_prompt == "Yes")
 				quiet_launch = FALSE
 
 			var/announce_receipt = FALSE
-			var/ar_prompt = tgui_alert(usr, "Would you like to announce the beacon received message? This will reveal the distress beacon to all players.", "Announce beacon received?", list("Yes", "No"), 20 SECONDS)
+			var/ar_prompt = tgui_alert(usr, "您要宣布收到信标的消息吗？这将向所有玩家公开求救信标。", "Announce beacon received?", list("Yes", "No"), 20 SECONDS)
 			if(ar_prompt == "Yes")
 				announce_receipt = TRUE
 

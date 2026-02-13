@@ -169,7 +169,7 @@
 
 //Slipery slope
 /turf/open/slippery
-	name = "sloped roof"
+	name = "斜屋顶"
 	icon = 'icons/turf/floors/floors.dmi'
 	icon_state = "grass1"
 	is_weedable = NOT_WEEDABLE
@@ -186,7 +186,7 @@
 	INVOKE_ASYNC(crosser, TYPE_PROC_REF(/atom/movable, throw_atom), (get_step(src, dir)), 50, SPEED_FAST, null, TRUE)
 
 /turf/open/slippery/hull
-	name = "sloped roof"
+	name = "斜屋顶"
 	icon = 'icons/turf/almayer.dmi'
 	icon_state = "outerhull"
 
@@ -222,7 +222,7 @@
 	icon_state = "grass1"
 
 /turf/open/organic/grass/astroturf
-	desc = "It'll get in your shoes no matter what you do."
+	desc = "无论你做什么，它都会钻进你的鞋里。"
 	name = "astroturf"
 
 // Mars grounds
@@ -404,7 +404,7 @@
 // Beach
 
 /turf/open/beach
-	name = "Beach"
+	name = "海滩"
 	icon = 'icons/turf/floors/beach.dmi'
 	supports_surgery = FALSE
 
@@ -420,17 +420,17 @@
 
 
 /turf/open/beach/sand
-	name = "Sand"
+	name = "沙地"
 	icon_state = "sand"
 	supports_surgery = TRUE
 
 /turf/open/beach/coastline
-	name = "Coastline"
+	name = "海岸线"
 	icon = 'icons/turf/beach2.dmi'
 	icon_state = "sandwater"
 
 /turf/open/beach/water
-	name = "Water"
+	name = "水"
 	icon_state = "water"
 	can_bloody = FALSE
 
@@ -439,7 +439,7 @@
 	overlays += image("icon"='icons/turf/floors/beach.dmi',"icon_state"="water2","layer"=MOB_LAYER+0.1)
 
 /turf/open/beach/water2
-	name = "Water"
+	name = "水"
 	icon_state = "water"
 	can_bloody = FALSE
 
@@ -455,7 +455,7 @@
 
 
 /turf/open/gm //Basic groundmap turf parent
-	name = "ground dirt"
+	name = "泥土地面"
 	icon = 'icons/turf/ground_map.dmi'
 	icon_state = "desert"
 	is_groundmap_turf = TRUE
@@ -466,10 +466,10 @@
 	if(istype(I, /obj/item/lightstick))
 		var/obj/item/lightstick/L = I
 		if(locate(/obj/item/lightstick) in get_turf(src))
-			to_chat(user, "There's already \a [L] at this position!")
+			to_chat(user, "这个位置已经有一个\a [L]了！")
 			return
 
-		to_chat(user, "Now planting \the [L].")
+		to_chat(user, "正在种植\the [L]。")
 		if(!do_after(user,20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return
 
@@ -742,7 +742,7 @@
 				if(istype(H.gloves,/obj/item/clothing/gloves/yautja/hunter))
 					var/obj/item/clothing/gloves/yautja/hunter/Y = H.gloves
 					if(Y && istype(Y) && HAS_TRAIT(H, TRAIT_CLOAKED))
-						to_chat(H, SPAN_WARNING("Your bracers hiss and spark as they short out!"))
+						to_chat(H, SPAN_WARNING("你的臂铠短路，发出嘶嘶声并迸出火花！"))
 						Y.decloak(H, TRUE, DECLOAK_SUBMERGED)
 
 		else if(isxeno(C))
@@ -812,8 +812,8 @@
 	name = "pool"
 
 /turf/open/gm/river/shallow_ocean_shallow_ocean
-	name = "shallow ocean"
-	default_name = "shallow ocean"
+	name = "浅海"
+	default_name = "浅海"
 	allow_construction = FALSE
 
 /turf/open/gm/river/ocean
@@ -821,8 +821,8 @@
 	base_river_slowdown = 4 // VERY. SLOW.
 
 /turf/open/gm/river/ocean/deep_ocean
-	name = "deep ocean"
-	default_name = "deep ocean"
+	name = "深海"
+	default_name = "深海"
 	allow_construction = FALSE
 
 /turf/open/gm/river/ocean/Entered(atom/movable/AM)
@@ -839,7 +839,7 @@
 		LM.thrower = unlucky_mob
 		LM.spin = TRUE
 		LM.pass_flags = NO_FLAGS
-		to_chat(unlucky_mob, SPAN_WARNING("The ocean currents sweep you off your feet and throw you away!"))
+		to_chat(unlucky_mob, SPAN_WARNING("洋流将你冲倒并卷走！"))
 		// Entered can occur during Initialize so we need to not sleep
 		INVOKE_ASYNC(unlucky_mob, TYPE_PROC_REF(/atom/movable, launch_towards), LM)
 		return
@@ -848,7 +848,7 @@
 		if(ismob(AM))
 			var/mob/rivermob = AM
 			if(!HAS_TRAIT(rivermob, TRAIT_HAULED))
-				to_chat(rivermob, SPAN_WARNING("Moving through the incredibly deep ocean slows you down a lot!"))
+				to_chat(rivermob, SPAN_WARNING("在极深的海水中移动让你速度大减！"))
 
 /turf/open/gm/coast
 	name = "coastline"
@@ -927,7 +927,7 @@
 
 //ELEVATOR SHAFT-----------------------------------//
 /turf/open/gm/empty
-	name = "empty space"
+	name = "空旷空间"
 	icon = 'icons/turf/floors/floors.dmi'
 	icon_state = "black"
 	density = TRUE
@@ -938,7 +938,7 @@
 
 /turf/open/nostromowater
 	name = "ocean"
-	desc = "It's a long way down to the ocean from here."
+	desc = "从这里到海面还有很长一段距离。"
 	icon = 'icons/turf/ground_map.dmi'
 	icon_state = "seadeep"
 	can_bloody = FALSE
@@ -948,7 +948,7 @@
 
 //Ice Floor
 /turf/open/ice
-	name = "ice floor"
+	name = "冰面"
 	icon = 'icons/turf/ice.dmi'
 	icon_state = "ice_floor"
 	baseturfs = /turf/open/ice
@@ -1076,8 +1076,8 @@
 	var/bushes_spawn = 1
 	var/plants_spawn = 1
 	is_groundmap_turf = TRUE
-	name = "wet grass"
-	desc = "Thick, long, wet grass."
+	name = "湿草地"
+	desc = "茂密、修长、潮湿的草地。"
 	icon = 'icons/turf/floors/jungle.dmi'
 	icon_state = "grass1"
 	var/icon_spawn_state = "grass1"
@@ -1136,10 +1136,10 @@
 	if(istype(I, /obj/item/lightstick))
 		var/obj/item/lightstick/L = I
 		if(locate(/obj/item/lightstick) in get_turf(src))
-			to_chat(user, "There's already \a [L] at this position!")
+			to_chat(user, "这个位置已经有一个\a [L]了！")
 			return
 
-		to_chat(user, "Now planting \the [L].")
+		to_chat(user, "正在种植\the [L]。")
 		if(!do_after(user,20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return
 
@@ -1175,8 +1175,8 @@
 
 /turf/open/jungle/water
 	bushes_spawn = 0
-	name = "murky water"
-	desc = "Thick, murky water."
+	name = "浑浊水域"
+	desc = "浓稠、浑浊的水。"
 	icon = 'icons/turf/floors/beach.dmi'
 	icon_state = "water"
 	icon_spawn_state = "water"
@@ -1201,7 +1201,7 @@
 
 		//piranhas - 25% chance to be an omnipresent risk, although they do practically no damage
 		if(prob(25))
-			to_chat(M, SPAN_NOTICE("You feel something slithering around your legs."))
+			to_chat(M, SPAN_NOTICE("你感觉到有什么东西在你腿间滑行。"))
 			if(prob(50))
 				spawn(rand(25,50))
 					var/turf/T = get_turf(M)
@@ -1360,7 +1360,7 @@
 
 
 /turf/open/shuttle/predship
-	name = "ship floor"
+	name = "舰船甲板"
 	icon_state = "floor6"
 	supports_surgery = TRUE
 	allow_construction = TRUE
@@ -1372,7 +1372,7 @@
 	icon_state = "plating"
 
 /turf/open/shuttle/brig // Added this floor tile so that I have a separate turf to check in the shuttle -- Polymorph
-	name = "Brig floor" // Also added it into the 2x3 brig area of the shuttle.
+	name = "禁闭室地面" // Also added it into the 2x3 brig area of the shuttle.
 	icon_state = "floor4"
 
 /turf/open/shuttle/escapepod

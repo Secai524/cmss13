@@ -34,7 +34,7 @@
 	ui.ui_interact(usr)
 
 /datum/action/wy_droid_emote_panel
-	name = "Open Voice Synthesizer"
+	name = "开启语音合成器"
 	action_icon_state = "looc_toggle"
 
 /datum/action/wy_droid_emote_panel/can_use_action()
@@ -118,19 +118,19 @@
 			return TRUE
 
 /datum/species/synthetic/colonial/wy_droid/cloaker
-	name = "W-Y Combat Android Cloaker"
+	name = "维兰德战斗合成人潜行者"
 
 /datum/species/synthetic/colonial/wy_droid/cloaker/handle_death(mob/living/carbon/human/dying_droid)
 	playsound(get_turf(dying_droid),"wy_droid_cloaker_death", 25, FALSE)
 
 /datum/species/synthetic/colonial/wy_droid/non_deathsquad
-	name = "W-Y Combat Android (Weaker)"
+	name = "维兰德战斗合成人（削弱型）"
 	burn_mod = 0.8
 	brute_mod = 0.8
 	total_health = 150
 
 /datum/species/synthetic/colonial/wy_droid/cloaker/non_deathsquad
-	name = "W-Y Combat Android Cloaker (Weaker)"
+	name = "维兰德战斗合成人潜行者（削弱型）"
 	burn_mod = 0.8
 	brute_mod = 0.8
 	total_health = 150

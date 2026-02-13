@@ -1,6 +1,6 @@
 /obj/item/device/radio
 	icon = 'icons/obj/items/radio.dmi'
-	name = "shortwave radio"
+	name = "短波无线电"
 	suffix = "\[3\]"
 	icon_state = "walkietalkie"
 	item_state = "walkietalkie"
@@ -259,13 +259,13 @@
 		jobname = "No id"
 	// --- Unidentifiable mob ---
 	else
-		jobname = "Unknown"
+		jobname = "未知"
 
 	// --- Modifications to the mob's identity ---
 	// The mob is disguising their identity:
 	if(ishuman(M) && M.GetVoice() != real_name)
 		displayname = M.GetVoice()
-		jobname = "Unknown"
+		jobname = "未知"
 		voicemask = 1
 
 	var/transmit_z = position.z
@@ -418,9 +418,9 @@
 	b_stat = !( b_stat )
 	if(!istype(src, /obj/item/device/radio/beacon))
 		if (b_stat)
-			user.show_message(SPAN_NOTICE("The radio can now be attached and modified!"))
+			user.show_message(SPAN_NOTICE("无线电现在可以安装和改装了！"))
 		else
-			user.show_message(SPAN_NOTICE("The radio can no longer be modified or attached!"))
+			user.show_message(SPAN_NOTICE("无线电已无法再改装或安装！"))
 		updateDialog()
 			//Foreach goto(83)
 		add_fingerprint(user)

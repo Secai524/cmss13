@@ -60,7 +60,7 @@
 
 /datum/sdql_parser/proc/parse_error(error_message)
 	error = 1
-	to_chat(usr, SPAN_WARNING("SDQL2 Parsing Error: [error_message]"), confidential = TRUE)
+	to_chat(usr, SPAN_WARNING("SDQL2解析错误：[error_message]"), confidential = TRUE)
 	return length(query) + 1
 
 /datum/sdql_parser/proc/parse()

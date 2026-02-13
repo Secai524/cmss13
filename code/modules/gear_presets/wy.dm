@@ -32,7 +32,7 @@
 	. = ..()
 
 /datum/equipment_preset/wy/trainee
-	name = "Corporate - A - Trainee"
+	name = "公司 - A - 实习生"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_TRAINEE
 	job_title = JOB_TRAINEE
@@ -44,7 +44,7 @@
 	. = ..()
 
 /datum/equipment_preset/wy/junior_exec
-	name = "Corporate - B - Junior Executive"
+	name = "公司 - B - 初级主管"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_JUNIOR_EXECUTIVE
 	job_title = JOB_JUNIOR_EXECUTIVE
@@ -52,14 +52,14 @@
 	paygrades = list(PAY_SHORT_WYC2 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/exec
-	name = "Corporate - C - Executive"
+	name = "公司 - C - 主管"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_EXECUTIVE
 	job_title = JOB_EXECUTIVE
 	paygrades = list(PAY_SHORT_WYC3 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/senior_exec
-	name = "Corporate - D - Senior Executive"
+	name = "公司 - D - 高级主管"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_SENIOR_EXECUTIVE
 	job_title = JOB_SENIOR_EXECUTIVE
@@ -67,7 +67,7 @@
 	paygrades = list(PAY_SHORT_WYC4 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/exec_spec
-	name = "Corporate - E - Executive Specialist"
+	name = "公司 - E - 主管专家"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_EXECUTIVE_SPECIALIST
 	job_title = JOB_EXECUTIVE_SPECIALIST
@@ -75,7 +75,7 @@
 	paygrades = list(PAY_SHORT_WYC5 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/exec_spec/lawyer
-	name = "Corporate - E - Lawyer"
+	name = "公司 - E - 律师"
 	assignment = JOB_LEGAL_SPECIALIST
 	job_title = JOB_LEGAL_SPECIALIST
 
@@ -92,7 +92,7 @@
 	..()
 
 /datum/equipment_preset/wy/exec_supervisor
-	name = "Corporate - F - Executive Supervisor"
+	name = "公司 - F - 主管监督员"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_EXECUTIVE_SUPERVISOR
 	job_title = JOB_EXECUTIVE_SUPERVISOR
@@ -100,7 +100,7 @@
 	paygrades = list(PAY_SHORT_WYC6 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/exec_supervisor/lawyer
-	name = "Corporate - F - Lawyer"
+	name = "公司 - F - 律师"
 	assignment = JOB_LEGAL_SUPERVISOR
 	job_title = JOB_LEGAL_SUPERVISOR
 
@@ -135,7 +135,7 @@
 	..()
 
 /datum/equipment_preset/wy/manager/assistant_manager
-	name = "Corporate - G - Assistant Manager"
+	name = "公司 - G - 助理经理"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_ASSISTANT_MANAGER
 	job_title = JOB_ASSISTANT_MANAGER
@@ -143,7 +143,7 @@
 	paygrades = list(PAY_SHORT_WYC7 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/manager/division_manager
-	name = "Corporate - H - Division Manager"
+	name = "公司 - H - 部门经理"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_DIVISION_MANAGER
 	job_title = JOB_DIVISION_MANAGER
@@ -151,7 +151,7 @@
 	paygrades = list(PAY_SHORT_WYC8 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/manager/chief_executive
-	name = "Corporate - I - Chief Executive"
+	name = "企业 - I - 首席执行官"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CHIEF_EXECUTIVE
 	job_title = JOB_CHIEF_EXECUTIVE
@@ -163,7 +163,7 @@
 	access = get_access(ACCESS_LIST_WY_ALL)
 
 /datum/equipment_preset/wy/manager/director/deputy
-	name = "Corporate - J - Deputy Director"
+	name = "企业 - J - 副主任"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_DEPUTY_DIRECTOR
 	job_title = JOB_DEPUTY_DIRECTOR
@@ -172,7 +172,7 @@
 	gun_type = /obj/item/storage/belt/gun/m4a3/heavy/co_golden
 
 /datum/equipment_preset/wy/manager/director
-	name = "Corporate - K - Director"
+	name = "企业 - K - 主任"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_DIRECTOR
 	job_title = JOB_DIRECTOR
@@ -196,7 +196,7 @@
 //SIMPLE SECURITY GUARDS
 
 /datum/equipment_preset/wy/security
-	name = "Weyland-Yutani Security Guard"
+	name = "维兰德-汤谷安保警卫"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_WY_SEC
 	job_title = JOB_WY_SEC

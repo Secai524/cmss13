@@ -5,7 +5,7 @@
 /obj/structure/machinery/defenses/planted_flag
 	name = "\improper JIMA planted flag"
 	icon = 'icons/obj/structures/machinery/defenses/planted_flag.dmi'
-	desc = "A planted flag with the iconic USCM flag plastered all over it, you feel a burst of energy by its mere sight."
+	desc = "一面插好的旗帜，上面印满了标志性的USCM旗帜，光是看到它就让你感到一股能量迸发。"
 	handheld_type = /obj/item/defenses/handheld/planted_flag
 	disassemble_time = 10
 	var/datum/shape/range_bounds
@@ -114,17 +114,17 @@
 	H.activate_order_buff(COMMAND_ORDER_FOCUS, buff_intensity, 1.5 SECONDS)
 
 /obj/structure/machinery/defenses/planted_flag/range
-	name = "extended JIMA planted flag"
+	name = "加长JIMA插旗"
 	health = 150
 	health_max = 150
 	area_range = PLANTED_FLAG_RANGE * 2 // Double range
 	disassemble_time = 1.5 SECONDS
 	handheld_type = /obj/item/defenses/handheld/planted_flag/range
-	defense_type = "Range"
+	defense_type = "范围"
 	luminosity_strength = 7
 
 /obj/structure/machinery/defenses/planted_flag/warbanner
-	name = "JIMA planted warbanner"
+	name = "JIMA插战旗"
 	disassemble_time = 0.5 SECONDS
 	health = 250
 	health_max = 250
@@ -139,8 +139,8 @@
 	H.activate_order_buff(COMMAND_ORDER_MOVE, buff_intensity, 5 SECONDS)
 
 /obj/structure/machinery/defenses/planted_flag/wy
-	name = "WY planted flag"
-	desc = "A planted flag with the iconic WY flag plastered all over it, you feel a burst of energy by its mere sight."
+	name = "WY插旗"
+	desc = "一面插好的旗帜，上面印满了标志性的WY旗帜，光是看到它就让你感到一股能量迸发。"
 	icon = 'icons/obj/structures/machinery/defenses/wy_defenses.dmi'
 	disassemble_time = 6 SECONDS
 	hack_time = 25 SECONDS
@@ -161,8 +161,8 @@
 	H.activate_order_buff(COMMAND_ORDER_MOVE, buff_intensity, 2 SECONDS)
 
 /obj/structure/machinery/defenses/planted_flag/upp
-	name = "UPP planted flag"
-	desc = "A planted flag with the iconic UPP flag plastered all over it, you feel a burst of energy by its mere sight."
+	name = "UPP插旗"
+	desc = "一面插好的旗帜，上面印满了标志性的UPP旗帜，光是看到它就让你感到一股能量迸发。"
 	icon = 'icons/obj/structures/machinery/defenses/upp_defenses.dmi'
 	disassemble_time = 5 SECONDS
 	health = 300
@@ -177,8 +177,8 @@
 	faction = FACTION_UPP
 
 /obj/structure/machinery/defenses/planted_flag/clf
-	name = "CLF planted flag"
-	desc = "A planted flag with the iconic CLF flag plastered all over it, you feel a burst of energy by its mere sight."
+	name = "CLF插旗"
+	desc = "一面插好的旗帜，上面印满了标志性的CLF旗帜，光是看到它就让你感到一股能量迸发。"
 	icon = 'icons/obj/structures/machinery/defenses/clf_defenses.dmi'
 	disassemble_time = 5 SECONDS
 	health = 300
@@ -193,7 +193,7 @@
 	faction = FACTION_CLF
 
 /obj/item/storage/backpack/jima
-	name = "JIMA frame mount"
+	name = "JIMA框架底座"
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
 	icon_state = "flag_backpack"
 	max_storage_space = 10

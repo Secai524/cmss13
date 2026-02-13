@@ -8,8 +8,8 @@
 #define MEDICAL_RECORD_ACCESS_LEVEL_2 2	// given to the CMO, Synths, and the CO/XO.
 
 /obj/structure/machinery/computer/med_data//TODO:SANITY
-	name = "Medical Records Console"
-	desc = "This can be used to check medical records."
+	name = "医疗记录控制台"
+	desc = "此设备可用于查看医疗记录。"
 	icon_state = "medcomp"
 	density = TRUE
 	req_one_access = list(ACCESS_MARINE_MEDBAY, ACCESS_WY_MEDICAL)
@@ -31,11 +31,11 @@
 
 /obj/structure/machinery/computer/med_data/attack_hand(mob/user)
 	if(..() || inoperable())
-		to_chat(user, SPAN_INFO("It does not appear to be working."))
+		to_chat(user, SPAN_INFO("它似乎无法正常工作。"))
 		return
 
 	if(bio_link_target_record_id && ishumansynth_strict(user))
-		user.visible_message(SPAN_NOTICE("You hear a beep as [user]'s hand is scanned to \the [name]."))
+		user.visible_message(SPAN_NOTICE("你听到一声蜂鸣，[user]的手被扫描到\the [name]。"))
 		visible_message("[SPAN_BOLD("[src]")] states, \"SCAN ENTRY: ["Scanned, please stay close until operation's end."]\"")
 		playsound(user.loc, 'sound/machines/screen_output1.ogg', 25, TRUE)
 		link_medical_data(user, bio_link_target_record_id)
@@ -43,11 +43,11 @@
 		return
 
 	if(!allowed(user))
-		to_chat(user, SPAN_WARNING("Access denied."))
+		to_chat(user, SPAN_WARNING("权限被拒绝。"))
 		return
 
 	if(!is_mainship_level(z))
-		to_chat(user, SPAN_DANGER("<b>Unable to establish a connection</b>: \black You're too far away from the station!"))
+		to_chat(user, SPAN_DANGER("<b>无法建立连接</b>: \black 你离空间站太远了！"))
 		return
 
 	tgui_interact(user)
@@ -93,13 +93,13 @@
 		medical_record.fields["name"] = target.real_name
 		medical_record.name = target.real_name
 		medical_record.fields["blood_type"] = target.blood_type
-		medical_record.fields["minor_disability"] = "None"
+		medical_record.fields["minor_disability"] = "无"
 		medical_record.fields["minor_disability_details"] = "No minor disabilities have been declared."
-		medical_record.fields["major_disability"] = "None"
+		medical_record.fields["major_disability"] = "无"
 		medical_record.fields["major_disability_details"] = "No major disabilities have been diagnosed."
-		medical_record.fields["allergies"] = "None"
+		medical_record.fields["allergies"] = "无"
 		medical_record.fields["allergies_details"] = "No allergies have been detected in this patient."
-		medical_record.fields["diseases"] = "None"
+		medical_record.fields["diseases"] = "无"
 		medical_record.fields["diseases_details"] = "No diseases have been diagnosed at the moment."
 		medical_record.fields["last_scan_time"] = null
 		medical_record.fields["last_scan_result"] = "No scan data on record"
@@ -116,7 +116,7 @@
 	if(!record_id)
 		// for whatever reason, the computer is asking for a record with a null ID
 		balloon_alert_to_viewers("critical systems fault!")
-		to_chat(user, SPAN_NOTICE("Critical systems fault! Unable to process request."))
+		to_chat(user, SPAN_NOTICE("关键系统故障！无法处理请求。"))
 		playsound(loc, 'sound/machines/terminal_shutdown.ogg', 15, FALSE)
 		return
 
@@ -128,7 +128,7 @@
 
 	if (!general_record)
 		balloon_alert_to_viewers("record not found!")
-		to_chat(user, SPAN_NOTICE("Unable to process request. Record not found!"))
+		to_chat(user, SPAN_NOTICE("无法处理请求。未找到记录！"))
 		playsound(loc, 'sound/machines/terminal_shutdown.ogg', 15, FALSE)
 		return
 
@@ -143,7 +143,7 @@
 
 	bio_link_target_record_id = null
 	balloon_alert_to_viewers("aborting biometric scan!")
-	to_chat(user, SPAN_NOTICE("Aborting biometric scan! No user detected in time."))
+	to_chat(user, SPAN_NOTICE("中止生物特征扫描！未在时限内检测到用户。"))
 	playsound(loc, 'sound/machines/terminal_shutdown.ogg', 15, FALSE)
 
 /obj/structure/machinery/computer/med_data/tgui_interact(mob/user, datum/tgui/ui)
@@ -176,7 +176,7 @@
 	if(!record_classified && (general.fields["rank"] in CHAIN_OF_COMMAND_ROLES))
 		record_classified = TRUE
 
-	var/paygrade = id ? id.paygrade : "None"
+	var/paygrade = id ? id.paygrade : "无"
 
 	var/list/record = list(
 		"id" = id_number,
@@ -273,7 +273,7 @@
 
 	var/mob/living/carbon/human/user = ui.user
 	if(!allowed(user))
-		to_chat(user, SPAN_WARNING("Access denied."))
+		to_chat(user, SPAN_WARNING("权限被拒绝。"))
 		return
 
 	playsound(src, get_sfx("terminal_button"), 25, FALSE)
@@ -295,14 +295,14 @@
 			var/id = params["id"]
 
 			if(!id)
-				tgui_alert(user, "Invalid record ID.")
+				tgui_alert(user, "无效记录ID。")
 				return
 
 			// Find the corresponding general record
 			var/datum/data/record/general_record = find_record("general", id)
 
 			if(!general_record)
-				tgui_alert(user,"Record not found.")
+				tgui_alert(user,"未找到记录。")
 				return
 
 			currently_selected_record_id = id
@@ -316,19 +316,19 @@
 
 			var/validation_error = validate_field(field, value, user, FALSE)
 			if (validation_error)
-				to_chat(user, SPAN_WARNING("Console returns error with buzzing sound: [validation_error]"))
+				to_chat(user, SPAN_WARNING("控制台发出蜂鸣声并返回错误：[validation_error]"))
 				playsound(loc, 'sound/machines/buzz-two.ogg', 15, TRUE)
 				return
 
 			if(!id || !field)
-				tgui_alert(user, "Invalid record ID or field.")
+				tgui_alert(user, "无效记录ID或字段。")
 				return
 
 			var/is_general_field = copytext(field, 1, 9) == "general_"
 			var/is_medical_field = copytext(field, 1, 9) == "medical_"
 
 			if(!is_general_field && !is_medical_field)
-				tgui_alert(user, "Invalid field prefix.")
+				tgui_alert(user, "无效字段前缀。")
 				return
 
 			// Remove the prefix to map to the original field name
@@ -348,7 +348,7 @@
 				medical_record.fields[original_field] = value
 
 			else
-				tgui_alert(user, "Record or associated field not found.")
+				tgui_alert(user, "未找到记录或关联字段。")
 				return
 
 			var/name = general_record.fields["name"]
@@ -362,14 +362,14 @@
 			var/comment = params["comment"]
 
 			if (!id || !comment || length(trim(comment)) == 0)
-				to_chat(user, SPAN_WARNING("Invalid input. Ensure both ID and comment are provided."))
+				to_chat(user, SPAN_WARNING("输入无效。请确保同时提供ID和评论。"))
 				return
 
 			// Locate the medical record
 			var/datum/data/record/medical_record = find_record("medical", id)
 
 			if (!medical_record)
-				to_chat(user, SPAN_WARNING("Record not found."))
+				to_chat(user, SPAN_WARNING("未找到记录。"))
 				return
 
 			var/comment_id = length(medical_record.fields["comments"] || list()) + 1
@@ -388,7 +388,7 @@
 			else
 				medical_record.fields["comments"]["[comment_id]"] = new_comment
 
-			to_chat(user, SPAN_NOTICE("Comment added successfully."))
+			to_chat(user, SPAN_NOTICE("评论添加成功。"))
 			msg_admin_niche("[key_name_admin(user)] added medical comment for [medical_record.fields["name"]] at [get_location_in_text(user)] [ADMIN_JMP(loc)]")
 
 			return TRUE
@@ -398,23 +398,23 @@
 			var/comment_key = params["key"]
 
 			if (!id || !comment_key)
-				to_chat(user, SPAN_WARNING("Invalid input. Ensure both ID and comment key are provided."))
+				to_chat(user, SPAN_WARNING("输入无效。请确保同时提供ID和评论键。"))
 				return
 
 			// Locate the medical record
 			var/datum/data/record/medical_record = find_record("medical", id)
 
 			if (!medical_record)
-				to_chat(user, SPAN_WARNING("Record not found."))
+				to_chat(user, SPAN_WARNING("未找到记录。"))
 				return
 
 			if (!medical_record.fields["comments"] || !medical_record.fields["comments"][comment_key])
-				to_chat(user, SPAN_WARNING("Comment not found."))
+				to_chat(user, SPAN_WARNING("未找到评论。"))
 				return
 
 			var/comment = medical_record.fields["comments"][comment_key]
 			if (comment["deleted_by"])
-				to_chat(user, SPAN_WARNING("This comment is already deleted."))
+				to_chat(user, SPAN_WARNING("此评论已被删除。"))
 				return
 
 			comment["deleted_by"] = "[user.get_authentification_name()] ([user.get_assignment()])"
@@ -422,7 +422,7 @@
 
 			medical_record.fields["comments"][comment_key] = comment
 
-			to_chat(user, SPAN_NOTICE("Comment deleted successfully."))
+			to_chat(user, SPAN_NOTICE("评论删除成功。"))
 			msg_admin_niche("[key_name_admin(user)] deleted comment [comment_key] on [medical_record.fields["name"]]'s medical record at [get_location_in_text(user)] [ADMIN_JMP(loc)]")
 
 			return TRUE
@@ -430,7 +430,7 @@
 		//* Records maintenance actions
 		if ("new_medical_record")
 			if(access_level != MEDICAL_RECORD_ACCESS_LEVEL_2)
-				to_chat(user, SPAN_WARNING("Insufficient access credentials!"))
+				to_chat(user, SPAN_WARNING("权限凭证不足！"))
 				return
 
 			var/id = params["id"]
@@ -438,7 +438,7 @@
 
 			if (name && id)
 				balloon_alert_to_viewers("place a hand on biometric reader to complete new medical record")
-				to_chat(user, SPAN_WARNING("Place a hand on biometric reader to complete new medical record."))
+				to_chat(user, SPAN_WARNING("请将手放在生物识别读取器上以完成新医疗记录。"))
 				playsound(src, 'sound/machines/ping.ogg', 15, FALSE)
 				bio_link_target_record_id = id
 				biometric_scan_timer = addtimer(CALLBACK(src, PROC_REF(handle_biometric_scan_timeout), user), 10 SECONDS, TIMER_STOPPABLE)
@@ -448,11 +448,11 @@
 		if ("new_general_record")
 
 			if(access_level != MEDICAL_RECORD_ACCESS_LEVEL_2)
-				to_chat(user, SPAN_WARNING("Insufficient access credentials!"))
+				to_chat(user, SPAN_WARNING("权限凭证不足！"))
 				return
 
 			CreateGeneralRecord()
-			to_chat(user, SPAN_NOTICE("You successfully created a new general record."))
+			to_chat(user, SPAN_NOTICE("你成功创建了一条新的通用记录。"))
 			msg_admin_niche("[key_name_admin(user)] created new general record at [get_location_in_text(user)] [ADMIN_JMP(loc)].")
 			update_static_data_for_all_viewers()
 
@@ -460,7 +460,7 @@
 
 		if ("delete_medical_record")
 			if(access_level != MEDICAL_RECORD_ACCESS_LEVEL_2)
-				to_chat(user, SPAN_WARNING("Insufficient access credentials!"))
+				to_chat(user, SPAN_WARNING("权限凭证不足！"))
 				return
 
 			var/id = params["id"]
@@ -468,7 +468,7 @@
 			var/datum/data/record/general_record = find_record("medical", id)
 
 			if (!medical_record || !general_record)
-				to_chat(user, SPAN_WARNING("Record not found."))
+				to_chat(user, SPAN_WARNING("未找到记录。"))
 				return
 
 			var/record_name = general_record.fields["name"]
@@ -485,13 +485,13 @@
 		if ("print_medical_record")
 			var/target_record_id = params["id"]
 			if (!COOLDOWN_FINISHED(src, record_printing_cooldown))
-				to_chat(user, SPAN_WARNING("Woah there buddy! You wouldn't want it to jam would you?"))
+				to_chat(user, SPAN_WARNING("嘿，伙计！你总不想让它卡壳吧？"))
 				return
 
 			COOLDOWN_START(src, record_printing_cooldown, 7 SECONDS)
 
 			balloon_alert_to_viewers("printing record!")
-			to_chat(user, SPAN_NOTICE("Printing record!"))
+			to_chat(user, SPAN_NOTICE("正在打印记录！"))
 			playsound(loc, 'sound/machines/fax.ogg', 15, TRUE)
 
 			addtimer(CALLBACK(src, PROC_REF(print_medical_record), target_record_id, user), 3 SECONDS)
@@ -502,14 +502,14 @@
 			var/photo_profile = params["photo_profile"]
 			var/icon/image = get_photo(user)
 			if(!image)
-				to_chat(user, SPAN_WARNING("You are currently not holding any photo."))
+				to_chat(user, SPAN_WARNING("你目前没有手持任何照片。"))
 				return
 
 			// Locate the general record
 			var/datum/data/record/general_record = find_record("general", id)
 
 			if (!general_record)
-				to_chat(user, SPAN_WARNING("Record not found."))
+				to_chat(user, SPAN_WARNING("未找到记录。"))
 				return
 
 			general_record.fields["photo_[photo_profile]"] = image
@@ -517,7 +517,7 @@
 				"photo_[photo_profile]" = icon2html(image, user.client, sourceonly = TRUE),
 			))
 
-			to_chat(user, SPAN_NOTICE("You successfully updated record [photo_profile] photo."))
+			to_chat(user, SPAN_NOTICE("你成功更新了记录[photo_profile]的照片。"))
 			msg_admin_niche("[key_name_admin(user)] updated the record photo of [general_record.fields["name"]] at [get_location_in_text(user)] [ADMIN_JMP(loc)]")
 
 			return TRUE
@@ -632,7 +632,7 @@
 		return photo.img
 
 /obj/structure/machinery/computer/med_data/laptop
-	name = "Medical Laptop"
-	desc = "Cheap Weyland-Yutani Laptop."
+	name = "医疗笔记本电脑"
+	desc = "廉价的维兰德-汤谷笔记本电脑。"
 	icon_state = "medlaptop"
 	density = FALSE

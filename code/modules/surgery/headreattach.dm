@@ -4,7 +4,7 @@
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery/head_reattach
-	name = "Synthetic Head Reattachment"
+	name = "合成人头颅再植"
 	priority = SURGERY_PRIORITY_MAXIMUM
 	possible_locs = list("head")
 	invasiveness = list(SURGERY_DEPTH_SURFACE)
@@ -30,8 +30,8 @@
 //------------------------------------
 
 /datum/surgery_step/peel_skin
-	name = "Peel Back Skin"
-	desc = "peel the skin back"
+	name = "剥离皮肤"
+	desc = "将皮肤剥离"
 	//Tools used to pry things open without orthopedic dramatics.
 	tools = list(
 		/obj/item/tool/surgery/retractor = SURGERY_TOOL_MULT_IDEAL,
@@ -45,14 +45,14 @@
 
 /datum/surgery_step/peel_skin/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	//No need for to-patient messages on this one, they're ghosted or in the head.
-	user.visible_message(SPAN_NOTICE("[user] begins to peel [target]'s neck stump open with \the [tool].") ,
+	user.visible_message(SPAN_NOTICE("[user]开始用\the [tool]剥离[target]的颈部残端。") ,
 	SPAN_NOTICE("You begin to peel [target]'s neck stump open with \the [tool]."))
 
 	log_interact(user, target, "[key_name(user)] began to peel back tattered artificial skin around [key_name(target)]'s neck with \the [tool].")
 
 /datum/surgery_step/peel_skin/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	//we could fetch the synth's flesh type, but because this surgery is only for synths, I'm too lazy to do it.
-	user.visible_message(SPAN_NOTICE("[user] draws back the ragged synthetic flesh of [target]'s neck stump."),
+	user.visible_message(SPAN_NOTICE("[user]掀开了[target]颈部残端上参差不齐的合成肉体。"),
 	SPAN_NOTICE("You draw back the ragged synthetic flesh of [target]'s neck stump."))
 
 	surgery.affected_limb.setAmputatedTree()
@@ -61,7 +61,7 @@
 	log_interact(user, target, "[key_name(user)] peeled back synthetic flesh where [key_name(target)]'s head used to be with \the [tool], beginning [surgery]")
 
 /datum/surgery_step/peel_skin/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message(SPAN_WARNING("[user]'s hand slips, somehow damaging the synthetic flesh of [target]'s stump even worse!"),
+	user.visible_message(SPAN_WARNING("[user]的手滑了一下，反而更严重地损坏了[target]残端的合成肉体！"),
 	SPAN_WARNING("Your hand slips, somehow damaging the synthetic flesh of [target]'s stump even worse!"))
 
 	log_interact(user, target, "[key_name(user)] failed to finish peeling back synthetic flesh where [key_name(target)]'s head used to be with \the [tool], aborting [surgery].")
@@ -70,13 +70,13 @@
 //------------------------------------
 
 /datum/surgery_step/reattach_head
-	name = "Reattach Synthetic Head"
-	desc = "reattach the head"
+	name = "再植合成人头颅"
+	desc = "再植头颅"
 	tools = list(/obj/item/limb/head/synth = SURGERY_TOOL_MULT_IDEAL)
 	time = 10 SECONDS
 
 /datum/surgery_step/reattach_head/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message(SPAN_NOTICE("[user] begins to reattach [tool] to [target]'s neck."),
+	user.visible_message(SPAN_NOTICE("[user]开始将[tool]再植到[target]的颈部。"),
 	SPAN_NOTICE("You begin reattaching [tool] to [target]'s neck."))
 	log_interact(user, target, "[key_name(user)] started to attach [tool] to [key_name(target)]'s reshaped neck.")
 
@@ -98,7 +98,7 @@
 	target.status_flags |= PERMANENTLY_DEAD
 
 /datum/surgery_step/reattach_head/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message(SPAN_WARNING("[user]'s hand slips, damaging the connectors on [target]'s neck!"),
+	user.visible_message(SPAN_WARNING("[user]的手滑了，损坏了[target]颈部的连接器！"),
 	SPAN_WARNING("Your hand slips, damaging the connectors on [target]'s neck!"))
 	log_interact(user, target, "[key_name(user)] failed to attach [tool] to [key_name(target)]'s reshaped neck.")
 
@@ -108,25 +108,25 @@
 //------------------------------------
 
 /datum/surgery_step/mend_connections
-	name = "Reconstruct Throat"
-	desc = "reconstruct the throat"
+	name = "重建喉咙"
+	desc = "重建喉咙"
 	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
 	time = 4 SECONDS
 
 /datum/surgery_step/mend_connections/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message(SPAN_NOTICE("[user] begins to shape the synthetic flesh of [target]'s neck back into something anatomically recognizable with \the [tool]."),
+	user.visible_message(SPAN_NOTICE("[user]开始用\the [tool]将[target]颈部的合成肉体塑造成解剖学上可识别的形状。"),
 	SPAN_NOTICE("You begin to shape the synthetic flesh of [target]'s neck back into something anatomically recognizable with \the [tool]."))
 
 	log_interact(user, target, "[key_name(user)] started to reshape [key_name(target)]'s head esophagal and vocal region with \the [tool].")
 
 /datum/surgery_step/mend_connections/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message(SPAN_NOTICE("[user] finishes reconstructing [target]'s throat."),
+	user.visible_message(SPAN_NOTICE("[user]完成了[target]喉咙的重建。"),
 	SPAN_NOTICE("You finish reconstructing [target]'s throat."))
 
 	log_interact(user, target, "[key_name(user)] reshaped [key_name(target)]'s head esophagal and vocal region with \the [tool].")
 
 /datum/surgery_step/mend_connections/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message(SPAN_WARNING("[user]'s hand slips, rending the synthetic flesh of [target]'s neck and throat even more!"),
+	user.visible_message(SPAN_WARNING("[user]的手滑了，将[target]颈部和喉咙的合成肉体撕裂得更严重了！"),
 	SPAN_WARNING("Your hand slips, rending the synthetic flesh of [target]'s neck and throat even more!"))
 
 	log_interact(user, target, "[key_name(user)] failed to reshape [key_name(target)]'s head esophagal and vocal region with \the [tool].")
@@ -135,17 +135,17 @@
 //------------------------------------
 
 /datum/surgery_step/cauterize/reposition_flesh
-	name = "Seal Skin"
-	desc = "seal the skin"
+	name = "缝合皮肤"
+	desc = "缝合皮肤"
 	time = 6 SECONDS
 
 /datum/surgery_step/cauterize/reposition_flesh/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message(SPAN_NOTICE("[user] begins making final adjustments to the area around [target]'s neck with \the [tool]."),
+	user.visible_message(SPAN_NOTICE("[user]开始用\the [tool]对[target]颈部周围的区域进行最终调整。"),
 	SPAN_NOTICE("You begin making final adjustments to the area around [target]'s neck with \the [tool]."))
 	log_interact(user, target, "[key_name(user)] started to adjust the area around [key_name(target)]'s neck with \the [tool].")
 
 /datum/surgery_step/cauterize/reposition_flesh/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/head_reattach/surgery)
-	user.visible_message(SPAN_NOTICE("[user] finishes adjusting [target]'s neck."),
+	user.visible_message(SPAN_NOTICE("[user]完成了对[target]颈部的调整。"),
 	SPAN_NOTICE("You finish adjusting [target]'s neck."))
 	log_interact(user, target, "[key_name(user)] adjusted the area around [key_name(target)]'s neck with \the [tool].")
 
@@ -165,7 +165,7 @@
 	qdel(surgery.patient_head) //Destroy head item.
 
 /datum/surgery_step/cauterize/reposition_flesh/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message(SPAN_WARNING("[user]'s hand slips, searing [target]'s neck!"),
+	user.visible_message(SPAN_WARNING("[user]的手滑了，灼伤了[target]的颈部！"),
 	SPAN_WARNING("Your hand slips, searing [target]'s [surgery.affected_limb.name]!"))
 	log_interact(user, target, "[key_name(user)] failed to adjust the area around [key_name(target)]'s neck with \the [tool].")
 

@@ -4,7 +4,7 @@
 //*****************************************************************************************************/
 
 /datum/reagent/blood
-	name = "Blood"
+	name = "血液"
 	id = "blood"
 	description = "Blood is classified as a connective tissue and consists of two main components: Plasma, which is a clear extracellular fluid. Formed elements, which are made up of the blood cells and platelets."
 	reagent_state = LIQUID
@@ -42,7 +42,7 @@
 
 
 /datum/reagent/blood/yaut_blood
-	name = "Green Blood"
+	name = "绿色血液"
 	id = "greenblood"
 	description = "A thick green blood, definitely not human."
 	color = BLOOD_COLOR_YAUTJA
@@ -50,21 +50,21 @@
 	objective_value = OBJECTIVE_HIGH_VALUE
 
 /datum/reagent/blood/synth_blood
-	name = "Synthetic Blood"
+	name = "合成血液"
 	id = "whiteblood"
 	color = BLOOD_COLOR_SYNTHETIC
 	description = "A synthetic blood-like liquid used by all Synthetics. Very effective as a medium for liquid cooling of electronics."
 	chemclass = CHEM_CLASS_NONE
 
 /datum/reagent/blood/zomb_blood
-	name = "Grey Blood"
+	name = "灰色血液"
 	id = "greyblood"
 	color = "#333333"
 	description = "A greyish liquid with the same consistency as blood."
 	chemclass = CHEM_CLASS_NONE
 
 /datum/reagent/blood/xeno_blood
-	name = "Acidic Blood"
+	name = "酸性血液"
 	id = "xenoblood"
 	color = BLOOD_COLOR_XENO
 	description = "A corrosive blood like substance. Makeup appears to be made out of acids and blood plasma."
@@ -83,16 +83,16 @@
 		var/removed_chem = pick(processing_tray.seed.chems)
 		processing_tray.seed = processing_tray.seed.diverge()
 		if(length(processing_tray.seed.chems) > 1)
-			c_turf.visible_message(SPAN_WARNING("[capitalize_first_letters(processing_tray.seed.display_name)] sizzles and pops!"))
+			c_turf.visible_message(SPAN_WARNING("[capitalize_first_letters(processing_tray.seed.display_name)]发出嘶嘶声并爆裂！"))
 			processing_tray.seed.chems.Remove(removed_chem)
 		if(length(processing_tray.seed.chems) <= 1)
 			if (!isnull(processing_tray.seed.chems["xenoblood"]))
 				return
 			processing_tray.seed.chems += list("xenoblood" = list(1,2))
-			c_turf.visible_message(SPAN_NOTICE("[capitalize_first_letters(processing_tray.seed.display_name)]'s sizzling sputters out, you smell [lowertext(name)]!"))
+			c_turf.visible_message(SPAN_NOTICE("[capitalize_first_letters(processing_tray.seed.display_name)]的嘶嘶声逐渐消失，你闻到了[lowertext(name)]的气味！"))
 
 /datum/reagent/blood/xeno_blood/royal
-	name = "Dark Acidic Blood"
+	name = "暗色酸性血液"
 	id = "xenobloodroyal"
 	color = BLOOD_COLOR_XENO_ROYAL
 	chemclass = CHEM_CLASS_SPECIAL
@@ -115,18 +115,18 @@
 			var/list/new_chem = list(pick( GLOB.chemical_gen_classes_list["H1"]) = list(1,rand(2,3)))
 			var/datum/reagent/new_chem_datum = GLOB.chemical_reagents_list[new_chem[1]]
 			processing_tray.seed.chems += new_chem
-			c_turf.visible_message(SPAN_NOTICE("[capitalize_first_letters(processing_tray.seed.display_name)] flashes an erie green, you smell [new_chem_datum.name]!"))
+			c_turf.visible_message(SPAN_NOTICE("[capitalize_first_letters(processing_tray.seed.display_name)]闪过诡异的绿光，你闻到了[new_chem_datum.name]的气味！"))
 
 /datum/reagent/vaccine
 	//data must contain virus type
-	name = "Vaccine"
+	name = "疫苗"
 	id = "vaccine"
 	reagent_state = LIQUID
 	color = "#C81040" // rgb: 200, 16, 64
 	properties = list(PROPERTY_CURING = 4)
 
 /datum/reagent/vaccine/reaction_mob(mob/M, method=TOUCH, volume, permeable)
-	if(has_species(M,"Horror"))
+	if(has_species(M,"恐怖造物"))
 		return
 	var/datum/reagent/vaccine/self = src
 	src = null
@@ -144,7 +144,7 @@
 	return
 
 /datum/reagent/water
-	name = "Water"
+	name = "水"
 	id = "water"
 	description = "A ubiquitous chemical substance that is composed of hydrogen and oxygen. It is a vital component to all known forms of organic life, even though it provides no calories or organic nutrients. It is also an effective solvent and can be used for cleaning."
 	reagent_state = LIQUID
@@ -178,14 +178,14 @@
 	processing_tray.waterlevel += 0.5*volume
 
 /datum/reagent/water/holywater
-	name = "Holy Water"
+	name = "圣水"
 	id = "holywater"
 	description = "An ashen-obsidian-water mix, this solution will alter certain sections of the brain's rationality."
 	color = "#E0E8EF" // rgb: 224, 232, 239
 	chemclass = CHEM_CLASS_NONE
 
 /datum/reagent/plasticide
-	name = "Plasticide"
+	name = "塑胶分解剂"
 	id = "plasticide"
 	description = "Liquid plastic. Not safe to eat."
 	reagent_state = LIQUID
@@ -194,7 +194,7 @@
 	properties = list(PROPERTY_TOXIC = 1)
 
 /datum/reagent/space_drugs
-	name = "Space drugs"
+	name = "太空毒品"
 	id = "space_drugs"
 	description = "An illegal compound that causes hallucinations, visual artefacts and loss of balance."
 	reagent_state = LIQUID
@@ -205,7 +205,7 @@
 	properties = list(PROPERTY_HALLUCINOGENIC = 2)
 
 /datum/reagent/sleen
-	name = "Sleen"
+	name = "斯林"
 	id = "sleen"
 	description = " A favorite of marine medics, it is an illicit mixture of name brand lime soda and oxycodone, known for its distinct red hue. Overdosing can cause hallucinations, loss of coordination, seizures, brain damage, respiratory failure, and death."
 	reagent_state = LIQUID
@@ -216,7 +216,7 @@
 	properties = list(PROPERTY_PAINKILLING = 3)
 
 /datum/reagent/serotrotium
-	name = "Serotrotium"
+	name = "血清素"
 	id = "serotrotium"
 	description = "A chemical compound that promotes concentrated production of the serotonin neurotransmitter in humans."
 	reagent_state = LIQUID
@@ -226,7 +226,7 @@
 	properties = list(PROPERTY_ALLERGENIC = 2)
 
 /datum/reagent/oxygen
-	name = "Oxygen"
+	name = "氧气"
 	id = "oxygen"
 	description = "Chemical element of atomic number 8. It is an oxidizing agent that forms oxides with most elements and many other compounds. Dioxygen is used in cellular respiration and is necessary to sustain organic life."
 	reagent_state = GAS
@@ -241,7 +241,7 @@
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 
 /datum/reagent/copper
-	name = "Copper"
+	name = "铜"
 	id = "copper"
 	description = "Chemical element of atomic number 29. A soft, red malleable metal with high thermal and electrical conductivity."
 	color = "#6E3B08" // rgb: 110, 59, 8
@@ -253,7 +253,7 @@
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 
 /datum/reagent/nitrogen
-	name = "Nitrogen"
+	name = "氮气"
 	id = "nitrogen"
 	description = "Chemical element of atomic number 7. Liquid nitrogen is commonly used in cryogenics, with its melting point of 63.15 kelvin. Nitrogen is a component of many explosive compounds and fertilizers."
 	reagent_state = GAS
@@ -264,7 +264,7 @@
 
 
 /datum/reagent/hydrogen
-	name = "Hydrogen"
+	name = "氢气"
 	id = "hydrogen"
 	description = "Chemical element of atomic number 1. Is the most abundant chemical element in the Universe. Liquid hydrogen was used as one of the first fuel sources for space travel. Very combustible and is used in many chemical reactions."
 	reagent_state = GAS
@@ -282,7 +282,7 @@
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 
 /datum/reagent/potassium
-	name = "Potassium"
+	name = "钾"
 	id = "potassium"
 	description = "Chemical element of atomic number 19. Is a soft and highly reactive metal and causes an extremely violent exothermic reaction with water."
 	reagent_state = SOLID
@@ -292,7 +292,7 @@
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 
 /datum/reagent/mercury
-	name = "Mercury"
+	name = "汞"
 	id = "mercury"
 	description = "Chemical element of atomic number 80. It is the only elemental metal that is liquid at room temperature. Used in many industrial chemical purposes. The low vapor pressure of mercury causes it to create toxic fumes. Mercury poisoning is extremely dangerous and can cause large amounts of brain damage."
 	reagent_state = LIQUID
@@ -302,7 +302,7 @@
 	properties = list(PROPERTY_NEUROTOXIC = 4, PROPERTY_NEUROCRYOGENIC = 1, PROPERTY_DISRUPTING = 1)
 
 /datum/reagent/sulfur
-	name = "Sulfur"
+	name = "硫磺"
 	id = "sulfur"
 	description = "Chemical element of atomic number 16. Sulfur is an essential element for all life, as a component in amino acids and vitamins. Industrial uses of sulfur include the production of gunpowder and sulfuric acid."
 	reagent_state = SOLID
@@ -312,7 +312,7 @@
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 
 /datum/reagent/carbon
-	name = "Carbon"
+	name = "碳"
 	id = "carbon"
 	description = "Chemical element of atomic number 6. A very abundant element that occurs in all known organic life and in more than half of all known compounds. Used as fuel, in the production of steel, for nanotechnology and many other industrial purposes."
 	reagent_state = SOLID
@@ -336,7 +336,7 @@
 			dirtoverlay.alpha = min(dirtoverlay.alpha+volume*30, 255)
 
 /datum/reagent/chlorine
-	name = "Chlorine"
+	name = "氯"
 	id = "chlorine"
 	description = "Chemical element of atomic number 17. High concentrations of elemental chlorine is highly reactive and poisonous for all living organisms. Chlorine gas has been used as a chemical warfare agent. Industrially used in the production of disinfectants, medicines, plastics and purification of water."
 	reagent_state = GAS
@@ -347,7 +347,7 @@
 	properties = list(PROPERTY_BIOCIDIC = 1)
 
 /datum/reagent/fluorine
-	name = "Fluorine"
+	name = "氟"
 	id = "fluorine"
 	description = "Chemical element of atomic number 9. It is a very reactive and highly toxic pale yellow gas at standard conditions. Mostly used for medical and dental purposes."
 	reagent_state = GAS
@@ -358,7 +358,7 @@
 	properties = list(PROPERTY_TOXIC = 1, PROPERTY_NEUTRALIZING = 1)
 
 /datum/reagent/sodium
-	name = "Sodium"
+	name = "钠"
 	id = "sodium"
 	description = "Chemical element of atomic number 11. Pure it is a soft and very reactive metal. Many salt compounds contain sodium, such as sodium chloride and sodium bicarbonate. There are more uses for sodium as a salt than as a metal."
 	reagent_state = SOLID
@@ -368,7 +368,7 @@
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 
 /datum/reagent/phosphorus
-	name = "Phosphorus"
+	name = "磷"
 	id = "phosphorus"
 	description = "Chemical element of atomic number 15. A highly reactive element, that is essential for life as a component of DNA, RNA and ATP. White phosphorus is used in many types of tracer and incendiary munitions due to its smoke production and high flammability."
 	reagent_state = SOLID
@@ -384,7 +384,7 @@
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 
 /datum/reagent/lithium
-	name = "Lithium"
+	name = "锂"
 	id = "lithium"
 	description = "Chemical element of atomic number 3. Is a soft alkali metal commonly used in the production of batteries. Highly reactive and flammable. Used as an antidepressant and for treating bipolar disorder."
 	reagent_state = SOLID
@@ -399,7 +399,7 @@
 	properties = list(PROPERTY_OXIDIZING = 1, PROPERTY_PSYCHOSTIMULATING = 1)
 
 /datum/reagent/sugar
-	name = "Sugar"
+	name = "糖"
 	id = "sugar"
 	description = "The organic compound commonly known as table sugar and sometimes called saccharose. This white, odorless, crystalline powder has a pleasing, sweet taste. The most simple form of sugar, glucose, is the only form of nutriment for red blood cells as they have no mitocondria. Sugar can therefore be used to improve blood regeneration as a nutriment, although ineffective."
 	reagent_state = SOLID
@@ -409,7 +409,7 @@
 	flags = REAGENT_TYPE_MEDICAL
 
 /datum/reagent/glycerol
-	name = "Glycerol"
+	name = "甘油"
 	id = "glycerol"
 	description = "Glycerol is a simple polyol compound. Glycerol is sweet-tasting and of low toxicity, often used in medicines and beverages. Used in the production of plastic, nitroglycerin and other explosives."
 	reagent_state = LIQUID
@@ -419,7 +419,7 @@
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 
 /datum/reagent/radium
-	name = "Radium"
+	name = "镭"
 	id = "radium"
 	description = "Chemical element of atomic number 88. Radium is a highly radioactive metal that emits alpha and gamma radiation upon decay. Exposure to radium can cause cancer and other disorders."
 	reagent_state = SOLID
@@ -428,7 +428,7 @@
 	properties = list(PROPERTY_CARCINOGENIC = 2, PROPERTY_HEMORRAGING = 1)
 
 /datum/reagent/thermite
-	name = "Thermite"
+	name = "铝热剂"
 	id = "thermite"
 	description = "Thermite is a pyrotechnic composition of powdered iron oxides that is an extremely volatile explosive. It is used in hand grenades, incendiary bombs, for welding and ore processing."
 	reagent_state = SOLID
@@ -449,7 +449,7 @@
 		W.overlays += image('icons/effects/effects.dmi',icon_state = "#673910")
 
 /datum/reagent/virus_food
-	name = "Virus Food"
+	name = "病毒培养基"
 	id = "virusfood"
 	description = "A mixture of water, milk, and oxygen. Virus cells can use this mixture to reproduce."
 	reagent_state = LIQUID
@@ -459,7 +459,7 @@
 	properties = list(PROPERTY_NUTRITIOUS = 2)
 
 /datum/reagent/iron
-	name = "Iron"
+	name = "铁"
 	id = "iron"
 	description = "Chemical element of atomic number 26. Has a broad range of uses in multiple industries particularly in engineering and construction. Iron is an important component of hemoglobin, the substance in red blood cells that carries oxygen. Overdosing on iron is extremely toxic."
 	reagent_state = SOLID
@@ -471,7 +471,7 @@
 	flags = REAGENT_TYPE_MEDICAL | REAGENT_SCANNABLE
 
 /datum/reagent/gold
-	name = "Gold"
+	name = "金"
 	id = "gold"
 	description = "Chemical element of atomic number 79. Gold is a dense, soft, shiny metal and the most malleable and ductile metal known. Used many industries including electronics, jewelry and medical."
 	reagent_state = SOLID
@@ -479,7 +479,7 @@
 	chemclass = CHEM_CLASS_RARE
 
 /datum/reagent/silver
-	name = "Silver"
+	name = "银"
 	id = "silver"
 	description = "Chemical element of atomic number 47. A soft, white, lustrous transition metal. Has the highest electrical conductivity of any element and the highest thermal conductivity of any metal."
 	reagent_state = SOLID
@@ -487,7 +487,7 @@
 	chemclass = CHEM_CLASS_RARE
 
 /datum/reagent/uranium
-	name ="Uranium"
+	name ="铀"
 	id = "uranium"
 	description = "Chemical element of atomic number 92. A silvery-white metallic chemical element in the actinide series, weakly radioactive. Has been historically used for nuclear power and in the creation of nuclear bombs."
 	reagent_state = SOLID
@@ -504,7 +504,7 @@
 				new /obj/effect/decal/cleanable/greenglow(T)
 
 /datum/reagent/aluminum
-	name = "Aluminum"
+	name = "铝"
 	id = "aluminum"
 	description = "Chemical element of atomic number 13. A silvery-white soft metal of the boron group. Because of its low density it is often uses as a structural material in aircrafts."
 	reagent_state = SOLID
@@ -512,7 +512,7 @@
 	chemclass = CHEM_CLASS_BASIC
 
 /datum/reagent/silicon
-	name = "Silicon"
+	name = "硅"
 	id = "silicon"
 	description = "Chemical element of atomic number 14. Commonly used as a semiconductor in electronics and is the main component of sand and glass."
 	reagent_state = SOLID
@@ -520,7 +520,7 @@
 	chemclass = CHEM_CLASS_BASIC
 
 /datum/reagent/fuel
-	name = "Welding fuel"
+	name = "焊接燃料"
 	id = "fuel"
 	description = "Liquid industrial grade blowtorch fuel."
 	reagent_state = LIQUID
@@ -542,7 +542,7 @@
 	properties = list(PROPERTY_FUELING = 5, PROPERTY_OXIDIZING = 3, PROPERTY_VISCOUS = 4, PROPERTY_TOXIC = 1)
 
 /datum/reagent/space_cleaner
-	name = "Space cleaner"
+	name = "太空清洁剂"
 	id = "cleaner"
 	description = "A synthetic cleaner that vaporizes quickly and isn't slippery like water. It is therefore used compound for cleaning in space and low gravity environments. Very effective at sterilizing surfaces."
 	reagent_state = LIQUID
@@ -592,7 +592,7 @@
 		M.clean_blood()
 
 /datum/reagent/cryptobiolin
-	name = "Cryptobiolin"
+	name = "隐生菌素"
 	id = "cryptobiolin"
 	description = "A component to making spaceacilin."
 	reagent_state = LIQUID
@@ -602,7 +602,7 @@
 	chemclass = CHEM_CLASS_UNCOMMON
 
 /datum/reagent/impedrezene
-	name = "Impedrezene"
+	name = "阻抗嗪"
 	id = "impedrezene"
 	description = "Impedrezene is a narcotic that impedes one's neural abilities by slowing down the higher brain cell functions. Can cause serious brain damage."
 	reagent_state = LIQUID
@@ -615,7 +615,7 @@
 //*****************************************************************************************************/
 
 /datum/reagent/oxidizing_agent
-	name = "Oxidizing Agent"
+	name = "氧化剂"
 	id = "oxidizing_agent"
 	description = "A synthesized, highly-refined oxidizing agent that is most likely extremely unhealthy for human consumption."
 	reagent_state = GAS
@@ -631,7 +631,7 @@
 	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/xenomicrobes
-	name = "Xenomicrobes"
+	name = "异形微生物"
 	id = "xenomicrobes"
 	description = "Microbes with an entirely alien cellular structure."
 	reagent_state = LIQUID
@@ -643,7 +643,7 @@
 		M.contract_disease(new /datum/disease/xeno_transformation(0),1)
 
 /datum/reagent/fluorosurfactant//foam precursor
-	name = "Fluorosurfactant"
+	name = "氟表面活性剂"
 	id = "fluorosurfactant"
 	description = "A perfluoronated sulfonic acid that forms a foam when mixed with water."
 	reagent_state = LIQUID
@@ -651,7 +651,7 @@
 	chemclass = CHEM_CLASS_UNCOMMON
 
 /datum/reagent/foaming_agent// Metal foaming agent. This is lithium hydride. Add other recipes (e.g. LiH + H2O -> LiOH + H2) eventually.
-	name = "Foaming agent"
+	name = "发泡剂"
 	id = "foaming_agent"
 	description = "An agent that yeilds metallic foam when mixed with light metal and a strong acid."
 	reagent_state = SOLID
@@ -659,7 +659,7 @@
 	chemclass = CHEM_CLASS_UNCOMMON
 
 /datum/reagent/foaming_agent/stabilized
-	name = "Stabilized metallic foam"
+	name = "稳定金属泡沫"
 	id = "stablefoam"
 	description = "Stabilized metallic foam that solidifies when exposed to an open flame"
 	reagent_state = LIQUID
@@ -668,7 +668,7 @@
 	properties = list(PROPERTY_TOXIC = 8)
 
 /datum/reagent/nicotine
-	name = "Nicotine"
+	name = "尼古丁"
 	id = "nicotine"
 	description = "A legal highly addictive stimulant extracted from the tobacco plant. It is one of the most commonly abused drugs."
 	reagent_state = LIQUID
@@ -677,7 +677,7 @@
 	flags = REAGENT_SCANNABLE
 
 /datum/reagent/ammonia
-	name = "Ammonia"
+	name = "氨水"
 	id = "ammonia"
 	description = "A caustic substance commonly used in fertilizers or household cleaners."
 	reagent_state = GAS
@@ -693,7 +693,7 @@
 	processing_tray.nutrilevel += 2*volume
 
 /datum/reagent/hexamine
-	name = "Hexamine"
+	name = "六胺"
 	id = "hexamine"
 	description = "A crystalline compound that sees many uses varying from food additives, making plastics, treating urinary tract infections, as a smokeless heating element in military rations, and the creation of several explosives."
 	reagent_state = SOLID
@@ -704,13 +704,13 @@
 	chemclass = CHEM_CLASS_RARE
 
 /datum/reagent/ultraglue
-	name = "Ultra Glue"
+	name = "超能胶"
 	id = "glue"
 	description = "An extremely powerful bonding agent."
 	color = "#FFFFCC" // rgb: 255, 255, 204
 
 /datum/reagent/diethylamine
-	name = "Diethylamine"
+	name = "二乙胺"
 	id = "diethylamine"
 	description = "Diethylamine is used as a potent fertilizer and as an alternative to ammonia. Also used in the preparation rubber processing chemicals, agricultural chemicals, and pharmaceuticals."
 	reagent_state = LIQUID
@@ -726,7 +726,7 @@
 	processing_tray.nutrilevel += 2*volume
 
 /datum/reagent/blackgoo
-	name = "Black goo"
+	name = "黑色粘液"
 	id = "blackgoo"
 	description = "A strange dark liquid of unknown origin and effect."
 	reagent_state = LIQUID
@@ -737,7 +737,7 @@
 /datum/reagent/blackgoo/reaction_mob(mob/M, method=TOUCH, volume, permeable)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if(H.species.name == "Human")
+		if(H.species.name == "人类")
 			H.contract_disease(new /datum/disease/black_goo)
 
 /datum/reagent/blackgoo/reaction_turf(turf/T, volume)
@@ -749,7 +749,7 @@
 		new /obj/effect/decal/cleanable/blackgoo(T)
 
 /datum/reagent/viroxeno
-	name = "Xenogenetic Catalyst"
+	name = "异形遗传催化剂"
 	id = "xenogenic"
 	description = "A catalyst chemical that is extremely aggresive towards any organic substance before swiftly turning it into itself."
 	reagent_state = LIQUID
@@ -764,7 +764,7 @@
 // Chemfire supplements
 
 /datum/reagent/napalm
-	name = "Napalm"
+	name = "凝固汽油"
 	id = "napalm"
 	description = "This will probably ignite before you get to read this."
 	reagent_state = LIQUID
@@ -775,7 +775,7 @@
 	properties = list(PROPERTY_OXIDIZING = 6, PROPERTY_FUELING = 7, PROPERTY_FLOWING = 1)
 
 /datum/reagent/napalm/sticky
-	name = "Sticky-Napalm"
+	name = "粘性凝固汽油"
 	id = "stickynapalm"
 	description = "A custom napalm mix, stickier and lasts longer but lower damage"
 	reagent_state = LIQUID
@@ -792,7 +792,7 @@
 	)
 
 /datum/reagent/napalm/high_damage
-	name = "High-Combustion Napalm Fuel"
+	name = "高燃凝固汽油燃料"
 	id = "highdamagenapalm"
 	description = "A custom napalm mix, higher damage but not as sticky"
 	reagent_state = LIQUID
@@ -810,7 +810,7 @@
 
 // This is the regular flamer fuel and pyro regular flamer fuel.
 /datum/reagent/napalm/ut
-	name = "UT-Napthal Fuel"
+	name = "UT-萘燃料"
 	id = "utnapthal"
 	description = "Known as Ultra Thick Napthal Fuel, a sticky combustible liquid chemical, typically used with flamethrowers."
 	burncolor = "#EE6515"
@@ -822,7 +822,7 @@
 
 // Weaker liquid fuel
 /datum/reagent/napalm/weak
-	name = "Napthal Fuel"
+	name = "萘燃料"
 	id = "napthal"
 	description = "Known as Napthal Fuel, a combustible liquid chemical."
 	burncolor = "#EE6515"
@@ -834,7 +834,7 @@
 
 // This is gellie fuel. Green Flames.
 /datum/reagent/napalm/gel
-	name = "Napalm B-Gel"
+	name = "凝固汽油B型凝胶"
 	id = "napalmgel"
 	description = "Unlike its liquid contemporaries, this gelled variant of napalm is easily extinguished, but shoots far and lingers on the ground in a viscous mess, while reacting with inorganic materials to ignite them."
 	flameshape = FLAMESHAPE_LINE
@@ -850,7 +850,7 @@
 
 // This is the blue flamer fuel for the pyro.
 /datum/reagent/napalm/blue
-	name = "Napalm X"
+	name = "凝固汽油X型"
 	id = "napalmx"
 	description = "A sticky combustible liquid chemical that burns extremely hot."
 	color = "#00b8ff"
@@ -865,7 +865,7 @@
 
 // This is the green flamer fuel for the pyro.
 /datum/reagent/napalm/green
-	name = "Napalm B"
+	name = "凝固汽油B型"
 	id = "napalmb"
 	description = "A special variant of napalm that's unable to cling well to anything, but disperses over a wide area while burning slowly. The composition reacts with inorganic materials to ignite them, causing severe damage."
 	flameshape = FLAMESHAPE_TRIANGLE
@@ -881,7 +881,7 @@
 	fire_type = FIRE_VARIANT_TYPE_B //Armor Shredding Greenfire
 
 /datum/reagent/napalm/penetrating
-	name = "Napalm E"
+	name = "凝固汽油E型"
 	id = "napalme"
 	description = "A sticky combustible liquid chemical that penetrates the best fire retardants."
 	color = COLOR_PURPLE
@@ -895,7 +895,7 @@
 	)
 
 /datum/reagent/napalm/deathsquad //version of fuel for dsquad flamers.
-	name = "Napalm EX"
+	name = "凝固汽油EX型"
 	id = "napalmex"
 	description = "A sticky combustible liquid chemical made up of a combonation of rare and dangerous reagents both that penetrates the best fire retardants, and burns extremely hot."
 	color = "#641dd6"
@@ -923,7 +923,7 @@
 	)
 
 /datum/reagent/chlorinetrifluoride
-	name = "Chlorine Trifluoride"
+	name = "三氟化氯"
 	id = "chlorine trifluoride"
 	description = "A highly reactive interhalogen compound capaple of self ignition. A very strong oxidizer and is extremely reactive with most organic and inorganic materials."
 	reagent_state = LIQUID
@@ -935,7 +935,7 @@
 	properties = list(PROPERTY_CORROSIVE = 6, PROPERTY_TOXIC = 6, PROPERTY_OXIDIZING = 9, PROPERTY_IGNITING = 1)
 
 /datum/reagent/methane
-	name = "Methane"
+	name = "甲烷"
 	id = "methane"
 	description = "An easily combustible hydrocarbon that can very rapidly expand a fire, even explosively at the right concentrations. It is used primarily as fuel to make heat and light or manufacturing of organic chemicals."
 	reagent_state = LIQUID
@@ -954,14 +954,14 @@
 //*****************************************************************************************************/
 
 /datum/reagent/potassium_hydroxide
-	name = "Potassium hydroxide"
+	name = "氢氧化钾"
 	id = "potassium_hydroxide"
 	description = "This will probably explode before you manage to read this."
 	explosive = TRUE
 	power = 0.5
 
 /datum/reagent/ammoniumnitrate
-	name = "Ammonium Nitrate"
+	name = "硝酸铵"
 	id = "ammonium_nitrate"
 	description = "A white crystalline compound that is used in agriculture as a high-nitrogen fertilizer. On its own, ammonium nitrate is not explosive, but rapidly becomes so when mixed with fuel oil."
 	reagent_state = SOLID
@@ -975,7 +975,7 @@
 	burncolor = "#ff9900"
 
 /datum/reagent/anfo
-	name = "Ammonium nitrate fuel oil"
+	name = "硝酸铵燃料油"
 	id = "anfo"
 	color = "#E0E0E0"
 	description = "Ammonium nitrate fuel oil (ANFO) is a low cost bulk explosive commonly used for mining and construction operations."
@@ -984,7 +984,7 @@
 	falloff_modifier = -0.6
 
 /datum/reagent/nitroglycerin
-	name = "Nitroglycerin"
+	name = "硝化甘油"
 	id = "nitroglycerin"
 	description = "Nitroglycerin is a heavy, colorless, oily, explosive liquid obtained by nitrating glycerol. Despite being a highly volatile material, it is used for many medical purposes."
 	reagent_state = LIQUID
@@ -995,7 +995,7 @@
 	falloff_modifier = -0.5
 
 /datum/reagent/cyclonite
-	name = "Cyclonite"
+	name = "旋风炸药"
 	id = "cyclonite"
 	description = "Cyclonite is a low sensitivity highly explosive compound, commonly known as RDX. It is considered as one of the most energetic military high explosives. It is also sometimes used as a rat poison by civilians."
 	reagent_state = SOLID
@@ -1009,7 +1009,7 @@
 	M.apply_damage(1, TOX)
 
 /datum/reagent/octogen
-	name = "Octogen"
+	name = "奥克托今"
 	id = "octogen"
 	description = "Octogen, also known as HMX or Her Majesty's Explosive, is a powerful and relatively insensitive explosive. It is one of the most potent chemical explosives available, exceeding that of cyclonite (RDX)."
 	reagent_state = SOLID
@@ -1033,7 +1033,7 @@
 	custom_metabolism = AMOUNT_PER_TIME(1, 5 SECONDS)
 
 /datum/reagent/plasma/pheromone
-	name = "Pheromone Plasma"
+	name = "信息素血浆"
 	id = PLASMA_PHEROMONE
 	description = "A funny smelling plasma..."
 	color = "#a2e7d6"
@@ -1044,7 +1044,7 @@
 	properties = list(PROPERTY_HALLUCINOGENIC = 8, PROPERTY_NERVESTIMULATING = 2)
 
 /datum/reagent/plasma/chitin
-	name = "Chitin Plasma"
+	name = "几丁质血浆"
 	id = PLASMA_CHITIN
 	description = "A very thick fibrous plasma..."
 	color = "#6d7694"
@@ -1055,7 +1055,7 @@
 	properties = list(PROPERTY_HYPERDENSIFICATING = 1)
 
 /datum/reagent/plasma/catecholamine
-	name = "Catecholamine Plasma"
+	name = "儿茶酚胺血浆"
 	id = PLASMA_CATECHOLAMINE
 	description = "A red-ish plasma..."
 	color = "#cf7551"
@@ -1066,7 +1066,7 @@
 	properties = list(PROPERTY_NEUROPATHIC = 2, PROPERTY_MUSCLESTIMULATING = 6)
 
 /datum/reagent/plasma/egg
-	name = "Egg Plasma"
+	name = "虫卵血浆"
 	id = PLASMA_EGG
 	description = "A white-ish plasma high with a high concentration of protein..."
 	color = "#c3c371"
@@ -1094,10 +1094,10 @@
 			embryo.hivenumber = data_properties["hive_number"]
 		else
 			embryo.hivenumber = XENO_HIVE_NORMAL
-		to_chat(H, SPAN_WARNING("Your stomach cramps and you suddenly feel very sick!"))
+		to_chat(H, SPAN_WARNING("你的胃部一阵痉挛，突然感到非常不适！"))
 
 /datum/reagent/plasma/neurotoxin
-	name = "Neurotoxin Plasma"
+	name = "神经毒素血浆"
 	id = PLASMA_NEUROTOXIN
 	description = "A plasma containing an unknown but potent neurotoxin."
 	color = "#ba8216"
@@ -1108,7 +1108,7 @@
 	properties = list(PROPERTY_NEUROTOXIC = 4, PROPERTY_EXCRETING = 2, PROPERTY_HALLUCINOGENIC = 6)
 
 /datum/reagent/plasma/antineurotoxin
-	name = "Anti-Neurotoxin"
+	name = "抗神经毒素"
 	id = "antineurotoxin"
 	description = "A counteragent to Neurotoxin Plasma."
 	color = "#afffc9"
@@ -1119,7 +1119,7 @@
 	properties = list(PROPERTY_NEUROSHIELDING = 1)
 
 /datum/reagent/plasma/nutrient
-	name = "Nutrient Plasma"
+	name = "营养血浆"
 	id = PLASMA_NUTRIENT
 	description = "A tarquise plasma..."
 	color = "#2fbe88"
@@ -1130,7 +1130,7 @@
 	properties = list(PROPERTY_FUELING = 1, PROPERTY_VISCOUS = 3, PROPERTY_ADDICTIVE = 4, PROPERTY_NUTRITIOUS = 3)
 
 /datum/reagent/plasma/purple
-	name = "Purple Plasma"
+	name = "紫色血浆"
 	id = PLASMA_PURPLE
 	description = "A purple-ish plasma..."
 	color = "#a65d7f"
@@ -1154,11 +1154,11 @@
 		processing_tray.seed = processing_tray.seed.diverge()
 		processing_tray.seed.production += -1
 		if(prob(50))
-			c_turf.visible_message(SPAN_NOTICE("[processing_tray.seed.display_name] bristles and sways towards you!"))
+			c_turf.visible_message(SPAN_NOTICE("[processing_tray.seed.display_name]竖起并朝你摇晃！"))
 		processing_tray.production_time_counter = 0
 
 /datum/reagent/plasma/royal
-	name = "Royal Plasma"
+	name = "皇家血浆"
 	id = PLASMA_ROYAL
 	description = "A dark purple-ish plasma..."
 	color = "#ffeb9c"
@@ -1169,7 +1169,7 @@
 	properties = list(PROPERTY_BIOCIDIC = 4, PROPERTY_ADDICTIVE = 1, PROPERTY_HALLUCINOGENIC = 4, PROPERTY_ENCRYPTED = 1)
 
 /datum/reagent/fruit_resin
-	name = "Fruit Resin"
+	name = "果实树脂"
 	id = "fruit_resin"
 	description = "A strange green fluid found in certain xenomorphic structures. Seems to have regenerative properties."
 	reagent_state = LIQUID
@@ -1182,7 +1182,7 @@
 	flags = REAGENT_SCANNABLE
 
 /datum/reagent/forensic_spray
-	name = "Forensic Spray"
+	name = "法证喷雾"
 	id = "forensic_spray"
 	description = "A dye-containing spray that binds to the skin oils left behind by fingerprints."
 	reagent_state = LIQUID

@@ -1,15 +1,15 @@
 //Space bears!
 /mob/living/simple_animal/hostile/bear
-	name = "space bear"
-	desc = "RawrRawr!!"
+	name = "太空熊"
+	desc = "嗷呜嗷呜！！"
 	icon_state = "bear"
 	icon_living = "bear"
 	icon_dead = "bear_dead"
 	icon_gib = "bear_gib"
 	speak = list("RAWR!","Rawr!","GRR!","Growl!")
 	speak_emote = list("growls", "roars")
-	emote_hear = list("rawrs.","roars.","grumbles.","growls.")
-	emote_see = list("stares ferociously.", "stomps.")
+	emote_hear = list("rawrs.","roars.","嘟囔。","发出低吼。")
+	emote_see = list("凶狠地瞪着。", "重踏。")
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6
@@ -39,7 +39,7 @@
 
 //SPACE BEARS! SQUEEEEEEEE~  OW! FUCK! IT BIT MY HAND OFF!!
 /mob/living/simple_animal/hostile/bear/Hudson
-	name = "Hudson"
+	name = "哈德森"
 	desc = ""
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"

@@ -13,8 +13,8 @@
 #define SIMULATION_STAGE_BEGIN 5
 
 /obj/structure/machinery/chem_simulator
-	name = "synthesis simulator"
-	desc = "This computer uses advanced algorithms to perform simulations of reagent properties, for the purpose of calculating the synthesis required to make a new variant."
+	name = "合成模拟器"
+	desc = "这台计算机使用先进算法模拟试剂属性，旨在计算合成新变体所需的配方。"
 	icon = 'icons/obj/structures/machinery/science_machines_64x32.dmi'
 	icon_state = "modifier"
 	active_power_usage = 1000
@@ -57,14 +57,14 @@
 
 /obj/structure/machinery/chem_simulator/attackby(obj/item/B, mob/living/user)
 	if(!skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
-		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
+		to_chat(user, SPAN_WARNING("你不知道如何使用这个。"))
 		return
 	if(istype(B, /obj/item/paper/research_notes))
 		var/obj/item/paper/research_notes/note = B
 		if(!target || (mode == MODE_RELATE || mode == MODE_ADD) && !reference && note.data)
 			B = note.convert_to_chem_report()
 		else
-			to_chat(user, SPAN_WARNING("Chemical data already inserted."))
+			to_chat(user, SPAN_WARNING("化学数据已插入。"))
 			return
 	if(istype(B, /obj/item/paper/research_report))
 		var/obj/item/paper/research_report/note = B
@@ -76,13 +76,13 @@
 			reference = B
 			ready = check_ready()
 		else
-			to_chat(user, SPAN_WARNING("Chemical data [note.data ? "is already inserted" : "is refused"]"))
+			to_chat(user, SPAN_WARNING("化学数据[note.data ? "is already inserted" : "is refused"]"))
 			return
 	else
-		to_chat(user, SPAN_WARNING("[src] refuses [B]."))
+		to_chat(user, SPAN_WARNING("[src]拒绝了[B]。"))
 		return
 	user.drop_inv_item_to_loc(B, src)
-	to_chat(user, SPAN_NOTICE("You insert [B] into [src]."))
+	to_chat(user, SPAN_NOTICE("你将[B]插入[src]。"))
 	flick("[icon_state]_reading",src)
 	update_costs()
 
@@ -90,7 +90,7 @@
 	if(inoperable())
 		return
 	if(!skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
-		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
+		to_chat(user, SPAN_WARNING("你不知道如何使用这个。"))
 		return
 	tgui_interact(user)
 
@@ -222,7 +222,7 @@
 					continue
 				target_property = target_prop
 			if(!target_property)
-				to_chat(ui.user, SPAN_WARNING("The [src] makes a suspicious wail."))
+				to_chat(ui.user, SPAN_WARNING("[src]发出可疑的哀鸣。"))
 				return
 		if("select_reference_property")
 			if(!reference)
@@ -233,7 +233,7 @@
 				reference_property = reference_prop
 			update_costs()
 			if(!reference_property)
-				to_chat(ui.user, SPAN_WARNING("The [src] makes a suspicious wail."))
+				to_chat(ui.user, SPAN_WARNING("[src]发出可疑的哀鸣。"))
 				return
 		if("simulate")
 			if(!ready)
@@ -616,25 +616,25 @@
 
 /datum/chemical_simulator_modes/supress
 	name = "SUPRESS"
-	desc = "Supress one level in the choosen property. This operation lowers the OD level."
+	desc = "抑制所选属性一个等级。此操作会降低过量剂量等级。"
 	mode_id = MODE_SUPPRESS
 	icon_type = "square-minus"
 
 /datum/chemical_simulator_modes/amplify
 	name = "AMPLIFY"
-	desc = "Amplify one level in the choosen property. This operation lowers the OD level."
+	desc = "放大所选属性一个等级。此操作会降低过量剂量等级。"
 	mode_id = MODE_AMPLIFY
 	icon_type = "square-plus"
 
 /datum/chemical_simulator_modes/add //death to create mode! Glory to the new add mode!
 	name = "ADD"
-	desc = "Use the property in the reference chemical to add a property to the target chemical, with no downsides to the target chemical, however it damages the chemical structure of reference chemical, Making any other modification impossible."
+	desc = "使用参考化学品的属性为目标化学品添加一个属性，对目标化学品无负面影响，但会破坏参考化学品的化学结构，使其无法再进行任何修改。"
 	mode_id = MODE_ADD
 	icon_type = "arrow-right"
 
 /datum/chemical_simulator_modes/relate
 	name = "RELATE"
-	desc = "Use the reference chemical to replace one choosen property in the target chemical. The target and reference target property level must be equal, This operation lowers the OD level."
+	desc = "使用参考化学品替换目标化学品中的一个选定属性。目标与参考目标属性等级必须相等，此操作会降低过量剂量等级。"
 	mode_id = MODE_RELATE
 	icon_type = "repeat"
 

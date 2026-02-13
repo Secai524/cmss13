@@ -3,8 +3,8 @@
  */
 
 /obj/effect/alien/resin/trap
-	desc = "It looks like a hiding hole."
-	name = "resin trap"
+	desc = "看起来像个藏身洞。"
+	name = "树脂陷阱"
 	icon_state = "trap0"
 	density = FALSE
 	opacity = FALSE
@@ -27,7 +27,7 @@
 		created_by = X.ckey
 		hivenumber = X.hivenumber
 
-	cause_data = create_cause_data("resin trap", X)
+	cause_data = create_cause_data("树脂陷阱", X)
 	set_hive_data(src, hivenumber)
 	if(hivenumber == XENO_HIVE_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
@@ -44,7 +44,7 @@
 	. = ..()
 	switch(trap_type)
 		if(RESIN_TRAP_EMPTY)
-			. += "It's empty."
+			. += "它是空的。"
 		if(RESIN_TRAP_HUGGER)
 			. += "There's a little one inside."
 		if(RESIN_TRAP_GAS)
@@ -94,8 +94,8 @@
 		if(RESIN_TRAP_HUGGER)
 			if(can_hug(victim, hivenumber) && !isyautja(victim) && !issynth(victim) && !isthrall(victim))
 				var/mob/living/victim_mob = victim
-				victim_mob.visible_message(SPAN_WARNING("[victim_mob] trips on [src]!"))
-				to_chat(victim_mob, SPAN_DANGER("You trip on [src]!"))
+				victim_mob.visible_message(SPAN_WARNING("[victim_mob]被[src]绊倒了！"))
+				to_chat(victim_mob, SPAN_DANGER("你被[src]绊倒了！"))
 				victim_mob.apply_effect(1, WEAKEN)
 				trigger_trap()
 		if(RESIN_TRAP_GAS, RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
@@ -140,7 +140,7 @@
 	clear_tripwires()
 	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)
 		if(X.hivenumber == hivenumber)
-			to_chat(X, SPAN_XENOMINORWARNING("We sense one of our Hive's facehugger traps at [A.name] has been burnt!"))
+			to_chat(X, SPAN_XENOMINORWARNING("我们感知到在[A.name]处的一个巢穴抱脸虫陷阱被烧毁了！"))
 
 /obj/effect/alien/resin/trap/proc/get_spray_type(level)
 	switch(level)
@@ -166,7 +166,7 @@
 			FH.hivenumber = hivenumber
 			set_hive_data(FH, hivenumber)
 			set_state()
-			visible_message(SPAN_WARNING("[FH] gets out of [src]!"))
+			visible_message(SPAN_WARNING("[FH]从[src]里出来了！"))
 			sleep(15)
 			if(FH.stat == CONSCIOUS && FH.loc) //Make sure we're conscious and not idle or dead.
 				FH.leap_at_nearest_target()
@@ -194,9 +194,9 @@
 	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)
 		if(X.hivenumber == hivenumber)
 			if(destroyed)
-				to_chat(X, SPAN_XENOMINORWARNING("We sense one of our Hive's [trap_type_name] traps at [A.name] has been destroyed!"))
+				to_chat(X, SPAN_XENOMINORWARNING("我们感知到在[A.name]处的一个巢穴[trap_type_name]陷阱被摧毁了！"))
 			else
-				to_chat(X, SPAN_XENOMINORWARNING("We sense one of our Hive's [trap_type_name] traps at [A.name] has been triggered!"))
+				to_chat(X, SPAN_XENOMINORWARNING("我们感知到在[A.name]处的一个巢穴[trap_type_name]陷阱被触发了！"))
 
 /obj/effect/alien/resin/trap/proc/clear_tripwires()
 	QDEL_NULL_LIST(tripwires)
@@ -214,14 +214,14 @@
 			set_state()
 			var/obj/item/clothing/mask/facehugger/hugger = new (loc, hivenumber)
 			xeno.put_in_active_hand(hugger)
-			to_chat(xeno, SPAN_XENONOTICE("You remove the facehugger from [src]."))
+			to_chat(xeno, SPAN_XENONOTICE("你从[src]中移除了抱脸虫。"))
 			return XENO_NONCOMBAT_ACTION
 		else
-			to_chat(xeno, SPAN_XENONOTICE("[src] is occupied by a child."))
+			to_chat(xeno, SPAN_XENONOTICE("[src]已经被一个幼体占据了。"))
 			return XENO_NO_DELAY_ACTION
 
 	if((!xeno.acid_level || trap_type == RESIN_TRAP_GAS) && trap_type != RESIN_TRAP_EMPTY)
-		to_chat(xeno, SPAN_XENONOTICE("Better not risk setting this off."))
+		to_chat(xeno, SPAN_XENONOTICE("最好别冒险触发这个。"))
 		return XENO_NO_DELAY_ACTION
 
 	if(xeno.try_fill_trap(src))
@@ -240,29 +240,29 @@
 	if(!(istype(W, /obj/item/clothing/mask/facehugger) && isxeno(user)))
 		return ..()
 	if(trap_type != RESIN_TRAP_EMPTY)
-		to_chat(user, SPAN_XENOWARNING("You can't put a hugger in this trap!"))
+		to_chat(user, SPAN_XENOWARNING("你不能把抱脸虫放进这个陷阱！"))
 		return
 	var/obj/item/clothing/mask/facehugger/FH = W
 	if(FH.stat == DEAD)
-		to_chat(user, SPAN_XENOWARNING("You can't put a dead facehugger in [src]."))
+		to_chat(user, SPAN_XENOWARNING("你不能把死掉的抱脸虫放进[src]。"))
 	else
 		var/mob/living/carbon/xenomorph/X = user
 		if (!istype(X))
 			return
 
 		if (X.hivenumber != hivenumber)
-			to_chat(user, SPAN_XENOWARNING("This resin trap doesn't belong to your hive!"))
+			to_chat(user, SPAN_XENOWARNING("这个树脂陷阱不属于你的巢穴！"))
 			return
 
 		if (FH.hivenumber != hivenumber)
-			to_chat(user, SPAN_XENOWARNING("This facehugger is tainted."))
+			to_chat(user, SPAN_XENOWARNING("这只抱脸虫被污染了。"))
 			return
 
 		if (!do_after(user, 3 SECONDS, INTERRUPT_ALL|INTERRUPT_DAZED, BUSY_ICON_HOSTILE))
 			return
 
 		set_state(RESIN_TRAP_HUGGER)
-		to_chat(user, SPAN_XENONOTICE("You place a facehugger in [src]."))
+		to_chat(user, SPAN_XENONOTICE("你将一只抱脸虫放入[src]。"))
 		qdel(FH)
 
 /obj/effect/alien/resin/trap/healthcheck()
@@ -279,7 +279,7 @@
 	. = ..()
 
 /obj/effect/trap_tripwire
-	name = "trap tripwire"
+	name = "陷阱绊线"
 	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	invisibility = 101

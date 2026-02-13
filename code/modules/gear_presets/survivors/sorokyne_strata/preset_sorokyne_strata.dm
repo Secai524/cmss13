@@ -1,5 +1,5 @@
 /datum/equipment_preset/survivor/engineer/soro_industry_contractor
-	name = "Survivor - UPP - Ministry of Industry - Infrastructure Engineer"
+	name = "幸存者 - UPP - 工业部 - 基础设施工程师"
 	assignment = "Inzhener Infrastruktury"
 	minimap_icon = "upp_cont"
 	minimap_background = "background_upp_bravo"
@@ -32,7 +32,7 @@
 	..()
 
 /datum/equipment_preset/survivor/engineer/soro_reactor_tech
-	name = "Survivor - UPP - Ministry of Energy - Reactor Technician"
+	name = "幸存者 - UPP - 能源部 - 反应堆技术员"
 	assignment = "Tekhnik Reaktora"
 	minimap_icon = "upp_cont"
 	minimap_background = "background_upp_bravo"
@@ -79,11 +79,11 @@
 
 
 /datum/job/nrodnyyvooruzhennyypolitsioner
-	title = "Narodnyy Vooruzhennyy Politsioner"
+	title = "人民武装警察"
 
 /datum/equipment_preset/survivor/peoples_armed_police
-	name = "Survivor - UPP - People's Armed Police Officer"
-	assignment = "Narodnyy Vooruzhennyy Politsioner"
+	name = "幸存者 - UPP - 人民武装警察"
+	assignment = "人民武装警察"
 	faction_group = FACTION_LIST_SURVIVOR_PAP
 	minimap_icon = "upp_sec"
 	minimap_background = "background_upp_alpha"
@@ -115,7 +115,7 @@
 	..()
 
 /datum/equipment_preset/survivor/upp/army
-	name = "Survivor - UPP - Ministry of Defense - Army Reservist"
+	name = "幸存者 - UPP - 国防部 - 陆军预备役人员"
 	assignment = "Armiyskiy Rezervist"
 	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0)
 	job_title = JOB_SURVIVOR
@@ -194,7 +194,7 @@
 	..()
 
 /datum/equipment_preset/survivor/doctor/soro
-	name = "Survivor - UPP - Ministry of Health - Doctor"
+	name = "幸存者 - UPP - 卫生部 - 医生"
 	assignment = "Doktor Ministerstva Zdravookhraneniya"
 	minimap_icon = "upp_doc"
 	minimap_background = "background_upp_medical"
@@ -262,7 +262,7 @@
 	..()
 
 /datum/equipment_preset/survivor/scientist/soro
-	name = "Survivor - UPP - Cosmos Exploration Corps Researcher"
+	name = "幸存者 - UPP - 宇宙探索军团研究员"
 	assignment = "Issledovatel' Korpusa Kosmicheskoy Eksploratsii"
 	minimap_icon = "upp_sci"
 	minimap_background = "background_upp_charlie"
@@ -313,7 +313,7 @@
 	..()
 
 /datum/equipment_preset/survivor/upp_colonist
-	name = "UPP - Civilian"
+	name = "UPP - 平民"
 	assignment = "Grazhdanin"
 	flags = EQUIPMENT_PRESET_EXTRA
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
@@ -432,7 +432,7 @@
 	..()
 
 /datum/equipment_preset/survivor/upp_fire_fighter
-	name = "Survivor - UPP - Ministry of Public Safety - Fire Protection Specialist"
+	name = "幸存者 - UPP - 公共安全部 - 消防专家"
 	assignment = "Spetsialist Po Pozharnoy Bezopasnosti"
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
 	faction = FACTION_UPP
@@ -479,7 +479,7 @@
 	..()
 
 /datum/equipment_preset/survivor/upp_miner
-	name = "Survivor - UPP - Jutou Combine - Miner"
+	name = "幸存者 - UPP - 聚头联合体 - 矿工"
 	assignment = "Jùtóu Combine - Shakhtyor"
 	minimap_background = "background_upp_civilian"
 	skills = /datum/skills/civilian/survivor/miner
@@ -507,7 +507,7 @@
 	..()
 
 /datum/equipment_preset/survivor/hyperdyne
-	name = "Survivor - UPP - Hyperdyne - Corporate Liaison" // Basically a Corporate Liaison for Hyperdyne instead of Weyland-Yutani. - Hyperdyne should be expanded in the future, more roles ect.
+	name = "幸存者 - UPP - 海珀戴恩 - 公司联络官" // Basically a Corporate Liaison for Hyperdyne instead of Weyland-Yutani. - Hyperdyne should be expanded in the future, more roles ect.
 	assignment = "Hyperdyne - Corporate Liaison"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -584,7 +584,7 @@
 // Civilian
 
 /datum/equipment_preset/synth/survivor/sorokyne/civilian
-	name = "Survivor - Sorokyne Strata - Synthetic - Civilian"
+	name = "幸存者 - 索罗金地层 - 合成人 - 平民"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	faction = FACTION_UPP
 	faction_group = FACTION_LIST_SURVIVOR_UPP
@@ -670,7 +670,7 @@
 // Engineer
 
 /datum/equipment_preset/synth/survivor/sorokyne/engineer
-	name = "Survivor - Sorokyne Strata - Synthetic - Reactor Plant Synthetic" // ENGINEER
+	name = "幸存者 - 索罗金地层 - 合成人 - 反应堆工厂合成人" // ENGINEER
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	faction = FACTION_UPP
 	faction_group = FACTION_LIST_SURVIVOR_UPP
@@ -700,7 +700,7 @@
 // Medical
 
 /datum/equipment_preset/synth/survivor/sorokyne/doctor
-	name = "Survivor - Sorokyne Strata - Synthetic - Doctor"
+	name = "幸存者 - 索罗金地层 - 合成人 - 医生"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	faction = FACTION_UPP
 	faction_group = FACTION_LIST_SURVIVOR_UPP
@@ -764,7 +764,7 @@
 // Security
 
 /datum/equipment_preset/synth/survivor/sorokyne/security
-	name = "Survivor - Sorokyne Strata - Synthetic - Army or PaP" // Either Army Reservist or PaP (COP)
+	name = "幸存者 - 索罗金地层 - 合成人 - 陆军或PaP" // Either Army Reservist or PaP (COP)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	faction = FACTION_UPP
 	faction_group = FACTION_LIST_SURVIVOR_UPP
@@ -804,7 +804,7 @@
 // Corporate
 
 /datum/equipment_preset/synth/survivor/sorokyne/corporate
-	name = "Survivor - Sorokyne Strata - Synthetic - Hyperdyne - Executive Bodyguard"
+	name = "幸存者 - 索罗金地层 - 合成人 - 海珀戴恩 - 行政保镖"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	faction_group = FACTION_HYPERDYNE
 	faction = FACTION_HYPERDYNE
@@ -851,7 +851,7 @@
 // Science
 
 /datum/equipment_preset/synth/survivor/sorokyne/scientist
-	name = "Survivor - Sorokyne Strata - Synthetic - Cosmos Exploration Corps Researcher"
+	name = "幸存者 - 索罗金地层 - 合成人 - 宇宙探索军团研究员"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	faction = FACTION_UPP
 	faction_group = FACTION_LIST_SURVIVOR_UPP

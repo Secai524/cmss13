@@ -35,7 +35,7 @@
 			if (!C)
 				return
 			if(!target)
-				to_chat(usr, SPAN_WARNING("The object you tried to expose to [C] no longer exists (nulled or hard-deled)"), confidential = TRUE)
+				to_chat(usr, SPAN_WARNING("你试图向[C]公开的对象已不存在（已置空或硬删除）"), confidential = TRUE)
 				return
 			message_admins("[key_name_admin(usr)] showed [key_name_admin(C)] a <a href='byond://?_src_=vars;[HrefToken(forceGlobal = TRUE)];Vars=[REF(target)]'>VV window</a>")
 			log_admin("Admin [key_name(usr)] showed [key_name(C)] a VV window of a [target]")
@@ -61,13 +61,13 @@
 		names += componentsubtypes
 		names += "---Elements---"
 		names += sort_list(subtypesof(/datum/element), GLOBAL_PROC_REF(cmp_typepaths_asc))
-		var/result = tgui_input_list(usr, "Choose a component/element to add", "Add Component", names)
+		var/result = tgui_input_list(usr, "选择要添加的组件/元素", "Add Component", names)
 		if(isnull(result))
 			return
 		if(!usr || result == "---Components---" || result == "---Elements---")
 			return
 		if(QDELETED(src))
-			to_chat(usr, "That thing doesn't exist anymore!", confidential = TRUE)
+			to_chat(usr, "该对象已不存在！", confidential = TRUE)
 			return
 		var/list/lst = get_callproc_args()
 		if(!lst)
@@ -101,20 +101,20 @@
 		names += "---Elements---"
 		// We have to list every element here because there is no way to know what element is on this object without doing some sort of hack.
 		names += sort_list(subtypesof(/datum/element), GLOBAL_PROC_REF(cmp_typepaths_asc))
-		var/path = tgui_input_list(usr, "Choose a component/element to remove. All elements listed here may not be on the datum.", "Remove element", names)
+		var/path = tgui_input_list(usr, "选择要移除的组件/元素。此处列出的所有元素可能并不存在于该数据中。", "Remove element", names)
 		if(isnull(path))
 			return
 		if(!usr || path == "---Components---" || path == "---Elements---")
 			return
 		if(QDELETED(src))
-			to_chat(usr, "That thing doesn't exist anymore!")
+			to_chat(usr, "该对象已不存在！")
 			return
 		var/list/targets_to_remove_from = list(target)
 		if(mass_remove)
 			var/method = vv_subtype_prompt(target.type)
 			targets_to_remove_from = get_all_of_type(target.type, method)
 
-			if(alert(usr, "Are you sure you want to mass-delete [path] on [target.type]?", "Mass Remove Confirmation", "Yes", "No") == "No")
+			if(alert(usr, "你确定要批量删除[target.type]上的[path]吗？", "Mass Remove Confirmation", "Yes", "No") == "No")
 				return
 
 		for(var/datum/target_to_remove_from as anything in targets_to_remove_from)

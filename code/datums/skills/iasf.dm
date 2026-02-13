@@ -8,7 +8,7 @@ IASF - Paratrooper
 
 
 /datum/skills/iasf
-	name = "IASF - Paratrooper"
+	name = "IASF - 伞兵"
 	skills = list(
 		SKILL_CQC = SKILL_CQC_SKILLED,
 		SKILL_FIREARMS = SKILL_FIREARMS_SKILLED,
@@ -25,7 +25,7 @@ IASF - Paratrooper
 	)
 
 /datum/skills/iasf/specialist
-	name = "IASF - Paratrooper - Specialist" // Not used in inserts.
+	name = "IASF - 伞兵 - 专家" // Not used in inserts.
 	skills = list(
 		SKILL_CQC = SKILL_CQC_SKILLED,
 		SKILL_FIREARMS = SKILL_FIREARMS_MASTER,
@@ -42,7 +42,7 @@ IASF - Paratrooper
 	)
 
 /datum/skills/iasf/pilot
-	name = "IASF - Paratrooper - Pilot"
+	name = "IASF - 伞兵 - 飞行员"
 	skills = list(
 		SKILL_CQC = SKILL_CQC_SKILLED,
 		SKILL_FIREARMS = SKILL_FIREARMS_SKILLED,
@@ -60,7 +60,7 @@ IASF - Paratrooper
 	)
 
 /datum/skills/iasf/engi
-	name = "IASF - Paratrooper - Engineer"
+	name = "IASF - 伞兵 - 工程师"
 	skills = list(
 		SKILL_CQC = SKILL_CQC_SKILLED,
 		SKILL_FIREARMS = SKILL_FIREARMS_SKILLED,
@@ -78,7 +78,7 @@ IASF - Paratrooper
 	)
 
 /datum/skills/iasf/smartgun
-	name = "IASF - Paratrooper - Smartgunner"  // Not used in inserts.
+	name = "IASF - 伞兵 - 智能枪手"  // Not used in inserts.
 	skills = list(
 		SKILL_CQC = SKILL_CQC_SKILLED,
 		SKILL_FIREARMS = SKILL_FIREARMS_SKILLED,
@@ -96,7 +96,7 @@ IASF - Paratrooper
 	)
 
 /datum/skills/iasf/medic
-	name = "IASF - Paratrooper - Medic"
+	name = "IASF - 伞兵 - 医疗兵"
 	skills = list(
 		SKILL_CQC = SKILL_CQC_SKILLED,
 		SKILL_FIREARMS = SKILL_FIREARMS_SKILLED,
@@ -113,7 +113,7 @@ IASF - Paratrooper
 	)
 
 /datum/skills/iasf/leader
-	name = "IASF - Paratrooper - Squad Leader"
+	name = "IASF - 伞兵 - 班长"
 	skills = list(
 		SKILL_CQC = SKILL_CQC_SKILLED,
 		SKILL_FIREARMS = SKILL_FIREARMS_SKILLED,
@@ -133,7 +133,7 @@ IASF - Paratrooper
 	)
 
 /datum/skills/iasf/lieutenant
-	name = "IASF - Paratrooper - Officer"  // Not used in inserts.
+	name = "IASF - 伞兵 - 军官"  // Not used in inserts.
 	skills = list(
 		SKILL_CQC = SKILL_CQC_EXPERT,
 		SKILL_FIREARMS = SKILL_FIREARMS_SKILLED,
@@ -156,7 +156,7 @@ IASF - Paratrooper
 	)
 
 /datum/skills/iasf/captain
-	name = "IASF - Paratrooper - Captain"  // Not used in inserts.
+	name = "IASF - 伞兵 - 上尉"  // Not used in inserts.
 	skills = list(
 		SKILL_CQC = SKILL_CQC_EXPERT,
 		SKILL_FIREARMS = SKILL_FIREARMS_SKILLED,
@@ -179,7 +179,7 @@ IASF - Paratrooper
 	)
 
 /datum/skills/iasf/major
-	name = "IASF - Paratrooper - Major"  // Not used in inserts.
+	name = "IASF - 伞兵 - 少校"  // Not used in inserts.
 	skills = list(
 		SKILL_CQC = SKILL_CQC_EXPERT,
 		SKILL_FIREARMS = SKILL_FIREARMS_SKILLED,
@@ -204,7 +204,7 @@ IASF - Paratrooper
 	)
 
 /datum/skills/iasf/commander
-	name = "IASF - Paratrooper - Commanding Officer"
+	name = "IASF - 伞兵 - 指挥官"
 	skills = list(
 		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED,
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI,

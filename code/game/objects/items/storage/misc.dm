@@ -1,6 +1,6 @@
 /obj/item/storage/pill_bottle/dice
-	name = "pack of dice"
-	desc = "It's a small container with dice inside."
+	name = "一包骰子"
+	desc = "这是一个装有骰子的小容器。"
 
 /obj/item/storage/pill_bottle/dice/fill_preset_inventory()
 		new /obj/item/toy/dice( src )
@@ -14,7 +14,7 @@
 	icon = 'icons/obj/items/food/donuts.dmi'
 	icon_state = "donutbox"
 	name = "\improper Yum! donuts"
-	desc = "A box of mouth-watering \"<i>Yum!</i>\" brand donuts."
+	desc = "一盒令人垂涎的\"<i>Yum!</i>\" brand donuts."
 	storage_slots = 6
 	var/startswith = 6
 	var/open = 0
@@ -57,8 +57,8 @@
 /obj/item/storage/mateba_case
 	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "matebacase"
-	name = "Unica spare barrels case"
-	desc = "A wooden case used for storing the tools and parts needed to customize a Unica autorevolver. Comes with three barrel lengths and the necessary key to swap them out, as well as room for the gun itself."
+	name = "独角兽备用枪管箱"
+	desc = "一个用于存放定制独角兽自动左轮所需工具和零件的木箱。包含三种枪管长度、用于更换的必要工具，并有空间存放枪械本身。"
 	storage_slots = 5
 	can_hold = list(/obj/item/attachable/mateba, /obj/item/weapon/gun/revolver/mateba, /obj/item/weapon/mateba_key)
 
@@ -70,8 +70,8 @@
 
 /obj/item/storage/mateba_case/captain/council
 	icon_state = "c_matebacase"
-	name = "senior officer's Unica spare barrels case"
-	desc = "A black-ebony case used for storing the tools and parts needed to customize a Unica autorevolver, as well as room for the gun itself. This variant is custom-made for senior officers and comes with silver barrel attachments."
+	name = "高级军官独角兽备用枪管箱"
+	desc = "一个用于存放定制独角兽自动左轮所需工具和零件的乌木黑箱，并有空间存放枪械本身。此型号为高级军官定制，配有银色枪管附件。"
 
 /obj/item/storage/mateba_case/captain/council/fill_preset_inventory()
 	new /obj/item/attachable/mateba/short/silver(src)
@@ -81,8 +81,8 @@
 
 /obj/item/storage/mateba_case/captain/council_gold
 	icon_state = "c_matebacase"
-	name = "senior officer's Unica spare barrels case"
-	desc = "A black-ebony case used for storing the tools and parts needed to customize a Unica autorevolver, as well as room for the gun itself. This variant is custom-made for senior officers and comes with golden barrel attachments."
+	name = "高级军官独角兽备用枪管箱"
+	desc = "一个用于存放定制独角兽自动左轮所需工具和零件的乌木黑箱，并有空间存放枪械本身。此型号为高级军官定制，配有金色枪管附件。"
 
 /obj/item/storage/mateba_case/captain/council_gold/fill_preset_inventory()
 	new /obj/item/attachable/mateba/short/gold(src)
@@ -92,8 +92,8 @@
 
 /obj/item/storage/mateba_case/general
 	icon_state = "c_matebacase"
-	name = "luxurious Unica customization kit case"
-	desc = "A black-ebony case used for storing the tools and parts needed to customize a Unica autorevolver. This variant is made for general-grade golden Unicas and comes with golden barrel attachments."
+	name = "豪华独角兽定制套件箱"
+	desc = "一个用于存放定制独角兽自动左轮所需工具和零件的乌木黑箱。此型号为将官级金色独角兽定制，配有金色枪管附件。"
 
 /obj/item/storage/mateba_case/general/fill_preset_inventory()
 	new /obj/item/attachable/mateba/short/gold(src)
@@ -104,8 +104,8 @@
 //6 pack
 
 /obj/item/storage/beer_pack
-	name = "beer pack"
-	desc = "A pack of Aspen beer cans."
+	name = "啤酒包"
+	desc = "一包阿斯彭啤酒罐。"
 	icon = 'icons/obj/items/food/drinkcans.dmi'
 	icon_state = "6_pack_6"
 	item_state = "souto_classic"
@@ -129,8 +129,8 @@
 		icon_state = "6_pack_[length(contents)]"
 
 /obj/item/storage/box/clf
-	name = "D18-storing box"
-	desc = "A fairly decorated and ceremonial box containing a CLF D18 and a single additional magazine for it. I guess those CLF folk really care about their craftsmanship and prose rather than practicality, eh?"
+	name = "D18收纳盒"
+	desc = "一个装饰相当精美、颇具仪式感的盒子，内含一把CLF D18手枪和一个额外弹匣。我猜那些CLF的家伙更在意他们的工艺和腔调，而不是实用性，对吧？"
 	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "m43case"
 	w_class = SIZE_SMALL
@@ -143,8 +143,8 @@
 	new /obj/item/ammo_magazine/pistol/clfpistol(src)
 
 /obj/item/storage/box/upp //war trophy luger
-	name = "Type 73 storing case"
-	desc = "A small case containing the once-standard sidearm of the UPP, the Type 73, and two additional magazines. The contained sidearm is probably looted off a dead officer or from a captured stockpile, either way this thing is worth a pretty penny."
+	name = "73式收纳盒"
+	desc = "一个小盒子，装着UPP曾经的标准配枪——73式手枪，以及两个额外弹匣。里面的手枪很可能是从阵亡军官身上搜刮来的，或是从缴获的库存中拿的，不管怎样，这东西都值不少钱。"
 	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "matebacase"
 	w_class = SIZE_MEDIUM
@@ -158,8 +158,8 @@
 	new /obj/item/ammo_magazine/pistol/t73(src)
 
 /obj/item/storage/box/action
-	name = "AC71 'Action' storing case"
-	desc = "A small case containing an AC71 Action, a holdout pistol by Spearhead Armory. It was most likely brought by a marine from home, or taken from a colony without permission."
+	name = "AC71‘行动’收纳盒"
+	desc = "一个小盒子，内含一把矛头军械厂制造的AC71‘行动’型隐藏手枪。这很可能是陆战队员从家里带来的，或是未经许可从殖民地拿走的。"
 	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "m43case"
 	w_class = SIZE_SMALL
@@ -173,8 +173,8 @@
 	new /obj/item/ammo_magazine/pistol/action(src)
 
 /obj/item/storage/box/plinker
-	name = "W62 'Whisper' storing case"
-	desc = "A small case containing a W62 Whisper, a .22 ratkiller made by Spearhead Armory. It was most likely brought by a marine from home, or taken from a colony without permission."
+	name = "W62‘耳语’收纳盒"
+	desc = "一个小盒子，内含一把矛头军械厂制造的.22口径W62‘耳语’型灭鼠手枪。这很可能是陆战队员从家里带来的，或是未经许可从殖民地拿走的。"
 	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "m43case"
 	w_class = SIZE_MEDIUM
@@ -188,8 +188,8 @@
 	new /obj/item/ammo_magazine/pistol/holdout(src)
 
 /obj/item/storage/box/co2_knife
-	name = "M8 cartridge bayonet packaging"
-	desc = "Contains one M8 Cartridge Bayonet and two sister CO2 cartridges. Thanks for being a dedicated Boots magazine subscriber!"
+	name = "M8弹匣刺刀包装"
+	desc = "内含一把M8弹匣刺刀和两枚配套的CO2气瓶。感谢您成为《靴子》杂志的忠实订阅者！"
 	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "co2_box"
 	foldable = TRUE

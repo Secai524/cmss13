@@ -12,7 +12,7 @@
 		else
 			jmp_coords = coords = "in nullspace"
 
-	if (tgui_alert(usr, "Are you sure you want to delete:\n[D]\n[coords]?", "Confirmation", list("Yes", "No")) == "Yes")
+	if (tgui_alert(usr, "确定要删除：\n[D]\n[coords]？", "确认", list("Yes", "No")) == "Yes")
 		log_admin("[key_name(usr)] deleted [D] [coords]")
 		message_admins("[key_name_admin(usr)] deleted [D] [jmp_coords]")
 		if(isturf(D))

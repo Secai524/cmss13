@@ -11,11 +11,11 @@
 
 
 /datum/data/function/data_control
-	name = "data control"
+	name = "数据控制"
 
 
 /datum/data/function/id_changer
-	name = "id changer"
+	name = "身份修改器"
 
 
 /datum/data/record

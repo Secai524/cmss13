@@ -17,7 +17,7 @@
 	update_icon()
 
 /obj/structure/machinery/door/airlock/multi_tile/glass
-	name = "Glass Airlock"
+	name = "玻璃气闸"
 	icon = 'icons/obj/structures/doors/Door2x1glass.dmi'
 	opacity = FALSE
 	glass = TRUE
@@ -28,7 +28,7 @@
 	req_one_access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /obj/structure/machinery/door/airlock/multi_tile/security
-	name = "Security Airlock"
+	name = "安保气闸"
 	icon = 'icons/obj/structures/doors/Door2x1security.dmi'
 	opacity = FALSE
 	glass = TRUE
@@ -38,7 +38,7 @@
 	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND)
 
 /obj/structure/machinery/door/airlock/multi_tile/command
-	name = "Command Airlock"
+	name = "指挥气闸"
 	icon = 'icons/obj/structures/doors/Door2x1command.dmi'
 	opacity = FALSE
 	glass = TRUE
@@ -48,7 +48,7 @@
 	req_one_access = list(ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
 
 /obj/structure/machinery/door/airlock/multi_tile/medical
-	name = "Medical Airlock"
+	name = "医疗气闸"
 	icon = 'icons/obj/structures/doors/Door2x1medbay.dmi'
 	opacity = FALSE
 	glass = TRUE
@@ -58,7 +58,7 @@
 	req_one_access = list(ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_PUBLIC)
 
 /obj/structure/machinery/door/airlock/multi_tile/engineering
-	name = "Engineering Airlock"
+	name = "工程气闸"
 	icon = 'icons/obj/structures/doors/Door2x1engine.dmi'
 	opacity = FALSE
 	glass = TRUE
@@ -68,7 +68,7 @@
 	req_one_access = list(ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_LOGISTICS)
 
 /obj/structure/machinery/door/airlock/multi_tile/research
-	name = "Research Airlock"
+	name = "研究气闸"
 	icon = 'icons/obj/structures/doors/Door2x1research.dmi'
 	opacity = FALSE
 	glass = TRUE
@@ -79,7 +79,7 @@
 	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
 
 /obj/structure/machinery/door/airlock/multi_tile/research/reinforced
-	name = "Reinforced Research Airlock"
+	name = "强化研究气闸"
 	masterkey_resist = TRUE
 
 /obj/structure/machinery/door/airlock/multi_tile/research/reinforced/colony
@@ -87,7 +87,7 @@
 	req_one_access = list(ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_COMMAND, ACCESS_WY_COLONIAL)
 
 /obj/structure/machinery/door/airlock/multi_tile/secure
-	name = "Secure Airlock"
+	name = "安全气闸"
 	icon = 'icons/obj/structures/doors/Door2x1_secure.dmi'
 	openspeed = 34
 /obj/structure/machinery/door/airlock/multi_tile/secure/colony
@@ -95,7 +95,7 @@
 	req_one_access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /obj/structure/machinery/door/airlock/multi_tile/secure2
-	name = "Secure Airlock"
+	name = "安全气闸"
 	icon = 'icons/obj/structures/doors/Door2x1_secure2.dmi'
 	openspeed = 31
 	req_access = null
@@ -106,7 +106,7 @@
 
 
 /obj/structure/machinery/door/airlock/multi_tile/secure2_glass
-	name = "Secure Airlock"
+	name = "安全气闸"
 	icon = 'icons/obj/structures/doors/Door2x1_secure2_glass.dmi'
 	opacity = FALSE
 	glass = TRUE
@@ -262,19 +262,19 @@
 		if (control.status != SHUTTLE_DOOR_BROKEN)
 			return ..()
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED) && !skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
-			to_chat(user, SPAN_WARNING("You don't seem to understand how to restore a remote connection to [src]."))
+			to_chat(user, SPAN_WARNING("你似乎不明白如何恢复与[src]的远程连接。"))
 			return
 		if(user.action_busy)
 			return
 
-		to_chat(user, SPAN_WARNING("You begin to restore the remote connection to [src]."))
+		to_chat(user, SPAN_WARNING("你开始恢复与[src]的远程连接。"))
 		if(!do_after(user, (skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED) ? 5 SECONDS : 8 SECONDS), INTERRUPT_ALL, BUSY_ICON_BUILD))
-			to_chat(user, SPAN_WARNING("You fail to restore a remote connection to [src]."))
+			to_chat(user, SPAN_WARNING("你未能恢复与[src]的远程连接。"))
 			return
 		unlock(TRUE)
 		close(FALSE)
 		control.status = SHUTTLE_DOOR_UNLOCKED
-		to_chat(user, SPAN_WARNING("You successfully restored the remote connection to [src]."))
+		to_chat(user, SPAN_WARNING("你成功恢复了与[src]的远程连接。"))
 		return
 	. = ..()
 
@@ -309,10 +309,10 @@
 		control = linked_dropship.door_control.door_controllers[direction]
 
 	if(control && control.status == SHUTTLE_DOOR_BROKEN)
-		to_chat(xeno, SPAN_NOTICE("The door is already disabled."))
+		to_chat(xeno, SPAN_NOTICE("这扇门已被禁用。"))
 		return
 
-	to_chat(xeno, SPAN_WARNING("You try and force the doors open!"))
+	to_chat(xeno, SPAN_WARNING("你试图强行打开这扇门！"))
 	if(do_after(xeno, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		if(control)
 			control.status = SHUTTLE_DOOR_BROKEN
@@ -364,14 +364,14 @@
 	icon = 'icons/obj/structures/doors/dropship_upp_side2.dmi'
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/blastdoor
-	name = "bulkhead blast door"
+	name = "舱壁防爆门"
 	icon = 'icons/obj/structures/doors/almayerblastdoor.dmi'
-	desc = "A heavyset bulkhead door. Built to withstand explosions, gunshots, and extreme pressure. Chances are you're not getting through this."
+	desc = "一扇厚重的舱壁门。建造用于抵御爆炸、枪击和极端压力。你很可能无法通过这里。"
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat
-	name = "lifeboat docking hatch"
+	name = "救生艇对接舱口"
 	icon = 'icons/obj/structures/doors/lifeboatdoors.dmi'
-	desc = "A heavyset bulkhead for a lifeboat."
+	desc = "一扇用于救生艇的厚重舱壁。"
 	safe = FALSE
 	autoclose = FALSE
 	locked = TRUE
@@ -421,8 +421,8 @@
 
 /// External airlock that is part of the lifeboat dock
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor
-	name = "bulkhead blast door"
-	desc = "A heavyset bulkhead door. Built to withstand explosions, gunshots, and extreme pressure. Chances are you're not getting through this."
+	name = "舱壁防爆门"
+	desc = "一扇厚重的舱壁门。建造用于抵御爆炸、枪击和极端压力。你很可能无法通过这里。"
 	icon = 'icons/obj/structures/doors/almayerblastdoor.dmi'
 	safe = FALSE
 	/// ID of the related stationary docking port operating this
@@ -445,7 +445,7 @@
 			if(ismob(atom_movable) && !isobserver(atom_movable))
 				var/mob/mob = atom_movable
 				mob.apply_effect(10, STUN)
-				to_chat(mob, SPAN_HIGHDANGER("You get sucked into space!"))
+				to_chat(mob, SPAN_HIGHDANGER("你被吸入了太空！"))
 			else if(isobj(atom_movable))
 				var/obj/object = atom_movable
 				if(object.anchored)

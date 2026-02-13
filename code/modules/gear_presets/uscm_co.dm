@@ -1,5 +1,5 @@
 /datum/equipment_preset/uscm_co
-	name = "USCM Commanding Officer (CO)"
+	name = "USCM 指挥官（CO）"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 	faction = FACTION_MARINE
 	faction_group = FACTION_LIST_MARINE
@@ -111,7 +111,7 @@
 		new_human.equip_to_slot_or_del(new kit(new_human), WEAR_IN_BACK)
 
 /datum/equipment_preset/uscm_co/infantry
-	name = "Shipside - CO - Infantry"
+	name = "舰上 - CO - 步兵"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/cmcap/req/ro,
 		WEAR_L_EAR = /obj/item/device/radio/headset/almayer/mcom/cdrcom/co,
@@ -125,7 +125,7 @@
 	)
 
 /datum/equipment_preset/uscm_co/infantry/council
-	name = "Shipside - CO - Infantry - COUNCIL"
+	name = "舰上 - CO - 步兵 - 议会"
 	idtype = /obj/item/card/id/gold/council
 	paygrades = list(PAY_SHORT_MO5 = JOB_PLAYTIME_TIER_0)
 	whitelist_level = WHITELIST_COUNCIL
@@ -133,7 +133,7 @@
 	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/commander, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
 
 /datum/equipment_preset/uscm_co/infantry/council/plus
-	name = "Shipside - CO - Infantry - SENATOR"
+	name = "舰上 - CO - 步兵 - 参议员"
 	idtype = /obj/item/card/id/general
 	paygrades = list(PAY_SHORT_MO6 = JOB_PLAYTIME_TIER_0)
 	whitelist_level = WHITELIST_LEADER
@@ -142,7 +142,7 @@
 
 /datum/equipment_preset/uscm_co/intel
 
-	name = "Shipside - CO - Intel"
+	name = "舰上 - CO - 情报"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/beret/marine/commander/black,
 		WEAR_L_EAR = /obj/item/device/radio/headset/almayer/mcom/cdrcom/co,
@@ -155,7 +155,7 @@
 
 /datum/equipment_preset/uscm_co/intel/council
 
-	name = "Shipside - CO - Intel - COUNCIL"
+	name = "舰上 - CO - 情报 - 议会"
 	idtype = /obj/item/card/id/gold/council
 	paygrades = list(PAY_SHORT_MO5 = JOB_PLAYTIME_TIER_0)
 	whitelist_level = WHITELIST_COUNCIL
@@ -163,7 +163,7 @@
 	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/commander, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
 
 /datum/equipment_preset/uscm_co/intel/council/plus
-	name = "Shipside - CO - Intel - SENATOR"
+	name = "舰上 - CO - 情报 - 参议员"
 	idtype = /obj/item/card/id/general
 	paygrades = list(PAY_SHORT_MO6 = JOB_PLAYTIME_TIER_0)
 	whitelist_level = WHITELIST_LEADER
@@ -172,7 +172,7 @@
 
 /datum/equipment_preset/uscm_co/medical
 
-	name = "Shipside - CO - Medical"
+	name = "舰上 - CO - 医疗"
 	equipment_to_spawn = list(
 		WEAR_HEAD =	/obj/item/clothing/head/beret/marine/commander/dress,
 		WEAR_L_EAR = /obj/item/device/radio/headset/almayer/mcom/cdrcom/co,
@@ -184,7 +184,7 @@
 
 /datum/equipment_preset/uscm_co/medical/council
 
-	name = "Shipside - CO - Medical - COUNCIL"
+	name = "舰上 - CO - 医疗 - 议会"
 	idtype = /obj/item/card/id/gold/council
 	paygrades = list(PAY_SHORT_MO5 = JOB_PLAYTIME_TIER_0)
 	whitelist_level = WHITELIST_COUNCIL
@@ -192,7 +192,7 @@
 	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/commander, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
 
 /datum/equipment_preset/uscm_co/medical/council/plus
-	name = "Shipside - CO - Medical - SENATOR"
+	name = "舰上 - 指挥官 - 医疗 - 参议员"
 	idtype = /obj/item/card/id/general
 	paygrades = list(PAY_SHORT_MO6 = JOB_PLAYTIME_TIER_0)
 	whitelist_level = WHITELIST_LEADER
@@ -201,7 +201,7 @@
 
 /datum/equipment_preset/uscm_co/aviation
 
-	name = "Shipside - CO - Aviation"
+	name = "舰上 - 指挥官 - 航空"
 	equipment_to_spawn = list(
 		WEAR_L_EAR = /obj/item/device/radio/headset/almayer/mcom/cdrcom/co,
 		WEAR_BODY = /obj/item/clothing/under/marine/officer/formal/turtleneck,
@@ -216,7 +216,7 @@
 
 /datum/equipment_preset/uscm_co/aviation/council
 
-	name = "Shipside - CO - Aviation - COUNCIL"
+	name = "舰上 - 指挥官 - 航空 - 议会"
 	idtype = /obj/item/card/id/gold/council
 	paygrades = list(PAY_SHORT_MO5 = JOB_PLAYTIME_TIER_0)
 	whitelist_level = WHITELIST_COUNCIL
@@ -224,7 +224,7 @@
 	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/commander, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
 
 /datum/equipment_preset/uscm_co/aviation/council/plus
-	name = "Shipside - CO - Aviation - SENATOR"
+	name = "舰上 - 指挥官 - 航空 - 参议员"
 	idtype = /obj/item/card/id/general
 	paygrades = list(PAY_SHORT_MO6 = JOB_PLAYTIME_TIER_0)
 	whitelist_level = WHITELIST_LEADER
@@ -233,7 +233,7 @@
 
 /datum/equipment_preset/uscm_co/tanker
 
-	name = "Shipside - CO - Tanker"
+	name = "舰上 - 指挥官 - 油轮"
 	equipment_to_spawn = list(
 		WEAR_L_EAR = /obj/item/device/radio/headset/almayer/mcom/cdrcom/co,
 		WEAR_L_STORE = /obj/item/storage/pouch/pistol/command,
@@ -247,7 +247,7 @@
 	)
 
 /datum/equipment_preset/uscm_co/tanker/council
-	name = "Shipside - CO - Tanker - COUNCIL"
+	name = "舰上 - 指挥官 - 油轮 - 议会"
 	idtype = /obj/item/card/id/gold/council
 	paygrades = list(PAY_SHORT_MO5 = JOB_PLAYTIME_TIER_0)
 	whitelist_level = WHITELIST_COUNCIL
@@ -256,7 +256,7 @@
 
 
 /datum/equipment_preset/uscm_co/tanker/council/plus
-	name = "Shipside - CO - Tanker - SENATOR"
+	name = "舰上 - 指挥官 - 油轮 - 参议员"
 	idtype = /obj/item/card/id/general
 	paygrades = list(PAY_SHORT_MO6 = JOB_PLAYTIME_TIER_0)
 	whitelist_level = WHITELIST_LEADER
@@ -266,7 +266,7 @@
 
 /datum/equipment_preset/uscm_co/engineering
 
-	name = "Shipside - CO - Engineering"
+	name = "舰上 - 指挥官 - 工程部"
 	equipment_to_spawn = list(
 		WEAR_L_EAR = /obj/item/device/radio/headset/almayer/mcom/cdrcom/co,
 		WEAR_L_STORE = /obj/item/storage/pouch/pistol/command,
@@ -280,7 +280,7 @@
 	)
 
 /datum/equipment_preset/uscm_co/engineering/council
-	name = "Shipside - CO - Engineering - COUNCIL"
+	name = "舰上 - 指挥官 - 工程部 - 议会"
 	idtype = /obj/item/card/id/gold/council
 	paygrades = list(PAY_SHORT_MO5 = JOB_PLAYTIME_TIER_0)
 	whitelist_level = WHITELIST_COUNCIL
@@ -288,7 +288,7 @@
 	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/commander, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
 
 /datum/equipment_preset/uscm_co/engineering/council/plus
-	name = "Shipside - CO - Engineering - SENATOR"
+	name = "舰上 - 指挥官 - 工程部 - 参议员"
 	idtype = /obj/item/card/id/general
 	paygrades = list(PAY_SHORT_MO6 = JOB_PLAYTIME_TIER_0)
 	whitelist_level = WHITELIST_LEADER
@@ -296,7 +296,7 @@
 	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/commander, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
 
 /datum/equipment_preset/uscm_co/logistics
-	name = "Shipside - CO - Logistics"
+	name = "舰上 - 指挥官 - 后勤"
 	equipment_to_spawn = list(
 		WEAR_L_EAR = /obj/item/device/radio/headset/almayer/mcom/cdrcom/co,
 		WEAR_L_STORE = /obj/item/storage/pouch/pistol/command,
@@ -310,7 +310,7 @@
 	)
 
 /datum/equipment_preset/uscm_co/logistics/council
-	name = "Shipside - CO - Logistics - COUNCIL"
+	name = "舰上 - 指挥官 - 后勤 - 议会"
 	idtype = /obj/item/card/id/gold/council
 	paygrades = list(PAY_SHORT_MO5 = JOB_PLAYTIME_TIER_0)
 	whitelist_level = WHITELIST_COUNCIL
@@ -318,7 +318,7 @@
 	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/commander, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
 
 /datum/equipment_preset/uscm_co/logistics/council/plus
-	name = "Shipside - CO - Logistics - SENATOR"
+	name = "舰上 - 指挥官 - 后勤 - 参议员"
 	idtype = /obj/item/card/id/general
 	paygrades = list(PAY_SHORT_MO6 = JOB_PLAYTIME_TIER_0)
 	whitelist_level = WHITELIST_LEADER
@@ -326,7 +326,7 @@
 	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/commander, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
 
 /datum/equipment_preset/uscm_co/council
-	name = "USCM Commanding Officer (CO+)"
+	name = "USCM指挥官 (CO+)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/gold/council
@@ -345,7 +345,7 @@
 	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/commander, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
 
 /datum/equipment_preset/uscm_co/council/plus
-	name = "USCM Commanding Officer (CO++)"
+	name = "USCM指挥官 (CO++)"
 	idtype = /obj/item/card/id/general
 	paygrades = list(PAY_SHORT_MO6 = JOB_PLAYTIME_TIER_0)
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior, /obj/item/clothing/under/marine/dress/blues/general)
@@ -353,7 +353,7 @@
 	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/commander, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
 
 /datum/equipment_preset/uscm_co/visitor
-	name = "USCM Observer (Major) (VO)"
+	name = "USCM观察员 (少校) (VO)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_USCM_OBSV
@@ -362,9 +362,9 @@
 	minimap_background = "background_medical_WO"
 
 /datum/equipment_preset/uscm_co/visitor/ltcol
-	name = "USCM Observer (Lt. Col.) (VO)"
+	name = "USCM观察员 (中校) (VO)"
 	paygrades = list(PAY_SHORT_MO5 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/uscm_co/visitor/col
-	name = "USCM Observer (Colonel) (VO)"
+	name = "USCM观察员 (上校) (VO)"
 	paygrades = list(PAY_SHORT_MO6 = JOB_PLAYTIME_TIER_0)

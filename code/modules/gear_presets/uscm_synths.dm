@@ -1,7 +1,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/synth/uscm
-	name = "USCM Synthetic (Generalised)"
+	name = "USCM合成人（通用）"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 	faction = FACTION_MARINE
 	idtype = /obj/item/card/id/gold
@@ -40,14 +40,14 @@
 		new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 
 /datum/equipment_preset/synth/uscm/councillor
-	name = "USCM Synthetic Council (Generalised)"
+	name = "USCM合成人委员会（通用）"
 	paygrades = list(PAY_SHORT_MCWO = JOB_PLAYTIME_TIER_0)
 	is_council = TRUE
 
 //*****************************************************************************************************/
 
 /datum/equipment_preset/synth/uscm/wo
-	name = "WO Support Synthetic"
+	name = "WO支援合成人"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 
@@ -68,69 +68,69 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/synth/uscm/engineering
-	name = "USCM Synthetic (Engineering)"
+	name = "USCM合成人（工程部）"
 	paygrades = list(PAY_SHORT_MWO = JOB_PLAYTIME_TIER_0)
 	subtype = "eng"
 	assignment = "Engineering Synthetic"
 	manifest_title = "Engineering Synthetic"
 
 /datum/equipment_preset/synth/uscm/engineering/council
-	name = "USCM Synthetic Council (Engineering)"
+	name = "USCM合成人委员会（工程部）"
 	paygrades = list(PAY_SHORT_MCWO = JOB_PLAYTIME_TIER_0)
 	is_council = TRUE
 
 //*****************************************************************************************************/
 
 /datum/equipment_preset/synth/uscm/medical
-	name = "USCM Synthetic (Medical)"
+	name = "USCM合成人（医疗部）"
 	paygrades = list(PAY_SHORT_MWO = JOB_PLAYTIME_TIER_0)
 	subtype = "med"
 	assignment = "Medical Synthetic"
 	manifest_title = "Medical Synthetic"
 
 /datum/equipment_preset/synth/uscm/medical/council
-	name = "USCM Synthetic Council (Medical)"
+	name = "USCM合成人委员会（医疗部）"
 	paygrades = list(PAY_SHORT_MCWO = JOB_PLAYTIME_TIER_0)
 	is_council = TRUE
 
 //*****************************************************************************************************/
 
 /datum/equipment_preset/synth/uscm/intel
-	name = "USCM Synthetic (Intel)"
+	name = "USCM合成人（情报部）"
 	paygrades = list(PAY_SHORT_MWO = JOB_PLAYTIME_TIER_0)
 	subtype = "io"
 	assignment = "Intelligence Synthetic"
 	manifest_title = "Intelligence Synthetic"
 
 /datum/equipment_preset/synth/uscm/intel/council
-	name = "USCM Synthetic Council (Intel)"
+	name = "USCM合成人委员会（情报部）"
 	paygrades = list(PAY_SHORT_MCWO = JOB_PLAYTIME_TIER_0)
 	is_council = TRUE
 
 //*****************************************************************************************************/
 
 /datum/equipment_preset/synth/uscm/command
-	name = "USCM Synthetic (Command)"
+	name = "USCM合成人（指挥部）"
 	paygrades = list(PAY_SHORT_MWO = JOB_PLAYTIME_TIER_0)
 	subtype = "cmd"
 	assignment = "Command Support Synthetic"
 	manifest_title = "Command Support Synthetic"
 
 /datum/equipment_preset/synth/uscm/command/council
-	name = "USCM Synthetic Council (Command)"
+	name = "USCM合成人委员会（指挥部）"
 	paygrades = list(PAY_SHORT_MCWO = JOB_PLAYTIME_TIER_0)
 	is_council = TRUE
 
 //*****************************************************************************************************/
 
 /datum/equipment_preset/synth/uscm/mp
-	name = "USCM Synthetic (MP)"
+	name = "USCM合成人（宪兵）"
 	paygrades = list(PAY_SHORT_MWO = JOB_PLAYTIME_TIER_0)
 	subtype = "mp"
 	assignment = "Military Police Synthetic"
 
 /datum/equipment_preset/synth/uscm/mp/council
-	name = "USCM Synthetic Council (MP)"
+	name = "USCM合成人委员会（宪兵）"
 	paygrades = list(PAY_SHORT_MCWO = JOB_PLAYTIME_TIER_0)
 	is_council = TRUE
 

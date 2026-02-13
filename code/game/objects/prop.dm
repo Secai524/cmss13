@@ -1,6 +1,6 @@
 /obj/item/prop
 	name = "prop"
-	desc = "Some kind of prop."
+	desc = "某种道具。"
 
 /// A prop that acts as a replacement for another item, mimicking their looks.
 /// Mainly used in Reqs Tutorial to provide the full item selections without side effects.
@@ -27,7 +27,7 @@
 
 /obj/item/prop/laz_top
 	name = "lazertop"
-	desc = "A Rexim RXF-M5 EVA pistol compressed down into a laptop! Also known as the Laz-top. Part of a line of discreet assassination weapons developed for Greater Argentina and the United States covert programs respectively."
+	desc = "一把压缩成笔记本电脑的雷克西姆RXF-M5 EVA手枪！也被称为“Laz-top”。这是分别为大阿根廷和美国秘密项目开发的一系列隐蔽刺杀武器中的一员。"
 	icon_state = "laptop-gun"
 	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	item_state = ""
@@ -35,8 +35,8 @@
 	garbage = TRUE
 
 /obj/item/prop/geiger_counter
-	name = "geiger counter"
-	desc = "A geiger counter measures the radiation it receives. This type automatically records and transfers any information it reads, provided it has a battery, with no user input required beyond being enabled."
+	name = "盖革计数器"
+	desc = "盖革计数器测量其接收到的辐射。这种型号会自动记录并传输读取到的任何信息，前提是它有电池，除了开启外无需用户输入。"
 	icon = 'icons/obj/items/devices.dmi'
 	icon_state = "geiger"
 	item_state = ""
@@ -68,9 +68,9 @@
 	. = ..()
 	toggled_on = !toggled_on
 	if(!battery)
-		to_chat(user, SPAN_NOTICE("[src] is missing a battery."))
+		to_chat(user, SPAN_NOTICE("[src]缺少电池。"))
 		return
-	to_chat(user, SPAN_NOTICE("You [toggled_on ? "enable" : "disable"] [src]."))
+	to_chat(user, SPAN_NOTICE("你[toggled_on ? "enable" : "disable"] [src]."))
 	update_icon()
 
 /obj/item/prop/geiger_counter/attackby(obj/item/attacking_item, mob/user)
@@ -79,9 +79,9 @@
 		return
 
 	if(!battery)
-		to_chat(user, SPAN_NOTICE("There is no battery for you to remove."))
+		to_chat(user, SPAN_NOTICE("没有电池可供你移除。"))
 		return
-	to_chat(user, SPAN_NOTICE("You jam [battery] out of [src] with [attacking_item], prying it out irreversibly."))
+	to_chat(user, SPAN_NOTICE("你用[attacking_item]将[battery]从[src]中撬出，使其不可逆地脱落。"))
 	user.put_in_hands(battery)
 	battery = null
 	update_icon()
@@ -95,84 +95,84 @@
 	icon_state = disabled_state
 
 /obj/item/prop/tableflag
-	name = "United Americas table flag"
-	desc = "A miniature table flag of the United Americas, representing all of North, South, and Central America."
+	name = "美洲合众国桌旗"
+	desc = "一面代表整个北美、南美和中美洲的美洲合众国微型桌旗。"
 	icon = 'icons/obj/items/table_decorations.dmi'
 	icon_state = "uaflag"
 	force = 0.5
 	w_class = SIZE_SMALL
 
 /obj/item/prop/tableflag/uscm
-	name = "USCM table flag"
-	desc = "A miniature table flag of the United States Colonial Marines. 'Semper Fi' is written on the flag's bottom."
+	name = "USCM桌旗"
+	desc = "一面美国殖民地海军陆战队的微型桌旗。旗帜底部写有“Semper Fi”（永远忠诚）。"
 	icon_state = "uscmflag"
 
 /obj/item/prop/tableflag/uscm2
-	name = "USCM historical table flag"
-	desc = "A miniature historical table flag of the United States Colonial Marines, in traditional scarlet and gold. The USCM logo sits in the center; an eagle is perched atop it and an anchor rests behind it."
+	name = "USCM历史桌旗"
+	desc = "一面美国殖民地海军陆战队的传统猩红与金色微型历史桌旗。USCM徽标位于中央；一只鹰栖息其上，后方衬有一个船锚。"
 	icon_state = "uscmflag2"
 
 /obj/item/prop/tableflag/upp
-	name = "UPP table flag"
-	desc = "A miniature table flag of the Union of Progressive Peoples, consisting of 17 yellow stars, surrounding the bigger one in the middle on scarlet field."
+	name = "UPP桌旗"
+	desc = "一面进步人民联盟的微型桌旗，猩红的背景上环绕着17颗黄色星星，中间是一颗更大的星。"
 	icon_state = "uppflag"
 
 /obj/item/prop/flower_vase
-	name = "flower vase"
-	desc = "An empty glass flower vase."
+	name = "花瓶"
+	desc = "一个空的玻璃花瓶。"
 	icon_state = "flowervase"
 	icon = 'icons/obj/items/table_decorations.dmi'
 	w_class = SIZE_SMALL
 
 /obj/item/prop/flower_vase/bluewhiteflowers
-	name = "vase of blue and white flowers"
-	desc = "A flower vase filled with blue and white roses."
+	name = "蓝白花束花瓶"
+	desc = "一个插满蓝色和白色玫瑰的花瓶。"
 	icon_state = "bluewhiteflowers"
 
 /obj/item/prop/flower_vase/redwhiteflowers
-	name = "vase of red and white flowers"
-	desc = "A flower vase filled with red and white roses."
+	name = "红白花束花瓶"
+	desc = "一个插满红色和白色玫瑰的花瓶。"
 	icon_state = "redwhiteflowers"
 
 /obj/item/prop/colony/usedbandage
-	name = "dirty bandages"
-	desc = "Some used gauze."
+	name = "脏绷带"
+	desc = "一些用过的纱布。"
 	icon_state = "bandages_prop"
 	icon = 'icons/obj/structures/props/furniture/misc.dmi'
 
 /obj/item/prop/colony/used_flare
 	name = "flare"
-	desc = "A used USCM issued flare. There are instructions on the side, it reads 'pull cord, make light'."
+	desc = "一根用过的USCM制式照明弹。侧面有使用说明，写着‘拉绳，发光’。"
 	icon_state = "flare-empty"
 	icon = 'icons/obj/items/lighting.dmi'
 
 /obj/item/prop/colony/canister
-	name = "fuel can"
-	desc = "A jerry can. In space! Or maybe a colony."
+	name = "燃料罐"
+	desc = "一个油桶。在太空里！或者也许在某个殖民地。"
 	icon_state = "canister"
 	icon = 'icons/obj/items/tank.dmi'
 
 /obj/item/prop/colony/proptag
-	name = "information dog tag"
-	desc = "A fallen marine's information dog tag. It reads,(BLANK)"
+	name = "信息身份牌"
+	desc = "一名阵亡陆战队员的信息身份牌。上面写着：（空白）"
 	icon_state = "dogtag_taken"
 	icon = 'icons/obj/items/card.dmi'
 
 /obj/item/prop/colony/game
-	name = "portable game kit"
-	desc = "A ThinkPad Systems Game-Bro Handheld (TSGBH, shortened). It can play chess, checkers, tri-d chess, and it also runs Byond! Except this one is out of batteries."
+	name = "便携式游戏套件"
+	desc = "一台ThinkPad Systems Game-Bro掌上游戏机（简称TSGBH）。可以玩国际象棋、跳棋、三维象棋，还能运行Byond！不过这台没电了。"
 	icon_state = "game_kit"
 	icon = 'icons/obj/items/toy.dmi'
 
 /obj/item/prop/gripper
-	name = "magnetic gripper"
-	desc = "A simple grasping tool for synthetic assets."
+	name = "磁性抓取器"
+	desc = "一种供合成人资产使用的简易抓取工具。"
 	icon_state = "gripper"
 	icon = 'icons/obj/items/devices.dmi'
 
 /obj/item/prop/matter_decompiler
-	name = "matter decompiler"
-	desc = "Eating trash, bits of glass, or other debris will replenish your stores."
+	name = "物质解译器"
+	desc = "吞食垃圾、玻璃碎片或其他碎屑将补充你的储备。"
 	icon_state = "decompiler"
 	icon = 'icons/obj/items/devices.dmi'
 
@@ -180,7 +180,7 @@
 
 /obj/item/prop/alien/hugger
 	name = "????"
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?"
+	desc = "它的尾巴末端有某种管状物。这到底是什么鬼东西？"
 	icon = 'icons/mob/xenos/effects.dmi'
 	icon_state = "facehugger_impregnated"
 
@@ -188,64 +188,64 @@
 //Put any props that don't function properly, they could function in the future but for now are for looks. This system could be expanded for other maps too. ~Art
 
 /obj/item/prop/almayer
-	name = "GENERIC USS ALMAYER PROP"
-	desc = "THIS SHOULDN'T BE VISIBLE, IF YOU SEE THIS THERE IS A PROBLEM IN THE PROP.DM FILE MAKE A BUG REPORT "
+	name = "通用阿尔迈耶号道具"
+	desc = "此内容不应可见，如果你看到这个，说明PROP.DM文件存在问题，请提交错误报告"
 	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi'
 	icon_state = "hangarbox"
 
 /obj/item/prop/almayer/box
-	name = "metal crate"
-	desc = "A metal crate used often for storing small electronics that go into dropships."
+	name = "金属板条箱"
+	desc = "一种常用于存放运输机小型电子设备的金属板条箱。"
 	icon_state = "hangarbox"
 	w_class = SIZE_LARGE
 
 /obj/item/prop/almayer/flight_recorder
 	name = "\improper FR-112 flight recorder"
-	desc = "A small red box that contains flight data from a dropship while it's on mission. Usually referred to as the black box, although this one comes in bloody red."
+	desc = "一个小红盒子，内含运输机执行任务期间的飞行数据。通常被称为黑匣子，尽管这个是血红色的。"
 	icon_state = "flight_recorder"
 	w_class = SIZE_LARGE
 
 /obj/item/prop/almayer/flight_recorder/colony
 	name = "\improper CIR-60 colony information recorder"
-	desc = "A small red box that records colony announcements, colonist flatlines and other key readouts. Usually referred to the black box, although this one comes in bloody red."
+	desc = "一个小红盒子，记录殖民地公告、殖民者生命体征消失及其他关键读数。通常被称为黑匣子，尽管这个是血红色的。"
 	icon_state = "flight_recorder"
 	w_class = SIZE_LARGE
 
 /obj/item/prop/almayer/flare_launcher
 	name = "\improper MJU-77/C case"
-	desc = "A flare launcher that usually gets mounted onto dropships to help survivability against infrared tracking missiles."
+	desc = "一种通常安装在运输机上的照明弹发射器，用于提高对抗红外制导导弹的生存能力。"
 	icon_state = "flare_launcher"
 	w_class = SIZE_SMALL
 
 /obj/item/prop/almayer/chaff_launcher
 	name = "\improper RR-247 Chaff case"
-	desc = "A chaff launcher that usually gets mounted onto dropships to help survivability against radar tracking missiles."
+	desc = "一种通常安装在运输机上的箔条发射器，用于提高对抗雷达制导导弹的生存能力。"
 	icon_state = "chaff_launcher"
 	w_class = SIZE_MEDIUM
 
 /obj/item/prop/almayer/handheld1
-	name = "small handheld"
-	desc = "A small piece of electronic doodads."
+	name = "小型手持设备"
+	desc = "一小块电子小玩意儿。"
 	icon_state = "handheld1"
 	w_class = SIZE_SMALL
 
 /obj/item/prop/almayer/comp_closed
-	name = "dropship maintenance computer"
-	desc = "A closed dropship maintenance computer that technicians and pilots use to find out what's wrong with a dropship. It has various outlets for different systems."
+	name = "运输机维护电脑"
+	desc = "一台关闭的运输机维护电脑，技术员和飞行员用它来排查运输机故障。它有为不同系统准备的各种接口。"
 	icon_state = "hangar_comp"
 	w_class = SIZE_LARGE
 
 /obj/item/prop/almayer/comp_open
-	name = "dropship maintenance computer"
-	desc = "An opened dropship maintenance computer, it seems to be off however. It's used by technicians and pilots to find damaged or broken systems on a dropship. It has various outlets for different systems."
+	name = "运输机维护电脑"
+	desc = "一台打开的运输机维护电脑，但似乎处于关闭状态。技术员和飞行员用它来定位运输机上的受损或故障系统。它有为不同系统准备的各种接口。"
 	icon_state = "hangar_comp_open"
 	w_class = SIZE_LARGE
 
 //lore fluff books and magazines
 
 /obj/item/prop/magazine
-	name = "generic prop magazine"
-	desc = "A Magazine with a picture of a pretty girl on it..wait isn't that my mom?"
+	name = "普通道具杂志"
+	desc = "一本封面上印着漂亮女孩的杂志……等等，那不是我老妈吗？"
 	icon = 'icons/obj/structures/props/wall_decorations/posters.dmi'
 	icon_state = "poster15"
 	throw_speed = SPEED_FAST
@@ -258,13 +258,13 @@
 
 //random magazines
 /obj/item/prop/magazine/dirty
-	name = "Dirty Magazine"
-	desc = "Wawaweewa."
+	name = "色情杂志"
+	desc = "哇哇哇哇。"
 	icon_state = "poster17"
 
 /obj/item/prop/magazine/dirty/torn
 	name = "\improper torn magazine page"
-	desc = "Hubba hubba."
+	desc = "哇哦哇哦。"
 
 /obj/item/prop/magazine/dirty/torn/alt
 	icon_state = "poster3"
@@ -272,116 +272,116 @@
 
 //books
 /obj/item/prop/magazine/book
-	name = "generic prop book"
-	desc = "Some generic hardcover book containing letters that, when grouped, form what we usually call 'words'. It's pages are made of paper, a material created with cellulose, being that a component usually found in trees."
+	name = "普通道具书籍"
+	desc = "一本普通的精装书，里面的字母组合起来，形成了我们通常所说的‘单词’。它的书页由纸张制成，这是一种用纤维素（通常存在于树木中）创造的材料。"
 	icon = 'icons/obj/items/books.dmi'
 	icon_state = "book_white"
 	item_state = "book_white"
 
 /obj/item/prop/magazine/book/spacebeast //The presence of this book is actually anachronistic, given that it was only published in 2183
 	name = "\improper Space Beast, by Robert Morse"
-	desc = "An autobiography focusing on the events of 'Fury 161' in August 2179 following the arrival of 'Ellen Ripley' and an unknown alien creature known as 'The Dragon' the books writing is extremely crude and was book banned shorty after publication."
+	desc = "一本聚焦于2179年8月‘Fury 161’事件的自传，讲述了‘艾伦·雷普利’和一种被称为‘巨龙’的未知外星生物抵达后的故事。该书文笔极其粗劣，出版后不久即被禁。"
 	icon_state = "book_dark"
 	item_state = "book_dark"
 
 /obj/item/prop/magazine/book/borntokill
 	name = "\improper Born to Kill"
-	desc = "An autobiography penned by Derik A.W. Tomahawk it recounts his service in the United States Colonial Marines (USCM), more specifically in the third fleet. The book was harshly criticised by the general public and even some members of the United Americas (UA) military for it's bland, repetitive and lifeless writing, consequently giving it quite a bad reception. However, artificial soldiers typically like and value the information contained within."
+	desc = "德里克·A·W·战斧撰写的自传，记述了他在美国殖民地海军陆战队（USCM），更具体地说是第三舰队服役的经历。该书因其平淡、重复且毫无生气的文笔而受到公众甚至一些联合美洲（UA）军方成员的严厉批评，因此反响相当糟糕。然而，合成人士兵通常喜欢并重视其中包含的信息。"
 	icon_state = "book_green"
 	item_state = "book_green"
 
 /obj/item/prop/magazine/book/bladerunner
 	name = "\improper Bladerunner: A True Detectives Story"
-	desc = "In the dark undercity of Luna 2119, blade runner Richard Ford is called out of retirement to terminate a cult of replicants who have escaped Earth seeking the meaning of their existence."
+	desc = "在2119年月球黑暗的地下城中，银翼杀手理查德·福特被召出退休，奉命处决一群逃离地球、寻求存在意义的复制人教派。"
 	icon_state = "book_tan"
 	item_state = "book_tan"
 
 /obj/item/prop/magazine/book/starshiptroopers
-	name = "Starship Troopers"
-	desc = "Written by Robert A. Heinlein, this book really missed the mark when it comes to the individual equipment it depicts our 'troopers' having, but it's still issued to every marine in basic so it must have some value."
+	name = "星河战队"
+	desc = "罗伯特·A·海因莱因所著，这本书在描绘我们‘士兵’拥有的个人装备方面确实偏离了现实，但它仍然被发放给每个基础训练中的陆战队员，所以肯定有其价值。"
 	icon_state = "book_blue"
 	item_state = "book_blue"
 
 /obj/item/prop/magazine/book/theartofwar
-	name = "The Art of War"
-	desc = "A treatise on war written by the legendary Sun Tzu, a great general, strategist, and philosopher from ancient Earth. This book is on the Commandant of the United States Colonial Marine Corps reading list and most officers can be found in possession of a copy. Most officers who've read it claim to know a little bit more about fighting than most who did not, but results may vary a lot."
+	name = "孙子兵法"
+	desc = "由古代地球的伟大将军、战略家和哲学家——传奇人物孙武所著的战争论著。这本书在美国殖民地海军陆战队司令的推荐阅读书目上，大多数军官都有一本。读过此书的军官大多声称比没读过的人更懂战斗，但实际效果可能因人而异。"
 	icon_state = "book_red"
 	item_state = "book_red"
 
 //boots magazine
 /obj/item/prop/magazine/boots
-	name = "generic Boots! magazine"
-	desc = "The only official USCM magazine!"
+	name = "普通《军靴！》杂志"
+	desc = "唯一官方的USCM杂志！"
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "boots!"
 
 /obj/item/prop/magazine/boots/n07
-	name = "Boots!: Issue No.7"
-	desc = "The only official USCM magazine, the headline reads 'The Future Soldier!'. The short paragraph following describes the B18 Defensive Armor on how it is designed to make the modern marine invincible and that it has recently finished trials, raising the expectations of the brass for this new piece of gear."
+	name = "《军靴！》：第7期"
+	desc = "唯一官方的USCM杂志，头条标题是‘未来士兵！’。随后的短段落描述了B18防御护甲，旨在使现代陆战队员刀枪不入，并称其最近已完成测试，提升了高层对这种新装备的期望。"
 
 /obj/item/prop/magazine/boots/n45
-	name = "Boots!: Issue No. 45"
-	desc = "The only official USCM magazine, the headline reads 'Your sidearm and You!' with the subtitle 'Your best sleeping companion' right below it. The first part of the article explains basic sidearm maintenance and includes a small advertisement for a well-known gunsmith on Gateway Station. The second describes the best positions to sleep with your sidearm under the pillow in case of unexpected seditious activity."
+	name = "《军靴！》：第45期"
+	desc = "唯一官方的USCM杂志，头条标题是‘你的配枪与你！’，副标题‘你最好的睡眠伴侣’紧随其后。文章第一部分解释了基本的配枪维护，并附有一则位于门户空间站的知名枪匠的小广告。第二部分描述了在发生意外叛乱活动时，将配枪放在枕头下睡觉的最佳姿势。"
 
 /obj/item/prop/magazine/boots/n054
-	name = "Boots!: Issue No.54"
-	desc = "The only official USCM magazine, the headline reads 'Armat strikes back against litigants in M41A-MK2 self cleaning case'."
+	name = "《军靴！》第54期"
+	desc = "这是USCM唯一的官方杂志，头条标题是‘阿玛特公司在M41A-MK2自清洁案中对诉讼人发起反击’。"
 
 /obj/item/prop/magazine/boots/n055
-	name = "Boots!: Issue No.55"
-	desc = "The only official USCM magazine, the headline reads 'TEN tips to keep your UD4 cockpit both safer and more relaxing'."
+	name = "《军靴！》第55期"
+	desc = "这是USCM唯一的官方杂志，头条标题是‘保持你的UD4驾驶舱更安全、更舒适的十大技巧’。"
 
 /obj/item/prop/magazine/boots/n058
-	name = "Boots!: Issue No.58"
-	desc = "The only official USCM magazine, the headline reads 'Swift, Silent, Deadly: Tientsin'. The article then goes on to describe the experience of the 1st FORECON Battalion veterans in the Tientsin campaign and the harsh jungle environment they had to go through when dealing with UPP and Local Guerrillas."
+	name = "《军靴！》第58期"
+	desc = "这是USCM唯一的官方杂志，头条标题是‘迅捷、无声、致命：天津行动’。文章随后描述了第一侦察营老兵在天津战役中的经历，以及他们在对付UPP和当地游击队时不得不面对的严酷丛林环境。"
 
 /obj/item/prop/magazine/boots/n070
-	name = "Boots!: Issue No.70"
-	desc = "The only official USCM magazine, the headline reads “Marine 70, The Future of Warfare.” The article then goes on to detail the plans and implementation of Marine 70, a program designed to help modernize the USCM for 2170."
+	name = "《军靴！》第70期"
+	desc = "这是USCM唯一的官方杂志，头条标题是‘陆战队员70，战争的未来’。文章随后详细介绍了‘陆战队员70’计划的规划和实施，该计划旨在帮助USCM在2170年实现现代化。"
 
 /obj/item/prop/magazine/boots/n113
-	name = "Boots!: Issue No.113"
-	desc = "The only official USCM magazine, the headline reads 'Canberra, the Forward edge of the battle'. The article then goes on to detail the Fierce urban combat the marines had to face against Australian rebels, a few accounts from tankers on the effectiveness of the new M40 Ridgeway, and recent sightings of Marines Special Forces (Raiders) in the AO."
+	name = "《军靴！》第113期"
+	desc = "这是USCM唯一的官方杂志，头条标题是‘堪培拉，战斗的前沿’。文章随后详细描述了陆战队员不得不面对的激烈城市战斗，一些坦克兵关于新型M40里奇威坦克效能的记述，以及最近在行动区域内目击到陆战队特种部队（突袭者）的情况。"
 
 /obj/item/prop/magazine/boots/n117
-	name = "Boots!: Issue No.117"
-	desc = "The only official USCM magazine, the headline reads 'STOP CANNING'. The short paragraph further explains the dangers of marines throwing CN-20 Nerve gas into bathrooms as a prank."
+	name = "《军靴！》第117期"
+	desc = "这是USCM唯一的官方杂志，头条标题是‘停止投毒’。短文进一步解释了陆战队员将CN-20神经毒气扔进卫生间作为恶作剧的危险性。"
 
 /obj/item/prop/magazine/boots/n120
-	name = "Boots!: Special Commemorative Issue No.120"
-	desc = "The only official USCM magazine, the headline reads 'Wallace Kelly Haar, 2136-2181'."
+	name = "《军靴！》特别纪念刊第120期"
+	desc = "这是USCM唯一的官方杂志，头条标题是‘华莱士·凯利·哈尔，2136-2181’。"
 
 /obj/item/prop/magazine/boots/n125
-	name = "Boots!: Issue No. 125"
-	desc = "The only official USCM magazine, the headline reads 'Bravo Squad… not just for FOB duty!'. Despite the title the article primarily consists of photos of barricades and diagrams on arrangements for ammo boxes."
+	name = "《军靴！》第125期"
+	desc = "这是USCM唯一的官方杂志，头条标题是‘布拉沃班……不只是负责前哨基地勤务！’。尽管标题如此，文章主要由路障照片和弹药箱摆放示意图组成。"
 
 /obj/item/prop/magazine/boots/n131
-	name = "Boots!: Issue No. 131"
-	desc =  "The only official USCM magazine, the headline reads 'NO HOTBOXING'. The following paragraph goes into detail about how the HSDP smoke grenades are not safe for long period inhalation exposure and how hypoxia is a poor way to get high."
+	name = "《军靴！》第131期"
+	desc =  "这是USCM唯一的官方杂志，头条标题是‘禁止闷烧’。接下来的段落详细说明了HSDP烟雾弹不适合长时间吸入暴露，以及缺氧是一种糟糕的致幻方式。"
 
 /obj/item/prop/magazine/boots/n150
-	name = "Boots!: Issue No.150"
-	desc = "The only official USCM magazine, the headline reads 'UPP Rations, The truth.' the short paragraph further explains UPP field rations aren't standardized and are produced at a local level. Because of this, captured and confiscated UPP rations have included some odd choices such as duck liver, century eggs, lutefisk, pickled pig snout, canned tripe, and dehydrated candied radish snacks."
+	name = "《军靴！》第150期"
+	desc = "这是USCM唯一的官方杂志，头条标题是‘UPP口粮，真相’。短文进一步解释说，UPP野战口粮并未标准化，而是在地方层面生产。因此，缴获和没收的UPP口粮中包含了一些奇怪的选择，例如鸭肝、皮蛋、碱渍鳕鱼、腌猪鼻、罐头牛肚和脱水糖渍萝卜零食。"
 
 /obj/item/prop/magazine/boots/n160
-	name = "Boots!: Issue No.160"
-	desc = "The only official USCM magazine, the headline reads 'Corporate Liaison 'emotionally exhausted' from screwing so many people over.'"
+	name = "《军靴！》第160期"
+	desc = "这是USCM唯一的官方杂志，头条标题是‘公司联络官因坑害太多人而‘情感枯竭’’。"
 
 /obj/item/prop/magazine/boots/n189
-	name = "Boots!: Issue No.189"
-	desc = "The only official USCM magazine, the headline reads 'Military Police Edition, those that help marines help themselves!'. As with every copy you have ever seen of Issue 189, someone has taken the time to deface it with crude language and unseemly drawings."
+	name = "《军靴！》第189期"
+	desc = "这是USCM唯一的官方杂志，头条标题是‘宪兵特辑，那些帮助陆战队员自助的人！’。就像你见过的每一本第189期杂志一样，有人花时间用粗俗的语言和不雅的图画对它进行了涂鸦。"
 
 // Massive Digger by dimdimich1996
 
 /obj/structure/prop/invuln/dense/excavator
-	name = "Model 30 Light Excavator"
-	desc = "Weyland-Yutani Corporation's Model 30 Light Excavator. Despite looking like a massive beast, the Model 30 is fairly light when compared to other W-Y terraforming excavators. It's designed to be able to be disassembled for transport and re-assembled on site. This one is a nice orange color."
+	name = "30型轻型挖掘机"
+	desc = "维兰德-汤谷公司30型轻型挖掘机。尽管看起来像一头巨兽，但与其他W-Y地形改造挖掘机相比，30型相当轻便。其设计可拆卸运输并在现场重新组装。这台是漂亮的橙色。"
 	icon = 'icons/obj/structures/props/digger.dmi'
 	icon_state = "digger_orange"
 	layer = BIG_XENO_LAYER
 
 /obj/structure/prop/invuln/dense/excavator/gray
-	desc = "Weyland-Yutani Corporation's Model 30 Light Excavator. Despite looking like a massive beast, the Model 30 is fairly light when compared to other W-Y terraforming excavators. It's designed to be able to be disassembled for transport and re-assembled on site. This one is a nice gray color."
+	desc = "维兰德-汤谷公司30型轻型挖掘机。尽管看起来像一头巨兽，但与其他W-Y地形改造挖掘机相比，30型相当轻便。其设计可拆卸运输并在现场重新组装。这台是漂亮的灰色。"
 	icon_state = "digger_gray"
 
 /obj/structure/prop/invuln/dense/excavator/Initialize()

@@ -1,6 +1,6 @@
 /obj/vehicle/multitile/arc
 	name = "\improper M540-B Armored Recon Carrier"
-	desc = "An M540-B Armored Recon Carrier. A lightly armored reconnaissance and intelligence vehicle. Entrances on the sides."
+	desc = "一辆M540-B装甲侦察车。一种轻型装甲侦察与情报车辆。侧方有入口。"
 
 	icon = 'icons/obj/vehicles/arc.dmi'
 	icon_state = "arc_base"
@@ -154,7 +154,7 @@
 	role_reserved_slots += RRS
 
 	RRS = new
-	RRS.category_name = "Intelligence Officer"
+	RRS.category_name = "情报官"
 	RRS.roles = list(JOB_INTEL)
 	RRS.total = 1
 	role_reserved_slots += RRS
@@ -209,7 +209,7 @@
 		return
 
 	if(health > 0)
-		to_chat(user, SPAN_XENO("We can't go under [src] until it is destroyed!"))
+		to_chat(user, SPAN_XENO("在[src]被摧毁前，我们无法从下方通过！"))
 		return
 
 	var/turf/current_turf = get_turf(user)
@@ -220,28 +220,28 @@
 			break
 
 		if(current_turf.density)
-			to_chat(user, SPAN_XENO("The path under [src] is obstructed!"))
+			to_chat(user, SPAN_XENO("[src]下方的路径被阻挡了！"))
 			return
 
 	// Now we check to make sure the turf on the other side of the ARC isn't dense too
 	current_turf = get_step(current_turf, dir_to_go)
 	if(current_turf.density)
-		to_chat(user, SPAN_XENO("The path under [src] is obstructed!"))
+		to_chat(user, SPAN_XENO("[src]下方的路径被阻挡了！"))
 		return
 
-	to_chat(user, SPAN_XENO("We begin to crawl under [src]..."))
+	to_chat(user, SPAN_XENO("我们开始从[src]下方爬行..."))
 	if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-		to_chat(user, SPAN_XENO("We stop crawling under [src]."))
+		to_chat(user, SPAN_XENO("我们停止从[src]下方爬行。"))
 		return
 
 	user.forceMove(current_turf)
-	to_chat(user, SPAN_XENO("We crawl to the other side of [src]."))
+	to_chat(user, SPAN_XENO("我们爬到了[src]的另一侧。"))
 
 /*
 ** PRESETS SPAWNERS
 */
 /obj/effect/vehicle_spawner/arc
-	name = "ARC Transport Spawner"
+	name = "装甲侦察车运输型生成器"
 	icon = 'icons/obj/vehicles/apc.dmi'
 	icon_state = "apc_base"
 	pixel_x = -48

@@ -1,12 +1,12 @@
 /turf/closed/wall/r_wall/bunker/floodgate
-	name = "flood gate"
-	desc = "A gate, designed to help prevent flooding. It can only be closed for a certain period of time, but would allow parts of the river to flow through filtered."
+	name = "防洪闸门"
+	desc = "一道用于帮助防止洪水的闸门。它只能关闭一段时间，但能让部分河水经过过滤后通过。"
 	density = TRUE
 	turf_flags = TURF_HULL
 
 /obj/structure/floodgate
-	name = "flood gate"
-	desc = "A gate, designed to help prevent flooding. It can only be closed for a certain period of time, but would allow parts of the river to flow through filtered."
+	name = "防洪闸门"
+	desc = "一道用于帮助防止洪水的闸门。它只能关闭一段时间，但能让部分河水经过过滤后通过。"
 	icon = 'icons/turf/walls/bunker.dmi'
 	icon_state = "gate_west"
 	density = TRUE

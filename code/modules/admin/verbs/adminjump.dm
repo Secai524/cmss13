@@ -9,7 +9,7 @@
 	set category = null
 
 	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return
 
 	if(!src.mob)
@@ -18,7 +18,7 @@
 	var/list/area_turfs = get_area_turfs(A)
 
 	if(!length(area_turfs))
-		to_chat(src, "There aren't any turfs in this area!")
+		to_chat(src, "此区域没有任何地块！")
 		return
 
 	if(!isobserver(mob))
@@ -34,7 +34,7 @@
 	set category = null
 
 	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return
 
 	if(!src.mob)
@@ -54,12 +54,12 @@
 	set category = null
 
 	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return
 
 	var/turf/object_location = get_turf(O)
 	if(!isturf(object_location))
-		to_chat(usr, "This object is not located in the game world.")
+		to_chat(usr, "此物体不在游戏世界中。")
 		return
 
 	if(src.mob)
@@ -76,7 +76,7 @@
 	set category = null
 
 	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return
 
 	if(src.mob)
@@ -90,14 +90,14 @@
 			A.forceMove(T)
 			message_admins(WRAP_STAFF_LOG(usr, "jumped to [key_name(M)] in [get_area(M)] ([M.loc.x],[M.loc.y],[M.loc.z])."), M.loc.x, M.loc.y, M.loc.z)
 		else
-			to_chat(A, "This mob is not located in the game world.")
+			to_chat(A, "此实体不在游戏世界中。")
 
 /client/proc/jumptocoord(tx as num, ty as num, tz as num)
 	set name = "Jump to Coordinate"
 	set category = null
 
 	if (!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return
 
 	if(src.mob)
@@ -118,7 +118,7 @@
 	set category = null
 
 	if(!CLIENT_IS_STAFF(src))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return
 
 	if(src.mob)
@@ -134,7 +134,7 @@
 
 		var/turf/T = locate(deobfuscate_x(tx), deobfuscate_y(ty), ground_level)
 		if(!T)
-			to_chat(src, SPAN_WARNING("That coordinate is invalid!"))
+			to_chat(src, SPAN_WARNING("坐标无效！"))
 			return
 		A.forceMove(T)
 		message_admins(WRAP_STAFF_LOG(src, "jumped to [get_area(mob)] (Coords:[tx]|[ty]) ([T.x],[T.y],[T.z])."), T.x, T.y, T.z)
@@ -144,15 +144,15 @@
 	set category = null
 
 	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return
 
 	var/list/keys = list()
 	for(var/mob/M in GLOB.player_list)
 		keys += M.client
-	var/client/selection = tgui_input_list(usr, "Please, select a player!", "Admin Jumping", sortKey(keys))
+	var/client/selection = tgui_input_list(usr, "请选择一名玩家！", "Admin Jumping", sortKey(keys))
 	if(!selection)
-		to_chat(src, "No keys found.")
+		to_chat(src, "未找到密钥。")
 		return
 	var/mob/M = selection.mob
 
@@ -173,7 +173,7 @@
 	set hidden = TRUE
 
 	if(!src.admin_holder)
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return
 
 	M.on_mob_jump()
@@ -186,13 +186,13 @@
 	set desc = "Key to teleport."
 
 	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return
 
 	var/list/keys = list()
 	for(var/mob/M in GLOB.player_list)
 		keys += M.client
-	var/selection = tgui_input_list(usr, "Please, select a player!", "Admin Jumping", sortKey(keys))
+	var/selection = tgui_input_list(usr, "请选择一名玩家！", "Admin Jumping", sortKey(keys))
 	if(!selection)
 		return
 	var/mob/M = selection:mob
@@ -209,9 +209,9 @@
 	set hidden = TRUE
 
 	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return
-	var/area/A = tgui_input_list(usr, "Pick an area.", "Pick an area", return_sorted_areas())
+	var/area/A = tgui_input_list(usr, "选择区域。", "Pick an area", return_sorted_areas())
 	if(A)
 		M.on_mob_jump()
 		M.forceMove(pick(get_area_turfs(A)))

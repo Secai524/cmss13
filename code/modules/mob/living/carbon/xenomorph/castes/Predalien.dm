@@ -1,6 +1,6 @@
 /datum/caste_datum/predalien
 	caste_type = XENO_CASTE_PREDALIEN
-	display_name = "Abomination"
+	display_name = "憎恶体"
 
 	melee_damage_lower = XENO_DAMAGE_TIER_4
 	melee_damage_upper = XENO_DAMAGE_TIER_5
@@ -33,8 +33,8 @@
 	AUTOWIKI_SKIP(TRUE)
 
 	caste_type = XENO_CASTE_PREDALIEN
-	name = "Abomination" //snowflake name
-	desc = "A strange looking creature with fleshy strands on its head. It appears like a mixture of armor and flesh, smooth, but well carapaced."
+	name = "憎恶体" //snowflake name
+	desc = "一种头部带有肉质触须的奇怪生物。看起来像是护甲与血肉的混合体，光滑但甲壳坚硬。"
 	icon = 'icons/mob/xenos/castes/tier_4/predalien.dmi'
 	icon_xeno = 'icons/mob/xenos/castes/tier_4/predalien.dmi'
 	icon_xenonid = 'icons/mob/xenos/castes/tier_4/predalien.dmi'
@@ -133,7 +133,7 @@ You must still listen to the queen.
 	should_announce_spawn = FALSE
 
 /datum/behavior_delegate/predalien_base
-	name = "Base Predalien Behavior Delegate"
+	name = "基础铁血异形行为代理"
 
 	var/kills = 0
 	var/max_kills = 10

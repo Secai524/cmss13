@@ -1,5 +1,5 @@
 /datum/disease/plasmatoid
-	name = "Plasmatoid"
+	name = "等离子体病"
 	max_stages = 4
-	cure = "None"
-	affected_species = list("Monkey", "Human")
+	cure = "无"
+	affected_species = list("猴子", "人类")

@@ -29,51 +29,51 @@
 	var/excavation_amount = 100
 
 /obj/item/tool/pickaxe/hammer
-	name = "mining sledgehammer"
+	name = "矿用大锤"
 	icon_state = "minesledge"
 	item_state = "minesledge"
-	desc = "A mining hammer made of reinforced metal. Works just as well as a pickaxe."
+	desc = "一把由强化金属制成的矿用锤。功能和鹤嘴锄一样好。"
 
 /obj/item/tool/pickaxe/silver
-	name = "silver pickaxe"
+	name = "银制鹤嘴锄"
 	icon_state = "spickaxe"
 	item_state = "spickaxe"
 	digspeed = 30
 
-	desc = "This makes no metallurgic sense."
+	desc = "这在冶金学上毫无道理。"
 	black_market_value = 25
 
 /obj/item/tool/pickaxe/drill
 	/// Can dig sand as well!
-	name = "mining drill"
+	name = "矿用钻机"
 	icon_state = "handdrill"
 	item_state = "jackhammer"
 	digspeed = 30
 
-	desc = "Yours is the drill that will pierce through the rock walls."
+	desc = "你的钻头将穿透岩壁。"
 	drill_verb = "drilling"
 
 /obj/item/tool/pickaxe/jackhammer
-	name = "sonic jackhammer"
+	name = "声波破碎镐"
 	icon_state = "jackhammer"
 	item_state = "jackhammer"
 	/// faster than drill, but cannot dig
 	digspeed = 20
 
-	desc = "Cracks rocks with sonic blasts, perfect for killing cave lizards."
+	desc = "利用声波冲击破碎岩石，是消灭洞穴蜥蜴的完美工具。"
 	drill_verb = "hammering"
 
 /obj/item/tool/pickaxe/gold
-	name = "golden pickaxe"
+	name = "金制鹤嘴锄"
 	icon_state = "gpickaxe"
 	item_state = "gpickaxe"
 	digspeed = 20
 
-	desc = "This makes no metallurgic sense."
+	desc = "这在冶金学上毫无道理。"
 	black_market_value = 30
 
 /obj/item/tool/pickaxe/plasmacutter
-	name = "plasma cutter"
+	name = "等离子切割器"
 	icon_state = "plasmacutter"
 	item_state = "gun"
 	/// it is smaller than the pickaxe
@@ -81,33 +81,33 @@
 	damtype = "fire"
 	/// Can slice though normal walls, all girders, or be used in reinforced wall deconstruction/ light thermite on fire
 	digspeed = 20
-	desc = "A rock cutter that uses bursts of hot plasma. You could use it to cut limbs off of xenos! Or, you know, mine stuff."
+	desc = "一种利用高温等离子体脉冲切割岩石的工具。你可以用它来切断异形的肢体！或者，你知道的，采矿。"
 	drill_verb = "cutting"
 	heat_source = 3800
 	flags_item = IGNITING_ITEM
 
 /obj/item/tool/pickaxe/diamond
-	name = "diamond pickaxe"
+	name = "钻石鹤嘴锄"
 	icon_state = "dpickaxe"
 	item_state = "dpickaxe"
 	digspeed = 10
 
-	desc = "A pickaxe with a diamond pick head, this is just like minecraft."
+	desc = "一把带有钻石镐头的鹤嘴锄，这简直就像《我的世界》。"
 	black_market_value = 5 //fuck you!
 
 /obj/item/tool/pickaxe/diamonddrill //When people ask about the badass leader of the mining tools, they are talking about ME!
-	name = "diamond mining drill"
+	name = "钻石矿用钻机"
 	icon_state = "diamonddrill"
 	item_state = "jackhammer"
 	/// Digs through walls, girders, and can dig up sand
 	digspeed = 5
 
-	desc = "Yours is the drill that will pierce the heavens!"
+	desc = "你的钻头将贯穿天际！"
 	drill_verb = "drilling"
 	black_market_value = 35
 
 /obj/item/tool/pickaxe/borgdrill
-	name = "cyborg mining drill"
+	name = "赛博格矿用钻机"
 	icon_state = "diamonddrill"
 	item_state = "jackhammer"
 	digspeed = 15

@@ -1,60 +1,60 @@
 /datum/law/minor_law/contraband
-	name = "Contraband"
-	desc = "Possessing items or weapons from the Area of Operations not authorized by someone with the rank of SSGT or higher."
+	name = "违禁品"
+	desc = "持有未经上士或更高军衔人员授权的、来自作战区域的物品或武器。"
 	special_punishment = "Contraband Confiscation"
 	brig_time = 7.5
 
 /datum/law/minor_law/damage_to_government_property
-	name = "Damage to Government Property"
-	desc = "Damaging the ship or making any unauthorized modifications to it as outlined in Standard Operating Procedure on a minor level, such as breaking a window or damaging a wall."
+	name = "破坏政府财产"
+	desc = "损坏舰船或对其进行任何标准操作程序中规定的轻微级别未经授权修改，例如打破窗户或损坏墙壁。"
 	special_punishment = "Reparation"
 	brig_time = 7.5
 
 /datum/law/minor_law/insubordination
-	name = "Insubordination"
-	desc = "Failing to follow a lawful order from a superior which is not personally directed at you. Additionally, disrespecting someone of higher rank or position that is not an officer."
+	name = "违抗命令"
+	desc = "未能遵守上级发出的、非针对你个人的合法命令。此外，不尊重非军官的更高军衔或职位人员。"
 	brig_time = 7.5
 
 /datum/law/minor_law/interference
-	name = "Interference"
-	desc = "Interfering in an arrest without ill intent to interfere against a legal arrest, such as blocking the way or helping someone up."
+	name = "妨碍公务"
+	desc = "无恶意地干扰合法逮捕，例如阻挡去路或扶起某人。"
 	brig_time = 7.5
 
 /datum/law/minor_law/trespassing
-	name = "Trespassing"
-	desc = "Unauthorized access of an area which a person does not have access to or without approval from someone with access."
+	name = "非法侵入"
+	desc = "未经授权进入个人无权进入的区域，或未经有权进入人员批准进入。"
 	special_punishment = "Escort Out"
 	brig_time = 7.5
 
 /datum/law/minor_law/listening_bugs
-	name = "Unauthorized use of a Listening Device"
-	desc = "Using a listening device against SOP in a public area such as the gym."
+	name = "未经授权使用监听设备"
+	desc = "在健身房等公共区域违反标准操作程序使用监听设备。"
 	special_punishment = "Listening Device Confiscation"
 	brig_time = 7.5
 
 /datum/law/minor_law/disrespect
-	name = "Disrespecting a Superior Officer"
-	desc = "Using offensive names or being directly disrespectful to someone of a Commissioned Officer of higher rank or position."
+	name = "不尊重上级军官"
+	desc = "使用冒犯性称呼或直接对更高军衔或职位的委任军官表示不尊重。"
 	brig_time = 10
 
 /datum/law/minor_law/failure_to_follow_procedure
-	name = "Failure to Follow Procedure"
-	desc = "Failing to follow the regulations found in the Standard Operating Procedure."
+	name = "未遵守程序"
+	desc = "未能遵守标准操作程序中的规定。"
 	special_punishment = "Equipment Confiscation"
 	brig_time = 10
 
 /datum/law/minor_law/intoxication
-	name = "Intoxication"
-	desc = "To consume alcohol or other substances such as alcohol or hallucinogenic drugs resulting in impaired job performance."
+	name = "醉酒执勤"
+	desc = "摄入酒精或其他物质（如酒精或致幻药物），导致工作表现受损。"
 	brig_time = 10
 
 /datum/law/minor_law/theft
-	name = "Theft"
-	desc = "To take items (or property) from another person or entity without their express permission, or to retain possession of items that have been taken without permission. This includes the removal of vendors from department areas without permission."
+	name = "盗窃"
+	desc = "在未获得明确许可的情况下，从他人或实体处拿走物品（或财产），或保留未经许可拿走的物品。这包括未经许可从部门区域移除自动售货机。"
 	special_punishment = "Return of Stolen Item"
 	brig_time = 10
 
 /datum/law/minor_law/false_testimony
-	name = "False Testimony"
-	desc = "To intentionally and willingly lie to an MP, or deputized officer, during a legal investigation with the intent to disrupt said investigation."
+	name = "伪证"
+	desc = "在法律调查期间，故意且自愿地向宪兵或被授权的军官撒谎，意图干扰该调查。"
 	brig_time = 5

@@ -1,7 +1,7 @@
 #define INACTIVITY_KICK 10 MINUTES
 
 SUBSYSTEM_DEF(inactivity)
-	name = "Inactivity"
+	name = "不活跃"
 	wait = 1 MINUTES
 	flags = SS_NO_INIT | SS_BACKGROUND
 	priority = SS_PRIORITY_INACTIVITY
@@ -44,7 +44,7 @@ SUBSYSTEM_DEF(inactivity)
 		if(current.is_afk(INACTIVITY_KICK))
 			if(!istype(current.mob, /mob/dead))
 				log_access("AFK: [key_name(current)]")
-				to_chat(current, SPAN_WARNING("You have been inactive for more than [INACTIVITY_KICK / 600] minutes and have been disconnected."))
+				to_chat(current, SPAN_WARNING("你已不活跃超过[INACTIVITY_KICK / 600]分钟，已被断开连接。"))
 				qdel(current)
 
 		if(MC_TICK_CHECK)

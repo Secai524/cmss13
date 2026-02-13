@@ -1,7 +1,7 @@
 
 /obj/structure/machinery/gibber
-	name = "Gibber"
-	desc = "The name isn't descriptive enough?"
+	name = "碎肉机"
+	desc = "这名字描述得还不够清楚吗？"
 	icon = 'icons/obj/structures/machinery/kitchen.dmi'
 	icon_state = "grinder"
 	density = TRUE
@@ -47,14 +47,14 @@
 	if(inoperable())
 		return
 	if(operating)
-		to_chat(user, SPAN_DANGER("It's locked and running."))
+		to_chat(user, SPAN_DANGER("它已上锁并正在运行。"))
 		return
 	else
 		startgibbing(user)
 
 /obj/structure/machinery/gibber/attackby(obj/item/grab/grabbed as obj, mob/user as mob)
 	if(occupant)
-		to_chat(user, SPAN_WARNING("The gibber is full, empty it first!"))
+		to_chat(user, SPAN_WARNING("碎肉机已满，请先清空！"))
 		return
 
 	if(HAS_TRAIT(grabbed, TRAIT_TOOL_WRENCH))
@@ -62,24 +62,24 @@
 		return
 
 	if(!(istype(grabbed, /obj/item/grab)) )
-		to_chat(user, SPAN_WARNING("This item is not suitable for the gibber!"))
+		to_chat(user, SPAN_WARNING("此物品不适合放入碎肉机！"))
 		return
 
 	if((!iscarbon(grabbed.grabbed_thing) && !istype(grabbed.grabbed_thing, /mob/living/simple_animal)) || isqueen(grabbed.grabbed_thing))
-		to_chat(user, SPAN_WARNING("This item is not suitable for the gibber!"))
+		to_chat(user, SPAN_WARNING("此物品不适合放入碎肉机！"))
 		return
 
 	var/mob/living/victim = grabbed.grabbed_thing
 
 	if(user.grab_level < GRAB_AGGRESSIVE && !istype(grabbed.grabbed_thing, /mob/living/carbon/xenomorph))
-		to_chat(user, SPAN_WARNING("You need a better grip to do that!"))
+		to_chat(user, SPAN_WARNING("你需要抓得更稳才能做到！"))
 		return
 
 	if(victim.abiotic(TRUE))
-		to_chat(user, SPAN_WARNING("Subject may not have abiotic items on."))
+		to_chat(user, SPAN_WARNING("对象身上不得携带非生物物品。"))
 		return
 
-	user.visible_message(SPAN_DANGER("[user] starts to put [victim] into the gibber!"))
+	user.visible_message(SPAN_DANGER("[user]开始将[victim]塞进碎肉机！"))
 	add_fingerprint(user)
 
 	///If synth is getting gibbed, we will 'soft gib' them, but this is still pretty LRP so let admin know.
@@ -88,9 +88,9 @@
 		var/area/area = get_area(user)
 		message_admins("ALERT: [user] ([user.key]) is trying to shove [victim] in a gibber! (They are a synth, so this will delimb them) ([victim.key]) in [area.name] [ADMIN_JMP(turf_ref)]</font>")
 		log_attack("[key_name(user)] tried to delimb [victim] using a gibber ([victim.key]) in [area.name]")
-		to_chat(user, SPAN_DANGER("What are you doing..."))
+		to_chat(user, SPAN_DANGER("你在干什么..."))
 		if(do_after(user, 30 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE && grabbed && grabbed.grabbed_thing && !occupant))
-			user.visible_message(SPAN_DANGER("[user] stuffs [victim] into the gibber!"))
+			user.visible_message(SPAN_DANGER("[user]把[victim]塞进了碎肉机！"))
 			victim.forceMove(src)
 			occupant = victim
 			update_icon()
@@ -101,15 +101,15 @@
 		var/area/area = get_area(user)
 		message_admins("ALERT: [user] ([user.key]) is trying to gib [victim] ([victim.key]) in [area.name] [ADMIN_JMP(turf_ref)]</font>")
 		log_attack("[key_name(user)] tried to gib [victim] ([victim.key]) in [area.name]")
-		to_chat(user, SPAN_DANGER("Are you insane?!"))
+		to_chat(user, SPAN_DANGER("你疯了吗？！"))
 		if(do_after(user, 30 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE && grabbed && grabbed.grabbed_thing && !occupant))
-			user.visible_message(SPAN_DANGER("[user] stuffs [victim] into the gibber!"))
+			user.visible_message(SPAN_DANGER("[user]把[victim]塞进了碎肉机！"))
 			victim.forceMove(src)
 			occupant = victim
 			update_icon()
 
 	else if(do_after(user, 3 SECONDS * user.get_skill_duration_multiplier(SKILL_DOMESTIC), INTERRUPT_ALL, BUSY_ICON_HOSTILE) && grabbed && grabbed.grabbed_thing && !occupant)
-		user.visible_message(SPAN_DANGER("[user] stuffs [victim] into the gibber!"))
+		user.visible_message(SPAN_DANGER("[user]把[victim]塞进了碎肉机！"))
 		victim.forceMove(src)
 		occupant = victim
 		update_icon()
@@ -136,7 +136,7 @@
 	occupant.forceMove(loc)
 	if(launch)
 		// yeet them out of the gibber
-		visible_message(SPAN_DANGER("[occupant] suddenly is launched out of the [src]!"))
+		visible_message(SPAN_DANGER("[occupant]突然从[src]中被弹射出来！"))
 		var/turf/Tx = locate(x - 3, y, z)
 		occupant.throw_atom(Tx, 3, SPEED_FAST, src, TRUE)
 	occupant = null
@@ -148,14 +148,14 @@
 	if(operating)
 		return
 	if(!occupant)
-		visible_message(SPAN_DANGER("You hear a loud metallic grinding sound."))
+		visible_message(SPAN_DANGER("你听到一阵响亮的金属摩擦声。"))
 		return
 	var/synthetic = issynth(occupant)
 	use_power(1000)
 	if(synthetic)
-		visible_message(SPAN_BOLDWARNING("[src] begins to emitt sparks out the top as a banging noise can be heard!"), SPAN_BOLDWARNING("You hear a myriad of loud bangs!"))
+		visible_message(SPAN_BOLDWARNING("[src]顶部开始迸出火花，同时传来一阵撞击声！"), SPAN_BOLDWARNING("You hear a myriad of loud bangs!"))
 	else
-		visible_message(SPAN_DANGER("You hear a loud squelchy grinding sound."))
+		visible_message(SPAN_DANGER("你听到一阵响亮的湿滑碾磨声。"))
 	operating = TRUE
 	update_icon()
 
@@ -234,7 +234,7 @@
 
 	addtimer(CALLBACK(src, PROC_REF(create_gibs), totalslabs, allmeat), gibtime)
 	if(synthetic)
-		to_chat(occupant, SPAN_HIGHDANGER("You can detect your limbs being ripped off your body, but it begins to malfunction as it reaches your torso!"))
+		to_chat(occupant, SPAN_HIGHDANGER("你能感觉到你的四肢正被从身体上扯下，但它在触及你的躯干时开始发生故障！"))
 		addtimer(CALLBACK(src, PROC_REF(go_out), TRUE), gibtime)
 	else
 		QDEL_NULL(occupant)

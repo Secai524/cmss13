@@ -27,10 +27,10 @@
 /mob/living/carbon/xenomorph/larva
 	AUTOWIKI_SKIP(TRUE)
 
-	name = "Bloody Larva"
+	name = "血腥幼虫"
 	caste_type = XENO_CASTE_LARVA
 	speak_emote = list("hisses")
-	icon_state = "Bloody Larva"
+	icon_state = "血腥幼虫"
 	icon_size = 32
 	layer = MOB_LAYER
 	see_in_dark = 8
@@ -79,7 +79,7 @@
 	if(should_block_game_interaction(src) && (!area || !(area.flags_area & AREA_ALLOW_XENO_JOIN)))
 		return //xenos on admin z level don't count
 
-	to_chat(client, SPAN_ALERTWARNING("You are inactive and will be available to ghosts in [XENO_AVAILABLE_TIMER] second\s!"))
+	to_chat(client, SPAN_ALERTWARNING("你处于非活跃状态，将在[XENO_AVAILABLE_TIMER]秒后可供鬼魂玩家选择！"))
 	playsound_client(client, sound('sound/effects/xeno_evolveready.ogg'))
 
 /mob/living/carbon/xenomorph/larva/initialize_pass_flags(datum/pass_flags_container/pass_flags)
@@ -135,7 +135,7 @@
 	hud_set_hunter()
 
 /mob/living/carbon/xenomorph/larva/evolve_message()
-	to_chat(src, SPAN_XENODANGER("Strength ripples through your small form. You are ready to be shaped to the Queen's will. <a href='byond://?src=\ref[src];evolve=1;'>Evolve</a>"))
+	to_chat(src, SPAN_XENODANGER("力量在你小小的身躯中涌动。你已准备好被塑造成女王的意志。<a href='byond://?src=\ref[src];evolve=1;'>进化</a>"))
 	playsound_client(client, sound('sound/effects/xeno_evolveready.ogg'))
 
 	var/datum/action/xeno_action/onclick/evolve/evolve_action = new()
@@ -198,14 +198,14 @@
 
 	switch(stat)
 		if(UNCONSCIOUS)
-			to_chat(src, SPAN_WARNING("You cannot emote while unconscious!"))
+			to_chat(src, SPAN_WARNING("昏迷时无法做表情！"))
 			return FALSE
 		if(DEAD)
-			to_chat(src, SPAN_WARNING("You cannot emote while dead!"))
+			to_chat(src, SPAN_WARNING("死亡时无法做表情！"))
 			return FALSE
 	if(client)
 		if(client.prefs.muted & MUTE_IC)
-			to_chat(src, SPAN_DANGER("You cannot emote (muted)."))
+			to_chat(src, SPAN_DANGER("你无法使用表情动作（已禁言）。"))
 			return FALSE
 		if(!client.attempt_talking())
 			return FALSE
@@ -213,7 +213,7 @@
 	// Otherwise, ""roar""!
 	var/current_time = world.time
 	if(current_time - last_roar_time < 1 SECONDS)
-		to_chat(src, SPAN_WARNING("You must wait before roaring again."))
+		to_chat(src, SPAN_WARNING("你必须等待才能再次咆哮。"))
 		return FALSE
 
 	last_roar_time = current_time
@@ -243,7 +243,7 @@ Also handles the "Mature / Bloody naming convention. Call this to update the nam
 	else if(larva_state == LARVA_STATE_BLOODY)
 		progress = "Bloody "
 
-	name = "[name_prefix][progress]Larva ([nicknumber])"
+	name = "[name_prefix][progress]幼虫 ([nicknumber])"
 
 	//Update linked data so they show up properly
 	change_real_name(src, name)

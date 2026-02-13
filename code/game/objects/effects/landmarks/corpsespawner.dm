@@ -4,7 +4,7 @@
 //These are meant for spawning on maps, namely Away Missions.
 
 /obj/effect/landmark/corpsespawner
-	name = "Unknown"
+	name = "未知"
 	icon_state = "corpse_spawner"
 	var/equip_path = null
 
@@ -19,213 +19,213 @@
 ///////////Civilians//////////////////////
 
 /obj/effect/landmark/corpsespawner/prisoner
-	name = "Prisoner"
+	name = "囚犯"
 	equip_path = /datum/equipment_preset/corpse/prisoner
 
 /obj/effect/landmark/corpsespawner/chef
-	name = "Chef"
+	name = "厨师"
 	equip_path = /datum/equipment_preset/corpse/chef
 
 /obj/effect/landmark/corpsespawner/doctor
-	name = "Doctor"
+	name = "医生"
 	equip_path = /datum/equipment_preset/corpse/doctor
 
 /obj/effect/landmark/corpsespawner/engineer
-	name = "Engineer"
+	name = "工程师"
 	equip_path = /datum/equipment_preset/corpse/engineer
 
 /obj/effect/landmark/corpsespawner/scientist
-	name = "Scientist"
+	name = "科学家"
 	equip_path = /datum/equipment_preset/corpse/scientist
 
 /obj/effect/landmark/corpsespawner/miner
-	name = "Shaft Miner"
+	name = "矿井矿工"
 	equip_path = /datum/equipment_preset/corpse/miner
 
 /obj/effect/landmark/corpsespawner/security
-	name = "Security Officer"
+	name = "安保官"
 	equip_path = /datum/equipment_preset/corpse/security
 
 /obj/effect/landmark/corpsespawner/security/marshal
-	name = "Colonial Marshal Deputy"
+	name = "殖民地法警副官"
 	equip_path = /datum/equipment_preset/corpse/security/cmb
 
 /obj/effect/landmark/corpsespawner/security/marshal/riot
-	name = "CMB Riot Control Officer"
+	name = "CMB防暴控制官"
 	equip_path = /datum/equipment_preset/corpse/security/cmb/riot
 
 /obj/effect/landmark/corpsespawner/security/liaison
-	name = "Corporate Liaison"
+	name = "公司联络官"
 	equip_path = /datum/equipment_preset/corpse/liaison
 
 /obj/effect/landmark/corpsespawner/prison_security
-	name = "Prison Guard"
+	name = "监狱守卫"
 	equip_path = /datum/equipment_preset/corpse/prison_guard
 
 /////////////////Officers//////////////////////
 
 /obj/effect/landmark/corpsespawner/bridgeofficer
-	name = "Colony Division Manager"
+	name = "殖民地部门经理"
 	equip_path = /datum/equipment_preset/corpse/manager
 
 /obj/effect/landmark/corpsespawner/administrator
-	name = "Colony Administrator"
+	name = "殖民地行政官"
 	equip_path = /datum/equipment_preset/corpse/administrator
 
 /obj/effect/landmark/corpsespawner/administrator/burst
-	name = "Burst Colony Administrator"
+	name = "爆裂殖民地行政官"
 	equip_path = /datum/equipment_preset/corpse/administrator/burst
 
 /obj/effect/landmark/corpsespawner/wysec
-	name = "Weyland-Yutani Corporate Security Guard"
+	name = "维兰德-汤谷公司安保警卫"
 	equip_path = /datum/equipment_preset/corpse/wysec
 
 /obj/effect/landmark/corpsespawner/wygoon
-	name = "Weyland-Yutani Corporate Security Officer"
+	name = "维兰德-汤谷公司安保官"
 	equip_path = /datum/equipment_preset/corpse/pmc/goon
 
 /obj/effect/landmark/corpsespawner/wygoon/lead
-	name = "Weyland-Yutani Corporate Security Lead"
+	name = "维兰德-汤谷企业安保领队"
 	equip_path = /datum/equipment_preset/corpse/pmc/goon/lead
 
 /obj/effect/landmark/corpsespawner/wygoon/lead/burst
-	name = "Burst Weyland-Yutani Corporate Security Lead"
+	name = "爆裂维兰德-汤谷公司安保主管"
 	equip_path = /datum/equipment_preset/corpse/pmc/goon/lead/burst
 
 /obj/effect/landmark/corpsespawner/wygoon/kutjevo
-	name = "Weyland-Yutani Kutjevo Corporate Security"
+	name = "维兰德-汤谷库特耶沃公司安保"
 	equip_path = /datum/equipment_preset/corpse/pmc/goon/kutjevo
 
 /obj/effect/landmark/corpsespawner/wygoon/trijent
-	name = "Weyland-Yutani Trijent Corporate Security"
+	name = "维兰德-汤谷特里金特公司安保"
 	equip_path = /datum/equipment_preset/corpse/pmc/goon/trijent
 
 /obj/effect/landmark/corpsespawner/wygoon/lead/trijent
-	name = "Weyland-Yutani Trijent Corporate Security Lead"
+	name = "维兰德-汤谷特里金特公司安保主管"
 	equip_path = /datum/equipment_preset/corpse/pmc/goon/lead/trijent
 
 
 ///CM specific jobs///
 
 /obj/effect/landmark/corpsespawner/colonist //default is a colonist
-	name = "Colonist"
+	name = "殖民者"
 	equip_path = /datum/equipment_preset/corpse/colonist
 
 /obj/effect/landmark/corpsespawner/colonist/burst
-	name = "Burst Colonist"
+	name = "连发殖民者"
 	equip_path = /datum/equipment_preset/corpse/colonist/burst
 
 /obj/effect/landmark/corpsespawner/colonist/kutjevo
-	name = "Colonist Kutjevo"
+	name = "库特耶沃殖民者"
 	equip_path = /datum/equipment_preset/corpse/colonist/kutjevo
 
 /obj/effect/landmark/corpsespawner/colonist/kutjevo/burst
-	name = "Burst Colonist Kutjevo"
+	name = "连发库特耶沃殖民者"
 	equip_path = /datum/equipment_preset/corpse/colonist/kutjevo/burst
 
 /obj/effect/landmark/corpsespawner/colonist/random
-	name = "Colonist Random"
+	name = "随机殖民者"
 	equip_path = /datum/equipment_preset/corpse/colonist/random
 
 /obj/effect/landmark/corpsespawner/colonist/random/burst
-	name = "Burst Colonist Random"
+	name = "连发随机殖民者"
 	equip_path = /datum/equipment_preset/corpse/colonist/random/burst
 
 /obj/effect/landmark/corpsespawner/ua_riot
-	name = "UA Officer"
+	name = "UA军官"
 	equip_path = /datum/equipment_preset/corpse/ua_riot
 
 /obj/effect/landmark/corpsespawner/ua_riot/burst
-	name = "Burst UA Officer"
+	name = "连发UA军官"
 	equip_path = /datum/equipment_preset/corpse/ua_riot/burst
 
 /obj/effect/landmark/corpsespawner/wy/manager
-	name = "Corporate Supervisor"
+	name = "公司主管"
 	equip_path = /datum/equipment_preset/corpse/wy/manager
 
 /obj/effect/landmark/corpsespawner/wy/manager/burst
-	name = "Burst Corporate Supervisor"
+	name = "连发公司主管"
 	equip_path = /datum/equipment_preset/corpse/wy/manager/burst
 
 
 ///////////Faction Specific Corpses//////////////////////
 
 /obj/effect/landmark/corpsespawner/clf
-	name = "Colonial Liberation Front Soldier"
+	name = "殖民地解放阵线士兵"
 	equip_path = /datum/equipment_preset/corpse/clf
 
 /obj/effect/landmark/corpsespawner/clf/burst
-	name = "Burst Colonial Liberation Front Soldier"
+	name = "连发殖民地解放阵线士兵"
 	equip_path = /datum/equipment_preset/corpse/clf/burst
 
 /obj/effect/landmark/corpsespawner/upp
-	name = "Union of Progressive Peoples Soldier"
+	name = "进步人民联盟士兵"
 	equip_path = /datum/equipment_preset/corpse/upp
 
 /obj/effect/landmark/corpsespawner/upp/burst
-	name = "Burst Union of Progressive Peoples Soldier"
+	name = "连发进步人民联盟士兵"
 	equip_path = /datum/equipment_preset/corpse/upp/burst
 
 /obj/effect/landmark/corpsespawner/pmc
-	name = "Weyland-Yutani PMC (Standard)"
+	name = "维兰德-汤谷PMC（标准）"
 	equip_path = /datum/equipment_preset/corpse/pmc
 
 /obj/effect/landmark/corpsespawner/pmc/burst
-	name = "Burst Weyland-Yutani PMC (Standard)"
+	name = "连发维兰德-汤谷PMC（标准）"
 	equip_path = /datum/equipment_preset/corpse/pmc/burst
 
 /obj/effect/landmark/corpsespawner/freelancer
-	name = "Freelancer"
+	name = "自由佣兵"
 	equip_path = /datum/equipment_preset/corpse/freelancer
 
 /obj/effect/landmark/corpsespawner/freelancer/burst
-	name = "Burst Freelancer"
+	name = "连发自由佣兵"
 	equip_path = /datum/equipment_preset/corpse/freelancer/burst
 
 // Fun Faction Corpse
 
 /obj/effect/landmark/corpsespawner/realpirate
-	name = "Pirate"
+	name = "海盗"
 	equip_path = /datum/equipment_preset/corpse/realpirate
 
 /obj/effect/landmark/corpsespawner/realpirate/ranged
-	name = "Pirate Gunner"
+	name = "海盗枪手"
 	equip_path = /datum/equipment_preset/corpse/realpirate/ranged
 
 /obj/effect/landmark/corpsespawner/russian
-	name = "Russian"
+	name = "俄罗斯人"
 	equip_path = /datum/equipment_preset/corpse/russian
 
 /obj/effect/landmark/corpsespawner/russian/ranged
 
 /obj/effect/landmark/corpsespawner/dutchrifle
-	name = "Dutch Dozen Rifleman"
+	name = "荷兰十二人步枪兵"
 	equip_path = /datum/equipment_preset/corpse/dutchrifle
 
 /obj/effect/landmark/corpsespawner/dutchrifle/burst
-	name = "Burst Dutch Dozen Rifleman"
+	name = "连发荷兰十二人步枪兵"
 	equip_path = /datum/equipment_preset/corpse/dutchrifle/burst
 
 /obj/effect/landmark/corpsespawner/pizza
-	name = "Pizza Deliverer"
+	name = "披萨配送员"
 	equip_path = /datum/equipment_preset/corpse/pizza
 
 /obj/effect/landmark/corpsespawner/pizza/burst
-	name = "Burst Pizza Deliverer"
+	name = "连发披萨配送员"
 	equip_path = /datum/equipment_preset/corpse/pizza/burst
 
 /obj/effect/landmark/corpsespawner/gladiator
-	name = "Gladiator"
+	name = "角斗士"
 	equip_path = /datum/equipment_preset/corpse/gladiator
 
 /obj/effect/landmark/corpsespawner/gladiator/burst
-	name = "Burst Gladiator"
+	name = "连发角斗士"
 	equip_path = /datum/equipment_preset/corpse/gladiator/burst
 
 //FORECON
 
 /obj/effect/landmark/corpsespawner/forecon_spotter
-	name = "USCM Reconnaissance Spotter"
+	name = "USCM侦察观察员"
 	equip_path = /datum/equipment_preset/corpse/forecon_spotter
 
 
@@ -236,19 +236,19 @@
 // Hybrisa - Goons
 
 /obj/effect/landmark/corpsespawner/hybrisa_goon
-	name = "Weyland-Yutani Corporate Security Officer"
+	name = "维兰德-汤谷公司安保官"
 	equip_path = /datum/equipment_preset/corpse/pmc/hybrisa_goon
 
 /obj/effect/landmark/corpsespawner/hybrisa_goon/burst
-	name = "Burst Weyland-Yutani Corporate Security Officer"
+	name = "爆裂的维兰德-汤谷公司安保官"
 	equip_path = /datum/equipment_preset/corpse/pmc/hybrisa_goon/lead/burst
 
 /obj/effect/landmark/corpsespawner/hybrisa_goon/lead
-	name = "Weyland-Yutani Corporate Security Lead"
+	name = "维兰德-汤谷企业安保领队"
 	equip_path = /datum/equipment_preset/corpse/pmc/hybrisa_goon/lead
 
 /obj/effect/landmark/corpsespawner/hybrisa_goon/lead/burst
-	name = "Burst Weyland-Yutani Corporate Security Lead"
+	name = "爆裂维兰德-汤谷公司安保主管"
 	equip_path = /datum/equipment_preset/corpse/pmc/hybrisa_goon/lead/burst
 
 //*****************************************************************************************************/
@@ -256,49 +256,49 @@
 // Civilian
 
 /obj/effect/landmark/corpsespawner/hybrisa/civilian
-	name = "Corpse - Civilian"
+	name = "尸体 - 平民"
 	equip_path = /datum/equipment_preset/corpse/hybrisa/civilian
 
 /obj/effect/landmark/corpsespawner/hybrisa/civilian/burst
-	name = "Corpse - Burst - Civilian"
+	name = "尸体 - 爆裂 - 平民"
 	equip_path = /datum/equipment_preset/corpse/hybrisa/civilian/burst
 
 /obj/effect/landmark/corpsespawner/hybrisa/civilian_office
-	name = "Corpse - Civilian - Office Worker"
+	name = "尸体 - 平民 - 办公室职员"
 	equip_path = /datum/equipment_preset/corpse/hybrisa/civilian_office
 
 /obj/effect/landmark/corpsespawner/hybrisa/civilian_office/burst
-	name = "Corpse - Burst - Civilian - Office Worker"
+	name = "尸体 - 爆裂 - 平民 - 办公室职员"
 	equip_path = /datum/equipment_preset/corpse/hybrisa/civilian_office/burst
 
 // Weymart
 
 /obj/effect/landmark/corpsespawner/hybrisa/weymart
-	name = "Corpse - Civilian - Weymart Employee"
+	name = "尸体 - 平民 - 维玛特员工"
 	equip_path = /datum/equipment_preset/corpse/hybrisa/weymart
 
 /obj/effect/landmark/corpsespawner/hybrisa/weymart/burst
-	name = "Corpse - Burst - Civilian - Weymart Employee"
+	name = "尸体 - 爆裂 - 平民 - 维玛特员工"
 	equip_path = /datum/equipment_preset/corpse/hybrisa/weymart/burst
 
 // Sanitation
 
 /obj/effect/landmark/corpsespawner/hybrisa/sanitation
-	name = "Corpse - Civilian - Material Reprocessing Technician"
+	name = "尸体 - 平民 - 材料回收技术员"
 	equip_path = /datum/equipment_preset/corpse/hybrisa/sanitation
 
 /obj/effect/landmark/corpsespawner/hybrisa/sanitation/burst
-	name = "Corpse - Burst - Civilian - Material Reprocessing Technician"
+	name = "尸体 - 爆裂 - 平民 - 材料回收技术员"
 	equip_path = /datum/equipment_preset/corpse/hybrisa/sanitation/burst
 
 // Pizza Galaxy
 
 /obj/effect/landmark/corpsespawner/hybrisa/pizza_galaxy
-	name = "Corpse - Civilian - Pizza Galaxy Delivery Driver"
+	name = "尸体 - 平民 - 银河披萨送货司机"
 	equip_path = /datum/equipment_preset/corpse/hybrisa/pizza_galaxy
 
 /obj/effect/landmark/corpsespawner/hybrisa/pizza_galaxy/burst
-	name = "Corpse - Burst - Civilian - Pizza Galaxy Delivery Driver"
+	name = "尸体 - 爆裂 - 平民 - 银河披萨送货司机"
 	equip_path = /datum/equipment_preset/corpse/hybrisa/pizza_galaxy/burst
 
 //*****************************************************************************************************/
@@ -306,19 +306,19 @@
 // NSPA
 
 /obj/effect/landmark/corpsespawner/hybrisa/nspa_constable
-	name = "Corpse - NSPA Constable"
+	name = "尸体 - NSPA警官"
 	equip_path = /datum/equipment_preset/corpse/hybrisa/nspa_constable
 
 /obj/effect/landmark/corpsespawner/hybrisa/nspa_constable/burst
-	name = "Corpse - Burst - NSPA Constable"
+	name = "尸体 - 爆裂 - NSPA警官"
 	equip_path = /datum/equipment_preset/corpse/hybrisa/nspa_constable/burst
 
 /obj/effect/landmark/corpsespawner/trijent/nspa_constable/
-	name = "Corpse - Trijent NSPA Constable"
+	name = "尸体 - 特里金特NSPA警官"
 	equip_path = /datum/equipment_preset/corpse/hybrisa/nspa_constable/trijent
 
 /obj/effect/landmark/corpsespawner/trijent/nspa_constable/burst
-	name = "Corpse - Burst - Trijent NSPA Constable"
+	name = "尸体 - 爆裂 - 特里金特NSPA警官"
 	equip_path = /datum/equipment_preset/corpse/hybrisa/nspa_constable/trijent/burst
 
 //*****************************************************************************************************/
@@ -326,11 +326,11 @@
 // KMCC Mining
 
 /obj/effect/landmark/corpsespawner/hybrisa/kelland_miner
-	name = "Corpse - KMCC - Miner"
+	name = "尸体 - KMCC - 矿工"
 	equip_path = /datum/equipment_preset/corpse/hybrisa/kelland_miner
 
 /obj/effect/landmark/corpsespawner/hybrisa/kelland_miner/burst
-	name = "Corpse - Burst - KMCC - Miner"
+	name = "尸体 - 爆裂 - KMCC - 矿工"
 	equip_path = /datum/equipment_preset/corpse/hybrisa/kelland_miner/burst
 
 //*****************************************************************************************************/
@@ -339,12 +339,12 @@
 
 /obj/effect/landmark/corpsespawner/hybrisa/medical_doctor_corpse
 
-	name = "Corpse - Civilian - Medical Doctor"
+	name = "尸体 - 平民 - 医生"
 	equip_path = /datum/equipment_preset/corpse/hybrisa/medical_doctor_corpse
 
 /obj/effect/landmark/corpsespawner/hybrisa/medical_doctor_corpse/burst
 
-	name = "Corpse - Burst - Civilian - Medical Doctor"
+	name = "尸体 - 爆裂 - 平民 - 医生"
 	equip_path = /datum/equipment_preset/corpse/hybrisa/medical_doctor_corpse/burst
 
 //*****************************************************************************************************/
@@ -355,24 +355,24 @@
 
 /obj/effect/landmark/corpsespawner/hybrisa/scientist_xenobiologist
 
-	name = "Corpse - Civilian - Xenobiologist"
+	name = "尸体 - 平民 - 异形生物学家"
 	equip_path = /datum/equipment_preset/corpse/hybrisa/scientist_xenobiologist
 
 /obj/effect/landmark/corpsespawner/hybrisa/scientist_xenobiologist/burst
 
-	name = "Corpse - Burst - Civilian - Xenobiologist"
+	name = "尸体 - 爆裂 - 平民 - 异形生物学家"
 	equip_path = /datum/equipment_preset/corpse/hybrisa/scientist_xenobiologist/burst
 
 // Xenoarchaeologist
 
 /obj/effect/landmark/corpsespawner/hybrisa/scientist_xenoarchaeologist
 
-	name = "Corpse - Civilian - Xenoarchaeologist"
+	name = "尸体 - 平民 - 异形考古学家"
 	equip_path = /datum/equipment_preset/corpse/hybrisa/scientist_xenoarchaeologist
 
 /obj/effect/landmark/corpsespawner/hybrisa/scientist_xenoarchaeologist/burst
 
-	name = "Corpse - Burst - Civilian - Xenoarchaeologist"
+	name = "尸体 - 爆裂 - 平民 - 异形考古学家"
 	equip_path = /datum/equipment_preset/corpse/hybrisa/scientist_xenoarchaeologist/burst
 
 //*****************************************************************************************************/

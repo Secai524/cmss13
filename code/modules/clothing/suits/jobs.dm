@@ -5,7 +5,7 @@
 //Botonist
 /obj/item/clothing/suit/apron
 	name = "apron"
-	desc = "A basic blue apron."
+	desc = "一件基本的蓝色围裙。"
 	icon_state = "apron"
 	item_state = "apron"
 	icon = 'icons/obj/items/clothing/suits/vests_aprons.dmi'
@@ -30,8 +30,8 @@
 
 //Cultist
 /obj/item/clothing/suit/cultist_hoodie
-	name = "black robe"
-	desc = "Looks eerie and weird, almost as if it belongs to a cult."
+	name = "黑色长袍"
+	desc = "看起来诡异而古怪，几乎像是属于某个邪教。"
 	icon_state = "chaplain_hoodie"
 	item_state = "chaplain_hoodie"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_GROIN
@@ -71,8 +71,8 @@
 
 //Chaplain
 /obj/item/clothing/suit/nun
-	name = "nun robe"
-	desc = "Maximum piety in this star system."
+	name = "修女长袍"
+	desc = "本星系最虔诚的象征。"
 	icon_state = "nun"
 	item_state = "nun"
 	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
@@ -89,8 +89,8 @@
 
 //Chef
 /obj/item/clothing/suit/chef
-	name = "Chef's apron"
-	desc = "An apron used by a high-class chef."
+	name = "厨师围裙"
+	desc = "高级厨师使用的围裙。"
 	icon_state = "chef"
 	item_state = "chef"
 	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
@@ -114,8 +114,8 @@
 
 //Chef
 /obj/item/clothing/suit/chef/classic
-	name = "A classic chef's apron"
-	desc = "A basic, dull, white chef's apron."
+	name = "一件经典的厨师围裙"
+	desc = "一件基本、单调的白色厨师围裙。"
 	icon_state = "apronchef"
 	item_state = "apronchef"
 	icon = 'icons/obj/items/clothing/suits/vests_aprons.dmi'
@@ -143,7 +143,7 @@
 //Detective
 /obj/item/clothing/suit/storage/CMB/trenchcoat
 	name = "\improper tan trench-coat"
-	desc = "A worn, tan, old style trench-coat. A classic of noir style apparel."
+	desc = "一件破旧的、棕褐色的老式风衣。黑色电影风格服饰的经典之作。"
 	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
@@ -155,32 +155,32 @@
 /obj/item/clothing/suit/storage/CMB/trenchcoat/brown
 
 	name = "\improper brown trench-coat"
-	desc = "A worn, brown, old style trench-coat. When a bum sees a dick coming, he don't stick around."
+	desc = "一件破旧的、棕色的老式风衣。当流浪汉看到混蛋来了，他可不会久留。"
 	icon_state = "trench_brown"
 	item_state = "trench_brown"
 
 /obj/item/clothing/suit/storage/CMB/trenchcoat/grey
 	name = "\improper grey trench-coat"
-	desc = "A worn, brown, old style trench-coat. When a bum sees a dick coming, he don't stick around."
+	desc = "一件破旧的、棕色的老式风衣。当流浪汉看到混蛋来了，他可不会久留。"
 	icon_state = "trench_grey"
 	item_state = "trench_grey"
 
 /obj/item/clothing/suit/storage/CMB/trenchcoat/police
 	name = "\improper tan police trench-coat"
-	desc = "A light tan coat with a badge. Often worn by government officiated crime scene investigators rather than private sleuths, this suit strikes authority into those who see it."
+	desc = "一件带有徽章的浅褐色外套。通常由政府指派的犯罪现场调查员而非私家侦探穿着，这套服装能让看到它的人感受到权威。"
 	icon_state = "detective"
 	item_state = "detective"
 
 /obj/item/clothing/suit/storage/CMB/trenchcoat/police/black
 	name = "\improper black police trench-coat"
-	desc = "A light black coat with a badge. Often worn by government officiated crime scene investigators rather than private sleuths, this suit strikes authority into those who see it."
+	desc = "一件带有徽章的浅黑色外套。通常由政府指派的犯罪现场调查员而非私家侦探穿着，这套服装能让看到它的人感受到权威。"
 	icon_state = "detective2"
 	item_state = "detective2"
 
 //Forensics
 /obj/item/clothing/suit/storage/forensics
 	name = "jacket"
-	desc = "A forensics technician jacket."
+	desc = "一件法医技术员夹克。"
 	item_state = "det_suit"
 	icon = 'icons/obj/items/clothing/suits/jackets.dmi'
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
@@ -239,8 +239,8 @@
 	)
 
 /obj/item/clothing/suit/storage/forensics/red
-	name = "red jacket"
-	desc = "A red forensics technician jacket."
+	name = "红色夹克"
+	desc = "一件红色的法医技术员夹克。"
 	icon_state = "forensics_red"
 	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
 	item_icons = list(
@@ -248,8 +248,8 @@
 	)
 
 /obj/item/clothing/suit/storage/forensics/blue
-	name = "blue jacket"
-	desc = "A blue forensics technician jacket."
+	name = "蓝色夹克"
+	desc = "一件蓝色的法医技术员夹克。"
 	icon_state = "forensics_blue"
 	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
 	item_icons = list(
@@ -258,8 +258,8 @@
 
 //Engineering
 /obj/item/clothing/suit/storage/hazardvest
-	name = "orange hazard vest"
-	desc = "An orange high-visibility vest used in work zones."
+	name = "橙色危险背心"
+	desc = "一件用于工作区域的橙色高能见度背心。"
 	icon_state = "hazard"
 	item_state = "hazard"
 	icon = 'icons/obj/items/clothing/suits/vests_aprons.dmi'
@@ -307,26 +307,26 @@
 	)
 
 /obj/item/clothing/suit/storage/hazardvest/blue
-	name = "blue hazard vest"
-	desc = "A blue high-visibility vest used in work zones."
+	name = "蓝色危险背心"
+	desc = "一种在工作区域使用的蓝色高可见度背心。"
 	icon_state = "hazard_blue"
 	item_state = "hazard_blue"
 
 /obj/item/clothing/suit/storage/hazardvest/yellow
-	name = "yellow hazard vest"
-	desc = "A yellow high-visibility vest used in work zones."
+	name = "黄色警示背心"
+	desc = "一种在工作区域使用的黄色高可见度背心。"
 	icon_state = "hazard_yellow"
 	item_state = "hazard_yellow"
 
 /obj/item/clothing/suit/storage/hazardvest/black
-	name = "black hazard vest"
-	desc = "A niche-market, black, allegedly high-visibility vest supposedly used in work zones. Features extra-reflective tapes. The etiquette on the vest insists that it's fully compliant with all the United American workplace safety standards."
+	name = "黑色警示背心"
+	desc = "一款小众市场、黑色、据称是高可见度的背心，据称用于工作区域。配有额外反光条。背心上的标签坚称其完全符合所有美利坚合众国工作场所安全标准。"
 	icon_state = "hazard_black"
 	item_state = "hazard_black"
 
 //Lawyer
 /obj/item/clothing/suit/storage/jacket/marine/lawyer
-	desc = "A snappy dress jacket."
+	desc = "一件时髦的正装外套。"
 	icon = 'icons/obj/items/clothing/suits/jackets.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi',
@@ -339,44 +339,44 @@
 	blood_overlay_type = "coat"
 
 /obj/item/clothing/suit/storage/jacket/marine/lawyer/bluejacket
-	name = "blue suit-jacket"
+	name = "蓝色正装外套"
 	icon_state = "suitjacket_blue"
 	initial_icon_state = "suitjacket_blue"
 
 /obj/item/clothing/suit/storage/jacket/marine/lawyer/purpjacket
-	name = "purple suit-jacket"
+	name = "紫色正装外套"
 	icon_state = "suitjacket_purp"
 	initial_icon_state = "suitjacket_purp"
 
 /obj/item/clothing/suit/storage/jacket/marine/lawyer/redjacket
-	name = "red suit-jacket"
+	name = "红色正装外套"
 	icon_state = "suitjacket_red"
 	initial_icon_state = "suitjacket_red"
 
 /obj/item/clothing/suit/storage/jacket/marine/lawyer/blackjacket
-	name = "black suit-jacket"
+	name = "黑色正装外套"
 	icon_state = "suitjacket_black"
 	initial_icon_state = "suitjacket_black"
 
 /obj/item/clothing/suit/storage/jacket/marine/lawyer/comedian
-	name = "bright red suit-jacket"
+	name = "亮红色正装外套"
 	icon_state = "suitjacket_comedian"
 	initial_icon_state = "suitjacket_comedian"
 
 /obj/item/clothing/suit/storage/jacket/marine/lawyer/brown
-	name = "brown suit-jacket"
+	name = "棕色正装外套"
 	icon_state = "suitjacket_brown"
 	initial_icon_state = "suitjacket_brown"
 
 /obj/item/clothing/suit/storage/jacket/marine/lawyer/light_brown
-	name = "light-brown suit-jacket"
+	name = "浅棕色正装外套"
 	icon_state = "suitjacket_lightbrown"
 	initial_icon_state = "suitjacket_lightbrown"
 
 //Windbreakers
 /obj/item/clothing/suit/storage/windbreaker
-	name = "windbreaker parent object"
-	desc = "This shouldn't be here..."
+	name = "防风夹克父对象"
+	desc = "这东西不该出现在这里..."
 	icon = 'icons/obj/items/clothing/suits/windbreakers.dmi'
 	blood_overlay_type = "armor"
 	allowed = list(
@@ -429,45 +429,45 @@
 
 	if(zip_unzip)
 		icon_state = initial(icon_state)
-		to_chat(user, SPAN_NOTICE("You zip \the [src]."))
+		to_chat(user, SPAN_NOTICE("你拉上了\the [src]的拉链。"))
 
 	else
 		icon_state = "[initial(icon_state)]_o"
-		to_chat(user, SPAN_NOTICE("You unzip \the [src]."))
+		to_chat(user, SPAN_NOTICE("你拉开了\the [src]的拉链。"))
 	zip_unzip = !zip_unzip
 
 	update_clothing_icon()
 
 /obj/item/clothing/suit/storage/windbreaker/windbreaker_brown
-	name = "brown windbreaker"
-	desc = "A brown windbreaker."
+	name = "棕色防风夹克"
+	desc = "一件棕色防风夹克。"
 	icon_state = "windbreaker_brown"
 
 /obj/item/clothing/suit/storage/windbreaker/windbreaker_gray
-	name = "gray windbreaker"
-	desc = "A gray windbreaker."
+	name = "灰色防风夹克"
+	desc = "一件灰色防风夹克。"
 	icon_state = "windbreaker_gray"
 
 /obj/item/clothing/suit/storage/windbreaker/windbreaker_green
-	name = "green windbreaker"
-	desc = "A green windbreaker."
+	name = "绿色防风夹克"
+	desc = "一件绿色防风夹克。"
 	icon_state = "windbreaker_green"
 
 /obj/item/clothing/suit/storage/windbreaker/windbreaker_fr
-	name = "first responder windbreaker"
-	desc = "A brown windbreaker with reflective strips commonly worn by first responders."
+	name = "急救员防风夹克"
+	desc = "一件带有反光条的棕色防风夹克，通常由急救员穿着。"
 	icon_state = "windbreaker_fr"
 
 /obj/item/clothing/suit/storage/windbreaker/windbreaker_covenant
-	name = "explorer's windbreaker"
-	desc = "A brown windbreaker covered in various patches tying it to one of the first explorations into this sector."
+	name = "探险者风衣"
+	desc = "一件棕色的风衣，上面缝满了各种徽章，表明它与对该星区的首次探索有关。"
 	icon_state = "windbreaker_covenant"
 
 //Suspenders
 /obj/item/clothing/suit/suspenders
 	name = "suspenders"
 	gender = PLURAL
-	desc = "They suspend pants."
+	desc = "它们能挂住裤子。"
 	icon = 'icons/obj/items/clothing/belts/misc.dmi'
 	icon_state = "suspenders"
 	blood_overlay_type = "armor"

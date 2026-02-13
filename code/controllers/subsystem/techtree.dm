@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(techtree)
-	name = "Tech Tree"
+	name = "科技树"
 	init_order = SS_INIT_TECHTREE
 
 	flags = SS_NO_FIRE

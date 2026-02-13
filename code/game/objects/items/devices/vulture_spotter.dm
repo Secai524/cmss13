@@ -1,6 +1,6 @@
 /obj/item/device/vulture_spotter_scope
 	name = "\improper M707 spotter scope"
-	desc = "A scope that, when mounted on a tripod, allows a user to assist the M707's firer in target acquisition."
+	desc = "一个瞄准镜，当安装在三角架上时，可协助M707的射手进行目标捕获。"
 	icon_state = "vulture_scope"
 	item_state = "electronic"
 	icon = 'icons/obj/items/binoculars.dmi'
@@ -21,13 +21,13 @@
 
 /obj/item/device/vulture_spotter_scope/attack_self(mob/user)
 	. = ..()
-	to_chat(user, SPAN_WARNING("[src] needs to be mounted on a tripod to use!"))
+	to_chat(user, SPAN_WARNING("[src]需要安装在三角架上才能使用！"))
 
 /obj/item/device/vulture_spotter_scope/skillless
 
 /obj/item/device/vulture_spotter_tripod
 	name = "\improper M707 spotter tripod"
-	desc = "A tripod, meant for stabilizing a spotting scope for the M707 anti-materiel rifle."
+	desc = "一个三角架，用于稳定M707反器材步枪的观测瞄准镜。"
 	icon_state = "vulture_tripod"
 	item_state = "electronic"
 	icon = 'icons/obj/items/binoculars.dmi'
@@ -41,7 +41,7 @@
 
 /obj/item/device/vulture_spotter_tripod/attack_self(mob/user)
 	. = ..()
-	user.balloon_alert(user, "setting up tripod")
+	user.balloon_alert(user, "架设三角架")
 	if(!do_after(user, 1.5 SECONDS, target = user))
 		return
 

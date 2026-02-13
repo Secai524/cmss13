@@ -10,13 +10,13 @@
 
 /obj/item/clothing/under/marine/veteran/pmc/corporate/hybrisa
 	name = "\improper WY corporate security uniform"
-	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant is commonly worn by what are known as 'goons'."
+	desc = "维兰德-汤谷公司安保人员穿着的装甲制服。这种款式通常被所谓的‘打手’穿着。"
 	icon_state = "sec_hybrisa_uniform"
 	worn_state = "sec_hybrisa_uniform"
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/marine/veteran/pmc/corporate/hybrisa/lead
-	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant is commonly worn by the lead of the 'goonsquad', as they are colloquially known."
+	desc = "维兰德-汤谷公司安保人员穿着的装甲制服。这种款式通常由俗称‘打手小队’的队长穿着。"
 	icon_state = "sec_lead_hybrisa_uniform"
 	worn_state = "sec_lead_hybrisa_uniform"
 
@@ -24,7 +24,7 @@
 
 /obj/item/clothing/under/hybrisa/cmb_officer
 	name = "\improper Colonial Marshal uniform"
-	desc = "A pair of grey slacks and a blue button-down shirt with a black tie; a non-standard uniform of the Colonial Marshals, specific to more urbanized colonies, resembling a uniform worn by more traditional policing forces on Earth."
+	desc = "一条灰色休闲裤和一件蓝色纽扣衬衫，配黑色领带；殖民地执法官的非标准制服，专为更城市化的殖民地设计，类似于地球上更传统的警察部队制服。"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/CMB.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/CMB.dmi',
@@ -44,7 +44,7 @@
 
 /obj/item/clothing/under/hybrisa/wy_pilot
 	name = "\improper Weyland-Yutani Pilot uniform"
-	desc = "A pair of grey slacks and a white button-down shirt with a dark-grey tie and golden epaulettes signifying rank; a standard uniform for a commercial grade Weyland-Yutani affiliated Pilot."
+	desc = "一条灰色休闲裤和一件白色纽扣衬衫，配深灰色领带和金色肩章以示军衔；维兰德-汤谷旗下商业级飞行员的标准制服。"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/WY.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi',
@@ -64,7 +64,7 @@
 
 /obj/item/clothing/under/hybrisa/paramedic
 	name = "\improper EMT - Paramedic uniform"
-	desc = "A set of EMT - Paramedic fatigues, this one is green."
+	desc = "一套急救医疗技术员 - 护理人员作训服，绿色款。"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/medical.dmi',
@@ -82,7 +82,7 @@
 
 /obj/item/clothing/under/hybrisa/paramedic/red
 	name = "\improper EMT - Paramedic uniform"
-	desc = "A set of EMT - Paramedic fatigues, this one is red."
+	desc = "一套急救医疗技术员 - 护理人员作训服，红色款。"
 	icon_state = "paramedic_redblack_uniform"
 	worn_state = "paramedic_redblack_uniform"
 	armor_melee = CLOTHING_ARMOR_LOW
@@ -98,7 +98,7 @@
 
 /obj/item/clothing/under/hybrisa/santiation
 	name = "\improper Weyland-Yutani RFF - Sanitation uniform"
-	desc = "A set of Weyland-Yutani RFF - Sanitation fatigues, a green pair of work slacks and a grey polo-shirt with green reflecting stripes."
+	desc = "一套维兰德-汤谷快速反应部队 - 环卫作训服，包括绿色工装裤和灰色Polo衫，带有绿色反光条纹。"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/service.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/service.dmi',
@@ -118,7 +118,7 @@
 
 /obj/item/clothing/under/hybrisa/engineering_utility
 	name = "\improper Weyland-Yutani engineering utility uniform"
-	desc = "A set of Weyland-Yutani engineering utility workers uniform, a orange pair of work slacks and a grey polo-shirt with orange reflecting stripes."
+	desc = "一套维兰德-汤谷工程公用事业工人制服，包括橙色工装裤和灰色Polo衫，带有橙色反光条纹。"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/engineering.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/engineering.dmi',
@@ -136,7 +136,7 @@
 
 /obj/item/clothing/under/hybrisa/engineering_utility/alt
 	name = "\improper Weyland-Yutani engineering utility uniform"
-	desc = "A set of Weyland-Yutani engineering utility workers uniform, a blue pair of work slacks and a grey polo-shirt with yellow reflecting stripes."
+	desc = "一套维兰德-汤谷工程公用事业工人制服，包括蓝色工装裤和灰色Polo衫，带有黄色反光条纹。"
 	icon_state = "engineer_worker_alt_uniform"
 	worn_state = "engineer_worker_alt_uniform"
 
@@ -144,7 +144,7 @@
 
 /obj/item/clothing/under/hybrisa/kelland_mining
 	name = "\improper kelland-mining uniform"
-	desc = "A set of Kelland-Mining fatigues, a yellow pair of utility work slacks and a light-grey polo-shirt with red reflecting stripes."
+	desc = "一套凯兰矿业作训服，包括黄色公用事业工装裤和浅灰色Polo衫，带有红色反光条纹。"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/cargo.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/cargo.dmi',
@@ -168,7 +168,7 @@
 
 /obj/item/clothing/under/hybrisa/weymart
 	name = "\improper Weymart uniform"
-	desc = "A pair of dark-grey slacks and an orange button-down shirt; a standard uniform for the Weyland-Yutani branded supermarket 'Weymart'."
+	desc = "一条深灰色休闲裤和一件橙色纽扣衬衫；维兰德-汤谷旗下超市‘维玛特’的标准制服。"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/WY.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi',
@@ -188,7 +188,7 @@
 
 /obj/item/clothing/under/hybrisa/pizza_galaxy
 	name = "\improper Pizza-Galaxy uniform"
-	desc = "A pair of red slacks and a white button-down shirt with a large 'Pizza-Galaxy' logo on the back; a standard uniform for a Pizza-Galaxy employee. Pizza-Galaxy! To infinity and beyond!"
+	desc = "一条红色休闲裤和一件白色纽扣衬衫，背面印有巨大的‘披萨银河’标志；披萨银河员工的标准制服。披萨银河！飞向无限，超越极限！"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/service.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/service.dmi',
@@ -208,7 +208,7 @@
 
 /obj/item/clothing/under/hybrisa/cuppa_joes
 	name = "\improper Cuppa Joe's uniform"
-	desc = "A pair of black slacks and a white short-sleeved button-down shirt; a standard uniform for a Cuppa Joe's employee. Have You Got The CuppaJoe Smile?"
+	desc = "一条黑色休闲裤和一件白色短袖纽扣衬衫；一杯乔咖啡店员工的标准制服。你有一杯乔的微笑吗？"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/service.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/service.dmi',
@@ -227,8 +227,8 @@
 // Science
 
 /obj/item/clothing/under/rank/scientist/hybrisa
-	name = "scientist's utility jumpsuit"
-	desc = "It's made of a special fiber that provides minor protection against biohazards. It has markings that denote the wearer as a scientist."
+	name = "科学家公用连体服"
+	desc = "由特殊纤维制成，提供对生物危害的轻微防护。其标记表明穿着者为科学家。"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/research.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/research.dmi',
@@ -251,7 +251,7 @@
 
 /obj/item/clothing/under/hybrisa/wy_exec_suit_uniform
 	name = "\improper expensive suit"
-	desc = "A luxurious designer suit, beyond the reach of the average person. It's an exclusive choice for high-level executives and the affluent elite."
+	desc = "一套奢华的品牌西装，非普通人所能企及。是高级执行官和富裕精英的专属选择。"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/WY.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi',
@@ -292,23 +292,23 @@
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa
 	name = "\improper WY corporate security helmet"
-	desc = "A basic skull-helm with a orange safety visor fitted. Worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar."
+	desc = "一顶配有橙色安全面罩的基础骷髅头盔。由公司安保人员佩戴，评级可保护头部免受手持撬棍的失控科学家攻击。"
 	icon_state = "sec_helmet_hybrisa"
 	item_state = "sec_helmet_hybrisa"
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa/lead
-	desc = "A basic skull-helm with a orange safety visor fitted. Worn by corporate security assets. This variant is worn by low-level guards that have too much brainmatter to fit into the old one. Or so they say."
+	desc = "一顶配有橙色安全面罩的基础骷髅头盔。由公司安保人员佩戴。此款式由脑容量过大而无法塞进旧款头盔的低级守卫佩戴。至少他们是这么说的。"
 	icon_state = "sec_lead_helmet_hybrisa"
 	item_state = "sec_lead_helmet_hybrisa"
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa/brown
 	name = "\improper WY corporate security helmet"
-	desc = "A basic skull-helm with a orange safety visor fitted. Worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar."
+	desc = "一顶配有橙色安全面罩的基础骷髅头盔。由公司安保人员佩戴，评级可保护头部免受手持撬棍的失控科学家攻击。"
 	icon_state = "sec_brown_helmet_hybrisa"
 	item_state = "sec_brown_helmet_hybrisa"
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa/medic
-	desc = "A basic skull-helm with a orange safety visor fitted. Worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar. A medical cross is emblazoned across the front."
+	desc = "一顶配有橙色安全面罩的基础骷髅头盔。由公司安保人员佩戴，评级可保护头部免受手持撬棍的失控科学家攻击。正面饰有医疗十字标志。"
 	icon_state = "sec_medic_helmet_hybrisa"
 	item_state = "sec_medic_helmet_hybrisa"
 
@@ -316,7 +316,7 @@
 
 /obj/item/clothing/head/hybrisa/cmb_cap_new
 	name = "\improper Colonial Marshal Bureau cap"
-	desc = "A dark cap enscribed with the powerful letters of 'MARSHAL' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
+	desc = "一项深色帽子，上面印有代表外缘星域正义、权威与保护的强大字母‘MARSHAL’。地球的法律延伸至太阳系之外。"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/CMB.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/CMB.dmi',
@@ -337,7 +337,7 @@
 
 /obj/item/clothing/head/hybrisa/cmb_cap_new/riot
 	name = "\improper Police cap"
-	desc = "A dark cap enscribed with the powerful letters of 'POLICE' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
+	desc = "一项深色帽子，上面印有代表外缘星域正义、权威与保护的强大字母‘POLICE’。地球的法律延伸至太阳系之外。"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/CMB.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/CMB.dmi',
@@ -347,7 +347,7 @@
 
 /obj/item/clothing/head/hybrisa/cmb_peaked_cap
 	name = "\improper Colonial Marshal Bureau cap"
-	desc = "A dark peaked cap enscribed with the powerful star shaped emblem of the 'Colonial Marshalls Bureau' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
+	desc = "一项深色大檐帽，上面印有代表外缘星域正义、权威与保护的‘殖民地执法局’星形徽章。地球的法律延伸至太阳系之外。"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/CMB.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/CMB.dmi',
@@ -368,7 +368,7 @@
 
 /obj/item/clothing/head/hybrisa/cmb_peaked_cap_gold
 	name = "\improper Colonial Marshal Bureau cap"
-	desc = "A dark peaked cap enscribed with the powerful star shaped emblem of the 'Colonial Marshalls Bureau' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
+	desc = "一项深色大檐帽，上面印有代表外缘星域正义、权威与保护的‘殖民地执法局’星形徽章。地球的法律延伸至太阳系之外。"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/CMB.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/CMB.dmi',
@@ -391,7 +391,7 @@
 
 /obj/item/clothing/head/hybrisa/wy_po_cap
 	name = "\improper Weyland-Yutani Pilot cap"
-	desc = "A dark peaked cap enscribed with the Weyland-Yutani 'Wings' logo. A formal cap for qualified civilian Pilots, akin to old Earth formal Pilots-wear."
+	desc = "一项深色大檐帽，上面印有维兰德-汤谷的‘飞翼’标志。合格民用飞行员的正式帽子，类似于旧地球的正式飞行员装束。"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/WY.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/WY.dmi',
@@ -413,8 +413,8 @@
 // Weymart Cap
 
 /obj/item/clothing/head/hybrisa/weymart
-	name = "orange cap"
-	desc = "It's a baseball style cap in the 'Weymart' orange color, with the 'Weymart' logo on the front."
+	name = "橙色棒球帽"
+	desc = "这是一顶'维玛特'橙色的棒球帽，正面印有'维玛特'标志。"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/WY.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/WY.dmi',
@@ -425,8 +425,8 @@
 // Pizza-Galaxy Cap
 
 /obj/item/clothing/head/hybrisa/pizza_galaxy
-	name = "Pizza-Galaxy red cap"
-	desc = "It's a baseball style cap in a red color, with the 'Pizza-Galaxy' logo on the front."
+	name = "披萨银河红色棒球帽"
+	desc = "这是一顶红色的棒球帽，正面印有'披萨银河'标志。"
 	icon = 'icons/obj/items/clothing/hats/soft_caps.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/soft_caps.dmi'
@@ -439,8 +439,8 @@
 // Firefighter
 
 /obj/item/clothing/head/helmet/hybrisa/medtech
-	name = "MT-SHIELD-X 525 helmet"
-	desc = "The MT-SHIELD-X 525 (MedTech - Safety Helmet Integrated for Extreme Danger). A closed helmet designed to protect the wearer from hazardous environments, this specific model is designed to be effective in a variety of hazardous environments and protects the user from potential biohazards. This helmet was designed by Hyperdyne Systems, in collabaration with MedTech."
+	name = "MT-SHIELD-X 525头盔"
+	desc = "MT-SHIELD-X 525（医疗科技 - 极端危险集成安全头盔）。一款为保护穿戴者免受危险环境伤害而设计的封闭式头盔，此特定型号旨在多种危险环境中有效运作，并保护使用者免受潜在生物危害。此头盔由海珀戴恩系统公司与医疗科技合作设计。"
 	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi'
@@ -459,8 +459,8 @@
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDETOPHAIR
 
 /obj/item/clothing/head/helmet/hybrisa/firefighter
-	name = "HS-SHIELD-X 500 helmet"
-	desc = "The HS-SHIELD-X 500 (Hyperdyne Systems - Safety Helmet Integrated for Extreme Danger). A closed helmet designed to protect the wearer from hazardous environments, this specific model is designed to be effective in high heat environments and protect the user from smoke inhalation. It has a built in semi-closed breathing system. This helmet was designed by Hyperdyne Systems."
+	name = "HS-SHIELD-X 500头盔"
+	desc = "HS-SHIELD-X 500（海珀戴恩系统 - 极端危险集成安全头盔）。一款为保护穿戴者免受危险环境伤害而设计的封闭式头盔，此特定型号旨在高温环境中有效运作，并保护使用者免受烟雾吸入伤害。它内置半封闭式呼吸系统。此头盔由海珀戴恩系统公司设计。"
 	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi'
@@ -481,8 +481,8 @@
 // Kelland Mining
 
 /obj/item/clothing/head/helmet/hybrisa/kelland_mining_helmet
-	name = "HS-KM-SHIELD-X 550 helmet"
-	desc = "The HS-KM-SHIELD-X 550 (Hyperdyne Systems - Kelland Mining - Safety Helmet Integrated for Extreme Danger). A closed helmet designed to protect the wearer from hazardous environments, this specific model is designed to be effective in a variety of hazardous environments and protect the user from toxic fume inhalation. It has a built in semi-closed breathing system. This helmet was designed by Hyperdyne Systems, in collabaration with Kelland-Mining."
+	name = "HS-KM-SHIELD-X 550头盔"
+	desc = "HS-KM-SHIELD-X 550（海珀戴恩系统 - 凯兰矿业 - 极端危险集成安全头盔）。一款为保护穿戴者免受危险环境伤害而设计的封闭式头盔，此特定型号旨在多种危险环境中有效运作，并保护使用者免受有毒烟雾吸入伤害。它内置半封闭式呼吸系统。此头盔由海珀戴恩系统公司与凯兰矿业合作设计。"
 	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi'
@@ -507,8 +507,8 @@
 // Pizza-Galaxy (Rare Helmet)
 
 /obj/item/clothing/head/helmet/hybrisa/pizza_galaxy
-	name = "HS-PG-SHIELD-X 575 helmet"
-	desc = "The HS-PG-SHIELD-X 575 (Hyperdyne Systems - Pizza-Galaxy - Safety Helmet Integrated for Extreme Danger). A closed prototype helmet was designed to protect the wearer from hazardous environments, this specific model is designed to be effective in low atmosphere environments. It has a built in closed breathing system. This helmet was designed by Hyperdyne Systems in collaboration with Pizza-Galaxy."
+	name = "HS-PG-SHIELD-X 575头盔"
+	desc = "HS-PG-SHIELD-X 575（海珀戴恩系统 - 披萨银河 - 极端危险集成安全头盔）。一款为保护穿戴者免受危险环境伤害而设计的封闭式原型头盔，此特定型号旨在低大气压环境中有效运作。它内置封闭式呼吸系统。此头盔由海珀戴恩系统公司与披萨银河合作设计。"
 	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi'
@@ -529,8 +529,8 @@
 // Biosuits
 
 /obj/item/clothing/head/bio_hood/wy_bio
-	name = "WY-TSS MK II - bio hood"
-	desc = "The 'Weyland-Yutani TerraScientia bio-suit MK II'. An advanced light-weight bio-suit developed in-house by Weyland-Yutani. It's a hood that protects the head and face from biological contaminants."
+	name = "WY-TSS MK II - 生物防护头罩"
+	desc = "'维兰德-汤谷地球科学生物防护服 MK II'。一款由维兰德-汤谷内部研发的先进轻量化生物防护服。这是一个保护头部和面部免受生物污染物侵害的头罩。"
 	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi'
@@ -543,14 +543,14 @@
 	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/clothing/head/bio_hood/wy_bio/alt
-	name = "WY-TSS MK I - bio hood"
-	desc = "The 'Weyland-Yutani TerraScientia bio-suit MK I'. An advanced light-weight bio-suit developed in-house by Weyland-Yutani. It's a hood that protects the head and face from biological contaminants."
+	name = "WY-TSS MK I - 生物防护头罩"
+	desc = "'维兰德-汤谷地球科学生物防护服 MK I'。一款由维兰德-汤谷内部研发的先进轻量化生物防护服。这是一个保护头部和面部免受生物污染物侵害的头罩。"
 	icon_state = "sci_expedition_helmet_alt"
 	item_state = "sci_expedition_helmet_alt"
 
 /obj/item/clothing/suit/bio_suit/wy_bio
-	name = "WY-TSS MK I - bio suit"
-	desc = "The 'Weyland-Yutani TerraScientia bio-suit MK I'. An advanced light-weight bio-suit developed in-house by Weyland-Yutani. It's a suit that protects against biological contamination."
+	name = "WY-TSS MK I - 生物防护服"
+	desc = "'维兰德-汤谷地球科学生物防护服 MK I'。一款由维兰德-汤谷内部研发的先进轻量化生物防护服。这是一套提供生物污染防护的服装。"
 	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/hazard.dmi',
@@ -567,8 +567,8 @@
 // Synth Bio
 
 /obj/item/clothing/head/bio_hood/synth/wy_bio
-	name = "WY-TSS MK II - bio hood"
-	desc = "The 'Weyland-Yutani TerraScientia bio-suit MK II'. An advanced light-weight bio-suit developed in-house by Weyland-Yutani. It's a hood that protects the head and face from biological contaminants, synthetic compliant. Offers no real protection."
+	name = "WY-TSS MK II - 生物防护头罩"
+	desc = "'维兰德-汤谷地球科学生物防护服 MK II'。一款由维兰德-汤谷内部研发的先进轻量化生物防护服。这是一个保护头部和面部免受生物污染物侵害的头罩，合成人适用。不提供实质性防护。"
 	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi'
@@ -577,14 +577,14 @@
 	item_state = "sci_expedition_helmet"
 
 /obj/item/clothing/head/bio_hood/synth/wy_bio/alt
-	name = "WY-TSS MK I - bio hood"
-	desc = "The 'Weyland-Yutani TerraScientia bio-suit MK I'. An advanced light-weight bio-suit developed in-house by Weyland-Yutani. It's a hood that protects the head and face from biological contaminants, synthetic compliant. Offers no real protection."
+	name = "WY-TSS MK I - 生物防护头罩"
+	desc = "'维兰德-汤谷地球科学生物防护服 MK I'。一款由维兰德-汤谷内部研发的先进轻量化生物防护服。这是一个保护头部和面部免受生物污染物侵害的头罩，合成人适用。不提供实质性防护。"
 	icon_state = "sci_expedition_helmet_synth"
 	item_state = "sci_expedition_helmet_synth"
 
 /obj/item/clothing/suit/storage/synthbio/wy_bio
-	name = "WY-TSS MK I - bio suit"
-	desc = "The 'Weyland-Yutani TerraScientia bio-suit MK I'. An advanced light-weight bio-suit developed in-house by Weyland-Yutani. A Synthetic compliant biohazard suit. Intended to allow a synthetic to offer the illusion of infection control to humans. Has had most of the internal protective lining removed, allowing it to hold equipment and be lighter to move in."
+	name = "WY-TSS MK I - 生物防护服"
+	desc = "'维兰德-汤谷地球科学生物防护服 MK I'。一款由维兰德-汤谷内部研发的先进轻量化生物防护服。一套合成人适用的生物危害防护服。旨在让合成人能够向人类营造感染控制的假象。其内部大部分防护衬里已被移除，以便容纳装备并减轻移动负担。"
 	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/hazard.dmi',
@@ -600,8 +600,8 @@
 
 /obj/item/clothing/suit/storage/marine/light/vest/fire_light
 
-	name = "PT-LT firesuit"
-	desc = "The 'PyroTex LT' is an advanced, lightweight firesuit developed by 'Watatsumi'. It provides protection against fire and heat, while also offering a degree of protection from blunt force trauma."
+	name = "PT-LT防火服"
+	desc = "'PyroTex LT'是一款由'Watatsumi'研发的先进轻量化防火服。它提供防火和防热保护，同时也能提供一定程度的钝器创伤防护。"
 	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/hazard.dmi',
@@ -678,8 +678,8 @@
 // UPP firefighter
 
 /obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp
-	name = "T-20 fire response coat"
-	desc = "A rugged, no-frills fire-resistant overcoat issued to UPP industrial and emergency crews. Based on the PyroTex LT design but using cheaper, domestically produced materials, it offers basic protection against heat and debris at the cost of weight and comfort."
+	name = "T-20消防响应外套"
+	desc = "一款配发给UPP工业和应急人员的坚固、无装饰的防火大衣。基于PyroTex LT设计，但使用更廉价的国产材料，它以重量和舒适度为代价，提供对高温和碎片的基本防护。"
 	icon_state = "upp_firefighter_alt"
 	item_state = "upp_firefighter_alt"
 	uniform_restricted = FALSE
@@ -689,8 +689,8 @@
 	item_state = "upp_firefighter"
 
 /obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp/synth
-	name = "T-20 synthetic fire response coat"
-	desc = "A rugged, no-frills fire-resistant overcoat issued to UPP industrial and emergency crews. Based on the PyroTex LT design but using cheaper, domestically produced materials, it offers basic protection against heat and debris at the cost of weight and comfort."
+	name = "T-20合成人防火响应外套"
+	desc = "一款配发给UPP工业和应急人员的坚固、无装饰的防火大衣。基于PyroTex LT设计，但使用更廉价的国产材料，它以重量和舒适度为代价，提供对高温和碎片的基本防护。"
 
 	time_to_unequip = 0.5 SECONDS
 	time_to_equip = 1 SECONDS
@@ -711,8 +711,8 @@
 	return ..()
 
 /obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp/synth/alt
-	name = "T-20 synthetic fire response coat"
-	desc = "A rugged, no-frills fire-resistant overcoat issued to UPP industrial and emergency crews. Based on the PyroTex LT design but using cheaper, domestically produced materials, it offers basic protection against heat and debris at the cost of weight and comfort."
+	name = "T-20合成人防火响应外套"
+	desc = "一款配发给UPP工业和应急人员的坚固、无装饰的防火大衣。基于PyroTex LT设计，但使用更廉价的国产材料，它以重量和舒适度为代价，提供对高温和碎片的基本防护。"
 	icon_state = "upp_firefighter"
 	item_state = "upp_firefighter"
 
@@ -738,7 +738,7 @@
 
 /obj/item/clothing/suit/storage/marine/light/vest/hybrisa_kelland
 	name = "\improper Kelland-Mining utility uniform"
-	desc = "A set of standard issue Kelland-Mining utility fatigues, a yellow pair of utility work slacks and a black collard heavy padded jacket, which protects against various environmental hazards."
+	desc = "一套标准配发的凯兰矿业工装服，包括一条黄色工装裤和一件黑色立领重型填充夹克，可抵御多种环境危害。"
 	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/hazard.dmi',
@@ -784,7 +784,7 @@
 
 /obj/item/clothing/suit/storage/marine/light/vest/hybrisa_kelland_alt
 	name = "\improper Kelland-Mining utility uniform"
-	desc = "A set of standard issue Kelland-Mining utility fatigues, a yellow pair of utility work slacks and a black collard heavy padded jacket, which protects against various environmental hazards."
+	desc = "一套标准配发的凯兰矿业工装服，包括一条黄色工装裤和一件黑色立领重型填充夹克，可抵御多种环境危害。"
 	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/hazard.dmi',
@@ -832,7 +832,7 @@
 
 /obj/item/clothing/suit/hybrisa/EMT_green_utility
 	name = "\improper EMT - Paramedic utility fatigues"
-	desc = "A set of EMT - Paramedic utility fatigues, this one is green."
+	desc = "一套紧急医疗技术员-护理员工装服，这是绿色的。"
 	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/hazard.dmi',
@@ -843,7 +843,7 @@
 
 /obj/item/clothing/suit/hybrisa/EMT_red_utility
 	name = "\improper EMT - Paramedic utility fatigues"
-	desc = "A set of EMT - Paramedic utility fatigues, this one is red."
+	desc = "一套紧急医疗技术员-护理员工装服，这是红色的。"
 	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/hazard.dmi',
@@ -856,7 +856,7 @@
 
 /obj/item/clothing/suit/hybrisa/sanitation_utility
 	name = "\improper Sanitation utility uniform"
-	desc = "A Sanitation utility uniform, used by the clean-up crews of the more prosperous colonies."
+	desc = "一套清洁工装服，供较富裕殖民地的清理人员使用。"
 	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/hazard.dmi',
@@ -869,7 +869,7 @@
 
 /obj/item/clothing/suit/hybrisa/engineering_utility_oversuit
 	name = "\improper Weyland-Yutani engineer utility uniform"
-	desc = "A Weyland-Yutani engineer utility uniform. Used as a general purpose utility oversuit by Weyland-Yutani colony engineers."
+	desc = "一套维兰德-汤谷工程师工装服。被维兰德-汤谷殖民地工程师用作通用工装外套。"
 	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/hazard.dmi',
@@ -886,7 +886,7 @@
 
 /obj/item/clothing/suit/storage/hybrisa/wy_Pilot
 	name = "\improper Weyland-Yutani Pilot formal-jacket"
-	desc = "A suit-style jacket with a fur lined collar and golden epaulettes signifying rank. Worn by Weyland-Yutani qualified civilian Pilots, akin to old Earth formal Pilots-wear."
+	desc = "一件西装式夹克，配有毛皮衬里衣领和象征军衔的金色肩章。由维兰德-汤谷认证的民用飞行员穿着，类似于旧地球的正式飞行员服装。"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/WY.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
@@ -899,7 +899,7 @@
 
 /obj/item/clothing/suit/storage/CMB/hybrisa/fur_lined_trench_coat
 	name = "\improper expensive fur-lined trench-coat"
-	desc = "A luxurious fur-lined, antique-styled trench coat that exudes classic noir elegance. This exquisite garment is far beyond the average person's budget, accessible only to high-level executives and elite military personnel."
+	desc = "一件奢华的毛皮衬里、复古风格风衣，散发着经典黑色电影的优雅气息。这件精美的服装远非普通人所能负担，仅供高级管理人员和精英军事人员使用。"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/WY.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
@@ -919,7 +919,7 @@
 
 /obj/item/clothing/suit/storage/CMB/hybrisa
 	name = "\improper CMB Marshal jacket"
-	desc = "A black polyester jacket with a Marshal's badge pinned to it. Representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
+	desc = "一件黑色聚酯夹克，上面别着执法官的徽章。代表着外缘星系的正义、权威与保护。地球的法律延伸至太阳系之外。"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/CMB.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/CMB.dmi'
@@ -931,8 +931,8 @@
 // CMB Vest
 
 /obj/item/clothing/suit/armor/vest/hybrisa/cmb_vest
-	name = "CMB armored vest"
-	desc = "An CMB armored vest that protects against some damage."
+	name = "CMB防弹背心"
+	desc = "一件CMB防弹背心，可提供一定程度的伤害防护。"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/CMB.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/CMB.dmi'
@@ -950,8 +950,8 @@
 	armor_rad = CLOTHING_ARMOR_LOW
 
 /obj/item/clothing/suit/armor/vest/hybrisa/civilian_vest
-	name = "armored vest"
-	desc = "An general-use, unmarked armored vest that protects against some damage."
+	name = "防弹背心"
+	desc = "一件通用、无标识的防弹背心，可提供一定程度的伤害防护。"
 	icon_state = "generic_ballistic_armor"
 	item_state = "generic_ballistic_armor"
 	uniform_restricted = null
@@ -967,8 +967,8 @@
 // Hazard Vests
 
 /obj/item/clothing/suit/storage/hazardvest/medical_green
-	name = "EMT - green hazard vest"
-	desc = "A green and white EMT high-visibility hazard vest used in work zones."
+	name = "紧急医疗技术员-绿色危险警示背心"
+	desc = "一件用于工作区域的绿白相间紧急医疗技术员高能见度危险警示背心。"
 	icon = 'icons/obj/items/clothing/suits/vests_aprons.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/vests_aprons.dmi',
@@ -977,8 +977,8 @@
 	item_state = "medicalhazard_green"
 
 /obj/item/clothing/suit/storage/hazardvest/medical_red
-	name = "EMT - red hazard vest"
-	desc = "A red and white EMT high-visibility hazard vest used in work zones."
+	name = "紧急医疗技术员-红色危险警示背心"
+	desc = "一件用于工作区域的红白相间紧急医疗技术员高能见度危险警示背心。"
 	icon = 'icons/obj/items/clothing/suits/vests_aprons.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/vests_aprons.dmi',
@@ -987,8 +987,8 @@
 	item_state = "medicalhazard_white"
 
 /obj/item/clothing/suit/storage/hazardvest/kelland_mining
-	name = "Kelland-Mining hazard vest"
-	desc = "A black high-visibility vest used in work zones."
+	name = "凯兰矿业危险警示背心"
+	desc = "一件用于工作区域的黑色高能见度背心。"
 	icon = 'icons/obj/items/clothing/suits/vests_aprons.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/vests_aprons.dmi',
@@ -997,8 +997,8 @@
 	item_state = "kellandmining_hazard"
 
 /obj/item/clothing/suit/storage/hazardvest/sanitation
-	name = "green hazard vest"
-	desc = "A green and white high-visibility vest used in work zones."
+	name = "绿色危险警示背心"
+	desc = "一件用于工作区域的绿白相间高能见度背心。"
 	icon = 'icons/obj/items/clothing/suits/vests_aprons.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/vests_aprons.dmi',
@@ -1007,8 +1007,8 @@
 	item_state = "sanitation_hazard"
 
 /obj/item/clothing/suit/storage/hazardvest/weymart
-	name = "Weymart vest"
-	desc = "A blue 'Weymart' employee vest, with name tag and all."
+	name = "维市背心"
+	desc = "一件蓝色的‘维市’员工背心，配有姓名牌等。"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/WY.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
@@ -1019,8 +1019,8 @@
 // Civilian Coats
 
 /obj/item/clothing/suit/storage/snow_suit/hybrisa/parka_blue
-	name = "dark blue worn Parka"
-	desc = "An old worn blue Parka, has seen better days..."
+	name = "深蓝色旧派克大衣"
+	desc = "一件破旧的蓝色派克大衣，曾经风光过……"
 	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
@@ -1029,8 +1029,8 @@
 	item_state = "hobocoat_blue"
 
 /obj/item/clothing/suit/storage/snow_suit/hybrisa/parka_brown
-	name = "dark brown worn Parka"
-	desc = "An old worn brown Parka, has seen better days..."
+	name = "深棕色磨损派克大衣"
+	desc = "一件老旧磨损的棕色派克大衣，经历过更好的日子..."
 	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
@@ -1039,8 +1039,8 @@
 	item_state = "hobocoat_brown"
 
 /obj/item/clothing/suit/storage/snow_suit/hybrisa/parka_green
-	name = "dark green worn Parka"
-	desc = "An old worn green Parka, has seen better days..."
+	name = "深绿色磨损派克大衣"
+	desc = "一件老旧磨损的绿色派克大衣，经历过更好的日子..."
 	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
@@ -1049,8 +1049,8 @@
 	item_state = "hobocoat_green"
 
 /obj/item/clothing/suit/storage/snow_suit/hybrisa/polyester_jacket_brown
-	name = "dark brown worn polyester jacket"
-	desc = "An old worn brown polyester jacket, has seen better days..."
+	name = "深棕色磨损涤纶夹克"
+	desc = "一件老旧磨损的棕色涤纶夹克，经历过更好的日子..."
 	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
@@ -1059,8 +1059,8 @@
 	item_state = "hobocoat_dark"
 
 /obj/item/clothing/suit/storage/snow_suit/hybrisa/polyester_jacket_blue
-	name = "dark blue worn polyester jacket"
-	desc = "An old worn blue polyester jacket, has seen better days..."
+	name = "深蓝色磨损涤纶夹克"
+	desc = "一件老旧磨损的蓝色涤纶夹克，经历过更好的日子..."
 	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
@@ -1069,8 +1069,8 @@
 	item_state = "hobocoat_darkblue"
 
 /obj/item/clothing/suit/storage/snow_suit/hybrisa/polyester_jacket_red
-	name = "dark red worn polyester jacket"
-	desc = "An old worn red polyester jacket, has seen better days..."
+	name = "深红色磨损涤纶夹克"
+	desc = "一件老旧磨损的红色涤纶夹克，经历过更好的日子..."
 	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
@@ -1081,8 +1081,8 @@
 // Cuppa Joe's Apron
 
 /obj/item/clothing/suit/apron/cuppa_joes
-	name = "red apron"
-	desc = "A basic red apron."
+	name = "红色围裙"
+	desc = "一条普通的红色围裙。"
 	icon_state = "cuppajoes_apron"
 	item_state = "cuppajoes_apron"
 
@@ -1103,7 +1103,7 @@
 	new /obj/item/clothing/head/bio_hood/wy_bio/alt( src )
 
 /obj/structure/closet/secure_closet/hybrisa/nspa
-	name = "NSPA Equipment Locker"
+	name = "NSPA装备柜"
 	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_CIVILIAN_BRIG)
 	icon_state = "secure_locked_warrant"
 	icon_closed = "secure_unlocked_warrant"
@@ -1124,7 +1124,7 @@
 // Miner Closet
 
 /obj/structure/closet/secure_closet/hybrisa/miner
-	name = "miner's equipment"
+	name = "矿工装备"
 	icon_state = "miningsec1"
 	icon_closed = "miningsec"
 	icon_locked = "miningsec1"
@@ -1156,7 +1156,7 @@
 
 /obj/item/clothing/under/hybrisa/nspa_officer
 	name = "\improper NSPA - police uniform"
-	desc = "A pair of black slacks and a white button-down shirt with a black tie; a standard uniform for the NSPA forces, specific to more urbanized colonies, resembling a uniform worn by more traditional policing forces on Earth."
+	desc = "一条黑色西裤和一件白色纽扣衬衫，配黑色领带；NSPA部队的标准制服，适用于更城市化的殖民地，类似于地球上更传统的警察部队所穿的制服。"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/TWE.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/TWE.dmi',
@@ -1173,15 +1173,15 @@
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 
 /obj/item/clothing/under/hybrisa/nspa_officer/warm_weather
-	desc = "A short-sleeved olive-green button-up shirt with matching trousers and black webbing straps; a standard NSPA warm weather patrol uniform, issued for use in hotter climates across the Neroid Sector, inspired by historic colonial policing attire for a practical yet sharp look."
+	desc = "一件短袖橄榄绿纽扣衬衫，配同色长裤和黑色战术背心带；标准的NSPA暖天巡逻制服，为内罗伊德星区较热气候地区配发，灵感来自历史上的殖民地警察服装，兼具实用性与干练外观。"
 	icon_state = "nspa_police_warm"
 	worn_state = "nspa_police_warm"
 
 // Suits & Armor
 
 /obj/item/clothing/suit/armor/vest/hybrisa/nspa_vest
-	name = "NSPA armored vest"
-	desc = "An NSPA armored vest that protects against some damage."
+	name = "NSPA防弹背心"
+	desc = "一件NSPA防弹背心，可提供一定程度的防护。"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/TWE.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi'
@@ -1200,7 +1200,7 @@
 
 /obj/item/clothing/suit/storage/CMB/hybrisa/nspa_jacket
 	name = "\improper NSPA police jacket"
-	desc = "A black polyester jacket with a silver Sakura emblem of the NSPA pinned to it. Empire and Honor, Bound by Duty. Duty Beyond Borders, Justice Across Worlds."
+	desc = "一件黑色涤纶夹克，上面别着NSPA的银色樱花徽章。帝国与荣耀，职责所系。职责无界，正义遍及寰宇。"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/TWE.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi'
@@ -1211,7 +1211,7 @@
 
 /obj/item/clothing/suit/storage/CMB/hybrisa/nspa_formal_jacket
 	name = "\improper NSPA police formal jacket"
-	desc = "A heavy woolen formal coat commonly used by NSPA Constables. Empire and Honor, Bound by Duty. Duty Beyond Borders, Justice Across Worlds."
+	desc = "NSPA警员常用的厚重羊毛正装大衣。帝国与荣耀，职责所系。职责无界，正义遍及寰宇。"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/TWE.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi'
@@ -1222,7 +1222,7 @@
 
 /obj/item/clothing/suit/storage/CMB/hybrisa/nspa_hazard_jacket
 	name = "\improper NSPA high-vis jacket"
-	desc = "A green and white striped (high-visibility) polyester jacket commonly used by NSPA personnel."
+	desc = "NSPA人员常用的绿白条纹（高可见度）涤纶夹克。"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/TWE.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi'
@@ -1232,8 +1232,8 @@
 	uniform_restricted = null
 
 /obj/item/clothing/suit/storage/hazardvest/nspa_hazard
-	name = "NSPA hazard vest"
-	desc = "A green and white high-visibility vest commonly used by NSPA personnel."
+	name = "NSPA危险作业背心"
+	desc = "NSPA人员常用的绿白高可见度背心。"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/TWE.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi'
@@ -1245,7 +1245,7 @@
 
 /obj/item/clothing/head/hybrisa/nspa_peaked_cap
 	name = "\improper NSPA peaked cap"
-	desc = "A dark peaked cap enscribed with the powerful silver & red Sakura flower shaped emblem of the NSPA. Empire and Honor, Bound by Duty. Duty Beyond Borders, Justice Across Worlds."
+	desc = "一顶深色大檐帽，上面饰有NSPA强大的银红樱花形徽章。帝国与荣耀，职责所系。职责无界，正义遍及寰宇。"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/TWE.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/TWE.dmi',
@@ -1266,7 +1266,7 @@
 
 /obj/item/clothing/head/hybrisa/nspa_peaked_cap_goldandsilver
 	name = "\improper NSPA peaked cap"
-	desc = "A dark peaked cap enscribed with the powerful silver & gold Sakura flower shaped emblem of the NSPA. Empire and Honor, Bound by Duty. Duty Beyond Borders, Justice Across Worlds."
+	desc = "一顶深色大檐帽，上面饰有NSPA强大的金银樱花形徽章。帝国与荣耀，职责所系。职责无界，正义遍及寰宇。"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/TWE.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/TWE.dmi',
@@ -1287,7 +1287,7 @@
 
 /obj/item/clothing/head/hybrisa/nspa_peaked_cap_gold
 	name = "\improper NSPA peaked cap"
-	desc = "A dark peaked cap enscribed with the powerful red & gold Sakura flower shaped emblem of the NSPA, more commonly used by higher ranking Constables & NSPA personnel. Empire and Honor, Bound by Duty. Duty Beyond Borders, Justice Across Worlds."
+	desc = "一顶深色大檐帽，上面印有NSPA强大而醒目的红金色樱花形徽章，通常由高级警官和NSPA人员佩戴。帝国与荣耀，职责所系。职责无界，正义遍及寰宇。"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/TWE.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/TWE.dmi',

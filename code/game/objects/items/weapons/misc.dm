@@ -1,6 +1,6 @@
 /obj/item/weapon/chainofcommand
-	name = "chain of command"
-	desc = "A tool used by great men to placate the frothing masses."
+	name = "指挥链"
+	desc = "伟人用来安抚暴动群众的工具。"
 	icon_state = "chain"
 	item_state = "chain"
 	icon = 'icons/obj/items/weapons/melee/misc.dmi'
@@ -18,8 +18,8 @@
 	shield_flags = CAN_SHIELD_BASH
 
 /obj/item/weapon/broken_bottle
-	name = "broken bottle"
-	desc = "A bottle with a sharp broken bottom."
+	name = "破酒瓶"
+	desc = "一个瓶底破裂成尖刺的酒瓶。"
 	icon = 'icons/obj/items/food/drinks.dmi'
 	icon_state = "broken_bottle"
 	force = MELEE_FORCE_WEAK
@@ -45,8 +45,8 @@
 	qdel(src)
 
 /obj/item/weapon/broken_glass
-	name = "broken glass"
-	desc = "A bottle with a sharp broken bottom."
+	name = "碎玻璃"
+	desc = "一个瓶底破裂成尖刺的酒瓶。"
 	icon = 'icons/obj/items/food/drinks.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_lefthand.dmi',
@@ -72,8 +72,8 @@
 	qdel(src)
 
 /obj/item/weapon/dart
-	name = "red throwing dart"
-	desc = "A dart. For throwing. This one's red."
+	name = "红色投掷飞镖"
+	desc = "一支飞镖，用于投掷。这支是红色的。"
 	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "red_dart"
 	force = MELEE_FORCE_WEAK
@@ -84,13 +84,13 @@
 	attack_verb = list("stabbed", "poked", "attacked")
 
 /obj/item/weapon/dart/green
-	name = "green throwing dart"
-	desc = "A dart. For throwing. This one's green."
+	name = "绿色投掷飞镖"
+	desc = "一支飞镖，用于投掷。这支是绿色的。"
 	icon_state = "green_dart"
 
 /obj/item/weapon/aquilastaff
-	name = "Aquila Staff"
-	desc = "A large prestigious staff used by Aquilifiers to rally the Roman troops. Can act as a blunt weapon in a pinch but is hard to carry around."
+	name = "阿奎拉权杖"
+	desc = "阿奎利法尔人用来集结罗马军队的大型权杖，象征威望。必要时可充当钝器，但携带不便。"
 	icon = 'icons/obj/items/weapons/melee/misc_64.dmi'
 	icon_state = "aquilastaff"
 	item_state = "aquilastaff"
@@ -115,8 +115,8 @@
 	shield_chance = SHIELD_CHANCE_MED
 
 /obj/item/weapon/javelin
-	name = "Javelin"
-	desc = "A large spear used by Roman infantry units. Extremely deadly in the right hands but hard to carry around."
+	name = "标枪"
+	desc = "罗马步兵使用的大型长矛。在行家手中极具杀伤力，但携带不便。"
 	icon = 'icons/obj/items/weapons/melee/spears.dmi'
 	icon_state = "javelin"
 	item_state = "javelin"

@@ -28,20 +28,20 @@
 
 /// Port Aft Lifeboat (bottom-right, doors on its left side)
 /obj/docking_port/mobile/crashable/lifeboat/port
-	name = "port-aft lifeboat"
+	name = "左舷-船尾救生艇"
 	id = MOBILE_SHUTTLE_LIFEBOAT_PORT
 	preferred_direction = WEST
 	port_direction = WEST
 
 /// Starboard Aft Lifeboat (top-right, doors its right side)
 /obj/docking_port/mobile/crashable/lifeboat/starboard
-	name = "starboard-aft lifeboat"
+	name = "右舷-船尾救生艇"
 	id = MOBILE_SHUTTLE_LIFEBOAT_STARBOARD
 	preferred_direction = EAST
 	port_direction = EAST
 
 /obj/docking_port/mobile/crashable/lifeboat/rostock
-	name = "rostock lifeboat"
+	name = "罗斯托克救生艇"
 	id = MOBILE_SHUTTLE_LIFEBOAT_ROSTOCK
 	preferred_direction = EAST
 	port_direction = EAST
@@ -78,7 +78,7 @@
 
 /// Generic lifeboat dock
 /obj/docking_port/stationary/lifeboat_dock
-	name   = "Lifeboat docking port"
+	name   = "救生艇对接舱口"
 	width  = 27
 	height = 7
 
@@ -124,21 +124,21 @@
 
 /// Port Aft Lifeboat default dock
 /obj/docking_port/stationary/lifeboat_dock/port
-	name = "Almayer Port Lifeboat Docking Port"
+	name = "阿尔迈耶号左舷救生艇对接舱口"
 	dir = NORTH
 	id = "almayer-lifeboat1"
 	roundstart_template = /datum/map_template/shuttle/lifeboat_port
 
 /// Port Aft Lifeboat default dock
 /obj/docking_port/stationary/lifeboat_dock/starboard
-	name = "Almayer Starboard Lifeboat Docking Port"
+	name = "阿尔迈耶号右舷救生艇对接舱口"
 	dir = NORTH
 	id = "almayer-lifeboat2"
 	roundstart_template = /datum/map_template/shuttle/lifeboat_starboard
 
 /// UPP Lifeboat default dock
 /obj/docking_port/stationary/lifeboat_dock/upp
-	name = "Rostock Lifeboat Docking Port"
+	name = "罗斯托克救生艇对接舱口"
 	dir = NORTH
 	id = "rostock-lifeboat1"
 	roundstart_template = /datum/map_template/shuttle/lifeboat_rostock
@@ -156,14 +156,14 @@
 
 /// Port-door lifeboat, bow east
 /datum/map_template/shuttle/lifeboat_port
-	name = "Port door lifeboat"
+	name = "左舷救生艇舱门"
 	shuttle_id = MOBILE_SHUTTLE_LIFEBOAT_PORT
 
 /// Starboard-door lifeboat, bow east
 /datum/map_template/shuttle/lifeboat_starboard
-	name = "Starboard door lifeboat"
+	name = "右舷救生艇舱门"
 	shuttle_id = MOBILE_SHUTTLE_LIFEBOAT_STARBOARD
 
 /datum/map_template/shuttle/lifeboat_rostock
-	name = "Starboard door lifeboat"
+	name = "右舷救生艇舱门"
 	shuttle_id = MOBILE_SHUTTLE_LIFEBOAT_ROSTOCK

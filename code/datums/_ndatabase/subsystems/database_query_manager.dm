@@ -21,7 +21,7 @@
 // SOFTWARE.
 GLOBAL_REAL(SSdatabase, /datum/controller/subsystem/database_query_manager)
 /datum/controller/subsystem/database_query_manager
-	name   = "Database QM"
+	name   = "数据库QM"
 	wait   = 1
 	init_order = SS_INIT_DATABASE
 	init_stage = INITSTAGE_EARLY

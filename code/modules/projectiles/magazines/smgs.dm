@@ -1,6 +1,6 @@
 /obj/item/ammo_magazine/smg
 	name = "\improper default SMG magazine"
-	desc = "A submachinegun magazine."
+	desc = "一个冲锋枪弹匣。"
 	item_state = "generic_mag"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_lefthand.dmi',
@@ -14,7 +14,7 @@
 
 /obj/item/ammo_magazine/smg/m39
 	name = "\improper M39 HV magazine (10x20mm)"
-	desc = "A 10x20mm caseless high-velocity submachinegun magazine. Powerful propellant allows the bullet increased velocity and minor penetration capabilities, noticeably improving its efficacy at medium ranges, although it still suffers significantly compared to a rifle bullet."
+	desc = "一个10x20mm无壳高速冲锋枪弹匣。强力推进剂使子弹获得更高的速度和轻微的穿透能力，显著提升了中距离效能，但与步枪子弹相比仍有明显差距。"
 	caliber = "10x20mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/smgs.dmi'
 	icon_state = "m39_HV"
@@ -28,49 +28,49 @@
 
 /obj/item/ammo_magazine/smg/m39/ap
 	name = "\improper M39 AP magazine (10x20mm)"
-	desc = "A 10x20mm caseless armor-piercing submachinegun magazine. The bullet tips are made out of high-density material, allowing them to pierce straight through armor, but also reducing the raw stopping power and velocity of the ammunition."
+	desc = "一个10x20mm无壳穿甲冲锋枪弹匣。弹头由高密度材料制成，使其能够直接穿透护甲，但也降低了弹药的原始停止力和速度。"
 	default_ammo = /datum/ammo/bullet/smg/ap
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
 /obj/item/ammo_magazine/smg/m39/le
 	name = "\improper M39 LE magazine (10x20mm)"
-	desc = "A 10x20mm caseless light-explosive submachinegun magazine containing special light explosive rounds, designed to rapidly decimate armor, at the cost of vastly reduced damage and penetration."
+	desc = "一个10x20mm无壳轻型爆破冲锋枪弹匣，内含特制轻型爆破弹，旨在快速摧毁护甲，代价是伤害和穿透力大幅降低。"
 	default_ammo = /datum/ammo/bullet/smg/le
 	ammo_band_color = AMMO_BAND_COLOR_LIGHT_EXPLOSIVE
 
 /obj/item/ammo_magazine/smg/m39/rubber
 	name = "\improper M39 rubber magazine (10x20mm)"
-	desc = "A 10x20mm caseless rubber bullet submachinegun magazine, containing rubber bullets. Non-lethal, but terrible on bioforms."
+	desc = "一个10x20mm无壳橡胶子弹冲锋枪弹匣，内含橡胶子弹。非致命，但对生物形态效果极差。"
 	default_ammo = /datum/ammo/bullet/smg/rubber
 	ammo_band_color = AMMO_BAND_COLOR_RUBBER
 
 /obj/item/ammo_magazine/smg/m39/heap
 	name = "\improper M39 HEAP magazine (10x20mm)"
-	desc = "A 10x20mm caseless armor-piercing high-explosive submachinegun magazine. The bullet tips are made out of a special explosive, designed to penetrate armor then detonate for maximum soft-tissue damage."
+	desc = "一个10x20mm无壳穿甲高爆冲锋枪弹匣。弹头由特殊炸药制成，旨在穿透护甲后引爆，以造成最大软组织伤害。"
 	default_ammo = /datum/ammo/bullet/smg/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
 
 /obj/item/ammo_magazine/smg/m39/penetrating
 	name = "\improper M39 wall-penetrating magazine (10x20mm)"
-	desc = "A 10x20mm caseless wall-penetrating bullet submachinegun magazine, containing wall-penetrating bullets. Designed to penetrate straight through objects and walls."
+	desc = "一个10x20mm无壳穿墙子弹冲锋枪弹匣，内含穿墙子弹。设计用于直接穿透物体和墙壁。"
 	default_ammo = /datum/ammo/bullet/smg/ap/penetrating
 	ammo_band_color = AMMO_BAND_COLOR_PENETRATING
 
 /obj/item/ammo_magazine/smg/m39/toxin
 	name = "\improper M39 toxin magazine (10x20mm)"
-	desc = "A 10x20mm caseless toxin bullet submachinegun magazine, containing toxin bullets. Great at stripping away armor and destroying biological structures."
+	desc = "一个10x20mm无壳毒素子弹冲锋枪弹匣，内含毒素子弹。擅长剥离护甲和破坏生物结构。"
 	default_ammo = /datum/ammo/bullet/smg/ap/toxin
 	ammo_band_color = AMMO_BAND_COLOR_TOXIN
 
 /obj/item/ammo_magazine/smg/m39/incendiary
 	name = "\improper M39 incendiary magazine (10x20mm)"
-	desc = "A 10x20mm caseless incendiary submachinegun magazine. Incendiary payload sets targets ablaze, but causes the gun to have low stopping power and strongly decreased accuracy."
+	desc = "一个10x20mm无壳燃烧冲锋枪弹匣。燃烧弹头使目标着火，但导致枪支停止力低且精度严重下降。"
 	default_ammo = /datum/ammo/bullet/smg/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
 
 /obj/item/ammo_magazine/smg/m39/extended
 	name = "\improper M39 HV extended magazine (10x20mm)"
-	desc = "A 10x20mm caseless HV extended submachinegun magazine. Powerful propellant allows the bullet increased travel speed and minor penetration capabilities, noticeably improving its efficacy at long ranges, although it still suffers significantly compared to a rifle bullet."
+	desc = "一个10x20mm无壳高速加长冲锋枪弹匣。强力推进剂使子弹获得更高的飞行速度和轻微的穿透能力，显著提升了远距离效能，但与步枪子弹相比仍有明显差距。"
 	max_rounds = 72
 	icon_state = "m39_HV_extended"
 	bonus_overlay = "m39_ex"
@@ -80,7 +80,7 @@
 
 /obj/item/ammo_magazine/smg/mp5
 	name = "\improper MP5 magazine (9mm)"
-	desc = "A 9mm magazine for the MP5."
+	desc = "一个用于MP5的9mm弹匣。"
 	default_ammo = /datum/ammo/bullet/smg
 	caliber = "9mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/smgs.dmi'
@@ -94,7 +94,7 @@
 
 /obj/item/ammo_magazine/smg/mp27
 	name = "\improper MP27 magazine (4.6x30mm)"
-	desc = "A 4.6mm magazine for the MP27. Fires large, heavy bullets that have noticeable punch for an SMG but also have equally noticeable scatter and a loss of accuracy."
+	desc = "一个用于MP27的4.6mm弹匣。发射大而重的子弹，对于冲锋枪而言有明显的冲击力，但同样有明显的散射和精度损失。"
 	default_ammo = /datum/ammo/bullet/smg/mp27
 	caliber = "4.6x30mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/smgs.dmi'
@@ -109,7 +109,7 @@
 	if(random_magazine)
 		var/capacity = pick(20, 30, 40)
 		name = "\improper MP27 [capacity]-round magazine (4.6x30mm)"
-		desc = "A [capacity]-round 4.6mm magazine for the MP27. Fires large, heavy bullets that have noticeable punch for an SMG but also have equally noticeable scatter and a loss of accuracy. Due to a factory blueprint mixup, 20, 30, and 40-round magazines were all manufactured and sold in the same boxes, leading to a class act lawsuit that bankrupted the company."
+		desc = "一个[capacity]发容量的4.6mm MP27弹匣。发射大而重的子弹，对于冲锋枪而言有明显的冲击力，但同样有明显的散射和精度损失。由于工厂蓝图混淆，20发、30发和40发弹匣都在同一批盒子中制造和销售，导致了一场集体诉讼，使该公司破产。"
 		caliber = "4.6x30mm"
 		base_mag_icon = "mp7_[capacity]"
 		icon_state = "mp7_[capacity]"
@@ -126,7 +126,7 @@
 
 /obj/item/ammo_magazine/smg/ppsh
 	name = "\improper PPSh-17b stick magazine (7.62x25mm)"
-	desc = "A stick magazine for the PPSh submachinegun. Less ammo than the iconic drum magazine, but the latter causes feeding and handling issues. Your call which one's better."
+	desc = "一个PPSh冲锋枪的弹匣。弹药量少于标志性的弹鼓，但后者会导致供弹和操作问题。哪个更好，由你决定。"
 	caliber = "7.62x25mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/smgs.dmi'
 	icon_state = "ppsh17b_stick"
@@ -142,7 +142,7 @@
 
 /obj/item/ammo_magazine/smg/ppsh/extended
 	name = "\improper PPSh-17b drum magazine (7.62x25mm)"
-	desc = "The iconic PPSh-17b drum magazine. Carries double the amount of bullets than the stick version, but may cause handling and feeding issues. Your call which one's better."
+	desc = "标志性的PPSh-17b弹鼓。载弹量是弹匣版的两倍，但可能导致操作和供弹问题。哪个更好，由你决定。"
 	icon_state = "ppsh17b_drum"
 	bonus_overlay = "ppsh17b_drum_overlay"
 	max_rounds = 71
@@ -160,7 +160,7 @@
 
 /obj/item/ammo_magazine/smg/pps43
 	name = "\improper Type-19 stick magazine (7.62x25mm)"
-	desc = "A stick magazine for the Type-19 submachinegun."
+	desc = "19式冲锋枪的弹匣。"
 	caliber = "7.62x25mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/smgs.dmi'
 	icon_state = "insasu_stickmag"
@@ -174,7 +174,7 @@
 
 /obj/item/ammo_magazine/smg/pps43/extended
 	name = "\improper Type-19 drum magazine (7.62x25mm)"
-	desc = "A 7.62x25mm drum magazine for the Type-19 submachinegun."
+	desc = "19式冲锋枪的7.62x25毫米弹鼓。"
 	icon_state = "insasu_drum"
 	bonus_overlay = "insasu_drum_overlay"
 	max_rounds = 71
@@ -186,7 +186,7 @@
 
 /obj/item/ammo_magazine/smg/bizon
 	name = "\improper Type 64 Helical Magazine (7.62x19mm)"
-	desc = "A 7.62x19mm 64-round helical magazine for the Type 64 submachinegun, the standard SMG of the UPP armed forces."
+	desc = "64式冲锋枪的7.62x19毫米64发螺旋弹匣，是UPP武装部队的标准冲锋枪弹匣。"
 	caliber = "7.62x19mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/smgs.dmi'
 	icon_state = "type64mag"
@@ -198,7 +198,7 @@
 
 /obj/item/ammo_magazine/smg/mac15 //Based on the Uzi.
 	name = "\improper MAC-15 magazine (9mm)"
-	desc = "A 9mm magazine for the MAC-15."
+	desc = "MAC-15的9毫米弹匣。"
 	caliber = "9mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/smgs.dmi'
 	icon_state = "mac15"
@@ -207,7 +207,7 @@
 
 /obj/item/ammo_magazine/smg/mac15/extended
 	name = "\improper MAC-15 extended magazine (9mm)"
-	desc = "An extended 9mm magazine for the MAC-15."
+	desc = "MAC-15的加长型9毫米弹匣。"
 	icon_state = "mac15_extended"
 	bonus_overlay = "mac15_ext"
 	max_rounds = 50
@@ -220,7 +220,7 @@
 
 /obj/item/ammo_magazine/smg/uzi
 	name = "\improper UZI magazine (9x21mm)"
-	desc = "A 9x21mm magazine for the UZI. Seems pretty small, huh? Anything larger could cause feeding errors."
+	desc = "乌兹冲锋枪的9x21毫米弹匣。看起来很小，对吧？更大的弹匣可能导致供弹故障。"
 	caliber = "9x12mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/smgs.dmi'
 	icon_state = "uzi"
@@ -230,7 +230,7 @@
 
 /obj/item/ammo_magazine/smg/uzi/extended
 	name = "\improper UZI extended magazine (9x21mm)"
-	desc = "A slightly extended 9x21mm magazine for the UZI. Due to its size, it may or may not cause feeding errors."
+	desc = "乌兹冲锋枪的稍加长型9x21毫米弹匣。由于其尺寸，可能会也可能不会导致供弹故障。"
 	icon_state = "uzi_extended"
 	bonus_overlay = "uzi_ext"
 	max_rounds = 32
@@ -243,8 +243,8 @@
 //FP9000 //Based on the FN P90
 
 /obj/item/ammo_magazine/smg/fp9000
-	name = "FN FP9000 magazine (5.7x28mm)"
-	desc = "A 5.7x28mm magazine for the FN FP9000 SMG."
+	name = "FN FP9000弹匣（5.7x28毫米）"
+	desc = "FN FP9000冲锋枪的5.7x28毫米弹匣。"
 	default_ammo = /datum/ammo/bullet/smg/ap
 	caliber = "5.7x28mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/smgs.dmi'
@@ -256,8 +256,8 @@
 //-------------------------------------------------------
 //Nailgun!
 /obj/item/ammo_magazine/smg/nailgun
-	name = "nailgun magazine (7x45mm)"
-	desc = "A large magazine of oversized plasteel nails. Unfortunately, the production cost of those nail makes them ill-affordable for most military projects, and only some specific construction projects require them."
+	name = "射钉枪弹匣（7x45毫米）"
+	desc = "一个装填了超大号塑钢钉的大型弹匣。不幸的是，这些钉子的生产成本使其难以负担大多数军事项目，只有某些特定的建筑工程才需要它们。"
 	default_ammo = /datum/ammo/bullet/smg/nail
 	flags_magazine = NO_FLAGS // Let's not start messing with nails...
 	caliber = "7x45mm"
@@ -272,7 +272,7 @@
 
 /obj/item/ammo_magazine/smg/p90
 	name = "\improper FN P90 magazine (5.7x28mm)"
-	desc = "A 5.7x28mm magazine for the FN P90."
+	desc = "FN P90的5.7x28毫米弹匣。"
 	default_ammo = /datum/ammo/bullet/smg/p90
 	caliber = "5.7x28mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/smgs.dmi'
@@ -285,7 +285,7 @@
 
 /obj/item/ammo_magazine/smg/p90/ap
 	name = "\improper FN P90 AP magazine (5.7x28mm)"
-	desc = "An armor-piercing 5.7x28mm magazine for the FN P90."
+	desc = "FN P90的穿甲型5.7x28毫米弹匣。"
 	default_ammo = /datum/ammo/bullet/smg/p90/ap
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/TWE/smgs.dmi'
 	icon_state = "p90_ap"

@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(sound)
-	name   = "Sound"
+	name   = "音效"
 	flags   = SS_POST_FIRE_TIMING | SS_NO_INIT
 	wait   = 2
 	priority   = SS_PRIORITY_SOUND

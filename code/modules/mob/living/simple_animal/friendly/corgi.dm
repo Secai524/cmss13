@@ -2,14 +2,14 @@
 /mob/living/simple_animal/big/corgi
 	name = "\improper corgi"
 	real_name = "corgi"
-	desc = "It's a corgi."
+	desc = "这是一只柯基犬。"
 	icon_state = "corgi"
 	icon_living = "corgi"
 	icon_dead = "corgi_dead"
 	speak = list("YAP!", "Ruff!", "Woof!", "Bark!", "Awooo!", "AUUUUU!", "Arf!")
 	speak_emote = list("barks", "woofs")
-	emote_hear = list("barks.", "woofs.", "yaps.", "pants.")
-	emote_see = list("shakes its head.", "shivers.")
+	emote_hear = list("吠叫。", "woofs.", "yaps.", "pants.")
+	emote_see = list("摇了摇头。", "打了个寒颤。")
 	speak_chance = 1
 	turns_per_move = 10
 	holder_type = /obj/item/holder/corgi
@@ -40,10 +40,10 @@
 
 //IAN! SQUEEEEEEEEE~
 /mob/living/simple_animal/big/corgi/Ian
-	name = "Ian"
-	real_name = "Ian" //Intended to hold the name without altering it.
+	name = "伊恩"
+	real_name = "伊恩" //Intended to hold the name without altering it.
 	gender = MALE
-	desc = "It's a corgi."
+	desc = "这是一只柯基犬。"
 	holder_type = /obj/item/holder/corgi/Ian
 	var/turns_since_scan = 0
 	var/obj/movement_target
@@ -114,8 +114,8 @@
 			user.count_niche_stat(STATISTICS_NICHE_CORGI)
 
 /obj/item/reagent_container/food/snacks/meat/corgi
-	name = "Corgi meat"
-	desc = "Tastes like... well you know..."
+	name = "柯基肉"
+	desc = "尝起来...嗯，你知道的..."
 
 
 /mob/living/simple_animal/big/corgi/attackby(obj/item/O as obj, mob/user as mob)  //Marker -Agouri
@@ -123,7 +123,7 @@
 		if(!stat)
 			for(var/mob/M as anything in viewers(user, null))
 				if ((M.client && !( M.blinded )))
-					M.show_message(SPAN_NOTICE("[user] baps [name] on the nose with the rolled-up [O]."), SHOW_MESSAGE_VISIBLE)
+					M.show_message(SPAN_NOTICE("[user]用卷起来的[O]轻轻拍了[name]的鼻子。"), SHOW_MESSAGE_VISIBLE)
 			spawn(0)
 				for(var/i in list(1,2,4,8,4,2,1,2))
 					setDir(i)
@@ -158,7 +158,7 @@
 /mob/living/simple_animal/big/corgi/puppy // "big" corgi puppy
 	name = "\improper corgi puppy"
 	real_name = "corgi"
-	desc = "It's a corgi puppy."
+	desc = "这是一只柯基幼犬。"
 	icon_state = "puppy"
 	icon_living = "puppy"
 	icon_dead = "puppy_dead"
@@ -173,17 +173,17 @@
 //pupplies cannot wear anything.
 /mob/living/simple_animal/big/corgi/puppy/Topic(href, href_list)
 	if(href_list["remove_inv"] || href_list["add_inv"])
-		to_chat(usr, SPAN_DANGER("You can't fit this on [src]."))
+		to_chat(usr, SPAN_DANGER("你无法把这个装到[src]上。"))
 		return
 	..()
 
 
 //LISA! SQUEEEEEEEEE~
 /mob/living/simple_animal/big/corgi/Lisa
-	name = "Lisa"
-	real_name = "Lisa"
+	name = "丽莎"
+	real_name = "丽莎"
 	gender = FEMALE
-	desc = "It's a corgi with a cute pink bow."
+	desc = "这是一只戴着可爱粉色蝴蝶结的柯基犬。"
 	icon_state = "lisa"
 	icon_living = "lisa"
 	icon_dead = "lisa_dead"
@@ -197,7 +197,7 @@
 //Lisa already has a cute bow!
 /mob/living/simple_animal/big/corgi/Lisa/Topic(href, href_list)
 	if(href_list["remove_inv"] || href_list["add_inv"])
-		to_chat(usr, SPAN_DANGER("[src] already has a cute bow!"))
+		to_chat(usr, SPAN_DANGER("[src]已经有一个可爱的蝴蝶结了！"))
 		return
 	..()
 

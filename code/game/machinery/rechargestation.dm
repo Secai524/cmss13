@@ -1,8 +1,8 @@
 /obj/structure/machinery/recharge_station
-	name = "synthetic maintenance station"
+	name = "合成人维护站"
 	icon = 'icons/obj/structures/machinery/synth_charger.dmi'
 	icon_state = "borgcharger0"
-	desc = "A Synthetic Maintenance Station designed to recharge, repair and maintain various sizes of artificial people. Simply place the synthetic or android in need of repair in here and they will be fixed up in no time!"
+	desc = "一种为各种尺寸的人造人进行充电、修复和维护而设计的合成人维护站。只需将需要维修的合成人或仿生人放入其中，他们很快就能被修复！"
 	density = TRUE
 	anchored = TRUE
 	use_power = USE_POWER_IDLE
@@ -34,7 +34,7 @@
 
 /obj/structure/machinery/recharge_station/Destroy()
 	if(occupant)
-		to_chat(occupant, SPAN_NOTICE("<B>Critical failure of [name]. Unit ejected.</B>"))
+		to_chat(occupant, SPAN_NOTICE("<B>[name]发生严重故障。单位已弹出。</B>"))
 		go_out()
 	return ..()
 
@@ -54,7 +54,7 @@
 
 	if(current_internal_charge <= 0)
 		if(occupant)
-			to_chat(occupant, SPAN_NOTICE("<B>The [name] is currently out of power. Please come back later!</B>"))
+			to_chat(occupant, SPAN_NOTICE("<B>[name]目前电力耗尽。请稍后再来！</B>"))
 			go_out()
 
 	var/chargemode = 0
@@ -162,36 +162,36 @@
 				occupant.heal_overall_damage(10, 10, TRUE)
 				occupant.apply_damage(-10, BRAIN)
 				current_internal_charge = max(current_internal_charge - 500, 0)
-				to_chat(occupant, "Structural damage detected. Repairing...")
+				to_chat(occupant, "检测到结构损伤。正在修复...")
 				doing_stuff = TRUE
 				occupant.pain.recalculate_pain()
 			if(!doing_stuff && occupant.blood_volume < initial(occupant.blood_volume))
 				occupant.blood_volume = min(occupant.blood_volume + 10, initial(occupant.blood_volume))
-				to_chat(occupant, "Fluid volume low. Refreshing liquids...")
+				to_chat(occupant, "液体容量低。正在补充液体...")
 				doing_stuff = TRUE
 			if(!doing_stuff)
 				for(var/obj/limb/current_limb in humanoid_occupant.limbs)
 					if(length(current_limb.implants))
 						doing_stuff = TRUE
-						to_chat(occupant, "Foreign material detected. Beginning removal process...")
+						to_chat(occupant, "检测到异物。开始移除程序...")
 						for(var/obj/item/current_implant in current_limb.implants)
 							if(!is_type_in_list(current_implant,known_implants))
 								sleep(REMOVE_OBJECT_MAX_DURATION)
 								current_limb.implants -= current_implant
 								humanoid_occupant.embedded_items -= current_implant
 								qdel(current_implant)
-								to_chat(occupant, "Foreign object removed.")
+								to_chat(occupant, "异物已移除。")
 				for(var/datum/internal_organ/current_organ in humanoid_occupant.internal_organs)
 					if(current_organ.robotic == ORGAN_ASSISTED||current_organ.robotic == ORGAN_ROBOT) //this time the machine can *only* fix robotic organs
 						if(current_organ.damage > 0)
-							to_chat(occupant, "Damaged internal component detected. Beginning repair process.")
+							to_chat(occupant, "检测到内部组件损坏。开始修复程序。")
 							doing_stuff = TRUE
 							sleep(FIX_ORGAN_MAX_DURATION)
 							current_organ.rejuvenate()
-							to_chat(occupant, "Internal component repaired.")
+							to_chat(occupant, "内部组件已修复。")
 
 		if(!doing_stuff)
-			to_chat(occupant, "Maintenance cycle completed. All systems nominal.")
+			to_chat(occupant, "维护周期完成。所有系统正常。")
 			go_out()
 
 
@@ -208,7 +208,7 @@
 	if(exit_stun)
 		synth.Stun(exit_stun) //Action delay when going out of a closet
 	if(synth.mobility_flags & MOBILITY_MOVE)
-		synth.visible_message(SPAN_WARNING("[synth] suddenly gets out of [src]!"), SPAN_WARNING("You get out of [src] and get your bearings!"))
+		synth.visible_message(SPAN_WARNING("[synth]突然从[src]里出来了！"), SPAN_WARNING("You get out of [src] and get your bearings!"))
 
 	occupant = null
 	update_icon()
@@ -257,10 +257,10 @@
 		//Whoever had it so that a borg with a dead cell can't enter this thing should be shot. --NEO
 		return
 	if (!issynth(usr))
-		to_chat(usr, SPAN_NOTICE("<B>Only non-organics may enter the [name]!</B>"))
+		to_chat(usr, SPAN_NOTICE("<B>只有非有机体可以进入[name]！</B>"))
 		return
 	if (src.occupant)
-		to_chat(usr, SPAN_NOTICE("<B>The [name] is already occupied!</B>"))
+		to_chat(usr, SPAN_NOTICE("<B>[name]已被占用！</B>"))
 		return
 	move_mob_inside(usr)
 	return
@@ -276,14 +276,14 @@
 			return
 
 		if(occupant)
-			to_chat(user, SPAN_NOTICE("The [name] is already occupied!"))
+			to_chat(user, SPAN_NOTICE("[name]已被占用！"))
 			return
 
-		visible_message(SPAN_NOTICE("[user] starts putting [G.grabbed_thing] into the [name]."), null, null, 3)
+		visible_message(SPAN_NOTICE("[user]开始将[G.grabbed_thing]放入[name]。"), null, null, 3)
 
 		if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			if(occupant)
-				to_chat(user, SPAN_NOTICE("The [name] is already occupied!"))
+				to_chat(user, SPAN_NOTICE("[name]已被占用！"))
 				return
 			if(!G || !G.grabbed_thing)
 				return

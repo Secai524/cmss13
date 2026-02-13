@@ -1,7 +1,7 @@
 //standart fridge
 
 /obj/structure/closet/secure_closet/fridge
-	name = "Refrigerator"
+	name = "冷藏柜"
 	icon = 'icons/obj/structures/machinery/kitchen.dmi'
 	icon_state = "fridge1"
 	icon_closed = "fridge"
@@ -30,7 +30,7 @@
 //standart organic storage.
 
 /obj/structure/closet/secure_closet/fridge/organic
-	name = "Organic"
+	name = "有机物"
 
 /obj/structure/closet/secure_closet/fridge/organic/Initialize()
 	. = ..()
@@ -67,7 +67,7 @@
 //grocery
 
 /obj/structure/closet/secure_closet/fridge/groceries
-	name = "Groceries"
+	name = "食品杂货"
 
 /obj/structure/closet/secure_closet/fridge/groceries/Initialize()
 	. = ..()
@@ -99,7 +99,7 @@
 
 //groceries to hold milk in bulk
 /obj/structure/closet/secure_closet/fridge/groceries/stock
-	name = "Groceries"
+	name = "食品杂货"
 
 /obj/structure/closet/secure_closet/fridge/groceries/stock/Initialize()
 	. = ..()
@@ -123,7 +123,7 @@
 // organic storage in bulk
 
 /obj/structure/closet/secure_closet/fridge/organic/stock
-	name = "Organic"
+	name = "有机物"
 
 /obj/structure/closet/secure_closet/fridge/organic/stock/Initialize()
 	. = ..()

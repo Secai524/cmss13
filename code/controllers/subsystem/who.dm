@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(who)
-	name = "Who"
+	name = "目标"
 	flags = SS_BACKGROUND
 	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
 	init_order = SS_INIT_WHO
@@ -21,8 +21,8 @@ SUBSYSTEM_DEF(who)
 
 // WHO DATA
 /datum/player_list
-	var/tgui_name = "Who"
-	var/tgui_interface_name = "Who"
+	var/tgui_name = "目标"
+	var/tgui_interface_name = "目标"
 	var/list/base_data = list()
 	var/list/admin_sorted_additional = list()
 
@@ -140,7 +140,7 @@ SUBSYSTEM_DEF(who)
 	for(var/i in 1 to length(counted_factions))
 		if(!counted_factions[counted_factions[i]])
 			continue
-		factions_additional += list(list("content" = "[counted_factions[i]]: [counted_factions[counted_factions[i]]]", "color" = "#2C7EFF", "text" = "Other"))
+		factions_additional += list(list("content" = "[counted_factions[i]]: [counted_factions[counted_factions[i]]]", "color" = "#2C7EFF", "text" = "其他"))
 
 	if(counted_factions[FACTION_NEUTRAL])
 		factions_additional += list(list("content" = "[FACTION_NEUTRAL] Humans: [counted_factions[FACTION_NEUTRAL]]", "color" = "#688944", "text" = "Neutrals"))
@@ -284,7 +284,7 @@ SUBSYSTEM_DEF(who)
 // VERBS
 CLIENT_VERB(who)
 	set category = "OOC"
-	set name = "Who"
+	set name = "目标"
 
 	SSwho.who.tgui_interact(mob)
 

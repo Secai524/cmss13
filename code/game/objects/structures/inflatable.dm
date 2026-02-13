@@ -1,6 +1,6 @@
 /obj/item/inflatable
-	name = "inflatable wall"
-	desc = "A folded membrane which rapidly expands into a large cubical shape on activation."
+	name = "充气墙"
+	desc = "一种折叠膜，激活后可迅速膨胀成大型立方体形状。"
 	icon = 'icons/obj/items/inflatable.dmi'
 	icon_state = "folded_wall"
 	w_class = SIZE_MEDIUM
@@ -10,15 +10,15 @@
 	..()
 	var/area/area = get_area(user)
 	if(!area.allow_construction)
-		to_chat(user, SPAN_WARNING("[src] must be inflated on a proper surface!"))
+		to_chat(user, SPAN_WARNING("[src]必须在合适的表面上充气！"))
 		return
 	var/turf/open/T = user.loc
 	if(!(istype(T) && T.allow_construction))
-		to_chat(user, SPAN_WARNING("[src] must be inflated on a proper surface!"))
+		to_chat(user, SPAN_WARNING("[src]必须在合适的表面上充气！"))
 		return
 	if(do_after(user, 0.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD, src))
 		playsound(loc, 'sound/items/zip.ogg', 25, TRUE)
-		to_chat(user, SPAN_NOTICE("You inflate [src]."))
+		to_chat(user, SPAN_NOTICE("你给[src]充气。"))
 		var/obj/structure/inflatable/R = new inflatable_type(usr.loc)
 		src.transfer_fingerprints_to(R)
 		R.add_fingerprint(user)
@@ -27,8 +27,8 @@
 
 
 /obj/item/inflatable/door
-	name = "inflatable door"
-	desc = "A folded membrane which rapidly expands into a simple door on activation."
+	name = "充气门"
+	desc = "一种折叠膜，激活后可迅速膨胀成一扇简易的门。"
 	icon = 'icons/obj/items/inflatable.dmi'
 	icon_state = "folded_door"
 	inflatable_type = /obj/structure/inflatable/door
@@ -36,8 +36,8 @@
 
 
 /obj/structure/inflatable
-	name = "inflatable wall"
-	desc = "An inflated membrane. Do not puncture."
+	name = "充气墙"
+	desc = "一块充气膜。请勿刺破。"
 	density = TRUE
 	anchored = TRUE
 	opacity = FALSE
@@ -75,10 +75,10 @@
 	health -= damage
 	user.animation_attack_on(src)
 	if(health <= 0)
-		user.visible_message(SPAN_DANGER("[user] tears open [src]!"))
+		user.visible_message(SPAN_DANGER("[user]撕开了[src]！"))
 		deflate(1)
 	else //for nicer text~
-		user.visible_message(SPAN_DANGER("[user] tears at [src]!"))
+		user.visible_message(SPAN_DANGER("[user]撕扯着[src]！"))
 
 /obj/structure/inflatable/attack_animal(mob/user as mob)
 	if(!isanimal(user))
@@ -94,7 +94,7 @@
 		return
 
 	if (can_puncture(W))
-		visible_message(SPAN_DANGER("<b>[user] pierces [src] with [W]!</b>"))
+		visible_message(SPAN_DANGER("<b>[user]用[W]刺穿了[src]！</b>"))
 		deflate(1)
 	if(W.damtype == BRUTE || W.damtype == BURN)
 		hit(W.force)
@@ -116,12 +116,12 @@
 	deflated = TRUE
 	playsound(loc, 'sound/machines/hiss.ogg', 25, 1)
 	if(violent)
-		visible_message("[src] rapidly deflates!")
+		visible_message("[src]迅速瘪了下去！")
 		flick("wall_popping", src)
 		sleep(10)
 		deconstruct(FALSE)
 	else
-		visible_message("[src] slowly deflates.")
+		visible_message("[src]慢慢瘪了下去。")
 		flick("wall_deflating", src)
 		spawn(50)
 			deconstruct(TRUE)
@@ -149,12 +149,12 @@
 	if(!deflated)
 		deflate()
 	else
-		to_chat(usr, "[src] is already deflated.")
+		to_chat(usr, "[src]已经瘪了。")
 
 
 /obj/structure/inflatable/popped
-	name = "popped inflatable wall"
-	desc = "It used to be an inflatable wall, now it's just a mess of plastic."
+	name = "瘪掉的充气墙"
+	desc = "它曾经是一堵充气墙，现在只是一堆塑料。"
 	density = FALSE
 	anchored = TRUE
 	deflated = TRUE
@@ -164,15 +164,15 @@
 
 
 /obj/structure/inflatable/popped/door
-	name = "popped inflatable door"
-	desc = "This used to be an inflatable door, now it's just a mess of plastic."
+	name = "瘪掉的充气门"
+	desc = "这曾经是一扇充气门，现在只是一堆塑料。"
 
 	icon = 'icons/obj/items/inflatable.dmi'
 	icon_state = "door_popped"
 
 
 /obj/structure/inflatable/door //Based on mineral door code
-	name = "inflatable door"
+	name = "充气门"
 	density = TRUE
 	anchored = TRUE
 	opacity = FALSE
@@ -251,7 +251,7 @@
 	set waitfor = 0
 	playsound(loc, 'sound/machines/hiss.ogg', 25, 1)
 	if(violent)
-		visible_message("[src] rapidly deflates!")
+		visible_message("[src]迅速瘪了下去！")
 		flick("door_popping",src)
 		sleep(10)
 		new /obj/structure/inflatable/popped/door(loc)
@@ -260,7 +260,7 @@
 		qdel(src)
 	else
 		//to_chat(user, SPAN_NOTICE("You slowly deflate the inflatable wall."))
-		visible_message("[src] slowly deflates.")
+		visible_message("[src]慢慢瘪了下去。")
 		flick("door_deflating", src)
 		spawn(50)
 			var/obj/item/inflatable/door/R = new /obj/item/inflatable/door(loc)
@@ -273,8 +273,8 @@
 
 
 /obj/item/storage/briefcase/inflatable
-	name = "inflatable barrier box"
-	desc = "Contains inflatable walls and doors."
+	name = "充气路障箱"
+	desc = "内含充气墙和充气门。"
 	icon = 'icons/obj/items/storage/boxes.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/storage_lefthand.dmi',

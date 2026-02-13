@@ -4,7 +4,7 @@
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery/prosthetical_replacement
-	name = "Attach Prosthetic Limb"
+	name = "安装义肢"
 	steps = list(
 		/datum/surgery_step/connect_prosthesis,
 		/datum/surgery_step/strenghten_prosthesis_connection,
@@ -20,8 +20,8 @@
 //------------------------------------
 
 /datum/surgery_step/connect_prosthesis
-	name = "Connect Prosthesis"
-	desc = "attach a prosthesis"
+	name = "连接义肢"
+	desc = "安装义肢"
 	tools = list(/obj/item/robot_parts = SURGERY_TOOL_MULT_IDEAL)
 	time = 2 SECONDS
 	preop_sound = 'sound/handling/clothingrustle1.ogg'
@@ -68,8 +68,8 @@
 //------------------------------------
 
 /datum/surgery_step/strenghten_prosthesis_connection
-	name = "Tighten Prosthesis Connections"
-	desc = "tighten the prosthesis"
+	name = "紧固义肢连接"
+	desc = "紧固义肢"
 	accept_hand = TRUE
 	time = 3 SECONDS
 	tools = SURGERY_TOOLS_PINCH
@@ -109,8 +109,8 @@
 //------------------------------------
 
 /datum/surgery_step/calibrate_prosthesis
-	name = "Calibrate Prosthesis"
-	desc = "calibrate the prosthesis"
+	name = "校准义肢"
+	desc = "校准义肢"
 	accept_hand = TRUE
 	time = 2.5 SECONDS
 	tools = SURGERY_TOOLS_PINCH

@@ -7,7 +7,7 @@
 GLOBAL_REAL(Failsafe, /datum/controller/failsafe)
 
 /datum/controller/failsafe // This thing pretty much just keeps poking the master controller
-	name = "Failsafe"
+	name = "故障保险"
 
 	// The length of time to check on the MC (in deciseconds).
 	// Set to 0 to disable.

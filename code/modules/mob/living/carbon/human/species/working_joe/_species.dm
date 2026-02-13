@@ -44,7 +44,7 @@
 	ui.ui_interact(usr)
 
 /datum/action/joe_emote_panel
-	name = "Open Voice Synthesizer"
+	name = "开启语音合成器"
 	action_icon_state = "looc_toggle"
 
 

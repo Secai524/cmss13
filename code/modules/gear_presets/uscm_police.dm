@@ -1,5 +1,5 @@
 /datum/equipment_preset/uscm_ship/uscm_police
-	name = "USCM (police roles)"
+	name = "USCM (警察角色)"
 	faction = FACTION_MARINE
 	minimum_age = 21
 	minimap_background = "background_mp"
@@ -7,7 +7,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/uscm_police/mp
-	name = "USCM Military Police (MP)"
+	name = "USCM宪兵 (MP)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	access = list(
@@ -63,7 +63,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(new_human), WEAR_R_STORE)
 
 /datum/equipment_preset/uscm_ship/uscm_police/mp/honorguard
-	name = "USCM Military Police Honor Guard (MPHG)"
+	name = "USCM宪兵仪仗队 (MPHG)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_POLICE_HG
@@ -80,7 +80,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/uscm_police/warden
-	name = "USCM Military Warden (MW)"
+	name = "USCM军事典狱长 (MW)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 	idtype = /obj/item/card/id/silver
 
@@ -140,7 +140,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/uscm_police/cmp
-	name = "USCM Chief MP (CMP)"
+	name = "USCM宪兵长 (CMP)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 	idtype = /obj/item/card/id/silver
 
@@ -205,7 +205,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/uscm_police/riot_mp
-	name = "USCM Riot MP (RMP)"
+	name = "USCM防暴宪兵 (RMP)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/silver
@@ -257,7 +257,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/uscm_police/riot_mp/riot_cmp
-	name = "USCM Riot Chief MP (RCMP)"
+	name = "USCM防暴宪兵长 (RCMP)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	minimap_icon = "crmp"

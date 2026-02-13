@@ -13,7 +13,7 @@
 
 	var/turf/open/T = get_turf(target)
 	if(!istype(user.loc, /turf/open))
-		to_chat(user, SPAN_WARNING("You can't perform surgery here!"))
+		to_chat(user, SPAN_WARNING("你不能在这里进行手术！"))
 		return FALSE
 	else
 		if(!istype(T) || !T.supports_surgery)
@@ -23,14 +23,14 @@
 			if(HAS_TRAIT(tool, TRAIT_TOOL_BLOWTORCH) && affecting)
 				return FALSE
 			if(!(tool.type in SURGERY_TOOLS_NO_INIT_MSG))
-				to_chat(user, SPAN_WARNING("You can't perform surgery under these bad conditions!"))
+				to_chat(user, SPAN_WARNING("在这种恶劣条件下你不能进行手术！"))
 			return FALSE
 
 	var/obj/limb/surgery_limb = target.get_limb(target_zone)
 	if(surgery_limb)
 		var/obj/item/blocker = target.get_sharp_obj_blocker(surgery_limb)
 		if(blocker)
-			to_chat(user, SPAN_WARNING("[blocker] [target] is wearing restricts your access to the surgical site, take it off!"))
+			to_chat(user, SPAN_WARNING("[blocker] [target]穿着的东西阻碍了你接触手术部位，把它脱掉！"))
 			return
 
 	if(user.action_busy) //already doing an action
@@ -101,12 +101,12 @@
 				if(ishuman(target))
 					var/limbname = affecting?.status & LIMB_DESTROYED ? "the stump of [target]'s [affecting.display_name]" : "[target]'s [parse_zone(target_zone)]"
 					if(target.incision_depths[target_zone] != SURGERY_DEPTH_SURFACE)
-						to_chat(user, SPAN_WARNING("You don't know of any operations you could perform in the [target.incision_depths[target_zone]] incision on [limbname]."))
+						to_chat(user, SPAN_WARNING("你不知道在[limbname]的[target.incision_depths[target_zone]]切口处可以进行任何手术。"))
 					else
-						to_chat(user, SPAN_WARNING("You don't know of any operations you could begin on [limbname]."))
+						to_chat(user, SPAN_WARNING("你不知道可以在[limbname]上开始任何手术。"))
 					return FALSE
 				if(isxeno(target))
-					to_chat(user, SPAN_WARNING("You don't know any operations you could perform on this body part of a xenomorph."))
+					to_chat(user, SPAN_WARNING("你不知道可以在异形的这个身体部位上进行任何手术。"))
 			var/hint_msg
 			for(var/datum/surgery_step/current_step as anything in valid_steps)
 				if(hint_msg)
@@ -124,7 +124,7 @@
 	if(length(available_surgeries) == 1)
 		surgeryinstance = available_surgeries[available_surgeries[1]]
 	else
-		surgeryinstance = available_surgeries[tgui_input_list(user, "Begin which procedure?", "Surgery", sortList(available_surgeries))]
+		surgeryinstance = available_surgeries[tgui_input_list(user, "开始哪个手术？", "Surgery", sortList(available_surgeries))]
 		//we check that the surgery is still doable after the input() wait.
 		if(!surgeryinstance || QDELETED(user) || user.is_mob_incapacitated() || !user.Adjacent(target) || tool != user.get_active_hand() || target_zone != user.zone_selected)
 			return TRUE
@@ -143,7 +143,7 @@
 		if(surgery_limb)
 			var/obj/item/blocker = target.get_sharp_obj_blocker(surgery_limb)
 			if(blocker)
-				to_chat(user, SPAN_WARNING("[blocker] [target] is wearing restricts your access to the surgical site, take it off!"))
+				to_chat(user, SPAN_WARNING("[blocker] [target]穿着的东西阻碍了你接触手术部位，把它脱掉！"))
 				return
 
 		if(affecting)

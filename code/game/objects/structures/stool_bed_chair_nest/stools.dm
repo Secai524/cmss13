@@ -1,6 +1,6 @@
 /obj/structure/bed/stool
 	name = "stool"
-	desc = "Apply butt."
+	desc = "请坐。"
 	icon_state = "stool"
 	anchored = TRUE
 	can_buckle = FALSE
@@ -10,7 +10,7 @@
 
 /obj/item/stool
 	name = "stool"
-	desc = "Uh-hoh, the bar is heating up."
+	desc = "哦豁，吧台开始升温了。"
 	icon = 'icons/obj/structures/props/furniture/chairs.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/furniture_lefthand.dmi',
@@ -24,7 +24,7 @@
 /obj/item/stool/proc/deploy_stool(mob/user)
 	new /obj/structure/bed/stool(get_turf(user))
 	user.temp_drop_inv_item(src)
-	user.visible_message(SPAN_NOTICE("[user] puts [src] down."), SPAN_NOTICE("You put [src] down."))
+	user.visible_message(SPAN_NOTICE("[user]放下了[src]。"), SPAN_NOTICE("You put [src] down."))
 	qdel(src)
 
 /obj/item/stool/attack_self(mob/user)

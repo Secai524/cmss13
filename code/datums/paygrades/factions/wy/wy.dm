@@ -1,45 +1,45 @@
 /datum/paygrade/wy_ranks
-	name = "WYC Paygrade"
+	name = "维兰德-汤谷职级"
 	pay_multiplier = 1
 	default_faction = FACTION_WY
 
 /datum/paygrade/wy_ranks/wyc1
 	paygrade = PAY_SHORT_WYC1
-	name = "Trainee"
+	name = "见习生"
 	prefix = "Trn."
 	ranking = 0
 
 /datum/paygrade/wy_ranks/wyc2
 	paygrade = PAY_SHORT_WYC2
-	name = "Junior Executive"
+	name = "初级主管"
 	prefix = "Jr. Exec."
 	ranking = 1
 	pay_multiplier = 2
 
 /datum/paygrade/wy_ranks/wycPO
 	paygrade = PAY_SHORT_WYPO2
-	name = "Captain"
+	name = "上尉"
 	prefix = "Capt"
 	ranking = 1
 	pay_multiplier = 2
 
 /datum/paygrade/wy_ranks/wyc3
 	paygrade = PAY_SHORT_WYC3
-	name = "Executive"
+	name = "主管"
 	prefix = "Exec."
 	ranking = 2
 	pay_multiplier = 3
 
 /datum/paygrade/wy_ranks/wyc4
 	paygrade = PAY_SHORT_WYC4
-	name = "Senior Executive"
+	name = "高级主管"
 	prefix = "Sr. Exec."
 	ranking = 3
 	pay_multiplier = 4
 
 /datum/paygrade/wy_ranks/wyc5
 	paygrade = PAY_SHORT_WYC5
-	name = "Executive Specialist"
+	name = "主管专家"
 	prefix = "Exec. Spc."
 	ranking = 4
 	pay_multiplier = 5
@@ -47,7 +47,7 @@
 
 /datum/paygrade/wy_ranks/wyc6
 	paygrade = PAY_SHORT_WYC6
-	name = "Executive Supervisor"
+	name = "主管督导"
 	prefix = "Exec. Spvsr."
 	ranking = 5
 	pay_multiplier = 6
@@ -55,7 +55,7 @@
 
 /datum/paygrade/wy_ranks/wyc7
 	paygrade = PAY_SHORT_WYC7
-	name = "Assistant Manager"
+	name = "助理经理"
 	prefix = "Assis. Mng."
 	ranking = 6
 	pay_multiplier = 7
@@ -63,7 +63,7 @@
 
 /datum/paygrade/wy_ranks/wyc8
 	paygrade = PAY_SHORT_WYC8
-	name = "Division Manager"
+	name = "部门经理"
 	prefix = "Div. Mng."
 	ranking = 7
 	pay_multiplier = 8
@@ -71,7 +71,7 @@
 
 /datum/paygrade/wy_ranks/wyc9
 	paygrade = PAY_SHORT_WYC9
-	name = "Chief Executive"
+	name = "首席执行官"
 	prefix = "Chief. Exec."
 	ranking = 8
 	pay_multiplier = 9
@@ -79,7 +79,7 @@
 
 /datum/paygrade/wy_ranks/wyc10
 	paygrade = PAY_SHORT_WYC10
-	name = "Deputy Director"
+	name = "副总监"
 	prefix = "Dep. Director"
 	ranking = 9
 	pay_multiplier = 10
@@ -87,8 +87,8 @@
 
 /datum/paygrade/wy_ranks/wyc11
 	paygrade = PAY_SHORT_WYC11
-	name = "Director"
-	prefix = "Director"
+	name = "总监"
+	prefix = "总监"
 	ranking = 10
 	pay_multiplier = 11
 	officer_grade = GRADE_FLAG

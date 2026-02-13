@@ -46,7 +46,7 @@
 	switch(href_list["lobby_choice"])
 		if("SelectedJob")
 			if(!GLOB.enter_allowed)
-				to_chat(usr, SPAN_WARNING("There is an administrative lock on entering the game! (The dropship likely crashed into the Almayer. This should take at most 20 minutes.)"))
+				to_chat(usr, SPAN_WARNING("进入游戏存在管理锁定！（运输机可能已坠毁在阿尔迈耶号上。这最多需要20分钟。）"))
 				return
 
 			AttemptLateSpawn(href_list["job_selected"])
@@ -56,15 +56,15 @@
 
 /mob/new_player/proc/tutorial_menu()
 	if(SSticker.current_state <= GAME_STATE_SETTING_UP)
-		to_chat(src, SPAN_WARNING("Please wait for the round to start before entering a tutorial."))
+		to_chat(src, SPAN_WARNING("请等待回合开始后再进入教程。"))
 		return
 
 	if(SSticker.current_state == GAME_STATE_FINISHED)
-		to_chat(src, SPAN_WARNING("The round has ended. Please wait for the next round to enter a tutorial."))
+		to_chat(src, SPAN_WARNING("本回合已结束。请等待下一回合再进入教程。"))
 		return
 
 	if(SSticker.tutorial_disabled)
-		to_chat(src, SPAN_WARNING("Tutorials are currently disabled because something broke, sorry!"))
+		to_chat(src, SPAN_WARNING("教程目前因某些问题已禁用，抱歉！"))
 		return
 
 	if(!tutorial_menu)
@@ -77,7 +77,7 @@
 	if(!client)
 		return
 	if(!SSticker || SSticker.current_state == GAME_STATE_STARTUP)
-		to_chat(src, SPAN_WARNING("The game is still setting up, please try again later."))
+		to_chat(src, SPAN_WARNING("游戏仍在设置中，请稍后再试。"))
 		return
 
 	if(!client.prefs?.preview_dummy)
@@ -91,10 +91,10 @@
 
 	var/obj/effect/landmark/observer_start/spawn_point = SAFEPICK(GLOB.observer_starts)
 	if(istype(spawn_point))
-		to_chat(src, SPAN_NOTICE("Now teleporting."))
+		to_chat(src, SPAN_NOTICE("正在传送。"))
 		observer.forceMove(spawn_point.loc)
 	else
-		to_chat(src, SPAN_DANGER("Could not locate an observer spawn point. Use the Teleport verbs to jump if needed."))
+		to_chat(src, SPAN_DANGER("无法定位观察者生成点。如需传送，请使用传送指令。"))
 	observer.icon = 'icons/mob/humans/species/r_human.dmi'
 	observer.icon_state = "anglo_example"
 	observer.alpha = 127
@@ -119,17 +119,17 @@
 	if (src != usr)
 		return
 	if(SSticker.current_state != GAME_STATE_PLAYING)
-		to_chat(usr, SPAN_WARNING("The round is either not ready, or has already finished!"))
+		to_chat(usr, SPAN_WARNING("回合尚未准备就绪，或已结束！"))
 		return
 	if(!GLOB.enter_allowed)
-		to_chat(usr, SPAN_WARNING("There is an administrative lock on entering the game! (The dropship likely crashed into the Almayer. This should take at most 20 minutes.)"))
+		to_chat(usr, SPAN_WARNING("进入游戏存在管理锁定！（运输机可能已坠毁在阿尔迈耶号上。这最多需要20分钟。）"))
 		return
 
 	if(!client?.prefs.update_slot(player_rank.title))
 		return
 
 	if(!GLOB.RoleAuthority.assign_role(src, player_rank, latejoin = TRUE))
-		to_chat(src, SPAN_WARNING("[rank] is not available. Please try another."))
+		to_chat(src, SPAN_WARNING("[rank]不可用。请尝试其他军衔。"))
 		return
 
 	spawning = TRUE
@@ -138,10 +138,10 @@
 	var/mob/living/carbon/human/character = create_character(TRUE) //creates the human and transfers vars and mind
 	GLOB.RoleAuthority.equip_role(character, player_rank, late_join = TRUE)
 	if(character.ckey in GLOB.donator_items)
-		to_chat(character, SPAN_BOLDNOTICE("You have gear available in the personal gear vendor near Requisitions."))
+		to_chat(character, SPAN_BOLDNOTICE("你可在补给处附近的个人装备贩卖机领取装备。"))
 
 	if((GLOB.security_level > SEC_LEVEL_BLUE || SShijack.hijack_status) && player_rank.gets_emergency_kit)
-		to_chat(character, SPAN_HIGHDANGER("As you stagger out of hypersleep, the sleep bay blares: '[SShijack.evac_status ? "VESSEL UNDERGOING EVACUATION PROCEDURES, SELF DEFENSE KIT PROVIDED" : "VESSEL IN HEIGHTENED ALERT STATUS, SELF DEFENSE KIT PROVIDED"]'."))
+		to_chat(character, SPAN_HIGHDANGER("当你踉跄着脱离休眠状态时，休眠舱广播响起：'[SShijack.evac_status ? "VESSEL UNDERGOING EVACUATION PROCEDURES, SELF DEFENSE KIT PROVIDED" : "VESSEL IN HEIGHTENED ALERT STATUS, SELF DEFENSE KIT PROVIDED"]'."))
 		character.put_in_hands(new /obj/item/storage/box/kit/cryo_self_defense(character.loc))
 
 	GLOB.data_core.manifest_inject(character)

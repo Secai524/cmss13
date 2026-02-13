@@ -1,6 +1,6 @@
 /obj/item/fishing_pole
-	name = "fishing pole"
-	desc = "A fishing pole. You reckon you might need water for this..."
+	name = "鱼竿"
+	desc = "一根鱼竿。你觉得你可能需要水才能用..."
 
 	icon = 'icons/obj/structures/fishing.dmi' // replace this or whatever, i ain't a spriter
 	icon_state = "pole_inhand" // this you should rename, though
@@ -22,9 +22,9 @@
 
 /obj/item/fishing_pole/examine(mob/user)
 	if(loaded_bait)
-		to_chat(user, SPAN_NOTICE("It has [loaded_bait] loaded on its hook."))
+		to_chat(user, SPAN_NOTICE("它的鱼钩上挂着[loaded_bait]。"))
 	else
-		to_chat(user, SPAN_WARNING("It doesn't have any bait attached!"))
+		to_chat(user, SPAN_WARNING("它没有挂任何鱼饵！"))
 
 /obj/item/fishing_pole/attack_self(mob/user)
 	..()
@@ -33,15 +33,15 @@
 		return
 
 	if(!forward.fishing_allowed)
-		to_chat(user, SPAN_WARNING("You can not fish here!"))
+		to_chat(user, SPAN_WARNING("你不能在这里钓鱼！"))
 		return
 	
-	user.visible_message(SPAN_NOTICE("[user] starts setting up \the [src]..."))
+	user.visible_message(SPAN_NOTICE("[user]开始架设\the [src]..."))
 	
 	if(!do_after(user, 3 SECONDS, show_busy_icon = BUSY_ICON_BUILD))
 		return
 
-	user.visible_message(SPAN_NOTICE("[user] finishes setting up \the [src]!"), SPAN_NOTICE("You finish setting up \the [src]!"))
+	user.visible_message(SPAN_NOTICE("[user]架设好了\the [src]！"), SPAN_NOTICE("You finish setting up \the [src]!"))
 	var/obj/structure/prop/fishing/pole_interactive/deployed_pole = new deploy_type(get_turf(src))
 	transfer_to_pole(deployed_pole, user)
 
@@ -52,7 +52,7 @@
 			return
 		if(user.drop_inv_item_to_loc(I, src))
 			loaded_bait = I
-			user.visible_message(SPAN_NOTICE("[user] loads \the [I] onto \the [src]'s hook."), SPAN_NOTICE("You load \the [I] onto \the [src]'s hook."))
+			user.visible_message(SPAN_NOTICE("[user]将\the [I]挂到\the [src]的鱼钩上。"), SPAN_NOTICE("You load \the [I] onto \the [src]'s hook."))
 			return
 	return ..()
 

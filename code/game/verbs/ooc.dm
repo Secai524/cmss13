@@ -5,7 +5,7 @@ CLIENT_VERB(ooc, msg as text)
 	if(!mob)
 		return
 	if(IsGuestKey(key))
-		to_chat(src, "Guests may not use OOC.")
+		to_chat(src, "访客不得使用OOC。")
 		return
 
 	if(!filter_message(src, msg))
@@ -16,7 +16,7 @@ CLIENT_VERB(ooc, msg as text)
 		return
 
 	if(!(prefs.toggles_chat & CHAT_OOC))
-		to_chat(src, SPAN_DANGER("You have OOC muted."))
+		to_chat(src, SPAN_DANGER("你已屏蔽OOC。"))
 		return
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
@@ -24,15 +24,15 @@ CLIENT_VERB(ooc, msg as text)
 			looc(msg)
 			return
 		if(!GLOB.dooc_allowed && (mob.stat == DEAD || isobserver(mob)))
-			to_chat(usr, SPAN_DANGER("OOC for dead mobs has been turned off."))
+			to_chat(usr, SPAN_DANGER("死亡单位的OOC功能已关闭。"))
 			return
 		if(prefs.muted & MUTE_OOC)
-			to_chat(src, SPAN_DANGER("You cannot use OOC (muted)."))
+			to_chat(src, SPAN_DANGER("你无法使用OOC（已屏蔽）。"))
 			return
 		if(handle_spam_prevention(msg,MUTE_OOC))
 			return
 		if(findtext(msg, "byond://"))
-			to_chat(src, "<B>Advertising other servers is not allowed.</B>")
+			to_chat(src, "<B>禁止宣传其他服务器。</B>")
 			message_admins("[key_name_admin(src)] has attempted to advertise in OOC: [msg]")
 			return
 
@@ -119,7 +119,7 @@ CLIENT_VERB(looc, msg as text)
 	if(!mob)
 		return
 	if(IsGuestKey(key))
-		to_chat(src, "Guests may not use LOOC.")
+		to_chat(src, "访客不得使用LOOC。")
 		return
 
 	if(!filter_message(src, msg))
@@ -130,23 +130,23 @@ CLIENT_VERB(looc, msg as text)
 		return
 
 	if(!(prefs.toggles_chat & CHAT_LOOC))
-		to_chat(src, SPAN_DANGER("You have LOOC muted."))
+		to_chat(src, SPAN_DANGER("你已屏蔽LOOC。"))
 		return
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		if(!GLOB.looc_allowed)
-			to_chat(src, SPAN_DANGER("LOOC is globally muted."))
+			to_chat(src, SPAN_DANGER("LOOC已全局屏蔽。"))
 			return
 		if(!GLOB.dlooc_allowed && (mob.stat != CONSCIOUS || isobserver(mob)))
-			to_chat(usr, SPAN_DANGER("Sorry, you cannot utilize LOOC while dead or incapacitated."))
+			to_chat(usr, SPAN_DANGER("抱歉，你在死亡或丧失行动能力时无法使用LOOC。"))
 			return
 		if(prefs.muted & MUTE_OOC)
-			to_chat(src, SPAN_DANGER("You cannot use LOOC (muted)."))
+			to_chat(src, SPAN_DANGER("你无法使用LOOC（已屏蔽）。"))
 			return
 		if(handle_spam_prevention(msg,MUTE_OOC))
 			return
 		if(findtext(msg, "byond://"))
-			to_chat(src, "<B>Advertising other servers is not allowed.</B>")
+			to_chat(src, "<B>禁止宣传其他服务器。</B>")
 			message_admins("[key_name_admin(src)] has attempted to advertise in LOOC: [msg]")
 			return
 
@@ -223,7 +223,7 @@ CLIENT_VERB(fixnanoui)
 	log_tgui(src, "Closing all tgui windows.", context = "verb/fixnanoui")
 	var/closed_windows = SStgui.close_user_uis(usr)
 
-	to_chat(mob, SPAN_NOTICE("<b>All interfaces have been forcefully closed. Please try re-opening them. (Closed [closed_windows] windows)</b>"))
+	to_chat(mob, SPAN_NOTICE("<b>所有界面已被强制关闭。请尝试重新打开。（已关闭[closed_windows]个窗口）</b>"))
 
 CLIENT_VERB(fit_viewport)
 	set name = "Fit Viewport"

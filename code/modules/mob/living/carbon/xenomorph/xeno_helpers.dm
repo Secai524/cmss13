@@ -5,7 +5,7 @@
 	var/mob/living/carbon/human/user = hauled_mob?.resolve()
 	if(user)
 		if(!isspeciesmonkey(user))
-			to_chat(src, SPAN_XENOWARNING("You cannot ventcrawl while hauling [user]!"))
+			to_chat(src, SPAN_XENOWARNING("拖拽[user]时无法进行管道爬行！"))
 			return FALSE
 	return TRUE
 

@@ -1,6 +1,6 @@
 /obj/item/hardpoint/special
-	name = "special hardpoint"
-	desc = "Special pre-installed module with unique behaviour."
+	name = "特殊挂载点"
+	desc = "预装的特殊模块，具有独特功能。"
 
 	slot = HDPT_SPECIAL
 	hdpt_layer = HDPT_LAYER_WHEELS

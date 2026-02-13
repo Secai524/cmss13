@@ -19,50 +19,50 @@
 /datum/emote/living/carbon/human/yautja/species_sound/predgrowl
 	key = "growl"
 	sound = 'sound/voice/predgrowl.ogg'
-	message = "growls!"
+	message = "低吼！"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 // Laughing Emotes
 /datum/emote/living/carbon/human/yautja/species_sound/laugh1
 	key = "laugh1"
-	message = "laughs!"
+	message = "大笑！"
 	sound = 'sound/voice/pred_laugh1.ogg'
 	volume = 25
 
 /datum/emote/living/carbon/human/yautja/species_sound/laugh2
 	key = "laugh2"
-	message = "laughs!"
+	message = "大笑！"
 	sound = 'sound/voice/pred_laugh2.ogg'
 	volume = 25
 
 /datum/emote/living/carbon/human/yautja/species_sound/laugh3
 	key = "laugh3"
-	message = "laughs!"
+	message = "大笑！"
 	sound = 'sound/voice/pred_laugh3.ogg'
 	volume = 25
 
 /datum/emote/living/carbon/human/yautja/species_sound/laugh4
 	key = "laugh4"
-	message = "laughs!"
+	message = "大笑！"
 	sound = 'sound/voice/pred_laugh4.ogg'
 	volume = 25
 
 /datum/emote/living/carbon/human/yautja/species_sound/laugh5
 	key = "laugh5"
-	message = "laughs!"
+	message = "大笑！"
 	sound = 'sound/voice/pred_laugh5.ogg'
 	volume = 25
 
 /datum/emote/living/carbon/human/yautja/species_sound/laugh6
 	key = "laugh6"
-	message = "laughs!"
+	message = "大笑！"
 	sound = 'sound/voice/pred_laugh6.ogg'
 	volume = 25
 
 // Roar Emotes
 /datum/emote/living/carbon/human/yautja/species_sound/roar
 	key = "roar"
-	message = "roars!"
+	message = "咆哮！"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/yautja/species_sound/roar/get_sound(mob/living/user)
@@ -71,12 +71,12 @@
 /datum/emote/living/carbon/human/yautja/species_sound/roar2
 	key = "roar2"
 	sound = 'sound/voice/pred_roar3.ogg'
-	message = "roars!"
+	message = "咆哮！"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/yautja/species_sound/loudroar
 	key = "loudroar"
-	message = "roars loudly!"
+	message = "大声咆哮！"
 	volume = 60
 	cooldown = 120 SECONDS
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
@@ -93,4 +93,4 @@
 	for(var/mob/current_mob as anything in get_mobs_in_z_level_range(get_turf(user), 18) - user)
 		var/relative_dir = Get_Compass_Dir(current_mob, user)
 		var/final_dir = dir2text(relative_dir)
-		to_chat(current_mob, SPAN_HIGHDANGER("You hear a loud roar coming from [final_dir ? "the [final_dir]" : "nearby"]!"))
+		to_chat(current_mob, SPAN_HIGHDANGER("你听到一声响亮的咆哮从[final_dir ? "the [final_dir]" : "nearby"]!"))

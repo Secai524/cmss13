@@ -69,15 +69,15 @@
 
 // Driver's seat
 /obj/structure/bed/chair/comfy/vehicle/driver
-	name = "driver's seat"
-	desc = "Comfortable seat for a driver."
+	name = "驾驶座"
+	desc = "为驾驶员准备的舒适座椅。"
 	seat = VEHICLE_DRIVER
 
 /obj/structure/bed/chair/comfy/vehicle/driver/do_buckle(mob/target, mob/user)
 	required_skill = vehicle.required_skill
 	if(!skillcheck(target, SKILL_VEHICLE, required_skill))
 		if(target == user)
-			to_chat(user, SPAN_WARNING("You have no idea how to drive this thing!"))
+			to_chat(user, SPAN_WARNING("你根本不知道如何驾驶这东西！"))
 		return FALSE
 
 	if(vehicle)
@@ -87,8 +87,8 @@
 
 // Gunner seat
 /obj/structure/bed/chair/comfy/vehicle/gunner
-	name = "gunner's seat"
-	desc = "Comfortable seat for a gunner."
+	name = "炮手座"
+	desc = "为炮手准备的舒适座椅。"
 	seat = VEHICLE_GUNNER
 	required_skill = SKILL_VEHICLE_CREWMAN
 
@@ -96,19 +96,19 @@
 	// Gunning always requires crewman-level skill
 	if(!skillcheck(target, SKILL_VEHICLE, required_skill))
 		if(target == user)
-			to_chat(user, SPAN_WARNING("You have no idea how to operate the weapons on this thing!"))
+			to_chat(user, SPAN_WARNING("你根本不知道如何操作这上面的武器！"))
 		return FALSE
 
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(!H.allow_gun_usage)
 			if(issynth(user))
-				to_chat(user, SPAN_WARNING("Your programming does not allow you to use heavy weaponry."))
+				to_chat(user, SPAN_WARNING("你的程序不允许你使用重型武器。"))
 			else
-				to_chat(user, SPAN_WARNING("You are unable to use heavy weaponry."))
+				to_chat(user, SPAN_WARNING("你无法使用重型武器。"))
 			return
 		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/ceasefire))
-			to_chat(user, SPAN_WARNING("You will not break the ceasefire by doing that!"))
+			to_chat(user, SPAN_WARNING("你那样做会破坏停火协议！"))
 			return FALSE
 
 	for(var/obj/item/I in user.contents)		//prevents shooting while zoomed in, but zoom can still be activated and used without shooting
@@ -136,7 +136,7 @@
 		return TAILSTAB_COOLDOWN_NONE
 	manual_unbuckle(xeno)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-	xeno.visible_message(SPAN_DANGER("[xeno] smacks [src] with its tail!"),
+	xeno.visible_message(SPAN_DANGER("[xeno]用它的尾巴猛击[src]！"),
 	SPAN_DANGER("We smack [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_LOW
@@ -145,7 +145,7 @@
 //spawners located in interior_landmarks
 
 /obj/structure/bed/chair/comfy/vehicle/driver/armor
-	desc = "Military-grade seat for armored vehicle driver with some controls, switches and indicators."
+	desc = "军用级装甲运兵车驾驶员座椅，带有一些控制装置、开关和指示器。"
 	var/image/over_image = null
 
 /obj/structure/bed/chair/comfy/vehicle/driver/armor/Initialize(mapload)
@@ -167,7 +167,7 @@
 		overlays += over_image
 
 /obj/structure/bed/chair/comfy/vehicle/gunner/armor
-	desc = "Military-grade seat for armored vehicle gunner with some controls, switches and indicators."
+	desc = "军用级装甲运兵车炮手座椅，带有一些控制装置、开关和指示器。"
 	var/image/over_image = null
 
 /obj/structure/bed/chair/comfy/vehicle/gunner/armor/Initialize(mapload)
@@ -215,8 +215,8 @@
 //armored vehicles support gunner seat
 
 /obj/structure/bed/chair/comfy/vehicle/support_gunner
-	name = "left support gunner's seat"
-	desc = "Military-grade seat for a support gunner with some controls, switches and indicators."
+	name = "左支援炮手座"
+	desc = "军用级支援炮手座椅，带有一些控制装置、开关和指示器。"
 	seat = VEHICLE_SUPPORT_GUNNER_ONE
 
 	required_skill = SKILL_VEHICLE_DEFAULT
@@ -241,12 +241,12 @@
 		var/mob/living/carbon/human/H = user
 		if(!H.allow_gun_usage)
 			if(issynth(user))
-				to_chat(user, SPAN_WARNING("Your programming does not allow you to use firearms."))
+				to_chat(user, SPAN_WARNING("你的程序设定不允许你使用枪械。"))
 			else
-				to_chat(user, SPAN_WARNING("You are unable to use firearms."))
+				to_chat(user, SPAN_WARNING("你无法使用枪械。"))
 			return
 		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/ceasefire))
-			to_chat(user, SPAN_WARNING("You will not break the ceasefire by doing that!"))
+			to_chat(user, SPAN_WARNING("你那样做会破坏停火协议！"))
 			return FALSE
 	. = ..()
 
@@ -298,10 +298,10 @@
 				msg = SPAN_INFO("Use 'Reload Firing Port Weapon' verb in 'Vehicle' tab to activate automated reload.")
 				to_chat(M, msg)
 				return
-		to_chat(M, SPAN_WARNING("ERROR. NO FPW FOUND, TELL A DEV!"))
+		to_chat(M, SPAN_WARNING("错误。未找到FPW，请告知开发人员！"))
 
 /obj/structure/bed/chair/comfy/vehicle/support_gunner/second
-	name = "right support gunner's seat"
+	name = "右支援炮手座"
 	seat = VEHICLE_SUPPORT_GUNNER_TWO
 
 //ARMORED VEHICLES PASSENGER SEATS
@@ -310,8 +310,8 @@
 
 //DOES NOT SUPPORT MORE THAN TWO SEATS ON TILE
 /obj/structure/bed/chair/vehicle
-	name = "passenger seat"
-	desc = "A sturdy chair with a brace that lowers over your body. Prevents being flung around in vehicle during crash being injured as a result. Fasten your seatbelts, kids! Fix with welding tool in case of damage."
+	name = "乘客座"
+	desc = "一把坚固的椅子，带有可降下固定身体的支架。防止在载具坠毁时被甩出受伤。系好安全带，孩子们！如果损坏，请使用焊枪修复。"
 	icon = 'icons/obj/vehicles/interiors/general.dmi'
 	icon_state = "vehicle_seat"
 	var/image/chairbar = null
@@ -406,7 +406,7 @@
 
 /obj/structure/bed/chair/vehicle/attack_alien(mob/living/user)
 	if(!unslashable)
-		user.visible_message(SPAN_WARNING("[user] smashes \the [src]!"),
+		user.visible_message(SPAN_WARNING("[user]砸碎了\the [src]！"),
 		SPAN_WARNING("You smash \the [src]!"))
 		playsound(loc, pick('sound/effects/metalhit.ogg', 'sound/weapons/alien_claw_metal1.ogg', 'sound/weapons/alien_claw_metal2.ogg', 'sound/weapons/alien_claw_metal3.ogg'), 25, 1)
 		if(!broken)
@@ -418,7 +418,7 @@
 	if(unslashable)
 		return TAILSTAB_COOLDOWN_NONE
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-	xeno.visible_message(SPAN_DANGER("[xeno] smashes [src] with its tail!"),
+	xeno.visible_message(SPAN_DANGER("[xeno] 用它的尾巴猛击 [src]！"),
 	SPAN_DANGER("We smash [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	if(!broken)
 		break_seat()
@@ -430,15 +430,15 @@
 /obj/structure/bed/chair/vehicle/attackby(obj/item/W, mob/living/user)
 	if((iswelder(W) && broken))
 		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
-			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			to_chat(user, SPAN_WARNING("你需要一把更强的喷枪！"))
 			return
 		var/obj/item/tool/weldingtool/C = W
 		if(C.remove_fuel(0,user))
 			playsound(src.loc, 'sound/items/weldingtool_weld.ogg', 25)
-			user.visible_message(SPAN_WARNING("[user] begins repairing \the [src]."),
+			user.visible_message(SPAN_WARNING("[user]开始修理\the [src]。"),
 			SPAN_WARNING("You begin repairing \the [src]."))
 			if(do_after(user, 2 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && broken)
-				user.visible_message(SPAN_WARNING("[user] repairs \the [src]."),
+				user.visible_message(SPAN_WARNING("[user]修好了\the [src]。"),
 				SPAN_WARNING("You repair \the [src]."))
 				repair_seat()
 				return
@@ -472,6 +472,6 @@
 // White chairs
 
 /obj/structure/bed/chair/vehicle/white
-	name = "passenger seat"
-	desc = "A sturdy chair with a brace that lowers over your body. Prevents being flung around in vehicle during crash being injured as a result. Fasten your seatbelts, kids! Fix with welding tool in case of damage."
+	name = "乘客座"
+	desc = "一把坚固的椅子，带有可降下固定身体的支架。防止在载具坠毁时被甩出受伤。系好安全带，孩子们！如果损坏，请使用焊枪修复。"
 	icon = 'icons/obj/vehicles/interiors/general_wy.dmi'

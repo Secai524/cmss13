@@ -39,7 +39,7 @@
 /mob/living/carbon/xenomorph/burrower
 	caste_type = XENO_CASTE_BURROWER
 	name = XENO_CASTE_BURROWER
-	desc = "A beefy alien with sharp claws."
+	desc = "一只肌肉发达、长着利爪的外星生物。"
 	icon = 'icons/mob/xenos/castes/tier_2/burrower.dmi'
 	icon_size = 64
 	icon_state = "Burrower Walking"
@@ -106,7 +106,7 @@
 		return 0
 
 /datum/behavior_delegate/burrower_base
-	name = "Base Burrower Behavior Delegate"
+	name = "基础掘地者行为代理"
 
 
 //Burrower Abilities
@@ -123,15 +123,15 @@
 
 	var/area/current_area = get_area(current_turf)
 	if(current_area.flags_area & AREA_NOBURROW)
-		to_chat(src, SPAN_XENOWARNING("There's no way to burrow here."))
+		to_chat(src, SPAN_XENOWARNING("此处无法掘地。"))
 		return
 
 	if(istype(current_turf, /turf/open/floor/almayer/research/containment) || istype(current_turf, /turf/closed/wall/almayer/research/containment))
-		to_chat(src, SPAN_XENOWARNING("We can't escape this cell!"))
+		to_chat(src, SPAN_XENOWARNING("我们无法逃离这个牢房！"))
 		return
 
 	if(clone) //Prevents burrowing on stairs
-		to_chat(src, SPAN_XENOWARNING("We can't burrow here!"))
+		to_chat(src, SPAN_XENOWARNING("我们无法在此处掘地！"))
 		return
 
 	if(caste_type && GLOB.xeno_datum_list[caste_type])
@@ -139,12 +139,12 @@
 
 	used_burrow = TRUE
 
-	to_chat(src, SPAN_XENOWARNING("We begin burrowing ourselves into the ground."))
+	to_chat(src, SPAN_XENOWARNING("我们开始向地下掘进。"))
 	if(!do_after(src, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		addtimer(CALLBACK(src, PROC_REF(do_burrow_cooldown)), (caste ? caste.burrow_cooldown : 5 SECONDS))
 		return
 	// TODO Make immune to all damage here.
-	to_chat(src, SPAN_XENOWARNING("We burrow ourselves into the ground."))
+	to_chat(src, SPAN_XENOWARNING("我们掘入了地下。"))
 	QDEL_NULL(observed_atom)
 	invisibility = 101
 	alpha = 100
@@ -155,7 +155,7 @@
 	if(hauled)
 		hauled.forceMove(src)
 
-	add_traits(list(TRAIT_ABILITY_BURROWED, TRAIT_UNDENSE, TRAIT_IMMOBILIZED), TRAIT_SOURCE_ABILITY("Burrow"))
+	add_traits(list(TRAIT_ABILITY_BURROWED, TRAIT_UNDENSE, TRAIT_IMMOBILIZED), TRAIT_SOURCE_ABILITY("掘地"))
 	playsound(src.loc, 'sound/effects/burrowing_b.ogg', 25)
 	update_icons()
 	addtimer(CALLBACK(src, PROC_REF(do_burrow_cooldown)), (caste ? caste.burrow_cooldown : 5 SECONDS))
@@ -175,8 +175,8 @@
 /mob/living/carbon/xenomorph/proc/burrow_off()
 	if(caste_type && GLOB.xeno_datum_list[caste_type])
 		caste = GLOB.xeno_datum_list[caste_type]
-	to_chat(src, SPAN_NOTICE("You resurface."))
-	remove_traits(list(TRAIT_ABILITY_BURROWED, TRAIT_UNDENSE, TRAIT_IMMOBILIZED), TRAIT_SOURCE_ABILITY("Burrow"))
+	to_chat(src, SPAN_NOTICE("你重新浮出地面。"))
+	remove_traits(list(TRAIT_ABILITY_BURROWED, TRAIT_UNDENSE, TRAIT_IMMOBILIZED), TRAIT_SOURCE_ABILITY("掘地"))
 	invisibility = FALSE
 	alpha = initial(alpha)
 	anchored = FALSE
@@ -196,7 +196,7 @@
 /mob/living/carbon/xenomorph/proc/do_burrow_cooldown()
 	used_burrow = FALSE
 	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
-		to_chat(src, SPAN_NOTICE("We can now surface."))
+		to_chat(src, SPAN_NOTICE("我们现在可以破土而出。"))
 	for(var/X in actions)
 		var/datum/action/act = X
 		act.update_button_icon()
@@ -207,52 +207,52 @@
 		return
 
 	if(!HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
-		to_chat(src, SPAN_NOTICE("We must be burrowed to do this."))
+		to_chat(src, SPAN_NOTICE("我们必须处于潜地状态才能这么做。"))
 		return
 
 	if(tunnel)
 		tunnel = FALSE
-		to_chat(src, SPAN_NOTICE("We stop tunneling."))
+		to_chat(src, SPAN_NOTICE("我们停止挖掘隧道。"))
 		used_tunnel = TRUE
 		addtimer(CALLBACK(src, PROC_REF(do_tunnel_cooldown)), (caste ? caste.tunnel_cooldown : 5 SECONDS))
 		return
 
 	if(used_tunnel)
-		to_chat(src, SPAN_NOTICE("We must wait some time to do this."))
+		to_chat(src, SPAN_NOTICE("我们必须等待一段时间才能这么做。"))
 		return
 
 	if(!target)
-		to_chat(src, SPAN_NOTICE("We can't tunnel there!"))
+		to_chat(src, SPAN_NOTICE("我们无法在那里挖掘隧道！"))
 		return
 
 	if(target.density)
-		to_chat(src, SPAN_XENOWARNING("We can't tunnel into a solid wall!"))
+		to_chat(src, SPAN_XENOWARNING("我们无法挖穿实心墙壁！"))
 		return
 
 	if(istype(target, /turf/open/space))
-		to_chat(src, SPAN_XENOWARNING("We make tunnels, not wormholes!"))
+		to_chat(src, SPAN_XENOWARNING("我们挖的是隧道，不是虫洞！"))
 		return
 
 	if(clone) //Prevents tunnels in Z transition areas
-		to_chat(src, SPAN_XENOWARNING("We make tunnels, not wormholes!"))
+		to_chat(src, SPAN_XENOWARNING("我们挖的是隧道，不是虫洞！"))
 		return
 
 	var/area/area_to_get = get_area(target)
 	if(area_to_get.flags_area & AREA_NOBURROW || get_dist(src, target) > 15)
-		to_chat(src, SPAN_XENOWARNING("There's no way to tunnel over there."))
+		to_chat(src, SPAN_XENOWARNING("那边没有挖掘隧道的路径。"))
 		return
 
 	for(var/obj/objects_in_turf in target.contents)
 		if(objects_in_turf.density)
 			if(objects_in_turf.flags_atom & ON_BORDER)
 				continue
-			to_chat(src, SPAN_WARNING("There's something solid there to stop us from emerging."))
+			to_chat(src, SPAN_WARNING("那里有坚固的东西阻挡我们钻出地面。"))
 			return
 
 	if(!target || target.density)
-		to_chat(src, SPAN_NOTICE("We cannot tunnel to there!"))
+		to_chat(src, SPAN_NOTICE("我们无法挖掘到那里！"))
 	tunnel = TRUE
-	to_chat(src, SPAN_NOTICE("We start tunneling!"))
+	to_chat(src, SPAN_NOTICE("我们开始挖掘隧道！"))
 	var/target_distance = max(get_dist(src, target), 1) // Min distance of 1 is to prevent stunlocking
 	tunnel_timer = (target_distance*10) + world.time
 	process_tunnel(target)
@@ -269,14 +269,14 @@
 		addtimer(CALLBACK(src, PROC_REF(process_tunnel), target), 1 SECONDS)
 
 /mob/living/carbon/xenomorph/proc/do_tunnel(turf/target)
-	to_chat(src, SPAN_NOTICE("We tunnel to the destination."))
+	to_chat(src, SPAN_NOTICE("我们向目的地挖掘隧道。"))
 	anchored = FALSE
 	forceMove(target)
 	burrow_off()
 
 /mob/living/carbon/xenomorph/proc/do_tunnel_cooldown()
 	used_tunnel = FALSE
-	to_chat(src, SPAN_NOTICE("We can now tunnel while burrowed."))
+	to_chat(src, SPAN_NOTICE("我们现在可以在潜地状态下挖掘隧道了。"))
 	for(var/X in actions)
 		var/datum/action/act = X
 		act.update_button_icon()
@@ -289,7 +289,7 @@
 	if(!istype(tunnel_target))
 		return
 
-	var/new_name = strip_html(input("Change the description of the tunnel:", "Tunnel Description") as text|null)
+	var/new_name = strip_html(input("Change the description of the tunnel:", "隧道描述") as text|null)
 	new_name = replace_non_alphanumeric_plus(new_name)
 	if(new_name)
 		new_name = "[new_name] ([get_area_name(tunnel_target)])"
@@ -303,11 +303,11 @@
 	var/mob/living/carbon/xenomorph/burrower_tremor = owner
 
 	if(HAS_TRAIT(burrower_tremor, TRAIT_ABILITY_BURROWED))
-		to_chat(burrower_tremor, SPAN_XENOWARNING("We must be above ground to do this."))
+		to_chat(burrower_tremor, SPAN_XENOWARNING("我们必须在地面上才能执行此操作。"))
 		return
 
 	if(burrower_tremor.is_ventcrawling)
-		to_chat(burrower_tremor, SPAN_XENOWARNING("We must be above ground to do this."))
+		to_chat(burrower_tremor, SPAN_XENOWARNING("我们必须在地面上才能执行此操作。"))
 		return
 
 	if(!action_cooldown_check())
@@ -320,19 +320,19 @@
 		return
 
 	playsound(burrower_tremor, 'sound/effects/alien_footstep_charge3.ogg', 75, 0)
-	to_chat(burrower_tremor, SPAN_XENOWARNING("We dig ourselves into the ground and cause tremors."))
+	to_chat(burrower_tremor, SPAN_XENOWARNING("我们钻入地下，引发震动。"))
 	burrower_tremor.create_stomp()
 
 
 	for(var/mob/living/carbon/carbon_target in range(7, burrower_tremor))
-		to_chat(carbon_target, SPAN_WARNING("You struggle to remain on your feet as the ground shakes beneath your feet!"))
+		to_chat(carbon_target, SPAN_WARNING("地面在你脚下震动，你挣扎着保持站立！"))
 		shake_camera(carbon_target, 2, 3)
 		if(get_dist(burrower_tremor, carbon_target) <= 3 && !burrower_tremor.can_not_harm(carbon_target))
 			if(carbon_target.mob_size >= MOB_SIZE_BIG)
 				carbon_target.apply_effect(1, SLOW)
 			else
 				carbon_target.apply_effect(1, WEAKEN)
-			to_chat(carbon_target, SPAN_WARNING("The violent tremors make you lose your footing!"))
+			to_chat(carbon_target, SPAN_WARNING("剧烈的震动让你脚下不稳！"))
 
 	apply_cooldown()
 	return ..()
@@ -343,33 +343,33 @@
 		return
 
 	if(xenomorph.action_busy)
-		to_chat(xenomorph, SPAN_XENOWARNING("We should finish up what we're doing before digging."))
+		to_chat(xenomorph, SPAN_XENOWARNING("我们应该先完成手头的事再挖掘。"))
 		return
 
 	var/turf/turf = xenomorph.loc
 	if(!istype(turf)) //logic
-		to_chat(xenomorph, SPAN_XENOWARNING("We can't do that from there."))
+		to_chat(xenomorph, SPAN_XENOWARNING("我们无法从那里做到。"))
 		return
 
 	var/area/current_area = get_area(turf)
 	if(!turf.can_dig_xeno_tunnel() || !is_ground_level(turf.z) || current_area.flags_area & AREA_NOTUNNEL)
-		to_chat(xenomorph, SPAN_XENOWARNING("We scrape around, but we can't seem to dig through that kind of floor."))
+		to_chat(xenomorph, SPAN_XENOWARNING("我们四处刨挖，但似乎无法挖穿那种地面。"))
 		return
 
 	if(locate(/obj/structure/tunnel) in xenomorph.loc)
-		to_chat(xenomorph, SPAN_XENOWARNING("There already is a tunnel here."))
+		to_chat(xenomorph, SPAN_XENOWARNING("这里已经有一条隧道了。"))
 		return
 
 	if(locate(/obj/structure/machinery/sentry_holder/landing_zone) in xenomorph.loc)
-		to_chat(xenomorph, SPAN_XENOWARNING("We can't dig a tunnel with this object in the way."))
+		to_chat(xenomorph, SPAN_XENOWARNING("有这个物体挡着，我们无法挖掘隧道。"))
 		return
 
 	if(xenomorph.tunnel_delay)
-		to_chat(xenomorph, SPAN_XENOWARNING("We are not ready to dig a tunnel again."))
+		to_chat(xenomorph, SPAN_XENOWARNING("我们还没准备好再次挖掘隧道。"))
 		return
 
 	if(xenomorph.get_active_hand())
-		to_chat(xenomorph, SPAN_XENOWARNING("We need an empty claw for this!"))
+		to_chat(xenomorph, SPAN_XENOWARNING("我们需要一只空闲的爪子！"))
 		return
 
 	if(!xenomorph.check_plasma(plasma_cost))
@@ -379,15 +379,15 @@
 
 	if(isnull(AR) || !(AR.is_resin_allowed))
 		if(!AR || AR.flags_area & AREA_UNWEEDABLE)
-			to_chat(xenomorph, SPAN_XENOWARNING("This area is unsuited to host the hive!"))
+			to_chat(xenomorph, SPAN_XENOWARNING("此区域不适合建立巢穴！"))
 			return
-		to_chat(xenomorph, SPAN_XENOWARNING("It's too early to spread the hive this far."))
+		to_chat(xenomorph, SPAN_XENOWARNING("现在将巢穴扩张至此还为时过早。"))
 		return
 
-	xenomorph.visible_message(SPAN_XENONOTICE("[xenomorph] begins digging out a tunnel entrance."),
+	xenomorph.visible_message(SPAN_XENONOTICE("[xenomorph]开始挖掘一个隧道入口。"),
 	SPAN_XENONOTICE("We begin digging out a tunnel entrance."), null, 5)
 	if(!do_after(xenomorph, 10 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-		to_chat(xenomorph, SPAN_WARNING("Our tunnel caves in as we stop digging it."))
+		to_chat(xenomorph, SPAN_WARNING("我们停止挖掘，隧道坍塌了。"))
 		return
 	if(!xenomorph.check_plasma(plasma_cost))
 		return
@@ -397,7 +397,7 @@
 	var/obj/structure/tunnel/tunnelobj = new(turf, xenomorph.hivenumber)
 	xenomorph.tunnel_delay = 1
 	addtimer(CALLBACK(src, PROC_REF(cooldown_end)), 4 MINUTES)
-	var/msg = strip_html(input("Add a description to the tunnel:", "Tunnel Description") as text|null)
+	var/msg = strip_html(input("Add a description to the tunnel:", "隧道描述") as text|null)
 	msg = replace_non_alphanumeric_plus(msg)
 	var/description
 	if(msg)
@@ -411,10 +411,10 @@
 		for(var/mob/living/carbon/xenomorph/target_for_message as anything in xenomorph.hive.totalXenos)
 			var/overwatch_target = XENO_OVERWATCH_TARGET_HREF
 			var/overwatch_src = XENO_OVERWATCH_SRC_HREF
-			to_chat(target_for_message, SPAN_XENOANNOUNCE("Hive: A new tunnel[description ? " ([description])" : ""] has been created by [xenomorph] (<a href='byond://?src=\ref[target_for_message];[overwatch_target]=\ref[xenomorph];[overwatch_src]=\ref[target_for_message]'>watch</a>) at <b>[get_area_name(tunnelobj)]</b>."))
+			to_chat(target_for_message, SPAN_XENOANNOUNCE("巢穴：一条新隧道[description ? " ([description])" : ""] has been created by [xenomorph] (<a href='byond://?src=\ref[target_for_message];[overwatch_target]=\ref[xenomorph];[overwatch_src]=\ref[target_for_message]'>watch</a>) at <b>[get_area_name(tunnelobj)]</b>."))
 
 	xenomorph.use_plasma(plasma_cost)
-	to_chat(xenomorph, SPAN_NOTICE("We will be ready to dig a new tunnel in 4 minutes."))
+	to_chat(xenomorph, SPAN_NOTICE("我们将在4分钟后准备好挖掘一条新隧道。"))
 	playsound(xenomorph.loc, 'sound/weapons/pierce.ogg', 25, 1)
 	apply_cooldown()
 
@@ -423,7 +423,7 @@
 
 /datum/action/xeno_action/onclick/build_tunnel/proc/cooldown_end()
 	var/mob/living/carbon/xenomorph/xenomorph = owner
-	to_chat(xenomorph, SPAN_NOTICE("We are ready to dig a tunnel again."))
+	to_chat(xenomorph, SPAN_NOTICE("我们已准备好再次挖掘隧道。"))
 	xenomorph.tunnel_delay = 0
 
 /mob/living/carbon/xenomorph/burrower/try_fill_trap(obj/effect/alien/resin/trap/target)

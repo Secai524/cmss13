@@ -17,7 +17,7 @@ Bonus
 
 /datum/symptom/hallucigen
 
-	name = "Hallucigen"
+	name = "致幻剂"
 	stealth = -2
 	resistance = -3
 	stage_speed = -3

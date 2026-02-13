@@ -1,6 +1,6 @@
 
 /obj/effect/landmark/wo_supplies
-	name = "Whiskey Outpost supply Spawner"
+	name = "威士忌前哨补给生成器"
 	var/amount = list(5,15)
 	var/list/stuff = list()
 

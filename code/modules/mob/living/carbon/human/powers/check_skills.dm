@@ -2,7 +2,7 @@
 	set name = "Check Skills"
 	set category = "IC"
 	if(!skills) //Stops null skills from a causing a runtime
-		to_chat(usr, SPAN_NOTICE("Unable to open the Skills Menu due to having null skills."))
+		to_chat(usr, SPAN_NOTICE("因技能为空，无法打开技能菜单。"))
 		return
 
 	skills.tgui_interact(src)

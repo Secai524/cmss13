@@ -10,7 +10,7 @@
 */
 
 /area/whiskey_outpost/inside
-	name = "Interior Whiskey Outpost"
+	name = "威士忌前哨内部"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	minimap_color = MINIMAP_AREA_CAVES
 
@@ -44,23 +44,23 @@
 	flags_area = NO_FLAGS
 
 /area/whiskey_outpost/inside/bunker/pillbox/one
-	name = "Pillbox Bourbon"
+	name = "波旁碉堡"
 	icon_state = "p1"
 
 /area/whiskey_outpost/inside/bunker/pillbox/two
-	name = "Pillbox Wine"
+	name = "葡萄酒碉堡"
 	icon_state = "p2"
 
 /area/whiskey_outpost/inside/bunker/pillbox/three
-	name = "Pillbox Vodka"
+	name = "伏特加碉堡"
 	icon_state = "p3"
 
 /area/whiskey_outpost/inside/bunker/pillbox/four
-	name = "Pillbox Tequila"
+	name = "碉堡龙舌兰"
 	icon_state = "p4"
 
 /area/whiskey_outpost/inside/bunker/bunker/front
-	name = "Pillbox Beer"
+	name = "碉堡啤酒"
 	icon_state = "p5"
 	flags_area = NO_FLAGS
 
@@ -162,7 +162,7 @@
 	icon_state = "south"
 
 /area/whiskey_outpost/outside/south/far
-	name = "Southern Jungle"
+	name = "南部丛林"
 	icon_state = "farsouth"
 
 /area/whiskey_outpost/outside/south/very_far

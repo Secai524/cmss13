@@ -2,7 +2,7 @@
 #define HYDRO_WATER_CONSUMPTION_MULTIPLIER 1.5
 
 /obj/structure/machinery/portable_atmospherics/hydroponics
-	name = "hydroponics tray"
+	name = "水培托盘"
 	icon = 'icons/obj/structures/machinery/hydroponics.dmi'
 	icon_state = "hydrotray3"
 	density = TRUE
@@ -219,7 +219,7 @@
 		animate(src, transform = matrix(rand(1,-1), rand(-0.5,0.5), MATRIX_TRANSLATE), time = 0.5, easing = EASE_IN)
 		animate(transform = matrix(rand(-0.5,0.5), rand(1,-1), MATRIX_TRANSLATE), time = 0.5)
 		animate(transform = matrix(0, 0, MATRIX_TRANSLATE), time = 0.5, easing = EASE_OUT)
-		visible_message(SPAN_NOTICE("[src] shakes itself in attempt to harvest its products."))
+		visible_message(SPAN_NOTICE("[src]摇晃自身，试图收获产物。"))
 		harvest(null, TRUE) //this is ok
 
 	check_level_sanity()
@@ -303,7 +303,7 @@
 			mutation_controller[mut_name] = 0
 
 
-	to_chat(user, SPAN_NOTICE("You remove the dead plant from [src]."))
+	to_chat(user, SPAN_NOTICE("你从[src]中移除了死去的植物。"))
 	check_level_sanity()
 	update_icon()
 
@@ -370,7 +370,7 @@
 	pestlevel = 0
 	sampled = 0
 	update_icon()
-	visible_message(SPAN_NOTICE("[src] has been overtaken by [seed.display_name]."))
+	visible_message(SPAN_NOTICE("[src]已被[seed.display_name]占据。"))
 
 	return
 
@@ -456,15 +456,15 @@
 	if(HAS_TRAIT(O, TRAIT_TOOL_WIRECUTTERS) || istype(O, /obj/item/tool/surgery/scalpel) || istype(O, /obj/item/tool/kitchen/knife) || istype(O, /obj/item/attachable/bayonet))
 
 		if(!seed)
-			to_chat(user, "There is nothing to take a sample from in \the [src].")
+			to_chat(user, "\the [src]中没有可供取样的东西。")
 			return
 
 		if(sampled)
-			to_chat(user, "You have already sampled from this plant.")
+			to_chat(user, "你已从该植物取样。")
 			return
 
 		if(dead)
-			to_chat(user, "The plant is dead.")
+			to_chat(user, "植物已死亡。")
 			return
 
 		// Create a sample.
@@ -488,14 +488,14 @@
 			if(seed)
 				return ..()
 			else
-				to_chat(user, "There's no plant to inject.")
+				to_chat(user, "没有可供注射的植物。")
 				return 1
 		else
 			if(seed)
 				//Leaving this in in case we want to extract from plants later.
-				to_chat(user, "You can't get any extract out of this plant.")
+				to_chat(user, "你无法从该植物中提取任何物质。")
 			else
-				to_chat(user, "There's nothing to draw something from.")
+				to_chat(user, "没有可供抽取的东西。")
 			return 1
 
 	else if (istype(O, /obj/item/seeds))
@@ -506,11 +506,11 @@
 			user.drop_held_item()
 
 			if(!S.seed)
-				to_chat(user, "The packet seems to be empty. You throw it away.")
+				to_chat(user, "包装袋似乎是空的。你把它扔掉了。")
 				qdel(O)
 				return
 
-			to_chat(user, "You plant the [S.seed.seed_name] [S.seed.seed_noun].")
+			to_chat(user, "你种下了[S.seed.seed_name] [S.seed.seed_noun]。")
 
 			seed = S.seed //Grab the seed datum.
 			dead = 0
@@ -531,19 +531,19 @@
 	else if (istype(O, /obj/item/tool/minihoe))  // The minihoe
 
 		if(weedlevel > 0)
-			user.visible_message(SPAN_DANGER("[user] starts uprooting the weeds."), SPAN_DANGER("You remove the weeds from [src]."))
+			user.visible_message(SPAN_DANGER("[user]开始拔除杂草。"), SPAN_DANGER("You remove the weeds from [src]."))
 			weedlevel = 0
 			update_icon()
 		else
-			to_chat(user, SPAN_DANGER("This plot is completely devoid of weeds. It doesn't need uprooting."))
+			to_chat(user, SPAN_DANGER("这块地完全没有杂草。无需拔除。"))
 
 	else if (istype(O, /obj/item/tool/shovel/spade))
 		if(isnull(seed))
 			return
-		user.visible_message(SPAN_DANGER("[user] starts to uproot the plant."), SPAN_DANGER("You begin removing plant from [src]..."))
+		user.visible_message(SPAN_DANGER("[user]开始拔除植物。"), SPAN_DANGER("You begin removing plant from [src]..."))
 		if(!do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src, INTERRUPT_MOVED, BUSY_ICON_FRIENDLY))
 			return
-		to_chat(user, SPAN_NOTICE("You remove the plant from [src]."))
+		to_chat(user, SPAN_NOTICE("你将植物从[src]中移除。"))
 		seed = null
 		dead = 0
 		sampled = 0
@@ -573,7 +573,7 @@
 		toxins += spray.toxicity
 		pestlevel -= spray.pest_kill_str
 		weedlevel -= spray.weed_kill_str
-		to_chat(user, "You spray [src] with [O].")
+		to_chat(user, "你用[O]喷洒[src]。")
 		playsound(loc, 'sound/effects/spray3.ogg', 25, 1, 3)
 		qdel(O)
 
@@ -588,17 +588,17 @@
 
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 		anchored = !anchored
-		to_chat(user, "You [anchored ? "wrench" : "unwrench"] \the [src].")
+		to_chat(user, "你[anchored ? "wrench" : "unwrench"] \the [src].")
 	else if(istype(O, /obj/item/research_upgrades/autoharvest))
 		if(!autoharvest)
-			to_chat(user, SPAN_NOTICE("You insert [O] into [src]."))
+			to_chat(user, SPAN_NOTICE("你将[O]插入[src]。"))
 			animate(src, transform = matrix(-1, 0.5, MATRIX_TRANSLATE), time = 0.5, easing = EASE_IN)
 			animate(transform = matrix(0.5, -1, MATRIX_TRANSLATE), time = 0.5)
 			animate(transform = matrix(0, 0, MATRIX_TRANSLATE), time = 0.5, easing = EASE_OUT)
 			autoharvest = TRUE
 			qdel(O)
 		else
-			to_chat(user, SPAN_WARNING("[src] is already capable of automatic harvesting."))
+			to_chat(user, SPAN_WARNING("[src]已具备自动收获能力。"))
 			return
 
 /obj/structure/machinery/portable_atmospherics/hydroponics/clicked(mob/user, list/mods)
@@ -607,30 +607,30 @@
 
 	var/obj/item/held_item = user.get_active_hand()
 	if(!held_item)
-		user.visible_message(SPAN_NOTICE("[user] runs their hand along \the [src]."))
+		user.visible_message(SPAN_NOTICE("[user]用手拂过\the [src]。"))
 		return TRUE
 
 	// Check if it's a reagent container
 	var/obj/item/reagent_container/RG = held_item
 	if(!istype(RG))
-		user.visible_message(SPAN_NOTICE("[user] taps \the [held_item] against \the [src]."))
+		user.visible_message(SPAN_NOTICE("[user]用\the [held_item]轻敲\the [src]。"))
 		return TRUE
 
 	if(!RG.is_open_container() || !RG.reagents || RG.reagents.total_volume <= 0)
-		user.visible_message(SPAN_WARNING("[user] tries to pour \the [RG] into \the [src], but it's empty or sealed."))
+		user.visible_message(SPAN_WARNING("[user]试图将\the [RG]倒入\the [src]，但它是空的或已密封。"))
 		return TRUE
 
 	var/available_space = reagents.maximum_volume - reagents.total_volume
 	if(available_space <= 0)
-		user.visible_message(SPAN_WARNING("[user] tries to pour \the [RG] into \the [src], but it's completely full."))
+		user.visible_message(SPAN_WARNING("[user]试图将\the [RG]倒入\the [src]，但它已完全满了。"))
 		return TRUE
 
 	var/transfer_amount = min(RG.reagents.total_volume, available_space)
 	RG.reagents.trans_to(src, transfer_amount)
-	user.visible_message(SPAN_NOTICE("[user] pours \the [RG] into \the [src]."), SPAN_NOTICE("You pour \the [RG] into \the [src]."))
+	user.visible_message(SPAN_NOTICE("[user]将\the [RG]倒入\the [src]中。"), SPAN_NOTICE("You pour \the [RG] into \the [src]."))
 
 	if(transfer_amount < RG.reagents.total_volume)
-		to_chat(user, SPAN_WARNING("The hydroponics tray is full."))
+		to_chat(user, SPAN_WARNING("水培托盘已满。"))
 
 	return TRUE
 
@@ -676,7 +676,7 @@
 
 	if(!usr || usr.stat || usr.is_mob_restrained())
 		return
-	if (alert(usr, "Are you sure you want to flush the hydroponics tray?", "Flush tray:", "Yes", "No") != "Yes")
+	if (alert(usr, "你确定要冲洗水培托盘吗？", "Flush tray:", "Yes", "No") != "Yes")
 		return
 
 	seed = null
@@ -693,7 +693,7 @@
 	weedlevel = 0
 	mutation_level = 0
 
-	to_chat(usr, "You flush away everything in the tray.")
+	to_chat(usr, "你冲走了托盘中的所有东西。")
 	check_level_sanity()
 	update_icon()
 
@@ -707,7 +707,7 @@
 
 /obj/structure/machinery/portable_atmospherics/hydroponics/soil/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/tool/shovel))
-		to_chat(user, "You clear up [src]!")
+		to_chat(user, "你清理了[src]！")
 		qdel(src)
 	else if(istype(O,/obj/item/tool/shovel) || istype(O,/obj/item/tank))
 		return

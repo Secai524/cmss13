@@ -1,6 +1,6 @@
 /datum/weather_event/light_rain
-	name = "Tropical Storm"
-	display_name = "Tropical Storm"
+	name = "热带风暴"
+	display_name = "热带风暴"
 	length = 4 MINUTES
 	fullscreen_type = /atom/movable/screen/fullscreen/weather/low
 
@@ -18,8 +18,8 @@
 	fire_smothering_strength = 1
 
 /datum/weather_event/monsoon
-	name = "Monsoon Warning"
-	display_name = "Monsoon Warning"
+	name = "季风警报"
+	display_name = "季风警报"
 	length = 6 MINUTES
 	fullscreen_type = /atom/movable/screen/fullscreen/weather/high
 

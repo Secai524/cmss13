@@ -7,7 +7,7 @@
 /datum/changelog/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		ui = new(user, src, "Changelog")
+		ui = new(user, src, "更新日志")
 		ui.open()
 
 /datum/changelog/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)

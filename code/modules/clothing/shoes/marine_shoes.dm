@@ -1,8 +1,8 @@
 
 
 /obj/item/clothing/shoes/marine
-	name = "marine combat boots"
-	desc = "Standard issue combat boots for combat scenarios or combat situations. All combat, all the time."
+	name = "陆战队员作战靴"
+	desc = "用于战斗场景或作战状况的标准配发作战靴。时刻准备战斗。"
 	icon_state = "marine"
 	item_state = "marine"
 	armor_melee = CLOTHING_ARMOR_MEDIUM
@@ -40,7 +40,7 @@
 
 /obj/item/clothing/shoes/marine/jungle
 	icon_state = "marine_jungle"
-	desc = "Don't go walkin' slow, the devil's on the loose."
+	desc = "别走得太慢，魔鬼已经出笼。"
 
 /obj/item/clothing/shoes/marine/jungle/knife
 	spawn_item_type = /obj/item/attachable/bayonet
@@ -50,34 +50,34 @@
 
 /obj/item/clothing/shoes/marine/brown
 	icon_state = "marine_brown"
-	desc = "Standard issue combat boots for combat scenarios or combat situations. All combat, all the time. These are brown."
+	desc = "用于战斗场景或作战状况的标准配发作战靴。时刻准备战斗。这双是棕色的。"
 
 /obj/item/clothing/shoes/marine/brown/knife
 	spawn_item_type = /obj/item/attachable/bayonet
 
 /obj/item/clothing/shoes/marine/grey
 	icon_state = "marine_grey"
-	desc = "Standard issue combat boots for combat scenarios or combat situations. All combat, all the time. These are grey."
+	desc = "用于战斗场景或作战状况的标准配发作战靴。时刻准备战斗。这双是灰色的。"
 
 /obj/item/clothing/shoes/marine/grey/knife
 	spawn_item_type = /obj/item/attachable/bayonet
 
 /obj/item/clothing/shoes/marine/urban
 	icon_state = "marine_grey_alt"
-	desc = "Don't go walkin' slow, the devil's on the loose."
+	desc = "别走得太慢，魔鬼已经出笼。"
 
 /obj/item/clothing/shoes/marine/urban/knife
 	spawn_item_type = /obj/item/attachable/bayonet
 
 /obj/item/clothing/shoes/marine/monkey
-	name = "monkey combat boots"
-	desc = "A sturdy pair of combat boots, the reflection of the polished leather reflects your true self."
+	name = "猴子作战靴"
+	desc = "一双结实的作战靴，抛光皮革的反光映照出你的真我。"
 	icon_state = "monkey_shoes"
 	item_state = "monkey_shoes"
 	spawn_item_type = /obj/item/attachable/bayonet
 
 /obj/item/clothing/shoes/marine/upp
-	name = "military combat boots"
+	name = "军用作战靴"
 	icon_state = "marine_brown"
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
@@ -95,8 +95,8 @@
 	spawn_item_type = /obj/item/attachable/bayonet/upp
 
 /obj/item/clothing/shoes/marine/joe
-	name = "biohazard boots"
-	desc = "A pair of somewhat cheaply made biohazard boots. Tomorrow, Together."
+	name = "生化防护靴"
+	desc = "一双做工略显廉价的生化防护靴。明日，携手共进。"
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
@@ -105,15 +105,15 @@
 	spawn_item_type = /obj/item/attachable/bayonet
 
 /obj/item/clothing/shoes/dress
-	name = "dress shoes"
-	desc = "Pre-polished fancy dress shoes. You can see your reflection in them."
+	name = "礼服鞋"
+	desc = "预先抛光的高档礼服鞋。你可以在上面看到自己的倒影。"
 	icon_state = "laceups"
 	flags_inventory = NOSLIPPING
 	siemens_coefficient = 0.6
 
 /obj/item/clothing/shoes/dress/commander
-	name = "commanding officer dress shoes"
-	desc = "Has special soles for better trampling those underneath."
+	name = "指挥官礼服鞋"
+	desc = "鞋底经过特殊设计，能更好地践踏脚下的敌人。"
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
 	armor_laser = CLOTHING_ARMOR_LOW
@@ -124,14 +124,14 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 
 /obj/item/clothing/shoes/stompers
-	name = "Reebok Stompers"
-	desc = "A pair of sneakers designed to elicit a morale boosting response within anyone that witnesses them."
+	name = "锐步践踏者"
+	desc = "一双运动鞋，旨在激发任何目睹者士气高涨的反应。"
 	icon_state = "stompers"
 	flags_inventory = NOSLIPPING
 
 /obj/item/clothing/shoes/veteran/pmc
-	name = "polished shoes"
-	desc = "The height of fashion, but these look to be woven with protective fiber."
+	name = "抛光皮鞋"
+	desc = "时尚的巅峰，但这些看起来编织了防护纤维。"
 	icon_state = "jackboots"
 	item_state = "jackboots"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
@@ -167,7 +167,7 @@
 
 /obj/item/clothing/shoes/veteran/pmc/commando
 	name = "\improper W-Y commando boots"
-	desc = "A pair of heavily armored, acid-resistant boots."
+	desc = "一双重装甲、耐酸靴子。"
 
 	armor_bio = CLOTHING_ARMOR_HIGH
 	siemens_coefficient = 0.2
@@ -182,7 +182,7 @@
 
 /obj/item/clothing/shoes/veteran/pmc/combat_android
 	name = "\improper M7X greaves"
-	desc = "A pair of heavily armored, acid-resistant boots, made to complete the M7X Apesuit."
+	desc = "一双重装甲、耐酸靴子，专为搭配M7X猿人服而设计。"
 	icon_state = "droid_boots"
 	item_state = "droid_boots"
 	armor_bio = CLOTHING_ARMOR_HIGH
@@ -196,18 +196,18 @@
 
 /obj/item/clothing/shoes/veteran/pmc/combat_android/dark
 	name = "\improper M7X Mark II greaves"
-	desc = "A pair of heavily armored, optical camouflaged, acid-resistant boots, made to complete the M7X Mark II Apesuit."
+	desc = "一双重装甲、光学迷彩、耐酸靴子，专为搭配M7X Mark II猿人服而设计。"
 	icon_state = "invis_droid_boots"
 	item_state = "invis_droid_boots"
 
 /obj/item/clothing/shoes/veteran/pmc/van_bandolier
-	name = "hiking boots"
-	desc = "Over stone, over ice, through sun and sand, mud and snow, into raging water and hungry bog, these will never let you down."
+	name = "徒步靴"
+	desc = "踏过岩石，踏过冰面，穿越烈日与沙地，泥泞与雪原，进入汹涌的水流和贪婪的沼泽，它们永远不会让你失望。"
 	spawn_item_type = /obj/item/attachable/bayonet/van_bandolier
 
 /obj/item/clothing/shoes/veteran/pmc/commando/cbrn
 	name = "\improper M3 MOPP boots"
-	desc = "M3 MOPP boots have been designed to protect the wearer from contact with any possible infection vectors or hazardous substances that may have contaminated the area of operations. This includes further enhancements in conjunction with the standard durability of M3 boots, reducing the probability of punctures or cuts as well as the effects of radiation."
+	desc = "M3 MOPP靴旨在保护穿戴者，避免其接触作战区域内可能存在的任何感染媒介或有害物质。这包括在标准M3靴耐久性的基础上进一步增强，降低了被刺穿或割伤的概率，并减轻了辐射影响。"
 	icon_state = "cbrn"
 	item_state = "cbrn"
 	armor_rad = CLOTHING_ARMOR_GIGAHIGHPLUS
@@ -216,34 +216,34 @@
 
 /obj/item/clothing/shoes/marine/cbrn_non_armored
 	name = "\improper M2 MOPP boots"
-	desc = "M2 MOPP boots are designed to shield the wearer from contact with hazardous substances and potential infection vectors in contaminated environments. These older boots offer basic resistance to punctures and environmental threats, but lack the advanced durability and radiation shielding of later models. Users should inspect these boots regularly for signs of wear or damage."
+	desc = "M2 MOPP靴旨在保护穿戴者，避免其在受污染环境中接触有害物质和潜在感染媒介。这些旧款靴子提供基本的防刺穿和环境威胁抵抗能力，但缺乏后续型号的高级耐久性和辐射屏蔽。使用者应定期检查这些靴子是否有磨损或损坏迹象。"
 	icon_state = "cbrn"
 	item_state = "cbrn"
 	spawn_item_type = /obj/item/attachable/bayonet
 
 /obj/item/clothing/shoes/marine/corporate
-	name = "rugged boots"
-	desc = "These synth-leather boots seem high quality when first worn, but quickly detoriate, especially in the environments the corporate security members these are issued to operate in. Still, better than nothing."
+	name = "坚固靴子"
+	desc = "这双合成革靴子初穿时似乎质量上乘，但很快就会劣化，尤其是在配发使用它们的公司安保人员所执行任务的环境中。尽管如此，总比没有好。"
 
 /obj/item/clothing/shoes/marine/corporate/knife
 	spawn_item_type = /obj/item/attachable/bayonet
 
 /obj/item/clothing/shoes/marine/cmb
-	name = "rugged boots"
-	desc = "Generic boots typically used by law enforcement types out on the frontier. Functional and stylish."
+	name = "坚固靴子"
+	desc = "边境执法者通常使用的通用靴子。功能性与时尚感兼备。"
 
 /obj/item/clothing/shoes/marine/cmb/knife
 	spawn_item_type = /obj/item/attachable/bayonet
 
 /obj/item/clothing/shoes/marine/ress
-	name = "armored sandals"
+	name = "装甲凉鞋"
 	icon_state = "sandals"
 	item_state = "sandals"
 	allowed_items_typecache = null
 
 /obj/item/clothing/shoes/hiking
-	name = "hiking shoes"
-	desc = "These rugged shoes are caked with mud and dirt. Designed for high-altitude hiking expeditions, they're sure to be helpful in any climate or environment."
+	name = "徒步鞋"
+	desc = "这双坚固的鞋子沾满了泥土和污垢。专为高海拔徒步探险设计，在任何气候或环境中都肯定能派上用场。"
 	icon_state = "jackboots"
 	item_state = "jackboots"
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
@@ -288,7 +288,7 @@
 
 /obj/item/clothing/shoes/marine/royal_marine
 	name = "\improper L10 pattern combat boots"
-	desc = "Standard issue combat boots for combat scenarios or combat situations. Used by the three world empires royal marines commando units."
+	desc = "用于战斗场景或战斗状况的标准配发作战靴。由三大世界帝国皇家海军陆战队突击队单位使用。"
 	icon_state = "rmc_boots"
 	item_state = "rmc_boots"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
@@ -318,5 +318,5 @@
 
 /obj/item/clothing/shoes/dress/rmc
 	name = "\improper RMC dress shoes"
-	desc = "Polished fancy dress shoes. You can see your reflection in them."
+	desc = "抛光的礼服鞋。你可以在上面看到自己的倒影。"
 	icon_state = "rmc_laceups"

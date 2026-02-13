@@ -2,12 +2,12 @@
 /obj/effect/landmark/desertdam
 	icon = 'icons/misc/mark.dmi'
 /obj/effect/landmark/desertdam/river_blocker
-	name = "toxic river blocker"
+	name = "毒河阻断器"
 	icon_state = "spawn_event"
 
 /obj/effect/blocker/fog
-	name = "dense fog"
-	desc = "It looks way too dangerous to traverse. Best wait until it has cleared up."
+	name = "浓雾"
+	desc = "看起来穿越此地过于危险。最好等它散去。"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "smoke"
 	anchored = TRUE
@@ -21,7 +21,7 @@
 		dir  = pick(CARDINAL_DIRS)
 
 	attack_hand(mob/M)
-		to_chat(M, SPAN_NOTICE("You peer through the fog, but it's impossible to tell what's on the other side..."))
+		to_chat(M, SPAN_NOTICE("你透过浓雾窥视，但无法看清另一侧有什么……"))
 
 	attack_alien(M)
 		return attack_hand(M)
@@ -132,7 +132,7 @@ Each var depends on others
 
 		if(isxeno(M))
 			if(M.pulling)
-				to_chat(M, SPAN_WARNING("The current forces you to release [M.pulling]!"))
+				to_chat(M, SPAN_WARNING("水流迫使你松开了[M.pulling]！"))
 				M.stop_pulling()
 
 		if(HAS_TRAIT(M, TRAIT_HAULED))
@@ -202,7 +202,7 @@ Each var depends on others
 			target.apply_damage(dam_amount, BURN, "groin", enviro=TRUE)
 		target.apply_effect(20,IRRADIATE,0)
 		if( !issynth(target) )
-			to_chat(target, SPAN_DANGER("The water burns!"))
+			to_chat(target, SPAN_DANGER("这水在灼烧！"))
 	playsound(target, 'sound/bullets/acid_impact1.ogg', 10, 1)
 
 
@@ -269,7 +269,7 @@ Each var depends on others
 	name = "\improper Filtration Activation"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "launcherbtt"
-	desc = "Activates the filtration mechanism."
+	desc = "激活过滤机制。"
 	var/id = null
 	var/active = 0
 	anchored = TRUE

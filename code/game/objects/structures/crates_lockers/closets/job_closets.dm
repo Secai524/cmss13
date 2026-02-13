@@ -9,8 +9,8 @@
  * Bartender
  */
 /obj/structure/closet/gmcloset
-	name = "formal closet"
-	desc = "It's a storage unit for formal clothing."
+	name = "正装衣柜"
+	desc = "这是一个用于存放正装的储物柜。"
 	icon_state = "black"
 	icon_closed = "black"
 
@@ -32,8 +32,8 @@
  * Janitor
  */
 /obj/structure/closet/jcloset
-	name = "custodial closet"
-	desc = "It's a storage unit for janitorial clothes and gear."
+	name = "保洁工具柜"
+	desc = "这是一个用于存放保洁员衣物和装备的储物柜。"
 	icon_state = "purple"
 	icon_closed = "purple"
 	icon_opened = "purple_open"
@@ -57,8 +57,8 @@
  * Lawyer
  */
 /obj/structure/closet/lawcloset
-	name = "suit closet"
-	desc = "It's a storage unit for formal apparel and items."
+	name = "西装衣柜"
+	desc = "这是一个用于存放正装和配饰的储物柜。"
 	icon_state = "blue"
 	icon_closed = "blue"
 	icon_opened = "blue_open"

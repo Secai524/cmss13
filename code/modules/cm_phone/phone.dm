@@ -1,10 +1,10 @@
 GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 /obj/structure/transmitter
-	name = "telephone receiver"
+	name = "电话听筒"
 	icon = 'icons/obj/structures/phone.dmi'
 	icon_state = "wall_phone"
-	desc = "It is a wall mounted telephone. The fine text reads: To log your details with the mainframe please insert your keycard into the slot below. Unfortunately the slot is jammed. You can still use the phone, however."
+	desc = "这是一个壁挂式电话。小字写着：如需将您的详细信息记录到主计算机，请将您的钥匙卡插入下方的插槽。不幸的是，插槽卡住了。不过，您仍然可以使用电话。"
 
 	var/phone_category = "Uncategorised"
 	var/phone_color = "white"
@@ -175,7 +175,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	transmitters -= phone_id
 
 	if(!length(transmitters) || !(calling_phone_id in transmitters))
-		to_chat(user, SPAN_PURPLE("[icon2html(src, user)] No transmitters could be located to call!"))
+		to_chat(user, SPAN_PURPLE("[icon2html(src, user)] 无法定位到任何发射器进行呼叫！"))
 		return
 
 	var/obj/structure/transmitter/T = transmitters[calling_phone_id]
@@ -191,7 +191,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	T.last_caller = src.phone_id
 	T.update_icon()
 
-	to_chat(user, SPAN_PURPLE("[icon2html(src, user)] Dialing [calling_phone_id].."))
+	to_chat(user, SPAN_PURPLE("[icon2html(src, user)] 正在拨号[calling_phone_id].."))
 	playsound(get_turf(user), pickup_sound)
 	timeout_timer_id = addtimer(CALLBACK(src, PROC_REF(reset_call), TRUE), timeout_duration, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_STOPPABLE)
 	outring_loop.start()
@@ -205,10 +205,10 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	switch(do_not_disturb)
 		if(PHONE_DND_ON)
 			do_not_disturb = PHONE_DND_OFF
-			to_chat(user, SPAN_NOTICE("Do Not Disturb has been disabled. You can now receive calls."))
+			to_chat(user, SPAN_NOTICE("“请勿打扰”已禁用。您现在可以接听电话。"))
 		if(PHONE_DND_OFF)
 			do_not_disturb = PHONE_DND_ON
-			to_chat(user, SPAN_WARNING("Do Not Disturb has been enabled. No calls will be received."))
+			to_chat(user, SPAN_WARNING("“请勿打扰”已启用。将不会接听任何来电。"))
 		else
 			return FALSE
 	return TRUE
@@ -233,13 +233,13 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 	if(T.attached_to && ismob(T.attached_to.loc))
 		var/mob/M = T.attached_to.loc
-		to_chat(M, SPAN_PURPLE("[icon2html(src, M)] [phone_id] has picked up."))
+		to_chat(M, SPAN_PURPLE("[icon2html(src, M)] [phone_id]已接听。"))
 		playsound(T.attached_to.loc, 'sound/machines/telephone/remote_pickup.ogg', 20)
 		if(T.timeout_timer_id)
 			deltimer(T.timeout_timer_id)
 			T.timeout_timer_id = null
 
-	to_chat(user, SPAN_PURPLE("[icon2html(src, user)] Picked up a call from [T.phone_id]."))
+	to_chat(user, SPAN_PURPLE("[icon2html(src, user)] 接听了来自[T.phone_id]的来电。"))
 	playsound(get_turf(user), pickup_sound)
 
 	T.outring_loop.stop()
@@ -266,17 +266,17 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	if(T)
 		if(T.attached_to && ismob(T.attached_to.loc))
 			var/mob/M = T.attached_to.loc
-			to_chat(M, SPAN_PURPLE("[icon2html(src, M)] You hear a click as the phone goes dead. [phone_id] has hung up on you."))
+			to_chat(M, SPAN_PURPLE("[icon2html(src, M)] 你听到咔哒一声，电话断了线。[phone_id]已挂断你的电话。"))
 			T.hangup_loop.start()
 
 		if(attached_to && ismob(attached_to.loc))
 			var/mob/M = attached_to.loc
 			if(timeout)
-				to_chat(M, SPAN_PURPLE("[icon2html(src, M)] Your call to [T.phone_id] has reached voicemail, nobody picked up the phone."))
+				to_chat(M, SPAN_PURPLE("[icon2html(src, M)] 你拨打给[T.phone_id]的电话已转入语音信箱，无人接听。"))
 				busy_loop.start()
 				outring_loop.stop()
 			else
-				to_chat(M, SPAN_PURPLE("[icon2html(src, M)] You have hung up on [T.phone_id]."))
+				to_chat(M, SPAN_PURPLE("[icon2html(src, M)] 你已挂断[T.phone_id]的电话。"))
 
 	if(outbound_call)
 		outbound_call.inbound_call = null
@@ -311,7 +311,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 		if(attached_to.loc == src)
 			if(next_ring < world.time)
 				playsound(loc, call_sound, 75)
-				visible_message(SPAN_WARNING("[src] rings vigorously!"))
+				visible_message(SPAN_WARNING("[src]剧烈地响了起来！"))
 				next_ring = world.time + 3 SECONDS
 
 	else if(outbound_call)
@@ -324,7 +324,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 		if(P && attached_to.loc == src && P.loc == T && next_ring < world.time)
 			playsound(get_turf(attached_to), call_sound, 20, FALSE, 14)
-			visible_message(SPAN_WARNING("[src] rings vigorously!"))
+			visible_message(SPAN_WARNING("[src]剧烈地响了起来！"))
 			next_ring = world.time + 3 SECONDS
 
 	else
@@ -522,10 +522,10 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	if(can_be_raised)
 		if(raised)
 			set_raised(FALSE, user)
-			to_chat(user, SPAN_NOTICE("You lower [src]."))
+			to_chat(user, SPAN_NOTICE("你放下了[src]。"))
 		else
 			set_raised(TRUE, user)
-			to_chat(user, SPAN_NOTICE("You raise [src] to your ear."))
+			to_chat(user, SPAN_NOTICE("你将[src]举到耳边。"))
 	else
 		set_raised(TRUE, user)
 
@@ -617,9 +617,9 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 //rotary desk phones (need a touch tone handset at some point)
 /obj/structure/transmitter/rotary
-	name = "rotary telephone"
+	name = "转盘电话"
 	icon_state = "rotary_phone"
-	desc = "The finger plate is a little stiff."
+	desc = "指孔盘有点卡涩。"
 
 /obj/structure/transmitter/rotary/no_dnd
 	do_not_disturb = PHONE_DND_FORBIDDEN
@@ -631,42 +631,42 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	pixel_y = 6
 
 /obj/structure/transmitter/touchtone
-	name = "touch-tone telephone"
+	name = "按键式电话"
 	icon_state = "rotary_phone"//placeholder
-	desc = "Ancient aliens, it's all true. I'm an expert just like you!"
+	desc = "远古外星人，都是真的。我和你一样是专家！"
 
 /obj/structure/transmitter/colony_net
 	networks_receive = list(FACTION_COLONIST)
 	networks_transmit = list(FACTION_COLONIST)
 
 /obj/structure/transmitter/colony_net/rotary
-	name = "rotary telephone"
+	name = "转盘电话"
 	icon_state = "rotary_phone"
-	desc = "The finger plate is a little stiff."
+	desc = "指孔盘有点卡涩。"
 
 /obj/structure/transmitter/upp_net
 	networks_receive = list(FACTION_UPP)
 	networks_transmit = list(FACTION_UPP)
 
 /obj/structure/transmitter/upp_net/rotary
-	name = "rotary telephone"
+	name = "转盘电话"
 	icon_state = "rotary_phone"
-	desc = "The finger plate is a little stiff."
+	desc = "指孔盘有点卡涩。"
 
 /obj/structure/transmitter/clf_net
 	networks_receive = list(FACTION_CLF)
 	networks_transmit = list(FACTION_CLF)
 
 /obj/structure/transmitter/clf_net/rotary
-	name = "rotary telephone"
+	name = "转盘电话"
 	icon_state = "rotary_phone"
-	desc = "The finger plate is a little stiff."
+	desc = "指孔盘有点卡涩。"
 
 /obj/structure/transmitter/wy_net
 	networks_receive = list(FACTION_WY)
 	networks_transmit = list(FACTION_WY)
 
 /obj/structure/transmitter/wy_net/rotary
-	name = "rotary telephone"
+	name = "转盘电话"
 	icon_state = "rotary_phone"
-	desc = "The finger plate is a little stiff."
+	desc = "指孔盘有点卡涩。"

@@ -4,7 +4,7 @@
  */
 
 /datum/emergency_call/cryo_squad_equipped
-	name = "Marine Cryo Reinforcements (Full Equipment) (Squad)"
+	name = "陆战队员冷冻增援（全套装备）（小队）"
 	mob_max = 15
 	mob_min = 1
 	probability = 0
@@ -21,7 +21,7 @@
 	leaders = cryo_squad.roles_in[JOB_SQUAD_LEADER]
 	. = ..()
 	if(length(members))
-		shipwide_ai_announcement("Successfully deployed [length(members)] Foxtrot marines.")
+		shipwide_ai_announcement("成功部署了[length(members)]名狐步陆战队员。")
 
 /datum/emergency_call/cryo_squad_equipped/create_member(datum/mind/M, turf/override_spawn_loc)
 	set waitfor = 0
@@ -41,39 +41,39 @@
 		leader = H
 		leaders++
 		arm_equipment(H, /datum/equipment_preset/uscm/leader_equipped/cryo, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are a Squad Leader in the USCM."))
-		to_chat(H, SPAN_ROLE_BODY("Your squad is here to assist in the defence of [SSmapping.configs[GROUND_MAP].map_name]."))
+		to_chat(H, SPAN_ROLE_HEADER("你是USCM的一名班长。"))
+		to_chat(H, SPAN_ROLE_BODY("你的小队奉命协助防御[SSmapping.configs[GROUND_MAP].map_name]。"))
 	else if (heavies < max_heavies && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_HEAVY) && check_timelock(H.client, JOB_SQUAD_SPECIALIST, time_required_for_job))
 		heavies++
 		arm_equipment(H, /datum/equipment_preset/uscm/specialist_equipped/cryo, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are a Weapons Specialist in the USCM."))
-		to_chat(H, SPAN_ROLE_BODY("Your squad is here to assist in the defence of [SSmapping.configs[GROUND_MAP].map_name]."))
+		to_chat(H, SPAN_ROLE_HEADER("你是USCM的一名武器专家。"))
+		to_chat(H, SPAN_ROLE_BODY("你的小队奉命协助防御[SSmapping.configs[GROUND_MAP].map_name]。"))
 	else if(smartgunners < max_smartgunners && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(H.client, JOB_SQUAD_SMARTGUN, time_required_for_job))
 		smartgunners++
 		arm_equipment(H, /datum/equipment_preset/uscm/smartgunner_equipped/cryo, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are a Smartgunner in the USCM."))
-		to_chat(H, SPAN_ROLE_BODY("Your squad is here to assist in the defence of [SSmapping.configs[GROUND_MAP].map_name]."))
+		to_chat(H, SPAN_ROLE_HEADER("你是USCM的一名智能枪手。"))
+		to_chat(H, SPAN_ROLE_BODY("你的小队奉命协助防御[SSmapping.configs[GROUND_MAP].map_name]。"))
 	else if(engineers < max_engineers && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_ENGINEER) && check_timelock(H.client, JOB_SQUAD_ENGI, time_required_for_job))
 		engineers++
 		arm_equipment(H, /datum/equipment_preset/uscm/engineer_equipped/cryo, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are an Engineer in the USCM."))
-		to_chat(H, SPAN_ROLE_BODY("Your squad is here to assist in the defence of [SSmapping.configs[GROUND_MAP].map_name]."))
+		to_chat(H, SPAN_ROLE_HEADER("你是USCM的一名工程师。"))
+		to_chat(H, SPAN_ROLE_BODY("你的小队奉命协助防御[SSmapping.configs[GROUND_MAP].map_name]。"))
 	else if (medics < max_medics && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(H.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
 		arm_equipment(H, /datum/equipment_preset/uscm/medic_equipped/cryo, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are a Hospital Corpsman in the USCM."))
-		to_chat(H, SPAN_ROLE_BODY("Your squad is here to assist in the defence of [SSmapping.configs[GROUND_MAP].map_name]."))
+		to_chat(H, SPAN_ROLE_HEADER("你是USCM的一名医疗兵。"))
+		to_chat(H, SPAN_ROLE_BODY("你的小队奉命协助防御[SSmapping.configs[GROUND_MAP].map_name]。"))
 	else
 		arm_equipment(H, /datum/equipment_preset/uscm/private_equipped/cryo, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are a Rifleman in the USCM."))
-		to_chat(H, SPAN_ROLE_BODY("Your squad is here to assist in the defence of [SSmapping.configs[GROUND_MAP].map_name]."))
+		to_chat(H, SPAN_ROLE_HEADER("你是USCM的一名步枪兵。"))
+		to_chat(H, SPAN_ROLE_BODY("你的小队奉命协助防御[SSmapping.configs[GROUND_MAP].map_name]。"))
 
 	sleep(10)
-	to_chat(H, SPAN_BOLD("Objectives: [objectives]"))
+	to_chat(H, SPAN_BOLD("任务目标：[objectives]"))
 
 
 /datum/emergency_call/cryo_squad_equipped/platoon
-	name = "Marine Cryo Reinforcements (Full Equipment) (Platoon)"
+	name = "陆战队员冷冻增援（全套装备）（排级）"
 	mob_min = 8
 	mob_max = 30
 	probability = 0

@@ -2,7 +2,7 @@
 // Due to our blatant lack of events, there is no real better solution that isn't worse shitcode.
 
 /datum/round_event_control/nothing_happens
-	name = "Nothing Happens!"
+	name = "无事发生！"
 	typepath = /datum/round_event/nothing_happens
 	weight = 160
 	earliest_start = 0 MINUTES

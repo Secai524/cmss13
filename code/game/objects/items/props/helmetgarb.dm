@@ -15,30 +15,30 @@
 		flags_obj |= OBJ_IS_HELMET_GARB
 
 /obj/item/prop/helmetgarb/gunoil
-	name = "gun oil"
-	desc = "It is a bottle of oil, for your gun. Don't fall for the rumors, the M41A is NOT a self-cleaning firearm."
+	name = "枪油"
+	desc = "这是一瓶枪油。别信谣言，M41A可不是一把会自我清洁的枪。"
 	icon_state = "gunoil"
 
 /obj/item/prop/helmetgarb/spent_buckshot
-	name = "spent buckshot"
-	desc = "Three spent rounds of good ol' buckshot. You know they used to paint these green? Strange times."
+	name = "用过的霰弹"
+	desc = "三发用过的老式霰弹。你知道它们以前被漆成绿色吗？真是个奇怪的时代。"
 	icon_state = "spent_buckshot"
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/ammo.dmi',
 		)
 
 /obj/item/prop/helmetgarb/spent_slug
-	name = "spent slugs"
+	name = "用过的独头弹"
 	gender = PLURAL
-	desc = "For when you need to knock your target down with superior stopping power. These three have already been fired."
+	desc = "当你需要以更强的停止作用力击倒目标时使用。这三发已经打过了。"
 	icon_state = "spent_slug"
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/ammo.dmi',
 		)
 
 /obj/item/prop/helmetgarb/spent_flech
-	name = "spent flechette"
-	desc = "The more you fire these, the more you're reminded that a fragmentation grenade is probably more effective at fulfilling the same purpose. Say, aren't these supposed to eject from your gun?"
+	name = "用过的箭弹"
+	desc = "这玩意儿打得越多，你就越觉得破片手榴弹可能更能胜任这活儿。话说，这玩意儿不是应该从枪里弹出来吗？"
 	icon_state = "spent_flech"
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/ammo.dmi',
@@ -46,7 +46,7 @@
 
 /obj/item/prop/helmetgarb/cartridge
 	name = "cartridge"
-	desc = "This is the bullet from a Type 71 Pulse Rifle. It is deformed from impact against an armored surface. It's been reduced to a lucky keepsake now."
+	desc = "这是一枚71式脉冲步枪的子弹。它因撞击装甲表面而变形。现在它已经沦为一件幸运的纪念品了。"
 	icon_state = "cartridge"
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/ammo.dmi',
@@ -54,46 +54,46 @@
 	item_state_slots = list(WEAR_AS_GARB = "bullet")
 
 /obj/item/prop/helmetgarb/prescription_bottle
-	name = "prescription medication"
-	desc = "Anti-anxiety meds? Amphetamines? The cure for Sudden Sleep Disorder? The label can't be read, leaving the now absent contents forever a mystery. The cap is screwed on tighter than any ID lock."
+	name = "处方药"
+	desc = "抗焦虑药？安非他命？治疗突发性睡眠障碍的药？标签已无法辨认，里面曾经装过什么将永远是个谜。瓶盖拧得比任何身份锁都紧。"
 	icon_state = "prescription_bottle"
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/medical.dmi',
 	)
 
 /obj/item/prop/helmetgarb/rabbitsfoot
-	name = "Rabbit's Foot"
-	desc = "Lucky for you, but not the rabbit, didn't really do it much good."
+	name = "兔脚"
+	desc = "对你来说是幸运的，但对兔子可不是，这玩意儿对它没什么好处。"
 	icon_state = "rabbitsfoot"
 
 /obj/item/prop/helmetgarb/rosary
 	name = "rosary"
-	desc = "Jesus Saves Lives!"
+	desc = "耶稣拯救生命！"
 	icon_state = "rosary"
 	item_state_slots = list(WEAR_AS_GARB = "rosary")
 
 /obj/item/prop/helmetgarb/lucky_feather
 	name = "\improper Red Lucky Feather"
-	desc = "It is a riotous red color, made of really crummy plastic and synthetic threading, you know, the same sort of material every Corporate Liaison's spine is made of."
+	desc = "这是一种刺眼的红色，由非常劣质的塑料和合成线制成，你知道的，就是每个公司联络官的脊梁骨用的那种材料。"
 	icon_state = "lucky_feather"
 	item_state_slots = list(WEAR_AS_GARB = "lucky_feather")
 	color = "red"
 
 /obj/item/prop/helmetgarb/lucky_feather/blue
 	name = "\improper Blue Lucky Feather"
-	desc = "It is a brilliant blue color. You think you might have seen a bluejay in a holo-theatre once."
+	desc = "这是一种亮蓝色。你记得好像在全息剧院里见过一只冠蓝鸦。"
 	item_state_slots = list(WEAR_AS_GARB = "lucky_feather_blue")
 	color = "blue"
 
 /obj/item/prop/helmetgarb/lucky_feather/purple
 	name = "\improper Purple Lucky Feather"
-	desc = "It is a plucky purple color. Legend has it a station AI known as Shakespeare simulated 1000 monkeys typing gibberish in order to replicate the actual works of Shakespeare. Art critics are on the fence if this is the first instance of true artificial abstract art."
+	desc = "这是一种大胆的紫色。传说有个叫莎士比亚的空间站AI模拟了1000只猴子乱打字，试图重现莎士比亚的真实作品。艺术评论家们仍在争论这是否是真正的人工抽象艺术的第一个实例。"
 	item_state_slots = list(WEAR_AS_GARB = "lucky_feather_purple")
 	color = "purple"
 
 /obj/item/prop/helmetgarb/lucky_feather/yellow
 	name = "\improper Yellow Lucky Feather"
-	desc = "It is an unyielding yellow color. They say the New Kansas colony produces more carpenters per capita than any other colony in all of UA controlled space."
+	desc = "这是一种坚毅的黄色。据说新堪萨斯殖民地人均产出的木匠比UA控制区内任何其他殖民地都多。"
 	item_state_slots = list(WEAR_AS_GARB = "lucky_feather_yellow")
 	color = "yellow"
 
@@ -104,7 +104,7 @@
 
 /obj/item/prop/helmetgarb/helmet_nvg
 	name = "\improper M2 night vision goggles"
-	desc = "USCM standard M2 Night vision goggles for military operations. Requires a battery in order to work."
+	desc = "USCM标准的M2军用夜视镜。需要电池才能工作。"
 	icon_state = "nvg"
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/goggles.dmi',
@@ -175,15 +175,15 @@
 		return COMPONENT_CELL_NO_RECHARGE
 
 	if(src != user.get_inactive_hand())
-		to_chat(user, SPAN_WARNING("You need to hold [src] in hand in order to recharge them."))
+		to_chat(user, SPAN_WARNING("你需要将[src]拿在手中才能为其充电。"))
 		return COMPONENT_CELL_NO_RECHARGE
 
 	if(shape == NVG_SHAPE_COSMETIC)
-		to_chat(user, SPAN_WARNING("There is no connector for the power cell inside [src]."))
+		to_chat(user, SPAN_WARNING("[src]内部没有电池的连接器。"))
 		return COMPONENT_CELL_NO_RECHARGE
 
 	if(shape == NVG_SHAPE_BROKEN)
-		to_chat(user, SPAN_WARNING("You need to repair [src] first."))
+		to_chat(user, SPAN_WARNING("你需要先修理[src]。"))
 		return COMPONENT_CELL_NO_RECHARGE
 
 
@@ -192,46 +192,46 @@
 
 		return
 	if(src != user.get_inactive_hand())
-		to_chat(user, SPAN_WARNING("You need to hold \the [src] in hand in order to repair them."))
+		to_chat(user, SPAN_WARNING("你需要将\the [src]拿在手中才能修理它们。"))
 		return
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE)) // level 2 is enough to repair damaged NVG
-		to_chat(user, SPAN_WARNING("You are not trained to repair electronics..."))
+		to_chat(user, SPAN_WARNING("你没有接受过修理电子设备的训练..."))
 		return
 
 	if(shape == NVG_SHAPE_BROKEN)
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)) // level 3 is needed to repair broken NVG
-			to_chat(user, SPAN_WARNING("Repair of this complexity is too difficult for you, find someone more trained."))
+			to_chat(user, SPAN_WARNING("这种复杂程度的修理对你来说太难了，去找个更专业的人吧。"))
 			return
 
-		to_chat(user, "You begin to repair \the [src].")
+		to_chat(user, "你开始修理\the [src]。")
 		if(!do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD, src))
-			to_chat(user, SPAN_WARNING("You were interrupted."))
+			to_chat(user, SPAN_WARNING("你被打断了。"))
 			return
 		playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 		color = "#bebebe"
 		shape = NVG_SHAPE_PATCHED
-		to_chat(user, "You successfully patch \the [src].")
+		to_chat(user, "你成功修补了\the [src]。")
 		nvg_maxhealth = 65
 		nvg_health = 65
 		return
 
 	else if(nvg_health == nvg_maxhealth)
 		if(shape == NVG_SHAPE_PATCHED)
-			to_chat(user, SPAN_WARNING("Already repaired, nothing more you can do."))
+			to_chat(user, SPAN_WARNING("已修复完毕，无事可做。"))
 		else if(shape == NVG_SHAPE_FINE)
-			to_chat(user, SPAN_WARNING("Nothing to fix."))
+			to_chat(user, SPAN_WARNING("无需修理。"))
 		else if(shape == NVG_SHAPE_COSMETIC)
 
-			to_chat(user, SPAN_WARNING("It's nothing but a husk of what it used to be."))
+			to_chat(user, SPAN_WARNING("它只剩下一个空壳了。"))
 
 	else
-		to_chat(user, "You begin to repair \the [src].")
+		to_chat(user, "你开始修理\the [src]。")
 		if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD, src))
-			to_chat(user, "You successfully repair \the [src].")
+			to_chat(user, "你成功修复了\the [src]。")
 			playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 			nvg_health = nvg_maxhealth
 		else
-			to_chat(user, SPAN_WARNING("You were interrupted."))
+			to_chat(user, SPAN_WARNING("你被打断了。"))
 
 
 /obj/item/prop/helmetgarb/helmet_nvg/get_examine_text(mob/user)
@@ -375,7 +375,7 @@
 		return
 
 	if(!attached_item.has_garb_overlay())
-		to_chat(attached_mob, SPAN_WARNING("You cannot use \the [src] when they are hidden."))
+		to_chat(attached_mob, SPAN_WARNING("当\the [src]处于隐藏状态时无法使用。"))
 		remove_nvg()
 		return
 
@@ -384,7 +384,7 @@
 	SIGNAL_HANDLER
 
 	if(activated && !attached_mob.is_dead())
-		to_chat(attached_mob, SPAN_WARNING("[src] emit a low power warning and immediately shut down!"))
+		to_chat(attached_mob, SPAN_WARNING("[src]发出低电量警告并立即关机！"))
 	remove_nvg()
 
 /obj/item/prop/helmetgarb/helmet_nvg/ui_action_click(mob/owner, obj/item/holder)
@@ -410,17 +410,17 @@
 		return
 
 	if(!attached_item.has_garb_overlay())
-		to_chat(user, SPAN_WARNING("You cannot use \the [src] when they are hidden."))
+		to_chat(user, SPAN_WARNING("当\the [src]处于隐藏状态时无法使用。"))
 		return
 
 	if(user.client.view > 7 && shape != NVG_SHAPE_COSMETIC)
-		to_chat(user, SPAN_WARNING("You cannot use \the [src] while using optics."))
+		to_chat(user, SPAN_WARNING("使用光学设备时无法使用\the [src]。"))
 		return
 
 	activated = !activated
 
 	if(activated)
-		to_chat(user, SPAN_NOTICE("You flip the goggles down."))
+		to_chat(user, SPAN_NOTICE("你拉下护目镜。"))
 		icon_state = active_icon_state
 		if(!SEND_SIGNAL(src, COMSIG_CELL_CHECK_CHARGE) && user.head == attached_item && shape > NVG_SHAPE_BROKEN)
 			enable_nvg(user)
@@ -433,7 +433,7 @@
 			RegisterSignal(user, COMSIG_MOB_CHANGE_VIEW, PROC_REF(change_view)) // will flip non-cosmetic nvgs back up when zoomed
 
 	else
-		to_chat(user, SPAN_NOTICE("You push \the [src] back up onto your helmet."))
+		to_chat(user, SPAN_NOTICE("你将\the [src]推回头盔上。"))
 
 		icon_state = inactive_icon_state
 		attached_item.update_icon()
@@ -466,8 +466,8 @@
 		H.pockets.remove_from_storage(src, get_turf(H))
 
 /obj/item/prop/helmetgarb/helmet_nvg/cosmetic //for "custom loadout", purely cosmetic
-	name = "old M2 night vision goggles"
-	desc = "This pair has been gutted of all electronics and therefore not working. But hey, they make you feel tacticool, and that's all that matters, right?"
+	name = "老式M2夜视镜"
+	desc = "这副眼镜的所有电子元件已被拆除，因此无法工作。不过，它们让你感觉很战术，这才是最重要的，对吧？"
 	shape = NVG_SHAPE_COSMETIC
 	garbage = TRUE
 
@@ -476,7 +476,7 @@
 
 /obj/item/prop/helmetgarb/helmet_nvg/marsoc //for Marine Raiders
 	name = "\improper Tactical M3 night vision goggles"
-	desc = "With an integrated self-recharging battery, nothing can stop you. Put them on your helmet and press the button and it's go-time."
+	desc = "配备集成自充电电池，无所阻挡。将其戴在头盔上，按下按钮，即刻行动。"
 	cell_max_charge = -1
 
 #undef NVG_SHAPE_COSMETIC
@@ -486,7 +486,7 @@
 
 /obj/item/prop/helmetgarb/flair_initech
 	name = "\improper Initech flair"
-	desc = "Flair for some weird tech company back on Earth. How did they get promotional material this far out in the rim?"
+	desc = "地球某个古怪科技公司的宣传品。他们的宣传材料怎么会出现在这么偏远的星域？"
 	icon_state = "flair_initech"
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/patches_flairs.dmi',
@@ -494,7 +494,7 @@
 
 /obj/item/prop/helmetgarb/flair_io
 	name = "\improper Io flair"
-	desc = "The Arcturians might be our allies now, but Io is forever a stain on trans-species relations. Never forget those who gave their lives aboard the USS Doramin."
+	desc = "阿克图里安人现在或许是我们的盟友，但木卫一事件永远是跨物种关系上的污点。永远不要忘记那些在多拉明号上牺牲的人们。"
 	icon_state = "flair_io"
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/patches_flairs.dmi',
@@ -502,7 +502,7 @@
 
 /obj/item/prop/helmetgarb/flair_peace
 	name = "\improper Peace flair"
-	desc = "Doesn't matter when it's Arcturian, baby."
+	desc = "只要是阿克图里安产的，管它呢，宝贝。"
 	icon_state = "flair_peace_smiley"
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/patches_flairs.dmi',
@@ -510,7 +510,7 @@
 
 /obj/item/prop/helmetgarb/flair_uscm
 	name = "\improper USCM flair"
-	desc = "These pins get handed out like candy at enlistment offices. Wear it with pride marine."
+	desc = "这些徽章在征兵办公室像糖果一样分发。陆战队员，骄傲地戴上它。"
 	icon_state = "flair_uscm"
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/patches_flairs.dmi',
@@ -518,12 +518,12 @@
 
 /obj/item/prop/helmetgarb/spacejam_tickets
 	name = "\improper Tickets to Space Jam"
-	desc = "Two original, crisp, orange, tickets to the one and only Space Jam of 2181. And what a jam it was."
+	desc = "两张2181年独一无二的太空扣篮大赛原版、崭新、橙色的门票。那可真是一场盛宴。"
 	icon_state = "tickets_to_space_jam"
 
 /obj/item/prop/helmetgarb/riot_shield
 	name = "\improper RC6 riot shield"
-	desc = "The complimentary, but sold separate face shield associated with the RC6 riot helmet."
+	desc = "RC6防暴头盔的配套面罩，需单独购买。"
 	icon_state = "riot_shield"
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/visors.dmi',
@@ -531,7 +531,7 @@
 
 /obj/item/prop/helmetgarb/helmet_gasmask
 	name = "\improper M5 integrated gasmask"
-	desc = "The USCM had its funding pulled for these when it became apparent that not every deployed enlisted was wearing a helmet 24/7; much to the bafflement of UA High Command."
+	desc = "当UA最高指挥部发现并非所有部署的士兵都24/7佩戴头盔时，感到十分困惑，USCM为此项目的拨款也被取消了。"
 	icon_state = "gasmask"
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/visors.dmi',
@@ -562,13 +562,13 @@
 	helmet_item.flags_inv_hide &= ~(HIDEFACE)
 
 /obj/item/prop/helmetgarb/trimmed_wire
-	name = "trimmed barbed wire"
-	desc = "It is a length of barbed wire that's had most of the sharp points filed down so that it is safe to handle."
+	name = "修剪过的铁丝网"
+	desc = "这是一段铁丝网，大部分尖锐部分已被锉平，可以安全手持。"
 	icon_state = "trimmed_wire"
 
 /obj/item/prop/helmetgarb/bullet_pipe
-	name = "10x99mm XM43E1 casing pipe"
-	desc = "The XM43E1 was an experimental weapons platform briefly fielded by the USCM and Wey-Yu PMC teams. It was manufactured by Armat systems at the Atlas weapons facility. Unfortunately the project had its funding pulled alongside the M5 integrated gasmask program. This spent casing has been converted into a pipe, but there is too much tar in the mouthpiece for it to be useable."
+	name = "10x99mm XM43E1弹壳管"
+	desc = "XM43E1曾是USCM和维兰德-汤谷PMC小队短暂部署的实验性武器平台，由阿玛特系统公司在阿特拉斯武器工厂制造。不幸的是，该项目与M5集成防毒面具项目一同被取消了拨款。这个用过的弹壳被改造成了烟斗，但烟嘴处焦油过多，已无法使用。"
 	icon_state = "bullet_pipe"
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/ammo.dmi',
@@ -576,7 +576,7 @@
 
 /obj/item/prop/helmetgarb/chaplain_patch
 	name = "\improper USCM chaplain helmet patch"
-	desc = "This patch is all that remains of the Chaplaincy of the USS Almayer, along with the Chaplains themselves. Both no longer exist as a result of losses suffered during Operation Tychon Tackle."
+	desc = "这枚臂章，连同随军牧师本人，是阿尔迈耶号上随军牧师团仅存的遗物。两者都因在\"提丰擒抱\"行动中遭受的损失而不复存在。"
 	icon_state = "chaplain_patch"
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/patches_flairs.dmi',
@@ -584,7 +584,7 @@
 	flags_obj = OBJ_NO_HELMET_BAND
 
 /obj/item/prop/helmetgarb/family_photo
-	name = "family photo"
+	name = "家庭照片"
 	desc = ""
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "photo_item"
@@ -632,15 +632,15 @@
 	. = ..()
 	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_PEN) || istype(attacking_item, /obj/item/toy/crayon))
 		if(scribble)
-			to_chat(user, SPAN_NOTICE("[src] has already been written on."))
+			to_chat(user, SPAN_NOTICE("[src]上已经有字了。"))
 			return
-		var/new_text = copytext(strip_html(tgui_input_text(user, "What would you like to write on the back of [src]?", "Photo Writing")), 1, 128)
+		var/new_text = copytext(strip_html(tgui_input_text(user, "你想在[src]背面写什么？", "Photo Writing")), 1, 128)
 
 		if(!loc == user)
-			to_chat(user, SPAN_NOTICE("You need to be holding [src] to write on it."))
+			to_chat(user, SPAN_NOTICE("你需要手持[src]才能在上面写字。"))
 			return
 		if(!user.stat == CONSCIOUS)
-			to_chat(user, SPAN_NOTICE("You cannot write on [src] in this state."))
+			to_chat(user, SPAN_NOTICE("你无法在此状态下在[src]上写字。"))
 			return
 		scribble = new_text
 		playsound(src, "paper_writing", 15, TRUE)
@@ -648,7 +648,7 @@
 
 /obj/item/prop/helmetgarb/compass
 	name = "compass"
-	desc = "It always faces north. Are you sure it is not broken?"
+	desc = "它总是指向北方。你确定它没坏吗？"
 	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "compass"
 	item_icons = list(
@@ -665,8 +665,8 @@
 	. += SPAN_NOTICE("The needle is not moving.")
 
 /obj/item/prop/helmetgarb/bug_spray
-	name = "insect repellent"
-	desc = "A store-brand insect repellent, to keep any variety of pest or mosquito away from you."
+	name = "驱虫剂"
+	desc = "一款商店品牌的驱虫剂，能让你远离各种害虫或蚊子。"
 	icon = 'icons/obj/items/spray.dmi'
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',

@@ -2,10 +2,10 @@
 	title = JOB_SQUAD_LEADER
 	total_positions = 4
 	spawn_positions = 4
-	supervisors = "the acting commanding officer"
+	supervisors = "代理指挥官"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/uscm/leader
-	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>You are responsible for the men and women of your squad.</a> Make sure they are on task, working together, and communicating. You are also in charge of communicating with command and letting them know about the situation first hand. Keep out of harm's way."
+	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>你对你小队的男女士兵负责。</a> 确保他们执行任务、协同合作并保持沟通。你还负责与指挥部沟通，让他们第一时间了解情况。远离危险。"
 
 /datum/job/marine/leader/whiskey
 	title = JOB_WO_SQUAD_LEADER

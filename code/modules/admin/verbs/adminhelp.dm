@@ -74,13 +74,13 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	switch(state)
 		if(AHELP_ACTIVE)
 			l2b = active_tickets
-			title = "Active Tickets"
+			title = "活跃工单"
 		if(AHELP_CLOSED)
 			l2b = closed_tickets
-			title = "Closed Tickets"
+			title = "已关闭工单"
 		if(AHELP_RESOLVED)
 			l2b = resolved_tickets
-			title = "Resolved Tickets"
+			title = "已处理工单"
 	if(!l2b)
 		return
 	var/list/dat = list("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><link rel='stylesheet' type='text/css' href='[SSassets.transport.get_asset_url("common.css")]'><title>[title]</title></head>")
@@ -292,7 +292,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 /datum/admin_help/proc/send_message_to_external(message, urgent = FALSE)
 	if(urgent)
 		var/extra_message = CONFIG_GET(string/urgent_ahelp_message)
-		to_chat(initiator, SPAN_BOLDNOTICE("Notified admins to prioritize your ticket."))
+		to_chat(initiator, SPAN_BOLDNOTICE("已通知管理员优先处理你的工单。"))
 		var/datum/discord_embed/embed = format_embed_discord(message)
 		embed.content = extra_message
 		embed.footer = "This player requested an admin"
@@ -304,7 +304,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 	log_admin_private("Ticket #[id]: [key_name(initiator)]: [name] - heard by [admin_number_present] non-AFK admins who have +BAN.")
 	if(admin_number_present <= 0)
-		to_chat(initiator, SPAN_NOTICE("No active admins are online, your adminhelp was sent to admins who are available through IRC or Discord."), confidential = TRUE)
+		to_chat(initiator, SPAN_NOTICE("当前没有在线管理员，你的管理员求助信息已发送至通过IRC或Discord可联系的管理员。"), confidential = TRUE)
 		heard_by_no_admins = TRUE
 		var/regular_webhook_url = CONFIG_GET(string/regular_adminhelp_webhook_url)
 		if(regular_webhook_url && (!urgent || regular_webhook_url != CONFIG_GET(string/urgent_adminhelp_webhook_url)))
@@ -434,11 +434,11 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 //Reopen a closed ticket
 /datum/admin_help/proc/Reopen()
 	if(state == AHELP_ACTIVE)
-		to_chat(usr, SPAN_WARNING("This ticket is already open."), confidential = TRUE)
+		to_chat(usr, SPAN_WARNING("此工单已开启。"), confidential = TRUE)
 		return
 
 	if(GLOB.ahelp_tickets.CKey2ActiveTicket(initiator_ckey))
-		to_chat(usr, SPAN_WARNING("This user already has an active ticket, cannot reopen this one."), confidential = TRUE)
+		to_chat(usr, SPAN_WARNING("该用户已有活跃工单，无法重新开启此工单。"), confidential = TRUE)
 		return
 
 	statclick = new(null, src)
@@ -474,9 +474,9 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 	if(marked_admin != usr.ckey)
 		if(marked_admin)
-			to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin]. Please override their mark to interact with this ticket!"))
+			to_chat(usr, SPAN_WARNING("此工单当前已被[marked_admin]标记。请覆盖其标记以与此工单互动！"))
 		else
-			to_chat(usr, SPAN_WARNING("This ticket is not currently marked. Please mark it first to interact with this ticket!"))
+			to_chat(usr, SPAN_WARNING("此工单当前未被标记。请先标记它以进行互动！"))
 		return
 
 	RemoveActive()
@@ -496,9 +496,9 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 	if(marked_admin != usr.ckey)
 		if(marked_admin)
-			to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin]. Please override their mark to interact with this ticket!"))
+			to_chat(usr, SPAN_WARNING("此工单当前已被[marked_admin]标记。请覆盖其标记以与此工单互动！"))
 		else
-			to_chat(usr, SPAN_WARNING("This ticket is not currently marked. Please mark it first to interact with this ticket!"))
+			to_chat(usr, SPAN_WARNING("此工单当前未被标记。请先标记它以进行互动！"))
 		return
 
 	RemoveActive()
@@ -508,7 +508,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	addtimer(CALLBACK(initiator, /client/proc/giveadminhelpverb), 50)
 
 	AddInteraction("<font color='green'>Resolved by [key_name].</font>", player_message = "<font color='green'>Ticket resolved!</font>")
-	to_chat(initiator, SPAN_ADMINHELP("Your ticket has been resolved by an admin. The Adminhelp verb will be returned to you shortly."), confidential = TRUE)
+	to_chat(initiator, SPAN_ADMINHELP("你的工单已被管理员处理完毕。管理员求助功能将很快恢复。"), confidential = TRUE)
 	if(!silent)
 		var/msg = "Ticket [TicketHref("#[id]")] resolved by [key_name]"
 		message_admins(msg)
@@ -520,13 +520,13 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		return
 
 	if(marked_admin && marked_admin != usr.ckey)
-		to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin]. Please override their mark to interact with this ticket!"))
+		to_chat(usr, SPAN_WARNING("此工单当前已被[marked_admin]标记。请覆盖其标记以与此工单互动！"))
 		return
 
 	if(!initiator.current_mhelp)
 		initiator.current_mhelp = new(initiator)
 
-	var/options = tgui_alert(usr, "Use the first message in this ticket, or a custom option?", "Defer to Mentors", list("First Message", "Custom"))
+	var/options = tgui_alert(usr, "使用此工单中的第一条消息，还是自定义选项？", "Defer to Mentors", list("First Message", "Custom"))
 	if(!options)
 		return
 
@@ -534,13 +534,13 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		if("First Message")
 			initiator.current_mhelp.broadcast_unhandled(initial_message, initiator)
 		if("Custom")
-			var/message = tgui_input_text(usr, "Text to Send to Mentors", "Defer to Mentors")
+			var/message = tgui_input_text(usr, "发送给导师的文本", "Defer to Mentors")
 			if(!message)
 				return
 			initiator.current_mhelp.broadcast_unhandled(message, initiator)
 
 	AddInteraction("Deferred to Mentors by [key_name_admin(usr)].", player_message = "Deferred to Mentors.")
-	to_chat(initiator, SPAN_ADMINHELP("Your ticket has been deferred to Mentors."))
+	to_chat(initiator, SPAN_ADMINHELP("你的工单已转交给导师处理。"))
 	log_admin_private("Ticket [TicketHref("#[id]")] deferred to mentors by [usr.key].")
 	log_ahelp(id, "Defer", "Deferred to mentors by [usr.key]", null,  usr.ckey)
 	Close(silent = TRUE)
@@ -551,8 +551,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		if(marked_admin == user.ckey)
 			unmark_ticket()
 			return
-		to_chat(user, SPAN_WARNING("This ticket has already been marked by [marked_admin]."))
-		var/unmark_option = tgui_alert(user, "This message has been marked by [marked_admin]. Do you want to override?", "Marked Ticket", list("Overwrite Mark", "Unmark", "Cancel"))
+		to_chat(user, SPAN_WARNING("此工单已被[marked_admin]标记。"))
+		var/unmark_option = tgui_alert(user, "此消息已被[marked_admin]标记。是否要覆盖？", "Marked Ticket", list("Overwrite Mark", "Unmark", "Cancel"))
 		if(unmark_option == "Unmark")
 			unmark_ticket()
 			return
@@ -561,7 +561,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 	var/key_name = key_name_admin(user)
 	AddInteraction("Marked by [key_name].", player_message = "Ticket marked!")
-	to_chat(initiator, SPAN_ADMINHELP("An admin is preparing to respond to your ticket."))
+	to_chat(initiator, SPAN_ADMINHELP("一名管理员正准备回复你的工单。"))
 	var/msg = "Ticket [TicketHref("#[id]")] marked by [key_name]."
 	message_admins(msg)
 	log_admin_private(msg)
@@ -584,9 +584,9 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 	if(marked_admin != usr.ckey)
 		if(marked_admin)
-			to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin]. Please override their mark to interact with this ticket!"))
+			to_chat(usr, SPAN_WARNING("此工单当前已被[marked_admin]标记。请覆盖其标记以与此工单互动！"))
 		else
-			to_chat(usr, SPAN_WARNING("This ticket is not currently marked. Please mark it first to interact with this ticket!"))
+			to_chat(usr, SPAN_WARNING("此工单当前未被标记。请先标记它以进行互动！"))
 		return
 
 	if(initiator)
@@ -594,9 +594,9 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 		SEND_SOUND(initiator, sound('sound/effects/adminhelp_new.ogg'))
 
-		to_chat(initiator, "<font color='red' size='4'><b>- AdminHelp Rejected! -</b></font>", confidential = TRUE)
-		to_chat(initiator, "<font color='red'><b>Your admin help was rejected.</b> The adminhelp verb has been returned to you so that you may try again.</font>", confidential = TRUE)
-		to_chat(initiator, "Please try to be calm, clear, and descriptive in admin helps, do not assume the admin has seen any related events, and clearly state the names of anybody you are reporting.", confidential = TRUE)
+		to_chat(initiator, "<font color='red' size='4'><b>- 管理员求助被拒绝！ -</b></font>", confidential = TRUE)
+		to_chat(initiator, "<font color='red'><b>你的管理员求助被拒绝了。</b>管理员求助功能已恢复，你可以重新尝试。</font>", confidential = TRUE)
+		to_chat(initiator, "请在管理员求助中保持冷静、清晰和描述性，不要假设管理员已看到相关事件，并明确说明你所报告的任何人的名字。", confidential = TRUE)
 
 	var/msg = "Ticket [TicketHref("#[id]")] rejected by [key_name]"
 	message_admins(msg)
@@ -609,17 +609,17 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 /datum/admin_help/proc/AutoReply()
 	var/key_name = key_name_admin(usr)
 	if(state != AHELP_ACTIVE)
-		to_chat(usr, SPAN_WARNING("This ticket is already closed!"))
+		to_chat(usr, SPAN_WARNING("此工单已关闭！"))
 		return
 
 	if(marked_admin != usr.ckey)
 		if(marked_admin)
-			to_chat(usr, SPAN_WARNING("This ticket is currently marked by [marked_admin]. Please override their mark to interact with this ticket!"))
+			to_chat(usr, SPAN_WARNING("此工单当前已被[marked_admin]标记。请覆盖其标记以与此工单互动！"))
 		else
-			to_chat(usr, SPAN_WARNING("This ticket is not currently marked. Please mark it first to interact with this ticket!"))
+			to_chat(usr, SPAN_WARNING("此工单当前未被标记。请先标记它以进行互动！"))
 		return
 
-	var/chosen = tgui_input_list(usr, "Which auto response do you wish to send?", "AutoReply", GLOB.adminreplies)
+	var/chosen = tgui_input_list(usr, "你希望发送哪个自动回复？", "AutoReply", GLOB.adminreplies)
 	var/datum/autoreply/admin/response = GLOB.adminreplies[chosen]
 
 	if(!response || !istype(response))
@@ -687,7 +687,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			return "INVALID, CALL A CODER"
 
 /datum/admin_help/proc/Retitle()
-	var/new_title = input(usr, "Enter a title for the ticket", "Rename Ticket", name) as text|null
+	var/new_title = input(usr, "为工单输入一个标题", "Rename Ticket", name) as text|null
 	if(new_title)
 		name = new_title
 		//not saying the original name cause it could be a long ass message
@@ -847,7 +847,7 @@ GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
 
 	//handle muting and automuting
 	if(user_client.prefs.muted & MUTE_ADMINHELP)
-		to_chat(user_client, SPAN_DANGER("Error: Admin-PM: You cannot send adminhelps (Muted)."), confidential = TRUE)
+		to_chat(user_client, SPAN_DANGER("错误：管理员私信：你无法发送管理员求助（已被禁言）。"), confidential = TRUE)
 		return
 	if(user_client.handle_spam_prevention(message, MUTE_ADMINHELP))
 		return
@@ -883,7 +883,7 @@ CLIENT_VERB(adminhelp)
 	set category = "Admin"
 	set name = "Adminhelp"
 	GLOB.admin_help_ui_handler.tgui_interact(mob)
-	to_chat(src, SPAN_BOLDNOTICE("Adminhelp failing to open or work? <a href='byond://?src=[REF(src)];tguiless_adminhelp=1'>Click here</a>"))
+	to_chat(src, SPAN_BOLDNOTICE("管理员求助无法打开或工作？<a href='byond://?src=[REF(src)];tguiless_adminhelp=1'>点击此处</a>"))
 
 CLIENT_VERB(mentorhelp)
 	set category = "Admin"
@@ -893,7 +893,7 @@ CLIENT_VERB(mentorhelp)
 
 /client/proc/execute_mentorhelp()
 	if(current_mhelp && current_mhelp.open)
-		if(tgui_alert(src, "You already have a mentorhelp thread open, would you like to close it?", "Mentor Help", list("Yes", "No")) == "Yes")
+		if(tgui_alert(src, "你已经有一个导师求助线程开启，是否要关闭它？", "导师帮助", list("Yes", "No")) == "Yes")
 			current_mhelp.close(src)
 		return
 	current_mhelp = new(src)
@@ -923,7 +923,7 @@ CLIENT_VERB(view_latest_ticket)
 			return
 
 		// client had no tickets this round
-		to_chat(src, SPAN_WARNING("You have not had an ahelp ticket this round."))
+		to_chat(src, SPAN_WARNING("本轮你还没有管理员求助工单。"))
 		return
 
 	current_ticket.player_ticket_panel()

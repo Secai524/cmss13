@@ -1,6 +1,6 @@
 // Allows for a trait to be extracted from a seed packet, destroying that seed.
 /obj/structure/machinery/botany/extractor
-	name = "lysis-isolation centrifuge"
+	name = "裂解分离离心机"
 	icon_state = "traitcopier"
 
 	var/datum/seed/genetics // Currently scanned seed genetic structure.

@@ -5,7 +5,7 @@
 // Used for advanced grid control (read: Substations)
 
 /obj/structure/machinery/power/breakerbox
-	name = "Breaker Box"
+	name = "断路器箱"
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "bbox_off"
 	directwired = 0
@@ -35,21 +35,21 @@
 
 /obj/structure/machinery/power/breakerbox/attack_remote(mob/user)
 	if(busy)
-		to_chat(user, SPAN_DANGER("System is busy. Please wait until current operation is finished before changing power settings."))
+		to_chat(user, SPAN_DANGER("系统繁忙。请等待当前操作完成后再更改电源设置。"))
 		return
 
 	busy = TRUE
-	to_chat(user, SPAN_XENOWARNING("Updating power settings..."))
+	to_chat(user, SPAN_XENOWARNING("正在更新电源设置..."))
 	if(do_after(user, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC)) //5s for AI as AIs can manipulate electronics much faster.
 		set_state(!on)
-		to_chat(user, SPAN_XENOWARNING("Update Completed. New setting:[on ? "on": "off"]"))
+		to_chat(user, SPAN_XENOWARNING("更新完成。新设置：[on ? "on": "off"]"))
 	busy = FALSE
 
 
 /obj/structure/machinery/power/breakerbox/attack_hand(mob/user)
 
 	if(busy)
-		to_chat(user, SPAN_DANGER("System is busy. Please wait until current operation is finished before changing power settings."))
+		to_chat(user, SPAN_DANGER("系统繁忙。请等待当前操作完成后再更改电源设置。"))
 		return
 
 	busy = TRUE

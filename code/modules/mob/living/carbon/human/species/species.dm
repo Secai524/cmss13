@@ -225,29 +225,29 @@
 		attempt_fist_bump(human, target)
 		return
 	else if(human.body_position == LYING_DOWN) // Keep other interactions above lying check for maximum awkwardness potential
-		human.visible_message(SPAN_NOTICE("[human] waves at [target] to make [t_him] feel better!"),
+		human.visible_message(SPAN_NOTICE("[human]向[target]挥手，想让[t_him]好受点！"),
 			SPAN_NOTICE("You wave at [target] to make [t_him] feel better!"), null, 4)
 	else if(target_zone == "groin")
-		human.visible_message(SPAN_NOTICE("[human] hugs [target] to make [t_him] feel better!"),
+		human.visible_message(SPAN_NOTICE("[human]拥抱[target]，想让[t_him]好受点！"),
 			SPAN_NOTICE("You hug [target] to make [t_him] feel better!"), null, 4)
 	else
-		human.visible_message(SPAN_NOTICE("[human] pats [target] on the back to make [t_him] feel better!"),
+		human.visible_message(SPAN_NOTICE("[human]拍了拍[target]的背，想让[t_him]好受点！"),
 			SPAN_NOTICE("You pat [target] on the back to make [t_him] feel better!"), null, 4)
 	playsound(target, 'sound/weapons/thudswoosh.ogg', 25, 1, 5)
 
 /datum/species/proc/attempt_rock_paper_scissors(mob/living/carbon/human/H, mob/living/carbon/human/target)
 	if(!H.get_limb("r_hand") && !H.get_limb("l_hand"))
-		to_chat(H, SPAN_WARNING("You have no hands!"))
+		to_chat(H, SPAN_WARNING("你没有手！"))
 		return
 
 	if(!target.get_limb("r_hand") && !target.get_limb("l_hand"))
-		to_chat(H, SPAN_WARNING("They have no hands!"))
+		to_chat(H, SPAN_WARNING("他们没有手！"))
 		return
 
 	//Responding to a raised hand
 	if(target.flags_emote & EMOTING_ROCK_PAPER_SCISSORS && do_after(H, 5, INTERRUPT_MOVED, EMOTE_ICON_ROCK_PAPER_SCISSORS))
 		if(!(target.flags_emote & EMOTING_ROCK_PAPER_SCISSORS)) //Additional check for if the target moved or was already high fived.
-			to_chat(H, SPAN_WARNING("Too slow!"))
+			to_chat(H, SPAN_WARNING("太慢了！"))
 			return
 		target.flags_emote &= ~EMOTING_ROCK_PAPER_SCISSORS
 		var/static/list/game_quips = list("Rock...", "Paper...", "Scissors...", "Shoot!")
@@ -277,8 +277,8 @@
 				winner_text = " [H] wins!"
 			else
 				winner_text = " [target] wins!"
-		H.visible_message(SPAN_NOTICE("[H] plays <b>[protagonist_plays]</b>![winner_text]"), SPAN_NOTICE("You play <b>[protagonist_plays]</b>![winner_text]"), max_distance = 5)
-		target.visible_message(SPAN_NOTICE("[target] plays <b>[antagonist_plays]</b>![winner_text]"), SPAN_NOTICE("You play <b>[antagonist_plays]</b>![winner_text]"), max_distance = 5)
+		H.visible_message(SPAN_NOTICE("[H]出了<b>[protagonist_plays]</b>！[winner_text]"), SPAN_NOTICE("You play <b>[protagonist_plays]</b>![winner_text]"), max_distance = 5)
+		target.visible_message(SPAN_NOTICE("[target]出了<b>[antagonist_plays]</b>！[winner_text]"), SPAN_NOTICE("You play <b>[antagonist_plays]</b>![winner_text]"), max_distance = 5)
 		playsound(target, "clownstep", 35, TRUE)
 		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(do_after), H, 8, INTERRUPT_NONE, play_to_emote[protagonist_plays])
 		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(do_after), target, 8, INTERRUPT_NONE, play_to_emote[antagonist_plays])
@@ -290,34 +290,34 @@
 
 	//Initiate high five
 	if(H.recent_audio_emote)
-		to_chat(H, "You just did an audible emote. Wait a while.")
+		to_chat(H, "你刚刚进行了一次有声表情。请稍等片刻。")
 		return
 
-	H.visible_message(SPAN_NOTICE("[H] challenges [target] to a game of rock paper scissors!"), SPAN_NOTICE("You challenge [target] to a game of rock paper scissors!"), null, 4)
+	H.visible_message(SPAN_NOTICE("[H]向[target]发起石头剪刀布的挑战！"), SPAN_NOTICE("You challenge [target] to a game of rock paper scissors!"), null, 4)
 	H.flags_emote |= EMOTING_ROCK_PAPER_SCISSORS
 	if(do_after(H, 50, INTERRUPT_ALL|INTERRUPT_EMOTE, EMOTE_ICON_ROCK_PAPER_SCISSORS) && H.flags_emote & EMOTING_ROCK_PAPER_SCISSORS)
-		to_chat(H, SPAN_NOTICE("You were left hanging!"))
+		to_chat(H, SPAN_NOTICE("你被晾在一边了！"))
 	H.flags_emote &= ~EMOTING_ROCK_PAPER_SCISSORS
 
 /datum/species/proc/attempt_high_five(mob/living/carbon/human/H, mob/living/carbon/human/target)
 	if(!H.get_limb("r_hand") && !H.get_limb("l_hand"))
-		to_chat(H, SPAN_NOTICE("You have no hands!"))
+		to_chat(H, SPAN_NOTICE("你没有手！"))
 		return
 
 	if(!target.get_limb("r_hand") && !target.get_limb("l_hand"))
-		to_chat(H, SPAN_NOTICE("They have no hands!"))
+		to_chat(H, SPAN_NOTICE("他们没有手！"))
 		return
 
 	//Responding to a raised hand
 	if(target.flags_emote & EMOTING_HIGH_FIVE && do_after(H, 5, INTERRUPT_MOVED, EMOTE_ICON_HIGHFIVE))
 		if(!(target.flags_emote & EMOTING_HIGH_FIVE)) //Additional check for if the target moved or was already high fived.
-			to_chat(H, SPAN_NOTICE("Too slow!"))
+			to_chat(H, SPAN_NOTICE("太慢了！"))
 			return
 		target.flags_emote &= ~EMOTING_HIGH_FIVE
 		var/extra_quip = ""
 		if(prob(10))
 			extra_quip = pick("Down low!", "Eiffel Tower!")
-		H.visible_message(SPAN_NOTICE("[H] gives [target] a high five![extra_quip]"),
+		H.visible_message(SPAN_NOTICE("[H]和[target]击掌！[extra_quip]"),
 			SPAN_NOTICE("You give [target] a high five![extra_quip]"), null, 4)
 		playsound(target, 'sound/effects/snap.ogg', 25, 1)
 		H.animation_attack_on(target)
@@ -328,7 +328,7 @@
 
 	//Initiate high five
 	if(H.recent_audio_emote)
-		to_chat(H, "You just did an audible emote. Wait a while.")
+		to_chat(H, "你刚刚进行了一次有声表情。请稍等片刻。")
 		return
 
 	var/h_his = "their"
@@ -338,29 +338,29 @@
 		if(FEMALE)
 			h_his = "her"
 
-	H.visible_message(SPAN_NOTICE("[H] raises [h_his] hand out for a high five from [target]."),
+	H.visible_message(SPAN_NOTICE("[H]向[target]伸出手准备击掌。"),
 		SPAN_NOTICE("You raise your hand out for a high five from [target]."), null, 4)
 	H.flags_emote |= EMOTING_HIGH_FIVE
 	if(do_after(H, 50, INTERRUPT_ALL|INTERRUPT_EMOTE, EMOTE_ICON_HIGHFIVE) && H.flags_emote & EMOTING_HIGH_FIVE)
-		to_chat(H, SPAN_NOTICE("You were left hanging!"))
+		to_chat(H, SPAN_NOTICE("你被晾在一边了！"))
 	H.flags_emote &= ~EMOTING_HIGH_FIVE
 
 /datum/species/proc/attempt_fist_bump(mob/living/carbon/human/H, mob/living/carbon/human/target)
 	if(!H.get_limb("r_hand") && !H.get_limb("l_hand"))
-		to_chat(H, SPAN_NOTICE("You have no hands!"))
+		to_chat(H, SPAN_NOTICE("你没有手！"))
 		return
 
 	if(!target.get_limb("r_hand") && !target.get_limb("l_hand"))
-		to_chat(H, SPAN_NOTICE("They have no hands!"))
+		to_chat(H, SPAN_NOTICE("他们没有手！"))
 		return
 
 	//Responding to a raised fist
 	if(target.flags_emote & EMOTING_FIST_BUMP && do_after(H, 5, INTERRUPT_MOVED, EMOTE_ICON_FISTBUMP))
 		if(!(target.flags_emote & EMOTING_FIST_BUMP)) //Additional check for if the target moved or was already fistbumped.
-			to_chat(H, SPAN_NOTICE("Too slow!"))
+			to_chat(H, SPAN_NOTICE("太慢了！"))
 			return
 		target.flags_emote &= ~EMOTING_FIST_BUMP
-		H.visible_message(SPAN_NOTICE("[H] gives [target] a fistbump!"),
+		H.visible_message(SPAN_NOTICE("[H]和[target]碰拳！"),
 			SPAN_NOTICE("You give [target] a fistbump!"), null, 4)
 		playsound(target, 'sound/effects/thud.ogg', 40, 1)
 		H.animation_attack_on(target)
@@ -371,7 +371,7 @@
 
 	//Initiate fistbump
 	if(H.recent_audio_emote)
-		to_chat(H, "You just did an audible emote. Wait a while.")
+		to_chat(H, "你刚刚进行了一次有声表情。请稍等片刻。")
 		return
 	var/h_his = "their"
 	switch(H.gender)
@@ -380,11 +380,11 @@
 		if(FEMALE)
 			h_his = "her"
 
-	H.visible_message(SPAN_NOTICE("[H] raises [h_his] fist out for a fistbump from [target]."),
+	H.visible_message(SPAN_NOTICE("[H]向[target]伸出拳头，示意碰拳。"),
 		SPAN_NOTICE("You raise your fist out for a fistbump from [target]."), null, 4)
 	H.flags_emote |= EMOTING_FIST_BUMP
 	if(do_after(H, 50, INTERRUPT_ALL|INTERRUPT_EMOTE, EMOTE_ICON_FISTBUMP) && H.flags_emote & EMOTING_FIST_BUMP)
-		to_chat(H, SPAN_NOTICE("You were left hanging!"))
+		to_chat(H, SPAN_NOTICE("你被晾在一边了！"))
 	H.flags_emote &= ~EMOTING_FIST_BUMP
 
 //things to change after we're no longer that species

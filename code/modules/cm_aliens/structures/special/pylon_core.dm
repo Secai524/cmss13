@@ -5,7 +5,7 @@
 
 /obj/effect/alien/resin/special/pylon
 	name = XENO_STRUCTURE_PYLON
-	desc = "A towering spike of resin. Its base pulsates with large tendrils."
+	desc = "一座高耸的树脂尖刺。其基部有巨大的触须在搏动。"
 	icon_state = "pylon"
 	health = 1800
 	light_range = 2
@@ -94,7 +94,7 @@
 		to_chat(xeno, SPAN_XENONOTICE("\The [name] is in good condition, you don't need to repair it."))
 		return
 
-	to_chat(xeno, SPAN_XENONOTICE("We begin adding the plasma to \the [name] to repair it."))
+	to_chat(xeno, SPAN_XENONOTICE("我们开始向\the [name]添加等离子体以修复它。"))
 	xeno_attack_delay(xeno)
 	if(!do_after(xeno, PYLON_REPAIR_TIME, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src) || !can_repair)
 		return
@@ -121,7 +121,7 @@
 			continue
 		addtimer(CALLBACK(W, TYPE_PROC_REF(/obj/effect/alien/weeds, weed_expand), N), PYLON_WEEDS_REGROWTH_TIME, TIMER_UNIQUE)
 
-	to_chat(xeno, SPAN_XENONOTICE("We have successfully repaired \the [name]."))
+	to_chat(xeno, SPAN_XENONOTICE("我们已成功修复\the [name]。"))
 	playsound(loc, "alien_resin_build", 25)
 
 /obj/effect/alien/resin/special/pylon/proc/place_node()
@@ -133,7 +133,7 @@
 	if(!linked_hive.can_spawn_as_lesser_drone(xeno_candidate, src))
 		return FALSE
 
-	if(tgui_alert(xeno_candidate, "Are you sure you want to become a lesser drone?", "Confirmation", list("Yes", "No")) != "Yes")
+	if(tgui_alert(xeno_candidate, "你确定要成为次级工蜂吗？", "确认", list("Yes", "No")) != "Yes")
 		return FALSE
 
 	if(!linked_hive.can_spawn_as_lesser_drone(xeno_candidate, src))
@@ -142,7 +142,7 @@
 	var/mob/living/carbon/xenomorph/lesser_drone/new_drone = new(loc, null, linked_hive.hivenumber)
 	xeno_candidate.mind.transfer_to(new_drone, TRUE)
 	lesser_drone_spawns -= 1
-	new_drone.visible_message(SPAN_XENODANGER("A lesser drone emerges out of [src]!"), SPAN_XENODANGER("You emerge out of [src] and awaken from your slumber. For the Hive!"))
+	new_drone.visible_message(SPAN_XENODANGER("一只次级工蜂从[src]中钻出！"), SPAN_XENODANGER("You emerge out of [src] and awaken from your slumber. For the Hive!"))
 	playsound(new_drone, 'sound/effects/xeno_newlarva.ogg', 25, TRUE)
 	new_drone.generate_name()
 
@@ -167,7 +167,7 @@
 		if(hijack_delete)
 			return ..()
 
-		marine_announcement("ALERT.\n\nEnergy build up around communication relay at [get_area_name(src)] halted.", "[MAIN_AI_SYSTEM] Biological Scanner")
+		marine_announcement("警报。\n\n位于[get_area_name(src)]的通讯中继器周围的能量聚集已停止。", "[MAIN_AI_SYSTEM] Biological Scanner")
 
 		for(var/hivenumber in GLOB.hive_datum)
 			var/datum/hive_status/checked_hive = GLOB.hive_datum[hivenumber]
@@ -183,7 +183,7 @@
 
 /// Checks if all comms towers are connected and then starts end game content on all pylons if they are
 /obj/effect/alien/resin/special/pylon/endgame/proc/comms_relay_connection()
-	marine_announcement("ALERT.\n\nIrregular build up of energy around communication relays at [get_area_name(src)], biological hazard detected.\n\nDANGER: Hazard is strengthening xenomorphs, advise urgent termination of hazard by ground forces.", "[MAIN_AI_SYSTEM] Biological Scanner")
+	marine_announcement("警报。\n\n位于[get_area_name(src)]的通讯中继器周围检测到异常能量聚集，发现生物危害。\n\n危险：该危害正在强化异形，建议地面部队紧急清除该危害。", "[MAIN_AI_SYSTEM] Biological Scanner")
 
 	for(var/hivenumber in GLOB.hive_datum)
 		var/datum/hive_status/checked_hive = GLOB.hive_datum[hivenumber]
@@ -215,7 +215,7 @@
 //Hive Core - Generates strong weeds, supports other buildings
 /obj/effect/alien/resin/special/pylon/core
 	name = XENO_STRUCTURE_CORE
-	desc = "A giant pulsating mound of mass. It looks very much alive."
+	desc = "一团巨大的脉动物质块。它看起来充满生机。"
 	icon_state = "core"
 	health = 1200
 	light_range = 4
@@ -264,7 +264,7 @@
 	if(linked_hive)
 		for(var/mob/living/carbon/xenomorph/larva/worm in range(2, src))
 			if((!worm.ckey || worm.stat == DEAD) && worm.burrowable && (worm.hivenumber == linked_hive.hivenumber) && !QDELETED(worm))
-				visible_message(SPAN_XENODANGER("[worm] quickly burrows into \the [src]."))
+				visible_message(SPAN_XENODANGER("[worm]迅速钻入了\the [src]。"))
 				if(!worm.banished)
 					// Goob job bringing her back home, but no doubling please
 					linked_hive.stored_larva++
@@ -316,14 +316,14 @@
 		if(isnull(new_xeno))
 			return FALSE
 
-		new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly emerges from [src]!"),
+		new_xeno.visible_message(SPAN_XENODANGER("一只幼虫突然从[src]中钻出！"),
 		SPAN_XENODANGER("We emerge from [src] and awaken from our slumber. For the Hive!"))
 		msg_admin_niche("[key_name(new_xeno)] emerged from \a [src]. [ADMIN_JMP(src)]")
 		playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 50, 1)
 		if(!SSticker.mode.transfer_xeno(xeno_candidate, new_xeno))
 			qdel(new_xeno)
 			return FALSE
-		to_chat(new_xeno, SPAN_XENOANNOUNCE("You are a xenomorph larva awakened from slumber!"))
+		to_chat(new_xeno, SPAN_XENOANNOUNCE("你是一只从沉睡中苏醒的异形幼虫！"))
 		playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 50, 1)
 		if(new_xeno.client)
 			if(new_xeno.client.prefs.toggles_flashing & FLASH_POOLSPAWN)
@@ -346,7 +346,7 @@
 		return
 	var/mob/living/carbon/carbon_mob = grab.grabbed_thing
 	if(carbon_mob.buckled)
-		to_chat(user, SPAN_XENOWARNING("Unbuckle first!"))
+		to_chat(user, SPAN_XENOWARNING("先解开安全带！"))
 		return
 	if(!linked_hive || carbon_mob.stat != DEAD)
 		return
@@ -370,7 +370,7 @@
 	if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_GENERIC))
 		return
 
-	visible_message(SPAN_DANGER("[src] engulfs [xeno] in resin!"))
+	visible_message(SPAN_DANGER("[src]用树脂吞没了[xeno]！"))
 	playsound(src, "alien_resin_build", 25, 1)
 	qdel(xeno)
 
@@ -380,18 +380,18 @@
 /obj/effect/alien/resin/special/pylon/core/attack_alien(mob/living/carbon/xenomorph/M)
 	if(M.a_intent != INTENT_HELP && M.can_destroy_special() && M.hivenumber == linked_hive.hivenumber)
 		if(!hardcore && last_attempt + 6 SECONDS > world.time)
-			to_chat(M,SPAN_WARNING("We have attempted to destroy \the [src] too recently! Wait a bit!")) // no spammy
+			to_chat(M,SPAN_WARNING("我们最近刚尝试过摧毁\the [src]！稍等片刻！")) // no spammy
 			return XENO_NO_DELAY_ACTION
 
 		else if(warn && world.time > XENOMORPH_PRE_SETUP_CUTOFF)
-			if((alert(M, "Are we sure that you want to destroy the hive core? (There will be a 5 minute cooldown before you can build another one.)", , "Yes", "No") != "Yes"))
+			if((alert(M, "你确定要摧毁巢穴核心吗？（在建造另一个之前将有5分钟的冷却时间。）", , "Yes", "No") != "Yes"))
 				return XENO_NO_DELAY_ACTION
 
 			INVOKE_ASYNC(src, PROC_REF(startDestroying),M)
 			return XENO_NO_DELAY_ACTION
 
 		else if(world.time < XENOMORPH_PRE_SETUP_CUTOFF)
-			if((alert(M, "Are we sure that we want to remove the hive core? No cooldown will be applied.", , "Yes", "No") != "Yes"))
+			if((alert(M, "你确定要移除巢穴核心吗？不会应用冷却时间。", , "Yes", "No") != "Yes"))
 				return XENO_NO_DELAY_ACTION
 
 			INVOKE_ASYNC(src, PROC_REF(startDestroying),M)
@@ -411,7 +411,7 @@
 
 /obj/effect/alien/resin/special/pylon/core/Destroy()
 	if(linked_hive)
-		visible_message(SPAN_XENOHIGHDANGER("The resin roof withers away as \the [src] dies!"), max_distance = WEED_RANGE_CORE)
+		visible_message(SPAN_XENOHIGHDANGER("随着\the [src]死亡，树脂顶盖枯萎消失了！"), max_distance = WEED_RANGE_CORE)
 		linked_hive.hive_location = null
 		if(world.time < XENOMORPH_PRE_SETUP_CUTOFF && !hardcore)
 			. = ..()
@@ -426,7 +426,7 @@
 			xeno_announcement("\The [linked_hive.name] has lost their hive core!", "everything", HIGHER_FORCE_ANNOUNCE)
 
 		if(linked_hive.hijack_burrowed_surge)
-			visible_message(SPAN_XENODANGER("We hear something resembling a scream from [src] as it's destroyed!"))
+			visible_message(SPAN_XENODANGER("当[src]被摧毁时，我们听到了类似尖叫的声音！"))
 			xeno_message(SPAN_XENOANNOUNCE("Psychic pain storms throughout the hive as [src] is destroyed! We will no longer gain burrowed larva over time."), 3, linked_hive.hivenumber)
 			linked_hive.hijack_burrowed_surge = FALSE
 
@@ -435,11 +435,11 @@
 
 /obj/effect/alien/resin/special/pylon/core/proc/startDestroying(mob/living/carbon/xenomorph/M)
 	xeno_message(SPAN_XENOANNOUNCE("[M] is destroying \the [src]!"), 3, linked_hive.hivenumber)
-	visible_message(SPAN_DANGER("[M] starts destroying \the [src]!"))
+	visible_message(SPAN_DANGER("[M]开始摧毁\the [src]！"))
 	last_attempt = world.time //spamcheck
 	if(!do_after(M, 5 SECONDS , INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
-		to_chat(M,SPAN_WARNING("You stop destroying \the [src]."))
-		visible_message(SPAN_WARNING("[M] stops destroying \the [src]."))
+		to_chat(M,SPAN_WARNING("你停止摧毁\the [src]。"))
+		visible_message(SPAN_WARNING("[M]停止摧毁\the [src]。"))
 		last_attempt = world.time // update the spam check
 		return XENO_NO_DELAY_ACTION
 	qdel(src)

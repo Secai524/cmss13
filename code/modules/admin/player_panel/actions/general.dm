@@ -1,7 +1,7 @@
 // DAMAGE
 /datum/player_action/rejuvenate
 	action_tag = "mob_rejuvenate"
-	name = "Rejuvenate"
+	name = "复原"
 
 /datum/player_action/rejuvenate/act(client/user, mob/target, list/params)
 	user.cmd_admin_rejuvenate(target)
@@ -10,7 +10,7 @@
 
 /datum/player_action/kill
 	action_tag = "mob_kill"
-	name = "Kill"
+	name = "处决"
 
 /datum/player_action/kill/act(client/user, mob/target, list/params)
 	target.death(create_cause_data("[user.key]"))
@@ -20,7 +20,7 @@
 
 /datum/player_action/gib
 	action_tag = "mob_gib"
-	name = "Gib"
+	name = "肢解"
 	permissions_required = R_ADMIN
 
 /datum/player_action/gib/act(client/user, mob/target, list/params)
@@ -31,7 +31,7 @@
 // MISC
 /datum/player_action/mob_sleep
 	action_tag = "mob_sleep"
-	name = "Toggle Sleeping"
+	name = "切换睡眠状态"
 
 /datum/player_action/mob_sleep/act(client/user, mob/target, list/params)
 	if(!istype(target, /mob/living))
@@ -52,18 +52,18 @@
 
 /datum/player_action/send_to_lobby
 	action_tag = "send_to_lobby"
-	name = "Send To Lobby"
+	name = "送回大厅"
 
 /datum/player_action/send_to_lobby/act(client/user, mob/target, list/params)
 	if(!isobserver(target))
-		to_chat(user, SPAN_NOTICE("You can only send ghost players back to the Lobby."))
+		to_chat(user, SPAN_NOTICE("你只能将幽灵玩家送回大厅。"))
 		return
 
 	if(!target.client)
-		to_chat(user, SPAN_WARNING("[target.name] doesn't seem to have an active client."))
+		to_chat(user, SPAN_WARNING("[target.name]似乎没有活跃的客户端。"))
 		return
 
-	if(alert(user, "Send [key_name(target)] back to Lobby?", "Message", "Yes", "No") != "Yes")
+	if(alert(user, "将[key_name(target)]送回大厅？", "消息", "Yes", "No") != "Yes")
 		return
 
 	message_admins("[key_name_admin(user)] has sent [key_name_admin(target)] back to the Lobby.")
@@ -73,7 +73,7 @@
 
 /datum/player_action/force_say
 	action_tag = "mob_force_say"
-	name = "Force Say"
+	name = "强制发言"
 	permissions_required = R_ADMIN
 
 /datum/player_action/force_say/act(client/user, mob/target, list/params)
@@ -89,7 +89,7 @@
 
 /datum/player_action/force_emote
 	action_tag = "mob_force_emote"
-	name = "Force Emote"
+	name = "强制表情"
 	permissions_required = R_ADMIN
 
 /datum/player_action/force_emote/act(client/user, mob/target, list/params)
@@ -104,7 +104,7 @@
 
 /datum/player_action/toggle_frozen
 	action_tag = "toggle_frozen"
-	name = "Toggle Frozen"
+	name = "切换冻结状态"
 
 /datum/player_action/toggle_frozen/act(client/user, mob/target, list/params)
 	var/frozen = text2num(params["freeze"])
@@ -119,7 +119,7 @@
 // MESSAGE
 /datum/player_action/subtle_message
 	action_tag = "subtle_message"
-	name = "Subtle Message"
+	name = "隐秘消息"
 
 /datum/player_action/subtle_message/act(client/user, mob/target, list/params)
 	user.cmd_admin_subtle_message(target)
@@ -128,7 +128,7 @@
 
 /datum/player_action/private_message
 	action_tag = "private_message"
-	name = "Private Message"
+	name = "私密消息"
 
 /datum/player_action/private_message/act(client/user, mob/target, list/params)
 	if(!target.client)
@@ -139,7 +139,7 @@
 
 /datum/player_action/alert_message
 	action_tag = "alert_message"
-	name = "Alert Message"
+	name = "警报消息"
 
 /datum/player_action/alert_message/act(client/user, mob/target, list/params)
 	if(!target.client)
@@ -151,11 +151,11 @@
 // SET NAME/CKEY
 /datum/player_action/set_name
 	action_tag = "set_name"
-	name = "Set Name"
+	name = "设置名称"
 
 /datum/player_action/set_name/act(client/user, mob/target, list/params)
 	if(!params["name"])
-		to_chat(user, "The Name field cannot be empty.")
+		to_chat(user, "名称字段不能为空。")
 
 		return FALSE
 
@@ -179,7 +179,7 @@
 
 /datum/player_action/set_ckey
 	action_tag = "set_ckey"
-	name = "Set ckey"
+	name = "设置ckey"
 
 /datum/player_action/set_ckey/act(client/user, mob/target, list/params)
 	if(params["ckey"] == "")
@@ -191,7 +191,7 @@
 // TELEPORTATION
 /datum/player_action/bring
 	action_tag = "mob_bring"
-	name = "Bring"
+	name = "传送"
 
 
 /datum/player_action/bring/act(client/user, mob/target, list/params)
@@ -203,7 +203,7 @@
 
 /datum/player_action/follow
 	action_tag = "mob_follow"
-	name = "Follow"
+	name = "跟随"
 
 /datum/player_action/follow/act(client/user, mob/target, list/params)
 	if(istype(user.mob, /mob/dead/observer))
@@ -211,13 +211,13 @@
 		O.do_observe(target)
 		return TRUE
 	else
-		to_chat(user, SPAN_WARNING("You must be a ghost to do this."))
+		to_chat(user, SPAN_WARNING("你必须处于幽灵状态才能执行此操作。"))
 
 	return FALSE
 
 /datum/player_action/jump_to
 	action_tag = "jump_to"
-	name = "Jump To"
+	name = "跳转至"
 
 
 /datum/player_action/jump_to/act(client/user, mob/target, list/params)
@@ -228,7 +228,7 @@
 // VIEW VARIABLES
 /datum/player_action/access_variables
 	action_tag = "access_variables"
-	name = "Access Variables"
+	name = "访问变量"
 
 
 /datum/player_action/access_variables/act(client/user, mob/target, list/params)
@@ -237,7 +237,7 @@
 
 /datum/player_action/access_playtimes
 	action_tag = "access_playtimes"
-	name = "Access Playtimes"
+	name = "访问游戏时长"
 
 /datum/player_action/access_playtimes/act(client/user, mob/target, list/params)
 	target?.client?.player_data.tgui_interact(user.mob)
@@ -247,7 +247,7 @@
 
 /datum/player_action/access_admin_datum
 	action_tag = "access_admin_datum"
-	name = "Access Admin Datum"
+	name = "访问管理员数据"
 
 /datum/player_action/access_admin_datum/act(client/user, mob/target, list/params)
 	if(!target.client || !target.client.admin_holder)

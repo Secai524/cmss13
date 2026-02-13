@@ -6,7 +6,7 @@
 	movement_slowdown = XENO_SPEED_SLOWMOD_ZOOM
 
 /datum/action/xeno_action/activable/acid_lance
-	name = "Acid Lance"
+	name = "酸液长矛"
 	action_icon_state = "acid_lance"
 	plasma_cost = 50
 	macro_path = /datum/action/xeno_action/verb/verb_acid_lance
@@ -31,7 +31,7 @@
 	var/activated_once = FALSE
 
 /datum/action/xeno_action/onclick/shift_spits/boiler
-	name = "Toggle Gas Type"
+	name = "切换气体类型"
 	action_icon_state = "shift_spit_acid_glob"
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_spit_type
 	action_type = XENO_ACTION_CLICK
@@ -48,7 +48,7 @@
 
 
 /datum/action/xeno_action/activable/xeno_spit/bombard
-	name = "Bombard"
+	name = "轰炸"
 	action_icon_state = "bombard"
 	cooldown_message = "Our stomach fills with another gas glob. We are ready to bombard again."
 	sound_to_play = 'sound/effects/blobattack.ogg'
@@ -64,7 +64,7 @@
 	var/cooldown_duration = 20 SECONDS
 
 /datum/action/xeno_action/onclick/acid_shroud  // acid dump alternative
-	name = "Acid Shroud"
+	name = "酸液帷幕"
 	action_icon_state = "acid_shroud"
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_5
@@ -88,7 +88,7 @@
 //////////////////////////// Trapper boiler abilities
 
 /datum/action/xeno_action/activable/boiler_trap
-	name = "Deploy Trap"
+	name = "部署陷阱"
 	action_icon_state = "resin_pit"
 	plasma_cost = 60
 	macro_path = /datum/action/xeno_action/verb/verb_boiler_trap
@@ -103,7 +103,7 @@
 	var/empower_charge_max = 10
 
 /datum/action/xeno_action/activable/acid_mine
-	name = "Acid Mine"
+	name = "酸液地雷"
 	action_icon_state = "acid_mine"
 	plasma_cost = 40
 	macro_path = /datum/action/xeno_action/verb/verb_acid_mine
@@ -117,7 +117,7 @@
 	var/delay = 13.5
 
 /datum/action/xeno_action/activable/acid_shotgun
-	name = "Acid Shotgun"
+	name = "酸液霰弹"
 	action_icon_state = "acid_shotgun"
 	plasma_cost = 60
 	macro_path = /datum/action/xeno_action/verb/verb_acid_shotgun
@@ -134,4 +134,4 @@
 	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/activable/tail_stab/boiler
-	name = "Toxic Tail Stab"
+	name = "剧毒尾刺"

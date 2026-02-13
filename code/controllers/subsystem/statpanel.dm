@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(statpanels)
-	name = "Stat Panels"
+	name = "状态面板"
 	wait = 0.4 SECONDS
 	init_order = SS_INIT_STATPANELS
 	init_stage = INITSTAGE_EARLY

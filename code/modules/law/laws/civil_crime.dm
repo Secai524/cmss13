@@ -1,37 +1,37 @@
 /datum/law/civilian_law/terror_association
-	name = "Terror Association"
-	desc = "Being a member of, or providing aid to a member of, a terrorist organisation."
+	name = "恐怖组织关联"
+	desc = "身为恐怖组织成员，或向恐怖组织成员提供援助。"
 	brig_time = PERMABRIG_SENTENCE
 	conditions = "Not applicable if the defendant has engaged in terror attacks. Not applicable for execution on its own."
 
 /datum/law/civilian_law/terrorism
-	name = "Terrorism"
-	desc = "Conducting terror attacks against the United Americas or its allies."
+	name = "恐怖主义"
+	desc = "对美国或其盟国实施恐怖袭击。"
 	brig_time = PERMABRIG_SENTENCE
 	conditions = "Not applicable if the defendant has not engaged in terror attacks."
 
 /datum/law/civilian_law/minor_civil_insubordination
-	name = "Minor Civil Insubordination"
-	desc = "Failing to follow a lawful order from a member of the department (if any) to which you have been assigned. Additionally applicable for being disrespectful to the Commander or Duty Officer."
+	name = "轻微民事抗命"
+	desc = "未能服从所属部门（如有）成员发出的合法命令。亦适用于对指挥官或值班军官不敬。"
 	brig_time = 5
 	conditions = "Only Applicable to Non-USCM personnel."
 
 /datum/law/civilian_law/major_civil_insubordination
-	name = "Major Civil Insubordination"
-	desc = "Failing to follow a lawful order from the Commander or Duty Officer (or assigned department head, if any) during an active Military Operation."
+	name = "严重民事抗命"
+	desc = "在军事行动期间，未能服从指挥官、值班军官（或所属部门主管，如有）的合法命令。"
 	brig_time = 10
 	conditions = "Only Applicable to Non-USCM personnel."
 
 /datum/law/civilian_law/black_marketeering
-	name = "Blackmarketeering"
-	desc = "Illegally procuring or selling restricted products, excluding firearms or explosives."
+	name = "黑市交易"
+	desc = "非法获取或销售受管制产品，不包括枪支或爆炸物。"
 	brig_time = 7.5
 	conditions = "Enforced by Civil Authorities such as the CMB."
 	special_punishment = "Confiscation of Contraband"
 
 /datum/law/civilian_law/arms_dealing
-	name = "Arms Dealing"
-	desc = "Illegally procuring or selling firearms or explosives."
+	name = "军火交易"
+	desc = "非法获取或出售枪支或爆炸物。"
 	brig_time = 15
 	conditions = "Enforced by Civil Authorities such as the CMB."
 	special_punishment = "Confiscation of Contraband"

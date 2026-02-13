@@ -62,10 +62,10 @@
 			return
 
 		if(!LAZYLEN(usr.client.stored_matrices))
-			to_chat(usr, "You don't have any matrices stored!")
+			to_chat(usr, "你没有存储任何矩阵！")
 			return
 
-		var/matrix_name = tgui_input_list(usr, "Choose a matrix", "Matrix", (usr.client.stored_matrices + "Revert to Default" + "Cancel"))
+		var/matrix_name = tgui_input_list(usr, "选择矩阵", "Matrix", (usr.client.stored_matrices + "Revert to Default" + "Cancel"))
 		if(!matrix_name || matrix_name == "Cancel")
 			return
 		else if (matrix_name == "Revert to Default")
@@ -81,7 +81,7 @@
 		base_transform = MX
 		transform = MX
 
-		if (alert(usr, "Would you like to enable pixel scaling?", "Confirm", "Yes", "No") == "Yes")
+		if (alert(usr, "是否启用像素缩放？", "确认", "Yes", "No") == "Yes")
 			enable_pixel_scaling()
 
 /obj/Entered(atom/movable/moved_obj, atom/old_loc)
@@ -233,7 +233,7 @@
 		buckle_mob(M, user)
 	else . = ..()
 
-/obj/item/proc/get_mob_overlay(mob/user_mob, slot, default_bodytype = "Default")
+/obj/item/proc/get_mob_overlay(mob/user_mob, slot, default_bodytype = "默认")
 	var/bodytype = default_bodytype
 	var/mob/living/carbon/human/user_human
 	if(ishuman(user_mob))
@@ -287,7 +287,7 @@
 /// Generates an image overlay based on the provided override_icon_state
 /// (handles prefixing for PREFIX_HAT_GARB_OVERRIDE and PREFIX_HELMET_GARB_OVERRIDE)
 /obj/item/proc/get_garb_overlay(override_icon_state)
-	var/image/overlay_img = get_mob_overlay(slot=WEAR_AS_GARB, default_bodytype="Human")
+	var/image/overlay_img = get_mob_overlay(slot=WEAR_AS_GARB, default_bodytype="人类")
 
 	switch(override_icon_state)
 		if(NO_GARB_OVERRIDE)
@@ -314,14 +314,14 @@
 
 // Adding a text string at the end of the object
 /obj/proc/add_label(obj/O, user)
-	var/label = copytext(reject_bad_text(input(user,"Label text?", "Set label", "")), 1, MAX_NAME_LEN)
+	var/label = copytext(reject_bad_text(input(user,"标签文本？", "Set label", "")), 1, MAX_NAME_LEN)
 
 	// Checks for valid labelling/name length
 	if(!label || !length(label))
-		to_chat(user, SPAN_NOTICE("Invalid text."))
+		to_chat(user, SPAN_NOTICE("文本无效。"))
 		return
 	if((length(O.name) + length(label)) > MAX_NAME_LEN * 1.5)
-		to_chat(user, SPAN_NOTICE("You cannot fit any more labels on this item."))
+		to_chat(user, SPAN_NOTICE("此物品无法贴上更多标签。"))
 		return
 
 	O.name += " ([label])"

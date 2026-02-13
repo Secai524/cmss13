@@ -16,7 +16,7 @@
 	SEND_SIGNAL(src, COMSIG_ATOM_DECORATED)
 
 SUBSYSTEM_DEF(decorator)
-	name = "Decorator"
+	name = "装饰器"
 	init_order = SS_INIT_DECORATOR
 	priority = SS_PRIORITY_DECORATOR
 	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY

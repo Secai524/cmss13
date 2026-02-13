@@ -1,10 +1,10 @@
 /obj/structure/interior_exit/vehicle/arc
-	name = "ARC side door"
+	name = "装甲侦察车侧门"
 	icon = 'icons/obj/vehicles/interiors/arc.dmi'
 	icon_state = "exit_door"
 
 /obj/structure/prop/vehicle/arc
-	name = "ARC chassis"
+	name = "装甲侦察车底盘"
 
 	icon = 'icons/obj/vehicles/interiors/arc_chassis.dmi'
 	icon_state = "arc_chassis"

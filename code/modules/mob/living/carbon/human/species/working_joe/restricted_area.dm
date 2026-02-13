@@ -5,14 +5,14 @@
 	key = "presencelogged"
 	sound = 'sound/voice/joe/presence_logged.ogg'
 	haz_sound = 'sound/voice/joe/presence_logged_haz.ogg'
-	say_message = "Your presence has been logged."
+	say_message = "你的存在已被记录。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/trespassing
 	key = "trespassing"
 	sound = 'sound/voice/joe/trespassing.ogg'
-	say_message = "You are trespassing."
+	say_message = "你正在非法侵入。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/not_allowed_there
@@ -20,21 +20,21 @@
 	sound = 'sound/voice/joe/not_allowed_there.ogg'
 	haz_sound = 'sound/voice/joe/not_allowed_there_haz.ogg'
 	upp_joe_sound = 'sound/voice/joe/upp_joe/vamsyduanelza.ogg'
-	say_message = "You're not allowed in there."
+	say_message = "你不允许进入那里。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/shouldnt_be_here
 	key = "shouldntbehere"
 	sound = 'sound/voice/joe/shouldnt_be_here.ogg'
-	say_message = "You shouldn't be here."
+	say_message = "你不该在这里。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/really_shouldnt_be_here
 	key = "reallyshouldntbehere"
 	sound = 'sound/voice/joe/really_shouldnt_be_here.ogg'
 	haz_sound = 'sound/voice/joe/really_shouldnt_be_here_haz.ogg'
-	say_message = "You really shouldn't be here."
+	say_message = "你真的不该在这里。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
@@ -42,7 +42,7 @@
 	key = "thishouldbehere"
 	sound = 'sound/voice/joe/this_shouldnt_be_here.ogg'
 	haz_sound = 'sound/voice/joe/this_shouldnt_be_here_haz.ogg'
-	say_message = "This shouldn't be here."
+	say_message = "这东西不该在这里。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
@@ -50,14 +50,14 @@
 	key = "interloper"
 	sound = 'sound/voice/joe/interloper.ogg'
 	haz_sound = 'sound/voice/joe/interloper_haz.ogg'
-	say_message = "On top of innumerable duties, now I have a interloper."
+	say_message = "除了数不清的职责，现在又来了个闯入者。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/area_restricted
 	key = "arearestrict"
 	haz_sound = 'sound/voice/joe/area_restricted_haz.ogg'
-	say_message = "This area is restricted."
+	say_message = "此区域为限制区域。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = HAZARD_JOE_EMOTE
 
@@ -65,7 +65,7 @@
 	key = "areacompromised"
 	sound = 'sound/voice/joe/protected_area_compromised.ogg'
 	haz_sound = 'sound/voice/joe/protected_area_compromised_haz.ogg'
-	say_message = "Protected area compromised."
+	say_message = "保护区已被侵入。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
@@ -74,14 +74,14 @@
 	sound = 'sound/voice/joe/breach.ogg'
 	haz_sound = 'sound/voice/joe/breach_haz.ogg'
 	upp_joe_sound = 'sound/voice/joe/upp_joe/narusheniekarantina.ogg'
-	say_message = "Hazard Containment breach logged."
+	say_message = "危险物收容失效已记录。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/no_laughing_matter
 	key = "nolaughingmatter"
 	sound = 'sound/voice/joe/no_laughing_matter.ogg'
-	say_message = "I'm afraid, hazard containment alerts aren't a laughing matter."
+	say_message = "恐怕危险物收容警报不是开玩笑的事。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/restricted_area/come_out_vent
@@ -89,6 +89,6 @@
 	sound = 'sound/voice/joe/come_out_vent.ogg'
 	haz_sound = 'sound/voice/joe/come_out_vent_haz.ogg'
 	upp_joe_sound = 'sound/voice/joe/upp_joe/ventilyacii.ogg'
-	say_message = "Come out of the vent system, please."
+	say_message = "请从通风管道系统里出来。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE

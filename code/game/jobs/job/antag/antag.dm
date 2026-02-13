@@ -1,10 +1,10 @@
 /datum/job/antag
 	selection_class = "job_antag"
-	supervisors =   "antagonists"
+	supervisors =   "反派角色"
 	late_joinable = FALSE
 
 /datum/timelock/xeno
-	name = "Xenomorph"
+	name = "异形"
 
 /datum/timelock/xeno/can_play(client/C)
 	return C.get_total_xeno_playtime() >= time_required
@@ -14,7 +14,7 @@
 
 /// counts drone caste evo time as well
 /datum/timelock/drone
-	name = "Drone and drone evolutions"
+	name = "工蜂及其进化体"
 
 /datum/timelock/drone/can_play(client/C)
 	return C.get_total_drone_playtime() >= time_required
@@ -24,7 +24,7 @@
 
 /// t3 and queen time
 /datum/timelock/tier3
-	name = "Tier three castes"
+	name = "三级种姓"
 
 /datum/timelock/tier3/can_play(client/C)
 	return C.get_total_t3_playtime() >= time_required

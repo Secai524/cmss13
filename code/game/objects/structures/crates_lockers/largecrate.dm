@@ -1,6 +1,6 @@
 /obj/structure/largecrate
-	name = "large crate"
-	desc = "A hefty wooden crate."
+	name = "大型板条箱"
+	desc = "一个沉重的木箱。"
 	icon = 'icons/obj/structures/crates.dmi'
 	icon_state = "densecrate"
 	density = TRUE
@@ -14,7 +14,7 @@
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND
 
 /obj/structure/largecrate/attack_hand(mob/user as mob)
-	to_chat(user, SPAN_NOTICE("You need a crowbar to pry this open!"))
+	to_chat(user, SPAN_NOTICE("你需要撬棍才能撬开它！"))
 	return
 
 /obj/structure/largecrate/proc/unpack()
@@ -40,7 +40,7 @@
 /obj/structure/largecrate/attackby(obj/item/W as obj, mob/user as mob)
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		unpack()
-		user.visible_message(SPAN_NOTICE("[user] pries [src] open."),
+		user.visible_message(SPAN_NOTICE("[user]撬开了[src]。"),
 							SPAN_NOTICE("You pry open [src]."))
 	else
 		return attack_hand(user)
@@ -48,7 +48,7 @@
 /obj/structure/largecrate/attack_alien(mob/living/carbon/xenomorph/user)
 	user.animation_attack_on(src)
 	unpack()
-	user.visible_message(SPAN_DANGER("[user] smashes [src] apart!"),
+	user.visible_message(SPAN_DANGER("[user]砸碎了[src]！"),
 					  SPAN_DANGER("We smash [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_ATTACK_ACTION
 
@@ -56,7 +56,7 @@
 	if(unslashable)
 		return TAILSTAB_COOLDOWN_NONE
 	unpack()
-	xeno.visible_message(SPAN_DANGER("[xeno] smashes [src] apart with its tail!"),
+	xeno.visible_message(SPAN_DANGER("[xeno]用它的尾巴砸碎了[src]！"),
 	SPAN_DANGER("We smash [src] apart with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
@@ -86,7 +86,7 @@
 	. = ..()
 
 /obj/structure/largecrate/cow
-	name = "cow crate"
+	name = "牛箱"
 	icon_state = "lisacrate"
 
 /obj/structure/largecrate/cow/attackby(obj/item/W as obj, mob/user as mob)
@@ -95,7 +95,7 @@
 	. = ..()
 
 /obj/structure/largecrate/goat
-	name = "goat crate"
+	name = "山羊箱"
 	icon_state = "lisacrate"
 
 /obj/structure/largecrate/goat/attackby(obj/item/W as obj, mob/user as mob)
@@ -104,7 +104,7 @@
 	. = ..()
 
 /obj/structure/largecrate/chick
-	name = "chicken crate"
+	name = "鸡笼板条箱"
 	icon_state = "lisacrate"
 
 /obj/structure/largecrate/chick/attackby(obj/item/W as obj, mob/user as mob)
@@ -117,7 +117,7 @@
 
 // CM largecrates
 /obj/structure/largecrate/random
-	name = "supply crate"
+	name = "补给箱"
 	var/num_things = 0
 	var/list/stuff = list(/obj/item/cell/high,
 						/obj/item/storage/belt/utility/full,
@@ -145,45 +145,45 @@
 	num_things = 0
 
 /obj/structure/largecrate/random/mini
-	name = "small crate"
-	desc = "The large supply crate's cousin, 1st removed."
+	name = "小型板条箱"
+	desc = "大型补给箱的远亲，隔了一代。"
 	icon_state = "mini_crate"
 	density = FALSE
 
 /obj/structure/largecrate/random/mini/chest
-	desc = "A small plastic crate wrapped with securing elastic straps."
+	desc = "一个用安全弹性绑带包裹的小型塑料箱。"
 	icon_state = "mini_chest"
-	name = "small chest"
+	name = "小型储物箱"
 
 /obj/structure/largecrate/random/mini/chest/b
 	icon_state = "mini_chest_b"
-	name = "small chest"
+	name = "小型储物箱"
 
 /obj/structure/largecrate/random/mini/chest/c
 	icon_state = "mini_chest_c"
-	name = "small chest"
+	name = "小型储物箱"
 
 /obj/structure/largecrate/random/mini/wooden
-	desc = "A small wooden crate. Two supporting ribs cross this one's frame."
+	desc = "一个小型木箱。两条支撑肋条横跨其框架。"
 	icon_state = "mini_wooden"
-	name = "wooden crate"
+	name = "木制板条箱"
 
 /obj/structure/largecrate/random/mini/small_case
-	desc = "A small hard-shell case. What could be inside?"
+	desc = "一个硬壳小箱。里面会是什么？"
 	icon_state = "mini_case"
-	name = "small case"
+	name = "小型手提箱"
 
 /obj/structure/largecrate/random/mini/small_case/b
 	icon_state = "mini_case_b"
-	name = "small case"
+	name = "小型手提箱"
 
 /obj/structure/largecrate/random/mini/small_case/c
 	icon_state = "mini_case_c"
-	name = "small case"
+	name = "小型手提箱"
 
 /obj/structure/largecrate/random/mini/ammo
-	desc = "A small metal crate. Here, Freeman ammo!"
-	name = "small ammocase"
+	desc = "一个小型金属弹药箱。给，弗里曼，弹药！"
+	name = "小型弹药箱"
 	icon_state = "mini_ammo"
 	stuff = list(
 		/obj/item/ammo_magazine/pistol,
@@ -198,9 +198,9 @@
 	)
 
 /obj/structure/largecrate/random/mini/med
-	desc = "A small metal crate. Here, Freeman take this medkit!" //https://www.youtube.com/watch?v=OMXan7GS8-Q
+	desc = "一个小型金属医疗箱。给，弗里曼，拿上这个医疗包！" //https://www.youtube.com/watch?v=OMXan7GS8-Q
 	icon_state = "mini_medcase"
-	name = "small medcase"
+	name = "小型医疗箱"
 	num_things = 1 //funny lootbox tho.
 	stuff = list(
 		/obj/item/stack/medical/bruise_pack,
@@ -220,13 +220,13 @@
 	)
 
 /obj/structure/largecrate/random/case
-	name = "storage case"
-	desc = "A black storage case."
+	name = "存储箱"
+	desc = "一个黑色存储箱。"
 	icon_state = "case"
 
 /obj/structure/largecrate/random/case/double
 	name = "cases"
-	desc = "A stack of black storage cases."
+	desc = "一摞黑色存储箱。"
 	icon_state = "case_double"
 
 /obj/structure/largecrate/random/case/double/unpack()
@@ -239,13 +239,13 @@
 	qdel(src)
 
 /obj/structure/largecrate/random/case/small
-	name = "small cases"
-	desc = "Two small black storage cases."
+	name = "小型存储箱组"
+	desc = "两个小型黑色存储箱。"
 	icon_state = "case_small"
 
 /obj/structure/largecrate/random/barrel
-	name = "blue barrel"
-	desc = "A blue storage barrel."
+	name = "蓝色存储桶"
+	desc = "一个蓝色存储桶。"
 	icon = 'icons/obj/structures/barrels.dmi'
 	icon_state = "barrel_blue"
 	var/strap_overlay = "+straps"
@@ -255,7 +255,7 @@
 
 /obj/structure/largecrate/random/barrel/true_random
 	name = "barrel"
-	desc = "A barrel."
+	desc = "一个桶。"
 	icon_state = "barrel_recolorable"
 	desc_lore = "From the future."
 	var/cap_doodad_state = ""
@@ -324,54 +324,54 @@ GLOBAL_LIST_INIT(rbarrel_color_list, list(COLOR_SILVER,
 	. = ..()
 
 /obj/structure/largecrate/random/barrel/blue
-	name = "blue barrel"
-	desc = "A blue storage barrel."
+	name = "蓝色存储桶"
+	desc = "一个蓝色存储桶。"
 	icon_state = "barrel_blue"
 
 /obj/structure/largecrate/random/barrel/red
-	name = "red barrel"
-	desc = "A red storage barrel."
+	name = "红色存储桶"
+	desc = "一个红色存储桶。"
 	icon_state = "barrel_red"
 	straps = TRUE//the original sprite had straps, anyway, this is a harmless instance
 
 /obj/structure/largecrate/random/barrel/green
-	name = "green barrel"
-	desc = "A green storage barrel."
+	name = "绿色存储桶"
+	desc = "一个绿色存储桶。"
 	icon_state = "barrel_green"
 
 /obj/structure/largecrate/random/barrel/yellow
-	name = "yellow barrel"
-	desc = "A yellow storage barrel."
+	name = "黄色储存桶"
+	desc = "一个黄色的储存桶。"
 	icon_state = "barrel_yellow"
 
 /obj/structure/largecrate/random/barrel/white
-	name = "white barrel"
-	desc = "A white storage barrel."
+	name = "白色储存桶"
+	desc = "一个白色的储存桶。"
 	icon_state = "barrel_white"
 
 /obj/structure/largecrate/random/barrel/medical
-	name = "white barrel"
-	desc = "A white storage barrel."
+	name = "白色储存桶"
+	desc = "一个白色的储存桶。"
 	icon_state = "barrel_medical"
 
 /obj/structure/largecrate/random/barrel/black
-	name = "black barrel"
-	desc = "A black storage barrel."
+	name = "黑色储存桶"
+	desc = "一个黑色的储存桶。"
 	icon_state = "barrel_wy"
 
 /obj/structure/largecrate/random/barrel/brown
-	name = "brown barrel"
-	desc = "A brown storage barrel."
+	name = "棕色储存桶"
+	desc = "一个棕色的储存桶。"
 	icon_state = "barrel_tan"
 
 /obj/structure/largecrate/random/barrel/purewhite
-	name = "white barrel"
-	desc = "A white storage barrel."
+	name = "白色储存桶"
+	desc = "一个白色的储存桶。"
 	icon_state = "barrel_purewhite"
 
 /obj/structure/largecrate/random/secure
-	name = "secure supply crate"
-	desc = "A secure crate."
+	name = "安全补给箱"
+	desc = "一个安全的板条箱。"
 	icon_state = "secure_crate_strapped"
 	var/strapped = 1
 
@@ -381,14 +381,14 @@ GLOBAL_LIST_INIT(rbarrel_color_list, list(COLOR_SILVER,
 		return
 
 	if (!W.sharp)
-		to_chat(user, SPAN_NOTICE("You need something sharp to cut off the straps."))
+		to_chat(user, SPAN_NOTICE("你需要锋利的东西来割断绑带。"))
 		return
 
-	to_chat(user, SPAN_NOTICE("You begin to cut the straps off \the [src]..."))
+	to_chat(user, SPAN_NOTICE("你开始割断\the [src]上的绑带..."))
 
 	if (do_after(user, 15, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
-		to_chat(user, SPAN_NOTICE("You cut the straps away."))
+		to_chat(user, SPAN_NOTICE("你割断了绑带。"))
 		icon_state = "secure_crate"
 		strapped = 0
 
@@ -465,7 +465,7 @@ GLOBAL_LIST_INIT(rbarrel_color_list, list(COLOR_SILVER,
 				)
 
 /obj/structure/largecrate/hunter_games_construction
-	name = "construction crate"
+	name = "工程建材箱"
 
 /obj/structure/largecrate/hunter_games_construction/Initialize()
 	. = ..()
@@ -490,7 +490,7 @@ GLOBAL_LIST_INIT(rbarrel_color_list, list(COLOR_SILVER,
 
 
 /obj/structure/largecrate/hunter_games_medical
-	name = "medical crate"
+	name = "医疗箱"
 
 /obj/structure/largecrate/hunter_games_medical/Initialize()
 	. = ..()
@@ -512,7 +512,7 @@ GLOBAL_LIST_INIT(rbarrel_color_list, list(COLOR_SILVER,
 	new /obj/item/storage/pouch/firstaid/full(src)
 
 /obj/structure/largecrate/hunter_games_surgery
-	name = "surgery crate"
+	name = "手术箱"
 
 /obj/structure/largecrate/hunter_games_surgery/Initialize()
 	. = ..()
@@ -532,7 +532,7 @@ GLOBAL_LIST_INIT(rbarrel_color_list, list(COLOR_SILVER,
 
 
 /obj/structure/largecrate/hunter_games_supplies
-	name = "supplies crate"
+	name = "补给箱"
 
 /obj/structure/largecrate/hunter_games_supplies/Initialize()
 	. = ..()
@@ -564,7 +564,7 @@ GLOBAL_LIST_INIT(rbarrel_color_list, list(COLOR_SILVER,
 
 
 /obj/structure/largecrate/hunter_games_guns
-	name = "weapons crate"
+	name = "武器箱"
 
 /obj/structure/largecrate/hunter_games_guns/mediocre/Initialize()
 	. = ..()
@@ -627,7 +627,7 @@ GLOBAL_LIST_INIT(rbarrel_color_list, list(COLOR_SILVER,
 
 
 /obj/structure/largecrate/hunter_games_ammo
-	name = "ammo crate"
+	name = "弹药箱"
 
 /obj/structure/largecrate/hunter_games_ammo/mediocre/Initialize()
 	. = ..()
@@ -674,7 +674,7 @@ GLOBAL_LIST_INIT(rbarrel_color_list, list(COLOR_SILVER,
 
 
 /obj/structure/largecrate/hunter_games_armors
-	name = "armors crate"
+	name = "护甲箱"
 
 /obj/structure/largecrate/hunter_games_armors/Initialize()
 	. = ..()

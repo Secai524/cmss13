@@ -6,17 +6,17 @@
 	var/tempo = 5
 
 /obj/structure/device/broken_piano
-	name = "broken vintage piano"
+	name = "损坏的老式钢琴"
 	icon = 'icons/obj/structures/props/furniture/musician.dmi'
-	desc = "What a shame. This piano looks like it'll never play again. Ever. Don't even ask about it."
+	desc = "真可惜。这架钢琴看起来再也无法演奏了。永远不能。甚至别问。"
 	icon_state = "pianobroken"
 	anchored = TRUE
 	density = TRUE
 
 /obj/structure/device/broken_moog
-	name = "broken vintage synthesizer"
+	name = "损坏的老式合成器"
 	icon = 'icons/obj/structures/props/furniture/musician.dmi'
-	desc = "This spacemoog synthesizer is vintage, but trashed. Seems someone didn't like its hot fresh tunes."
+	desc = "这台太空穆格合成器是老型号，但被砸坏了。看来有人不喜欢它那火辣的新曲调。"
 	icon_state = "minimoogbroken"
 	anchored = TRUE
 	density = TRUE

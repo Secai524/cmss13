@@ -297,7 +297,7 @@
 	. = locate(/obj/docking_port/mobile) in loc
 
 /obj/docking_port/stationary/transit
-	name = "In Transit"
+	name = "运输中"
 	var/datum/turf_reservation/reserved_area
 	var/area/shuttle/transit/assigned_area
 	var/obj/docking_port/mobile/owner
@@ -471,7 +471,7 @@
 	if(!id)
 		id = "[length(SSshuttle.mobile)]"
 	if(name == "shuttle")
-		name = "shuttle[length(SSshuttle.mobile)]"
+		name = "穿梭机[length(SSshuttle.mobile)]"
 
 	shuttle_areas = list()
 	var/list/all_turfs = return_ordered_turfs(x, y, z, dir)
@@ -1076,13 +1076,13 @@
 
 /obj/docking_port/mobile/proc/can_move_topic(mob/user)
 	if(mode == SHUTTLE_RECHARGING)
-		to_chat(user, SPAN_WARNING("The engines are not ready to use yet!"))
+		to_chat(user, SPAN_WARNING("引擎尚未准备就绪！"))
 		return FALSE
 	if(launch_status == ENDGAME_LAUNCHED)
-		to_chat(user, SPAN_WARNING("You've already escaped. Never going back to that place again!"))
+		to_chat(user, SPAN_WARNING("你已经逃脱了。再也不会回到那个地方了！"))
 		return FALSE
 	if(mode != SHUTTLE_IDLE)
-		to_chat(user, SPAN_WARNING("Shuttle already in transit."))
+		to_chat(user, SPAN_WARNING("穿梭机已在运输中。"))
 		return FALSE
 	return TRUE
 

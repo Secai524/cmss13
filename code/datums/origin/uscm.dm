@@ -1,31 +1,31 @@
 /datum/origin/uscm
 	name = ORIGIN_USCM
-	desc = "You were born in the US-of-A, the best god damn country in the entire universe."
+	desc = "你出生在美利坚合众国，这整个宇宙里最他妈棒的国家。"
 
 
 /datum/origin/uscm/luna
 	name = ORIGIN_USCM_LUNA
-	desc = "You were born on a moonbase orbiting the earth. Pretty fuckin' cool if you ask me."
+	desc = "你出生在一个环绕地球的月球基地上。要我说，这他妈酷毙了。"
 
 
 /datum/origin/uscm/other
 	name = ORIGIN_USCM_OTHER
-	desc = "You were born in an non-descript country within the United Americas."
+	desc = "你出生在美洲合众国一个不起眼的国家。"
 
 
 /datum/origin/uscm/colony
 	name = ORIGIN_USCM_COLONY
-	desc = "You were born on a Weyland-Yutani colony, and your only way of escaping that hell-hole was signing up with the marines."
+	desc = "你出生在一个维兰德-汤谷殖民地，加入陆战队是你逃离那个地狱的唯一出路。"
 
 
 /datum/origin/uscm/foreign
 	name = ORIGIN_USCM_FOREIGN
-	desc = "You were born outside of the United Americas, designated irrelevant at birth."
+	desc = "你出生在美洲合众国之外，从出生起就被视为无关紧要。"
 
 
 /datum/origin/uscm/aw
 	name = ORIGIN_USCM_AW
-	desc = "You were a product of an experimental military programme that sought to breed the perfect supersoldier. In some aspects, they've succeeded."
+	desc = "你是一项旨在培育完美超级士兵的实验性军事计划的产物。在某些方面，他们成功了。"
 
 /datum/origin/uscm/aw/generate_human_name(gender = MALE)
 	switch(gender)
@@ -51,12 +51,12 @@
 
 /datum/origin/uscm/convict/minor
 	name = ORIGIN_USCM_CONVICT_MINOR
-	desc = "Where you were born is irrelevant, as far as anyone is concerned you are were convicted for numerous minor crimes and offered a way out: the USCM."
+	desc = "你的出生地无关紧要，在所有人看来，你因多项轻微罪行被定罪，并被提供了一个出路：USCM。"
 
 /datum/origin/uscm/convict/gang
 	name = ORIGIN_USCM_CONVICT_GANG
-	desc = "Where you were born is irrelevant, as far as anyone is concerned you are were convicted for gang related crimes and offered a way out: the USCM."
+	desc = "你的出生地无关紧要，在所有人看来，你因涉黑帮罪行被定罪，并被提供了一个出路：USCM。"
 
 /datum/origin/uscm/convict/smuggling
 	name = ORIGIN_USCM_CONVICT_SMUGGLING
-	desc = "Where you were born is irrelevant, as far as anyone is concerned you are were convicted for smuggling (and likely some piracy) and offered a way out: the USCM."
+	desc = "你的出生地无关紧要，在所有人看来，你因走私（可能还有些海盗行为）被定罪，并被提供了一个出路：USCM。"

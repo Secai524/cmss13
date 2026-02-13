@@ -17,7 +17,7 @@
  * and next references for the respective elements in that bucket's list.
  */
 SUBSYSTEM_DEF(timer)
-	name = "Timer"
+	name = "计时器"
 	wait = 1 // SS_TICKER subsystem, so wait is in ticks
 	init_order = SS_INIT_TIMER
 	priority = SS_PRIORITY_TIMER
@@ -505,7 +505,7 @@ SUBSYSTEM_DEF(timer)
 /datum/timedevent/proc/bucketJoin()
 	// Generate debug-friendly name for timer
 	var/static/list/bitfield_flags = list("TIMER_UNIQUE", "TIMER_OVERRIDE", "TIMER_CLIENT_TIME", "TIMER_STOPPABLE", "TIMER_NO_HASH_WAIT", "TIMER_LOOP")
-	name = "Timer: [id] ([text_ref(src)]), TTR: [timeToRun], wait:[wait] Flags: [jointext(bitfield_to_list(flags, bitfield_flags), ", ")], \
+	name = "计时器：[id] ([text_ref(src)])，TTR：[timeToRun]，等待：[wait] 标志：[jointext(bitfield_to_list(flags, bitfield_flags), ", ")], \
 		callBack: [text_ref(callBack)], callBack.object: [callBack.object][text_ref(callBack.object)]([getcallingtype()]), \
 		callBack.delegate:[callBack.delegate]([callBack.arguments ? callBack.arguments.Join(", ") : ""]), source: [source]"
 

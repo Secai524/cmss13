@@ -1,5 +1,5 @@
 /datum/faction/cmb
-	name = "Colonial Marshal Bureau"
+	name = "殖民地执法局"
 	faction_tag = FACTION_MARSHAL
 	base_icon_file = 'icons/mob/hud/factions/cmb.dmi'
 

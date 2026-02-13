@@ -1,6 +1,6 @@
 /obj/structure/machinery/computer/teleporter_console
-	name = "teleporter console"
-	desc = "A console used for controlling teleporters."
+	name = "传送器控制台"
+	desc = "用于控制传送器的控制台。"
 	icon_state = "teleport"
 	unacidable = TRUE
 	var/datum/teleporter/linked_teleporter
@@ -18,11 +18,11 @@
 		return
 
 	if(ishuman(user) && !skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
-		to_chat(user, SPAN_WARNING("You can't figure out how to use [src]."))
+		to_chat(user, SPAN_WARNING("你搞不懂如何使用[src]。"))
 		return
 
 	if(!linked_teleporter && !attempt_teleporter_link(teleporter_id))
-		to_chat(user, SPAN_WARNING("Something has gone very, very wrong. Tell the devs. Code: TELEPORTER_CONSOLE_4"))
+		to_chat(user, SPAN_WARNING("出了非常、非常严重的问题。通知开发人员。代码：TELEPORTER_CONSOLE_4"))
 		log_debug("Couldn't find teleporter matching ID [teleporter_id]. Code: TELEPORTER_CONSOLE_4")
 		log_admin("Couldn't find teleporter matching ID [teleporter_id]. Tell the devs. Code: TELEPORTER_CONSOLE_4")
 		return
@@ -65,7 +65,7 @@
 
 	if(!linked_teleporter)
 		if(!attempt_teleporter_link(teleporter_id))
-			to_chat(user, SPAN_WARNING("Something has gone very, very wrong. Tell the devs. Code: TELEPORTER_CONSOLE_5"))
+			to_chat(user, SPAN_WARNING("出了非常、非常严重的问题。通知开发人员。代码：TELEPORTER_CONSOLE_5"))
 			log_debug("Couldn't find teleporter matching ID [teleporter_id]. Code: TELEPORTER_CONSOLE_5")
 			log_admin("Couldn't find teleporter matching ID [teleporter_id]. Tell the devs. Code: TELEPORTER_CONSOLE_5")
 			return
@@ -104,11 +104,11 @@
 
 /obj/structure/machinery/computer/teleporter_console/proc/carry_out_teleport()
 	if(!linked_teleporter.safety_check_destination(selected_destination))
-		visible_message("<b>[src]</b> beeps, \"The destination is unsafe. Please clear it of any dangerous or dense objects.\"")
+		visible_message("<b>[src]</b>发出哔哔声，\"The destination is unsafe. Please clear it of any dangerous or dense objects.\"")
 		return
 
 	if(!linked_teleporter.safety_check_source(selected_source))
-		visible_message("<b>[src]</b> beeps, \"The source location is unsafe. Any large objects must be completely inside the teleporter.\"")
+		visible_message("<b>[src]</b>发出哔哔声，\"The source location is unsafe. Any large objects must be completely inside the teleporter.\"")
 		return
 
 	teleporting = TRUE
@@ -121,23 +121,23 @@
 	spawn(0)
 		linked_teleporter.apply_vfx(selected_source, 30)
 
-	visible_message("<b>[src]</b> beeps, \"Initiating Teleportation in 5 seconds....\"")
+	visible_message("<b>[src]</b>发出哔哔声，\"Initiating Teleportation in 5 seconds....\"")
 
 	sleep(10)
 
-	visible_message("<b>[src]</b> beeps, \"Initiating Teleportation in 4 seconds....\"")
+	visible_message("<b>[src]</b>发出哔哔声，\"Initiating Teleportation in 4 seconds....\"")
 
 	sleep(10)
 
-	visible_message("<b>[src]</b> beeps, \"Initiating Teleportation in 3 seconds....\"")
+	visible_message("<b>[src]</b>发出哔哔声，\"Initiating Teleportation in 3 seconds....\"")
 
 	sleep(10)
 
-	visible_message("<b>[src]</b> beeps, \"Initiating Teleportation in 2 seconds....\"")
+	visible_message("<b>[src]</b>发出哔哔声，\"Initiating Teleportation in 2 seconds....\"")
 
 	sleep(10)
 
-	visible_message("<b>[src]</b> beeps, \"Initiating Teleportation in 1 second....\"")
+	visible_message("<b>[src]</b>发出哔哔声，\"Initiating Teleportation in 1 second....\"")
 
 	for(var/turf_key in turf_keys)
 		var/turf/T = turf_keys[turf_key]
@@ -145,13 +145,13 @@
 
 	sleep(10)
 
-	visible_message("<b>[src]</b> beeps, \"INITIATING TELEPORTATION....\"")
+	visible_message("<b>[src]</b>发出哔哔声，\"INITIATING TELEPORTATION....\"")
 
 	teleporting = FALSE
 	SStgui.update_uis(src)
 
 	if(!linked_teleporter.safety_check_source(selected_source) || !linked_teleporter.safety_check_destination(selected_destination) || !linked_teleporter.check_teleport_cooldown())
-		visible_message("<b>[src]</b> beeps, \"TELEPORTATION ERROR; ABORTING....\"")
+		visible_message("<b>[src]</b>发出哔哔声，\"TELEPORTATION ERROR; ABORTING....\"")
 		return
 
 	linked_teleporter.teleport(selected_source, selected_destination)
@@ -164,13 +164,13 @@
 
 
 /obj/structure/machinery/computer/teleporter_console/bullet_act(obj/projectile/P)
-	visible_message("[P] doesn't even scratch [src]!")
+	visible_message("[P]甚至没有划伤[src]！")
 	return FALSE
 
 // Please only add things with teleporter_id set or it will not work and you'll spam the shit out of admin logs
 /obj/structure/machinery/computer/teleporter_console/corsat
 	name = "\improper CORSAT Teleporter Console"
-	desc = "A console used for interfacing with the CORSAT experimental teleporter."
+	desc = "用于与CORSAT实验性传送器对接的控制台。"
 	teleporter_id = "Corsat_Teleporter"
 
 /obj/structure/machinery/computer/teleporter_console/corsat/Initialize()

@@ -2,7 +2,7 @@
 #define SENDMAPS_FILENAME "sendmaps.json"
 
 SUBSYSTEM_DEF(profiler)
-	name = "Profiler"
+	name = "性能分析器"
 	init_order = SS_INIT_PROFILER
 	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
 	wait = 300 SECONDS

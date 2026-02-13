@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(projectiles)
-	name = "Projectiles"
+	name = "抛射物"
 	wait = 1
 	init_order = SS_INIT_PROJECTILES
 	flags = SS_TICKER

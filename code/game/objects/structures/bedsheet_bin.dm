@@ -6,7 +6,7 @@ LINEN BINS
 
 /obj/item/bedsheet
 	name = "bedsheet"
-	desc = "A surprisingly soft linen bedsheet."
+	desc = "一条出奇柔软的亚麻床单。"
 	icon = 'icons/obj/items/bedsheets.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bedsheets_lefthand.dmi',
@@ -106,8 +106,8 @@ LINEN BINS
 	color = "#e2df90"
 
 /obj/structure/bedsheetbin
-	name = "linen bin"
-	desc = "A linen bin. It looks rather cosy."
+	name = "亚麻布桶"
+	desc = "一个亚麻布桶。看起来相当舒适。"
 	icon = 'icons/obj/structures/props/watercloset.dmi'
 	icon_state = "linenbin-full"
 	anchored = TRUE
@@ -143,12 +143,12 @@ LINEN BINS
 			I.forceMove(src)
 			sheets.Add(I)
 			amount++
-			to_chat(user, SPAN_NOTICE("You put [I] in [src]."))
+			to_chat(user, SPAN_NOTICE("你将[I]放入[src]。"))
 	else if(amount && !hidden && I.w_class < 4 && !(I.flags_item & ITEM_ABSTRACT)) //make sure there's sheets to hide it among, make sure nothing else is hidden in there.
 		if(user.drop_held_item())
 			I.forceMove(src)
 			hidden = I
-			to_chat(user, SPAN_NOTICE("You hide [I] among the sheets."))
+			to_chat(user, SPAN_NOTICE("你将[I]藏在床单里。"))
 
 /obj/structure/bedsheetbin/attack_hand(mob/user as mob)
 	if(amount >= 1)
@@ -164,11 +164,11 @@ LINEN BINS
 
 		B.forceMove(user.loc)
 		user.put_in_hands(B)
-		to_chat(user, SPAN_NOTICE("You take [B] out of [src]."))
+		to_chat(user, SPAN_NOTICE("你从[src]中取出[B]。"))
 
 		if(hidden)
 			hidden.forceMove(user.loc)
-			to_chat(user, SPAN_NOTICE("[hidden] falls out of [B]!"))
+			to_chat(user, SPAN_NOTICE("[hidden]从[B]中掉了出来！"))
 			hidden = null
 
 

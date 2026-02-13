@@ -1,7 +1,7 @@
 
 /obj/vehicle/multitile/apc/command
-	name = "M577-CMD Armored Personnel Carrier"
-	desc = "A modification of the M577 Armored Personnel Carrier designed to act as a field commander vehicle. An armored transport with four big wheels. Has inbuilt sensor tower and a field command station installed inside. Entrances on the sides."
+	name = "M577-CMD装甲运兵车"
+	desc = "M577装甲运兵车的改进型号，设计用作野战指挥官车辆。一种带有四个大轮子的装甲运输工具。内置传感器塔，车内安装了野战指挥站。侧面有入口。"
 
 	icon_state = "apc_base_com"
 
@@ -148,7 +148,7 @@
 //taken from gear_access_point.dm
 /obj/vehicle/multitile/apc/command/proc/access_techpod(mob/user)
 	if(!ishuman(user) || !get_access_permission(user))
-		to_chat(user, SPAN_WARNING("Access denied."))
+		to_chat(user, SPAN_WARNING("权限被拒绝。"))
 		return
 
 	if(health < initial(health) * 0.5)
@@ -164,16 +164,16 @@
 		list_of_techs[droppod_tech.name] = droppod_tech
 
 	if(!length(list_of_techs))
-		to_chat(user, SPAN_WARNING("No tech gear is available at the moment!"))
+		to_chat(user, SPAN_WARNING("目前没有可用的技术装备！"))
 		return
 
-	var/user_input = tgui_input_list(user, "Choose a tech to retrieve an item from.", name, list_of_techs)
+	var/user_input = tgui_input_list(user, "选择一个技术类别以从中取回物品。", name, list_of_techs)
 	if(!user_input)
 		return
 
 	var/datum/tech/droppod/chosen_tech = list_of_techs[user_input]
 	if(!chosen_tech.can_access(user))
-		to_chat(user, SPAN_WARNING("You cannot access this tech!"))
+		to_chat(user, SPAN_WARNING("你无法访问此技术！"))
 		return
 
 	chosen_tech.on_pod_access(user)
@@ -182,7 +182,7 @@
 /obj/vehicle/multitile/apc/command/proc/get_access_permission(mob/living/carbon/human/user)
 	if(SSticker.mode == GAMEMODE_WHISKEY_OUTPOST || GLOB.master_mode == GAMEMODE_WHISKEY_OUTPOST)
 		return TRUE
-	else if(SSticker.mode == "Distress Signal" || GLOB.master_mode == "Distress Signal")
+	else if(SSticker.mode == "求救信号" || GLOB.master_mode == "求救信号")
 		if(techpod_access_settings_override)
 			return TRUE
 		else if(user.get_target_lock(techpod_faction_requirement))
@@ -201,7 +201,7 @@
 ** PRESETS SPAWNERS
 */
 /obj/effect/vehicle_spawner/apc_cmd
-	name = "APC CMD Spawner"
+	name = "装甲运兵车指挥型生成器"
 	icon = 'icons/obj/vehicles/apc.dmi'
 	icon_state = "apc_base_com"
 	pixel_x = -48

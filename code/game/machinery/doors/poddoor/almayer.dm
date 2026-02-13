@@ -34,8 +34,8 @@
 	density = FALSE
 
 /obj/structure/machinery/door/poddoor/almayer/blended/liaison
-	name = "reinforced hull"
-	desc = "A reinforced metal wall used to separate rooms and make up the ship."
+	name = "强化船体"
+	desc = "用于分隔舱室并构成舰船结构的强化金属墙壁。"
 	icon_state = "liaison_pdoor1"
 	base_icon_state = "liaison_pdoor"
 	id = "CLRoomDivider"

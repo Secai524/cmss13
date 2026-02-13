@@ -2,7 +2,7 @@
 //NASA Voidsuit
 /obj/item/clothing/head/helmet/space/uscm
 	name = "\improper USCM Compression Helmet"
-	desc = "A high tech, USCM designed, dark red space suit helmet. Used for maintenance in space."
+	desc = "一项高科技、USCM设计的深红色太空服头盔。用于太空维护。"
 	icon_state = "void"
 	item_state = "void"
 
@@ -10,5 +10,5 @@
 	name = "\improper USCM Compression Suit"
 	icon_state = "void"
 	item_state = "void"
-	desc = "A high tech, USCM designed, dark red Space suit. Used for maintenance in space."
+	desc = "一套高科技、USCM设计的深红色太空服。用于太空维护。"
 	slowdown = 1

@@ -3,7 +3,7 @@
 //------------------------------------------
 
 /obj/effect/block //color is white by default, set to whatever is needed
-	name = "blocking glow"
+	name = "阻挡辉光"
 	icon_state = "block"
 	color = COLOR_YELLOW
 	layer = ABOVE_MOB_LAYER

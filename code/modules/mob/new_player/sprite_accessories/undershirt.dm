@@ -56,7 +56,7 @@ GLOBAL_LIST_INIT_TYPED(undershirt_f, /datum/sprite_accessory/undershirt, setup_u
 
 // Plural
 /datum/sprite_accessory/undershirt/undershirt
-	name = "Undershirt (Tan)"
+	name = "汗衫（棕褐色）"
 	icon_state = "t_undershirt"
 	gender = NEUTER
 
@@ -64,89 +64,89 @@ GLOBAL_LIST_INIT_TYPED(undershirt_f, /datum/sprite_accessory/undershirt, setup_u
 	camo_conforming = TRUE
 
 /datum/sprite_accessory/undershirt/undershirt/black
-	name = "Undershirt (Black)"
+	name = "汗衫（黑色）"
 	icon_state = "b_undershirt"
 	camo_conforming = FALSE
 
 /datum/sprite_accessory/undershirt/undershirt/sleeveless
-	name = "Undershirt (Tan, Sleeveless)"
+	name = "汗衫（棕褐色，无袖）"
 	icon_state = "t_undershirt_sleeveless"
 	camo_conforming = TRUE
 
 /datum/sprite_accessory/undershirt/undershirt/sleeveless/black
-	name = "Undershirt (Black, Sleeveless)"
+	name = "汗衫（黑色，无袖）"
 	icon_state = "b_undershirt_sleeveless"
 	camo_conforming = FALSE
 
 /datum/sprite_accessory/undershirt/undershirt/rolled
-	name = "Undershirt (Tan, Rolled)"
+	name = "汗衫（棕褐色，卷袖）"
 	icon_state = "t_rolled_undershirt"
 	camo_conforming = TRUE
 
 /datum/sprite_accessory/undershirt/undershirt/rolled/black
-	name = "Undershirt (Black, Rolled)"
+	name = "汗衫（黑色，卷袖）"
 	icon_state = "b_rolled_undershirt"
 	camo_conforming = FALSE
 
 /datum/sprite_accessory/undershirt/undershirt/rolled_sleeveless
-	name = "Undershirt (Tan, Rolled, Sleeveless)"
+	name = "汗衫（棕褐色，卷袖，无袖）"
 	icon_state = "t_rolled_undershirt_sleeveless"
 	camo_conforming = TRUE
 
 /datum/sprite_accessory/undershirt/undershirt/rolled_sleeveless/black
-	name = "Undershirt (Black, Rolled, Sleeveless)"
+	name = "汗衫（黑色，卷袖，无袖）"
 	icon_state = "b_rolled_undershirt_sleeveless"
 	camo_conforming = FALSE
 
 /datum/sprite_accessory/undershirt/undershirt/long
-	name = "Undershirt (Tan, Long Sleeved)"
+	name = "汗衫（棕褐色，长袖）"
 	icon_state = "t_long_undershirt"
 	camo_conforming = TRUE
 
 /datum/sprite_accessory/undershirt/undershirt/long/black
-	name = "Undershirt (Black, Long Sleeved)"
+	name = "汗衫（黑色，长袖）"
 	icon_state = "b_long_undershirt"
 	camo_conforming = FALSE
 
 // Male
 /datum/sprite_accessory/undershirt/none
-	name = "None"
+	name = "无"
 	icon_state = "none"
 	gender = MALE
 
 // Female
 /datum/sprite_accessory/undershirt/bra
-	name = "Bra"
+	name = "文胸"
 	icon_state = "bra"
 	gender = FEMALE
 	camo_conforming = TRUE
 
 /datum/sprite_accessory/undershirt/bra/black
-	name = "Bra (Black)"
+	name = "文胸（黑色）"
 	icon_state = "b_bra"
 	gender = FEMALE
 	camo_conforming = FALSE
 
 /datum/sprite_accessory/undershirt/sports_bra
-	name = "Sports Bra"
+	name = "运动文胸"
 	icon_state = "sports"
 	gender = FEMALE
 	camo_conforming = TRUE
 
 /datum/sprite_accessory/undershirt/sports_bra/black
-	name = "Sports Bra (Black)"
+	name = "运动文胸（黑色）"
 	icon_state = "b_sports"
 	gender = FEMALE
 	camo_conforming = FALSE
 
 /datum/sprite_accessory/undershirt/strapless_bra
-	name = "Strapless Bra"
+	name = "无肩带文胸"
 	icon_state = "strapless"
 	gender = FEMALE
 	camo_conforming = TRUE
 
 /datum/sprite_accessory/undershirt/strapless_bra/black
-	name = "Strapless Bra (Black)"
+	name = "无肩带文胸（黑色）"
 	icon_state = "b_strapless"
 	gender = FEMALE
 	camo_conforming = FALSE

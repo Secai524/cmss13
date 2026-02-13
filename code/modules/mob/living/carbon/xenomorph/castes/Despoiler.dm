@@ -33,7 +33,7 @@
 /mob/living/carbon/xenomorph/despoiler
 	caste_type = XENO_CASTE_DESPOILER
 	name = XENO_CASTE_DESPOILER
-	desc = "An emaciated acidic terror, barely alive and constantly leaking acid."
+	desc = "一种瘦弱、充满酸液的恐怖存在，勉强存活并不断泄漏酸液。"
 	icon_size = 64
 	icon_state = "Despoiler Walking"
 	plasma_types = list(PLASMA_NEUROTOXIN, PLASMA_PURPLE)
@@ -85,7 +85,7 @@
 		behavior.slashes_enhanced = TRUE
 	xeno.attack_speed_modifier -= slash_speedup
 
-	to_chat(xeno, SPAN_XENOHIGHDANGER("Our slashes will apply stronger acid!"))
+	to_chat(xeno, SPAN_XENOHIGHDANGER("我们的劈砍将施加更强的酸液！"))
 
 	addtimer(CALLBACK(src, PROC_REF(unbuff_slash)), buff_duration)
 
@@ -102,11 +102,11 @@
 			return
 		behavior.slashes_enhanced = FALSE
 	xeno.attack_speed_modifier += slash_speedup
-	to_chat(xeno, SPAN_XENODANGER("Our power weakens, our slashes will no longer apply stronger acid!"))
+	to_chat(xeno, SPAN_XENODANGER("我们的力量减弱了，劈砍将不再施加更强的酸液！"))
 
 
 /datum/behavior_delegate/despoiler_base
-	name = "Base Despoiler Behavior Delegate"
+	name = "基础掠夺者行为委托"
 
 	var/slashes_enhanced = FALSE
 
@@ -117,7 +117,7 @@
 	var/speed_up_progress = 10
 	if (slashes_enhanced)
 		speed_up_progress = 20
-		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We significantly strengthen our attack, covering [target_carbon] in acid!"))
+		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("我们极大地强化了攻击，用酸液覆盖了[target_carbon]！"))
 		if(acid_effect)
 			acid_effect.enhance_acid(super_acid = TRUE)
 
@@ -127,7 +127,7 @@
 	acid_effect.increment_duration(speed_up_progress)
 
 
-	to_chat(target_carbon, SPAN_XENOHIGHDANGER("You feel a burning pain as [bound_xeno] slashes you, covering you in acid!"))
+	to_chat(target_carbon, SPAN_XENOHIGHDANGER("你感到一阵灼痛，[bound_xeno]劈中了你，酸液覆盖了你的全身！"))
 
 	return original_damage
 
@@ -145,7 +145,7 @@
 	XENO_ACTION_CHECK_USE_PLASMA(xeno)
 
 	playsound(xeno, 'sound/voice/xeno_praetorian_screech.ogg', 75, 0, status = 0)
-	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] begins to exude a carrion gas!"))
+	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno]开始散发出腐尸气体！"))
 	xeno.create_shriekwave()
 
 	var/datum/effect_system/smoke_spread/decomposing_enzymes/smoke_gas = new()

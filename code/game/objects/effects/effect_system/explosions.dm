@@ -26,10 +26,10 @@
 		s.start()
 
 		for(var/mob/M as anything in viewers(5, location))
-			to_chat(M, SPAN_WARNING("The solution violently explodes."))
+			to_chat(M, SPAN_WARNING("溶液猛烈爆炸。"))
 		for(var/mob/M as anything in viewers(1, location))
 			if (prob (50 * amount))
-				to_chat(M, SPAN_WARNING("The explosion knocks you down."))
+				to_chat(M, SPAN_WARNING("爆炸将你击倒。"))
 				M.apply_effect(rand(1,5), WEAKEN)
 		return
 	else
@@ -40,7 +40,7 @@
 		if (flash && flashing_factor) flash = light + 1
 
 		for(var/mob/M as anything in viewers(8, location))
-			to_chat(M, SPAN_WARNING("The solution violently explodes."))
+			to_chat(M, SPAN_WARNING("溶液猛烈爆炸。"))
 
 		explosion(location, -1, -1, light, flash)
 		if(light > 0)
@@ -69,7 +69,7 @@
 
 
 /obj/effect/particle_effect/expl_particles
-	name = "explosive particles"
+	name = "爆炸性微粒"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "explosion_particle"
 	anchored = TRUE
@@ -106,7 +106,7 @@
 //EXPLOSION EFFECT
 
 /obj/effect/particle_effect/explosion
-	name = "explosive particles"
+	name = "爆炸性微粒"
 	icon = 'icons/effects/96x96.dmi'
 	icon_state = "explosion"
 	opacity = TRUE

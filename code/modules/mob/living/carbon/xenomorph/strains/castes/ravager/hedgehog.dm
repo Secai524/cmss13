@@ -26,7 +26,7 @@
 	ravager.recalculate_everything()
 
 /datum/behavior_delegate/ravager_hedgehog
-	name = "Hedgehog Ravager Behavior Delegate"
+	name = "刺猬掠夺者行为代理"
 
 	// Shard config
 	var/max_shards = 300
@@ -54,7 +54,7 @@
 	if (!bound_xeno)
 		return
 
-	to_chat(bound_xeno, SPAN_XENODANGER("You have shed your spikes and cannot gain any more for [shard_lock_duration/10] seconds!"))
+	to_chat(bound_xeno, SPAN_XENODANGER("你已脱落尖刺，在[shard_lock_duration/10]秒内无法获得更多！"))
 
 	bound_xeno.speed_modifier -= shard_lock_speed_mod
 	bound_xeno.recalculate_speed()
@@ -68,7 +68,7 @@
 	if (!bound_xeno)
 		return
 
-	to_chat(bound_xeno, SPAN_XENODANGER("You feel your ability to gather shards return!"))
+	to_chat(bound_xeno, SPAN_XENODANGER("你感到收集骨刺碎片的能力恢复了！"))
 
 	bound_xeno.speed_modifier += shard_lock_speed_mod
 	bound_xeno.recalculate_speed()
@@ -140,11 +140,11 @@
 
 	var/datum/behavior_delegate/ravager_hedgehog/behavior = xeno.behavior_delegate
 	if (!behavior.check_shards(shard_cost))
-		to_chat(xeno, SPAN_DANGER("Not enough shards! We need [shard_cost - behavior.shards] more!"))
+		to_chat(xeno, SPAN_DANGER("骨刺碎片不足！我们还需要[shard_cost - behavior.shards]个！"))
 		return
 	behavior.use_shards(shard_cost)
 
-	xeno.visible_message(SPAN_XENODANGER("[xeno] ruffles its bone-shard quills, forming a defensive shell!"), SPAN_XENODANGER("We ruffle our bone-shard quills, forming a defensive shell!"))
+	xeno.visible_message(SPAN_XENODANGER("[xeno]竖起它的骨刺刚毛，形成了一个防御外壳！"), SPAN_XENODANGER("We ruffle our bone-shard quills, forming a defensive shell!"))
 
 	// Add our shield
 	var/datum/xeno_shield/hedgehog_shield/shield = xeno.add_xeno_shield(shield_amount, XENO_SHIELD_SOURCE_HEDGE_RAV, /datum/xeno_shield/hedgehog_shield)
@@ -185,7 +185,7 @@
 			qdel(shield)
 			break
 
-	to_chat(xeno, SPAN_XENODANGER("We feel our shard shield dissipate!"))
+	to_chat(xeno, SPAN_XENODANGER("我们感觉到碎片护盾消散了！"))
 	xeno.overlay_shields()
 	return
 
@@ -200,11 +200,11 @@
 
 	var/datum/behavior_delegate/ravager_hedgehog/behavior = xeno.behavior_delegate
 	if (!behavior.check_shards(shard_cost))
-		to_chat(xeno, SPAN_DANGER("Not enough shards! We need [shard_cost - behavior.shards] more!"))
+		to_chat(xeno, SPAN_DANGER("骨刺碎片不足！我们还需要[shard_cost - behavior.shards]个！"))
 		return
 	behavior.use_shards(shard_cost)
 
-	xeno.visible_message(SPAN_XENOWARNING("[xeno] fires their spikes at [affected_atom]!"), SPAN_XENOWARNING("We fire our spikes at [affected_atom]!"))
+	xeno.visible_message(SPAN_XENOWARNING("[xeno]向[affected_atom]发射了尖刺！"), SPAN_XENOWARNING("We fire our spikes at [affected_atom]!"))
 
 	var/turf/target = locate(affected_atom.x, affected_atom.y, affected_atom.z)
 	var/obj/projectile/projectile = new /obj/projectile(xeno.loc, create_cause_data(initial(xeno.caste_type), xeno))
@@ -242,12 +242,12 @@
 
 	var/datum/behavior_delegate/ravager_hedgehog/behavior = xeno.behavior_delegate
 	if (!behavior.check_shards(shard_cost))
-		to_chat(xeno, SPAN_DANGER("Not enough shards! We need [shard_cost - behavior.shards] more!"))
+		to_chat(xeno, SPAN_DANGER("骨刺碎片不足！我们还需要[shard_cost - behavior.shards]个！"))
 		return
 	behavior.use_shards(shard_cost)
 	behavior.lock_shards()
 
-	xeno.visible_message(SPAN_XENOWARNING("[xeno] sheds their spikes, firing them in all directions!"), SPAN_XENOWARNING("We shed our spikes, firing them in all directions!!"))
+	xeno.visible_message(SPAN_XENOWARNING("[xeno]甩出尖刺，向四面八方发射！"), SPAN_XENOWARNING("We shed our spikes, firing them in all directions!!"))
 	xeno.spin_circle()
 	create_shrapnel(get_turf(xeno), shrapnel_amount, null, null, ammo_type, create_cause_data(initial(xeno.caste_type), owner), TRUE)
 	playsound(xeno, 'sound/effects/spike_spray.ogg', 25, 1)

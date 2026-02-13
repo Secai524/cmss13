@@ -36,7 +36,7 @@
 #define EGGSAC_EGG_SUSTAIN_DISTANCE 14
 
 /datum/behavior_delegate/carrier_eggsac
-	name = "Eggsac Carrier Behavior Delegate"
+	name = "卵囊携带者行为委托"
 	///List of /obj/effect/alien/egg/carrier_egg sustained by the carrier on normal weeds
 	var/list/eggs_sustained = list()
 	///Total number of eggs which can be sustained defined as EGGSAC_OFF_WEED_EGGCAP
@@ -58,7 +58,7 @@
 		if(my_egg)
 			remove_egg_owner(my_egg)
 			my_egg.start_unstoppable_decay()
-			to_chat(bound_xeno, SPAN_XENOWARNING("You can only sustain [egg_sustain_cap] eggs off hive weeds! Your oldest placed egg is decaying rapidly."))
+			to_chat(bound_xeno, SPAN_XENOWARNING("你只能在巢穴菌毯外维持[egg_sustain_cap]个虫卵！你最早放置的虫卵正在快速衰败。"))
 
 	for(var/obj/effect/alien/egg/carrier_egg/my_egg as anything in eggs_sustained)
 		//Get the distance from us to our sustained egg
@@ -79,7 +79,7 @@
 		remove_egg_owner(my_egg)
 		my_egg.start_unstoppable_decay()
 
-	M.visible_message(SPAN_XENOWARNING("[M] throes as its eggsac bursts into a mess of acid!"))
+	M.visible_message(SPAN_XENOWARNING("[M]因卵囊爆裂成一片酸液而剧烈挣扎！"))
 	playsound(M.loc, 'sound/effects/alien_egg_burst.ogg', 25, TRUE)
 
 ///Remove all references to src in eggs_sustained
@@ -89,7 +89,7 @@
 	return ..()
 
 /datum/action/xeno_action/active_toggle/generate_egg
-	name = "Generate Eggs (50)"
+	name = "生成虫卵 (50)"
 	action_icon_state = "lay_egg"
 	action_type = XENO_ACTION_CLICK
 	plasma_cost = 50
@@ -120,7 +120,7 @@
 			if(egg_generation_progress >= 15)
 				egg_generation_progress = 0
 				xeno.eggs_cur++
-				to_chat(xeno, SPAN_XENONOTICE("We generate an egg. Now sheltering: [xeno.eggs_cur] / [xeno.eggs_max]."))
+				to_chat(xeno, SPAN_XENONOTICE("我们生成了一个虫卵。当前庇护：[xeno.eggs_cur] / [xeno.eggs_max]。"))
 				xeno.update_icons()
 			
 #undef EGGSAC_OFF_WEED_EGGCAP

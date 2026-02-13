@@ -1,5 +1,5 @@
 /datum/asset/spritesheet/vending
-	name = "goods-vending"
+	name = "商品贩卖"
 
 /datum/asset/spritesheet/vending/register()
 	// initialising the list of items we need

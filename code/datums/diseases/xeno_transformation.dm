@@ -1,14 +1,14 @@
 //Xenomicrobes
 
 /datum/disease/xeno_transformation
-	name = "Unknown Mutagenic Disease"
+	name = "未知诱变疾病"
 	max_stages = 5
 	spread = "Syringe"
 	spread_type = SPECIAL
-	cure = "Unknown"
+	cure = "未知"
 	cure_chance = 5
 	agent = "Rip-LEY Mutagenic Microbes"
-	affected_species = list("Human")
+	affected_species = list("人类")
 	hidden = list(1, 0)
 	stage_minimum_age = 100
 
@@ -17,19 +17,19 @@
 	switch(stage)
 		if(2)
 			if (prob(3))
-				to_chat(affected_mob, "Your throat feels scratchy.")
+				to_chat(affected_mob, "你的喉咙感觉有点痒。")
 		if(3)
 			if (prob(5))
-				to_chat(affected_mob, SPAN_DANGER("Your throat feels very scratchy."))
+				to_chat(affected_mob, SPAN_DANGER("你的喉咙感觉非常痒。"))
 				affected_mob.take_limb_damage(1)
 			if (prob(8))
-				to_chat(affected_mob, SPAN_DANGER("Your skin feels tight."))
+				to_chat(affected_mob, SPAN_DANGER("你的皮肤感觉紧绷。"))
 				affected_mob.take_limb_damage(2)
 			if (prob(4))
-				to_chat(affected_mob, SPAN_DANGER("You feel a stabbing pain in your head."))
+				to_chat(affected_mob, SPAN_DANGER("你感到头部一阵刺痛。"))
 				affected_mob.apply_effect(2, PARALYZE)
 			if (prob(4))
-				to_chat(affected_mob, SPAN_DANGER("You can feel something move...inside."))
+				to_chat(affected_mob, SPAN_DANGER("你能感觉到有什么东西在……里面移动。"))
 			if (prob(5))
 				to_chat(affected_mob, "\italic " + pick("Soon we will be one...", "Must... evolve...", "Capture...", "We are perfect."))
 		if(4)
@@ -39,9 +39,9 @@
 			if (prob(5))
 				affected_mob.whisper(pick("Soon we will be one...", "Must... evolve...", "Capture...", "We are perfect.", "Hsssshhhhh!"))
 			if (prob(8))
-				to_chat(affected_mob, SPAN_DANGER("You can feel... something...inside you."))
+				to_chat(affected_mob, SPAN_DANGER("你能感觉到……有什么东西……在你体内。"))
 		if(5)
-			to_chat(affected_mob, SPAN_DANGER("Your skin feels impossibly calloused..."))
+			to_chat(affected_mob, SPAN_DANGER("你的皮肤变得异常坚硬……"))
 			affected_mob.apply_damage(10, TOX)
 			affected_mob.updatehealth()
 			if(prob(40))

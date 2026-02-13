@@ -1,8 +1,8 @@
 
 
 /mob/living/simple_animal/hostile/carp
-	name = "space carp"
-	desc = "A ferocious, fang-bearing creature that resembles a fish."
+	name = "太空鲤鱼"
+	desc = "一种凶猛、长着尖牙、形似鱼的生物。"
 	icon_state = "carp"
 	icon_living = "carp"
 	icon_dead = "carp_dead"

@@ -105,7 +105,7 @@
 	if(prob(stumble_prob) && stumble)
 		if(affected_mob.is_mob_incapacitated())
 			return
-		affected_mob.visible_message(SPAN_DANGER("[affected_mob] misteps in their confusion!")
+		affected_mob.visible_message(SPAN_DANGER("[affected_mob] 在混乱中失足！")
 						,SPAN_HIGHDANGER("You stumble!"))
 		step(affected_mob, pick(CARDINAL_ALL_DIRS))
 		affected_mob.apply_effect(5, DAZE) // Unable to talk and weldervision
@@ -120,7 +120,7 @@
 		affected_mob.emote("cough")
 		affected_mob.Slow(1)
 		affected_mob.apply_damage(5,BRUTE, "chest")
-		to_chat(affected_mob, SPAN_DANGER("You cough up blood!"))
+		to_chat(affected_mob, SPAN_DANGER("你咳出血来！"))
 
 	if(chat_cd <= 0)
 		to_chat(affected_mob,msg)
@@ -151,7 +151,7 @@
 		if(17 to 24)
 			hallucination_fakecas_sequence(victim) //Not gonna spam a billion timers for this one so outsourcing to a proc with sleeps is a better async solution
 		if(25 to 42)
-			to_chat(victim,SPAN_HIGHDANGER("A SHELL IS ABOUT TO IMPACT [pick(SPAN_UNDERLINE("TOWARDS THE [pick("WEST","EAST","SOUTH","NORTH")]"),SPAN_UNDERLINE("RIGHT ONTOP OF YOU!"))]!"))
+			to_chat(victim,SPAN_HIGHDANGER("一枚炮弹即将命中 [pick(SPAN_UNDERLINE("TOWARDS THE [pick("WEST","EAST","SOUTH","NORTH")]"),SPAN_UNDERLINE("RIGHT ONTOP OF YOU!"))]!"))
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/weapons/gun_mortar_travel.ogg'), 1 SECONDS)
 		if(43 to 69)
 			victim.emote(pick("twitch","drool","moan","giggle"))

@@ -1,5 +1,5 @@
 /obj/item/weapon/banhammer
-	desc = "A banhammer."
+	desc = "一把封禁之锤。"
 	name = "banhammer"
 	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "toyhammer"
@@ -11,8 +11,8 @@
 	attack_verb = list("banned")
 
 /obj/item/weapon/nullrod
-	name = "null rod"
-	desc = "A rod of pure obsidian, its very presence disrupts and dampens the powers of paranormal phenomena."
+	name = "虚无之杖"
+	desc = "一根纯黑曜石制成的杖，它的存在本身就能扰乱和削弱超自然现象的力量。"
 	icon_state = "nullrod"
 	item_state = "nullrod"
 	item_icons = list(
@@ -31,7 +31,7 @@
 	name = "harpoon"
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = 0
-	desc = "Tharr she blows!"
+	desc = "它在那儿喷发了！"
 	icon_state = "harpoon"
 	item_state = "harpoon"
 	icon = 'icons/obj/items/weapons/melee/spears.dmi'
@@ -41,8 +41,8 @@
 	attack_verb = list("jabbed","stabbed","ripped")
 
 /obj/item/weapon/ice_axe
-	name = "ice axe"
-	desc = "For climbing, mostly. Makes for a good improvised weapon."
+	name = "冰镐"
+	desc = "主要用于攀爬。也可作为不错的临时武器。"
 	icon = 'icons/obj/items/weapons/melee/axes.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/axes_lefthand.dmi',
@@ -66,7 +66,7 @@
 
 /obj/item/weapon/baseballbat
 	name = "\improper wooden baseball bat"
-	desc = "A large wooden baseball bat. Commonly used in colony recreation, but also used as a means of self defense. Often carried by thugs and ruffians."
+	desc = "一根大型木质棒球棒。常用于殖民地娱乐活动，但也用作自卫手段。常被暴徒和流氓携带。"
 	icon_state = "woodbat"
 	item_state = "woodbat"
 	icon = 'icons/obj/items/weapons/melee/non_lethal.dmi'
@@ -87,15 +87,15 @@
 
 /obj/item/weapon/baseballbat/metal
 	name = "\improper metal baseball bat"
-	desc = "A large metal baseball bat. Compared to its wooden cousin, the metal bat offers a bit more more force. Often carried by thugs and ruffians."
+	desc = "一根大型金属棒球棒。与其木质同类相比，金属球棒能提供更大的打击力。常被暴徒和流氓携带。"
 	icon_state = "metalbat"
 	item_state = "metalbat"
 	force = MELEE_FORCE_STRONG
 	w_class = SIZE_MEDIUM
 
 /obj/item/weapon/butterfly
-	name = "butterfly knife"
-	desc = "A basic metal blade concealed in a lightweight plasteel grip. Small enough when folded to fit in a pocket."
+	name = "蝴蝶刀"
+	desc = "一把隐藏于轻质塑钢握柄中的基础金属刀刃。折叠后足够小巧，可放入口袋。"
 	icon_state = "butterflyknife"
 	item_state = null
 	icon = 'icons/obj/items/weapons/melee/knives.dmi'
@@ -121,7 +121,7 @@
 
 	active = !active
 	if(active)
-		to_chat(user, SPAN_NOTICE("You flip out your [src]."))
+		to_chat(user, SPAN_NOTICE("你甩出了你的[src]。"))
 		playsound(user, 'sound/weapons/flipblade.ogg', 15, 1)
 		force = MELEE_FORCE_STRONG //bay adjustments
 		throwforce = MELEE_FORCE_NORMAL
@@ -132,7 +132,7 @@
 		w_class = SIZE_MEDIUM
 		attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	else
-		to_chat(user, SPAN_NOTICE("[src] can now be concealed."))
+		to_chat(user, SPAN_NOTICE("[src]现在可以隐藏了。"))
 		force = initial(force)
 		edge = 0
 		sharp = 0
@@ -144,19 +144,19 @@
 
 /obj/item/weapon/butterfly/switchblade
 	name = "switchblade"
-	desc = "A classic switchblade with gold engraving. Just holding it makes you feel like a gangster."
+	desc = "一把带有金色刻花的经典弹簧刀。光是握着它就让你感觉像个黑帮分子。"
 	icon_state = "switchblade"
 
 /obj/item/weapon/butterfly/katana
 	name = "katana"
-	desc = "A ancient weapon from Japan."
+	desc = "一种来自日本的古老武器。"
 	icon_state = "samurai"
 	icon = 'icons/obj/items/weapons/melee/swords.dmi'
 	force = MELEE_FORCE_VERY_STRONG
 
 /obj/item/weapon/wirerod
-	name = "wired rod"
-	desc = "A rod with some wire wrapped around the top. It'd be easy to attach something to the top bit."
+	name = "缠线杆"
+	desc = "一根顶端缠有电线的杆子。很容易在顶端固定些东西。"
 	icon_state = "wiredrod"
 	item_state = "rods"
 	icon = 'icons/obj/items/weapons/melee/spears.dmi'
@@ -172,7 +172,7 @@
 		var/obj/item/weapon/twohanded/spear/S = new /obj/item/weapon/twohanded/spear
 
 		user.put_in_hands(S)
-		to_chat(user, SPAN_NOTICE("You fasten the glass shard to the top of the rod with the cable."))
+		to_chat(user, SPAN_NOTICE("你用电缆将玻璃碎片固定在杆子顶端。"))
 		qdel(I)
 		qdel(src)
 		update_icon(user)
@@ -181,7 +181,7 @@
 		var/obj/item/weapon/baton/cattleprod/P = new /obj/item/weapon/baton/cattleprod
 
 		user.put_in_hands(P)
-		to_chat(user, SPAN_NOTICE("You fasten the wirecutters to the top of the rod with the cable, prongs outward."))
+		to_chat(user, SPAN_NOTICE("你用电缆将剪线钳固定在杆子顶端，钳口朝外。"))
 		qdel(I)
 		qdel(src)
 		update_icon(user)
@@ -189,8 +189,8 @@
 
 
 /obj/item/weapon/sword/katana/sharp
-	name = "absurdly sharp katana"
-	desc = "<p>That's it. I'm sick of all this \"Masterwork Bastard Sword\" bullshit that's going on in CM-SS13 right now. Katanas deserve much better than that. Much, much better than that.</p>\
+	name = "锋利得离谱的武士刀"
+	desc = "<p>够了。我受够了所有这些\"Masterwork Bastard Sword\" bullshit that's going on in CM-SS13 right now. Katanas deserve much better than that. Much, much better than that.</p>\
 <p>I should know what I'm talking about. I myself commissioned a genuine katana in Japan for 2,400,000 Yen (that's about $20,000) and have been practicing with it for almost 2 years now. I can even cut slabs of solid steel with my katana.</p>\
 <p>Japanese smiths spend years working on a single katana and fold it up to a million times to produce the finest blades known to mankind.</p>\
 <p>Katanas are thrice as sharp as European swords and thrice as hard for that matter too. Anything a longsword can cut through, a katana can cut through better. I'm pretty sure a katana could easily bisect a knight wearing full plate with a simple vertical slash.</p>\
@@ -220,7 +220,7 @@
 		return 0
 
 	if( (M in already_dead) || (M.stat == DEAD) )
-		to_chat(user, "[M] is already dead.")
+		to_chat(user, "[M]已经死了。")
 		return 0
 
 	already_dead += M
@@ -247,9 +247,9 @@
 	if( ( istype(M.get_active_hand(), /obj/item/weapon/sword/katana) || istype(M.get_inactive_hand(), /obj/item/weapon/sword/katana) ) && M != user )
 
 		if(prob(50))
-			user.visible_message(SPAN_DANGER("[M] and [user] cross blades!"))
+			user.visible_message(SPAN_DANGER("[M]和[user]刀剑相交！"))
 		else
-			M.visible_message(SPAN_DANGER("[user] and [M] cross blades!"))
+			M.visible_message(SPAN_DANGER("[user]和[M]刀剑相交！"))
 		playsound(user, 'sound/weapons/bladeslice.ogg', 25, 1)
 		playsound(M, 'sound/weapons/bladeslice.ogg', 25, 1)
 		user.animation_attack_on(M)
@@ -271,7 +271,7 @@
 		var/used_verb = "attacked"
 		if(LAZYLEN(attack_verb))
 			used_verb = pick(attack_verb)
-		user.visible_message(SPAN_DANGER("[M] has been [used_verb] with [src][showname]."),
+		user.visible_message(SPAN_DANGER("[M]被[src][showname][used_verb]了。"),
 						SPAN_DANGER("You [used_verb] [M] with [src]."), null, 5)
 
 		playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1)

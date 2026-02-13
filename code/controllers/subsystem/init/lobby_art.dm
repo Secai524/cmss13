@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(lobby_art)
-	name = "Lobby Art"
+	name = "大厅艺术"
 	init_order = SS_INIT_LOBBYART
 	init_stage = INITSTAGE_EARLY
 	wait = 1 SECONDS

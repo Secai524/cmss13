@@ -1,6 +1,6 @@
 /obj/item/tool/crew_monitor
-	name = "crew monitor"
-	desc = "A tool used to get coordinates to deployed personnel. It was invented after it was found out 3/4 command officers couldn't read numbers."
+	name = "船员监控器"
+	desc = "一种用于获取已部署人员坐标的工具。在发现四分之三的指挥军官不会读数字后被发明出来。"
 	icon = 'icons/obj/items/devices.dmi'
 	icon_state = "crew_monitor"
 	flags_equip_slot = SLOT_WAIST
@@ -26,7 +26,7 @@
 
 /obj/item/clothing/suit/auto_cpr
 	name = "autocompressor" //autocompressor
-	desc = "A device that gives regular compression to the victim's ribcage, used in case of urgent heart issues.\nClick a person with it to place it on them."
+	desc = "一种对受害者胸腔进行规律按压的设备，用于紧急心脏问题。\n点击一个人以将其放置在他们身上。"
 	icon = 'icons/obj/items/medical_tools.dmi'
 	icon_state = "autocomp"
 	item_state = "autocomp"
@@ -60,17 +60,17 @@
 	if(M == user)
 		return ..()
 	if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-		to_chat(user, SPAN_WARNING("You have no idea how to use \the [src]..."))
+		to_chat(user, SPAN_WARNING("你完全不知道如何使用\the [src]..."))
 		return
 	if(M.stat == CONSCIOUS)
-		to_chat(user, SPAN_WARNING("They're fine, no need for <b>CPR</b>!"))
+		to_chat(user, SPAN_WARNING("他们没事，不需要<b>心肺复苏</b>！"))
 		return
 	if(!M.is_revivable() || !M.check_tod())
-		to_chat(user, SPAN_WARNING("That won't be of any use, they're already too far gone!"))
+		to_chat(user, SPAN_WARNING("那不会有任何用处，他们已经没救了！"))
 		return
 	if(istype(M) && user.a_intent == INTENT_HELP)
 		if(M.wear_suit)
-			to_chat(user, SPAN_WARNING("Their [M.wear_suit] is in the way, remove it first!"))
+			to_chat(user, SPAN_WARNING("他们的[M.wear_suit]挡着了，先把它脱掉！"))
 			return
 		if(!mob_can_equip(M, WEAR_JACKET))
 			to_chat(user, SPAN_WARNING("\The [src] only fits on humans!"))
@@ -168,7 +168,7 @@
 			H.updatehealth()
 			H.affected_message(H,
 				SPAN_HELPFUL("You feel a <b>breath of fresh air</b> enter your lungs. It feels good."),
-				message_viewer = SPAN_NOTICE("<b>\The [src]</b> automatically performs <b>CPR</b> on <b>[H]</b>.")
+				message_viewer = SPAN_NOTICE("<b>\The [src]</b>自动对<b>[H]</b>进行<b>心肺复苏</b>。")
 				)
 			pdcell.use(pump_cost)
 			update_icon()
@@ -176,9 +176,9 @@
 		else if(H.is_revivable() && H.stat == DEAD)
 			if(H.cpr_cooldown < world.time)
 				H.revive_grace_period += 7 SECONDS
-				H.visible_message(SPAN_NOTICE("<b>\The [src]</b> automatically performs <b>CPR</b> on <b>[H]</b>."))
+				H.visible_message(SPAN_NOTICE("<b>\The [src]</b>自动对<b>[H]</b>进行<b>心肺复苏</b>。"))
 			else
-				H.visible_message(SPAN_NOTICE("<b>\The [src]</b> fails to perform CPR on <b>[H]</b>."))
+				H.visible_message(SPAN_NOTICE("<b>\The [src]</b>未能对<b>[H]</b>进行心肺复苏。"))
 				if(prob(50))
 					var/obj/limb/E = H.get_limb("chest")
 					E.fracture(100)
@@ -191,8 +191,8 @@
 			return PROCESS_KILL
 
 /obj/item/tool/portadialysis
-	name = "portable dialysis machine"
-	desc = "A man-portable dialysis machine, with a small internal battery that can be recharged. Filters out all foreign compounds from the bloodstream of whoever it's attached to, but also typically ends up removing some blood as well."
+	name = "便携式透析机"
+	desc = "一种便携式透析机，带有一个可充电的小型内置电池。它能过滤掉连接者血液中的所有外来化合物，但通常也会带走一些血液。"
 	icon = 'icons/obj/items/medical_tools.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
@@ -263,7 +263,7 @@
 	if(!attached) //sanity
 		return
 	attached.visible_message(SPAN_WARNING("\The [src]'s needle is ripped out of [attached], doesn't that hurt?"))
-	to_chat(attached, SPAN_WARNING("Ow! A needle is ripped out of you!"))
+	to_chat(attached, SPAN_WARNING("噢！一根针从你身上被扯了出来！"))
 	damage_arms(attached)
 	if(attached.pain.feels_pain)
 		attached.emote("scream")
@@ -278,7 +278,7 @@
 		return ..()
 
 	if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-		to_chat(user, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
+		to_chat(user, SPAN_WARNING("你似乎不知道如何使用\the [src]……"))
 		return
 
 	if(!pdcell || pdcell.charge == 0)
@@ -293,11 +293,11 @@
 			return
 
 		if(attached && !(target == attached)) //are we already attached to something that isn't the target?
-			to_chat(user, SPAN_WARNING("You're already using \the [src] on someone else!"))
+			to_chat(user, SPAN_WARNING("你已经在对其他人使用\the [src]了！"))
 			return
 
 		if(target == attached) //are we attached to the target?
-			user.visible_message("[user] detaches \the [src] from [attached].",
+			user.visible_message("[user]将\the [src]从[attached]身上取下。",
 			"You detach \the [src] from [attached].")
 			attached = null
 			filtering = FALSE
@@ -311,23 +311,23 @@
 			var/obj/limb/l_arm = target.get_limb("l_arm")
 			var/obj/limb/r_arm = target.get_limb("r_arm")
 			if((l_arm.status & LIMB_DESTROYED) && (r_arm.status & LIMB_DESTROYED))
-				to_chat(user, SPAN_WARNING("[target] has no arms to attach \the [src] to!"))
+				to_chat(user, SPAN_WARNING("[target]没有手臂可以连接\the [src]！"))
 				return
 
 			attaching = TRUE
 			update_icon()
-			to_chat(target, SPAN_DANGER("[user] is trying to attach \the [src] to you!"))
-			user.visible_message(SPAN_WARNING("[user] starts setting up \the [src]'s needle on [target]'s arm."),
+			to_chat(target, SPAN_DANGER("[user]正试图将\the [src]连接到你身上！"))
+			user.visible_message(SPAN_WARNING("[user]开始将\the [src]的针头安装到[target]的手臂上。"),
 				SPAN_WARNING("You start setting up \the [src]'s needle on [target]'s arm."))
 			if(!do_after(user, attach_time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
-				user.visible_message(SPAN_WARNING("[user] stops setting up \the [src]'s needle on [target]'s arm."),
+				user.visible_message(SPAN_WARNING("[user]停止将\the [src]的针头安装到[target]的手臂上。"),
 				SPAN_WARNING("You stop setting up \the [src]'s needle on [target]'s arm."))
 				visible_message("\The [src]'s tubing snaps back onto the machine frame.")
 				attaching = FALSE
 				update_icon()
 				return
 
-			user.visible_message("[user] attaches \the [src] to [target].",
+			user.visible_message("[user]将\the [src]连接到[target]身上。",
 			"You attach \the [src] to [target].")
 			attached = target
 			filtering = TRUE

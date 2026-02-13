@@ -1,5 +1,5 @@
 /obj/structure/machinery/computer/spy_camera
-	name = "remote monitoring computer"
+	name = "远程监控电脑"
 
 	icon_state = "terminal"
 
@@ -68,15 +68,15 @@
 		return
 
 	if(locked || (!(pos_operator.faction == FACTION_FAX) && !(spy_faction in pos_operator.faction_group)))
-		to_chat(pos_operator, SPAN_WARNING("The remote camera system is locked out!"))
+		to_chat(pos_operator, SPAN_WARNING("远程摄像头系统已被锁定！"))
 		return FALSE
 
 	if(operator && operator.stat == CONSCIOUS)
-		to_chat(pos_operator, SPAN_WARNING("Someone is already using this computer!"))
+		to_chat(pos_operator, SPAN_WARNING("已有人在操作此计算机！"))
 		return
 
-	if(tgui_alert(pos_operator, "Change the camera focus?", "Spycam Computer", list("Yes", "No")) == "Yes")
-		var/obj/effect/landmark/spycam_start/start_point = tgui_input_list(pos_operator, "Where do you want to focus the camera?", "Camera Focus", GLOB.spycam_starts)
+	if(tgui_alert(pos_operator, "更改摄像头焦点？", "Spycam Computer", list("Yes", "No")) == "Yes")
+		var/obj/effect/landmark/spycam_start/start_point = tgui_input_list(pos_operator, "你想将摄像头聚焦在哪里？", "Camera Focus", GLOB.spycam_starts)
 		if(!start_point)
 			return
 		last_location = start_point.loc
@@ -85,12 +85,12 @@
 
 
 /obj/effect/landmark/spycam_start
-	name = "Spycam Landmark"
+	name = "间谍摄像头地标"
 	icon_state = "spycam"
 
 /obj/effect/landmark/spycam_start/Initialize()
 	. = ..()
-	name = "Spycam [get_area_name(src, TRUE)]"
+	name = "间谍摄像头 [get_area_name(src, TRUE)]"
 	GLOB.spycam_starts += src
 
 /obj/effect/landmark/spycam_start/Destroy()
@@ -98,7 +98,7 @@
 	return ..()
 
 /mob/hologram/spy_camera
-	name = "Spy Camera"
+	name = "间谍摄像头"
 	motion_sensed = FALSE
 	icon_state = "spycam"
 
@@ -145,7 +145,7 @@
 
 	. = ..()
 
-	name = "Spy Camera ([spy_faction])"
+	name = "间谍摄像头 ([spy_faction])"
 	RegisterSignal(spy_operator, COMSIG_MOB_PRE_CLICK, PROC_REF(handle_overwatch))
 	//RegisterSignal(spy_operator, COMSIG_XENO_OVERWATCH_XENO, PROC_REF(start_watching))
 	//RegisterSignal(spy_operator, list(
@@ -211,7 +211,7 @@
 			if(!move_warn)
 				move_warn = TRUE
 				addtimer(CALLBACK(src, PROC_REF(reset_warn)), 3 SECONDS)
-				to_chat(linked_mob, SPAN_WARNING("You cannot move the camera here, it's a solid wall!"))
+				to_chat(linked_mob, SPAN_WARNING("你无法将摄像头移动到这里，这是实心墙壁！"))
 			return COMPONENT_TURF_DENY_MOVEMENT
 
 	if(is_mainship_level(z))
@@ -238,7 +238,7 @@
 	if(!move_warn)
 		move_warn = TRUE
 		addtimer(CALLBACK(src, PROC_REF(reset_warn)), 3 SECONDS)
-		to_chat(linked_mob, SPAN_WARNING("You can't move the spy here, there's no camera you have access to nearby!"))
+		to_chat(linked_mob, SPAN_WARNING("你无法将间谍移动到这里，附近没有你有权限访问的摄像头！"))
 	return COMPONENT_TURF_DENY_MOVEMENT
 
 /mob/hologram/spy_camera/proc/reset_warn()

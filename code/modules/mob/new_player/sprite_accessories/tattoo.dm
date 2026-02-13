@@ -5,9 +5,9 @@
 	icon = 'icons/mob/humans/species/r_human.dmi'
 
 /datum/sprite_accessory/skin/human
-	name = "Default human skin"
+	name = "默认人类皮肤"
 	icon_state = "default"
 
 /datum/sprite_accessory/skin/human_tatt01
-	name = "Tatt01 human skin"
+	name = "纹身01人类皮肤"
 	icon_state = "tatt1"

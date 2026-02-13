@@ -45,7 +45,7 @@
 
 /datum/ares_record/flight/New(details, user)
 	time = worldtime2text()
-	title = "Flight Log"
+	title = "飞行日志"
 	src.details = details
 	src.user = user
 

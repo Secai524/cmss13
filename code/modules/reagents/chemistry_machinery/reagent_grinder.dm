@@ -1,5 +1,5 @@
 /obj/structure/machinery/reagentgrinder
-	name = "All-In-One Grinder"
+	name = "全能研磨机"
 	icon = 'icons/obj/structures/machinery/kitchen.dmi'
 	icon_state = "juicer1"
 	layer = ABOVE_TABLE_LAYER
@@ -68,7 +68,7 @@
 /obj/structure/machinery/reagentgrinder/process()
 	if(linked_storage)
 		if(QDELETED(linked_storage) || src.z != linked_storage.z || get_dist(src, linked_storage) > tether_range)
-			visible_message(SPAN_WARNING("<b>The [src] beeps:</b> Smartfridge connection lost."))
+			visible_message(SPAN_WARNING("<b>[src]发出哔哔声：</b>智能冰箱连接已断开。"))
 			cleanup()
 			SStgui.update_uis(src)
 
@@ -90,38 +90,38 @@
 		beaker = O
 		user.drop_inv_item_to_loc(O, src)
 		if(old_beaker)
-			to_chat(user, SPAN_NOTICE("You swap out \the [old_beaker] for \the [O]."))
+			to_chat(user, SPAN_NOTICE("你将\the [old_beaker]更换为\the [O]。"))
 			user.put_in_hands(old_beaker)
 		update_icon()
 		SStgui.update_uis(src)
 		return FALSE
 
 	if(LAZYLEN(holdingitems) >= limit)
-		to_chat(user, SPAN_WARNING("The machine cannot hold anymore items."))
+		to_chat(user, SPAN_WARNING("机器无法容纳更多物品。"))
 		return TRUE
 	if (istype(O, /obj/item/research_upgrades/grinderspeed))
 		if(limit == 16)
 			grind_duration = 3 SECONDS
 			limit = 25
-			to_chat(user, SPAN_NOTICE("You insert [O] into [src]"))
+			to_chat(user, SPAN_NOTICE("你将[O]插入[src]。"))
 			qdel(O)
 			return TRUE
 		else
-			to_chat(user, SPAN_WARNING("[src] already contains [O], and already has extended capacity and speed."))
+			to_chat(user, SPAN_WARNING("[src]已装有[O]，且已具备扩展容量和速度。"))
 			return TRUE
 	if(istype(O,/obj/item/storage))
 		var/obj/item/storage/B = O
 		if(length(B.contents) > 0)
-			to_chat(user, SPAN_NOTICE("You start dumping the contents of [B] into [src]."))
+			to_chat(user, SPAN_NOTICE("你开始将[B]中的内容物倒入[src]。"))
 			if(!do_after(user, 15, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 				return
 			for(var/obj/item/I in B)
 				if(LAZYLEN(holdingitems) >= limit)
-					to_chat(user, SPAN_WARNING("The machine cannot hold anymore items."))
+					to_chat(user, SPAN_WARNING("机器无法容纳更多物品。"))
 					break
 				else
 					if(!is_type_in_list(I, blend_items) && !is_type_in_list(I, juice_items))
-						to_chat(user, SPAN_WARNING("Cannot refine [I] into a reagent."))
+						to_chat(user, SPAN_WARNING("无法将[I]精炼成试剂。"))
 						break
 					else
 						user.drop_inv_item_to_loc(I, src)
@@ -130,11 +130,11 @@
 			return FALSE
 
 		else
-			to_chat(user, SPAN_WARNING("[B] is empty."))
+			to_chat(user, SPAN_WARNING("[B]是空的。"))
 			return TRUE
 
 	else if(!is_type_in_list(O, blend_items) && !is_type_in_list(O, juice_items))
-		to_chat(user, SPAN_WARNING("Cannot refine into a reagent."))
+		to_chat(user, SPAN_WARNING("无法精炼成试剂。"))
 		return TRUE
 	user.drop_inv_item_to_loc(O, src)
 	holdingitems += O
@@ -208,7 +208,7 @@
 		if("bottle")
 			var/id = params["id"]
 			if(QDELETED(linked_storage) || src.z != linked_storage.z || get_dist(src, linked_storage) > tether_range)
-				visible_message(SPAN_WARNING("Smartfridge is out of range. Connection severed."))
+				visible_message(SPAN_WARNING("智能冰箱超出范围。连接已断开。"))
 				cleanup()
 				return
 			if(!beaker)
@@ -254,9 +254,9 @@
 	linked_storage = locate(/obj/structure/machinery/smartfridge/chemistry) in range(tether_range, src)
 	if(linked_storage)
 		RegisterSignal(linked_storage, COMSIG_PARENT_QDELETING, PROC_REF(cleanup), override = TRUE)
-		visible_message(SPAN_NOTICE("<b>The [src] beeps:</b> Smartfridge connected."))
+		visible_message(SPAN_NOTICE("<b>[src]发出哔哔声：</b>智能冰箱已连接。"))
 	else
-		visible_message(SPAN_WARNING("<b>The [src] beeps:</b> No smartfridge detected in range."))
+		visible_message(SPAN_WARNING("<b>[src]发出哔哔声：</b>未检测到范围内的智能冰箱。"))
 
 /obj/structure/machinery/reagentgrinder/proc/is_allowed(obj/item/reagent_container/O)
 	for(var/i in blend_items)
@@ -443,8 +443,8 @@
 	SStgui.update_uis(src)
 
 /obj/structure/machinery/reagentgrinder/industrial
-	name = "Industrial Grinder"
-	desc = "A heavy-duty variant of the all-in-one grinder meant for grinding large amounts of industrial material. Not food safe."
+	name = "工业研磨机"
+	desc = "全能研磨机的重型变体，用于研磨大量工业材料。不适用于食品。"
 	icon_state = "industry1"
 	limit = 30
 	blend_items = list (

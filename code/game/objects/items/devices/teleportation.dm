@@ -9,7 +9,7 @@
  */
 /obj/item/device/locator
 	name = "locator"
-	desc = "Used to track those with locater implants."
+	desc = "用于追踪植入定位器的人员。"
 	icon_state = "locator"
 	var/temp = null
 	var/frequency = 1451
@@ -49,7 +49,7 @@
 		return
 	var/turf/current_location = get_turf(usr)//What turf is the user on?
 	if(!current_location || should_block_game_interaction(current_location))//If turf was not found or they're on z level 2.
-		to_chat(usr, "[src] is malfunctioning.")
+		to_chat(usr, "[src]发生故障。")
 		return
 	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))))
 		usr.set_interaction(src)
@@ -125,8 +125,8 @@
  * Hand-tele
  */
 /obj/item/device/hand_tele
-	name = "hand tele"
-	desc = "A portable item using blue-space technology."
+	name = "手持传送器"
+	desc = "一种使用蓝空技术的便携式物品。"
 	icon_state = "hand_tele"
 	item_state = "electronic"
 	throwforce = 5
@@ -160,7 +160,7 @@
 		turfs += T
 	if(length(turfs))
 		L["None (Dangerous)"] = pick(turfs)
-	var/t1 = tgui_input_list(user, "Please select a teleporter to lock in on.", "Hand Teleporter", L)
+	var/t1 = tgui_input_list(user, "请选择一个传送器进行锁定。", "Hand Teleporter", L)
 	if ((user.get_active_hand() != src || user.stat || user.is_mob_restrained()))
 		return
 	var/count = 0 //num of portals from this teleport in the world
@@ -173,7 +173,7 @@
 		return
 	var/T = L[t1]
 	for(var/mob/O in hearers(user, null))
-		O.show_message(SPAN_NOTICE("Locked In."), SHOW_MESSAGE_AUDIBLE)
+		O.show_message(SPAN_NOTICE("已锁定。"), SHOW_MESSAGE_AUDIBLE)
 	var/obj/effect/portal/P = new /obj/effect/portal( get_turf(src) )
 	P.target = T
 	P.creator = src

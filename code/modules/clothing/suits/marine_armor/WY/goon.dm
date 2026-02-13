@@ -1,6 +1,6 @@
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate
 	name = "\improper M1 pattern corporate security armor"
-	desc = "A basic vest with a Weyland-Yutani badge on the right breast. This is commonly worn by low-level guards protecting Weyland-Yutani facilities."
+	desc = "一件基础背心，右胸有维兰德-汤谷徽章。这通常由保护维兰德-汤谷设施的低级警卫穿着。"
 	icon_state = "armor"
 	item_state = "armor"
 	slowdown = SLOWDOWN_ARMOR_LIGHT
@@ -14,27 +14,27 @@
 	light_color = LIGHT_COLOR_TUNGSTEN
 
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/medic
-	desc = "A basic vest with a Weyland-Yutani badge on the right breast. This variant has a red badge, denoting the medical purpose of the wearer. At least in theory."
+	desc = "一件基础背心，右胸有维兰德-汤谷徽章。此变体带有红色徽章，表明穿戴者的医疗用途。至少理论上是这样。"
 	icon_state = "med_armor"
 	item_state = "med_armor"
 	item_state_slots = list(WEAR_JACKET = "med_armor")
 
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/lead
-	desc = "A basic vest with a Weyland-Yutani badge on the right breast. This variant is worn by low-level guards that have elevated in rank due to 'good conduct in the field', also known as corporate bootlicking."
+	desc = "一件基础背心，右胸有维兰德-汤谷徽章。这种款式由因‘战场表现良好’——也就是公司马屁精——而晋升的低级守卫穿着。"
 	icon_state = "lead_armor"
 	item_state = "lead_armor"
 	item_state_slots = list(WEAR_JACKET = "lead_armor")
 
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/synth/corporate
 	name = "\improper M1 pattern corporate synthetic armor"
-	desc = "A basic synthetic personnel vest with a Weyland-Yutani badge on the right breast. This is a rare sight, as low-level security units often aren't afforded the luxury of an accompanying synthetic. It has all of the armor inserts removed."
+	desc = "一件基础的合成人员背心，右胸有维兰德-汤谷徽章。这很罕见，因为低级安保单位通常没有配备合成人的待遇。其所有护甲插板均已移除。"
 	icon_state = "armor"
 	item_state = "armor"
 	storage_slots = 2
 	item_state_slots = list(WEAR_JACKET = "armor")
 
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/ppo
-	desc = "A basic vest with a Weyland-Yutani badge on the right breast. This variant is worn by Personal Protection Officers protecting Weyland-Yutani employees, as denoted by the blue badge."
+	desc = "一件基础背心，右胸有维兰德-汤谷徽章。这种款式由保护维兰德-汤谷雇员的个人保护官穿着，以蓝色徽章为标识。"
 	icon_state = "ppo_armor"
 	item_state = "ppo_armor"
 	item_state_slots = list(WEAR_JACKET = "ppo_armor")
@@ -51,7 +51,7 @@
 
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/ppo/strong
 	name = "\improper M4 pattern PPO armor"
-	desc = "A modification of the standard Armat Systems M3 armor. This variant is worn by Personal Protection Officers protecting Weyland-Yutani employees, as denoted by the blue detailing. Has some armor plating removed for extra mobility."
+	desc = "标准阿玛特系统M3护甲的改型。这种款式由保护维兰德-汤谷雇员的个人保护官穿着，以蓝色细节为标识。移除了部分护甲板以增强机动性。"
 	icon_state = "ppo_armor_strong"
 	item_state_slots = list(WEAR_JACKET = "ppo_armor_strong")
 	storage_slots = 2

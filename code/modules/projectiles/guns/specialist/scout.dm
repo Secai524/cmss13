@@ -2,7 +2,7 @@
 
 /obj/item/weapon/gun/rifle/m4ra_custom
 	name = "\improper M4RA custom battle rifle"
-	desc = "This is a further improvement upon the already rock-solid M4RA. Made by the USCM armorers on Chinook station - This variant of the M4RA has a specifically milled magazine well to accept A19 rounds. It sports a light-weight titantium-alloy frame, better responsive to the heavy kick of the tailor-made A19 rounds."
+	desc = "这是对原本就坚如磐石的M4RA的进一步改进。由奇努克空间站上的USCM军械师制造——这款M4RA变体拥有专门铣削的弹匣井以适配A19弹药。它采用了轻质钛合金框架，能更好地应对定制A19弹药产生的强大后坐力。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/marksman_rifles.dmi'
 	icon_state = "m4ra_custom"
 	item_state = "m4ra_custom"
@@ -94,7 +94,7 @@
 	. = ..()
 	if (. && istype(user)) //Let's check all that other stuff first.
 		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SCOUT)
-			to_chat(user, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
+			to_chat(user, SPAN_WARNING("你似乎不知道如何使用\the [src]……"))
 			return FALSE
 
 /obj/item/weapon/gun/rifle/m4ra_custom/tactical

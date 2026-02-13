@@ -1,7 +1,7 @@
 //Space santa outfit suit
 /obj/item/clothing/head/helmet/space/santahat
-	name = "Santa's hat"
-	desc = "Ho ho ho. Merrry X-mas!"
+	name = "圣诞帽"
+	desc = "呵呵呵。圣诞快乐！"
 	icon_state = "santa_hat_red"
 	item_state = "santa_hat_red"
 	icon = 'icons/obj/items/clothing/hats/hats.dmi'
@@ -18,8 +18,8 @@
 	icon_state = "santa_hat_green"
 
 /obj/item/clothing/suit/space/santa
-	name = "Santa's suit"
-	desc = "Festive!"
+	name = "圣诞老人套装"
+	desc = "节日气氛！"
 	icon_state = "santa"
 	item_state = "santa"
 	icon = 'icons/obj/items/clothing/suits/misc_ert.dmi'
@@ -33,7 +33,7 @@
 
 /obj/item/clothing/head/helmet/space/compression
 	name = "\improper MK.50 compression helmet"
-	desc = "A heavy space helmet, designed to be coupled with the MK.50 compression suit, though it is less resilient than the suit. Feels like you could hotbox in here."
+	desc = "一顶沉重的太空头盔，设计用于搭配MK.50压缩服，但其坚固性不如护甲本身。感觉你可以在里面抽上一支。"
 	item_state = "compression"
 	icon_state = "compression"
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
@@ -47,7 +47,7 @@
 
 /obj/item/clothing/suit/space/compression
 	name = "\improper MK.50 compression suit"
-	desc = "A heavy, bulky civilian space suit, fitted with armored plates. Commonly seen in the hands of mercenaries, explorers, scavengers, and researchers."
+	desc = "一套沉重、笨重的民用太空服，配有装甲板。常见于雇佣兵、探险家、拾荒者和研究人员之手。"
 	item_state = "compression"
 	icon_state = "compression"
 	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
@@ -65,18 +65,18 @@
 
 /obj/item/clothing/head/helmet/space/compression/uscm
 	name = "\improper MK.50 compression helmet"
-	desc = "A heavy space helmet, designed to be coupled with the MK.50 compression suit, it bears USCM styling. Feels like you could hotbox in here."
+	desc = "一顶沉重的太空头盔，设计用于搭配MK.50压缩服，带有USCM的风格。感觉你可以在里面抽上一支。"
 
 /obj/item/clothing/suit/space/compression/uscm
 	name = "\improper MK.50 compression suit"
-	desc = "A heavy, bulky civilian space suit, fitted with armored plates. This specific suit has found its way into the ragtag inventory of the USCM's patrol boat requisitions system."
+	desc = "一套沉重、笨重的民用太空服，配有装甲板。这套特定的护甲不知怎地流入了USCM巡逻艇补给系统的杂牌库存中。"
 	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/baton,/obj/item/restraint/handcuffs,/obj/item/tank)
 
 // Souto man
 
 /obj/item/clothing/suit/space/souto
 	name = "\improper Souto Man tank top"
-	desc = "The tank top worn by Souto Man. As fresh as a nice can of Souto Classic!"
+	desc = "Souto Man穿着的背心。就像一罐新鲜的Souto Classic一样清爽！"
 	item_state = "souto_man"
 	icon_state = "souto_man"
 	icon = 'icons/obj/items/clothing/suits/misc_ert.dmi'
@@ -98,7 +98,7 @@
 
 /obj/item/clothing/head/helmet/space/souto
 	name = "\improper Souto Man hat"
-	desc = "The hat worn by Souto Man. As tall as the new 24oz cans of Souto Lime!"
+	desc = "Souto Man戴着的帽子。像新的24盎司Souto Lime罐子一样高！"
 	item_state = "souto_man"
 	icon_state = "souto_man"
 	icon = 'icons/obj/items/clothing/hats/hats.dmi'

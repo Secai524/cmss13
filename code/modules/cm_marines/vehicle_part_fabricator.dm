@@ -1,7 +1,7 @@
 
 /obj/structure/machinery/part_fabricator
-	name = "part fabricator"
-	desc = "A large automated 3D printer for producing runtime errors."
+	name = "零件制造机"
+	desc = "一台用于产生运行时错误的大型自动化3D打印机。"
 	density = TRUE
 	anchored = TRUE
 	use_power = USE_POWER_IDLE
@@ -17,7 +17,7 @@
 	var/list/datum/build_queue_entry/build_queue = list()
 
 /obj/structure/machinery/part_fabricator/upp
-	name = "UPP part fabricator"
+	name = "UPP零件制造机"
 	faction = FACTION_UPP
 
 
@@ -104,7 +104,7 @@
 		if((is_omnisentry && get_point_store() < omnisentry_price) || get_point_store() < entry.cost)
 			if(!TIMER_COOLDOWN_CHECK(src, COOLDOWN_PRINTER_ERROR))
 				balloon_alert_to_viewers("out of points - printing paused")
-				visible_message(SPAN_WARNING("[src] flashes a warning light."))
+				visible_message(SPAN_WARNING("[src] 闪烁起警告灯。"))
 				TIMER_COOLDOWN_START(src, COOLDOWN_PRINTER_ERROR, 20 SECONDS)
 			busy = FALSE
 			return
@@ -115,7 +115,7 @@
 		else
 			spend_point_store(entry.cost)
 
-		visible_message(SPAN_NOTICE("[src] starts printing something."))
+		visible_message(SPAN_NOTICE("[src] 开始打印某物。"))
 		addtimer(CALLBACK(src, PROC_REF(produce_part), entry), 3 SECONDS)
 
 /obj/structure/machinery/part_fabricator/proc/build_part(part_type, cost, mob/user)
@@ -127,7 +127,7 @@
 		cost = omnisentry_price
 
 	if(get_point_store() < cost)
-		to_chat(user, SPAN_WARNING("You don't have enough points to build that."))
+		to_chat(user, SPAN_WARNING("你的点数不足以制造那个。"))
 		return
 
 	build_queue += new /datum/build_queue_entry(part_type, cost)
@@ -194,7 +194,7 @@
 				return
 
 			if(busy && index == 1)
-				to_chat(user, SPAN_WARNING("Cannot cancel currently produced item."))
+				to_chat(user, SPAN_WARNING("无法取消当前正在生产的物品。"))
 				return
 
 			var/datum/build_queue_entry/entry = build_queue[index]
@@ -208,7 +208,7 @@
 
 /obj/structure/machinery/part_fabricator/attack_hand(mob/user)
 	if(!allowed(user))
-		to_chat(user, SPAN_WARNING("Access denied."))
+		to_chat(user, SPAN_WARNING("权限被拒绝。"))
 		return TRUE
 	tgui_interact(user)
 
@@ -230,8 +230,8 @@
 	icon_state = "drone_fab_idle"
 
 /obj/structure/machinery/part_fabricator/dropship
-	name = "dropship part fabricator"
-	desc = "A large automated 3D printer for producing dropship parts. You can recycle parts or ammo in it, and get 80% of your points back, by clicking it while holding them in a powerloader claw."
+	name = "运输机零件制造机"
+	desc = "一台用于生产运输机零件的大型自动化3D打印机。你可以通过用动力装载机爪夹持零件或弹药并点击它，来回收它们并获得80%的点数返还。"
 	req_access = list(ACCESS_MARINE_DROPSHIP)
 
 	unslashable = TRUE
@@ -239,7 +239,7 @@
 	faction = FACTION_MARINE
 
 /obj/structure/machinery/part_fabricator/dropship/upp
-	name = "UPP dropship part fabricator"
+	name = "UPP运输机零件制造机"
 	faction = FACTION_UPP
 	req_access = list(ACCESS_UPP_FLIGHT)
 
@@ -315,7 +315,7 @@
 
 /obj/structure/machinery/part_fabricator/dropship/proc/recycle_equipment(obj/item/powerloader_clamp/powerloader_clamp_used, mob/living/user)
 	if(!powerloader_clamp_used.loaded)
-		to_chat(user, SPAN_WARNING("There is nothing loaded in \the [powerloader_clamp_used]."))
+		to_chat(user, SPAN_WARNING("\the [powerloader_clamp_used]中未装载任何物品。"))
 		return
 
 	var/recycle_points
@@ -340,10 +340,10 @@
 		return
 
 	var/thing_to_recycle = powerloader_clamp_used.loaded
-	to_chat(user, SPAN_WARNING("You start recycling \the [powerloader_clamp_used.loaded]!"))
+	to_chat(user, SPAN_WARNING("你开始回收\the [powerloader_clamp_used.loaded]！"))
 	playsound(loc, 'sound/machines/hydraulics_1.ogg', 40, 1)
 	if(!user || !do_after(user, (3 SECONDS) * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE, powerloader_clamp_used.loaded, INTERRUPT_ALL))
-		to_chat(user, SPAN_NOTICE("You stop recycling \the [thing_to_recycle]."))
+		to_chat(user, SPAN_NOTICE("你停止回收\the [thing_to_recycle]。"))
 		return
 	if(istype(powerloader_clamp_used.loaded, /obj/structure/ship_ammo/sentry))
 		omnisentry_price -= omnisentry_price_scale
@@ -352,7 +352,7 @@
 		qdel(thing)
 	qdel(powerloader_clamp_used.loaded)
 	powerloader_clamp_used.loaded = null
-	to_chat(user, SPAN_NOTICE("You recycle \the [thing_to_recycle] into [src], and get back [floor(recycle_points * 0.8)] points."))
+	to_chat(user, SPAN_NOTICE("你将\the [thing_to_recycle]回收到[src]中，并取回[floor(recycle_points * 0.8)]点。"))
 	msg_admin_niche("[key_name(user)] recycled a [thing_to_recycle] into \the [src] for [floor(recycle_points * 0.8)] points.")
 	add_to_point_store(floor(recycle_points * 0.8))
 	playsound(loc, 'sound/machines/fax.ogg', 40, 1)
@@ -362,8 +362,8 @@
 // WARNING: IF YOU DECIDE TO READD THIS, GIVE THE HARDPOINTS POINT COSTS
 /// Fabricator for individual tank parts
 /obj/structure/machinery/part_fabricator/tank
-	name = "vehicle part fabricator"
-	desc = "A large automated 3D printer for producing vehicle parts."
+	name = "载具零件制造机"
+	desc = "一台用于生产载具零件的大型自动化3D打印机。"
 	req_access = list(ACCESS_MARINE_CREWMAN)
 	generate_points = FALSE
 
@@ -372,7 +372,7 @@
 	faction = FACTION_MARINE
 
 /obj/structure/machinery/part_fabricator/tank/upp
-	name = "UPP vehicle part fabricator"
+	name = "UPP载具零件制造机"
 	faction = FACTION_UPP
 
 /obj/structure/machinery/part_fabricator/tank/get_point_store()

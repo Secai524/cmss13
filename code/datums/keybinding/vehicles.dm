@@ -14,8 +14,8 @@
 /datum/keybinding/vehicles/toggle_door_lock
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
-	name = "Toggle door locks"
-	full_name = "Toggle Door Locks"
+	name = "切换门锁"
+	full_name = "切换门锁"
 	keybind_signal = COMSIG_KB_VEHICLE_TOGGLE_LOCKS
 
 /datum/keybinding/vehicles/toggle_door_lock/down(client/user)
@@ -29,8 +29,8 @@
 /datum/keybinding/vehicles/get_vehicle_status
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
-	name = "See vehicle status"
-	full_name = "See Vehicle Status"
+	name = "查看载具状态"
+	full_name = "查看载具状态"
 	keybind_signal = COMSIG_KB_VEHICLE_GET_STATUS
 
 /datum/keybinding/vehicles/get_vehicle_status/down(client/user)
@@ -44,8 +44,8 @@
 /datum/keybinding/vehicles/change_selected_hardpoint
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
-	name = "Change Active Hardpoint"
-	full_name = "Change Active Hardpoint"
+	name = "切换活动硬点"
+	full_name = "切换活动硬点"
 	keybind_signal = COMSIG_KB_VEHICLE_CHANGE_SELECTED_WEAPON
 
 /datum/keybinding/vehicles/change_selected_hardpoint/down(client/user)
@@ -58,8 +58,8 @@
 /datum/keybinding/vehicles/activate_horn
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
-	name = "Activate horn"
-	full_name = "Activate Horn"
+	name = "鸣笛"
+	full_name = "鸣笛"
 	keybind_signal = COMSIG_KB_VEHICLE_ACTIVATE_HORN
 
 /datum/keybinding/vehicles/activate_horn/down(client/user)
@@ -73,8 +73,8 @@
 /datum/keybinding/vehicles/reload_weapon
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
-	name = "Reload weapon"
-	full_name = "Reload Weapon"
+	name = "装填武器"
+	full_name = "装填武器"
 	keybind_signal = COMSIG_KB_VEHICLE_RELOAD_WEAPON
 
 /datum/keybinding/vehicles/reload_weapon/down(client/user)

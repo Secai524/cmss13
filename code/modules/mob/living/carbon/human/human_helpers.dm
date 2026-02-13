@@ -36,39 +36,39 @@
 					return "[skin_color]_[limb_name]_[body_type]_[get_gender_name(gender)]"
 
 		switch(limb_name)
-			if("synthetic head")
+			if("合成人头颅")
 				return "head_[get_gender_name(gender)]"
 			if("r_arm")
 				return "[skin_color]_right_arm"
-			if("right arm")
+			if("右臂")
 				return "[skin_color]_right_arm"
 			if("l_arm")
 				return "[skin_color]_left_arm"
-			if("left arm")
+			if("左臂")
 				return "[skin_color]_left_arm"
 			if("r_leg")
 				return "[skin_color]_right_leg"
-			if("right leg")
+			if("右腿")
 				return "[skin_color]_right_leg"
 			if("l_leg")
 				return "[skin_color]_left_leg"
-			if("left leg")
+			if("左腿")
 				return "[skin_color]_left_leg"
 			if("r_hand")
 				return "[skin_color]_right_hand"
-			if("right hand")
+			if("右手")
 				return "[skin_color]_right_hand"
 			if("l_hand")
 				return "[skin_color]_left_hand"
-			if("left hand")
+			if("左手")
 				return "[skin_color]_left_hand"
 			if("r_foot")
 				return "[skin_color]_right_foot"
-			if("right foot")
+			if("右脚")
 				return "[skin_color]_right_foot"
 			if("l_foot")
 				return "[skin_color]_left_foot"
-			if("left foot")
+			if("左脚")
 				return "[skin_color]_left_foot"
 
 			else
@@ -88,55 +88,55 @@
 			if ("groin")
 				return "[limb_name]_[get_gender_name(gender)]"
 
-			if("synthetic head")
+			if("合成人头颅")
 				return "head_[get_gender_name(gender)]"
 
 			if ("r_arm")
 				return "[limb_name]"
 
-			if ("right arm")
+			if ("右臂")
 				return "r_arm"
 
 			if ("l_arm")
 				return "[limb_name]"
 
-			if ("left arm")
+			if ("左臂")
 				return "l_arm"
 
 			if ("r_leg")
 				return "[limb_name]"
 
-			if ("right leg")
+			if ("右腿")
 				return "r_leg"
 
 			if ("l_leg")
 				return "[limb_name]"
 
-			if ("left leg")
+			if ("左腿")
 				return "l_leg"
 
 			if ("r_hand")
 				return "[limb_name]"
 
-			if ("right hand")
+			if ("右手")
 				return "r_hand"
 
 			if ("l_hand")
 				return "[limb_name]"
 
-			if ("left hand")
+			if ("左手")
 				return "l_hand"
 
 			if ("r_foot")
 				return "[limb_name]"
 
-			if ("right foot")
+			if ("右脚")
 				return "r_foot"
 
 			if ("l_foot")
 				return "[limb_name]"
 
-			if ("left foot")
+			if ("左脚")
 				return "l_foot"
 			else
 				message_admins("DEBUG: Something called get_limb_icon_name() incorrectly, they use the name [limb_name]")
@@ -178,11 +178,11 @@
 /mob/living/carbon/human/can_inject(mob/user, error_msg, target_zone)
 	if(species?.flags & IS_SYNTHETIC)
 		if(user && error_msg)
-			to_chat(user, SPAN_WARNING("[src] has no flesh to inject."))
+			to_chat(user, SPAN_WARNING("[src]没有可供注射的肉体。"))
 		return FALSE
 	. = TRUE
 	if(!user)
-		target_zone = pick("chest","chest","chest","left leg","right leg","left arm", "right arm", "head")
+		target_zone = pick("chest","chest","chest","左腿","右腿","左臂", "右臂", "head")
 	else if(!target_zone)
 		target_zone = user.zone_selected
 
@@ -311,17 +311,17 @@
 			if(Z.turn_off(src))
 				goes_out++
 	if(goes_out && light_off)
-		to_chat(src, SPAN_NOTICE("Your sources of light short and fizzle out."))
+		to_chat(src, SPAN_NOTICE("你的光源短路并熄灭了。"))
 	else if(goes_out)
 		if(goes_out > 1)
-			to_chat(src, SPAN_NOTICE("Your sources of light fizzle out."))
+			to_chat(src, SPAN_NOTICE("你的光源熄灭了。"))
 		else
-			to_chat(src, SPAN_NOTICE("Your source of light fizzles out."))
+			to_chat(src, SPAN_NOTICE("你的光源熄灭了。"))
 	else if(light_off)
 		if(light_off > 1)
-			to_chat(src, SPAN_NOTICE("Your sources of light short out."))
+			to_chat(src, SPAN_NOTICE("你的光源短路了。"))
 		else
-			to_chat(src, SPAN_NOTICE("Your source of light shorts out."))
+			to_chat(src, SPAN_NOTICE("你的光源短路了。"))
 
 
 /mob/living/carbon/human/a_intent_change(intent as num)
@@ -430,7 +430,7 @@
 		var/mob/living/carbon/human/human = mob
 		ignores_stripdrag_flag = human.species.ignores_stripdrag_flag
 	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && !ignores_stripdrag_flag && (stat == DEAD || health < health_threshold_crit) && !get_target_lock(mob.faction_group) && !(mob.status_flags & PERMANENTLY_DEAD))
-		to_chat(mob, SPAN_WARNING("You can't pull a crit or dead member of another faction!"))
+		to_chat(mob, SPAN_WARNING("你不能拖动其他阵营的危急或死亡成员！"))
 		return FALSE
 	return TRUE
 

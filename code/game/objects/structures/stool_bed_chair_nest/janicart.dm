@@ -35,14 +35,14 @@
 		if(reagents.total_volume > 1)
 			reagents.trans_to(mop, mop.max_reagent_volume)
 			mop.update_icon()
-			to_chat(user, SPAN_NOTICE("You wet [I] in the [callme]."))
+			to_chat(user, SPAN_NOTICE("你在[callme]里弄湿了[I]。"))
 			playsound(loc, 'sound/effects/slosh.ogg', 25, 1)
 		else
-			to_chat(user, SPAN_NOTICE("This [callme] is out of water!"))
+			to_chat(user, SPAN_NOTICE("这个[callme]没水了！"))
 	else if(istype(I, /obj/item/key))
-		to_chat(user, "Hold [I] in one of your hands while you drive this [callme].")
+		to_chat(user, "驾驶这个[callme]时，请将[I]握在其中一只手中。")
 	else if(istype(I, /obj/item/storage/bag/trash))
-		to_chat(user, SPAN_NOTICE("You hook the trashbag onto the [callme]."))
+		to_chat(user, SPAN_NOTICE("你将垃圾袋挂到[callme]上。"))
 		user.drop_held_item()
 		I.forceMove(src)
 		mybag = I
@@ -67,7 +67,7 @@
 	if(istype(user.l_hand, /obj/item/key) || istype(user.r_hand, /obj/item/key))
 		step(src, direction)
 	else
-		to_chat(user, SPAN_NOTICE("You'll need the keys in one of your hands to drive this [callme]."))
+		to_chat(user, SPAN_NOTICE("你需要将钥匙握在其中一只手中才能驾驶这个[callme]。"))
 
 
 /obj/structure/bed/chair/janicart/send_buckling_message(mob/M, mob/user)
@@ -107,12 +107,12 @@
 	if(buckled_mob)
 		if(prob(85))
 			return buckled_mob.bullet_act(Proj)
-	visible_message(SPAN_WARNING("[Proj] ricochets off the [callme]!"))
+	visible_message(SPAN_WARNING("[Proj]从[callme]上弹开了！"))
 	return 1
 
 /obj/item/key
 	name = "key"
-	desc = "A keyring with a small steel key, and a pink fob reading \"Pussy Wagon\"."
+	desc = "一个钥匙圈，上面有一把小钢钥匙和一个粉红色的钥匙牌，上面写着\"Pussy Wagon\"."
 	icon = 'icons/obj/vehicles/vehicles.dmi'
 	icon_state = "keys"
 	w_class = SIZE_TINY

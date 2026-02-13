@@ -3,7 +3,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(mentorreplies, /datum/autoreply/mentor, title)
 
 /datum/autoreply
 	/// What shows up in the list of replies, and the big red header on the reply itself.
-	var/title = "Blank"
+	var/title = "空白"
 	/// The detailed message in the auto reply.
 	var/message = "Lorem ipsum dolor sit amit."
 	/// If the autoreply will automatically close the ahelp or not.
@@ -11,137 +11,137 @@ GLOBAL_REFERENCE_LIST_INDEXED(mentorreplies, /datum/autoreply/mentor, title)
 
 /// Admin Replies
 /datum/autoreply/admin/handled
-	title = "Being Handled"
-	message = "Staff are aware of this issue and it is being handled"
+	title = "处理中"
+	message = "管理员已获悉此问题，正在处理中"
 	closer = FALSE
 
 /datum/autoreply/admin/icissue
-	title = "IC Issue"
-	message = "Your issue has been determined by an administrator to be an in character issue and does NOT require administrator intervention at this time. For further resolution you should pursue options that are in character."
+	title = "角色内问题"
+	message = "管理员已判定你的问题属于角色内问题，目前<strong>不</strong>需要管理员介入。请通过角色内途径寻求进一步解决方案。"
 
 /datum/autoreply/admin/bug
-	title = "Bug Report"
+	title = "漏洞报告"
 
 ON_CONFIG_LOAD(/datum/autoreply/admin/bug)
-	message = "Please report all bugs on our <a href='[CONFIG_GET(string/githuburl)]'>Github</a>. Administrative staff are unable to fix most bugs on a round to round basis and only round critical bugs, or exploits, should be ahelped."
+	message = "请在我们的<a href='[CONFIG_GET(string/githuburl)]'>Github</a>上报告所有漏洞。管理员通常无法在单局游戏内修复大多数漏洞，只有对当前回合至关重要的漏洞或利用行为才应通过管理员求助报告。"
 
 /datum/autoreply/admin/marine
-	title = "Marine Guide"
+	title = "陆战队员指南"
 
 ON_CONFIG_LOAD(/datum/autoreply/admin/marine)
-	message = "Your action can be answered by the <a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_MARINE_QUICKSTART]'>Marine Quickstart Guide</a>. If anything is unclear or you have another question please make a new mentorhelp or ahelp about it."
+	message = "你的问题可通过<a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_MARINE_QUICKSTART]'>陆战队员快速入门指南</a>解答。如有任何不清楚之处或其他问题，请重新发起导师求助或管理员求助。"
 
 /datum/autoreply/admin/xeno
-	title = "Xeno Guide"
+	title = "异形指南"
 
 ON_CONFIG_LOAD(/datum/autoreply/admin/xeno)
-	message = "Your action can be answered by the <a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_XENO_QUICKSTART]'>Xeno Quickstart Guide</a>. If anything is unclear or you have another question please make a new mentorhelp or ahelp about it."
+	message = "你的问题可通过<a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_XENO_QUICKSTART]'>异形快速入门指南</a>解答。如有任何不清楚之处或其他问题，请重新发起导师求助或管理员求助。"
 
 /datum/autoreply/admin/changelog
-	title = "Changelog"
-	message = "The answer to your question can be found in the Changelog. Click the changelog button at the top-right of the screen to view it in-game, alternatively go the the CM-SS13 discord server where you can look at the cm-changelog channel to find links to any merged changes to the server."
+	title = "更新日志"
+	message = "你的问题答案可在更新日志中找到。点击屏幕右上角的更新日志按钮在游戏中查看，或前往CM-SS13 Discord服务器，在cm-changelog频道查找所有已合并服务器更新的链接。"
 
 /datum/autoreply/admin/intended
-	title = "Intended"
-	message = "This is an intended feature and therefore does not need admin intervention."
+	title = "预期功能"
+	message = "此为预期功能，因此无需管理员介入。"
 
 /datum/autoreply/admin/event
-	title = "Event"
-	message = "There is currently a special event running and many things may be changed or different, however normal rules still apply unless you have been specifically instructed otherwise by a staff member."
+	title = "事件"
+	message = "当前正在进行特殊事件，许多内容可能已更改或有所不同，但除非管理员特别指示，否则常规规则依然适用。"
 
 /datum/autoreply/admin/whitelist
-	title = "Whitelist Issue"
+	title = "白名单问题"
 
 ON_CONFIG_LOAD(/datum/autoreply/admin/whitelist)
-	message = "Staff are unable to handle most whitelist rulebreaks in-game, please make a player report on the forums, <a href='[CONFIG_GET(string/playerreport)]'>here</a>."
+	message = "管理员无法在游戏中处理大多数白名单违规行为，请在论坛上提交玩家报告，<a href='[CONFIG_GET(string/playerreport)]'>点击此处</a>。"
 
 /datum/autoreply/admin/clear_cache
-	title = "Clear Cache"
-	message = "In order to clear cache, you need to click on gear icon located in upper-right corner of your BYOND client and select preferences. Switch to Games tab and click Clear Cache button. In some cases you need to manually delete cache. To do that, select Advanced tab and click Open User Directory and delete \"cache\" folder there."
+	title = "清除缓存"
+	message = "要清除缓存，你需要点击BYOND客户端右上角的齿轮图标并选择偏好设置。切换到游戏选项卡，点击清除缓存按钮。某些情况下需要手动删除缓存。为此，选择高级选项卡，点击打开用户目录并删除\"cache\" folder there."
 	closer = FALSE
 
 /datum/autoreply/admin/lobby
-	title = "Cryo and Ghost to Lobby"
-	message = "Staff have approved your request to be returned to the lobby. In order to do so, you must enter a cryogenics bay and ghost. You will be then manually returned to the lobby by staff."
+	title = "冷冻与返回大厅"
+	message = "管理员已批准你返回大厅的请求。为此，你必须进入冷冻舱并进入观察者模式。随后管理员会手动将你送回大厅。"
 	closer = FALSE
 ////////////////////////////
 /////   MENTOR HELPS   /////
 ////////////////////////////
 
 /datum/autoreply/mentor/staff_issue
-	title = "A: Staff Issue"
-	message = "This is not something that mentors can help with, please contact the staff team via AdminHelp."
+	title = "A：管理员问题"
+	message = "这不是导师能处理的问题，请通过管理员求助联系管理员团队。"
 
 /datum/autoreply/mentor/whitelist
-	title = "L: Whitelist Issue"
+	title = "L：白名单问题"
 
 ON_CONFIG_LOAD(/datum/autoreply/mentor/whitelist)
-	message = "This is not something that mentors can help with, please contact the staff team via AdminHelp. Staff are unable to handle most whitelist rulebreaks in-game and you are likely to be told to make a player report on the forums, <a href='[CONFIG_GET(string/playerreport)]'>here</a>."
+	message = "这不是导师能处理的问题，请通过管理员求助联系管理员团队。管理员无法在游戏中处理大多数白名单违规行为，你很可能会被要求在论坛上提交玩家报告，<a href='[CONFIG_GET(string/playerreport)]'>点击此处</a>。"
 
 /datum/autoreply/mentor/event
-	title = "A: Event in Progress"
-	message = "There is currently a special event running and many things may be changed or different, however normal rules still apply unless you have been specifically instructed otherwise by a staff member."
+	title = "A：事件进行中"
+	message = "当前正在进行特殊事件，许多内容可能已更改或有所不同，但除非管理员特别指示，否则常规规则依然适用。"
 
 /datum/autoreply/mentor/changelog
-	title = "C: Changelog"
-	message = "The answer to your question can be found in the Changelog. Click the changelog button at the top-right of the screen to view it in-game, alternatively go the the CM-SS13 discord server where you can look at the cm-changelog channel to find links to any merged changes to the server."
+	title = "C：更新日志"
+	message = "你的问题答案可在更新日志中找到。点击屏幕右上角的更新日志按钮在游戏中查看，或前往CM-SS13 Discord服务器，在cm-changelog频道查找所有已合并服务器更新的链接。"
 
 /datum/autoreply/mentor/join_server
-	title = "C: Joining the Server"
-	message = "Joining for new players is disabled for the current round due to either a staff member or and automatic setting during the end of the round. You can observe while it ends and wait for a new round to start."
+	title = "C：加入服务器"
+	message = "由于管理员操作或回合结束时的自动设置，当前回合已禁止新玩家加入。你可以在回合结束时进行观察，并等待新回合开始。"
 
 /datum/autoreply/mentor/leave_server
-	title = "C: Leaving the Server"
-	message = "If you need to leave the server as a marine, either go to cryo or ask someone to cryo you before leaving. If you are a xenomorph, find a safe place to rest and ghost before leaving, that will instantly unlock your xeno for observers to join."
+	title = "C：离开服务器"
+	message = "如果你需要以陆战队员身份离开服务器，请在离开前进入冷冻舱或让他人将你冷冻。如果你是异形，请在离开前找到安全地点休息并进入观察者模式，这将立即解锁你的异形供观察者加入。"
 
 /datum/autoreply/mentor/clear_cache
-	title = "C: Clear Cache"
-	message = "In order to clear cache, you need to click on gear icon located in upper-right corner of your BYOND client and select preferences. Switch to Games tab and click Clear Cache button. In some cases you need to manually delete cache. To do that, select Advanced tab and click Open User Directory and delete \"cache\" folder there."
+	title = "C：清除缓存"
+	message = "要清除缓存，你需要点击BYOND客户端右上角的齿轮图标并选择偏好设置。切换到游戏选项卡，点击清除缓存按钮。某些情况下需要手动删除缓存。为此，选择高级选项卡，点击打开用户目录并删除\"cache\" folder there."
 
 /datum/autoreply/mentor/click_drag
-	title = "C: Combat Click-Drag Override"
+	title = "C：战斗点击拖动覆盖"
 	message = "When clicking while moving the mouse, Byond sometimes detects it as a click-and-drag attempt and prevents the click from taking effect, even if the button was only held down for an instant.\
 This toggle means that when you're on disarm or harm intent, depressing the mouse triggers a click immediately even if you hold it down - unless you're trying to click-drag yourself, an ally, or something in your own inventory."
 
 /datum/autoreply/mentor/discord
-	title = "L: Discord"
+	title = "L：Discord"
 
 ON_CONFIG_LOAD(/datum/autoreply/mentor/discord)
-	message = "You can join our Discord server by using <a href='[CONFIG_GET(string/discordurl)]'>this link</a>!"
+	message = "你可以使用<a href='[CONFIG_GET(string/discordurl)]'>此链接</a>加入我们的Discord服务器！"
 
 /datum/autoreply/mentor/bug
-	title = "L: Bug Report"
+	title = "L：错误报告"
 
 ON_CONFIG_LOAD(/datum/autoreply/mentor/bug)
-	message = "Please report all bugs on our <a href='[CONFIG_GET(string/githuburl)]'>Github</a>. Administrative staff are unable to fix most bugs on a round to round basis and only round critical bugs, or exploits, should be ahelped."
+	message = "请在我们的<a href='[CONFIG_GET(string/githuburl)]'>Github</a>上报告所有漏洞。管理员通常无法在单局游戏内修复大多数漏洞，只有对当前回合至关重要的漏洞或利用行为才应通过管理员求助报告。"
 
 /datum/autoreply/mentor/currentmap
-	title = "L: Current Map"
+	title = "L：当前地图"
 
 ON_CONFIG_LOAD(/datum/autoreply/mentor/currentmap)
-	message = "If you need a map overview of the current round, use Current Map verb in OOC tab to check name of the map. Then open our <a href='[CONFIG_GET(string/wikiurl)]'>wiki front page</a> and look for the map overview in the 'Maps' section. If the map is not listed, it's a new or rare map and the overview hasn't been finished yet."
+	message = "如果你需要当前回合的地图概览，请使用OOC选项卡中的“当前地图”动词来查看地图名称。然后打开我们的<a href='[CONFIG_GET(string/wikiurl)]'>维基首页</a>，在“地图”部分查找地图概览。如果地图未列出，说明它是新地图或稀有地图，概览尚未完成。"
 
 /datum/autoreply/mentor/marine
-	title = "L: Marine Guide"
+	title = "L：陆战队员指南"
 
 ON_CONFIG_LOAD(/datum/autoreply/mentor/marine)
-	message = "Your action can be answered by the <a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_MARINE_QUICKSTART]'>Marine Quickstart Guide</a>. If anything is unclear or you have another question please make a new mentorhelp or ahelp about it."
+	message = "你的问题可通过<a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_MARINE_QUICKSTART]'>陆战队员快速入门指南</a>解答。如有任何不清楚之处或其他问题，请重新发起导师求助或管理员求助。"
 
 /datum/autoreply/mentor/xeno
-	title = "L: Xeno Guide"
+	title = "L：异形指南"
 
 ON_CONFIG_LOAD(/datum/autoreply/mentor/xeno)
-	message = "Your action can be answered by the <a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_XENO_QUICKSTART]'>Xeno Quickstart Guide</a>. If anything is unclear or you have another question please make a new mentorhelp or ahelp about it."
+	message = "你的问题可通过<a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_XENO_QUICKSTART]'>异形快速入门指南</a>解答。如有任何不清楚之处或其他问题，请重新发起导师求助或管理员求助。"
 
 /datum/autoreply/mentor/macros
-	title = "L: Macros"
+	title = "L：宏指令"
 
 ON_CONFIG_LOAD(/datum/autoreply/mentor/macros)
-	message = "This <a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_MACROS]'>guide</a> explains how to set up macros including examples of most common and useful ones."
+	message = "这份<a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_MACROS]'>指南</a>解释了如何设置宏指令，并包含了最常见和最有用的示例。"
 
 /datum/autoreply/mentor/synthkey
-	title = "H: Synthetic Reset Key"
-	message = "Synthetics cannot be restarted with a normal defibrilator and instead require a unique item called the Synthetic Reset Key. This functions the same as a defibrilator but only for synthetics. It can be used by anyone with engineering training and acquired from various squad role vendors. Most synthetics will carry one at all times."
+	title = "H：合成人重置密钥"
+	message = "合成人无法用普通除颤器重启，而是需要一种名为合成人重置密钥的特殊物品。它的功能与除颤器相同，但仅适用于合成人。任何受过工程训练的人员均可使用，并可从各班组角色供应商处获取。大多数合成人会随身携带一个。"
 
 /datum/autoreply/mentor/radio
 	title = "H: Radio"
@@ -154,13 +154,13 @@ Rangefinders allow you to get tile coordinates (longitude and latitude) by lasin
 Laser Designators have a second mode (produces a RED laser) that allows highlighting targets for Close Air Support performed by dropship pilots. They also have a fixed ID number that is shown on the pilot's weaponry console. Examine the laser designator to check its ID. Red laser must be maintained as long as needed in order for the dropship pilot to bomb the designated area. To switch between lasing modes, Alt + Click the laser designator. Alternatively, Right + Click it in hand and click \"Toggle Mode\"."
 
 /datum/autoreply/mentor/haul
-	title = "X: Haul as Xeno"
-	message = "Hauling is useful to quickly transport incapacitated hosts from one place to another. In order to haul a host as a Xeno, grab the mob (CTRL+Click) and then click on yourself to begin hauling. The host can break out of your grip, which will result in your death so make sure your target is incapacitated. After approximately 1 minute host will be automatically released. To release your target voluntary, click 'Release' on the HUD to throw them back up."
+	title = "X：作为异形拖拽"
+	message = "拖拽对于快速将失去行动能力的宿主从一个地方运送到另一个地方非常有用。要作为异形拖拽宿主，抓住目标（CTRL+点击），然后点击自己开始拖拽。宿主可能会挣脱你的抓握，这会导致你死亡，因此请确保你的目标已失去行动能力。大约1分钟后，宿主会自动被释放。要主动释放目标，点击HUD上的‘释放’将其抛出。"
 
 /datum/autoreply/mentor/plasma
-	title = "X: No plasma regen"
-	message = "If you have low/no plasma regen, it's most likely because you are off weeds or are currently using a passive ability, such as the Runner's 'Hide' or emitting a pheromone."
+	title = "X：无等离子体恢复"
+	message = "如果你的等离子体恢复速度很低或没有恢复，很可能是因为你离开了菌毯，或者正在使用被动能力，例如奔跑者的‘隐藏’或正在释放信息素。"
 
 /datum/autoreply/mentor/tunnel
-	title = "X: Tunnel"
-	message = "Click on the tunnel to enter it. While being in the tunnel, Alt + Click it to exit, Ctrl + Click to choose a destination."
+	title = "X：地道"
+	message = "点击地道进入。在地道内时，Alt + 点击地道出口，Ctrl + 点击选择目的地。"

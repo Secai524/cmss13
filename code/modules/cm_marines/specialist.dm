@@ -13,7 +13,7 @@
 
 // Spec verb macros
 /mob/living/carbon/human/verb/spec_activation_one()
-	set name = "Specialist Activation One"
+	set name = "专家技能激活一"
 	set hidden = TRUE
 
 	var/mob/living/carbon/human/H = src
@@ -24,7 +24,7 @@
 			SA.handle_spec_macro()
 
 /mob/living/carbon/human/verb/spec_activation_two()
-	set name = "Specialist Activation Two"
+	set name = "专家技能激活二"
 	set hidden = TRUE
 
 	var/mob/living/carbon/human/H = src
@@ -86,11 +86,11 @@
 
 	if(kit && (available_kit_num <= 0))
 		if(!silent)
-			to_chat(redeemer, SPAN_WARNING("No more kits of this type may be chosen."))
+			to_chat(redeemer, SPAN_WARNING("无法再选择此类型的装备包。"))
 		return FALSE
 	else if(!kit && (available_vendor_num <= 0))
 		if(!silent)
-			to_chat(redeemer, SPAN_WARNING("That set is already taken."))
+			to_chat(redeemer, SPAN_WARNING("那套装备已被领取。"))
 		return FALSE
 
 	if(skill_to_give != SKILL_SPEC_DEFAULT)
@@ -142,7 +142,7 @@
 	return available_vendor_num
 
 /datum/specialist_set/sadar
-	name = "Demolitionist Set"
+	name = "爆破手装备包"
 	role_name = "Demo"
 	skill_to_give = SKILL_SPEC_ROCKET
 	trait_to_give = "demo"
@@ -159,7 +159,7 @@
 	return TRUE
 
 /datum/specialist_set/scout
-	name = "Scout Set"
+	name = "侦察兵装备包"
 	role_name = "Scout"
 	skill_to_give = SKILL_SPEC_SCOUT
 	trait_to_give = "scout"
@@ -175,7 +175,7 @@
 	return TRUE
 
 /datum/specialist_set/sniper
-	name = "Sniper Set"
+	name = "狙击手装备包"
 	role_name = "Sniper"
 	skill_to_give = SKILL_SPEC_SNIPER
 	trait_to_give = "sniper"
@@ -186,7 +186,7 @@
 	)
 
 /datum/specialist_set/anti_mat_sniper
-	name = "Anti-Materiel Sniper Set"
+	name = "反器材狙击手装备包"
 	role_name = "Heavy Sniper"
 	skill_to_give = SKILL_SPEC_SNIPER
 	trait_to_give = "antimat_sniper"
@@ -197,7 +197,7 @@
 	)
 
 /datum/specialist_set/grenadier
-	name = "Heavy Grenadier Set"
+	name = "重型掷弹兵装备包"
 	role_name = "Grenadier"
 	skill_to_give = SKILL_SPEC_GRENADIER
 	trait_to_give = "grenadier"
@@ -208,7 +208,7 @@
 	)
 
 /datum/specialist_set/sharp_operator
-	name = "SHARP Operator Set"
+	name = "SHARP特战队员装备包"
 	role_name = "SHARP Operator"
 	skill_to_give = SKILL_SPEC_GRENADIER
 	rank_icon = "spec_sharp"
@@ -218,7 +218,7 @@
 	)
 
 /datum/specialist_set/pyro
-	name = "Pyro Set"
+	name = "喷火兵装备包"
 	role_name = "Pyro"
 	skill_to_give = SKILL_SPEC_PYRO
 	trait_to_give = "pyro"
@@ -226,7 +226,7 @@
 	kit_typepath = /obj/item/storage/box/spec/pyro
 
 /datum/specialist_set/heavy
-	name = "Heavy Armor Set"
+	name = "重型护甲装备包"
 	role_name = "Heavy"
 	skill_to_give = SKILL_SPEC_PYRO //we do not realy care atm
 	trait_to_give = "heavy"

@@ -43,7 +43,7 @@
 			if(clicked_atom.unacidable || clicked_atom.explo_proof || CHECK_BITFIELD(clicked_turf.turf_flags, TURF_HULL))
 				destruction_switch = "Make Destructible"
 			radial_menu_options = list(
-					"Destroy" = image('icons/misc/buildmode.dmi', icon_state = "buildquit"),
+					"摧毁" = image('icons/misc/buildmode.dmi', icon_state = "buildquit"),
 					"[destruction_switch]" = image('icons/misc/buildmode.dmi', icon_state = "build", dir = NORTH),
 					"Downgrade" = image('icons/misc/buildmode.dmi', icon_state = "build"),
 					"Turn" = image('icons/misc/buildmode.dmi', icon_state = "buildmode_edit"),
@@ -52,7 +52,7 @@
 				return
 			var/picked_option = show_radial_menu(admin_building.mob, clicked_atom, radial_menu_options, tooltips = TRUE, uniqueid = "buildmode_basic_turf_[key_name(admin_building)]")
 			switch(picked_option)
-				if("Destroy")
+				if("摧毁")
 					log_admin("Build Mode: [key_name(admin_building)] deleted [clicked_turf] at [AREACOORD(clicked_turf)]")
 					clicked_turf.ScrapeAway()
 				if("Downgrade")
@@ -81,10 +81,10 @@
 					log_admin("Build Mode: [key_name(admin_building)] made [clicked_turf] [clicked_atom.explo_proof ? "indestructible" : "destructible"] at [AREACOORD(clicked_turf)]")
 				if("Turn")
 					radial_menu_options = list(
-						"North" = image('icons/misc/buildmode.dmi', icon_state = "build", dir = NORTH),
-						"East" = image('icons/misc/buildmode.dmi', icon_state = "build", dir = EAST),
-						"South" = image('icons/misc/buildmode.dmi', icon_state = "build", dir = SOUTH),
-						"West" = image('icons/misc/buildmode.dmi', icon_state = "build", dir = WEST),
+						"北" = image('icons/misc/buildmode.dmi', icon_state = "build", dir = NORTH),
+						"东" = image('icons/misc/buildmode.dmi', icon_state = "build", dir = EAST),
+						"南" = image('icons/misc/buildmode.dmi', icon_state = "build", dir = SOUTH),
+						"西" = image('icons/misc/buildmode.dmi', icon_state = "build", dir = WEST),
 					)
 					if(GLOB.radial_menus["buildmode_basic_turf_[key_name(admin_building)]"])
 						return
@@ -128,13 +128,13 @@
 			if(GLOB.radial_menus["buildmode_basic_obj_[key_name(admin_building)]"])
 				return
 			radial_menu_options = list(
-					"Destroy" = image('icons/misc/buildmode.dmi', icon_state = "buildquit"),
+					"摧毁" = image('icons/misc/buildmode.dmi', icon_state = "buildquit"),
 					"[destruction_switch]" = image('icons/misc/buildmode.dmi', icon_state = "build", dir = NORTH),
 					"Turn" = image('icons/misc/buildmode.dmi', icon_state = "buildmode_edit"),
 				)
 			var/picked_option = show_radial_menu(admin_building.mob, clicked_atom, radial_menu_options, tooltips = TRUE, uniqueid = "buildmode_basic_obj_[key_name(admin_building)]")
 			switch(picked_option)
-				if("Destroy")
+				if("摧毁")
 					log_admin("Build Mode: [key_name(admin_building)] deleted [clicked_object] at [AREACOORD(clicked_object)]")
 					qdel(clicked_object)
 				if("Make Indestructible", "Make Destructible")
@@ -151,10 +151,10 @@
 					if(GLOB.radial_menus["buildmode_basic_obj_[key_name(admin_building)]"])
 						return
 					radial_menu_options = list(
-						"North" = image('icons/misc/buildmode.dmi', icon_state = "build", dir = NORTH),
-						"East" = image('icons/misc/buildmode.dmi', icon_state = "build", dir = EAST),
-						"South" = image('icons/misc/buildmode.dmi', icon_state = "build", dir = SOUTH),
-						"West" = image('icons/misc/buildmode.dmi', icon_state = "build", dir = WEST),
+						"北" = image('icons/misc/buildmode.dmi', icon_state = "build", dir = NORTH),
+						"东" = image('icons/misc/buildmode.dmi', icon_state = "build", dir = EAST),
+						"南" = image('icons/misc/buildmode.dmi', icon_state = "build", dir = SOUTH),
+						"西" = image('icons/misc/buildmode.dmi', icon_state = "build", dir = WEST),
 					)
 					var/picked_turn_option = show_radial_menu(admin_building.mob, clicked_atom, radial_menu_options, tooltips = TRUE, uniqueid = "buildmode_basic_obj_[key_name(admin_building)]")
 					clicked_atom.setDir(text2dir(capitalize(picked_turn_option)))

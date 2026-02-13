@@ -1,8 +1,8 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
 /obj/structure/machinery/computer/skills//TODO:SANITY
-	name = "Employment Records"
-	desc = "Used to view personnel's employment records."
+	name = "雇员档案"
+	desc = "用于查看人员的雇员档案。"
 	icon_state = "medlaptop"
 	req_one_access = list(ACCESS_MARINE_DATABASE)
 	circuit = /obj/item/circuitboard/computer/skills
@@ -27,7 +27,7 @@
 		if(usr.drop_held_item())
 			O.forceMove(src)
 			scan = O
-			to_chat(user, "You insert [O].")
+			to_chat(user, "你插入了[O]。")
 	. = ..()
 
 /obj/structure/machinery/computer/skills/attack_remote(mob/user as mob)
@@ -38,7 +38,7 @@
 	if(..())
 		return
 	if (src.z > 6)
-		to_chat(user, SPAN_DANGER("<b>Unable to establish a connection</b>: \black You're too far away from the station!"))
+		to_chat(user, SPAN_DANGER("<b>无法建立连接</b>: \black 你离空间站太远了！"))
 		return
 	var/dat
 
@@ -127,7 +127,7 @@
 						dat += "<br><A href='byond://?src=\ref[src];choice=Return'>Return to index.</A>"
 		else
 			dat += "<A href='byond://?src=\ref[src];choice=Log In'>{Log In}</A>"
-	show_browser(user, dat, "Employment Records", "secure_rec", width = 600, height = 400)
+	show_browser(user, dat, "雇员档案", "secure_rec", width = 600, height = 400)
 	onclose(user, "secure_rec")
 	return
 
@@ -195,7 +195,7 @@ What a mess.*/
 						screen = 1
 //RECORD FUNCTIONS
 			if("Search Records")
-				var/t1 = input("Search String: (Partial Name or ID or Fingerprints or Rank)", "Secure. records", null, null)  as text
+				var/t1 = input("Search String: (Partial Name or ID or Fingerprints or Rank)", "安全档案", null, null)  as text
 				if ((!( t1 ) || usr.stat || !( authenticated ) || usr.is_mob_restrained() || !in_range(src, usr)))
 					return
 				Perp = new/list()
@@ -274,7 +274,7 @@ What a mess.*/
 				switch(href_list["field"])
 					if("name")
 						if (istype(active1, /datum/data/record))
-							var/new_value = reject_bad_name(input("Please input name:", "Secure. records", active1.fields["name"], null)  as text)
+							var/new_value = reject_bad_name(input("Please input name:", "安全档案", active1.fields["name"], null)  as text)
 							if ((!( new_value ) || !length(trim(new_value)) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr)))) || active1 != a1)
 								return
 							message_admins("[key_name(usr)] changed the employment record name of [active1.fields["name"]] to [new_value]")
@@ -282,7 +282,7 @@ What a mess.*/
 
 					if("id")
 						if (istype(active1, /datum/data/record))
-							var/new_value = copytext(trim(sanitize(input("Please input id:", "Secure. records", active1.fields["id"], null)  as text)),1,MAX_MESSAGE_LEN)
+							var/new_value = copytext(trim(sanitize(input("Please input id:", "安全档案", active1.fields["id"], null)  as text)),1,MAX_MESSAGE_LEN)
 							if ((!( new_value ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || active1 != a1))
 								return
 							msg_admin_niche("[key_name_admin(usr)] changed the employment record id for [active1.fields["name"]] ([active1.fields["id"]]) to [new_value].")
@@ -298,7 +298,7 @@ What a mess.*/
 
 					if("age")
 						if (istype(active1, /datum/data/record))
-							var/new_value = input("Please input age:", "Secure. records", active1.fields["age"], null)  as num
+							var/new_value = input("Please input age:", "安全档案", active1.fields["age"], null)  as num
 							if ((!( new_value ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || active1 != a1))
 								return
 							active1.fields["age"] = new_value
@@ -314,11 +314,11 @@ What a mess.*/
 									temp += "<li><a href='byond://?src=\ref[src];choice=Change Rank;rank=[rank]'>[rank]</a></li>"
 								temp += "</ul>"
 							else
-								alert(usr, "You do not have the required rank to do this!")
+								alert(usr, "你的军衔不足以执行此操作！")
 
 					if("species")
 						if (istype(active1, /datum/data/record))
-							var/new_value = copytext(trim(sanitize(input("Please enter race:", "General records", active1.fields["species"], null)  as message)),1,MAX_MESSAGE_LEN)
+							var/new_value = copytext(trim(sanitize(input("Please enter race:", "通用档案", active1.fields["species"], null)  as message)),1,MAX_MESSAGE_LEN)
 							if ((!( new_value ) || !( authenticated ) || usr.stat || usr.is_mob_restrained() || (!in_range(src, usr) && (!isRemoteControlling(usr))) || active1 != a1))
 								return
 							active1.fields["species"] = new_value
@@ -369,10 +369,10 @@ What a mess.*/
 					R.fields["age"] = rand(5, 85)
 					msg_admin_niche("The employment record age of [R.fields["name"]] was scrambled!")
 				if(4)
-					R.fields["criminal"] = pick("None", "*Arrest*", "Incarcerated", "Released")
+					R.fields["criminal"] = pick("无", "*Arrest*", "Incarcerated", "Released")
 					msg_admin_niche("The employment record criminal status of [R.fields["name"]] was scrambled!")
 				if(5)
-					R.fields["p_stat"] = pick("Inactive", "Active", "Unknown")
+					R.fields["p_stat"] = pick("Inactive", "Active", "未知")
 					msg_admin_niche("The employment record physical state of [R.fields["name"]] was scrambled!")
 				if(6)
 					R.fields["m_stat"] = pick("*Insane*", "*Unstable*", "*Watch*", "Stable")

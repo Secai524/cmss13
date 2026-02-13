@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(perf_logging)
-	name = "Perf Logging"
+	name = "性能日志"
 	wait = 60 SECONDS
 	flags = SS_NO_INIT | SS_KEEP_TIMING
 	priority = SS_PRIORITY_PERFLOGGING

@@ -3,7 +3,7 @@
 
 /obj/item/weapon/gun/launcher/rocket
 	name = "\improper common rocket launcher ancestor"
-	desc = "You should not be seeing this."
+	desc = "你不应该看到这个。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/rocket_launchers.dmi'
 	icon_state = "m5"
 	item_state = "m5"
@@ -70,7 +70,7 @@
 	. = ..()
 	if (. && istype(user)) //Let's check all that other stuff first.
 		if(skill_locked && skill_fail(user))
-			to_chat(user, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
+			to_chat(user, SPAN_WARNING("你似乎不知道如何使用\the [src]……"))
 			return 0
 		if(user.faction == FACTION_MARINE && explosive_antigrief_check(src, user))
 			to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from firing!"))
@@ -133,33 +133,33 @@
 		return
 
 	if(!rocket || !istype(rocket) || !istype(src, rocket.gun_type))
-		to_chat(user, SPAN_WARNING("That's not going to fit!"))
+		to_chat(user, SPAN_WARNING("那装不进去！"))
 		return
 
 	if(current_mag.current_rounds > 0)
-		to_chat(user, SPAN_WARNING("[src] is already loaded!"))
+		to_chat(user, SPAN_WARNING("[src]已经装填好了！"))
 		return
 
 	if(rocket.current_rounds <= 0)
-		to_chat(user, SPAN_WARNING("That frame is empty!"))
+		to_chat(user, SPAN_WARNING("那个发射架是空的！"))
 		return
 
 	if(user)
-		to_chat(user, SPAN_NOTICE("You begin reloading [src]. Hold still..."))
+		to_chat(user, SPAN_NOTICE("你开始为[src]装弹。保持不动..."))
 		if(do_after(user,current_mag.reload_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 			qdel(current_mag)
 			user.drop_inv_item_on_ground(rocket)
 			current_mag = rocket
 			rocket.forceMove(src)
 			replace_ammo(,rocket)
-			to_chat(user, SPAN_NOTICE("You load [rocket] into [src]."))
+			to_chat(user, SPAN_NOTICE("你将[rocket]装填入[src]。"))
 			update_icon()
 			if(reload_sound)
 				playsound(user, reload_sound, 25, 1)
 			else
 				playsound(user,'sound/machines/click.ogg', 25, 1)
 		else
-			to_chat(user, SPAN_WARNING("Your reload was interrupted!"))
+			to_chat(user, SPAN_WARNING("你的装填被打断了！"))
 			return
 	else
 		qdel(current_mag)
@@ -172,15 +172,15 @@
 /obj/item/weapon/gun/launcher/rocket/unload(mob/user,  reload_override = 0, drop_override = 0)
 	if(user && current_mag)
 		if(current_mag.current_rounds <= 0)
-			to_chat(user, SPAN_WARNING("[src] is already empty!"))
+			to_chat(user, SPAN_WARNING("[src]已经是空的！"))
 			return
-		to_chat(user, SPAN_NOTICE("You begin unloading [src]. Hold still..."))
+		to_chat(user, SPAN_NOTICE("你开始卸载[src]。保持不动..."))
 		if(do_after(user,current_mag.reload_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 			if(current_mag.current_rounds <= 0)
-				to_chat(user, SPAN_WARNING("You have already unloaded \the [src]."))
+				to_chat(user, SPAN_WARNING("你已经卸载了\the [src]。"))
 				return
 			playsound(user, unload_sound, 25, 1)
-			user.visible_message(SPAN_NOTICE("[user] unloads [ammo] from [src]."),
+			user.visible_message(SPAN_NOTICE("[user]从[src]中卸下[ammo]。"),
 			SPAN_NOTICE("You unload [ammo] from [src]."))
 			make_rocket(user, drop_override, 0)
 			current_mag.current_rounds = 0
@@ -191,7 +191,7 @@
 	. = ..()
 	if(!HAS_TRAIT(user, TRAIT_EAR_PROTECTION) && ishuman(user))
 		var/mob/living/carbon/human/huser = user
-		to_chat(user, SPAN_WARNING("Augh!! \The [src]'s launch blast resonates extremely loudly in your ears! You probably should have worn some sort of ear protection..."))
+		to_chat(user, SPAN_WARNING("啊！！\The [src]的发射冲击波在你耳边产生了极大的回响！你或许应该戴点护耳装备..."))
 		huser.apply_effect(6, STUTTER)
 		huser.emote("pain")
 		huser.SetEarDeafness(max(user.ear_deaf,10))
@@ -203,7 +203,7 @@
 	for(var/mob/living/carbon/mob in backblast_loc)
 		if(mob.body_position != STANDING_UP || HAS_TRAIT(mob, TRAIT_EAR_PROTECTION)) //Have to be standing up to get the fun stuff
 			continue
-		to_chat(mob, SPAN_BOLDWARNING("You got hit by the backblast!"))
+		to_chat(mob, SPAN_BOLDWARNING("你被尾焰击中了！"))
 		mob.apply_damage(15, BRUTE) //The shockwave hurts, quite a bit. It can knock unarmored targets unconscious in real life
 		var/knockdown_amount = 6
 		if(isxeno(mob))
@@ -219,7 +219,7 @@
 
 /obj/item/weapon/gun/launcher/rocket/m5
 	name = "\improper M5 RPG"
-	desc = "The M5 RPG is the primary anti-armor weapon of the USCM. Used to take out light-tanks and enemy structures, the M5 RPG is a dangerous weapon with a variety of combat uses."
+	desc = "M5火箭筒是USCM的主要反装甲武器。用于摧毁轻型坦克和敌方建筑，M5火箭筒是一种具有多种战斗用途的危险武器。"
 	map_specific_decoration = TRUE
 	has_empty_icon = TRUE
 	auto_retrieval_slot = WEAR_J_STORE
@@ -238,7 +238,7 @@
 
 /obj/item/weapon/gun/launcher/rocket/m57a4
 	name = "\improper M57-A4 'Lightning Bolt' quad thermobaric launcher"
-	desc = "The M57-A4 'Lightning Bolt' is possibly the most destructive man-portable weapon ever made. It is a 4-barreled missile launcher capable of burst-firing 4 thermobaric missiles. Enough said."
+	desc = "M57-A4'闪电箭'可能是迄今为止制造出的最具破坏性的单兵携带武器。它是一种四管导弹发射器，能够连发四枚温压导弹。无需多言。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/event.dmi'
 	icon_state = "m57a4"
 	item_state = "m57a4"
@@ -263,7 +263,7 @@
 
 /obj/item/weapon/gun/launcher/rocket/anti_tank //reloadable
 	name = "\improper QH-4 Shoulder-Mounted Anti-Tank RPG"
-	desc = "Used to take out light-tanks and enemy structures, the QH-4 is a dangerous weapon specialised against vehicles. Requires direct hits to penetrate vehicle armor."
+	desc = "用于摧毁轻型坦克和敌方建筑，QH-4是一种专门针对载具的危险武器。需要直接命中才能穿透载具装甲。"
 	icon_state = "m83a2"
 	item_state = "m83a2"
 	unacidable = FALSE
@@ -290,7 +290,7 @@
 
 /obj/item/weapon/gun/launcher/rocket/anti_tank/disposable //single shot and disposable
 	name = "\improper M83A2 SADAR"
-	desc = "The M83A2 SADAR is a lightweight one-shot anti-armor weapon capable of engaging enemy vehicles at ranges up to 1,000m. Fully disposable, the rocket's launcher is discarded after firing. When stowed (unique-action), the SADAR system consists of a watertight carbon-fiber composite blast tube, inside of which is an aluminum launch tube containing the missile. The weapon is fired by pushing a charge button on the trigger grip. It is sighted and fired from the shoulder."
+	desc = "M83A2 SADAR是一种轻量级单发反装甲武器，能够在最远1000米的距离上攻击敌方载具。完全一次性，火箭发射器在发射后即被丢弃。存放时（特殊动作），SADAR系统由一个防水碳纤维复合材料爆管组成，其内部是装有导弹的铝制发射管。武器通过按下扳机握把上的发射按钮来发射。它从肩部瞄准和发射。"
 	var/fired = FALSE
 	can_be_reloaded = FALSE
 
@@ -308,14 +308,14 @@
 		to_chat(M, SPAN_WARNING("\The [src] has already been fired - you can't fold it back up again!"))
 		return
 
-	M.visible_message(SPAN_NOTICE("[M] begins to fold up \the [src]."), SPAN_NOTICE("You start to fold and collapse closed \the [src]."))
+	M.visible_message(SPAN_NOTICE("[M]开始折叠\the [src]。"), SPAN_NOTICE("You start to fold and collapse closed \the [src]."))
 
 	if(!do_after(M, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-		to_chat(M, SPAN_NOTICE("You stop folding up \the [src]"))
+		to_chat(M, SPAN_NOTICE("你停止折叠\the [src]"))
 		return
 
 	fold(M)
-	M.visible_message(SPAN_NOTICE("[M] finishes folding \the [src]."), SPAN_NOTICE("You finish folding \the [src]."))
+	M.visible_message(SPAN_NOTICE("[M]完成了\the [src]的折叠。"), SPAN_NOTICE("You finish folding \the [src]."))
 
 /obj/item/weapon/gun/launcher/rocket/anti_tank/disposable/proc/fold(mob/user)
 	var/obj/item/prop/folded_anti_tank_sadar/F = new /obj/item/prop/folded_anti_tank_sadar(src.loc)
@@ -324,17 +324,17 @@
 	user.put_in_active_hand(F)
 
 /obj/item/weapon/gun/launcher/rocket/anti_tank/disposable/reload()
-	to_chat(usr, SPAN_WARNING("You cannot reload \the [src]!"))
+	to_chat(usr, SPAN_WARNING("你无法为\the [src]重新装填！"))
 	return
 
 /obj/item/weapon/gun/launcher/rocket/anti_tank/disposable/unload()
-	to_chat(usr, SPAN_WARNING("You cannot unload \the [src]!"))
+	to_chat(usr, SPAN_WARNING("你无法为\the [src]卸下弹药！"))
 	return
 
 //folded version of the sadar
 /obj/item/prop/folded_anti_tank_sadar
 	name = "\improper M83 SADAR (folded)"
-	desc = "An M83 SADAR Anti-Tank RPG, compacted for easier storage. Can be unfolded with the in-hand activation key, default 'Z'."
+	desc = "M83 SADAR反坦克火箭筒，为便于储存而折叠。可使用手持激活键（默认为‘Z’键）展开。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/rocket_launchers.dmi'
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/rocket_launchers.dmi',
@@ -356,16 +356,16 @@
 	garbage = FALSE
 
 /obj/item/prop/folded_anti_tank_sadar/attack_self(mob/user)
-	user.visible_message(SPAN_NOTICE("[user] begins to unfold \the [src]."), SPAN_NOTICE("You start to unfold and expand \the [src]."))
+	user.visible_message(SPAN_NOTICE("[user]开始展开\the [src]。"), SPAN_NOTICE("You start to unfold and expand \the [src]."))
 	playsound(src, 'sound/items/component_pickup.ogg', 20, TRUE, 5)
 
 	if(!do_after(user, 4 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-		to_chat(user, SPAN_NOTICE("You stop unfolding \the [src]"))
+		to_chat(user, SPAN_NOTICE("你停止了展开\the [src]。"))
 		return
 
 	unfold(user)
 
-	user.visible_message(SPAN_NOTICE("[user] finishes unfolding \the [src]."), SPAN_NOTICE("You finish unfolding \the [src]."))
+	user.visible_message(SPAN_NOTICE("[user]完成了展开\the [src]。"), SPAN_NOTICE("You finish unfolding \the [src]."))
 	playsound(src, 'sound/items/component_pickup.ogg', 20, TRUE, 5)
 	. = ..()
 
@@ -380,7 +380,7 @@
 
 /obj/item/weapon/gun/launcher/rocket/upp
 	name = "\improper HJRA-12 Handheld Anti-Tank Rocket Launcher"
-	desc = "The HJRA-12 Handheld Anti-Tank Rocket Launcher is the standard Anti-Armor weapon of the UPP. It is designed to be easy to use and to take out or disable armored vehicles."
+	desc = "HJRA-12手持反坦克火箭发射器是UPP的标准反装甲武器。其设计易于使用，旨在摧毁或瘫痪装甲车辆。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/rocket_launchers.dmi'
 	icon_state = "hjra12"
 	item_state = "hjra12"
@@ -432,7 +432,7 @@
 
 /obj/item/weapon/gun/launcher/rocket/brute
 	name = "\improper M6H-BRUTE launcher system"
-	desc = "Breaching Rocket Unit for Tactical Entry, or BRUTE, is a shoulder-mounted, man-portable launcher system designed to give combat technicians rapid structure defeating capabilities at reasonable range. The launcher fits a fore-mounted laser guidance module that steers the 90mm shaped-charge rockets towards a fortified position. Try not to drool on it."
+	desc = "战术突入用破门火箭单元，简称BRUTE，是一种肩扛式、单兵便携发射系统，旨在为战斗技术员提供在合理射程内快速摧毁建筑结构的能力。发射器配有前置激光制导模块，可将90毫米聚能装药火箭导向加固目标。小心别把口水滴在上面。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/rocket_launchers.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/rocket_launchers_lefthand.dmi',
@@ -480,13 +480,13 @@
 		return
 
 	if(!(istype(target, /obj/structure) || istype(target,/turf/closed/wall)) )
-		to_chat(user, SPAN_WARNING("Invalid target!"))
+		to_chat(user, SPAN_WARNING("目标无效！"))
 		return
 
 	var/list/turf/path = get_line(user, target, include_start_atom = FALSE)
 	for(var/turf/turf_path in path)
 		if(turf_path.opacity && turf_path != target)
-			to_chat(user, SPAN_WARNING("Target obscured!"))
+			to_chat(user, SPAN_WARNING("目标被遮挡！"))
 			return
 	aiming = TRUE
 	var/beam = "laser_beam_guided"

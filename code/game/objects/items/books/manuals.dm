@@ -12,12 +12,12 @@
 //Engineering related manuals
 
 /obj/item/book/manual/engineering_guide
-	name = "Tools, Radiowaves And Electrical Grids"
-	desc = "A book containing basic and yet important information regarding engineering procedures."
+	name = "工具、无线电波与电网"
+	desc = "一本包含工程流程基础且重要信息的书籍。"
 	icon_state = "book_engineering"
 	item_state = "book_engineering"
 	author = "Colonial Marines Engineer Association"
-	title = "Tools, Radiowaves And Electrical Grids"
+	title = "工具、无线电波与电网"
 
 	dat = {"
 
@@ -33,12 +33,12 @@
 
 
 /obj/item/book/manual/engineering_construction
-	name = "Construction Destruction"
-	desc = "A detailed guide containing a series of diagrams and tables regarding the required resources and proper procedures to building, from barricades to floor tiles."
+	name = "建造与拆除"
+	desc = "一本详细指南，包含一系列关于从路障到地砖等建造所需资源及正确流程的图表与表格。"
 	icon_state = "book_engineering"
 	item_state = "book_engineering"
 	author = "Colonial Marines Engineer Association"
-	title = "Construction Destruction: The guide"
+	title = "建造与拆除：指南"
 
 	dat = {"
 
@@ -55,12 +55,12 @@
 
 
 /obj/item/book/manual/engineering_hacking
-	name = "Hack-A-Mole: How Electrical Components Work"
-	desc = "A guide specialized on the knowledge of 'hacking', being that of airlocks, vending machines, or anything else that your multi tool is capable of messing with."
+	name = "黑客入门：电气元件工作原理"
+	desc = "一本专注于“黑客”知识的指南，涉及气闸门、自动售货机或任何你的万用工具能搞定的东西。"
 	icon_state = "book_hacking"
 	item_state = "book_hacking"
 	author = "Colonial Marines Engineer Association"
-	title = "Hack-A-Mole: How Electrical Components Work"
+	title = "黑客入门：电气元件工作原理"
 
 	dat = {"
 
@@ -76,12 +76,12 @@
 		"}
 
 /obj/item/book/manual/ordnance
-	name = "Ordnance for Recruits or: How I Learned to Stop Worrying and Love the Maxcap"
-	desc = "A manual containing absurdly detailed information regarding the production, assembly, and handling of all kinds of explosive devices."
+	name = "新兵军械指南：或，我如何学会不再担忧并爱上最大当量"
+	desc = "一本包含各类爆炸装置生产、组装及处理信息的详尽手册。"
 	icon_state = "book_engineering2"
 	item_state = "book_engineering2"
 	author = "Colonial Marines Engineer Association"
-	title = "Ordnance for Recruits or: How I Learned to Stop Worrying and Love the Maxcap"
+	title = "新兵军械指南：或，我如何学会不再担忧并爱上最大当量"
 
 	dat = {"
 
@@ -97,12 +97,12 @@
 		"}
 
 /obj/item/book/manual/comms
-	name = "Subspace Telecommunications And You"
-	desc = "An instructions manual regarding the use of communication channels and advice on how to be properly heard over the radiowaves while speaking all kinds of languages."
+	name = "子空间通信与你"
+	desc = "一本关于通信频道使用及如何在无线电波中用各种语言清晰传达信息的指导手册。"
 	icon_state = "book_particle"
 	item_state = "book_particle"
 	author = "Colonial Marines Engineer Association"
-	title = "Subspace Telecommunications And You"
+	title = "子空间通信与你"
 
 	dat = {"
 
@@ -118,12 +118,12 @@
 		"}
 
 /obj/item/book/manual/reactor
-	name = "How to React: Steps to maintain a S-52 Fusion Reactor"
-	desc = "A manual containing information on how to maintain S-52 Fusion Ship Reactors, very popular engines among space vessels."
+	name = "如何反应：S-52聚变反应堆维护步骤"
+	desc = "一本包含如何维护S-52聚变飞船反应堆信息的手册，这是太空飞船中非常流行的引擎。"
 	icon_state = "book_supermatter"
 	item_state = "book_supermatter"
 	author = "Colonial Marines Engineer Association"
-	title = "How to React: Steps to maintain a S-52 Fusion Reactor"
+	title = "如何反应：S-52聚变反应堆维护步骤"
 
 	dat = {"
 
@@ -140,12 +140,12 @@
 
 
 /obj/item/book/manual/orbital_cannon_manual
-	name = "USCM Orbital Bombardment System Manual"
-	desc = "This book contains instructions on how to operate a standard-issue United States Colonial Marines Orbital Artillery Cannon."
+	name = "USCM轨道轰炸系统手册"
+	desc = "本书包含如何操作标准配发的美国殖民地海军陆战队轨道火炮的说明。"
 	icon_state = "book_engineering2"
 	item_state = "book_engineering2"
 	author = "Colonial Marines Engineer Association"
-	title = "USCM Orbital Bombardment System Manual"
+	title = "USCM轨道轰炸系统手册"
 
 	dat = {"<html>
 				<head>
@@ -272,11 +272,11 @@
 
 
 /obj/item/book/manual/atmospipes
-	name = "Pipes and You: Getting To Know Your Scary Tools"
+	name = "管道与你：了解你那些吓人的工具"
 	icon_state = "book_piping"
 	item_state = "book_piping"
 	author = "Colonial Marines Engineer Association"
-	title = "Pipes and You: Getting To Know Your Scary Tools"
+	title = "管道与你：了解你那些吓人的工具"
 	dat = {"<html>
 				<head>
 				<style>
@@ -381,11 +381,11 @@
 
 
 /obj/item/book/manual/evaguide
-	name = "EVA Gear and You: Not Spending All Day Inside"
+	name = "舱外活动装备与你：别整天待在舰内"
 	icon_state = "book_eva"
 	item_state = "book_eva"
 	author = "Senior Technician Sandra Rose, Weyland-Yutani Corporation"
-	title = "EVA Gear and You: Not Spending All Day Inside"
+	title = "舱外活动装备与你：别整天待在舰内"
 	dat = {"<html>
 				<head>
 				<style>
@@ -415,7 +415,7 @@
 				but apparently there are some on a space station who don't. This guide should give you a basic idea of how to use this gear, safely. It's split into two sections:
 				Civilian suits and hardsuits.<BR><BR>
 
-				<h2><a name="Civilian">Civilian Suits</a></h2>
+				<h2><a name="平民">Civilian Suits</a></h2>
 				<I>The bulkiest things this side of Alpha Centauri</I><BR>
 				These suits are the grey ones that are stored in EVA. They're the more simple to get on, but are also a lot bulkier, and provide less protection from environmental hazards such as radiation or physical impact.
 				As Medical, Engineering, Security, and Mining all have hardsuits of their own, these don't see much use, but knowing how to put them on is quite useful anyways.<BR><BR>
@@ -457,12 +457,12 @@
 
 
 /obj/item/book/manual/security_space_law
-	name = "Standard Operating Procedure"
-	desc = "One of the most important books onboard any United States Colonial Marines vessel, or at least that's how you are supposed to feel about it. The book carries within it's pages the USCM guidelines and procedures regarding all kinds of situations."
+	name = "标准作战程序"
+	desc = "这是任何一艘美国殖民地海军陆战队舰船上最重要的书籍之一——至少你应该这么认为。这本书的页面里记载了USCM关于各种情况的指导方针和程序。"
 	icon_state = "book_sop"
 	item_state = "book_sop"
 	author = "Colonial Marines High Command"
-	title = "Standard Operating Procedure"
+	title = "标准作战程序"
 
 	dat = {"
 
@@ -479,12 +479,12 @@
 
 
 /obj/item/book/manual/marine_law
-	name = "Marine Law"
-	desc = "Usually being the favorite read of any member of the Military Police of the USCM, it's whole meaning is to work as the scales for the sword of justice that brandishes onboard the vessels of the United States Colonial Marines, so peace and order can be maintained. It's nicknames may include but are not limited to: Devil's Red Book, Bible of All Sinners, THE Book, ML, Red Brick, Provost's Torture Manual, Provost's Red Devil's Torture Bible of All Sinners."
+	name = "陆战队军法"
+	desc = "这通常是USCM任何宪兵成员最爱读的书。它的全部意义在于作为美国殖民地海军陆战队舰船上挥舞的正义之剑的天平，以维持和平与秩序。它的绰号可能包括但不限于：魔鬼红皮书、所有罪人的圣经、那本书、ML、红砖、宪兵长的拷问手册、宪兵长的所有罪人红魔鬼拷问圣经。"
 	icon_state = "book_marine_law"
 	item_state = "book_marine_law"
 	author = "Colonial Marines Provost Office"
-	title = "Marine Law"
+	title = "陆战队军法"
 
 	dat = {"
 
@@ -504,12 +504,12 @@
 
 
 /obj/item/book/manual/surgery
-	name = "Surgical Reference Manual"
-	desc = "A detailed reference manual for surgical procedures. To be read mid-surgery when you forget a simple surgical step."
+	name = "外科手术参考手册"
+	desc = "一份详细的外科手术程序参考手册。当你在手术中途忘记一个简单步骤时，可以翻阅它。"
 	icon_state = "book_surgery"
 	item_state = "book_surgery"
 	author = "Colonial Marines Bureau of Medicine and Surgery"
-	title = "Surgical Reference Manual"
+	title = "外科手术参考手册"
 
 	dat = {"
 
@@ -526,12 +526,12 @@
 
 
 /obj/item/book/manual/medical_diagnostics_manual
-	name = "Principles and Practice of Medicine"
-	desc = "Firstly and foremost, do no harm. A detailed, thick and heavy medical practitioner's guide, with the first five full pages only being the book's dedication."
+	name = "医学原理与实践"
+	desc = "首要且最重要的是，切勿造成伤害。一本详细、厚重且沉重的医疗从业者指南，仅前五整页都是本书的献词。"
 	icon_state = "book_medical"
 	item_state = "book_medical"
 	author = "Chief Medical Officer Pierre Corbeau, Colonial Marines Bureau of Medicine and Surgery"
-	title = "Principles and Practice of Medicine"
+	title = "医学原理与实践"
 
 	dat = {"<html>
 				<head>
@@ -574,12 +574,12 @@
 		"}
 
 /obj/item/book/manual/chemistry
-	name = "Chemical Reactions and How They Can Ruin Your Day"
-	desc = "A detailed manual containing everything you need to know about chemistry. Recipes and methodology included."
+	name = "化学反应及其如何毁掉你的一天"
+	desc = "一本包含你需要了解的关于化学的一切的详细手册。内含配方和方法论。"
 	icon_state = "book_chemistry"
 	item_state = "book_chemistry"
 	author = "Colonial Marines Bureau of Medicine and Surgery"
-	title = "Chemical Reactions and How They Can Ruin Your Day"
+	title = "化学反应及其如何毁掉你的一天"
 
 	dat = {"
 
@@ -595,12 +595,12 @@
 		"}
 
 /obj/item/book/manual/research_and_development
-	name = "Research and Development: What there is to find?"
-	desc = "Science: The final frontier. This book contains deeply specialized and educational information regarding research's continuing scientific mission: to explore strange new worlds; to seek out new life, new alloys and new vaccines; to boldly go where no one has researched before!"
+	name = "研发部：有什么可发现的？"
+	desc = "科学：最后的边疆。这本书包含了关于研究部持续科学使命的高度专业化和教育性的信息：探索陌生的新世界；寻找新生命、新合金和新疫苗；勇敢地前往无人研究过的地方！"
 	icon_state = "book_research_development"
 	item_state = "book_research_development"
 	author = "Senior Researcher Glen Brooks, Weyland-Yutani Corporation"
-	title = "Research and Development: What there is to find?"
+	title = "研发部：有什么可发现的？"
 
 	dat = {"
 
@@ -620,12 +620,12 @@
 
 
 /obj/item/book/manual/tychontackle
-	name = "After Action Report No.55: Operation Tychon Tackle"
-	desc = "An after action report of the infamous Operation 'Tychon Tackle', so big that it had to be turned into a book. Warning: Some information, such as personal names, have been REDACTED on this print."
+	name = "第55号行动后报告：提丰擒抱行动"
+	desc = "关于臭名昭著的“提丰擒抱”行动的行动后报告，其规模之大以至于必须被编成一本书。警告：本印刷品中的某些信息，如个人姓名，已被涂黑。"
 	icon_state = "book_light_red"
 	item_state = "book_light_red"
-	author = "Executive Officer 'REDACTED', USS Heyst, United Americas"
-	title = "After Action Report No.55: Operation Tychon Tackle"
+	author = "副指挥官 'REDACTED', USS Heyst, United Americas"
+	title = "第55号行动后报告：提丰擒抱行动"
 
 	dat = {"
 
@@ -642,12 +642,12 @@
 
 
 /obj/item/book/manual/upphistory
-	name = "The Raise And Steadying of the Union of Progressive Peoples, By Robert Mendes"
-	desc = "A large, supposedly unbiased history book containing what's supposed to be the history of the so-called UPP."
+	name = "进步人民联盟的崛起与稳固，罗伯特·门德斯著"
+	desc = "一本厚重、据称无偏见的历史书，包含了所谓的UPP的历史。"
 	icon_state = "book_upp"
 	item_state = "book_upp"
 	author = "Historian Robert Mendes, United Americas"
-	title = "The Raise And Steadying of the Union of Progressive Peoples, By Robert Mendes"
+	title = "进步人民联盟的崛起与稳固，罗伯特·门德斯著"
 
 	dat = {"
 
@@ -664,12 +664,12 @@
 
 
 /obj/item/book/manual/paperwork
-	name = "Bureaucracy and paperworking: Everything You Need to Know"
-	desc = "A book containing all kinds of knowledge and pre-made formularies for the writing of important documents. You need it? This book have it."
+	name = "官僚主义与文书工作：你需要知道的一切"
+	desc = "一本包含各种知识和用于撰写重要文件的预制表格的书。你需要它吗？这本书里都有。"
 	icon_state = "book"
 	item_state = "book"
 	author = "Colonial Marines High Command"
-	title = "Bureaucracy and paperworking: Everything You Need to Know"
+	title = "官僚主义与文书工作：你需要知道的一切"
 
 	dat = {"
 
@@ -685,12 +685,12 @@
 		"}
 
 /obj/item/book/manual/rank
-	name = "The Marine Ranks: United States Colonial Marines Chain of Command and Ranking"
-	desc = "This book contains information regarding all ranks inside the United States Colonial Marines force, and its consequent chain of command."
+	name = "陆战队军衔：美国殖民地海军陆战队指挥链与军衔"
+	desc = "这本书包含了关于美国殖民地海军陆战队内部所有军衔及其相应指挥链的信息。"
 	icon_state = "book"
 	item_state = "book"
 	author = "Colonial Marines High Command"
-	title = "The Marine Ranks: United States Colonial Marines Chain of Command and Ranking"
+	title = "陆战队军衔：美国殖民地海军陆战队指挥链与军衔"
 	dat = {"
 
 		<html><head>
@@ -706,12 +706,12 @@
 
 
 /obj/item/book/manual/chef_recipes
-	name = "Pans and Dishes: Your Way Around the Marine Kitchens"
-	desc = "A huge book containing lots and lots of cooking recipes, perfect for those who wish to actually cook and not only stand in front of the microwave, staring at it."
+	name = "锅碗瓢盆：陆战队厨房指南"
+	desc = "一本包含大量烹饪食谱的巨著，非常适合那些真正想做饭，而不是只站在微波炉前盯着它看的人。"
 	icon_state = "cooked_book"
 	item_state = "cooked_book"
 	author = "Food Service Specialist Louis Covenant, United Americas"
-	title = "Pans and Dishes: Your Way Around the Marine Kitchens"
+	title = "锅碗瓢盆：陆战队厨房指南"
 
 	dat = {"<html>
 				<head>
@@ -768,12 +768,12 @@
 
 
 /obj/item/book/manual/barman_recipes
-	name = "Barman Recipes: Mixing Drinks and Changing Lives Under the Blitz"
-	desc = "One of the most popular recipe books for drinks in the entirety of humankind. Now on it's 39th edition, it was first published in 1946 after the end of the Second World War by Sir Hugh Fairfax, one of the most prestigious barmen of all time."
+	name = "《酒保配方：闪电战下的调酒与人生》"
+	desc = "全人类最受欢迎的饮品配方书之一。现已发行第39版，最初由史上最负盛名的酒保之一休·费尔法克斯爵士于1946年第二次世界大战结束后出版。"
 	icon_state = "barbook"
 	item_state = "barbook"
 	author = "Sir Hugh Fairfax, Three World Empire"
-	title = "Barman Recipes: Mixing Drinks and Changing Lives Under the Blitz"
+	title = "《酒保配方：闪电战下的调酒与人生》"
 
 	dat = {"<html>
 				<head>
@@ -827,11 +827,11 @@
 
 
 /obj/item/book/manual/detective
-	name = "The Film Noir: Proper Procedures for Investigations"
+	name = "《黑色电影：调查的正确流程》"
 	icon_state ="book_detective"
 	item_state ="book_detective"
 	author = "Lawyer Ruben Knight, Weyland-Yutani Corporation"
-	title = "The Film Noir: Proper Procedures for Investigations"
+	title = "《黑色电影：调查的正确流程》"
 
 	dat = {"<html>
 				<head>
@@ -872,12 +872,12 @@
 
 
 /obj/item/book/manual/nuclear
-	name = "Fission Mailed: How to Operate a Blockbuster"
-	desc = "A book containing important information and instructions regarding the operation of a 'Blockbuster' Large Atomic Fission Demolition Device."
+	name = "《裂变邮递：如何操作“重磅炸弹”》"
+	desc = "一本包含关于操作‘重磅炸弹’大型原子裂变爆破装置的重要信息和说明的书。"
 	icon_state = "book_nuclear"
 	item_state = "book_nuclear"
 	author = "Nuclear Regulatory Commission of the United Americas"
-	title = "Fission Mailed: How to Operate a Blockbuster"
+	title = "《裂变邮递：如何操作“重磅炸弹”》"
 
 	dat = {"<html>
 				<head>
@@ -925,11 +925,11 @@
 
 // This book is ultra old
 /obj/item/book/manual/hydroponics_beekeeping
-	name = "The Ins and Outs of Apiculture - A Precise Art"
+	name = "《养蜂术的里里外外——一门精确的艺术》"
 	icon_state = "book_hydroponics_bees"
 	item_state = "book_hydroponics_bees"
 	author = "Beekeeper Dave"
-	title = "The Ins and Outs of Apiculture - A Precise Art"
+	title = "《养蜂术的里里外外——一门精确的艺术》"
 	dat = {"<html>
 				<head>
 				<style>

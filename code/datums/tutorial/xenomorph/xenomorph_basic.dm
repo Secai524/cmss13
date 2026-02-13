@@ -1,8 +1,8 @@
 #define WAITING_HEALTH_THRESHOLD 300
 
 /datum/tutorial/xenomorph/basic
-	name = "Xenomorph - Basic"
-	desc = "A tutorial to get you acquainted with the very basics of how to play a xenomorph."
+	name = "异形 - 基础"
+	desc = "一个让你熟悉扮演异形最基础知识的教程。"
 	icon_state = "xeno"
 	tutorial_id = "xeno_basic_1"
 	tutorial_template = /datum/map_template/tutorial/s12x12

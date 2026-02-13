@@ -11,7 +11,7 @@
 	name = "\improper S-52 fusion reactor"
 	icon = 'icons/obj/structures/machinery/fusion_eng.dmi'
 	icon_state = "off"
-	desc = "A Westingland S-52 Fusion Reactor."
+	desc = "一台威斯汀兰S-52聚变反应堆。"
 	directwired = FALSE  //Requires a cable directly underneath
 	unslashable = TRUE
 	unacidable = TRUE
@@ -108,7 +108,7 @@
 		if(BUILDSTATE_DAMAGE_WIRE)
 			. += SPAN_INFO(SPAN_BOLD("Use wirecutters to repair it."))
 		if(BUILDSTATE_DAMAGE_WRENCH)
-			. += SPAN_INFO(SPAN_BOLD("Use a wrench to repair it."))
+			. += SPAN_INFO(SPAN_BOLD("使用扳手来修复它。"))
 
 	if(buildstate || require_fusion_cell && !HasFuel())
 		if(is_on)
@@ -146,7 +146,7 @@
 	. = ..()
 	if(overloaded)
 		set_overloading(FALSE)
-		visible_message(SPAN_NOTICE("[src]'s overload suddenly ceases as primary power is lost."))
+		visible_message(SPAN_NOTICE("随着主电源的丢失，[src]的过载突然停止了。"))
 
 /obj/structure/machinery/power/power_generator/reactor/HasFuel()
 	return fusion_cell && fusion_cell.fuel_amount > 0
@@ -160,22 +160,22 @@
 		if(require_fusion_cell) //if broken and fuel cell, lose fuel
 			if(fusion_cell && fusion_cell.fuel_amount)
 				fusion_cell.modify_fuel(rand(-5, -20))
-				visible_message(SPAN_DANGER("[src] hisses as fuel starts to pool around it."))
+				visible_message(SPAN_DANGER("[src]嘶嘶作响，燃料开始在其周围积聚。"))
 		else //Otherwise just start to break down faster
-			visible_message(SPAN_DANGER("[src] sparks and seizes."))
+			visible_message(SPAN_DANGER("[src]迸出火花并停止了运转。"))
 			fail_rate += 2.5
 
 	if(require_fusion_cell && !HasFuel()) //empty fuel
 		if(prob(20))
-			visible_message(SPAN_DANGER("[src] flashes that the fuel cell is [fusion_cell ? "empty" : "missing"] as the engine seizes."))
+			visible_message(SPAN_DANGER("[src]闪烁显示燃料单元[fusion_cell ? "empty" : "missing"] as the engine seizes."))
 		fail_rate += 2.5
 
 	if(overloaded && prob(1)) // up to 18 generators at 1% every 3.5 seconds means that every ~21 seconds or so, one generator will make noise assuming all are overloaded
 		if(prob(50))
-			visible_message(SPAN_NOTICE("[src] loudly hums."))
+			visible_message(SPAN_NOTICE("[src]发出响亮的嗡鸣声。"))
 			playsound(src, 'sound/machines/resource_node/node_idle.ogg', 60, TRUE)
 		else
-			visible_message(SPAN_NOTICE("[src] makes a worrying hiss."))
+			visible_message(SPAN_NOTICE("[src]发出令人不安的嘶嘶声。"))
 			playsound(src, 'sound/machines/hiss.ogg', 60, TRUE)
 
 	if(power_gen_percent < 100)
@@ -197,7 +197,7 @@
 	if(!prob(fail_rate)) //Oh snap, we failed! Shut it down!
 		return
 
-	visible_message(SPAN_DANGER("[src] seizes and breaks down."))
+	visible_message(SPAN_DANGER("[src]停止运转并发生故障。"))
 	if(buildstate >= BUILDSTATE_DAMAGE_WELD)
 		start_functioning(FALSE)
 	buildstate = clamp(buildstate + 1, BUILDSTATE_FUNCTIONAL, BUILDSTATE_DAMAGE_WELD)
@@ -205,66 +205,66 @@
 /obj/structure/machinery/power/power_generator/reactor/attack_hand(mob/user)
 	. = TRUE
 	if(overloaded)
-		to_chat(user, SPAN_DANGER("[src] is not responding to your attempt to shut the reactor down."))
+		to_chat(user, SPAN_DANGER("[src]没有响应你关闭反应堆的尝试。"))
 		return FALSE
 	add_fingerprint(user)
 
 	if(buildstate || require_fusion_cell && !HasFuel())
 		if(is_on)
-			to_chat(user, SPAN_NOTICE("You press [src]'s emergency shutdown button."))
-			visible_message(SPAN_NOTICE("[user] presses [src]'s emergency shutdown button."))
+			to_chat(user, SPAN_NOTICE("你按下了[src]的紧急关闭按钮。"))
+			visible_message(SPAN_NOTICE("[user]按下了[src]的紧急关闭按钮。"))
 			start_functioning(FALSE)
 			return
 
-		visible_message(SPAN_NOTICE("[user] starts to hold [src]'s emergency start lever."))
+		visible_message(SPAN_NOTICE("[user]开始握住[src]的紧急启动杆。"))
 		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD, src))
-			to_chat(user, SPAN_NOTICE("You let go of the emergency start lever."))
+			to_chat(user, SPAN_NOTICE("你松开了紧急启动杆。"))
 			return FALSE
 		start_functioning(TRUE)
 		return
 
 	if(is_on)
-		visible_message(SPAN_WARNING("[src] beeps softly and stops humming as [user] shuts off the generator."))
+		visible_message(SPAN_WARNING("随着[user]关闭发电机，[src]发出轻柔的哔哔声并停止了嗡鸣。"))
 		start_functioning(FALSE)
 		return
 
-	visible_message(SPAN_NOTICE("[src] beeps loudly as [user] starts the reactor."))
+	visible_message(SPAN_NOTICE("随着[user]启动反应堆，[src]发出响亮的哔哔声。"))
 	start_functioning(TRUE)
 
 /obj/structure/machinery/power/power_generator/reactor/attack_alien(mob/living/carbon/xenomorph/xeno)
 	. = XENO_NONCOMBAT_ACTION
 	if(buildstate >= BUILDSTATE_DAMAGE_WELD)
-		to_chat(xeno, SPAN_WARNING("You see no reason to attack [src]."))
+		to_chat(xeno, SPAN_WARNING("你认为没有理由攻击[src]。"))
 		return
 
 	if(xeno.action_busy)
-		to_chat(xeno, SPAN_WARNING("You cannot damage [src] while doing something else."))
+		to_chat(xeno, SPAN_WARNING("你在做其他事情时无法损坏[src]。"))
 		return
 
 	if(overloaded)
 		xeno.animation_attack_on(src)
 		playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-		xeno.visible_message(SPAN_DANGER("[xeno] [xeno.slashes_verb] [src], stopping its overload process!"),
+		xeno.visible_message(SPAN_DANGER("[xeno][xeno.slashes_verb]了[src]，阻止了它的过载进程！"),
 		SPAN_DANGER("You [xeno.slash_verb] [src], stopping its overload process!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		set_overloading(FALSE)
 		return
 
 	var/looping = FALSE
 	while(buildstate < BUILDSTATE_DAMAGE_WELD)
-		to_chat(xeno, SPAN_NOTICE("You [looping ? "continue damaging" : "start to damage"] [src]."))
+		to_chat(xeno, SPAN_NOTICE("你[looping ? "continue damaging" : "start to damage"] [src]."))
 		if(!do_after(xeno, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src))
-			to_chat(xeno, SPAN_DANGER("You stop damaging [src]."))
+			to_chat(xeno, SPAN_DANGER("你停止损坏[src]。"))
 			break
 		xeno.animation_attack_on(src)
 		playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-		xeno.visible_message(SPAN_DANGER("[xeno] [xeno.slashes_verb] [src], [is_on ? "disabling" : "damaging"] it!"))
+		xeno.visible_message(SPAN_DANGER("[xeno][xeno.slashes_verb]了[src]，[is_on ? "disabling" : "damaging"] it!"))
 		switch(buildstate)
 			if(BUILDSTATE_FUNCTIONAL)
-				visible_message(SPAN_DANGER("[src] starts to fall apart!"))
+				visible_message(SPAN_DANGER("[src]开始解体！"))
 			if(BUILDSTATE_DAMAGE_WRENCH)
-				visible_message(SPAN_DANGER("[src] sparks as wires fall out!"))
+				visible_message(SPAN_DANGER("[src]迸出火花，电线脱落！"))
 			if(BUILDSTATE_DAMAGE_WIRE)
-				visible_message(SPAN_DANGER("[src] gets torn apart!"))
+				visible_message(SPAN_DANGER("[src]被撕碎了！"))
 		buildstate = clamp(buildstate + 1, BUILDSTATE_FUNCTIONAL, BUILDSTATE_DAMAGE_WELD)
 		update_icon()
 		looping = TRUE
@@ -280,17 +280,17 @@
 	if(istype(attacking_item, /obj/item/fuel_cell))
 		var/obj/item/fuel_cell/cell = attacking_item
 		if(fusion_cell)
-			to_chat(user, SPAN_WARNING("[src] already has [fusion_cell]. Before you can replace it with [cell] you need to remove it with a crowbar."))
+			to_chat(user, SPAN_WARNING("[src]已经装有[fusion_cell]。在你用[cell]替换它之前，你需要用撬棍将其移除。"))
 			return
 
-		to_chat(user, SPAN_NOTICE("You start inserting [cell] into [src]."))
+		to_chat(user, SPAN_NOTICE("你开始将[cell]插入[src]。"))
 		if(!do_after(user, 10 SECONDS * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_BUILD, src))
 			return
 
 		if(!user.drop_inv_item_to_loc(cell, src))
-			to_chat(user, SPAN_NOTICE("You fail to insert [cell] into [src]."))
+			to_chat(user, SPAN_NOTICE("你未能将[cell]插入[src]。"))
 			return
-		to_chat(user, SPAN_NOTICE("You insert [cell] into [src]."))
+		to_chat(user, SPAN_NOTICE("你将[cell]插入[src]。"))
 		fusion_cell = cell
 		update_icon()
 		if(cell.new_cell)
@@ -300,14 +300,14 @@
 
 	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_CROWBAR))
 		if(!fusion_cell)
-			to_chat(user, SPAN_WARNING("There is no fuel cell to remove from [src]."))
+			to_chat(user, SPAN_WARNING("[src]中没有可移除的燃料电池。"))
 			return
 
-		to_chat(user, SPAN_NOTICE("You start prying [fusion_cell] out of [src]."))
+		to_chat(user, SPAN_NOTICE("你开始从[src]中撬出[fusion_cell]。"))
 		if(!do_after(user, 10 SECONDS * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_BUILD, src))
 			return
 
-		to_chat(user, SPAN_NOTICE("You remove [fusion_cell] from [src]."))
+		to_chat(user, SPAN_NOTICE("你从[src]中移除了[fusion_cell]。"))
 		fusion_cell.update_icon()
 		user.put_in_hands(fusion_cell)
 		fusion_cell = null
@@ -352,16 +352,16 @@
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			return
 
-		to_chat(user, SPAN_WARNING("You start [overloaded ? "restoring" : "overloading"] the safeties on [src]."))
+		to_chat(user, SPAN_WARNING("你开始[overloaded ? "restoring" : "overloading"] the safeties on [src]."))
 		if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
 			return
 
 		if(inoperable())
-			to_chat(user, SPAN_WARNING("[src] needs to be working and have external power in order to be [overloaded ? "restored" : "overloaded"]."))
+			to_chat(user, SPAN_WARNING("[src]需要处于工作状态并连接外部电源才能[overloaded ? "restored" : "overloaded"]."))
 			return
 
 		set_overloading(!overloaded)
-		to_chat(user, SPAN_WARNING("You finish [overloaded ? "overloading" : "restoring"] the safeties on [src]."))
+		to_chat(user, SPAN_WARNING("你完成了[overloaded ? "overloading" : "restoring"] the safeties on [src]."))
 		log_game("[key_name(user)] has [overloaded ? "overloaded" : "restored the safeties of"] a generator.")
 		return
 
@@ -443,10 +443,10 @@
 	if(!tool || !repair_type)
 		return
 	if(!buildstate)
-		to_chat(user, SPAN_NOTICE("[src] does not need repairs."))
+		to_chat(user, SPAN_NOTICE("[src]不需要修理。"))
 		return
 	if(buildstate != repair_type)
-		to_chat(user, SPAN_WARNING("You need a different tool to repair [src]."))
+		to_chat(user, SPAN_WARNING("你需要其他工具来修理[src]。"))
 		return
 
 	var/repair_time = 20 SECONDS
@@ -462,7 +462,7 @@
 		if(BUILDSTATE_DAMAGE_WRENCH)
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 
-	to_chat(user, SPAN_NOTICE("You start repairing [src] with [tool]."))
+	to_chat(user, SPAN_NOTICE("你开始用[tool]修理[src]。"))
 	if(!do_after(user, repair_time, INTERRUPT_ALL, BUSY_ICON_BUILD, src))
 		return
 
@@ -481,7 +481,7 @@
 /obj/structure/machinery/power/power_generator/reactor/colony
 	name = "\improper G-11 geothermal generator"
 	icon = 'icons/obj/structures/machinery/geothermal.dmi'
-	desc = "A thermoelectric generator sitting atop a plasma-filled borehole."
+	desc = "一个位于充满等离子体的钻孔顶部的热电发电机。"
 
 	is_on = FALSE
 	power_gen = 100000 //100,000W at full capacity
@@ -489,7 +489,7 @@
 
 /obj/structure/machinery/power/power_generator/reactor/rostock
 	name = "\improper RDS-168 fusion reactor"
-	desc = "A RDS-168 Fusion Reactor."
+	desc = "一台RDS-168聚变反应堆。"
 
 
 #undef BUILDSTATE_FUNCTIONAL

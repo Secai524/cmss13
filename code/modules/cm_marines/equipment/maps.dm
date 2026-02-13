@@ -16,7 +16,7 @@
 
 /obj/item/map/attack_self(mob/user) //Open the map
 	..()
-	user.visible_message(SPAN_NOTICE("[user] opens the [src.name]."))
+	user.visible_message(SPAN_NOTICE("[user]打开了[src.name]。"))
 	initialize_map()
 
 /obj/item/map/attack()
@@ -61,84 +61,84 @@
 
 /obj/item/map/lazarus_landing_map
 	name = "\improper Lazarus Landing Map"
-	desc = "A satellite printout of the Lazarus Landing colony on LV-624."
+	desc = "LV-624上拉撒路着陆殖民地的卫星打印图。"
 	html_link = "images/6/6f/LV624.png"
 
 /obj/item/map/ice_colony_map
 	name = "\improper Ice Colony map"
-	desc = "A satellite printout of the Ice Colony."
+	desc = "冰雪殖民地的卫星打印图。"
 	html_link = "images/1/18/Map_icecolony.png"
 	color = "cyan"
 
 /obj/item/map/ice_colony_map_v3
 	name = "\improper Shivas Snowball map"
-	desc = "A labelled print out of the anterior scan of the UA colony Shivas Snowball."
+	desc = "UA殖民地湿婆雪球的前部扫描标注打印图。"
 	html_link = "images/1/18/Map_icecolony.png"
 	color = "cyan"
 
 /obj/item/map/whiskey_outpost_map
 	name = "\improper Whiskey Outpost map"
-	desc = "A tactical printout of the Whiskey Outpost defensive positions and locations."
+	desc = "威士忌前哨防御阵地和位置的战术打印图。"
 	html_link = "images/7/78/Whiskey_outpost.png"
 	color = "grey"
 
 /obj/item/map/big_red_map
 	name = "\improper Solaris Ridge Map"
-	desc = "A censored blueprint of the Solaris Ridge facility."
+	desc = "索拉里斯山脊设施的审查版蓝图。"
 	html_link = "images/9/9e/Solaris_Ridge.png"
 	color = "#e88a10"
 
 /obj/item/map/FOP_map
 	name = "\improper Fiorina Orbital Penitentiary Map"
-	desc = "A labelled interior scan of Fiorina Orbital Penitentiary."
+	desc = "菲奥里纳轨道监狱的内部扫描标注图。"
 	html_link = "images/4/4c/Map_Prison.png"
 	color = "#e88a10"
 
 /obj/item/map/FOP_map_v3
 	name = "\improper Fiorina Orbital Civilian Annex Map"
-	desc = "A scan produced by the Almayer's sensor array of the Fiorina Orbital Penitentiary Civilian Annex. It appears to have broken off from the rest of the station and is now in free geo-sync orbit around the planet."
+	desc = "阿尔迈耶号传感器阵列对菲奥里纳轨道监狱民用附属设施的扫描图。它似乎已与空间站主体分离，目前正围绕行星进行自由地球同步轨道运行。"
 	html_link = "images/e/e0/Prison_Station_Science_Annex.png"
 	color = "#e88a10"
 
 /obj/item/map/desert_dam
 	name = "\improper Trijent Dam map"
-	desc = "An orbital scan printout of the Trijent Dam colony."
+	desc = "特里金特大坝殖民地的轨道扫描打印图。"
 	html_link = "images/9/92/Trijent_Dam.png"
 	color = "#ad8d0e"
 
 /obj/item/map/sorokyne_map
 	name = "\improper Sorokyne Strata map"
-	desc = "A map of the Weyland-Yutani colony Sorokyne Outpost, commonly known as Sorokyne Strata."
+	desc = "维兰德-汤谷殖民地索罗金前哨的地图，通常称为索罗金地层。"
 	html_link = "images/2/21/Sorokyne_Wiki_Map.jpg" //The fact that this is just a wiki-link makes me sad and amused.
 	color = "cyan"
 
 /obj/item/map/corsat
 	name = "\improper CORSAT map"
-	desc = "A blueprint of CORSAT station."
+	desc = "CORSAT空间站的蓝图。"
 	html_link = "images/8/8e/CORSAT_Satellite.png"
 	color = "red"
 
 /obj/item/map/kutjevo_map
 	name = "\improper Kutjevo Refinery map"
-	desc = "An orbital scan of Kutjevo Refinery."
+	desc = "库特耶沃精炼厂的轨道扫描图。"
 	html_link = "images/0/0d/Kutjevo_a1.jpg"
 	color = "red"
 
 /obj/item/map/lv522_map
 	name = "\improper LV-522 Map"
-	desc = "An overview of LV-522 schematics."
+	desc = "LV-522的示意图总览。"
 	html_link = "images/b/bb/C_claim.png"
 	color = "cyan"
 
 /obj/item/map/lv759_map
 	name = "\improper LV-759 Map"
-	desc = "An overview of LV-759 schematics."
+	desc = "LV-759的示意图总览。"
 	html_link = "images/6/60/LV759_Hybrisa_Prospera.png" //needs proper image still.
 	color = "#005eab"
 
 /obj/item/map/new_varadero
 	name = "\improper New Varadero map"
-	desc = "A labeled blueprint of the UA outpost New Varadero."
+	desc = "标注有UA前哨新瓦拉德罗的蓝图。"
 	html_link = "images/9/94/New_Varadero.png"
 	color = "red"
 
@@ -179,7 +179,7 @@ GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 
 // Landmark - Used for mapping. Will spawn the appropriate map for each gamemode (LV map items will spawn when LV is the gamemode, etc)
 /obj/effect/landmark/map_item
-	name = "map item"
+	name = "地图物品"
 	icon_state = "ipool"
 
 /obj/effect/landmark/map_item/Initialize(mapload, ...)

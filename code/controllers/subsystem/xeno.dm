@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(xeno)
-	name   = "Xeno Life"
+	name   = "异形生命"
 	wait   = 2 SECONDS
 	flags  = SS_NO_INIT | SS_KEEP_TIMING
 	priority   = SS_PRIORITY_XENO

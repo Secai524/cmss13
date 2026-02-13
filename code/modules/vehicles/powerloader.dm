@@ -1,7 +1,7 @@
 /obj/vehicle/powerloader
 	name = "\improper Caterpillar P-5000 Work Loader"
 	icon = 'icons/obj/vehicles/powerloader.dmi'
-	desc = "The Caterpillar P-5000 Work Loader is a commercial mechanized exoskeleton used for lifting heavy materials and objects, first designed in January 29, 2025 by Weyland Corporation. An old but trusted design used in warehouses, constructions and military ships everywhere."
+	desc = "卡特彼勒P-5000型动力装载机是一种用于搬运重型物料和物体的商用机械化外骨骼，最初由维兰德公司于2025年1月29日设计。这是一种老旧但值得信赖的设计，广泛应用于仓库、建筑工地和军用舰船。"
 	icon_state = "powerloader_open"
 	layer = POWERLOADER_LAYER //so the top appears above windows and wall mounts
 	anchored = TRUE
@@ -84,7 +84,7 @@
 
 /obj/vehicle/powerloader/attack_hand(mob/user)
 	if(buckled_mob && user != buckled_mob)
-		buckled_mob.visible_message(SPAN_WARNING("[user] tries to move [buckled_mob] out of [src]."),
+		buckled_mob.visible_message(SPAN_WARNING("[user]试图将[buckled_mob]移出[src]。"),
 		SPAN_DANGER("[user] tries to move you out of [src]!"))
 		var/oldloc = loc
 		var/olddir = dir
@@ -109,10 +109,10 @@
 		return
 	var/mob/living/carbon/human/H = M
 	if(!skillcheck(user, SKILL_POWERLOADER, SKILL_POWERLOADER_TRAINED))
-		to_chat(H, SPAN_WARNING("You don't seem to know how to operate \the [src]."))
+		to_chat(H, SPAN_WARNING("你似乎不知道如何操作\the [src]。"))
 		return
 	if(H.r_hand || H.l_hand)
-		to_chat(H, SPAN_WARNING("You need both hands free to operate \the [src]."))
+		to_chat(H, SPAN_WARNING("你需要双手空闲才能操作\the [src]。"))
 		return
 	. = ..()
 
@@ -217,28 +217,28 @@
 			if(!T.density)
 				for(var/atom/movable/AM in T.contents)
 					if(AM.density)
-						to_chat(user, SPAN_WARNING("You can't drop [loaded] here, [AM] blocks the way."))
+						to_chat(user, SPAN_WARNING("你无法在此处卸下[loaded]，[AM]挡住了去路。"))
 						return
 				if(loaded.bound_height > 32)
 					var/turf/next_turf = get_step(T, NORTH)
 					if(next_turf.density)
-						to_chat(user, SPAN_WARNING("You can't drop [loaded] here, something blocks the way."))
+						to_chat(user, SPAN_WARNING("你无法在此处卸下[loaded]，有东西挡住了去路。"))
 						return
 					for(var/atom/movable/AM in next_turf.contents)
 						if(AM.density)
-							to_chat(user, SPAN_WARNING("You can't drop [loaded] here, [AM] blocks the way."))
+							to_chat(user, SPAN_WARNING("你无法在此处卸下[loaded]，[AM]挡住了去路。"))
 							return
 				if(loaded.bound_width > 32)
 					var/turf/next_turf = get_step(T, EAST)
 					if(next_turf.density)
-						to_chat(user, SPAN_WARNING("You can't drop [loaded] here, something blocks the way."))
+						to_chat(user, SPAN_WARNING("你无法在此处卸下[loaded]，有东西挡住了去路。"))
 						return
 					for(var/atom/movable/AM in next_turf.contents)
 						if(AM.density)
-							to_chat(user, SPAN_WARNING("You can't drop \the [loaded] here, \the [AM] blocks the way."))
+							to_chat(user, SPAN_WARNING("你无法在此处卸下\the [loaded]，\the [AM]挡住了去路。"))
 							return
 
-				user.visible_message(SPAN_NOTICE("[user] drops \the [loaded] on [T] with \the [src]."),
+				user.visible_message(SPAN_NOTICE("[user]用\the [src]将\the [loaded]卸在[T]上。"),
 				SPAN_NOTICE("You drop \the [loaded] on [T] with \the [src]."))
 				loaded.forceMove(T)
 				playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
@@ -290,8 +290,8 @@
 			return
 		if(RD.reagents && RD.reagents.total_volume > 0)
 			for(var/datum/reagent/R in RD.reagents.reagent_list)
-				if(R.name != "Water" && R.name != "Beer")
-					to_chat(user, SPAN_WARNING("It is unsafe to use \the [linked_powerloader] to transport \the [RD] without emptying it first."))
+				if(R.name != "水" && R.name != "啤酒")
+					to_chat(user, SPAN_WARNING("在清空\the [RD]之前，使用\the [linked_powerloader]运输它是不安全的。"))
 					return
 		load_target_tag = "reagent_dispenser"
 
@@ -316,7 +316,7 @@
 		return
 	loaded = target
 	loaded.forceMove(src)
-	to_chat(user, SPAN_NOTICE("You grab \the [target] with \the [src]."))
+	to_chat(user, SPAN_NOTICE("你用\the [src]抓住了\the [target]。"))
 	playsound(src, sound, 40, 1)
 	update_icon(target_tag)
 	target.update_icon()
@@ -330,7 +330,7 @@
 
 /obj/structure/powerloader_wreckage
 	name = "\improper Caterpillar P-5000 Work Loader wreckage"
-	desc = "Remains of some unfortunate Power Loader. Completely unrepairable."
+	desc = "某台不幸的动力装载机的残骸。完全无法修复。"
 	icon = 'icons/obj/vehicles/powerloader.dmi'
 	icon_state = "wreck"
 	density = TRUE
@@ -345,12 +345,12 @@
 		return XENO_NO_DELAY_ACTION
 
 	if(attacking_xeno.mob_size < MOB_SIZE_XENO)
-		to_chat(attacking_xeno, SPAN_XENOWARNING("You're too small to do any significant damage to this vehicle!"))
+		to_chat(attacking_xeno, SPAN_XENOWARNING("你体型太小，无法对这载具造成显著伤害！"))
 		return XENO_NO_DELAY_ACTION
 
 	attacking_xeno.animation_attack_on(src)
 
-	attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno] slashes [src]!"), SPAN_DANGER("You slash [src]!"))
+	attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno]劈砍[src]！"), SPAN_DANGER("You slash [src]!"))
 	playsound(attacking_xeno, pick('sound/effects/metalhit.ogg', 'sound/weapons/alien_claw_metal1.ogg', 'sound/weapons/alien_claw_metal2.ogg', 'sound/weapons/alien_claw_metal3.ogg'), 25, 1)
 
 	var/damage = (attacking_xeno.melee_vehicle_damage + rand(-5,5))
@@ -366,17 +366,17 @@
 	if(unslashable || health <= 0)
 		return TAILSTAB_COOLDOWN_NONE
 	if(xeno.mob_size < MOB_SIZE_XENO)
-		to_chat(xeno, SPAN_XENOWARNING("You're too small to do any significant damage to this vehicle!"))
+		to_chat(xeno, SPAN_XENOWARNING("你体型太小，无法对这载具造成显著伤害！"))
 		return XENO_NO_DELAY_ACTION
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	var/damage = (xeno.melee_vehicle_damage + rand(-5,5))
 	health -= damage
 	if(health <= 0)
-		xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno]用它的尾巴摧毁了[src]！"),
 		SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		deconstruct(FALSE)
 	else
-		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno] 用它的尾巴抽打 [src]！"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
@@ -387,7 +387,7 @@
 
 /obj/vehicle/powerloader/jd
 	name = "\improper John Deere 4300 Power Loader"
-	desc = "The John Deere 4300 Power Loader is a commercial mechanized exoskeleton used for lifting heavy materials and objects based on the Caterpillar P-5000, first designed in January 29, 2025 by the Weyland Corporation. An old but trusted design used in warehouses, constructions and military ships everywhere. This one has a signature green and yellow livery."
+	desc = "约翰迪尔4300型动力装载机是一种基于卡特彼勒P-5000设计的商用机械化外骨骼，用于搬运重型物料和物体，最初由维兰德公司于2025年1月29日设计。这是一种老旧但值得信赖的设计，广泛应用于仓库、建筑工地和军用舰船。这台涂有标志性的绿色和黄色涂装。"
 	icon_state = "powerloader_open_jd"
 	base_state = "powerloader_jd"
 	open_state = "powerloader_open_jd"
@@ -400,7 +400,7 @@
 
 /obj/vehicle/powerloader/ft
 	name = "\improper Ferret Heavy Industries Mk4 Power Loader"
-	desc = "The Ferret Heavy Industries Mk4 Power Loader is a commercial mechanized exoskeleton used for lifting heavy materials and objects based on the Caterpillar P-5000, first designed in January 29, 2025 by the Weyland Corporation. An old but trusted design used in warehouses, constructions and military ships everywhere. This one has the signature blue and white livery of the now defunct Ferret Heavy Industries that went bankrupt two years ago."
+	desc = "费雷特重工业Mk4型动力装载机是一种基于卡特彼勒P-5000设计的商用机械化外骨骼，用于搬运重型物料和物体，最初由维兰德公司于2025年1月29日设计。这是一种老旧但值得信赖的设计，广泛应用于仓库、建筑工地和军用舰船。这台涂有现已倒闭（两年前破产）的费雷特重工业标志性的蓝白涂装。"
 	icon_state = "powerloader_open_ft"
 	base_state = "powerloader_ft"
 	open_state = "powerloader_open_ft"

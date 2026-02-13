@@ -4,7 +4,7 @@ COLONIAL MARSHALS
 ---------------------
 */
 /datum/skills/cmb
-	name = "CMB Deputy"
+	name = "CMB副手"
 	skills = list(
 		SKILL_POLICE = SKILL_POLICE_SKILLED,
 		SKILL_CQC = SKILL_CQC_EXPERT,
@@ -18,7 +18,7 @@ COLONIAL MARSHALS
 	)
 
 /datum/skills/cmb/medic
-	name = "CMB Medical Technician"
+	name = "CMB医疗技术员"
 	skills = list(
 		SKILL_POLICE = SKILL_POLICE_SKILLED,
 		SKILL_CQC = SKILL_CQC_EXPERT,
@@ -33,7 +33,7 @@ COLONIAL MARSHALS
 	)
 
 /datum/skills/cmb/engi
-	name = "CMB Breaching Technician"
+	name = "CMB破门技术员"
 	skills = list(
 		SKILL_POLICE = SKILL_POLICE_SKILLED,
 		SKILL_CQC = SKILL_CQC_EXPERT,
@@ -48,7 +48,7 @@ COLONIAL MARSHALS
 	)
 
 /datum/skills/cmb/spec
-	name = "CMB SWAT Specialist"
+	name = "CMB特警专家"
 	skills = list(
 		SKILL_POLICE = SKILL_POLICE_SKILLED,
 		SKILL_CQC = SKILL_CQC_MASTER,
@@ -62,7 +62,7 @@ COLONIAL MARSHALS
 	)
 
 /datum/skills/cmb/leader
-	name = "CMB Marshal"
+	name = "CMB执法官"
 	skills = list(
 		SKILL_POLICE = SKILL_POLICE_SKILLED,
 		SKILL_CQC = SKILL_CQC_EXPERT,
@@ -80,7 +80,7 @@ COLONIAL MARSHALS
 	)
 
 /datum/skills/synthetic/cmb
-	name = "CMB Investigative Synthetic"
+	name = "CMB调查型合成人"
 	skills = list(
 		SKILL_CQC = SKILL_CQC_MASTER,
 		SKILL_ENGINEER = SKILL_ENGINEER_MASTER,
@@ -105,7 +105,7 @@ COLONIAL MARSHALS
 
 
 /datum/skills/cmb/co_survivor // CMB CO Survivor for Solaris Ridge
-	name = "CMB Marshal"
+	name = "CMB执法官"
 	skills = list(
 		SKILL_POLICE = SKILL_POLICE_SKILLED,
 		SKILL_CQC = SKILL_CQC_EXPERT,

@@ -1,6 +1,6 @@
 /obj/item/disk/botany
-	name = "flora data disk"
-	desc = "A small disk used for carrying data on plant genetics."
+	name = "植物数据盘"
+	desc = "一种用于携带植物遗传数据的小型磁盘。"
 	icon = 'icons/obj/items/disk.dmi'
 	icon_state = "botanydisk"
 	item_state = "botanydisk"
@@ -18,17 +18,17 @@
 	if(!length(genes))
 		return
 
-	var/choice = alert(user, "Are you sure you want to wipe the disk?", "Xenobotany Data", "No", "Yes")
+	var/choice = alert(user, "确定要擦除磁盘数据吗？", "Xenobotany Data", "No", "Yes")
 	if(src && user && genes && choice == "Yes")
-		to_chat(user, "You wipe the disk data.")
+		to_chat(user, "你擦除了磁盘数据。")
 		name = initial(name)
 		desc = initial(name)
 		genes = list()
 		genesource = "unknown"
 
 /obj/item/storage/box/botanydisk
-	name = "flora disk box"
-	desc = "A box of flora data disks, apparently."
+	name = "植物数据盘盒"
+	desc = "一盒植物数据盘，看起来是。"
 
 /obj/item/storage/box/botanydisk/Initialize()
 	. = ..()

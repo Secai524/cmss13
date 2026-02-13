@@ -6,8 +6,8 @@
 #define LIGHT_FLOOR_COLOR_WHITE 5
 
 /turf/open/floor/light
-	name = "light floor"
-	desc = "Beware of breakdancing on these tiles, glass shards embedded in the head is not a fun time."
+	name = "轻质地板"
+	desc = "小心在这些地砖上跳霹雳舞，脑袋里嵌进玻璃碎片可不是闹着玩的。"
 	icon_state = "light_on"
 	tile_type = /obj/item/stack/tile/light
 	var/on = TRUE
@@ -62,27 +62,27 @@
 			turf_flags &= ~TURF_BROKEN
 			update_icon()
 			playsound(src, 'sound/machines/click.ogg', 25, 1)
-			to_chat(user, SPAN_NOTICE("You replace the light bulb."))
+			to_chat(user, SPAN_NOTICE("你更换了灯泡。"))
 		else
-			to_chat(user, SPAN_NOTICE("The lightbulb seems fine, no need to replace it."))
+			to_chat(user, SPAN_NOTICE("灯泡看起来没问题，无需更换。"))
 		return
 
 	if(istype(item_in_hand, /obj/item/device/multitool)) //changing the light color with multitool, can't do if bulb broken, can do while it's off
 		if(!(turf_flags & TURF_BROKEN))
 			state++
 			update_icon()
-			to_chat(user, SPAN_NOTICE("You alter the glass panel's settings, changing its color."))
+			to_chat(user, SPAN_NOTICE("你调整了玻璃面板的设置，改变了它的颜色。"))
 		else
-			to_chat(user, SPAN_NOTICE("The bulb inside is shattered, you should get a new one before tuning it."))
+			to_chat(user, SPAN_NOTICE("里面的灯泡碎了，你应该在调试前换个新的。"))
 
 
 /turf/open/floor/light/attack_hand(mob/user as mob) //turning the light on and off
 	if(!(turf_flags & TURF_BROKEN))
 		on = !on
 		update_icon()
-		to_chat(user, SPAN_NOTICE("You turn the light [on ? "on" : "off"]."))
+		to_chat(user, SPAN_NOTICE("你将灯[on ? "on" : "off"]."))
 	else
-		to_chat(user, SPAN_NOTICE("It looks like the bulb inside has been shattered, you should think about replacing it.")) //if the light is broken and you try to turn it off and on
+		to_chat(user, SPAN_NOTICE("看起来里面的灯泡碎了，你应该考虑更换它。")) //if the light is broken and you try to turn it off and on
 
 	return ..()
 

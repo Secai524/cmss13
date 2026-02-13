@@ -1,6 +1,6 @@
 //Base Instance
 /area/prison
-	name = "Fiorina Orbital Penitentiary - Main Cellblock"
+	name = "菲奥里纳轨道监狱 - 主监区"
 	ceiling = CEILING_GLASS
 	ambience_exterior = AMBIENCE_ALMAYER
 	ceiling_muffle = FALSE
@@ -472,7 +472,7 @@
 	is_landing_zone = TRUE
 
 /area/prison/hangar_storage/research/shuttle
-	name = "Corporate Shuttle"
+	name = "公司穿梭机"
 	is_landing_zone = FALSE
 
 /area/prison/telecomms
@@ -480,7 +480,7 @@
 	icon_state = "tcomsatcham"
 
 /area/prison/pirate
-	name = "Tramp Freighter \"Rocinante\""
+	name = "流浪货船\"Rocinante\""
 	icon_state = "syndie-ship"
 	requires_power = 0
 
@@ -499,6 +499,6 @@
 	requires_power = 0
 
 /area/prison/landing/console3
-	name = "\improper LZ1 'Civilian'"
+	name = "\improper LZ1 '平民'"
 	icon_state = "tcomsatcham"
 	requires_power = 0

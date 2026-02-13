@@ -2,7 +2,7 @@
 
 /datum/tgs_chat_command/sdql
 	name = "sdql"
-	help_text = "Runs an SDQL query"
+	help_text = "运行一个 SDQL 查询"
 	admin_only = TRUE
 
 /datum/tgs_chat_command/sdql/Run(datum/tgs_chat_user/sender, params)

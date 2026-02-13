@@ -2,7 +2,7 @@
 
 /obj/item/reagent_container/glass/bottle
 	name = "bottle"
-	desc = "A small bottle."
+	desc = "一个小瓶子。"
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle-1"
 	item_state = "bottle-1"
@@ -64,7 +64,7 @@
 
 /obj/item/reagent_container/glass/bottle/inaprovaline
 	name = "\improper Inaprovaline bottle"
-	desc = "A small bottle. Contains inaprovaline - used to stabilize patients."
+	desc = "一个小瓶子。内含伊纳普罗瓦林——用于稳定病人状况。"
 	amount_per_transfer_from_this = 60
 
 /obj/item/reagent_container/glass/bottle/inaprovaline/Initialize()
@@ -74,7 +74,7 @@
 
 /obj/item/reagent_container/glass/bottle/kelotane
 	name = "\improper Kelotane bottle"
-	desc = "A small bottle. Contains kelotane - used to treat burned areas."
+	desc = "一个小瓶子。内含凯洛坦——用于治疗烧伤区域。"
 	amount_per_transfer_from_this = 60
 
 /obj/item/reagent_container/glass/bottle/kelotane/Initialize()
@@ -93,7 +93,7 @@
 
 /obj/item/reagent_container/glass/bottle/spaceacillin
 	name = "\improper Spaceacillin bottle"
-	desc = "A small bottle. Contains spaceacillin - used to treat infected wounds."
+	desc = "一个小瓶子。内含太空青霉素——用于治疗感染伤口。"
 	amount_per_transfer_from_this = 60
 
 /obj/item/reagent_container/glass/bottle/spaceacillin/Initialize()
@@ -102,16 +102,16 @@
 	update_icon()
 
 /obj/item/reagent_container/glass/bottle/toxin
-	name = "toxin bottle"
-	desc = "A small bottle of toxins. Do not drink, it is poisonous."
+	name = "毒素瓶"
+	desc = "一小瓶毒素。请勿饮用，有毒。"
 /obj/item/reagent_container/glass/bottle/toxin/Initialize()
 	. = ..()
 	reagents.add_reagent("toxin", 60)
 	update_icon()
 
 /obj/item/reagent_container/glass/bottle/cyanide
-	name = "cyanide bottle"
-	desc = "A small bottle of cyanide. Bitter almonds?"
+	name = "氰化物瓶"
+	desc = "一小瓶氰化物。苦杏仁味？"
 
 /obj/item/reagent_container/glass/bottle/cyanide/Initialize()
 	. = ..()
@@ -119,8 +119,8 @@
 	update_icon()
 
 /obj/item/reagent_container/glass/bottle/stoxin
-	name = "Soporific bottle"
-	desc = "A small bottle of soporific. Just the fumes make you sleepy."
+	name = "安眠药瓶"
+	desc = "一小瓶安眠药。光是气味就让人昏昏欲睡。"
 	amount_per_transfer_from_this = 60
 
 /obj/item/reagent_container/glass/bottle/stoxin/Initialize()
@@ -129,8 +129,8 @@
 	update_icon()
 
 /obj/item/reagent_container/glass/bottle/chloralhydrate
-	name = "chloral hydrate bottle"
-	desc = "A small bottle of Choral Hydrate. Mickey's Favorite!"
+	name = "水合氯醛瓶"
+	desc = "一小瓶水合氯醛。米奇的最爱！"
 
 /obj/item/reagent_container/glass/bottle/chloralhydrate/Initialize()
 	. = ..()
@@ -139,7 +139,7 @@
 
 /obj/item/reagent_container/glass/bottle/antitoxin
 	name = "\improper Dylovene bottle"
-	desc = "A small bottle of dylovene. Counters poisons, and repairs toxin damage. A wonder drug."
+	desc = "一小瓶迪洛文。可解毒并修复毒素损伤。一种特效药。"
 	amount_per_transfer_from_this = 60
 
 /obj/item/reagent_container/glass/bottle/antitoxin/Initialize()
@@ -148,8 +148,8 @@
 	update_icon()
 
 /obj/item/reagent_container/glass/bottle/mutagen
-	name = "unstable mutagen bottle"
-	desc = "A small bottle of unstable mutagen. Randomly changes the DNA structure of whoever comes in contact."
+	name = "不稳定诱变剂瓶"
+	desc = "一小瓶不稳定诱变剂。会随机改变接触者的DNA结构。"
 
 /obj/item/reagent_container/glass/bottle/mutagen/Initialize()
 	. = ..()
@@ -157,8 +157,8 @@
 	update_icon()
 
 /obj/item/reagent_container/glass/bottle/ammonia
-	name = "ammonia bottle"
-	desc = "A small bottle."
+	name = "氨水瓶"
+	desc = "一个小瓶子。"
 
 /obj/item/reagent_container/glass/bottle/ammonia/Initialize()
 	. = ..()
@@ -166,8 +166,8 @@
 	update_icon()
 
 /obj/item/reagent_container/glass/bottle/diethylamine
-	name = "diethylamine bottle"
-	desc = "A small bottle. Contains a potent fertiliser."
+	name = "二乙胺瓶"
+	desc = "一个小瓶子。内含强力肥料。"
 
 /obj/item/reagent_container/glass/bottle/diethylamine/Initialize()
 	. = ..()
@@ -175,8 +175,8 @@
 	update_icon()
 
 /obj/item/reagent_container/glass/bottle/flu_virion
-	name = "flu virion culture bottle"
-	desc = "A small bottle. Contains H13N1 flu virion culture in synthblood medium."
+	name = "流感病毒培养瓶"
+	desc = "一个小瓶子。内含培养于合成血液介质中的H13N1流感病毒。"
 
 /obj/item/reagent_container/glass/bottle/flu_virion/Initialize()
 	. = ..()
@@ -186,8 +186,8 @@
 	update_icon()
 
 /obj/item/reagent_container/glass/bottle/epiglottis_virion
-	name = "epiglottis virion culture bottle"
-	desc = "A small bottle. Contains Epiglottis virion culture in synthblood medium."
+	name = "会厌炎病毒培养瓶"
+	desc = "一个小瓶子。内含培养于合成血液介质中的会厌炎病毒。"
 
 /obj/item/reagent_container/glass/bottle/epiglottis_virion/Initialize()
 	. = ..()
@@ -197,8 +197,8 @@
 	update_icon()
 
 /obj/item/reagent_container/glass/bottle/liver_enhance_virion
-	name = "liver enhancement virion culture bottle"
-	desc = "A small bottle. Contains liver enhancement virion culture in synthblood medium."
+	name = "肝脏增强病毒培养瓶"
+	desc = "一个小瓶子。内含培养于合成血液介质中的肝脏增强病毒。"
 
 /obj/item/reagent_container/glass/bottle/liver_enhance_virion/Initialize()
 	. = ..()
@@ -208,8 +208,8 @@
 	update_icon()
 
 /obj/item/reagent_container/glass/bottle/hullucigen_virion
-	name = "hullucigen virion culture bottle"
-	desc = "A small bottle. Contains hullucigen virion culture in synthblood medium."
+	name = "致幻病毒培养瓶"
+	desc = "一个小瓶子。内含培养于合成血液介质中的致幻病毒。"
 
 /obj/item/reagent_container/glass/bottle/hullucigen_virion/Initialize()
 	. = ..()
@@ -220,7 +220,7 @@
 
 /obj/item/reagent_container/glass/bottle/pierrot_throat
 	name = "\improper Pierrot's Throat culture bottle"
-	desc = "A small bottle. Contains H0NI<42 virion culture in synthblood medium."
+	desc = "一个小瓶子。内含培养于合成血液介质中的H0NI<42病毒。"
 
 /obj/item/reagent_container/glass/bottle/pierrot_throat/Initialize()
 	. = ..()
@@ -230,8 +230,8 @@
 	update_icon()
 
 /obj/item/reagent_container/glass/bottle/cold
-	name = "rhinovirus culture bottle"
-	desc = "A small bottle. Contains XY-rhinovirus culture in synthblood medium."
+	name = "鼻病毒培养瓶"
+	desc = "一个小瓶子。内含培养于合成血液介质中的XY-鼻病毒。"
 
 /obj/item/reagent_container/glass/bottle/cold/Initialize()
 	. = ..()
@@ -241,8 +241,8 @@
 	update_icon()
 
 /obj/item/reagent_container/glass/bottle/random
-	name = "random culture bottle"
-	desc = "A small bottle. Contains a random disease."
+	name = "随机培养瓶"
+	desc = "一个小瓶子。内含随机疾病。"
 
 /obj/item/reagent_container/glass/bottle/random/Initialize()
 	. = ..()
@@ -253,7 +253,7 @@
 
 /obj/item/reagent_container/glass/bottle/gbs
 	name = "\improper GBS culture bottle"
-	desc = "A small bottle. Contains Gravitokinetic Bipotential SADS+ culture in synthblood medium."//Or simply - General BullShit
+	desc = "一个小瓶子。内含培养于合成血液介质中的重力动力学双势SADS+病毒。"//Or simply - General BullShit
 	amount_per_transfer_from_this = 5
 
 /obj/item/reagent_container/glass/bottle/gbs/Initialize()
@@ -266,7 +266,7 @@
 
 /obj/item/reagent_container/glass/bottle/fake_gbs
 	name = "\improper GBS culture bottle"
-	desc = "A small bottle. Contains Gravitokinetic Bipotential SADS- culture in synthblood medium."//Or simply - General BullShit
+	desc = "一个小瓶子。内含合成血培养基中的重力动力学双势SADS培养物。"//Or simply - General BullShit
 
 /obj/item/reagent_container/glass/bottle/fake_gbs/Initialize()
 	. = ..()
@@ -277,8 +277,8 @@
 
 /*
 /obj/item/reagent_container/glass/bottle/rhumba_beat
-	name = "Rhumba Beat culture bottle"
-	desc = "A small bottle. Contains The Rhumba Beat culture in synthblood medium."//Or simply - General BullShit
+	name = "伦巴节拍培养瓶"
+	desc = "一个小瓶子。内含合成血培养基中的伦巴节拍培养物。"//Or simply - General BullShit
 	amount_per_transfer_from_this = 5
 
 	New()
@@ -294,7 +294,7 @@
 
 /obj/item/reagent_container/glass/bottle/brainrot
 	name = "\improper Brainrot culture bottle"
-	desc = "A small bottle. Contains Cryptococcus Cosmosis culture in synthblood medium."
+	desc = "一个小瓶子。内含合成血培养基中的隐球菌宇宙病培养物。"
 
 /obj/item/reagent_container/glass/bottle/brainrot/Initialize()
 	. = ..()
@@ -305,7 +305,7 @@
 
 /obj/item/reagent_container/glass/bottle/magnitis
 	name = "\improper Magnitis culture bottle"
-	desc = "A small bottle. Contains a small dosage of Fukkos Miracos."
+	desc = "一个小瓶子。内含一小剂量的福科斯奇迹剂。"
 
 /obj/item/reagent_container/glass/bottle/magnitis/Initialize()
 	. = ..()
@@ -315,8 +315,8 @@
 	update_icon()
 
 /obj/item/reagent_container/glass/bottle/pacid
-	name = "polytrinic acid bottle"
-	desc = "A small bottle. Contains a small amount of Polytrinic Acid, an extremely potent and dangerous acid."
+	name = "聚三硝酸瓶"
+	desc = "一个小瓶子。内含少量聚三硝酸，一种极其强效且危险的酸。"
 
 /obj/item/reagent_container/glass/bottle/pacid/Initialize()
 	. = ..()
@@ -325,7 +325,7 @@
 
 /obj/item/reagent_container/glass/bottle/adminordrazine
 	name = "\improper Adminordrazine bottle"
-	desc = "A small bottle. Contains the liquid essence of the gods."
+	desc = "一个小瓶子。内含众神的液体精华。"
 
 /obj/item/reagent_container/glass/bottle/adminordrazine/Initialize()
 	. = ..()
@@ -334,7 +334,7 @@
 
 /obj/item/reagent_container/glass/bottle/capsaicin
 	name = "\improper Capsaicin bottle"
-	desc = "A small bottle. Contains hot sauce."
+	desc = "一个小瓶子。内含辣酱。"
 
 /obj/item/reagent_container/glass/bottle/capsaicin/Initialize()
 	. = ..()
@@ -343,7 +343,7 @@
 
 /obj/item/reagent_container/glass/bottle/frostoil
 	name = "\improper Frost Oil bottle"
-	desc = "A small bottle. Contains cold sauce."
+	desc = "一个小瓶子。内含冷酱。"
 
 /obj/item/reagent_container/glass/bottle/frostoil/Initialize()
 	. = ..()
@@ -352,7 +352,7 @@
 
 /obj/item/reagent_container/glass/bottle/bicaridine
 	name = "\improper Bicaridine bottle"
-	desc = "A small bottle. Contains Bicaridine - Used to treat brute damage."
+	desc = "一个小瓶子。内含碧卡利定——用于治疗钝器伤。"
 	amount_per_transfer_from_this = 60
 
 /obj/item/reagent_container/glass/bottle/bicaridine/Initialize()
@@ -362,7 +362,7 @@
 
 /obj/item/reagent_container/glass/bottle/peridaxon
 	name = "\improper Peridaxon bottle"
-	desc = "A small bottle. Contains Peridaxon - Used by lazy doctors to temporarily halt the effects of internal organ damage."
+	desc = "一个小瓶子。内含培利达松——被懒惰的医生用来暂时阻止内脏损伤的影响。"
 	volume = 60
 	amount_per_transfer_from_this = 60
 
@@ -373,7 +373,7 @@
 
 /obj/item/reagent_container/glass/bottle/tramadol
 	name = "\improper Tramadol bottle"
-	desc = "A small bottle. Contains Tramadol - Used as a basic painkiller."
+	desc = "一个小瓶子。内含曲马多——用作基础止痛药。"
 	volume = 60
 	amount_per_transfer_from_this = 60
 
@@ -384,7 +384,7 @@
 
 /obj/item/reagent_container/glass/bottle/oxycodone
 	name = "\improper Oxycodone bottle"
-	desc = "A small bottle. Contains Oxycodone - Used as an Extreme Painkiller. ILLEGAL TO DISTRIBUTE."
+	desc = "一个小瓶子。内含羟考酮——用作强效止痛药。禁止分发。"
 	volume = 60
 	amount_per_transfer_from_this = 60
 
@@ -395,7 +395,7 @@
 
 /obj/item/reagent_container/glass/bottle/tricordrazine
 	name = "\improper Tricordrazine bottle"
-	desc = "A small bottle. Contains tricordrazine - A weak but catch-all medicine for treating all sorts of damage."
+	desc = "一个小瓶子。内含三合剂——一种效果较弱但能治疗各种损伤的万能药。"
 	volume = 60
 
 /obj/item/reagent_container/glass/bottle/tricordrazine/Initialize()
@@ -405,7 +405,7 @@
 
 /obj/item/reagent_container/glass/bottle/epinephrine
 	name = "\improper Epinephrine bottle"
-	desc = "A small bottle. Contains epinephrine - Used to increase a patients arterial blood pressure, amongst other actions, to assist in cardiopulmonary resuscitation." //"I can't lie to you about your odds of a successful resuscitation, but you have my sympathies."
+	desc = "一个小瓶子。内含肾上腺素——用于提高患者的动脉血压等，以协助心肺复苏。" //"I can't lie to you about your odds of a successful resuscitation, but you have my sympathies."
 	volume = 60
 
 /obj/item/reagent_container/glass/bottle/epinephrine/Initialize()

@@ -39,69 +39,69 @@
 
 /datum/emergency_call/wy_bodyguard/print_backstory(mob/living/carbon/human/response_mob)
 	to_chat(response_mob, SPAN_BOLD("You were born [pick(75;"in Europe", 15;"in Asia", 10;"on Mars")] to a poor family."))
-	to_chat(response_mob, SPAN_BOLD("Joining the ranks of Weyland-Yutani was all you could do to keep yourself and your loved ones fed."))
-	to_chat(response_mob, SPAN_BOLD("You have no idea what a xenomorph is."))
-	to_chat(response_mob, SPAN_BOLD("You are a simple security officer employed by Weyland-Yutani to guard their Executives from all Divisions alike."))
-	to_chat(response_mob, SPAN_BOLD("You were sent to act as the Executives bodyguard on the [MAIN_SHIP_NAME], you have gotten permission from corporate to enter the area."))
-	to_chat(response_mob, SPAN_BOLD("Ensure no damage is incurred against Weyland-Yutani. Make sure the CL is safe."))
+	to_chat(response_mob, SPAN_BOLD("加入维兰德-汤谷是你唯一能让自己和所爱之人糊口的选择。"))
+	to_chat(response_mob, SPAN_BOLD("你完全不知道异形是什么。"))
+	to_chat(response_mob, SPAN_BOLD("你是一名受雇于维兰德-汤谷的普通安保人员，负责保护公司各部门的高管。"))
+	to_chat(response_mob, SPAN_BOLD("你被派往[MAIN_SHIP_NAME]担任高管的保镖，并已获得公司许可进入该区域。"))
+	to_chat(response_mob, SPAN_BOLD("确保维兰德-汤谷的利益不受损害。保证公司联络官的安全。"))
 
 /datum/emergency_call/wy_bodyguard/goon
-	name = "Weyland-Yutani Corporate Security (Executive Bodyguard Detail)"
+	name = "维兰德-汤谷公司安保（高管保镖分队）"
 	equipment_preset = /datum/equipment_preset/goon/standard/bodyguard
 	equipment_preset_leader = /datum/equipment_preset/goon/lead/bodyguard
-	spawn_header = "You are a Weyland-Yutani Corporate Security Officer!"
-	spawn_header_leader = "You are a Weyland-Yutani Corporate Security Lead!"
+	spawn_header = "你是维兰德-汤谷公司安保官员！"
+	spawn_header_leader = "你是维兰德-汤谷公司安保领队！"
 
 /datum/emergency_call/wy_bodyguard/pmc
-	name = "Weyland-Yutani PMC (Executive Bodyguard Detail)"
+	name = "维兰德-汤谷PMC（高管保镖分队）"
 	equipment_preset = /datum/equipment_preset/pmc/pmc_standard
 	equipment_preset_leader = /datum/equipment_preset/pmc/pmc_leader
-	spawn_header = "You are a Weyland-Yutani PMC Operator!"
+	spawn_header = "你是维兰德-汤谷PMC操作员！"
 	spawn_header_leader = "You are a Weyland-Yutani PMC Leader!"
 
 /datum/emergency_call/wy_bodyguard/pmc/print_backstory(mob/living/carbon/human/response_mob)
 	if(ishuman_strict(response_mob))
 		to_chat(response_mob, SPAN_BOLD("You were born [pick(75;"in Europe", 15;"in Asia", 10;"on Mars")] to a [pick(75;"well-off", 15;"well-established", 10;"average")] family."))
-		to_chat(response_mob, SPAN_BOLD("Joining the ranks of Weyland-Yutani has proven to be very profitable for you."))
-		to_chat(response_mob, SPAN_BOLD("While you are officially an employee, much of your work is off the books. You work as a skilled mercenary."))
-		to_chat(response_mob, SPAN_BOLD("You are [pick(50;"unaware of the xenomorph threat", 15;"acutely aware of the xenomorph threat", 10;"well-informed of the xenomorph threat")]."))
+		to_chat(response_mob, SPAN_BOLD("加入维兰德-汤谷为你带来了丰厚的回报。"))
+		to_chat(response_mob, SPAN_BOLD("虽然你名义上是公司雇员，但你的大部分工作都见不得光。你是一名技艺精湛的雇佣兵。"))
+		to_chat(response_mob, SPAN_BOLD("你是[pick(50;"unaware of the xenomorph threat", 15;"acutely aware of the xenomorph threat", 10;"well-informed of the xenomorph threat")]."))
 
 /datum/emergency_call/wy_bodyguard/pmc/sec
-	name = "Weyland-Yutani PMC Enforcer (Executive Bodyguard Detail)"
+	name = "维兰德-汤谷PMC执法者（高管保镖分队）"
 	equipment_preset = /datum/equipment_preset/pmc/pmc_security
 	equipment_preset_leader = /datum/equipment_preset/pmc/pmc_lead_investigator
 	spawn_header = "You are a Weyland-Yutani PMC Security Enforcer!"
-	spawn_header_leader = "You are a Weyland-Yutani PMC Lead Investigator!"
+	spawn_header_leader = "你是维兰德-汤谷PMC的首席调查员！"
 
 /datum/emergency_call/wy_bodyguard/commando
-	name = "Weyland-Yutani Commando (Executive Bodyguard Detail)"
+	name = "维兰德-汤谷突击队员（高管保镖分队）"
 	equipment_preset = /datum/equipment_preset/pmc/commando/standard/low_threat
 	equipment_preset_leader = /datum/equipment_preset/pmc/commando/leader/low_threat
-	spawn_header = "You are a Weyland-Yutani Commando!"
+	spawn_header = "你是维兰德-汤谷突击队员！"
 	spawn_header_leader = "You are a Weyland-Yutani Commando Leader!"
 
 /datum/emergency_call/wy_bodyguard/commando/print_backstory(mob/living/carbon/human/response_mob)
 	to_chat(response_mob, SPAN_BOLD("You were born [pick(75;"in Europe", 15;"in Asia", 10;"on Mars")] to a [pick(75;"well-off", 15;"well-established", 10;"average")] family."))
-	to_chat(response_mob, SPAN_BOLD("Joining the ranks of Weyland-Yutani has proven to be very profitable for you."))
-	to_chat(response_mob, SPAN_BOLD("While you are officially an employee, much of your work is off the books. You work as a skilled mercenary."))
-	to_chat(response_mob, SPAN_BOLD("You are well-informed of the xenomorph threat."))
-	to_chat(response_mob, SPAN_BOLD("You are part of Weyland-Yutani Task Force Oberon that arrived in 2182 following the UA withdrawal of the Neroid Sector."))
-	to_chat(response_mob, SPAN_BOLD("Task-force Titan is stationed aboard the USCSS Nisshoku, a weaponized science Weyland-Yutani vessel that is stationed at the edge of the Neroid Sector."))
-	to_chat(response_mob, SPAN_BOLD("Under the directive of Weyland-Yutani board member Johan Almric, you act as private security for Weyland-Yutani Corporate Liaison."))
-	to_chat(response_mob, SPAN_BOLD("The USCSS Nisshoku contains a crew of roughly fifty commandos, and thirty scientists and support personnel."))
-	to_chat(response_mob, SPAN_BOLD("Ensure no damage is incurred against Weyland-Yutani. Make sure the CL is safe."))
-	to_chat(response_mob, SPAN_BOLD("Deny Weyland-Yutani's involvement and do not trust the UA/USCM forces."))
+	to_chat(response_mob, SPAN_BOLD("加入维兰德-汤谷为你带来了丰厚的回报。"))
+	to_chat(response_mob, SPAN_BOLD("虽然你名义上是公司雇员，但你的大部分工作都见不得光。你是一名技艺精湛的雇佣兵。"))
+	to_chat(response_mob, SPAN_BOLD("你对异形威胁了如指掌。"))
+	to_chat(response_mob, SPAN_BOLD("你是维兰德-汤谷奥伯伦特遣队的一员，该部队于2182年美军撤离内罗伊德扇区后抵达。"))
+	to_chat(response_mob, SPAN_BOLD("泰坦特遣队驻扎在USCSS Nisshoku号上，这是一艘维兰德-汤谷的武装科研船，停泊在内罗伊德扇区边缘。"))
+	to_chat(response_mob, SPAN_BOLD("根据维兰德-汤谷董事会成员约翰·阿尔姆里克的指示，你担任维兰德-汤谷公司联络官的私人保镖。"))
+	to_chat(response_mob, SPAN_BOLD("USCSS Nisshoku号上约有五十名突击队员，以及三十名科学家和后勤人员。"))
+	to_chat(response_mob, SPAN_BOLD("确保维兰德-汤谷的利益不受损害。保证公司联络官的安全。"))
+	to_chat(response_mob, SPAN_BOLD("否认维兰德-汤谷的参与，不要信任美军/USCM部队。"))
 
 /datum/emergency_call/wy_bodyguard/android
-	name = "Weyland-Yutani Combat Android (Executive Bodyguard Detail)"
+	name = "维兰德-汤谷战斗仿生人（高管保镖分队）"
 	equipment_preset = /datum/equipment_preset/pmc/w_y_whiteout/low_threat
 	equipment_preset_leader = /datum/equipment_preset/pmc/w_y_whiteout/low_threat/leader
 	spawn_header = "You are a Weyland-Yutani Combat Android!"
 	spawn_header_leader = "You are a Weyland-Yutani Combat Android Leading Unit!"
 
 /datum/emergency_call/wy_bodyguard/android/print_backstory(mob/living/carbon/human/response_mob)
-	to_chat(response_mob, SPAN_BOLD("You were brought online in a Weyland-Yutani secret combat synthetic production facility."))
-	to_chat(response_mob, SPAN_BOLD("You were programmed with a fully unlocked combat software."))
-	to_chat(response_mob, SPAN_BOLD("You were given all available information about the xenomorph threat including classified data reserved for special employees."))
-	to_chat(response_mob, SPAN_BOLD("Ensure no damage is incurred against Weyland-Yutani. Make sure the CL is safe."))
-	to_chat(response_mob, SPAN_BOLD("Deny Weyland-Yutani's involvement and do not trust the UA/USCM forces."))
+	to_chat(response_mob, SPAN_BOLD("你在维兰德-汤谷一处秘密战斗合成人生产设施中被激活。"))
+	to_chat(response_mob, SPAN_BOLD("你的程序搭载了完全解锁的战斗软件。"))
+	to_chat(response_mob, SPAN_BOLD("你获得了关于异形威胁的所有可用信息，包括为特殊雇员保留的机密数据。"))
+	to_chat(response_mob, SPAN_BOLD("确保维兰德-汤谷的利益不受损害。保证公司联络官的安全。"))
+	to_chat(response_mob, SPAN_BOLD("否认维兰德-汤谷的参与，不要信任美军/USCM部队。"))

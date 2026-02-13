@@ -1,6 +1,6 @@
 /obj/item/weapon/gun/flare
 	name = "\improper M82-F flare gun"
-	desc = "A flare gun issued to JTAC operators to use with flares. Comes with a miniscope. One shot, one... life saved?"
+	desc = "配发给JTAC操作员用于发射照明弹的信号枪。附带微型瞄准镜。一发，一条...命得救？"
 	icon_state = "m82f"
 	item_state = "m82f"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/pistols.dmi'
@@ -55,29 +55,29 @@
 
 /obj/item/weapon/gun/flare/reload_into_chamber(mob/user)
 	. = ..()
-	to_chat(user, SPAN_WARNING("You pop out [src]'s tube!"))
+	to_chat(user, SPAN_WARNING("你退出了 [src] 的弹管！"))
 	update_icon()
 
 /obj/item/weapon/gun/flare/attackby(obj/item/attacking_item, mob/user)
 	if(istype(attacking_item, /obj/item/device/flashlight/flare))
 		var/obj/item/device/flashlight/flare/attacking_flare = attacking_item
 		if(attacking_flare.on)
-			to_chat(user, SPAN_WARNING("You can't put a lit flare in [src]!"))
+			to_chat(user, SPAN_WARNING("你不能把点燃的照明弹放入[src]！"))
 			return
 		if(!attacking_flare.fuel)
-			to_chat(user, SPAN_WARNING("You can't put a burnt out flare in [src]!"))
+			to_chat(user, SPAN_WARNING("你不能把燃尽的照明弹放入[src]！"))
 			return
 		if(current_mag && current_mag.current_rounds == 0)
 			ammo = GLOB.ammo_list[attacking_flare.ammo_datum]
 			playsound(user, reload_sound, 25, 1)
-			to_chat(user, SPAN_NOTICE("You load [attacking_flare] into [src]."))
+			to_chat(user, SPAN_NOTICE("你将[attacking_flare]装入了[src]。"))
 			current_mag.current_rounds++
 			qdel(attacking_flare)
 			update_icon()
 		else
-			to_chat(user, SPAN_WARNING("[src] is already loaded!"))
+			to_chat(user, SPAN_WARNING("[src]已经装填好了！"))
 	else
-		to_chat(user, SPAN_WARNING("That's not a flare!"))
+		to_chat(user, SPAN_WARNING("那不是照明弹！"))
 
 /obj/item/weapon/gun/flare/unload(mob/user)
 	if(flags_gun_features & GUN_BURST_FIRING)
@@ -92,7 +92,7 @@
 		playsound(user, reload_sound, 25, TRUE)
 		current_mag.current_rounds--
 		if(user)
-			to_chat(user, SPAN_NOTICE("You unload [unloaded_flare] from \the [src]."))
+			to_chat(user, SPAN_NOTICE("你从 \the [src] 中卸下了 [unloaded_flare]。"))
 			user.put_in_hands(unloaded_flare)
 		update_icon()
 
@@ -104,11 +104,11 @@
 	var/area/flare_area = flare_turf.loc
 
 	if(flare_area.ceiling > CEILING_GLASS)
-		to_chat(user, SPAN_NOTICE("The roof above you is too dense."))
+		to_chat(user, SPAN_NOTICE("你上方的屋顶过于厚重。"))
 		return
 
 	if(!istype(ammo, /datum/ammo/flare))
-		to_chat(user, SPAN_NOTICE("[src] jams as it is somehow loaded with incorrect ammo!"))
+		to_chat(user, SPAN_NOTICE("[src] 因装填了错误的弹药而卡住了！"))
 		return
 
 	if(user.action_busy)
@@ -127,7 +127,7 @@
 	var/datum/ammo/flare/explicit_ammo = ammo
 
 	var/obj/item/device/flashlight/flare/fired_flare = new explicit_ammo.flare_type(get_turf(src))
-	to_chat(user, SPAN_NOTICE("You fire [fired_flare] into the air!"))
+	to_chat(user, SPAN_NOTICE("你将 [fired_flare] 射向空中！"))
 	fired_flare.visible_message(SPAN_WARNING("\A [fired_flare] bursts into brilliant light in the sky!"))
 	fired_flare.invisibility = INVISIBILITY_MAXIMUM
 	fired_flare.mouse_opacity = FALSE
@@ -150,8 +150,8 @@
 		. += SPAN_NOTICE("The last signal flare fired has the designation: [last_signal_flare_name]")
 
 /obj/effect/flare_light
-	name = "flare light"
-	desc = "You are not supposed to see this. Please report it."
+	name = "照明弹光"
+	desc = "你不应该看到这个。请报告此问题。"
 	icon_state = "" //No sprite
 	invisibility = INVISIBILITY_MAXIMUM
 	light_system = MOVABLE_LIGHT

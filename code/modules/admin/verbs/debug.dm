@@ -23,15 +23,15 @@
 	set name = "Make Simple Animal"
 
 	if(!SSticker.mode)
-		alert("Wait until the game starts")
+		alert("请等待游戏开始")
 		return
 
 	if(!M)
-		alert("That mob doesn't seem to exist, close the panel and try again.")
+		alert("该单位似乎不存在，请关闭面板重试。")
 		return
 
 	if(istype(M, /mob/new_player))
-		alert("The mob must not be a new_player.")
+		alert("单位不能是新玩家。")
 		return
 
 	log_admin("[key_name(src)] has animalized [M.key].")
@@ -43,7 +43,7 @@
 	set name = "Make Alien"
 
 	if(!SSticker.mode)
-		alert("Wait until the game starts")
+		alert("请等待游戏开始")
 		return
 	if(ishuman(M))
 		log_admin("[key_name(src)] has alienized [M.key].")
@@ -52,15 +52,15 @@
 
 		message_admins("[key_name_admin(usr)] made [key_name(M)] into an alien.")
 	else
-		alert("Invalid mob")
+		alert("无效单位")
 
 /client/proc/cmd_admin_change_hivenumber()
 	set category = "Debug"
-	set name = "Change Hivenumber"
+	set name = "更改巢穴编号"
 
-	var/mob/living/carbon/X = tgui_input_list(src,"Select a xeno.", "Change Hivenumber", GLOB.living_xeno_list)
+	var/mob/living/carbon/X = tgui_input_list(src,"选择一个异形。", "更改巢穴编号", GLOB.living_xeno_list)
 	if(!istype(X))
-		to_chat(usr, "This can only be done to instances of type /mob/living/carbon.")
+		to_chat(usr, "此操作仅能对 /mob/living/carbon 类型的实例执行。")
 		return
 
 	cmd_admin_change_their_hivenumber(X)
@@ -70,7 +70,7 @@
 	set name = "Toggle Round End Checks"
 
 	if(!SSticker.mode)
-		to_chat(usr, "Mode not found?")
+		to_chat(usr, "未找到模式？")
 	GLOB.round_should_check_for_win = !GLOB.round_should_check_for_win
 	if (GLOB.round_should_check_for_win)
 		message_admins("[key_name(src)] enabled checking for round-end.")
@@ -86,10 +86,10 @@
 	if(!check_rights(R_MOD))
 		return
 
-	if(tgui_alert(usr, "Are you sure you want to mass screenshot this z-level? Ensure your visual settings are correct first (other ghost visibility, zoom level, etc.) and you have emptied your BYOND/screenshots folder.", "Mass Screenshot", list("Yes", "No")) != "Yes")
+	if(tgui_alert(usr, "你确定要对此Z层级进行批量截图吗？请先确保你的视觉设置正确（其他幽灵可见性、缩放等级等），并已清空你的BYOND/screenshots文件夹。", "Mass Screenshot", list("Yes", "No")) != "Yes")
 		return
 
-	var/sleep_duration = tgui_input_number(usr, "Enter a delay in deciseconds between screenshots to allow the client to render changes.", "Screenshot delay", 2, 10, 1, 0, TRUE)
+	var/sleep_duration = tgui_input_number(usr, "输入截图之间的延迟（以十分之一秒为单位），以便客户端渲染变化。", "Screenshot delay", 2, 10, 1, 0, TRUE)
 	if(!sleep_duration)
 		return
 
@@ -150,7 +150,7 @@
 		mob.hud_used.show_hud(HUD_STYLE_STANDARD)
 	mob.animate_movement = SLIDE_STEPS // Initial is incorrect
 
-	to_chat(usr, "Provide these values when asked for the MapTileImageTool: [width] [height] [half_chunk_size] [world.icon_size]")
+	to_chat(usr, "当被要求提供MapTileImageTool时，请提供这些值：[width] [height] [half_chunk_size] [world.icon_size]")
 
 //TODO: merge the vievars version into this or something maybe mayhaps
 /client/proc/cmd_debug_del_all()
@@ -159,11 +159,11 @@
 
 	// to prevent REALLY stupid deletions
 	var/blocked = list(/obj, /obj/item, /obj/effect, /obj/structure/machinery, /mob, /mob/living, /mob/living/carbon, /mob/living/carbon/xenomorph, /mob/living/carbon/human, /mob/dead, /mob/dead/observer, /mob/living/silicon, /mob/living/silicon/ai)
-	var/chosen_deletion = input(usr, "Type the path of the object you want to delete", "Delete:") as null|text
+	var/chosen_deletion = input(usr, "输入你想删除的对象的路径", "Delete:") as null|text
 	if(chosen_deletion)
 		chosen_deletion = text2path(chosen_deletion)
 		if(ispath(chosen_deletion))
-			var/hsbitem = tgui_input_list(usr, "Choose an object to delete.", "Delete:", typesof(chosen_deletion))
+			var/hsbitem = tgui_input_list(usr, "选择要删除的对象。", "Delete:", typesof(chosen_deletion))
 			if(hsbitem)
 				var/do_delete = 1
 				if(hsbitem in blocked)
@@ -182,12 +182,12 @@
 							del_amt++
 					message_admins("[key_name_admin(src)] has deleted all instances of [hsbitem] ([del_amt]).", 0)
 		else
-			to_chat(usr, SPAN_WARNING("Not a valid type path."))
+			to_chat(usr, SPAN_WARNING("不是有效的类型路径。"))
 
 /client/proc/cmd_debug_make_powernets()
 	set category = "Debug"
 	set name = "Generate Powernets"
-	if(alert("Are you sure you want to do this?",, "Yes", "No") != "Yes")
+	if(alert("你确定要执行此操作吗？",, "Yes", "No") != "Yes")
 		return
 	makepowernets()
 	message_admins("[key_name_admin(src)] has remade the powernets. makepowernets() called.", 0)
@@ -201,7 +201,7 @@
 		return
 
 	if (!SSticker.mode)
-		alert("Wait until the game starts")
+		alert("请等待游戏开始")
 		return
 	if (istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
@@ -215,12 +215,12 @@
 			id.access = get_access(ACCESS_LIST_GLOBAL)
 			id.registered_name = H.real_name
 			id.registered_ref = WEAKREF(H)
-			id.assignment = "Captain"
+			id.assignment = "上尉"
 			id.name = "[id.registered_name]'s [id.id_type] ([id.assignment])"
 			H.equip_to_slot_or_del(id, WEAR_ID)
 			H.update_inv_wear_id()
 	else
-		alert("Invalid mob")
+		alert("无效单位")
 
 	message_admins("[key_name_admin(usr)] has granted [M.key] global access.")
 
@@ -232,12 +232,12 @@
 		return
 
 	if(!SSticker.mode)
-		alert("Wait until the game starts")
+		alert("请等待游戏开始")
 		return
 	if(M)
 		M.skills = null // No restrictions
 	else
-		alert("Invalid mob")
+		alert("无效单位")
 
 	message_admins("[key_name_admin(usr)] has given [M.key] null skills.")
 
@@ -252,7 +252,7 @@
 	var/mob/living/carbon/human/account_user = target
 
 	if(account_user.mind?.initial_account)
-		var/warning = tgui_alert(src, "They already have an account, proceeding will delete it. Are you sure you wish to continue?", "Confirm", list("Proceed", "Cancel"))
+		var/warning = tgui_alert(src, "他们已有一个账户，继续操作将删除该账户。你确定要继续吗？", "确认", list("Proceed", "Cancel"))
 		if(warning != "Proceed")
 			return
 		else
@@ -260,13 +260,13 @@
 
 	var/datum/money_account/generated_account
 
-	var/starting_amount = tgui_input_number(src, "How much money should they start with?", "Pick starting amount", 30, 100000, 0)
+	var/starting_amount = tgui_input_number(src, "他们应以多少资金开始？", "Pick starting amount", 30, 100000, 0)
 	if(!starting_amount)
 		starting_amount = 0
 
-	var/custom_paygrade = tgui_input_list(src, "Select paygrade of account", "Account paygrade", GLOB.paygrades)
+	var/custom_paygrade = tgui_input_list(src, "选择账户的军衔等级", "Account paygrade", GLOB.paygrades)
 	if(!custom_paygrade)
-		to_chat(src, SPAN_WARNING("They must have a paygrade!"))
+		to_chat(src, SPAN_WARNING("他们必须有一个军衔等级！"))
 		return
 
 
@@ -358,10 +358,10 @@
 		return
 
 	if(byond_version < 516)
-		to_chat(src, SPAN_WARNING("You can only use this on 516!"))
+		to_chat(src, SPAN_WARNING("你只能在516上使用此功能！"))
 		return
 
-	to_chat(src, SPAN_INFO("You can now right click to use inspect on browsers."))
+	to_chat(src, SPAN_INFO("你现在可以在浏览器上右键使用检查功能。"))
 	winset(src, null, list("browser-options" = "+devtools"))
 	winset(src, null, list("browser-options" = "+find"))
 	winset(src, null, list("browser-options" = "+refresh"))

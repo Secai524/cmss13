@@ -9,7 +9,7 @@
 	hotkey_keys = list("F5")
 	classic_keys = list("Unbound")
 	name = "admin_ghost"
-	full_name = "Aghost"
+	full_name = "幽灵模式"
 	description = "Go ghost"
 	keybind_signal = COMSIG_KB_ADMIN_AGHOST_DOWN
 
@@ -24,7 +24,7 @@
 	hotkey_keys = list("F6")
 	classic_keys = list("F6")
 	name = "player_panel_new"
-	full_name = "Player Panel New"
+	full_name = "玩家面板（新）"
 	description = "Opens up the new player panel"
 	keybind_signal = COMSIG_KB_ADMIN_PLAYERPANELNEW_DOWN
 
@@ -39,7 +39,7 @@
 	hotkey_keys = list("F7")
 	classic_keys = list("Unbound")
 	name = "toggle_buildmode_self"
-	full_name = "Toggle Buildmode Self"
+	full_name = "切换自身建造模式"
 	description = "Toggles buildmode"
 	keybind_signal = COMSIG_KB_ADMIN_TOGGLEBUILDMODE_DOWN
 
@@ -54,7 +54,7 @@
 	hotkey_keys = list("F8")
 	classic_keys = list("F8")
 	name = "stealth_mode"
-	full_name = "Stealth mode"
+	full_name = "潜行模式"
 	description = "Enters stealth mode"
 	keybind_signal = COMSIG_KB_ADMIN_STEALTHMODETOGGLE_DOWN
 
@@ -84,7 +84,7 @@
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
 	name = "deadmin"
-	full_name = "Deadmin"
+	full_name = "退出管理员"
 	description = "Shed your admin powers"
 	keybind_signal = COMSIG_KB_ADMIN_DEADMIN_DOWN
 
@@ -99,7 +99,7 @@
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
 	name = "readmin"
-	full_name = "Readmin"
+	full_name = "恢复管理员"
 	description = "Regain your admin powers"
 	keybind_signal = COMSIG_KB_ADMIN_READMIN_DOWN
 

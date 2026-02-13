@@ -3,7 +3,7 @@
 // These are intended as the initial breadcrumbs that lead to more objectives such as data retrieval
 // --------------------------------------------
 /datum/cm_objective/document
-	name = "Paper scrap objective"
+	name = "纸片目标"
 	var/obj/item/document_objective/document
 	var/area/initial_area
 	value = OBJECTIVE_LOW_VALUE
@@ -50,20 +50,20 @@
 /datum/cm_objective/document/get_tgui_data()
 	var/list/clue = list()
 
-	clue["text"] = "Paper scrap"
+	clue["text"] = "纸片碎片"
 	clue["location"] = initial_area.name
 
 	return clue
 
 // Progress report
 /datum/cm_objective/document/progress_report
-	name = "Progress report objective"
+	name = "进度报告目标"
 	value = OBJECTIVE_MEDIUM_VALUE
 
 /datum/cm_objective/document/progress_report/get_tgui_data()
 	var/list/clue = list()
 
-	clue["text"] = "Progress report"
+	clue["text"] = "进度报告"
 	clue["location"] = initial_area.name
 
 	return clue
@@ -73,7 +73,7 @@
 
 // Folder
 /datum/cm_objective/document/folder
-	name = "Folder objective"
+	name = "文件夹目标"
 	value = OBJECTIVE_MEDIUM_VALUE
 	var/color // Text name of the color
 	var/display_color // Color of the sprite
@@ -96,7 +96,7 @@
 
 // Technical manual
 /datum/cm_objective/document/technical_manual
-	name = "Technical manual objective"
+	name = "技术手册目标"
 	value = OBJECTIVE_HIGH_VALUE
 	state = OBJECTIVE_INACTIVE
 	number_of_clues_to_generate = 2
@@ -152,11 +152,11 @@
 		if (!clue)
 			continue
 
-		to_chat(user, SPAN_NOTICE("You make out something about [clue]."))
+		to_chat(user, SPAN_NOTICE("你辨认出一些关于[clue]的内容。"))
 		if (related_labels != "")
 			related_labels+=","
 		related_labels+=D.get_related_label()
-	to_chat(user, SPAN_INFO("You finish reading \the [src]."))
+	to_chat(user, SPAN_INFO("你读完了\the [src]。"))
 
 	// Our first time reading this successfully, add the clue labels.
 	if(!(objective.state & OBJECTIVE_COMPLETE))
@@ -166,15 +166,15 @@
 /obj/item/document_objective/attack_self(mob/living/carbon/human/user)
 	. = ..()
 
-	to_chat(user, SPAN_NOTICE("You start reading \the [src]."))
+	to_chat(user, SPAN_NOTICE("你开始阅读\the [src]。"))
 
 	if(!do_after(user, reading_time * user.get_skill_duration_multiplier(SKILL_INTEL), INTERRUPT_INCAPACITATED|INTERRUPT_NEEDHAND, BUSY_ICON_GENERIC)) // Can move while reading intel
-		to_chat(user, SPAN_WARNING("You get distracted and lose your train of thought, you'll have to start over reading this."))
+		to_chat(user, SPAN_WARNING("你分心了，思绪被打断，得重新开始阅读。"))
 		return
 
 	// Prerequisit objective not complete.
 	if(objective.state & OBJECTIVE_INACTIVE)
-		to_chat(user, SPAN_NOTICE("You don't notice anything useful. You probably need to find its instructions on a paper scrap."))
+		to_chat(user, SPAN_NOTICE("你没发现什么有用的信息。可能需要找到它的纸质说明碎片。"))
 		return
 
 	display_read_message(user)
@@ -186,8 +186,8 @@
 		objective.state = OBJECTIVE_COMPLETE
 
 /obj/item/document_objective/paper
-	name = "Paper scrap"
-	desc = "A scrap of paper, you think some of the words might still be readable."
+	name = "纸片碎片"
+	desc = "一张纸片，你觉得有些字可能还能辨认。"
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "paper_words"
 	item_state = "paper"
@@ -200,8 +200,8 @@
 	w_class = SIZE_TINY
 
 /obj/item/document_objective/report
-	name = "Progress report"
-	desc = "A written report from someone for their supervisor about the status of some kind of project."
+	name = "进度报告"
+	desc = "某人写给上级的书面报告，关于某个项目的状态。"
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "paper_p_words"
 	item_state = "paper"
@@ -216,8 +216,8 @@
 	objective_type = /datum/cm_objective/document/progress_report
 
 /obj/item/document_objective/folder
-	name = "Intel folder"
-	desc = "A folder with some documents inside."
+	name = "情报文件夹"
+	desc = "一个装有若干文件的文件夹。"
 	icon = 'icons/obj/items/paper.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_lefthand.dmi',
@@ -256,8 +256,8 @@
 		. += SPAN_INFO("\The [src] is labelled [label].")
 
 /obj/item/document_objective/technical_manual
-	name = "Technical Manual"
-	desc = "A highly specified technical manual, may be of use to someone in the relevant field."
+	name = "技术手册"
+	desc = "一份高度专业化的技术手册，可能对相关领域的人员有用。"
 	icon = 'icons/obj/items/books.dmi'
 	icon_state = "book"
 	item_state = "book_dark"

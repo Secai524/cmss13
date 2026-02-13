@@ -150,7 +150,7 @@ would spawn and follow the beaker, even if it is carried or thrown.
 /////////////////////////////////////////////
 
 /obj/effect/particle_effect/ion_trails
-	name = "ion trails"
+	name = "离子尾迹"
 	icon_state = "ion_trails"
 	anchored = TRUE
 

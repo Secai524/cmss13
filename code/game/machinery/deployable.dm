@@ -3,12 +3,12 @@
 
 /obj/structure/machinery/deployable
 	name = "deployable"
-	desc = "Deployable."
+	desc = "可部署式。"
 	req_access = list(ACCESS_MARINE_PREP)//I'm changing this until these are properly tested./N
 
 /obj/structure/machinery/deployable/barrier
-	name = "deployable barrier"
-	desc = "A deployable barrier. Swipe your ID card to lock/unlock it."
+	name = "可部署式路障"
+	desc = "一种可部署的路障。刷卡以锁定/解锁。"
 	icon = 'icons/obj/items/security.dmi'
 	anchored = FALSE
 	density = TRUE
@@ -34,17 +34,17 @@
 			src.anchored = !src.anchored
 			src.icon_state = "barrier[src.locked]"
 			if (src.locked == 1.0)
-				to_chat(user, "Barrier lock toggled on.")
+				to_chat(user, "路障锁定已开启。")
 				return
 			else if (src.locked == 0.0)
-				to_chat(user, "Barrier lock toggled off.")
+				to_chat(user, "路障锁定已关闭。")
 				return
 		return
 	else if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		if (src.health < src.maxhealth)
 			src.health = src.maxhealth
 			src.req_access = list(ACCESS_MARINE_PREP)
-			visible_message(SPAN_DANGER("[user] repairs \the [src]!"))
+			visible_message(SPAN_DANGER("[user]修复了\the [src]！"))
 			return
 		return
 	else
@@ -74,7 +74,7 @@
 
 /obj/structure/machinery/deployable/barrier/proc/explode()
 
-	visible_message(SPAN_DANGER("<B>[src] blows apart!</B>"))
+	visible_message(SPAN_DANGER("<B>[src]炸得粉碎！</B>"))
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(3, 1, src)
 	s.start()

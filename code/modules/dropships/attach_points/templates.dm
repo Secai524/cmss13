@@ -2,7 +2,7 @@
 	ship_tag = DROPSHIP_ALAMO
 
 /obj/effect/attach_point/weapon/dropship1/left_wing
-	name = "port wing weapon attach point"
+	name = "左翼武器挂载点"
 	icon_state = "equip_base_l_wing"
 	attach_id = 1
 	dir = WEST
@@ -12,7 +12,7 @@
 	long    =  0
 
 /obj/effect/attach_point/weapon/dropship1/left_fore
-	name = "port fore weapon attach point"
+	name = "左前武器挂载点"
 	attach_id = 2
 	dir = NORTH
 	firing_arc_min = -6
@@ -21,7 +21,7 @@
 	long    =  0
 
 /obj/effect/attach_point/weapon/dropship1/right_fore
-	name = "starboard fore weapon attach point"
+	name = "右前武器挂载点"
 	attach_id = 3
 	dir = NORTH
 	firing_arc_min =  0
@@ -30,7 +30,7 @@
 	long    =  0
 
 /obj/effect/attach_point/weapon/dropship1/right_wing
-	name = "starboard wing weapon attach point"
+	name = "右翼武器挂载点"
 	icon_state = "equip_base_r_wing";
 	attach_id = 4
 	dir = EAST
@@ -43,7 +43,7 @@
 	ship_tag = DROPSHIP_NORMANDY
 
 /obj/effect/attach_point/weapon/dropship2/left_wing
-	name = "port wing weapon attach point"
+	name = "左翼武器挂载点"
 	icon_state = "equip_base_l_wing"
 	attach_id = 1
 	dir = WEST
@@ -53,7 +53,7 @@
 	long    =  0
 
 /obj/effect/attach_point/weapon/dropship2/left_fore
-	name = "port fore weapon attach point"
+	name = "左前武器挂载点"
 	attach_id = 2
 	dir = NORTH
 	firing_arc_min = -6
@@ -62,7 +62,7 @@
 	long    =  0
 
 /obj/effect/attach_point/weapon/dropship2/right_fore
-	name = "starboard fore weapon attach point"
+	name = "右前武器挂载点"
 	attach_id = 3
 	dir = NORTH
 	firing_arc_min =  0
@@ -71,7 +71,7 @@
 	long    =  0
 
 /obj/effect/attach_point/weapon/dropship2/right_wing
-	name = "starboard wing weapon attach point"
+	name = "右翼武器挂载点"
 	icon_state = "equip_base_r_wing";
 	attach_id = 4
 	dir = EAST
@@ -84,7 +84,7 @@
 	ship_tag = DROPSHIP_SAIPAN
 
 /obj/effect/attach_point/weapon/dropship3/left_wing
-	name = "port wing weapon attach point"
+	name = "左翼武器挂载点"
 	icon_state = "equip_base_l_wing"
 	attach_id = 1
 	dir = WEST
@@ -94,7 +94,7 @@
 	long    =  0
 
 /obj/effect/attach_point/weapon/dropship3/left_fore
-	name = "port fore weapon attach point"
+	name = "左前武器挂载点"
 	attach_id = 2
 	dir = NORTH
 	firing_arc_min = -6
@@ -103,7 +103,7 @@
 	long    =  0
 
 /obj/effect/attach_point/weapon/dropship3/right_fore
-	name = "starboard fore weapon attach point"
+	name = "右前武器挂载点"
 	attach_id = 3
 	dir = NORTH
 	firing_arc_min =  0
@@ -112,7 +112,7 @@
 	long    =  0
 
 /obj/effect/attach_point/weapon/dropship3/right_wing
-	name = "starboard wing weapon attach point"
+	name = "右翼武器挂载点"
 	icon_state = "equip_base_r_wing";
 	attach_id = 4
 	dir = EAST
@@ -125,7 +125,7 @@
 	ship_tag = DROPSHIP_MORANA
 
 /obj/effect/attach_point/weapon/dropship_upp/left_wing
-	name = "port wing weapon attach point"
+	name = "左翼武器挂载点"
 	icon_state = "equip_base_l_wing"
 	attach_id = 1
 	dir = WEST
@@ -135,7 +135,7 @@
 	long    =  0
 
 /obj/effect/attach_point/weapon/dropship_upp/left_fore
-	name = "port fore weapon attach point"
+	name = "左前武器挂载点"
 	attach_id = 2
 	dir = NORTH
 	firing_arc_min = -6
@@ -144,7 +144,7 @@
 	long    =  0
 
 /obj/effect/attach_point/weapon/dropship_upp/right_fore
-	name = "starboard fore weapon attach point"
+	name = "右前武器挂载点"
 	attach_id = 3
 	dir = NORTH
 	firing_arc_min =  0
@@ -153,7 +153,7 @@
 	long    =  0
 
 /obj/effect/attach_point/weapon/dropship_upp/right_wing
-	name = "starboard wing weapon attach point"
+	name = "右翼武器挂载点"
 	icon_state = "equip_base_r_wing";
 	attach_id = 4
 	dir = EAST
@@ -166,7 +166,7 @@
 	ship_tag = DROPSHIP_DEVANA
 
 /obj/effect/attach_point/weapon/dropship_upp2/left_wing
-	name = "port wing weapon attach point"
+	name = "左翼武器挂载点"
 	icon_state = "equip_base_l_wing"
 	attach_id = 1
 	dir = WEST
@@ -176,7 +176,7 @@
 	long    =  0
 
 /obj/effect/attach_point/weapon/dropship_upp2/left_fore
-	name = "port fore weapon attach point"
+	name = "左前武器挂载点"
 	attach_id = 2
 	dir = NORTH
 	firing_arc_min = -6
@@ -185,7 +185,7 @@
 	long    =  0
 
 /obj/effect/attach_point/weapon/dropship_upp2/right_fore
-	name = "starboard fore weapon attach point"
+	name = "右前武器挂载点"
 	attach_id = 3
 	dir = NORTH
 	firing_arc_min =  0
@@ -194,7 +194,7 @@
 	long    =  0
 
 /obj/effect/attach_point/weapon/dropship_upp2/right_wing
-	name = "starboard wing weapon attach point"
+	name = "右翼武器挂载点"
 	icon_state = "equip_base_r_wing";
 	attach_id = 4
 	dir = EAST
@@ -204,7 +204,7 @@
 	long    =  0
 
 /obj/effect/attach_point/crew_weapon
-	name = "crew compartment attach point"
+	name = "乘员舱挂载点"
 	base_category = DROPSHIP_CREW_WEAPON
 
 /obj/effect/attach_point/crew_weapon/dropship1
@@ -238,7 +238,7 @@
 	plane = FLOOR_PLANE
 
 /obj/effect/attach_point/electronics
-	name = "electronic system attach point"
+	name = "电子系统挂载点"
 	base_category = DROPSHIP_ELECTRONICS
 	icon_state = "equip_base_front"
 	layer = ABOVE_OBJ_LAYER
@@ -259,7 +259,7 @@
 	ship_tag = DROPSHIP_DEVANA
 
 /obj/effect/attach_point/fuel
-	name = "engine system attach point"
+	name = "引擎系统挂载点"
 	icon = 'icons/obj/structures/props/dropship/dropship_equipment64.dmi'
 	icon_state = "fuel_base"
 	base_category = DROPSHIP_FUEL_EQP

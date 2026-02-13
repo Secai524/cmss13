@@ -3,8 +3,8 @@
 #define DISPENSER_HACKED 1
 
 /obj/structure/machinery/chem_dispenser
-	name = "chemical dispenser"
-	desc = "A complex machine for mixing elements into chemicals. A Wey-Yu product."
+	name = "化学分配器"
+	desc = "一种将元素混合成化学品的复杂机器。维兰德-汤谷产品。"
 	density = TRUE
 	anchored = TRUE
 	icon = 'icons/obj/structures/machinery/science_machines.dmi'
@@ -17,7 +17,7 @@
 	var/req_skill_level = SKILL_MEDICAL_DOCTOR
 	var/ui_title = "Chem Dispenser 5000"
 	var/obj/structure/machinery/chem_storage/chem_storage
-	var/network = "Ground"
+	var/network = "地面"
 	var/amount = 30
 	var/accept_beaker_only = TRUE
 	var/obj/item/reagent_container/beaker = null
@@ -213,21 +213,21 @@
 /obj/structure/machinery/chem_dispenser/attackby(obj/item/reagent_container/attacking_object, mob/user)
 	if(istype(attacking_object, /obj/item/reagent_container/glass) || istype(attacking_object, /obj/item/reagent_container/food))
 		if(accept_beaker_only && istype(attacking_object,/obj/item/reagent_container/food))
-			to_chat(user, SPAN_NOTICE("This machine only accepts beakers."))
+			to_chat(user, SPAN_NOTICE("此机器仅接受烧杯。"))
 			return
 		//If the dispenser has a whitelist with stuff in it, and the attacking object ain't in there, don't accept it.
 		if(length(whitelisted_containers) && !(attacking_object.type in whitelisted_containers))
 			//Currently this is only used for pressurized disepnsers
-			to_chat(user, SPAN_WARNING("This machine doesn't accept that container."))
+			to_chat(user, SPAN_WARNING("此机器不接受该容器。"))
 			return
 		if(user.drop_inv_item_to_loc(attacking_object, src))
 			var/obj/item/old_beaker = beaker
 			beaker = attacking_object
 			if(old_beaker)
-				to_chat(user, SPAN_NOTICE("You swap out [old_beaker] for [attacking_object]."))
+				to_chat(user, SPAN_NOTICE("你将 [old_beaker] 换成了 [attacking_object]。"))
 				user.put_in_hands(old_beaker)
 			else
-				to_chat(user, SPAN_NOTICE("You set [attacking_object] on the machine."))
+				to_chat(user, SPAN_NOTICE("你将 [attacking_object] 放在机器上。"))
 			SStgui.update_uis(src)
 		update_icon()
 		return
@@ -235,19 +235,19 @@
 	if(HAS_TRAIT(attacking_object, TRAIT_TOOL_MULTITOOL))
 		switch(hacked_check)
 			if(DISPENSER_UNHACKABLE)
-				to_chat(user, SPAN_NOTICE("[src] cannot be hacked."))
+				to_chat(user, SPAN_NOTICE("[src] 无法被入侵。"))
 			if(DISPENSER_NOT_HACKED)
-				user.visible_message("[user] modifies [src] with [attacking_object], turning a light on.", "You enable a light in [src].")
+				user.visible_message("[user]用[attacking_object]改装了[src]，打开了灯。", "You enable a light in [src].")
 				dispensable_reagents += hacked_reagents
 				hacked_check = DISPENSER_HACKED
 			if(DISPENSER_HACKED)
-				user.visible_message("[user] modifies [src] with [attacking_object], turning a light off.", "You disable a light in [src].")
+				user.visible_message("[user]用[attacking_object]改装了[src]，关闭了灯。", "You disable a light in [src].")
 				dispensable_reagents -= hacked_reagents
 				hacked_check = DISPENSER_NOT_HACKED
 
 	if(HAS_TRAIT(attacking_object, TRAIT_TOOL_WRENCH))
 		if(!wrenchable)
-			to_chat(user, "[src] cannot be unwrenched.")
+			to_chat(user, "[src]无法被卸下。")
 			return
 
 		if(!do_after(user, 2 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -258,26 +258,26 @@
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 		anchored = !anchored
 		if(anchored)
-			user.visible_message("[user] tightens the bolts securing [src] to the surface.", "You tighten the bolts securing [src] to the surface.")
+			user.visible_message("[user]拧紧了将[src]固定在地面的螺栓。", "You tighten the bolts securing [src] to the surface.")
 			return
 
-		user.visible_message("[user] unfastens the bolts securing [src] to the surface.", "You unfasten the bolts securing [src] to the surface.")
+		user.visible_message("[user]松开了将[src]固定在地面的螺栓。", "You unfasten the bolts securing [src] to the surface.")
 
 /obj/structure/machinery/chem_dispenser/attack_remote(mob/user as mob)
 	return src.attack_hand(user)
 
 /obj/structure/machinery/chem_dispenser/attack_hand(mob/user as mob)
 	if(stat & BROKEN)
-		to_chat(user, SPAN_WARNING("[src] is inoperative."))
+		to_chat(user, SPAN_WARNING("[src]已失效。"))
 		return
 	if(req_skill && !skillcheck(user, req_skill, req_skill_level))
-		to_chat(user, SPAN_WARNING("You don't have the training to use [src]."))
+		to_chat(user, SPAN_WARNING("你没有接受过使用[src]的训练。"))
 		return
 	tgui_interact(user)
 
 /obj/structure/machinery/chem_dispenser/corpsman
-	name = "pressurized chemical dispenser"
-	desc = "A more basic chemical dispenser, designed for use with pressurized reagent canisters. A Wey-Yu product."
+	name = "加压化学分配器"
+	desc = "一种更基础的化学分配器，设计用于加压试剂罐。维兰德-汤谷产品。"
 	icon_state = "mixer0"
 	ui_title = "Chem Dispenser 4000"
 	req_skill_level = SKILL_MEDICAL_MEDIC
@@ -309,8 +309,8 @@
 
 /obj/structure/machinery/chem_dispenser/soda
 	icon_state = "soda_dispenser"
-	name = "soda fountain"
-	desc = "A drink fabricating machine, capable of producing many sugary drinks with just one touch."
+	name = "苏打水机"
+	desc = "一种饮料制造机，只需一键即可生产多种含糖饮料。"
 	ui_title = "Soda Dispens-o-matic"
 	req_skill = null
 	req_skill_level = null
@@ -354,9 +354,9 @@
 
 /obj/structure/machinery/chem_dispenser/soda/beer
 	icon_state = "booze_dispenser"
-	name = "booze dispenser"
+	name = "酒类分配器"
 	ui_title = "Booze Portal 9001"
-	desc = "A technological marvel, supposedly able to mix just the mixture you'd like to drink the moment you ask for one."
+	desc = "一项技术奇迹，据称能在你点单时精确调配出你想要的混合饮品。"
 	dispensable_reagents = list(
 		"water",
 		"ice",

@@ -12,7 +12,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/wo/commander
-	name = "WO Commanding Officer"
+	name = "威士忌前哨指挥官"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	assignment = JOB_WO_CO
@@ -107,7 +107,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/wo/xo
-	name = "WO Lieutenant Commander"
+	name = "威士忌前哨副指挥官"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	assignment = JOB_WO_XO
@@ -149,7 +149,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/wo/cmp
-	name = "WO Honor Guard Squad Leader"
+	name = "威士忌前哨仪仗队班长"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(
@@ -196,7 +196,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/wo/vhg
-	name = "WO Veteran Honor Guard" //SO
+	name = "威士忌前哨资深仪仗队员" //SO
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_BRIG, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_DATABASE, ACCESS_MARINE_GENERAL)
@@ -237,7 +237,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/wo/hgs
-	name = "WO Honor Guard Specialist" //Tank crew
+	name = "威士忌前哨仪仗队专家" //Tank crew
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_GENERAL)
@@ -276,7 +276,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/wo/hg
-	name = "WO Honor Guard" //MP
+	name = "威士忌前哨仪仗队员" //MP
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_MARINE_BRIG, ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_DATABASE, ACCESS_MARINE_GENERAL, ACCESS_MARINE_PREP, ACCESS_MARINE_MEDBAY)
@@ -309,7 +309,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/wo/mortar_crew
-	name = "WO Mortar Crew" //PO
+	name = "威士忌前哨迫击炮组" //PO
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_PILOT)
@@ -343,7 +343,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/wo/quartermaster
-	name = "WO Quartermaster"
+	name = "WO军需官"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_MARINE_CARGO, ACCESS_MARINE_RO, ACCESS_MARINE_COMMAND)
@@ -372,7 +372,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/wo/cargo
-	name = "WO Bunker Crew Logistics" //CT
+	name = "WO地堡后勤人员" //CT
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_MARINE_ENGINEERING, ACCESS_CIVILIAN_ENGINEERING, ACCESS_MARINE_CARGO)
@@ -407,7 +407,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/wo/head_surgeon
-	name = "WO Head Surgeon" //CMO
+	name = "WO首席外科医生" //CMO
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_MARINE_CMO, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_RESEARCH, ACCESS_MARINE_COMMAND, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
@@ -449,14 +449,14 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/wo/doctor
-	name = "WO Field Doctor"
+	name = "WO野战医生"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_WO_DOCTOR
 	job_title = JOB_WO_DOCTOR
 	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
-	role_comm_title = "Doc"
+	role_comm_title = "博士"
 	skills = /datum/skills/doctor
 	idtype = /obj/item/card/id
 
@@ -488,7 +488,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/wo/chemist
-	name = "WO Chemist"
+	name = "WO化学家"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_RESEARCH, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
@@ -527,7 +527,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/wo/bcm
-	name = "WO Bunker Crew Master" //CE
+	name = "WO地堡主管" //CE
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_MARINE_CE, ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_COMMAND, ACCESS_CIVILIAN_ENGINEERING, ACCESS_MARINE_DATABASE, ACCESS_MARINE_GENERAL)
@@ -560,7 +560,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/wo/bc
-	name = "WO Bunker Crew" //OT
+	name = "WO地堡人员" //OT
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_MARINE_CE, ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_COMMAND, ACCESS_CIVILIAN_ENGINEERING)
@@ -593,7 +593,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/wo/reporter
-	name = "WO Combat Reporter" //CL
+	name = "WO战地记者" //CL
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	assignment = JOB_WO_CORPORATE_LIAISON
@@ -630,14 +630,14 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/wo/marine
-	name = "WO Dust Raider" //Stub other Marine equipment stems from
+	name = "WO沙暴袭击者" //Stub other Marine equipment stems from
 	flags = EQUIPMENT_PRESET_STUB
 	minimap_background = "background_intel"
 
 //*****************************************************************************************************/
 
 /datum/equipment_preset/wo/marine/sl
-	name = "WO Dust Raider Squad Leader"
+	name = "WO沙暴袭击者班长"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
@@ -675,7 +675,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/wo/marine/spec
-	name = "WO Dust Raider Squad Weapons Specialist"
+	name = "WO沙暴袭击者班武器专家"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SPECPREP)
@@ -713,7 +713,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/wo/marine/sg
-	name = "WO Dust Raider Squad Smartgunner"
+	name = "WO沙暴袭击者班智能枪手"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
@@ -738,7 +738,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/wo/marine/engineer
-	name = "WO Dust Raider Squad Combat Technician"
+	name = "WO沙暴袭击者班战斗技术员"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_ENGPREP, ACCESS_CIVILIAN_ENGINEERING)
@@ -773,7 +773,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/wo/marine/medic
-	name = "WO Dust Raider Hospital Corpsman"
+	name = "WO沙暴袭击者医疗兵"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_MEDBAY)
@@ -812,7 +812,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/wo/marine/pfc
-	name = "WO Dust Raider Rifleman (PFC)"
+	name = "WO沙暴袭击者步枪兵（一等兵）"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_MARINE_PREP)

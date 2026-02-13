@@ -261,5 +261,5 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 		SSticker.delay_start = FALSE
 
 /datum/map_template/unit_tests
-	name = "Unit Tests Zone"
+	name = "单元测试区"
 	mappath = "maps/templates/unit_tests.dmm"

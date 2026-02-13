@@ -2,7 +2,7 @@
 // *** Slightly more complicated data retrieval ***
 // --------------------------------------------
 /datum/cm_objective/retrieve_data
-	name = "Retrieve Important Data"
+	name = "取回重要数据"
 	objective_flags = OBJECTIVE_DEAD_END
 	var/data_total = 100
 	var/data_retrieved = 0
@@ -74,7 +74,7 @@
 /datum/cm_objective/retrieve_data/terminal/complete()
 	state = OBJECTIVE_COMPLETE
 	uploading = FALSE
-	terminal.visible_message(SPAN_NOTICE("[terminal] pings softly as it finishes the upload."))
+	terminal.visible_message(SPAN_NOTICE("[terminal] 在完成上传时发出轻柔的提示音。"))
 	playsound(terminal, 'sound/machines/screen_output1.ogg', 25, 1)
 	award_points()
 
@@ -152,9 +152,9 @@
 // *** Retrieve a disk and upload it ***
 // --------------------------------------------
 /obj/item/disk/objective
-	name = "computer disk"
+	name = "电脑磁盘"
 	var/label = ""
-	desc = "A boring looking computer disk. The name label is just a gibberish collection of letters and numbers."
+	desc = "一个看起来乏味的电脑磁盘。名称标签只是一堆毫无意义的字母和数字。"
 	unacidable = TRUE
 	explo_proof = TRUE
 	is_objective = TRUE
@@ -194,7 +194,7 @@
 			display_color = "#5296e3"
 
 	label = "[pick(GLOB.greek_letters)]-[rand(100,999)]"
-	name = "[disk_color] computer disk [label]"
+	name = "[disk_color] 电脑磁盘 [label]"
 	objective = new /datum/cm_objective/retrieve_data/disk(src)
 	retrieve_objective = new /datum/cm_objective/retrieve_item/document(src)
 	w_class = SIZE_TINY
@@ -210,9 +210,9 @@
 // *** Upload data from a terminal ***
 // --------------------------------------------
 /obj/structure/machinery/computer/objective
-	name = "data terminal"
+	name = "数据终端"
 	var/label = ""
-	desc = "A computer data terminal with an incomprehensible label."
+	desc = "一个带有难以理解标签的计算机数据终端。"
 	var/uploading = 0
 	icon_state = "medlaptop"
 	unslashable = TRUE
@@ -223,7 +223,7 @@
 /obj/structure/machinery/computer/objective/Initialize()
 	. = ..()
 	label = "[pick(GLOB.greek_letters)]-[rand(100,999)]"
-	name = "data terminal [label]"
+	name = "数据终端 [label]"
 	objective = new /datum/cm_objective/retrieve_data/terminal(src)
 
 ///Disabled explosions due to issues with the Objectives UI should it be destroyed.
@@ -240,8 +240,8 @@
 	if (!check_if_usable(user))
 		return
 
-	if(input(user,"Enter the password","Password","") != objective.decryption_password)
-		to_chat(user, SPAN_WARNING("The terminal rejects the password."))
+	if(input(user,"输入密码","Password","") != objective.decryption_password)
+		to_chat(user, SPAN_WARNING("终端拒绝了该密码。"))
 		return
 
 	// Check if the terminal became unusable since we started entering the password.
@@ -250,21 +250,21 @@
 
 	uploading = 1
 	objective.activate()
-	to_chat(user, SPAN_NOTICE("You start uploading the data."))
+	to_chat(user, SPAN_NOTICE("你开始上传数据。"))
 	user.count_niche_stat(STATISTICS_NICHE_UPLOAD)
 
 /obj/structure/machinery/computer/objective/proc/check_if_usable(mob/living/user)
 	if(!powered())
-		to_chat(user, SPAN_WARNING("This terminal has no power!"))
+		to_chat(user, SPAN_WARNING("这个终端没有电力！"))
 		return
 	if(!SSobjectives.comms.state == OBJECTIVE_COMPLETE)
-		to_chat(user, SPAN_WARNING("The terminal flashes a network connection error."))
+		to_chat(user, SPAN_WARNING("终端闪烁显示网络连接错误。"))
 		return
 	if(objective.state == OBJECTIVE_COMPLETE)
-		to_chat(user, SPAN_WARNING("There's a message on the screen that the data upload finished successfully."))
+		to_chat(user, SPAN_WARNING("屏幕上有一条信息显示数据上传已成功完成。"))
 		return
 	if(uploading)
-		to_chat(user, SPAN_WARNING("Looks like the terminal is already uploading, better make sure nothing interupts it!"))
+		to_chat(user, SPAN_WARNING("看起来终端已经在进行上传了，最好确保没有东西干扰它！"))
 		return
 
 	return TRUE
@@ -273,8 +273,8 @@
 // *** Upload data from an inserted disk ***
 // --------------------------------------------
 /obj/structure/machinery/computer/disk_reader
-	name = "universal disk reader"
-	desc = "A console able to read any format of disk known to man."
+	name = "通用磁盘读取器"
+	desc = "一个能够读取人类已知任何格式磁盘的控制台。"
 	var/obj/item/disk/objective/disk
 	icon_state = "medlaptop"
 	unslashable = TRUE

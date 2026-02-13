@@ -12,14 +12,14 @@
 	icon_state = "supply"
 
 /obj/effect/landmark/whiskey_outpost/xenospawn
-	name = "Xeno Spawn"
+	name = "异形生成点"
 	icon_state = "xeno_spawn"
 
 
 //Landmarks to spawn in more landmarks. Would you like redundancy on your redundancy?
 //But in seriousness, this is for admins to spawn in, so they only need to spawn in 4-8 things, instead of 200+, making the delay for round start much shorter for players.
 /obj/effect/landmark/wo_spawners
-	name = "landmark spawner"
+	name = "地标生成器"
 	var/obj/effect/landmark/Landmark = null //The landmarks we'll spawn in
 	var/range = 3 //The range we'll spawn these in at.
 	invisibility = 0
@@ -35,12 +35,12 @@
 	qdel(src)
 
 /obj/effect/landmark/wo_spawners/supplydrops
-	name = "supply drop location"
+	name = "补给投放点"
 	icon_state = "supply"
 	Landmark = /obj/effect/landmark/whiskey_outpost/supplydrops
 	range = 2
 
 /obj/effect/landmark/wo_spawners/xenospawn
-	name = "xeno location 1 spawn point"
+	name = "异形位置1生成点"
 	icon_state = "xeno_spawn"
 	Landmark = /obj/effect/landmark/whiskey_outpost/xenospawn

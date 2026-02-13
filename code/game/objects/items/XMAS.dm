@@ -2,8 +2,8 @@
 /mob/living/carbon/human/var/opened_gift = 0
 
 /obj/item/m_gift //Marine Gift
-	name = "Present"
-	desc = "One, standard issue USCM Present."
+	name = "礼物"
+	desc = "一个，标准配发的USCM礼物。"
 	icon = 'icons/obj/items/gifts.dmi'
 	icon_state = "gift1"
 	item_state = "gift1"
@@ -24,17 +24,17 @@
 	var/mob/living/carbon/human/H = M
 	if(istype(H))
 		if(H.opened_gift == 1)
-			to_chat(H, SPAN_NOTICE("This is not your gift, opening it feels wrong."))
+			to_chat(H, SPAN_NOTICE("这不是给你的礼物，打开它感觉不对。"))
 		if(H.opened_gift == 2)
-			to_chat(H, SPAN_NOTICE("Santa knows of your treachery, yet you open another present."))
+			to_chat(H, SPAN_NOTICE("圣诞老人知道你的背叛，而你却打开了另一个礼物。"))
 		if(H.opened_gift == 3)
-			to_chat(H, SPAN_NOTICE("Even the Grinch glares with disgust..."))
+			to_chat(H, SPAN_NOTICE("就连格林奇都投来厌恶的目光..."))
 		if(H.opened_gift == 4)
-			to_chat(H, SPAN_NOTICE("You're ruining the Christmas magic, I hope you're happy."))
+			to_chat(H, SPAN_NOTICE("你正在毁掉圣诞魔法，我希望你满意。"))
 		if(H.opened_gift == 5)
-			to_chat(H, SPAN_DANGER("Ok, Congratulations, you've ruined Christmas for 5 marines now."))
+			to_chat(H, SPAN_DANGER("好吧，恭喜你，你已经毁了5个陆战队员的圣诞节。"))
 		if(H.opened_gift > 5)
-			to_chat(H, SPAN_DANGER("You've ruined Christmas for [H.opened_gift] marines now..."))
+			to_chat(H, SPAN_DANGER("你已经毁了[H.opened_gift]个陆战队员的圣诞节..."))
 
 		H.opened_gift++
 	/// Check if it has the possibility of being a FANCY present
@@ -45,7 +45,7 @@
 	var gift_type = /obj/item/storage/fancy/crayons
 	if(fancy > 90)
 		if(exFancy == 1)
-			to_chat(M, SPAN_NOTICE("Just what the fuck is it???"))
+			to_chat(M, SPAN_NOTICE("这他妈到底是什么东西？？？"))
 			gift_type = /obj/item/clothing/mask/facehugger/lamarr
 			var/obj/item/I = new gift_type(M)
 			M.temp_drop_inv_item(src)
@@ -54,7 +54,7 @@
 			qdel(src)
 			return
 		if(exFancy > 15)
-			to_chat(M, SPAN_NOTICE("Oh, just what I needed... Fucking HEFA's."))
+			to_chat(M, SPAN_NOTICE("哦，正是我需要的...该死的HEFA。"))
 			gift_type = /obj/item/storage/box/nade_box/frag
 			var/obj/item/I = new gift_type(M)
 			M.temp_drop_inv_item(src)
@@ -73,7 +73,7 @@
 			/obj/item/attachable/extended_barrel,
 			/obj/item/attachable/burstfire_assembly,
 			)
-			to_chat(M, SPAN_NOTICE("It's a REAL gift!!!"))
+			to_chat(M, SPAN_NOTICE("这是个真正的礼物！！！"))
 			var/obj/item/I = new gift_type(M)
 			M.temp_drop_inv_item(src)
 			M.put_in_hands(I)
@@ -81,7 +81,7 @@
 			qdel(src)
 			return
 	else if (fancy <=5)
-		to_chat(M, SPAN_NOTICE("It's fucking EMPTY. Man, Fuck CM."))
+		to_chat(M, SPAN_NOTICE("他妈的是空的。妈的，去他妈的CM。"))
 		M.temp_drop_inv_item(src)
 		qdel(src)
 		return
@@ -129,7 +129,7 @@
 
 	if(!ispath(gift_type,/obj/item))
 		return
-	to_chat(M, SPAN_NOTICE("At least it's something..."))
+	to_chat(M, SPAN_NOTICE("至少有点东西..."))
 	var/obj/item/I = new gift_type(M)
 	M.temp_drop_inv_item(src)
 	M.put_in_hands(I)

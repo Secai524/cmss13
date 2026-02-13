@@ -1,6 +1,6 @@
 /obj/item/device/radio/beacon
-	name = "Tracking Beacon"
-	desc = "A beacon used by a teleporter."
+	name = "追踪信标"
+	desc = "传送器使用的信标。"
 	icon_state = "beacon"
 	item_state = "signaller"
 	item_icons = list(

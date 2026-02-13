@@ -20,7 +20,7 @@
 	take_damage( rand(user.melee_damage_lower, user.melee_damage_upper) * brute_multiplier)
 	playsound(src, 'sound/effects/metalscrape.ogg', 20, 1)
 	if(health <= 0)
-		user.visible_message(SPAN_DANGER("[user] slices [src] apart!"),
+		user.visible_message(SPAN_DANGER("[user]将[src]切成了碎片！"),
 		SPAN_DANGER("We slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
 		user.visible_message(SPAN_DANGER("[user] [user.slashes_verb] [src]!"),
@@ -34,10 +34,10 @@
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	take_damage(xeno.melee_damage_upper * brute_multiplier)
 	if(health <= 0)
-		xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno]用它的尾巴摧毁了[src]！"),
 		SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
-		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno] 用它的尾巴抽打 [src]！"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	xeno.tail_stab_animation(src, blunt_stab)
 	update_icon()
@@ -77,7 +77,7 @@
 			. += SPAN_DANGER("It looks like it's about break down into scrap.")
 
 /obj/structure/prop/hybrisa/vehicles/proc/explode(dam, mob/M)
-	visible_message(SPAN_DANGER("[src] blows apart!"), max_distance = 1)
+	visible_message(SPAN_DANGER("[src]炸成了碎片！"), max_distance = 1)
 	playsound(loc, 'sound/effects/car_crush.ogg', 20)
 	var/turf/Tsec = get_turf(src)
 	new /obj/item/stack/rods(Tsec)
@@ -107,8 +107,8 @@
 // Armored Truck - Damage States
 
 /obj/structure/prop/hybrisa/vehicles/Armored_Truck
-	name = "heavy-loader truck"
-	desc = "It's locked and seems to be broken down, forget driving this."
+	name = "重型装载卡车"
+	desc = "它被锁住了，而且似乎已经抛锚，别想着开它了。"
 	icon = 'icons/obj/structures/props/vehicles/armored_truck_wy_black.dmi'
 	icon_state = "armored_truck_wy_black"
 	bound_height = 64
@@ -130,19 +130,19 @@
 	icon_state = "armored_truck_white"
 
 /obj/structure/prop/hybrisa/vehicles/Armored_Truck/WY_Black
-	name = "Weyland-Yutani security truck"
+	name = "维兰德-汤谷安保卡车"
 	icon = 'icons/obj/structures/props/vehicles/armored_truck_wy_black.dmi'
 	icon_state = "armored_truck_wy_black"
 
 /obj/structure/prop/hybrisa/vehicles/Armored_Truck/WY_White
-	name = "Weyland-Yutani security truck"
+	name = "维兰德-汤谷安保卡车"
 	icon = 'icons/obj/structures/props/vehicles/armored_truck_wy_white.dmi'
 	icon_state = "armored_truck_wy_white"
 
 // Ambulance - Damage States
 /obj/structure/prop/hybrisa/vehicles/Ambulance
 	name = "ambulance"
-	desc = "It's locked and seems to be broken down, forget driving this."
+	desc = "它被锁住了，而且似乎已经抛锚，别想着开它了。"
 	icon = 'icons/obj/structures/props/vehicles/ambulance.dmi'
 	icon_state = "ambulance"
 	bound_height = 64
@@ -152,8 +152,8 @@
 
 // Long Hauler Truck - Damage States
 /obj/structure/prop/hybrisa/vehicles/Long_Truck
-	name = "long-hauler truck"
-	desc = "It's locked and seems to be broken down, forget driving this."
+	name = "长途运输卡车"
+	desc = "它被锁住了，而且似乎已经抛锚，别想着开它了。"
 	icon = 'icons/obj/structures/props/vehicles/long_truck_wy_blue.dmi'
 	icon_state = "longtruck_wy_blue"
 	bound_height = 64
@@ -190,8 +190,8 @@
 
 // Small Truck - Damage States
 /obj/structure/prop/hybrisa/vehicles/Small_Truck
-	name = "small truck"
-	desc = "It's locked and seems to be broken down, forget driving this."
+	name = "小型卡车"
+	desc = "它被锁住了，而且似乎已经抛锚，别想着开它了。"
 	icon = 'icons/obj/structures/props/vehicles/small_truck_turquoise_cargo.dmi'
 	icon_state = "small_truck_turquoise_cargo"
 	bound_height = 32
@@ -254,8 +254,8 @@
 
 // Box Vans - Damage States
 /obj/structure/prop/hybrisa/vehicles/Box_Vans
-	name = "box van"
-	desc = "It's locked and seems to be broken down, forget driving this."
+	name = "厢式货车"
+	desc = "它被锁住了，而且似乎已经抛锚，别想着开它了。"
 	icon = 'icons/obj/structures/props/vehicles/box_van_hyperdyne.dmi'
 	icon_state = "box_van_hyperdyne"
 	bound_height = 32
@@ -290,8 +290,8 @@
 
 // Meridian Cars - Damage States
 /obj/structure/prop/hybrisa/vehicles/Meridian
-	name = "Mono-Spectra"
-	desc = "The 'Mono-Spectra', a mass-produced civilian vehicle for the colonial markets, in and outside of the United Americas. Produced by 'Meridian' a car marque and associated operating division of the Weyland-Yutani Corporation."
+	name = "单谱"
+	desc = "‘单谱’，一款面向美洲合众国境内外殖民地市场的大规模量产民用载具。由维兰德-汤谷公司旗下汽车品牌及关联运营部门‘子午线’生产。"
 	icon = 'icons/obj/structures/props/vehicles/meridian_red.dmi'
 	icon_state = "meridian_red"
 	bound_height = 32
@@ -568,14 +568,14 @@
 	health = 125
 
 /obj/structure/prop/hybrisa/vehicles/Meridian/Shell
-	desc = "A Mono-Spectra chassis in the early stages of assembly."
+	desc = "一个处于组装初期的单谱底盘。"
 	icon = 'icons/obj/structures/props/vehicles/meridian_shell.dmi'
 	icon_state = "meridian_shell"
 
 // Colony Crawlers - Damage States
 /obj/structure/prop/hybrisa/vehicles/Colony_Crawlers
-	name = "colony crawler"
-	desc = "It's locked and seems to be broken down, forget driving this."
+	name = "殖民地履带车"
+	desc = "它被锁住了，而且似乎已经抛锚，别想着开它了。"
 	icon = 'icons/obj/structures/props/vehicles/crawler_wy_1.dmi'
 	icon_state = "crawler_wy_1"
 	bound_height = 32
@@ -584,12 +584,12 @@
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/prop/hybrisa/vehicles/Colony_Crawlers/Science_1
-	desc = "It is a tread bound crawler used in harsh conditions. This one is designed for personnel transportation. Supplied by Orbital Blue International; 'Your friends, in the Aerospace business.' A subsidiary of Weyland Yutani."
+	desc = "这是一款用于恶劣环境的履带式车辆。此型号专为人员运输设计。由轨道蓝国际公司提供；‘您在航空航天领域的朋友。’维兰德-汤谷的子公司。"
 	icon = 'icons/obj/structures/props/vehicles/crawler_wy_1.dmi'
 	icon_state = "crawler_wy_1"
 
 /obj/structure/prop/hybrisa/vehicles/Colony_Crawlers/Science_2
-	desc = "It is a tread bound crawler used in harsh conditions. This one is designed for personnel transportation. Supplied by Orbital Blue International; 'Your friends, in the Aerospace business.' A subsidiary of Weyland Yutani."
+	desc = "这是一款用于恶劣环境的履带式车辆。此型号专为人员运输设计。由轨道蓝国际公司提供；‘您在航空航天领域的朋友。’维兰德-汤谷的子公司。"
 	icon = 'icons/obj/structures/props/vehicles/crawler_wy_2.dmi'
 	icon_state = "crawler_wy_2"
 
@@ -600,8 +600,8 @@
 // Mining Crawlers
 
 /obj/structure/prop/hybrisa/vehicles/Mining_Crawlers
-	name = "mining crawler"
-	desc = "It is a tread bound crawler used in harsh conditions. Supplied by The Kelland Mining Company; A subsidiary of Weyland Yutani."
+	name = "采矿履带车"
+	desc = "这是一款用于恶劣环境的履带式车辆。由凯兰矿业公司提供；维兰德-汤谷的子公司。"
 	icon = 'icons/obj/structures/props/vehicles/mining_crawler.dmi'
 	icon_state = "mining_crawler_1"
 	bound_height = 32
@@ -620,8 +620,8 @@
 // Car Pileup
 
 /obj/structure/prop/hybrisa/vehicles/car_pileup
-	name = "burned out vehicle pileup"
-	desc = "Burned-out vehicles block your path, their charred frames and shattered glass hinting at recent chaos. The acrid smell of smoke lingers."
+	name = "烧毁车辆残骸堆"
+	desc = "烧毁的车辆挡住了你的去路，焦黑的车架和破碎的玻璃暗示着不久前发生的混乱。刺鼻的烟味仍在空气中弥漫。"
 	icon = 'icons/obj/structures/props/vehicles/car_pileup.dmi'
 	icon_state = "car_pileup"
 	bound_height = 96
@@ -639,7 +639,7 @@
 
 /obj/structure/prop/hybrisa/boulders/large_boulderdark
 	name = "boulder"
-	desc = "A large rock. It's not cooking anything."
+	desc = "一块大石头。它没在烹饪任何东西。"
 	icon = 'icons/obj/structures/props/natural/boulder_largedark.dmi'
 	icon_state = "boulder_largedark1"
 	density = TRUE
@@ -657,7 +657,7 @@
 
 /obj/structure/prop/hybrisa/boulders/wide_boulderdark
 	name = "boulder"
-	desc = "A large rock. It's not cooking anything."
+	desc = "一块大石头。它没在烹饪任何东西。"
 	icon = 'icons/obj/structures/props/natural/boulder_widedark.dmi'
 	icon_state = "boulderwidedark"
 	density = TRUE
@@ -673,7 +673,7 @@
 /obj/structure/prop/hybrisa/boulders/smallboulderdark
 	name = "boulder"
 	icon_state = "bouldersmalldark1"
-	desc = "A large rock. It's not cooking anything."
+	desc = "一块大石头。它没在烹饪任何东西。"
 	icon = 'icons/obj/structures/props/natural/boulder_small.dmi'
 	density = TRUE
 
@@ -691,7 +691,7 @@
 	icon = 'icons/obj/structures/props/natural/rocks.dmi'
 	name = "stalagmite"
 	icon_state = "stalagmite"
-	desc = "A cave stalagmite."
+	desc = "一根洞穴石笋。"
 	layer = TURF_LAYER
 	plane = FLOOR_PLANE
 
@@ -716,9 +716,9 @@
 // Supermart
 
 /obj/structure/prop/hybrisa/supermart
-	name = "long rack"
+	name = "长货架"
 	icon_state = "longrack1"
-	desc = "A long shelf filled with various foodstuffs."
+	desc = "一个摆满各种食品的长架子。"
 	icon = 'icons/obj/structures/props/supermart.dmi'
 	density = TRUE
 	projectile_coverage = 20
@@ -732,7 +732,7 @@
 	return TRUE
 
 /obj/structure/prop/hybrisa/supermart/proc/explode()
-	visible_message(SPAN_DANGER("[src] breaks apart!"), max_distance = 1)
+	visible_message(SPAN_DANGER("[src]碎裂了！"), max_distance = 1)
 	deconstruct(FALSE)
 
 /obj/structure/prop/hybrisa/supermart/proc/healthcheck()
@@ -752,7 +752,7 @@
 		return XENO_NO_DELAY_ACTION
 	current_xenomorph.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] 挥爪攻击 [src]！"),
 	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
@@ -763,10 +763,10 @@
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	update_health(xeno.melee_damage_upper)
 	if(health <= 0)
-		xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno]用它的尾巴摧毁了[src]！"),
 		SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
-		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno] 用它的尾巴抽打 [src]！"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
@@ -776,52 +776,52 @@
 
 /obj/structure/prop/hybrisa/supermart/rack/longrackempty
 	name = "shelf"
-	desc = "A long empty shelf."
+	desc = "一个空荡荡的长架子。"
 	icon_state = "longrackempty"
 
 /obj/structure/prop/hybrisa/supermart/rack/longrack1
 	name = "shelf"
-	desc = "A long shelf filled with various foodstuffs."
+	desc = "一个摆满各种食品的长架子。"
 	icon_state = "longrack1"
 
 /obj/structure/prop/hybrisa/supermart/rack/longrack2
 	name = "shelf"
-	desc = "A long shelf filled with various foodstuffs."
+	desc = "一个摆满各种食品的长架子。"
 	icon_state = "longrack2"
 
 /obj/structure/prop/hybrisa/supermart/rack/longrack3
 	name = "shelf"
-	desc = "A long shelf filled with various foodstuffs."
+	desc = "一个摆满各种食品的长架子。"
 	icon_state = "longrack3"
 
 /obj/structure/prop/hybrisa/supermart/rack/longrack4
 	name = "shelf"
-	desc = "A long shelf filled with various foodstuffs."
+	desc = "一个摆满各种食品的长架子。"
 	icon_state = "longrack4"
 
 /obj/structure/prop/hybrisa/supermart/rack/longrack5
 	name = "shelf"
-	desc = "A long shelf filled with various foodstuffs."
+	desc = "一个摆满各种食品的长架子。"
 	icon_state = "longrack5"
 
 /obj/structure/prop/hybrisa/supermart/rack/longrack6
 	name = "shelf"
-	desc = "A long shelf filled with various foodstuffs."
+	desc = "一个摆满各种食品的长架子。"
 	icon_state = "longrack6"
 
 /obj/structure/prop/hybrisa/supermart/rack/longrack7
 	name = "shelf"
-	desc = "A long shelf filled with various foodstuffs."
+	desc = "一个摆满各种食品的长架子。"
 	icon_state = "longrack7"
 
 /obj/structure/prop/hybrisa/supermart/supermartbelt
-	name = "conveyor belt"
-	desc = "A conveyor belt."
+	name = "传送带"
+	desc = "一条传送带。"
 	icon_state = "checkoutbelt"
 
 /obj/structure/prop/hybrisa/supermart/freezer
-	name = "commercial freezer"
-	desc = "A commercial grade freezer."
+	name = "商用冰柜"
+	desc = "一个商用级冰柜。"
 	icon_state = "freezerupper"
 	density = TRUE
 	health = 30
@@ -846,44 +846,44 @@
 
 /obj/structure/prop/hybrisa/supermart/supermartfruitbasket
 	name = "basket"
-	desc = "A basket."
+	desc = "一个篮子。"
 	icon_state = "supermarketbasketempty"
 	health = 5
 
 /obj/structure/prop/hybrisa/supermart/supermartfruitbasket/empty
 	name = "basket"
-	desc = "A basket."
+	desc = "一个篮子。"
 	icon_state = "supermarketbasketempty"
 
 /obj/structure/prop/hybrisa/supermart/supermartfruitbasket/oranges
 	name = "basket"
-	desc = "A basket full of oranges."
+	desc = "一个装满橙子的篮子。"
 	icon_state = "supermarketbasket1"
 
 /obj/structure/prop/hybrisa/supermart/supermartfruitbasket/pears
 	name = "basket"
-	desc = "A basket full of pears."
+	desc = "一个装满梨子的篮子。"
 	icon_state = "supermarketbasket2"
 
 /obj/structure/prop/hybrisa/supermart/supermartfruitbasket/carrots
 	name = "basket"
-	desc = "A basket full of carrots."
+	desc = "一个装满胡萝卜的篮子。"
 	icon_state = "supermarketbasket3"
 
 /obj/structure/prop/hybrisa/supermart/supermartfruitbasket/melons
 	name = "basket"
-	desc = "A basket full of melons."
+	desc = "一个装满甜瓜的篮子。"
 	icon_state = "supermarketbasket4"
 
 /obj/structure/prop/hybrisa/supermart/supermartfruitbasket/apples
 	name = "basket"
-	desc = "A basket full of apples."
+	desc = "一个装满苹果的篮子。"
 	icon_state = "supermarketbasket5"
 
 /obj/structure/prop/hybrisa/supermart/souto_man_prop
-	name = "Souto Man mannequin"
+	name = "苏托人偶模型"
 	icon = 'icons/obj/structures/props/hybrisa/souto.dmi'
-	desc = "A mannequin of the famous 'Souto-Man', Party like it's 1999!"
+	desc = "著名‘苏托人’的模特，像1999年那样狂欢！"
 	icon_state = "souto_man_prop"
 	density = TRUE
 	health = 100
@@ -893,17 +893,17 @@
 	AddElement(/datum/element/corp_label/souta)
 
 /obj/structure/prop/hybrisa/supermart/souto_rack
-	name = "Souto cans rack"
+	name = "苏托汽水货架"
 	icon = 'icons/obj/structures/props/hybrisa/souto.dmi'
-	desc = "A rack filled with Souto cans of various flavors."
+	desc = "一个装满各种口味苏托汽水的货架。"
 	icon_state = "souto_rack"
 	density = TRUE
 	health = 75
 
 /obj/structure/prop/hybrisa/supermart/souto_can_stack
-	name = "stacked souto cans"
+	name = "堆叠的苏托汽水罐"
 	icon = 'icons/obj/structures/props/hybrisa/souto.dmi'
-	desc = "A large stack of 'Souto-Classic' cans."
+	desc = "一大摞‘经典苏托’汽水罐。"
 	icon_state = "souto_can_stack"
 	density = TRUE
 	health = 75
@@ -930,7 +930,7 @@
 	return TRUE
 
 /obj/structure/prop/hybrisa/furniture/tables/proc/explode()
-	visible_message(SPAN_DANGER("[src] breaks apart!"), max_distance = 1)
+	visible_message(SPAN_DANGER("[src]碎裂了！"), max_distance = 1)
 	deconstruct(FALSE)
 
 /obj/structure/prop/hybrisa/furniture/tables/proc/healthcheck()
@@ -950,7 +950,7 @@
 		return XENO_NO_DELAY_ACTION
 	current_xenomorph.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] 挥爪攻击 [src]！"),
 	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
@@ -961,17 +961,17 @@
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	update_health(xeno.melee_damage_upper)
 	if(health <= 0)
-		xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno]用它的尾巴摧毁了[src]！"),
 		SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
-		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno] 用它的尾巴抽打 [src]！"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/prop/hybrisa/furniture/tables/tableblack
-	name = "large metal table"
-	desc = "A large black metal table, looks very expensive."
+	name = "大型金属桌"
+	desc = "一张大型黑色金属桌，看起来非常昂贵。"
 	icon_state = "blackmetaltable"
 	density = TRUE
 	climbable = TRUE
@@ -986,8 +986,8 @@
 	icon_state = "blackmetaltable_computer"
 
 /obj/structure/prop/hybrisa/furniture/tables/tablewood
-	name = "large wood table"
-	desc = "A large wooden table, looks very expensive."
+	name = "大型木桌"
+	desc = "一张大型木桌，看起来非常昂贵。"
 	icon_state = "brownlargetable"
 	density = TRUE
 	climbable = TRUE
@@ -1002,8 +1002,8 @@
 	icon_state = "brownlargetable_computer"
 
 /obj/structure/prop/hybrisa/furniture/tables/tablepool
-	name = "pool table"
-	desc = "A large table used for Pool."
+	name = "台球桌"
+	desc = "一张用于打台球的大桌子。"
 	icon = 'icons/obj/structures/tables_64x64.dmi'
 	icon_state = "table_pool"
 	density = TRUE
@@ -1014,8 +1014,8 @@
 	debris = list(/obj/item/stack/sheet/wood)
 
 /obj/structure/prop/hybrisa/furniture/tables/tablegambling
-	name = "gambling table"
-	desc = "A large table used for gambling."
+	name = "赌桌"
+	desc = "一张用于赌博的大桌子。"
 	icon = 'icons/obj/structures/tables_64x64.dmi'
 	icon_state = "table_cards"
 	density = TRUE
@@ -1028,8 +1028,8 @@
 // Chairs
 
 /obj/structure/bed/chair/comfy/hybrisa
-	name = "expensive chair"
-	desc = "A expensive looking chair."
+	name = "昂贵椅子"
+	desc = "一把看起来很昂贵的椅子。"
 
 /obj/structure/bed/chair/comfy/hybrisa/black
 	icon_state = "comfychair_hybrisablack"
@@ -1046,8 +1046,8 @@
 // Beds
 
 /obj/structure/bed/hybrisa/dingy
-	name = "dingy bed"
-	desc = "An old mattress seated on a rectangular metallic frame. This is used to support a lying person in a comfortable manner, notably for regular sleep. Ancient technology, but still useful."
+	name = "肮脏的床"
+	desc = "一张旧床垫放在矩形的金属框架上。用于以舒适的方式支撑躺卧的人，特别是用于常规睡眠。古老的技术，但依然有用。"
 	icon_state = "bed_dingy"
 
 /obj/structure/bed/hybrisa
@@ -1055,42 +1055,42 @@
 	buckling_y = 8
 
 /obj/structure/bed/hybrisa/prisonbed
-	name = "bunk bed"
-	desc = "A sorry looking bunk-bed."
+	name = "双层床"
+	desc = "一张看起来寒酸的双层床。"
 	icon_state = "prisonbed"
 
 /obj/structure/bed/hybrisa/bunkbed1
-	name = "bunk bed"
-	desc = "A comfy looking bunk-bed."
+	name = "双层床"
+	desc = "一张看起来舒适的双层床。"
 	icon_state = "zbunkbed"
 
 /obj/structure/bed/hybrisa/bunkbed2
-	name = "bunk bed"
-	desc = "A comfy looking bunk-bed."
+	name = "双层床"
+	desc = "一张看起来舒适的双层床。"
 	icon_state = "zbunkbed2"
 
 /obj/structure/bed/hybrisa/bunkbed3
-	name = "bunk bed"
-	desc = "A comfy looking bunk-bed."
+	name = "双层床"
+	desc = "一张看起来舒适的双层床。"
 	icon_state = "zbunkbed3"
 
 /obj/structure/bed/hybrisa/bunkbed4
-	name = "bunk bed"
-	desc = "A comfy looking bunk-bed."
+	name = "双层床"
+	desc = "一张看起来舒适的双层床。"
 	icon_state = "zbunkbed4"
 
 // Cabinet
 
 /obj/structure/closet/cabinet/hybrisa/metal
-	name = "metal cabinet"
-	desc = "A large metal cabinet, looks sturdy."
+	name = "金属柜"
+	desc = "一个大型金属柜，看起来很坚固。"
 	icon_state = "cabinet_metal_closed"
 	icon_closed = "cabinet_metal_closed"
 	icon_opened = "cabinet_metal_open"
 
 /obj/structure/closet/cabinet/hybrisa/metal/alt
-	name = "metal cabinet"
-	desc = "A large metal cabinet, looks sturdy."
+	name = "金属柜"
+	desc = "一个大型金属柜，看起来很坚固。"
 	icon_state = "cabinet_metal_alt_closed"
 	icon_closed = "cabinet_metal_alt_closed"
 	icon_opened = "cabinet_metal_alt_open"
@@ -1103,57 +1103,57 @@
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/prop/hybrisa/xenobiology/small/empty
-	name = "specimen containment cell"
-	desc = "It's empty."
+	name = "样本收容单元"
+	desc = "它是空的。"
 	icon_state = "xenocellemptyon"
 	density = TRUE
 
 /obj/structure/prop/hybrisa/xenobiology/small/offempty
-	name = "specimen containment cell"
-	desc = "It's turned off and empty."
+	name = "样本收容单元"
+	desc = "它已关闭且空无一物。"
 	icon_state = "xenocellemptyoff"
 	density = TRUE
 
 /obj/structure/prop/hybrisa/xenobiology/small/larva
-	name = "specimen containment cell"
-	desc = "There is something worm-like inside..."
+	name = "样本收容单元"
+	desc = "里面有某种蠕虫状的东西..."
 	icon_state = "xenocelllarva"
 	density = TRUE
 
 /obj/structure/prop/hybrisa/xenobiology/small/egg
-	name = "specimen containment cell"
-	desc = "There is, what looks like some sort of egg inside..."
+	name = "样本收容单元"
+	desc = "里面好像有某种卵状物..."
 	icon_state = "xenocellegg"
 	density = TRUE
 
 /obj/structure/prop/hybrisa/xenobiology/small/hugger
-	name = "specimen containment cell"
-	desc = "There's something spider-like inside..."
+	name = "样本收容单元"
+	desc = "里面有某种蜘蛛状的东西..."
 	icon_state = "xenocellhugger"
 	density = TRUE
 
 /obj/structure/prop/hybrisa/xenobiology/small/cracked1
-	name = "specimen containment cell"
-	desc = "Looks like something broke it...from the inside."
+	name = "样本收容单元"
+	desc = "看起来有什么东西从内部把它弄破了。"
 	icon_state = "xenocellcrackedempty"
 	density = TRUE
 
 /obj/structure/prop/hybrisa/xenobiology/small/cracked2
-	name = "specimen containment cell"
-	desc = "Looks like something broke it...from the inside."
+	name = "样本收容单元"
+	desc = "看起来有什么东西从内部把它弄破了。"
 	icon_state = "xenocellcrackedempty2"
 	density = TRUE
 
 /obj/structure/prop/hybrisa/xenobiology/small/crackedegg
-	name = "specimen containment cell"
-	desc = "Looks like something broke it, there's a giant empty egg inside."
+	name = "样本收容单元"
+	desc = "看起来有什么东西把它弄破了，里面有一个巨大的空卵。"
 	icon_state = "xenocellcrackedegg"
 	density = TRUE
 
 /obj/structure/prop/hybrisa/xenobiology/giant_cryo
 	icon = 'icons/obj/structures/props/xeno_cyro_giant.dmi'
-	name = "colossal specimen containment cell"
-	desc = "A colossal cryogenic tube with yellow-tinted glass towers before you, housing a hulking, monstrous entity. Is it alive, or in a deep slumber? Cold mist swirls around the base as a low hum fills the air."
+	name = "巨型样本收容单元"
+	desc = "一个巨大的、带有黄色玻璃的低温管耸立在你面前，里面容纳着一个庞大、怪异的实体。它是活的，还是处于深度沉睡？冰冷的雾气在底座周围盘旋，低沉的嗡鸣声弥漫在空气中。"
 	icon_state = "giant_xeno_cryo"
 	bound_height = 128
 	bound_width = 64
@@ -1165,8 +1165,8 @@
 
 /obj/structure/prop/hybrisa/xenobiology/misc
 	icon = 'icons/obj/structures/props/hybrisa/misc_props.dmi'
-	name = "strange egg"
-	desc = "A strange ancient looking egg, it seems to be inert."
+	name = "奇怪的卵"
+	desc = "一个看起来古老而奇怪的卵，它似乎是惰性的。"
 	icon_state = "inertegg"
 	unslashable = TRUE
 	explo_proof = TRUE
@@ -1179,8 +1179,8 @@
 	icon_state = "spacejockey"
 
 /obj/structure/prop/hybrisa/engineer/spacejockey
-	name = "giant pilot"
-	desc = "A colossal enigma looms before you—a titan of alien origin, frozen in time and death. Its massive form appears fossilized, hinting at eons spent entombed within the bowels of the derelict alien vessel. The creature seems fused with the grandeur of its chair, as if emerging from the very essence of the ship itself. Bones, twisted and contorted, protrude outward in a macabre display, as if violently expelled from within by some unimaginable force. It's a harrowing encounter with an enigmatic being from a bygone era—a silent witness to mysteries that may never be unraveled."
+	name = "巨型飞行员"
+	desc = "一个巨大的谜团耸立在你面前——一个来自外星起源的泰坦，被冻结在时间和死亡之中。它庞大的身躯看起来已经石化，暗示着在废弃外星飞船的内部深处度过了漫长的岁月。这个生物似乎与它座椅的宏伟融为一体，仿佛是从飞船本身的本质中浮现出来。扭曲变形的骨头以一种令人毛骨悚然的方式向外突出，仿佛被某种难以想象的力量从内部猛烈地排出。这是一次与来自遥远过去的谜样存在的可怕遭遇——一个可能永远无法解开的秘密的无声见证者。"
 	icon = 'icons/obj/structures/props/engineers/engineerJockey.dmi'
 	icon_state = "spacejockey"
 	unslashable = TRUE
@@ -1189,16 +1189,16 @@
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/prop/hybrisa/engineer/giantpod/broken
-	name = "giant hypersleep chamber"
-	desc = "Before you lies a behemoth of what looks like a 'hypersleep chamber', dwarfing everything around it. Within, a fossilized alien presence lies dormant. The chamber itself bears the scars of a violent past, with holes melted in its outer shell, as if something within had erupted outwards with some unknown force. The desiccated remains of the occupant are twisted and contorted, suggesting a violent demise that occurred long ago."
+	name = "巨型超眠舱"
+	desc = "你面前躺着一个庞然大物，看起来像是一个‘超眠舱’，使周围的一切都相形见绌。里面，一个石化的外星存在处于休眠状态。舱体本身带有暴力过去的伤痕，外壳上有熔化的洞，仿佛里面的东西曾以某种未知的力量向外爆发。居住者的干枯遗骸扭曲变形，暗示着很久以前发生的一场暴力死亡。"
 	icon = 'icons/obj/structures/props/engineers/engineerPod.dmi'
 	icon_state = "pod_broken"
 	bound_height = 96
 	density = TRUE
 
 /obj/structure/prop/hybrisa/engineer/giantpod
-	name = "colossal hypersleep chamber"
-	desc = "Before you stands an imposing structure, what looks like a colossal 'hypersleep chamber' of alien design, unlike anything you've ever encountered. Its intricate patterns and unfamiliar symbols hint at technologies far beyond human comprehension. Yet, despite its grandeur, the chamber is empty, devoid of any sign of life."
+	name = "巨型超眠舱"
+	desc = "你面前矗立着一个令人印象深刻的结构，看起来像是一个外星设计的巨型‘超眠舱’，与你见过的任何东西都不同。它复杂的图案和陌生的符号暗示着远超人类理解能力的技术。然而，尽管它宏伟壮观，这个舱室却是空的，没有任何生命迹象。"
 	icon = 'icons/obj/structures/props/engineers/engineerPod.dmi'
 	icon_state = "pod"
 	bound_height = 96
@@ -1217,7 +1217,7 @@
 	return TRUE
 
 /obj/structure/prop/hybrisa/engineer/giantpod/proc/explode()
-	visible_message(SPAN_DANGER("[src] crumbles!"), max_distance = 1)
+	visible_message(SPAN_DANGER("[src]碎裂了！"), max_distance = 1)
 	playsound(loc, 'sound/effects/burrowoff.ogg', 25)
 
 	deconstruct(FALSE)
@@ -1239,7 +1239,7 @@
 		return XENO_NO_DELAY_ACTION
 	current_xenomorph.animation_attack_on(src)
 	playsound(src, 'sound/effects/metal_close.ogg', 25, 1)
-	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] 挥爪攻击 [src]！"),
 	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
@@ -1250,17 +1250,17 @@
 	playsound(src, 'sound/effects/metal_close.ogg', 25, 1)
 	update_health(xeno.melee_damage_upper)
 	if(health <= 0)
-		xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno]用它的尾巴摧毁了[src]！"),
 		SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
-		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno] 用它的尾巴抽打 [src]！"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/prop/hybrisa/engineer/giantconsole
-	name = "colossal alien console"
-	desc = "Before you looms a towering alien console, its design defying all familiarity and logic. It's a marvel of unknown technology, adorned with intricate patterns and pulsating lights that dance with otherworldly energy. What purpose does this enigmatic device serve? The answer eludes you..."
+	name = "巨型外星控制台"
+	desc = "一个高耸的外星控制台矗立在你面前，其设计违背了所有的熟悉感和逻辑。这是一个未知技术的奇迹，装饰着复杂的图案和脉动的灯光，随着异世界的能量舞动。这个神秘装置有何用途？答案让你捉摸不透..."
 	icon = 'icons/obj/structures/props/engineers/consoles.dmi'
 	icon_state = "engineerconsole"
 	bound_height = 32
@@ -1281,33 +1281,33 @@
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/prop/hybrisa/engineer/engineerpillar/northwesttop
-	name = "strange pillar"
+	name = "奇怪的柱子"
 	icon_state = "engineerpillar_NW1"
 
 /obj/structure/prop/hybrisa/engineer/engineerpillar/northwestbottom
-	name = "strange pillar"
+	name = "奇怪的柱子"
 	icon_state = "engineerpillar_NW2"
 
 /obj/structure/prop/hybrisa/engineer/engineerpillar/southwesttop
-	name = "strange pillar"
+	name = "奇怪的柱子"
 	icon_state = "engineerpillar_SW1"
 
 /obj/structure/prop/hybrisa/engineer/engineerpillar/southwestbottom
-	name = "strange pillar"
+	name = "奇怪的柱子"
 	icon_state = "engineerpillar_SW2"
 
 /obj/structure/prop/hybrisa/engineer/engineerpillar/smallsouthwest1
-	name = "strange pillar"
+	name = "奇怪的柱子"
 	icon_state = "engineerpillar_SW1fade"
 
 /obj/structure/prop/hybrisa/engineer/engineerpillar/smallsouthwest2
-	name = "strange pillar"
+	name = "奇怪的柱子"
 	icon_state = "engineerpillar_SW2fade"
 
 /obj/structure/blackgoocontainer
-	name = "strange container"
+	name = "奇怪的容器"
 	icon_state = "blackgoocontainer1"
-	desc = "A strange alien container. It exudes an aura of otherworldly mystery, its sleek surface bearing no hint of its previous contents. It appears to be completely empty."
+	desc = "一个奇怪的外星容器。它散发着异世界的神秘气息，光滑的表面没有留下任何先前内容的痕迹。它看起来完全是空的。"
 	icon = 'icons/obj/items/black_goo_stuff.dmi'
 	density = TRUE
 	anchored = TRUE
@@ -1329,7 +1329,7 @@
 	return TRUE
 
 /obj/structure/blackgoocontainer/proc/explode()
-	visible_message(SPAN_DANGER("[src] crumbles!"), max_distance = 1)
+	visible_message(SPAN_DANGER("[src]碎裂了！"), max_distance = 1)
 	playsound(loc, 'sound/effects/burrowoff.ogg', 25)
 
 	deconstruct(FALSE)
@@ -1351,7 +1351,7 @@
 		return XENO_NO_DELAY_ACTION
 	current_xenomorph.animation_attack_on(src)
 	playsound(src, 'sound/effects/metal_close.ogg', 25, 1)
-	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] 挥爪攻击 [src]！"),
 	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
@@ -1362,18 +1362,18 @@
 	playsound(src, 'sound/effects/metal_close.ogg', 25, 1)
 	update_health(xeno.melee_damage_upper)
 	if(health <= 0)
-		xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno]用它的尾巴摧毁了[src]！"),
 		SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
-		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno] 用它的尾巴抽打 [src]！"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/item/hybrisa/engineer_helmet
 	icon = 'icons/obj/structures/props/engineers/props.dmi'
-	name = "strange alien helmet"
-	desc = "The alien helmet takes on a bizarre form reminiscent of an elongated elephant's trunk, adorned with insectoid-like eyes that peer out from its weathered surface. Its purpose and origins shrouded in mystery. As you behold this strange relic, you can't help but ponder the beings who once wore such unconventional headgear and the ancient secrets it may hold..."
+	name = "奇怪的外星头盔"
+	desc = "这个外星头盔呈现出一种怪异的形态，让人联想到拉长的大象鼻子，上面装饰着类似昆虫的眼睛，从它饱经风霜的表面向外凝视。它的用途和起源笼罩在神秘之中。当你凝视这件奇怪的遗物时，你不禁会思考那些曾经佩戴这种非传统头饰的生物，以及它可能隐藏的古老秘密..."
 	icon_state = "alien_helmet"
 	force = 15
 	throwforce = 12
@@ -1382,14 +1382,14 @@
 // Airport
 
 /obj/structure/prop/hybrisa/airport
-	name = "nose cone"
+	name = "鼻锥"
 	icon = 'icons/obj/structures/props/dropship/dropship_parts.dmi'
 	icon_state = "dropshipfrontwhite1"
 	unslashable = TRUE
 	unacidable = TRUE
 
 /obj/structure/prop/hybrisa/airport/dropshipnosecone
-	name = "nose cone"
+	name = "鼻锥"
 	icon_state = "dropshipfrontwhite1"
 	explo_proof = TRUE
 	layer = ABOVE_MOB_LAYER
@@ -1434,8 +1434,8 @@
 // Dropship damage
 
 /obj/structure/prop/hybrisa/airport/dropshipenginedamage
-	name = "dropship damage"
-	desc = "The engine appears to have severe damage."
+	name = "运输机损伤"
+	desc = "引擎似乎遭受了严重损坏。"
 	icon = 'icons/obj/structures/props/dropship/dropshipdamage.dmi'
 	icon_state = "dropship_engine_damage"
 	bound_height = 64
@@ -1446,8 +1446,8 @@
 	gender = PLURAL
 
 /obj/structure/prop/hybrisa/airport/dropshipenginedamagenofire
-	name = "dropship damage"
-	desc = "The engine appears to have severe damage."
+	name = "运输机损伤"
+	desc = "引擎似乎遭受了严重损坏。"
 	icon = 'icons/obj/structures/props/dropship/dropshipdamage.dmi'
 	icon_state = "dropship_engine_damage_nofire"
 	bound_height = 64
@@ -1458,8 +1458,8 @@
 	gender = PLURAL
 
 /obj/structure/prop/hybrisa/airport/refuelinghose
-	name = "refueling hose"
-	desc = "A long refueling hose that connects to various types of dropships."
+	name = "加油软管"
+	desc = "一根连接各类运输机的长加油软管。"
 	icon = 'icons/obj/structures/props/dropship/dropshipdamage.dmi'
 	icon_state = "fuelline1"
 	bound_height = 64
@@ -1468,8 +1468,8 @@
 	unacidable = TRUE
 
 /obj/structure/prop/hybrisa/airport/refuelinghose2
-	name = "refueling hose"
-	desc = "A long refueling hose that connects to various types of dropships."
+	name = "加油软管"
+	desc = "一根连接各类运输机的长加油软管。"
 	icon = 'icons/obj/structures/props/dropship/dropshipdamage.dmi'
 	icon_state = "fuelline2"
 	bound_height = 64
@@ -1480,8 +1480,8 @@
 // Pilot body
 
 /obj/structure/prop/hybrisa/airport/deadpilot1
-	name = "decapitated Weyland-Yutani Pilot"
-	desc = "What remains of a Weyland-Yutani Pilot. Their entire head is missing. Where'd it roll off to?..."
+	name = "被斩首的维兰德-汤谷飞行员"
+	desc = "一名维兰德-汤谷飞行员的残骸。他的整个头颅都不见了。滚到哪里去了？……"
 	icon = 'icons/obj/structures/props/hybrisa/64x96-props.dmi'
 	icon_state = "pilotbody_decap1"
 	bound_height = 64
@@ -1490,8 +1490,8 @@
 	unacidable = TRUE
 
 /obj/structure/prop/hybrisa/airport/deadpilot2
-	name = "decapitated Weyland-Yutani Pilot"
-	desc = "What remains of a Weyland-Yutani Pilot. Their entire head is missing. Where'd it roll off to?..."
+	name = "被斩首的维兰德-汤谷飞行员"
+	desc = "一名维兰德-汤谷飞行员的残骸。他的整个头颅都不见了。滚到哪里去了？……"
 	icon = 'icons/obj/structures/props/hybrisa/64x96-props.dmi'
 	icon_state = "pilotbody_decap2"
 	bound_height = 64
@@ -1513,31 +1513,31 @@
 	layer = HATCH_LAYER
 
 /obj/structure/prop/hybrisa/misc/floorprops/grate
-	name = "solid metal grate"
-	desc = "A metal grate."
+	name = "实心金属格栅"
+	desc = "一个金属格栅。"
 	icon_state = "solidgrate1"
 
 /obj/structure/prop/hybrisa/misc/floorprops/grate2
-	name = "solid metal grate"
-	desc = "A metal grate."
+	name = "实心金属格栅"
+	desc = "一个金属格栅。"
 	icon_state = "solidgrate5"
 
 /obj/structure/prop/hybrisa/misc/floorprops/grate3
-	name = "solid metal grate"
-	desc = "A metal grate."
+	name = "实心金属格栅"
+	desc = "一个金属格栅。"
 	icon_state = "zhalfgrate1"
 
 /obj/structure/prop/hybrisa/misc/floorprops/floorglass
-	name = "reinforced glass floor"
-	desc = "A heavily reinforced glass floor panel, this looks almost indestructible."
+	name = "强化玻璃地板"
+	desc = "一块经过重重强化的玻璃地板板，看起来几乎坚不可摧。"
 	icon_state = "solidgrate2"
 	unslashable = TRUE
 	unacidable = TRUE
 	explo_proof = TRUE
 
 /obj/structure/prop/hybrisa/misc/floorprops/floorglass2
-	name = "reinforced glass floor"
-	desc = "A heavily reinforced glass floor panel, this looks almost indestructible."
+	name = "强化玻璃地板"
+	desc = "一块经过重重强化的玻璃地板板，看起来几乎坚不可摧。"
 	icon_state = "solidgrate3"
 	unslashable = TRUE
 	unacidable = TRUE
@@ -1545,8 +1545,8 @@
 	layer = ABOVE_TURF_LAYER
 
 /obj/structure/prop/hybrisa/misc/floorprops/floorglass3
-	name = "reinforced glass floor"
-	desc = "A heavily reinforced glass floor panel, this looks almost indestructible."
+	name = "强化玻璃地板"
+	desc = "一块经过重重强化的玻璃地板板，看起来几乎坚不可摧。"
 	icon_state = "solidgrate4"
 	unslashable = TRUE
 	unacidable = TRUE
@@ -1642,21 +1642,21 @@
 // Misc
 
 /obj/structure/prop/hybrisa/misc/commandosuitemptyprop
-	name = "Weyland-Yutani 'M5X Apesuit' showcase"
-	desc = "A display model of the Weyland-Yutani 'Apesuit', shame it's only a model..."
+	name = "维兰德-汤谷‘M5X猿服’展示柜"
+	desc = "维兰德-汤谷‘猿服’的展示模型，可惜只是个模型……"
 	icon_state = "dogcatchersuitempty1"
 
 /obj/structure/prop/hybrisa/misc/cabinet
 	name = "cabinet"
-	desc = "A small cabinet with drawers."
+	desc = "一个带抽屉的小柜子。"
 	icon = 'icons/obj/structures/props/furniture/misc.dmi'
 	icon_state = "sidecabinet"
 	projectile_coverage = 20
 	throwpass = TRUE
 
 /obj/structure/prop/hybrisa/misc/elevator_door
-	name = "broken elevator door"
-	desc = "Completely broken, the elevator is not going to work."
+	name = "损坏的电梯门"
+	desc = "完全损坏，电梯无法工作了。"
 	icon = 'icons/obj/structures/props/hybrisa/misc_props.dmi'
 	icon_state = "elevator_left"
 	opacity = FALSE
@@ -1668,8 +1668,8 @@
 	icon_state = "elevator_right"
 
 /obj/structure/prop/hybrisa/misc/trash
-	name = "trash bin"
-	desc = "A Weyland-Yutani trash bin used for disposing your unwanted items, or you can just throw your shit on the ground like every other asshole."
+	name = "垃圾桶"
+	desc = "一个维兰德-汤谷的垃圾桶，用于丢弃你不想要的物品，或者你也可以像其他混蛋一样直接把东西扔在地上。"
 	icon = 'icons/obj/structures/props/hybrisa/trash_bins.dmi'
 	icon_state = "trashblue"
 	health = 100
@@ -1685,7 +1685,7 @@
 	return TRUE
 
 /obj/structure/prop/hybrisa/misc/trash/proc/explode()
-	visible_message(SPAN_DANGER("[src] breaks apart!"), max_distance = 1)
+	visible_message(SPAN_DANGER("[src]碎裂了！"), max_distance = 1)
 	deconstruct(FALSE)
 
 /obj/structure/prop/hybrisa/misc/trash/proc/healthcheck()
@@ -1705,7 +1705,7 @@
 		return XENO_NO_DELAY_ACTION
 	current_xenomorph.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] 挥爪攻击 [src]！"),
 	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
@@ -1716,10 +1716,10 @@
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	update_health(xeno.melee_damage_upper)
 	if(health <= 0)
-		xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno]用它的尾巴摧毁了[src]！"),
 		SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
-		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno] 用它的尾巴抽打 [src]！"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
@@ -1736,8 +1736,8 @@
 	icon_state = "redmeter"
 
 /obj/item/hybrisa/misc/trash_bag_full_prop
-	name = "full trash bag"
-	desc = "It's the heavy-duty black polymer kind. It's full of old trash, you don't want to touch it."
+	name = "满的垃圾袋"
+	desc = "这是那种厚重的黑色聚合物垃圾袋。里面装满了旧垃圾，你不想碰它。"
 	icon = 'icons/obj/structures/props/hybrisa/misc_props.dmi'
 	icon_state = "ztrashbag"
 	force = 15
@@ -1745,8 +1745,8 @@
 	w_class = SIZE_MEDIUM
 
 /obj/structure/prop/hybrisa/misc/slotmachine
-	name = "slot machine"
-	desc = "A slot machine."
+	name = "老虎机"
+	desc = "一台老虎机。"
 	icon = 'icons/obj/structures/props/furniture/slot_machines.dmi'
 	icon_state = "slotmachine"
 	bound_width = 32
@@ -1757,8 +1757,8 @@
 	health = 150
 
 /obj/structure/prop/hybrisa/misc/slotmachine/broken
-	name = "slot machine"
-	desc = "A broken slot machine."
+	name = "老虎机"
+	desc = "一台损坏的老虎机。"
 	icon_state = "slotmachine_broken"
 	bound_width = 32
 	bound_height = 32
@@ -1774,7 +1774,7 @@
 	return TRUE
 
 /obj/structure/prop/hybrisa/misc/slotmachine/proc/explode()
-	visible_message(SPAN_DANGER("[src] breaks apart!"), max_distance = 1)
+	visible_message(SPAN_DANGER("[src]碎裂了！"), max_distance = 1)
 	deconstruct(FALSE)
 
 /obj/structure/prop/hybrisa/misc/slotmachine/proc/healthcheck()
@@ -1794,7 +1794,7 @@
 		return XENO_NO_DELAY_ACTION
 	current_xenomorph.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] 挥爪攻击 [src]！"),
 	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
@@ -1805,10 +1805,10 @@
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	update_health(xeno.melee_damage_upper)
 	if(health <= 0)
-		xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno]用它的尾巴摧毁了[src]！"),
 		SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
-		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno] 用它的尾巴抽打 [src]！"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
@@ -1817,8 +1817,8 @@
 
 /obj/structure/machinery/hybrisa/coffee_machine
 	icon = 'icons/obj/structures/machinery/coffee_machine.dmi'
-	name = "coffee machine"
-	desc = "A coffee machine."
+	name = "咖啡机"
+	desc = "一台咖啡机。"
 	wrenchable = TRUE
 	icon_state = "coffee"
 	var/vends = "coffee"
@@ -1847,11 +1847,11 @@
 		return TRUE
 
 	if(brewing)
-		to_chat(user, SPAN_WARNING("[src] is still brewing [vends]."))
+		to_chat(user, SPAN_WARNING("[src]仍在冲泡[vends]。"))
 		return FALSE
 
 	if(cup && user.Adjacent(src) && user.put_in_hands(cup, FALSE))
-		to_chat(user, SPAN_NOTICE("You take [cup] in your hand."))
+		to_chat(user, SPAN_NOTICE("你将[cup]拿在手中。"))
 		cup = null
 		update_icon()
 		return TRUE
@@ -1859,11 +1859,11 @@
 /obj/structure/machinery/hybrisa/coffee_machine/attackby(obj/item/attacking_object, mob/user)
 	if(is_type_in_list(attacking_object, fiting_cups))
 		if(inoperable())
-			to_chat(user, SPAN_WARNING("[src] does not appear to be working."))
+			to_chat(user, SPAN_WARNING("[src]似乎无法工作。"))
 			return TRUE
 
 		if(cup)
-			to_chat(user, SPAN_WARNING("There is already [cup] there."))
+			to_chat(user, SPAN_WARNING("那里已经有一个[cup]了。"))
 			return TRUE
 
 		playsound(src, "sound/machines/coffee1.ogg", 40, TRUE)
@@ -1874,14 +1874,14 @@
 		var/datum/reagents/current_reagent = cup.reagents
 		var/space = current_reagent.maximum_volume - current_reagent.total_volume
 		if(space < current_reagent.maximum_volume)
-			to_chat(user, SPAN_WARNING("[capitalize_first_letters(vends)] spills around as it does not fit [cup], you should have emptied it first."))
+			to_chat(user, SPAN_WARNING("[capitalize_first_letters(vends)]溢出，因为它装不进[cup]，你应该先把它清空。"))
 
 		brewing = TRUE
 		addtimer(CALLBACK(src, PROC_REF(vend_coffee), user, space), making_time)
 		return TRUE
 
 	if(istype(attacking_object, /obj/item/reagent_container))
-		to_chat(user, SPAN_WARNING("[attacking_object] does not quite fit in."))
+		to_chat(user, SPAN_WARNING("[attacking_object]不太合适。"))
 		return TRUE
 
 	return ..()
@@ -1890,10 +1890,10 @@
 	brewing = FALSE
 	cup?.reagents?.add_reagent(vends, amount)
 	if(user?.Adjacent(src) && user.put_in_hands(cup, FALSE))
-		to_chat(user, SPAN_NOTICE("You take [cup] in your hand."))
+		to_chat(user, SPAN_NOTICE("你将[cup]拿在手中。"))
 		cup = null
 	else
-		to_chat(user, SPAN_WARNING("[cup] sits ready in the machine."))
+		to_chat(user, SPAN_WARNING("[cup]已就位，准备就绪。"))
 
 	update_icon()
 
@@ -1957,7 +1957,7 @@
 	return TRUE
 
 /obj/structure/machinery/big_computers/proc/explode()
-	visible_message(SPAN_DANGER("[src] breaks apart!"), max_distance = 1)
+	visible_message(SPAN_DANGER("[src]碎裂了！"), max_distance = 1)
 	deconstruct(FALSE)
 
 /obj/structure/machinery/big_computers/proc/healthcheck()
@@ -1977,7 +1977,7 @@
 		return XENO_NO_DELAY_ACTION
 	current_xenomorph.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] 挥爪攻击 [src]！"),
 	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
@@ -2037,7 +2037,7 @@
 	icon_state = "blacksensor_comp3"
 
 /obj/structure/machinery/big_computers/messaging_server
-	name = "messaging server"
+	name = "通讯服务器"
 	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	icon_state = "messageserver_black"
 
@@ -2054,7 +2054,7 @@
 
 /obj/structure/machinery/big_computers/science_big
 	icon = 'icons/obj/structures/machinery/science_machines_64x32.dmi'
-	name = "synthesis simulator"
+	name = "合成模拟器"
 	icon_state = "modifier"
 	bound_width = 64
 	bound_height = 32
@@ -2064,28 +2064,28 @@
 	opacity = FALSE
 
 /obj/structure/machinery/big_computers/science_big/synthesis_simulator
-	name = "synthesis simulator"
-	desc = "This computer uses advanced algorithms to perform simulations of reagent properties, for the purpose of calculating the synthesis required to make a new variant."
+	name = "合成模拟器"
+	desc = "这台计算机使用先进算法模拟试剂属性，旨在计算合成新变体所需的配方。"
 	icon_state = "modifier"
 
 /obj/structure/machinery/big_computers/science_big/protolathe
-	name = "chemical storage system"
-	desc = "Storage system for a large supply of chemicals, which slowly recharges."
+	name = "化学品存储系统"
+	desc = "用于大量化学品存储的系统，可缓慢补充。"
 	icon_state = "protolathe"
 
 /obj/structure/machinery/big_computers/science_big/operator_machine
-	name = "synthesis simulator"
-	desc = "This computer uses advanced algorithms to perform simulations of reagent properties, for the purpose of calculating the synthesis required to make a new variant."
+	name = "合成模拟器"
+	desc = "这台计算机使用先进算法模拟试剂属性，旨在计算合成新变体所需的配方。"
 	icon_state = "operator"
 
 /obj/structure/machinery/big_computers/science_big/operator_machine_open
-	name = "synthesis simulator"
-	desc = "This computer uses advanced algorithms to perform simulations of reagent properties, for the purpose of calculating the synthesis required to make a new variant."
+	name = "合成模拟器"
+	desc = "这台计算机使用先进算法模拟试剂属性，旨在计算合成新变体所需的配方。"
 	icon_state = "operator_open"
 
 /obj/structure/machinery/big_computers/science_big/medilathe
 	name = "medilathe"
-	desc = "A specialized autolathe made for printing medical items."
+	desc = "一台专门用于打印医疗物品的自动制造机。"
 	icon_state = "medilathe"
 
 // Monitors
@@ -2102,7 +2102,7 @@
 	return TRUE
 
 /obj/structure/prop/hybrisa/misc/machinery/screens/proc/explode()
-	visible_message(SPAN_DANGER("[src] breaks apart!"), max_distance = 1)
+	visible_message(SPAN_DANGER("[src]碎裂了！"), max_distance = 1)
 	deconstruct(FALSE)
 
 /obj/structure/prop/hybrisa/misc/machinery/screens/proc/healthcheck()
@@ -2122,7 +2122,7 @@
 		return XENO_NO_DELAY_ACTION
 	current_xenomorph.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] 挥爪攻击 [src]！"),
 	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
@@ -2133,10 +2133,10 @@
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	update_health(xeno.melee_damage_upper)
 	if(health <= 0)
-		xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno]用它的尾巴摧毁了[src]！"),
 		SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
-		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno] 用它的尾巴抽打 [src]！"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
@@ -2247,7 +2247,7 @@
 
 // Fake Pipes
 /obj/effect/hybrisa/misc/fake/pipes
-	name = "disposal pipe"
+	name = "垃圾处理管道"
 	icon = 'icons/obj/structures/props/hybrisa/piping_wiring.dmi'
 	icon_state = "pipe-s"
 	layer = WIRE_LAYER
@@ -2270,7 +2270,7 @@
 // Fake Wire
 
 /obj/effect/hybrisa/misc/fake/wire
-	name = "power cable"
+	name = "电源线"
 	icon = 'icons/obj/structures/props/hybrisa/piping_wiring.dmi'
 	icon_state = "intactred"
 	layer = UNDERFLOOR_OBJ_LAYER
@@ -2288,7 +2288,7 @@
 	icon_state = "intactblue"
 
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire
-	name = "heavy duty wire"
+	name = "重型线缆"
 	icon = 'icons/obj/structures/props/hybrisa/piping_wiring.dmi'
 	layer = TURF_LAYER
 
@@ -2310,7 +2310,7 @@
 // Lattice & 'Effect' Lattice
 
 /obj/structure/prop/hybrisa/misc/fake/lattice
-	name = "structural lattice"
+	name = "结构框架"
 	icon = 'icons/obj/structures/props/hybrisa/piping_wiring.dmi'
 	layer = TURF_LAYER
 
@@ -2318,7 +2318,7 @@
 	icon_state = "latticefull"
 
 /obj/effect/decal/hybrisa/lattice
-	name = "structural lattice"
+	name = "结构框架"
 	icon = 'icons/obj/structures/props/hybrisa/piping_wiring.dmi'
 	icon_state = "latticefull"
 	layer = TURF_LAYER
@@ -2329,8 +2329,8 @@
 // Cargo Containers extended
 
 /obj/structure/cargo_container/hybrisa/containersextended
-	name = "cargo container"
-	desc = "A cargo container."
+	name = "货运集装箱"
+	desc = "一个货运集装箱。"
 	icon = 'icons/obj/structures/props/containers/containersextended.dmi'
 	icon_state = "blackwyleft"
 	bound_height = 32
@@ -2338,132 +2338,132 @@
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/cargo_container/hybrisa/containersextended/blueleft
-	name = "cargo container"
+	name = "货运集装箱"
 	icon_state = "blueleft"
 
 /obj/structure/cargo_container/hybrisa/containersextended/blueright
-	name = "cargo container"
+	name = "货运集装箱"
 	icon_state = "blueright"
 
 /obj/structure/cargo_container/hybrisa/containersextended/greenleft
-	name = "cargo container"
+	name = "货运集装箱"
 	icon_state = "greenleft"
 
 /obj/structure/cargo_container/hybrisa/containersextended/greenright
-	name = "cargo container"
+	name = "货运集装箱"
 	icon_state = "greenright"
 
 /obj/structure/cargo_container/hybrisa/containersextended/tanleft
-	name = "cargo container"
+	name = "货运集装箱"
 	icon_state = "tanleft"
 
 /obj/structure/cargo_container/hybrisa/containersextended/tanright
-	name = "cargo container"
+	name = "货运集装箱"
 	icon_state = "tanright"
 
 /obj/structure/cargo_container/hybrisa/containersextended/redleft
-	name = "cargo container"
+	name = "货运集装箱"
 	icon_state = "redleft"
 
 /obj/structure/cargo_container/hybrisa/containersextended/redright
-	name = "cargo container"
+	name = "货运集装箱"
 	icon_state = "redright"
 
 /obj/structure/cargo_container/hybrisa/containersextended/greywyleft
-	name = "Weyland-Yutani cargo container"
+	name = "维兰德-汤谷货运集装箱"
 	icon_state = "greywyleft"
 
 /obj/structure/cargo_container/hybrisa/containersextended/greywyright
-	name = "Weyland-Yutani cargo container"
+	name = "维兰德-汤谷货运集装箱"
 	icon_state = "greywyright"
 
 /obj/structure/cargo_container/hybrisa/containersextended/lightgreywyleft
-	name = "Weyland-Yutani cargo container"
+	name = "维兰德-汤谷货运集装箱"
 	icon_state = "lightgreywyleft"
 
 /obj/structure/cargo_container/hybrisa/containersextended/lightgreywyright
-	name = "Weyland-Yutani cargo container"
+	name = "维兰德-汤谷货运集装箱"
 	icon_state = "lightgreywyright"
 
 /obj/structure/cargo_container/hybrisa/containersextended/blackwyleft
-	name = "Weyland-Yutani cargo container"
+	name = "维兰德-汤谷货运集装箱"
 	icon_state = "blackwyleft"
 
 /obj/structure/cargo_container/hybrisa/containersextended/blackwyright
-	name = "Weyland-Yutani cargo container"
+	name = "维兰德-汤谷货运集装箱"
 	icon_state = "blackwyright"
 
 /obj/structure/cargo_container/hybrisa/containersextended/whitewyleft
-	name = "Weyland-Yutani cargo container"
+	name = "维兰德-汤谷货运集装箱"
 	icon_state = "whitewyleft"
 
 /obj/structure/cargo_container/hybrisa/containersextended/whitewyright
-	name = "Weyland-Yutani cargo container"
+	name = "维兰德-汤谷货运集装箱"
 	icon_state = "whitewyright"
 
 /obj/structure/cargo_container/hybrisa/containersextended/tanwywingsleft
-	name = "cargo container"
+	name = "货运集装箱"
 	icon_state = "tanwywingsleft"
 
 /obj/structure/cargo_container/hybrisa/containersextended/tanwywingsright
-	name = "cargo container"
+	name = "货运集装箱"
 	icon_state = "tanwywingsright"
 
 /obj/structure/cargo_container/hybrisa/containersextended/greenwywingsleft
-	name = "cargo container"
+	name = "货运集装箱"
 	icon_state = "greenwywingsleft"
 
 /obj/structure/cargo_container/hybrisa/containersextended/greenwywingsright
-	name = "cargo container"
+	name = "货运集装箱"
 	icon_state = "greenwywingsright"
 
 /obj/structure/cargo_container/hybrisa/containersextended/bluewywingsleft
-	name = "cargo container"
+	name = "货运集装箱"
 	icon_state = "bluewywingsleft"
 
 /obj/structure/cargo_container/hybrisa/containersextended/bluewywingsright
-	name = "cargo container"
+	name = "货运集装箱"
 	icon_state = "bluewywingsright"
 
 /obj/structure/cargo_container/hybrisa/containersextended/redwywingsleft
-	name = "cargo container"
+	name = "货运集装箱"
 	icon_state = "redwywingsleft"
 
 /obj/structure/cargo_container/hybrisa/containersextended/redwywingsright
-	name = "cargo container"
+	name = "货运集装箱"
 	icon_state = "redwywingsright"
 
 /obj/structure/cargo_container/hybrisa/containersextended/medicalleft
-	name = "medical cargo containers"
+	name = "医疗货运集装箱"
 	icon_state = "medicalleft"
 
 /obj/structure/cargo_container/hybrisa/containersextended/medicalright
-	name = "medical cargo containers"
+	name = "医疗货运集装箱"
 	icon_state = "medicalright"
 
 /obj/structure/cargo_container/hybrisa/containersextended/emptymedicalleft
-	name = "medical cargo container"
+	name = "医疗货运集装箱"
 	icon_state = "emptymedicalleft"
 
 /obj/structure/cargo_container/hybrisa/containersextended/emptymedicalright
-	name = "medical cargo container"
+	name = "医疗货运集装箱"
 	icon_state = "emptymedicalright"
 
 /obj/structure/cargo_container/hybrisa/containersextended/kelland_left
-	name = "Kelland Mining Company cargo container"
-	desc = "A small industrial shipping container.\nYou haven't heard much about Kelland Mining, besides the incident at LV-178's mining operation."
+	name = "凯兰矿业公司货运集装箱"
+	desc = "一个小型工业运输货柜。\n除了LV-178采矿作业的事故外，你对凯兰矿业公司了解不多。"
 	icon_state = "kelland_alt_l"
 
 /obj/structure/cargo_container/hybrisa/containersextended/kelland_right
-	name = "Kelland Mining Company cargo container"
-	desc = "A small industrial shipping container.\nYou haven't heard much about Kelland Mining, besides the incident at LV-178's mining operation."
+	name = "凯兰矿业公司货运集装箱"
+	desc = "一个小型工业运输货柜。\n除了LV-178采矿作业的事故外，你对凯兰矿业公司了解不多。"
 	icon_state = "kelland_alt_r"
 
 /// Fake Platforms
 
 /obj/structure/prop/hybrisa/fakeplatforms
 	name = "platform"
-	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
+	desc = "一个抬高的金属平台，通常用于将区域提升到其他区域之上。你或许可以爬上去。"
 	icon = 'icons/obj/structures/props/hybrisa/platforms.dmi'
 	icon_state = "platform"
 	unslashable = TRUE
@@ -2486,8 +2486,8 @@
 /obj/structure/prop/hybrisa/fakeplatforms/platform4/deco
 	icon = 'icons/obj/structures/props/platforms.dmi'
 	icon_state = "hybrisaplatform_deco3"
-	name = "raised metal corner"
-	desc = "A raised level of metal, often used to elevate areas above others. You could probably climb it."
+	name = "金属转角平台"
+	desc = "一个抬高的金属平台，通常用于将区域提升到其他区域之上。你或许可以爬上去。"
 
 /obj/structure/prop/hybrisa/fakeplatforms/platform5
 	icon = 'icons/obj/structures/props/platforms.dmi'
@@ -2520,7 +2520,7 @@
 	return TRUE
 
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/proc/explode()
-	visible_message(SPAN_DANGER("[src] breaks apart!"), max_distance = 1)
+	visible_message(SPAN_DANGER("[src]碎裂了！"), max_distance = 1)
 	deconstruct(FALSE)
 
 /obj/structure/prop/hybrisa/misc/buildinggreeblies/proc/healthcheck()
@@ -2540,7 +2540,7 @@
 		return XENO_NO_DELAY_ACTION
 	current_xenomorph.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] 挥爪攻击 [src]！"),
 	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
@@ -2551,10 +2551,10 @@
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	update_health(xeno.melee_damage_upper)
 	if(health <= 0)
-		xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno]用它的尾巴摧毁了[src]！"),
 		SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
-		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno] 用它的尾巴抽打 [src]！"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
@@ -2599,7 +2599,7 @@
 	icon_state = "buildingventbig13"
 
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall
-	name = "wall vent"
+	name = "墙壁通风口"
 	icon = 'icons/obj/structures/props/hybrisa/piping_wiring.dmi'
 	icon_state = "smallwallvent1"
 	density = FALSE
@@ -2613,7 +2613,7 @@
 	return TRUE
 
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/proc/explode()
-	visible_message(SPAN_DANGER("[src] breaks apart!"), max_distance = 1)
+	visible_message(SPAN_DANGER("[src]碎裂了！"), max_distance = 1)
 	deconstruct(FALSE)
 
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/proc/healthcheck()
@@ -2633,7 +2633,7 @@
 		return XENO_NO_DELAY_ACTION
 	current_xenomorph.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] 挥爪攻击 [src]！"),
 	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
@@ -2644,20 +2644,20 @@
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	update_health(xeno.melee_damage_upper)
 	if(health <= 0)
-		xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno]用它的尾巴摧毁了[src]！"),
 		SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
-		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno] 用它的尾巴抽打 [src]！"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2
-	name = "wall vent"
+	name = "墙壁通风口"
 	icon_state = "smallwallvent2"
 
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3
-	name = "wall vent"
+	name = "墙壁通风口"
 	icon_state = "smallwallvent3"
 
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/computer
@@ -2672,15 +2672,15 @@
 	icon_state = "biggreenmeter1"
 
 /obj/structure/prop/hybrisa/misc/elevator_button
-	name = "broken elevator button"
+	name = "损坏的电梯按钮"
 	icon = 'icons/obj/structures/props/hybrisa/misc_props.dmi'
 	icon_state = "broken_elevator_button"
 
 // MISC
 
 /obj/structure/prop/hybrisa/misc/stoneplanterseats
-	name = "concrete seated planter"
-	desc = "A decorative concrete planter with seating attached, the seats are fitted with synthetic leather, they've faded in time.."
+	name = "带座混凝土花坛"
+	desc = "一个带座位的装饰性混凝土花坛，座椅配有合成皮革，但已随时间褪色。"
 	icon = 'icons/obj/structures/props/hybrisa/64x64_props.dmi'
 	icon_state = "planterseats"
 	bound_width = 32
@@ -2693,13 +2693,13 @@
 	throwpass = TRUE
 
 /obj/structure/prop/hybrisa/misc/stoneplanterseats/empty
-	name = "concrete planter"
-	desc = "A decorative concrete planter."
+	name = "混凝土花坛"
+	desc = "一个装饰性混凝土花坛。"
 	icon_state = "planterempty"
 
 /obj/structure/prop/hybrisa/misc/concretestatue
-	name = "concrete statue"
-	desc = "A decorative statue with the Weyland-Yutani 'Wings' adorned on it, A corporate brutalist piece of art."
+	name = "混凝土雕像"
+	desc = "一座装饰性雕像，饰有维兰德-汤谷的“翅膀”标志，是一件企业粗野主义风格的艺术品。"
 	icon = 'icons/obj/structures/props/hybrisa/64x64_props.dmi'
 	icon_state = "concretesculpture"
 	bound_width = 64
@@ -2713,7 +2713,7 @@
 
 /obj/structure/prop/hybrisa/misc/detonator
 	name = "detonator"
-	desc = "A detonator for explosives, armed and ready."
+	desc = "一个用于炸药的起爆器，已武装并准备就绪。"
 	icon_state = "detonator"
 	density = FALSE
 	anchored = TRUE
@@ -2734,8 +2734,8 @@
 			explosive.handle_explosion(target_turf, explosive.dir, temp_cause)
 
 /obj/structure/prop/hybrisa/misc/firehydrant
-	name = "fire hydrant"
-	desc = "A fire hydrant public water outlet, designed for quick access to water."
+	name = "消防栓"
+	desc = "一个消防栓公共出水口，设计用于快速取水。"
 	icon = 'icons/obj/structures/props/hybrisa/misc_props.dmi'
 	icon_state = "firehydrant"
 	density = TRUE
@@ -2760,7 +2760,7 @@
 	return TRUE
 
 /obj/structure/prop/hybrisa/misc/firehydrant/proc/explode()
-	visible_message(SPAN_DANGER("[src] breaks apart!"), max_distance = 1)
+	visible_message(SPAN_DANGER("[src]碎裂了！"), max_distance = 1)
 	deconstruct(FALSE)
 
 /obj/structure/prop/hybrisa/misc/firehydrant/proc/healthcheck()
@@ -2780,7 +2780,7 @@
 		return XENO_NO_DELAY_ACTION
 	current_xenomorph.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] 挥爪攻击 [src]！"),
 	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
@@ -2791,16 +2791,16 @@
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	update_health(xeno.melee_damage_upper)
 	if(health <= 0)
-		xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno]用它的尾巴摧毁了[src]！"),
 		SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
-		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno] 用它的尾巴抽打 [src]！"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/prop/hybrisa/misc/pole_stump
-	name = "colony streetlight stump"
+	name = "殖民地路灯桩"
 	icon = 'icons/obj/structures/props/streetlights.dmi'
 	icon_state = "street_stump"
 	plane = FLOOR_PLANE
@@ -2811,20 +2811,20 @@
 	. = ..()
 	if(ishuman(crosser) && prob(10))
 		var/mob/living/carbon/human/crossing_human = crosser
-		crossing_human.visible_message(SPAN_DANGER("[crossing_human] trips on [src] and falls prone."))
+		crossing_human.visible_message(SPAN_DANGER("[crossing_human]被[src]绊倒，摔倒在地。"))
 		playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 		crossing_human.KnockDown(0.5)
 
 /obj/structure/prop/hybrisa/misc/pole_stump/traffic
-	name = "colony streetlight stump"
+	name = "殖民地路灯桩"
 	icon = 'icons/obj/structures/props/streetlights.dmi'
 	icon_state = "trafficlight_stump"
 
 // Sofa Black
 
 /obj/structure/bed/sofa/hybrisa/sofa/black
-	name = "Couch"
-	desc = "Just like Space Ikea would have wanted."
+	name = "沙发"
+	desc = "正如太空宜家所期望的那样。"
 	icon_state = "sofa_black"
 	anchored = TRUE
 	can_buckle = FALSE
@@ -2832,15 +2832,15 @@
 // Sofa Red
 
 /obj/structure/bed/sofa/hybrisa/sofa/red
-	name = "Couch"
-	desc = "Just like Space Ikea would have wanted."
+	name = "沙发"
+	desc = "正如太空宜家所期望的那样。"
 	icon_state = "sofa_red"
 	anchored = TRUE
 	can_buckle = FALSE
 
 /obj/structure/prop/hybrisa/misc/pole
 	name = "pole"
-	desc = "For all of your 'pole' related activities."
+	desc = "满足你所有与“杆子”相关的活动需求。"
 	icon = 'icons/obj/structures/props/hybrisa/64x64_props.dmi'
 	icon_state = "pole"
 	unslashable = TRUE
@@ -2862,7 +2862,7 @@
 
 /obj/structure/bed/sofa/hybrisa/misc/bench
 	name = "bench"
-	desc = "A metal frame, with seats that are fitted with synthetic leather, they've faded in time."
+	desc = "一个金属框架，配有合成皮革座椅，但皮革已经随时间褪色。"
 	icon = 'icons/obj/structures/props/hybrisa/64x64_props.dmi'
 	icon_state = "seatedbench"
 	bound_width = 32
@@ -2874,8 +2874,8 @@
 // Phonebox Prop (Doesn't actually work as a locker)
 
 /obj/structure/prop/hybrisa/misc/phonebox
-	name = "wrecked phonebox"
-	desc = "It's a phonebox, outdated but reliable technology. These are used to communicate throughout the colony and connected colonies without interference. It seems it's completely wrecked, the glass is smashed, hiding inside would be pointless."
+	name = "损毁的电话亭"
+	desc = "这是一个电话亭，技术过时但可靠。用于在整个殖民地及相连的殖民地之间进行无干扰通信。它似乎完全损毁了，玻璃被砸碎，躲在里面毫无意义。"
 	icon = 'icons/obj/structures/props/phonebox.dmi'
 	icon_state = "phonebox_off_broken"
 	layer = ABOVE_MOB_LAYER
@@ -2885,8 +2885,8 @@
 	anchored = TRUE
 
 /obj/structure/prop/hybrisa/misc/phonebox/bloody
-	name = "wrecked phonebox"
-	desc = "It's a phonebox, outdated but reliable technology. These are used to communicate throughout the colony and connected colonies without interference. It seems it's completely wrecked, covered in blood and the glass is smashed. Hiding inside would be pointless."
+	name = "损毁的电话亭"
+	desc = "这是一个电话亭，技术过时但可靠。用于在整个殖民地及相连的殖民地之间进行无干扰通信。它似乎完全损毁了，沾满血迹，玻璃也被砸碎。躲在里面毫无意义。"
 	icon_state = "phonebox_bloody_off_broken"
 
 /obj/structure/prop/hybrisa/misc/phonebox/bullet_act(obj/projectile/P)
@@ -2897,7 +2897,7 @@
 	return TRUE
 
 /obj/structure/prop/hybrisa/misc/phonebox/proc/explode()
-	visible_message(SPAN_DANGER("[src] breaks apart!"), max_distance = 1)
+	visible_message(SPAN_DANGER("[src]碎裂了！"), max_distance = 1)
 	deconstruct(FALSE)
 
 /obj/structure/prop/hybrisa/misc/phonebox/proc/healthcheck()
@@ -2917,7 +2917,7 @@
 		return XENO_NO_DELAY_ACTION
 	current_xenomorph.animation_attack_on(src)
 	playsound(src, 'sound/effects/Glasshit.ogg', 25, 1)
-	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] 挥爪攻击 [src]！"),
 	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
@@ -2928,17 +2928,17 @@
 	playsound(src, 'sound/effects/Glasshit.ogg', 25, 1)
 	update_health(xeno.melee_damage_upper)
 	if(health <= 0)
-		xeno.visible_message(SPAN_DANGER("[xeno] smashes [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno] 用它的尾巴猛击 [src]！"),
 		SPAN_DANGER("We smash [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
-		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno] 用它的尾巴抽打 [src]！"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/prop/hybrisa/misc/urinal
 	name = "urinal"
-	desc = "A urinal."
+	desc = "一个小便池。"
 	icon = 'icons/obj/structures/props/watercloset.dmi'
 	icon_state = "small_urinal"
 	density = FALSE
@@ -2948,8 +2948,8 @@
 	icon_state = "small_urinal_dark"
 
 /obj/effect/decal/hybrisa/deco_edging
-	name = "decorative concrete edging"
-	desc = "Decorative edging for bordering stuff, very fancy."
+	name = "装饰性混凝土边饰"
+	desc = "用于装饰边界的边饰，非常别致。"
 	icon = 'icons/obj/structures/props/hybrisa/platforms.dmi'
 	icon_state = "stone_edging"
 	density = FALSE
@@ -2965,7 +2965,7 @@
 // Signs
 
 /obj/structure/roof/hybrisa/signs
-	name = "neon sign"
+	name = "霓虹灯招牌"
 	icon = 'icons/obj/structures/props/wall_decorations/hybrisa64x64_signs.dmi'
 	icon_state = "jacksopen_on"
 	bound_height = 64
@@ -2981,7 +2981,7 @@
 	return TRUE
 
 /obj/structure/roof/hybrisa/signs/proc/explode()
-	visible_message(SPAN_DANGER("[src] breaks apart!"), max_distance = 1)
+	visible_message(SPAN_DANGER("[src]碎裂了！"), max_distance = 1)
 	deconstruct(FALSE)
 
 /obj/structure/roof/hybrisa/signs/proc/healthcheck()
@@ -3001,7 +3001,7 @@
 		return XENO_NO_DELAY_ACTION
 	current_xenomorph.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] 挥爪攻击 [src]！"),
 	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
@@ -3012,48 +3012,48 @@
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	update_health(xeno.melee_damage_upper)
 	if(health <= 0)
-		xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno]用它的尾巴摧毁了[src]！"),
 		SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
-		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno] 用它的尾巴抽打 [src]！"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/roof/hybrisa/signs/casniosign
-	name = "casino sign"
+	name = "赌场招牌"
 	icon_state = "nightgoldcasinoopen_on"
 
 /obj/structure/roof/hybrisa/signs/jackssign
-	name = "jack's surplus sign"
+	name = "杰克军品店招牌"
 	icon_state = "jacksopen_on"
 
 /obj/structure/roof/hybrisa/signs/opensign
-	name = "open sign"
+	name = "营业中招牌"
 	icon_state = "open_on"
 
 /obj/structure/roof/hybrisa/signs/opensign2
-	name = "open sign"
+	name = "营业中招牌"
 	icon_state = "open_on2"
 
 /obj/structure/roof/hybrisa/signs/pizzasign
-	name = "pizza sign"
+	name = "披萨店招牌"
 	icon_state = "pizzaneon_on"
 
 /obj/structure/roof/hybrisa/signs/weymartsign
-	name = "weymart sign"
+	name = "维玛特超市招牌"
 	icon_state = "weymartsign2"
 
 /obj/structure/roof/hybrisa/signs/mechanicsign
-	name = "mechanic sign"
+	name = "修车厂招牌"
 	icon_state = "mechanicopen_on2"
 
 /obj/structure/roof/hybrisa/signs/cuppajoessign
-	name = "cuppa joe's sign"
+	name = "乔氏咖啡招牌"
 	icon_state = "cuppajoes"
 
 /obj/structure/roof/hybrisa/signs/barsign
-	name = "bar sign"
+	name = "酒吧招牌"
 	icon_state = "barsign_on"
 
 /obj/structure/roof/hybrisa/signs/miscsign
@@ -3089,44 +3089,44 @@
 	icon_state = "miscvert7_on"
 
 /obj/structure/roof/hybrisa/signs/cafesign
-	name = "cafe sign"
+	name = "咖啡馆招牌"
 	icon_state = "cafe_on"
 
 /obj/structure/roof/hybrisa/signs/cafealtsign
-	name = "cafe sign"
+	name = "咖啡馆招牌"
 	icon_state = "cafealt_on"
 
 /obj/structure/roof/hybrisa/signs/coffeesign
-	name = "coffee sign"
+	name = "咖啡店招牌"
 	icon_state = "coffee_on"
 
 /obj/structure/roof/hybrisa/signs/arcadesign
-	name = "arcade sign"
+	name = "街机厅招牌"
 	icon_state = "arcade_on"
 
 /obj/structure/roof/hybrisa/signs/hotelsign
-	name = "hotel sign"
+	name = "旅馆招牌"
 	icon_state = "hotel_on"
 
 /obj/structure/roof/hybrisa/signs/casinolights
-	name = "neon sign"
+	name = "霓虹灯招牌"
 	icon_state = "casinolights_on"
 
 /obj/structure/roof/hybrisa/signs/pharmacy_sign
-	name = "pharmacy sign"
+	name = "药店招牌"
 	icon_state = "pharmacy_on"
 
 // Small Sign
 
 /obj/structure/prop/hybrisa/signs/high_voltage
-	name = "warning sign"
+	name = "警告标志"
 	desc = null
 	icon = 'icons/obj/structures/props/wall_decorations/decals.dmi'
 	icon_state = "shockyBig"
 	layer = WALL_OBJ_LAYER
 
 /obj/structure/prop/hybrisa/signs/high_voltage/small
-	name = "warning sign"
+	name = "警告标志"
 	desc = null
 	icon_state = "shockyTiny"
 	layer = WALL_OBJ_LAYER
@@ -3137,7 +3137,7 @@
 
 /obj/structure/roof/hybrisa/billboardsandsigns
 	name = "billboard"
-	desc = "An advertisement billboard."
+	desc = "一块广告牌。"
 	icon = 'icons/obj/structures/props/wall_decorations/32x64_hybrisabillboards.dmi'
 	icon_state = "billboard_bigger"
 	health = 150
@@ -3154,7 +3154,7 @@
 	return TRUE
 
 /obj/structure/roof/hybrisa/billboardsandsigns/proc/explode()
-	visible_message(SPAN_DANGER("[src] breaks apart!"), max_distance = 1)
+	visible_message(SPAN_DANGER("[src]碎裂了！"), max_distance = 1)
 	deconstruct(FALSE)
 
 /obj/structure/roof/hybrisa/billboardsandsigns/proc/healthcheck()
@@ -3174,7 +3174,7 @@
 		return XENO_NO_DELAY_ACTION
 	current_xenomorph.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] 挥爪攻击 [src]！"),
 	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
@@ -3185,10 +3185,10 @@
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	update_health(xeno.melee_damage_upper)
 	if(health <= 0)
-		xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno]用它的尾巴摧毁了[src]！"),
 		SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
-		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno] 用它的尾巴抽打 [src]！"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
@@ -3214,8 +3214,8 @@
 // Big Road Signs
 
 /obj/structure/roof/hybrisa/billboardsandsigns/bigroadsigns
-	name = "road sign"
-	desc = "A road sign."
+	name = "路标"
+	desc = "一个路标。"
 	icon = 'icons/obj/structures/props/hybrisa/64x64_props.dmi'
 	icon_state = "roadsign_1"
 	bound_width = 64
@@ -3237,8 +3237,8 @@
 	icon_state = "factory_roboticarm"
 
 /obj/structure/prop/hybrisa/factory/robotic_arm
-	name = "robotic arm"
-	desc = "A robust robotic arm used in a range of mechanical processes, including assembly and packaging."
+	name = "机械臂"
+	desc = "一种坚固的机械臂，用于包括装配和包装在内的多种机械流程。"
 	icon_state = "factory_roboticarm"
 	bound_width = 32
 	anchored = TRUE
@@ -3258,7 +3258,7 @@
 	return TRUE
 
 /obj/structure/prop/hybrisa/factory/proc/explode()
-	visible_message(SPAN_DANGER("[src] breaks apart!"), max_distance = 1)
+	visible_message(SPAN_DANGER("[src]碎裂了！"), max_distance = 1)
 	deconstruct(FALSE)
 
 /obj/structure/prop/hybrisa/factory/proc/healthcheck()
@@ -3278,7 +3278,7 @@
 		return XENO_NO_DELAY_ACTION
 	current_xenomorph.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] 挥爪攻击 [src]！"),
 	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
@@ -3289,17 +3289,17 @@
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	update_health(xeno.melee_damage_upper)
 	if(health <= 0)
-		xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno]用它的尾巴摧毁了[src]！"),
 		SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
-		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno] 用它的尾巴抽打 [src]！"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/prop/hybrisa/factory/conveyor_belt
-	name = "large conveyor belt"
-	desc = "A large conveyor belt used in industrial factories."
+	name = "大型传送带"
+	desc = "工业工厂中使用的大型传送带。"
 	icon_state = "factory_conveyer"
 	density = FALSE
 	health = 25
@@ -3308,7 +3308,7 @@
 
 /obj/structure/roof/hybrisa/lattice_prop
 	name = "lattice"
-	desc = "A support lattice."
+	desc = "一个支撑框架。"
 	icon = 'icons/obj/structures/props/industrial/hybrisa_lattice.dmi'
 	icon_state = "lattice1"
 	density = FALSE

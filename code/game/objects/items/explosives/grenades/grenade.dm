@@ -1,6 +1,6 @@
 /obj/item/explosive/grenade
 	name = "grenade"
-	desc = "A hand-held grenade, with an adjustable timer."
+	desc = "一种手持式手榴弹，带有可调计时器。"
 	w_class = SIZE_SMALL
 	icon = 'icons/obj/items/weapons/grenade.dmi'
 	icon_state = "grenade"
@@ -33,18 +33,18 @@
 
 /obj/item/explosive/grenade/proc/can_use_grenade(mob/living/carbon/human/user)
 	if(!hand_throwable)
-		to_chat(user, SPAN_WARNING("This isn't a hand grenade!"))
+		to_chat(user, SPAN_WARNING("这不是手榴弹！"))
 		return FALSE
 
 	if(!user.IsAdvancedToolUser())
-		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
+		to_chat(user, SPAN_WARNING("你的手不够灵巧，无法完成此操作！"))
 		return FALSE
 
 	if(harmful && ishuman(user) && !user.allow_gun_usage)
-		to_chat(user, SPAN_WARNING("Your programming prevents you from using this!"))
+		to_chat(user, SPAN_WARNING("你的程序设定禁止你使用这个！"))
 		return FALSE
 	if(harmful && ishuman(user) && MODE_HAS_MODIFIER(/datum/gamemode_modifier/ceasefire))
-		to_chat(user, SPAN_WARNING("You will not break the ceasefire by doing that!"))
+		to_chat(user, SPAN_WARNING("你那样做会破坏停火协议！"))
 		return FALSE
 
 	if(HAS_TRAIT(user, TRAIT_HAULED)) // If somehow they have a grenade in hand while hauled, we don't want them to prime it
@@ -85,13 +85,13 @@
 
 	cause_data = create_cause_data(initial(name), user)
 
-	user.visible_message(SPAN_WARNING("[user] primes \a [name]!"),
+	user.visible_message(SPAN_WARNING("[user]拉开了\a [name]的保险销！"),
 	SPAN_WARNING("You prime \a [name]!"))
 	msg_admin_attack("[key_name(user)] primed \a grenade ([name]) in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 	user.attack_log += text("\[[time_stamp()]\] <font color='red'> [key_name(user)] primed \a grenade ([name]) at ([src.loc.x],[src.loc.y],[src.loc.z])</font>")
 	if(initial(dangerous))
 		var/nade_sound
-		if(has_species(user, "Human"))
+		if(has_species(user, "人类"))
 			nade_sound = user.gender == FEMALE ? get_sfx("female_fragout") : get_sfx("male_fragout")
 		else if(ismonkey(user))
 			nade_sound = sound('sound/voice/monkey_scream.ogg')
@@ -107,7 +107,7 @@
 	if(active)
 		return
 	if(!hand_throwable && hand_throw)
-		to_chat(user, SPAN_WARNING("This isn't a hand grenade!"))
+		to_chat(user, SPAN_WARNING("这不是手榴弹！"))
 		return
 	cause_data = create_cause_data(initial(name), user)
 	if(has_arm_sound)
@@ -143,16 +143,16 @@
 		switch(det_time)
 			if ("1")
 				det_time = 10
-				to_chat(user, SPAN_NOTICE("You set the [name] for 1 second detonation time."))
+				to_chat(user, SPAN_NOTICE("你将[name]的起爆时间设定为1秒。"))
 			if ("10")
 				det_time = 30
-				to_chat(user, SPAN_NOTICE("You set the [name] for 3 second detonation time."))
+				to_chat(user, SPAN_NOTICE("你将[name]的起爆时间设定为3秒。"))
 			if ("30")
 				det_time = 50
-				to_chat(user, SPAN_NOTICE("You set the [name] for 5 second detonation time."))
+				to_chat(user, SPAN_NOTICE("你将[name]的起爆时间设定为5秒。"))
 			if ("50")
 				det_time = 1
-				to_chat(user, SPAN_NOTICE("You set the [name] for instant detonation."))
+				to_chat(user, SPAN_NOTICE("你将[name]设定为即时起爆。"))
 		add_fingerprint(user)
 	..()
 	return

@@ -2,7 +2,7 @@
  * A tech that can be purchased multiple times
  */
 /datum/tech/repeatable
-	name = "Repeatable Tech"
+	name = "可重复技术"
 
 	tech_flags = TECH_FLAG_MULTIUSE
 	var/purchase_cooldown = 10 SECONDS
@@ -25,7 +25,7 @@
 		return
 
 	if(next_purchase > world.time)
-		to_chat(M, SPAN_WARNING("You recently purchased this! Wait [DisplayTimeText(next_purchase - world.time, 0.1)]"))
+		to_chat(M, SPAN_WARNING("你最近刚购买过这个！请等待[DisplayTimeText(next_purchase - world.time, 0.1)]"))
 		return FALSE
 
 /datum/tech/repeatable/on_unlock()

@@ -1,0 +1,152 @@
+{
+  "_comment": "CM13 专有名词词典 - 可扩展",
+  "_usage": "python ai_translator.py --glossary glossary.json",
+
+  "factions": {
+    "USCM": "USCM",
+    "United States Colonial Marines": "美国殖民地海军陆战队",
+    "Colonial Marines": "殖民地海军陆战队",
+    "Weyland-Yutani": "维兰德-汤谷",
+    "Xenomorph": "异形",
+    "CLF": "CLF",
+    "Colonial Liberation Front": "殖民地解放阵线",
+    "UPP": "UPP",
+    "Union of Progressive Peoples": "进步人民联盟",
+    "Yautja": "铁血战士",
+    "Predator": "铁血战士"
+  },
+
+  "xeno_castes": {
+    "Queen": "女王",
+    "Praetorian": "禁卫军",
+    "Ravager": "掠夺者",
+    "Crusher": "碾压者",
+    "Boiler": "沸腾者",
+    "Carrier": "携带者",
+    "Hivelord": "巢穴领主",
+    "Drone": "工蜂",
+    "Runner": "奔跑者",
+    "Lurker": "潜伏者",
+    "Spitter": "喷吐者",
+    "Sentinel": "哨兵",
+    "Defender": "防御者",
+    "Warrior": "战士",
+    "Facehugger": "抱脸虫",
+    "Chestburster": "破胸体",
+    "Larva": "幼虫"
+  },
+
+  "ranks": {
+    "Private": "列兵",
+    "PFC": "一等兵",
+    "Private First Class": "一等兵",
+    "Lance Corporal": "下士",
+    "Corporal": "下士",
+    "Sergeant": "中士",
+    "Staff Sergeant": "上士",
+    "Gunnery Sergeant": "枪炮军士",
+    "Lieutenant": "中尉",
+    "Captain": "上尉",
+    "Major": "少校",
+    "Colonel": "上校",
+    "Commander": "指挥官"
+  },
+
+  "roles": {
+    "Squad Leader": "班长",
+    "Fireteam Leader": "火力组长",
+    "Rifleman": "步枪兵",
+    "Smartgunner": "智能枪手",
+    "Specialist": "专家",
+    "Combat Technician": "战斗技术员",
+    "Hospital Corpsman": "医疗兵",
+    "Medic": "医疗兵",
+    "Engineer": "工程师",
+    "Pilot": "飞行员",
+    "Military Police": "宪兵",
+    "Synthetic": "合成人",
+    "Working Joe": "工作乔",
+    "Corporate Liaison": "公司联络官",
+    "Survivor": "幸存者"
+  },
+
+  "squads": {
+    "Alpha": "阿尔法",
+    "Bravo": "布拉沃",
+    "Charlie": "查理",
+    "Delta": "德尔塔",
+    "Echo": "回声",
+    "Foxtrot": "狐步"
+  },
+
+  "locations": {
+    "USS Almayer": "阿尔迈耶号",
+    "Almayer": "阿尔迈耶号",
+    "LV-624": "LV-624",
+    "Big Red": "大红",
+    "Ice Colony": "冰雪殖民地",
+    "Prison Station": "监狱空间站",
+    "CIC": "作战指挥中心",
+    "Medbay": "医疗舱",
+    "Hangar": "机库",
+    "Requisitions": "补给处",
+    "Brig": "禁闭室",
+    "Engineering": "工程部"
+  },
+
+  "weapons": {
+    "M41A": "M41A",
+    "Pulse Rifle": "脉冲步枪",
+    "M39": "M39",
+    "Submachine Gun": "冲锋枪",
+    "Shotgun": "霰弹枪",
+    "Pistol": "手枪",
+    "Revolver": "左轮手枪",
+    "Smartgun": "智能枪",
+    "Flamethrower": "火焰喷射器",
+    "Grenade": "手榴弹",
+    "Machete": "砍刀",
+    "Combat Knife": "战斗刀"
+  },
+
+  "equipment": {
+    "Armor": "护甲",
+    "Helmet": "头盔",
+    "Backpack": "背包",
+    "Webbing": "战术背心",
+    "Magazine": "弹匣",
+    "Ammo": "弹药",
+    "Medkit": "医疗包",
+    "Flare": "照明弹",
+    "Flashlight": "手电筒"
+  },
+
+  "medical": {
+    "Tricordrazine": "三合剂",
+    "Bicaridine": "碧卡利定",
+    "Kelotane": "凯洛坦",
+    "Tramadol": "曲马多",
+    "Splint": "夹板",
+    "Bandage": "绷带",
+    "Defibrillator": "除颤器",
+    "Stasis Bag": "静滞袋",
+    "Surgery": "手术",
+    "Infection": "感染",
+    "Fracture": "骨折",
+    "Bleeding": "出血"
+  },
+
+  "misc": {
+    "Dropship": "运输机",
+    "APC": "装甲运兵车",
+    "Orbital Bombardment": "轨道轰炸",
+    "Supply Drop": "补给投放",
+    "Sentry Gun": "哨戒炮",
+    "Barricade": "路障",
+    "Sandbag": "沙袋",
+    "Welder": "焊枪",
+    "Wrench": "扳手",
+    "Radio": "无线电",
+    "Overwatch": "监控"
+  }
+}

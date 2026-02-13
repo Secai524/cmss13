@@ -1,6 +1,6 @@
 /obj/item/clothing/head/hardhat
-	name = "hard hat"
-	desc = "A piece of headgear used in dangerous working conditions to protect the head. Comes with a built-in flashlight."
+	name = "安全帽"
+	desc = "一种在危险工作条件下保护头部的头饰。内置手电筒。"
 	icon_state = "hardhat0_yellow"
 	item_state = "hardhat0_yellow"
 	icon = 'icons/obj/items/clothing/hats/hardhats.dmi'
@@ -45,11 +45,11 @@
 	. = ..()
 
 	if(!toggleable)
-		to_chat(user, SPAN_WARNING("You cannot toggle [src] on or off."))
+		to_chat(user, SPAN_WARNING("你无法开启或关闭[src]。"))
 		return FALSE
 
 	if(!isturf(user.loc))
-		to_chat(user, SPAN_WARNING("You cannot turn the light [light_on ? "off" : "on"] while in [user.loc].")) //To prevent some lighting anomalies.
+		to_chat(user, SPAN_WARNING("你无法将灯光[light_on ? "off" : "on"] while in [user.loc].")) //To prevent some lighting anomalies.
 		return FALSE
 
 	turn_light(user, !light_on)
@@ -89,7 +89,7 @@
 /obj/item/clothing/head/hardhat/red
 	icon_state = "hardhat0_red"
 	hardhat_color = "red"
-	name = "firefighter helmet"
+	name = "消防头盔"
 	gas_transfer_coefficient = 0.01
 
 	flags_inventory = NOPRESSUREDMAGE|BLOCKSHARPOBJ|COVERMOUTH|ALLOWINTERNALS|COVEREYES|BLOCKGASEFFECT|ALLOWREBREATH|ALLOWCPR
@@ -101,7 +101,7 @@
 /obj/item/clothing/head/hardhat/white/alt
 	icon_state = "hardhat0_white_alt"
 	hardhat_color = "white_alt"
-	name = "Jùtóu Combine mining helmet"
+	name = "巨投联合矿业头盔"
 
 /obj/item/clothing/head/hardhat/white
 	icon_state = "hardhat0_white"
@@ -117,4 +117,4 @@
 /obj/item/clothing/head/hardhat/red/kelland
 	icon_state = "hardhat0_red"
 	hardhat_color = "red"
-	name = "kelland-mining hard hat"
+	name = "凯兰矿业安全帽"

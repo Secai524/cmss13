@@ -173,7 +173,7 @@ Class Procs:
 	if(!stat)
 		return
 
-	. += "It does not appear to be working."
+	. += "它似乎无法正常工作。"
 	var/msg = get_repair_move_text(FALSE)
 	if(msg && skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		. += SPAN_WARNING("[msg]")
@@ -247,7 +247,7 @@ Class Procs:
 	if(usr.is_mob_restrained())
 		return 1
 	if(!is_valid_user(usr))
-		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
+		to_chat(usr, SPAN_DANGER("你的手不够灵巧，无法完成此操作！"))
 		return 1
 
 	src.add_fingerprint(usr)
@@ -267,10 +267,10 @@ Class Procs:
 		return TRUE
 	if(!(istype(user, /mob/living/carbon/human) || isRemoteControlling(user) || istype(user, /mob/living/carbon/xenomorph)))
 		if(!HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
-			to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
+			to_chat(usr, SPAN_DANGER("你的手不够灵巧，无法完成此操作！"))
 			return TRUE
 	if(!is_valid_user(user))
-		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
+		to_chat(usr, SPAN_DANGER("你的手不够灵巧，无法完成此操作！"))
 		return TRUE
 /*
 	//distance checks are made by atom/proc/clicked()
@@ -280,10 +280,10 @@ Class Procs:
 	if (ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.getBrainLoss() >= 60)
-			visible_message(SPAN_DANGER("[H] stares cluelessly at [src] and drools."))
+			visible_message(SPAN_DANGER("[H]茫然地盯着[src]，口水直流。"))
 			return TRUE
 		else if(prob(H.getBrainLoss()))
-			to_chat(user, SPAN_DANGER("You momentarily forget how to use [src]."))
+			to_chat(user, SPAN_DANGER("你一时忘记了如何使用[src]。"))
 			return TRUE
 
 	src.add_fingerprint(user)
@@ -349,7 +349,7 @@ Class Procs:
 
 /obj/structure/machinery/mill
 	name = "\improper Mill"
-	desc = "It is a machine that grinds produce."
+	desc = "这是一台研磨农产品的机器。"
 	icon_state = "autolathe"
 	icon = 'icons/obj/structures/machinery/autolathe.dmi'
 	density = TRUE
@@ -357,7 +357,7 @@ Class Procs:
 
 /obj/structure/machinery/fermenter
 	name = "\improper Fermenter"
-	desc = "It is a machine that ferments produce into alcoholic drinks."
+	desc = "这是一台将农产品发酵成酒精饮料的机器。"
 	icon_state = "autolathe"
 	icon = 'icons/obj/structures/machinery/autolathe.dmi'
 	density = TRUE
@@ -365,7 +365,7 @@ Class Procs:
 
 /obj/structure/machinery/still
 	name = "\improper Still"
-	desc = "It is a machine that produces hard liquor from alcoholic drinks."
+	desc = "这是一台从酒精饮料中蒸馏出烈酒的机器。"
 	icon_state = "autolathe"
 	icon = 'icons/obj/structures/machinery/autolathe.dmi'
 	density = TRUE
@@ -373,7 +373,7 @@ Class Procs:
 
 /obj/structure/machinery/squeezer
 	name = "\improper Squeezer"
-	desc = "It is a machine that squeezes extracts from produce."
+	desc = "这是一台从农产品中榨取汁液的机器。"
 	icon_state = "autolathe"
 	icon = 'icons/obj/structures/machinery/autolathe.dmi'
 	density = TRUE
@@ -382,7 +382,7 @@ Class Procs:
 /obj/structure/machinery/fuelpump
 	name = "\improper Fuel Pump"
 	layer = ABOVE_MOB_LAYER
-	desc = "It is a machine that pumps fuel around the ship."
+	desc = "这是一台为整艘舰船输送燃料的机器。"
 	icon = 'icons/obj/structures/machinery/fuelpump.dmi'
 	icon_state = "fuelpump_off"
 	health = null

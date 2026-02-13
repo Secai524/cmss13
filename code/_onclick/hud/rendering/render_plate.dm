@@ -23,19 +23,19 @@
  * remember that once planes are unified on a render plate you can't change the layering of them!
  */
 /atom/movable/screen/plane_master/rendering_plate
-	name = "default rendering plate"
+	name = "默认渲染板"
 
 
 ///this plate renders the final screen to show to the player
 /atom/movable/screen/plane_master/rendering_plate/master
-	name = "master rendering plate"
+	name = "主渲染板"
 	plane = RENDER_PLANE_MASTER
 	render_relay_plane = null
 	generate_render_target = FALSE
 
 ///renders general in charachter game objects
 /atom/movable/screen/plane_master/rendering_plate/game_world
-	name = "game rendering plate"
+	name = "游戏渲染板"
 	plane = RENDER_PLANE_GAME
 	render_relay_plane = RENDER_PLANE_MASTER
 
@@ -45,7 +45,7 @@
 
 ///render plate for OOC stuff like ghosts, hud-screen effects, etc
 /atom/movable/screen/plane_master/rendering_plate/non_game
-	name = "non-game rendering plate"
+	name = "非游戏渲染板"
 	plane = RENDER_PLANE_NON_GAME
 	render_relay_plane = RENDER_PLANE_MASTER
 

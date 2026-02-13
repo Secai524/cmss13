@@ -238,11 +238,11 @@ GLOBAL_DATUM(Banlist, /savefile)
 				return
 
 			var/datum/entity/player/unban_player = get_player_from_key(ckey_to_unban)
-			if(tgui_alert("Are you sure you want to remove timed ban from [unban_player.ckey]?", "Confirm", list("Yes", "No")) == "No")
+			if(tgui_alert("Are you sure you want to remove timed ban from [unban_player.ckey]?", "确认", list("Yes", "No")) == "No")
 				return
 
 			if(!unban_player.remove_timed_ban())
-				tgui_alert(user, "This ban has already been lifted / does not exist.", "Error", list("Ok"))
+				tgui_alert(user, "此封禁已被解除/不存在。", "Error", list("Ok"))
 
 			return TRUE
 
@@ -252,11 +252,11 @@ GLOBAL_DATUM(Banlist, /savefile)
 				return
 
 			var/datum/entity/player/unban_player = get_player_from_key(ckey_to_unban)
-			if(!(tgui_alert(user, "Do you want to unban [unban_player.ckey]? They are currently permabanned for: [unban_player.permaban_reason], since [unban_player.permaban_date].", "Unban Player", list("Yes", "No")) == "Yes"))
+			if(!(tgui_alert(user, "你确定要解封 [unban_player.ckey] 吗？他们目前因 [unban_player.permaban_reason] 被永久封禁，自 [unban_player.permaban_date] 起。", "Unban Player", list("Yes", "No")) == "Yes"))
 				return
 
 			if(!unban_player.is_permabanned)
-				to_chat(user, SPAN_WARNING("The player is not currently permabanned."))
+				to_chat(user, SPAN_WARNING("该玩家目前未被永久封禁。"))
 				return
 
 			unban_player.is_permabanned = FALSE
@@ -356,51 +356,51 @@ GLOBAL_DATUM(Banlist, /savefile)
 		return //mods+ cannot be banned. Even if they could, the ban doesn't affect them anyway
 
 	if(!M.ckey)
-		to_chat(usr, SPAN_DANGER("<B>Warning: Mob ckey for [M.name] not found.</b>"))
+		to_chat(usr, SPAN_DANGER("<B>警告：未找到 [M.name] 的 Mob ckey。</b>"))
 		return
 	var/mob_key = M.ckey
-	var/mins = tgui_input_number(usr,"How long (in minutes)? \n 180 = 3 hours \n 1440 = 1 day \n 4320 = 3 days \n 10080 = 7 days \n 43800 = 1 Month","Ban time", 1440, 262800, 1)
+	var/mins = tgui_input_number(usr,"时长（分钟）？ \n 180 = 3 小时 \n 1440 = 1 天 \n 4320 = 3 天 \n 10080 = 7 天 \n 43800 = 1 个月","Ban time", 1440, 262800, 1)
 	if(!mins)
 		return
 	if(mins >= 525600)
 		mins = 525599
-	var/reason = input(usr,"Reason? \n\nPress 'OK' to finalize the ban.","reason","Griefer") as message|null
+	var/reason = input(usr,"原因？ \n\n按‘确定’完成封禁。","reason","Griefer") as message|null
 	if(!reason)
 		return
 	var/datum/entity/player/P = get_player_from_key(mob_key) // you may not be logged in, but I will find you and I will ban you
-	if(P.is_time_banned && alert(usr, "Ban already exists. Proceed?", "Confirmation", "Yes", "No") != "Yes")
+	if(P.is_time_banned && alert(usr, "封禁已存在。是否继续？", "确认", "Yes", "No") != "Yes")
 		return
 	P.add_timed_ban(reason, mins)
 
 /client/proc/cmd_admin_do_stickyban(identifier, reason, message, list/impacted_ckeys, list/impacted_cids, list/impacted_ips)
 	if(!identifier)
-		identifier = tgui_input_text(src, "Name of the primary CKEY you are adding a stickyban to.", "BuildABan")
+		identifier = tgui_input_text(src, "你要添加粘性封禁的主要CKEY名称。", "BuildABan")
 	if(!identifier)
 		return
 
 	if(!message)
-		message = tgui_input_text(src, "What message should be given to the impacted users?", "BuildABan", encode = FALSE)
+		message = tgui_input_text(src, "应向受影响的用户显示什么信息？", "BuildABan", encode = FALSE)
 	if(!message)
 		return
 
 	if(!reason)
-		reason = tgui_input_text(src, "What's the reason for the ban? This is shown internally, and not displayed in public notes and ban messages. Include as much detail as necessary.", "BuildABan", multiline = TRUE, encode = FALSE)
+		reason = tgui_input_text(src, "封禁原因是什么？此信息仅内部可见，不会显示在公开记录和封禁信息中。请包含尽可能多的细节。", "BuildABan", multiline = TRUE, encode = FALSE)
 	if(!reason)
 		return
 
 	if(!length(impacted_ckeys))
-		impacted_ckeys = splittext(tgui_input_text(src, "Which CKEYs should be impacted by this ban? Include the primary ckey, separated by semicolons.", "BuildABan", "player1;player2;player3"), ";")
+		impacted_ckeys = splittext(tgui_input_text(src, "哪些CKEY应受此封禁影响？包含主要ckey，用分号分隔。", "BuildABan", "player1;player2;player3"), ";")
 
 	if(!length(impacted_cids))
-		impacted_cids = splittext(tgui_input_text(src, "Which CIDs should be impacted by this ban? Separate with semicolons.", "BuildABan", "12345678;87654321"), ";")
+		impacted_cids = splittext(tgui_input_text(src, "哪些CID应受此封禁影响？用分号分隔。", "BuildABan", "12345678;87654321"), ";")
 
 	if(!length(impacted_ips))
-		impacted_ips = splittext(tgui_input_text(src, "Which IPs should be impacted by this ban? Separate with semicolons.", "BuildABan", "1.1.1.1;8.8.8.8"), ";")
+		impacted_ips = splittext(tgui_input_text(src, "哪些IP应受此封禁影响？用分号分隔。", "BuildABan", "1.1.1.1;8.8.8.8"), ";")
 
 	var/datum/entity/stickyban/new_sticky = SSstickyban.add_stickyban(identifier, reason, message, player_data)
 
 	if(!new_sticky)
-		to_chat(src, SPAN_ADMIN("Failed to apply stickyban."))
+		to_chat(src, SPAN_ADMIN("应用粘性封禁失败。"))
 		return
 
 	for(var/ckey in impacted_ckeys)

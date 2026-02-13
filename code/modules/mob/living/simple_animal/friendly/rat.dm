@@ -1,7 +1,7 @@
 /mob/living/simple_animal/small/mouse/rat
 	name = "rat"
 	real_name = "rat"
-	desc = "It's a big, disease-ridden rodent."
+	desc = "这是一只体型庞大、携带疾病的啮齿动物。"
 	icon_state = "rat_gray"
 	icon_living = "rat_gray"
 	icon_dead = "rat_gray_dead"
@@ -25,8 +25,8 @@
 	holder_type = /obj/item/holder/rat/brown
 
 /mob/living/simple_animal/small/mouse/rat/brown/Old_Timmy
-	name = "Old Timmy"
-	desc = "An ancient looking rat from the old days of the colony."
+	name = "老提米"
+	desc = "一只从殖民地旧时代遗留下来的、看起来年迈的老鼠。"
 	response_help = "pets"
 	response_disarm = "gently pushes aside"
 	response_harm = "splats"
@@ -40,12 +40,12 @@
 /mob/living/simple_animal/small/mouse/rat/white
 	body_color = "white"
 	icon_state = "rat_white"
-	desc = "It's a small laboratory rat."
+	desc = "这是一只实验室大鼠。"
 	holder_type = /obj/item/holder/rat/white
 
 /mob/living/simple_animal/small/mouse/rat/white/Milky
-	name = "Milky"
-	desc = "An escaped test rat from the Weyland-Yutani Research Facility. Hope it doesn't have some sort of genetically engineered disease or something..."
+	name = "米尔基"
+	desc = "一只从维兰德-汤谷研究设施逃出的实验鼠。希望它没有携带什么基因工程疾病之类的……"
 	gender = MALE
 	response_help = "pets"
 	response_disarm = "gently pushes aside"
@@ -56,20 +56,20 @@
 //Specific Pets for Frozen's Rat Collecting Competition
 
 /mob/living/simple_animal/small/mouse/rat/pet
-	name = "Pet Rat"
-	desc = "This is someone's pet rat. I wonder what it's doing here."
+	name = "宠物鼠"
+	desc = "这是某人的宠物鼠。我想知道它为什么会在这里。"
 	holder_type = /obj/item/holder/rat/pet
 
 /mob/living/simple_animal/small/mouse/rat/pet/marvin
-	name = "Marvin"
-	desc = "A sleek well kept rat with a tiny collar around its neck, it must belong to someone. For a rodent it appears remarkably clean and hygenic."
+	name = "马文"
+	desc = "一只毛发光亮、保养良好的老鼠，脖子上戴着一个小项圈，它一定有主人。作为啮齿动物，它看起来异常干净卫生。"
 	body_color = "black"
 	icon_state = "rat_black"
 	holder_type = /obj/item/holder/rat/pet/marvin
 
 /mob/living/simple_animal/small/mouse/rat/pet/ikit
-	name = "Ikit"
-	desc = "An albino rat with a tiny collar around its neck, it must belong to someone. Hope it doesn't have some sort of genetically engineered disease or something..."
+	name = "伊基特"
+	desc = "一只白化病大鼠，脖子上戴着一个小项圈，它一定有主人。希望它没有什么基因工程疾病之类的……"
 	body_color = "white"
 	icon_state = "rat_white"
 	holder_type = /obj/item/holder/rat/pet/ikit
@@ -89,7 +89,7 @@
 /obj/item/reagent_container/food/snacks/cheesewedge/proc/spawn_pet_rat(mob/user)
 	if(user.mob_flags & HAS_SPAWNED_PET)
 		return FALSE
-	if(tgui_alert(user, "Do you want to spawn your pet rat?", "Spawn Pet", list("Yes", "No")) != "Yes")
+	if(tgui_alert(user, "是否要生成你的宠物鼠？", "Spawn Pet", list("Yes", "No")) != "Yes")
 		return FALSE
 
 	var/list/pet_rats = file2list("config/pet_rats.txt")

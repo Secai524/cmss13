@@ -17,7 +17,7 @@ Bonus
 
 /datum/symptom/heal
 
-	name = "Toxic Filter"
+	name = "毒性过滤器"
 	stealth = 1
 	resistance = -4
 	stage_speed = -4

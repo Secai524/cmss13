@@ -16,21 +16,21 @@
 	set desc = "Shows whether or not a mine is contained within the xenomorph list."
 
 	if(SSticker.current_state != GAME_STATE_PLAYING || !SSticker.mode)
-		to_chat(src, SPAN_WARNING("The round is either not ready, or has already finished."))
+		to_chat(src, SPAN_WARNING("回合尚未就绪，或已结束。"))
 		return
 	if(mind in SSticker.mode.xenomorphs)
-		to_chat(src, SPAN_DEBUG("[src] mind is in the xenomorph list. Mind key is [mind.key]."))
-		to_chat(src, SPAN_DEBUG("Current mob is: [mind.current]. Original mob is: [mind.original]."))
+		to_chat(src, SPAN_DEBUG("[src]的意识在异形列表中。意识密钥是[mind.key]。"))
+		to_chat(src, SPAN_DEBUG("当前实体是：[mind.current]。原始实体是：[mind.original]。"))
 	else
-		to_chat(src, SPAN_DEBUG("This xenomorph is not in the xenomorph list."))
+		to_chat(src, SPAN_DEBUG("此异形不在异形列表中。"))
 #endif
 
 #undef DEBUG_XENO
 
 /mob/living/carbon/xenomorph
 	//// ALL OLD SS13 VARS
-	name = "Drone"
-	desc = "What the hell is THAT?"
+	name = "工蜂"
+	desc = "那到底是什么鬼东西？"
 	layer = BIG_XENO_LAYER
 	voice_name = "xenomorph"
 	speak_emote = list("hisses")
@@ -117,7 +117,7 @@
 	var/crit_grace_time = 1 SECONDS
 	var/next_grace_time = 0
 
-	var/evasion = 0   // RNG "Armor"
+	var/evasion = 0   // RNG "护甲"
 
 	// Armor
 	var/armor_deflection = 10 // Most important: "max armor"
@@ -166,7 +166,7 @@
 	var/can_heal = TRUE
 
 	//Naming variables
-	var/caste_type = "Drone"
+	var/caste_type = "工蜂"
 	var/nicknumber = 0 //The number after the name. Saved right here so it transfers between castes.
 	var/full_designation = ""
 
@@ -906,12 +906,12 @@
 		return TRUE
 	if(legcuffed)
 		return TRUE
-	if(has_species(puller,"Human")) // If the Xeno is alive, fight back against a grab/pull
+	if(has_species(puller,"人类")) // If the Xeno is alive, fight back against a grab/pull
 		var/mob/living/carbon/human/H = puller
 		if(H.ally_of_hivenumber(hivenumber))
 			return TRUE
 		playsound(puller.loc, 'sound/weapons/pierce.ogg', 25, 1)
-		puller.visible_message(SPAN_WARNING("[puller] tried to pull [src] but instead gets a tail swipe to the head!"))
+		puller.visible_message(SPAN_WARNING("[puller]试图拉动[src]，却被一记甩尾击中头部！"))
 		if(stealth)
 			puller.apply_effect(caste.tacklestrength_min, WEAKEN)
 			return FALSE
@@ -927,7 +927,7 @@
 		var/facing = get_dir(src, puller)
 		throw_carbon(puller, facing, 1, SPEED_SLOW, shake_camera = FALSE, immobilize = FALSE)
 		puller.apply_effect(get_xeno_stun_duration(puller, 1), WEAKEN)
-		puller.visible_message(SPAN_WARNING("[puller] tried to pull [src] but instead gets whacked in the chest!"))
+		puller.visible_message(SPAN_WARNING("[puller]试图拉动[src]，但反而被击中胸口！"))
 		return FALSE
 	return TRUE
 
@@ -935,7 +935,7 @@
 	if(!pulledby)
 		return
 	if(pulledby.grab_level)
-		visible_message(SPAN_DANGER("[src] has broken free of [pulledby]'s grip!"), null, null, 5)
+		visible_message(SPAN_DANGER("[src]挣脱了[pulledby]的控制！"), null, null, 5)
 	pulledby.stop_pulling()
 	. = 1
 
@@ -1155,7 +1155,7 @@
 		caste.aura_strength = 0
 	if(aura_strength == 0 && current_aura)
 		current_aura = null
-		to_chat(src, SPAN_XENOWARNING("We lose our pheromones."))
+		to_chat(src, SPAN_XENOWARNING("我们失去了信息素。"))
 
 	// Also recalculate received pheros now
 	for(var/capped_aura in received_phero_caps)
@@ -1189,7 +1189,7 @@
 /mob/living/carbon/xenomorph/resist_fire()
 	adjust_fire_stacks(XENO_FIRE_RESIST_AMOUNT, min_stacks = 0)
 	apply_effect(4, WEAKEN)
-	visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"),
+	visible_message(SPAN_DANGER("[src]在地上翻滚，试图扑灭自己！"),
 		SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
 
 	if(istype(get_turf(src), /turf/open/gm/river))
@@ -1198,7 +1198,7 @@
 	if(fire_stacks > 0)
 		return
 
-	visible_message(SPAN_DANGER("[src] has successfully extinguished themselves!"),
+	visible_message(SPAN_DANGER("[src]成功扑灭了身上的火焰！"),
 		SPAN_NOTICE("We extinguish ourselves."), null, 5)
 
 /mob/living/carbon/xenomorph/proc/get_organ_icon()
@@ -1213,13 +1213,13 @@
 	last_special = world.time + 1 SECONDS
 
 	var/displaytime = max(1, floor(breakouttime / 600)) //Minutes
-	visible_message(SPAN_DANGER("<b>[src] attempts to remove [legcuffed]!</b>"),
+	visible_message(SPAN_DANGER("<b>[src]试图移除[legcuffed]！</b>"),
 		SPAN_WARNING("We attempt to remove [legcuffed]. (This will take around [displaytime] minute\s and we must stand still)"))
 	if(!do_after(src, breakouttime, INTERRUPT_NO_NEEDHAND ^ INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
 		return
 	if(!legcuffed || buckled)
 		return
-	visible_message(SPAN_DANGER("<b>[src] manages to remove [legcuffed]!</b>"), SPAN_NOTICE("We successfully remove [legcuffed]."))
+	visible_message(SPAN_DANGER("<b>[src]成功解除了[legcuffed]！</b>"), SPAN_NOTICE("We successfully remove [legcuffed]."))
 	drop_inv_item_on_ground(legcuffed)
 
 /mob/living/carbon/xenomorph/IgniteMob()
@@ -1282,15 +1282,15 @@
 	var/move_dir = get_dir(src, loc)
 	for(var/atom/movable/atom in get_turf(current_structure))
 		if(atom != current_structure && atom.density && atom.BlockedPassDirs(src, move_dir))
-			to_chat(src, SPAN_WARNING("[atom] prevents us from squeezing under [current_structure]!"))
+			to_chat(src, SPAN_WARNING("[atom]阻止了我们从[current_structure]下方挤过去！"))
 			return FALSE
 	// Is it an airlock?
 	if(istype(current_structure, /obj/structure/machinery/door/airlock))
 		var/obj/structure/machinery/door/airlock/current_airlock = current_structure
 		if(current_airlock.locked || current_airlock.welded) //Can't pass through airlocks that have been bolted down or welded
-			to_chat(src, SPAN_WARNING("[current_airlock] is locked down tight. We can't squeeze underneath!"))
+			to_chat(src, SPAN_WARNING("[current_airlock]被牢牢锁死。我们无法从下方挤过去！"))
 			return FALSE
-	visible_message(SPAN_WARNING("[src] scuttles underneath [current_structure]!"),
+	visible_message(SPAN_WARNING("[src]快速爬到了[current_structure]下方！"),
 	SPAN_WARNING("We squeeze and scuttle underneath [current_structure]."), max_distance = 5)
 	forceMove(current_structure.loc)
 	return TRUE
@@ -1339,9 +1339,9 @@
 		return
 	if(target.is_mob_incapacitated())
 		if(target_mounting)
-			to_chat(target, SPAN_XENOWARNING("You cannot mount [src]!"))
+			to_chat(target, SPAN_XENOWARNING("你无法骑乘[src]！"))
 			return
-		to_chat(src, SPAN_XENOWARNING("[target] cannot mount you!"))
+		to_chat(src, SPAN_XENOWARNING("[target]无法骑乘你！"))
 		return
 	visible_message(SPAN_NOTICE("[target_mounting ? "[target] starts to mount [src]" : "[src] starts hoisting [target] onto [p_their()] back..."]"),
 	SPAN_NOTICE("[target_mounting ? "[target] starts to mount on your back" : "You start to lift [target] onto your back..."]"))

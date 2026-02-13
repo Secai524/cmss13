@@ -1,6 +1,6 @@
 /obj/item/ammo_magazine/hardpoint/primary_flamer
-	name = "DRG-N Offensive Flamer Unit Fuel Tank"
-	desc = "Fuel tanks for the DRG-N Offensive Flamer. It contains a high-combustion napalm, capabale of burning through nearly anything."
+	name = "DRG-N进攻型喷火器燃料罐"
+	desc = "DRG-N进攻型喷火器的燃料罐。内含高燃烧性凝固汽油，几乎能烧穿一切。"
 	caliber = "High-Combustion Napalm" //correlates to flamer mags
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/vehicles.dmi'
 	icon_state = "drgn_flametank"

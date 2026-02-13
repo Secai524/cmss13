@@ -1,5 +1,5 @@
 /datum/skills/mercenary
-	name = "Mercenary"
+	name = "雇佣兵"
 	skills = list(
 		SKILL_CQC = SKILL_CQC_SKILLED,
 		SKILL_FIREMAN = SKILL_FIREMAN_SKILLED,
@@ -12,7 +12,7 @@
 	)
 
 /datum/skills/mercenary/elite
-	name = "Elite Mercenary"
+	name = "精英雇佣兵"
 	skills = list(
 		SKILL_CQC = SKILL_CQC_SKILLED,
 		SKILL_FIREMAN = SKILL_FIREMAN_SKILLED,
@@ -27,7 +27,7 @@
 	)
 
 /datum/skills/mercenary/elite/medic
-	name = "Elite Mercenary Medic"
+	name = "精英雇佣兵医疗兵"
 	skills = list(
 		SKILL_CQC = SKILL_CQC_SKILLED,
 		SKILL_FIREMAN = SKILL_FIREMAN_SKILLED,
@@ -42,7 +42,7 @@
 	)
 
 /datum/skills/mercenary/elite/engineer
-	name = "Elite Mercenary Engineer"
+	name = "精英雇佣兵工程师"
 	skills = list(
 		SKILL_CQC = SKILL_CQC_SKILLED,
 		SKILL_FIREMAN = SKILL_FIREMAN_SKILLED,
@@ -58,7 +58,7 @@
 	)
 
 /datum/skills/mercenary/elite/heavy
-	name = "Elite Mercenary Heavy"
+	name = "精英雇佣兵重装兵"
 	skills = list(
 		SKILL_CQC = SKILL_CQC_SKILLED,
 		SKILL_FIREMAN = SKILL_FIREMAN_SKILLED,
@@ -74,7 +74,7 @@
 	)
 
 /datum/skills/mercenary/elite/leader
-	name = "Elite Mercenary Leader"
+	name = "精英雇佣兵队长"
 	skills = list(
 		SKILL_CQC = SKILL_CQC_SKILLED,
 		SKILL_FIREMAN = SKILL_FIREMAN_SKILLED,

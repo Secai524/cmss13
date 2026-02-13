@@ -1,5 +1,5 @@
 /datum/supply_packs/upp/medical
-	name = "UPP medical crate"
+	name = "UPP医疗箱"
 	contains = list(
 		/obj/item/storage/box/syringes,
 		/obj/item/reagent_container/glass/bottle/inaprovaline,
@@ -19,31 +19,31 @@
 	)
 	cost = 15
 	containertype = /obj/structure/closet/crate/medical
-	containername = "medical crate"
+	containername = "医疗箱"
 	group = "UPP Medical"
 
 /datum/supply_packs/upp/medical_restock_cart
-	name = "UPP medical restock cart"
+	name = "UPP医疗补货推车"
 	contains = list(
 		/obj/structure/restock_cart/medical,
 	)
 	cost = 20
 	containertype = null
-	containername = "medical restock cart"
+	containername = "医疗补给推车"
 	group = "UPP Medical"
 
 /datum/supply_packs/upp/medical_reagent_cart
-	name = "UPP medical reagent restock cart"
+	name = "UPP医疗试剂补货推车"
 	contains = list(
 		/obj/structure/restock_cart/medical/reagent,
 	)
 	cost = 20
 	containertype = null
-	containername = "medical reagent restock cart"
+	containername = "医疗试剂补给推车"
 	group = "UPP Medical"
 
 /datum/supply_packs/upp/pillbottle
-	name = "UPP pill bottle crate (x2 each)"
+	name = "UPP药瓶箱（每种x2）"
 	contains = list(
 		/obj/item/storage/pill_bottle/inaprovaline,
 		/obj/item/storage/pill_bottle/antitox,
@@ -64,11 +64,11 @@
 	)
 	cost = 15
 	containertype = /obj/structure/closet/crate/medical
-	containername = "medical crate"
+	containername = "医疗箱"
 	group = "UPP Medical"
 
 /datum/supply_packs/upp/firstaid
-	name = "UPP first aid kit crate (x2 each)"
+	name = "UPP急救包箱（每种x2）"
 	contains = list(
 		/obj/item/storage/firstaid/regular,
 		/obj/item/storage/firstaid/regular,
@@ -83,11 +83,11 @@
 	)
 	cost = 11
 	containertype = /obj/structure/closet/crate/medical
-	containername = "medical crate"
+	containername = "医疗箱"
 	group = "UPP Medical"
 
 /datum/supply_packs/upp/bodybag
-	name = "UPP body bag crate (x28)"
+	name = "UPP裹尸袋箱（x28）"
 	contains = list(
 		/obj/item/storage/box/bodybags,
 		/obj/item/storage/box/bodybags,
@@ -100,7 +100,7 @@
 	group = "UPP Medical"
 
 /datum/supply_packs/upp/cryobag
-	name = "UPP stasis bag crate (x3)"
+	name = "UPP静滞袋箱（x3）"
 	contains = list(
 		/obj/item/bodybag/cryobag,
 		/obj/item/bodybag/cryobag,
@@ -112,7 +112,7 @@
 	group = "UPP Medical"
 
 /datum/supply_packs/upp/surgery
-	name = "UPP surgery crate(tray,anesthetic,surgeon gear)"
+	name = "UPP手术箱（托盘、麻醉剂、外科医生装备）"
 	contains = list(
 		/obj/item/storage/surgical_tray,
 		/obj/item/clothing/mask/breath/medical,
@@ -123,12 +123,12 @@
 	)
 	cost = 25
 	containertype = /obj/structure/closet/crate/secure/surgery
-	containername = "surgery crate"
+	containername = "手术箱"
 	access = ACCESS_MARINE_MEDBAY
 	group = "UPP Medical"
 
 /datum/supply_packs/upp/upgraded_medical_kits
-	name = "UPP upgraded medical equipment crate (x4)"
+	name = "UPP升级医疗设备箱（x4）"
 	contains = list(
 		/obj/item/storage/box/czsp/medic_upgraded_kits/full,
 		/obj/item/storage/box/czsp/medic_upgraded_kits/full,

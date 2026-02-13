@@ -9,26 +9,26 @@
 	if(!istype(user))
 		return
 	if(!user.hunter_data)
-		to_chat(user, SPAN_WARNING("ERROR: No hunter_data detected."))
+		to_chat(user, SPAN_WARNING("错误：未检测到猎人数据。"))
 		return
 
 	if(linked_bracer)
-		to_chat(user, SPAN_YAUTJABOLD("[icon2html(src)] \The <b>[src]</b> beeps: Link is already established!"))
+		to_chat(user, SPAN_YAUTJABOLD("[icon2html(src)] \The <b>[src]</b>发出哔哔声：链接已建立！"))
 		return
 
 	if(user.gloves != src)
-		to_chat(user, SPAN_WARNING("You are not wearing your bracer!"))
+		to_chat(user, SPAN_WARNING("你没有佩戴护腕！"))
 		return
 	else if(!owner || user != owner)
-		to_chat(user, SPAN_YAUTJABOLD("[icon2html(src)] \The <b>[src]</b> beeps: Wrong user detected!"))
+		to_chat(user, SPAN_YAUTJABOLD("[icon2html(src)] \The <b>[src]</b>发出哔哔声：检测到错误用户！"))
 		return
 
 	var/mob/living/carbon/human/thrall = user.hunter_data.thrall
 	if(!thrall)
-		to_chat(user, SPAN_WARNING("You do not have a thrall to link to!"))
+		to_chat(user, SPAN_WARNING("你没有可供链接的仆从！"))
 		return
 	else if(!istype(thrall.gloves, /obj/item/clothing/gloves/yautja/thrall))
-		to_chat(user, SPAN_YAUTJABOLD("[icon2html(src)] \The <b>[src]</b> beeps: Your thrall is not wearing a bracer!"))
+		to_chat(user, SPAN_YAUTJABOLD("[icon2html(src)] \The <b>[src]</b>发出哔哔声：你的仆从没有佩戴护腕！"))
 		return
 	else
 		var/obj/item/clothing/gloves/yautja/thrall/thrall_gloves = thrall.gloves
@@ -37,14 +37,14 @@
 		thrall_gloves.linked_bracer = src
 		thrall_gloves.owner = thrall
 		thrall.client?.init_verbs()
-		thrall.set_species("Thrall")
+		thrall.set_species("奴仆")
 		thrall.allow_gun_usage = FALSE
-		to_chat(user, SPAN_YAUTJABOLD("[icon2html(src)] \The <b>[src]</b> beeps: Your bracer is now linked to your thrall."))
+		to_chat(user, SPAN_YAUTJABOLD("[icon2html(src)] \The <b>[src]</b>发出哔哔声：你的护腕现已链接到你的仆从。"))
 		if(notification_sound)
 			playsound(loc, 'sound/items/pred_bracer.ogg', 75, 1)
 
 		to_chat(thrall, SPAN_WARNING("\The [thrall_gloves] locks around your wrist with a sharp click."))
-		to_chat(thrall, SPAN_YAUTJABOLD("[icon2html(thrall_gloves)] \The <b>[thrall_gloves]</b> beeps: Your master has linked their bracer to yours."))
+		to_chat(thrall, SPAN_YAUTJABOLD("[icon2html(thrall_gloves)] \The <b>[thrall_gloves]</b>发出哔哔声：你的主人已将其护腕与你的护腕链接。"))
 		if(thrall_gloves.notification_sound)
 			playsound(thrall_gloves.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 
@@ -69,22 +69,22 @@
 		receiver_title = "thrall"
 
 	if(!istype(receiver))
-		to_chat(messenger, SPAN_WARNING("You have no one to message!"))
+		to_chat(messenger, SPAN_WARNING("你没有可发送消息的对象！"))
 		return
 	if(!istype(receiver.gloves, /obj/item/clothing/gloves/yautja))
-		to_chat(messenger, SPAN_WARNING("Your [receiver_title] isn't wearing their bracer!"))
+		to_chat(messenger, SPAN_WARNING("你的[receiver_title]没戴臂铠！"))
 		return
 
-	var/message = sanitize(input(messenger, "Enter the message you want to send:", "Send Message") as null|text)
+	var/message = sanitize(input(messenger, "输入你要发送的信息：", "Send Message") as null|text)
 	if(!message)
 		return
 
 	if(!istype(receiver))
-		to_chat(messenger, SPAN_WARNING("You have no one to message!"))
+		to_chat(messenger, SPAN_WARNING("你没有可发送消息的对象！"))
 		return
 	var/obj/item/clothing/gloves/yautja/receiver_gloves = receiver.gloves
 	if(!istype(receiver_gloves))
-		to_chat(messenger, SPAN_WARNING("Your [receiver_title] isn't wearing their bracer!"))
+		to_chat(messenger, SPAN_WARNING("你的[receiver_title]没戴臂铠！"))
 		return
 
 	to_chat(receiver, SPAN_YAUTJABOLD("\The <b>[receiver_gloves]</b> beeps with a message from your [messenger_title]: [message]"))
@@ -102,7 +102,7 @@
 	. = ..()
 
 /obj/item/clothing/gloves/yautja/thrall/bracer_message()
-	set category = "Thrall"
+	set category = "奴仆"
 	. = ..()
 
 /obj/item/clothing/gloves/yautja/hunter/verb/stun_thrall()
@@ -114,15 +114,15 @@
 	var/mob/living/carbon/human/master = usr
 	var/mob/living/carbon/human/thrall = master.hunter_data.thrall
 	if(!thrall)
-		to_chat(master, SPAN_WARNING("You have no thrall to punish!"))
+		to_chat(master, SPAN_WARNING("你没有仆从可供惩罚！"))
 		return
 	if(thrall.IsStun())
-		to_chat(master, SPAN_WARNING("Your thrall is already stunned!"))
+		to_chat(master, SPAN_WARNING("你的仆从已经眩晕了！"))
 		return
 
 	thrall.apply_effect(10, WEAKEN)
-	to_chat(master, SPAN_WARNING("Your bracer beeps, your thrall is punished."))
-	to_chat(thrall, SPAN_WARNING("You feel a searing shock rip through your body! You fall to the ground in pain!"))
+	to_chat(master, SPAN_WARNING("你的臂铠哔哔作响，你的仆从受到了惩罚。"))
+	to_chat(thrall, SPAN_WARNING("你感到一阵灼热的电击撕裂你的身体！你痛苦地倒在地上！"))
 
 /obj/item/clothing/gloves/yautja/hunter/verb/self_destruct_thrall()
 	set name = "Self Destruct Thrall (!)"
@@ -137,24 +137,24 @@
 
 
 	if(master.stat == DEAD)
-		to_chat(master, SPAN_WARNING("Little too late for that now!"))
+		to_chat(master, SPAN_WARNING("现在做这个已经太迟了！"))
 		return
 	if(master.health < master.health_threshold_crit)
-		to_chat(master, SPAN_WARNING("As you fall into unconsciousness you fail to activate your self-destruct device before you collapse."))
+		to_chat(master, SPAN_WARNING("当你陷入昏迷时，你在倒下前未能启动自毁装置。"))
 		return
 	if(master.stat)
-		to_chat(master, SPAN_WARNING("Not while you're unconscious..."))
+		to_chat(master, SPAN_WARNING("在你昏迷时不行..."))
 		return
 	if(grounds?.flags_area & AREA_YAUTJA_HUNTING_GROUNDS)
-		to_chat(master, SPAN_WARNING("Your bracer will not allow you to activate a self-destruction sequence in order to protect the hunting preserve."))
+		to_chat(master, SPAN_WARNING("你的臂铠不允许你启动自毁程序，以保护狩猎场。"))
 		return
 	if(!thrall)
-		to_chat(master, SPAN_WARNING("You have no thrall to destroy!"))
+		to_chat(master, SPAN_WARNING("你没有仆从可供摧毁！"))
 
 	if(exploding)
 		return
 
-	if(tgui_alert(thrall, "Are you sure you want to detonate this [thrall.species]'s bracer? There is no stopping this process","Self Destruct Thrall", list("Yes", "No")) == "No")
+	if(tgui_alert(thrall, "你确定要引爆这个[thrall.species]的臂铠吗？此过程无法停止","Self Destruct Thrall", list("Yes", "No")) == "No")
 		return
 
 	var/area/area = get_area(thrall)
@@ -162,7 +162,7 @@
 	message_admins(FONT_SIZE_HUGE("ALERT: [master] ([master.key]) triggered their thrall's self-destruct sequence [area ? "in [area.name]":""] [ADMIN_JMP(turf)]"))
 	log_attack("[key_name(master)] triggered their thrall's self-destruct sequence in [area ? "in [area.name]":""]")
 	message_all_yautja("[master.real_name] has triggered their thrall's self-destruction sequence.")
-	to_chat(master, SPAN_DANGER("You set the timer. They have failed you."))
+	to_chat(master, SPAN_DANGER("你设定了计时器。他们让你失望了。"))
 	explode(thrall)
 	exploding = FALSE
 	do_after(thrall, (80), INTERRUPT_NONE, BUSY_ICON_HOSTILE)
@@ -176,4 +176,4 @@
 	if(thrall.stat == DEAD)
 		return
 	thrall.apply_effect(10, WEAKEN)
-	to_chat(thrall, SPAN_WARNING("You feel a searing shock rip through your body! You fall to the ground in pain!"))
+	to_chat(thrall, SPAN_WARNING("你感到一阵灼热的电击撕裂你的身体！你痛苦地倒在地上！"))

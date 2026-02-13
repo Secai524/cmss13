@@ -379,8 +379,8 @@
 
 
 /obj/structure/machinery/power/power_generator
-	name = "power generator"
-	desc = "A machine that generates power."
+	name = "发电机"
+	desc = "一台发电的机器。"
 	power_machine = TRUE
 
 	//5,000W is our power output

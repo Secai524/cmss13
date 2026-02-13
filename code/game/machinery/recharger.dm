@@ -35,12 +35,12 @@
 		if(istype(G, /obj/item/device/defibrillator))
 			var/obj/item/device/defibrillator/D = G
 			if(D.ready)
-				to_chat(user, SPAN_WARNING("It won't fit, put the paddles back into \the [D] first!"))
+				to_chat(user, SPAN_WARNING("放不进去，先把除颤器电极板放回\the [D]！"))
 				return
 		if(istype(G, /obj/item/tool/portadialysis))
 			var/obj/item/tool/portadialysis/P = G
 			if(P.attached)
-				to_chat(user, SPAN_WARNING("It won't fit, detach it from [P.attached] first!"))
+				to_chat(user, SPAN_WARNING("放不进去，先从[P.attached]上拆下来！"))
 				return
 		if(user.drop_inv_item_to_loc(G, src))
 			charging = G
@@ -48,10 +48,10 @@
 			update_icon()
 	else if(HAS_TRAIT(G, TRAIT_TOOL_WRENCH))
 		if(charging)
-			to_chat(user, SPAN_DANGER("Remove \the [charging] first!"))
+			to_chat(user, SPAN_DANGER("先移除\the [charging]！"))
 			return
 		anchored = !anchored
-		to_chat(user, "You [anchored ? "attached" : "detached"] the recharger.")
+		to_chat(user, "你[anchored ? "attached" : "detached"] the recharger.")
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 
 /obj/structure/machinery/recharger/attack_hand(mob/user as mob)

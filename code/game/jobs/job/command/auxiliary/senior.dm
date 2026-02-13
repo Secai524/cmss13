@@ -4,7 +4,7 @@
 	flags_whitelist = WHITELIST_MENTOR
 	gear_preset = /datum/equipment_preset/uscm_ship/sea
 
-	job_options = list("Gunnery Sergeant" = "GySGT", "Master Sergeant" = "MSgt", "First Sergeant" = "1Sgt", "Master Gunnery Sergeant" = "MGySgt", "Sergeant Major" = "SgtMaj")
+	job_options = list("枪炮军士" = "GySGT", "军士长" = "MSgt", "上士" = "1Sgt", "枪炮总军士长" = "MGySgt", "总军士长" = "SgtMaj")
 
 /datum/job/command/senior/on_config_load()
 	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>You are</a> held to a higher standard and are required to obey not only the Server Rules but <a href='"+LAW_PLACEHOLDER+"'>Marine Law</a> and <a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_SOP]'>Standard Operating Procedure</a>. Failure to do so may result in your Mentorship Removal. Your primary job is to teach others the game and its mechanics, and offer advice to all USCM Departments and Personnel on-board."

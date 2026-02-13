@@ -1,7 +1,7 @@
 // "SOF's 121st Special Reconnaissance Detachment the SOF's primary Reconnaissance group in the Bau Sau sector, often training along side the CEC and recruiting from the CEC, they are the first to be deployed in the event of war."
 
 /datum/equipment_preset/survivor/upp/SOF_survivor
-	name = "Survivor - UPP SOF"
+	name = "幸存者 - UPP特种部队"
 	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0)
 	origin_override = ORIGIN_UPP
 	job_title = JOB_SURVIVOR
@@ -39,7 +39,7 @@
 // /obj/effect/landmark/survivor_spawner/SOF_survivor/soldier
 
 /datum/equipment_preset/survivor/upp/SOF_survivor/soldier
-	name = "Survivor - UPP SOF Soldier"
+	name = "幸存者 - UPP特种部队士兵"
 	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_UE2 = JOB_PLAYTIME_TIER_1)
 	assignment = JOB_UPP
 	job_title = JOB_UPP
@@ -55,7 +55,7 @@
 // /obj/effect/landmark/survivor_spawner/SOF_survivor/sapper
 
 /datum/equipment_preset/survivor/upp/SOF_survivor/sapper
-	name = "Survivor - UPP SOF Sapper"
+	name = "幸存者 - UPP特种部队工兵"
 	paygrades = list(PAY_SHORT_UE3 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_UPP_ENGI
 	job_title = JOB_UPP_ENGI
@@ -76,7 +76,7 @@
 // /obj/effect/landmark/survivor_spawner/SOF_survivor/medic
 
 /datum/equipment_preset/survivor/upp/SOF_survivor/medic
-	name = "Survivor - UPP SOF Medic"
+	name = "幸存者 - UPP特种部队医疗兵"
 	paygrades = list(PAY_SHORT_UE3 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_UPP_MEDIC
 	job_title = JOB_UPP_MEDIC
@@ -99,7 +99,7 @@
 // /obj/effect/landmark/survivor_spawner/SOF_survivor/specialist
 
 /datum/equipment_preset/survivor/upp/SOF_survivor/specialist
-	name = "Survivor - UPP SOF Specialist"
+	name = "幸存者 - UPP特种部队专家"
 	assignment = JOB_UPP_SPECIALIST
 	job_title = JOB_UPP_SPECIALIST
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH,  LANGUAGE_GERMAN,  LANGUAGE_CHINESE)
@@ -116,7 +116,7 @@
 // /obj/effect/landmark/survivor_spawner/SOF_survivor/squad_leader
 
 /datum/equipment_preset/survivor/upp/SOF_survivor/squad_leader
-	name = "Survivor - UPP SOF Squad Leader"
+	name = "幸存者 - UPP特种部队班长"
 	paygrades = list(PAY_SHORT_UE5 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_UPP_LEADER
 	job_title = JOB_UPP_LEADER
@@ -140,7 +140,7 @@
 //it's used on all of the above in their spawner.
 
 /datum/equipment_preset/synth/survivor/upp/SOF_synth
-	name = "Survivor - Synthetic - UPP SOF Synth"
+	name = "幸存者 - 合成人 - UPP特种部队合成人"
 
 	languages = ALL_SYNTH_LANGUAGES_UPP
 	assignment = JOB_UPP_SUPPORT_SYNTH

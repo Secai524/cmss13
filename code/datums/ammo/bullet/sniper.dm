@@ -5,7 +5,7 @@
 */
 
 /datum/ammo/bullet/sniper
-	name = "sniper bullet"
+	name = "狙击枪子弹"
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
 	damage_falloff = 0
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SNIPER|AMMO_IGNORE_COVER
@@ -24,10 +24,10 @@
 	if((P.projectile_flags & PROJECTILE_BULLSEYE) && M == P.original)
 		var/mob/living/L = M
 		L.apply_armoured_damage(damage*2, ARMOR_BULLET, BRUTE, null, penetration)
-		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
+		to_chat(P.firer, SPAN_WARNING("正中靶心！"))
 
 /datum/ammo/bullet/sniper/incendiary
-	name = "incendiary sniper bullet"
+	name = "燃烧狙击枪子弹"
 	damage_type = BRUTE
 	shrapnel_chance = 0
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SNIPER|AMMO_IGNORE_COVER
@@ -52,10 +52,10 @@
 				blind_duration = 2
 		L.AdjustEyeBlur(blind_duration)
 		L.adjust_fire_stacks(10)
-		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
+		to_chat(P.firer, SPAN_WARNING("正中靶心！"))
 
 /datum/ammo/bullet/sniper/flak
-	name = "flak sniper bullet"
+	name = "高爆狙击枪子弹"
 	damage_type = BRUTE
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SNIPER|AMMO_IGNORE_COVER
 
@@ -75,7 +75,7 @@
 				slow_duration = 4
 		M.adjust_effect(slow_duration, SUPERSLOW)
 		L.apply_armoured_damage(damage, ARMOR_BULLET, BRUTE, null, penetration)
-		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
+		to_chat(P.firer, SPAN_WARNING("正中靶心！"))
 	else
 		burst(get_turf(M),P,damage_type, 2 , 2)
 		burst(get_turf(M),P,damage_type, 1 , 2 , 0)
@@ -86,7 +86,7 @@
 	return 1
 
 /datum/ammo/bullet/sniper/crude
-	name = "crude sniper bullet"
+	name = "粗制狙击枪子弹"
 	damage = 42
 	penetration = ARMOR_PENETRATION_TIER_6
 
@@ -95,12 +95,12 @@
 	pushback(M, P, 3)
 
 /datum/ammo/bullet/sniper/upp
-	name = "armor-piercing sniper bullet"
+	name = "穿甲狙击枪子弹"
 	damage = 80
 	penetration = ARMOR_PENETRATION_TIER_10
 
 /datum/ammo/bullet/sniper/anti_materiel
-	name = "anti-materiel sniper bullet"
+	name = "反器材狙击枪子弹"
 
 	shrapnel_chance = 0 // This isn't leaving any shrapnel.
 	accuracy = HIT_ACCURACY_TIER_8
@@ -123,24 +123,24 @@
 			if(stopping_power > 3)
 				shake_camera(living_mob, (stopping_power - 3), (stopping_power - 2))
 			if(HAS_TRAIT(living_mob, TRAIT_CHARGING) && isxeno(living_mob))
-				to_chat(living_mob, SPAN_WARNING("A sudden massive impact strikes you, but your charge will not be stopped!"))
+				to_chat(living_mob, SPAN_WARNING("一股突如其来的巨大冲击击中了你，但你的冲锋无法被阻挡！"))
 				return stopping_power
 			if(stopping_power >= 4)
-				to_chat(living_mob, SPAN_XENOHIGHDANGER("You are knocked off-balance by the sudden massive impact!"))
+				to_chat(living_mob, SPAN_XENOHIGHDANGER("突如其来的巨大冲击让你失去了平衡！"))
 				if(living_mob.mob_size >= MOB_SIZE_IMMOBILE && !((fired_projectile.projectile_flags & PROJECTILE_BULLSEYE) && living_mob == fired_projectile.original)) // Queens and Crushers
 					return stopping_power // For Crushers and Queens, must be aimed at them.
 				living_mob.KnockDown(0.05) // Must deal more than 90 damage to mini-stun big mobs for 0.1s
 				// Can't interrupt a big mob unless it's completely alone with nothing blocking the shot.
 			else
-				to_chat(living_mob, SPAN_XENODANGER("You are shaken by the sudden heavy impact!"))
+				to_chat(living_mob, SPAN_XENODANGER("你被突如其来的猛烈冲击震得站立不稳！"))
 		else
 			// If above 60 damage, screenshake. This maxes out at (3,4) like buckshot and heavy rounds. (1,2) (2,3) or (3,4)
 			shake_camera(living_mob, (stopping_power - 2), (stopping_power - 1))
 			if(living_mob.body_position != LYING_DOWN)
-				to_chat(living_mob, SPAN_XENOHIGHDANGER("You are thrown back by the sudden massive force!"))
+				to_chat(living_mob, SPAN_XENOHIGHDANGER("你被突如其来的巨大力量掀飞出去！"))
 				slam_back(living_mob, fired_projectile)
 			else
-				to_chat(living_mob, SPAN_XENODANGER("You are shaken by the sudden heavy impact!"))
+				to_chat(living_mob, SPAN_XENODANGER("你被突如其来的猛烈冲击震得站立不稳！"))
 
 			if(isxeno(living_mob))
 				living_mob.KnockDown((stopping_power - 2)*0.05) // Up to 0.3s on a solo target.
@@ -248,20 +248,20 @@
 		if((focused_fire_active || isxeno(target_mob)) && !(target_mob.is_dead()))
 			switch(amr_counter)
 				if(1)
-					to_chat(aimed_projectile.firer, SPAN_WARNING("One hit! You begin to carefully track the target's movements."))
+					to_chat(aimed_projectile.firer, SPAN_WARNING("命中一次！你开始仔细追踪目标的移动。"))
 					if(isxeno(target_mob) && isxeno(old_target?.resolve()))
 						var/mob/living/carbon/xenomorph/old_xeno = old_target.resolve()
 						var/mob/living/carbon/xenomorph/new_xeno = target_mob
 						if((old_xeno.hive == new_xeno.hive) && !(old_xeno.stat)) // Must be in same hive and conscious
-							to_chat(old_xeno,SPAN_XENOLEADER("The feeling of looming danger fades as we sense that another sister has been targeted instead."))
+							to_chat(old_xeno,SPAN_XENOLEADER("迫在眉睫的危险感逐渐消退，我们感觉到另一个姐妹已被锁定为目标。"))
 				if(2)
-					to_chat(aimed_projectile.firer, SPAN_WARNING("Two hits! You're starting to get a good read on the target's patterns."))
+					to_chat(aimed_projectile.firer, SPAN_WARNING("命中两次！你开始摸清目标的行动模式了。"))
 				if(3)
-					to_chat(aimed_projectile.firer, SPAN_WARNING("Bullseye! You're fully focused on the target. You notice they are starting to change their patterns."))
+					to_chat(aimed_projectile.firer, SPAN_WARNING("正中靶心！你完全锁定了目标。你注意到他们开始改变行动模式。"))
 				else
-					to_chat(aimed_projectile.firer, SPAN_WARNING("Bullseye!"))
+					to_chat(aimed_projectile.firer, SPAN_WARNING("正中靶心！"))
 		else
-			to_chat(aimed_projectile.firer, SPAN_WARNING("Bullseye!"))
+			to_chat(aimed_projectile.firer, SPAN_WARNING("正中靶心！"))
 
 /datum/ammo/bullet/sniper/anti_materiel/set_bullet_traits()
 	. = ..()
@@ -288,7 +288,7 @@
 	))
 
 /datum/ammo/bullet/sniper/anti_materiel/vulture/holo_target
-	name = "holo-targeting anti-materiel sniper bullet"
+	name = "全息瞄准反器材狙击弹"
 	damage = 60 // it's a big bullet but its purpose is to support marines, not to kill enemies by itself
 	/// inflicts this many holo stacks per bullet hit
 	var/holo_stacks = 333
@@ -310,7 +310,7 @@
 	))
 
 /datum/ammo/bullet/sniper/elite
-	name = "supersonic sniper bullet"
+	name = "超音速狙击弹"
 
 	shrapnel_chance = 0 // This isn't leaving any shrapnel.
 	accuracy = HIT_ACCURACY_TIER_8
@@ -338,4 +338,4 @@
 		else
 			L.apply_armoured_damage(damage, ARMOR_BULLET, BRUTE, null, penetration)
 		// 150% damage to runners (225), 300% against Big xenos (450), and 200% against all others (300). -Kaga
-		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
+		to_chat(P.firer, SPAN_WARNING("正中靶心！"))

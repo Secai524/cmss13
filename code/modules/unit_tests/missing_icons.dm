@@ -102,7 +102,7 @@
 				defined_slots |= slot
 			defined_slots -= WEAR_AS_GARB // Already checked
 			for(var/slot in defined_slots)
-				var/image/result = item.get_mob_overlay(slot=slot, default_bodytype="Human")
+				var/image/result = item.get_mob_overlay(slot=slot, default_bodytype="人类")
 				// States specified in item_state_slots and item_icons (warning only currently)
 				check(obj_path, result.icon, result.icon_state, "This icon_state is needed in slot [slot]", variable_name="mob_state", warning_only=TRUE)
 			for(var/slot in additional_slots_to_test)
@@ -112,7 +112,7 @@
 					continue
 				if(slot in ignored_slots)
 					continue
-				var/image/result = item.get_mob_overlay(slot=slot, default_bodytype="Human")
+				var/image/result = item.get_mob_overlay(slot=slot, default_bodytype="人类")
 				// States specified in additional_slots_to_test not already tested above (warning only currently)
 				check(obj_path, result.icon, result.icon_state, "This icon_state is needed in slot [slot]", variable_name="mob_state", warning_only=TRUE)
 

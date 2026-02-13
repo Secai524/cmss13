@@ -10,7 +10,7 @@
 
 /obj/structure/machinery/door/firedoor
 	name = "\improper Emergency Shutter"
-	desc = "Emergency air-tight shutter, capable of sealing off breached areas."
+	desc = "紧急气密闸门，能够封堵破损区域。"
 	icon = 'icons/obj/structures/doors/DoorHazard.dmi'
 	icon_state = "door_open"
 	req_one_access = list(ACCESS_CIVILIAN_ENGINEERING)
@@ -133,14 +133,14 @@
 	"\The [src]", list("Yes", "No")) != "Yes")
 		return
 	if(user.is_mob_incapacitated() || (get_dist(src, user) > 1  && !isRemoteControlling(user)))
-		to_chat(user, "Sorry, you must remain able bodied and close to \the [src] in order to use it.")
+		to_chat(user, "抱歉，你必须保持行动能力并靠近\the [src]才能使用它。")
 		return
 	if(density && (inoperable())) //can still close without power
 		to_chat(user, "\The [src] is not functioning, you'll have to force it open manually.")
 		return
 
 	if(alarmed && density && lockdown && !allowed(user))
-		to_chat(user, SPAN_WARNING("Access denied. Please wait for authorities to arrive, or for the alert to clear."))
+		to_chat(user, SPAN_WARNING("权限被拒绝。请等待当局抵达，或警报解除。"))
 		return
 	else
 		user.visible_message(SPAN_NOTICE("\The [src] [density ? "open" : "close"]s for \the [user]."),
@@ -294,7 +294,7 @@
 
 /obj/structure/machinery/door/firedoor/border_only/almayer
 	name = "\improper Emergency Shutter"
-	desc = "Emergency air-tight shutter, capable of sealing off breached areas."
+	desc = "紧急气密闸门，能够封堵破损区域。"
 	icon = 'icons/obj/structures/doors/purinadoor.dmi'
 	openspeed = 4
 

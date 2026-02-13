@@ -15,11 +15,11 @@
 	if(!ispath(objholder))
 		objholder = pick_closest_path(target_path)
 		if(!objholder)
-			alert("No path has been selected.")
+			alert("未选择路径。")
 			return
 		else if(ispath(objholder, /area))
 			objholder = null
-			alert("Area paths are not supported for this mode, use the area edit mode instead.")
+			alert("此模式不支持区域路径，请改用区域编辑模式。")
 			return
 	deselect_region()
 
@@ -33,7 +33,7 @@
 		else
 			to_chat(c, SPAN_NOTICE("[initial(object.name)] is not a turf, object, or mob! Please select again."))
 	if(isnull(objholder))
-		to_chat(c, SPAN_WARNING("Select an object type first."))
+		to_chat(c, SPAN_WARNING("请先选择对象类型。"))
 		deselect_region()
 		return
 	..()
@@ -55,7 +55,7 @@
 				T.ScrapeAway(INFINITY, CHANGETURF_DEFER_CHANGE)
 			var/selection_size = abs(cornerA.x - cornerB.x) * abs(cornerA.y - cornerB.y)
 			if(selection_size > FILL_WARNING_MIN) // Confirm fill if the number of tiles in the selection is greater than FILL_WARNING_MIN
-				var/choice = alert("Your selected area is [selection_size] tiles! Continue?", "Large Fill Confirmation", CONFIRM_YES, CONFIRM_NO)
+				var/choice = alert("Your selected area is [selection_size] tiles! Continue?", "大范围填充确认", CONFIRM_YES, CONFIRM_NO)
 				if(choice != CONFIRM_YES)
 					return
 			for(var/turf/T as anything in deletion_area)

@@ -1,6 +1,6 @@
 /datum/weather_event/clash_rain
-	name = "Rainstorm"
-	display_name = "Rainstorm"
+	name = "暴雨"
+	display_name = "暴雨"
 	length = INFINITY
 	fullscreen_type = /atom/movable/screen/fullscreen/weather/low
 

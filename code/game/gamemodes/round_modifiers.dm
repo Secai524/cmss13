@@ -107,7 +107,7 @@
 /datum/gamemode_modifier/lz_roundstart_miasma/set_active(enabled)
 	. = ..()
 	if(ROUND_TIME > DISTRESS_LZ_HAZARD_START)
-		to_chat(usr, SPAN_WARNING("Its too late to toggle this!"))
+		to_chat(usr, SPAN_WARNING("现在切换这个已经太迟了！"))
 
 /datum/gamemode_modifier/lz_weeding
 	modifier_name = "Landing Zone Weeding"

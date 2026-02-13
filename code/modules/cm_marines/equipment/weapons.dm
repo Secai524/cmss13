@@ -1,7 +1,7 @@
 
 /obj/item/storage/box/m56a2_system
 	name = "\improper M56 smartgun system case"
-	desc = "A large case containing an M56A2 Smartgun, M56 combat harness, head mounted sight and powerpack.\nDrag this sprite into you to open it up! NOTE: You cannot put items back inside this case."
+	desc = "一个大型箱子，内装M56A2智能枪、M56战斗背带、头戴式瞄准镜和电源包。\n将此图标拖拽到身上以打开！注意：你无法将物品放回此箱内。"
 	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "kit_case"
 	w_class = SIZE_HUGE
@@ -40,7 +40,7 @@
 
 /obj/item/storage/box/m56a2c_system
 	name = "\improper M56A2C smartgun system case"
-	desc = "A large case containing an M56A2C Smartgun, M56 combat harness, head mounted sight, M280 Smartgunner Drum Belt and powerpack.\nDrag this sprite into you to open it up! NOTE: You cannot put items back inside this case."
+	desc = "一个大型箱子，内装M56A2C智能枪、M56战斗背带、头戴式瞄准镜、M280智能枪手弹鼓腰带和电源包。\n将此图标拖拽到身上以打开！注意：你无法将物品放回此箱内。"
 	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "kit_case"
 	w_class = SIZE_HUGE
@@ -69,7 +69,7 @@
 
 /obj/item/storage/box/l56a2_dirty_system
 	name = "\improper M56D 'Dirty' smartgun system case"
-	desc = "A large case containing an M56D 'Dirty' Smartgun, M56D PMC combat harness and helmet, head mounted sight, M280 Smartgunner Drum Belt and powerpack.\nDrag this sprite into you to open it up! NOTE: You cannot put items back inside this case."
+	desc = "一个大型箱子，内装M56D'肮脏'智能枪、M56D PMC战斗背带和头盔、头戴式瞄准镜、M280智能枪手弹鼓腰带和电源包。\n将此图标拖拽到身上以打开！注意：你无法将物品放回此箱内。"
 	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "kit_case"
 	w_class = SIZE_HUGE

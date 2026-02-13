@@ -1,6 +1,6 @@
 /obj/structure/closet/secure_closet/personal
-	desc = "It's a secure locker for personnel. The first card swiped gains control."
-	name = "personal closet"
+	desc = "这是一个人员安全储物柜。首次刷卡者获得控制权。"
+	name = "个人储物柜"
 	req_access = list(ACCESS_CIVILIAN_PUBLIC)
 	var/registered_name = null
 
@@ -14,7 +14,7 @@
 
 
 /obj/structure/closet/secure_closet/personal/patient
-	name = "patient's closet"
+	name = "患者储物柜"
 
 /obj/structure/closet/secure_closet/personal/patient/Initialize()
 	. = ..()
@@ -53,7 +53,7 @@
 		return ..()
 	if(istype(W, /obj/item/card/id))
 		if(src.broken)
-			to_chat(user, SPAN_DANGER("It appears to be broken."))
+			to_chat(user, SPAN_DANGER("它似乎已损坏。"))
 			return
 		var/obj/item/card/id/I = W
 		if(!I || !I.registered_name)
@@ -70,9 +70,9 @@
 				src.registered_name = I.registered_name
 				src.desc = "Owned by [I.registered_name]."
 		else
-			to_chat(user, SPAN_DANGER("Access Denied."))
+			to_chat(user, SPAN_DANGER("权限被拒绝。"))
 	else
-		to_chat(user, SPAN_DANGER("Access Denied."))
+		to_chat(user, SPAN_DANGER("权限被拒绝。"))
 	return
 
 /obj/structure/closet/secure_closet/personal/verb/reset()
@@ -84,9 +84,9 @@
 	if(ishuman(usr))
 		src.add_fingerprint(usr)
 		if (src.locked || !src.registered_name)
-			to_chat(usr, SPAN_DANGER("You need to unlock it first."))
+			to_chat(usr, SPAN_DANGER("你需要先解锁它。"))
 		else if (src.broken)
-			to_chat(usr, SPAN_DANGER("It appears to be broken."))
+			to_chat(usr, SPAN_DANGER("它似乎已损坏。"))
 		else
 			if (src.opened)
 				if(!src.close())
@@ -94,5 +94,5 @@
 			src.locked = 1
 			src.icon_state = src.icon_locked
 			src.registered_name = null
-			src.desc = "It's a secure locker for personnel. The first card swiped gains control."
+			src.desc = "这是一个人员安全储物柜。首次刷卡者获得控制权。"
 	return

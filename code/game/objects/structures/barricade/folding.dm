@@ -1,6 +1,6 @@
 /obj/structure/barricade/plasteel
-	name = "folding plasteel barricade"
-	desc = "A very sturdy barricade made out of plasteel panels, the pinnacle of strongpoints. Use a blowtorch to repair. Can be flipped down to create a path."
+	name = "折叠式塑钢路障"
+	desc = "一种由塑钢板制成的非常坚固的路障，是防御工事的巅峰之作。使用喷灯进行修理。可以翻倒以开辟通道。"
 	icon_state = "plasteel_closed_0"
 	health = 800
 	maxhealth = 800
@@ -71,7 +71,7 @@
 
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
 		if(!silent)
-			to_chat(user, SPAN_WARNING("You're not trained to repair [src]..."))
+			to_chat(user, SPAN_WARNING("你没受过维修[src]的训练..."))
 		return FALSE
 
 	return TRUE
@@ -86,7 +86,7 @@
 
 	for(var/obj/effect/xenomorph/acid/A in src.loc)
 		if(A.acid_t == src)
-			to_chat(user, "You can't get near that, it's melting!")
+			to_chat(user, "你无法靠近，它正在融化！")
 			return
 
 	switch(build_state)
@@ -96,16 +96,16 @@
 					return
 				tool_cooldown = world.time + 10
 				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-					to_chat(user, SPAN_WARNING("You are not trained to assemble [src]..."))
+					to_chat(user, SPAN_WARNING("你没受过组装[src]的训练..."))
 					return
 
 				for(var/obj/structure/barricade/B in loc)
 					if(B != src && B.dir == dir)
-						to_chat(user, SPAN_WARNING("There's already a barricade here."))
+						to_chat(user, SPAN_WARNING("这里已经有一个路障了。"))
 						return
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 					return
-				user.visible_message(SPAN_NOTICE("[user] removes [src]'s protection panel."),
+				user.visible_message(SPAN_NOTICE("[user]移除了[src]的保护面板。"),
 				SPAN_NOTICE("You remove [src]'s protection panels, exposing the anchor bolts."))
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				build_state = BARRICADE_BSTATE_UNSECURED
@@ -113,17 +113,17 @@
 
 			if(HAS_TRAIT(item, TRAIT_TOOL_CROWBAR))
 				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-					to_chat(user, SPAN_WARNING("You are not trained to modify [src]..."))
+					to_chat(user, SPAN_WARNING("你没受过改装[src]的训练..."))
 					return
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 				if(linked)
-					user.visible_message(SPAN_NOTICE("[user] removes the linking on [src]."),
+					user.visible_message(SPAN_NOTICE("[user]移除了[src]上的连接。"),
 					SPAN_NOTICE("You remove the linking on [src]."))
 				else if(linkable)
-					user.visible_message(SPAN_NOTICE("[user] sets up [src] for linking."),
+					user.visible_message(SPAN_NOTICE("[user]为[src]设置了连接点。"),
 					SPAN_NOTICE("You set up [src] for linking."))
 				else
-					to_chat(user, SPAN_WARNING("[src] has no linking points..."))
+					to_chat(user, SPAN_WARNING("[src]没有连接点..."))
 					return
 				linked = !linked
 				for(var/direction in GLOB.cardinals)
@@ -137,11 +137,11 @@
 					return
 				tool_cooldown = world.time + 10
 				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-					to_chat(user, SPAN_WARNING("You are not trained to assemble [src]..."))
+					to_chat(user, SPAN_WARNING("你没受过组装[src]的训练..."))
 					return
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 					return
-				user.visible_message(SPAN_NOTICE("[user] set [src]'s protection panel back."),
+				user.visible_message(SPAN_NOTICE("[user]将[src]的保护面板装回原位。"),
 				SPAN_NOTICE("You set [src]'s protection panel back."))
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				build_state = BARRICADE_BSTATE_SECURED
@@ -152,11 +152,11 @@
 					return
 				tool_cooldown = world.time + 10
 				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-					to_chat(user, SPAN_WARNING("You are not trained to assemble [src]..."))
+					to_chat(user, SPAN_WARNING("你没受过组装[src]的训练..."))
 					return
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 					return
-				user.visible_message(SPAN_NOTICE("[user] loosens [src]'s anchor bolts."),
+				user.visible_message(SPAN_NOTICE("[user]拧松了[src]的锚定螺栓。"),
 				SPAN_NOTICE("You loosen [src]'s anchor bolts."))
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				anchored = FALSE
@@ -170,22 +170,22 @@
 					return
 				tool_cooldown = world.time + 10
 				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-					to_chat(user, SPAN_WARNING("You are not trained to assemble [src]..."))
+					to_chat(user, SPAN_WARNING("你没受过组装[src]的训练..."))
 					return
 				var/area/area = get_area(src)
 				if(!area.allow_construction)
-					to_chat(user, SPAN_WARNING("[src] must be secured on a proper surface!"))
+					to_chat(user, SPAN_WARNING("[src]必须被固定在合适的表面上！"))
 					return
 				if(area.flags_area & AREA_NOSECURECADES)
-					to_chat(user, SPAN_WARNING("[src] must be secured on a proper surface!"))
+					to_chat(user, SPAN_WARNING("[src]必须被固定在合适的表面上！"))
 					return
 				var/turf/open/T = loc
 				if(!(istype(T) && T.allow_construction))
-					to_chat(user, SPAN_WARNING("[src] must be secured on a proper surface!"))
+					to_chat(user, SPAN_WARNING("[src]必须被固定在合适的表面上！"))
 					return
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 					return
-				user.visible_message(SPAN_NOTICE("[user] secures [src]'s anchor bolts."),
+				user.visible_message(SPAN_NOTICE("[user]拧紧了[src]的锚定螺栓。"),
 				SPAN_NOTICE("You secure [src]'s anchor bolts."))
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				anchored = TRUE
@@ -198,14 +198,14 @@
 					return
 				tool_cooldown = world.time + 10
 				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-					to_chat(user, SPAN_WARNING("You are not trained to assemble [src]..."))
+					to_chat(user, SPAN_WARNING("你没受过组装[src]的训练..."))
 					return
-				user.visible_message(SPAN_NOTICE("[user] starts unseating [src]'s panels."),
+				user.visible_message(SPAN_NOTICE("[user]开始拆卸[src]的面板。"),
 				SPAN_NOTICE("You start unseating [src]'s panels."))
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 				busy = TRUE
 				if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
-					user.visible_message(SPAN_NOTICE("[user] takes [src]'s panels apart."),
+					user.visible_message(SPAN_NOTICE("[user]拆开了[src]的面板。"),
 					SPAN_NOTICE("You take [src]'s panels apart."))
 					playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 					deconstruct(TRUE) //Note : Handles deconstruction too !
@@ -220,9 +220,9 @@
 
 	if(closed)
 		if(recentlyflipped)
-			to_chat(user, SPAN_NOTICE("[src] has been flipped too recently!"))
+			to_chat(user, SPAN_NOTICE("[src]刚刚被翻转，操作过快！"))
 			return
-		user.visible_message(SPAN_NOTICE("[user] flips [src] closed."),
+		user.visible_message(SPAN_NOTICE("[user]将[src]翻下关闭。"),
 		SPAN_NOTICE("You flip [src] closed."))
 		open(src)
 		recentlyflipped = TRUE
@@ -232,9 +232,9 @@
 
 	else
 		if(recentlyflipped)
-			to_chat(user, SPAN_NOTICE("[src] has been flipped too recently!"))
+			to_chat(user, SPAN_NOTICE("[src]刚刚被翻转，操作过快！"))
 			return
-		user.visible_message(SPAN_NOTICE("[user] flips [src] open."),
+		user.visible_message(SPAN_NOTICE("[user]将[src]翻开。"),
 		SPAN_NOTICE("You flip [src] open."))
 		close(src)
 		recentlyflipped = TRUE
@@ -282,8 +282,8 @@
 	flags_can_pass_behind_temp &= ~PASS_OVER_THROW_MOB
 
 /obj/structure/barricade/plasteel/metal
-	name = "folding metal barricade"
-	desc = "A folding barricade made out of metal, making it slightly weaker than a normal metal barricade. Use a blowtorch to repair. Can be flipped down to create a path."
+	name = "折叠式金属路障"
+	desc = "一种由金属制成的折叠路障，比普通金属路障稍弱。使用喷灯修复。可以翻下以开辟通道。"
 	icon_state = "folding_metal_closed_0"
 	health = 400
 	maxhealth = 400

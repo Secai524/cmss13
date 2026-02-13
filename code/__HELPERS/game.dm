@@ -278,7 +278,7 @@
 
 		if(abomination)
 			if(!IS_TUTORIAL_COMPLETED(cur_obs, "xeno_abom_1"))
-				to_chat(cur_obs, SPAN_BOLDNOTICE("You were passed over for playing as an Abomination because you have not completed its tutorial."))
+				to_chat(cur_obs, SPAN_BOLDNOTICE("你被跳过了扮演憎恶的机会，因为你尚未完成其教程。"))
 				continue
 
 		candidates += cur_obs

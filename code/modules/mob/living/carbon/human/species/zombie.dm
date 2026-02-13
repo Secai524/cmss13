@@ -5,7 +5,7 @@
 /datum/species/zombie
 	group = SPECIES_HUMAN
 	name = SPECIES_ZOMBIE
-	name_plural = "Zombies"
+	name_plural = "僵尸"
 	slowdown = 0.75
 	blood_color = BLOOD_COLOR_ZOMBIE
 	icobase = 'icons/mob/humans/species/r_goo_zed.dmi'
@@ -40,7 +40,7 @@
 	var/rare_variance = TRUE
 
 /datum/species/zombie/handle_post_spawn(mob/living/carbon/human/zombie)
-	zombie.set_languages(list("Zombie"))
+	zombie.set_languages(list("僵尸"))
 
 	zombie.faction = FACTION_ZOMBIE
 	zombie.faction_group = list(FACTION_ZOMBIE)
@@ -103,14 +103,14 @@
 		if(!QDELETED(head) && !(head.status & LIMB_DESTROYED))
 			if(zombie.client)
 				zombie.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>You are dead...</u></span><br>You will rise again in one minute.", /atom/movable/screen/text/screen_text/command_order, rgb(155, 0, 200))
-			to_chat(zombie, SPAN_XENOWARNING("You fall... but your body is slowly regenerating itself."))
+			to_chat(zombie, SPAN_XENOWARNING("你倒下了……但你的身体正在缓慢再生。"))
 			var/weak_ref = WEAKREF(zombie)
 			to_revive[weak_ref] = addtimer(CALLBACK(src, PROC_REF(revive_from_death), zombie, "[REF(zombie)]"), ZOMBIE_REVIVE_TIME, TIMER_STOPPABLE|TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
 			revive_times[weak_ref] = world.time + 1 MINUTES
 		else
 			if(zombie.client)
 				zombie.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>You are dead...</u></span><br>You lost your head. No reviving for you.", /atom/movable/screen/text/screen_text/command_order, rgb(155, 0, 200))
-			to_chat(zombie, SPAN_XENOWARNING("You fall... headless, you will no longer rise."))
+			to_chat(zombie, SPAN_XENOWARNING("你倒下了……身首异处，你将无法再起身。"))
 			zombie.undefibbable = TRUE // really only for weed_food
 			SEND_SIGNAL(zombie, COMSIG_HUMAN_SET_UNDEFIBBABLE)
 
@@ -124,7 +124,7 @@
 		zombie.apply_effect(4, STUN)
 
 		zombie.make_jittery(500)
-		zombie.visible_message(SPAN_WARNING("[zombie] rises from the ground!"))
+		zombie.visible_message(SPAN_WARNING("[zombie]从地面爬起！"))
 		remove_from_revive(zombie)
 
 		handle_alert_ghost(zombie)

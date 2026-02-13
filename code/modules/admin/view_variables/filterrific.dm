@@ -67,7 +67,7 @@
 			target.add_filter(params["name"], old_filter_data["priority"], new_filter_data)
 			. = TRUE
 		if("modify_color_value")
-			var/new_color = input(usr, "Pick new filter color", "Filteriffic Colors!") as color|null
+			var/new_color = input(usr, "选择新的过滤器颜色", "Filteriffic Colors!") as color|null
 			if(new_color)
 				target.transition_filter(params["name"], list("color" = new_color), 4)
 				. = TRUE

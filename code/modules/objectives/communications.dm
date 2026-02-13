@@ -2,7 +2,7 @@
 // *** Get communications up ***
 // --------------------------------------------
 /datum/cm_objective/communications
-	name = "Restore Colony Communications"
+	name = "恢复殖民地通讯"
 	objective_flags = OBJECTIVE_DO_NOT_TREE
 	value = OBJECTIVE_EXTREME_VALUE
 	controller = TREE_MARINE

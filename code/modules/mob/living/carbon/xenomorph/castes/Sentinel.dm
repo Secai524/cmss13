@@ -32,7 +32,7 @@
 /mob/living/carbon/xenomorph/sentinel
 	caste_type = XENO_CASTE_SENTINEL
 	name = XENO_CASTE_SENTINEL
-	desc = "A slithery, spitting kind of alien."
+	desc = "一种滑行、会喷吐的异形。"
 	icon_size = 48
 	icon_state = "Sentinel Walking"
 	plasma_types = list(PLASMA_NEUROTOXIN)
@@ -68,7 +68,7 @@
 	pelt = /obj/item/pelt/sentinel
 
 /datum/behavior_delegate/sentinel_base
-	name = "Base Sentinel Behavior Delegate"
+	name = "基础哨兵行为代理"
 
 	// State
 	var/next_slash_buffed = FALSE
@@ -83,18 +83,18 @@
 		return original_damage
 
 	if(skillcheck(carbon_target, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX ))
-		carbon_target.visible_message(SPAN_DANGER("[carbon_target] withstands the neurotoxin!"))
+		carbon_target.visible_message(SPAN_DANGER("[carbon_target]抵抗住了神经毒素！"))
 		next_slash_buffed = FALSE
 		return original_damage //endurance 5 makes you immune to weak neurotoxin
 	if(ishuman(carbon_target))
 		var/mob/living/carbon/human/human = carbon_target
 		if(human.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || human.species.flags & NO_NEURO)
-			human.visible_message(SPAN_DANGER("[human] shrugs off the neurotoxin!"))
+			human.visible_message(SPAN_DANGER("[human]摆脱了神经毒素的影响！"))
 			next_slash_buffed = FALSE
 			return //species like zombies or synths are immune to neurotoxin
 	if (next_slash_buffed)
-		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We add neurotoxin into our attack, [carbon_target] is about to fall over paralyzed!"))
-		to_chat(carbon_target, SPAN_XENOHIGHDANGER("You feel like you're about to fall over, as [bound_xeno] slashes you with its neurotoxin coated claws!"))
+		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("我们在攻击中加入了神经毒素，[carbon_target]即将因麻痹而倒下！"))
+		to_chat(carbon_target, SPAN_XENOHIGHDANGER("当[bound_xeno]用涂有神经毒素的利爪攻击你时，你感觉自己快要倒下了！"))
 		carbon_target.sway_jitter(times = 3, steps = floor(NEURO_TOUCH_DELAY/3))
 		carbon_target.apply_effect(4, DAZE)
 		addtimer(CALLBACK(src, PROC_REF(paralyzing_slash), carbon_target), NEURO_TOUCH_DELAY)
@@ -119,7 +119,7 @@
 /datum/behavior_delegate/sentinel_base/proc/paralyzing_slash(mob/living/carbon/human/human_target)
 	human_target.KnockDown(2)
 	human_target.Stun(2)
-	to_chat(human_target, SPAN_XENOHIGHDANGER("You fall over, paralyzed by the toxin!"))
+	to_chat(human_target, SPAN_XENOHIGHDANGER("你倒下了，被毒素麻痹了！"))
 
 
 
@@ -129,7 +129,7 @@
 		return
 
 	if(!action_cooldown_check())
-		to_chat(src, SPAN_WARNING("We must wait for our spit glands to refill."))
+		to_chat(src, SPAN_WARNING("我们必须等待喷吐腺体重新填满。"))
 		return
 
 	var/turf/current_turf = get_turf(slowspit_user)
@@ -140,7 +140,7 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-	slowspit_user.visible_message(SPAN_XENOWARNING("[slowspit_user] spits at [target]!"),
+	slowspit_user.visible_message(SPAN_XENOWARNING("[slowspit_user]向[target]喷吐！"),
 	SPAN_XENOWARNING("You spit at [target]!") )
 	var/sound_to_play = pick(1, 2) == 1 ? 'sound/voice/alien_spitacid.ogg' : 'sound/voice/alien_spitacid2.ogg'
 	playsound(slowspit_user.loc, sound_to_play, 25, 1)
@@ -161,7 +161,7 @@
 		return
 
 	if(!action_cooldown_check())
-		to_chat(src, SPAN_WARNING("We must wait for your spit glands to refill."))
+		to_chat(src, SPAN_WARNING("我们必须等待你的喷吐腺体重新填满。"))
 		return
 
 	var/turf/current_turf = get_turf(scatterspit_user)
@@ -172,7 +172,7 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-	scatterspit_user.visible_message(SPAN_XENOWARNING("[scatterspit_user] spits at [target]!"),
+	scatterspit_user.visible_message(SPAN_XENOWARNING("[scatterspit_user]向[target]喷吐！"),
 	SPAN_XENOWARNING("You spit at [target]!") )
 	var/sound_to_play = pick(1, 2) == 1 ? 'sound/voice/alien_spitacid.ogg' : 'sound/voice/alien_spitacid2.ogg'
 	playsound(scatterspit_user.loc, sound_to_play, 25, 1)
@@ -203,7 +203,7 @@
 	if (istype(behavior))
 		behavior.next_slash_buffed = TRUE
 
-	to_chat(paraslash_user, SPAN_XENOHIGHDANGER("Our next slash will apply neurotoxin!"))
+	to_chat(paraslash_user, SPAN_XENOHIGHDANGER("我们的下一次劈砍将施加神经毒素！"))
 	button.icon_state = "template_active"
 
 	addtimer(CALLBACK(src, PROC_REF(unbuff_slash)), buff_duration)
@@ -222,5 +222,5 @@
 			return
 		behavior.next_slash_buffed = FALSE
 
-	to_chat(unbuffslash_user, SPAN_XENODANGER("We have waited too long, our slash will no longer apply neurotoxin!"))
+	to_chat(unbuffslash_user, SPAN_XENODANGER("我们等待太久了，我们的劈砍将不再施加神经毒素！"))
 	button.icon_state = "template_xeno"

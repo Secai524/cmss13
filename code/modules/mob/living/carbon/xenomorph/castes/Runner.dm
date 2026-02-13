@@ -34,7 +34,7 @@
 /mob/living/carbon/xenomorph/runner
 	caste_type = XENO_CASTE_RUNNER
 	name = XENO_CASTE_RUNNER
-	desc = "A small red alien that looks like it could run fairly quickly..."
+	desc = "一种体型较小、看起来能跑得相当快的红色异形..."
 	icon = 'icons/mob/xenos/castes/tier_1/runner.dmi'
 	icon_state = "Runner Walking"
 	icon_size = 64
@@ -101,7 +101,7 @@
 	return TRUE
 
 /datum/behavior_delegate/runner_base
-	name = "Base Runner Behavior Delegate"
+	name = "基础奔跑者行为代理"
 
 /datum/behavior_delegate/runner_base/melee_attack_additional_effects_self()
 	..()

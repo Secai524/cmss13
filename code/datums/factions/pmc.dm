@@ -1,5 +1,5 @@
 /datum/faction/pmc
-	name = "Private Military Company"
+	name = "私人军事公司"
 	faction_tag = FACTION_PMC
 	base_icon_file = 'icons/mob/hud/factions/wy.dmi'
 

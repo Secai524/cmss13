@@ -3,7 +3,7 @@
 //*******************************************************************************/
 
 /datum/supply_packs/ammo_ltb_cannon
-	name = "LTB Cannon magazines (x6)"
+	name = "LTB加农炮弹匣（x6）"
 	contains = list(
 		/obj/item/ammo_magazine/hardpoint/ltb_cannon,
 		/obj/item/ammo_magazine/hardpoint/ltb_cannon,
@@ -18,7 +18,7 @@
 	group = "Vehicle Ammo"
 
 /datum/supply_packs/ammo_ltaaap_minigun
-	name = "LTAA-AP Minigun magazines (x3)"
+	name = "LTAA-AP迷你机枪弹匣（x3）"
 	contains = list(
 		/obj/item/ammo_magazine/hardpoint/ltaaap_minigun,
 		/obj/item/ammo_magazine/hardpoint/ltaaap_minigun,
@@ -30,7 +30,7 @@
 	group = "Vehicle Ammo"
 
 /datum/supply_packs/ammo_ace_autocannon
-	name = "AC3-E Autocannon magazines (x5)"
+	name = "AC3-E自动加农炮弹匣（x5）"
 	contains = list(
 		/obj/item/ammo_magazine/hardpoint/ace_autocannon,
 		/obj/item/ammo_magazine/hardpoint/ace_autocannon,
@@ -44,7 +44,7 @@
 	group = "Vehicle Ammo"
 
 /datum/supply_packs/ammo_drgn_flamer
-	name = "DRG-N Offensive Flamer Unit fuel tanks (x3)"
+	name = "DRG-N攻击型火焰喷射器燃料罐（x3）"
 	contains = list(
 		/obj/item/ammo_magazine/hardpoint/primary_flamer,
 		/obj/item/ammo_magazine/hardpoint/primary_flamer,
@@ -56,7 +56,7 @@
 	group = "Vehicle Ammo"
 
 /datum/supply_packs/ammo_dualcannon
-	name = "PARS-159 Boyars Dualcannon magazines (x5)"
+	name = "PARS-159博亚尔斯双联加农炮弹匣（x5）"
 	contains = list(
 		/obj/item/ammo_magazine/hardpoint/boyars_dualcannon,
 		/obj/item/ammo_magazine/hardpoint/boyars_dualcannon,
@@ -70,7 +70,7 @@
 	group = "Vehicle Ammo"
 
 /datum/supply_packs/ammo_glauncher
-	name = "M92T Grenade Launcher magazines (x5)"
+	name = "M92T榴弹发射器弹匣（x5）"
 	contains = list(
 		/obj/item/ammo_magazine/hardpoint/tank_glauncher,
 		/obj/item/ammo_magazine/hardpoint/tank_glauncher,
@@ -84,7 +84,7 @@
 	group = "Vehicle Ammo"
 
 /datum/supply_packs/ammo_slauncher
-	name = "M34A2-A Multipurpose Turret smoke screen magazines (x4)"
+	name = "M34A2-A多用途炮塔烟雾弹弹匣（x4）"
 	contains = list(
 		/obj/item/ammo_magazine/hardpoint/turret_smoke,
 		/obj/item/ammo_magazine/hardpoint/turret_smoke,
@@ -96,7 +96,7 @@
 	group = "Vehicle Ammo"
 
 /datum/supply_packs/ammo_towlauncher
-	name = "TOW Launcher magazines (x3)"
+	name = "TOW发射器弹匣（x3）"
 	contains = list(/obj/item/hardpoint/secondary/towlauncher)
 	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
@@ -104,7 +104,7 @@
 	group = "Vehicle Ammo"
 
 /datum/supply_packs/ammo_m56_cupola
-	name = "M56 Cupola magazines (x2)"
+	name = "M56炮塔弹匣（x2）"
 	contains = list(
 		/obj/item/ammo_magazine/hardpoint/m56_cupola,
 		/obj/item/ammo_magazine/hardpoint/m56_cupola,
@@ -115,7 +115,7 @@
 	group = "Vehicle Ammo"
 
 /datum/supply_packs/tank_flamer_ammo
-	name = "LZR-N Flamer Unit fuel tanks (x2)"
+	name = "LZR-N火焰喷射器燃料罐（x2）"
 	contains = list(
 		/obj/item/ammo_magazine/hardpoint/secondary_flamer,
 		/obj/item/ammo_magazine/hardpoint/secondary_flamer,
@@ -126,7 +126,7 @@
 	group = "Vehicle Ammo"
 
 /datum/supply_packs/ammo_frontalcannon
-	name = "Bleihagel RE-RE700 Frontal Cannon magazines (x2)"
+	name = "Bleihagel RE-RE700前部加农炮弹匣（x2）"
 	contains = list(
 		/obj/item/ammo_magazine/hardpoint/m56_cupola/frontal_cannon,
 		/obj/item/ammo_magazine/hardpoint/m56_cupola/frontal_cannon,
@@ -137,7 +137,7 @@
 	group = "Vehicle Ammo"
 
 /datum/supply_packs/ammo_flarelauncher
-	name = "M-87F Flare Launcher magazines (x4)"
+	name = "M-87F照明弹发射器弹匣（x4）"
 	contains = list(
 		/obj/item/ammo_magazine/hardpoint/flare_launcher,
 		/obj/item/ammo_magazine/hardpoint/flare_launcher,
@@ -150,7 +150,7 @@
 	group = "Vehicle Ammo"
 
 /datum/supply_packs/ammo_arcsentry
-	name = "RE700 Rotary Cannon magazines (x3)"
+	name = "RE700转轮机炮弹匣（x3）"
 	contains = list(
 		/obj/item/ammo_magazine/hardpoint/arc_sentry,
 		/obj/item/ammo_magazine/hardpoint/arc_sentry,

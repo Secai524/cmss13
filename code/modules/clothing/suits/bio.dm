@@ -2,8 +2,8 @@
 //Standard biosuit, orange stripe
 
 /obj/item/clothing/head/bio_hood
-	name = "bio hood"
-	desc = "A hood that protects the head and face from biological contaminants."
+	name = "生化防护兜帽"
+	desc = "一种保护头部和面部免受生物污染物侵害的头罩。"
 	icon_state = "bio_general"
 	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
 	item_icons = list(
@@ -23,14 +23,14 @@
 	siemens_coefficient = 0.9
 
 /obj/item/clothing/head/bio_hood/synth
-	desc = "A hood that protects the head and face from biological contaminants, synthetic compliant. Offers no real protection."
+	desc = "一种保护头部和面部免受生物污染物侵害的头罩，合成人适用。不提供实际防护。"
 	armor_bio = CLOTHING_ARMOR_NONE
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_NONE
 
 /obj/item/clothing/suit/bio_suit
-	name = "bio suit"
-	desc = "A suit that protects against biological contamination."
+	name = "生物防护服"
+	desc = "一种防止生物污染的防护服。"
 	icon_state = "bio_general"
 	item_state = "bio_suit"
 	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
@@ -55,8 +55,8 @@
 	)
 
 /obj/item/clothing/suit/storage/synthbio
-	name = "bio suit"
-	desc = "Synthetic compliant biohazard suit. Intended to allow a synthetic to offer the illusion of infection control to humans. Has had most of the internal protective lining removed, allowing it to hold equipment and be lighter to move in."
+	name = "生物防护服"
+	desc = "合成人适用的生物危害防护服。旨在让合成人给人类一种感染控制的假象。其内部大部分防护衬里已被移除，以便容纳装备并减轻移动负担。"
 	icon_state = "bio_general"
 	item_state = "bio_suit"
 	icon = 'icons/obj/items/clothing/suits/hazard.dmi'

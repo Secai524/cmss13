@@ -1,11 +1,11 @@
 // MUTINEER
 /datum/player_action/make_mutineer
 	action_tag = "make_mutineer"
-	name = "Make Mutineer"
+	name = "设为叛变者"
 
 /datum/player_action/make_mutineer/act(client/user, mob/target, list/params)
 	if(!ishuman(target))
-		to_chat(user, SPAN_WARNING("This can only be done to instances of type /mob/living/carbon/human."))
+		to_chat(user, SPAN_WARNING("此操作仅能对 /mob/living/carbon/human 类型的实例执行。"))
 		return
 
 	var/mob/living/carbon/human/H = target
@@ -22,7 +22,7 @@
 // XENO
 /datum/player_action/change_hivenumber
 	action_tag = "xeno_change_hivenumber"
-	name = "Change Hivenumber"
+	name = "更改巢穴编号"
 	permissions_required = R_SPAWN
 
 /datum/player_action/change_hivenumber/act(client/user, mob/target, list/params)
@@ -40,7 +40,7 @@
 
 /datum/player_action/make_cultist
 	action_tag = "make_cultist"
-	name = "Make Cultist"
+	name = "设为邪教徒"
 	permissions_required = R_ADMIN
 
 /datum/player_action/make_cultist/act(client/user, mob/target, list/params)

@@ -3,8 +3,8 @@
 
 //Come get some.
 /obj/item/weapon/gun/smartgun
-	name = "\improper M56A2 smartgun"
-	desc = "The actual firearm in the 4-piece M56A2 Smartgun System. Essentially a heavy, mobile machinegun."
+	name = "\improper M56A2 智能枪"
+	desc = "M56A2智能枪系统的四件套中的实际火器。本质上是一挺重型机动机枪。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi'
 	icon_state = "m56"
 	item_state = "m56"
@@ -137,7 +137,7 @@
 	. = ..()
 
 /obj/item/weapon/gun/smartgun/cock(mob/user)
-	to_chat(user, SPAN_WARNING("You can't manually unload a smartgun's chamber!"))
+	to_chat(user, SPAN_WARNING("你无法手动退下智能枪的弹膛！"))
 	return
 
 /obj/item/weapon/gun/smartgun/set_gun_attachment_offsets()
@@ -192,16 +192,16 @@
 		if(!locate(src) in list(user.get_active_hand(), user.get_inactive_hand()))
 			return TRUE
 		if(user.get_active_hand() && user.get_inactive_hand())
-			to_chat(user, SPAN_WARNING("You can't do that with your hands full!"))
+			to_chat(user, SPAN_WARNING("你双手没空，做不到！"))
 			return TRUE
 		if(has_cover)
 			if(!cover_open)
 				playsound(src.loc, 'sound/handling/smartgun_open.ogg', 50, TRUE, 3)
-				to_chat(user, SPAN_NOTICE("You open \the [src]'s feed cover, allowing the drum to be removed."))
+				to_chat(user, SPAN_NOTICE("你打开\the [src]的供弹盖，允许取下弹鼓。"))
 				cover_open = TRUE
 			else
 				playsound(src.loc, 'sound/handling/smartgun_close.ogg', 50, TRUE, 3)
-				to_chat(user, SPAN_NOTICE("You close \the [src]'s feed cover."))
+				to_chat(user, SPAN_NOTICE("你关上\the [src]的供弹盖。"))
 				cover_open = FALSE
 		update_icon()
 		return TRUE
@@ -211,9 +211,9 @@
 /obj/item/weapon/gun/smartgun/attackby(obj/item/attacking_object, mob/user)
 	if(istype(attacking_object, /obj/item/smartgun_battery))
 		var/obj/item/smartgun_battery/new_cell = attacking_object
-		visible_message(SPAN_NOTICE("[user] swaps out the power cell in [src]."),
+		visible_message(SPAN_NOTICE("[user]更换了[src]中的电池。"),
 			SPAN_NOTICE("You swap out the power cell in [src] and drop the old one."))
-		to_chat(user, SPAN_NOTICE("The new cell contains: [new_cell.power_cell.charge] power."))
+		to_chat(user, SPAN_NOTICE("新电池包含：[new_cell.power_cell.charge]能量。"))
 		battery.update_icon()
 		battery.forceMove(get_turf(user))
 		battery = new_cell
@@ -266,7 +266,7 @@
 
 /datum/action/item_action/smartgun/toggle_motion_detector/New(Target, obj/item/holder)
 	. = ..()
-	name = "Toggle Motion Detector"
+	name = "切换动态探测器"
 	button.name = name
 
 /datum/action/item_action/smartgun/toggle_motion_detector/action_activate()
@@ -288,7 +288,7 @@
 
 /datum/action/item_action/smartgun/toggle_auto_fire/New(Target, obj/item/holder)
 	. = ..()
-	name = "Toggle Auto Fire"
+	name = "切换自动开火"
 	action_icon_state = "autofire"
 	button.name = name
 	button.overlays.Cut()
@@ -312,7 +312,7 @@
 
 /datum/action/item_action/smartgun/toggle_aim_assist/New(Target, obj/item/holder)
 	. = ..()
-	name = "Toggle Aim Assist"
+	name = "切换瞄准辅助"
 
 	update_icon()
 	button.name = name
@@ -335,7 +335,7 @@
 
 /datum/action/item_action/smartgun/toggle_accuracy_improvement/New(Target, obj/item/holder)
 	. = ..()
-	name = "Toggle Accuracy Improvement"
+	name = "切换精度提升"
 	action_icon_state = "accuracy_improvement"
 	button.name = name
 	button.overlays.Cut()
@@ -354,7 +354,7 @@
 
 /datum/action/item_action/smartgun/toggle_recoil_compensation/New(Target, obj/item/holder)
 	. = ..()
-	name = "Toggle Recoil Compensation"
+	name = "切换后坐力补偿"
 	action_icon_state = "recoil_compensation"
 	button.name = name
 	button.overlays.Cut()
@@ -373,7 +373,7 @@
 
 /datum/action/item_action/smartgun/toggle_frontline_mode/New(Target, obj/item/holder)
 	. = ..()
-	name = "Toggle Frontline Mode"
+	name = "切换前线模式"
 	action_icon_state = "frontline_toggle_off"
 	listen_signal = COMSIG_KB_HUMAN_WEAPON_TOGGLE_FRONTLINE_MODE
 	button.name = name
@@ -393,7 +393,7 @@
 
 /datum/action/item_action/smartgun/toggle_lethal_mode/New(Target, obj/item/holder)
 	. = ..()
-	name = "Toggle IFF"
+	name = "切换敌我识别"
 	action_icon_state = "iff_toggle_on"
 	button.name = name
 	button.overlays.Cut()
@@ -412,7 +412,7 @@
 
 /datum/action/item_action/smartgun/toggle_ammo_type/New(Target, obj/item/holder)
 	. = ..()
-	name = "Toggle Ammo Type"
+	name = "切换弹药类型"
 	action_icon_state = "ammo_swap_normal"
 	button.name = name
 	button.overlays.Cut()
@@ -435,9 +435,9 @@
 //more general procs
 
 /obj/item/weapon/gun/smartgun/proc/toggle_frontline_mode(mob/user, silent)
-	to_chat(user, "[icon2html(src, user)] You [frontline_enabled? "<B>disable</b>" : "<B>enable</b>"] [src]'s frontline mode. You will now [frontline_enabled ? "be able to shoot through friendlies" : "deal increased damage but be unable to shoot through friendlies"].")
+	to_chat(user, "[icon2html(src, user)] 你[frontline_enabled? "<B>disable</b>" : "<B>enable</b>"] [src]'s frontline mode. You will now [frontline_enabled ? "be able to shoot through friendlies" : "deal increased damage but be unable to shoot through friendlies"].")
 	if(!silent)
-		balloon_alert(user, "frontline mode [frontline_enabled ? "disabled" : "enabled"]")
+		balloon_alert(user, "前线模式[frontline_enabled ? "disabled" : "enabled"]")
 		playsound(loc,'sound/machines/click.ogg', 25, 1)
 	frontline_enabled = !frontline_enabled
 ///Determines the color of the muzzle flash, depending on whether frontline mode is enabled or not.
@@ -461,15 +461,15 @@
 			return FALSE
 		var/mob/living/carbon/human/H = user
 		if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_SMARTGUN) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
-			balloon_alert(user, "insufficient skills")
+			balloon_alert(user, "技能不足")
 			return FALSE
 		if(requires_harness)
 			if(!H.wear_suit || !(H.wear_suit.flags_inventory & SMARTGUN_HARNESS))
-				balloon_alert(user, "harness required")
+				balloon_alert(user, "需要背带")
 				return FALSE
 		if(cover_open)
-			to_chat(H, SPAN_WARNING("You can't fire \the [src] with the feed cover open! (alt-click to close)"))
-			balloon_alert(user, "cannot fire; feed cover open")
+			to_chat(H, SPAN_WARNING("供弹口盖打开时无法射击\the [src]！(Alt+点击关闭)"))
+			balloon_alert(user, "无法射击；供弹口盖打开")
 			return FALSE
 
 /obj/item/weapon/gun/smartgun/unique_action(mob/user)
@@ -480,8 +480,8 @@
 
 /obj/item/weapon/gun/smartgun/proc/toggle_ammo_type(mob/user)
 	secondary_toggled = !secondary_toggled
-	to_chat(user, "[icon2html(src, user)] You changed [src]'s ammo preparation procedures. You now fire [secondary_toggled ? "armor piercing rounds" : "highly precise rounds"].")
-	balloon_alert(user, "firing [secondary_toggled ? "armor piercing" : "highly precise"]")
+	to_chat(user, "[icon2html(src, user)] 你更改了[src]的弹药准备程序。你现在发射[secondary_toggled ? "armor piercing rounds" : "highly precise rounds"].")
+	balloon_alert(user, "发射[secondary_toggled ? "armor piercing" : "highly precise"]")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	ammo = secondary_toggled ? ammo_secondary : ammo_primary
 	var/datum/action/item_action/smartgun/toggle_ammo_type/TAT = locate(/datum/action/item_action/smartgun/toggle_ammo_type) in actions
@@ -492,7 +492,7 @@
 	ammo = secondary_toggled ? ammo_secondary : ammo_primary
 
 /obj/item/weapon/gun/smartgun/proc/toggle_lethal_mode(mob/user)
-	to_chat(user, "[icon2html(src, usr)] You [iff_enabled? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s fire restriction. You will [iff_enabled ? "harm anyone in your way" : "target through IFF"].")
+	to_chat(user, "[icon2html(src, usr)] 你[iff_enabled? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s fire restriction. You will [iff_enabled ? "harm anyone in your way" : "target through IFF"].")
 	balloon_alert(user, "[iff_enabled ? "disabled" : "enabled"] IFF")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	iff_enabled = !iff_enabled
@@ -538,17 +538,17 @@
 			battery.power_cell.charge -= actual_drain
 		else
 			battery.power_cell.charge = 0
-			to_chat(usr, SPAN_WARNING("[src] emits a low power warning and immediately shuts down!"))
+			to_chat(usr, SPAN_WARNING("[src]发出低电量警告并立即关机！"))
 			return FALSE
 		return TRUE
 	if(!battery || battery.power_cell.charge == 0)
-		balloon_alert(usr, "low power")
+		balloon_alert(usr, "电量低")
 		return FALSE
 	return FALSE
 
 /obj/item/weapon/gun/smartgun/proc/toggle_recoil_compensation(mob/user)
-	to_chat(user, "[icon2html(src, usr)] You [recoil_compensation? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s recoil compensation.")
-	balloon_alert(user, "recoil compensation [recoil_compensation ? "disabled" : "enabled"]")
+	to_chat(user, "[icon2html(src, usr)] 你[recoil_compensation? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s recoil compensation.")
+	balloon_alert(user, "后坐力补偿[recoil_compensation ? "disabled" : "enabled"]")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	recoil_compensation = !recoil_compensation
 	if(recoil_compensation)
@@ -558,8 +558,8 @@
 	recalculate_attachment_bonuses() //Includes set_gun_config_values() as well as attachments.
 
 /obj/item/weapon/gun/smartgun/proc/toggle_accuracy_improvement(mob/user)
-	to_chat(user, "[icon2html(src, usr)] You [accuracy_improvement? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s accuracy improvement.")
-	balloon_alert(user, "accuracy improvement [accuracy_improvement ? "disabled" : "enabled"]")
+	to_chat(user, "[icon2html(src, usr)] 你[accuracy_improvement? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s accuracy improvement.")
+	balloon_alert(user, "精度提升[accuracy_improvement ? "disabled" : "enabled"]")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	accuracy_improvement = !accuracy_improvement
 	if(accuracy_improvement)
@@ -570,10 +570,10 @@
 
 /obj/item/weapon/gun/smartgun/proc/toggle_auto_fire(mob/user)
 	if(!(flags_item & WIELDED))
-		to_chat(user, "[icon2html(src, usr)] You need to wield \the [src] to enable autofire.")
+		to_chat(user, "[icon2html(src, usr)] 你需要双手持握\the [src]以启用全自动射击。")
 		return //Have to be actually be wielded.
-	to_chat(user, "[icon2html(src, usr)] You [auto_fire? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s auto fire mode.")
-	balloon_alert(user, "autofire [auto_fire ? "disabled" : "enabled"]")
+	to_chat(user, "[icon2html(src, usr)] 你[auto_fire? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s auto fire mode.")
+	balloon_alert(user, "全自动射击[auto_fire ? "disabled" : "enabled"]")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	auto_fire = !auto_fire
 	var/datum/action/item_action/smartgun/toggle_auto_fire/TAF = locate(/datum/action/item_action/smartgun/toggle_auto_fire) in actions
@@ -582,8 +582,8 @@
 
 /obj/item/weapon/gun/smartgun/proc/toggle_aim_assist(mob/user, silent)
 	if(!silent)
-		to_chat(user, "[icon2html(src, user)] You [aim_assist ? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s aim assist.")
-		balloon_alert(user, "aim assist [aim_assist? "disabled" : "enabled"]")
+		to_chat(user, "[icon2html(src, user)] 你[aim_assist ? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s aim assist.")
+		balloon_alert(user, "瞄准辅助[aim_assist? "disabled" : "enabled"]")
 		playsound(loc,'sound/machines/click.ogg', 25, 1)
 
 	aim_assist = !aim_assist
@@ -794,8 +794,8 @@
 	target = null
 
 /obj/item/weapon/gun/smartgun/proc/toggle_motion_detector(mob/user)
-	to_chat(user, "[icon2html(src, usr)] You [motion_detector? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s motion detector.")
-	balloon_alert(user, "motion detector [motion_detector ? "disabled" : "enabled"]")
+	to_chat(user, "[icon2html(src, usr)] 你[motion_detector? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s motion detector.")
+	balloon_alert(user, "动态探测器[motion_detector ? "disabled" : "enabled"]")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	motion_detector = !motion_detector
 	var/datum/action/item_action/smartgun/toggle_motion_detector/TMD = locate(/datum/action/item_action/smartgun/toggle_motion_detector) in actions
@@ -812,7 +812,7 @@
 //CO SMARTGUN
 /obj/item/weapon/gun/smartgun/co
 	name = "\improper M56A2C 'Cavalier' smartgun"
-	desc = "The actual firearm in the 4-piece M56A2C Smartgun system. Back order only. Besides a more robust weapons casing, an ID lock system and a fancy paintjob, the gun's performance is identical to the standard-issue M56A2.\nAlt-click it to open the feed cover and allow for reloading."
+	desc = "M56A2C智能枪四件套系统中的实际枪械。仅限预订。除了更坚固的武器外壳、ID锁定系统和花哨的涂装外，其性能与标准配发的M56A2完全相同。\nAlt+点击可打开供弹口盖进行装填。"
 	icon_state = "m56c"
 	item_state = "m56c"
 	random_cosmetic_chance = 10
@@ -840,7 +840,7 @@
 	. = ..()
 	if(is_locked && linked_human && linked_human != user)
 		if(linked_human.is_revivable() || linked_human.stat != DEAD)
-			to_chat(user, SPAN_WARNING("[icon2html(src, usr)] Trigger locked by [src]. Unauthorized user."))
+			to_chat(user, SPAN_WARNING("[icon2html(src, usr)] 扳机已被[src]锁定。未授权用户。"))
 			playsound(loc,'sound/weapons/gun_empty.ogg', 25, 1)
 			return FALSE
 
@@ -864,7 +864,7 @@
 
 /datum/action/item_action/co_sg/toggle_id_lock/New(Target, obj/item/holder)
 	. = ..()
-	name = "Toggle ID lock"
+	name = "切换ID锁定"
 	action_icon_state = "id_lock_locked"
 	button.name = name
 	button.overlays.Cut()
@@ -883,13 +883,13 @@
 
 /obj/item/weapon/gun/smartgun/co/proc/toggle_lock(mob/user)
 	if(linked_human && usr != linked_human)
-		to_chat(usr, SPAN_WARNING("[icon2html(src, usr)] Action denied by \the [src]. Unauthorized user."))
+		to_chat(usr, SPAN_WARNING("[icon2html(src, usr)] 操作被\the [src]拒绝。未授权用户。"))
 		return
 	else if(!linked_human)
 		name_after_co(usr)
 
 	is_locked = !is_locked
-	to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You [is_locked? "lock": "unlock"] \the [src]."))
+	to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] 你[is_locked? "lock": "unlock"] \the [src]."))
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 
 // action end \\
@@ -898,7 +898,7 @@
 	. = ..()
 	if(!linked_human)
 		src.name_after_co(user, src)
-		to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You pick up \the [src], registering yourself as its owner."))
+		to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] 你拾起了\the [src]，将自己注册为其所有者。"))
 
 /obj/item/weapon/gun/smartgun/co/proc/name_after_co(mob/living/carbon/human/H, obj/item/weapon/gun/smartgun/co/I)
 	linked_human = H
@@ -923,7 +923,7 @@
 //TERMINATOR SMARTGUN
 /obj/item/weapon/gun/smartgun/terminator
 	name = "\improper M57R 'Terminator' smartgun"
-	desc = "The actual experimental firearm in the 4-piece M57R Smartgun System. Essentially a heavy, mobile machinegun. This one looks slightly outdated, but far more menacing."
+	desc = "M57R智能枪四件套系统中的实验性实际枪械。本质上是一挺重型机动机枪。这把看起来略显过时，但威慑力十足。"
 	icon_state = "m50r"
 	item_state = "m50r"
 	can_change_ammo = FALSE //Only one ammo type, no toggling.
@@ -948,7 +948,7 @@
 
 /obj/item/weapon/gun/smartgun/l56a2
 	name = "\improper L56A2 smartgun"
-	desc = "The actual firearm in the 4-piece L56A2 Smartgun System. If you have this, you're about to bring some serious pain to anyone in your way."
+	desc = "L56A2智能枪四件套系统中的实际枪械。如果你有这玩意儿，你即将给任何挡路者带来巨大的痛苦。"
 	desc_lore = "Originally produced for the Three World Empires Royal Marines forces, it mostly ended up in hands of W-Y PMCs and other affiliated forces, with Three World Empire giving preference for other design, that is still produced by W-Y regardless. Compared to more commonly used M56A2, it has improved recoil control, better electronics and advanced tracking software."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/machineguns.dmi'
 	icon_state = "l56d"
@@ -974,7 +974,7 @@
 
 /obj/item/weapon/gun/smartgun/l56a2/elite
 	name = "\improper L56A2D 'Dirty' smartgun"
-	desc = "The actual firearm in the 4-piece L56A2D Smartgun System. If you have this, you're about to bring some serious pain to anyone in your way."
+	desc = "L56A2D智能枪系统的四件套中的实际枪械。如果你拿着这个，你即将给任何挡路者带来严重的痛苦。"
 	desc_lore = "Essentially a reuse of a proof of concept originally made as M57D, utilizing depleted uranium rounds, this one reuses same ideas on a basis of a more robust L56A2 smartgun."
 	current_mag = /obj/item/ammo_magazine/smartgun/dirty
 	ammo = /obj/item/ammo_magazine/smartgun/dirty
@@ -1001,7 +1001,7 @@
 
 /obj/item/weapon/gun/smartgun/clf
 	name = "\improper scavenged M56 'Freedom' smartgun"
-	desc = "A smartgun abomination made from salvaged-parts sloppily wired and welded together, it appears to be rusted across it's frame. As whoever made this thing, clearly had no resources or proper tools to assemble it to an efficient usable state."
+	desc = "一个由回收零件粗制滥造、胡乱接线焊接而成的智能枪怪物，其框架似乎已锈迹斑斑。显然，制造这东西的人既没有资源也没有合适的工具将其组装成高效可用的状态。"
 	desc_lore = {"After long-fiery battles that partook within the Neroid Sector of the frontier, the United States Colonial Marines were pushed out by Colonial Liberation Front cells. Through a set of tactics, utilizing guerilla warfare mostly based around hit-and runs to compensate for the lack of proper logistics.
 
 		On it's aftermath gear unrecovered was left on the way, which the front proceeded to use to their own advantage. Taking what they could from the corpses of the infantry left behind to cover their needs, the mechanisms and electronics from the M56A2's were extracted from the broken-down exemplarys. Then placed into a makeshift frame although primitive and rudimentary due to no detailed schematics or resources at hand. Then issued out as  a desperate measure of giving an equal fire-support weapon to it's troops.
@@ -1051,14 +1051,14 @@
 	if(jammed)
 		if(world.time % 3)
 			playsound(src, 'sound/weapons/handling/gun_jam_click.ogg', 35, TRUE)
-			to_chat(user, SPAN_WARNING("Your gun is jammed! Mash Unique-Action to unjam it!"))
-			balloon_alert(user, "*jammed*")
+			to_chat(user, SPAN_WARNING("你的枪卡壳了！猛按特殊动作键来排除故障！"))
+			balloon_alert(user, "*卡壳*")
 		return NONE
 	else if(prob(0.6)) //0.6% chance to jam on fire
 		jammed = TRUE
 		playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 50, FALSE)
-		user.visible_message(SPAN_DANGER("[src] makes a noticeable clicking noise!"), SPAN_HIGHDANGER("\The [src] suddenly jams and refuses to fire! Mash Unique-Action to unjam it."))
-		balloon_alert(user, "*jammed*")
+		user.visible_message(SPAN_DANGER("[src]发出了明显的咔哒声！"), SPAN_HIGHDANGER("\The [src] suddenly jams and refuses to fire! Mash Unique-Action to unjam it."))
+		balloon_alert(user, "*卡壳*")
 		return NONE
 	else if(prob(0.8)) //0.8% chance to malfunction on fire
 		switch(rand(1, 7))
@@ -1076,7 +1076,7 @@
 				toggle_ammo_type(user)
 			if(7)
 				toggle_lethal_mode(user)
-		to_chat(user, SPAN_HIGHDANGER("The [src] electronics malfunctions!"))
+		to_chat(user, SPAN_HIGHDANGER("[src]的电子系统发生故障！"))
 		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
 		sparks.set_up(5, 3, src)
 		sparks.start()
@@ -1087,15 +1087,15 @@
 /obj/item/weapon/gun/smartgun/clf/unique_action(mob/user)
 	if(jammed)
 		if(prob(CLF_SMARTGUN_UNJAM_CHANCE))
-			to_chat(user, SPAN_GREEN("You successfully unjam \the [src]!"))
+			to_chat(user, SPAN_GREEN("你成功排除了\the [src]的故障！"))
 			playsound(src, 'sound/weapons/handling/gun_jam_rack_success.ogg', 50, FALSE)
 			jammed = FALSE
 			cock_cooldown += 1 SECONDS //so they don't accidentally cock a bullet away
-			balloon_alert(user, "*unjammed!*")
+			balloon_alert(user, "*故障排除！*")
 		else
-			to_chat(user, SPAN_NOTICE("You start wildly racking the bolt back and forth attempting to unjam \the [src]!"))
+			to_chat(user, SPAN_NOTICE("你开始疯狂地来回拉动枪栓，试图排除\the [src]的故障！"))
 			playsound(src, "gun_jam_rack", 50, FALSE)
-			balloon_alert(user, "*rack*")
+			balloon_alert(user, "*拉动*")
 		return
 	. = ..()
 
@@ -1124,7 +1124,7 @@
 
 /obj/item/smartgun_battery
 	name = "\improper DV9 smartgun battery"
-	desc = "A standard-issue 9-volt lithium dry-cell battery, most commonly used within the USCMC to power smartguns. Per the manual, one battery is good for up to 50000 rounds and plugs directly into the smartgun's power receptacle, which is only compatible with this type of battery. Various auxiliary modes usually bring the round count far lower. While this cell is incompatible with most standard electrical system, it can be charged by common rechargers in a pinch. USCMC smartgunners often guard them jealously."
+	desc = "一种标准制式的9伏锂干电池，在USCMC中最常用于为智能枪供电。根据手册，一节电池最多可支持50000发子弹，并直接插入智能枪的电源插座，该插座仅兼容此类电池。各种辅助模式通常会使可发射弹数大幅降低。虽然此电池与大多数标准电气系统不兼容，但在紧急情况下可用普通充电器充电。USCMC的智能枪手们常常对其倍加珍惜。"
 
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "smartguncell"
@@ -1153,7 +1153,7 @@
 
 /obj/item/weapon/gun/smartgun/rmc
 	name = "\improper L56A1 smartgun"
-	desc = "The actual firearm in the 2-piece L56A2 Smartgun System. This variant is used by the Three World Empires Royal Marines Commando units."
+	desc = "L56A2智能枪系统的两件套中的实际枪械。此型号被三世界帝国皇家海军陆战队突击队单位使用。"
 	desc_lore = "The L56A1 is a W-Y licensed copy of the original M56 developed for the USMC, this version was marketed to the 3WE's Royal Marines as having a lighter weight construction and as being more reliable then the LMG's in service at the time."
 	current_mag = /obj/item/ammo_magazine/smartgun/holo_targetting
 	ammo = /obj/item/ammo_magazine/smartgun/holo_targetting
@@ -1173,7 +1173,7 @@
 
 /obj/item/weapon/gun/smartgun/upp
 	name = "\improper RFVS37 smartgun"
-	desc = "The actual firearm in the 2-piece RFVS37 Smartgun System. This experimental variant is used by the Union of Progressive Peoples units."
+	desc = "RFVS37智能枪系统的两件套中的实际枪械。此实验型号被进步人民联盟单位使用。"
 	desc_lore = "Seeing the successful use of the M56 and L56 by the UA and 3WE Militaries during military conflicts such as the linna 349 campaign and the the australia wars, the UPP SOF saw a need for a similar self aiming LMG for their own units, following extensive trials the NORCOMM RFVS-37 was chosen, fulfilling all of the SOF's criteria."
 	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/machineguns.dmi'
@@ -1190,7 +1190,7 @@
 //  Solar devils SG, frontline mode only
 
 /obj/item/weapon/gun/smartgun/pve
-	desc = "The actual firearm in the 4-piece M56A2 Smartgun System. This is a variant used by the Solar Devils Batallion, utilizing a 'frontline only' IFF system that refuses to fire if a friendly would be hit."
+	desc = "M56A2智能枪系统的四件套中的实际枪械。这是太阳恶魔营使用的一个变体，采用“仅限前线”的IFF系统，如果会击中友军则拒绝开火。"
 	actions_types = list(
 		/datum/action/item_action/smartgun/toggle_accuracy_improvement,
 		/datum/action/item_action/smartgun/toggle_ammo_type,

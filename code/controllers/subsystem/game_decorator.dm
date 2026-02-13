@@ -1,6 +1,6 @@
 // Essentially the same as decorators but that apply to the whole game state instead of individual atoms
 SUBSYSTEM_DEF(game_decorator)
-	name = "Game Decorator"
+	name = "游戏装饰器"
 	init_order = SS_INIT_DECORATOR
 	flags = SS_NO_FIRE
 

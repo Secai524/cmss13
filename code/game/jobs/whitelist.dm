@@ -96,30 +96,30 @@
 	return data
 
 GLOBAL_LIST_INIT(co_flags, list(
-	list(name = "Commander", bitflag = WHITELIST_COMMANDER, permission = WL_PANEL_RIGHT_CO),
+	list(name = "指挥官", bitflag = WHITELIST_COMMANDER, permission = WL_PANEL_RIGHT_CO),
 	list(name = "Council", bitflag = WHITELIST_COMMANDER_COUNCIL, permission = WL_PANEL_RIGHT_CO),
 	list(name = "Legacy Council", bitflag = WHITELIST_COMMANDER_COUNCIL_LEGACY, permission = WL_PANEL_RIGHT_CO),
 	list(name = "Senator", bitflag = WHITELIST_COMMANDER_LEADER, permission = WL_PANEL_RIGHT_OVERSEER),
-	list(name = "Colonel", bitflag = WHITELIST_COMMANDER_COLONEL, permission = WL_PANEL_RIGHT_OVERSEER)
+	list(name = "上校", bitflag = WHITELIST_COMMANDER_COLONEL, permission = WL_PANEL_RIGHT_OVERSEER)
 ))
 GLOBAL_LIST_INIT(syn_flags, list(
-	list(name = "Synthetic", bitflag = WHITELIST_SYNTHETIC, permission = WL_PANEL_RIGHT_SYNTH),
+	list(name = "合成人", bitflag = WHITELIST_SYNTHETIC, permission = WL_PANEL_RIGHT_SYNTH),
 	list(name = "Council", bitflag = WHITELIST_SYNTHETIC_COUNCIL, permission = WL_PANEL_RIGHT_SYNTH),
 	list(name = "Legacy Council", bitflag = WHITELIST_SYNTHETIC_COUNCIL_LEGACY, permission = WL_PANEL_RIGHT_SYNTH),
 	list(name = "Senator", bitflag = WHITELIST_SYNTHETIC_LEADER, permission = WL_PANEL_RIGHT_OVERSEER)
 ))
 GLOBAL_LIST_INIT(yaut_flags, list(
-	list(name = "Yautja", bitflag = WHITELIST_YAUTJA, permission = WL_PANEL_RIGHT_YAUTJA),
+	list(name = "铁血战士", bitflag = WHITELIST_YAUTJA, permission = WL_PANEL_RIGHT_YAUTJA),
 	list(name = "Legacy Holder", bitflag = WHITELIST_YAUTJA_LEGACY, permission = WL_PANEL_RIGHT_MANAGER),
 	list(name = "Council", bitflag = WHITELIST_YAUTJA_COUNCIL, permission = WL_PANEL_RIGHT_YAUTJA),
 	list(name = "Legacy Council", bitflag = WHITELIST_YAUTJA_COUNCIL_LEGACY, permission = WL_PANEL_RIGHT_YAUTJA),
 	list(name = "Senator", bitflag = WHITELIST_YAUTJA_LEADER, permission = WL_PANEL_RIGHT_OVERSEER)
 ))
 GLOBAL_LIST_INIT(misc_flags, list(
-	list(name = "Senior Enlisted Advisor", bitflag = WHITELIST_MENTOR, permission = WL_PANEL_RIGHT_MENTOR),
+	list(name = "高级士官顾问", bitflag = WHITELIST_MENTOR, permission = WL_PANEL_RIGHT_MENTOR),
 	list(name = "Working Joe", bitflag = WHITELIST_JOE, permission = WL_PANEL_RIGHT_SYNTH),
 	list(name = "Dzho Automaton", bitflag = WHITELIST_JOE, permission = WL_PANEL_RIGHT_SYNTH),
-	list(name = "Fax Responder", bitflag = WHITELIST_FAX_RESPONDER, permission = WL_PANEL_RIGHT_MANAGER),
+	list(name = "传真应答员", bitflag = WHITELIST_FAX_RESPONDER, permission = WL_PANEL_RIGHT_MANAGER),
 ))
 
 /datum/whitelist_panel/ui_static_data(mob/user)
@@ -162,13 +162,13 @@ GLOBAL_LIST_INIT(misc_flags, list(
 			return
 		if("update_perms")
 			var/player_key = params["player"]
-			var/reason = tgui_input_text(user, "What is the reason for this change?", "Update Reason")
+			var/reason = tgui_input_text(user, "此次变更的原因是什么？", "Update Reason")
 			if(!reason)
 				return
 			var/datum/entity/player/player = get_player_from_key(player_key)
 			player.set_whitelist_status(new_rights)
 			player.add_note("Whitelists updated by [user.key]. Reason: '[reason]'.", FALSE, NOTE_WHITELIST)
-			to_chat(user, SPAN_HELPFUL("Whitelists for [player_key] updated."))
+			to_chat(user, SPAN_HELPFUL("[player_key] 的白名单已更新。"))
 			message_admins("Whitelists for [player_key] updated by [key_name(user)]. Reason: '[reason]'.")
 			log_admin("WHITELISTS: Flags for [player_key] changed from [target_rights] to [new_rights]. Reason: '[reason]'.")
 			go_back()
@@ -176,7 +176,7 @@ GLOBAL_LIST_INIT(misc_flags, list(
 			return
 		if("refresh_data")
 			update_static_data(user, ui)
-			to_chat(user, SPAN_NOTICE("Whitelist data refreshed."))
+			to_chat(user, SPAN_NOTICE("白名单数据已刷新。"))
 
 /datum/whitelist_panel/proc/select_player(mob/user, player_key)
 	var/target_key = player_key
@@ -186,7 +186,7 @@ GLOBAL_LIST_INIT(misc_flags, list(
 		return FALSE
 
 	if(target_key == TRUE)
-		var/new_player = tgui_input_text(user, "Enter the new ckey you wish to add. Do not include spaces or special characters.", "New Whitelistee")
+		var/new_player = tgui_input_text(user, "输入你想要添加的新ckey。不要包含空格或特殊字符。", "New Whitelistee")
 		if(!new_player)
 			return FALSE
 		target_key = new_player

@@ -1,5 +1,5 @@
 /datum/faction/clf
-	name = "Colonial Liberation Front"
+	name = "殖民地解放阵线"
 	faction_tag = FACTION_CLF
 	base_icon_file = 'icons/mob/hud/factions/clf.dmi'
 
@@ -91,7 +91,7 @@
 		list("Vertical Grip", 15, /obj/item/attachable/verticalgrip, null, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", 0, null, null, null),
-		list("Type 80 Bayonet", 3, /obj/item/attachable/bayonet/upp, null, VENDOR_ITEM_REGULAR),
+		list("80式刺刀", 3, /obj/item/attachable/bayonet/upp, null, VENDOR_ITEM_REGULAR),
 		list("Lunge Mine", 120, /obj/item/weapon/twohanded/lungemine, null, VENDOR_ITEM_REGULAR),
 		list("Melee Weapon (Random)", 7, /obj/effect/essentials_set/random/clf_melee, null, VENDOR_ITEM_REGULAR),
 		list("M94 Marking Flare Pack", 3, /obj/item/storage/box/m94, null, VENDOR_ITEM_RECOMMENDED),
@@ -156,5 +156,5 @@
 		list("UTILITIES", -1, null, null),
 		list("M94 Marking Flare Pack", 20, /obj/item/storage/box/m94, VENDOR_ITEM_REGULAR),
 		list("Smoke Grenade", 5, /obj/item/explosive/grenade/smokebomb, VENDOR_ITEM_REGULAR),
-		list("Type 80 Bayonet", 40, /obj/item/attachable/bayonet/upp, VENDOR_ITEM_REGULAR),
+		list("80式刺刀", 40, /obj/item/attachable/bayonet/upp, VENDOR_ITEM_REGULAR),
 	)

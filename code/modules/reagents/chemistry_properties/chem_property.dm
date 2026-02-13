@@ -1,7 +1,7 @@
 /datum/chem_property
 	var/name
 	var/code = "ZZZ" //should be unique to all properties
-	var/description = "You shouldn't be seeing this."
+	var/description = "你不该看到这个。"
 	var/datum/reagent/holder
 	var/rarity = PROPERTY_DISABLED
 	var/category = PROPERTY_TYPE_MEDICINE
@@ -105,7 +105,7 @@
 	if(category & PROPERTY_TYPE_TOXICANT)
 		text += "Toxicant "
 	if(category & PROPERTY_TYPE_STIMULANT)
-		text += "Stimulant "
+		text += "兴奋剂 "
 	if(category & PROPERTY_TYPE_REACTANT)
 		text += "Reactant "
 	if(category & PROPERTY_TYPE_IRRITANT)

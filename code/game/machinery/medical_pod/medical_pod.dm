@@ -1,5 +1,5 @@
 /obj/structure/machinery/medical_pod
-	name = "generic medical pod"
+	name = "通用医疗舱"
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "sleeper_open"
 	var/base_icon_state = "sleeper"
@@ -56,7 +56,7 @@
 		to_chat(usr, SPAN_NOTICE("\The [src] is non-functional!"))
 		return
 	if (usr.abiotic())
-		to_chat(usr, SPAN_BOLDNOTICE("Subject cannot have abiotic items on."))
+		to_chat(usr, SPAN_BOLDNOTICE("目标身上不能有非生物物品。"))
 		return
 	if(entry_timer)
 		if(!do_after(usr, entry_timer, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
@@ -66,7 +66,7 @@
 			return
 	if(skilllock)
 		if(!skillcheck(usr, SKILL_SURGERY, skilllock))
-			to_chat(usr, SPAN_WARNING("You're going to need someone trained in the use of \the [src] to help you get into it."))
+			to_chat(usr, SPAN_WARNING("你需要一位受过\the [src]使用训练的人来帮你进入。"))
 			return
 	go_in(usr)
 	add_fingerprint(usr)
@@ -79,12 +79,12 @@
 	if(usr.is_mob_incapacitated())
 		return
 	if(!occupant)
-		to_chat(usr, SPAN_WARNING("There's nobody in \the [src] to eject!"))
+		to_chat(usr, SPAN_WARNING("\the [src]里没有人可以弹出！"))
 		return
 	if(isxeno(usr)) // let xenos eject people hiding inside.
-		visible_message("[usr] starts forcing open \the [src]!")
+		visible_message("[usr]开始强行打开\the [src]！")
 		if(!do_after(usr, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-			to_chat(usr, SPAN_WARNING("You were interrupted!"))
+			to_chat(usr, SPAN_WARNING("你被打断了！"))
 			return
 		go_out()
 		add_fingerprint(usr)
@@ -93,7 +93,7 @@
 		return
 	if(skilllock)
 		if(!skillcheck(usr, SKILL_SURGERY, skilllock))
-			to_chat(usr, SPAN_WARNING("You don't have the training to use this."))
+			to_chat(usr, SPAN_WARNING("你没有使用此设备的训练资格。"))
 			return
 
 	if(!extra_eject_checks())
@@ -135,9 +135,9 @@
 		to_chat(main_character, SPAN_BOLDNOTICE("\The [src] is already occupied!"))
 		return
 	if(main_character != M)
-		to_chat(main_character, SPAN_NOTICE("You move [M.name] inside \the [src]."))
+		to_chat(main_character, SPAN_NOTICE("你将[M.name]移入\the [src]内。"))
 	else
-		to_chat(main_character, SPAN_NOTICE("You move into \the [src]."))
+		to_chat(main_character, SPAN_NOTICE("你进入\the [src]。"))
 
 	M.forceMove(src)
 	occupant = M
@@ -158,7 +158,7 @@
 
 	if(exit_stun)
 		occupant.apply_effect(exit_stun, STUN) //Action delay when going out
-		occupant.visible_message(SPAN_WARNING("[occupant] pops out of \the [src]!"),
+		occupant.visible_message(SPAN_WARNING("[occupant]从\the [src]里弹了出来！"),
 		SPAN_WARNING("You get out of \the [src] and get your bearings!"))
 
 	occupant = null
@@ -192,20 +192,20 @@
 			return
 		if(skilllock)
 			if(!skillcheck(usr, SKILL_SURGERY, skilllock))
-				to_chat(usr, SPAN_WARNING("You don't have the training to use \the [src]!"))
+				to_chat(usr, SPAN_WARNING("你没有接受过使用\the [src]的训练！"))
 				return
 		if(occupant)
 			to_chat(user, SPAN_WARNING("\The [src] is already occupied!"))
 			return
 		if(to_put_in.abiotic())
-			to_chat(user, SPAN_WARNING("Subject cannot have abiotic items on."))
+			to_chat(user, SPAN_WARNING("目标身上不能有非生物物品。"))
 			return
 		if(!ishuman(to_put_in))
-			to_chat(user, SPAN_WARNING("An unsupported lifeform was detected, aborting!"))
+			to_chat(user, SPAN_WARNING("检测到不受支持的生命形式，中止！"))
 			return
 
 		if(push_in_timer)
-			visible_message(SPAN_NOTICE("[user] starts putting [to_put_in] into \the [src]."), null, null, 3)
+			visible_message(SPAN_NOTICE("[user]开始将[to_put_in]放入\the [src]。"), null, null, 3)
 			if(!do_after(usr, push_in_timer, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 				return
 			if(src.occupant)

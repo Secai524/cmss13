@@ -1,5 +1,5 @@
 /obj/effect/spawner/prop_gun //Makes a prop that looks similar to the original gun, for use such as broken guns
-	name = "prop gun spawner"
+	name = "道具枪生成器"
 	icon = 'icons/landmarks.dmi'
 	icon_state = "prop_gun"
 	///The typepath of the gun the prop will copy
@@ -46,8 +46,8 @@
 	qdel(src)
 
 /obj/item/prop/prop_gun
-	name = "prop gun"
-	desc = "A non-functional gun prop. You should not be able to see this."
+	name = "道具枪"
+	desc = "一把无法使用的道具枪。你不应该看到这个。"
 	icon = 'icons/landmarks.dmi'
 	icon_state = "prop_gun"
 	flags_item = TWOHANDED

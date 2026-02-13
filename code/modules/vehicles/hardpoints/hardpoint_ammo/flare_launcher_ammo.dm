@@ -1,6 +1,6 @@
 /obj/item/ammo_magazine/hardpoint/flare_launcher
-	name = "M-87F Flare Launcher Magazine"
-	desc = "A support armament grenade magazine. This one is loaded with flares packaged in expendable shells."
+	name = "M-87F照明弹发射器弹箱"
+	desc = "一种支援武器榴弹弹箱。此弹箱装填了封装在一次性弹壳内的照明弹。"
 	caliber = "flare"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/vehicles.dmi'
 	icon_state = "slauncher_1"

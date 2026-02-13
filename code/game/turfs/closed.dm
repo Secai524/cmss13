@@ -13,7 +13,7 @@
 		return
 
 	if(istype(above_current, /turf/open/slippery))
-		to_chat(user, "The roof is too sloped to stand on it.")
+		to_chat(user, "屋顶坡度太大，无法站立。")
 		return
 
 	while(above_current.density)
@@ -29,13 +29,13 @@
 
 	var/obj/item/held_item = user.get_held_item()
 	if(istype(held_item, /obj/item/explosive/plastic))
-		to_chat(user, SPAN_DANGER("You cannot climb while holding [held_item]!"))
+		to_chat(user, SPAN_DANGER("手持[held_item]时无法攀爬！"))
 		return
 
 	if(user.action_busy)
 		return
 
-	user.visible_message(SPAN_WARNING("[user] starts climbing up [src]."), SPAN_WARNING("You start climbing up [src]."))
+	user.visible_message(SPAN_WARNING("[user]开始攀爬[src]。"), SPAN_WARNING("You start climbing up [src]."))
 	var/climb_up_time = 1 SECONDS
 	if(isxeno(user))
 		var/mob/living/carbon/xenomorph/xeno = user
@@ -59,10 +59,10 @@
 				if(human)
 					climb_up_time = 3 SECONDS
 					INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(do_after), human, 3 SECONDS, INTERRUPT_MOVED, EMOTE_ICON_WALLBOOSTING)
-					user.visible_message(SPAN_WARNING("[user] is being boosted up [src] by [human]."), SPAN_WARNING("[human] tries to boost you up."))
+					user.visible_message(SPAN_WARNING("[user]正被[human]托举上[src]。"), SPAN_WARNING("[human] tries to boost you up."))
 
 	if(!do_after(user, climb_up_time, INTERRUPT_ALL, BUSY_ICON_CLIMBING))
-		to_chat(user, SPAN_WARNING("You were interrupted!"))
+		to_chat(user, SPAN_WARNING("你被打断了！"))
 		if(human)
 			human.flags_emote &= ~EMOTING_WALL_BOOSTING
 		return
@@ -70,7 +70,7 @@
 	if(human)
 		human.flags_emote &= ~EMOTING_WALL_BOOSTING
 
-	user.visible_message(SPAN_WARNING("[user] climbs up [src]."), SPAN_WARNING("You climb up [src]."))
+	user.visible_message(SPAN_WARNING("[user]爬上了[src]。"), SPAN_WARNING("You climb up [src]."))
 
 	user.forceMove(above_current)
 	return
@@ -104,7 +104,7 @@
 
 /// Cordon turf marking z-level boundaries and surrounding reservations
 /turf/closed/cordon
-	name = "world border"
+	name = "世界边界"
 	icon = 'icons/turf/shuttle.dmi'
 	icon_state = "pwall"
 	layer = ABOVE_TURF_LAYER
@@ -112,13 +112,13 @@
 
 /// Used as placeholder turf when something went really wrong, as per /tg/ string lists handler
 /turf/closed/cordon/debug
-	name = "debug turf"
-	desc = "This turf shouldn't be here and probably result of incorrect turf replacement. Adminhelp about it or report it in an issue."
+	name = "调试地块"
+	desc = "此地块不应在此出现，可能是地块替换错误所致。请向管理员报告或在问题追踪器中提交。"
 	color = "#660088"
 	baseturfs = /turf/closed/cordon/debug
 
 /turf/closed/mineral //mineral deposits
-	name = "Rock"
+	name = "岩石区"
 	icon = 'icons/turf/walls/walls.dmi'
 	icon_state = "rock"
 
@@ -134,10 +134,10 @@
 
 //Ground map dense jungle
 /turf/closed/gm
-	name = "dense jungle"
+	name = "茂密丛林"
 	icon = 'icons/turf/ground_map.dmi'
 	icon_state = "wall2"
-	desc = "Some thick jungle."
+	desc = "一片茂密的丛林。"
 	baseturfs = /turf/open/gm/grass
 
 	//Not yet
@@ -148,7 +148,7 @@
 
 
 /turf/closed/gm/dense
-	name = "dense jungle wall"
+	name = "茂密丛林墙"
 	icon = 'icons/turf/ground_map.dmi'
 	icon_state = "wall2"
 
@@ -173,10 +173,10 @@
 
 //Ice Wall
 /turf/closed/ice
-	name = "dense ice wall"
+	name = "厚冰墙"
 	icon = 'icons/turf/walls/icewall.dmi'
 	icon_state = "Single"
-	desc = "It is very thick."
+	desc = "它非常厚实。"
 
 /turf/closed/ice/single
 	icon_state = "Single"
@@ -198,7 +198,7 @@
 
 //Ice Secret Wall
 /turf/closed/ice/secret
-	desc = "There is something inside..."
+	desc = "里面好像有什么东西..."
 
 /turf/closed/ice/secret/single
 	icon_state = "Single"
@@ -221,10 +221,10 @@
 
 //Ice Thin Wall
 /turf/closed/ice/thin
-	name = "thin ice wall"
+	name = "薄冰墙"
 	icon = 'icons/turf/walls/icewalllight.dmi'
 	icon_state = "Single"
-	desc = "It is very thin."
+	desc = "它非常薄。"
 	opacity = FALSE
 
 /turf/closed/ice/thin/single
@@ -247,7 +247,7 @@
 
 //Thin Ice Secret Wall
 /turf/closed/ice/thin/secret
-	desc = "There is something inside..."
+	desc = "里面好像有什么东西..."
 
 /turf/closed/ice/thin/secret/single
 	icon_state = "Single"
@@ -272,7 +272,7 @@
 
 //Icy Rock
 /turf/closed/ice_rock
-	name = "Icy rock"
+	name = "冰岩"
 	icon = 'icons/turf/walls/rockwall.dmi'
 
 /turf/closed/ice_rock/single
@@ -418,8 +418,8 @@
 	icon_state = "wall0"
 
 /turf/closed/shuttle/lifeboat
-	name = "Lifeboat"
-	desc = "Separates you from certain death."
+	name = "救生艇"
+	desc = "将你与死亡隔开。"
 	icon = 'icons/turf/lifeboat.dmi'
 	icon_state = "2,0"
 
@@ -461,7 +461,7 @@
 
 // Elevator Buttons
 /turf/closed/shuttle/elevator/button
-	name = "elevator buttons"
+	name = "电梯按钮"
 
 /turf/closed/shuttle/elevator/button/research
 	icon_state = "wall_button_research"
@@ -514,7 +514,7 @@
 
 /turf/closed/shuttle/dropship4/WY/HorizonRunner
 	name = "\improper WY-LWI Horizon Runner HR-150"
-	desc = "The WY-LWI Horizon Runner HR-150, a collaborative creation of Lunnar-Welsun Industries and Weyland-Yutani. This small dropship is designed for short-range commercial transport."
+	desc = "WY-LWI Horizon Runner HR-150，由Lunnar-Welsun工业与维兰德-汤谷合作制造。这款小型运输机专为短途商业运输设计。"
 	icon_state = "1"
 
 /turf/closed/shuttle/dropship4/WY/HorizonRunner/transparent
@@ -522,7 +522,7 @@
 
 /turf/closed/shuttle/dropship4/WY/StarGlider
 	name = "\improper WY-LWI StarGlider SG-200"
-	desc = "The WY-LWI StarGlider SG-200, a product of the collaborative ingenuity between Weyland Yutani and Lunnar-Welsun Industries, This small dropship is designed for short-range commercial transport."
+	desc = "WY-LWI StarGlider SG-200，是维兰德-汤谷与Lunnar-Welsun工业合作智慧的产物。这款小型运输机专为短途商业运输设计。"
 	icon_state = "1"
 
 /turf/closed/shuttle/dropship4/WY/StarGlider/transparent
@@ -534,7 +534,7 @@
 
 /turf/closed/shuttle/dropship5/CLF/Fire
 	name = "\improper UD-9M 'Dogbite'"
-	desc = "The UD-9M 'Dogbite' is a repurposed utility dropship, originally designed for short-haul cargo operations across colonial systems. Stolen and heavily modified by the Colonial Liberation Front, it's now a rugged smuggler and strike craft, capable of dropping a full fireteam through tight patrol nets. Its hull is scarred with gunfire, rust, and graffiti — a patchwork of rebellion held together by grit and stolen parts."
+	desc = "UD-9M '犬咬'是一架经过改造的通用运输机，最初设计用于殖民地系统间的短途货运作业。被殖民地解放阵线窃取并大幅改装后，它现在成了一架坚固的走私和打击飞行器，能够将一个完整的火力小组投送到严密的巡逻网中。其船体布满了弹孔、锈迹和涂鸦——这是一架由勇气和偷来的零件拼凑而成的反抗机器。"
 	icon_state = "1"
 
 /turf/closed/shuttle/dropship5/CLF/Fire/transparent

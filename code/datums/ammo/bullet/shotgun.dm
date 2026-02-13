@@ -13,7 +13,7 @@
 
 
 /datum/ammo/bullet/shotgun/slug
-	name = "shotgun slug"
+	name = "霰弹枪独头弹"
 	handful_state = "slug_shell"
 
 	accurate_range = 8
@@ -30,7 +30,7 @@
 /datum/ammo/bullet/shotgun/slug/knockback_effects(mob/living/living_mob, obj/projectile/fired_projectile)
 	if(iscarbonsizexeno(living_mob))
 		var/mob/living/carbon/xenomorph/target = living_mob
-		to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
+		to_chat(target, SPAN_XENODANGER("突如其来的冲击让你感到震撼并行动迟缓！"))
 		target.KnockDown(0.5) // If you ask me the KD should be left out, but players like their visual cues
 		target.Stun(0.5)
 		target.apply_effect(1, SUPERSLOW)
@@ -39,11 +39,11 @@
 		if(!isyautja(living_mob)) //Not predators.
 			living_mob.apply_effect(1, SUPERSLOW)
 			living_mob.apply_effect(2, SLOW)
-			to_chat(living_mob, SPAN_HIGHDANGER("The impact knocks you off-balance!"))
+			to_chat(living_mob, SPAN_HIGHDANGER("冲击让你失去平衡！"))
 		living_mob.apply_stamina_damage(fired_projectile.ammo.damage, fired_projectile.def_zone, ARMOR_BULLET)
 
 /datum/ammo/bullet/shotgun/slug/es7
-	name = "electrostatic solid slug"
+	name = "静电实心独头弹"
 	icon_state = "bullet_iff"
 	handful_state = "es7_slug"
 	sound_miss = "energy_miss"
@@ -55,7 +55,7 @@
 	accuracy = HIT_ACCURACY_TIER_5
 
 /datum/ammo/bullet/shotgun/beanbag
-	name = "beanbag slug"
+	name = "豆袋弹"
 	headshot_state = HEADSHOT_OVERLAY_LIGHT //It's not meant to kill people... but if you put it in your mouth, it will.
 	handful_state = "beanbag_slug"
 	icon_state = "beanbag"
@@ -78,7 +78,7 @@
 		shake_camera(H, 2, 1)
 
 /datum/ammo/bullet/shotgun/beanbag/es7
-	name = "electrostatic shock slug"
+	name = "静电冲击弹"
 	headshot_state = HEADSHOT_OVERLAY_LIGHT //Electric version of the bean bag.
 	handful_state = "shock_slug"
 	icon_state = "cm_laser"
@@ -107,7 +107,7 @@
 		humanus.make_jittery(40)
 
 /datum/ammo/bullet/shotgun/incendiary
-	name = "incendiary slug"
+	name = "燃烧独头弹"
 	handful_state = "incendiary_slug"
 	damage_type = BURN
 	flags_ammo_behavior = AMMO_BALLISTIC
@@ -136,7 +136,7 @@
 
 
 /datum/ammo/bullet/shotgun/flechette
-	name = "flechette shell"
+	name = "箭弹"
 	icon_state = "flechette"
 	handful_state = "flechette_shell"
 	bonus_projectiles_type = /datum/ammo/bullet/shotgun/flechette_spread
@@ -157,7 +157,7 @@
 	damage *= 0.7
 
 /datum/ammo/bullet/shotgun/flechette_spread
-	name = "additional flechette"
+	name = "附加箭弹"
 	icon_state = "flechette"
 
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
@@ -174,7 +174,7 @@
 	damage *= 0.7
 
 /datum/ammo/bullet/shotgun/buckshot
-	name = "buckshot shell"
+	name = "鹿弹"
 	icon_state = "buckshot"
 	handful_state = "buckshot_shell"
 	multiple_handful_name = TRUE
@@ -196,7 +196,7 @@
 	multiple_handful_name = TRUE
 
 /datum/ammo/bullet/shotgun/buckshot/incendiary
-	name = "incendiary buckshot shell"
+	name = "燃烧鹿弹"
 	handful_state = "incen_buckshot"
 	handful_type = /obj/item/ammo_magazine/handful/shotgun/buckshot/incendiary
 
@@ -219,7 +219,7 @@
 	knockback(M,P,1)
 
 /datum/ammo/bullet/shotgun/spread
-	name = "additional buckshot"
+	name = "附加鹿弹"
 	icon_state = "buckshot"
 
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
@@ -243,7 +243,7 @@
 */
 
 /datum/ammo/bullet/shotgun/heavy/buckshot
-	name = "heavy buckshot shell"
+	name = "重型鹿弹"
 	icon_state = "buckshot"
 	handful_state = "heavy_buckshot"
 	multiple_handful_name = TRUE
@@ -261,14 +261,14 @@
 	knockback(M,P)
 
 /datum/ammo/bullet/shotgun/heavy/buckshot/spread
-	name = "additional heavy buckshot"
+	name = "附加重型鹿弹"
 	max_range = 4
 	scatter = SCATTER_AMOUNT_TIER_1
 	bonus_projectiles_amount = 0
 
 //basically the same
 /datum/ammo/bullet/shotgun/heavy/buckshot/dragonsbreath
-	name = "dragon's breath shell"
+	name = "龙息弹"
 	handful_state = "heavy_dragonsbreath"
 	multiple_handful_name = TRUE
 	damage_type = BURN
@@ -284,7 +284,7 @@
 	))
 
 /datum/ammo/bullet/shotgun/heavy/buckshot/dragonsbreath/spread
-	name = "additional dragon's breath"
+	name = "附加龙息弹"
 	bonus_projectiles_amount = 0
 	accurate_range = 4
 	max_range = 5 //make use of the ablaze property
@@ -292,7 +292,7 @@
 
 
 /datum/ammo/bullet/shotgun/heavy/slug
-	name = "heavy shotgun slug"
+	name = "重型霰弹枪独头弹"
 	handful_state = "heavy_slug"
 
 	accurate_range = 7
@@ -307,7 +307,7 @@
 /datum/ammo/bullet/shotgun/heavy/slug/knockback_effects(mob/living/living_mob, obj/projectile/fired_projectile)
 	if(iscarbonsizexeno(living_mob))
 		var/mob/living/carbon/xenomorph/target = living_mob
-		to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
+		to_chat(target, SPAN_XENODANGER("突如其来的冲击让你感到震撼并行动迟缓！"))
 		target.KnockDown(0.5) // If you ask me the KD should be left out, but players like their visual cues
 		target.Stun(0.5)
 		target.apply_effect(2, SUPERSLOW)
@@ -316,11 +316,11 @@
 		if(!isyautja(living_mob)) //Not predators.
 			living_mob.apply_effect(1, SUPERSLOW)
 			living_mob.apply_effect(2, SLOW)
-			to_chat(living_mob, SPAN_HIGHDANGER("The impact knocks you off-balance!"))
+			to_chat(living_mob, SPAN_HIGHDANGER("冲击让你失去平衡！"))
 		living_mob.apply_stamina_damage(fired_projectile.ammo.damage, fired_projectile.def_zone, ARMOR_BULLET)
 
 /datum/ammo/bullet/shotgun/heavy/beanbag
-	name = "heavy beanbag slug"
+	name = "重型豆袋弹"
 	icon_state = "beanbag"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 	handful_state = "heavy_beanbag"
@@ -342,7 +342,7 @@
 		shake_camera(H, 2, 1)
 
 /datum/ammo/bullet/shotgun/heavy/flechette
-	name = "heavy flechette shell"
+	name = "重型箭弹"
 	icon_state = "flechette"
 	handful_state = "heavy_flechette"
 	multiple_handful_name = TRUE
@@ -362,7 +362,7 @@
 	damage *= 0.7
 
 /datum/ammo/bullet/shotgun/heavy/flechette_spread
-	name = "additional heavy flechette"
+	name = "附加重型箭弹"
 	icon_state = "flechette"
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
@@ -382,7 +382,7 @@
 */
 
 /datum/ammo/bullet/shotgun/light/breaching
-	name = "light breaching shell"
+	name = "轻型破门弹"
 	icon_state = "flechette"
 	handful_state = "breaching_shell"
 	multiple_handful_name = TRUE
@@ -396,7 +396,7 @@
 	penetration = ARMOR_PENETRATION_TIER_1
 
 /datum/ammo/bullet/shotgun/light/breaching/spread
-	name = "additional light breaching fragments"
+	name = "额外轻型破门破片"
 	bonus_projectiles_amount = 0
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
@@ -404,7 +404,7 @@
 	damage = 10
 
 /datum/ammo/bullet/shotgun/light/rubber
-	name = "rubber buckshot shell"
+	name = "橡胶鹿弹弹壳"
 	icon_state = "buckshot"
 	handful_state = "rubbershot_shell"
 	multiple_handful_name = TRUE
@@ -421,7 +421,7 @@
 	penetration = ARMOR_PENETRATION_TIER_1
 
 /datum/ammo/bullet/shotgun/light/rubber/spread
-	name = "additional rubber buckshot"
+	name = "额外橡胶鹿弹"
 	bonus_projectiles_amount = 0
 	scatter = SCATTER_AMOUNT_TIER_3
 	stamina_damage = 10
@@ -429,7 +429,7 @@
 
 //Enormous shell for Van Bandolier's superheavy double-barreled hunting gun.
 /datum/ammo/bullet/shotgun/twobore
-	name = "two bore bullet"
+	name = "双径子弹"
 	icon_state = "autocannon"
 	handful_state = "twobore"
 
@@ -445,7 +445,7 @@
 	var/mob/shooter = P.firer
 	if(shooter && ismob(shooter) && HAS_TRAIT(shooter, TRAIT_TWOBORE_TRAINING) && M.stat != DEAD && prob(40)) //Death is handled by periodic life() checks so this should have a chance to fire on a killshot.
 		if(!length(hit_messages)) //Pick and remove lines, refill on exhaustion.
-			hit_messages = list("Got you!", "Aha!", "Bullseye!", "It's curtains for you, Sonny Jim!", "Your head will look fantastic on my wall!", "I have you now!", "You miserable coward! Come and fight me like a man!", "Tally ho!")
+			hit_messages = list("Got you!", "Aha!", "正中靶心！", "It's curtains for you, Sonny Jim!", "Your head will look fantastic on my wall!", "I have you now!", "You miserable coward! Come and fight me like a man!", "Tally ho!")
 		var/message = pick_n_take(hit_messages)
 		shooter.say(message)
 
@@ -460,16 +460,16 @@
 	M.Stun(2)
 	M.apply_effect(4, SLOW)
 	if(iscarbonsizexeno(M))
-		to_chat(M, SPAN_XENODANGER("The impact knocks you off your feet!"))
+		to_chat(M, SPAN_XENODANGER("冲击力将你击倒在地！"))
 	else //This will hammer a Yautja as hard as a human.
-		to_chat(M, SPAN_HIGHDANGER("The impact knocks you off your feet!"))
+		to_chat(M, SPAN_HIGHDANGER("冲击力将你击倒在地！"))
 
 	step(M, get_dir(P.firer, M))
 
 /datum/ammo/bullet/shotgun/twobore/knockback_effects(mob/living/living_mob, obj/projectile/fired_projectile)
 	if(iscarbonsizexeno(living_mob))
 		var/mob/living/carbon/xenomorph/target = living_mob
-		to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
+		to_chat(target, SPAN_XENODANGER("突如其来的冲击让你感到震撼并行动迟缓！"))
 		target.KnockDown(0.5) // If you ask me the KD should be left out, but players like their visual cues
 		target.Stun(0.5)
 		target.apply_effect(2, SUPERSLOW)
@@ -478,5 +478,5 @@
 		if(!isyautja(living_mob)) //Not predators.
 			living_mob.apply_effect(1, SUPERSLOW)
 			living_mob.apply_effect(2, SLOW)
-			to_chat(living_mob, SPAN_HIGHDANGER("The impact knocks you off-balance!"))
+			to_chat(living_mob, SPAN_HIGHDANGER("冲击让你失去平衡！"))
 		living_mob.apply_stamina_damage(fired_projectile.ammo.damage, fired_projectile.def_zone, ARMOR_BULLET)

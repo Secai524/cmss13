@@ -160,7 +160,7 @@
 	trans_to_datum(V, amount, reaction = FALSE)
 	if(issynth(target))
 		return
-	to_chat(target, SPAN_NOTICE("You taste [pick(V.reagent_list)]."))
+	to_chat(target, SPAN_NOTICE("你尝到了[pick(V.reagent_list)]的味道。"))
 
 	for(var/datum/reagent/RG in V.reagent_list) // If it can't be ingested, remove it.
 		if(RG.flags & REAGENT_NOT_INGESTIBLE)
@@ -260,9 +260,9 @@
 						var/list/seen = viewers(4, get_turf(my_atom))
 						for(var/mob/seen_mob in seen)
 							if(volume_factor == 1)
-								to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] The solution begins to bubble."))
+								to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] 溶液开始冒泡。"))
 							else
-								to_chat(seen_mob, SPAN_WARNING("[icon2html(my_atom, seen_mob)] The solution decreases in volume."))
+								to_chat(seen_mob, SPAN_WARNING("[icon2html(my_atom, seen_mob)] 溶液体积减小。"))
 						playsound(get_turf(my_atom), 'sound/effects/bubbles.ogg', 20, 1)
 						qdel(reagent)
 						break
@@ -319,7 +319,7 @@
 							add_reagent(secondary_result, reaction.result_amount * reaction.secondary_results[secondary_result] * multiplier)
 						var/list/seen = viewers(4, get_turf(my_atom))
 						for(var/mob/seen_mob in seen)
-							to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] The solution begins to bubble."))
+							to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] 溶液开始冒泡。"))
 						playsound(get_turf(my_atom), 'sound/effects/bubbles.ogg', 20, 1)
 						reaction_occurred = TRUE
 					if(CHECK_BITFIELD(reaction.reaction_type, CHEM_REACTION_BUBBLING))
@@ -333,13 +333,13 @@
 								return
 							if(!prob(min(victim.getarmor(null, ARMOR_BIO)*2, 100)) && created_volume >= 5)
 								playsound(victim, "acid_sizzle", 15, TRUE)
-								to_chat(victim, SPAN_BOLDWARNING("[my_atom] chemicals from [my_atom] splash on you!"))
+								to_chat(victim, SPAN_BOLDWARNING("[my_atom]的化学物质从[my_atom]溅到你身上！"))
 								victim.reagents.add_reagent(result_to_splash.id, max(1+rand(0,2), rand(4,6)))
 								victim.reagents.add_reagent(recipe_to_splash.id, max(1+rand(0,2), rand(4,6)))
 								if(result_to_splash.get_property(PROPERTY_CORROSIVE) || recipe_to_splash.get_property(PROPERTY_CORROSIVE))//make a burning sound and flash if the reagents involved are corrosive
 									animation_flash_color(victim, "#FF0000")
 							else if (created_volume >= 5)
-								to_chat(victim, SPAN_WARNING("Your gear protects you from [pick("chunk", "drop", "lump")] of foam and bubbles!"))
+								to_chat(victim, SPAN_WARNING("你的装备保护你免受[pick("chunk", "drop", "lump")] of foam and bubbles!"))
 
 					if(CHECK_BITFIELD(reaction.reaction_type, CHEM_REACTION_GLOWING))
 						if(!HAS_TRAIT(my_atom, TRAIT_REACTS_UNSAFELY))
@@ -348,7 +348,7 @@
 						var/datum/reagent/result_chemical = GLOB.chemical_reagents_list[reaction.result]
 						for(var/mob/seen_mob in seen)
 							if(prob(50))
-								to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] [my_atom] starts to glow!"))
+								to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] [my_atom]开始发光！"))
 						var/obj/item/device/flashlight/flare/on/illumination/chemical/chem_light = new(my_atom, max(1,created_volume*2), result_chemical.burncolor)
 						chem_light.set_light_color(result_chemical.burncolor)
 
@@ -360,12 +360,12 @@
 							if(water_in_holder.id == "water" && water_in_holder.volume >= created_volume)
 								var/list/seen = viewers(2, get_turf(my_atom))
 								for(var/mob/seen_mob in seen)
-									to_chat(seen_mob, SPAN_WARNING("[icon2html(my_atom, seen_mob)] [my_atom] starts to boil before settling down."))
+									to_chat(seen_mob, SPAN_WARNING("[icon2html(my_atom, seen_mob)] [my_atom]开始沸腾，随后平息下来。"))
 								return
 						if(timeleft(addtimer(CALLBACK(src, PROC_REF(combust), get_turf(my_atom), 1+floor(max(multiplier/6, 0)), 3+floor(max(multiplier/6, 0)), 2, 2, reagent_to_burn.burncolor, 0, 0 , FALSE), 3 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)) == 3 SECONDS) //prevents smoke and sound spam
 							var/list/seen = viewers(3, get_turf(my_atom))
 							for(var/mob/seen_mob in seen)
-								to_chat(seen_mob, SPAN_WARNING("[icon2html(my_atom, seen_mob)] [my_atom] starts to smoke heavily!"))
+								to_chat(seen_mob, SPAN_WARNING("[icon2html(my_atom, seen_mob)] [my_atom]开始剧烈冒烟！"))
 							var/datum/effect_system/smoke_spread/bad/fire_smoke = new(my_atom)
 							fire_smoke.attach(my_atom)
 							fire_smoke.set_up(0,3 SECONDS, my_atom)
@@ -377,7 +377,7 @@
 							return
 						var/list/seen = viewers(3, get_turf(my_atom))
 						for(var/mob/seen_mob in seen)
-							to_chat(seen_mob, SPAN_WARNING("[icon2html(my_atom, seen_mob)] [my_atom] starts to give heavy fumes from it's contents!"))
+							to_chat(seen_mob, SPAN_WARNING("[icon2html(my_atom, seen_mob)] [my_atom]的内容物开始散发出浓重的烟雾！"))
 						addtimer(CALLBACK(src, PROC_REF(create_smoke_reaction), created_volume, reaction), 4 SECONDS, TIMER_UNIQUE)
 						playsound(get_turf(my_atom), 'sound/effects/tankhiss3.ogg', 10, 30000, 4)// what a great sound where did it hide all this time
 
@@ -398,7 +398,7 @@
 	var/list/seen = viewers(2, get_turf(my_atom))
 	if(!CHECK_BITFIELD(my_atom.flags_atom, OPENCONTAINER))
 		for(var/mob/seen_mob in seen)
-			to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] Lid on [my_atom] prevents fumes from spreading around itself."))
+			to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] [my_atom]上的盖子阻止了烟雾向周围扩散。"))
 		return
 	for(var/mob/seen_mob in seen)
 		to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] "))
@@ -426,7 +426,7 @@
 	var/list/seen = viewers(2, get_turf(my_atom))
 	if(prob(10))
 		for(var/mob/seen_mob in seen)
-			to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] The solution bubbles."))
+			to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] 溶液冒泡。"))
 			playsound(get_turf(my_atom), 'sound/effects/bubbles.ogg', 15, 1)
 	for(var/required_reagent in reaction.required_reagents)
 		remove_reagent(required_reagent, reaction.required_reagents[required_reagent] * 2, safety = TRUE)
@@ -436,7 +436,7 @@
 	var/list/this_turf = viewers(0, get_turf(my_atom))
 	for(var/mob/seen_mob in this_turf)
 		if(prob(15))
-			to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] [my_atom] feels extremely cold to touch."))
+			to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] 触摸[my_atom]感觉极其冰冷。"))
 	endothermic_reaction_occuring = TRUE
 	addtimer(CALLBACK(src, PROC_REF(handle_endothermic_reaction), reaction), 1 SECONDS, TIMER_UNIQUE)
 

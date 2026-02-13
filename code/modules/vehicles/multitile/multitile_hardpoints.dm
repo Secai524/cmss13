@@ -65,7 +65,7 @@
 //Similar to repairing stuff, down to the time delay
 /obj/vehicle/multitile/proc/install_hardpoint(obj/item/O, mob/user)
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-		to_chat(user, SPAN_WARNING("You don't know what to do with [O] on \the [src]."))
+		to_chat(user, SPAN_WARNING("你不知道该如何在\the [src]上处理[O]。"))
 		return
 
 	var/obj/item/hardpoint/HP = O
@@ -81,20 +81,20 @@
 			return
 
 	if(health < initial(health) * 0.75)
-		to_chat(user, SPAN_WARNING("All the mounting points on \the [src] are broken!"))
+		to_chat(user, SPAN_WARNING("\the [src]上所有的安装点都损坏了！"))
 		return
 
 	if(LAZYLEN(hardpoints))
 		for(var/obj/item/hardpoint/H in hardpoints)
 			if(HP.slot == H.slot)
-				to_chat(user, SPAN_WARNING("There is already something installed there!"))
+				to_chat(user, SPAN_WARNING("那里已经安装了东西！"))
 				return
 
 	if(!(HP.type in hardpoints_allowed))
-		to_chat(user, SPAN_WARNING("You don't know what to do with [HP] on \the [src]."))
+		to_chat(user, SPAN_WARNING("你不知道该如何在\the [src]上处理[HP]。"))
 		return
 
-	user.visible_message(SPAN_NOTICE("[user] begins installing \the [HP] on the [HP.slot] hardpoint slot of \the [src]."),
+	user.visible_message(SPAN_NOTICE("[user]开始将\the [HP]安装到\the [src]的[HP.slot]挂载点上。"),
 		SPAN_NOTICE("You begin installing \the [HP] on the [HP.slot] hardpoint slot of \the [src]."))
 
 	var/num_delays = 1
@@ -112,21 +112,21 @@
 			num_delays = 7
 
 	if(!do_after(user, 30*num_delays * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = num_delays))
-		user.visible_message(SPAN_WARNING("[user] stops installing \the [HP] on \the [src]."), SPAN_WARNING("You stop installing \the [HP] on \the [src]."))
+		user.visible_message(SPAN_WARNING("[user]停止在\the [src]上安装\the [HP]。"), SPAN_WARNING("You stop installing \the [HP] on \the [src]."))
 		return
 
 	//check to prevent putting two modules on same slot
 	for(var/obj/item/hardpoint/H in hardpoints)
 		if(HP.slot == H.slot)
-			to_chat(user, SPAN_WARNING("There is already something installed there!"))
+			to_chat(user, SPAN_WARNING("那里已经安装了东西！"))
 			return
 
-	user.visible_message(SPAN_NOTICE("[user] installs \the [HP] on \the [src]."), SPAN_NOTICE("You install \the [HP] on \the [src]."))
+	user.visible_message(SPAN_NOTICE("[user]将\the [HP]安装到了\the [src]上。"), SPAN_NOTICE("You install \the [HP] on \the [src]."))
 
 	if(ispowerclamp(O))
 		var/obj/item/powerloader_clamp/PC = O
 		PC.loaded.forceMove(src)
-		to_chat(user, SPAN_NOTICE("You install \the [PC.loaded] on \the [src] with \the [PC]."))
+		to_chat(user, SPAN_NOTICE("你用\the [PC]将\the [PC.loaded]安装到了\the [src]上。"))
 		PC.loaded = null
 		playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
 		PC.update_icon()
@@ -139,7 +139,7 @@
 //Again, similar to the above ones
 /obj/vehicle/multitile/proc/uninstall_hardpoint(obj/item/O, mob/user)
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-		to_chat(user, SPAN_WARNING("You don't know what to do with \the [O] on \the [src]."))
+		to_chat(user, SPAN_WARNING("你不知道该如何在\the [src]上处理\the [O]。"))
 		return
 
 	if(ispowerclamp(O))
@@ -154,14 +154,14 @@
 			continue
 		hps += H
 
-	var/chosen_hp = tgui_input_list(usr, "Select a hardpoint to remove", "Hardpoint Removal", (hps + "Cancel"))
+	var/chosen_hp = tgui_input_list(usr, "选择要移除的挂载点", "Hardpoint Removal", (hps + "Cancel"))
 	if(chosen_hp == "Cancel" || !chosen_hp || (get_dist(src, user) > 2)) //get_dist uses 2 because the vehicle is 3x3
 		return
 
 	var/obj/item/hardpoint/old = chosen_hp
 
 	if(!old)
-		to_chat(user, SPAN_WARNING("There is nothing installed there."))
+		to_chat(user, SPAN_WARNING("那里没有安装任何东西。"))
 		return
 
 	if(!old.can_be_removed(user))
@@ -174,7 +174,7 @@
 				update_icon()
 				return
 
-	user.visible_message(SPAN_NOTICE("[user] begins removing [old] on the [old.slot] hardpoint slot on \the [src]."),
+	user.visible_message(SPAN_NOTICE("[user]开始从\the [src]的[old.slot]挂载点上移除[old]。"),
 		SPAN_NOTICE("You begin removing [old] on the [old.slot] hardpoint slot on \the [src]."))
 
 	var/num_delays = 1
@@ -192,10 +192,10 @@
 			num_delays = 7
 
 	if(!do_after(user, 30*num_delays * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = num_delays, target_flags = INTERRUPT_DIFF_LOC, target = old))
-		user.visible_message(SPAN_WARNING("[user] stops removing \the [old] on \the [src]."), SPAN_WARNING("You stop removing \the [old] on \the [src]."))
+		user.visible_message(SPAN_WARNING("[user]停止从\the [src]上移除\the [old]。"), SPAN_WARNING("You stop removing \the [old] on \the [src]."))
 		return
 
-	user.visible_message(SPAN_NOTICE("[user] removes \the [old] on \the [src]."), SPAN_NOTICE("You remove \the [old] on \the [src]."))
+	user.visible_message(SPAN_NOTICE("[user]从\the [src]上移除了\the [old]。"), SPAN_NOTICE("You remove \the [old] on \the [src]."))
 
 	remove_hardpoint(old, user)
 

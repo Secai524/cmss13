@@ -65,8 +65,8 @@
 
 
 /obj/item/weapon/shield/riot
-	name = "riot shield"
-	desc = "A shield adept at blocking blunt objects from connecting with the torso of the shield wielder."
+	name = "防暴盾牌"
+	desc = "一面擅长格挡钝器攻击持盾者躯干的盾牌。"
 	icon = 'icons/obj/items/weapons/melee/shields.dmi'
 	icon_state = "riot"
 	item_state = "riot"
@@ -102,15 +102,15 @@
 	if(isweapon(attacking_item) && COOLDOWN_FINISHED(src, bash_cooldown))
 		var/obj/item/weapon/attacking_weapon = attacking_item
 		if(attacking_weapon.shield_flags & CAN_SHIELD_BASH)
-			user.visible_message(SPAN_WARNING("[user] bashes [src] with [attacking_weapon]!"))
+			user.visible_message(SPAN_WARNING("[user]用[attacking_weapon]猛击[src]！"))
 			playsound(user.loc, 'sound/effects/shieldbash.ogg', 25, 1)
 			COOLDOWN_START(src, bash_cooldown, SHIELD_BASH_COOLDOWN)
 	else
 		..()
 
 /obj/item/weapon/shield/energy
-	name = "energy combat shield"
-	desc = "A shield capable of stopping most projectile and melee attacks. It can be retracted, expanded, and stored anywhere."
+	name = "能量战斗盾牌"
+	desc = "一面能阻挡大多数投射物和近战攻击的盾牌。可以伸缩、展开并随处存放。"
 	icon = 'icons/obj/items/weapons/melee/shields.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/shields_lefthand.dmi',
@@ -134,8 +134,8 @@
 	var/active = FALSE
 
 /obj/item/weapon/shield/riot/metal
-	name = "metal riot shield"
-	desc = "A metal riot shield effective, but heavy."
+	name = "金属防暴盾牌"
+	desc = "一面有效但沉重的金属防暴盾牌。"
 	icon_state = "riotmetal"
 	item_state = "riotmetal"
 	base_icon_state = "riotmetal"
@@ -145,8 +145,8 @@
 	readied_projectile_mult = PROJECTILE_BLOCK_PERC_70
 
 /obj/item/weapon/shield/riot/ballistic //FOR THE ROYAL MARINE SPEC DO NOT TOUCH SMELLY MAN
-	name = "FBS-B Ballistic shield"
-	desc = "Ballistic shield used by the royal marines commando. This shield is commonly used during boarding actions due to its lightweight but durable design."
+	name = "FBS-B防弹盾牌"
+	desc = "皇家海军陆战队突击队使用的防弹盾牌。因其轻量耐用的设计，常用于登船作战。"
 	desc_lore = "The Fox Ballistic Shield-B (FBS-B), was originally introduced as the FBS, attempting to be a solution to high-impact operations following increased counter-insurgency deployments since 2151. It was designed to provide maximum protection, and for the user to be able to utilize their primary armament in tandem. By 2163 tertiary ballistics trials were undertaken to ascertain it's effectiveness against improved munitions, and was additionally used as an opportunity to deal with user complaints making their way up from quartermasters. The complaints of the original FBS were twofold: weight and extended usage in combat causing the side to melt closest to the barrel. After further material research and in the field tests were conducted, by 2171, the FBS had attained a ballistics protection classification of D, the highest available for a portable shield, by being able to stop a singular armor piercing round. This reported success was due to the usage of a new fibre reinforced lightweight composite. In the wake of the successful improvements, the FBS was later christened the FBS-B as with the enhanced shield, the user had a tendency for maximum aggression during engagements. The nickname 'Bellicose' was given to breachers by their squaddies and later became it's official designation."
 	icon_state = "ballisticshield"
 	item_state = "ballisticshield"
@@ -157,8 +157,8 @@
 	readied_projectile_mult = PROJECTILE_BLOCK_PERC_80
 
 /obj/item/weapon/shield/riot/roman
-	name = "imperial scutum shield"
-	desc = "A large metal shield often used by Roman heavy infantry units. Capable of stopping multiple projectiles and melee blows. its size makes it extraordinary difficult to carry around."
+	name = "帝国斯库图姆盾牌"
+	desc = "一种罗马重步兵部队常用的大型金属盾牌。能够阻挡多发投射物和近战攻击。其尺寸使其极难随身携带。"
 
 	icon_state = "roman_shield"
 	item_state = "roman_shield"

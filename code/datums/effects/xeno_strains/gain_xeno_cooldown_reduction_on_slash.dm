@@ -30,8 +30,8 @@
 		var/mob/living/carbon/xenomorph/xeno  = affected_atom
 		xeno.cooldown_reduction_percentage -= current_reduction
 		if(istype(xeno) && show_baloon_alert)
-			to_chat(xeno, SPAN_XENOWARNING("We feel our frenzy wane! Our cooldowns are back to normal."))
-			xeno.balloon_alert(xeno, "we feel our frenzy wane!", text_color = "#99461780")
+			to_chat(xeno, SPAN_XENOWARNING("我们的狂暴正在消退！冷却时间恢复正常。"))
+			xeno.balloon_alert(xeno, "我们的狂暴正在消退！", text_color = "#99461780")
 			playsound(xeno, 'sound/effects/squish_and_exhaust.ogg', 25, 1)
 		if(xeno.cooldown_reduction_percentage < 0)
 			xeno.cooldown_reduction_percentage = 0

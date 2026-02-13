@@ -1,5 +1,5 @@
 /obj/structure/machinery/chem_master
-	name = "ChemMaster 3000"
+	name = "化学大师3000"
 	density = TRUE
 	anchored = TRUE
 	icon = 'icons/obj/structures/machinery/science_machines.dmi'
@@ -44,7 +44,7 @@
 	connected = locate(/obj/structure/machinery/smartfridge/chemistry) in range(tether_range, src)
 	if(connected)
 		RegisterSignal(connected, COMSIG_PARENT_QDELETING, PROC_REF(cleanup))
-		visible_message(SPAN_NOTICE("<b>The [src] beeps:</b> Smartfridge connected."))
+		visible_message(SPAN_NOTICE("<b>[src]发出哔哔声：</b>智能冰箱已连接。"))
 
 /obj/structure/machinery/chem_master/ex_act(severity)
 	switch(severity)
@@ -71,10 +71,10 @@
 		beaker = inputted_item
 		user.drop_inv_item_to_loc(inputted_item, src)
 		if(old_beaker)
-			to_chat(user, SPAN_NOTICE("You swap out \the [old_beaker] for \the [inputted_item]."))
+			to_chat(user, SPAN_NOTICE("你将	he [old_beaker]换成了	he [inputted_item]。"))
 			user.put_in_hands(old_beaker)
 		else
-			to_chat(user, SPAN_NOTICE("You add \the [inputted_item] to the machine!"))
+			to_chat(user, SPAN_NOTICE("你将	he [inputted_item]加入了机器！"))
 		SStgui.update_uis(src)
 		update_icon()
 		return
@@ -86,13 +86,13 @@
 		var/obj/item/storage/pill_bottle/bottle = inputted_item
 
 		if(length(loaded_pill_bottles) >= max_bottles_count)
-			to_chat(user, SPAN_WARNING("[src] is fully loaded with pill bottles."))
+			to_chat(user, SPAN_WARNING("[src]的药瓶槽已满。"))
 			return
 
 		add_pill_bottle(bottle)
 
 		user.drop_inv_item_to_loc(bottle, src)
-		to_chat(user, SPAN_NOTICE("You add the pill bottle into the dispenser slot!"))
+		to_chat(user, SPAN_NOTICE("你将药瓶加入了分配器的插槽！"))
 		SStgui.update_uis(src)
 		return
 
@@ -101,19 +101,19 @@
 		var/obj/item/storage/box/pillbottles/box = inputted_item
 
 		if(length(loaded_pill_bottles) >= max_bottles_count)
-			to_chat(user, SPAN_WARNING("[src] is fully loaded with pill bottles."))
+			to_chat(user, SPAN_WARNING("[src]的药瓶槽已满。"))
 			return
 
 		if(length(box.contents) <= 0)
 			to_chat(user, SPAN_WARNING("\The [box] is empty and cannot be unloaded into [src]."))
 			return
 
-		user.visible_message(SPAN_NOTICE("[user] starts to empty \the [box] into [src]..."),
+		user.visible_message(SPAN_NOTICE("[user]开始将	he [box]中的物品倒入[src]..."),
 		SPAN_NOTICE("You start to empty \the [box] into [src]..."))
 		var/waiting_time = min(length(box.contents), max_bottles_count - length(loaded_pill_bottles)) * box.time_to_empty
 
 		if(!do_after(user, waiting_time, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
-			user.visible_message(SPAN_NOTICE("[user] stops trying to empty \the [box] into [src]."),
+			user.visible_message(SPAN_NOTICE("[user]停止了将	he [box]倒入[src]的尝试。"),
 			SPAN_WARNING("You get distracted and stop trying to empty \the [box] into [src]."))
 			return
 
@@ -121,7 +121,7 @@
 
 		for(var/obj/item/storage/pill_bottle/bottle in box.contents)
 			if(length(loaded_pill_bottles) >= max_bottles_count)
-				to_chat(user, SPAN_WARNING("[src] is fully loaded with pill bottles."))
+				to_chat(user, SPAN_WARNING("[src]的药瓶槽已满。"))
 				return
 			add_pill_bottle(bottle)
 			box.forced_item_removal(bottle)
@@ -540,7 +540,7 @@
 			var/list/reagents_in_pill = list()
 			for(var/datum/reagent/contained_reagent in reagents.reagent_list)
 				if(contained_reagent.flags & REAGENT_NOT_INGESTIBLE)
-					to_chat(user, SPAN_WARNING("[contained_reagent.name] must be administered intravenously, and cannot be made into a pill."))
+					to_chat(user, SPAN_WARNING("[contained_reagent.name]必须静脉注射，无法制成药片。"))
 					return
 
 				reagents_in_pill += contained_reagent.name
@@ -555,7 +555,7 @@
 					else
 						total_possible_pills +=  (bottle.max_storage_space - length(bottle.contents))
 				if (to_create > total_possible_pills || (to_create * length(loaded_pill_bottles_to_fill)) > total_possible_pills)
-					to_chat(user, SPAN_WARNING("Selected pill bottles do not have enough space in each bottle."))
+					to_chat(user, SPAN_WARNING("所选药瓶的每个瓶子空间不足。"))
 					return
 				else
 					amount_per_pill = clamp((reagents.total_volume / to_create) / length(loaded_pill_bottles_to_fill), 0, 60)
@@ -660,11 +660,11 @@
 				return
 
 			if(QDELETED(connected))
-				to_chat(user, SPAN_WARNING("Connect a smartfridge first."))
+				to_chat(user, SPAN_WARNING("请先连接智能冰箱。"))
 				return
 
 			if(src.z != connected.z || get_dist(src, connected) > tether_range)
-				to_chat(user, SPAN_WARNING("Smartfridge is out of range. Connection severed."))
+				to_chat(user, SPAN_WARNING("智能冰箱超出范围。连接已断开。"))
 				cleanup()
 				attack_hand(user)
 				return
@@ -709,7 +709,7 @@
 	if(stat & BROKEN)
 		return
 	if(req_skill && !skillcheck(user, req_skill, req_skill_level))
-		to_chat(user, SPAN_WARNING("You don't have the training to use this."))
+		to_chat(user, SPAN_WARNING("你没有使用此设备的训练资格。"))
 		return
 
 	tgui_interact(usr)
@@ -721,18 +721,18 @@
 		connected = null
 
 /obj/structure/machinery/chem_master/yautja
-	name = "chemical distributor"
+	name = "化学分配器"
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	breakable = FALSE
 
 /obj/structure/machinery/chem_master/condimaster
-	name = "CondiMaster 3000"
+	name = "康迪大师3000"
 	req_skill = null
 	req_skill_level = null
 	condi = 1
 
 /obj/structure/machinery/chem_master/industry_mixer
-	name = "Industrial Chemical Mixer"
+	name = "工业化学混合器"
 	icon_state = "industry_mixer0"
 	base_state = "industry_mixer"
 	req_skill = SKILL_ENGINEER

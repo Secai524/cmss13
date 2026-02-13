@@ -13,7 +13,7 @@
  */
 /obj/item/tool/surgery/retractor
 	name = "retractor"
-	desc = "A tool for surgery used to hold skin, tissues, or organs apart to expose and access the surgical site."
+	desc = "一种外科手术工具，用于撑开皮肤、组织或器官，以暴露和进入手术部位。"
 	icon_state = "retractor"
 	hitsound = 'sound/weapons/genhit3.ogg'
 	force = 10
@@ -33,7 +33,7 @@
  */
 /obj/item/tool/surgery/hemostat
 	name = "hemostat"
-	desc = "A tool for surgery used to control bleeding by pinching blood vessels closed. It can also be used to remove foreign objects and manipulate and lift small organs and tissues."
+	desc = "一种外科手术工具，通过夹闭血管来控制出血。也可用于取出异物，以及操作和提起小型器官和组织。"
 	icon_state = "hemostat"
 	hitsound = 'sound/weapons/pierce.ogg'
 	matter = list("metal" = 5000, "glass" = 2500)
@@ -53,7 +53,7 @@
  */
 /obj/item/tool/surgery/cautery
 	name = "cautery"
-	desc = "A tool for surgery that uses extreme heat to stop bleeding, seal blood vessels, and remove unwanted tissue. Closes incisions by burning things, in this case."
+	desc = "一种外科手术工具，利用高温止血、封闭血管并去除不需要的组织。通过灼烧来闭合切口。"
 	icon_state = "cautery"
 	matter = list("metal" = 5000, "glass" = 2500)
 	force = 10
@@ -75,8 +75,8 @@
  * Usual substitutes: pen, metal rods.
  */
 /obj/item/tool/surgery/surgicaldrill
-	name = "surgical drill"
-	desc = "A surgical tool used to drill through bone to make a cavity for implantation purposes."
+	name = "手术钻"
+	desc = "一种外科手术工具，用于钻穿骨骼，为植入目的制造空腔。"
 	icon_state = "drill"
 	hitsound = 'sound/weapons/circsawhit.ogg'
 	matter = list("metal" = 15000, "glass" = 10000)
@@ -89,7 +89,7 @@
 	attack_verb = list("drilled", "bored", "gored", "perforated")
 
 /obj/item/tool/surgery/surgicaldrill/predatorsurgicaldrill
-	name = "bone drill"
+	name = "骨钻"
 	icon_state = "predator_drill"
 
 /*
@@ -98,7 +98,7 @@
  */
 /obj/item/tool/surgery/scalpel
 	name = "scalpel"
-	desc = "A surgical tool used to create incisions, debride diseased flesh, and separate muscles and organs via a cutting motion. Can also remove foreign objects. Begins most surgeries."
+	desc = "一种外科手术工具，用于切开切口、清创病变组织，并通过切割动作分离肌肉和器官。也可用于取出异物。是大多数手术的开端。"
 	icon_state = "scalpel"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
@@ -126,8 +126,8 @@
  * Researchable Scalpels
  */
 /obj/item/tool/surgery/scalpel/laser
-	name = "prototype laser scalpel"
-	desc = "A scalpel augmented with a directed laser for controlling bleeding as the incision is made and for functioning as a cautery. Sadly, this is only a prototype that looks like a superheated laser crudely slapped on a modified scalpel, so don't expect any miracles."
+	name = "原型激光手术刀"
+	desc = "一种配备了定向激光的手术刀，可在切开时控制出血并起到烧灼作用。可惜这只是原型机，看起来像是将过热的激光粗糙地安装在改装过的手术刀上，所以别指望有什么奇迹。"
 	desc_lore = "The prototype laser scalpel was developed during the mid-1900s, a time where scientists had yet to solve their quandary of developing a laser that could cut through flesh and and burn the blood vessels closed simultaneously; they settled on a compromise: slapping a superheated directed laser beneath the blade of the scalpel and hoping the laser burns the incision the blade makes. While the prototype ironically functioned perfectly as a cautery, it left something to be desired where bloodless incisions were a concern. Somehow, the big heads in research forgot to calibrate the width of the laser to be equivalent to the precise width of the incision made by the blade, leaving some blood vessels untouched in the process."
 	icon_state = "scalpel_laser"
 	damtype = "fire"
@@ -137,8 +137,8 @@
 	black_market_value = 15
 
 /obj/item/tool/surgery/scalpel/laser/improved
-	name = "laser scalpel"
-	desc = "A scalpel augmented with a directed laser for controlling bleeding as the incision is made and for functioning as a cautery. This standard model uses a CO2 laser to vaporize tissue and seal blood vessels, but the incisions are not always bloodless."
+	name = "激光手术刀"
+	desc = "一种配备定向激光的手术刀，可在切开时控制出血并起到烧灼作用。此标准型号使用二氧化碳激光汽化组织并封闭血管，但切口并非总是无血的。"
 	desc_lore = "After figuring out how to make a laser that incises flesh, the prototype and its blade became nothing more than a distant memory and a reminder to not haphazardly slap two independently-functioning tools together and praying to Spess Jesus they will in tandem with one another. This design, hailing from the early 2000s, uses a CO2 laser to create an incision by using an invisible infrared beam that vaporizes tissue while sealing blood vessels. While pinpoint bleeding occurs on occasion, the laser scalpel is a perfect, if not expensive alternative to replacing a standard scalpel and cautery."
 	icon_state = "scalpel_laser_2"
 	damtype = "fire"
@@ -146,8 +146,8 @@
 	black_market_value = 20
 
 /obj/item/tool/surgery/scalpel/laser/advanced
-	name = "advanced laser scalpel"
-	desc = "A scalpel augmented with a directed laser for controlling bleeding as the incision is made and for functioning as a cautery. This one's laser has smart detection technology to target and burn every blood vessel in its vicinity and represents the pinnacle of precision energy cutlery!"
+	name = "高级激光手术刀"
+	desc = "一种配备定向激光的手术刀，用于在切开时控制出血并起到烧灼作用。其激光具备智能探测技术，可瞄准并烧灼附近所有血管，代表了精密能量切割器具的巅峰！"
 	desc_lore = "Scientists perfected the standard model by using a much stronger type of laser that creates explosions on the microscopic scale to vaporize any tissue and blood vessels in its way as it makes an incision. With a 100% success rate in creating bloodless incision, these scalpels have no issue taking the place of scalpels and cauteries, despite their exorbitant price tags."
 	icon_state = "scalpel_laser_3"
 	damtype = "fire"
@@ -160,7 +160,7 @@
 
 /obj/item/tool/surgery/scalpel/pict_system
 	name = "\improper PICT system"
-	desc = "The Perivascular Incision and Cauterization Tool uses a high-frequency vibrating blade and suction liquid control system to precisely target and destroy the lymphatic and vascular systems feeding tumors while suctioning fluids that may contain traveling cancerous cells. Due to its specialty in cutting certain tissues, it is much slower than a scalpel in initiating surgeries and it can't create a full-length incision bloodlessly."
+	desc = "血管周切开烧灼工具采用高频振动刀片和抽吸液体控制系统，可精确瞄准并摧毁为肿瘤供血的淋巴和血管系统，同时抽吸可能含有游离癌细胞的液体。由于其专用于切割特定组织，在开始手术时比手术刀慢得多，且无法进行全程无血切开。"
 	desc_lore = "The PICT system has humble origins as yet another tool developed for cancer research. Designed to identify, sever and cauterize the lymphatic and vascular systems feeding tumors, it accomplishes goals with aplomb and is the standard tool for cutting and burning off nutrient supplies to tumors before extraction. Due to its mechanisms of targeting specific types of cells while incising and suctioning, it struggles to create a full-length incision bloodlessly."
 	icon_state = "pict_system"
 	force = 15
@@ -169,8 +169,8 @@
 	black_market_value = 25
 
 /obj/item/tool/surgery/scalpel/manager
-	name = "incision management system"
-	desc = "A true extension of the surgeon's body, this marvel instantly and completely prepares and widens incisions simultaneously and bloodlessly, allowing for the immediate commencement of therapeutic steps. It can only be used to begin surgeries."
+	name = "切口管理系统"
+	desc = "这是外科医生身体的真正延伸，这个奇迹能瞬间、完全地同时准备并扩大切口，且无出血，从而立即开始治疗步骤。它只能用于开始手术。"
 	desc_lore = "Thousands of surgeons across the galaxy can only dream of holding one of these in their hands. With the technology of an advanced laser scalpel and a mechanical retractor all in one tool, a surgeon can incise, seal blood vessels, and widen incisions all in one step. Sadly, the tool is overhyped, aiding in its unconscionable price tag; it cannot function as a retractor, hemostat, cautery in any circumstances other than making an incision."
 	force = 15
 	attack_speed = 6
@@ -184,8 +184,8 @@
  */
 
 /obj/item/tool/surgery/circular_saw
-	name = "circular saw"
-	desc = "A surgical tool used to saw through thick bone in the skull and ribcage prior to prying them apart, or for amputating diseased limbs."
+	name = "圆锯"
+	desc = "一种外科工具，用于在撬开颅骨和胸腔的厚骨之前将其锯开，或用于截除病变肢体。"
 	icon_state = "saw"
 	hitsound = 'sound/weapons/circsawhit.ogg'
 	flags_atom = FPRINT|CONDUCT
@@ -202,7 +202,7 @@
 	edge = 1
 
 /obj/item/tool/surgery/circular_saw/predatorbonesaw
-	name = "bone saw"
+	name = "骨锯"
 	icon_state = "predator_bonesaw"
 	flags_item = NO_FLAGS
 
@@ -212,8 +212,8 @@
  */
 
 /obj/item/tool/surgery/bonegel
-	name = "bottle of bone gel"
-	desc = "A container for bone gel, a substance capable of fixing fractures using an analogue that mimics bone. It needs to be refilled from a specialized machine."
+	name = "骨凝胶瓶"
+	desc = "一个装有骨凝胶的容器，骨凝胶是一种能够使用模拟骨骼的类似物来固定骨折的物质。需要从专用机器重新填充。"
 	desc_lore = "Bone gel is a biological synthetic bone-analogue with the consistency of clay. It is capable of fixing hairline fractures and complex fractures alike by sealing cracks through adhesion to compact bone and solidifying; the gel then naturally erodes away as the bone remodels itself. Bone gel should not be used to fix missing bone, as it does not replace the body's bone marrow. Overuse in a short period may cause acute immunodeficiency or anemia."
 	icon_state = "bone-gel"
 	w_class = SIZE_SMALL
@@ -266,14 +266,14 @@
 
 /obj/item/tool/surgery/bonegel/proc/refill_gel(obj/refilling_obj, mob/user)
 	if(unlimited_gel)
-		to_chat(user, SPAN_NOTICE("[refilling_obj] refuses to fill [src]."))
+		to_chat(user, SPAN_NOTICE("[refilling_obj]拒绝填充[src]。"))
 		return
 	if(remaining_gel >= 100)
-		to_chat(user, SPAN_NOTICE("[src] cannot be filled with any more bone gel."))
+		to_chat(user, SPAN_NOTICE("[src]无法再装入更多骨凝胶。"))
 		return
 
 	if(refilling)
-		to_chat(user, SPAN_NOTICE("You are already refilling [src] from [refilling_obj]."))
+		to_chat(user, SPAN_NOTICE("你已经在从[refilling_obj]重新填充[src]了。"))
 		return
 	refilling = TRUE
 
@@ -282,11 +282,11 @@
 			break
 		remaining_gel = clamp(remaining_gel + 10, 0, 100)
 		update_icon()
-		to_chat(user, SPAN_NOTICE("[refilling_obj] chimes, and displays \"[remaining_gel]% filled\"."))
+		to_chat(user, SPAN_NOTICE("[refilling_obj]发出提示音，并显示\"[remaining_gel]% filled\"."))
 
 	refilling = FALSE
 	playsound(refilling_obj, "sound/machines/ping.ogg", 10)
-	to_chat(user, SPAN_NOTICE("You remove [src] from [refilling_obj]."))
+	to_chat(user, SPAN_NOTICE("你从[refilling_obj]取出了[src]。"))
 
 /obj/item/tool/surgery/bonegel/proc/use_gel(gel_cost)
 	if(unlimited_gel)
@@ -303,8 +303,8 @@
 	icon_state = "bone-gel_0"
 
 /obj/item/tool/surgery/bonegel/predatorbonegel
-	name = "gel gun"
-	desc = "Inside is a liquid that is similar in effect to bone gel, but requires much smaller quantities, allowing near infinite use from a single capsule."
+	name = "凝胶枪"
+	desc = "内部是一种效果与骨凝胶相似的液体，但所需用量小得多，单个胶囊几乎可以无限次使用。"
 	base_icon_state = "predator_bone-gel"
 	icon_state = "predator_bone-gel"
 	unlimited_gel = TRUE
@@ -317,7 +317,7 @@
 /obj/item/tool/surgery/FixOVein
 	name = "\improper FixOVein"
 	icon_state = "fixovein"
-	desc = "A surgical tool used to repair broken blood vessels using a synthetic membrane. The tool can also be used to reconnect other ligaments and tissues in a pinch."
+	desc = "一种外科工具，使用合成膜修复破损的血管。紧急情况下也可用于重新连接其他韧带和组织。"
 	desc_lore = "Hemophilics everywhere can thank a likewise hemophilic surgeon and their love for birds for the development of this tool. Inspired by the protective keratin sheath surrounding blood feathers as they grow and the crumbling of pin feather sheaths after the feather finishes growing, they worked with scientists to develop a tool that secretes a membrane of synthetic connective tissue to provide a framework and protective casing for the healing blood vessel until it naturally repairs itself, after which is sloughs off and dissolves. Since the membrane operates on a cellular level, it is practically infinite. With patients having been operated on experiencing a 100% recovery rate, the FixOVein has earned it a spot on every surgeon's surgical tray."
 	force = 0
 	throwforce = 1
@@ -326,7 +326,7 @@
 	var/usage_amount = 10
 
 /obj/item/tool/surgery/FixOVein/predatorFixOVein
-	name = "vein fixer"
+	name = "血管修复器"
 	icon_state = "predator_fixovein"
 
 /*
@@ -335,8 +335,8 @@
  */
 
 /obj/item/tool/surgery/surgical_line
-	name = "surgical line"
-	desc = "A roll of military-grade surgical line, able to seamlessly sew up any wound. Also works as a robust fishing line for maritime deployments."
+	name = "手术缝合线"
+	desc = "一卷军用级手术缝合线，能无缝缝合任何伤口。在海上部署时也可用作坚固的钓鱼线。"
 	icon_state = "line_brute"
 	item_state = "line_brute"
 	force = 0
@@ -353,7 +353,7 @@
  */
 
 /obj/item/tool/surgery/synthgraft
-	name = "synth-graft"
+	name = "合成移植物"
 	desc = "An applicator for synthetic skin field grafts. The stuff reeks like processed space carp skin, itches like the dickens, stings like hell when applied, and the color is \
 		a perfectly averaged multi-ethnic tone that doesn't blend with <i>anyone's</i> complexion. But at least you don't have to stay in sickbay for skin graft surgery."
 	icon_state = "line_burn"
@@ -372,8 +372,8 @@
  */
 
 /obj/item/tool/surgery/bonesetter
-	name = "bone setter"
-	desc = "Known formally as 'bone reduction forceps,' it is a surgical tool used for a procedure called 'fracture reduction,' during which it to repositions fractured bones into their proper positions so they may heal properly."
+	name = "骨骼复位器"
+	desc = "正式名称为'骨折复位钳'，是一种用于'骨折复位'手术的外科工具，在此过程中将骨折的骨骼重新定位到正确位置以便正常愈合。"
 	icon_state = "bonesetter"
 	hitsound = 'sound/weapons/genhit3.ogg'
 	force = 15
@@ -386,7 +386,7 @@
 	matter = list("plastic" = 7500)
 
 /obj/item/tool/surgery/bonesetter/predatorbonesetter
-	name = "bone placer"
+	name = "骨骼定位器"
 	icon_state = "predator_bonesetter"
 
 /*
@@ -395,8 +395,8 @@ WILL BE USED AT A LATER TIME
 t. optimisticdude
 
 /obj/item/tool/surgery/handheld_pump
-	name = "handheld surgical pump"
-	desc = "This sucks. Literally."
+	name = "手持手术泵"
+	desc = "这玩意儿真能吸。字面意思。"
 	icon_state = "pump"
 	force = 0
 	throwforce = 9
@@ -408,8 +408,8 @@ t. optimisticdude
 */
 
 /obj/item/tool/surgery/drapes //Does nothing at present. Might be useful for increasing odds of success.
-	name = "surgical drapes"
-	desc = "Used to cover a limb prior to the beginning of a surgical procedure."
+	name = "手术铺单"
+	desc = "用于在手术开始前覆盖肢体。"
 	icon_state = "drapes"
 	gender = PLURAL
 	w_class = SIZE_SMALL
@@ -420,8 +420,8 @@ t. optimisticdude
  */
 
 /obj/item/tool/surgery/stabilizer_gel
-	name = "stabilizer gel vial"
-	desc = "Used for stabilizing wounds for treatment."
+	name = "稳定凝胶瓶"
+	desc = "用于稳定伤口以便治疗。"
 	icon_state = "stabilizer_gel"
 	force = 0
 	throwforce = 1
@@ -430,8 +430,8 @@ t. optimisticdude
 	black_market_value = 50
 
 /obj/item/tool/surgery/healing_gun
-	name = "healing gun"
-	desc = "Used for mending stabilized wounds."
+	name = "治疗枪"
+	desc = "用于修复已稳定的伤口。"
 	icon_state = "healing_gun"
 	force = 0
 	throwforce = 1
@@ -448,13 +448,13 @@ t. optimisticdude
 
 /obj/item/tool/surgery/healing_gun/attackby(obj/item/O, mob/user)
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		to_chat(user, SPAN_WARNING("You have no idea how to put [O] into [src]!"))
+		to_chat(user, SPAN_WARNING("你完全不知道如何把[O]装进[src]！"))
 		return
 	if(istype(O, /obj/item/tool/surgery/healing_gel))
 		if(loaded)
-			to_chat(user, SPAN_WARNING("There's already a capsule inside the healing gun!"))
+			to_chat(user, SPAN_WARNING("治疗枪里已经有一个胶囊了！"))
 			return
-		user.visible_message(SPAN_NOTICE("[user] loads [src] with \a [O].") ,SPAN_NOTICE("You load [src] with \a [O]."))
+		user.visible_message(SPAN_NOTICE("[user]将\a [O]装入了[src]。") ,SPAN_NOTICE("You load [src] with \a [O]."))
 		playsound(loc, 'sound/items/air_release.ogg',25)
 		loaded = TRUE
 		update_icon()
@@ -463,8 +463,8 @@ t. optimisticdude
 	return ..()
 
 /obj/item/tool/surgery/healing_gel
-	name = "healing gel capsule"
-	desc = "Used for reloading the healing gun."
+	name = "治疗凝胶胶囊"
+	desc = "用于给治疗枪重新装填。"
 	icon_state = "healing_gel"
 	force = 0
 	throwforce = 1
@@ -473,8 +473,8 @@ t. optimisticdude
 	black_market_value = 15
 
 /obj/item/tool/surgery/wound_clamp
-	name = "wound clamp"
-	desc = "Used for clamping wounds after treatment."
+	name = "伤口夹"
+	desc = "用于在治疗后夹住伤口。"
 	icon_state = "wound_clamp"
 	force = 10
 	throwforce = 1
@@ -487,7 +487,7 @@ t. optimisticdude
 
 /obj/item/tool/surgery/WYautopsy
 	name = "\improper Weyland Brand Automatic Autopsy System(TM)"
-	desc = "Putting the FUN back in Autopsy. This little gadget performs an entire autopsy of whatever strange life form you've found in about 30 seconds."
+	desc = "让尸检重新变得有趣。这个小装置能在约30秒内对你发现的任何奇怪生命形式完成一次完整的尸检。"
 	icon_state = "scalpel_laser_2"
 	damtype = "fire"
 	force = 10
@@ -503,17 +503,17 @@ t. optimisticdude
 	set src in usr
 
 	if(!active)
-		to_chat(usr, "The system appears to be working fine...")
+		to_chat(usr, "系统似乎运行正常...")
 		return
 	if(active)
 		resetting = 1
-		to_chat(usr, "Resetting tool. This will take a few seconds... Do not attempt to use the tool during the reset or it may malfunction.")
+		to_chat(usr, "正在重置工具。这需要几秒钟... 重置期间请勿尝试使用该工具，否则可能导致故障。")
 		while(active) //While keep running until it's reset (in case of lag-spam)
 			active = 0 //Sets it to not active
-			to_chat(usr, "Processing...")
+			to_chat(usr, "处理中...")
 			spawn(60) // runs a timer before the final check.  timer is longer than autopsy timers.
 				if(!active)
-					to_chat(usr, "System Reset completed!")
+					to_chat(usr, "系统重置完成！")
 					resetting = 0
 
 /obj/item/tool/surgery/WYautopsy/attack(mob/living/carbon/xenomorph/T as mob, mob/living/user as mob)
@@ -521,27 +521,27 @@ t. optimisticdude
 	set name = "Perform Alien Autopsy"
 	set src in usr*/
 	if(resetting)
-		to_chat(usr, "This tool is currently returning to its factory default settings. If you have been waiting, try running the reset again.")
+		to_chat(usr, "此工具正在恢复出厂默认设置。如果你一直在等待，请尝试再次运行重置。")
 	if(!isxeno(T))
-		to_chat(usr, "What are you, some sort of fucking MONSTER?")
+		to_chat(usr, "你他妈是什么东西，某种怪物吗？")
 		return
 	if(T.health > 0)
-		to_chat(usr, "The fuck are you doing!? Kill it!")
+		to_chat(usr, "你他妈在干什么！？干掉它！")
 		return
 	if(active)
-		to_chat(usr, "You are already performing an autopsy.")
+		to_chat(usr, "你已经在进行尸检了。")
 		return
 	if(istype(T, /mob/living/carbon/xenomorph/larva))
-		to_chat(usr, "The larva has not developed any useful biomass for you to extract.") //It will in a future update, I guess.
+		to_chat(usr, "这只幼虫尚未发育出任何可供你提取的有用生物质。") //It will in a future update, I guess.
 		return
 	active = 1
 	var CHECK = user.loc
 	playsound(loc, 'sound/weapons/pierce.ogg', 25)
-	to_chat(usr, "You begin to cut into the alien... This might take some time...")
+	to_chat(usr, "你开始切割异形...这可能需要一些时间...")
 	if(T.health >-100)
-		to_chat(usr, "HOLY SHIT! IT'S STILL ALIVE! It springs to life and uses its body weight to knock you down!")
+		to_chat(usr, "我操！它还活着！它突然暴起，用身体重量将你撞倒！")
 		usr.apply_effect(20, WEAKEN)
-		to_chat(T, "Though you feel a monumental amount of pain, you jump back up to use the last of your strength to kill [usr] with your final moments of life.") ///~10 seconds
+		to_chat(T, "尽管你感到剧痛难忍，但你仍挣扎起身，用尽最后一丝力气，在生命的最后一刻杀死了[usr]。") ///~10 seconds
 		T.health = T.maxHealth*2 //It's hulk levels of angry.
 		active = 0
 		spawn (1000) //Around 10 seconds
@@ -552,9 +552,9 @@ t. optimisticdude
 		if(0)
 			spawn(50)
 				if(CHECK != user.loc)
-					to_chat(usr, "This procedure requires uninterrupted focus; you need to remain still.")
+					to_chat(usr, "此操作需要全神贯注；你必须保持静止。")
 					return
-				to_chat(usr, "You've cut through the outer layers of Chitin.")
+				to_chat(usr, "你已经切开了外层的几丁质甲壳。")
 				new /obj/item/oldresearch/Chitin(T.loc) //This will be 1-3 Chitin eventually (depending on tier)
 				new /obj/item/oldresearch/Chitin(T.loc) //This will be 1-3 Chitin eventually (depending on tier)
 				T.butchery_progress++
@@ -562,28 +562,28 @@ t. optimisticdude
 		if(1)
 			spawn(50)
 				if(CHECK != user.loc)
-					to_chat(usr, "This procedure requires uninterrupted focus; you need to remain still.")
+					to_chat(usr, "此操作需要全神贯注；你必须保持静止。")
 					return
-				to_chat(usr, "You've cut into the chest cavity and retrieved a sample of blood.")
+				to_chat(usr, "你切入了胸腔并采集了一份血液样本。")
 				new /obj/item/oldresearch/Blood(T.loc)//This will be a sample of blood eventually
 				T.butchery_progress++
 				active = 0
 		if(2)
 			spawn(50)
 				if(CHECK != user.loc)
-					to_chat(usr, "This procedure requires uninterrupted focus; you need to remain still.")
+					to_chat(usr, "此操作需要全神贯注；你必须保持静止。")
 					return
 				//to_chat(usr, "You've cut out an intact organ.")
-				to_chat(usr, "You've cut out some biomass...")
+				to_chat(usr, "你切下了一些生物质...")
 				new /obj/item/oldresearch/Resin(T.loc)//This will be an organ eventually, based on the caste.
 				T.butchery_progress++
 				active = 0
 		if(3)
 			spawn(50)
 				if(CHECK != user.loc)
-					to_chat(usr, "This procedure requires uninterrupted focus; you need to remain still.")
+					to_chat(usr, "此操作需要全神贯注；你必须保持静止。")
 					return
-				to_chat(usr, "You scrape out the remaining biomass.")
+				to_chat(usr, "你刮出了剩余的生物质。")
 				active = 0
 				new /obj/item/oldresearch/Resin(T.loc)
 				new /obj/effect/decal/remains/xeno(T.loc)

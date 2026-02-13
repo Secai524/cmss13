@@ -29,7 +29,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/colonist/engineer
-	name = "Colonist - Engineer"
+	name = "殖民者 - 工程师"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Colonial Engineer"
 
@@ -50,7 +50,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/colonist/security
-	name = "Colonist - Security"
+	name = "殖民者 - 安保"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Colonial Security"
 
@@ -70,7 +70,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/colonist/doctor
-	name = "Colonist - Doctor"
+	name = "殖民者 - 医生"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Colonial Doctor"
 	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)

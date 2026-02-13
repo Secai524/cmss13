@@ -1,7 +1,7 @@
 /obj/item/facepaint
 	gender = PLURAL
 	name = "facepaint"
-	desc = "Paint, for your face. Wipe it off your face with some paper if you need to. This one is a deep, forest green."
+	desc = "涂脸用的颜料。需要时可以用纸擦掉。这个是深森林绿色。"
 	icon = 'icons/obj/items/paint.dmi'
 	icon_state = "camo"
 	var/paint_type = "green"
@@ -18,26 +18,26 @@
 
 //FACEPAINT
 /obj/item/facepaint/green
-	name = "green facepaint"
-	desc = "Paint, for your face. This green facepaint is perfect for drawing menacing stripes across your face. Wipe it off your face with some paper if you need to."
+	name = "绿色油彩"
+	desc = "涂脸用的颜料。这款绿色油彩非常适合在脸上画出威慑性的条纹。需要时可以用纸擦掉。"
 	paint_type = "green_camo"
 	icon_state = "green_camo"
 
 /obj/item/facepaint/brown
-	name = "brown facepaint"
-	desc = "Paint, for your face. This brown facepaint is perfect for drawing menacing stripes across your face. Wipe it off your face with some paper if you need to."
+	name = "棕色油彩"
+	desc = "涂脸用的颜料。这款棕色油彩非常适合在脸上画出威慑性的条纹。需要时可以用纸擦掉。"
 	paint_type = "brown_camo"
 	icon_state = "brown_camo"
 
 /obj/item/facepaint/black
-	name = "black facepaint"
-	desc = "Paint, for your face. This black facepaint is perfect for your very own eye black. Wipe it off your face with some paper if you need to."
+	name = "黑色面部油彩"
+	desc = "用于面部的油彩。这款黑色面部油彩非常适合用作你自己的眼部涂黑。如果需要，可以用纸擦掉。"
 	paint_type = "black_camo"
 	icon_state = "black_camo"
 
 /obj/item/facepaint/sniper
-	name = "fullbody paint"
-	desc = "Paint, for your face. This facepaint is meant to help you blend in with the foliage, but studies on this are at best inconclusive. Wipe it off your face with some paper if you need to."
+	name = "全身伪装油彩"
+	desc = "用于面部的油彩。这种油彩旨在帮助你融入植被环境，但相关研究充其量尚无定论。如果需要，可以用纸擦掉。"
 	paint_type = "full_camo"
 	icon_state = "full_camo"
 
@@ -67,34 +67,34 @@
 	select_gamemode_skin(type)
 
 /obj/item/facepaint/sniper/snow
-	name = "fullbody paint snow"
+	name = "雪地全身伪装油彩"
 	paint_type = "full_camo_snow"
 	icon_state = "full_camo_snow"
 
 /obj/item/facepaint/sniper/desert
-	name = "fullbody paint desert"
+	name = "沙漠全身伪装油彩"
 	paint_type = "full_camo_desert"
 	icon_state = "full_camo_desert"
 
 /obj/item/facepaint/sniper/jungle
-	name = "fullbody paint jungle"
+	name = "丛林全身伪装油彩"
 	paint_type = "full_camo_jungle"
 	icon_state = "full_camo_jungle"
 
 /obj/item/facepaint/sniper/urban
-	name = "fullbody paint urban"
+	name = "城市全身伪装油彩"
 	paint_type = "full_camo_urban"
 	icon_state = "full_camo_urban"
 
 /obj/item/facepaint/skull
-	name = "skull paint"
-	desc = "Paint, for your face. Make your enemies need a change of underwear from the sheer terror a goddamn skull on your face will bring to them. WARNING: DOES NOT MIX WELL WITH BEARDS."
+	name = "骷髅面部油彩"
+	desc = "用于面部的油彩。让你脸上的骷髅图案给敌人带来纯粹的恐惧，让他们需要换条裤子。警告：与胡须搭配效果不佳。"
 	paint_type = "skull_camo"
 	icon_state = "skull_camo"
 
 /obj/item/facepaint/clown
-	name = "clown makeup paint"
-	desc = "Paint, for your face. Used for entertainers and alike, or maybe you just feel that way."
+	name = "小丑彩妆油彩"
+	desc = "用于面部的油彩。供演艺人员等使用，或者也许你只是有这种感觉。"
 	paint_type = "clown_camo"
 	icon_state = "clown_camo"
 
@@ -105,7 +105,7 @@
 
 /obj/item/facepaint/sunscreen_stick
 	name= "\improper USCM issue sunscreen"
-	desc = "A stick of SPF 50 sunscreen, issued to you by the good brass of the Corps. Whereas the previously issued sunscreen was toxic upon ingestion, this batch improves upon that by only containing excessive amounts of cadmium."
+	desc = "一支SPF 50防晒霜，由陆战队的好长官配发给你。之前配发的防晒霜在摄入时有毒，而这一批有所改进，仅含有过量的镉。"
 	paint_type = "sunscreen_stick"
 	icon_state = "sunscreen_stick"
 
@@ -117,7 +117,7 @@
 		return FALSE
 
 	if(!COOLDOWN_FINISHED(src, apply_delay)) // Stops players from spamming each other with popups.
-		to_chat(user, SPAN_WARNING("You just attempted to apply some makeup, slow down!"))
+		to_chat(user, SPAN_WARNING("你刚刚试图化妆，慢一点！"))
 		return FALSE
 
 	COOLDOWN_START(src, apply_delay, apply_delay_length)
@@ -127,11 +127,11 @@
 		var/mob/living/carbon/human/human_user = user
 		human_user.animation_attack_on(human_target)
 		if(!open)
-			to_chat(user, SPAN_WARNING("The lid is on!"))
+			to_chat(user, SPAN_WARNING("盖子盖上了！"))
 			return FALSE
 
 		if(human_target.lip_style) //if they already have lipstick on
-			to_chat(user, SPAN_WARNING("You need to wipe the old makeup off with paper first!"))
+			to_chat(user, SPAN_WARNING("你需要先用纸把旧的化妆品擦掉！"))
 			return
 
 		if(human_target == user)
@@ -139,20 +139,20 @@
 			return TRUE
 
 		else
-			to_chat(user, SPAN_NOTICE("You attempt to apply [src] on [human_target]..."))
-			to_chat(human_target, SPAN_NOTICE("[user] is trying to apply [src] on your face..."))
-			if(alert(human_target,"Will you allow [user] to apply makeup to your face?",,"Sure","No") == "Sure")
+			to_chat(user, SPAN_NOTICE("你试图将[src]涂在[human_target]脸上..."))
+			to_chat(human_target, SPAN_NOTICE("[user]正试图将[src]涂在你脸上..."))
+			if(alert(human_target,"你是否允许[user]给你化妆？",,"Sure","No") == "Sure")
 				if( user && loc == user && (user in range(1,human_target)) ) //Have to be close and hold the thing.
 					paint_face(human_target, user)
 					return TRUE
 
-	to_chat(user, SPAN_WARNING("Foiled!"))
+	to_chat(user, SPAN_WARNING("被阻止了！"))
 
 
 /obj/item/facepaint/proc/paint_face(mob/living/carbon/human/H, mob/user)
 	if(!H || !user)
 		return //In case they're passed as null.
-	user.visible_message(SPAN_NOTICE("[user] carefully applies [src] on [H]'s face."),
+	user.visible_message(SPAN_NOTICE("[user]小心翼翼地将[src]涂在[H]脸上。"),
 						SPAN_NOTICE("You apply [src]."))
 	H.lip_style = paint_type
 	H.update_body()
@@ -167,8 +167,8 @@
 
 //LIPSTICK
 /obj/item/facepaint/lipstick
-	name = "red lipstick"
-	desc = "Lipstick. A stick, for your lips."
+	name = "红色唇膏"
+	desc = "唇膏。一支用于嘴唇的棒状物。"
 	paint_type = "red_lipstick"
 	icon_state = "lipstick"
 	item_state = "lipstick"
@@ -184,27 +184,27 @@
 	. = ..()
 	if(open)
 		open = FALSE
-		to_chat(user, SPAN_NOTICE("You put the lipstick's lid back on."))
+		to_chat(user, SPAN_NOTICE("你把唇膏的盖子盖了回去。"))
 		icon_state = icon_state_closed
 	else
 		open = TRUE
-		to_chat(user, SPAN_NOTICE("You take the lid off."))
+		to_chat(user, SPAN_NOTICE("你把盖子取了下来。"))
 		icon_state = icon_state_open
 		playsound(src, "pillbottle", 25, TRUE)
 
 /obj/item/facepaint/lipstick/purple
-	name = "purple lipstick"
+	name = "紫色唇膏"
 	paint_type = "purp_lipstick"
 	icon_state_open = "lipstick_purple"
 
 /obj/item/facepaint/lipstick/maroon
-	name = "maroon lipstick"
+	name = "褐红色唇膏"
 	paint_type = "marn_lipstick"
 	icon_state_open = "lipstick_maroon"
 
 /obj/item/facepaint/lipstick/jade
-	name = "jade lipstick"
-	desc = "Lipstick. A stick, for your lips. This one looks sharp for some reason. Why would something you put on your mouth be sharp??"
+	name = "翡翠色唇膏"
+	desc = "唇膏。一根涂在你嘴唇上的棒子。这支不知为何看起来很锋利。为什么涂在嘴上的东西会是锋利的？？"
 	paint_type = "jade_lipstick"
 	icon_state_open = "lipstick_jade"
 
@@ -220,19 +220,19 @@
 		force = 0
 
 /obj/item/k9_name_changer
-	name = "K9 name implanter"
-	desc = "Syncs the implanted W-Y Serial Chip to the unit's preferred name."
+	name = "K9命名植入器"
+	desc = "将植入的维兰德-汤谷序列芯片同步到该单位的首选名称。"
 	icon = 'icons/obj/items/economy.dmi'
 	icon_state = "efundcard"
 	w_class = SIZE_TINY
 
 /obj/item/k9_name_changer/attack_self(mob/user)
 	. = ..()
-	var/newname = capitalize(tgui_input_text(user, "What do you wish to be named", "Name:", encode = FALSE))
+	var/newname = capitalize(tgui_input_text(user, "你希望被命名为什么", "名称：", encode = FALSE))
 	if(!newname)
 		return
 
-	var/verify = tgui_input_list(user, "Are you SURE you wish to be named: [newname]?", "Confirm", list("Yes", "No"))
+	var/verify = tgui_input_list(user, "你确定希望被命名为：[newname]吗？", "确认", list("Yes", "No"))
 	if(verify != "Yes")
 		return
 
@@ -246,7 +246,7 @@
 			if(ID.assignment)
 				ID.name += " ([ID.assignment])"
 
-	var/genderswap = tgui_input_list(user, "Which Gender?", "Gender", list("Male", "Female"))
+	var/genderswap = tgui_input_list(user, "选择性别？", "Gender", list("Male", "Female"))
 	if(!genderswap)
 		return
 	user.gender = lowertext(genderswap)

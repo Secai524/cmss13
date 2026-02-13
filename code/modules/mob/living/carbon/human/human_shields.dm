@@ -14,7 +14,7 @@
 	// Check if our armour blocks pounces.
 	if((attack_type == SHIELD_ATTACK_POUNCE) && wear_suit && wear_suit.flags_inventory & BLOCK_KNOCKDOWN)
 		if(!custom_response)
-			visible_message(SPAN_DANGER("<B>[src] withstands [attack_text] with their [wear_suit.name]!</B>"), max_distance=5)
+			visible_message(SPAN_DANGER("<B>[src]用其[wear_suit.name]抵挡住了[attack_text]！</B>"), max_distance=5)
 		new block_effect(owner_turf)
 		playsound(src, 'sound/items/block_shield.ogg', 70, vary = TRUE)
 		return TRUE
@@ -30,14 +30,14 @@
 					var/appropriate_dir = (attacking_direction in get_related_directions(reverse_direction(dir)))
 					if(appropriate_dir && prob(back_shield.passive_block))
 						if(!custom_response)
-							visible_message(SPAN_DANGER("<B>The [back_shield] on [src]'s back blocks [attack_text]!</B>"), null, null, 5)
+							visible_message(SPAN_DANGER("<B>[src]背上的[back_shield]格挡了[attack_text]！</B>"), null, null, 5)
 						new block_effect(owner_turf)
 						playsound(src, back_shield.shield_sound, 70, vary = TRUE)
 						return TRUE
 				if(SHIELD_ABSOLUTE, SHIELD_ABSOLUTE_TWOHANDS)
 					if(prob(back_shield.passive_block))
 						if(!custom_response)
-							visible_message(SPAN_DANGER("<B>[src] is protected from [attack_text] by the [back_shield]!</B>"), null, null, 5)
+							visible_message(SPAN_DANGER("<B>[src]受到[back_shield]保护，免受[attack_text]伤害！</B>"), null, null, 5)
 						new block_effect(owner_turf)
 						playsound(src, back_shield.shield_sound, 70, vary = TRUE)
 						return TRUE
@@ -147,7 +147,7 @@
 		new block_effect(owner_turf)
 		playsound(src, checking_weapon.shield_sound, 70, vary = TRUE)
 		if(!custom_response)
-			visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [checking_weapon.name]!</B>"), null, null, 5)
+			visible_message(SPAN_DANGER("<B>[src]用[checking_weapon.name]格挡了[attack_text]！</B>"), null, null, 5)
 		return TRUE
 
 	return FALSE

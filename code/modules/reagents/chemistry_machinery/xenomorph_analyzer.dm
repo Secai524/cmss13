@@ -1,6 +1,6 @@
 /obj/structure/machinery/xenoanalyzer
-	name = "Biomass Analyzer"
-	desc = "Analyzer of biological material which processes valuable matter into even more valueble data."
+	name = "生物质分析仪"
+	desc = "用于分析生物材料的设备，可将有价值的物质转化为更有价值的数据。"
 	density = TRUE
 	anchored = TRUE
 	icon = 'icons/obj/structures/machinery/science_machines_64x32.dmi'
@@ -32,7 +32,7 @@
 
 /obj/structure/machinery/xenoanalyzer/attack_hand(mob/user)
 	if(!skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
-		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
+		to_chat(user, SPAN_WARNING("你不知道如何使用这个。"))
 		return
 	tgui_interact(user)
 
@@ -44,20 +44,20 @@
 
 /obj/structure/machinery/xenoanalyzer/attackby(obj/item/attacked_item, mob/user)
 	if(!skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
-		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
+		to_chat(user, SPAN_WARNING("你不知道如何使用这个。"))
 		return
 	if(istype(attacked_item, /obj/item/organ/xeno))
 		if(busy)
-			to_chat(user, SPAN_WARNING("The [src] is currently busy!"))
+			to_chat(user, SPAN_WARNING("[src]当前正忙！"))
 		if(organ)
-			to_chat(user, SPAN_WARNING("Organ slot is already full!"))
+			to_chat(user, SPAN_WARNING("器官槽位已满！"))
 			return
 		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-			to_chat(user, SPAN_WARNING("You were interupted!"))
+			to_chat(user, SPAN_WARNING("你被打断了！"))
 			return
 		if(!user.drop_inv_item_to_loc(attacked_item, src))
 			return
-		to_chat(user, SPAN_NOTICE("You place the organ in the machine."))
+		to_chat(user, SPAN_NOTICE("你将器官放入机器中。"))
 		organ = attacked_item
 		icon_state = "xeno_analyzer_organ_on"
 		caste_of_organ = organ.caste_origin
@@ -65,12 +65,12 @@
 	if(istype(attacked_item, /obj/item/clothing/accessory/health/research_plate))
 		var/obj/item/clothing/accessory/health/research_plate/plate = attacked_item
 		if(plate.recyclable_value == 0 && !plate.can_recycle(user))
-			to_chat(user, SPAN_WARNING("You cannot recycle this type of plate."))
+			to_chat(user, SPAN_WARNING("无法回收此类板材。"))
 			return
 		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-			to_chat(user, SPAN_WARNING("You were interupted!"))
+			to_chat(user, SPAN_WARNING("你被打断了！"))
 			return
-		to_chat(user, SPAN_NOTICE("You recycle [attacked_item]"))
+		to_chat(user, SPAN_NOTICE("你回收了[attacked_item]。"))
 		biomass_points += plate.recyclable_value
 		qdel(attacked_item)
 		playsound(loc, 'sound/machines/fax.ogg', 15, 1)
@@ -154,7 +154,7 @@
 
 /obj/structure/machinery/xenoanalyzer/proc/eject_biomass(mob/user)
 	if(busy)
-		to_chat(user, SPAN_WARNING("[src] is currently busy!"))
+		to_chat(user, SPAN_WARNING("[src]正忙！"))
 		return
 	if(isnull(organ))
 		return
@@ -176,7 +176,7 @@
 	queue_proccessing = TRUE
 	var/datum/research_upgrades/upgrade = print_queue[length(print_queue)]
 	if(clamp(upgrade.value_upgrade + upgrade.change_purchase * technology_purchased[upgrade], upgrade.minimum_price, upgrade.maximum_price) > biomass_points)
-		to_chat(user, SPAN_WARNING("[src] makes a worrying beep and flashes red, theres not enough data processed to build the requested upgrade!"))
+		to_chat(user, SPAN_WARNING("[src]发出令人不安的哔声并闪烁红光，处理的数据不足以构建请求的升级！"))
 		queue_proccessing = FALSE
 		return
 	flick("xeno_analyzer_printing", src)
@@ -195,7 +195,7 @@
 		icon_state = "xeno_analyzer_off"
 		return FALSE
 	if(busy)//double check for me here
-		to_chat(user, SPAN_WARNING("[src] makes a annoying hum and flashes red - its currently busy!"))
+		to_chat(user, SPAN_WARNING("[src]发出恼人的嗡鸣并闪烁红光——它正忙！"))
 		playsound(loc, 'sound/machines/buzz-sigh.ogg', 15, 1)
 		return FALSE
 	var/path_exists = FALSE
@@ -209,19 +209,19 @@
 			path_exists = TRUE
 			break
 	if(!path_exists)
-		to_chat(user, SPAN_WARNING("[src] makes a suspicious wail before powering down."))
+		to_chat(user, SPAN_WARNING("[src]发出可疑的哀鸣后关机。"))
 		playsound(loc, 'sound/machines/buzz-sigh.ogg', 15, 1)
 		return FALSE
 	if((upgrade.clearance_req > GLOB.chemical_data.clearance_level && upgrade.clearance_req != 6) || (upgrade.clearance_req == 6 && !GLOB.chemical_data.reached_x_access))
-		to_chat(user, SPAN_WARNING("[src] makes a annoying hum and flashes red - you don't have access to this upgrade!"))
+		to_chat(user, SPAN_WARNING("[src]发出恼人的嗡鸣并闪烁红光——你无权使用此升级！"))
 		playsound(loc, 'sound/machines/buzz-sigh.ogg', 15, 1)
 		return FALSE
 	if(clamp(upgrade.value_upgrade + upgrade.change_purchase * technology_purchased[datum_upgrades], upgrade.minimum_price, upgrade.maximum_price) > biomass_points)
-		to_chat(user, SPAN_WARNING("[src] makes a worrying beep and flashes red, theres not enough data processed to build the requested upgrade!"))
+		to_chat(user, SPAN_WARNING("[src]发出令人不安的哔声并闪烁红光，处理的数据不足以构建请求的升级！"))
 		playsound(loc, 'sound/machines/buzz-sigh.ogg', 15, 1)
 		return FALSE
 	if(length(print_queue) == 10)
-		to_chat(user, SPAN_WARNING("[src] internal memory buffer is full!"))
+		to_chat(user, SPAN_WARNING("[src]内部内存缓冲区已满！"))
 		playsound(loc, 'sound/machines/buzz-sigh.ogg', 15, 1)
 		return FALSE
 	LAZYADD(print_queue, upgrade)

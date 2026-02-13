@@ -34,7 +34,7 @@
 /mob/living/carbon/xenomorph/warrior
 	caste_type = XENO_CASTE_WARRIOR
 	name = XENO_CASTE_WARRIOR
-	desc = "A beefy alien with an armored carapace."
+	desc = "一个有着装甲甲壳的强壮异形。"
 	icon = 'icons/mob/xenos/castes/tier_2/warrior.dmi'
 	icon_size = 64
 	icon_state = "Warrior Walking"
@@ -67,7 +67,7 @@
 	pelt = /obj/item/pelt/warrior
 
 /datum/behavior_delegate/warrior_base
-	name = "Base Warrior Behavior Delegate"
+	name = "基础战士行为代理"
 
 	var/lifesteal_percent = 7
 	var/max_lifesteal = 9
@@ -100,7 +100,7 @@
 	var/should_neckgrab = !(src.can_not_harm(living_mob)) && lunge
 
 	if(!QDELETED(living_mob) && !QDELETED(living_mob.pulledby) && living_mob != src ) //override pull of other mobs
-		visible_message(SPAN_WARNING("[src] has broken [living_mob.pulledby]'s grip on [living_mob]!"), null, null, 5)
+		visible_message(SPAN_WARNING("[src]挣脱了[living_mob.pulledby]对[living_mob]的控制！"), null, null, 5)
 		living_mob.pulledby.stop_pulling()
 
 	. = ..(living_mob, lunge, should_neckgrab)
@@ -118,7 +118,7 @@
 			living_mob.Stun(duration)
 			if(living_mob.pulledby != src)
 				return // Grab was broken, probably as Stun side effect (eg. target getting knocked away from a manned M56D)
-			visible_message(SPAN_XENOWARNING("[src] grabs [living_mob] by the throat!"),
+			visible_message(SPAN_XENOWARNING("[src]扼住了[living_mob]的喉咙！"),
 			SPAN_XENOWARNING("We grab [living_mob] by the throat!"))
 			warrior_delegate.lunging = TRUE
 			addtimer(CALLBACK(src, PROC_REF(stop_lunging)), get_xeno_stun_duration(living_mob, 2) SECONDS + 1 SECONDS)
@@ -157,7 +157,7 @@
 // This part is then outside the for loop
 		if(final_lifesteal >= max_lifesteal)
 			bound_xeno.add_filter("empower_rage", 1, list("type" = "outline", "color" = color, "size" = 1, "alpha" = 90))
-			bound_xeno.visible_message(SPAN_DANGER("[bound_xeno.name] glows as it heals even more from its injuries!"), SPAN_XENODANGER("We glow as we heal even more from our injuries!"))
+			bound_xeno.visible_message(SPAN_DANGER("[bound_xeno.name]发出微光，它的伤势正在加速愈合！"), SPAN_XENODANGER("We glow as we heal even more from our injuries!"))
 			bound_xeno.flick_heal_overlay(2 SECONDS, "#00B800")
 		if(istype(bound_xeno) && world.time > emote_cooldown && bound_xeno)
 			bound_xeno.emote("roar")
@@ -185,7 +185,7 @@
 /mob/living/carbon/xenomorph/warrior/pull_power(mob/mob)
 	if(!ripping_limb && mob.stat != DEAD)
 		if(mob.status_flags & XENO_HOST)
-			to_chat(src, SPAN_XENOWARNING("This would harm the embryo!"))
+			to_chat(src, SPAN_XENOWARNING("这会伤害到胚胎！"))
 			return
 		ripping_limb = TRUE
 		if(rip_limb(mob))
@@ -205,26 +205,26 @@
 	var/obj/limb/limb = human.get_limb(check_zone(zone_selected))
 
 	if(can_not_harm(human))
-		to_chat(src, SPAN_XENOWARNING("We can't harm this host!"))
+		to_chat(src, SPAN_XENOWARNING("我们不能伤害这个宿主！"))
 		return
 
 	if(!limb || limb.body_part == BODY_FLAG_CHEST || limb.body_part == BODY_FLAG_GROIN || (limb.status & LIMB_DESTROYED)) //Only limbs and head.
-		to_chat(src, SPAN_XENOWARNING("We can't rip off that limb."))
+		to_chat(src, SPAN_XENOWARNING("我们无法扯下那条肢体。"))
 		return FALSE
 
 	var/limb_time = rand(40,60)
 	if(limb.body_part == BODY_FLAG_HEAD)
 		limb_time = rand(90,110)
 
-	visible_message(SPAN_XENOWARNING("[src] begins pulling on [mob]'s [limb.display_name] with incredible strength!"),
+	visible_message(SPAN_XENOWARNING("[src]开始以惊人的力量拉扯[mob]的[limb.display_name]！"),
 	SPAN_XENOWARNING("We begin to pull on [mob]'s [limb.display_name] with incredible strength!"))
 
 	if(!do_after(src, limb_time, INTERRUPT_ALL|INTERRUPT_DIFF_SELECT_ZONE, BUSY_ICON_HOSTILE) || mob.stat == DEAD || mob.status_flags & XENO_HOST)
-		to_chat(src, SPAN_NOTICE("We stop ripping off the limb."))
+		to_chat(src, SPAN_NOTICE("我们停止撕扯肢体。"))
 		return FALSE
 
 	if(mob.status_flags & XENO_HOST)
-		to_chat(src, SPAN_NOTICE("We detect an embryo inside [mob] which overwhelms our instinct to rip."))
+		to_chat(src, SPAN_NOTICE("我们检测到[mob]体内有一个胚胎，这压制了我们撕扯的本能。"))
 		return FALSE
 
 	if(limb.status & LIMB_DESTROYED)
@@ -232,10 +232,10 @@
 
 	if(limb.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 		limb.take_damage(rand(30,40), 0, 0) // just do more damage
-		visible_message(SPAN_XENOWARNING("You hear [mob]'s [limb.display_name] being pulled beyond its load limits!"),
+		visible_message(SPAN_XENOWARNING("你听到[mob]的[limb.display_name]被拉扯得超出了其承受极限！"),
 		SPAN_XENOWARNING("[mob]'s [limb.display_name] begins to tear apart!"))
 	else
-		visible_message(SPAN_XENOWARNING("We hear the bones in [mob]'s [limb.display_name] snap with a sickening crunch!"),
+		visible_message(SPAN_XENOWARNING("我们听到[mob]的[limb.display_name]传来令人作呕的骨头碎裂声！"),
 		SPAN_XENOWARNING("[mob]'s [limb.display_name] bones snap with a satisfying crunch!"))
 		limb.take_damage(rand(15,25), 0, 0)
 		limb.fracture(100)
@@ -245,17 +245,17 @@
 	log_attack("[src.name] ([src.ckey]) ripped the [limb.display_name] off of [mob.name] ([mob.ckey]) 1/2 progress")
 
 	if(!do_after(src, limb_time, INTERRUPT_ALL|INTERRUPT_DIFF_SELECT_ZONE, BUSY_ICON_HOSTILE)  || mob.stat == DEAD || iszombie(mob))
-		to_chat(src, SPAN_NOTICE("We stop ripping off the limb."))
+		to_chat(src, SPAN_NOTICE("我们停止撕扯肢体。"))
 		return FALSE
 
 	if(mob.status_flags & XENO_HOST)
-		to_chat(src, SPAN_NOTICE("We detect an embryo inside [mob] which overwhelms our instinct to rip."))
+		to_chat(src, SPAN_NOTICE("我们检测到[mob]体内有一个胚胎，这压制了我们撕扯的本能。"))
 		return FALSE
 
 	if(limb.status & LIMB_DESTROYED)
 		return FALSE
 
-	visible_message(SPAN_XENOWARNING("[src] rips [mob]'s [limb.display_name] away from their body!"),
+	visible_message(SPAN_XENOWARNING("[src]将[mob]的[limb.display_name]从身体上撕扯下来！"),
 	SPAN_XENOWARNING("[mob]'s [limb.display_name] rips away from their body!"))
 	src.attack_log += text("\[[time_stamp()]\] <font color='red'>ripped the [limb.display_name] off of [mob.name] ([mob.ckey]) 2/2 progress</font>")
 	mob.attack_log += text("\[[time_stamp()]\] <font color='orange'>had their [limb.display_name] ripped off by [src.name] ([src.ckey]) 2/2 progress</font>")
@@ -270,7 +270,7 @@
 
 	if (!action_cooldown_check())
 		if(twitch_message_cooldown < world.time )
-			lunge_user.visible_message(SPAN_XENOWARNING("[lunge_user]'s claws twitch."), SPAN_XENOWARNING("Our claws twitch as we try to lunge but lack the strength. Wait a moment to try again."))
+			lunge_user.visible_message(SPAN_XENOWARNING("[lunge_user]的爪子抽搐了一下。"), SPAN_XENOWARNING("Our claws twitch as we try to lunge but lack the strength. Wait a moment to try again."))
 			twitch_message_cooldown = world.time + 5 SECONDS
 		return //this gives a little feedback on why your lunge didn't hit other than the lunge button going grey. Plus, it might spook marines that almost got lunged if they know why the message appeared, and extra spookiness is always good.
 
@@ -278,7 +278,7 @@
 		return
 
 	if (!isturf(lunge_user.loc))
-		to_chat(lunge_user, SPAN_XENOWARNING("We can't lunge from here!"))
+		to_chat(lunge_user, SPAN_XENOWARNING("我们无法从这里突进！"))
 		return
 
 	if (!lunge_user.check_state() || lunge_user.agility)
@@ -298,7 +298,7 @@
 	apply_cooldown()
 	..()
 
-	lunge_user.visible_message(SPAN_XENOWARNING("[lunge_user] lunges towards [carbon]!"), SPAN_XENOWARNING("We lunge at [carbon]!"))
+	lunge_user.visible_message(SPAN_XENOWARNING("[lunge_user]向[carbon]猛扑过去！"), SPAN_XENOWARNING("We lunge at [carbon]!"))
 
 	lunge_user.throw_atom(get_step_towards(affected_atom, lunge_user), grab_range, SPEED_FAST, lunge_user, tracking=TRUE)
 
@@ -307,7 +307,7 @@
 		if(ishuman(carbon))
 			INVOKE_ASYNC(carbon, TYPE_PROC_REF(/mob, emote), "scream")
 	else
-		lunge_user.visible_message(SPAN_XENOWARNING("[lunge_user]'s claws twitch."), SPAN_XENOWARNING("Our claws twitch as we lunge but are unable to grab onto our target. Wait a moment to try again."))
+		lunge_user.visible_message(SPAN_XENOWARNING("[lunge_user]的爪子抽搐了一下。"), SPAN_XENOWARNING("Our claws twitch as we lunge but are unable to grab onto our target. Wait a moment to try again."))
 
 	return TRUE
 
@@ -337,13 +337,13 @@
 		fling_user.stop_pulling()
 
 	if(carbon.mob_size >= MOB_SIZE_BIG)
-		to_chat(fling_user, SPAN_XENOWARNING("[carbon] is too big for us to fling!"))
+		to_chat(fling_user, SPAN_XENOWARNING("[carbon]体型太大，我们无法投掷！"))
 		return
 
 	if (!check_and_use_plasma_owner())
 		return
 
-	fling_user.visible_message(SPAN_XENOWARNING("[fling_user] effortlessly flings [carbon] to the side!"), SPAN_XENOWARNING("We effortlessly fling [carbon] to the side!"))
+	fling_user.visible_message(SPAN_XENOWARNING("[fling_user]轻松地将[carbon]甩到一边！"), SPAN_XENOWARNING("We effortlessly fling [carbon] to the side!"))
 	playsound(carbon,'sound/weapons/alien_claw_block.ogg', 75, 1)
 	if(stun_power)
 		carbon.Stun(get_xeno_stun_duration(carbon, stun_power))
@@ -402,7 +402,7 @@
 
 	carbon.last_damage_data = create_cause_data(initial(punch_user.caste_type), punch_user)
 
-	punch_user.visible_message(SPAN_XENOWARNING("[punch_user] hits [carbon] in the [target_limb ? target_limb.display_name : "chest"] with a devastatingly powerful punch!"),
+	punch_user.visible_message(SPAN_XENOWARNING("[punch_user]击中了[carbon]的[target_limb ? target_limb.display_name : "chest"] with a devastatingly powerful punch!"),
 	SPAN_XENOWARNING("We hit [carbon] in the [target_limb ? target_limb.display_name : "chest"] with a devastatingly powerful punch!"))
 	var/sound = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg',)
 	playsound(carbon, sound, 50, 1)
@@ -418,7 +418,7 @@
 		if((target_limb.status & LIMB_SPLINTED) && !(target_limb.status & LIMB_SPLINTED_INDESTRUCTIBLE)) //If they have it splinted, the splint won't hold.
 			target_limb.status &= ~LIMB_SPLINTED
 			playsound(get_turf(carbon), 'sound/items/splintbreaks.ogg', 20)
-			to_chat(carbon, SPAN_DANGER("The splint on your [target_limb.display_name] comes apart!"))
+			to_chat(carbon, SPAN_DANGER("你[target_limb.display_name]上的夹板散开了！"))
 			carbon.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
 
 		if(ishuman_strict(carbon))

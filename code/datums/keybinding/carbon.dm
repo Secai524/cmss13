@@ -16,7 +16,7 @@
 	hotkey_keys = list("R", "Southwest") // END
 	classic_keys =list("R", "Southwest")
 	name = "toggle_throw_mode"
-	full_name = "Toggle throw mode"
+	full_name = "切换投掷模式"
 	description = "Toggle throwing the current item or not."
 	category = CATEGORY_CARBON
 	keybind_signal = COMSIG_KB_CARBON_TOGGLETHROWMODE_DOWN
@@ -34,7 +34,7 @@
 	hotkey_keys = list("Ctrl+R", "Ctrl+Southwest") // END
 	classic_keys = list("Ctrl+R", "Ctrl+Southwest")
 	name = "toggle_high_throw_mode"
-	full_name = "Toggle high throw mode"
+	full_name = "切换高抛模式"
 	description = "Toggle throwing the current item or not. This one does a high throw."
 	category = CATEGORY_CARBON
 	keybind_signal = COMSIG_KB_CARBON_TOGGLETHROWMODE_HIGH_DOWN
@@ -44,7 +44,7 @@
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Insert")
 	name = "cycle_intent"
-	full_name = "Cycle Intent"
+	full_name = "循环切换意图"
 	description = "Cycle currently selected intent"
 	category = CATEGORY_CARBON
 	keybind_signal = COMSIG_KB_CARBON_CYCLEINTENT_DOWN
@@ -60,7 +60,7 @@
 	hotkey_keys = list("1")
 	classic_keys = list("1")
 	name = "select_help_intent"
-	full_name = "Select help intent"
+	full_name = "选择帮助意图"
 	description = ""
 	category = CATEGORY_CARBON
 	keybind_signal = COMSIG_KB_CARBON_SELECTHELPINTENT_DOWN
@@ -77,7 +77,7 @@
 	hotkey_keys = list("2")
 	classic_keys = list("2")
 	name = "select_disarm_intent"
-	full_name = "Select disarm intent"
+	full_name = "选择缴械意图"
 	description = ""
 	category = CATEGORY_CARBON
 	keybind_signal = COMSIG_KB_CARBON_SELECTDISARMINTENT_DOWN
@@ -94,7 +94,7 @@
 	hotkey_keys = list("3")
 	classic_keys = list("3")
 	name = "select_grab_intent"
-	full_name = "Select grab intent"
+	full_name = "选择抓取意图"
 	description = ""
 	category = CATEGORY_CARBON
 	keybind_signal = COMSIG_KB_CARBON_SELECTGRABINTENT_DOWN
@@ -111,7 +111,7 @@
 	hotkey_keys = list("4")
 	classic_keys = list("4")
 	name = "select_harm_intent"
-	full_name = "Select harm intent"
+	full_name = "选择伤害意图"
 	description = ""
 	category = CATEGORY_CARBON
 	keybind_signal = COMSIG_KB_CARBON_SELECTHARMINTENT_DOWN
@@ -126,8 +126,8 @@
 /datum/keybinding/carbon/give
 	hotkey_keys = list("G")
 	classic_keys = list("Unbound")
-	name = "Give_Item"
-	full_name = "Give item"
+	name = "给予物品"
+	full_name = "给予物品"
 	description = "Give the item you're currently holding"
 	keybind_signal = COMSIG_KB_CARBON_GIVEITEM_DOWN
 
@@ -143,7 +143,7 @@
 	hotkey_keys = list("Space")
 	classic_keys = list("Unbound")
 	name = "unique_action"
-	full_name = "Unique Action"
+	full_name = "特殊动作"
 	keybind_signal = COMSIG_KB_CARBON_UNIQUEACTION
 
 /datum/keybinding/carbon/item/unique_action/down(client/user)

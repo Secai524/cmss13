@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(quadtree)
-	name = "Quadtree"
+	name = "四叉树"
 	wait = 0.5 SECONDS
 	priority = SS_PRIORITY_QUADTREE
 

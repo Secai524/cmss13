@@ -1,6 +1,6 @@
 // The Order of HEFA has arrived!
 /datum/emergency_call/hefa_knight
-	name = "HEFA knights"
+	name = "HEFA骑士"
 	mob_max = 15
 	mob_min = 3
 	arrival_message = "'Prepaerth to surrender thine HEFAs unto the order!'"
@@ -18,7 +18,7 @@
 	M.transfer_to(H, TRUE)
 
 	arm_equipment(H, /datum/equipment_preset/fun/hefa/melee, FALSE, TRUE)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("任务目标：[objectives]")), 1 SECONDS)
 
 
 	to_chat(H, SPAN_WARNING(FONT_SIZE_HUGE("YOU ARE [hostility? "HOSTILE":"FRIENDLY"] to the USCM.")))

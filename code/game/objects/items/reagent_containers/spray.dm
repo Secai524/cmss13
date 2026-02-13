@@ -1,6 +1,6 @@
 /obj/item/reagent_container/spray
-	name = "spray bottle"
-	desc = "A spray bottle, with an unscrewable top."
+	name = "喷雾瓶"
+	desc = "一个喷壶，顶部可以拧开。"
 	icon = 'icons/obj/items/spray.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_lefthand.dmi',
@@ -35,20 +35,20 @@
 /obj/item/reagent_container/spray/afterattack(atom/target, mob/user, proximity)
 	if(istype(target, /obj/structure/reagent_dispensers) && get_dist(src, target) <= 1) //this block copypasted from reagent_containers/glass, for lack of a better solution
 		if(!target.reagents.total_volume && target.reagents)
-			to_chat(user, SPAN_NOTICE("[target] is empty."))
+			to_chat(user, SPAN_NOTICE("[target]是空的。"))
 			return
 
 		if(reagents.total_volume >= reagents.maximum_volume)
-			to_chat(user, SPAN_NOTICE("[src] is full."))
+			to_chat(user, SPAN_NOTICE("[src]已满。"))
 			return
 
 		var/obj/structure/reagent_dispensers/dispenser = target
 		var/trans = dispenser.reagents.trans_to(src, dispenser.amount_per_transfer_from_this)
 		if(!trans)
-			to_chat(user, SPAN_DANGER("You fail to fill [src] with reagents from [target]."))
+			to_chat(user, SPAN_DANGER("你未能用[target]中的试剂装满[src]。"))
 			return
 
-		to_chat(user, SPAN_NOTICE("You fill [src] with [trans] units of the contents of [target]."))
+		to_chat(user, SPAN_NOTICE("你用[target]中的内容物向[src]注入了[trans]单位。"))
 		return
 
 	if(world.time < last_use + use_delay)
@@ -60,11 +60,11 @@
 		return
 
 	if(reagents.total_volume < amount_per_transfer_from_this)
-		to_chat(user, SPAN_NOTICE("[src] is empty!"))
+		to_chat(user, SPAN_NOTICE("[src]是空的！"))
 		return
 
 	if(safety)
-		to_chat(user, SPAN_WARNING("The safety is on!"))
+		to_chat(user, SPAN_WARNING("保险开着！"))
 		return
 
 	last_use = world.time
@@ -75,10 +75,10 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/human_user = user
 		if(!human_user.allow_gun_usage && reagents.contains_harmful_substances())
-			to_chat(user, SPAN_WARNING("Your programming prevents you from using this!"))
+			to_chat(user, SPAN_WARNING("你的程序设定禁止你使用这个！"))
 			return FALSE
 		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/ceasefire))
-			to_chat(user, SPAN_WARNING("You will not break the ceasefire by doing that!"))
+			to_chat(user, SPAN_WARNING("你那样做会破坏停火协议！"))
 			return FALSE
 
 	var/obj/effect/decal/chempuff/puff = new /obj/effect/decal/chempuff(get_turf(src))
@@ -96,7 +96,7 @@
 		return
 	amount_per_transfer_from_this = next_in_list(amount_per_transfer_from_this, possible_transfer_amounts)
 	spray_size = next_in_list(spray_size, spray_sizes)
-	to_chat(user, SPAN_NOTICE("You adjusted the pressure nozzle. You'll now use [amount_per_transfer_from_this] units per spray."))
+	to_chat(user, SPAN_NOTICE("你调整了压力喷嘴。现在每次喷洒将使用[amount_per_transfer_from_this]单位。"))
 
 
 /obj/item/reagent_container/spray/get_examine_text(mob/user)
@@ -109,22 +109,22 @@
 	set category = "Object"
 	set src in usr
 
-	if (alert(usr, "Are you sure you want to empty that?", "Empty Bottle:", "Yes", "No") != "Yes")
+	if (alert(usr, "你确定要清空吗？", "Empty Bottle:", "Yes", "No") != "Yes")
 		return
 	if(isturf(usr.loc))
-		to_chat(usr, SPAN_NOTICE("You empty \the [src] onto the floor."))
+		to_chat(usr, SPAN_NOTICE("你将\the [src]倒在地板上。"))
 		reagents.reaction(usr.loc)
 		spawn(5) src.reagents.clear_reagents()
 
 //space cleaner
 /obj/item/reagent_container/spray/cleaner
-	name = "space cleaner"
-	desc = "BLAM!-brand non-foaming space cleaner!"
+	name = "太空清洁剂"
+	desc = "BLAM!牌无泡太空清洁剂！"
 	icon_state = "cleaner"
 
 /obj/item/reagent_container/spray/cleaner/drone
-	name = "space cleaner"
-	desc = "BLAM!-brand non-foaming space cleaner!"
+	name = "太空清洁剂"
+	desc = "BLAM!牌无泡太空清洁剂！"
 	volume = 50
 
 /obj/item/reagent_container/spray/cleaner/Initialize()
@@ -134,7 +134,7 @@
 //pepperspray
 /obj/item/reagent_container/spray/pepper
 	name = "pepperspray"
-	desc = "Manufactured by UhangInc, used to blind and down an opponent quickly."
+	desc = "由UhangInc制造，用于快速致盲和击倒对手。"
 	icon_state = "pepperspray"
 	item_state = "pepperspray"
 	possible_transfer_amounts = null
@@ -149,17 +149,17 @@
 /obj/item/reagent_container/spray/pepper/get_examine_text(mob/user)
 	. = ..()
 	if(get_dist(user,src) <= 1)
-		. += "The safety is [safety ? "on" : "off"]."
+		. += "保险装置处于[safety ? "on" : "off"]."
 
 /obj/item/reagent_container/spray/pepper/attack_self(mob/user)
 	..()
 	safety = !safety
-	to_chat(user, SPAN_NOTICE("You switch the safety [safety ? "on" : "off"]."))
+	to_chat(user, SPAN_NOTICE("你将保险[safety ? "on" : "off"]."))
 
 //water flower
 /obj/item/reagent_container/spray/waterflower
-	name = "water flower"
-	desc = "A seemingly innocent sunflower...with a twist."
+	name = "喷水花"
+	desc = "一朵看似无害的向日葵……暗藏玄机。"
 	icon = 'icons/obj/items/harvest.dmi'
 	icon_state = "sunflower"
 	item_state = "sunflower"
@@ -173,8 +173,8 @@
 
 //chemsprayer
 /obj/item/reagent_container/spray/chemsprayer
-	name = "chem sprayer"
-	desc = "A utility used to spray large amounts of reagent in a given area."
+	name = "化学喷雾器"
+	desc = "一种用于在指定区域喷洒大量试剂的工具。"
 	icon_state = "chemsprayer"
 	item_state = "chemsprayer"
 	throwforce = 3
@@ -189,10 +189,10 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/human_user = user
 		if(!human_user.allow_gun_usage && reagents.contains_harmful_substances())
-			to_chat(user, SPAN_WARNING("Your programming prevents you from using this!"))
+			to_chat(user, SPAN_WARNING("你的程序设定禁止你使用这个！"))
 			return FALSE
 		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/ceasefire))
-			to_chat(user, SPAN_WARNING("You will not break the ceasefire by doing that!"))
+			to_chat(user, SPAN_WARNING("你那样做会破坏停火协议！"))
 			return FALSE
 
 	var/direction = get_dir(src, target)
@@ -219,8 +219,8 @@
 
 // Plant-B-Gone
 /obj/item/reagent_container/spray/plantbgone // -- Skie
-	name = "Plant-B-Gone"
-	desc = "Kills those pesky weeds!"
+	name = "植物杀手"
+	desc = "消灭那些烦人的杂草！"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/hydroponics_tools_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/hydroponics_tools_righthand.dmi',
@@ -241,8 +241,8 @@
 
 //ammonia spray
 /obj/item/reagent_container/spray/hydro
-	name = "hydroponics spray"
-	desc = "A spray used in hydroponics initially containing ammonia."
+	name = "水培喷雾"
+	desc = "一种用于水培的喷雾，初始含有氨水。"
 	icon_state = "hydrospray"
 
 /obj/item/reagent_container/spray/hydro/Initialize()
@@ -250,7 +250,7 @@
 	reagents.add_reagent("ammonia", volume)
 
 /obj/item/reagent_container/spray/investigation
-	name = "forensic spray"
+	name = "法证喷雾"
 	desc = /datum/reagent/forensic_spray::description
 
 /obj/item/reagent_container/spray/investigation/Initialize()

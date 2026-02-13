@@ -2,7 +2,7 @@
 ///
 /// Despite having no DM-defined static type, proc paths have some variables,
 /// listed below. These are not modifiable, but for a given procpath P,
-/// `new P(null, "Name", "Desc")` can be used to create a new procpath with the
+/// `new P(null, "姓名", "Desc")` can be used to create a new procpath with the
 /// same code but new `name` and `desc` values. The other variables cannot be
 /// changed in this way.
 ///

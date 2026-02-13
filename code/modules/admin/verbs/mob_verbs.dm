@@ -7,7 +7,7 @@
 	var/new_ckey = a_ckey
 
 	if (!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return
 
 	if(!M || QDELETED(M))
@@ -37,7 +37,7 @@
 /client/proc/cmd_admin_ghostchange(mob/living/M, mob/dead/observer/O)
 	if(!istype(O) || (!check_rights(R_ADMIN|R_DEBUG, 0))) //Let's add a few extra sanity checks.
 		return
-	if(alert("Do you want to possess this mob?", "Switch Ckey", "Yes", "No") == "Yes")
+	if(alert("Do you want to possess this mob?", "切换Ckey", "Yes", "No") == "Yes")
 		if(!M || !O) //Extra check in case the mob was deleted while we were transfering.
 			return
 		change_ckey(M, O.ckey)
@@ -60,16 +60,16 @@
 	set category = null
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return
 	if(!mob)
 		return
 	if(!istype(M))
-		alert("Why do you need to add a HUD to a ghost?")
+		alert("你为什么需要给幽灵添加HUD？")
 		return
 
 	var/list/listed_huds = list("Medical HUD", "Security HUD", "Squad HUD", "Xeno Status HUD")
-	var/hud_choice = tgui_input_list(usr, "Choose a HUD to toggle", "Toggle HUD", listed_huds)
+	var/hud_choice = tgui_input_list(usr, "选择要切换的HUD", "Toggle HUD", listed_huds)
 	var/datum/mob_hud/H
 	switch(hud_choice)
 		if("Medical HUD")
@@ -84,17 +84,17 @@
 			return
 
 	H.add_hud_to(M, HUD_SOURCE_ADMIN)
-	to_chat(src, SPAN_INFO("[hud_choice] enabled."))
+	to_chat(src, SPAN_INFO("[hud_choice] 已启用。"))
 	message_admins(SPAN_INFO("[key_name(usr)] has given a [hud_choice] to [M]."))
 
 /client/proc/cmd_admin_gib(mob/M as mob in GLOB.mob_list)
 	set category = "Admin.Fun"
-	set name = "Gib"
+	set name = "肢解"
 
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/confirm = alert(src, "You sure?", "Confirm", "Yes", "No")
+	var/confirm = alert(src, "你确定吗？", "确认", "Yes", "No")
 	if(confirm != "Yes")
 		return
 	//Due to the delay here its easy for something to have happened to the mob
@@ -111,14 +111,14 @@
 
 /client/proc/cmd_admin_rejuvenate(mob/living/M as mob in GLOB.living_mob_list)
 	set category = null
-	set name = "Rejuvenate"
+	set name = "复原"
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return
 	if(!mob)
 		return
 	if(!istype(M))
-		alert("Cannot revive a ghost")
+		alert("无法复活幽灵")
 		return
 
 	M.revive(FALSE) // Argument means that viruses will be cured (except zombie virus)
@@ -126,18 +126,18 @@
 	message_admins(WRAP_STAFF_LOG(usr, "ahealed [key_name(M)] in [get_area(M)] ([M.x],[M.y],[M.z])."), M.x, M.y, M.z)
 
 /client/proc/cmd_admin_subtle_message(mob/M as mob in GLOB.mob_list)
-	set name = "Subtle Message"
+	set name = "隐秘消息"
 	set category = null
 
 	if(!ismob(M))
 		return
 	if (!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return
 
 	var/list/subtle_message_options = list("Voice in head", "QM Psychic Whisper", "Weyland-Yutani", "USCM High Command", "Faction-specific")
 
-	var/message_option = tgui_input_list(usr, "Choose the method of subtle messaging", "", subtle_message_options)
+	var/message_option = tgui_input_list(usr, "选择隐蔽消息发送方式", "", subtle_message_options)
 
 	if(message_option == "Faction-specific")
 		message_option = input("Choose which faction", "")
@@ -152,40 +152,40 @@
 
 	switch(message_option)
 		if("Voice in head")
-			to_chat(M, SPAN_ANNOUNCEMENT_HEADER_BLUE("You hear a voice in your head... [msg]"))
+			to_chat(M, SPAN_ANNOUNCEMENT_HEADER_BLUE("你脑海中响起一个声音……[msg]"))
 
 		if("QM Psychic Whisper")
 			if(isxeno(M))
-				to_chat(M, SPAN_XENONOTICE("You hear the voice of the Queen Mother... [msg]"))
+				to_chat(M, SPAN_XENONOTICE("你听到了女王母亲的声音……[msg]"))
 			else
-				to_chat(M, SPAN_XENONOTICE("You hear a strange, distant, alien voice in your head... [msg]"))
+				to_chat(M, SPAN_XENONOTICE("你脑海中响起一个遥远而陌生的异形声音……[msg]"))
 		else
 			var/mob/living/carbon/human/H = M
 
 			if(!istype(H))
-				to_chat(usr, "The person you are trying to contact is not human.")
+				to_chat(usr, "你试图联系的目标并非人类。")
 				return
 
 			if(!H.get_type_in_ears(/obj/item/device/radio/headset))
-				to_chat(usr, "The person you are trying to contact is not wearing a headset.")
+				to_chat(usr, "你试图联系的对象未佩戴耳机。")
 				return
-			to_chat(H, SPAN_ANNOUNCEMENT_HEADER_BLUE("Message received through headset. [message_option] Transmission <b>\"[msg]\"</b>"))
+			to_chat(H, SPAN_ANNOUNCEMENT_HEADER_BLUE("通过耳机收到信息。[message_option] 传输 <b>\"[msg]\"</b>"))
 
 	var/message = WRAP_STAFF_LOG(usr, SPAN_STAFF_IC("subtle messaged [key_name(M)] as [message_option], saying \"[msg]\" in [get_area(M)] ([M.x],[M.y],[M.z])."))
 	message_admins(message, M.x, M.y, M.z)
 	admin_ticket_log(M, message)
 
 /client/proc/cmd_admin_alert_message(mob/M)
-	set name = "Alert Message"
+	set name = "警报消息"
 	set category = "Admin.Game"
 
 	if(!ismob(M))
 		return
 	if (!CLIENT_IS_STAFF(src))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return
 
-	var/res = alert(src, "Do you wish to send an admin alert to this user?",,"Yes","No","Custom")
+	var/res = alert(src, "你希望向该用户发送管理员警报吗？",,"Yes","No","Custom")
 	switch(res)
 		if("Yes")
 			var/message = "An admin is trying to talk to you!<br>Check your chat window and click their name to respond or you may be banned!"
@@ -194,11 +194,11 @@
 			log_admin("[key_name(src)] sent a default admin alert to [key_name(M)].")
 			message_admins("[key_name(src)] sent a default admin alert to [key_name(M)].")
 		if("Custom")
-			var/message = input(src, "Input your custom admin alert text:", "Message") as text|null
+			var/message = input(src, "输入您的自定义管理员警报文本：", "消息") as text|null
 			if(!message)
 				return
 
-			var/new_color = input(src, "Input your message color:", "Color Selector") as color|null
+			var/new_color = input(src, "输入您的消息颜色：", "Color Selector") as color|null
 			if(!new_color)
 				return
 
@@ -232,7 +232,7 @@
 	switch(type)
 		if(NARRATION_METHOD_SAY)
 			selected.langchat_speech(message, heard, GLOB.all_languages, skip_language_check = TRUE)
-			selected.visible_message("<b>[selected]</b> says, \"[message]\"")
+			selected.visible_message("<b>[selected]</b> 说道，\"[message]\"")
 		if(NARRATION_METHOD_ME)
 			selected.langchat_speech(message, heard, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small", "emote"))
 			selected.visible_message("<b>[selected]</b> [message]")
@@ -242,20 +242,20 @@
 	message_admins("[key_name(src)] sent an Object Narrate with message [message].")
 
 /client/proc/cmd_admin_direct_narrate(mob/M in GLOB.mob_list)
-	set name = "Narrate"
+	set name = "旁白"
 	set category = null
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return
 
 	if(!M)
-		M = tgui_input_list(usr, "Direct narrate to who?", "Active Players", GLOB.player_list)
+		M = tgui_input_list(usr, "直接向谁叙述？", "Active Players", GLOB.player_list)
 
 	if(!M)
 		return
 
-	var/msg = input("Message:", text("Enter the text you wish to appear to your target:")) as text
+	var/msg = input("信息：", text("Enter the text you wish to appear to your target:")) as text
 
 	if(!msg)
 		return
@@ -268,10 +268,10 @@
 	set category = null
 
 	if (!CLIENT_IS_STAFF(src))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return
 
-	to_chat(usr, SPAN_DANGER("<b>Attack Log for [mob]</b>"))
+	to_chat(usr, SPAN_DANGER("<b>[mob]的攻击日志</b>"))
 	for(var/t in M.attack_log)
 		to_chat(usr, t)
 
@@ -280,7 +280,7 @@
 	set category = null
 
 	if (!CLIENT_IS_STAFF(src))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return
 
 	var/turf/T = get_turf(O)
@@ -304,7 +304,7 @@
 	set category = null
 
 	if (!CLIENT_IS_STAFF(src))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return
 
 	if(usr.control_object && usr.name_archive) //if you have a name archived and if you are actually relassing an object
@@ -324,10 +324,10 @@
 	set category = null
 
 	if(!admin_holder)
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return
 
-	var/confirm = alert(src, "Make [M] drop everything?", "Message", "Yes", "No")
+	var/confirm = alert(src, "让[M]丢弃所有物品？", "消息", "Yes", "No")
 	if(confirm != "Yes")
 		return
 
@@ -339,7 +339,7 @@
 	message_admins("[key_name_admin(usr)] made [key_name_admin(M)] drop everything!")
 
 /client/proc/cmd_admin_change_their_hivenumber(mob/living/carbon/H in GLOB.living_mob_list)
-	set name = "Change Hivenumber"
+	set name = "更改巢穴编号"
 	set category = null
 
 	if(!istype(H))
@@ -350,10 +350,10 @@
 		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 		hives += list("[hive.name]" = hive.hivenumber)
 
-	var/newhive = tgui_input_list(src,"Select a hive.", "Change Hivenumber", hives, theme="hive_status")
+	var/newhive = tgui_input_list(src,"选择一个巢穴。", "更改巢穴编号", hives, theme="hive_status")
 
 	if(!H)
-		to_chat(usr, "This mob no longer exists.")
+		to_chat(usr, "该单位已不存在。")
 		return
 
 	if(isxeno(H))
@@ -382,12 +382,12 @@
 	set name = "Change Name"
 	set category = null
 
-	var/newname = input(usr, "What do you want to name them?", "Name:") as null|text
+	var/newname = input(usr, "你想给他们起什么名字？", "名称：") as null|text
 	if(!newname)
 		return
 
 	if(!carbon)
-		to_chat(usr, "This mob no longer exists.")
+		to_chat(usr, "该单位已不存在。")
 		return
 
 	var/old_name = carbon.name
@@ -404,7 +404,7 @@
 	message_admins("[key_name(src)] changed name of [old_name] to [newname].")
 
 /datum/admins/proc/togglesleep(mob/living/M as mob in GLOB.mob_list)
-	set name = "Toggle Sleeping"
+	set name = "切换睡眠状态"
 	set category = null
 
 	if(!check_rights(0))

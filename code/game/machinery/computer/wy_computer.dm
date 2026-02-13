@@ -1,7 +1,7 @@
 // #################### WY Intranet Console #####################
 /obj/structure/machinery/computer/wy_intranet
-	name = "WY Intranet Terminal"
-	desc = "A standard issue Weyland-Yutani terminal for accessing the corporate intranet."
+	name = "维兰德内部网终端"
+	desc = "维兰德-汤谷公司标准配发的终端，用于访问企业内部网。"
 	icon_state = "medlaptop"
 	explo_proof = TRUE
 
@@ -167,7 +167,7 @@
 	switch (action)
 		if("go_back")
 			if(!last_menu)
-				return to_chat(user, SPAN_WARNING("Error, no previous page detected."))
+				return to_chat(user, SPAN_WARNING("错误，未检测到上一页。"))
 			var/temp_holder = current_menu
 			current_menu = last_menu
 			last_menu = temp_holder
@@ -177,7 +177,7 @@
 			var/obj/item/card/id/idcard = human_user.get_active_hand()
 			if(istype(idcard))
 				if(!idcard.check_biometrics(human_user))
-					to_chat(human_user, SPAN_WARNING("ERROR: Biometric identification failure. You must use your own ID card during login procedures."))
+					to_chat(human_user, SPAN_WARNING("错误：生物识别失败。登录程序必须使用你自己的身份卡。"))
 					return FALSE
 				authentication = get_wy_access(idcard)
 				last_login = idcard.registered_name
@@ -187,7 +187,7 @@
 					authentication = get_wy_access(idcard)
 					last_login = idcard.registered_name
 			else
-				to_chat(human_user, SPAN_WARNING("You require an ID card to access this terminal!"))
+				to_chat(human_user, SPAN_WARNING("你需要身份卡才能访问此终端！"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
 			if(authentication)
@@ -238,14 +238,14 @@
 			playsound = FALSE
 			var/obj/structure/pipes/vents/pump/no_boom/gas/sec_vent = locate(params["vent"])
 			if(!istype(sec_vent) || sec_vent.welded)
-				to_chat(user, SPAN_WARNING("ERROR: Gas release failure."))
+				to_chat(user, SPAN_WARNING("错误：气体释放失败。"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
 			if(!COOLDOWN_FINISHED(sec_vent, vent_trigger_cooldown))
-				to_chat(user, SPAN_WARNING("ERROR: Insufficient gas reserve for this vent."))
+				to_chat(user, SPAN_WARNING("错误：此通风口气体储备不足。"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
-			to_chat(user, SPAN_WARNING("Initiating gas release from [sec_vent.vent_tag]."))
+			to_chat(user, SPAN_WARNING("正在从[sec_vent.vent_tag]启动气体释放。"))
 			playsound(src, 'sound/machines/chime.ogg', 15, 1)
 			COOLDOWN_START(sec_vent, vent_trigger_cooldown, 30 SECONDS)
 			ares_apollo_talk("Nerve Gas release imminent from [sec_vent.vent_tag].")//Ares still monitors release of gas, even in the CLs vents.
@@ -259,7 +259,7 @@
 		if("print_document")
 			if(!COOLDOWN_FINISHED(src, printer_cooldown))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
-				to_chat(user, SPAN_WARNING("The printer is not ready to print another document."))
+				to_chat(user, SPAN_WARNING("打印机尚未准备好打印另一份文件。"))
 				return FALSE
 			playsound = FALSE
 			playsound(src, 'sound/machines/fax.ogg', 15, 1)
@@ -454,7 +454,7 @@
 	return
 
 /obj/structure/machinery/computer/wy_intranet/proc/print_document(document_name)
-	visible_message(SPAN_NOTICE("[src] prints out a paper."))
+	visible_message(SPAN_NOTICE("[src]打印出一张纸。"))
 
 	var/selected_document = GLOB.prefab_papers[document_name].type
 	new selected_document(loc)

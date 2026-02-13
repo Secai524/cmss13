@@ -31,7 +31,7 @@
 		if(AH)
 			AH.Action(href_list["ahelp_action"])
 		else
-			to_chat(usr, "Ticket [ahelp_ref] has been deleted!", confidential = TRUE)
+			to_chat(usr, "工单[ahelp_ref]已被删除！", confidential = TRUE)
 		return
 
 	if(href_list["adminplayeropts"])
@@ -48,24 +48,24 @@
 
 		var/task = href_list["editrights"]
 		if(task == "add")
-			var/new_ckey = ckey(input(usr,"New admin's ckey","Admin ckey", null) as text|null)
+			var/new_ckey = ckey(input(usr,"新管理员的CKEY","Admin ckey", null) as text|null)
 			if(!new_ckey)
 				return
 			if(new_ckey in GLOB.admin_datums)
-				to_chat(usr, "<font color='red'>Error: Topic 'editrights': [new_ckey] is already an admin</font>")
+				to_chat(usr, "<font color='red'>错误：主题'editrights'：[new_ckey]已是管理员</font>")
 				return
 			adm_ckey = new_ckey
 			task = "rank"
 		else if(task != "show")
 			adm_ckey = ckey(href_list["ckey"])
 			if(!adm_ckey)
-				to_chat(usr, "<font color='red'>Error: Topic 'editrights': No valid ckey</font>")
+				to_chat(usr, "<font color='red'>错误：主题'editrights'：CKEY无效</font>")
 				return
 
 		var/datum/admins/D = GLOB.admin_datums[adm_ckey]
 
 		if(task == "remove")
-			if(alert("Are you sure you want to remove [adm_ckey]?","Message","Yes","Cancel") == "Yes")
+			if(alert("Are you sure you want to remove [adm_ckey]?","消息","Yes","Cancel") == "Yes")
 				if(!D)
 					return
 				GLOB.admin_datums -= adm_ckey
@@ -76,9 +76,9 @@
 		else if(task == "rank")
 			var/new_rank
 			if(length(GLOB.admin_ranks))
-				new_rank = tgui_input_list(usr, "Please select a rank", "New rank", (GLOB.admin_ranks|"*New Rank*"))
+				new_rank = tgui_input_list(usr, "请选择等级", "New rank", (GLOB.admin_ranks|"*New Rank*"))
 			else
-				new_rank = tgui_input_list(usr, "Please select a rank", "New rank", list("Game Master","Game Admin", "Trial Admin", "Admin Observer","*New Rank*"))
+				new_rank = tgui_input_list(usr, "请选择等级", "New rank", list("Game Master","Game Admin", "Trial Admin", "Admin Observer","*New Rank*"))
 
 			var/rights = 0
 			if(D)
@@ -87,11 +87,11 @@
 				if(null,"")
 					return
 				if("*New Rank*")
-					new_rank = input("Please input a new rank", "New custom rank", null, null) as null|text
+					new_rank = input("Please input a new rank", "新自定义等级", null, null) as null|text
 					if(CONFIG_GET(flag/admin_legacy_system))
 						new_rank = ckeyEx(new_rank)
 					if(!new_rank)
-						to_chat(usr, "<font color='red'>Error: Topic 'editrights': Invalid rank</font>")
+						to_chat(usr, "<font color='red'>错误：主题'editrights'：等级无效</font>")
 						return
 					if(CONFIG_GET(flag/admin_legacy_system))
 						if(length(GLOB.admin_ranks))
@@ -122,7 +122,7 @@
 			var/list/permissionlist = list()
 			for(var/i=1, i<=R_HOST, i<<=1) //that <<= is shorthand for i = i << 1. Which is a left bitshift
 				permissionlist[rights2text(i)] = i
-			var/new_permission = tgui_input_list(usr, "Select a permission to turn on/off", "Permission toggle", permissionlist)
+			var/new_permission = tgui_input_list(usr, "选择要开启/关闭的权限", "Permission toggle", permissionlist)
 			if(!new_permission)
 				return
 			D.rights ^= permissionlist[new_permission]
@@ -137,13 +137,13 @@
 		switch(href_list["evac_authority"])
 			if("init_evac")
 				if(!SShijack.initiate_evacuation())
-					to_chat(usr, SPAN_WARNING("You are unable to initiate an evacuation right now!"))
+					to_chat(usr, SPAN_WARNING("你现在无法启动撤离程序！"))
 				else
 					message_admins("[key_name_admin(usr)] called an evacuation.")
 
 			if("cancel_evac")
 				if(!SShijack.cancel_evacuation())
-					to_chat(usr, SPAN_WARNING("You are unable to cancel an evacuation right now!"))
+					to_chat(usr, SPAN_WARNING("你现在无法取消撤离程序！"))
 				else
 					message_admins("[key_name_admin(usr)] canceled an evacuation.")
 
@@ -205,13 +205,13 @@
 			return
 
 		if(href_list["find_sticky"])
-			var/ckey = ckey(tgui_input_text(owner, "Which CKEY should we attempt to find stickybans for?", "FindABan"))
+			var/ckey = ckey(tgui_input_text(owner, "我们应该为哪个CKEY查找粘性封禁？", "FindABan"))
 			if(!ckey)
 				return
 
 			var/list/datum/view_record/stickyban/stickies = SSstickyban.check_for_sticky_ban(ckey)
 			if(!stickies)
-				to_chat(owner, SPAN_ADMIN("Could not locate any stickbans impacting [ckey]."))
+				to_chat(owner, SPAN_ADMIN("未找到影响 [ckey] 的任何粘性封禁。"))
 				return
 
 			var/list/impacting_stickies = list()
@@ -219,7 +219,7 @@
 			for(var/datum/view_record/stickyban/sticky as anything in stickies)
 				impacting_stickies += sticky.identifier
 
-			to_chat(owner, SPAN_ADMIN("Found the following stickybans for [ckey]: [english_list(impacting_stickies)]"))
+			to_chat(owner, SPAN_ADMIN("找到 [ckey] 的以下粘性封禁：[english_list(impacting_stickies)]"))
 
 		if(!check_rights_for(owner, R_BAN))
 			return
@@ -235,7 +235,7 @@
 		sticky.sync()
 
 		if(href_list["whitelist_ckey"])
-			var/ckey_to_whitelist = ckey(tgui_input_text(owner, "What CKEY should be whitelisted? Editing stickyban: [sticky.identifier]"))
+			var/ckey_to_whitelist = ckey(tgui_input_text(owner, "应将哪个 CKEY 加入白名单？正在编辑粘性封禁：[sticky.identifier]"))
 			if(!ckey_to_whitelist)
 				return
 
@@ -244,11 +244,11 @@
 			important_message_external("[owner] has whitelisted [ckey_to_whitelist] against stickyban '[sticky.identifier]'.", "CKEY Whitelisted")
 
 		if(href_list["add"])
-			var/option = tgui_input_list(owner, "What do you want to add?", "AddABan", list("CID", "CKEY", "IP"))
+			var/option = tgui_input_list(owner, "你想添加什么？", "AddABan", list("CID", "CKEY", "IP"))
 			if(!option)
 				return
 
-			var/to_add = tgui_input_text(owner, "Provide the [option] to add to the stickyban.", "AddABan")
+			var/to_add = tgui_input_text(owner, "提供要添加到粘性封禁的 [option]。", "AddABan")
 			if(!to_add)
 				return
 
@@ -264,10 +264,10 @@
 			important_message_external("[owner] has added a [option] ([to_add]) to stickyban '[sticky.identifier]'.", "[option] Added to Stickyban")
 
 		if(href_list["remove"])
-			var/option = tgui_input_list(owner, "What do you want to remove?", "DelABan", list("Entire Stickyban", "CID", "CKEY", "IP"))
+			var/option = tgui_input_list(owner, "你想移除什么？", "DelABan", list("Entire Stickyban", "CID", "CKEY", "IP"))
 			switch(option)
 				if("Entire Stickyban")
-					if(!(tgui_alert(owner, "Are you sure you want to remove this stickyban? Identifier: [sticky.identifier] Reason: [sticky.reason]", "Confirm", list("Yes", "No")) == "Yes"))
+					if(!(tgui_alert(owner, "你确定要移除这个粘性封禁吗？标识符：[sticky.identifier] 原因：[sticky.reason]", "确认", list("Yes", "No")) == "Yes"))
 						return
 
 					sticky.active = FALSE
@@ -285,7 +285,7 @@
 					for(var/datum/view_record/stickyban_matched_cid/match in all_cids)
 						cid_to_record_id["[match.cid]"] = match.id
 
-					var/picked = tgui_input_list(owner, "Which CID to remove?", "DelABan", cid_to_record_id)
+					var/picked = tgui_input_list(owner, "要移除哪个 CID？", "DelABan", cid_to_record_id)
 					if(!picked)
 						return
 
@@ -306,7 +306,7 @@
 					for(var/datum/view_record/stickyban_matched_ckey/match in all_ckeys)
 						ckey_to_record_id["[match.ckey]"] = match.id
 
-					var/picked = tgui_input_list(owner, "Which CKEY to remove?", "DelABan", ckey_to_record_id)
+					var/picked = tgui_input_list(owner, "要移除哪个 CKEY？", "DelABan", ckey_to_record_id)
 					if(!picked)
 						return
 
@@ -327,7 +327,7 @@
 					for(var/datum/view_record/stickyban_matched_ip/match in all_ips)
 						ip_to_record_id["[match.ip]"] = match.id
 
-					var/picked = tgui_input_list(owner, "Which IP to remove?", "DelABan", ip_to_record_id)
+					var/picked = tgui_input_list(owner, "要移除哪个 IP？", "DelABan", ip_to_record_id)
 					if(!picked)
 						return
 
@@ -364,7 +364,7 @@
 			return
 		mins = max(5255990,mins) // 10 years
 		minutes = GLOB.CMinutes + mins
-		reason = input(usr,"Reason?","reason",reason2) as message|null
+		reason = input(usr,"原因？","reason",reason2) as message|null
 		if(!reason)
 			return
 
@@ -400,13 +400,13 @@
 		var/mins = 0
 		if(minutes > GLOB.CMinutes)
 			mins = minutes - GLOB.CMinutes
-		mins = tgui_input_number(usr,"How long (in minutes)? \n 1440 = 1 day \n 4320 = 3 days \n 10080 = 7 days \n 43800 = 1 Month","Ban time", 1440, 262800, 1)
+		mins = tgui_input_number(usr,"时长（分钟）？\n 1440 = 1天 \n 4320 = 3天 \n 10080 = 7天 \n 43800 = 1个月","Ban time", 1440, 262800, 1)
 		if(!mins)
 			return
 		mins = min(525599,mins)
 		minutes = GLOB.CMinutes + mins
 		duration = GetExp(minutes)
-		reason = input(usr,"Reason?","reason",reason2) as message|null
+		reason = input(usr,"原因？","reason",reason2) as message|null
 		if(!reason)
 			return
 
@@ -428,16 +428,16 @@
 
 		var/mob/M = locate(href_list["jobban4"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob.")
+			to_chat(usr, "这只能用于类型为 /mob 的实例。")
 			return
 
 		if(M != usr) //we can jobban ourselves
 			if(M.client && M.client.admin_holder && (M.client.admin_holder.rights & R_BAN)) //they can ban too. So we can't ban them
-				alert("You cannot perform this action. You must be of a higher administrative rank!")
+				alert("你无法执行此操作。你必须拥有更高的管理员等级！")
 				return
 
 		if(!GLOB.RoleAuthority)
-			to_chat(usr, "Role Authority has not been set up!")
+			to_chat(usr, "角色权限尚未设置！")
 			return
 
 
@@ -477,7 +477,7 @@
 		//Banning comes first
 		if(length(notbannedlist))
 			if(!check_rights(R_BAN))  return
-			var/reason = input(usr,"Reason?","Please State Reason","") as text|null
+			var/reason = input(usr,"原因？","Please State Reason","") as text|null
 			if(reason)
 				var/datum/entity/player/P = get_player_from_key(M.ckey)
 				P.add_job_ban(reason, notbannedlist)
@@ -492,7 +492,7 @@
 				var/reason = jobban_isbanned(M, job, P1)
 				if(!reason)
 					continue //skip if it isn't jobbanned anyway
-				switch(alert("Job: '[job]' Reason: '[reason]' Un-jobban?","Please Confirm","Yes","No"))
+				switch(alert("Job: '[job]' Reason: '[reason]' Un-jobban?","请确认","Yes","No"))
 					if("Yes")
 						P1.remove_job_ban(job)
 					else
@@ -525,7 +525,7 @@
 
 		var/t = href_list["removejobban"]
 		if(t)
-			if((alert("Do you want to unjobban [t]?","Unjobban confirmation", "Yes", "No") == "Yes") && t) //No more misclicks! Unless you do it twice.
+			if((alert("Do you want to unjobban [t]?","解除职位封禁确认", "Yes", "No") == "Yes") && t) //No more misclicks! Unless you do it twice.
 				message_admins("[key_name_admin(usr)] removed [t]")
 				jobban_remove(t)
 				jobban_savebanfile()
@@ -542,19 +542,19 @@
 			return //mods+ cannot be banned. Even if they could, the ban doesn't affect them anyway
 
 		if(!M.ckey)
-			to_chat(usr, SPAN_DANGER("<B>Warning: Mob ckey for [M.name] not found.</b>"))
+			to_chat(usr, SPAN_DANGER("<B>警告：未找到 [M.name] 的 Mob ckey。</b>"))
 			return
 		var/mob_key = M.ckey
-		var/mins = tgui_input_number(usr,"How long (in minutes)? \n 1440 = 1 day \n 4320 = 3 days \n 10080 = 7 days \n 43800 = 1 Month","Ban time", 1440, 262800, 1)
+		var/mins = tgui_input_number(usr,"时长（分钟）？\n 1440 = 1天 \n 4320 = 3天 \n 10080 = 7天 \n 43800 = 1个月","Ban time", 1440, 262800, 1)
 		if(!mins)
 			return
 		if(mins >= 525600)
 			mins = 525599
-		var/reason = input(usr,"Reason? \n\nPress 'OK' to finalize the ban.","reason","Griefer") as message|null
+		var/reason = input(usr,"原因？ \n\n按‘确定’完成封禁。","reason","Griefer") as message|null
 		if(!reason)
 			return
 		var/datum/entity/player/P = get_player_from_key(mob_key) // you may not be logged in, but I will find you and I will ban you
-		if(P.is_time_banned && alert(usr, "Ban already exists. Proceed?", "Confirmation", "Yes", "No") != "Yes")
+		if(P.is_time_banned && alert(usr, "封禁已存在。是否继续？", "确认", "Yes", "No") != "Yes")
 			return
 		P.add_timed_ban(reason, mins)
 
@@ -569,7 +569,7 @@
 			return //admins cannot be banned. Even if they could, the ban doesn't affect them anyway
 
 		if(!M.ckey)
-			to_chat(usr, SPAN_DANGER("<B>Warning: Mob ckey for [M.name] not found.</b>"))
+			to_chat(usr, SPAN_DANGER("<B>警告：未找到 [M.name] 的 Mob ckey。</b>"))
 			return
 
 		var/mins = 0
@@ -581,7 +581,7 @@
 			if("No")
 				return
 		var/datum/entity/player/P = get_player_from_key(M.ckey) // you may not be logged in, but I will find you and I will ban you
-		if(P.is_time_banned && alert(usr, "Ban already exists. Proceed?", "Confirmation", "Yes", "No") != "Yes")
+		if(P.is_time_banned && alert(usr, "封禁已存在。是否继续？", "确认", "Yes", "No") != "Yes")
 			return
 		P.add_timed_ban(reason, mins)
 
@@ -591,19 +591,19 @@
 
 		var/mob/living/carbon/xenomorph/X = locate(href_list["xenoresetname"])
 		if(!isxeno(X))
-			to_chat(usr, SPAN_WARNING("Not a xeno."))
+			to_chat(usr, SPAN_WARNING("不是异形。"))
 			return
 
-		if(alert("Are you sure you want to reset xeno name for [X.ckey]?", , "Yes", "No") != "Yes")
+		if(alert("你确定要重置[X.ckey]的异形名称吗？", , "Yes", "No") != "Yes")
 			return
 
 		if(!X.ckey)
-			to_chat(usr, SPAN_DANGER("Warning: Mob ckey for [X.name] not found."))
+			to_chat(usr, SPAN_DANGER("警告：未找到 [X.name] 的实体 CKEY。"))
 			return
 
 		message_admins("[usr.client.ckey] has reset [X.ckey] xeno name")
 
-		to_chat(X, SPAN_DANGER("Warning: Your xeno name has been reset by [usr.client.ckey]."))
+		to_chat(X, SPAN_DANGER("警告：你的异形名称已被 [usr.client.ckey] 重置。"))
 
 		X.client.xeno_prefix = "XX"
 		X.client.xeno_postfix = ""
@@ -630,26 +630,26 @@
 			message_admins("[usr.client.ckey] has unbanned [X.ckey] from using xeno names")
 
 			notes_add(X.ckey, "Xeno Name Unbanned by [usr.client.ckey]", usr)
-			to_chat(X, SPAN_DANGER("Warning: You can use xeno names again."))
+			to_chat(X, SPAN_DANGER("警告：你现在可以再次使用异形名称了。"))
 			return
 
 
 		if(!isxeno(X))
-			to_chat(usr, SPAN_WARNING("Not a xeno."))
+			to_chat(usr, SPAN_WARNING("不是异形。"))
 			return
 
 		if(alert("Are you sure you want to BAN [X.ckey] from ever using any xeno name?", , "Yes", "No") != "Yes")
 			return
 
 		if(!X.ckey)
-			to_chat(usr, SPAN_DANGER("Warning: Mob ckey for [X.name] not found."))
+			to_chat(usr, SPAN_DANGER("警告：未找到 [X.name] 的实体 CKEY。"))
 			return
 
 		message_admins("[usr.client.ckey] has banned [X.ckey] from using xeno names")
 
 		notes_add(X.ckey, "Xeno Name Banned by [usr.client.ckey]|Reason: Xeno name was [X.name]", usr)
 
-		to_chat(X, SPAN_DANGER("Warning: You were banned from using xeno names by [usr.client.ckey]."))
+		to_chat(X, SPAN_DANGER("警告：你已被 [usr.client.ckey] 禁止使用异形名称。"))
 
 		X.client.xeno_prefix = "XX"
 		X.client.xeno_postfix = ""
@@ -708,7 +708,7 @@
 
 		var/mob/living/carbon/human/H = locate(href_list["monkeyone"])
 		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
+			to_chat(usr, "这只能用于 /mob/living/carbon/human 类型的实例。")
 			return
 
 		message_admins("[key_name_admin(usr)] attempting to monkeyize [key_name_admin(H)]")
@@ -720,10 +720,10 @@
 
 		var/mob/M = locate(href_list["forcespeech"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob.")
+			to_chat(usr, "这只能用于类型为 /mob 的实例。")
 			return
 
-		var/speech = input("What will [key_name(M)] say?.", "Force speech", "")// Don't need to sanitize, since it does that in say(), we also trust our admins.
+		var/speech = input("What will [key_name(M)] say?.", "强制发言", "")// Don't need to sanitize, since it does that in say(), we also trust our admins.
 		if(!speech)
 			return
 		M.say(speech)
@@ -735,14 +735,14 @@
 			return
 		var/mob/living/carbon/human/H = locate(href_list["zombieinfect"])
 		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /human.")
+			to_chat(usr, "这只能用于 /human 类型的实例。")
 			return
 
-		if(alert(usr, "Are you sure you want to infect them with a ZOMBIE VIRUS? This can trigger a major event!", "Message", "Yes", "No") != "Yes")
+		if(alert(usr, "你确定要让他们感染僵尸病毒吗？这可能触发重大事件！", "消息", "Yes", "No") != "Yes")
 			return
 
 		var/datum/disease/black_goo/bg = new()
-		if(alert(usr, "Make them non-symptomatic carrier?", "Message", "Yes", "No") == "Yes")
+		if(alert(usr, "使其成为无症状携带者？", "消息", "Yes", "No") == "Yes")
 			bg.carrier = TRUE
 		else
 			bg.carrier = FALSE
@@ -755,10 +755,10 @@
 			return
 		var/mob/living/carbon/human/H = locate(href_list["larvainfect"])
 		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /human.")
+			to_chat(usr, "这只能用于 /human 类型的实例。")
 			return
 
-		if(alert(usr, "Are you sure you want to infect them with a xeno larva?", "Message", "Yes", "No") != "Yes")
+		if(alert(usr, "你确定要让他们感染异形幼虫吗？", "消息", "Yes", "No") != "Yes")
 			return
 
 		var/list/hives = list()
@@ -767,10 +767,10 @@
 			hive = GLOB.hive_datum[hivenumber]
 			hives += list("[hive.name]" = hive.hivenumber)
 
-		var/newhive = tgui_input_list(usr,"Select a hive.", "Infect Larva", hives)
+		var/newhive = tgui_input_list(usr,"选择一个巢穴。", "Infect Larva", hives)
 
 		if(!H)
-			to_chat(usr, "This mob no longer exists.")
+			to_chat(usr, "该单位已不存在。")
 			return
 
 		var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(H)
@@ -785,11 +785,11 @@
 
 		var/mob/living/carbon/human/H = locate(href_list["makemutineer"])
 		if(!istype(H))
-			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human.")
+			to_chat(usr, "此操作仅能对 /mob/living/carbon/human 类型的实例执行。")
 			return
 
 		if(H.faction != FACTION_MARINE)
-			to_chat(usr, "This player's faction must equal '[FACTION_MARINE]' to make them a mutineer.")
+			to_chat(usr, "该玩家的派系必须等于 '[FACTION_MARINE]' 才能使其成为叛变者。")
 			return
 
 		var/datum/equipment_preset/other/mutiny/mutineer/leader/leader_preset = new()
@@ -803,7 +803,7 @@
 
 		var/mob/living/carbon/human/H = locate(href_list["makecultist"]) || locate(href_list["makecultistleader"])
 		if(!istype(H))
-			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human.")
+			to_chat(usr, "此操作仅能对 /mob/living/carbon/human 类型的实例执行。")
 			return
 
 		var/list/hives = list()
@@ -812,9 +812,9 @@
 			LAZYSET(hives, hive.name, hive)
 		LAZYSET(hives, "CANCEL", null)
 
-		var/hive_name = tgui_input_list(usr, "Which Hive will he belongs to", "Make Cultist", hives)
+		var/hive_name = tgui_input_list(usr, "他将属于哪个巢穴", "设为邪教徒", hives)
 		if(!hive_name || hive_name == "CANCEL")
-			to_chat(usr, SPAN_ALERT("Hive choice error. Aborting."))
+			to_chat(usr, SPAN_ALERT("巢穴选择错误。中止。"))
 
 		var/datum/hive_status/hive = hives[hive_name]
 
@@ -838,9 +838,9 @@
 
 		var/mob/M = locate(href_list["forceemote"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob.")
+			to_chat(usr, "这只能用于类型为 /mob 的实例。")
 
-		var/speech = input("What will [key_name(M)] emote?.", "Force emote", "")// Don't need to sanitize, since it does that in say(), we also trust our admins.
+		var/speech = input("What will [key_name(M)] emote?.", "强制表情动作", "")// Don't need to sanitize, since it does that in say(), we also trust our admins.
 		if(!speech)
 			return
 		M.manual_emote(speech)
@@ -854,14 +854,14 @@
 		var/mob/M = locate(href_list["sendbacktolobby"])
 
 		if(!isobserver(M))
-			to_chat(usr, SPAN_NOTICE("You can only send ghost players back to the Lobby."))
+			to_chat(usr, SPAN_NOTICE("你只能将幽灵玩家送回大厅。"))
 			return
 
 		if(!M.client)
-			to_chat(usr, SPAN_WARNING("[M] doesn't seem to have an active client."))
+			to_chat(usr, SPAN_WARNING("[M] 似乎没有活动的客户端。"))
 			return
 
-		if(alert(usr, "Send [key_name(M)] back to Lobby?", "Message", "Yes", "No") != "Yes")
+		if(alert(usr, "将 [key_name(M)] 送回大厅？", "消息", "Yes", "No") != "Yes")
 			return
 
 		message_admins("[key_name(usr)] has sent [key_name(M)] back to the Lobby.")
@@ -874,12 +874,12 @@
 		if(!check_rights(R_ADMIN))
 			return
 
-		if(alert(usr, "Confirm?", "Message", "Yes", "No") != "Yes")
+		if(alert(usr, "确认？", "消息", "Yes", "No") != "Yes")
 			return
 
 		var/mob/M = locate(href_list["tdome1"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob.")
+			to_chat(usr, "这只能用于类型为 /mob 的实例。")
 			return
 
 		for(var/obj/item/I in M)
@@ -889,19 +889,19 @@
 		sleep(5)
 		M.forceMove(get_turf(pick(GLOB.thunderdome_one)))
 		spawn(50)
-			to_chat(M, SPAN_NOTICE("You have been sent to the Thunderdome."))
+			to_chat(M, SPAN_NOTICE("你已被送往雷霆穹顶。"))
 		message_admins("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Team 1)", 1)
 
 	else if(href_list["tdome2"])
 		if(!check_rights(R_ADMIN))
 			return
 
-		if(alert(usr, "Confirm?", "Message", "Yes", "No") != "Yes")
+		if(alert(usr, "确认？", "消息", "Yes", "No") != "Yes")
 			return
 
 		var/mob/M = locate(href_list["tdome2"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob.")
+			to_chat(usr, "这只能用于类型为 /mob 的实例。")
 			return
 
 		for(var/obj/item/I in M)
@@ -911,38 +911,38 @@
 		sleep(5)
 		M.forceMove(get_turf(pick(GLOB.thunderdome_two)))
 		spawn(50)
-			to_chat(M, SPAN_NOTICE("You have been sent to the Thunderdome."))
+			to_chat(M, SPAN_NOTICE("你已被送往雷霆穹顶。"))
 		message_admins("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Team 2)", 1)
 
 	else if(href_list["tdomeadmin"])
 		if(!check_rights(R_ADMIN))
 			return
 
-		if(alert(usr, "Confirm?", "Message", "Yes", "No") != "Yes")
+		if(alert(usr, "确认？", "消息", "Yes", "No") != "Yes")
 			return
 
 		var/mob/M = locate(href_list["tdomeadmin"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob.")
+			to_chat(usr, "这只能用于类型为 /mob 的实例。")
 			return
 
 		M.apply_effect(5, PARALYZE)
 		sleep(5)
 		M.forceMove(get_turf(pick(GLOB.thunderdome_admin)))
 		spawn(50)
-			to_chat(M, SPAN_NOTICE("You have been sent to the Thunderdome."))
+			to_chat(M, SPAN_NOTICE("你已被送往雷霆穹顶。"))
 		message_admins("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Admin.)", 1)
 
 	else if(href_list["tdomeobserve"])
 		if(!check_rights(R_ADMIN))
 			return
 
-		if(alert(usr, "Confirm?", "Message", "Yes", "No") != "Yes")
+		if(alert(usr, "确认？", "消息", "Yes", "No") != "Yes")
 			return
 
 		var/mob/M = locate(href_list["tdomeobserve"])
 		if(!ismob(M))
-			to_chat(usr, "This can only be used on instances of type /mob.")
+			to_chat(usr, "这只能用于类型为 /mob 的实例。")
 			return
 
 		for(var/obj/item/I in M)
@@ -956,7 +956,7 @@
 		sleep(5)
 		M.forceMove(get_turf(pick(GLOB.thunderdome_observer)))
 		spawn(50)
-			to_chat(M, SPAN_NOTICE("You have been sent to the Thunderdome."))
+			to_chat(M, SPAN_NOTICE("你已被送往雷霆穹顶。"))
 		message_admins("[key_name_admin(usr)] has sent [key_name_admin(M)] to the thunderdome. (Observer.)", 1)
 
 	else if(href_list["revive"])
@@ -965,7 +965,7 @@
 
 		var/mob/living/L = locate(href_list["revive"])
 		if(!istype(L))
-			to_chat(usr, "This can only be used on instances of type /mob/living.")
+			to_chat(usr, "此功能仅能用于 /mob/living 类型的实例。")
 			return
 
 		L.revive()
@@ -977,7 +977,7 @@
 
 		var/mob/living/carbon/human/H = locate(href_list["makealien"])
 		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
+			to_chat(usr, "这只能用于 /mob/living/carbon/human 类型的实例。")
 			return
 
 		usr.client.cmd_admin_alienize(H)
@@ -988,7 +988,7 @@
 
 		var/mob/living/carbon/H = locate(href_list["changehivenumber"])
 		if(!istype(H))
-			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/")
+			to_chat(usr, "此操作仅能对 /mob/living/carbon/ 类型的实例执行。")
 			return
 		if(usr.client)
 			usr.client.cmd_admin_change_their_hivenumber(H)
@@ -997,31 +997,31 @@
 		if(!check_rights(R_SPAWN))
 			return
 
-		if(alert("Are you sure you want to make this person into a yautja? It will delete their old character.","Make Yautja","Yes","No") != "Yes")
+		if(alert("Are you sure you want to make this person into a yautja? It will delete their old character.","设为铁血战士","Yes","No") != "Yes")
 			return
 
 		var/mob/H = locate(href_list["makeyautja"])
 
 		if(!istype(H))
-			to_chat(usr, "This can only be used on mobs. How did you even do this?")
+			to_chat(usr, "此功能仅能用于单位。你是怎么做到的？")
 			return
 
 		if(!usr.loc || !isturf(usr.loc))
-			to_chat(usr, "Only on turfs, please.")
+			to_chat(usr, "请仅对地块使用。")
 			return
 
-		var/y_name = input(usr, "What name would you like to give this new Predator?","Name", "")
+		var/y_name = input(usr, "你想给这个新铁血战士起什么名字？","姓名", "")
 		if(!y_name)
-			to_chat(usr, "That is not a valid name.")
+			to_chat(usr, "这不是一个有效的名字。")
 			return
 
-		var/y_gend = input(usr, "Gender?","Gender", "male")
+		var/y_gend = input(usr, "性别？","Gender", "male")
 		if(!y_gend || (y_gend != "male" && y_gend != "female"))
-			to_chat(usr, "That is not a valid gender.")
+			to_chat(usr, "这不是一个有效的性别。")
 			return
 
 		var/mob/living/carbon/human/M = new(usr.loc)
-		M.set_species("Yautja")
+		M.set_species("铁血战士")
 		spawn(0)
 			M.gender = y_gend
 			M.regenerate_icons()
@@ -1038,7 +1038,7 @@
 			M.skills = null //no skill restriction
 
 			M.change_real_name(M, y_name)
-			M.name = "Unknown" // Yautja names are not visible for oomans
+			M.name = "未知" // Yautja names are not visible for oomans
 
 			if(H)
 				qdel(H) //May have to clear up round-end vars and such....
@@ -1051,7 +1051,7 @@
 
 		var/mob/M = locate(href_list["makeanimal"])
 		if(istype(M, /mob/new_player))
-			to_chat(usr, "This cannot be used on instances of type /mob/new_player.")
+			to_chat(usr, "此功能不能用于 /mob/new_player 类型的实例。")
 			return
 
 		usr.client.cmd_admin_animalize(M)
@@ -1133,10 +1133,10 @@
 
 		var/mob/living/carbon/human/H = locate(href_list["adminspawncookie"])
 		if(!ishuman(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
+			to_chat(usr, "这只能用于 /mob/living/carbon/human 类型的实例。")
 			return
 
-		var/cookie_type = tgui_input_list(usr, "Choose cookie type:", "Give Cookie", list("cookie", "random fortune cookie", "custom fortune cookie"))
+		var/cookie_type = tgui_input_list(usr, "选择饼干类型：", "Give Cookie", list("cookie", "random fortune cookie", "custom fortune cookie"))
 		if(!cookie_type)
 			return
 
@@ -1147,22 +1147,22 @@
 			if("random fortune cookie")
 				snack = new /obj/item/reagent_container/food/snacks/fortunecookie/prefilled(H.loc)
 			if("custom fortune cookie")
-				var/fortune_text = tgui_input_list(usr, "Choose fortune:", "Cookie customisation", list("Random", "Custom", "None"))
+				var/fortune_text = tgui_input_list(usr, "选择运势：", "Cookie customisation", list("Random", "Custom", "无"))
 				if(!fortune_text)
 					return
 				if(fortune_text == "Custom")
-					fortune_text = input(usr, "Enter the fortune text:", "Cookie customisation", "")
+					fortune_text = input(usr, "输入运势文本：", "Cookie customisation", "")
 					if(!fortune_text)
 						return
-				var/fortune_numbers = tgui_input_list(usr, "Choose lucky numbers:", "Cookie customisation", list("Random", "Custom", "None"))
+				var/fortune_numbers = tgui_input_list(usr, "选择幸运数字：", "Cookie customisation", list("Random", "Custom", "无"))
 				if(!fortune_numbers)
 					return
 				if(fortune_numbers == "Custom")
-					fortune_numbers = input(usr, "Enter the lucky numbers:", "Cookie customisation", "1, 2, 3, 4 and 5")
+					fortune_numbers = input(usr, "输入幸运数字：", "Cookie customisation", "1, 2, 3, 4 and 5")
 					if(!fortune_numbers)
 						return
-				if(fortune_text == "None" && fortune_numbers == "None")
-					to_chat(usr, "No fortune provided, Give Cookie code crumbled!")
+				if(fortune_text == "无" && fortune_numbers == "无")
+					to_chat(usr, "未提供运势，饼干代码已失效！")
 					return
 				snack = new /obj/item/reagent_container/food/snacks/fortunecookie/prefilled(H.loc, fortune_text, fortune_numbers)
 
@@ -1170,7 +1170,7 @@
 			error("Give Cookie code crumbled!")
 		H.put_in_hands(snack)
 		message_admins("[key_name(H)] got their [cookie_type], spawned by [key_name(src.owner)]")
-		to_chat(H, SPAN_NOTICE("Your prayers have been answered!! You received the <b>best cookie</b>!"))
+		to_chat(H, SPAN_NOTICE("你的祈祷得到了回应！！你获得了<b>最佳饼干</b>！"))
 
 	else if(href_list["adminalert"])
 		if(!check_rights(R_MOD))
@@ -1183,42 +1183,42 @@
 		var/mob/living/carbon/human/H = locate(href_list["CentcommReply"])
 
 		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
+			to_chat(usr, "这只能用于 /mob/living/carbon/human 类型的实例。")
 			return
 
 		//unanswered_distress -= H
 
 		if(!H.get_type_in_ears(/obj/item/device/radio/headset))
-			to_chat(usr, "The person you are trying to contact is not wearing a headset.")
+			to_chat(usr, "你试图联系的对象未佩戴耳机。")
 			return
 
-		var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via their headset.","Outgoing message from USCM", "")
+		var/input = input(src.owner, "请输入消息，通过耳机回复[key_name(H)]。","Outgoing message from USCM", "")
 		if(!input)
 			return
 
-		to_chat(src.owner, "You sent [input] to [H] via a secure channel.")
+		to_chat(src.owner, "你通过安全频道向[H]发送了[input]。")
 		log_admin("[src.owner] replied to [key_name(H)]'s USCM message with the message [input].")
 		for(var/client/X in GLOB.admins)
 			if((R_ADMIN|R_MOD) & X.admin_holder.rights)
-				to_chat(X, SPAN_STAFF_IC("<b>ADMINS/MODS: \red [src.owner] replied to [key_name(H)]'s USCM message with: \blue \")[input]\"</b>"))
-		to_chat(H, SPAN_DANGER("You hear something crackle in your headset before a voice speaks, please stand by for a message:\" \blue <b>\"[input]\"</b>"))
+				to_chat(X, SPAN_STAFF_IC("<b>管理员/版主：\red [src.owner] 回复了[key_name(H)]的USCM消息：\blue \")[input]\"</b>"))
+		to_chat(H, SPAN_DANGER("你听到耳机里传来一阵噼啪声，随后一个声音响起，请等待消息：\" \blue <b>\"[input]\"</b>"))
 
 	else if(href_list["SyndicateReply"])
 		var/mob/living/carbon/human/H = locate(href_list["SyndicateReply"])
 		if(!istype(H))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
+			to_chat(usr, "这只能用于 /mob/living/carbon/human 类型的实例。")
 			return
 		if(!H.get_type_in_ears(/obj/item/device/radio/headset))
-			to_chat(usr, "The person you are trying to contact is not wearing a headset.")
+			to_chat(usr, "你试图联系的对象未佩戴耳机。")
 			return
 
-		var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via their headset.","Outgoing message from The Syndicate", "")
+		var/input = input(src.owner, "请输入消息，通过耳机回复[key_name(H)]。","Outgoing message from The Syndicate", "")
 		if(!input)
 			return
 
-		to_chat(src.owner, "You sent [input] to [H] via a secure channel.")
+		to_chat(src.owner, "你通过安全频道向[H]发送了[input]。")
 		log_admin("[src.owner] replied to [key_name(H)]'s Syndicate message with the message [input].")
-		to_chat(H, "You hear something crackle in your headset for a moment before a voice speaks. \"Please stand by for a message from your benefactor. Message as follows, agent. <b>\"[input]\"</b>  Message ends.\"")
+		to_chat(H, "你听到耳机里短暂地传来一阵噼啪声，随后一个声音响起。\"Please stand by for a message from your benefactor. Message as follows, agent. <b>\"[input]\"</b>  Message ends.\"")
 
 	else if(href_list["UpdateFax"])
 		var/obj/structure/machinery/faxmachine/origin_fax = locate(href_list["originfax"])
@@ -1227,93 +1227,93 @@
 	else if(href_list["PressFaxReply"])
 		var/mob/user = usr
 		if(!user.client || !CLIENT_IS_STAFF(user.client))
-			to_chat(user, SPAN_WARNING("You cannot send fax replies!"))
+			to_chat(user, SPAN_WARNING("你无法发送传真回复！"))
 			return FALSE
 
 		var/mob/living/carbon/human/target_human = locate(href_list["PressFaxReply"])
 		var/obj/structure/machinery/faxmachine/origin_fax = locate(href_list["originfax"])
 
-		var/template_choice = tgui_input_list(usr, "Use which template or roll your own?", "Fax Templates", list("Template", "Custom"))
+		var/template_choice = tgui_input_list(usr, "使用模板还是自定义？", "Fax Templates", list("模板", "Custom"))
 		if(!template_choice)
 			return
 		var/datum/fax/fax_message
 		var/organization_type = ""
 		switch(template_choice)
 			if("Custom")
-				var/input = input(src.owner, "Please enter a message to reply to [key_name(target_human)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from Press", "") as message|null
+				var/input = input(src.owner, "请输入消息，通过安全连接回复[key_name(target_human)]。注意：BBCode无效，但HTML标签有效！使用<br>换行。", "Outgoing message from Press", "") as message|null
 				if(!input)
 					return
 				fax_message = new(input)
-			if("Template")
-				var/subject = input(src.owner, "Enter subject line", "Outgoing message from Press", "") as message|null
+			if("模板")
+				var/subject = input(src.owner, "输入主题行", "Outgoing message from Press", "") as message|null
 				if(!subject)
 					return
 				var/addressed_to = ""
-				var/address_option = tgui_input_list(user, "Address it to the sender or custom?", "Fax Template", list("Sender", "Custom"))
+				var/address_option = tgui_input_list(user, "地址写给发件人还是自定义？", "Fax Template", list("Sender", "Custom"))
 				if(address_option == "Sender")
 					addressed_to = "[target_human.real_name]"
 				else if(address_option == "Custom")
-					addressed_to = input(src.owner, "Enter Addressee Line", "Outgoing message from Press", "") as message|null
+					addressed_to = input(src.owner, "输入收件人行", "Outgoing message from Press", "") as message|null
 					if(!addressed_to)
 						return
 				else
 					return
-				var/message_body = input(src.owner, "Enter Message Body, use <p></p> for paragraphs", "Outgoing message from Press", "") as message|null
+				var/message_body = input(src.owner, "输入消息正文，使用<p></p>表示段落", "Outgoing message from Press", "") as message|null
 				if(!message_body)
 					return
-				var/sent_by = input(src.owner, "Enter the name and rank you are sending from.", "Outgoing message from Press", "") as message|null
+				var/sent_by = input(src.owner, "输入你的姓名和军衔。", "Outgoing message from Press", "") as message|null
 				if(!sent_by)
 					return
-				organization_type = input(src.owner, "Enter the organization you are sending from.", "Outgoing message from Press", "") as message|null
+				organization_type = input(src.owner, "输入你所属的组织。", "Outgoing message from Press", "") as message|null
 				if(!organization_type)
 					return
 
 				fax_message = new(generate_templated_fax(0, organization_type, subject, addressed_to, message_body, sent_by, "Editor in Chief", organization_type))
 		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "pressfaxpreview", width = DEFAULT_PAPER_WIDTH, height = DEFAULT_PAPER_HEIGHT)
-		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Template", list("Send", "Cancel"))
+		var/send_choice = tgui_input_list(user, "发送此传真？", "Fax Template", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
-		var/is_priority_fax = tgui_alert(user, "Is this a priority fax?", "Priority Fax?", list("Yes", "No"))
+		var/is_priority_fax = tgui_alert(user, "这是加急传真吗？", "Priority Fax?", list("Yes", "No"))
 
 		send_admin_fax("Press", fax_message, origin_fax, is_priority_fax, target_human, organization_type)
 
 	else if(href_list["USCMFaxReply"])
 		var/mob/user = usr
 		if(!user.client || !CLIENT_IS_STAFF(user.client))
-			to_chat(user, SPAN_WARNING("You cannot send fax replies!"))
+			to_chat(user, SPAN_WARNING("你无法发送传真回复！"))
 			return FALSE
 
 		var/mob/living/carbon/human/target_human = locate(href_list["USCMFaxReply"])
 		var/obj/structure/machinery/faxmachine/origin_fax = locate(href_list["originfax"])
 
-		var/template_choice = tgui_input_list(usr, "Use which template or roll your own?", "Fax Templates", list("USCM High Command", "USCM Provost General", "Custom"))
+		var/template_choice = tgui_input_list(usr, "使用模板还是自定义？", "Fax Templates", list("USCM High Command", "USCM Provost General", "Custom"))
 		if(!template_choice)
 			return
 		var/datum/fax/fax_message
 		switch(template_choice)
 			if("Custom")
-				var/input = input(src.owner, "Please enter a message to reply to [key_name(target_human)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from USCM", "") as message|null
+				var/input = input(src.owner, "请输入消息，通过安全连接回复[key_name(target_human)]。注意：BBCode无效，但HTML标签有效！使用<br>换行。", "Outgoing message from USCM", "") as message|null
 				if(!input)
 					return
 				fax_message = new(input)
 			if("USCM High Command", "USCM Provost General")
-				var/subject = input(src.owner, "Enter subject line", "Outgoing message from USCM", "") as message|null
+				var/subject = input(src.owner, "输入主题行", "Outgoing message from USCM", "") as message|null
 				if(!subject)
 					return
 				var/addressed_to = ""
-				var/address_option = tgui_input_list(user, "Address it to the sender or custom?", "Fax Template", list("Sender", "Custom"))
+				var/address_option = tgui_input_list(user, "地址写给发件人还是自定义？", "Fax Template", list("Sender", "Custom"))
 				if(address_option == "Sender")
 					addressed_to = "[target_human.real_name]"
 				else if(address_option == "Custom")
-					addressed_to = input(src.owner, "Enter Addressee Line", "Outgoing message from USCM", "") as message|null
+					addressed_to = input(src.owner, "输入收件人行", "Outgoing message from USCM", "") as message|null
 					if(!addressed_to)
 						return
 				else
 					return
-				var/message_body = input(src.owner, "Enter Message Body, use <p></p> for paragraphs", "Outgoing message from USCM", "") as message|null
+				var/message_body = input(src.owner, "输入消息正文，使用<p></p>表示段落", "Outgoing message from USCM", "") as message|null
 				if(!message_body)
 					return
-				var/sent_by = input(src.owner, "Enter the name and rank you are sending from.", "Outgoing message from USCM", "") as message|null
+				var/sent_by = input(src.owner, "输入你的姓名和军衔。", "Outgoing message from USCM", "") as message|null
 				if(!sent_by)
 					return
 				var/sent_title = "Office of the Provost General"
@@ -1322,250 +1322,250 @@
 
 				fax_message = new(generate_templated_fax(0, "USCM CENTRAL COMMAND", subject,addressed_to, message_body,sent_by, sent_title, "United States Colonial Marine Corps"))
 		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "uscmfaxpreview", width = DEFAULT_PAPER_WIDTH, height = DEFAULT_PAPER_HEIGHT)
-		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Template", list("Send", "Cancel"))
+		var/send_choice = tgui_input_list(user, "发送此传真？", "Fax Template", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
-		var/is_priority_fax = tgui_alert(user, "Is this a priority fax?", "Priority Fax?", list("Yes", "No"))
+		var/is_priority_fax = tgui_alert(user, "这是加急传真吗？", "Priority Fax?", list("Yes", "No"))
 
 		send_admin_fax(FACTION_MARINE, fax_message, origin_fax, is_priority_fax, target_human)
 
 	else if(href_list["WYFaxReply"])
 		var/mob/user = usr
 		if(!user.client || !CLIENT_IS_STAFF(user.client))
-			to_chat(user, SPAN_WARNING("You cannot send fax replies!"))
+			to_chat(user, SPAN_WARNING("你无法发送传真回复！"))
 			return FALSE
 
 		var/mob/living/carbon/human/target_human = locate(href_list["WYFaxReply"])
 		var/obj/structure/machinery/faxmachine/origin_fax = locate(href_list["originfax"])
 
-		var/template_choice = tgui_input_list(usr, "Use the template or roll your own?", "Fax Template", list("Template", "Custom"))
+		var/template_choice = tgui_input_list(usr, "使用模板还是自定义？", "Fax Template", list("模板", "Custom"))
 		if(!template_choice)
 			return
 		var/datum/fax/fax_message
 		switch(template_choice)
 			if("Custom")
-				var/input = input(src.owner, "Please enter a message to reply to [key_name(target_human)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from Weyland-Yutani", "") as message|null
+				var/input = input(src.owner, "请输入消息，通过安全连接回复[key_name(target_human)]。注意：BBCode无效，但HTML标签有效！使用<br>换行。", "Outgoing message from Weyland-Yutani", "") as message|null
 				if(!input)
 					return
 				fax_message = new(input)
-			if("Template")
-				var/subject = input(src.owner, "Enter subject line", "Outgoing message from Weyland-Yutani", "") as message|null
+			if("模板")
+				var/subject = input(src.owner, "输入主题行", "Outgoing message from Weyland-Yutani", "") as message|null
 				if(!subject)
 					return
 				var/addressed_to = ""
-				var/address_option = tgui_input_list(user, "Address it to the sender or custom?", "Fax Template", list("Sender", "Custom"))
+				var/address_option = tgui_input_list(user, "地址写给发件人还是自定义？", "Fax Template", list("Sender", "Custom"))
 				if(address_option == "Sender")
 					addressed_to = "[target_human.real_name]"
 				else if(address_option == "Custom")
-					addressed_to = input(src.owner, "Enter Addressee Line", "Outgoing message from Weyland-Yutani", "") as message|null
+					addressed_to = input(src.owner, "输入收件人行", "Outgoing message from Weyland-Yutani", "") as message|null
 					if(!addressed_to)
 						return
 				else
 					return
-				var/message_body = input(src.owner, "Enter Message Body, use <p></p> for paragraphs", "Outgoing message from Weyland-Yutani", "") as message|null
+				var/message_body = input(src.owner, "输入消息正文，使用<p></p>表示段落", "Outgoing message from Weyland-Yutani", "") as message|null
 				if(!message_body)
 					return
-				var/sent_by = input(src.owner, "Enter JUST the name you are sending this from", "Outgoing message from Weyland-Yutani", "") as message|null
+				var/sent_by = input(src.owner, "仅输入你的姓名", "Outgoing message from Weyland-Yutani", "") as message|null
 				if(!sent_by)
 					return
 				fax_message = new(generate_templated_fax(1, "WEYLAND-YUTANI CORPORATE AFFAIRS - [MAIN_SHIP_NAME]", subject, addressed_to, message_body, sent_by, "Corporate Affairs Director", "Weyland-Yutani"))
 		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "clfaxpreview", width = DEFAULT_PAPER_WIDTH, height = DEFAULT_PAPER_HEIGHT)
-		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
+		var/send_choice = tgui_input_list(user, "发送此传真？", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
-		var/is_priority_fax = tgui_alert(user, "Is this a priority fax?", "Priority Fax?", list("Yes", "No"))
+		var/is_priority_fax = tgui_alert(user, "这是加急传真吗？", "Priority Fax?", list("Yes", "No"))
 
 		send_admin_fax(FACTION_WY, fax_message, origin_fax, is_priority_fax, target_human)
 
 	else if(href_list["TWEFaxReply"])
 		var/mob/user = usr
 		if(!user.client || !CLIENT_IS_STAFF(user.client))
-			to_chat(user, SPAN_WARNING("You cannot send fax replies!"))
+			to_chat(user, SPAN_WARNING("你无法发送传真回复！"))
 			return FALSE
 
 		var/mob/living/carbon/human/target_human = locate(href_list["TWEFaxReply"])
 		var/obj/structure/machinery/faxmachine/origin_fax = locate(href_list["originfax"])
 
-		var/template_choice = tgui_input_list(usr, "Use the template or roll your own?", "Fax Template", list("Template", "Custom"))
+		var/template_choice = tgui_input_list(usr, "使用模板还是自定义？", "Fax Template", list("模板", "Custom"))
 		if(!template_choice)
 			return
 		var/datum/fax/fax_message
 		switch(template_choice)
 			if("Custom")
-				var/input = input(src.owner, "Please enter a message to reply to [key_name(target_human)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from TWE", "") as message|null
+				var/input = input(src.owner, "请输入消息，通过安全连接回复[key_name(target_human)]。注意：BBCode无效，但HTML标签有效！使用<br>换行。", "Outgoing message from TWE", "") as message|null
 				if(!input)
 					return
 				fax_message = new(input)
-			if("Template")
-				var/subject = input(src.owner, "Enter subject line", "Outgoing message from TWE", "") as message|null
+			if("模板")
+				var/subject = input(src.owner, "输入主题行", "Outgoing message from TWE", "") as message|null
 				if(!subject)
 					return
 				var/addressed_to = ""
-				var/address_option = tgui_input_list(user, "Address it to the sender or custom?", "Fax Template", list("Sender", "Custom"))
+				var/address_option = tgui_input_list(user, "地址写给发件人还是自定义？", "Fax Template", list("Sender", "Custom"))
 				if(address_option == "Sender")
 					addressed_to = "[target_human.real_name]"
 				else if(address_option == "Custom")
-					addressed_to = input(src.owner, "Enter Addressee Line", "Outgoing message from TWE", "") as message|null
+					addressed_to = input(src.owner, "输入收件人行", "Outgoing message from TWE", "") as message|null
 					if(!addressed_to)
 						return
 				else
 					return
-				var/message_body = input(src.owner, "Enter Message Body, use <p></p> for paragraphs", "Outgoing message from TWE", "") as message|null
+				var/message_body = input(src.owner, "输入消息正文，使用<p></p>表示段落", "Outgoing message from TWE", "") as message|null
 				if(!message_body)
 					return
-				var/sent_by = input(src.owner, "Enter JUST the name you are sending this from", "Outgoing message from TWE", "") as message|null
+				var/sent_by = input(src.owner, "仅输入你的姓名", "Outgoing message from TWE", "") as message|null
 				if(!sent_by)
 					return
-				fax_message = new(generate_templated_fax(0, "THREE WORLD EMPIRE - ROYAL MILITARY COMMAND", subject, addressed_to, message_body, sent_by, "Office of Military Communications", "Three World Empire"))
+				fax_message = new(generate_templated_fax(0, "THREE WORLD EMPIRE - ROYAL MILITARY COMMAND", subject, addressed_to, message_body, sent_by, "Office of Military Communications", "三世界帝国"))
 		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF TWE FAX", width = DEFAULT_PAPER_WIDTH, height = DEFAULT_PAPER_HEIGHT)
-		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
+		var/send_choice = tgui_input_list(user, "发送此传真？", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
-		var/is_priority_fax = tgui_alert(user, "Is this a priority fax?", "Priority Fax?", list("Yes", "No"))
+		var/is_priority_fax = tgui_alert(user, "这是加急传真吗？", "Priority Fax?", list("Yes", "No"))
 
 		send_admin_fax(FACTION_TWE, fax_message, origin_fax, is_priority_fax, target_human)
 
 	else if(href_list["UPPFaxReply"])
 		var/mob/user = usr
 		if(!user.client || !CLIENT_IS_STAFF(user.client))
-			to_chat(user, SPAN_WARNING("You cannot send fax replies!"))
+			to_chat(user, SPAN_WARNING("你无法发送传真回复！"))
 			return FALSE
 
 		var/mob/living/carbon/human/target_human = locate(href_list["UPPFaxReply"])
 		var/obj/structure/machinery/faxmachine/origin_fax = locate(href_list["originfax"])
 
-		var/template_choice = tgui_input_list(usr, "Use the template or roll your own?", "Fax Template", list("Template", "Custom"))
+		var/template_choice = tgui_input_list(usr, "使用模板还是自定义？", "Fax Template", list("模板", "Custom"))
 		if(!template_choice)
 			return
 		var/datum/fax/fax_message
 		switch(template_choice)
 			if("Custom")
-				var/input = input(src.owner, "Please enter a message to reply to [key_name(target_human)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from UPP", "") as message|null
+				var/input = input(src.owner, "请输入消息，通过安全连接回复[key_name(target_human)]。注意：BBCode无效，但HTML标签有效！使用<br>换行。", "Outgoing message from UPP", "") as message|null
 				if(!input)
 					return
 				fax_message = new(input)
-			if("Template")
-				var/subject = input(src.owner, "Enter subject line", "Outgoing message from UPP", "") as message|null
+			if("模板")
+				var/subject = input(src.owner, "输入主题行", "Outgoing message from UPP", "") as message|null
 				if(!subject)
 					return
 				var/addressed_to = ""
-				var/address_option = tgui_input_list(user, "Address it to the sender or custom?", "Fax Template", list("Sender", "Custom"))
+				var/address_option = tgui_input_list(user, "地址写给发件人还是自定义？", "Fax Template", list("Sender", "Custom"))
 				if(address_option == "Sender")
 					addressed_to = "[target_human.real_name]"
 				else if(address_option == "Custom")
-					addressed_to = input(src.owner, "Enter Addressee Line", "Outgoing message from UPP", "") as message|null
+					addressed_to = input(src.owner, "输入收件人行", "Outgoing message from UPP", "") as message|null
 					if(!addressed_to)
 						return
 				else
 					return
-				var/message_body = input(src.owner, "Enter Message Body, use <p></p> for paragraphs", "Outgoing message from UPP", "") as message|null
+				var/message_body = input(src.owner, "输入消息正文，使用<p></p>表示段落", "Outgoing message from UPP", "") as message|null
 				if(!message_body)
 					return
-				var/sent_by = input(src.owner, "Enter JUST the name you are sending this from", "Outgoing message from UPP", "") as message|null
+				var/sent_by = input(src.owner, "仅输入你的姓名", "Outgoing message from UPP", "") as message|null
 				if(!sent_by)
 					return
-				fax_message = new(generate_templated_fax(0, "UNION OF PROGRESSIVE PEOPLES - MILITARY HIGH KOMMAND", subject, addressed_to, message_body, sent_by, "Military High Kommand", "Union of Progressive Peoples"))
+				fax_message = new(generate_templated_fax(0, "UNION OF PROGRESSIVE PEOPLES - MILITARY HIGH KOMMAND", subject, addressed_to, message_body, sent_by, "Military High Kommand", "进步人民联盟"))
 		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF UPP FAX", width = DEFAULT_PAPER_WIDTH, height = DEFAULT_PAPER_HEIGHT)
-		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
+		var/send_choice = tgui_input_list(user, "发送此传真？", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
-		var/is_priority_fax = tgui_alert(user, "Is this a priority fax?", "Priority Fax?", list("Yes", "No"))
+		var/is_priority_fax = tgui_alert(user, "这是加急传真吗？", "Priority Fax?", list("Yes", "No"))
 
 		send_admin_fax(FACTION_UPP, fax_message, origin_fax, is_priority_fax, target_human)
 
 	else if(href_list["CLFFaxReply"])
 		var/mob/user = usr
 		if(!user.client || !CLIENT_IS_STAFF(user.client))
-			to_chat(user, SPAN_WARNING("You cannot send fax replies!"))
+			to_chat(user, SPAN_WARNING("你无法发送传真回复！"))
 			return FALSE
 
 		var/mob/living/carbon/human/target_human = locate(href_list["CLFFaxReply"])
 		var/obj/structure/machinery/faxmachine/origin_fax = locate(href_list["originfax"])
 
-		var/template_choice = tgui_input_list(usr, "Use the template or roll your own?", "Fax Template", list("Template", "Custom"))
+		var/template_choice = tgui_input_list(usr, "使用模板还是自定义？", "Fax Template", list("模板", "Custom"))
 		if(!template_choice)
 			return
 		var/datum/fax/fax_message
 		switch(template_choice)
 			if("Custom")
-				var/input = input(src.owner, "Please enter a message to reply to [key_name(target_human)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from CLF", "") as message|null
+				var/input = input(src.owner, "请输入消息，通过安全连接回复[key_name(target_human)]。注意：BBCode无效，但HTML标签有效！使用<br>换行。", "Outgoing message from CLF", "") as message|null
 				if(!input)
 					return
 				fax_message = new(input)
-			if("Template")
-				var/subject = input(src.owner, "Enter subject line", "Outgoing message from CLF", "") as message|null
+			if("模板")
+				var/subject = input(src.owner, "输入主题行", "Outgoing message from CLF", "") as message|null
 				if(!subject)
 					return
 				var/addressed_to = ""
-				var/address_option = tgui_input_list(user, "Address it to the sender or custom?", "Fax Template", list("Sender", "Custom"))
+				var/address_option = tgui_input_list(user, "地址写给发件人还是自定义？", "Fax Template", list("Sender", "Custom"))
 				if(address_option == "Sender")
 					addressed_to = "[target_human.real_name]"
 				else if(address_option == "Custom")
-					addressed_to = input(src.owner, "Enter Addressee Line", "Outgoing message from CLF", "") as message|null
+					addressed_to = input(src.owner, "输入收件人行", "Outgoing message from CLF", "") as message|null
 					if(!addressed_to)
 						return
 				else
 					return
-				var/message_body = input(src.owner, "Enter Message Body, use <p></p> for paragraphs", "Outgoing message from CLF", "") as message|null
+				var/message_body = input(src.owner, "输入消息正文，使用<p></p>表示段落", "Outgoing message from CLF", "") as message|null
 				if(!message_body)
 					return
-				var/sent_by = input(src.owner, "Enter JUST the name you are sending this from", "Outgoing message from CLF", "") as message|null
+				var/sent_by = input(src.owner, "仅输入你的姓名", "Outgoing message from CLF", "") as message|null
 				if(!sent_by)
 					return
-				fax_message = new(generate_templated_fax(0, "COLONIAL LIBERATION FRONT - COLONIAL COUNCIL OF LIBERATION", subject, addressed_to, message_body, sent_by, "Guerilla Forces Command", "Colonial Liberation Front"))
+				fax_message = new(generate_templated_fax(0, "COLONIAL LIBERATION FRONT - COLONIAL COUNCIL OF LIBERATION", subject, addressed_to, message_body, sent_by, "Guerilla Forces Command", "殖民地解放阵线"))
 		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF CLF FAX", width = DEFAULT_PAPER_WIDTH, height = DEFAULT_PAPER_HEIGHT)
-		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
+		var/send_choice = tgui_input_list(user, "发送此传真？", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
-		var/is_priority_fax = tgui_alert(user, "Is this a priority fax?", "Priority Fax?", list("Yes", "No"))
+		var/is_priority_fax = tgui_alert(user, "这是加急传真吗？", "Priority Fax?", list("Yes", "No"))
 
 		send_admin_fax(FACTION_CLF, fax_message, origin_fax, is_priority_fax, target_human)
 
 	else if(href_list["CMBFaxReply"])
 		var/mob/user = usr
 		if(!user.client || !CLIENT_IS_STAFF(user.client))
-			to_chat(user, SPAN_WARNING("You cannot send fax replies!"))
+			to_chat(user, SPAN_WARNING("你无法发送传真回复！"))
 			return FALSE
 
 		var/mob/living/carbon/human/target_human = locate(href_list["CMBFaxReply"])
 		var/obj/structure/machinery/faxmachine/origin_fax = locate(href_list["originfax"])
 
-		var/template_choice = tgui_input_list(usr, "Use the template or roll your own?", "Fax Template", list("Anchorpoint", "Custom"))
+		var/template_choice = tgui_input_list(usr, "使用模板还是自定义？", "Fax Template", list("Anchorpoint", "Custom"))
 		if(!template_choice)
 			return
 		var/datum/fax/fax_message
 		switch(template_choice)
 			if("Custom")
-				var/input = input(src.owner, "Please enter a message to reply to [key_name(target_human)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from The Colonial Marshal Bureau", "") as message|null
+				var/input = input(src.owner, "请输入消息，通过安全连接回复[key_name(target_human)]。注意：BBCode无效，但HTML标签有效！使用<br>换行。", "Outgoing message from The Colonial Marshal Bureau", "") as message|null
 				if(!input)
 					return
 				fax_message = new(input)
 			if("Anchorpoint")
-				var/subject = input(src.owner, "Enter subject line", "Outgoing message from The Colonial Marshal Bureau, Anchorpoint Station", "") as message|null
+				var/subject = input(src.owner, "输入主题行", "Outgoing message from The Colonial Marshal Bureau, Anchorpoint Station", "") as message|null
 				if(!subject)
 					return
 				var/addressed_to = ""
-				var/address_option = tgui_input_list(user, "Address it to the sender or custom?", "Fax Template", list("Sender", "Custom"))
+				var/address_option = tgui_input_list(user, "地址写给发件人还是自定义？", "Fax Template", list("Sender", "Custom"))
 				if(address_option == "Sender")
 					addressed_to = "[target_human.real_name]"
 				else if(address_option == "Custom")
-					addressed_to = input(src.owner, "Enter Addressee Line", "Outgoing message from The Colonial Marshal Bureau", "") as message|null
+					addressed_to = input(src.owner, "输入收件人行", "Outgoing message from The Colonial Marshal Bureau", "") as message|null
 					if(!addressed_to)
 						return
 				else
 					return
-				var/message_body = input(src.owner, "Enter Message Body, use <p></p> for paragraphs", "Outgoing message from The Colonial Marshal Bureau", "") as message|null
+				var/message_body = input(src.owner, "输入消息正文，使用<p></p>表示段落", "Outgoing message from The Colonial Marshal Bureau", "") as message|null
 				if(!message_body)
 					return
-				var/sent_by = input(src.owner, "Enter JUST the name you are sending this from", "Outgoing message from The Colonial Marshal Bureau", "") as message|null
+				var/sent_by = input(src.owner, "仅输入你的姓名", "Outgoing message from The Colonial Marshal Bureau", "") as message|null
 				if(!sent_by)
 					return
-				fax_message = new(generate_templated_fax(0, "COLONIAL MARSHAL BUREAU INCIDENT COMMAND CENTER - ANCHORPOINT STATION", subject, addressed_to, message_body, sent_by, "Supervisory Deputy Marshal", "Colonial Marshal Bureau"))
+				fax_message = new(generate_templated_fax(0, "COLONIAL MARSHAL BUREAU INCIDENT COMMAND CENTER - ANCHORPOINT STATION", subject, addressed_to, message_body, sent_by, "Supervisory Deputy Marshal", "殖民地执法局"))
 		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF CMB FAX", width = DEFAULT_PAPER_WIDTH, height = DEFAULT_PAPER_HEIGHT)
-		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
+		var/send_choice = tgui_input_list(user, "发送此传真？", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
-		var/is_priority_fax = tgui_alert(user, "Is this a priority fax?", "Priority Fax?", list("Yes", "No"))
+		var/is_priority_fax = tgui_alert(user, "这是加急传真吗？", "Priority Fax?", list("Yes", "No"))
 
 		send_admin_fax(FACTION_MARSHAL, fax_message, origin_fax, is_priority_fax, target_human)
 
@@ -1587,7 +1587,7 @@
 		if(!check_rights(R_ADMIN))
 			return
 
-		if(alert(usr, "Confirm?", "Message", "Yes", "No") != "Yes")
+		if(alert(usr, "确认？", "消息", "Yes", "No") != "Yes")
 			return
 		var/mob/M = locate(href_list["getmob"])
 		usr.client.Getmob(M)
@@ -1664,10 +1664,10 @@
 			paths += path
 
 		if(!paths)
-			alert("The path list you sent is empty")
+			alert("你发送的路径列表为空")
 			return
 		if(length(paths) > 5)
-			alert("Select fewer object types, (max 5)")
+			alert("选择更少的对象类型（最多5个）。")
 			return
 		else if(length(removed_paths))
 			alert("Removed:\n" + jointext(removed_paths, "\n"))
@@ -1687,20 +1687,20 @@
 			where = "onfloor"
 
 		if( where == "inhand" )
-			to_chat(usr, "Support for inhand not available yet. Will spawn on floor.")
+			to_chat(usr, "手持生成功能暂不可用。将生成在地板上。")
 			where = "onfloor"
 
 		if (where == "inhand") //Can only give when human or monkey
 			if (!(ishuman(usr)))
-				to_chat(usr, "Can only spawn in hand when you're a human or a monkey.")
+				to_chat(usr, "只有人类或猴子角色才能在手中生成物品。")
 				where = "onfloor"
 			else if (usr.get_active_hand())
-				to_chat(usr, "Your active hand is full. Spawning on floor.")
+				to_chat(usr, "你的当前手持位已满。将生成在地板上。")
 				where = "onfloor"
 
 		if (where == "inmarked" )
 			if (!marked_datum)
-				to_chat(usr, "You don't have any datum marked. Abandoning spawn.")
+				to_chat(usr, "你未标记任何数据对象。取消生成。")
 				return
 			else
 				var/datum/D = marked_datum
@@ -1708,7 +1708,7 @@
 					return
 
 				if (!istype(D,/atom))
-					to_chat(usr, "The datum you have marked cannot be used as a target. Target must be of type /atom. Abandoning spawn.")
+					to_chat(usr, "你标记的数据对象不能作为目标。目标必须是 /atom 类型。取消生成。")
 					return
 
 		var/atom/target //Where the object will be spawned
@@ -1722,7 +1722,7 @@
 			if ("inmarked")
 				var/datum/D = marked_datum
 				if(!D)
-					to_chat(usr, "Invalid marked datum. Abandoning.")
+					to_chat(usr, "标记的数据对象无效。取消。")
 					return
 
 				target = D
@@ -1856,7 +1856,7 @@
 
 	if(href_list["ccdeny"]) // CentComm-deny. The distress call is denied, without any further conditions
 		var/mob/ref_person = locate(href_list["ccdeny"])
-		marine_announcement("The distress signal has not received a response, the launch tubes are now recalibrating.", "Distress Beacon", logging = ARES_LOG_SECURITY)
+		marine_announcement("求救信号未收到回应，发射管正在重新校准。", "Distress Beacon", logging = ARES_LOG_SECURITY)
 		log_game("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]")
 		message_admins("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]", 1)
 
@@ -1864,7 +1864,7 @@
 
 	if(href_list["distresscancel"])
 		if(GLOB.distress_cancel)
-			to_chat(usr, "The distress beacon was either canceled, or you are too late to cancel.")
+			to_chat(usr, "求救信标已被取消，或者你已错过取消时机。")
 			return
 		log_game("[key_name_admin(usr)] has canceled the distress beacon.")
 		message_admins("[key_name_admin(usr)] has canceled the distress beacon.")
@@ -1886,7 +1886,7 @@
 
 	if(href_list["deny_distress_handheld"]) //Logs denied handheld distress beacons
 		var/mob/ref_person = href_list["deny_distress_handheld"]
-		to_chat(ref_person, "The distress signal has not received a response.")
+		to_chat(ref_person, "求救信号未收到回应。")
 		log_game("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]")
 		message_admins("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]")
 
@@ -1905,11 +1905,11 @@
 		var/mob/ref_person = locate(href_list["nukeapprove"])
 		if(!istype(ref_person))
 			return FALSE
-		var/nukename = "Encrypted Operational Blockbuster"
-		var/prompt = tgui_alert(usr, "Do you want the nuke to be Encrypted?", "Nuke Type", list("Encrypted", "Decrypted"), 20 SECONDS)
+		var/nukename = "加密的行动大片"
+		var/prompt = tgui_alert(usr, "是否将核弹设置为加密状态？", "Nuke Type", list("Encrypted", "Decrypted"), 20 SECONDS)
 		if(prompt == "Decrypted")
-			nukename = "Decrypted Operational Blockbuster"
-		prompt = tgui_alert(usr, "Are you sure you want to authorize '[nukename]' to the marines? This will greatly affect the round!", "DEFCON 1", list("Yes", "No"))
+			nukename = "已解密的行动大片"
+		prompt = tgui_alert(usr, "你确定要授权陆战队员使用‘[nukename]’吗？这将极大影响本轮战局！", "DEFCON 1", list("Yes", "No"))
 		if(prompt != "Yes")
 			return
 
@@ -1925,7 +1925,7 @@
 		//Can no longer request a nuke
 		GLOB.ares_datacore.nuke_available = FALSE
 
-		marine_announcement("A nuclear device has been authorized by High Command and will be delivered to requisitions via ASRS.", "NUCLEAR ORDNANCE AUTHORIZED", 'sound/misc/notice2.ogg', logging = ARES_LOG_MAIN)
+		marine_announcement("一枚核装置已获最高指挥部授权，将通过ASRS系统运抵补给处。", "NUCLEAR ORDNANCE AUTHORIZED", 'sound/misc/notice2.ogg', logging = ARES_LOG_MAIN)
 		log_game("[key_name_admin(usr)] has authorized \a [nuketype], requested by [key_name_admin(ref_person)]")
 		message_admins("[key_name_admin(usr)] has authorized \a [nuketype], requested by [key_name_admin(ref_person)]")
 
@@ -1933,22 +1933,22 @@
 		var/mob/ref_person = locate(href_list["nukedeny"])
 		if(!istype(ref_person))
 			return FALSE
-		marine_announcement("Your request for nuclear ordnance deployment has been reviewed and denied by USCM High Command for operational security and colonial preservation reasons. Have a good day.", "NUCLEAR ORDNANCE DENIED", 'sound/misc/notice2.ogg', logging = ARES_LOG_MAIN)
+		marine_announcement("你方关于部署核武器的请求已由USCM最高指挥部审核，出于作战安全与殖民地保护原因，请求已被驳回。祝您愉快。", "NUCLEAR ORDNANCE DENIED", 'sound/misc/notice2.ogg', logging = ARES_LOG_MAIN)
 		log_game("[key_name_admin(usr)] has denied nuclear ordnance, requested by [key_name_admin(ref_person)]")
 		message_admins("[key_name_admin(usr)] has dnied nuclear ordnance, requested by [key_name_admin(ref_person)]")
 
 	if(href_list["sddeny"]) // CentComm-deny. The self-destruct is denied, without any further conditions
 		var/mob/ref_person = locate(href_list["sddeny"])
-		marine_announcement("The self-destruct request has not received a response, ARES is now recalculating statistics.", "Self-Destruct System", logging = ARES_LOG_SECURITY)
+		marine_announcement("自毁请求未收到回应，ARES正在重新计算统计数据。", "Self-Destruct System", logging = ARES_LOG_SECURITY)
 		log_game("[key_name_admin(usr)] has denied self-destruct, requested by [key_name_admin(ref_person)]")
 		message_admins("[key_name_admin(usr)] has denied self-destruct, requested by [key_name_admin(ref_person)]", 1)
 
 	if(href_list["sdcancel"])
 		if(GLOB.destroy_cancel)
-			to_chat(usr, "The self-destruct was already canceled.")
+			to_chat(usr, "自毁程序已被取消。")
 			return
 		if(get_security_level() == "delta")
-			to_chat(usr, "Too late! The self-destruct was started.")
+			to_chat(usr, "太迟了！自毁程序已启动。")
 			return
 		log_game("[key_name_admin(usr)] has canceled the self-destruct.")
 		message_admins("[key_name_admin(usr)] has canceled the self-destruct.")
@@ -1977,7 +1977,7 @@
 
 		var/datum/tgui_bug_report_form/bug_report = locate(href_list["view_bug_report"])
 		if(!istype(bug_report) || QDELETED(bug_report))
-			to_chat(usr, SPAN_WARNING("This bug report is no longer available."))
+			to_chat(usr, SPAN_WARNING("此错误报告已不可用。"))
 			return
 
 		if(!bug_report.assign_admin(usr))
@@ -2011,7 +2011,7 @@
 			return
 		if(event.announce_when>0)
 			event.processing = FALSE
-			var/prompt = alert(usr, "Would you like to alert the general population?", "Alert", "Yes", "No", "Cancel")
+			var/prompt = alert(usr, "是否要向全体人员发出警报？", "警报", "Yes", "No", "Cancel")
 			switch(prompt)
 				if("Yes")
 					event.announce_chance = 100
@@ -2037,40 +2037,40 @@
 		var/mob/living/carbon/human/speaker = locate(href_list["AresReply"])
 
 		if(!istype(speaker))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
+			to_chat(usr, "这只能用于 /mob/living/carbon/human 类型的实例。")
 			return FALSE
 
 		if((!GLOB.ares_link.interface) || (GLOB.ares_link.interface.inoperable()))
-			to_chat(usr, "ARES Interface offline.")
+			to_chat(usr, "ARES界面离线。")
 			return FALSE
 
-		var/input = input(src.owner, "Please enter a message from ARES to reply to [key_name(speaker)].","Outgoing message from ARES", "")
+		var/input = input(src.owner, "请输入一条来自ARES的回复消息给 [key_name(speaker)]。","Outgoing message from ARES", "")
 		if(!input)
 			return FALSE
 
-		to_chat(src.owner, "You sent [input] to [speaker] via ARES Interface.")
+		to_chat(src.owner, "你已通过ARES界面向 [speaker] 发送了消息：[input]。")
 		log_admin("[src.owner] replied to [key_name(speaker)]'s ARES message with the message [input].")
 		for(var/client/staff in GLOB.admins)
 			if((R_ADMIN|R_MOD) & staff.admin_holder.rights)
-				to_chat(staff, SPAN_STAFF_IC("<b>ADMINS/MODS: [SPAN_RED("[src.owner] replied to [key_name(speaker)]'s ARES message")] with: [SPAN_BLUE(input)] </b>"))
+				to_chat(staff, SPAN_STAFF_IC("<b>管理员/模组：[SPAN_RED("[src.owner] replied to [key_name(speaker)]'s ARES message")] with: [SPAN_BLUE(input)] </b>"))
 		GLOB.ares_link.interface.response_from_ares(input, href_list["AresRef"])
 
 	if(href_list["AresMark"])
 		var/mob/living/carbon/human/speaker = locate(href_list["AresMark"])
 
 		if(!istype(speaker))
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
+			to_chat(usr, "这只能用于 /mob/living/carbon/human 类型的实例。")
 			return FALSE
 
 		if((!GLOB.ares_link.interface) || (GLOB.ares_link.interface.inoperable()))
-			to_chat(usr, "ARES Interface offline.")
+			to_chat(usr, "ARES界面离线。")
 			return FALSE
 
-		to_chat(src.owner, "You marked [speaker]'s ARES message for response.")
+		to_chat(src.owner, "你已标记 [speaker] 的ARES消息以待回复。")
 		log_admin("[src.owner] marked [key_name(speaker)]'s ARES message. [src.owner] will be responding.")
 		for(var/client/staff in GLOB.admins)
 			if((R_ADMIN|R_MOD) & staff.admin_holder.rights)
-				to_chat(staff, SPAN_STAFF_IC("<b>ADMINS/MODS: [SPAN_RED("[src.owner] marked [key_name(speaker)]'s ARES message for response.")]</b>"))
+				to_chat(staff, SPAN_STAFF_IC("<b>管理员/模组：[SPAN_RED("[src.owner] marked [key_name(speaker)]'s ARES message for response.")]</b>"))
 
 	return
 
@@ -2134,7 +2134,7 @@
 /datum/admins/proc/send_admin_fax(sending_faction, datum/fax/fax_message, obj/structure/machinery/faxmachine/origin_fax, sending_priority, mob/living/carbon/human/target_human, press_organization)
 	GLOB.fax_contents += fax_message // save a copy
 
-	var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
+	var/customname = input(src.owner, "为报告选择一个标题", "Title") as text|null
 	if(!customname)
 		return
 
@@ -2148,7 +2148,7 @@
 		if(FACTION_MARSHAL)
 			GLOB.CMBFaxes.Add(reply_log)
 			faction_ghost_header = "<b><font color='#1B748C'>COLONIAL MARSHAL BUREAU FAX REPLY: </font></b> "
-			faction_prefix = "Colonial Marshal Bureau"
+			faction_prefix = "殖民地执法局"
 			fax_stamp_icon = "paper_stamp-cmb"
 			fax_stamp_print = "<HR><i>This paper has been stamped by [FAX_NET_CMB].</i>"
 		if(FACTION_MARINE)
@@ -2160,19 +2160,19 @@
 		if(FACTION_CLF)
 			GLOB.CLFFaxes.Add(reply_log)
 			faction_ghost_header = "<b><font color='#426480'>COLONIAL LIBERATION FRONT FAX REPLY: </font></b> "
-			faction_prefix = "Colonial Liberation Front"
+			faction_prefix = "殖民地解放阵线"
 			fax_stamp_icon = "paper_stamp-clf"
 			fax_stamp_print = "<HR><i>This paper has been stamped by the [FAX_NET_CLF_HC].</i>"
 		if(FACTION_UPP)
 			GLOB.UPPFaxes.Add(reply_log)
 			faction_ghost_header = "<b><font color='#0c5020'>UNION OF PROGRESSIVE PEOPLES FAX REPLY: </font></b> "
-			faction_prefix = "Union of Progressive Peoples"
+			faction_prefix = "进步人民联盟"
 			fax_stamp_icon = "paper_stamp-upp"
 			fax_stamp_print = "<HR><i>This paper has been stamped by the [FAX_NET_UPP_HC].</i>"
 		if(FACTION_TWE)
 			GLOB.TWEFaxes.Add(reply_log)
 			faction_ghost_header = "<b><font color='#2994eb'>THREE WORLD EMPIRE FAX REPLY: </font></b> "
-			faction_prefix = "Three World Empire"
+			faction_prefix = "三世界帝国"
 			fax_stamp_icon = "paper_stamp-twe"
 			fax_stamp_print = "<HR><i>This paper has been stamped by the [FAX_NET_TWE_HC].</i>"
 		if(FACTION_WY)
@@ -2222,11 +2222,11 @@
 				if(sending_priority == "Yes")
 					playsound(target_fax.loc, "sound/machines/twobeep.ogg", 45)
 					target_fax.langchat_speech("beeps with a priority message", get_mobs_in_view(GLOB.world_view_size, target_fax), GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small", "emote"))
-					target_fax.visible_message("[SPAN_BOLD(target_fax)] beeps with a priority message.")
+					target_fax.visible_message("<b>[target_fax]</b>发出哔哔声，提示有一条优先消息。")
 					if(target_fax.radio_alert_tag != null)
 						ai_silent_announcement("COMMUNICATIONS REPORT: Fax Machine [target_fax.machine_id_tag], [target_fax.sub_name ? "[target_fax.sub_name]" : ""], now receiving priority fax.", "[target_fax.radio_alert_tag]")
 
-			to_chat(src.owner, "Message reply to transmitted successfully.")
+			to_chat(src.owner, "消息回复已成功发送。")
 			message_admins(SPAN_STAFF_IC("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(target_human)]"), 1)
 			return
-	to_chat(src.owner, SPAN_RED("Unable to locate fax!"))
+	to_chat(src.owner, SPAN_RED("无法定位传真机！"))

@@ -25,7 +25,7 @@
 
 /obj/item/storage/box
 	name = "box"
-	desc = "It's just an ordinary box."
+	desc = "这只是一个普通的盒子。"
 	icon_state = "box"
 	icon = 'icons/obj/items/storage/boxes.dmi'
 	item_icons = list(
@@ -40,8 +40,8 @@
 	storage_flags = STORAGE_FLAGS_BOX
 
 /obj/item/storage/box/pride
-	name = "box of prideful crayons"
-	desc = "A box of every flavor of pride."
+	name = "骄傲蜡笔盒"
+	desc = "一盒包含各种骄傲口味的蜡笔。"
 	storage_slots = 8
 	w_class = SIZE_SMALL
 	can_hold = list(/obj/item/toy/crayon/pride)
@@ -71,8 +71,8 @@
 
 
 /obj/item/storage/box/gloves
-	name = "box of latex gloves"
-	desc = "Contains white gloves."
+	name = "乳胶手套盒"
+	desc = "内含白色手套。"
 	icon_state = "latex"
 	item_state = "latex"
 	can_hold = list(/obj/item/clothing/gloves/latex)
@@ -89,16 +89,16 @@
 	new /obj/item/clothing/gloves/latex(src)
 
 /obj/item/storage/box/masks
-	name = "box of sterile masks"
-	desc = "This box contains masks of sterility."
+	name = "无菌口罩盒"
+	desc = "此盒内含无菌口罩。"
 	icon_state = "sterile"
 	item_state = "sterile"
 	can_hold = list(/obj/item/clothing/mask/surgical)
 	w_class = SIZE_SMALL
 
 /obj/item/storage/box/bloodbag
-	name = "empty box of blood bags"
-	desc = "This box can hold all kinds of blood bags."
+	name = "空血袋盒"
+	desc = "这个盒子可以容纳各种血袋。"
 	icon_state = "blood"
 	item_state = "blood"
 	can_hold = list(/obj/item/reagent_container/blood/)
@@ -115,9 +115,9 @@
 
 
 /obj/item/storage/box/syringes
-	name = "box of syringes"
-	desc = "A box full of syringes."
-	desc = "A biohazard alert warning is printed on the box."
+	name = "注射器盒"
+	desc = "一个装满注射器的盒子。"
+	desc = "盒子上印有生物危害警报警告。"
 	can_hold = list(/obj/item/reagent_container/syringe)
 	icon_state = "syringe"
 	item_state = "syringe"
@@ -134,7 +134,7 @@
 
 
 /obj/item/storage/box/beakers
-	name = "box of beakers"
+	name = "烧杯盒"
 	icon_state = "beaker"
 	item_state = "beaker"
 	can_hold = list(/obj/item/reagent_container/glass/beaker)
@@ -150,7 +150,7 @@
 	new /obj/item/reagent_container/glass/beaker(src)
 
 /obj/item/storage/box/vials
-	name = "box of vials"
+	name = "小瓶盒"
 	icon_state = "vial"
 	item_state = "vial"
 	can_hold = list(/obj/item/reagent_container/glass/beaker)
@@ -166,7 +166,7 @@
 	new /obj/item/reagent_container/glass/beaker/vial(src)
 
 /obj/item/storage/box/sprays
-	name = "box of empty spray bottles"
+	name = "空喷瓶盒"
 	icon_state = "spray"
 	item_state = "spray"
 	can_hold = list(/obj/item/reagent_container/spray)
@@ -182,8 +182,8 @@
 	new /obj/item/reagent_container/spray(src)
 
 /obj/item/storage/box/flashbangs
-	name = "box of flashbangs (WARNING)"
-	desc = "<B>WARNING: These devices are extremely dangerous and can cause blindness or deafness in repeated use.</B>"
+	name = "闪光弹盒（警告）"
+	desc = "<B>警告：这些装置极其危险，反复使用可能导致失明或失聪。</B>"
 	icon = 'icons/obj/items/storage/packets.dmi'
 	icon_state = "flashbang"
 	item_state = "flashbang"
@@ -215,8 +215,8 @@
 	UnregisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP)
 
 /obj/item/storage/box/emps
-	name = "box of emp grenades"
-	desc = "A box with 5 emp grenades."
+	name = "电磁脉冲手榴弹盒"
+	desc = "装有5枚电磁脉冲手榴弹的盒子。"
 	icon = 'icons/obj/items/storage/packets.dmi'
 	icon_state = "emp"
 	item_state = "emp"
@@ -230,8 +230,8 @@
 
 
 /obj/item/storage/box/trackimp
-	name = "boxed tracking implant kit"
-	desc = "Box full of scum-bag tracking utensils."
+	name = "盒装追踪植入套件"
+	desc = "装满用于追踪人渣的器具的盒子。"
 	icon_state = "implant"
 
 /obj/item/storage/box/trackimp/fill_preset_inventory()
@@ -244,8 +244,8 @@
 	new /obj/item/device/locator(src)
 
 /obj/item/storage/box/chemimp
-	name = "boxed chemical implant kit"
-	desc = "Box of stuff used to implant chemicals."
+	name = "盒装化学植入套件"
+	desc = "用于植入化学品的材料盒。"
 	icon_state = "implant"
 
 /obj/item/storage/box/chemimp/fill_preset_inventory()
@@ -260,8 +260,8 @@
 
 
 /obj/item/storage/box/rxglasses
-	name = "box of prescription glasses"
-	desc = "This box contains nerd glasses."
+	name = "处方眼镜盒"
+	desc = "这个盒子里装着书呆子眼镜。"
 	icon_state = "glasses"
 	can_hold = list(/obj/item/clothing/glasses/regular)
 	w_class = SIZE_MEDIUM
@@ -276,8 +276,8 @@
 	new /obj/item/clothing/glasses/regular(src)
 
 /obj/item/storage/box/wycaps
-	name = "box of Company baseball caps"
-	desc = "This box contains seven Weyland Yutani brand baseball caps. Give them away at your leisure."
+	name = "公司棒球帽盒"
+	desc = "这个盒子里有七顶维兰德-汤谷品牌的棒球帽。请随意分发。"
 	icon_state = "mre1"
 
 /obj/item/storage/box/wycaps/fill_preset_inventory()
@@ -290,8 +290,8 @@
 	new /obj/item/clothing/head/cmcap/wy_cap(src)
 
 /obj/item/storage/box/drinkingglasses
-	name = "box of drinking glasses"
-	desc = "It has a picture of drinking glasses on it."
+	name = "玻璃杯盒"
+	desc = "盒子上印有玻璃杯的图片。"
 
 /obj/item/storage/box/drinkingglasses/fill_preset_inventory()
 	new /obj/item/reagent_container/food/drinks/drinkingglass(src)
@@ -302,8 +302,8 @@
 	new /obj/item/reagent_container/food/drinks/drinkingglass(src)
 
 /obj/item/storage/box/cdeathalarm_kit
-	name = "Death Alarm Kit"
-	desc = "Box of stuff used to implant death alarms."
+	name = "死亡警报套件"
+	desc = "用于植入死亡警报的器具盒。"
 	icon_state = "implant"
 	item_state = "box"
 
@@ -317,8 +317,8 @@
 	new /obj/item/implantcase/death_alarm(src)
 
 /obj/item/storage/box/condimentbottles
-	name = "box of condiment bottles"
-	desc = "It has a large ketchup smear on it."
+	name = "调味瓶盒"
+	desc = "盒子上有一大块番茄酱污渍。"
 
 /obj/item/storage/box/condimentbottles/fill_preset_inventory()
 	new /obj/item/reagent_container/food/condiment(src)
@@ -331,8 +331,8 @@
 
 
 /obj/item/storage/box/cups
-	name = "box of paper cups"
-	desc = "It has pictures of paper cups on the front."
+	name = "纸杯盒"
+	desc = "盒子正面印有纸杯的图片。"
 
 /obj/item/storage/box/cups/fill_preset_inventory()
 	new /obj/item/reagent_container/food/drinks/sillycup( src )
@@ -344,8 +344,8 @@
 	new /obj/item/reagent_container/food/drinks/sillycup( src )
 
 /obj/item/storage/box/donkpockets
-	name = "box of donk-pockets"
-	desc = "<B>Instructions:</B> <I>Heat in microwave. Product will cool if not eaten within seven minutes.</I>"
+	name = "唐克口袋饼盒"
+	desc = "<B>使用说明：</B> <I>微波加热。产品若在七分钟内未食用将会冷却。</I>"
 	icon_state = "donk_kit"
 	item_state = "donk_kit"
 	can_hold = list(/obj/item/reagent_container/food/snacks)
@@ -360,8 +360,8 @@
 	new /obj/item/reagent_container/food/snacks/donkpocket(src)
 
 /obj/item/storage/box/teabags
-	name = "box of Earl Grey tea bags"
-	desc = "A box of instant tea bags."
+	name = "伯爵红茶茶包盒"
+	desc = "一盒速溶茶包。"
 	icon_state = "teabag_box"
 	item_state = "teabag_box"
 	can_hold = list(/obj/item/reagent_container/pill/teabag)
@@ -379,8 +379,8 @@
 	new /obj/item/reagent_container/pill/teabag/earl_grey(src)
 
 /obj/item/storage/box/lemondrop
-	name = "box of Lemon Drop candies"
-	desc = "A box of lemon flavored hard candies."
+	name = "柠檬糖盒"
+	desc = "一盒柠檬味硬糖。"
 	icon_state = "lemon_drop_box"
 	item_state = "lemon_drop_box"
 	can_hold = list(/obj/item/reagent_container/food/snacks/lemondrop)
@@ -398,8 +398,8 @@
 	new /obj/item/reagent_container/food/snacks/lemondrop(src)
 
 /obj/item/storage/box/monkeycubes
-	name = "monkey cube box"
-	desc = "Drymate brand monkey cubes. Just add water!"
+	name = "猴子方块盒"
+	desc = "Drymate牌猴子方块。加水即可！"
 	icon = 'icons/obj/items/storage/boxes.dmi'
 	icon_state = "monkeycubebox"
 	item_state = "monkeycubebox"
@@ -409,37 +409,37 @@
 		new /obj/item/reagent_container/food/snacks/monkeycube/wrapped(src)
 
 /obj/item/storage/box/monkeycubes/farwacubes
-	name = "farwa cube box"
-	desc = "Drymate brand farwa cubes, shipped from Ahdomai. Just add water!"
+	name = "法瓦方块盒"
+	desc = "Drymate牌法瓦方块，从阿多米运来。加水即可！"
 
 /obj/item/storage/box/monkeycubes/farwacubes/fill_preset_inventory()
 	for(var/i = 1; i <= 5; i++)
 		new /obj/item/reagent_container/food/snacks/monkeycube/wrapped/farwacube(src)
 
 /obj/item/storage/box/monkeycubes/stokcubes
-	name = "stok cube box"
-	desc = "Drymate brand stok cubes, shipped from Moghes. Just add water!"
+	name = "斯托克方块盒"
+	desc = "Drymate牌斯托克方块，从莫赫斯运来。加水即可！"
 
 /obj/item/storage/box/monkeycubes/stokcubes/fill_preset_inventory()
 	for(var/i = 1; i <= 5; i++)
 		new /obj/item/reagent_container/food/snacks/monkeycube/wrapped/stokcube(src)
 
 /obj/item/storage/box/monkeycubes/neaeracubes
-	name = "neaera cube box"
-	desc = "Drymate brand neaera cubes, shipped from Jargon 4. Just add water!"
+	name = "尼埃拉方块盒"
+	desc = "Drymate牌尼埃拉方块，从贾贡4号运来。加水即可！"
 
 /obj/item/storage/box/monkeycubes/neaeracubes/fill_preset_inventory()
 	for(var/i = 1; i <= 5; i++)
 		new /obj/item/reagent_container/food/snacks/monkeycube/wrapped/neaeracube(src)
 
 /obj/item/storage/box/monkeycubes/yautja
-	name = "weird cube box"
-	desc = "Some box with unknown language label on it."
+	name = "奇怪方块盒"
+	desc = "一个标签印有未知语言的盒子。"
 	icon_state = "box_of_doom"
 
 /obj/item/storage/box/ids
-	name = "box of spare IDs"
-	desc = "Has so many empty IDs."
+	name = "备用身份卡盒"
+	desc = "有好多空白身份卡。"
 	icon_state = "id"
 	item_state = "id"
 
@@ -454,8 +454,8 @@
 
 
 /obj/item/storage/box/handcuffs
-	name = "box of handcuffs"
-	desc = "A box full of handcuffs."
+	name = "手铐盒"
+	desc = "一盒手铐。"
 	icon_state = "handcuff"
 	item_state = "handcuff"
 
@@ -470,8 +470,8 @@
 
 
 /obj/item/storage/box/legcuffs
-	name = "box of legcuffs"
-	desc = "A box full of legcuffs."
+	name = "脚镣盒"
+	desc = "一盒脚镣。"
 	icon_state = "handcuff"
 	item_state = "handcuff"
 
@@ -485,8 +485,8 @@
 	new /obj/item/restraint/legcuffs(src)
 
 /obj/item/storage/box/zipcuffs
-	name = "box of zip cuffs"
-	desc = "A box full of zip cuffs."
+	name = "塑料束带盒"
+	desc = "一盒塑料束带。"
 	w_class = SIZE_MEDIUM
 	icon_state = "handcuff"
 	item_state = "handcuff"
@@ -508,8 +508,8 @@
 	new /obj/item/restraint/handcuffs/zip(src)
 
 /obj/item/storage/box/zipcuffs/small
-	name = "small box of zip cuffs"
-	desc = "A small box full of zip cuffs."
+	name = "小盒塑料束带"
+	desc = "一小盒塑料束带。"
 	w_class = SIZE_MEDIUM
 	max_storage_space = 7
 
@@ -523,8 +523,8 @@
 	new /obj/item/restraint/handcuffs/zip(src)
 
 /obj/item/storage/box/tapes
-	name = "box of regulation tapes"
-	desc = "A box full of magnetic tapes for tape recorders. Contains 10 hours and 40 minutes of recording space!"
+	name = "规章胶带盒"
+	desc = "一个装满录音磁带的盒子。包含10小时40分钟的录音空间！"
 
 /obj/item/storage/box/tapes/fill_preset_inventory()
 	new /obj/item/tape/regulation(src)
@@ -543,8 +543,8 @@
 	new /obj/item/tape/regulation(src)
 
 /obj/item/storage/box/mousetraps
-	name = "box of Pest-B-Gon mousetraps"
-	desc = "<B><FONT color='red'>WARNING:</FONT></B> <I>Keep out of reach of children</I>."
+	name = "一盒害虫必除捕鼠器"
+	desc = "<B><FONT color='red'>警告：</FONT></B> <I>请置于儿童接触不到的地方</I>。"
 	icon_state = "mousetraps"
 	item_state = "mousetraps"
 
@@ -557,8 +557,8 @@
 	new /obj/item/device/assembly/mousetrap( src )
 
 /obj/item/storage/box/pillbottles
-	name = "box of pill bottles"
-	desc = "It has pictures of pill bottles on its front."
+	name = "一盒药瓶"
+	desc = "它的正面印有药瓶的图案。"
 	icon_state = "pillbox"
 	item_state = "pillbox"
 
@@ -582,8 +582,8 @@
 
 
 /obj/item/storage/box/snappops
-	name = "snap pop box"
-	desc = "Eight wrappers of fun! Ages 8 and up. Not suitable for children."
+	name = "摔炮盒"
+	desc = "八份包装的乐趣！适合8岁及以上。不适合儿童。"
 	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "spbox"
 	max_storage_space = 8
@@ -594,7 +594,7 @@
 
 /obj/item/storage/box/matches
 	name = "matchbox"
-	desc = "A small box of 'Space-Proof' premium matches."
+	desc = "一小盒‘太空级’高级火柴。"
 	icon = 'icons/obj/items/smoking/matches.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/smoking_lefthand.dmi',
@@ -618,10 +618,10 @@
 		W.light_match(user)
 
 /obj/item/storage/box/lights
-	name = "box of replacement bulbs"
+	name = "一盒替换灯泡"
 	icon = 'icons/obj/items/storage/boxes.dmi'
 	icon_state = "light"
-	desc = "This box is shaped on the inside so that only light tubes and bulbs fit."
+	desc = "这个盒子的内部形状只能容纳灯管和灯泡。"
 	item_state = "light"
 	foldable = /obj/item/stack/sheet/cardboard //BubbleWrap
 	can_hold = list(
@@ -636,7 +636,7 @@
 		new /obj/item/light_bulb/bulb(src)
 
 /obj/item/storage/box/lights/tubes
-	name = "box of replacement tubes"
+	name = "一盒替换灯管"
 	icon_state = "lighttube"
 	item_state = "lighttube"
 	w_class = SIZE_MEDIUM
@@ -646,7 +646,7 @@
 		new /obj/item/light_bulb/tube/large(src)
 
 /obj/item/storage/box/lights/mixed
-	name = "box of replacement lights"
+	name = "一盒替换灯具"
 	icon_state = "lightmixed"
 	item_state = "lightmixed"
 
@@ -658,7 +658,7 @@
 
 
 /obj/item/storage/box/autoinjectors
-	name = "box of autoinjectors"
+	name = "一盒自动注射器"
 	icon_state = "syringe"
 	item_state = "syringe"
 
@@ -668,10 +668,10 @@
 
 
 /obj/item/storage/box/twobore
-	name = "box of 2 bore shells"
+	name = "一盒2号口径霰弹"
 	icon_state = "twobore"
 	icon = 'icons/obj/items/storage/kits.dmi'
-	desc = "A box filled with enormous slug shells, for hunting only the most dangerous game. 2 Bore."
+	desc = "一个装满巨大独头弹的盒子，仅用于狩猎最危险的猎物。2号口径。"
 	storage_slots = 5
 	can_hold = list(/obj/item/ammo_magazine/handful/shotgun/twobore)
 
@@ -681,7 +681,7 @@
 
 /obj/item/storage/box/stompers
 	name = "\improper Reebok shoe box"
-	desc = "A fancy shoe box with reflective surface and Weyland-Yutani logo on top, says 'Reebok Stompers' on the back."
+	desc = "一个花哨的鞋盒，表面反光，顶部有维兰德-汤谷标志，背面写着‘锐步践踏者’。"
 	icon_state = "stomper_box"
 	item_state = "stomper_box"
 	w_class = SIZE_MEDIUM
@@ -703,7 +703,7 @@
 
 /obj/item/storage/box/explosive_mines
 	name = "\improper M20 mine box"
-	desc = "A secure box holding five M20 anti-personnel proximity mines."
+	desc = "一个安全箱，内装五枚M20反步兵近程地雷。"
 	icon = 'icons/obj/items/storage/packets.dmi'
 	icon_state = "minebox"
 	item_state = "minebox"
@@ -724,7 +724,7 @@
 
 /obj/item/storage/box/m94
 	name = "\improper M94 marking flare pack"
-	desc = "A packet of eight M94 Marking Flares. Carried by USCM soldiers to light dark areas that cannot be reached with the usual TNR Shoulder Lamp."
+	desc = "一包八枚M94标记照明弹。由USCM士兵携带，用于照亮普通TNR肩灯无法触及的黑暗区域。"
 	icon_state = "m94"
 	icon = 'icons/obj/items/storage/packets.dmi'
 	w_class = SIZE_MEDIUM
@@ -745,7 +745,7 @@
 
 /obj/item/storage/box/m94/signal
 	name = "\improper M89-S signal flare pack"
-	desc = "A packet of eight M89-S Signal Marking Flares."
+	desc = "一包八枚M89-S信号标记照明弹。"
 	icon_state = "m89"
 
 /obj/item/storage/box/m94/signal/fill_preset_inventory()
@@ -761,7 +761,7 @@
 
 /obj/item/storage/box/nade_box
 	name = "\improper M40 HEDP grenade box"
-	desc = "A secure box holding 25 M40 High-Explosive Dual-Purpose grenades. High explosive, don't store near the flamer fuel."
+	desc = "一个安全箱，内装25枚M40高爆双用途手榴弹。高爆炸性，请勿存放在火焰喷射器燃料附近。"
 	icon_state = "nade_placeholder"
 	item_state = "nade_placeholder"
 	icon = 'icons/obj/items/storage/packets.dmi'
@@ -796,7 +796,7 @@
 
 	UnregisterSignal(src, COMSIG_ITEM_DROPPED)
 	storage_close(user)
-	to_chat(user, SPAN_NOTICE("You throw away [src]."))
+	to_chat(user, SPAN_NOTICE("你扔掉了[src]。"))
 	qdel(src)
 
 /obj/item/storage/box/nade_box/post_skin_selection()
@@ -820,28 +820,28 @@
 
 /obj/item/storage/box/nade_box/frag
 	name = "\improper M40 HEFA grenade box"
-	desc = "A secure box holding 25 M40 High-Explosive Fragmenting-Antipersonnel grenades. High explosive, don't store near the flamer fuel."
+	desc = "一个安全箱，内装25枚M40高爆破片反步兵手榴弹。高爆炸性，请勿存放在火焰喷射器燃料附近。"
 	type_icon = "hefa"
 	can_hold = list(/obj/item/explosive/grenade/high_explosive/frag)
 	grenade_type = /obj/item/explosive/grenade/high_explosive/frag
 
 /obj/item/storage/box/nade_box/phophorus
 	name = "\improper M40 CCDP grenade box"
-	desc = "A secure box holding 25 M40 CCDP chemical compound grenade. High explosive, don't store near the flamer fuel."
+	desc = "一个安全箱，内装25枚M40 CCDP化合物手榴弹。高爆炸性，请勿存放在火焰喷射器燃料附近。"
 	type_icon = "ccdp"
 	can_hold = list(/obj/item/explosive/grenade/phosphorus)
 	grenade_type = /obj/item/explosive/grenade/phosphorus
 
 /obj/item/storage/box/nade_box/incen
 	name = "\improper M40 HIDP grenade box"
-	desc = "A secure box holding 25 M40 HIDP white incendiary grenades. Highly flammable, don't store near the flamer fuel."
+	desc = "一个安全箱，内装25枚M40 HIDP白色燃烧手榴弹。高度易燃，请勿存放在火焰喷射器燃料附近。"
 	type_icon = "hidp"
 	can_hold = list(/obj/item/explosive/grenade/incendiary)
 	grenade_type = /obj/item/explosive/grenade/incendiary
 
 /obj/item/storage/box/nade_box/airburst
 	name = "\improper M74 AGM-F grenade box"
-	desc = "A secure box holding 25 M74 AGM Fragmentation grenades. Explosive, don't store near the flamer fuel."
+	desc = "一个安全箱，内装25枚M74 AGM破片手榴弹。爆炸物，请勿存放在火焰喷射器燃料附近。"
 	model_icon = "model_m74"
 	type_icon = "agmf"
 	can_hold = list(/obj/item/explosive/grenade/high_explosive/airburst)
@@ -849,7 +849,7 @@
 
 /obj/item/storage/box/nade_box/airburstincen
 	name = "\improper M74 AGM-I grenade box"
-	desc = "A secure box holding 25 M74 AGM Incendiary grenades. Highly flammable, don't store near the flamer fuel."
+	desc = "一个装有25枚M74 AGM燃烧手榴弹的安全箱。高度易燃，请勿靠近喷火器燃料存放。"
 	model_icon = "model_m74"
 	type_icon = "agmi"
 	can_hold = list(/obj/item/explosive/grenade/incendiary/airburst)
@@ -858,7 +858,7 @@
 
 /obj/item/storage/box/nade_box/training
 	name = "\improper M07 training grenade box"
-	desc = "A secure box holding 25 M07 training grenades. Harmless and reusable."
+	desc = "一个装有25枚M07训练手榴弹的安全箱。无害且可重复使用。"
 	icon_state = "train_nade_placeholder"
 	item_state = "train_nade_placeholder"
 	model_icon = "model_mo7"
@@ -869,7 +869,7 @@
 
 /obj/item/storage/box/nade_box/tear_gas
 	name = "\improper M66 tear gas grenade box"
-	desc = "A secure box holding 25 M66 tear gas grenades. Used for riot control."
+	desc = "一个装有25枚M66催泪瓦斯手榴弹的安全箱。用于防暴控制。"
 	icon_state = "teargas_nade_placeholder"
 	item_state = "teargas_nade_placeholder"
 	model_icon = "model_m66"
@@ -898,8 +898,8 @@
 
 //ITEMS-----------------------------------//
 /obj/item/storage/box/lightstick
-	name = "box of lightsticks"
-	desc = "Contains blue lightsticks."
+	name = "一箱荧光棒"
+	desc = "内含蓝色荧光棒。"
 	icon_state = "lightstick"
 	item_state = "lightstick"
 	can_hold = list(/obj/item/lightstick)
@@ -914,7 +914,7 @@
 	new /obj/item/lightstick(src)
 
 /obj/item/storage/box/lightstick/red
-	desc = "Contains red lightsticks."
+	desc = "内含红色荧光棒。"
 	icon_state = "lightstick2"
 	item_state = "lightstick2"
 
@@ -931,7 +931,7 @@
 
 //meat
 /obj/item/storage/box/meat
-	name = "box of meat"
+	name = "一箱肉"
 
 /obj/item/storage/box/meat/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -939,7 +939,7 @@
 
 //fish
 /obj/item/storage/box/fish
-	name = "box of fish"
+	name = "一箱鱼"
 
 /obj/item/storage/box/fish/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -949,7 +949,7 @@
 
 //milk
 /obj/item/storage/box/milk
-	name = "box of milk"
+	name = "一箱牛奶"
 
 /obj/item/storage/box/milk/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -957,7 +957,7 @@
 
 //soymilk
 /obj/item/storage/box/soymilk
-	name = "box of soymilk"
+	name = "一箱豆奶"
 
 /obj/item/storage/box/soymilk/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -965,7 +965,7 @@
 
 //enzyme
 /obj/item/storage/box/enzyme
-	name = "box of enzyme"
+	name = "一箱酶"
 
 /obj/item/storage/box/enzyme/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -975,7 +975,7 @@
 
 //flour
 /obj/item/storage/box/flour
-	name = "box of flour"
+	name = "一箱面粉"
 
 /obj/item/storage/box/flour/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -983,7 +983,7 @@
 
 //sugar
 /obj/item/storage/box/sugar
-	name = "box of sugar"
+	name = "一箱糖"
 
 /obj/item/storage/box/sugar/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -991,7 +991,7 @@
 
 //saltshaker
 /obj/item/storage/box/saltshaker
-	name = "box of saltshakers"
+	name = "一箱盐瓶"
 
 /obj/item/storage/box/saltshaker/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -999,7 +999,7 @@
 
 //peppermill
 /obj/item/storage/box/peppermill
-	name = "box of peppermills"
+	name = "一箱胡椒研磨器"
 
 /obj/item/storage/box/peppermill/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -1007,7 +1007,7 @@
 
 //mint
 /obj/item/storage/box/mint
-	name = "box of mints"
+	name = "一箱薄荷糖"
 
 /obj/item/storage/box/mint/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -1017,7 +1017,7 @@
 
 //apple
 /obj/item/storage/box/apple
-	name = "box of apples"
+	name = "一箱苹果"
 
 /obj/item/storage/box/apple/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -1025,7 +1025,7 @@
 
 //banana
 /obj/item/storage/box/banana
-	name = "box of bananas"
+	name = "一箱香蕉"
 
 /obj/item/storage/box/banana/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -1033,7 +1033,7 @@
 
 //chanterelle
 /obj/item/storage/box/chanterelle
-	name = "box of chanterelles"
+	name = "一箱鸡油菌"
 
 /obj/item/storage/box/chanterelle/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -1041,7 +1041,7 @@
 
 //cherries
 /obj/item/storage/box/cherries
-	name = "box of cherries"
+	name = "一箱樱桃"
 
 /obj/item/storage/box/cherries/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -1049,7 +1049,7 @@
 
 //chili
 /obj/item/storage/box/chili
-	name = "box of chili"
+	name = "一箱辣椒"
 
 /obj/item/storage/box/chili/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -1057,7 +1057,7 @@
 
 //cabbage
 /obj/item/storage/box/cabbage
-	name = "box of cabbages"
+	name = "一箱卷心菜"
 
 /obj/item/storage/box/cabbage/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -1065,7 +1065,7 @@
 
 //carrot
 /obj/item/storage/box/carrot
-	name = "box of carrots"
+	name = "一箱胡萝卜"
 
 /obj/item/storage/box/carrot/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -1073,7 +1073,7 @@
 
 //corn
 /obj/item/storage/box/corn
-	name = "box of corn"
+	name = "一箱玉米"
 
 /obj/item/storage/box/corn/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -1081,7 +1081,7 @@
 
 //eggplant
 /obj/item/storage/box/eggplant
-	name = "box of eggplants"
+	name = "一箱茄子"
 
 /obj/item/storage/box/eggplant/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -1089,7 +1089,7 @@
 
 //lemon
 /obj/item/storage/box/lemon
-	name = "box of lemons"
+	name = "一箱柠檬"
 
 /obj/item/storage/box/lemon/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -1097,7 +1097,7 @@
 
 //lime
 /obj/item/storage/box/lime
-	name = "box of limes"
+	name = "一箱青柠"
 
 /obj/item/storage/box/lime/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -1105,7 +1105,7 @@
 
 //orange
 /obj/item/storage/box/orange
-	name = "box of oranges"
+	name = "一箱橙子"
 
 /obj/item/storage/box/orange/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -1113,7 +1113,7 @@
 
 //potato
 /obj/item/storage/box/potato
-	name = "box of potatoes"
+	name = "一箱土豆"
 
 /obj/item/storage/box/potato/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -1121,7 +1121,7 @@
 
 //tomato
 /obj/item/storage/box/tomato
-	name = "box of tomatoes"
+	name = "一箱番茄"
 
 /obj/item/storage/box/tomato/fill_preset_inventory()
 	for(var/i in 1 to 7)
@@ -1129,7 +1129,7 @@
 
 //whitebeet
 /obj/item/storage/box/whitebeet
-	name = "box of whitebeet"
+	name = "一箱白甜菜"
 
 /obj/item/storage/box/whitebeet/fill_preset_inventory()
 	for(var/i in 1 to 7)

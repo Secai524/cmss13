@@ -11,7 +11,7 @@
 
 /obj/item/clothing/suit/fire
 	name = "firesuit"
-	desc = "A suit that protects against fire and heat."
+	desc = "一套能防护火焰和高温的服装。"
 	icon_state = "fire"
 	item_state = "fire_suit"
 	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
@@ -67,8 +67,8 @@
  * Bomb protection
  */
 /obj/item/clothing/head/bomb_hood
-	name = "bomb hood"
-	desc = "Use in case of bomb."
+	name = "防爆头罩"
+	desc = "炸弹处理时使用。"
 	icon_state = "bombsuit"
 	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
 	item_icons = list(
@@ -89,8 +89,8 @@
 
 
 /obj/item/clothing/suit/bomb_suit
-	name = "bomb suit"
-	desc = "A suit designed for safety when handling explosives."
+	name = "防爆服"
+	desc = "为处理爆炸物时的安全而设计的服装。"
 	icon_state = "bombsuit"
 	item_state = "bombsuit"
 	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
@@ -141,8 +141,8 @@
  * Radiation protection
  */
 /obj/item/clothing/head/radiation
-	name = "Radiation Hood"
-	desc = "A hood with radiation protective properties. Label: Made with lead, do not eat insulation."
+	name = "辐射防护头罩"
+	desc = "具有辐射防护性能的头罩。标签：含铅制造，请勿食用绝缘材料。"
 	icon_state = "rad"
 	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
 	item_icons = list(
@@ -162,8 +162,8 @@
 
 
 /obj/item/clothing/suit/radiation
-	name = "Radiation suit"
-	desc = "A suit that protects against radiation. Label: Made with lead, do not eat insulation."
+	name = "辐射防护服"
+	desc = "一套能防护辐射的服装。标签：含铅制造，请勿食用绝缘材料。"
 	icon_state = "rad"
 	item_state = "rad_suit"
 	icon = 'icons/obj/items/clothing/suits/hazard.dmi'

@@ -7,4 +7,4 @@
 	icon_state = "catwalk"
 	name = "catwalk"
 	layer = CATWALK_LAYER
-	desc = "These things have no depth to them, are they just, painted on?"
+	desc = "这些东西没有深度，它们难道只是画上去的？"

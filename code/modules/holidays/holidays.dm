@@ -67,14 +67,14 @@
 // JANUARY
 
 /datum/holiday/copyright
-	name = "Copyright Law Day"
+	name = "版权法日"
 	begin_day = 1
 	greet_text = "Let's set aside all creatives to appreciate the role of copyright law in ensuring legal use of their creations and encourage people to support and uphold copyright law!"
 	begin_month = JANUARY
 	holiday_faction = FACTION_WY
 
 /datum/holiday/eastern_xmas
-	name = "Orthodox Christmas"
+	name = "东正教圣诞节"
 	begin_day = 5
 	begin_month = JANUARY
 	greet_text = "Have a merry Christmas!"
@@ -82,28 +82,28 @@
 	holiday_faction = FACTION_UPP
 
 /datum/holiday/pharma
-	name = "Pharmacist Day"
+	name = "药剂师日"
 	begin_day = 12
 	begin_month = JANUARY
 	holiday_faction = FACTION_WY
 	greet_text = "Celebrate a medicine producer who saves lives with their work!"
 
 /datum/holiday/cleandesk
-	name = "Clean Your Desk Day"
+	name = "清理办公桌日"
 	begin_day = 13
 	begin_month = JANUARY
 	holiday_faction = FACTION_WY
 	greet_text = "On this day, we must remember the importance of a clean working environment!"
 
 /datum/holiday/australia
-	name = "Australia Day"
+	name = "澳大利亚日"
 	begin_day = 26
 	begin_month = JANUARY
 	holiday_faction = FACTION_TWE
 	greet_text = "On this day, in the year of 1788, the First Fleet of the Royal Navy landed on the Australian soil and planted the Union flag, thus marking the establishment of Australian colony."
 
 /datum/holiday/community_manager
-	name = "Community Manager Appreciation Day"
+	name = "社区管理员感谢日"
 	begin_day = 27
 	greet_text = "On this day let's celebrate the effort of our community managers, who work with the media and monitor it endlessly!"
 	begin_month = JANUARY
@@ -112,21 +112,21 @@
 // FEBRUARY
 
 /datum/holiday/legal
-	name = "Employee Legal Awareness Day"
+	name = "员工法律意识日"
 	begin_day = 16
 	begin_month = FEBRUARY
 	holiday_faction = FACTION_WY
 	greet_text = "On this day, we must remember the importance of clear labor laws and transparent bureaucracy!"
 
 /datum/holiday/innovation
-	name = "Innovation Day"
+	name = "创新日"
 	begin_day = 16
 	begin_month = FEBRUARY
 	holiday_faction = FACTION_WY
 	greet_text = "On this day, we celebrate the importance of numerous innovations that we've made and will make in the future!"
 
 /datum/holiday/japan
-	name = "National Science Day"
+	name = "国家科学日"
 	begin_day = 28
 	begin_month = FEBRUARY
 	holiday_faction = FACTION_WY
@@ -139,7 +139,7 @@
 	begin_month = FEBRUARY
 
 /datum/holiday/armyday
-	name = "Defender of the Fatherland Day"
+	name = "祖国保卫者日"
 	begin_day = 23
 	greet_text = "Was originally the day celebrating Soviet Army in USSR, but later morphed into more generalized Men's Day in Russia, and later all across UPP."
 	begin_month = FEBRUARY
@@ -148,28 +148,28 @@
 // MARCH
 
 /datum/holiday/employee
-	name = "Employee Appreciation Day"
+	name = "员工感谢日"
 	begin_day = 7
 	begin_month = MARCH
 	greet_text = "On this day, we must remember to respect and value our dear employees and workers!"
 	holiday_faction = FACTION_WY
 
 /datum/holiday/commonwealthday
-	name = "Day of the Empire"
+	name = "帝国日"
 	begin_day = 10
 	begin_month = MARCH
 	greet_text = "Was originally celebrated as the Commonwealth Day, but was later reformed after foundation of the Three World Empire"
 	holiday_faction = FACTION_TWE
 
 /datum/holiday/holi
-	name = "Holi"
+	name = "胡里节"
 	begin_day = 14
 	begin_month = MARCH
 	greet_text = "Holiday celebrated in Hindu parts of the TWE. Holi, also known as Festival of Colours, the holiday celebrates the eternal and divine love of the deities Radha and Krishna."
 	holiday_faction = FACTION_TWE
 
 /datum/holiday/no_this_is_patrick
-	name = "St. Patrick's Day"
+	name = "圣帕特里克节"
 	begin_day = 17
 	begin_month = MARCH
 
@@ -182,45 +182,45 @@
 	end_day = 2
 
 /datum/holiday/fun_at_work
-	name = "International Fun at Work Day"
+	name = "国际工作乐趣日"
 	begin_month = APRIL
 	begin_day = 1
 	greet_text = "Today is one of the best workdays in the year, because what other day are we going to get the chance to party and work at the same time?"
 
 /datum/holiday/spess
-	name = "Cosmonautics Day"
+	name = "航天日"
 	begin_day = 12
 	begin_month = APRIL
 	greet_text = "On this day over 600 years ago, Comrade Yuri Gagarin first ventured into space!"
 
 //Information itself is from the combat manual but the date was never stated, I chose the date of when the CM server was as we know it was established by Apop - 2015, April 20
 /datum/holiday/uscm_day
-	name = "Day of the Colonial Marines"
+	name = "殖民地海军陆战队日"
 	begin_day = 20
 	begin_month = APRIL
 	greet_text = "On this day in the year of 2101 the National Security Act was signed, and the United States Colonial Marine Corps were established."
 	holiday_faction = FACTION_MARINE
 
 /datum/holiday/tea
-	name = "National Tea Day"
+	name = "国家茶日"
 	begin_day = 21
 	begin_month = APRIL
 	holiday_faction = FACTION_TWE
 
 /datum/holiday/earth
-	name = "Earth Day"
+	name = "地球日"
 	begin_day = 22
 	begin_month = APRIL
 
 /datum/holiday/anzac
-	name = "Anzac Day"
+	name = "澳新军团日"
 	begin_day = 25
 	begin_month = APRIL
 	greet_text = "TWE holiday celebrated by people from the British part of Oceania. Dedicated to remembrance of the Anzacs at Gallipoli"
 	holiday_faction = FACTION_TWE
 
 /datum/holiday/showa
-	name = "Showa Day"
+	name = "昭和日"
 	begin_day = 29
 	begin_month = APRIL
 	greet_text = "Public holiday in the ethnically Japanese parts of the TWE, honoring the birthday of emperor Hirohito, and historical period associated with him."
@@ -229,7 +229,7 @@
 // MAY
 
 /datum/holiday/image_improvement
-	name = "International Business Image Improvement Month"
+	name = "国际企业形象提升月"
 	begin_day = 1
 	begin_month = MAY
 	end_day = 31
@@ -237,24 +237,24 @@
 	holiday_faction = FACTION_WY
 
 /datum/holiday/labor
-	name = "Labor Day"
+	name = "劳动节"
 	begin_day = 1
 	begin_month = MAY
 
 /datum/holiday/firefighter
-	name = "Firefighter's Day"
+	name = "消防员日"
 	begin_day = 4
 	begin_month = MAY
 
 /datum/holiday/third_shift
-	name = "National Third Shift Workers Day"
+	name = "国家第三班工人日"
 	begin_day = 14
 	begin_month = MAY
 	greet_text = "Today we take the opportunity to celebrate and thank the people that work throughout the night to keep the communities safe while we sleep and continue business operations that are required to run 24 hours."
 	holiday_faction = FACTION_WY
 
 /datum/holiday/learn_at_work
-	name = "Learning at Work Week"
+	name = "工作场所学习周"
 	begin_day = 19
 	begin_month = MAY
 	end_day = 25
@@ -264,7 +264,7 @@
 // JUNE
 
 /datum/holiday/business_etiquette
-	name = "National Business Etiquette Week"
+	name = "国家商务礼仪周"
 	begin_day = 1
 	begin_month = JUNE
 	end_day = 7
@@ -272,19 +272,19 @@
 	holiday_faction = FACTION_WY
 
 /datum/holiday/education_day
-	name = "National Higher Education Day"
+	name = "国家高等教育日"
 	begin_day = 6
 	begin_month = JUNE
 	greet_text = "On this day we recognize the importance of education in improving our lives. To excel in your dream job, it is important to have the latest knowledge in that field, which can be attained through higher education."
 	holiday_faction = FACTION_WY
 
 /datum/holiday/summersolstice
-	name = "Summer Solstice"
+	name = "夏至"
 	begin_day = 21
 	begin_month = JUNE
 
 /datum/holiday/slavic_unity
-	name = "Slavic Unity Day"
+	name = "斯拉夫团结日"
 	begin_day = 25
 	begin_month = JUNE
 	greet_text = "On this day all Slavic people of the UPP celebrate their shared cultural and language roots."
@@ -293,7 +293,7 @@
 // JULY
 
 /datum/holiday/enterprise
-	name = "Global Enterprise Agility Month"
+	name = "全球企业敏捷月"
 	begin_day = 1
 	begin_month = JULY
 	end_day = 31
@@ -301,17 +301,17 @@
 	holiday_faction = FACTION_WY
 
 /datum/holiday/doctor
-	name = "Doctor's Day"
+	name = "医生日"
 	begin_day = 1
 	begin_month = JULY
 
 /datum/holiday/ufo
-	name = "UFO Day"
+	name = "UFO日"
 	begin_day = 2
 	begin_month = JULY
 
 /datum/holiday/usa
-	name = "US Independence Day"
+	name = "美国独立日"
 	timezones = list(TIMEZONE_EDT, TIMEZONE_CDT, TIMEZONE_MDT, TIMEZONE_MST, TIMEZONE_PDT, TIMEZONE_AKDT, TIMEZONE_HDT, TIMEZONE_HST)
 	begin_day = 4
 	begin_month = JULY
@@ -319,7 +319,7 @@
 	holiday_faction = FACTION_MARINE
 
 /datum/holiday/writer
-	name = "Writer's Day"
+	name = "作家日"
 	begin_day = 8
 	begin_month = JULY
 
@@ -330,20 +330,20 @@
 	greet_text = "Happy National Hot Dog Day!"
 
 /datum/holiday/thermoengi
-	name = "National Thermal Engineer Day"
+	name = "国家热力工程师日"
 	begin_day = 24
 	begin_month = JULY
 	greet_text = "It's the perfect day for a hot celebration, and that is a major reason for observing National Thermal Engineer Day."
 	holiday_faction = FACTION_WY
 
 /datum/holiday/friendship
-	name = "Friendship Day"
+	name = "友谊日"
 	begin_day = 30
 	begin_month = JULY
 	greet_text = "Have a magical Friendship Day!"
 
 /datum/holiday/intern
-	name = "National Intern Day"
+	name = "国家实习生日"
 	begin_day = 31
 	begin_month = JULY
 	greet_text = "Today we celebrate interns, people are often trusted with responsibilities such as filing important documents, making calls, or assisting someone who's been in the field for a long time — essentially learning the ropes of the business."
@@ -352,21 +352,21 @@
 // AUGUST
 
 /datum/holiday/vdvday
-	name = "Paratrooper's Day"
+	name = "空降兵日"
 	begin_day = 2
 	begin_month = AUGUST
 	greet_text = "Originally celebrating USSR and post-Soviet VDV forces, this holiday celebrates UPP KVD paratroopers in their heroic and hazardous job."
 	holiday_faction = FACTION_UPP
 
 /datum/holiday/monarchday
-	name = "Empress Birthday"
+	name = "女皇诞辰"
 	begin_day = 7
 	begin_month = AUGUST
 	greet_text = "Today is 39th birthday of the Three World Empire monarch, her majesty empress Fiona II Kōshitsu-Windsor."
 	holiday_faction = FACTION_TWE
 
 /datum/holiday/health_unit
-	name = "Health Unit Coordinators Day"
+	name = "卫生单位协调员日"
 	begin_day = 23
 	begin_month = AUGUST
 	greet_text = "This day reminds us of the important teamwork taking place in medical facilities and why health unit coordinators are so vital and indispensable."
@@ -375,28 +375,28 @@
 // SEPTEMBER
 
 /datum/holiday/it_spec
-	name = "National IT Professionals Day"
+	name = "国家信息技术专家日"
 	begin_day = 16
 	begin_month = SEPTEMBER
 	greet_text = "On this day we recognize the technical experts — network engineers, system administrators, database admins, ethical hackers, and many more types of I.T. professionals — that make sure our computer systems run smoothly."
 	holiday_faction = FACTION_WY
 
 /datum/holiday/equinox
-	name = "Autumnal Equinox Day"
+	name = "秋分日"
 	begin_day = 23
 	begin_month = SEPTEMBER
 	greet_text = "TWE holiday associated with Shinto, on this day people reconnect with their families and ancestors."
 	holiday_faction = FACTION_TWE
 
 /datum/holiday/research_admin
-	name = "Research Administrators Day"
+	name = "研究管理员日"
 	begin_day = 25
 	begin_month = SEPTEMBER
 	greet_text = "This day is dedicated to those professionals who assist researchers at research organizations and educational institutions to conduct research."
 	holiday_faction = FACTION_WY
 
 /datum/holiday/hr
-	name = "HR Professionals Day"
+	name = "人力资源专家日"
 	begin_day = 26
 	begin_month = SEPTEMBER
 	greet_text = "Sharing information about H.R. professionals is important so that we know what it is like to be part of this community."
@@ -405,17 +405,17 @@
 // OCTOBER
 
 /datum/holiday/animal
-	name = "Animal's Day"
+	name = "动物日"
 	begin_day = 4
 	begin_month = OCTOBER
 
 /datum/holiday/smile
-	name = "Smiling Day"
+	name = "微笑日"
 	begin_day = 7
 	begin_month = OCTOBER
 
 /datum/holiday/cranky
-	name = "Cranky Co-Workers Day"
+	name = "暴躁同事日"
 	begin_day = 27
 	begin_month = OCTOBER
 	greet_text = "We all have that cranky co-worker in the office who is always in a bad mood, so take October 27 as the day to make some fun of said co-worker's attitude by celebrating Cranky Co-Workers Day."
@@ -432,34 +432,34 @@
 // NOVEMBER
 
 /datum/holiday/jculture
-	name = "Culture Day"
+	name = "文化日"
 	begin_day = 3
 	begin_month = NOVEMBER
 	greet_text = "TWE holiday founded in Japan, the day dedicated to promoting arts, culture and other forms of artistic expression."
 	holiday_faction = FACTION_TWE
 
 /datum/holiday/lovelawyer
-	name = "Love Your Lawyer Day"
+	name = "爱你的律师日"
 	begin_month = NOVEMBER
 	begin_day = 10
 	greet_text = "This is when we honor lawyers and encourage them to keep going, despite the often negative reputation they have."
 	holiday_faction = FACTION_WY
 
 /datum/holiday/remembrance_day
-	name = "Remembrance Day"
+	name = "阵亡将士纪念日"
 	begin_month = NOVEMBER
 	begin_day = 11
 	greet_text = "Lest we forget."
 
 /datum/holiday/accounting
-	name = "International Accounting Day"
+	name = "国际会计日"
 	begin_month = NOVEMBER
 	begin_day = 10
 	greet_text = "Does the sight of a ledger book make your head spin? That's why we have accountants to figure it all out."
 	holiday_faction = FACTION_WY
 
 /datum/holiday/lifeday
-	name = "Life Day"
+	name = "生命日"
 	begin_day = 17
 	begin_month = NOVEMBER
 
@@ -473,7 +473,7 @@
 	greet_text = "Have a nice festive season!"
 
 /datum/holiday/business_plan
-	name = "National Write a Business Plan Month"
+	name = "国家商业计划月"
 	begin_day = 1
 	begin_month = DECEMBER
 	end_day = 31
@@ -481,19 +481,19 @@
 	holiday_faction = FACTION_WY
 
 /datum/holiday/salesperson
-	name = "National Salesperson Day"
+	name = "国家销售员日"
 	begin_day = 8
 	begin_month = DECEMBER
 	greet_text = "On this day let's celebrate the importance of small business and free trade."
 	holiday_faction = FACTION_WY
 
 /datum/holiday/human_rights
-	name = "Human-Rights Day"
+	name = "人权日"
 	begin_day = 10
 	begin_month = DECEMBER
 
 /datum/holiday/doomsday
-	name = "Mayan Doomsday Anniversary"
+	name = "玛雅末日周年纪念"
 	begin_day = 21
 	begin_month = DECEMBER
 
@@ -505,7 +505,7 @@
 	greet_text = "Have a merry Christmas!"
 
 /datum/holiday/boxing
-	name = "Boxing Day"
+	name = "节礼日"
 	begin_day = 26
 	begin_month = DECEMBER
 
@@ -520,7 +520,7 @@
 // MOVING DATES
 
 /datum/holiday/friday_thirteenth
-	name = "Friday the 13th"
+	name = "十三号星期五"
 
 /datum/holiday/friday_thirteenth/shouldCelebrate(dd, mm, yyyy, ddd)
 	if(dd == 13 && ddd == FRIDAY)

@@ -95,8 +95,8 @@
 	relativewall_neighbours()
 
 /obj/structure/machinery/door/poddoor/yautja
-	name = "Yautja Shutter"
-	desc = "A heavily reinforced metal-alloy door, designed to be virtually indestructible—nothing can penetrate its defenses."
+	name = "铁血战士百叶窗"
+	desc = "一扇经过强化的金属合金门，设计得几乎坚不可摧——没有什么能穿透它的防御。"
 	icon = 'icons/obj/structures/doors/hybrisashutters.dmi'
 	icon_state = "udoor1"
 	base_icon_state = "udoor"
@@ -115,7 +115,7 @@
 	return TRUE
 
 /obj/structure/machinery/door/poddoor/yautja/hunting_grounds
-	name = "Preserve Shutter"
+	name = "保护区百叶窗"
 	id = "Yautja Preserve"
 	needs_power = FALSE
 	unacidable = TRUE
@@ -129,7 +129,7 @@
 	RegisterSignal(SSdcs, COMSIG_GLOB_YAUTJA_PRESERVE_CLOSED, PROC_REF(close))
 
 /obj/structure/machinery/door/poddoor/yautja/armory
-	name = "Armory Shutter"
+	name = "军械库防护门"
 
 /obj/structure/machinery/door/poddoor/yautja/armory/Initialize()
 	. = ..()
@@ -156,8 +156,8 @@
 
 //transit shutters used by marine dropships
 /obj/structure/machinery/door/poddoor/shutters/transit
-	name = "Transit shutters"
-	desc = "Safety shutters to prevent dangerous depressurization during flight."
+	name = "运输防护门"
+	desc = "飞行期间防止危险失压的安全防护门。"
 	icon = 'icons/obj/structures/doors/blastdoors_shutters.dmi'
 	unacidable = TRUE
 
@@ -168,7 +168,7 @@
 	density = FALSE
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/pressure
-	name = "pressure shutters"
+	name = "压力防护门"
 	density = FALSE
 	opacity = FALSE
 	unacidable = TRUE
@@ -198,8 +198,8 @@
 	. = ..()
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/antitheft
-	name = "Anti-Theft Shutters"
-	desc = "Secure Storage shutters, they're reinforced against entry attempts."
+	name = "防盗防护门"
+	desc = "安全存储防护门，经过加固以抵御闯入企图。"
 	var/req_level = SEC_LEVEL_RED
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/uniform_vendors/antitheft/Initialize()

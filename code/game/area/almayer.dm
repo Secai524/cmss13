@@ -33,7 +33,7 @@
 		SShijack.progress_areas[src] = power_equip
 
 /obj/structure/machinery/computer/shuttle_control/almayer/hangar
-	name = "Elevator Console"
+	name = "电梯控制台"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "supply"
 	unslashable = TRUE
@@ -44,7 +44,7 @@
 	shuttle_tag = "Hangar"
 
 /obj/structure/machinery/computer/shuttle_control/almayer/maintenance
-	name = "Elevator Console"
+	name = "电梯控制台"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "shuttle"
 	unslashable = TRUE
@@ -848,7 +848,7 @@
 	flags_area = AREA_NOBURROW
 
 /area/almayer/lifeboat_pumps
-	name = "Lifeboat Fuel Pumps"
+	name = "救生艇燃料泵"
 	icon_state = "lifeboat_pump"
 	requires_power = 1
 	fake_zlevel = 1
@@ -857,16 +857,16 @@
 	hijack_evacuation_type = EVACUATION_TYPE_ADDITIVE
 
 /area/almayer/lifeboat_pumps/north1
-	name = "Starboard-Fore Lifeboat Fuel Pump"
+	name = "右舷-前部救生艇燃料泵"
 
 /area/almayer/lifeboat_pumps/north2
-	name = "Starboard-Aft Lifeboat Fuel Pump"
+	name = "右舷-后部救生艇燃料泵"
 
 /area/almayer/lifeboat_pumps/south1
-	name = "Port-Fore Lifeboat Fuel Pump"
+	name = "左舷-前部救生艇燃料泵"
 
 /area/almayer/lifeboat_pumps/south2
-	name = "Port-Aft Lifeboat Fuel Pump"
+	name = "左舷-后部救生艇燃料泵"
 
 /area/almayer/command/lifeboat
 	name = "\improper Lifeboat Docking Port"
@@ -930,28 +930,28 @@
 //Mid-Deck
 
 /area/almayer/middeck
-	name = "USS Almayer - Middle Deck"
+	name = "阿尔迈耶号 - 中层甲板"
 	allow_construction = FALSE
 	icon_state = "lowerhull"
 
 /area/almayer/middeck/hanger
-	name = "Middle Deck - Hangerbay Catwalks"
+	name = "中层甲板 - 机库舱通道"
 	icon_state = "hangar"
 
 /area/almayer/middeck/medical
-	name = "Middle Deck - Medical Catwalks"
+	name = "中层甲板 - 医疗舱通道"
 	icon_state = "medical"
 
 /area/almayer/middeck/engineer
-	name = "Middle Deck - Engineering Catwalks"
+	name = "中层甲板 - 工程部通道"
 	icon_state = "workshop"
 
 /area/almayer/middeck/req
-	name = "Middle Deck - Requisition Catwalks"
+	name = "中层甲板 - 补给处通道"
 	icon_state = "req"
 
 /area/almayer/middeck/briefing
-	name = "Middle Deck - Briefing Catwalks"
+	name = "中层甲板 - 简报室通道"
 	icon_state = "briefing"
 
 /area/almayer/middeck/maintenance
@@ -993,18 +993,18 @@
 //Admin Lower Level
 
 /area/almayer/underdeck/
-	name = "USS Almayer - Under Deck"
+	name = "阿尔迈耶号 - 下层甲板"
 	allow_construction = FALSE
 	icon_state = "lowerhull"
 
 /area/almayer/underdeck/hangar
-	name = "USS Almayer - Under Deck Hangar"
+	name = "阿尔迈耶号 - 下层甲板机库"
 	icon_state = "hangar"
 
 /area/almayer/underdeck/req
-	name = "USS Almayer - Under Deck Cargo"
+	name = "阿尔迈耶号 - 下层甲板货舱"
 	icon_state = "req"
 
 /area/almayer/underdeck/vehicle
-	name = "USS Almayer - Under Deck Vehicle Bay"
+	name = "阿尔迈耶号 - 下层甲板载具舱"
 	icon_state = "req"

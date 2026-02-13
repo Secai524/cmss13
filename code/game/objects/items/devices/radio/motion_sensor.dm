@@ -1,11 +1,11 @@
 #define COOLDOWN_MOTION_SENSOR 60 SECONDS
 
 /obj/item/device/motion_sensor
-	name = "Motion Sensor"
+	name = "动态传感器"
 
 	icon = 'icons/obj/items/new_assemblies.dmi'
 	icon_state = "motion"
-	desc = "A motion sensor."
+	desc = "一个动态传感器。"
 
 	/// Alert message to report unless area based.
 	var/alert_message = "ALERT: Unauthorized movement detected!"
@@ -63,7 +63,7 @@
 /obj/item/device/motion_sensor/update_icon()
 	if(anchored)
 		icon_state = "[icon_state]_active"
-		name = "[name] (ACTIVE)"
+		name = "[name] (激活)"
 	else
 		icon_state = initial(icon_state)
 		name = initial(name)
@@ -113,24 +113,24 @@
 /obj/item/device/motion_sensor/attackby(obj/item/hit_item, mob/user)
 	if(istype(hit_item, /obj/item/card/id))
 		if(!allowed(user))
-			to_chat(user, SPAN_WARNING("Access Denied."))
+			to_chat(user, SPAN_WARNING("权限被拒绝。"))
 			return FALSE
 		if(anchored)
-			to_chat(user, SPAN_WARNING("You cannot update this device while it is active!"))
+			to_chat(user, SPAN_WARNING("此装置激活时无法更新！"))
 			return FALSE
 		var/obj/item/card/id/id_card = hit_item
-		if(tgui_alert(user, "Do you wish to change the network?", "Change Network?", list("Yes", "No")) == "Yes")
-			var/list/the_options = list("None")
+		if(tgui_alert(user, "你想要更改网络吗？", "Change Network?", list("Yes", "No")) == "Yes")
+			var/list/the_options = list("无")
 			for(var/network in network_to_access)
-				to_chat(user, SPAN_HELPFUL("Checking '[network]'."))
+				to_chat(user, SPAN_HELPFUL("正在检查'[network]'。"))
 				if(network_to_access[network] in id_card.access)
-					to_chat(user, SPAN_HELPFUL("Adding '[network]'."))
+					to_chat(user, SPAN_HELPFUL("正在添加'[network]'。"))
 					the_options += network
 				else
-					to_chat(user, SPAN_HELPFUL("Ignoring '[network]'."))
-			var/new_net = tgui_input_list(user, "Which new network do you want to use?", "New Network", the_options, 20 SECONDS)
-			if(!new_net || new_net == "None")
-				to_chat(user, SPAN_WARNING("No new network selected!"))
+					to_chat(user, SPAN_HELPFUL("正在忽略'[network]'。"))
+			var/new_net = tgui_input_list(user, "你想要使用哪个新网络？", "New Network", the_options, 20 SECONDS)
+			if(!new_net || new_net == "无")
+				to_chat(user, SPAN_WARNING("未选择新网络！"))
 				return FALSE
 			update_tranceiver(new_net)
 			return TRUE
@@ -139,7 +139,7 @@
 		var/delay_time = 2 SECONDS
 		if(!allowed(user) && anchored)
 			delay_time = 15 SECONDS
-			send_alert(user, "Tampering Detected!")
+			send_alert(user, "检测到篡改！")
 
 		if(!do_after(user, delay_time, INTERRUPT_ALL, BUSY_ICON_BUILD))
 			return FALSE
@@ -151,7 +151,7 @@
 		else
 			anchored = TRUE
 			update_icon()
-			var/chosen_dir = tgui_input_list(user, "Which corner do you wish to place the sensor?", "Location", list("North-West", "North-East", "South-West", "South-East"), 5 SECONDS, default = "North-West")
+			var/chosen_dir = tgui_input_list(user, "你想将传感器放置在哪个角落？", "Location", list("North-West", "North-East", "South-West", "South-East"), 5 SECONDS, default = "North-West")
 			switch(chosen_dir)
 				if("North-West")
 					pixel_y = 8

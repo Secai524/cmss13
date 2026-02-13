@@ -1,5 +1,5 @@
 /datum/supply_packs/rail_reddot
-	name = "red-dot sight attachment crate (x8)"
+	name = "红点瞄准镜配件箱 (x8)"
 	contains = list(
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reddot,
@@ -16,7 +16,7 @@
 	group = "Attachments"
 
 /datum/supply_packs/rail_scope
-	name = "railscope attachment crate (x2)"
+	name = "导轨瞄准镜配件箱 (x2)"
 	contains = list(
 		/obj/item/attachable/scope,
 		/obj/item/attachable/scope,
@@ -27,7 +27,7 @@
 	group = "Attachments"
 
 /datum/supply_packs/rail_miniscope
-	name = "mini railscope attachment crate (x2)"
+	name = "迷你导轨瞄准镜配件箱 (x2)"
 	contains = list(
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/scope/mini,
@@ -38,7 +38,7 @@
 	group = "Attachments"
 
 /datum/supply_packs/rail_magneticharness
-	name = "magnetic harness attachment crate (x6)"
+	name = "磁性枪带配件箱 (x6)"
 	contains = list(
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/magnetic_harness,
@@ -53,7 +53,7 @@
 	group = "Attachments"
 
 /datum/supply_packs/muzzle_suppressor
-	name = "suppressor attachment crate (x8)"
+	name = "消音器配件箱 (x8)"
 	contains = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/suppressor,
@@ -70,7 +70,7 @@
 	group = "Attachments"
 
 /datum/supply_packs/muzzle_extended
-	name = "extended barrel attachment crate (x6)"
+	name = "加长枪管配件箱 (x6)"
 	contains = list(
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/extended_barrel,
@@ -85,7 +85,7 @@
 	group = "Attachments"
 
 /datum/supply_packs/muzzle_compensator
-	name = "compensator attachment crate (x6)"
+	name = "制退器配件箱 (x6)"
 	contains = list(
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/compensator,
@@ -100,7 +100,7 @@
 	group = "Attachments"
 
 /datum/supply_packs/shotgun_choke
-	name = "shotgun choke attachment crate (x4)"
+	name = "霰弹枪收束器配件箱 (x4)"
 	contains = list(
 		/obj/item/attachable/shotgun_choke,
 		/obj/item/attachable/shotgun_choke,
@@ -113,7 +113,7 @@
 	group = "Attachments"
 
 /datum/supply_packs/underbarrel_foregrip
-	name = "foregrip attachment crate (x8)"
+	name = "前握把配件箱 (x8)"
 	contains = list(
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/verticalgrip,
@@ -130,7 +130,7 @@
 	group = "Attachments"
 
 /datum/supply_packs/underbarrel_gyro
-	name = "gyroscopic stabilizer attachment crate (x2)"
+	name = "陀螺稳定器配件箱 (x2)"
 	contains = list(
 		/obj/item/attachable/gyro,
 		/obj/item/attachable/gyro,
@@ -141,7 +141,7 @@
 	group = "Attachments"
 
 /datum/supply_packs/underbarrel_bipod
-	name = "bipod attachment crate (x6)"
+	name = "两脚架配件箱 (x6)"
 	contains = list(
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/bipod,
@@ -156,7 +156,7 @@
 	group = "Attachments"
 
 /datum/supply_packs/underbarrel_shotgun
-	name = "underbarrel shotgun attachment crate (x4)"
+	name = "下挂霰弹枪配件箱 (x4)"
 	contains = list(
 		/obj/item/attachable/attached_gun/shotgun,
 		/obj/item/attachable/attached_gun/shotgun,
@@ -169,7 +169,7 @@
 	group = "Attachments"
 
 /datum/supply_packs/underbarrel_extinguisher
-	name = "underbarrel extinguisher attachment crate (x4)"
+	name = "下挂灭火器配件箱 (x4)"
 	contains = list(
 		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/attached_gun/extinguisher,
@@ -182,7 +182,7 @@
 	group = "Attachments"
 
 /datum/supply_packs/underbarrel_flamer
-	name = "underbarrel flamer attachment crate (x4)"
+	name = "下挂火焰喷射器配件箱 (x4)"
 	contains = list(
 		/obj/item/attachable/attached_gun/flamer,
 		/obj/item/attachable/attached_gun/flamer,
@@ -195,7 +195,7 @@
 	group = "Attachments"
 
 /datum/supply_packs/underbarrel_burstfire_assembly
-	name = "burstfire assembly attachment crate (x2)"
+	name = "点射组件配件箱 (x2)"
 	contains = list(
 		/obj/item/attachable/burstfire_assembly,
 		/obj/item/attachable/burstfire_assembly,
@@ -206,7 +206,7 @@
 	group = "Attachments"
 
 /datum/supply_packs/s_attachables
-	name = "stock attachments crate (x3 each , 1 paratroopers)"
+	name = "枪托配件箱 (各x3，含1个伞兵托)"
 	contains = list(
 		/obj/item/attachable/stock/revolver,
 		/obj/item/attachable/stock/revolver,
@@ -231,7 +231,7 @@
 	group = "Attachments"
 
 /datum/supply_packs/stock_revolver
-	name = "revolver stock attachment crate (x4)"
+	name = "左轮手枪枪托配件箱 (x4)"
 	contains = list(
 		/obj/item/attachable/stock/revolver,
 		/obj/item/attachable/stock/revolver,
@@ -244,7 +244,7 @@
 	group = "Attachments"
 
 /datum/supply_packs/stock_rifle
-	name = "rifle stock attachment crate (x4)"
+	name = "步枪枪托配件箱 (x4)"
 	contains = list(
 		/obj/item/attachable/stock/rifle,
 		/obj/item/attachable/stock/rifle,
@@ -257,7 +257,7 @@
 	group = "Attachments"
 
 /datum/supply_packs/stock_shotgun
-	name = "shotgun stock attachment crate (x4)"
+	name = "霰弹枪枪托配件箱 (x4)"
 	contains = list(
 		/obj/item/attachable/stock/synth/collapsible,
 		/obj/item/attachable/stock/synth/collapsible,
@@ -270,7 +270,7 @@
 	group = "Attachments"
 
 /datum/supply_packs/stock_smg
-	name = "submachinegun stock attachment crate (x4)"
+	name = "冲锋枪枪托配件箱 (x4)"
 	contains = list(
 		/obj/item/attachable/stock/smg,
 		/obj/item/attachable/stock/smg,

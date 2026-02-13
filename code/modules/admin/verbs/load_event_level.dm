@@ -7,7 +7,7 @@
 	var/client/C = usr.client
 	var/logckey = C.ckey
 
-	var/map_choice = tgui_input_list(C, "Choose a Map Template to load into a new Z-Level", "Load Level Template", sortList(SSmapping.map_templates))
+	var/map_choice = tgui_input_list(C, "选择要加载到新Z层的地图模板", "Load Level Template", sortList(SSmapping.map_templates))
 	if(!map_choice)
 		return
 	template = SSmapping.map_templates[map_choice]
@@ -25,7 +25,7 @@
 	var/dim_x  = boundaries[MAP_MAXX] - boundaries[MAP_MINX] + 1
 	var/dim_y  = boundaries[MAP_MAXY] - boundaries[MAP_MINY] + 1
 
-	var/prompt = alert(C, "Are you SURE you want to load this template as level ? This is SLOW and can freeze server for a bit. Dimensions are: [dim_x] x [dim_y]", "Template Confirm" ,"Yes","Nope!")
+	var/prompt = alert(C, "你确定要将此模板加载为关卡吗？此操作缓慢，可能导致服务器短暂卡顿。尺寸为：[dim_x] x [dim_y]", "Template Confirm" ,"Yes","Nope!")
 	if(prompt != "Yes")
 		return
 
@@ -35,7 +35,7 @@
 	var/datum/space_level/loaded = template.load_new_z()
 	if(!loaded?.z_value)
 		if(C)
-			to_chat(C, "Failed to load the template to a Z-Level! Sorry!")
+			to_chat(C, "向Z层加载模板失败！抱歉！")
 		return
 
 	var/center_x = floor(loaded.bounds[MAP_MAXX] / 2) // Technically off by 0.5 due to above +1. Whatever

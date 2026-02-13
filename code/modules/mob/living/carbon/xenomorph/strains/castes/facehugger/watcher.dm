@@ -18,7 +18,7 @@
 
 // This has no special effects, it's just here to skip `/datum/behavior_delegate/facehugger_base/on_life()`.
 /datum/behavior_delegate/facehugger_watcher
-	name = "Watcher Facehugger Behavior Delegate"
+	name = "监视者抱脸虫行为代理"
 
 /datum/behavior_delegate/facehugger_watcher/on_life()
 	// Sap health if we're standing, not on weeds, and not zoomed out

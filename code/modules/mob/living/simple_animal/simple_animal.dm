@@ -369,7 +369,7 @@
 
 /mob/living/simple_animal/can_be_pulled_by(mob/pulling_mob)
 	if(locate(/obj/item/explosive/plastic) in contents)
-		to_chat(pulling_mob, SPAN_WARNING("You leave [src] alone. It's got live explosives on it!"))
+		to_chat(pulling_mob, SPAN_WARNING("你放过了[src]。它上面有未引爆的炸药！"))
 		return FALSE
 	return ..()
 
@@ -384,10 +384,10 @@
 					MED.use(1)
 					for(var/mob/M as anything in viewers(src, null))
 						if ((M.client && !( M.blinded )))
-							M.show_message(SPAN_NOTICE("[user] applies [MED] on [src]"), SHOW_MESSAGE_VISIBLE)
+							M.show_message(SPAN_NOTICE("[user]对[src]使用了[MED]"), SHOW_MESSAGE_VISIBLE)
 					return
 		else
-			to_chat(user, SPAN_NOTICE("[src] is dead, medical items won't bring it back to life."))
+			to_chat(user, SPAN_NOTICE("[src]已经死亡，医疗物品无法使其复活。"))
 			return
 	if(meat_type && (stat == DEAD)) //if the animal has a meat, and if it is dead.
 		if(istype(O, /obj/item/tool/kitchen/knife) || istype(O, /obj/item/tool/kitchen/knife/butcher))
@@ -479,11 +479,11 @@
 
 /mob/living/simple_animal/can_inject(mob/user, error_msg)
 	if(user && error_msg)
-		to_chat(user, SPAN_WARNING("You aren't sure how to inject this animal!"))
+		to_chat(user, SPAN_WARNING("你不确定如何给这只动物注射！"))
 	return FALSE
 
 /mob/living/simple_animal/small
-	name = "small animal"
+	name = "小动物"
 
 /mob/living/simple_animal/small/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	..()
@@ -492,7 +492,7 @@
 		pass_flags.flags_can_pass_all = PASS_ALL|PASS_OVER_THROW_ITEM
 
 /mob/living/simple_animal/big
-	name = "big animal"
+	name = "大动物"
 
 /mob/living/simple_animal/big/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	..()

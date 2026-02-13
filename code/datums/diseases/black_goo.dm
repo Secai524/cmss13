@@ -9,13 +9,13 @@
 #define MESSAGE_COOLDOWN_TIME 1 MINUTES
 
 /datum/disease/black_goo
-	name = "Black Goo"
+	name = "黑水"
 	max_stages = 4
-	cure = "Anti-Zed"
+	cure = "抗异形剂"
 	cure_id = "antiZed"
 	spread = "Bites"
 	spread_type = SPECIAL
-	affected_species = list("Human")
+	affected_species = list("人类")
 	cure_chance = 100 //meaning the cure will kill the virus asap
 	severity = "Medium"
 	agent = "Unknown Biological Organism X-65"
@@ -69,7 +69,7 @@
 	switch(stage)
 		if(ZOMBIE_INFECTION_STAGE_ONE)
 			if(infected_mob.stat == DEAD && stage_counter != stage)
-				to_chat(infected_mob, SPAN_CENTERBOLD("Your zombie infection is now at stage one! Zombie transformation begins at stage three."))
+				to_chat(infected_mob, SPAN_CENTERBOLD("你的僵尸感染现已进入第一阶段！僵尸转化将在第三阶段开始。"))
 				stage_counter = stage
 
 			// dead mobs should not have symptoms, because... they are dead.
@@ -82,18 +82,18 @@
 					if(0 to 25)
 						return
 					if(25 to 75)
-						to_chat(infected_mob, SPAN_DANGER("You feel warm..."))
+						to_chat(infected_mob, SPAN_DANGER("你感到一阵暖意..."))
 						stage_level += 9
 					if(75 to 95)
-						to_chat(infected_mob, SPAN_DANGER("Your throat is really dry..."))
+						to_chat(infected_mob, SPAN_DANGER("你的喉咙异常干渴..."))
 						stage_level += 18
 					if(95 to 100)
-						to_chat(infected_mob, SPAN_DANGER("You can't trust them..."))
+						to_chat(infected_mob, SPAN_DANGER("你不能相信他们..."))
 						stage_level += 36
 
 		if(ZOMBIE_INFECTION_STAGE_TWO)
 			if(infected_mob.stat == DEAD && stage_counter != stage)
-				to_chat(infected_mob, SPAN_CENTERBOLD("Your zombie infection is now at stage two! Zombie transformation begins at stage three."))
+				to_chat(infected_mob, SPAN_CENTERBOLD("你的僵尸感染现已进入第二阶段！僵尸转化将在第三阶段开始。"))
 				stage_counter = stage
 
 			if(infected_mob.stat != DEAD)
@@ -105,19 +105,19 @@
 					if(0 to 25)
 						return
 					if(25 to 50)
-						to_chat(infected_mob, SPAN_DANGER("You can't trust them..."))
+						to_chat(infected_mob, SPAN_DANGER("你不能相信他们..."))
 						stage_level += 5
 					if(50 to 75)
-						to_chat(infected_mob, SPAN_DANGER("You feel really warm..."))
+						to_chat(infected_mob, SPAN_DANGER("你感到非常燥热..."))
 						stage_level += 9
 					if(75 to 85)
-						to_chat(infected_mob, SPAN_DANGER("Your throat is really dry..."))
+						to_chat(infected_mob, SPAN_DANGER("你的喉咙异常干渴..."))
 						stage_level += 18
 					if(85 to 95)
 						infected_mob.vomit_on_floor()
 						stage_level += 36
 					if(95 to 100)
-						to_chat(infected_mob, SPAN_DANGER("You cough up some black fluid..."))
+						to_chat(infected_mob, SPAN_DANGER("你咳出了一些黑色液体..."))
 						stage_level += 42
 
 		if(ZOMBIE_INFECTION_STAGE_THREE)
@@ -129,7 +129,7 @@
 			if(!zombie_is_transforming)
 				// if your dead we inform you that you're going to turn into a zombie.
 				if(infected_mob.stat == DEAD && stage_counter != stage)
-					to_chat(infected_mob, SPAN_CENTERBOLD("Your zombie infection is now at stage three! Zombie transformation begin!"))
+					to_chat(infected_mob, SPAN_CENTERBOLD("你的僵尸感染现已进入第三阶段！僵尸转化开始！"))
 					stage_counter = stage
 				zombie_transform(infected_mob)
 				hidden = list(0,0)
@@ -189,12 +189,12 @@
 		var/mob/living/carbon/human/human = target
 
 		if(locate(/datum/disease/black_goo) in human.viruses)
-			to_chat(user, SPAN_XENOWARNING("<b>You sense your target is infected.</b>"))
+			to_chat(user, SPAN_XENOWARNING("<b>你感知到你的目标已被感染。</b>"))
 		else
 			var/bio_protected = max(CLOTHING_ARMOR_HARDCORE - human.getarmor(user.zone_selected, ARMOR_BIO), 0)
 			if(prob(bio_protected))
 				target.AddDisease(new /datum/disease/black_goo)
-				to_chat(user, SPAN_XENOWARNING("<b>You sense your target is now infected.</b>"))
+				to_chat(user, SPAN_XENOWARNING("<b>你感知到你的目标现在已被感染。</b>"))
 
 	target.apply_effect(2, SLOW)
 
@@ -206,19 +206,19 @@
 		if(!D.density)
 			return
 		if(D.heavy)
-			to_chat(usr, SPAN_DANGER("[D] is too heavy to be forced open."))
+			to_chat(usr, SPAN_DANGER("[D]太重了，无法强行撬开。"))
 			return FALSE
 		if(user.action_busy || user.a_intent == INTENT_HARM)
 			return
 
-		user.visible_message(SPAN_DANGER("[user] jams their [name] into [O] and strains to rip it open."),
+		user.visible_message(SPAN_DANGER("[user]将他们的[name]卡入[O]，用力试图将其撬开。"),
 		SPAN_DANGER("You jam your [name] into [O] and strain to rip it open."))
 		playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, 1)
 		if(do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			if(!D.density)
 				return
 
-			user.visible_message(SPAN_DANGER("[user] forces [O] open with their [name]."),
+			user.visible_message(SPAN_DANGER("[user]用他们的[name]强行撬开了[O]。"),
 			SPAN_DANGER("You force [O] open with your [name]."))
 			D.open(1)
 
@@ -228,17 +228,17 @@
 			return
 		if(!D.density || user.action_busy || user.a_intent == INTENT_HARM)
 			return
-		user.visible_message(SPAN_DANGER("[user] jams their [name] into [D] and strains to rip it open."),
+		user.visible_message(SPAN_DANGER("[user]将他们的[name]卡入[D]，用力试图将其撬开。"),
 		SPAN_DANGER("You jam your [name] into [D] and strain to rip it open."))
 		playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
 		if(do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && D.density)
-			user.visible_message(SPAN_DANGER("[user] forces [D] open with their [name]."),
+			user.visible_message(SPAN_DANGER("[user]用他们的[name]强行撬开了[D]。"),
 			SPAN_DANGER("You force [D] open with your [name]."))
 			D.open()
 
 /obj/item/reagent_container/food/drinks/bottle/black_goo
-	name = "strange bottle"
-	desc = "A strange bottle of unknown origin."
+	name = "奇怪的瓶子"
+	desc = "一个来源不明的奇怪瓶子。"
 	icon = 'icons/obj/items/black_goo_stuff.dmi'
 	icon_state = "blackgoo"
 	garbage = FALSE
@@ -249,8 +249,8 @@
 
 
 /obj/item/reagent_container/food/drinks/bottle/black_goo_cure
-	name = "even stranger bottle"
-	desc = "A bottle of black labeled CURE..."
+	name = "更加奇怪的瓶子"
+	desc = "一瓶标有CURE的黑色瓶子..."
 	icon = 'icons/obj/items/black_goo_stuff.dmi'
 	icon_state = "blackgoo"
 
@@ -260,15 +260,15 @@
 
 /obj/item/reagent_container/glass/bottle/labeled_black_goo_cure
 	name = "\"Pathogen\" cure bottle"
-	desc = "The bottle has a biohazard symbol on the front, and has a label, designating its use against Agent A0-3959X.91–15, colloquially known as the \"Black Goo\"."
+	desc = "瓶子正面有一个生物危害标志，并贴有标签，标明其用于对抗A0-3959X.91–15号制剂，俗称\"Black Goo\"."
 
 /obj/item/reagent_container/glass/bottle/labeled_black_goo_cure/Initialize()
 	. = ..()
 	reagents.add_reagent("antiZed", 60)
 
 /datum/language/zombie
-	name = "Zombie"
-	desc = "A growling, guttural method of communication, only Zombies seem to be capable of producing these sounds."
+	name = "僵尸"
+	desc = "一种低吼、喉音式的交流方式，似乎只有僵尸能发出这种声音。"
 	speech_verb = "growls"
 	ask_verb = "grumbles"
 	exclaim_verb = "snarls"
@@ -280,7 +280,7 @@
 	return pick("Urrghh...", "Rrraaahhh...", "Aaaarghhh...", "Mmmrrrgggghhh...", "Huuuuhhhh...", "Sssssgrrrr...")
 
 /obj/item/clothing/glasses/zombie_eyes
-	name = "zombie eyes"
+	name = "僵尸之眼"
 	gender = PLURAL
 	icon = 'icons/obj/items/clothing/glasses/misc.dmi'
 	item_icons = list(
@@ -299,8 +299,8 @@
 	icon = 'icons/obj/items/black_goo_stuff.dmi'
 	icon_state = "goobox"
 	icon_type = "goo"
-	name = "strange canister"
-	desc = "A strange looking metal container."
+	name = "奇怪的罐子"
+	desc = "一个外观奇怪的金属容器。"
 	storage_slots = 3
 	can_hold = list(/obj/item/reagent_container/food/drinks/bottle/black_goo)
 

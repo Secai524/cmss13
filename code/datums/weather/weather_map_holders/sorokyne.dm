@@ -1,7 +1,7 @@
 //// Sorokyne's map holder
 
 /datum/weather_ss_map_holder/sorokyne
-	name = "Sorokyne Map Holder"
+	name = "索罗金地图架"
 
 	min_time_between_events = 30 MINUTES
 	no_weather_turf_icon_state = "strata_clearsky"

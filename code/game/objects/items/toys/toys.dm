@@ -30,8 +30,8 @@
  * Balloons
  */
 /obj/item/toy/balloon
-	name = "water balloon"
-	desc = "A translucent balloon. There's nothing in it."
+	name = "水球"
+	desc = "一个半透明的气球。里面是空的。"
 	icon_state = "waterballoon-e"
 	item_state = "balloon-empty"
 
@@ -47,7 +47,7 @@
 		return
 	if (istype(A, /obj/structure/reagent_dispensers/tank/water) && get_dist(src,A) <= 1)
 		A.reagents.trans_to(src, 10)
-		to_chat(user, SPAN_NOTICE("You fill the balloon with the contents of [A]."))
+		to_chat(user, SPAN_NOTICE("你用[A]的内容物装满了气球。"))
 		src.desc = "A translucent balloon with some form of liquid sloshing around in it."
 		src.update_icon()
 	return
@@ -56,22 +56,22 @@
 	if(istype(O, /obj/item/reagent_container/glass))
 		if(O.reagents)
 			if(O.reagents.total_volume < 1)
-				to_chat(user, SPAN_WARNING("[O] is empty."))
+				to_chat(user, SPAN_WARNING("[O]是空的。"))
 			else if(O.reagents.total_volume >= 1)
 				if(O.reagents.has_reagent("pacid", 1))
-					to_chat(user, SPAN_WARNING("The acid chews through the balloon!"))
+					to_chat(user, SPAN_WARNING("酸液腐蚀了气球！"))
 					O.reagents.reaction(user)
 					qdel(src)
 				else
 					src.desc = "A translucent balloon with some form of liquid sloshing around in it."
-					to_chat(user, SPAN_NOTICE("You fill the balloon with the contents of [O]."))
+					to_chat(user, SPAN_NOTICE("你用[O]的内容物装满了气球。"))
 					O.reagents.trans_to(src, 10)
 	src.update_icon()
 	return
 
 /obj/item/toy/balloon/launch_impact(atom/hit_atom)
 	if(src.reagents.total_volume >= 1)
-		src.visible_message(SPAN_DANGER("[src] bursts!"),"You hear a pop and a splash.")
+		src.visible_message(SPAN_DANGER("[src]爆裂了！"),"You hear a pop and a splash.")
 		src.reagents.reaction(get_turf(hit_atom))
 		for(var/atom/A in get_turf(hit_atom))
 			src.reagents.reaction(A)
@@ -90,8 +90,8 @@
 		item_state = "balloon-empty"
 
 /obj/item/toy/syndicateballoon
-	name = "syndicate balloon"
-	desc = "There is a tag on the back that reads \"FUK WY!11!\"."
+	name = "辛迪加气球"
+	desc = "背面有一个标签，上面写着\"FUK WY!11!\"."
 	throwforce = 0
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
@@ -105,8 +105,8 @@
  * Fake telebeacon
  */
 /obj/item/toy/blink
-	name = "electronic blink toy game"
-	desc = "Blink... Blink... Blink... For ages 8 and up."
+	name = "电子闪烁玩具游戏"
+	desc = "闪烁...闪烁...闪烁...适合8岁及以上儿童。"
 	icon = 'icons/obj/items/radio.dmi'
 	icon_state = "beacon"
 	item_state = "signaller"
@@ -115,7 +115,7 @@
  * Fake singularity
  */
 /obj/item/toy/spinningtoy
-	name = "Gravitational Singularity"
+	name = "引力奇点"
 	desc = "\"Singulo\" brand spinning toy."
 	icon = 'icons/obj/structures/props/singularity.dmi'
 	icon_state = "singularity_s1"
@@ -127,7 +127,7 @@
 
 /obj/item/toy/crayon
 	name = "crayon"
-	desc = "A colorful crayon. Please refrain from eating it or putting it in your nose."
+	desc = "一支彩色蜡笔。请不要食用或塞入鼻孔。"
 	icon = 'icons/obj/items/paint.dmi'
 	icon_state = "crayonred"
 	item_icons = list(
@@ -147,8 +147,8 @@
  * Snap pops
  */
 /obj/item/toy/snappop
-	name = "snap pop"
-	desc = "Wow!"
+	name = "摔炮"
+	desc = "哇！"
 	icon_state = "snappop"
 	w_class = SIZE_TINY
 
@@ -158,20 +158,20 @@
 	s.set_up(3, 1, src)
 	s.start()
 	new /obj/effect/decal/cleanable/ash(src.loc)
-	src.visible_message(SPAN_DANGER("The [src.name] explodes!"),SPAN_DANGER("You hear a snap!"))
+	src.visible_message(SPAN_DANGER("这个[src.name]爆炸了！"),SPAN_DANGER("You hear a snap!"))
 	playsound(src, 'sound/effects/snap.ogg', 25, 1)
 	qdel(src)
 
 /obj/item/toy/snappop/Crossed(H as mob|obj)
 	if((ishuman(H))) //i guess carp and shit shouldn't set them off
 		var/mob/living/carbon/M = H
-		to_chat(M, SPAN_WARNING("You step on the snap pop!"))
+		to_chat(M, SPAN_WARNING("你踩到了摔炮！"))
 
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(2, 0, src)
 		s.start()
 		new /obj/effect/decal/cleanable/ash(src.loc)
-		src.visible_message(SPAN_DANGER("The [src.name] explodes!"),SPAN_DANGER("You hear a snap!"))
+		src.visible_message(SPAN_DANGER("这个[src.name]爆炸了！"),SPAN_DANGER("You hear a snap!"))
 		playsound(src, 'sound/effects/snap.ogg', 25, 1)
 		qdel(src)
 
@@ -179,8 +179,8 @@
  * Water flower
  */
 /obj/item/toy/waterflower
-	name = "Water Flower"
-	desc = "A seemingly innocent sunflower...with a twist."
+	name = "水花"
+	desc = "一朵看似无害的向日葵……暗藏玄机。"
 	icon = 'icons/obj/items/harvest.dmi'
 	icon_state = "sunflower"
 	item_state = "sunflower"
@@ -205,12 +205,12 @@
 
 	else if (istype(A, /obj/structure/reagent_dispensers/tank/water) && get_dist(src,A) <= 1)
 		A.reagents.trans_to(src, 10)
-		to_chat(user, SPAN_NOTICE("You refill your flower!"))
+		to_chat(user, SPAN_NOTICE("你重新装满了你的水花！"))
 		return
 
 	else if (src.reagents.total_volume < 1)
 		src.empty = 1
-		to_chat(user, SPAN_NOTICE("Your flower has run dry!"))
+		to_chat(user, SPAN_NOTICE("你的水花已经没水了！"))
 		return
 
 	else
@@ -232,7 +232,7 @@
 				for(var/atom/T in get_turf(D))
 					D.reagents.reaction(T)
 					if(ismob(T) && T:client)
-						to_chat(T:client, SPAN_WARNING("[user] has sprayed you with water!"))
+						to_chat(T:client, SPAN_WARNING("[user]用水喷了你！"))
 				sleep(4)
 			qdel(D)
 
@@ -256,78 +256,78 @@
 	..()
 
 	if(cooldown < world.time - 8)
-		to_chat(user, SPAN_NOTICE("You play with [src]."))
+		to_chat(user, SPAN_NOTICE("你玩着[src]。"))
 		playsound(user, 'sound/mecha/mechstep.ogg', 15, 1)
 		cooldown = world.time
 
 /obj/item/toy/prize/attack_hand(mob/user)
 	if(loc == user)
 		if(cooldown < world.time - 8)
-			to_chat(user, SPAN_NOTICE("You play with [src]."))
+			to_chat(user, SPAN_NOTICE("你玩着[src]。"))
 			playsound(user, 'sound/mecha/mechturn.ogg', 15, 1)
 			cooldown = world.time
 			return
 	..()
 
 /obj/item/toy/prize/ripley
-	name = "toy ripley"
-	desc = "Mini-Mecha action figure! Collect them all! 1/11."
+	name = "雷普利玩具"
+	desc = "迷你机甲可动人偶！集齐全套！1/11。"
 
 /obj/item/toy/prize/fireripley
-	name = "toy firefighting ripley"
-	desc = "Mini-Mecha action figure! Collect them all! 2/11."
+	name = "消防雷普利玩具"
+	desc = "迷你机甲可动人偶！集齐全套！2/11。"
 	icon_state = "fireripleytoy"
 
 /obj/item/toy/prize/deathripley
-	name = "toy deathsquad ripley"
-	desc = "Mini-Mecha action figure! Collect them all! 3/11."
+	name = "死亡小队雷普利玩具"
+	desc = "迷你机甲可动人偶！集齐全套！3/11。"
 	icon_state = "deathripleytoy"
 
 /obj/item/toy/prize/gygax
-	name = "toy gygax"
-	desc = "Mini-Mecha action figure! Collect them all! 4/11."
+	name = "吉格斯玩具"
+	desc = "迷你机甲可动人偶！集齐全套！4/11。"
 	icon_state = "gygaxtoy"
 
 
 /obj/item/toy/prize/durand
-	name = "toy durand"
-	desc = "Mini-Mecha action figure! Collect them all! 5/11."
+	name = "杜兰德玩具"
+	desc = "迷你机甲可动人偶！集齐全套！5/11。"
 	icon_state = "durandprize"
 
 /obj/item/toy/prize/honk
-	name = "toy H.O.N.K."
-	desc = "Mini-Mecha action figure! Collect them all! 6/11."
+	name = "玩具 H.O.N.K."
+	desc = "迷你机甲可动人偶！集齐全套！6/11。"
 	icon_state = "honkprize"
 
 /obj/item/toy/prize/marauder
-	name = "toy marauder"
-	desc = "Mini-Mecha action figure! Collect them all! 7/11."
+	name = "玩具掠夺者"
+	desc = "迷你机甲可动人偶！集齐全套！7/11。"
 	icon_state = "marauderprize"
 
 /obj/item/toy/prize/seraph
-	name = "toy seraph"
-	desc = "Mini-Mecha action figure! Collect them all! 8/11."
+	name = "玩具六翼天使"
+	desc = "迷你机甲可动人偶！集齐全套！8/11。"
 	icon_state = "seraphprize"
 
 /obj/item/toy/prize/mauler
-	name = "toy mauler"
-	desc = "Mini-Mecha action figure! Collect them all! 9/11."
+	name = "玩具粉碎者"
+	desc = "迷你机甲可动人偶！集齐全套！9/11。"
 	icon_state = "maulerprize"
 
 /obj/item/toy/prize/odysseus
-	name = "toy odysseus"
-	desc = "Mini-Mecha action figure! Collect them all! 10/11."
+	name = "玩具奥德修斯"
+	desc = "迷你机甲可动人偶！集齐全套！10/11。"
 	icon_state = "odysseusprize"
 
 /obj/item/toy/prize/phazon
-	name = "toy phazon"
-	desc = "Mini-Mecha action figure! Collect them all! 11/11."
+	name = "玩具法泽恩"
+	desc = "迷你机甲可动人偶！集齐全套！11/11。"
 	icon_state = "phazonprize"
 
 
 /obj/item/toy/inflatable_duck
-	name = "inflatable duck"
-	desc = "No bother to sink or swim when you can just float!"
+	name = "充气鸭"
+	desc = "既然能浮着，何必纠结沉浮！"
 	icon_state = "inflatable"
 	item_state = "inflatable"
 	icon = 'icons/obj/items/clothing/belts/misc.dmi'
@@ -338,7 +338,7 @@
 	black_market_value = 20
 
 /obj/item/toy/beach_ball
-	name = "beach ball"
+	name = "沙滩球"
 	icon_state = "beachball"
 	item_state = "beachball"
 	density = FALSE
@@ -355,7 +355,7 @@
 
 /obj/item/toy/dice
 	name = "d6"
-	desc = "A die with six sides."
+	desc = "一个六面骰子。"
 	icon = 'icons/obj/items/dice.dmi'
 	icon_state = "d66"
 	w_class = SIZE_TINY
@@ -368,7 +368,7 @@
 
 /obj/item/toy/dice/d20
 	name = "d20"
-	desc = "A die with twenty sides."
+	desc = "一个二十面骰子。"
 	icon_state = "d2020"
 	sides = 20
 
@@ -381,13 +381,13 @@
 	else if(sides == 20 && result == 1)
 		comment = "Ouch, bad luck."
 	icon_state = "[name][result]"
-	user.visible_message(SPAN_NOTICE("[user] has thrown [src]. It lands on [result]. [comment]"),
+	user.visible_message(SPAN_NOTICE("[user]掷出了[src]。结果是[result]。[comment]"),
 						SPAN_NOTICE("You throw [src]. It lands on a [result]. [comment]"),
 						SPAN_NOTICE("You hear [src] landing on a [result]. [comment]"))
 
 /obj/item/toy/bikehorn
-	name = "bike horn"
-	desc = "A horn off of a bicycle."
+	name = "自行车喇叭"
+	desc = "一个从自行车上拆下来的喇叭。"
 	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "bike_horn"
 	item_state = "bike_horn"
@@ -411,14 +411,14 @@
 
 // rubber duck
 /obj/item/toy/bikehorn/rubberducky
-	name = "rubber ducky"
-	desc = "Rubber ducky you're so fine, you make bathtime lots of fuuun. Rubber ducky I'm awfully fooooond of yooooouuuu~" //thanks doohl
+	name = "橡皮小鸭"
+	desc = "橡皮小鸭你真棒，洗澡时光乐陶陶。橡皮小鸭我真是，好喜欢好喜欢你~" //thanks doohl
 	icon_state = "rubberducky"
 	item_state = "rubberducky"
 
 /obj/item/computer3_part
-	name = "computer part"
-	desc = "Holy jesus you donnit now."
+	name = "电脑零件"
+	desc = "老天爷啊，这下你可闯祸了。"
 	gender = PLURAL
 	icon = 'icons/obj/structures/machinery/stock_parts.dmi'
 	icon_state = "hdd1"
@@ -452,7 +452,7 @@
 
 /obj/item/toy/festivizer
 	name = "\improper C92 pattern 'Festivizer' decorator"
-	desc = "State of the art, WY-brand, high tech... ah who are we kidding, it's just a festivizer. You spot a label on it that says: <i> Attention: This device does not cover item in festive wire, but rather paints it a festive color. </i> What a rip!"
+	desc = "最先进的、维兰德品牌、高科技……啊，骗谁呢，就是个节日装饰器。你发现上面有个标签写着：<i> 注意：本设备并非用节日彩线包裹物品，而是将其涂成节日颜色。</i> 真坑人！"
 	icon = 'icons/obj/items/marine-items_christmas.dmi'
 	icon_state = "festive_wire"
 	attack_speed = 0.8 SECONDS
@@ -474,7 +474,7 @@
 	var/red = prob(50)
 	target.color = list(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1, red? 0.2 : 0,!red? 0.2 : 0,0,0)
 	target.visible_message(SPAN_GREEN("\The [target] has been festivized by [user]! Merry Christmas!"))
-	to_chat(user, SPAN_GREEN("You festivize \the [target]! Merry Christmas!"))
+	to_chat(user, SPAN_GREEN("你为\the [target]增添了节日气氛！圣诞快乐！"))
 	playsound(user, pick(95;'sound/items/jingle_short.wav', 5;'sound/items/jingle_long.wav'), 25, TRUE)
 	if(prob(5))
 		playsound(target, pick('sound/voice/alien_queen_xmas.ogg', 'sound/voice/alien_queen_xmas_2.ogg'), 25, TRUE)
@@ -485,12 +485,12 @@
 	return XENO_NONCOMBAT_ACTION
 
 /obj/item/toy/festivizer/xeno
-	name = "strange resin-covered festivizer decorator"
-	desc = "This bizarre festivizer is covered in goopy goop and schmuck. Ew! It's so sticky, *anything* could grab onto it! Grab it and touch other things to festivize them!"
+	name = "奇怪的、覆盖着树脂的节日装饰器"
+	desc = "这个怪异的节日装饰器覆盖着黏糊糊的胶状物和污渍。真恶心！它太黏了，*任何东西*都能粘上去！抓住它并触碰其他东西来为它们增添节日气氛！"
 
 /obj/item/toy/plush
-	name = "generic plushie"
-	desc = "Perfectly generic."
+	name = "普通毛绒玩具"
+	desc = "非常普通。"
 	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "debug"
 	w_class = SIZE_SMALL
@@ -501,75 +501,75 @@
 	..()
 	if(!COOLDOWN_FINISHED(src, last_hug_time))
 		return
-	user.visible_message(SPAN_NOTICE("[user] hugs [src] tightly!"), SPAN_NOTICE("You hug [src]."))
+	user.visible_message(SPAN_NOTICE("[user]紧紧地拥抱了[src]！"), SPAN_NOTICE("You hug [src]."))
 	playsound(user, "plush", 25, TRUE)
 	COOLDOWN_START(src, last_hug_time, 2.5 SECONDS)
 
 /obj/item/toy/plush/farwa
-	name = "Farwa plush"
-	desc = "A Farwa plush doll. It's soft and comforting!"
+	name = "法瓦玩偶"
+	desc = "一个法瓦毛绒玩偶。它柔软又令人安心！"
 	icon_state = "farwa"
 	item_state = "farwaplush"
 	black_market_value = 25
 
 /obj/item/toy/plush/barricade
-	name = "plushie barricade"
-	desc = "Great for squeezing whenever you're scared. Or lightly hurt. Or in any other situation."
+	name = "毛绒玩具路障"
+	desc = "在你害怕、轻微受伤或任何其他情况下，都非常适合用来挤压。"
 	icon_state = "barricade"
 	item_state = "plushie_cade"
 
 /obj/item/toy/plush/shark //A few more generic plushies to increase the size of the plushie loot pool
-	name = "shark plush"
-	desc = "A plushie depicting a somewhat cartoonish shark. The tag notes that it was made by an obscure furniture manufacturer in Scandinavia."
+	name = "鲨鱼毛绒玩具"
+	desc = "一个描绘了有些卡通化的鲨鱼的毛绒玩具。标签上注明它由斯堪的纳维亚一家不知名的家具制造商生产。"
 	icon_state = "shark"
 
 /obj/item/toy/plush/bee
-	name = "bee plush"
-	desc = "A cute toy that awakens the warrior spirit in the most reserved marine."
+	name = "蜜蜂毛绒玩具"
+	desc = "一个可爱的玩具，能唤醒最沉默寡言的陆战队员心中的战士精神。"
 	icon_state = "bee"
 
 /obj/item/toy/plush/rock
-	name = "rock plush"
-	desc = "It says it is a plush on the tag, at least."
+	name = "岩石毛绒玩具"
+	desc = "至少标签上说它是一个毛绒玩具。"
 	icon_state = "rock"
 
 /obj/item/toy/plush/gnarp
-	name = "gnarp plush"
-	desc = "Gnarp gnarp."
+	name = "格纳普毛绒玩具"
+	desc = "格纳普 格纳普。"
 	icon_state = "gnarp"
 
 /obj/item/toy/plush/gnarp/alt
-	name = "gnarp plush"
-	desc = "Gnarp gnarp."
+	name = "格纳普毛绒玩具"
+	desc = "格纳普 格纳普。"
 	icon_state = "gnarp_alt"
 
 /obj/item/toy/plush/therapy
-	name = "therapy plush"
-	desc = "A therapeutic toy to assist marines in recovering from mental and behavioral disorders after experiencing the trauma of battles."
+	name = "治疗用毛绒玩具"
+	desc = "一种治疗性玩具，用于协助陆战队员在经历战斗创伤后，从精神和行为障碍中恢复。"
 	icon_state = "therapy"
 
 /obj/item/toy/plush/therapy/red
-	name = "red therapy plush"
+	name = "红色治疗用毛绒玩具"
 	color = "#FC5274"
 
 /obj/item/toy/plush/therapy/blue
-	name = "blue therapy plush"
+	name = "蓝色治疗用毛绒玩具"
 	color = "#9EBAE0"
 
 /obj/item/toy/plush/therapy/green
-	name = "green therapy plush"
+	name = "绿色治疗用毛绒玩具"
 	color = "#A3C940"
 
 /obj/item/toy/plush/therapy/orange
-	name = "orange therapy plush"
+	name = "橙色治疗用毛绒玩具"
 	color = "#FD8535"
 
 /obj/item/toy/plush/therapy/purple
-	name = "purple therapy plush"
+	name = "紫色治疗用毛绒玩具"
 	color = "#A26AC7"
 
 /obj/item/toy/plush/therapy/yellow
-	name = "yellow therapy plush"
+	name = "黄色治疗用毛绒玩具"
 	color = "#FFE492"
 
 /obj/item/toy/plush/therapy/random_color
@@ -580,11 +580,11 @@
 	. = ..()
 	var/color_code = "#[pick(hexadecimal)][pick(hexadecimal)][pick(hexadecimal)][pick(hexadecimal)][pick(hexadecimal)][pick(hexadecimal)]" //This is dumb and I hope theres a better way I'm missing
 	color = color_code
-	desc = "A custom therapy plush, in a unique color."
+	desc = "一个定制版治疗玩偶，颜色独特。"
 
 /obj/item/toy/plush/random_plushie //Not using an effect so it can fit into storage from loadout
-	name = "random plush"
-	desc = "This plush looks awfully standard and bland. Is it actually yours?"
+	name = "随机玩偶"
+	desc = "这个玩偶看起来极其普通乏味。它真是你的吗？"
 	/// Standard plushies for the spawner to pick from
 	var/list/plush_list = list(
 		/obj/item/toy/plush/farwa,
@@ -641,14 +641,14 @@
 
 //Admin plushies
 /obj/item/toy/plush/yautja
-	name = "strange plush"
-	desc = "A plush doll depicting some sort of tall humanoid biped..?"
+	name = "奇怪的玩偶"
+	desc = "一个描绘了某种高大类人双足生物的玩偶..？"
 	icon_state = "yautja"
 	black_market_value = 100
 
 /obj/item/toy/plush/runner
 	name = "\improper XX-121 therapy plush"
-	desc = "Don't be sad! Be glad (that you're alive)!"
+	desc = "别难过！要高兴（你还活着）！"
 	icon_state = "runner"
 	/// If the runner is wearing a beret
 	var/beret = FALSE
@@ -665,7 +665,7 @@
 	if(!istypestrict(attacking_object, /obj/item/clothing/head/beret/marine/mp))
 		return
 	var/beret_attack = attacking_object
-	to_chat(user, SPAN_NOTICE("You put [beret_attack] on [src]."))
+	to_chat(user, SPAN_NOTICE("你将[beret_attack]戴在[src]头上。"))
 	qdel(beret_attack)
 	beret = TRUE
 	update_icon()

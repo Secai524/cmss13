@@ -8,10 +8,10 @@
 */
 
 /obj/structure/machinery/telecomms/broadcaster
-	name = "Subspace Broadcaster"
+	name = "子空间广播器"
 	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	icon_state = "broadcaster"
-	desc = "A dish-shaped machine used to broadcast processed subspace signals."
+	desc = "一种碟形机器，用于广播处理过的子空间信号。"
 	density = TRUE
 	anchored = TRUE
 	use_power = USE_POWER_IDLE

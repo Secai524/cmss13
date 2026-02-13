@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(hijack)
-	name   = "Hijack"
+	name   = "劫持"
 	wait   = 2 SECONDS
 	flags  = SS_KEEP_TIMING
 	priority   = SS_PRIORITY_HIJACK
@@ -173,7 +173,7 @@ SUBSYSTEM_DEF(hijack)
 	var/message = ""
 
 	for(var/area/cycled_area as anything in progress_areas)
-		message += "[cycled_area] - [cycled_area.power_equip ? "Online" : "Offline"]\n"
+		message += "[cycled_area] - [cycled_area.power_equip ? "在线" : "离线"]\n"
 		progress_areas[cycled_area] = cycled_area.power_equip
 
 	message += "\nDue to low orbit, extra fuel is required for non-surface evacuations.\nMaintain fueling functionality for optimal evacuation conditions."
@@ -182,7 +182,7 @@ SUBSYSTEM_DEF(hijack)
 
 ///Called when an area power status is changed to announce that it has been changed
 /datum/controller/subsystem/hijack/proc/announce_area_power_change(area/changed_area)
-	var/message = "[changed_area] - [changed_area.power_equip ? "Online" : "Offline"]"
+	var/message = "[changed_area] - [changed_area.power_equip ? "在线" : "离线"]"
 
 	marine_announcement(message, HIJACK_ANNOUNCE)
 
@@ -223,13 +223,13 @@ SUBSYSTEM_DEF(hijack)
 
 	switch(announce)
 		if(1)
-			marine_announcement("Emergency fuel replenishment is at 25%. Lifeboat early launch is now available. Recommendation: wait for 100% fuel for safety purposes.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
+			marine_announcement("紧急燃料补充已达25%。救生艇现在可以提前发射。建议：为安全起见，等待燃料达到100%。[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
 		if(2)
-			marine_announcement("Emergency fuel replenishment is at 50%.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
+			marine_announcement("紧急燃料补充已达50%。[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
 		if(3)
-			marine_announcement("Emergency fuel replenishment is at 75%.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
+			marine_announcement("紧急燃料补充已达75%。[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
 		if(4)
-			marine_announcement("Emergency fuel replenishment is at 100%. Safe utilization of lifeboats and pods is now possible.", HIJACK_ANNOUNCE)
+			marine_announcement("紧急燃料补充已达100%。现在可以安全使用救生艇和逃生舱。", HIJACK_ANNOUNCE)
 			if(!admin_sd_blocked)
 				addtimer(CALLBACK(src, PROC_REF(unlock_self_destruct)), 8 SECONDS)
 
@@ -259,7 +259,7 @@ SUBSYSTEM_DEF(hijack)
 /datum/controller/subsystem/hijack/proc/initiate_evacuation()
 	if(evac_status == EVACUATION_STATUS_NOT_INITIATED && !(evac_admin_denied & FLAGS_EVACUATION_DENY))
 		evac_status = EVACUATION_STATUS_INITIATED
-		ai_announcement("Attention. Emergency. All personnel must evacuate immediately.", 'sound/AI/evacuate.ogg')
+		ai_announcement("注意。紧急情况。所有人员必须立即撤离。", 'sound/AI/evacuate.ogg')
 
 		for(var/obj/structure/machinery/status_display/cycled_status_display in GLOB.machines)
 			if(is_mainship_level(cycled_status_display.z))
@@ -274,7 +274,7 @@ SUBSYSTEM_DEF(hijack)
 	if(evac_status == EVACUATION_STATUS_INITIATED)
 		evac_status = EVACUATION_STATUS_NOT_INITIATED
 		deactivate_lifeboats()
-		ai_announcement("Evacuation has been cancelled.", 'sound/AI/evacuate_cancelled.ogg')
+		ai_announcement("撤离已取消。", 'sound/AI/evacuate_cancelled.ogg')
 
 		for(var/obj/structure/machinery/status_display/cycled_status_display in GLOB.machines)
 			if(is_mainship_level(cycled_status_display.z))
@@ -304,7 +304,7 @@ SUBSYSTEM_DEF(hijack)
 /datum/controller/subsystem/hijack/proc/unlock_self_destruct()
 	sd_time_remaining = sd_max_time
 	sd_unlocked = TRUE
-	marine_announcement("Fuel reserves full. Manual detonation of fuel reserves by overloading the on-board fusion reactors now possible.", HIJACK_ANNOUNCE)
+	marine_announcement("燃料储备已满。现在可以通过过载船载聚变反应堆手动引爆燃料储备。", HIJACK_ANNOUNCE)
 
 /datum/controller/subsystem/hijack/proc/on_generator_overload(obj/structure/machinery/power/power_generator/reactor/source, new_overloading)
 	SIGNAL_HANDLER
@@ -338,7 +338,7 @@ SUBSYSTEM_DEF(hijack)
 	for(var/mob/current_mob as anything in GLOB.mob_list)
 		var/area/mob_area = get_area(current_mob)
 		if(istype(mob_area, /area/almayer/engineering/lower/engine_core))
-			to_chat(current_mob, SPAN_BOLDWARNING("You feel the heat of the room increase as the fusion engines whirr louder."))
+			to_chat(current_mob, SPAN_BOLDWARNING("随着聚变引擎的轰鸣声越来越大，你感到房间的温度在升高。"))
 
 /datum/controller/subsystem/hijack/proc/superheat_engine_room()
 	engine_room_superheated = TRUE
@@ -348,11 +348,11 @@ SUBSYSTEM_DEF(hijack)
 	for(var/mob/current_mob as anything in GLOB.mob_list)
 		var/area/mob_area = get_area(current_mob)
 		if(istype(mob_area, /area/almayer/engineering/lower/engine_core))
-			to_chat(current_mob, SPAN_BOLDWARNING("The room feels incredibly hot, you can't take much more of this!"))
+			to_chat(current_mob, SPAN_BOLDWARNING("房间感觉异常炎热，你快要受不了了！"))
 
 /datum/controller/subsystem/hijack/proc/announce_sd_halfway()
 	ares_sd_announced = TRUE
-	marine_announcement("ALERT: Fusion reactor meltdown has reached fifty percent.", HIJACK_ANNOUNCE)
+	marine_announcement("警报：聚变反应堆熔毁已达百分之五十。", HIJACK_ANNOUNCE)
 
 /datum/controller/subsystem/hijack/proc/detonate_sd()
 	set waitfor = FALSE
@@ -364,13 +364,13 @@ SUBSYSTEM_DEF(hijack)
 		if(!current_mob?.loc || !current_mob.client || !current_turf || !is_mainship_level(current_turf.z))
 			continue
 
-		to_chat(current_mob, SPAN_BOLDWARNING("The ship's deck worryingly creaks underneath you."))
+		to_chat(current_mob, SPAN_BOLDWARNING("你脚下的甲板令人不安地吱嘎作响。"))
 		playsound_client(current_mob.client, creak_picked, vol = 50)
 
 	sleep(7 SECONDS)
 	shakeship(2, 10, TRUE)
 
-	marine_announcement("ALERT: Fusion reactors dangerously overloaded. Runaway meltdown in reactor core imminent.", HIJACK_ANNOUNCE)
+	marine_announcement("警报：聚变反应堆危险过载。反应堆核心即将发生失控熔毁。", HIJACK_ANNOUNCE)
 	sleep(5 SECONDS)
 
 	var/sound_picked = pick('sound/theme/nuclear_detonation1.ogg','sound/theme/nuclear_detonation2.ogg')

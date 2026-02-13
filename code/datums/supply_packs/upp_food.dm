@@ -1,5 +1,5 @@
 /datum/supply_packs/upp/potato_crate
-	name = "UPP Surplus boxes of potato (x10 boxes) (x700 potatos)"
+	name = "UPP剩余土豆箱 (x10箱) (x700个土豆)"
 	contains = list(
 		/obj/item/storage/box/potato,
 		/obj/item/storage/box/potato,
@@ -19,7 +19,7 @@
 	group = "UPP Food"
 
 /datum/supply_packs/upp/ration_crate
-	name = "UPP IRP crate (x2)"
+	name = "UPP IRP箱 (x2)"
 	contains = list(
 		/obj/item/ammo_box/magazine/misc/mre/upp,
 		/obj/item/ammo_box/magazine/misc/mre/upp,

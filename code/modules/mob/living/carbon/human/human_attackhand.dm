@@ -10,7 +10,7 @@
 	SEND_SIGNAL(attacking_mob, COMSIG_LIVING_ATTACKHAND_HUMAN, src)
 
 	if((attacking_mob != src) && check_shields(attacking_mob.name, get_dir(src, attacking_mob), custom_response = TRUE))
-		visible_message(SPAN_DANGER("<B>[attacking_mob] attempted to touch [src]!</B>"), null, null, 5)
+		visible_message(SPAN_DANGER("<B>[attacking_mob]试图触碰[src]！</B>"), null, null, 5)
 		return FALSE
 
 	switch(attacking_mob.a_intent)
@@ -19,10 +19,10 @@
 			if(on_fire && attacking_mob != src)
 				adjust_fire_stacks(-10, min_stacks = 0)
 				playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
-				attacking_mob.visible_message(SPAN_DANGER("[attacking_mob] tries to put out the fire on [src]!"),
+				attacking_mob.visible_message(SPAN_DANGER("[attacking_mob]试图扑灭[src]身上的火焰！"),
 					SPAN_WARNING("You try to put out the fire on [src]!"), null, 5)
 				if(fire_stacks <= 0)
-					attacking_mob.visible_message(SPAN_DANGER("[attacking_mob] has successfully extinguished the fire on [src]!"),
+					attacking_mob.visible_message(SPAN_DANGER("[attacking_mob]成功扑灭了[src]身上的火焰！"),
 						SPAN_NOTICE("You extinguished the fire on [src]."), null, 5)
 				return 1
 
@@ -32,18 +32,18 @@
 				return 1
 
 			if(species.flags & IS_SYNTHETIC)
-				to_chat(attacking_mob, SPAN_DANGER("Your hands compress the metal chest uselessly..."))
+				to_chat(attacking_mob, SPAN_DANGER("你的双手徒劳地按压着金属胸腔..."))
 				return 0
 
 			if(cpr_attempt_timer >= world.time)
-				to_chat(attacking_mob, SPAN_NOTICE("<B>CPR is already being performed on [src]!</B>"))
+				to_chat(attacking_mob, SPAN_NOTICE("<B>正在对[src]进行心肺复苏！</B>"))
 				return 0
 
 			//CPR
 			if(attacking_mob.action_busy)
 				return 1
 
-			attacking_mob.visible_message(SPAN_NOTICE("<b>[attacking_mob]</b> starts performing <b>CPR</b> on <b>[src]</b>."),
+			attacking_mob.visible_message(SPAN_NOTICE("<b>[attacking_mob]</b>开始对<b>[src]</b>进行<b>心肺复苏</b>。"),
 				SPAN_HELPFUL("You start <b>performing CPR</b> on <b>[src]</b>."))
 
 			cpr_attempt_timer = world.time + HUMAN_STRIP_DELAY * attacking_mob.get_skill_duration_multiplier(SKILL_MEDICAL)
@@ -55,17 +55,17 @@
 					src.affected_message(attacking_mob,
 						SPAN_HELPFUL("You feel a <b>breath of fresh air</b> enter your lungs. It feels good."),
 						SPAN_HELPFUL("You <b>perform CPR</b> on <b>[src]</b>. Repeat at least every <b>7 seconds</b>."),
-						SPAN_NOTICE("<b>[attacking_mob]</b> performs <b>CPR</b> on <b>[src]</b>."))
+						SPAN_NOTICE("<b>[attacking_mob]</b>对<b>[src]</b>进行<b>心肺复苏</b>。"))
 				if(is_revivable() && stat == DEAD)
 					if(cpr_cooldown < world.time)
 						revive_grace_period += 7 SECONDS
-						attacking_mob.visible_message(SPAN_NOTICE("<b>[attacking_mob]</b> performs <b>CPR</b> on <b>[src]</b>."),
+						attacking_mob.visible_message(SPAN_NOTICE("<b>[attacking_mob]</b>对<b>[src]</b>进行<b>心肺复苏</b>。"),
 							SPAN_HELPFUL("You perform <b>CPR</b> on <b>[src]</b>."))
-						balloon_alert(attacking_mob, "you perform cpr")
+						balloon_alert(attacking_mob, "你正在进行心肺复苏")
 					else
-						attacking_mob.visible_message(SPAN_NOTICE("<b>[attacking_mob]</b> fails to perform CPR on <b>[src]</b>."),
+						attacking_mob.visible_message(SPAN_NOTICE("<b>[attacking_mob]</b>未能对<b>[src]</b>成功进行心肺复苏。"),
 							SPAN_HELPFUL("You <b>fail</b> to perform <b>CPR</b> on <b>[src]</b>. Incorrect rhythm. Do it <b>slower</b>."))
-						balloon_alert(attacking_mob, "incorrect rhythm, do it slower")
+						balloon_alert(attacking_mob, "节奏错误，放慢速度")
 					cpr_cooldown = world.time + 7 SECONDS
 			cpr_attempt_timer = 0
 			return 1
@@ -109,7 +109,7 @@
 
 			playsound(loc, attack.attack_sound, 25, 1)
 
-			visible_message(SPAN_DANGER("[attacking_mob] [pick(attack.attack_verb)]ed [src]!"), null, null, 5)
+			visible_message(SPAN_DANGER("[attacking_mob][pick(attack.attack_verb)]了[src]！"), null, null, 5)
 
 			raw_damage = attack.damage + extra_cqc_dmg
 			var/final_damage = armor_damage_reduction(GLOB.marine_melee, raw_damage, armor, FALSE) // no penetration from punches
@@ -146,7 +146,7 @@
 						chance = !hand ? 40 : 20
 
 					if (prob(chance))
-						visible_message(SPAN_DANGER("[attacking_mob] accidentally discharges [src]'s [held_weapon.name] during the struggle!"), SPAN_DANGER("[attacking_mob] accidentally discharges your [held_weapon.name] during the struggle!"), null, 5)
+						visible_message(SPAN_DANGER("[attacking_mob]在扭打中意外击发了[src]的[held_weapon.name]！"), SPAN_DANGER("[attacking_mob] accidentally discharges your [held_weapon.name] during the struggle!"), null, 5)
 						var/list/turfs = list()
 						for(var/turf/turfs_to_discharge in view())
 							turfs += turfs_to_discharge
@@ -170,22 +170,22 @@
 				Stun(strength)
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 				var/shove_text = attacker_skill_level > 1 ? "tackled" : pick("pushed", "shoved")
-				visible_message(SPAN_DANGER("<B>[attacking_mob] has [shove_text] [src]!</B>"), null, null, 5)
+				visible_message(SPAN_DANGER("<B>[attacking_mob][shove_text]了[src]！</B>"), null, null, 5)
 				return
 
 			if(disarm_chance <= 60)
 				//BubbleWrap: Disarming breaks a pull
 				if(pulling)
-					visible_message(SPAN_DANGER("<b>[attacking_mob] has broken [src]'s grip on [pulling]!</B>"), null, null, 5)
+					visible_message(SPAN_DANGER("<b>[attacking_mob]打断了[src]对[pulling]的抓握！</B>"), null, null, 5)
 					stop_pulling()
 				else
 					drop_held_item()
-					visible_message(SPAN_DANGER("<B>[attacking_mob] has disarmed [src]!</B>"), null, null, 5)
+					visible_message(SPAN_DANGER("<B>[attacking_mob]解除了[src]的武装！</B>"), null, null, 5)
 				playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, 7)
 				return
 
 			playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, 7)
-			visible_message(SPAN_DANGER("<B>[attacking_mob] attempted to disarm [src]!</B>"), null, null, 5)
+			visible_message(SPAN_DANGER("<B>[attacking_mob]试图解除[src]的武装！</B>"), null, null, 5)
 
 /mob/living/carbon/human/proc/afterattack(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, inrange, params)
 	return
@@ -214,20 +214,20 @@
 			sleeping = max(0,src.sleeping-5)
 		if(!sleeping)
 			if(is_dizzy)
-				to_chat(M, SPAN_WARNING("[src] looks dizzy. Maybe you should let [t_him] rest a bit longer."))
+				to_chat(M, SPAN_WARNING("[src]看起来晕乎乎的。也许你应该让[t_him]多休息一会儿。"))
 			else
 				set_resting(FALSE)
-		M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [t_him] up!"),
+		M.visible_message(SPAN_NOTICE("[M]摇晃着[src]，试图唤醒[t_him]！"),
 			SPAN_NOTICE("You shake [src] trying to wake [t_him] up!"), null, 4)
 	else if(HAS_TRAIT(src, TRAIT_INCAPACITATED))
-		M.visible_message(SPAN_NOTICE("[M] shakes [src], trying to shake [t_him] out of his stupor!"),
+		M.visible_message(SPAN_NOTICE("[M]摇晃着[src]，试图将[t_him]从昏迷中摇醒！"),
 			SPAN_NOTICE("You shake [src], trying to shake [t_him] out of his stupor!"), null, 4)
 	else
 		var/mob/living/carbon/human/H = M
 		if(istype(H))
 			H.species.hug(H, src, H.zone_selected)
 		else
-			M.visible_message(SPAN_NOTICE("[M] pats [src] on the back to make [t_him] feel better!"),
+			M.visible_message(SPAN_NOTICE("[M]拍了拍[src]的背，想让[t_him]好受点！"),
 				SPAN_NOTICE("You pat [src] on the back to make [t_him] feel better!"), null, 4)
 			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 5)
 		return
@@ -239,7 +239,7 @@
 	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 
 /mob/living/carbon/human/proc/check_for_injuries()
-	visible_message(SPAN_NOTICE("[src] examines [gender==MALE?"himself":"herself"]."),
+	visible_message(SPAN_NOTICE("[src]检查[gender==MALE?"himself":"herself"]."),
 	SPAN_NOTICE("You check yourself for injuries."), null, 3)
 
 	var/list/limb_message = list()

@@ -1,5 +1,5 @@
 /obj/effect/landmark/freed_mob_spawner
-	name = "Naked Human"
+	name = "赤裸的人类"
 	icon_state = "freed_mob_spawner"
 	var/equipment_path = /datum/equipment_preset/strip
 	var/count_participant = FALSE
@@ -22,11 +22,11 @@
 	H.free_for_ghosts()
 
 /obj/effect/landmark/freed_mob_spawner/upp_conscript
-	name = "UPP Conscript"
+	name = "UPP征召兵"
 	equipment_path = /datum/equipment_preset/upp/conscript
 	count_participant = TRUE
 
 /obj/effect/landmark/freed_mob_spawner/upp_soldier
-	name = "UPP Soldier"
+	name = "UPP士兵"
 	equipment_path = /datum/equipment_preset/upp/soldier/dressed
 	count_participant = TRUE

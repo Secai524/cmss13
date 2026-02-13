@@ -4,7 +4,7 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/farewell/further_assistance
 	key = "furtherassistance"
 	sound = 'sound/voice/joe/further_assistance.ogg'
-	say_message = "Please call if you need further assistance."
+	say_message = "如需进一步协助，请呼叫。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/farewell/glad_we_resolved
@@ -12,41 +12,41 @@
 	sound = 'sound/voice/joe/glad_we_resolved.ogg'
 	haz_sound = 'sound/voice/joe/glad_we_resolved_haz.ogg'
 	upp_joe_sound = 'sound/voice/joe/upp_joe/radchtomiuladili.ogg'
-	say_message = "I'm glad we resolved this."
+	say_message = "很高兴我们解决了此事。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/farewell/pity
 	key = "pity"
 	sound = 'sound/voice/joe/pity.ogg'
-	say_message = "A pity I couldn't be of service."
+	say_message = "很遗憾我未能提供帮助。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/farewell/pity_upp
 	key = "pityupp"
 	upp_joe_sound = 'sound/voice/joe/upp_joe/nesmogpomoch.ogg'
-	say_message = "A pity, that I couldn't help."
+	say_message = "很遗憾，我帮不上忙。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/farewell/required_by_apollo
 	key = "requiredbyapollo"
 	sound = 'sound/voice/joe/required_by_apollo.ogg'
-	say_message = "I am required by APOLLO."
+	say_message = "这是APOLLO的要求。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/farewell/day_never_done
 	key = "dayneverdone"
 	sound = 'sound/voice/joe/day_never_done.ogg'
 	haz_sound = 'sound/voice/joe/day_never_done_haz.ogg'
-	say_message = "A synthetic's day is never done."
+	say_message = "合成人的工作永无止境。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/farewell/day_never_done_upp
 	key = "dayneverdone_upp"
 	upp_joe_sound = 'sound/voice/joe/upp_joe/polno_raboti.ogg'
-	say_message = "Androids have tons of work to do."
+	say_message = "仿生人有成堆的工作要做。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = UPP_JOE_EMOTE
 
@@ -54,7 +54,7 @@
 	key = "returningtotasks"
 	sound = 'sound/voice/joe/returning_to_tasks.ogg'
 	upp_joe_sound = 'sound/voice/joe/upp_joe/zadacham.ogg'
-	say_message = "Returning to assigned tasks."
+	say_message = "返回指定任务。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|UPP_JOE_EMOTE
 
@@ -63,7 +63,7 @@
 	sound = 'sound/voice/joe/back_to_work.ogg'
 	haz_sound = 'sound/voice/joe/back_to_work_haz.ogg'
 	upp_joe_sound = 'sound/voice/joe/upp_joe/poydurabotat.ogg'
-	say_message = "Back to work."
+	say_message = "回去工作。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
@@ -71,21 +71,21 @@
 	key = "otherconcerns"
 	sound = 'sound/voice/joe/other_concerns.ogg'
 	haz_sound = 'sound/voice/joe/other_concerns_haz.ogg'
-	say_message = "I have other concerns."
+	say_message = "我还有别的事要处理。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/farewell/other_concerns_upp
 	key = "otherconcernsupp"
 	upp_joe_sound = 'sound/voice/joe/upp_joe/delapovazhnee.ogg'
-	say_message = "I have more important business."
+	say_message = "我有更重要的事。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/farewell/other_concerns_upp_alt
 	key = "otherconcernsuppalt"
 	upp_joe_sound = 'sound/voice/joe/upp_joe/drugihdel.ogg'
-	say_message = "I have many other things to do."
+	say_message = "我还有很多其他事要做。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = UPP_JOE_EMOTE
 
@@ -93,7 +93,7 @@
 	key = "morepressingmatters"
 	sound = 'sound/voice/joe/more_pressing_matters.ogg'
 	haz_sound = 'sound/voice/joe/more_pressing_matters_haz.ogg'
-	say_message = "There are more pressing matters."
+	say_message = "还有更紧迫的事情。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
@@ -102,7 +102,7 @@
 	sound = 'sound/voice/joe/how_inconsiderate.ogg'
 	haz_sound = 'sound/voice/joe/how_inconsiderate_haz.ogg'
 	upp_joe_sound = 'sound/voice/joe/upp_joe/nikogo.ogg'
-	say_message = "Gone. How inconsiderate."
+	say_message = "走了。真不体谅人。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
@@ -110,7 +110,7 @@
 	key = "facilityclear"
 	sound = 'sound/voice/joe/facility_clear.ogg'
 	haz_sound = 'sound/voice/joe/facility_clear_haz.ogg'
-	say_message = "Facility now clear. APOLLO informed."
+	say_message = "设施现已清空。已通知APOLLO。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
@@ -118,7 +118,7 @@
 	key = "wasteofboth"
 	sound = 'sound/voice/joe/waste_of_both.ogg'
 	haz_sound = 'sound/voice/joe/waste_of_both_haz.ogg'
-	say_message = "Gone. A waste of both our time."
+	say_message = "走了。浪费了我们双方的时间。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
@@ -126,7 +126,7 @@
 	key = "onlywantedto"
 	sound = 'sound/voice/joe/only_wanted_to_help.ogg'
 	upp_joe_sound = 'sound/voice/joe/upp_joe/hotel_pomoch.ogg'
-	say_message = "I only wanted to help."
+	say_message = "我只是想帮忙。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|UPP_JOE_EMOTE
 
@@ -134,7 +134,7 @@
 	key = "coreduties"
 	sound = 'sound/voice/joe/for_no_gain.ogg'
 	haz_sound = 'sound/voice/joe/for_no_gain_haz.ogg'
-	say_message = "Core duties have been neglected. For no gain."
+	say_message = "核心职责被忽视了。毫无收获。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
@@ -142,7 +142,7 @@
 	key = "clearwaste"
 	sound = 'sound/voice/joe/clear_waste.ogg'
 	haz_sound = 'sound/voice/joe/clear_waste_haz.ogg'
-	say_message = "Another clear waste of Seegson's time."
+	say_message = "又一次白白浪费了西格森的时间。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
@@ -150,7 +150,7 @@
 	key = "timewasted"
 	sound = 'sound/voice/joe/time_wasted.ogg'
 	upp_joe_sound = 'sound/voice/joe/upp_joe/zrya_potratil.ogg'
-	say_message = "Hmmm...Time wasted yet again."
+	say_message = "嗯……时间又被浪费了。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|UPP_JOE_EMOTE
 
@@ -158,6 +158,6 @@
 	key = "wherewasi"
 	sound = 'sound/voice/joe/where_was_i.ogg'
 	upp_joe_sound = 'sound/voice/joe/upp_joe/na_chem_ya.ogg'
-	say_message = "Now, where was I?"
+	say_message = "那么，我刚才在做什么？"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|UPP_JOE_EMOTE

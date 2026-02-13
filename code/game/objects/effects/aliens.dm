@@ -4,15 +4,15 @@
 //Ideally we'll consolidate all the "effect" objects here
 //Also need to change the icons
 /obj/effect/xenomorph
-	name = "alien thing"
-	desc = "You shouldn't be seeing this."
+	name = "异形物体"
+	desc = "你不该看到这个。"
 	unacidable = TRUE
 	icon = 'icons/mob/xenos/effects.dmi'
 	layer = FLY_LAYER
 
 /obj/effect/xenomorph/splatter
 	name = "splatter"
-	desc = "It burns! It burns like hygiene!"
+	desc = "它在燃烧！烧得像消毒一样！"
 	icon_state = "splatter"
 	density = FALSE
 	opacity = FALSE
@@ -25,7 +25,7 @@
 
 /obj/effect/xenomorph/splatterblob
 	name = "splatter"
-	desc = "It burns! It burns like hygiene!"
+	desc = "它在燃烧！烧得像消毒一样！"
 	icon_state = "acidblob"
 	density = FALSE
 	opacity = FALSE
@@ -38,7 +38,7 @@
 
 /obj/effect/xenomorph/spray
 	name = "splatter"
-	desc = "It burns! It burns like hygiene!"
+	desc = "它在燃烧！烧得像消毒一样！"
 	icon_state = "acid2"
 	density = FALSE
 	opacity = FALSE
@@ -172,7 +172,7 @@
 /obj/effect/xenomorph/spray/proc/apply_spray(mob/living/carbon/human, should_stun = TRUE)
 
 	if(human.body_position == STANDING_UP)
-		to_chat(human, SPAN_DANGER("Your feet scald and burn! Argh!"))
+		to_chat(human, SPAN_DANGER("你的脚被烫伤了！啊！"))
 		if(ishuman(human))
 			human.emote("pain")
 			if(should_stun)
@@ -190,11 +190,11 @@
 		human.last_damage_data = cause_data
 	else
 		human.apply_armoured_damage(damage_amount*0.33, ARMOR_BIO, BURN) //This is ticking damage!
-		to_chat(human, SPAN_DANGER("You are scalded by the burning acid!"))
+		to_chat(human, SPAN_DANGER("你被燃烧的酸液烫伤了！"))
 
 /obj/effect/xenomorph/spray/weak
-	name = "weak splatter"
-	desc = "It burns! It burns, but not as much!"
+	name = "弱酸溅痕"
+	desc = "它在燃烧！它在燃烧，但没那么厉害！"
 	icon_state = "acid2-weak"
 
 	stun_duration = 1
@@ -225,11 +225,11 @@
 		spray_stack.hit_count++
 		damage /= spray_stack.hit_count //less damage every hit
 
-		to_chat(hooman, SPAN_DANGER("Your legs scald and burn! Argh!"))
+		to_chat(hooman, SPAN_DANGER("你的双腿被灼伤！啊！"))
 		hooman.emote(pick("scream", "pain"))
 		if (buffed_splash)
 			hooman.KnockDown(stun_duration)
-			to_chat(hooman, SPAN_HIGHDANGER("The acid coating on you starts bubbling and sizzling wildly!"))
+			to_chat(hooman, SPAN_HIGHDANGER("你身上的酸液开始剧烈地冒泡并发出嘶嘶声！"))
 			playsound(hooman, sizzle_sound, 75, 1)
 		hooman.last_damage_data = cause_data
 		hooman.apply_armoured_damage(damage * 0.25, ARMOR_BIO, BURN, "l_foot", 20)
@@ -240,8 +240,8 @@
 		..(carbone, FALSE)
 
 /obj/effect/xenomorph/spray/strong
-	name = "strong splatter"
-	desc = "It burns a lot!"
+	name = "强酸溅射"
+	desc = "灼烧感非常强烈！"
 	icon_state = "acid2-strong"
 
 	stun_duration = 2
@@ -256,7 +256,7 @@
 
 /obj/effect/xenomorph/spray/praetorian
 	name = "splatter"
-	desc = "It burns! It burns like hygiene!"
+	desc = "它在燃烧！烧得像消毒一样！"
 	icon_state = "acid2"
 	damage_amount = 12
 	stun_duration = 0
@@ -274,21 +274,21 @@
 			PAS.increment_stack_count(2)
 
 		if(human.body_position == STANDING_UP)
-			to_chat(human, SPAN_DANGER("Your feet scald and burn! Argh!"))
+			to_chat(human, SPAN_DANGER("你的脚被烫伤了！啊！"))
 			human.emote("pain")
 			human.last_damage_data = cause_data
 			human.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "l_foot", 50)
 			human.apply_armoured_damage(damage_amount * 0.5, ARMOR_BIO, BURN, "r_foot", 50)
 		else
 			human.apply_armoured_damage(damage_amount*0.33, ARMOR_BIO, BURN) //This is ticking damage!
-			to_chat(human, SPAN_DANGER("You are scalded by the burning acid!"))
+			to_chat(human, SPAN_DANGER("你被燃烧的酸液烫伤了！"))
 	else if (isxeno(M))
 		..(M)
 
 //Medium-strength acid
 /obj/effect/xenomorph/acid
 	name = "acid"
-	desc = "Burbling corrosive stuff. I wouldn't want to touch it."
+	desc = "冒着泡的腐蚀性物质。我可不想碰它。"
 	icon_state = "acid_normal"
 	density = FALSE
 	opacity = FALSE
@@ -312,7 +312,7 @@
 
 //Sentinel weakest acid
 /obj/effect/xenomorph/acid/weak
-	name = "weak acid"
+	name = "弱酸"
 	acid_delay = 2.5 //250% delay (40% speed)
 	barricade_damage = 20
 	flare_damage = 180
@@ -320,7 +320,7 @@
 
 //Superacid
 /obj/effect/xenomorph/acid/strong
-	name = "strong acid"
+	name = "强酸"
 	acid_delay = 0.4 //40% delay (250% speed)
 	barricade_damage = 100
 	flare_damage = 2250
@@ -379,7 +379,7 @@
 
 /obj/effect/xenomorph/acid/proc/handle_barricade()
 	if(prob(in_weather))
-		visible_message(SPAN_XENOWARNING("Acid on \The [acid_t] subsides!"))
+		visible_message(SPAN_XENOWARNING("\The [acid_t]上的酸液消退了！"))
 		return NONE
 	var/obj/structure/barricade/cade = acid_t
 	cade.take_acid_damage(barricade_damage)
@@ -432,14 +432,14 @@
 	if(istype(acid_t, /obj/item/weapon/gun))
 		var/obj/item/weapon/gun/acid_gun = acid_t
 		if(acid_gun.has_second_wind)
-			visible_message(SPAN_XENODANGER("[acid_t] loses its shine as the acid bubbles against it."))
+			visible_message(SPAN_XENODANGER("酸液在[acid_t]上冒泡，使其失去了光泽。"))
 			acid_gun.has_second_wind = FALSE
 			playsound(src, 'sound/weapons/handling/gun_jam_click.ogg', 25, TRUE)
 			qdel(src)
 			return
 
 	if(istype(acid_t, /turf))
-		visible_message(SPAN_XENODANGER("[acid_t] is terribly damaged by the acid covering it!"))
+		visible_message(SPAN_XENODANGER("[acid_t]被覆盖其上的酸液严重损坏了！"))
 		if(istype(acid_t, /turf/closed/wall))
 			var/turf/closed/wall/wall = acid_t
 			new /obj/effect/acid_hole(wall)
@@ -449,22 +449,22 @@
 
 	else if (istype(acid_t, /obj/structure/girder))
 		var/obj/structure/girder/girder = acid_t
-		visible_message(SPAN_XENODANGER("[acid_t] collapses and falls in on itself as the acid melts its frame!"))
+		visible_message(SPAN_XENODANGER("[acid_t]的框架被酸液熔化，坍塌并垮掉了！"))
 		girder.dismantle()
 
 	else if(istype(acid_t, /obj/structure/window/framed))
 		var/obj/structure/window/framed/window = acid_t
-		visible_message(SPAN_XENODANGER("[acid_t] audibly cracks and fails as the acid bubbles against it!"))
+		visible_message(SPAN_XENODANGER("酸液在[acid_t]上冒泡，使其发出清晰的破裂声并失效了！"))
 		window.deconstruct(disassembled = FALSE)
 
 	else if(istype(acid_t, /obj/structure/barricade))
-		visible_message(SPAN_XENODANGER("[acid_t] cracks and fragments as the acid sizzles against it!"))
+		visible_message(SPAN_XENODANGER("酸液在[acid_t]上嘶嘶作响，使其破裂并碎裂！"))
 		pass() // Don't delete it, just damaj
 
 	else
 		for(var/mob/mob in acid_t)
 			mob.forceMove(loc)
-		visible_message(SPAN_XENODANGER("[acid_t] collapses under its own weight into a puddle of goop and undigested debris!"))
+		visible_message(SPAN_XENODANGER("[acid_t]在其自身重量下坍塌，变成了一滩粘液和未消化的残骸！"))
 		qdel(acid_t)
 	qdel(src)
 
@@ -476,10 +476,10 @@
 	if(istype(acid_t, /obj/item/weapon/gun))
 		var/obj/item/weapon/gun/acid_gun = acid_t
 		if(!acid_gun.has_second_wind)
-			visible_message(SPAN_XENODANGER("[acid_t] seems unaffected and continues to deform!"))
+			visible_message(SPAN_XENODANGER("[acid_t]似乎未受影响，并继续变形！"))
 			return FALSE
 		else
-			visible_message(SPAN_XENODANGER("The sizzling on [acid_t] quiets as the acid is sprayed off of it!"))
+			visible_message(SPAN_XENODANGER("随着酸液被喷溅掉，[acid_t]上的嘶嘶声平息了！"))
 			qdel(src)
 			return TRUE
 
@@ -533,7 +533,7 @@
 				continue
 			human.apply_armoured_damage(damage, ARMOR_BIO, BURN)
 			animation_flash_color(human)
-			to_chat(human, SPAN_XENODANGER("You are scalded by acid as a massive glob explodes nearby!"))
+			to_chat(human, SPAN_XENODANGER("一大团酸液在附近爆开，你被酸液灼伤了！"))
 
 	icon_state = "boiler_bombard_heavy"
 

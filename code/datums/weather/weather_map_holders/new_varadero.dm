@@ -1,5 +1,5 @@
 /datum/weather_ss_map_holder/new_varadero
-	name = "New Varadero Map Holder"
+	name = "新瓦拉德罗地图架"
 
 	min_time_between_events = 15 MINUTES
 	no_weather_turf_icon_state = "strata_clearsky"

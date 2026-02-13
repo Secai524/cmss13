@@ -1,14 +1,14 @@
 /mob/living/carbon/human/proc/issue_order(order)
 	if(!HAS_TRAIT(src, TRAIT_LEADERSHIP))
-		to_chat(src, SPAN_WARNING("You are not qualified to issue orders!"))
+		to_chat(src, SPAN_WARNING("你没有资格下达命令！"))
 		return
 
 	if(stat)
-		to_chat(src, SPAN_WARNING("You cannot give an order in your current state."))
+		to_chat(src, SPAN_WARNING("你当前的状态无法下达命令。"))
 		return
 
 	if(!command_aura_available)
-		to_chat(src, SPAN_WARNING("You have recently given an order. Calm down."))
+		to_chat(src, SPAN_WARNING("你刚刚下达过命令。冷静一下。"))
 		return
 
 	if(!skills)
@@ -26,15 +26,15 @@
 			order_level = 3
 
 	if(!order)
-		order = tgui_input_list(src, "Choose an order", "Order to send", list(COMMAND_ORDER_MOVE, COMMAND_ORDER_HOLD, COMMAND_ORDER_FOCUS, "help", "cancel"))
+		order = tgui_input_list(src, "选择命令", "Order to send", list(COMMAND_ORDER_MOVE, COMMAND_ORDER_HOLD, COMMAND_ORDER_FOCUS, "help", "cancel"))
 		if(order == "help")
-			to_chat(src, SPAN_NOTICE("<br>Orders give a buff to nearby soldiers for a short period of time, followed by a cooldown, as follows:<br><B>Move</B> - Increased mobility and chance to dodge projectiles.<br><B>Hold</B> - Increased resistance to pain and combat wounds.<br><B>Focus</B> - Increased gun accuracy and effective range.<br>"))
+			to_chat(src, SPAN_NOTICE("<br>命令会在短时间内为附近士兵提供增益效果，随后进入冷却，具体如下：<br><B>移动</B> - 提升机动性及闪避投射物的几率。<br><B>坚守</B> - 提升对疼痛和战斗创伤的抵抗力。<br><B>专注</B> - 提升枪械精度和有效射程。<br>"))
 			return
 		if(!order || order == "cancel")
 			return
 
 		if(!command_aura_available)
-			to_chat(src, SPAN_WARNING("You have recently given an order. Calm down."))
+			to_chat(src, SPAN_WARNING("你刚刚下达过命令。冷静一下。"))
 			return
 
 	command_aura_available = FALSE
@@ -93,20 +93,20 @@
 				spoken_order = pick("FOCUS FIRE!", "PICK YOUR TARGETS!", "CENTER MASS!", "SHORT-CONTROLLED BURSTS!", "AIM YOUR SHOTS!", "ON MY MARK!", "AIMED SHOTS!", "GO FOR THE KILL!", "SHOOT 'EM DEAD!", "KILL THEM ALL!", "SUPPRESSIVE FIRE!", "TIGHTEN YOUR SHOTS!", "LOCK AND LOAD!", "TARGET THEIR WEAK SPOTS!", "ZERO IN ON THE ENEMY!", "EYES ON THE PRIZE!", "LET'S ROCK!", "HIT 'EM WHERE IT HURTS!", "SLAUGHTER 'EM!", "BRING THE PAIN!", "STEADY YOUR AIM!", "EYES UP AND FIRE!", "FIRING LANES!", "CROSSHAIRS, PEOPLE!", "STRIKE!")
 		say(spoken_order) // if someone thinks about adding new lines, it'll be better to split the current ones we have into two different lists per order for readability, and have a coin flip pick between spoken_orders 1 or 2
 	else
-		visible_message(SPAN_BOLDNOTICE("[src] gives an order to [order]!"), SPAN_BOLDNOTICE("You give an order to [order]!"))
+		visible_message(SPAN_BOLDNOTICE("[src]下达了[order]命令！"), SPAN_BOLDNOTICE("You give an order to [order]!"))
 
 	if(whistling)
 		whistling.whistle_playsound(src, bypass_cooldown = TRUE, custom_sound = leader_sound, leader_slowdown = TRUE)
 
 /mob/living/carbon/human/proc/make_aura_available()
-	to_chat(src, SPAN_NOTICE("You can issue an order again."))
+	to_chat(src, SPAN_NOTICE("你可以再次下达命令了。"))
 	command_aura_available = TRUE
 	for(var/datum/action/A in actions)
 		A.update_button_icon()
 
 
 /mob/living/carbon/human/verb/issue_order_verb()
-	set name = "Issue Order"
+	set name = "下达命令"
 	set desc = "Issue an order to nearby humans, using your authority to strengthen their resolve."
 	set category = "IC"
 
@@ -161,21 +161,21 @@
 
 /mob/living/carbon/human/proc/cycle_voice_level()
 	if(!HAS_TRAIT(src, TRAIT_LEADERSHIP)) // just in case
-		to_chat(src, SPAN_WARNING("You don't particularly understand how to speak... 'authoritatively.'"))
+		to_chat(src, SPAN_WARNING("你不太明白如何用'命令式'的口吻说话..."))
 		return
 
 	switch(langchat_styles)
 		if("", null)
 			langchat_styles = "langchat_smaller_bolded"
-			to_chat(src, SPAN_NOTICE("You will now speak authoritatively."))
+			to_chat(src, SPAN_NOTICE("你现在将以命令式口吻说话。"))
 			return
 
 		if("langchat_smaller_bolded")
 			langchat_styles = "langchat_bolded"
-			to_chat(src, SPAN_NOTICE("You will now speak loudly and authoritatively."))
+			to_chat(src, SPAN_NOTICE("你现在将以响亮且命令式的口吻说话。"))
 			return
 
 		if("langchat_bolded")
 			langchat_styles = ""
-			to_chat(src, SPAN_NOTICE("You will now speak normally."))
+			to_chat(src, SPAN_NOTICE("你现在将正常说话。"))
 			return

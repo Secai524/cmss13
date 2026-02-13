@@ -7,7 +7,7 @@ FLOOR SAFES
 //SAFES
 
 /obj/item/paper/safe_key
-	name = "Secure Safe Combination"
+	name = "保险箱密码"
 	var/obj/structure/safe/safe = null
 
 /obj/item/paper/safe_key/Initialize()
@@ -25,7 +25,7 @@ FLOOR SAFES
 
 /obj/structure/safe
 	name = "safe"
-	desc = "A huge chunk of metal with a dial embedded in it. Fine print on the dial reads \"Scarborough Arms - 2 tumbler safe, guaranteed thermite resistant, explosion resistant, and assistant resistant.\""
+	desc = "一大块金属，上面嵌着一个转盘。转盘上的小字写着\"Scarborough Arms - 2 tumbler safe, guaranteed thermite resistant, explosion resistant, and assistant resistant.\""
 	icon = 'icons/obj/structures/safes.dmi'
 	icon_state = "safe"
 	anchored = TRUE
@@ -76,9 +76,9 @@ FLOOR SAFES
 /obj/structure/safe/proc/check_unlocked(mob/user as mob, canhear)
 	if(user && canhear)
 		if(tumbler_1_pos == tumbler_1_open)
-			to_chat(user, SPAN_NOTICE("You hear a [pick("tonk", "krunk", "plunk")] from [src]."))
+			to_chat(user, SPAN_NOTICE("你听到一声[pick("tonk", "krunk", "plunk")] from [src]."))
 		if(tumbler_2_pos == tumbler_2_open)
-			to_chat(user, SPAN_NOTICE("You hear a [pick("tink", "krink", "plink")] from [src]."))
+			to_chat(user, SPAN_NOTICE("你听到一声[pick("tink", "krink", "plink")] from [src]."))
 	if(tumbler_1_pos == tumbler_1_open && tumbler_2_pos == tumbler_2_open)
 		if(user)
 			visible_message("<b>[pick("Spring", "Sprang", "Sproing", "Clunk", "Click")]!</b>")
@@ -153,7 +153,7 @@ FLOOR SAFES
 			SEND_SIGNAL(src, COMSIG_SAFE_OPENED)
 			return
 		else
-			to_chat(user, SPAN_NOTICE("You can't [open ? "close" : "open"] [src], the lock is engaged!"))
+			to_chat(user, SPAN_NOTICE("你无法[open ? "close" : "open"] [src], the lock is engaged!"))
 			return
 
 	if(href_list["decrement"])
@@ -193,15 +193,15 @@ FLOOR SAFES
 		if(I.w_class + space <= maxspace)
 			space += I.w_class
 			if(user.drop_inv_item_to_loc(I, src))
-				to_chat(user, SPAN_NOTICE("You put [I] in [src]."))
+				to_chat(user, SPAN_NOTICE("你将[I]放入[src]。"))
 			updateUsrDialog()
 			return
 		else
-			to_chat(user, SPAN_NOTICE("[I] won't fit in [src]."))
+			to_chat(user, SPAN_NOTICE("[I]无法放入[src]。"))
 			return
 	else
 		if(istype(I, /obj/item/clothing/accessory/stethoscope))
-			to_chat(user, "Hold [I] in one of your hands while you manipulate the dial.")
+			to_chat(user, "操作转盘时，请用一只手握住[I]。")
 			return
 
 /obj/structure/safe/ex_act(severity)
@@ -209,7 +209,7 @@ FLOOR SAFES
 
 //FLOOR SAFES
 /obj/structure/safe/floor
-	name = "floor safe"
+	name = "嵌入式保险箱"
 	icon_state = "floorsafe"
 	density = FALSE
 	level = 1 //underfloor

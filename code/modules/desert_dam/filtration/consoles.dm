@@ -2,7 +2,7 @@ GLOBAL_VAR_INIT(river_activated, FALSE)
 
 /obj/structure/machinery/filtration/console
 	name = "console"
-	desc = "A console."
+	desc = "一个控制台。"
 	icon = 'icons/obj/structures/machinery/filtration.dmi'
 	icon_state = "console"
 	density = TRUE
@@ -40,7 +40,7 @@ GLOBAL_VAR_INIT(river_activated, FALSE)
 	if(damaged)
 		return //We're already broken
 	damaged = !damaged
-	visible_message(SPAN_WARNING("[src]'s screen cracks, and it bellows out smoke!"))
+	visible_message(SPAN_WARNING("[src]的屏幕碎裂，并喷出浓烟！"))
 	playsound(src, 'sound/effects/metal_crash.ogg', 35)
 	update_icon()
 	return

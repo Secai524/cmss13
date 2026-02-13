@@ -38,13 +38,13 @@
 		copy.name = "Copy - " + c.name
 		copy.fields = c.fields
 		copy.updateinfolinks()
-		to_chat(usr, SPAN_NOTICE("You tear off the carbon-copy!"))
+		to_chat(usr, SPAN_NOTICE("你撕下了复写页！"))
 		c.copied = TRUE
 		copy.iscopy = TRUE
 		copy.update_icon()
 		c.update_icon()
 	else
-		to_chat(usr, "There are no more carbon copies attached to this paper!")
+		to_chat(usr, "这张纸上没有更多的复写页了！")
 
 /obj/item/paper/prefab/carbon
 	name = "paper"
@@ -86,10 +86,10 @@
 		copy.name = "Copy - " + this_doc.name
 		copy.fields = this_doc.fields
 		copy.updateinfolinks()
-		to_chat(usr, SPAN_NOTICE("You tear off the carbon-copy!"))
+		to_chat(usr, SPAN_NOTICE("你撕下了复写页！"))
 		this_doc.copied = TRUE
 		copy.iscopy = TRUE
 		copy.update_icon()
 		this_doc.update_icon()
 	else
-		to_chat(usr, "There are no more carbon copies attached to this paper!")
+		to_chat(usr, "这张纸上没有更多的复写页了！")

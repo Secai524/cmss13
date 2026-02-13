@@ -1,7 +1,7 @@
 // File that holds everything related to Xeno overwatch.
 // The action for watching another Xeno (Queen still has some shitty leftovers, but it's mostly been cleaned out)
 /datum/action/xeno_action/watch_xeno
-	name = "Watch Xenomorph"
+	name = "观察异形"
 	action_icon_state = "watch_xeno"
 	plasma_cost = 0
 	macro_path = /datum/action/xeno_action/verb/verb_watch_xeno
@@ -28,7 +28,7 @@
 		isQueen = TRUE
 
 	if(!X.hive.living_xeno_queen && !X.hive.allow_no_queen_actions)
-		to_chat(X, SPAN_WARNING("There is no Queen. We are alone."))
+		to_chat(X, SPAN_WARNING("没有女王。我们是孤独的。"))
 		return
 
 	// We are already overwatching something
@@ -47,7 +47,7 @@
 		if (T != X && !should_block_game_interaction(T) && X.hivenumber == T.hivenumber) // Can't overwatch yourself, Xenos in Thunderdome, or Xenos in other hives
 			possible_xenos += T
 
-	var/mob/living/carbon/xenomorph/selected_xeno = tgui_input_list(X, "Target", "Watch which xenomorph?", possible_xenos, theme="hive_status")
+	var/mob/living/carbon/xenomorph/selected_xeno = tgui_input_list(X, "目标", "Watch which xenomorph?", possible_xenos, theme="hive_status")
 
 	if (!selected_xeno || QDELETED(selected_xeno) || selected_xeno == X.observed_xeno || selected_xeno.stat == DEAD || should_block_game_interaction(selected_xeno) || !X.check_state(TRUE))
 		X.overwatch(X.observed_xeno, TRUE) // Cancel OW
@@ -74,7 +74,7 @@
 		UnregisterSignal(src, COMSIG_MOB_MOVE_OR_LOOK)
 
 		if(oldXeno)
-			to_chat(src, SPAN_XENOWARNING("We stop watching [oldXeno]."))
+			to_chat(src, SPAN_XENOWARNING("我们停止观察[oldXeno]。"))
 			UnregisterSignal(oldXeno, COMSIG_PARENT_QDELETING)
 			if(!QDELETED(oldXeno))
 				oldXeno.hud_set_queen_overwatch()
@@ -83,23 +83,23 @@
 			return
 
 		if(!hive.living_xeno_queen && !hive.allow_no_queen_actions)
-			to_chat(src, SPAN_WARNING("There is no Queen. We are alone."))
+			to_chat(src, SPAN_WARNING("没有女王。我们是孤独的。"))
 			return
 
 		if(targetXeno == src)
-			to_chat(src, SPAN_XENOWARNING("We can't watch ourselves!"))
+			to_chat(src, SPAN_XENOWARNING("我们不能观察自己！"))
 			return
 
 		if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
-			to_chat(src, SPAN_XENOWARNING("Our psychic connection is cut off!"))
+			to_chat(src, SPAN_XENOWARNING("我们的心灵连接被切断了！"))
 			return
 
 		if(HAS_TRAIT(targetXeno, TRAIT_HIVEMIND_INTERFERENCE))
-			to_chat(src, SPAN_XENOWARNING("Our sister's psychic connection is cut off!"))
+			to_chat(src, SPAN_XENOWARNING("我们姐妹的心灵连接被切断了！"))
 			return
 
 		if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
-			to_chat(src, SPAN_XENOWARNING("We cannot do this in our current state!"))
+			to_chat(src, SPAN_XENOWARNING("我们无法在当前状态下这么做！"))
 			return
 
 		if(caste_type != XENO_CASTE_QUEEN && is_zoomed)
@@ -136,7 +136,7 @@
 			return
 
 		if(HAS_TRAIT(observed_xeno, TRAIT_HIVEMIND_INTERFERENCE))
-			to_chat(src, SPAN_XENOWARNING("Our sister's psychic connection is cut off!"))
+			to_chat(src, SPAN_XENOWARNING("我们姐妹的心灵连接被切断了！"))
 			overwatch(null, TRUE)
 			return
 
@@ -209,16 +209,16 @@
 		var/input = href_list["target"]
 		var/obj/effect/alien/resin/marker/target = locate(input)
 		if(!istype(target, /obj/effect/alien/resin/marker)|| !target.loc)
-			to_chat(src, SPAN_XENONOTICE("That resin mark no longer exists."))
+			to_chat(src, SPAN_XENONOTICE("那个树脂标记已不存在。"))
 			return
 		else
-			to_chat(src, SPAN_XENONOTICE("We psychically observe the [target.mark_meaning.name] resin mark in [get_area_name(target)]."))
+			to_chat(src, SPAN_XENONOTICE("我们通过心灵感应观察到了位于[get_area_name(target)]的[target.mark_meaning.name]树脂标记。"))
 			overwatch(target)
 	if(href_list["track"])
 		var/input2 = href_list["target"]
 		var/obj/effect/alien/resin/marker/target2 = locate(input2)
 		if(!istype(target2, /obj/effect/alien/resin/marker) || !target2.loc)
-			to_chat(src, SPAN_XENONOTICE("That resin mark no longer exists."))
+			to_chat(src, SPAN_XENONOTICE("那个树脂标记已不存在。"))
 			return
 		else
 			start_tracking_resin_mark(target2)

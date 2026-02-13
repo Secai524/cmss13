@@ -82,12 +82,12 @@
 	..()
 	if(over_object == usr && Adjacent(usr))
 		if(burning)
-			to_chat(usr, SPAN_DANGER("It's on fire and might explode!"))
+			to_chat(usr, SPAN_DANGER("它着火了，可能会爆炸！"))
 			return
 
 		if(!ishuman(usr))
 			return
-		visible_message(SPAN_NOTICE("[usr] picks up the [name]."))
+		visible_message(SPAN_NOTICE("[usr]捡起了[name]。"))
 
 		usr.put_in_hands(item_box)
 		item_box = null
@@ -105,18 +105,18 @@
 	else
 		. +=  SPAN_INFO("It has [length(item_box.contents)] magazines out of [item_box.num_of_magazines].")
 	if(burning)
-		. +=  SPAN_DANGER("It's on fire and might explode!")
+		. +=  SPAN_DANGER("它着火了，可能会爆炸！")
 
 /obj/structure/magazine_box/attack_hand(mob/living/user)
 	if(burning)
-		to_chat(user, SPAN_DANGER("It's on fire and might explode!"))
+		to_chat(user, SPAN_DANGER("它着火了，可能会爆炸！"))
 		return
 	if(length(item_box.contents))
 		if(!item_box.handfuls)
 			var/obj/item/ammo_magazine/AM = pick(item_box.contents)
 			item_box.contents -= AM
 			user.put_in_hands(AM)
-			to_chat(user, SPAN_NOTICE("You retrieve \a [AM] from \the [src]."))
+			to_chat(user, SPAN_NOTICE("你从\the [src]中取出了\a [AM]。"))
 		else
 			var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in item_box.contents
 			if(AM)
@@ -127,14 +127,14 @@
 
 /obj/structure/magazine_box/attackby(obj/item/W, mob/living/user)
 	if(burning)
-		to_chat(user, SPAN_DANGER("It's on fire and might explode!"))
+		to_chat(user, SPAN_DANGER("它着火了，可能会爆炸！"))
 		return
 	if(!item_box.handfuls)
 		if(istypestrict(W,item_box.magazine_type))
 			if(istype(W, /obj/item/storage/box/m94))
 				var/obj/item/storage/box/m94/flare_pack = W
 				if(length(flare_pack.contents) < flare_pack.max_storage_space)
-					to_chat(user, SPAN_WARNING("[W] is not full."))
+					to_chat(user, SPAN_WARNING("[W]未装满。"))
 					return
 				var/flare_type
 				if(istype(W, /obj/item/storage/box/m94/signal))
@@ -143,30 +143,30 @@
 					flare_type = /obj/item/device/flashlight/flare
 				for(var/obj/item/device/flashlight/flare/F in flare_pack.contents)
 					if(F.fuel < 1)
-						to_chat(user, SPAN_WARNING("Some flares in [F] are used."))
+						to_chat(user, SPAN_WARNING("[F]中的部分照明弹已使用过。"))
 						return
 					if(F.type != flare_type)
-						to_chat(user, SPAN_WARNING("Some flares in [W] are not of the correct type."))
+						to_chat(user, SPAN_WARNING("[W]中的部分照明弹型号不符。"))
 						return
 			else if(istype(W, /obj/item/storage/box/mre))
 				var/obj/item/storage/box/mre/mre_pack = W
 				if(mre_pack.isopened)
-					to_chat(user, SPAN_WARNING("[W] was already opened and isn't suitable for storing in [src]."))
+					to_chat(user, SPAN_WARNING("[W]已被打开，不适合存放在[src]中。"))
 					return
 			else if(istype(W, /obj/item/cell/high))
 				var/obj/item/cell/high/cell = W
 				if(cell.charge != cell.maxcharge)
-					to_chat(user, SPAN_WARNING("[W] needs to be fully charged before it can be stored in [src]."))
+					to_chat(user, SPAN_WARNING("[W]需要完全充电后才能存放在[src]中。"))
 					return
 			if(length(item_box.contents) < item_box.num_of_magazines)
 				user.drop_inv_item_to_loc(W, src)
 				item_box.contents += W
-				to_chat(user, SPAN_NOTICE("You put \a [W] into [src]"))
+				to_chat(user, SPAN_NOTICE("你将\a [W]放入[src]。"))
 				update_icon()
 			else
-				to_chat(user, SPAN_WARNING("[src] is full."))
+				to_chat(user, SPAN_WARNING("[src]已满。"))
 		else
-			to_chat(user, SPAN_WARNING("You don't want to mix different magazines in one box."))
+			to_chat(user, SPAN_WARNING("你不想在一个箱子里混装不同的弹匣。"))
 	else
 		if(istype(W, /obj/item/ammo_magazine/shotgun) || istype(W, /obj/item/ammo_magazine/lever_action) )
 			var/obj/item/ammo_magazine/O = W
@@ -175,10 +175,10 @@
 				return
 			if(O.default_ammo == AM.default_ammo)
 				if(O.current_rounds <= 0)
-					to_chat(user, SPAN_WARNING("[O] is empty."))
+					to_chat(user, SPAN_WARNING("[O]是空的。"))
 					return
 				if(AM.current_rounds >= AM.max_rounds)
-					to_chat(user, SPAN_WARNING("[src] is full."))
+					to_chat(user, SPAN_WARNING("[src]已满。"))
 					return
 				else
 					if(!do_after(user, 15, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
@@ -187,11 +187,11 @@
 					var/S = min(O.current_rounds, AM.max_rounds - AM.current_rounds)
 					AM.current_rounds += S
 					O.current_rounds -= S
-					to_chat(user, SPAN_NOTICE("You transfer [O.description_ammo] from [O] into [src]."))
+					to_chat(user, SPAN_NOTICE("你将[O.description_ammo]从[O]转移到[src]。"))
 					update_icon()
 					O.update_icon()
 			else
-				to_chat(user, SPAN_WARNING("Wrong type of [O.description_ammo]."))
+				to_chat(user, SPAN_WARNING("[O.description_ammo]类型错误。"))
 
 		if(istype(W, /obj/item/ammo_magazine/handful))
 			var/obj/item/ammo_magazine/AM = locate(/obj/item/ammo_magazine) in item_box.contents

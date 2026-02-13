@@ -1,7 +1,7 @@
 // Glass shards
 
 /obj/item/shard
-	name = "glass shard"
+	name = "玻璃碎片"
 	icon = 'icons/obj/items/shards.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_lefthand.dmi',
@@ -10,7 +10,7 @@
 	icon_state = ""
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = 1
-	desc = "A shard of broken glass. Could probably be used as ... a throwing weapon?"
+	desc = "一块碎玻璃片。或许能用作……投掷武器？"
 	w_class = SIZE_TINY
 	force = 5
 	throwforce = 8
@@ -51,7 +51,7 @@
 /obj/item/shard/attackby(obj/item/W, mob/user)
 	if ( iswelder(W))
 		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
-			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			to_chat(user, SPAN_WARNING("你需要一把更强的喷枪！"))
 			return
 		var/obj/item/tool/weldingtool/WT = W
 		if(source_sheet_type) //can be melted into something
@@ -65,14 +65,14 @@
 					if(G.amount>=G.max_amount)
 						continue
 					G.attackby(NG, user)
-					to_chat(user, "You add the newly-formed glass to the stack. It now contains [NG.amount] sheets.")
+					to_chat(user, "你将新成型的玻璃加入堆叠。现在共有[NG.amount]片。")
 				qdel(src)
 				return
 	return ..()
 
 /obj/item/shard/phoron
-	name = "phoron shard"
-	desc = "A shard of broken phoron glass. Considerably tougher than normal glass shards. Apparently not tough enough to be a window."
+	name = "红色晶石碎片"
+	desc = "一块破碎的红色晶石玻璃片。比普通玻璃碎片坚固得多。但显然还不足以用作窗户。"
 	force = 8
 	throwforce = 15
 	icon_state = "phoron"
@@ -90,10 +90,10 @@
 	return
 
 /obj/item/large_shrapnel/at_rocket_dud
-	name = "unexploded anti-tank rocket"
+	name = "未爆反坦克火箭弹"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/rocket_launchers.dmi'
 	icon_state = "custom_rocket_no_fuel"
-	desc = "An undetonated anti-tank rocket that probably hit something soft. You really shouldn't drop this..."
+	desc = "一枚未引爆的反坦克火箭弹，可能击中了柔软物体。你实在不该把它掉在地上……"
 	/// same as custom warhead
 	matter = list("metal" = 11250)
 	w_class = SIZE_LARGE
@@ -117,20 +117,20 @@
 
 	if(!detonating && !thrown && !cause && prob(drop_sensitivity))
 		cause = "accidental"
-		visible_message(SPAN_DANGER("You hear the click of a mechanism triggering inside \the [src] as [user] drops it. Uh oh."))
+		visible_message(SPAN_DANGER("你听到\the [src]内部传来机械触发的咔哒声，因为[user]把它掉在了地上。糟了。"))
 		manual_detonate(get_turf(src), user)
 	cause = null
 
 /obj/item/large_shrapnel/at_rocket_dud/try_to_throw(mob/living/user)
-	to_chat(user, SPAN_NOTICE("You heft \the [src] up, preparing to throw it."))
-	user.visible_message(SPAN_DANGER("[user] strains to lift up \the [src]. It looks like they're trying to throw it!"))
+	to_chat(user, SPAN_NOTICE("你举起\the [src]，准备投掷。"))
+	user.visible_message(SPAN_DANGER("[user]费力地举起\the [src]。看起来他们想把它扔出去！"))
 	throw_range = 5
 	throw_channel = 2 SECONDS
 	if(HAS_TRAIT(user, TRAIT_SUPER_STRONG))
 		throw_range = 8
 		throw_channel = 1 SECONDS
 	if(!do_after(user, throw_channel, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-		to_chat(user, SPAN_WARNING("Your attempt to throw \the [src] was interrupted!"))
+		to_chat(user, SPAN_WARNING("你投掷\the [src]的尝试被打断了！"))
 		return FALSE
 	cause = "manually triggered"
 	thrown = 1
@@ -142,7 +142,7 @@
 	var/user = LM?.thrower
 	if(!detonating && prob(impact_sensitivity))
 		cause = "manually triggered"
-		visible_message(SPAN_DANGER("You hear the click of a mechanism triggering inside \the [src]. Uh oh."))
+		visible_message(SPAN_DANGER("你听到\the [src]内部传来机械触发的咔哒声。糟了。"))
 		vehicle_impact(hit_atom, user)
 		manual_detonate(hit_atom, user, 0)
 		return
@@ -212,7 +212,7 @@
 /obj/item/shard/shrapnel
 	name = "shrapnel"
 	icon_state = "shrapnel"
-	desc = "A bunch of tiny bits of shattered metal."
+	desc = "一堆细小的碎裂金属片。"
 	matter = list("metal" = 50)
 	source_sheet_type = null
 	var/damage_on_move = 0.5
@@ -238,43 +238,43 @@
 		embedded_mob.pain.apply_pain(damage_on_move * count)
 
 /obj/item/shard/shrapnel/upp
-	name = "small shrapnel"
-	desc = "Some shrapnel that used to be embedded underneath someone's skin."
+	name = "小型破片"
+	desc = "曾嵌在某人皮肤下的弹片。"
 	icon_state = "small"
 	damage_on_move = 2
 	random_size = FALSE
 
 /obj/item/shard/shrapnel/upp/bits
-	name = "tiny shrapnel"
-	desc = "A tiny piece of shrapnel that used to be embedded underneath someone's skin."
+	name = "微小弹片"
+	desc = "曾嵌在某人皮肤下的一小块弹片。"
 	icon_state = "tiny"
 	damage_on_move = 0.5
 
 /obj/item/shard/shrapnel/bone_chips
-	name = "bone shrapnel chips"
+	name = "骨片碎屑"
 	gender = PLURAL
 	icon_state = "bonechips"
 	matter = list("bone" = 50)
-	desc = "It looks like it came from a prehistoric animal."
+	desc = "看起来像是来自史前动物。"
 	damage_on_move = 0.6
 	random_size = FALSE
 
 /obj/item/shard/shrapnel/bone_chips/human
-	name = "human bone fragments"
+	name = "人骨碎片"
 	icon_state = "humanbonechips"
-	desc = "Oh god, their bits are everywhere!"
+	desc = "老天，他们的碎片到处都是！"
 
 /obj/item/shard/shrapnel/bone_chips/xeno
-	name = "alien bone fragments"
+	name = "异形骨碎片"
 	icon_state = "alienbonechips"
-	desc = "Sharp, jagged fragments of alien bone. Looks like the previous owner exploded violently..."
+	desc = "尖锐、参差不齐的异形骨碎片。看起来原主是剧烈爆炸而亡..."
 
 /obj/item/shard/shrapnel/tutorial
 	damage_on_move = 0
 
 /obj/item/sharp
-	name = "sharp dart shrapnel"
-	desc = "It looks like a used 9X-E Sticky Explosive Dart, useless now."
+	name = "尖锐飞镖弹片"
+	desc = "看起来像一枚用过的9X-E粘性爆破镖，现已无用。"
 	icon = 'icons/obj/items/weapons/projectiles.dmi'
 	icon_state = "sharp_explosive_dart"
 	sharp = IS_SHARP_ITEM_BIG
@@ -317,10 +317,10 @@
 
 /obj/item/sharp/incendiary
 	name = "\improper 9X-T Sticky Incendiary Dart"
-	desc = "It looks like a used 9X-T Sticky Incendiary Dart, useless now."
+	desc = "看起来像一枚用过的9X-T粘性燃烧镖，现已无用。"
 	icon_state = "sharp_incendiary_dart"
 
 /obj/item/sharp/flechette
 	name = "\improper 9X-F Flechette Dart"
-	desc = "It looks like a used 9X-F Flechette Dart, useless now."
+	desc = "看起来像一枚用过的9X-F箭霰镖，现已无用。"
 	icon_state = "sharp_flechette_dart"

@@ -1,6 +1,6 @@
 /obj/item/weapon/gun/pistol/tranquilizer
-	name = "Tranquilizer gun"
-	desc = "Contains horse tranquilizer darts. Useful at knocking people out."
+	name = "麻醉枪"
+	desc = "装有马用麻醉镖。可用于使人昏迷。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/event.dmi'
 	icon_state = "pk9r"
 	item_state = "pk9r"

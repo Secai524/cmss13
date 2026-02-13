@@ -9,9 +9,9 @@ GLOBAL_DATUM_INIT(crew_manifest, /datum/crew_manifest, new)
 		"Command" = GLOB.ROLES_CIC,
 		"Auxiliary" = GLOB.ROLES_AUXIL_SUPPORT,
 		"Security" = GLOB.ROLES_POLICE,
-		"Engineering" = GLOB.ROLES_ENGINEERING,
+		"工程部" = GLOB.ROLES_ENGINEERING,
 		"Requisitions" = GLOB.ROLES_REQUISITION,
-		"Medical" = GLOB.ROLES_MEDICAL,
+		"医疗区" = GLOB.ROLES_MEDICAL,
 		"Miscellaneous" = GLOB.ROLES_MISC
 	)
 

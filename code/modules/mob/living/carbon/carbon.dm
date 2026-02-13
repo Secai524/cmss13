@@ -54,7 +54,7 @@
 		severity *= EXPLOSION_PRONE_MULTIPLIER
 
 	if(HAS_TRAIT(src, TRAIT_HAULED) && !gibbing) // We still probably wanna gib them as well if they were supposed to be gibbed by the explosion in the first place
-		visible_message(SPAN_WARNING("[src] is shielded from the blast!"), SPAN_WARNING("You are shielded from the blast!"))
+		visible_message(SPAN_WARNING("[src]被护盾挡住了爆炸！"), SPAN_WARNING("You are shielded from the blast!"))
 		return
 
 	if(severity >= 30)
@@ -156,7 +156,7 @@
 		else
 			for(var/mob/mobs_can_hear in hearers(4, xeno))
 				if(mobs_can_hear.client)
-					mobs_can_hear.show_message(SPAN_DANGER("You hear [src] struggling against [xeno]'s grip..."), SHOW_MESSAGE_AUDIBLE)
+					mobs_can_hear.show_message(SPAN_DANGER("你听到[src]正在挣扎着摆脱[xeno]的钳制..."), SHOW_MESSAGE_AUDIBLE)
 	return
 
 /mob/living/carbon/attack_hand(mob/target_mob as mob)
@@ -229,7 +229,7 @@
 	if(shock_damage > 10)
 		src.visible_message(
 			SPAN_DANGER("[src] was shocked by [source]!"),
-			SPAN_DANGER("<B>You feel a powerful shock course through your body!</B>"),
+			SPAN_DANGER("<B>你感到一股强大的电流贯穿全身！</B>"),
 			SPAN_DANGER("You hear a heavy electrical crack.") \
 		)
 		if(isxeno(src) && mob_size >= MOB_SIZE_BIG)
@@ -304,11 +304,11 @@
 	if(shake_action) // We are incapacitated in some fashion
 		if(client)
 			sleeping = max(0,sleeping-5)
-		M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to [shake_action]"),
+		M.visible_message(SPAN_NOTICE("[M]摇晃着[src]，试图[shake_action]。"),
 			SPAN_NOTICE("You shake [src] trying to [shake_action]"), null, 4)
 
 	else if(body_position == LYING_DOWN) // We're just chilling on the ground, let us be
-		M.visible_message(SPAN_NOTICE("[M] stares and waves impatiently at [src] lying on the ground."),
+		M.visible_message(SPAN_NOTICE("[M]盯着躺在地上的[src]，不耐烦地挥手。"),
 			SPAN_NOTICE("You stare and wave at [src] just lying on the ground."), null, 4)
 
 	else
@@ -316,7 +316,7 @@
 		if(istype(H))
 			H.species.hug(H, src, H.zone_selected)
 		else
-			M.visible_message(SPAN_NOTICE("[M] pats [src] on the back to make [t_him] feel better!"),
+			M.visible_message(SPAN_NOTICE("[M]拍了拍[src]的背，想让[t_him]好受点！"),
 				SPAN_NOTICE("You pat [src] on the back to make [t_him] feel better!"), null, 4)
 			playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 5)
 		return
@@ -366,7 +366,7 @@
 	if(stat || !target)
 		return
 	if(!istype(loc, /turf) || HAS_TRAIT(src, TRAIT_HAULED)) // In some mob/object (i.e. hauled or tank)
-		to_chat(src, SPAN_WARNING("You cannot throw anything right now."))
+		to_chat(src, SPAN_WARNING("你现在无法投掷任何东西。"))
 		return
 	if(target.type == /atom/movable/screen)
 		return
@@ -396,7 +396,7 @@
 					usr.attack_log += "\[[time_stamp()]\] <font color='red'>Has thrown [key_name(M)] from [start_T_descriptor] with the target [end_T_descriptor]</font>"
 					msg_admin_attack("[key_name(usr)] has thrown [key_name(M)] from [start_T_descriptor] with the target [end_T_descriptor] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 			else
-				to_chat(src, SPAN_WARNING("You need a better grip!"))
+				to_chat(src, SPAN_WARNING("你需要抓得更稳！"))
 
 	else //real item in hand, not a grab
 		thrown_thing = I
@@ -408,7 +408,7 @@
 
 		if(!(thrown_thing.try_to_throw(src)))
 			return
-		visible_message(SPAN_WARNING("[src] has thrown [thrown_thing]."), null, null, 5)
+		visible_message(SPAN_WARNING("[src]扔出了[thrown_thing]。"), null, null, 5)
 
 		if(!lastarea)
 			lastarea = get_area(src.loc)
@@ -417,9 +417,9 @@
 			step(src, inertia_dir)
 
 		if(throw_type == THROW_MODE_HIGH)
-			to_chat(src, SPAN_NOTICE("You prepare to perform a high toss."))
+			to_chat(src, SPAN_NOTICE("你准备进行一次高抛投掷。"))
 			if(!do_after(src, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-				to_chat(src, SPAN_WARNING("You need to set up the high toss!"))
+				to_chat(src, SPAN_WARNING("你需要先设置高抛投掷！"))
 				return
 			animation_attack_on(target, 6)
 			//The volume of the sound takes the minimum between the distance thrown or the max range an item, but no more than 15. Short throws are quieter. Invisible mobs do no sound.
@@ -468,9 +468,9 @@
 	set category = "IC"
 
 	if(sleeping)
-		to_chat(usr, SPAN_DANGER("You are already sleeping."))
+		to_chat(usr, SPAN_DANGER("你已经在睡觉了。"))
 		return
-	if(alert(src,"You sure you want to sleep for a while?","Sleep","Yes","No") == "Yes")
+	if(alert(src,"你确定要睡一会儿吗？","Sleep","Yes","No") == "Yes")
 		sleeping = 20 //Short nap
 
 
@@ -557,10 +557,10 @@
 /mob/living/carbon/proc/extinguish_mob(mob/living/carbon/C)
 	adjust_fire_stacks(-5, min_stacks = 0)
 	playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
-	C.visible_message(SPAN_DANGER("[C] tries to put out the fire on [src]!"),
+	C.visible_message(SPAN_DANGER("[C]试图扑灭[src]身上的火！"),
 	SPAN_WARNING("You try to put out the fire on [src]!"), null, 5)
 	if(fire_stacks <= 0)
-		C.visible_message(SPAN_DANGER("[C] has successfully extinguished the fire on [src]!"),
+		C.visible_message(SPAN_DANGER("[C]成功扑灭了[src]身上的火！"),
 		SPAN_NOTICE("You extinguished the fire on [src]."), null, 5)
 
 /mob/living/carbon/resist_buckle()
@@ -568,12 +568,12 @@
 	if(handcuffed)
 		next_move = world.time + 100
 		last_special = world.time + 100
-		visible_message(SPAN_DANGER("<B>[src] attempts to unbuckle themself!</B>"),
+		visible_message(SPAN_DANGER("<B>[src]试图自行解开束缚！</B>"),
 		SPAN_DANGER("You attempt to unbuckle yourself. (This will take around 2 minutes and you need to stand still)"))
 		if(do_after(src, 1200, INTERRUPT_NO_FLOORED^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
 			if(!buckled)
 				return
-			visible_message(SPAN_DANGER("<B>[src] manages to unbuckle themself!</B>"),
+			visible_message(SPAN_DANGER("<B>[src]成功自行解开了束缚！</B>"),
 						SPAN_NOTICE("You successfully unbuckle yourself."))
 			buckled.manual_unbuckle(src)
 	else

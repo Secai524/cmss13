@@ -1,6 +1,6 @@
 /obj/item/device/defibrillator
-	name = "emergency defibrillator"
-	desc = "A handheld emergency defibrillator, used to restore fibrillating patients. Can optionally bring people back from the dead."
+	name = "紧急除颤器"
+	desc = "手持式紧急除颤器，用于恢复心室颤动患者的心跳。可选择性地将人从死亡中救回。"
 	icon_state = "defib"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
@@ -118,12 +118,12 @@
 	if(user.skills && !noskill)
 		if(!skillcheck(user, skill_to_check, skill_level))
 			if(!skill_to_check_alt || (!skillcheck(user, skill_to_check_alt, skill_level_alt)))
-				to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
+				to_chat(user, SPAN_WARNING("你似乎不知道如何使用 [src]..."))
 				return
 
 	defib_cooldown = world.time + 10 //1 second cooldown every time the defib is toggled
 	ready = !ready
-	user.visible_message(SPAN_NOTICE("[user] turns [src] [ready? "on and takes the [fluff_tool] out" : "off and puts the [fluff_tool] back in"]."),
+	user.visible_message(SPAN_NOTICE("[user]将[src] [ready? "on and takes the [fluff_tool] out" : "off and puts the [fluff_tool] back in"]."),
 	SPAN_NOTICE("You turn [src] [ready? "on and take the [fluff_tool] out" : "off and put the [fluff_tool] back in"]."))
 	if(should_spark)
 		playsound(get_turf(src), "sparks", 15, 1, 0)
@@ -158,32 +158,32 @@
 
 /obj/item/device/defibrillator/proc/check_revive(mob/living/carbon/human/H, mob/living/carbon/human/user)
 	if(!ishuman(H) || isyautja(H))
-		to_chat(user, SPAN_WARNING("You can't defibrilate [H]. You don't even know where to put the [fluff_tool]!"))
+		to_chat(user, SPAN_WARNING("你无法对[H]进行除颤。你甚至不知道该把[fluff_tool]放在哪里！"))
 		return
 	if(issynth(H))
-		to_chat(user, SPAN_WARNING("You can't defibrilate [H]. You need a synthetic reset key for reboot!"))
+		to_chat(user, SPAN_WARNING("你无法对[H]进行除颤。你需要合成人重置密钥来重启！"))
 		return
 	if(!ready)
-		balloon_alert(user, "take out the [fluff_tool]")
-		to_chat(user, SPAN_WARNING("Take [src]'s [fluff_tool] out first."))
+		balloon_alert(user, "取出[fluff_tool]")
+		to_chat(user, SPAN_WARNING("先把[src]的[fluff_tool]取出来。"))
 		return
 	if(dcell.charge < charge_cost)
-		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src]'s battery is too low! It needs to recharge."))
+		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src]的电池电量太低！需要充电。"))
 		return
 	if(H.stat != DEAD)
-		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Vital signs detected. Aborting."))
+		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src]发出嗡嗡声：检测到生命体征。中止操作。"))
 		return
 
 	if(!H.is_revivable())
-		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Patient's general condition does not allow reviving."))
+		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src]发出嗡嗡声：患者的总体状况不允许复苏。"))
 		return
 
 	if((!MODE_HAS_MODIFIER(/datum/gamemode_modifier/defib_past_armor) && blocked_by_suit) && H.wear_suit && (istype(H.wear_suit, /obj/item/clothing/suit/armor) || istype(H.wear_suit, /obj/item/clothing/suit/storage/marine)) && prob(95))
-		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Paddles registering >100,000 ohms, Possible cause: Suit or Armor interfering."))
+		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] 发出嗡鸣：电极板检测到电阻 >100,000 欧姆。可能原因：防护服或护甲干扰。"))
 		return
 
 	if(!H.check_tod())
-		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Patient is braindead."))
+		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] 发出嗡鸣：患者脑死亡。"))
 		return
 
 	return TRUE
@@ -201,7 +201,7 @@
 	if(user.skills && !noskill)
 		if(!skillcheck(user, skill_to_check, skill_level))
 			if(!skill_to_check_alt || (!skillcheck(user, skill_to_check_alt, skill_level_alt)))
-				to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
+				to_chat(user, SPAN_WARNING("你似乎不知道如何使用 [src]..."))
 				return
 
 	if(!check_revive(target, user))
@@ -213,7 +213,7 @@
 		to_chat(G, SPAN_BOLDNOTICE(FONT_SIZE_LARGE("Someone is trying to revive your body. Return to it if you want to be resurrected! \
 			(Verbs -> Ghost -> Re-enter corpse, or <a href='byond://?src=\ref[G];reentercorpse=1'>click here!</a>)")))
 
-	user.visible_message(SPAN_NOTICE("[user] starts setting up the [fluff_tool] on [target]'s [fluff_target_part]"),
+	user.visible_message(SPAN_NOTICE("[user] 开始在[target]的[fluff_target_part]上设置[fluff_tool]。"),
 		SPAN_HELPFUL("You start <b>setting up</b> the [fluff_tool] on <b>[target]</b>'s [fluff_target_part]."))
 	if(user.get_skill_duration_multiplier(SKILL_MEDICAL) == 0.35)
 		playsound(get_turf(src), sound_charge_skill4, 25, 0)
@@ -224,7 +224,7 @@
 
 	//Taking square root not to make defibs too fast...
 	if(!do_after(user, (4 + (3 * user.get_skill_duration_multiplier(SKILL_MEDICAL))) SECONDS, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
-		user.visible_message(SPAN_WARNING("[user] stops setting up the [fluff_tool] on [target]'s [fluff_target_part]."),
+		user.visible_message(SPAN_WARNING("[user] 停止在[target]的[fluff_target_part]上设置[fluff_tool]。"),
 		SPAN_WARNING("You stop setting up the [fluff_tool] on [target]'s [fluff_target_part]."))
 		return FALSE
 
@@ -242,9 +242,9 @@
 	dcell.use(charge_cost)
 	update_icon()
 	playsound(get_turf(src), sound_release, 25, 1)
-	user.visible_message(SPAN_NOTICE("[user] shocks [target] with the [fluff_tool]."),
+	user.visible_message(SPAN_NOTICE("[user] 用[fluff_tool]电击了[target]。"),
 		SPAN_HELPFUL("You shock <b>[target]</b> with the [fluff_tool]."))
-	target.visible_message(SPAN_DANGER("[target]'s body convulses a bit."))
+	target.visible_message(SPAN_DANGER("[target]的身体抽搐了一下。"))
 	shock_cooldown = world.time + 10 //1 second cooldown before you can shock again
 
 	var/datum/internal_organ/heart/heart = target.internal_organs_by_name["heart"]
@@ -252,15 +252,15 @@
 	if(!target.is_revivable())
 		playsound(get_turf(src), sound_failed, 25, 0)
 		if(heart && heart.organ_status >= ORGAN_BROKEN)
-			user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Defibrillation failed. Patient's heart is too damaged. Immediate surgery is advised."))
+			user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] 发出嗡鸣：除颤失败。患者心脏损伤过重。建议立即进行手术。"))
 			msg_admin_niche("[key_name_admin(user)] failed an attempt to revive [key_name_admin(target)] with [src] because of heart damage.")
 			return
-		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Defibrillation failed. Patient's general condition does not allow reviving."))
+		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] 发出嗡鸣：除颤失败。患者的整体状况不允许复苏。"))
 		msg_admin_niche("[key_name_admin(user)] failed an attempt to revive [key_name_admin(target)] with [src].")
 		return
 
 	if(!target.client && !(target.status_flags & FAKESOUL)) //Freak case, no client at all. This is a braindead mob (like a colonist)
-		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: No soul detected, Attempting to revive..."))
+		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] 发出嗡鸣：未检测到生命信号，正在尝试复苏..."))
 
 	if(isobserver(target.mind?.current) && !target.client) //Let's call up the correct ghost! Also, bodies with clients only, thank you.
 		target.mind.transfer_to(target, TRUE)
@@ -282,7 +282,7 @@
 				target.reagents.remove_reagent(R.id, 1)
 				break
 	if(target.health > target.health_threshold_dead)
-		user.visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] \The [src] beeps: [fluff_revive_message]."))
+		user.visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] \The [src] 发出哔声：[fluff_revive_message]。"))
 		msg_admin_niche("[key_name_admin(user)] successfully revived [key_name_admin(target)] with [src].")
 		playsound(get_turf(src), sound_success, 25, 0)
 		user.track_life_saved(user.job)
@@ -292,11 +292,11 @@
 		if(heart)
 			heart.take_damage(rand(min_heart_damage_dealt, max_heart_damage_dealt), TRUE) // Make death and revival leave lasting consequences
 
-		to_chat(target, SPAN_NOTICE("You suddenly feel a spark and your consciousness returns, dragging you back to the mortal plane."))
+		to_chat(target, SPAN_NOTICE("你突然感到一阵电击，意识被拉回了现世。"))
 		if(target.client?.prefs.toggles_flashing & FLASH_CORPSEREVIVE)
 			window_flash(target.client)
 	else
-		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Defibrillation failed. Vital signs are too weak, repair damage and try again.")) //Freak case
+		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] 发出嗡鸣：除颤失败。生命体征过于微弱，修复损伤后重试。")) //Freak case
 		msg_admin_niche("[key_name_admin(user)] failed an attempt to revive [key_name_admin(target)] with [src] because of weak vitals.")
 		playsound(get_turf(src), sound_failed, 25, 0)
 		if(heart && prob(25))
@@ -308,10 +308,10 @@
 	update_icon()
 
 /obj/item/device/defibrillator/upgraded
-	name = "upgraded emergency defibrillator"
+	name = "升级版紧急除颤器"
 	icon_state = "adv_defib"
 	item_state = "adv_defib"
-	desc = "An advanced rechargeable defibrillator using induction to deliver shocks through metallic objects, such as armor, and does so with much greater efficiency than the standard variant, not damaging the heart."
+	desc = "一种先进的可充电除颤器，利用感应原理通过金属物体（如护甲）传递电击，效率远高于标准型号，且不会损伤心脏。"
 
 	blocked_by_suit = FALSE
 	min_heart_damage_dealt = 0
@@ -319,8 +319,8 @@
 	damage_heal_threshold = 35
 
 /obj/item/device/defibrillator/compact_adv
-	name = "advanced compact defibrillator"
-	desc = "An advanced compact defibrillator that trades capacity for strong immediate power. Ignores armor and heals strongly and quickly, at the cost of very low charge. It does not damage the heart."
+	name = "先进紧凑型除颤器"
+	desc = "一种先进的紧凑型除颤器，以牺牲容量换取强大的瞬时功率。可无视护甲，快速强力治疗，但代价是极低的电量。它不会损伤心脏。"
 	icon = 'icons/obj/items/medical_tools.dmi'
 	icon_state = "compact_defib"
 	item_state = "defib"
@@ -333,8 +333,8 @@
 	charge_cost = 198
 
 /obj/item/device/defibrillator/compact
-	name = "compact defibrillator"
-	desc ="This particular defibrillator has halved charge capacity compared to the standard emergency defibrillator, but can fit in your pocket."
+	name = "紧凑型除颤器"
+	desc ="这款除颤器的电量容量仅为标准紧急除颤器的一半，但可以放入口袋。"
 	icon = 'icons/obj/items/medical_tools.dmi'
 	icon_state = "compact_defib"
 	item_state = "defib"
@@ -344,8 +344,8 @@
 
 
 /obj/item/device/defibrillator/synthetic
-	name = "W-Y synthetic reset key"
-	desc = "Result of collaboration between Hyperdyne and Weyland-Yutani, this device can fix major glitches or programming errors of synthetic units, as well as being able to restart a synthetic that has suffered critical failure. It can only be used once before being reset."
+	name = "维兰德-汤谷合成人重置密钥"
+	desc = "海珀戴恩与维兰德-汤谷合作的产物，该设备可以修复合成人单位的主要故障或程序错误，并能够重启遭受严重故障的合成人。它只能使用一次，之后需要重置。"
 	icon = 'icons/obj/items/synth/synth_reset_key.dmi'
 	icon_state = "reset_key"
 	item_state = "synth_reset_key"
@@ -395,55 +395,55 @@
 
 /obj/item/device/defibrillator/synthetic/check_revive(mob/living/carbon/human/H, mob/living/carbon/human/user)
 	if(!issynth(H))
-		to_chat(user, SPAN_WARNING("You can't use a [src] on a living being!"))
+		to_chat(user, SPAN_WARNING("你不能对活体使用[src]！"))
 		return FALSE
 	if(!ready)
-		balloon_alert(user, "activate it first!")
-		to_chat(user, SPAN_WARNING("You need to activate [src] first."))
+		balloon_alert(user, "先激活它！")
+		to_chat(user, SPAN_WARNING("你需要先激活[src]。"))
 		return FALSE
 	if(synthetic_type_locked && !istype(H.assigned_equipment_preset, synthetic_type_locked))
-		to_chat(user, SPAN_WARNING("You can't use [src] on this type of synthetic!"))
+		to_chat(user, SPAN_WARNING("你不能对这类合成人使用[src]！"))
 		return FALSE
 	if(dcell.charge < charge_cost)
-		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] has already been used! It needs to be recharged."))
+		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] 已被使用过！需要重新充电。"))
 		return FALSE
 	if(H.stat != DEAD)
-		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Function signs detected. Aborting."))
+		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] 发出嗡鸣：检测到功能签名。中止。"))
 		return FALSE
 
 	if(!H.is_revivable())
-		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Unit's general condition does not allow reactivation."))
+		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] 发出嗡鸣：单位整体状况不允许重新激活。"))
 		return FALSE
 
 	return TRUE
 
 /obj/item/device/defibrillator/synthetic/noskill
-	name = "SMART W-Y synthetic reset key"
-	desc = "Result of collaboration between Hyperdyne and Weyland-Yutani, this device can fix major glitches or programming errors of synthetic units, as well as being able to restart a synthetic that has suffered critical failure. It can only be used once before being reset. This one has a microfunction AI and can be operated by anyone."
+	name = "SMART 维兰德-汤谷合成人重置密钥"
+	desc = "这是海珀戴恩与维兰德-汤谷合作的成果，该设备可以修复合成人单位的主要故障或程序错误，并能够重启遭受严重故障的合成人。它只能使用一次，之后需要重置。此型号带有微功能AI，可由任何人操作。"
 	icon_state = "reset_key_ns"
 	noskill = TRUE
 
 /obj/item/device/defibrillator/synthetic/hyperdyne
-	name = "Hyperdyne synthetic reset key"
-	desc = "An independant Hyperdyne design, based on a previous collaboration with Weyland-Yutani, this device can fix major glitches or programming errors of synthetic units, as well as being able to restart a synthetic that has suffered critical failure. It can only be used once before being reset."
+	name = "海珀戴恩合成人重置密钥"
+	desc = "这是海珀戴恩的独立设计，基于先前与维兰德-汤谷的合作。该设备可以修复合成人单位的主要故障或程序错误，并能够重启遭受严重故障的合成人。它只能使用一次，之后需要重置。"
 	icon_state = "hyper_reset_key"
 
 /obj/item/device/defibrillator/synthetic/hyperdyne/noskill
-	name = "SMART Hyperdyne synthetic reset key"
-	desc = "An independant Hyperdyne design, based on a previous collaboration with Weyland-Yutani, this device can fix major glitches or programming errors of synthetic units, as well as being able to restart a synthetic that has suffered critical failure. It can only be used once before being reset. This one has a microfunction AI and can be operated by anyone."
+	name = "SMART 海珀戴恩合成人重置密钥"
+	desc = "这是海珀戴恩的独立设计，基于先前与维兰德-汤谷的合作。该设备可以修复合成人单位的主要故障或程序错误，并能够重启遭受严重故障的合成人。它只能使用一次，之后需要重置。此型号带有微功能AI，可由任何人操作。"
 	icon_state = "hyper_reset_ns_key"
 	noskill = TRUE
 
 /obj/item/device/defibrillator/synthetic/seegson
-	name = "Seegson Working Joe reboot key"
-	desc = "Seegson tool required in a repair of Working Joe units that suffered critical failures, reboots unit system to a factory settings. Isn't compatible with sythetics of Hyperdyne, Weyland-Yutani and other designs. It can only be used once before being reset."
+	name = "希格森 工作乔 重启密钥"
+	desc = "希格森工具，用于修复遭受严重故障的工作乔单位，将单位系统重启至出厂设置。与海珀戴恩、维兰德-汤谷及其他设计的合成人不兼容。它只能使用一次，之后需要重置。"
 	icon_state = "seeg_reset_key"
 	sound_success = 'sound/items/synth_reset_key/seegson_revive.ogg'
 	synthetic_type_locked = /datum/equipment_preset/synth/working_joe
 
 /obj/item/device/defibrillator/synthetic/makeshift
-	name = "makeshift synthetic sparker"
-	desc = "A tool resembling a synthetic reset key, but extremely crude and made from spare parts, only capable of rebooting the system of a synthetic, with a small chance of corrupting that system. It can only be used once before being reset."
+	name = "临时合成人电击器"
+	desc = "一种类似合成人重置钥匙的工具，但极其粗糙，由备用零件制成，只能重启合成人的系统，并有小概率损坏该系统。它只能使用一次，之后需要重置。"
 	icon_state = "makeshift_key"
 	should_spark = TRUE
 	sound_success = "sparks"

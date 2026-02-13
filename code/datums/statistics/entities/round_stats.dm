@@ -30,7 +30,7 @@
 
 	var/list/abilities_used = list() // types of /datum/entity/statistic, "tail sweep" = 10, "screech" = 2
 
-	var/list/castes_evolved = list() // dict of any caste that has been evolved into, and how many times, "Ravager" = 5, "Warrior" = 2
+	var/list/castes_evolved = list() // dict of any caste that has been evolved into, and how many times, "掠夺者" = 5, "Warrior" = 2
 
 	var/list/participants = list() // types of /datum/entity/statistic, "[human.faction]" = 10, "xeno" = 2
 	var/list/final_participants = list() // types of /datum/entity/statistic, "[human.faction]" = 0, "xeno" = 45
@@ -417,7 +417,7 @@
 	WRITE_LOG(GLOB.round_stats, stats)
 
 /datum/action/show_round_statistics
-	name = "View End-Round Statistics"
+	name = "查看回合结束统计"
 
 /datum/action/show_round_statistics/can_use_action()
 	if(!..())

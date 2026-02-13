@@ -1,6 +1,6 @@
 /// Updates BYOND pager status periodically
 SUBSYSTEM_DEF(pager_status)
-	name   = "Pager Status"
+	name   = "寻呼机状态"
 	wait   = 1 MINUTES
 	priority  = SS_PRIORITY_PAGER_STATUS
 	flags  = SS_NO_INIT

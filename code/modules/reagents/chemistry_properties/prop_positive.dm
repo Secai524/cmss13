@@ -155,7 +155,7 @@
 	if(prob(60))
 		processing_tray.sampled = 0
 		var/turf/c_turf = get_turf(processing_tray)
-		c_turf.visible_message(SPAN_NOTICE("[processing_tray.seed.display_name]'s graft scar has healed!"))
+		c_turf.visible_message(SPAN_NOTICE("[processing_tray.seed.display_name]的移植疤痕愈合了！"))
 
 
 /datum/chem_property/positive/hemogenic/proc/handle_nutrition_loss(mob/living/M, potency = 1, delta_time)
@@ -507,7 +507,7 @@
 				var/total_knitting_time = world.time + L.time_to_knit - min(150*potency, L.time_to_knit - 50)
 				L.knitting_time = total_knitting_time
 				L.start_processing()
-				to_chat(M, SPAN_NOTICE("You feel the bones in your [L.display_name] starting to knit together."))
+				to_chat(M, SPAN_NOTICE("你感觉[L.display_name]的骨头开始愈合。"))
 
 /datum/chem_property/positive/bonemending/process_overdose(mob/living/M, potency = 1)
 	M.take_limb_damage(POTENCY_MULTIPLIER_MEDIUM*potency)
@@ -557,7 +557,7 @@
 
 /datum/chem_property/positive/neurocryogenic/process(mob/living/M, potency = 1, delta_time)
 	if(prob(10 * delta_time))
-		to_chat(M, SPAN_WARNING("You feel like you have the worst brain freeze ever!"))
+		to_chat(M, SPAN_WARNING("你感觉像是经历了最严重的脑冻结！"))
 	M.KnockDown(20)
 	M.Stun(20)
 
@@ -596,14 +596,14 @@
 				embryo.counter = embryo.counter - (potency * delta_time)
 				current_human.take_limb_damage(0, POTENCY_MULTIPLIER_MEDIUMLOW*potency)
 				if(prob(potency * 5)) //Higher chance of notice with higher potency makes sense
-					to_chat(current_human, SPAN_NOTICE("You feel something inside you squirming in agitation!")) //Inform the marine their embryo is dying
+					to_chat(current_human, SPAN_NOTICE("你感觉体内有东西在焦躁地蠕动！")) //Inform the marine their embryo is dying
 			else
 				embryo.stage--
 				if(embryo.stage <= 0)//if we reach this point, the embryo dies and the occupant takes a nasty amount of acid damage
 					embryo.forceMove(current_human.loc) //forces the embryo out of the container that is the human host and onto the ground
 					current_human.take_limb_damage(0,rand(20,40))
 					current_human.vomit()
-					to_chat(current_human, SPAN_NOTICE("You throw up several bits of wormlike matter!")) //Embryo is dead
+					to_chat(current_human, SPAN_NOTICE("你吐出几块蠕虫状的物质！")) //Embryo is dead
 				else
 					embryo.counter = embryo.per_stage_hugged_time - (potency * delta_time)
 
@@ -726,14 +726,14 @@
 		if(!COOLDOWN_FINISHED(src, revive_notif))
 			return
 		COOLDOWN_START(src, revive_notif, 10 SECONDS)
-		to_chat(dead, SPAN_NOTICE("You feel your heart struggling as you suddenly feel a spark, making it desperately try to continue pumping."))
+		to_chat(dead, SPAN_NOTICE("你感觉心脏在挣扎，突然出现一丝火花，让它拼命尝试继续跳动。"))
 		playsound_client(dead.client, 'sound/effects/heart_beat_short.ogg', 35)
 		var/mob/dead/observer/ghost = dead.get_ghost()
 		if(ghost?.client)
 			playsound_client(ghost.client, 'sound/effects/adminhelp_new.ogg')
-			to_chat(ghost, SPAN_BOLDNOTICE("Your heart is struggling to pump! There is a chance you might get up!(Verbs -> Ghost -> Re-enter corpse, or <a href='byond://?src=\ref[ghost];reentercorpse=1'>click here!</a>)"))
+			to_chat(ghost, SPAN_BOLDNOTICE("你的心脏泵血困难！你有可能重新站起来！（操作 -> 鬼魂 -> 重返尸体，或<a href='byond://?src=\ref[ghost];reentercorpse=1'>点击这里！</a>）"))
 	else if ((potency >= 1) && dead.health <= dead.health_threshold_dead) //heals on all level above 1. This is however, minimal.
-		to_chat(dead, SPAN_NOTICE("You feel a faint spark in your chest."))
+		to_chat(dead, SPAN_NOTICE("你感到胸口有一丝微弱的火花。"))
 		dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, BRUTE)
 		dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, BURN)
 		dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, TOX)
@@ -763,12 +763,12 @@
 		return
 	H.chem_effect_flags |= CHEM_EFFECT_RESIST_FRACTURE
 	if(prob(5 * delta_time))
-		to_chat(M, SPAN_NOTICE("Your body feels incredibly tense."))
+		to_chat(M, SPAN_NOTICE("你的身体感觉异常紧绷。"))
 
 /datum/chem_property/positive/hyperdensificating/process_overdose(mob/living/M, potency = 1)
 	M.reagent_move_delay_modifier += POTENCY_MULTIPLIER_MEDIUM*potency
 	if(prob(10))
-		to_chat(M, SPAN_NOTICE("It is really hard to move your body."))
+		to_chat(M, SPAN_NOTICE("移动身体变得异常困难。"))
 
 /datum/chem_property/positive/hyperdensificating/process_critical(mob/living/M, potency = 1, delta_time)
 	M.take_limb_damage(1.5 * potency * delta_time)
@@ -789,7 +789,7 @@
 	if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO)
 		return
 	H.chem_effect_flags |= CHEM_EFFECT_RESIST_NEURO
-	to_chat(M, SPAN_NOTICE("Your skull feels incredibly thick."))
+	to_chat(M, SPAN_NOTICE("你的颅骨感觉异常厚重。"))
 	M.SetDaze(0)
 
 /datum/chem_property/positive/neuroshielding/process_overdose(mob/living/M, potency = 1, delta_time)
@@ -966,7 +966,7 @@
 	max_level = 1
 
 /datum/chem_property/positive/photosensitive/process(mob/living/M, potency = 1)
-	to_chat(M, SPAN_WARNING("Your feel a horrible migraine!"))
+	to_chat(M, SPAN_WARNING("你感到一阵可怕的偏头痛！"))
 	M.apply_internal_damage(potency, "brain")
 
 /datum/chem_property/positive/photosensitive/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
@@ -985,7 +985,7 @@
 		var/turf/c_turf = get_turf(processing_tray)
 		processing_tray.seed = processing_tray.seed.diverge()
 		processing_tray.seed.harvest_repeat = 1
-		c_turf.visible_message(SPAN_NOTICE("[processing_tray.seed.display_name] begins to shimmer with a color out of space!"))
+		c_turf.visible_message(SPAN_NOTICE("[processing_tray.seed.display_name]开始闪烁出空间之外的颜色！"))
 		processing_tray.potency_counter = 0
 
 /datum/chem_property/positive/crystallization
@@ -997,7 +997,7 @@
 	max_level = 1
 
 /datum/chem_property/positive/crystallization/process(mob/living/M, potency = 1)
-	to_chat(M, SPAN_WARNING("You feel like many razor sharp blades cut through your insides!"))
+	to_chat(M, SPAN_WARNING("你感觉仿佛有许多锋利的刀刃切开了你的内脏！"))
 	M.take_limb_damage(brute = 0.5 * potency)
 	M.apply_internal_damage(potency, "liver")
 
@@ -1017,7 +1017,7 @@
 		var/turf/c_turf = get_turf(processing_tray)
 		processing_tray.seed = processing_tray.seed.diverge()
 		processing_tray.seed.harvest_repeat = 1
-		c_turf.visible_message(SPAN_NOTICE("[processing_tray.seed.display_name] begins to shimmer with a color out of space!"))
+		c_turf.visible_message(SPAN_NOTICE("[processing_tray.seed.display_name]开始闪烁出空间之外的颜色！"))
 		processing_tray.potency_counter = 0
 
 //properties with combat uses
@@ -1030,7 +1030,7 @@
 	cost_penalty = FALSE
 
 /datum/chem_property/positive/disrupting/process(mob/living/M, potency = 1)
-	to_chat(M, SPAN_NOTICE("Your mind feels oddly... quiet."))
+	to_chat(M, SPAN_NOTICE("你的心智感觉出奇地...安静。"))
 
 /datum/chem_property/positive/disrupting/process_overdose(mob/living/M, potency = 1)
 	M.apply_internal_damage(potency, "brain")
@@ -1069,7 +1069,7 @@
 	if(isxeno(L))
 		var/mob/living/carbon/xenomorph/xeno = M
 		xeno.plasma_stored = max(xeno.plasma_stored - POTENCY_MULTIPLIER_VHIGH * volume * potency, 0)
-		to_chat(xeno, SPAN_WARNING("You feel your plasma reserves being drained!"))
+		to_chat(xeno, SPAN_WARNING("你感觉你的等离子储备正在被抽干！"))
 
 /datum/chem_property/positive/neutralizing/reaction_turf(turf/T, volume, potency)
 	if(!istype(T))

@@ -1,5 +1,5 @@
 /obj/docking_port/mobile/vehicle_elevator
-	name = "vehicle elevator"
+	name = "载具升降机"
 	width = 5
 	height = 5
 	dwidth = 2
@@ -75,7 +75,7 @@
 			railing.close()
 
 /obj/docking_port/stationary/vehicle_elevator
-	name = "Root Vehicle Elevator Dock"
+	name = "根区载具升降机泊位"
 	id = "root vehicle"
 	width = 5
 	height = 5
@@ -83,7 +83,7 @@
 	dheight = 2
 
 /obj/docking_port/stationary/vehicle_elevator/almayer
-	name = "Almayer Vehicle Elevator Dock"
+	name = "阿尔迈耶号载具升降机泊位"
 	id = "almayer vehicle"
 	roundstart_template = /datum/map_template/shuttle/vehicle
 
@@ -128,5 +128,5 @@
 	NE.invisibility = INVISIBILITY_ABSTRACT
 
 /obj/docking_port/stationary/vehicle_elevator/adminlevel
-	name = "Adminlevel Vehicle Elevator Dock"
+	name = "管理区载具升降机泊位"
 	id = "adminlevel vehicle"

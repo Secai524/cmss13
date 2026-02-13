@@ -4,7 +4,7 @@
 
 /obj/item/device/multitool
 	name = "\improper Security Access Tuner" //Thats what is is in-universe. From Alien: Isolation.
-	desc = "A small handheld tool used to override various machine functions. Primarily used to pulse Airlock and APC wires on a shortwave frequency. It contains a small data buffer as well."
+	desc = "一种小型手持工具，用于覆盖各种机器功能。主要用于以短波频率脉冲气闸和APC线路。它内部还包含一个小型数据缓冲区。"
 	icon_state = "multitool"
 	item_state = "multitool"
 	icon = 'icons/obj/items/tools.dmi'
@@ -59,8 +59,8 @@
 	var/area/A = get_area(src)
 	var/atom/APC = A? A.get_apc() : null
 	if(APC)
-		to_chat(user, SPAN_NOTICE("The local APC is located at [SPAN_BOLD("[get_dist(src, APC)] units [dir2text(Get_Compass_Dir(src, APC))]")]."))
-		user.balloon_alert(user, "[get_dist(src, APC)] units [dir2text(Get_Compass_Dir(src, APC))]")
+		to_chat(user, SPAN_NOTICE("本地APC位于[SPAN_BOLD("[get_dist(src, APC)]单位[dir2text(Get_Compass_Dir(src, APC))]方向")]."))
+		user.balloon_alert(user, "[get_dist(src, APC)]单位[dir2text(Get_Compass_Dir(src, APC))]方向")
 		if(user.client)
 			//Create the appearance so we have something to apply the filter to.
 			var/mutable_appearance/apc_appearance = new(APC)
@@ -78,8 +78,8 @@
 
 
 	else
-		to_chat(user, SPAN_WARNING("ERROR: Could not locate local APC."))
-		user.balloon_alert(user, "could not locate!")
+		to_chat(user, SPAN_WARNING("错误：无法定位本地APC。"))
+		user.balloon_alert(user, "无法定位！")
 
 /obj/item/device/multitool/proc/remove_apc_highlight(client/user_client, image/highlight_image)
 	if(!user_client)

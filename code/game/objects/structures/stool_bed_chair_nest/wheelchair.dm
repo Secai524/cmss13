@@ -1,6 +1,6 @@
 /obj/structure/bed/chair/wheelchair
 	name = "wheelchair"
-	desc = "You sit in this. Either by will or force."
+	desc = "你坐了进去。无论是自愿还是被迫。"
 	icon_state = "wheelchair"
 	anchored = FALSE
 	drag_delay = 1 //pulling something on wheels is easy
@@ -89,7 +89,7 @@
 			victim.apply_effect(6, WEAKEN)
 			victim.apply_effect(6, STUTTER)
 			victim.apply_damage(10, BRUTE, def_zone)
-		occupant.visible_message(SPAN_DANGER("[occupant] crashed into \the [A]!"))
+		occupant.visible_message(SPAN_DANGER("[occupant]撞上了\the [A]！"))
 
 /obj/structure/bed/chair/wheelchair/proc/create_track()
 	var/obj/effect/decal/cleanable/blood/tracks/B = new(loc)

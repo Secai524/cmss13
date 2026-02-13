@@ -2,12 +2,12 @@
 	set category = null
 	set name = "Select Rank"
 	if(!istype(H))
-		alert("Invalid mob")
+		alert("无效单位")
 		return
 
 	var/rank_list = list("Custom", "Weyland-Yutani") + GLOB.RoleAuthority.roles_by_name
 
-	var/newrank = tgui_input_list(usr, "Select new rank for [H]", "Change the mob's rank and skills", rank_list)
+	var/newrank = tgui_input_list(usr, "为[H]选择新军衔", "Change the mob's rank and skills", rank_list)
 	if (!newrank)
 		return
 	if(QDELETED(H))
@@ -33,7 +33,7 @@
 				if(rankpath)
 					var/obj/item/clothing/accessory/ranks/R = new rankpath()
 					C.attach_accessory(H, R)
-		var/new_faction = tgui_input_list(usr, "Select faction.", "Faction Choice", FACTION_LIST_HUMANOID)
+		var/new_faction = tgui_input_list(usr, "选择阵营。", "Faction Choice", FACTION_LIST_HUMANOID)
 		if(!new_faction)
 			new_faction = FACTION_NEUTRAL
 		H.faction = new_faction
@@ -44,7 +44,7 @@
 				H.faction = FACTION_WY
 				H.faction_group = FACTION_LIST_WY
 
-				var/newskillset = tgui_input_list(usr, "Select a skillset", "Skill Set", (list("Keep Skillset") +GLOB.RoleAuthority.roles_by_name))
+				var/newskillset = tgui_input_list(usr, "选择技能组", "Skill Set", (list("Keep Skillset") +GLOB.RoleAuthority.roles_by_name))
 				if(!newskillset || newskillset == "Keep Skillset")
 					return
 
@@ -55,7 +55,7 @@
 				H.set_skills(J.get_skills())
 
 			if("Custom")
-				var/newcommtitle = input("Write the custom title appearing on comms chat (e.g. Spc)", "Comms title") as null|text
+				var/newcommtitle = input("Write the custom title appearing on comms chat (e.g. Spc)", "通讯头衔") as null|text
 				if(!newcommtitle)
 					return
 				if(QDELETED(H))
@@ -64,16 +64,16 @@
 				H.comm_title = newcommtitle
 
 				if(!I || I != H.get_idcard())
-					to_chat(usr, "The mob has no id card, unable to modify ID and chat title.")
+					to_chat(usr, "该单位无身份卡，无法修改ID和聊天头衔。")
 				else
-					var/newchattitle = input("Write the custom title appearing in chat (e.g. SGT)", "Chat title") as null|text
+					var/newchattitle = input("Write the custom title appearing in chat (e.g. SGT)", "聊天头衔") as null|text
 					if(!newchattitle)
 						return
 					if(QDELETED(H) || I != H.get_idcard())
 						return
 
 					I.paygrade = newchattitle
-					var/IDtitle = input("Write the custom title on your ID (e.g. Squad Specialist)", "ID title") as null|text
+					var/IDtitle = input("Write the custom title on your ID (e.g. Squad Specialist)", "ID头衔") as null|text
 					if(!IDtitle)
 						return
 					if(QDELETED(H) || I != H.get_idcard())
@@ -83,12 +83,12 @@
 					I.assignment = IDtitle
 					I.name = "[I.registered_name]'s [I.id_type] ([I.assignment])"
 
-				var/new_faction = tgui_input_list(usr, "Select faction.", "Faction Choice", FACTION_LIST_HUMANOID)
+				var/new_faction = tgui_input_list(usr, "选择阵营。", "Faction Choice", FACTION_LIST_HUMANOID)
 				if(!new_faction)
 					new_faction = FACTION_NEUTRAL
 				H.faction = new_faction
 
-				var/newskillset = tgui_input_list(usr, "Select a skillset", "Skill Set", GLOB.RoleAuthority.roles_by_name)
+				var/newskillset = tgui_input_list(usr, "选择技能组", "Skill Set", GLOB.RoleAuthority.roles_by_name)
 				if(!newskillset)
 					return
 
@@ -100,16 +100,16 @@
 
 /client/proc/cmd_admin_dress(mob/M in GLOB.mob_list)
 	set category = null
-	set name = "Select Equipment"
+	set name = "选择装备"
 
 	cmd_admin_dress_human(M)
 
 /client/proc/cmd_admin_dress_human(mob/living/carbon/human/M in GLOB.human_mob_list, datum/equipment_preset/dresscode, no_logs = 0, count_participant = FALSE)
 	if (!no_logs)
-		var/category = tgui_input_list(usr, "Which Equipment Category do you wish to use?", "Select Category", GLOB.equipment_presets.categories)
+		var/category = tgui_input_list(usr, "你希望使用哪个装备类别？", "Select Category", GLOB.equipment_presets.categories)
 		if(!category)
 			return
-		dresscode = tgui_input_list(usr, "Select dress for [M]", "Robust quick dress shop", GLOB.equipment_presets.categories[category])
+		dresscode = tgui_input_list(usr, "为[M]选择着装", "Robust quick dress shop", GLOB.equipment_presets.categories[category])
 
 	if(isnull(dresscode))
 		return
@@ -123,9 +123,9 @@
 	if(!ishuman(M))
 		//If the mob is not human, we're transforming them into a human
 		//To speed up the setup process
-		M = M.change_mob_type( /mob/living/carbon/human , null, null, TRUE, "Human")
+		M = M.change_mob_type( /mob/living/carbon/human , null, null, TRUE, "人类")
 		if(!ishuman(M))
-			to_chat(usr, "Something went wrong with mob transformation...")
+			to_chat(usr, "单位转换过程出错...")
 			return
 
 	if(!M.hud_used)
@@ -141,7 +141,7 @@
 	set name = "Select Equipment - All Humans"
 	set desc = "Applies an equipment preset to all humans in the world."
 
-	var/datum/equipment_preset/dresscode = tgui_input_list(usr, "Select dress for ALL HUMANS", "Robust quick dress shop", GLOB.equipment_presets.categories["All"])
+	var/datum/equipment_preset/dresscode = tgui_input_list(usr, "为所有人类选择着装", "Robust quick dress shop", GLOB.equipment_presets.categories["All"])
 	if (isnull(dresscode))
 		return
 

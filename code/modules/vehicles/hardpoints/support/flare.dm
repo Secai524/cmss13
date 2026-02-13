@@ -1,6 +1,6 @@
 /obj/item/hardpoint/support/flare_launcher
 	name = "\improper M-87F Flare Launcher"
-	desc = "A support module for APCs that shoots flares."
+	desc = "装甲运兵车的支援模块，可发射照明弹。"
 	icon = 'icons/obj/vehicles/hardpoints/apc.dmi'
 
 	icon_state = "flare_launcher"

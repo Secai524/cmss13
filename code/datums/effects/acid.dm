@@ -84,7 +84,7 @@
 		var/mob/living/carbon/human/human = affected_atom
 		human.update_effects()
 		if(acid_level >= 3)
-			to_chat(human, SPAN_WARNING("Your armor returns to normal."))
+			to_chat(human, SPAN_WARNING("你的护甲恢复正常。"))
 
 	if(isobj(affected_atom))
 		var/obj/obj_target = affected_atom
@@ -124,7 +124,7 @@
 		var/mob/living/carbon/human/affected_human = affected_atom
 		affected_human.update_effects()
 		if(acid_level == 3)
-			to_chat(affected_human, SPAN_WARNING("Your armor has been weakened."))
+			to_chat(affected_human, SPAN_WARNING("你的护甲已被削弱。"))
 
 /**
  * Counts up how long the acid has lasted to determine the hits_multiplier.

@@ -2,7 +2,7 @@
 
 //OBJ
 /obj/structure/desertdam/decals
-	name = "desert foliage"
+	name = "沙漠植被"
 	icon = 'icons/turf/floors/desertdam_map.dmi'
 	density = FALSE
 	anchored = TRUE
@@ -12,7 +12,7 @@
 	plane = FLOOR_PLANE
 //loose sand overlay
 /obj/structure/desertdam/decals/loose_sand_overlay
-	name = "loose sand"
+	name = "散沙"
 	icon_state = "loosesand_overlay_for_asphalt_1"
 
 //road decal

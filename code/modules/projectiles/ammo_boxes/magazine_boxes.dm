@@ -1,7 +1,7 @@
 //-----------------------M41A Rifle Mag Boxes-----------------------
 
 /obj/item/ammo_box/magazine/ap
-	name = "magazine box (AP M41A x 10)"
+	name = "弹匣箱 (M41A穿甲弹 x 10)"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_ap"
 	overlay_content = "_ap"
@@ -11,7 +11,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/le
-	name = "magazine box (LE M41A x 10)"
+	name = "弹匣箱 (M41A低致命弹 x 10)"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_le"
 	overlay_content = "_le"
@@ -21,7 +21,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/ext
-	name = "magazine box (Ext M41A x 8)"
+	name = "弹匣箱 (M41A加长弹匣 x 8)"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_ext"
 	num_of_magazines = 8
@@ -31,7 +31,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/incen
-	name = "magazine box (Incen M41A x 10)"
+	name = "弹匣箱 (M41A燃烧弹 x 10)"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_incen"
 	overlay_content = "_incen"
@@ -41,7 +41,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/explosive
-	name = "magazine box (Explosive M41A x 10)"
+	name = "弹匣箱 (M41A高爆弹 x 10)"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_expl"
 	overlay_content = "_expl"
@@ -51,7 +51,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/heap
-	name = "magazine box (HEAP M41A x 10)"
+	name = "弹匣箱 (M41A高爆穿甲弹 x 10)"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_heap"
 	overlay_content = "_heap"
@@ -63,7 +63,7 @@
 //-----------------------M39 Rifle Mag Boxes-----------------------
 
 /obj/item/ammo_box/magazine/m39
-	name = "magazine box (M39 x 12)"
+	name = "弹匣箱 (M39弹匣 x 12)"
 	icon_state = "base_m39"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_reg"
@@ -76,7 +76,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/m39/ap
-	name = "magazine box (AP M39 x 12)"
+	name = "弹匣箱 (M39穿甲弹 x 12)"
 	overlay_ammo_type = "_ap"
 	overlay_content = "_ap"
 	magazine_type = /obj/item/ammo_magazine/smg/m39/ap
@@ -85,7 +85,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/m39/ext
-	name = "magazine box (Ext m39 x 10)"
+	name = "弹匣箱 (M39加长弹匣 x 10)"
 	overlay_ammo_type = "_ext"
 	overlay_content = "_hv"
 	num_of_magazines = 10
@@ -95,7 +95,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/m39/incen
-	name = "magazine box (Incen m39 x 12)"
+	name = "弹匣箱 (M39燃烧弹 x 12)"
 	overlay_ammo_type = "_incen"
 	overlay_content = "_incen"
 	magazine_type = /obj/item/ammo_magazine/smg/m39/incendiary
@@ -104,7 +104,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/m39/le
-	name = "magazine box (LE m39 x 12)"
+	name = "弹匣箱 (M39低致命弹 x 12)"
 	overlay_ammo_type = "_le"
 	overlay_content = "_le"
 	magazine_type = /obj/item/ammo_magazine/smg/m39/le
@@ -113,7 +113,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/m39/heap
-	name = "magazine box (HEAP m39 x 12)"
+	name = "弹匣箱 (M39高爆穿甲弹 x 12)"
 	overlay_ammo_type = "_heap"
 	overlay_content = "_heap"
 	magazine_type = /obj/item/ammo_magazine/smg/m39/heap
@@ -124,7 +124,7 @@
 //-----------------------M4RA Battle Rifle Mag Boxes-----------------------
 
 /obj/item/ammo_box/magazine/m4ra
-	name = "magazine box (M4RA x 16)"
+	name = "弹匣箱 (M4RA弹匣 x 16)"
 	icon_state = "base_m4ra"
 	flags_equip_slot = SLOT_BACK
 	overlay_gun_type = "_m4ra"
@@ -135,7 +135,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/m4ra/ap
-	name = "magazine box (AP M4RA x 16)"
+	name = "弹匣箱 (M4RA穿甲弹 x 16)"
 	overlay_ammo_type = "_ap"
 	overlay_content = "_ap"
 	magazine_type = /obj/item/ammo_magazine/rifle/m4ra/ap
@@ -144,7 +144,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/m4ra/ext
-	name = "magazine box (Ext M4RA x 12)"
+	name = "弹匣箱 (M4RA加长弹匣 x 12)"
 	overlay_ammo_type = "_ext"
 	num_of_magazines = 12
 	magazine_type = /obj/item/ammo_magazine/rifle/m4ra/extended
@@ -153,7 +153,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/m4ra/incen
-	name = "magazine box (Incen M4RA x 16)"
+	name = "弹匣箱 (M4RA燃烧弹 x 16)"
 	overlay_ammo_type = "_incen"
 	overlay_content = "_incen"
 	magazine_type = /obj/item/ammo_magazine/rifle/m4ra/incendiary
@@ -162,7 +162,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/m4ra/heap
-	name = "magazine box (HEAP M4RA x 16)"
+	name = "弹匣箱 (M4RA高爆穿甲弹 x 16)"
 	overlay_ammo_type = "_heap"
 	overlay_content = "_heap"
 	magazine_type = /obj/item/ammo_magazine/rifle/m4ra/heap
@@ -173,7 +173,7 @@
 //-----------------------XM51 Breaching Scattergun Mag Box-----------------------
 
 /obj/item/ammo_box/magazine/xm51
-	name = "magazine box (XM51 x 8)"
+	name = "弹匣箱 (XM51弹匣 x 8)"
 	icon_state = "base_breach"
 	flags_equip_slot = SLOT_BACK
 	overlay_gun_type = "_xm51"
@@ -186,7 +186,7 @@
 //-----------------------L42A Battle Rifle Mag Boxes-----------------------
 
 /obj/item/ammo_box/magazine/l42a
-	name = "magazine box (L42A x 16)"
+	name = "弹匣箱 (L42A弹匣 x 16)"
 	icon_state = "base_l42"
 	flags_equip_slot = SLOT_BACK
 	overlay_gun_type = "_l42"
@@ -197,7 +197,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/l42a/ap
-	name = "magazine box (AP L42A x 16)"
+	name = "弹匣箱 (L42A穿甲弹 x 16)"
 	overlay_ammo_type = "_ap"
 	overlay_content = "_ap"
 	magazine_type = /obj/item/ammo_magazine/rifle/l42a/ap
@@ -206,7 +206,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/l42a/le
-	name = "magazine box (LE L42A x 16)"
+	name = "弹匣箱 (L42A低致命弹 x 16)"
 	overlay_ammo_type = "_le"
 	overlay_content = "_le"
 	magazine_type = /obj/item/ammo_magazine/rifle/l42a/le
@@ -215,7 +215,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/l42a/ext
-	name = "magazine box (Ext L42A x 12)"
+	name = "弹匣箱 (L42A加长弹匣 x 12)"
 	overlay_ammo_type = "_ext"
 	overlay_content = "_reg"
 	num_of_magazines = 12
@@ -225,7 +225,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/l42a/incen
-	name = "magazine box (Incen L42A x 16)"
+	name = "弹匣箱 (燃烧弹 L42A x 16)"
 	overlay_ammo_type = "_incen"
 	overlay_content = "_incen"
 	magazine_type = /obj/item/ammo_magazine/rifle/l42a/incendiary
@@ -234,7 +234,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/l42a/heap
-	name = "magazine box (HEAP L42A x 16)"
+	name = "弹匣箱 (高爆穿甲弹 L42A x 16)"
 	overlay_ammo_type = "_heap"
 	overlay_content = "_heap"
 	magazine_type = /obj/item/ammo_magazine/rifle/l42a/heap
@@ -245,7 +245,7 @@
 //-----------------------M16 Rifle Mag Box-----------------------
 
 /obj/item/ammo_box/magazine/M16
-	name = "magazine box (M16 x 12)"
+	name = "弹匣箱 (M16 x 12)"
 	icon_state = "base_m16"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_reg"
@@ -257,7 +257,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/M16/ap
-	name = "magazine box (AP M16 x 12)"
+	name = "弹匣箱 (穿甲弹 M16 x 12)"
 	icon_state = "base_m16"
 	overlay_ammo_type = "_ap"
 	overlay_gun_type = "_m16"
@@ -270,7 +270,7 @@
 //-----------------------M10 Pistol Mag Boxes-----------------------
 
 /obj/item/ammo_box/magazine/m10
-	name = "magazine box (M10 x 22)"
+	name = "弹匣箱 (M10 x 22)"
 	icon_state = "base_m10"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_reg"
@@ -283,7 +283,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/m10/extended
-	name = "magazine box (Ext m10 x 14)"
+	name = "弹匣箱 (加长弹 M10 x 14)"
 	overlay_ammo_type = "_ext"
 	overlay_content = "_apc"
 	num_of_magazines = 14
@@ -293,7 +293,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/m10/drum
-	name = "magazine box (Drum m10 x 12)"
+	name = "弹匣箱 (弹鼓 M10 x 12)"
 	overlay_ammo_type = "_drum"
 	overlay_content = "_apc"
 	num_of_magazines = 12
@@ -303,7 +303,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/m10/ap
-	name = "magazine box (M10 AP x 22)"
+	name = "弹匣箱 (M10 穿甲弹 x 22)"
 	icon_state = "base_m10"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_ap"
@@ -316,7 +316,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/m10/ap/extended
-	name = "magazine box (Ext AP m10 x 14)"
+	name = "弹匣箱 (加长穿甲弹 M10 x 14)"
 	overlay_ammo_type = "_ext_ap"
 	overlay_content = "_ap"
 	num_of_magazines = 14
@@ -326,7 +326,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/m10/ap/drum
-	name = "magazine box (Drum AP m10 x 12)"
+	name = "弹匣箱 (弹鼓穿甲弹 M10 x 12)"
 	overlay_ammo_type = "_drum_ap"
 	overlay_content = "_ap"
 	num_of_magazines = 12
@@ -338,7 +338,7 @@
 //-----------------------M4A3 Pistol Mag Box-----------------------
 
 /obj/item/ammo_box/magazine/m4a3
-	name = "magazine box (M4A3 x 16)"
+	name = "弹匣箱 (M4A3 x 16)"
 	icon_state = "base_m4a3"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_reg"
@@ -350,7 +350,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/m4a3/ap
-	name = "magazine box (AP M4A3 x 16)"
+	name = "弹匣箱 (穿甲弹 M4A3 x 16)"
 	overlay_ammo_type = "_ap"
 	overlay_content = "_ap"
 	magazine_type = /obj/item/ammo_magazine/pistol/ap
@@ -359,7 +359,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/m4a3/hp
-	name = "magazine box (HP M4A3 x 16)"
+	name = "弹匣箱 (空尖弹 M4A3 x 16)"
 	overlay_ammo_type = "_hp"
 	overlay_content = "_hp"
 	magazine_type = /obj/item/ammo_magazine/pistol/hp
@@ -368,7 +368,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/m4a3/incen
-	name = "magazine box (Incen M4A3 x 16)"
+	name = "弹匣箱 (燃烧弹 M4A3 x 16)"
 	overlay_ammo_type = "_incen"
 	overlay_content = "_incen"
 	magazine_type = /obj/item/ammo_magazine/pistol/incendiary
@@ -379,7 +379,7 @@
 //-----------------------M44 Revolver Speed Loaders Box-----------------------
 
 /obj/item/ammo_box/magazine/m44
-	name = "speed loaders box (M44 x 16)"
+	name = "快速装弹器箱 (M44 x 16)"
 	icon_state = "base_m44"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_m44_reg"
@@ -392,7 +392,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/m44/marksman
-	name = "speed loaders box (Marksman M44 x 16)"
+	name = "快速装弹器箱 (神射手弹 M44 x 16)"
 	overlay_ammo_type = "_m44_mark"
 	magazine_type = /obj/item/ammo_magazine/revolver/marksman
 
@@ -400,7 +400,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/m44/heavy
-	name = "speed loaders box (Heavy M44 x 16)"
+	name = "快速装弹器箱 (重型弹 M44 x 16)"
 	overlay_ammo_type = "_m44_heavy"
 	magazine_type = /obj/item/ammo_magazine/revolver/heavy
 
@@ -410,7 +410,7 @@
 //-----------------------SU-6 Smartpistol Mag Box-----------------------
 
 /obj/item/ammo_box/magazine/su6
-	name = "magazine box (SU-6 x 16)"
+	name = "弹匣箱 (SU-6 x 16)"
 	icon_state = "base_su6"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_reg"
@@ -424,7 +424,7 @@
 //-----------------------88M4 Pistol Mag Box-----------------------
 
 /obj/item/ammo_box/magazine/mod88
-	name = "magazine box (88 Mod 4 AP x 16)"
+	name = "弹匣箱 (88式4型穿甲弹 x 16)"
 	icon_state = "base_mod88"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_ap"
@@ -439,7 +439,7 @@
 //-----------------------VP78 Pistol Mag Box-----------------------
 
 /obj/item/ammo_box/magazine/vp78
-	name = "magazine box (VP78 x 16)"
+	name = "弹匣箱 (VP78 x 16)"
 	icon_state = "base_vp78"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_reg"
@@ -453,7 +453,7 @@
 //-----------------------Type71 Rifle Mag Box-----------------------
 
 /obj/item/ammo_box/magazine/type71
-	name = "magazine box (Type71 x 10)"
+	name = "弹匣箱 (71式 x 10)"
 	icon_state = "base_type71"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_type71_reg"
@@ -466,7 +466,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/type71/ap
-	name = "magazine box (Type71 AP x 10)"
+	name = "弹匣箱 (71式穿甲弹 x 10)"
 	overlay_ammo_type = "_type71_ap"
 	overlay_content = "_type71_ap"
 	magazine_type = /obj/item/ammo_magazine/rifle/type71/ap
@@ -475,7 +475,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/type71/heap
-	name = "magazine box (Type71 HEAP x 10)"
+	name = "弹匣箱 (71式高爆穿甲弹 x 10)"
 	overlay_ammo_type = "_type71_heap"
 	overlay_content = "_type71_heap"
 	magazine_type = /obj/item/ammo_magazine/rifle/type71/heap
@@ -486,7 +486,7 @@
 //-----------------------AK-4047 Rifle Mag Box-----------------------
 
 /obj/item/ammo_box/magazine/ak4047
-	name = "magazine box (AK-4047 x 10)"
+	name = "弹匣箱 (AK-4047 x 10)"
 	icon_state = "base_type71"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_type71_reg"
@@ -499,7 +499,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/ak4047/ap
-	name = "magazine box (AK-4047 AP x 10)"
+	name = "弹匣箱 (AK-4047穿甲弹 x 10)"
 	overlay_ammo_type = "_type71_ap"
 	overlay_content = "_type71_ap"
 	magazine_type = /obj/item/ammo_magazine/rifle/ak4047/ap
@@ -508,7 +508,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/ak4047/heap
-	name = "magazine box (AK-4047 HEAP x 10)"
+	name = "弹匣箱 (AK-4047 HEAP x 10)"
 	overlay_ammo_type = "_type71_heap"
 	overlay_content = "_type71_heap"
 	magazine_type = /obj/item/ammo_magazine/rifle/ak4047/heap
@@ -517,7 +517,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/ak4047/incendiary
-	name = "magazine box (AK-4047 HEAP x 10)"
+	name = "弹匣箱 (AK-4047 HEAP x 10)"
 	overlay_ammo_type = "_type71_incend"
 	overlay_content = "_type71_incend"
 	magazine_type = /obj/item/ammo_magazine/rifle/ak4047/incendiary
@@ -528,7 +528,7 @@
 //-----------------------Nailgun Mag Box-----------------------
 
 /obj/item/ammo_box/magazine/nailgun
-	name = "magazine box (Nailgun x 10)"
+	name = "弹匣箱 (射钉枪 x 10)"
 	icon_state = "base_nailgun" //base color of box
 	icon_state_deployed = "base_nailgun_deployed"
 	overlay_ammo_type = "_nail" //used for ammo type color overlay
@@ -546,7 +546,7 @@
 //-----------------------M56A2 Drum Box-----------------------
 
 /obj/item/ammo_box/magazine/m56a2
-	name = "drum box (M56A2 x 8)"
+	name = "弹鼓箱 (M56A2 x 8)"
 	icon_state = "base_m56b"
 	overlay_ammo_type = "_reg_heavy"
 	overlay_gun_type = "_sg"
@@ -558,7 +558,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/m56a2/dirty
-	name = "drum box (M56A2 'Dirty' x 8)"
+	name = "弹鼓箱 (M56A2 '脏弹' x 8)"
 	overlay_ammo_type = "_red_heavy"
 	overlay_content = "_sgdirty"
 	magazine_type = /obj/item/ammo_magazine/smartgun/dirty
@@ -569,7 +569,7 @@
 //-----------------------M56D Drum Box-----------------------
 
 /obj/item/ammo_box/magazine/m56d
-	name = "drum box (M56D x 8)"
+	name = "弹鼓箱 (M56D x 8)"
 	icon_state = "base_m56d"
 	overlay_ammo_type = ""
 	overlay_gun_type = "_m56d"
@@ -590,7 +590,7 @@
 //-----------------------M2C Ammo Box-----------------------
 
 /obj/item/ammo_box/magazine/m2c
-	name = "ammo box (M2C x 8)"
+	name = "弹药箱 (M2C x 8)"
 	icon_state = "base_m2c"
 	overlay_ammo_type = ""
 	overlay_gun_type = "_m2c"
@@ -622,7 +622,7 @@
 //-----------------------M41AE2 Ammo Box-----------------------
 
 /obj/item/ammo_box/magazine/m41ae2
-	name = "magazine (M41AE2 x 8)"
+	name = "弹匣 (M41AE2 x 8)"
 	icon_state = "base_m41ae2"
 	overlay_ammo_type = "_reg_heavy"
 	overlay_gun_type = "_m41ae2"
@@ -634,7 +634,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/m41ae2/holo
-	name = "magazine box (M41AE2 Holo-Target x 8)"
+	name = "弹匣箱 (M41AE2 全息瞄准 x 8)"
 	overlay_ammo_type = "_holo_heavy"
 	overlay_content = "_m41ae2_holo"
 	magazine_type = /obj/item/ammo_magazine/rifle/lmg/holo_target
@@ -643,7 +643,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/m41ae2/heap
-	name = "magazine box (M41AE2 HEAP x 8)"
+	name = "弹匣箱 (M41AE2 HEAP x 8)"
 	overlay_ammo_type = "_heap_heavy"
 	overlay_content = "_m41ae2_heap"
 	magazine_type = /obj/item/ammo_magazine/rifle/lmg/heap
@@ -654,7 +654,7 @@
 //-----------------------Flamer Fuel Tank Box-----------------------
 
 /obj/item/ammo_box/magazine/flamer
-	name = "flamer tank box (UT-Napthal Fuel x 8)"
+	name = "火焰喷射器燃料罐箱 (UT-萘燃料 x 8)"
 	icon_state = "base_flamer"
 	overlay_ammo_type = "_flamer"
 	overlay_gun_type = "_blank"
@@ -666,7 +666,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/flamer/bgel
-	name = "flamer fuel box (Napalm B-Gel x 8)"
+	name = "火焰喷射器燃料箱 (凝固汽油B凝胶 x 8)"
 	overlay_ammo_type = "_flamer_bgel"
 	overlay_content = "_flamer_bgel"
 	magazine_type = /obj/item/ammo_magazine/flamer_tank/gellied
@@ -677,7 +677,7 @@
 //-----------------------M41A MK1 Rifle Mag Boxes-----------------------
 
 /obj/item/ammo_box/magazine/mk1
-	name = "magazine box (M41A MK1 x 8)"
+	name = "弹匣箱 (M41A MK1 x 8)"
 	overlay_ammo_type = "_reg_mk1"
 	overlay_gun_type = "_mk1"
 	overlay_content = "_reg"
@@ -688,7 +688,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/mk1/ap
-	name = "magazine box (M41A MK1 AP x 8)"
+	name = "弹匣箱 (M41A MK1 AP x 8)"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_ap_mk1"
 	overlay_content = "_ap"
@@ -700,7 +700,7 @@
 //-----------------------NSG 23 Rifle Mag Boxes-----------------------
 
 /obj/item/ammo_box/magazine/nsg23
-	name = "magazine box (NSG 23 x 12)"
+	name = "弹匣箱 (NSG 23 x 12)"
 	icon_state = "base_nsg23"
 	overlay_gun_type = "_nsg23"
 	overlay_ammo_type = "_l23_reg"
@@ -712,7 +712,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/nsg23/ap
-	name = "magazine box (NSG 23 AP x 12)"
+	name = "弹匣箱 (NSG 23 AP x 12)"
 	overlay_ammo_type = "_l23_ap"
 	overlay_content = "_l23_ap"
 	magazine_type = /obj/item/ammo_magazine/rifle/nsg23/ap
@@ -722,7 +722,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/nsg23/ex
-	name = "magazine box (NSG 23 Extended x 8)"
+	name = "弹匣箱 (NSG 23 加长型 x 8)"
 	overlay_ammo_type = "_l23_ext"
 	magazine_type = /obj/item/ammo_magazine/rifle/nsg23/extended
 	num_of_magazines = 8
@@ -731,7 +731,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/nsg23/heap
-	name = "magazine box (NSG 23 HEAP x 12)"
+	name = "弹匣箱 (NSG 23 HEAP x 12)"
 	overlay_ammo_type = "_l23_heap"
 	overlay_content = "_l23_heap"
 	magazine_type = /obj/item/ammo_magazine/rifle/nsg23/heap
@@ -742,7 +742,7 @@
 //-----------------------L23 Battle Rifle Mag Boxes--------------------------------\\
 
 /obj/item/ammo_box/magazine/l23
-	name = "magazine box (L23 x 12)"
+	name = "弹匣箱 (L23 x 12)"
 	icon_state = "base_l23"
 	overlay_gun_type = "_l23"
 	overlay_ammo_type = "_l23_reg"
@@ -754,7 +754,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/l23/ap
-	name = "magazine box (AP L23 x 12)"
+	name = "弹匣箱 (AP L23 x 12)"
 	overlay_ammo_type = "_l23_ap"
 	overlay_content = "_l23_ap"
 	magazine_type = /obj/item/ammo_magazine/rifle/l23/ap
@@ -764,7 +764,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/l23/ex
-	name = "magazine box (Extended L23 x 8)"
+	name = "弹匣箱 (加长型 L23 x 8)"
 	overlay_ammo_type = "_l23_ext"
 	magazine_type = /obj/item/ammo_magazine/rifle/l23/extended
 	num_of_magazines = 8
@@ -773,7 +773,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/l23/heap
-	name = "magazine box (HEAP L23 x 12)"
+	name = "弹匣箱 (HEAP L23 x 12)"
 	overlay_ammo_type = "_l23_heap"
 	overlay_content = "_l23_heap"
 	magazine_type = /obj/item/ammo_magazine/rifle/l23/heap
@@ -782,7 +782,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/l23/incendiary
-	name = "magazine box (Incendiary L23 x 12)"
+	name = "弹匣箱 (燃烧弹 L23 x 12)"
 	overlay_ammo_type = "_l23_incen"
 	overlay_content = "_l23_incen"
 	magazine_type = /obj/item/ammo_magazine/rifle/l23/incendiary
@@ -793,7 +793,7 @@
 //-----------------------Spearhead Autorevolver Speed Loaders Box-----------------------
 
 /obj/item/ammo_box/magazine/spearhead
-	name = "speed loaders box (Spearhead HP x 12)"
+	name = "快速装弹器箱 (矛头HP x 12)"
 	icon_state = "base_cmb"
 	overlay_ammo_type = "_357_hp"
 	overlay_gun_type = "_357"
@@ -805,7 +805,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/spearhead/normalpoint
-	name = "speed loaders box (Spearhead x 12)"
+	name = "快速装弹器箱 (矛头弹 x 12)"
 	overlay_ammo_type = "_357_reg"
 	magazine_type = /obj/item/ammo_magazine/revolver/cmb/normalpoint
 
@@ -815,7 +815,7 @@
 //-----------------------Type 73 Pistol Mag Box-----------------------
 
 /obj/item/ammo_box/magazine/type73
-	name = "magazine box (Type 73 x 16)"
+	name = "弹匣箱 (73式 x 16)"
 	icon_state = "base_type73"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_type71_reg"
@@ -828,7 +828,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/type73/impact
-	name = "magazine box (Type 73 High-Impact x 10)"
+	name = "弹匣盒 (73型高冲击弹 x 10)"
 	overlay_ammo_type = "_type73_impact"
 	overlay_content = "_type73_impact"
 	num_of_magazines = 10
@@ -841,7 +841,7 @@
 //-----------------------AR10 Rifle Mag Box-----------------------
 
 /obj/item/ammo_box/magazine/ar10
-	name = "magazine box (AR10 x 12)"
+	name = "弹匣盒 (AR10 x 12)"
 	icon_state = "base_ar10"
 	flags_equip_slot = SLOT_BACK
 	overlay_gun_type = "_ar10"
@@ -855,7 +855,7 @@
 //-----------------------MP5 Smg Mag Box-----------------------
 
 /obj/item/ammo_box/magazine/mp5
-	name = "magazine box (MP5 x 12)"
+	name = "弹匣盒 (MP5 x 12)"
 	icon_state = "base_m16"
 	flags_equip_slot = SLOT_BACK
 	overlay_gun_type = "_mp5"
@@ -870,7 +870,7 @@
 //-----------------------Desert Eagle Pistol Mag Box-----------------------
 
 /obj/item/ammo_box/magazine/deagle
-	name = "magazine box (Desert Eagle x 12)"
+	name = "弹匣盒 (沙漠之鹰 x 12)"
 	icon_state = "base_deagle"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_reg"
@@ -883,7 +883,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/deagle/super
-	name = "magazine box (Heavy Desert Eagle x 8)"
+	name = "弹匣盒 (重型沙漠之鹰 x 8)"
 	overlay_ammo_type = "_hp"
 	overlay_content = "_hp"
 	num_of_magazines = 8
@@ -893,7 +893,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/deagle/super/highimpact
-	name = "magazine box (High Impact Desert Eagle x 8)"
+	name = "弹匣盒 (高冲击沙漠之鹰 x 8)"
 	overlay_ammo_type = "_impact"
 	overlay_content = "_impact"
 	magazine_type = /obj/item/ammo_magazine/pistol/heavy/super/highimpact
@@ -902,7 +902,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/deagle/super/highimpact/ap
-	name = "magazine box (High Impact Armor-Piercing Desert Eagle x 8)"
+	name = "弹匣盒 (高冲击穿甲沙漠之鹰 x 8)"
 	overlay_ammo_type = "_ap"
 	overlay_content = "_ap"
 	magazine_type = /obj/item/ammo_magazine/pistol/heavy/super/highimpact/ap
@@ -913,7 +913,7 @@
 
 //-----------------------S&W Revolver Speed Loaders Box-----------------------
 /obj/item/ammo_box/magazine/snw
-	name = "speed loaders box (S&W .38 x 12)"
+	name = "快速装弹器盒 (S&W .38 x 12)"
 	icon_state = "base_S&W"
 	overlay_ammo_type = "_m44_reg"
 	overlay_gun_type = "_38"
@@ -928,7 +928,7 @@
 //-----------------------Type64 Bizon SMG Mag Box-----------------------
 
 /obj/item/ammo_box/magazine/type64
-	name = "magazine box (Type64 Bizon x 10)"
+	name = "弹匣盒 (64型野牛 x 10)"
 	icon_state = "base_type64"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_type71_reg"
@@ -943,7 +943,7 @@
 //-----------------------ZhNK-72 Revolver Speedloader Box-----------------------
 
 /obj/item/ammo_box/magazine/zhnk
-	name = "speed loaders box (ZhNK-72 x 12)"
+	name = "快速装弹器盒 (ZhNK-72 x 12)"
 	icon_state = "base_zhnk72"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = ""
@@ -964,7 +964,7 @@
 //-----------------------Type-19 SMG Mag Box-----------------------
 
 /obj/item/ammo_box/magazine/type19
-	name = "magazine box (Type19 x 12)"
+	name = "弹匣盒 (19型 x 12)"
 	icon_state = "base_type19"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = ""
@@ -986,7 +986,7 @@
 //-----------------------UZI SMG Mag Box-----------------------
 
 /obj/item/ammo_box/magazine/uzi
-	name = "magazine box (UZI x 12)"
+	name = "弹匣盒 (乌兹 x 12)"
 	icon_state = "base_uzi"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = ""
@@ -1007,7 +1007,7 @@
 //-----------------------MAC-15 SMG Mag Box-----------------------
 
 /obj/item/ammo_box/magazine/mac15
-	name = "magazine box (MAC-15 x 12)"
+	name = "弹匣盒 (MAC-15 x 12)"
 	icon_state = "base_uzi"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = ""
@@ -1028,7 +1028,7 @@
 //-----------------------MP27 SMG Mag Box-----------------------
 
 /obj/item/ammo_box/magazine/mp27
-	name = "magazine box (MP27 x 12)"
+	name = "弹匣盒 (MP27 x 12)"
 	icon_state = "base_uzi"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = ""
@@ -1049,7 +1049,7 @@
 //-----------------------M1911 Pistol Mag Box-----------------------
 
 /obj/item/ammo_box/magazine/m1911
-	name = "magazine box (M1911 x 16)"
+	name = "弹匣盒 (M1911 x 16)"
 	icon_state = "base_mk45"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = ""
@@ -1071,7 +1071,7 @@
 //-----------------------MK-45 Highpower Pistol Mag Box-----------------------
 
 /obj/item/ammo_box/magazine/mk45
-	name = "magazine box (MK-45 x 16)"
+	name = "弹匣盒 (MK-45 x 16)"
 	icon_state = "base_mk45"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = ""
@@ -1092,7 +1092,7 @@
 //-----------------------KT-42 Automag Pistol Mag Box-----------------------
 
 /obj/item/ammo_box/magazine/kt42
-	name = "magazine box (KT-42 x 16)"
+	name = "弹匣盒 (KT-42 x 16)"
 	icon_state = "base_mk45"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = ""
@@ -1114,7 +1114,7 @@
 //-----------------------Beretta 92FS Pistol Mag Box-----------------------
 
 /obj/item/ammo_box/magazine/b92fs
-	name = "magazine box (Beretta 92FS x 16)"
+	name = "弹匣盒 (伯莱塔92FS x 16)"
 	icon_state = "base_mk45"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = ""
@@ -1135,7 +1135,7 @@
 //-----------------------FN FP9000 SMG Mag Box-----------------------
 
 /obj/item/ammo_box/magazine/fp9000
-	name = "magazine box (FN FP9000 x 12)"
+	name = "弹匣盒 (FN FP9000 x 12)"
 	icon_state = "base_fn"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_fn_reg"
@@ -1150,7 +1150,7 @@
 //-----------------------FN P90 SMG Mag Box-----------------------
 
 /obj/item/ammo_box/magazine/p90
-	name = "magazine box (FN P90 x 12)"
+	name = "弹匣盒 (FN P90 x 12)"
 	icon_state = "base_fn"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_fn_reg"
@@ -1163,7 +1163,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/p90/ap
-	name = "magazine box (AP FN P90 x 12)"
+	name = "弹匣盒 (穿甲FN P90 x 12)"
 	icon_state = "base_fn"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_fn_ap"
@@ -1178,7 +1178,7 @@
 //-----------------------MAR30/40 Mag Box-----------------------
 
 /obj/item/ammo_box/magazine/mar30
-	name = "magazine box (MAR30/40 x 10)"
+	name = "弹匣盒 (MAR30/40 x 10)"
 	icon_state = "base_mar"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = ""
@@ -1197,7 +1197,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/mar30/ext
-	name = "magazine box (MAR30/40 Ext x 8)"
+	name = "弹匣盒 (MAR30/40加长型 x 8)"
 	overlay_gun_type = "_mar30"
 	num_of_magazines = 8
 	magazine_type = /obj/item/ammo_magazine/rifle/mar40/extended
@@ -1208,7 +1208,7 @@
 //-----------------------MAR50 Mag Box-----------------------
 
 /obj/item/ammo_box/magazine/mar50
-	name = "magazine box (MAR50 x 8)"
+	name = "弹匣盒 (MAR50 x 8)"
 	icon_state = "base_mar"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = ""
@@ -1229,7 +1229,7 @@
 //-----------------------l54 Pistol Mag Box-----------------------
 
 /obj/item/ammo_box/magazine/l54
-	name = "magazine box (L54 x 16)"
+	name = "弹匣盒 (L54 x 16)"
 	icon_state = "base_l54"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_reg"
@@ -1241,7 +1241,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/l54/ap
-	name = "magazine box (AP L54 x 16)"
+	name = "弹匣箱 (穿甲 L54 x 16)"
 	overlay_ammo_type = "_ap"
 	overlay_content = "_ap"
 	magazine_type = /obj/item/ammo_magazine/pistol/l54/ap
@@ -1250,7 +1250,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/l54/hp
-	name = "magazine box (HP L54 x 16)"
+	name = "弹匣箱 (空尖 L54 x 16)"
 	overlay_ammo_type = "_hp"
 	overlay_content = "_hp"
 	magazine_type = /obj/item/ammo_magazine/pistol/l54/hp
@@ -1259,7 +1259,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/l54/incen
-	name = "magazine box (Incen L54 x 16)"
+	name = "弹匣箱 (燃烧 L54 x 16)"
 	overlay_ammo_type = "_incen"
 	overlay_content = "_incen"
 	magazine_type = /obj/item/ammo_magazine/pistol/l54/incendiary

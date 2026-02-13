@@ -36,21 +36,21 @@
 
 	if(!projectile_target.TryIgniteMob(burn_stacks, burn_reagent))
 		return
-	to_chat(projectile_target, SPAN_HIGHDANGER("You burst into flames!! Stop drop and roll!"))
+	to_chat(projectile_target, SPAN_HIGHDANGER("你身上着火了！！快停下、卧倒、打滚！"))
 
 /datum/element/bullet_trait_incendiary/proc/ignite_human(datum/target, mob/living/carbon/human/projectile_target, damage, damage_actual)
 	SIGNAL_HANDLER
 
 	projectile_target.adjust_fire_stacks(burn_stacks, burn_reagent)
 	projectile_target.IgniteMob(TRUE)
-	to_chat(projectile_target, SPAN_HIGHDANGER("You burst into flames!! Stop drop and roll!"))
+	to_chat(projectile_target, SPAN_HIGHDANGER("你身上着火了！！快停下、卧倒、打滚！"))
 
 /datum/element/bullet_trait_incendiary/proc/ignite_xeno(datum/target, mob/living/carbon/xenomorph/projectile_target, damage, damage_actual)
 	SIGNAL_HANDLER
 
 	if(projectile_target.fire_immunity & (FIRE_IMMUNITY_NO_IGNITE || FIRE_IMMUNITY_COMPLETE))
 		if(projectile_target.stat)
-			to_chat(projectile_target, SPAN_AVOIDHARM("You shrug off some persistent flames."))
+			to_chat(projectile_target, SPAN_AVOIDHARM("你摆脱了身上顽固的火焰。"))
 		return
 	projectile_target.adjust_fire_stacks(burn_stacks/2 + floor(damage_actual / 4), burn_reagent)
 	projectile_target.IgniteMob()

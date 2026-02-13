@@ -13,7 +13,7 @@ GLOBAL_LIST_INIT(random_personal_possessions, generate_random_possessions())
 
 		var/donor_key
 		var/list/kit_gear = list()
-		var/kit_name = "Default"
+		var/kit_name = "默认"
 
 		var/split_line = splittext(current_line, ":")
 
@@ -54,8 +54,8 @@ GLOBAL_LIST_INIT(random_personal_possessions, generate_random_possessions())
 	return .
 
 /obj/structure/machinery/personal_gear_vendor
-	name = "personal gear vendor"
-	desc = "A console that allows the user to retrieve their personal possessions from the ASRS."
+	name = "个人装备供应商"
+	desc = "一个允许用户从ASRS取回个人物品的控制台。"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "cellconsole"
 	density = TRUE
@@ -78,14 +78,14 @@ GLOBAL_LIST_INIT(random_personal_possessions, generate_random_possessions())
 	if(user.ckey in ckeys_redeemed_kits)
 		if(length(ckeys_redeemed_kits[user.ckey]) >= length(possible_kits))
 			// They are a donator but have gotten everything
-			to_chat(user, SPAN_NOTICE("You have already retrieved your kit(s)."))
+			to_chat(user, SPAN_NOTICE("你已经取回了你的装备。"))
 			return TRUE
 
 	if(length(possible_kits) == 0) //if no donor kit they can get something else
 		var/random_item_path = pick(GLOB.random_personal_possessions)
 		var/random_item = new random_item_path(get_turf(src))
 		user.put_in_any_hand_if_possible(random_item)
-		to_chat(user, SPAN_NOTICE("You take [random_item] from [src]."))
+		to_chat(user, SPAN_NOTICE("你从[src]拿走了[random_item]。"))
 		LAZYADD(ckeys_redeemed_kits[user.ckey], random_item_path)
 		return TRUE
 
@@ -95,20 +95,20 @@ GLOBAL_LIST_INIT(random_personal_possessions, generate_random_possessions())
 
 	if(length(possible_kits) == 1)
 		user.put_in_any_hand_if_possible(new /obj/item/storage/box/donator_kit(get_turf(src), user.ckey, possible_kits[possible_kits[1]]))
-		to_chat(user, SPAN_NOTICE("You retrieve your kit from [src]."))
+		to_chat(user, SPAN_NOTICE("你从[src]取回了你的装备。"))
 		LAZYADD(ckeys_redeemed_kits[user.ckey], possible_kits[1])
 		return TRUE
 
 	if(length(possible_kits) >= 2)
-		var/kit_choice = tgui_input_list(user, "Pick a kit to take:", "Donation Kit Selection", possible_kits)
+		var/kit_choice = tgui_input_list(user, "选择要取走的装备：", "Donation Kit Selection", possible_kits)
 		if(!kit_choice)
-			to_chat(user, SPAN_NOTICE("You choose not to take any kits."))
+			to_chat(user, SPAN_NOTICE("你选择不取走任何装备。"))
 			return TRUE
 		if(!user.Adjacent(src))
-			to_chat(user, SPAN_NOTICE("You are too far from [src]."))
+			to_chat(user, SPAN_NOTICE("你离[src]太远了。"))
 			return TRUE
 		user.put_in_any_hand_if_possible(new /obj/item/storage/box/donator_kit(get_turf(src), user.ckey, possible_kits[kit_choice]))
-		to_chat(user, SPAN_NOTICE("You retrieve your kit from [src]."))
+		to_chat(user, SPAN_NOTICE("你从[src]取回了你的装备。"))
 		LAZYADD(ckeys_redeemed_kits[user.ckey], kit_choice)
 		return TRUE
 
@@ -118,17 +118,17 @@ GLOBAL_LIST_INIT(random_personal_possessions, generate_random_possessions())
 
 	var/obj/item/storage/box/donator_kit/kit = attacking_item
 	if(!kit.allowed(user))
-		to_chat(user, SPAN_WARNING("[src] denies [kit]."))
+		to_chat(user, SPAN_WARNING("[src]拒绝了[kit]。"))
 		return TRUE
-	to_chat(user, SPAN_NOTICE("You return [kit] to [src]."))
+	to_chat(user, SPAN_NOTICE("你将[kit]归还给[src]。"))
 	user.drop_held_item(kit)
 	kit.forceMove(src)
 	qdel(kit)
 	return TRUE
 
 /obj/item/storage/box/donator_kit
-	name = "personal gear kit"
-	desc = "A cardboard box stamped with a dollar sign and filled with trinkets. It contains someones personal possessions.."
+	name = "个人装备箱"
+	desc = "一个印有美元符号、装满小玩意的纸箱。里面装着某人的个人物品。"
 	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "donator_kit"
 	item_state = "giftbag"
@@ -151,13 +151,13 @@ GLOBAL_LIST_INIT(random_personal_possessions, generate_random_possessions())
 
 /obj/item/storage/box/donator_kit/open(mob/user)
 	if(!allowed(user))
-		to_chat(user, SPAN_NOTICE("You do not have access to [src]."))
+		to_chat(user, SPAN_NOTICE("你没有[src]的权限。"))
 		return
 	return ..()
 
 /obj/item/storage/box/donator_kit/empty(mob/user, turf/drop_to)
 	if(!allowed(user))
-		to_chat(user, SPAN_NOTICE("You do not have access to [src]."))
+		to_chat(user, SPAN_NOTICE("你没有[src]的权限。"))
 		return
 	return ..()
 

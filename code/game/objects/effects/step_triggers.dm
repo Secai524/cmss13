@@ -197,16 +197,16 @@
 		return
 
 	if(traveler.faction == FACTION_YAUTJA_YOUNG)
-		to_chat(traveler, SPAN_WARNING("You do not wish to make your elders angry do you?"))
+		to_chat(traveler, SPAN_WARNING("你不想惹怒你的长老，对吧？"))
 		return
 
 	if(!HAS_TRAIT(traveler, TRAIT_YAUTJA_TECH))
-		to_chat(traveler, SPAN_WARNING("You better not try to use this, you might lose half of your body in the process!"))
+		to_chat(traveler, SPAN_WARNING("你最好别想用这个，小心把半条命搭进去！"))
 		return
 
 	var/turf/destination
 	if(length(GLOB.yautja_teleports)) //We have some possible locations.
-		var/pick = tgui_input_list(traveler, "Where do you want to go today?", "Locations", GLOB.yautja_teleport_descs) //Pick one of them in the list.)
+		var/pick = tgui_input_list(traveler, "今天想去哪？", "Locations", GLOB.yautja_teleport_descs) //Pick one of them in the list.)
 		destination = GLOB.yautja_teleport_descs[pick]
 	if(!destination || (traveler.loc != loc))
 		return
@@ -223,17 +223,17 @@
 		return
 
 	if(!HAS_TRAIT(young_hunter, TRAIT_YAUTJA_TECH))
-		to_chat(young_hunter, SPAN_WARNING("You better not try to use this, you might lose half of your body in the process!"))
+		to_chat(young_hunter, SPAN_WARNING("你最好别想用这个，小心把半条命搭进去！"))
 		return
 
 	var/turf/place
 	if(length(GLOB.yautja_young_teleports))
-		var/pick = tgui_input_list(young_hunter, "Where do you want to go today?", "Locations", GLOB.yautja_young_descs)
+		var/pick = tgui_input_list(young_hunter, "今天想去哪？", "Locations", GLOB.yautja_young_descs)
 		place = GLOB.yautja_young_descs[pick]
 	if(!place || (young_hunter.loc != loc))
 		return
 
-	var/choice = tgui_alert(young_hunter, "Youngbloods are not able to return back to the ship until they complete their trial, choose wisely.", "Are you ready?", list("Deploy", "Stay"), 15 SECONDS)
+	var/choice = tgui_alert(young_hunter, "年轻猎手在完成试炼前无法返回飞船，慎重选择。", "Are you ready?", list("Deploy", "Stay"), 15 SECONDS)
 	if(!choice)
 		return
 
@@ -258,6 +258,6 @@
 			return
 		qdel(A)
 	else if(isliving(A)) //Hacked it up so it just deletes it
-		to_chat(A, SPAN_DANGER("You get lost into the depths of space, never to be seen again."))
+		to_chat(A, SPAN_DANGER("你迷失在太空深处，从此杳无音讯。"))
 		qdel(A)
 

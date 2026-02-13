@@ -194,7 +194,7 @@
 /////////////////////////////////////////////
 
 /obj/effect/particle_effect/smoke/miasma
-	name = "CN20-X miasma"
+	name = "CN20-X瘴气"
 	amount = 1
 	time_to_live = INFINITY
 	smokeranking = SMOKE_RANK_MAX
@@ -257,7 +257,7 @@
 		affected_mob.coughedtime = world.time + 2 SECONDS
 		if(ishuman(affected_mob)) //Humans only to avoid issues
 			if(issynth(affected_mob))
-				affected_mob.visible_message(SPAN_DANGER("[affected_mob]'s skin is sloughing off!"),
+				affected_mob.visible_message(SPAN_DANGER("[affected_mob]的皮肤正在剥落！"),
 				SPAN_DANGER("Your skin is sloughing off!"))
 			else
 				if(prob(50))
@@ -266,14 +266,14 @@
 					affected_mob.emote("gasp")
 			if(prob(20))
 				affected_mob.drop_held_item()
-		to_chat(affected_mob, SPAN_DANGER("Something is not right here..."))
+		to_chat(affected_mob, SPAN_DANGER("这里有些不对劲..."))
 	return TRUE
 
 /obj/effect/particle_effect/smoke/miasma/ex_act(severity)
 	return
 
 /obj/effect/particle_effect/smoke/weedkiller
-	name = "C10-W Weedkiller"
+	name = "C10-W除草剂"
 	amount = 1
 	time_to_live = 15
 	smokeranking = SMOKE_RANK_HARMLESS
@@ -321,7 +321,7 @@
 /////////////////////////////////////////////
 
 /obj/effect/particle_effect/smoke/mustard
-	name = "mustard gas"
+	name = "芥子气"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "mustard"
 	smokeranking = SMOKE_RANK_HIGH
@@ -396,7 +396,7 @@
 		if(affected_mob.coughedtime < world.time && !affected_mob.stat)
 			affected_mob.coughedtime = world.time + next_cough
 			if(issynth(affected_mob))
-				affected_mob.visible_message(SPAN_DANGER("[affected_mob]'s skin is sloughing off!"),
+				affected_mob.visible_message(SPAN_DANGER("[affected_mob]的皮肤正在剥落！"),
 				SPAN_DANGER("Your skin is sloughing off!"))
 			else
 				affected_mob.emote("cough")
@@ -416,7 +416,7 @@
 /////////////////////////////////////////////
 
 /obj/effect/particle_effect/smoke/cn20
-	name = "CN20 nerve gas"
+	name = "CN20神经毒气"
 	smokeranking = SMOKE_RANK_HIGH
 	color = "#80c7e4"
 	var/xeno_affecting = FALSE
@@ -424,7 +424,7 @@
 	alpha = 75
 
 /obj/effect/particle_effect/smoke/cn20/xeno
-	name = "CN20-X nerve gas"
+	name = "CN20-X神经毒气"
 	color = "#2da9da"
 	xeno_affecting = TRUE
 
@@ -473,7 +473,7 @@
 
 	creature.SetEarDeafness(max(creature.ear_deaf, floor(effect_amt*1.5))) //Paralysis of hearing system, aka deafness
 	if(!xeno_creature && !creature.eye_blind) //Eye exposure damage
-		to_chat(creature, SPAN_DANGER("Your eyes sting. You can't see!"))
+		to_chat(creature, SPAN_DANGER("你的眼睛刺痛。你看不见了！"))
 		creature.SetEyeBlind(floor(effect_amt/3))
 
 	if(human_creature && creature.coughedtime < world.time && !creature.stat) //Coughing/gasping
@@ -491,9 +491,9 @@
 
 	//Topical damage (neurotoxin on exposed skin)
 	if(xeno_creature)
-		to_chat(xeno_creature, SPAN_XENODANGER("You are struggling to move, it's as if you're paralyzed!"))
+		to_chat(xeno_creature, SPAN_XENODANGER("你挣扎着想要移动，身体仿佛瘫痪了！"))
 	else
-		to_chat(creature, SPAN_DANGER("Your body is going numb, almost as if paralyzed!"))
+		to_chat(creature, SPAN_DANGER("你的身体正在麻木，几乎像是瘫痪了！"))
 	if(prob(60 + floor(amount*15))) //Highly likely to drop items due to arms/hands seizing up
 		creature.drop_held_item()
 	if(human_creature)
@@ -590,7 +590,7 @@
 	if(affected_mob.coughedtime < world.time && !affected_mob.stat && ishuman(affected_mob)) //Coughing/gasping
 		affected_mob.coughedtime = world.time + 1.5 SECONDS
 		if(issynth(affected_mob))
-			affected_mob.visible_message(SPAN_DANGER("[affected_mob]'s skin is sloughing off!"),
+			affected_mob.visible_message(SPAN_DANGER("[affected_mob]的皮肤正在剥落！"),
 			SPAN_DANGER("Your skin is sloughing off!"))
 		else
 			if(prob(50))
@@ -599,7 +599,7 @@
 				affected_mob.emote("gasp")
 
 	//Topical damage (acid on exposed skin)
-	to_chat(affected_mob, SPAN_DANGER("Your skin feels like it is melting away!"))
+	to_chat(affected_mob, SPAN_DANGER("你的皮肤感觉像在融化！"))
 	if(ishuman(affected_mob))
 		var/mob/living/carbon/human/human = affected_mob
 		human.apply_armoured_damage(amount*rand(15, 20), ARMOR_BIO, BURN) //Burn damage, randomizes between various parts //Amount corresponds to upgrade level, 1 to 2.5
@@ -703,7 +703,7 @@
 	moob.apply_damage(9, OXY) // MUCH harsher
 	moob.SetEarDeafness(max(moob.ear_deaf, floor(effect_amt*1.5))) //Paralysis of hearing system, aka deafness
 	if(!moob.eye_blind) //Eye exposure damage
-		to_chat(moob, SPAN_DANGER("Your eyes sting. You can't see!"))
+		to_chat(moob, SPAN_DANGER("你的眼睛刺痛。你看不见了！"))
 	moob.SetEyeBlind(floor(effect_amt/3))
 
 	if(human_moob && moob.coughedtime < world.time && !moob.stat) //Coughing/gasping
@@ -718,7 +718,7 @@
 		moob.KnockDown(1)
 
 	//Topical damage (neurotoxin on exposed skin)
-	to_chat(moob, SPAN_DANGER("Your body is going numb, almost as if paralyzed!"))
+	to_chat(moob, SPAN_DANGER("你的身体正在麻木，几乎像是瘫痪了！"))
 	if(prob(40 + floor(amount*15))) //Highly likely to drop items due to arms/hands seizing up
 		moob.drop_held_item()
 	if(human_moob)

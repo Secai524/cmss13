@@ -1,5 +1,5 @@
 /obj/docking_port/mobile/trijent_elevator
-	name="Elevator"
+	name="电梯"
 	id=MOBILE_TRIJENT_ELEVATOR
 
 	// Map information
@@ -88,26 +88,26 @@
 	airlock_exit = "west"
 
 /obj/docking_port/stationary/trijent_elevator/lz1
-	name="Lz1 Elevator"
+	name="LZ1电梯"
 	id=STAT_TRIJENT_LZ1
 	airlock_area=/area/shuttle/trijent_shuttle/lz1
 	airlock_exit="west"
 	roundstart_template = /datum/map_template/shuttle/trijent_elevator
 
 /obj/docking_port/stationary/trijent_elevator/lz2
-	name="Lz2 Elevator"
+	name="LZ2电梯"
 	id=STAT_TRIJENT_LZ2
 	airlock_area=/area/shuttle/trijent_shuttle/lz2
 	airlock_exit="west"
 
 /obj/docking_port/stationary/trijent_elevator/engineering
-	name="Engineering Elevator"
+	name="工程部电梯"
 	id=STAT_TRIJENT_ENGI
 	airlock_area=/area/shuttle/trijent_shuttle/engi
 	airlock_exit="east"
 
 /obj/docking_port/stationary/trijent_elevator/omega
-	name="Omega Elevator"
+	name="欧米茄电梯"
 	id=STAT_TRIJENT_OMEGA
 	airlock_area=/area/shuttle/trijent_shuttle/omega
 	airlock_exit="east"

@@ -1,5 +1,5 @@
 /datum/equipment_preset/survivor/trucker/solaris
-	name = "Survivor - Solaris Heavy Vehicle Operator"
+	name = "幸存者 - 索拉里斯重型载具操作员"
 	assignment = "Solaris Heavy Vehicle Operator"
 	skills = /datum/skills/civilian/survivor/trucker
 
@@ -11,8 +11,8 @@
 	..()
 
 /datum/equipment_preset/survivor/colonial_marshal/solaris
-	name = "Survivor - Solaris Colonial Marshal Deputy"
-	assignment = "CMB Deputy"
+	name = "幸存者 - 索拉里斯殖民地法警副手"
+	assignment = "CMB副手"
 
 /datum/equipment_preset/survivor/colonial_marshal/solaris/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform(new_human), WEAR_BODY)
@@ -23,7 +23,7 @@
 	..()
 
 /datum/equipment_preset/survivor/engineer/solaris
-	name = "Survivor - Solaris Engineer"
+	name = "幸存者 - 索拉里斯工程师"
 	assignment = "Solaris Engineer"
 
 /datum/equipment_preset/survivor/engineer/solaris/load_gear(mob/living/carbon/human/new_human)
@@ -35,7 +35,7 @@
 	..()
 
 /datum/equipment_preset/survivor/scientist/solaris
-	name = "Survivor - Solaris Scientist"
+	name = "幸存者 - 索拉里斯科学家"
 	assignment = "Solaris Scientist"
 
 /datum/equipment_preset/survivor/scientist/solaris/load_gear(mob/living/carbon/human/new_human)
@@ -48,7 +48,7 @@
 	..()
 
 /datum/equipment_preset/survivor/doctor/solaris
-	name = "Survivor - Solaris Doctor"
+	name = "幸存者 - 索拉里斯医生"
 	assignment = "Solaris Doctor"
 
 /datum/equipment_preset/survivor/doctor/solaris/load_gear(mob/living/carbon/human/new_human)
@@ -58,7 +58,7 @@
 	..()
 
 /datum/equipment_preset/survivor/chaplain/solaris
-	name = "Survivor - Solaris Chaplain"
+	name = "幸存者 - 索拉里斯牧师"
 	assignment = "Solaris Chaplain"
 
 /datum/equipment_preset/survivor/chaplain/solaris/load_gear(mob/living/carbon/human/new_human)
@@ -67,7 +67,7 @@
 	..()
 
 /datum/equipment_preset/survivor/security/solaris
-	name = "Survivor - Solaris United Americas Peacekeepers"
+	name = "幸存者 - 索拉里斯联合美洲维和部队"
 	assignment = "United Americas Peacekeeper"
 	minimap_icon = "peacekeeper"
 	minimap_background = "background_ua"
@@ -82,8 +82,8 @@
 	..()
 
 /datum/equipment_preset/survivor/solaris_ridge/co_survivor
-	name = "CO Survivor - Solaris Marshal"
-	assignment = "CMB Marshal"
+	name = "指挥官幸存者 - 索拉里斯法警"
+	assignment = "CMB执法官"
 	job_title = JOB_CMB_TL
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	role_comm_title = "CMB MAR"
@@ -131,7 +131,7 @@
 	..()
 
 /datum/equipment_preset/survivor/uscm/solaris
-	name = "Survivor - Solaris United States Colonial Marine Corps Recruiter"
+	name = "幸存者 - 索拉里斯美国殖民地海军陆战队征兵官"
 	assignment = "USCM Recruiter"
 	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0)
 	minimap_icon = "recruiter"
@@ -150,7 +150,7 @@
 	..()
 
 /datum/equipment_preset/survivor/corporate/solaris
-	name = "Survivor - Solaris Corporate Liaison"
+	name = "幸存者 - 索拉里斯公司联络官"
 	assignment = "Solaris Corporate Liaison"
 
 /datum/equipment_preset/survivor/corporate/solaris/load_gear(mob/living/carbon/human/new_human)

@@ -1,6 +1,6 @@
 /obj/item/clothing/gloves/yautja
-	name = "ancient alien bracers"
-	desc = "A pair of strange, alien bracers."
+	name = "远古外星护腕"
+	desc = "一对奇怪的外星护腕。"
 
 	icon = 'icons/obj/items/hunter/pred_bracers.dmi'
 	icon_state = "bracer"
@@ -82,7 +82,7 @@
 /obj/item/clothing/gloves/yautja/pickup(mob/living/user)
 	. = ..()
 	if(!isyautja(user))
-		to_chat(user, SPAN_WARNING("The bracer feels cold against your skin, heavy with an unfamiliar, almost alien weight."))
+		to_chat(user, SPAN_WARNING("护腕贴着你的皮肤感觉冰冷，带着一种陌生的、近乎异类的沉重感。"))
 
 /obj/item/clothing/gloves/yautja/process()
 	if(!ishuman(loc))
@@ -155,7 +155,7 @@
 	if(!human)
 		return FALSE
 	if(charge < amount)
-		to_chat(human, SPAN_WARNING("Your bracers lack the energy. They have only <b>[charge]/[charge_max]</b> remaining and need <B>[amount]</b>."))
+		to_chat(human, SPAN_WARNING("你的护腕能量不足。仅剩<b>[charge]/[charge_max]</b>，需要<B>[amount]</b>。"))
 		return FALSE
 
 	charge -= amount
@@ -171,7 +171,7 @@
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(2, 1, src)
 		s.start()
-		M.visible_message(SPAN_WARNING("[src] beeps and sends a shock through [M]'s body!"))
+		M.visible_message(SPAN_WARNING("[src]发出哔哔声并向[M]的身体发送了一道电击！"))
 		//Stun and knock out, scream in pain
 		M.apply_effect(2, STUN)
 		M.apply_effect(2, WEAKEN)
@@ -202,14 +202,14 @@
 		workingProbability = 25
 		randomProbability = 7
 
-	to_chat(user, SPAN_NOTICE("You press a few buttons..."))
+	to_chat(user, SPAN_NOTICE("你按了几个按钮..."))
 	//Add a little delay so the user wouldn't be just spamming all the buttons
 	user.next_move = world.time + 3
 	if(do_after(user, 3, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = 1))
 		if(prob(randomProbability))
 			return activate_random_verb(user)
 		if(!prob(workingProbability))
-			to_chat(user, SPAN_WARNING("You fiddle with the buttons but nothing happens..."))
+			to_chat(user, SPAN_WARNING("你摆弄着按钮但什么都没发生..."))
 			return TRUE
 
 	if(always_delimb)
@@ -228,7 +228,7 @@
 	set src in usr
 
 	notification_sound = !notification_sound
-	to_chat(usr, SPAN_NOTICE("The bracer's sound is now turned [notification_sound ? "on" : "off"]."))
+	to_chat(usr, SPAN_NOTICE("护腕的声音现在已[notification_sound ? "on" : "off"]."))
 
 /obj/item/clothing/gloves/yautja/thrall/update_minimap_icon()
 	if(!ishuman(owner))
@@ -249,8 +249,8 @@
 		SSminimaps.add_marker(owner, MINIMAP_FLAG_YAUTJA, underlay)
 
 /obj/item/clothing/gloves/yautja/hunter
-	name = "clan bracers"
-	desc = "An extremely complex, yet simple-to-operate set of armored bracers worn by the Yautja. It has many functions, activate them to use some."
+	name = "氏族护腕"
+	desc = "一副由铁血战士佩戴的极其复杂但操作简单的装甲护腕。它有许多功能，激活它们以使用部分功能。"
 
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_HIGH
@@ -316,12 +316,12 @@
 	if(ishuman(loc))
 		var/mob/living/carbon/human/wearer = loc
 		if(wearer.gloves == src)
-			wearer.visible_message(SPAN_DANGER("You hear a hiss and crackle!"), SPAN_DANGER("Your bracers hiss and spark!"), SPAN_DANGER("You hear a hiss and crackle!"))
+			wearer.visible_message(SPAN_DANGER("你听到嘶嘶声和噼啪声！"), SPAN_DANGER("Your bracers hiss and spark!"), SPAN_DANGER("你听到嘶嘶声和噼啪声！"))
 			if(HAS_TRAIT(wearer, TRAIT_CLOAKED))
 				decloak(wearer, TRUE, DECLOAK_EMP)
 		else
 			var/turf/our_turf = get_turf(src)
-			our_turf.visible_message(SPAN_DANGER("You hear a hiss and crackle!"), SPAN_DANGER("You hear a hiss and crackle!"))
+			our_turf.visible_message(SPAN_DANGER("你听到嘶嘶声和噼啪声！"), SPAN_DANGER("你听到嘶嘶声和噼啪声！"))
 
 /obj/item/clothing/gloves/yautja/hunter/equipped(mob/user, slot)
 	. = ..()
@@ -425,14 +425,14 @@
 	O = user.get_limb(check_zone("l_arm"))
 	O.droplimb()
 
-	to_chat(user, SPAN_NOTICE("The device emits a strange noise and falls off... Along with your arms!"))
+	to_chat(user, SPAN_NOTICE("设备发出奇怪的声响并脱落了...连同你的手臂！"))
 	playsound(user,'sound/weapons/wristblades_on.ogg', 15, 1)
 	return TRUE
 
 //bracer attachments
 /obj/item/bracer_attachments
-	name = "wristblade bracer attachment"
-	desc = "Report this if you see this."
+	name = "腕刃护腕附件"
+	desc = "如果你看到这个，请报告。"
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	///Typepath of the weapon attached to the bracer
 	var/obj/item/attached_weapon_type
@@ -453,17 +453,17 @@
 	. = ..()
 
 /obj/item/bracer_attachments/chain_gauntlets
-	name = "chain gauntlets"
+	name = "链甲护手"
 	icon_state = "metal_gauntlet"
 	item_state = "metal_gauntlet"
 	attached_weapon_type = /obj/item/weapon/bracer_attachment/chain_gauntlets
-	desc = "Gauntlets made out of alien alloy, you could probably wrap some chains around this after its been put into your bracer."
+	desc = "由外星合金制成的护手，在它被装进你的护腕后，你或许可以在上面缠上一些链条。"
 	deployment_sound = 'sound/handling/combistick_close.ogg'
 	retract_sound = 'sound/handling/combistick_close.ogg'
 
 /obj/item/bracer_attachments/wristblades
-	name = "wristblade bracer attachment"
-	desc = "A pair of huge, serrated blades."
+	name = "腕刃护腕附件"
+	desc = "一对巨大的锯齿状刀刃。"
 	icon_state = "wrist"
 	item_state = "wristblade"
 	attached_weapon_type = /obj/item/weapon/bracer_attachment/wristblades
@@ -471,8 +471,8 @@
 	retract_sound = 'sound/weapons/wristblades_off.ogg'
 
 /obj/item/bracer_attachments/scimitars
-	name = "scimitar bracer attachment"
-	desc = "A pair of huge, serrated blades."
+	name = "弯刀护腕附件"
+	desc = "一对巨大的锯齿状刀刃。"
 	icon_state = "scim"
 	item_state = "scim"
 	attached_weapon_type = /obj/item/weapon/bracer_attachment/scimitar
@@ -480,8 +480,8 @@
 	retract_sound = 'sound/weapons/scims_off.ogg'
 
 /obj/item/bracer_attachments/scimitars_alt
-	name = "scimitar bracer attachment"
-	desc = "A pair of huge, serrated blades."
+	name = "弯刀护腕附件"
+	desc = "一对巨大的锯齿状刀刃。"
 	icon_state = "scim_alt"
 	item_state = "scim_alt"
 	attached_weapon_type = /obj/item/weapon/bracer_attachment/scimitar/alt
@@ -489,8 +489,8 @@
 	retract_sound = 'sound/weapons/scims_alt_off.ogg'
 
 /obj/item/bracer_attachments/shield
-	name ="shield bracer attachment"
-	desc ="A shield made of concentric metal alloy plates. The plates fold into one another for compact storage while still providing superior protection."
+	name ="盾牌护腕附件"
+	desc ="一个由同心金属合金板制成的盾牌。这些板可以相互折叠以便紧凑存放，同时仍能提供卓越的保护。"
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "bracer_shield_off"
 	item_state = "bracer_shield_off"
@@ -503,7 +503,7 @@
 		return ..()
 
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		to_chat(user, SPAN_WARNING("You do not know how to attach the [attacking_item] to the [src]."))
+		to_chat(user, SPAN_WARNING("你不知道如何将[attacking_item]安装到[src]上。"))
 		return
 
 	var/obj/item/bracer_attachments/bracer_attachment = attacking_item
@@ -511,12 +511,12 @@
 		CRASH("[key_name(user)] attempted to attach the [bracer_attachment] to the [src], with no valid attached_weapon.")
 
 	if(left_bracer_attachment && right_bracer_attachment)
-		to_chat(user, SPAN_WARNING("You already have the maximum amount of bracer attachments on [src]."))
+		to_chat(user, SPAN_WARNING("[src]上的护腕附件已达最大数量。"))
 		return
 
 	var/attach_to_left = TRUE
 	if(!left_bracer_attachment && !right_bracer_attachment)
-		var/selected = tgui_alert(user, "Do you want to attach [bracer_attachment] to the left or right hand?", "[src]", list("Right", "Left"), 15 SECONDS)
+		var/selected = tgui_alert(user, "你想将[bracer_attachment]安装在左手还是右手？", "[src]", list("Right", "Left"), 15 SECONDS)
 		if(!selected)
 			return
 
@@ -524,7 +524,7 @@
 			attach_to_left = FALSE
 
 	if(attacking_item.loc != user)
-		to_chat(user, SPAN_WARNING("You cannot attach [attacking_item] without holding it."))
+		to_chat(user, SPAN_WARNING("你必须手持[attacking_item]才能安装。"))
 		return
 
 	var/bracer_attached = FALSE
@@ -536,7 +536,7 @@
 		right_bracer_attachment = bracer_attachment
 		user.drop_inv_item_to_loc(bracer_attachment, src)
 
-	to_chat(user, SPAN_NOTICE("You attach [bracer_attachment] to [src]."))
+	to_chat(user, SPAN_NOTICE("你将[bracer_attachment]安装到[src]上。"))
 	playsound(loc, 'sound/weapons/pred_attach.ogg')
 	return ..()
 
@@ -556,24 +556,24 @@
 		return
 
 	if(!left_bracer_attachment && !right_bracer_attachment)
-		to_chat(user, SPAN_WARNING("[src] has no attached bracers!"))
+		to_chat(user, SPAN_WARNING("[src]没有安装任何护腕！"))
 		return
 
 	if(bracer_attachment_deployed)
-		to_chat(user, SPAN_WARNING("Retract your attachments First!"))
+		to_chat(user, SPAN_WARNING("先收回你的附件！"))
 		return
 
 	if(left_bracer_attachment)
 		if(!user.put_in_any_hand_if_possible(left_bracer_attachment))
 			user.drop_inv_item_on_ground(left_bracer_attachment)
-		to_chat(user, SPAN_NOTICE("You remove [left_bracer_attachment] from [src]."))
+		to_chat(user, SPAN_NOTICE("你从[src]上拆除了[left_bracer_attachment]。"))
 		playsound(src, 'sound/machines/click.ogg', 15, 1)
 		left_bracer_attachment = null
 
 	if(right_bracer_attachment)
 		if(!user.put_in_any_hand_if_possible(right_bracer_attachment))
 			user.drop_inv_item_on_ground(right_bracer_attachment)
-		to_chat(user, SPAN_NOTICE("You remove [right_bracer_attachment] from [src]."))
+		to_chat(user, SPAN_NOTICE("你从[src]上拆除了[right_bracer_attachment]。"))
 		playsound(src, 'sound/machines/click.ogg', 15, 1)
 		right_bracer_attachment = null
 
@@ -613,14 +613,14 @@
 	if(!drain_power(user, 50))
 		return
 	if(!left_bracer_attachment && !right_bracer_attachment)
-		to_chat(user, SPAN_WARNING("[src] has no bracer attachments!"))
+		to_chat(user, SPAN_WARNING("[src]没有护腕附件！"))
 		return
 
 	if(left_bracer_attachment)
 		var/obj/limb/left_hand = user.get_limb("l_hand")
 		if(!user.l_hand && left_hand.is_usable())
 			if(user.put_in_l_hand(left_bracer_attachment.attached_weapon))
-				to_chat(user, SPAN_NOTICE("You extend [left_bracer_attachment.attached_weapon]."))
+				to_chat(user, SPAN_NOTICE("你展开了[left_bracer_attachment.attached_weapon]。"))
 				bracer_attachment_deployed = TRUE
 				playsound(loc,left_bracer_attachment.deployment_sound, 25, TRUE)
 
@@ -629,19 +629,19 @@
 		var/obj/limb/right_hand = user.get_limb("r_hand")
 		if(!user.r_hand && right_hand.is_usable())
 			if(user.put_in_r_hand(right_bracer_attachment.attached_weapon))
-				to_chat(user, SPAN_NOTICE("You extend [right_bracer_attachment.attached_weapon]."))
+				to_chat(user, SPAN_NOTICE("你展开了[right_bracer_attachment.attached_weapon]。"))
 				bracer_attachment_deployed = TRUE
 				playsound(loc,right_bracer_attachment.deployment_sound, 25, TRUE)
 
 /obj/item/clothing/gloves/yautja/hunter/proc/retract_bracer_attachments(mob/living/carbon/human/user) //if the attachments weapon is in the callers hands, retract them back into the attachments
 	if(left_bracer_attachment && left_bracer_attachment.attached_weapon.loc == user)
 		user.drop_inv_item_to_loc(left_bracer_attachment.attached_weapon, left_bracer_attachment, FALSE, TRUE)
-		to_chat(user, SPAN_NOTICE("You retract [left_bracer_attachment.attached_weapon]."))
+		to_chat(user, SPAN_NOTICE("你收回了[left_bracer_attachment.attached_weapon]。"))
 		playsound(loc, left_bracer_attachment.retract_sound, 25, TRUE)
 
 	if(right_bracer_attachment && right_bracer_attachment.attached_weapon.loc == user)
 		user.drop_inv_item_to_loc(right_bracer_attachment.attached_weapon, right_bracer_attachment, FALSE, TRUE)
-		to_chat(user, SPAN_NOTICE("You retract [right_bracer_attachment.attached_weapon]."))
+		to_chat(user, SPAN_NOTICE("你收回了[right_bracer_attachment.attached_weapon]。"))
 		playsound(loc, right_bracer_attachment.retract_sound, 25, TRUE)
 
 	bracer_attachment_deployed = FALSE
@@ -716,19 +716,19 @@
 	var/output = FALSE
 	if(dead_on_planet || dead_on_almayer || dead_low_orbit)
 		output = TRUE
-		to_chat(hunter, SPAN_NOTICE("Your bracer shows a readout of deceased Yautja bio signatures[dead_on_planet ? ", <b>[dead_on_planet]</b> in the hunting grounds" : ""][dead_on_almayer ? ", <b>[dead_on_almayer]</b> in orbit" : ""][dead_low_orbit ? ", <b>[dead_low_orbit]</b> in low orbit" : ""]."))
+		to_chat(hunter, SPAN_NOTICE("你的护腕显示出已死亡铁血战士的生物信号[dead_on_planet ? ", <b>[dead_on_planet]</b> in the hunting grounds" : ""][dead_on_almayer ? ", <b>[dead_on_almayer]</b> in orbit" : ""][dead_low_orbit ? ", <b>[dead_low_orbit]</b> in low orbit" : ""]."))
 	if(gear_on_planet || gear_on_almayer || gear_low_orbit)
 		output = TRUE
-		to_chat(hunter, SPAN_NOTICE("Your bracer shows a readout of Yautja technology signatures[gear_on_planet ? ", <b>[gear_on_planet]</b> in the hunting grounds" : ""][gear_on_almayer ? ", <b>[gear_on_almayer]</b> in orbit" : ""][gear_low_orbit ? ", <b>[gear_low_orbit]</b> in low orbit" : ""]."))
+		to_chat(hunter, SPAN_NOTICE("你的护腕显示出铁血战士科技信号[gear_on_planet ? ", <b>[gear_on_planet]</b> in the hunting grounds" : ""][gear_on_almayer ? ", <b>[gear_on_almayer]</b> in orbit" : ""][gear_low_orbit ? ", <b>[gear_low_orbit]</b> in low orbit" : ""]."))
 	if(closest < 900)
 		output = TRUE
 		var/areaName = get_area_name(areaLoc)
 		if(closest == 0)
-			to_chat(hunter, SPAN_NOTICE("You are directly on top of the[closest_item ? " <b>[closest_item.name]</b>'s" : ""] signature."))
+			to_chat(hunter, SPAN_NOTICE("你正位于[closest_item ? " <b>[closest_item.name]</b>'s" : ""] signature."))
 		else
-			to_chat(hunter, SPAN_NOTICE("The closest signature[closest_item ? ", a <b>[closest_item.name]</b>" : ""], is [closest > 10 ? "approximately <b>[round(closest, 10)]</b>" : "<b>[closest]</b>"] paces <b>[dir2text(direction)]</b> in <b>[areaName]</b>."))
+			to_chat(hunter, SPAN_NOTICE("最近的信号[closest_item ? ", a <b>[closest_item.name]</b>" : ""], is [closest > 10 ? "approximately <b>[round(closest, 10)]</b>" : "<b>[closest]</b>"] paces <b>[dir2text(direction)]</b> in <b>[areaName]</b>."))
 	if(!output)
-		to_chat(hunter, SPAN_NOTICE("There are no signatures that require your attention."))
+		to_chat(hunter, SPAN_NOTICE("没有需要你关注的信号。"))
 	return TRUE
 
 /obj/item/clothing/gloves/yautja/hunter/verb/cloaker()
@@ -751,20 +751,20 @@
 
 	if(HAS_TRAIT(user, TRAIT_CLOAKED)) //Turn it off.
 		if(cloak_timer > world.time)
-			to_chat(M, SPAN_WARNING("Your cloaking device is busy! Time left: <B>[max(floor((cloak_timer - world.time) / 10), 1)]</b> seconds."))
+			to_chat(M, SPAN_WARNING("你的隐形装置正忙！剩余时间：<B>[max(floor((cloak_timer - world.time) / 10), 1)]</b>秒。"))
 			return FALSE
 		decloak(user)
 	else //Turn it on!
 		if(exploding)
-			to_chat(M, SPAN_WARNING("Your bracer is much too busy violently exploding to activate the cloaking device."))
+			to_chat(M, SPAN_WARNING("你的护腕正忙于剧烈爆炸，无法启动隐形装置。"))
 			return FALSE
 
 		if(cloak_malfunction > world.time)
-			to_chat(M, SPAN_WARNING("Your cloak is malfunctioning and can't be enabled right now!"))
+			to_chat(M, SPAN_WARNING("你的隐形装置故障，目前无法启用！"))
 			return FALSE
 
 		if(cloak_timer > world.time)
-			to_chat(M, SPAN_WARNING("Your cloaking device is still recharging! Time left: <B>[max(floor((cloak_timer - world.time) / 10), 1)]</b> seconds."))
+			to_chat(M, SPAN_WARNING("你的隐形装置仍在充能！剩余时间：<B>[max(floor((cloak_timer - world.time) / 10), 1)]</b>秒。"))
 			return FALSE
 
 		if(!drain_power(M, 50))
@@ -783,7 +783,7 @@
 
 		log_game("[key_name_admin(user)] has enabled their cloaking device.")
 		if(!silent)
-			M.visible_message(SPAN_WARNING("[M] vanishes into thin air!"), SPAN_NOTICE("You are now invisible to normal detection."))
+			M.visible_message(SPAN_WARNING("[M]消失在空气中！"), SPAN_NOTICE("You are now invisible to normal detection."))
 			var/sound_to_use
 			if(invisibility_sound == PRED_TECH_MODERN)
 				sound_to_use = 'sound/effects/pred_cloakon_modern.ogg'
@@ -815,7 +815,7 @@
 	SIGNAL_HANDLER
 
 	var/mob/wearer = src.loc
-	wearer.visible_message(SPAN_DANGER("[wearer]'s cloak fizzles out!"), SPAN_DANGER("Your cloak fizzles out!"))
+	wearer.visible_message(SPAN_DANGER("[wearer]的隐形装置失效了！"), SPAN_DANGER("Your cloak fizzles out!"))
 
 	var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
 	sparks.set_up(5, 4, src)
@@ -839,7 +839,7 @@
 
 	REMOVE_TRAIT(user, TRAIT_CLOAKED, TRAIT_SOURCE_EQUIPMENT(WEAR_HANDS))
 	log_game("[key_name_admin(user)] has disabled their cloaking device.")
-	user.visible_message(SPAN_WARNING("[user] shimmers into existence!"), SPAN_WARNING("Your cloaking device deactivates."))
+	user.visible_message(SPAN_WARNING("[user]的身影闪烁显现！"), SPAN_WARNING("Your cloaking device deactivates."))
 	var/sound_to_use
 	if(invisibility_sound == PRED_TECH_MODERN)
 		sound_to_use = 'sound/effects/pred_cloakoff_modern.ogg'
@@ -882,20 +882,20 @@
 		if(!drain_power(user, 50))
 			return
 		if(user.get_active_hand())
-			to_chat(user, SPAN_WARNING("Your hand must be free to activate your plasma caster!"))
+			to_chat(user, SPAN_WARNING("你必须空出一只手才能激活你的等离子肩炮！"))
 			return
 		var/obj/limb/hand = user.get_limb(user.hand ? "l_hand" : "r_hand")
 		if(!istype(hand) || !hand.is_usable())
-			to_chat(user, SPAN_WARNING("You can't hold that!"))
+			to_chat(user, SPAN_WARNING("你无法持有那个！"))
 			return
 		if(user.faction == FACTION_YAUTJA_YOUNG)
-			to_chat(user, SPAN_WARNING("You have not earned that right yet!"))
+			to_chat(user, SPAN_WARNING("你尚未获得这项权利！"))
 			return
 		user.put_in_active_hand(caster)
 		caster_deployed = TRUE
 		if(user.client?.prefs.custom_cursors)
 			user.client?.mouse_pointer_icon = 'icons/effects/mouse_pointer/plasma_caster_mouse.dmi'
-		to_chat(user, SPAN_NOTICE("You activate your plasma caster. It is in [caster.mode] mode."))
+		to_chat(user, SPAN_NOTICE("你激活了你的等离子肩炮。当前模式为[caster.mode]。"))
 		playsound(src, 'sound/weapons/pred_plasmacaster_on.ogg', 15, TRUE)
 
 		var/datum/action/predator_action/bracer/caster/caster_action
@@ -942,10 +942,10 @@
 	set src in usr
 
 	if(explosion_type == SD_TYPE_SMALL && exploding)
-		to_chat(usr, SPAN_WARNING("Why would you want to do this?"))
+		to_chat(usr, SPAN_WARNING("你为什么要这么做？"))
 		return
 
-	if(alert("Which explosion type do you want?","Explosive Bracers", "Small", "Big") == "Big")
+	if(alert("Which explosion type do you want?","爆炸腕带", "Small", "Big") == "Big")
 		explosion_type = SD_TYPE_BIG
 		log_attack("[key_name_admin(usr)] has changed their Self-Destruct to Large")
 	else
@@ -969,25 +969,25 @@
 	var/area/grounds = get_area(boomer)
 
 	if(HAS_TRAIT(boomer, TRAIT_CLOAKED))
-		to_chat(boomer, SPAN_WARNING("Not while you're cloaked. It might disrupt the sequence."))
+		to_chat(boomer, SPAN_WARNING("隐形时不行。这可能会干扰程序。"))
 		return
 	if(boomer.stat == DEAD)
-		to_chat(boomer, SPAN_WARNING("Little too late for that now!"))
+		to_chat(boomer, SPAN_WARNING("现在做这个已经太迟了！"))
 		return
 	if(boomer.health < boomer.health_threshold_crit)
-		to_chat(boomer, SPAN_WARNING("As you fall into unconsciousness you fail to activate your self-destruct device before you collapse."))
+		to_chat(boomer, SPAN_WARNING("当你陷入昏迷时，你在倒下前未能启动自毁装置。"))
 		return
 	if(boomer.stat != CONSCIOUS)
-		to_chat(boomer, SPAN_WARNING("Not while you're unconscious..."))
+		to_chat(boomer, SPAN_WARNING("在你昏迷时不行..."))
 		return
 	if(boomer.is_mob_incapacitated() || (!exploding && HAS_TRAIT(boomer, TRAIT_HAULED)))
-		to_chat(boomer, SPAN_WARNING("You cannot do this in your current state."))
+		to_chat(boomer, SPAN_WARNING("你当前的状态无法执行此操作。"))
 		return
 	if(grounds?.flags_area & AREA_YAUTJA_HUNTING_GROUNDS) // Hunted need mask to escape
-		to_chat(boomer, SPAN_WARNING("Your bracer will not allow you to activate a self-destruction sequence in order to protect the hunting preserve."))
+		to_chat(boomer, SPAN_WARNING("你的臂铠不允许你启动自毁程序，以保护狩猎场。"))
 		return
 	if(user.faction == FACTION_YAUTJA_YOUNG)
-		to_chat(boomer, SPAN_WARNING("You don't yet understand how to use this.")) // No SDing for youngbloods
+		to_chat(boomer, SPAN_WARNING("你还未掌握此物的使用方法。")) // No SDing for youngbloods
 		return
 
 	var/obj/item/grab/G = boomer.get_active_hand()
@@ -997,17 +997,17 @@
 			var/obj/item/clothing/gloves/yautja/hunter/bracer = victim.gloves
 			var/message = "Are you sure you want to detonate this [victim.species]'s bracer?"
 			if(isspeciesyautja(victim))
-				message = "Are you sure you want to send this [victim.species] into the great hunting grounds?"
+				message = "你确定要将这个[victim.species]送往伟大的狩猎场吗？"
 			if(istype(bracer))
-				if(forced || tgui_alert(boomer, message, "Explosive Bracers", list("Yes", "No"), 20 SECONDS) == "Yes")
+				if(forced || tgui_alert(boomer, message, "爆炸腕带", list("Yes", "No"), 20 SECONDS) == "Yes")
 					if(boomer.stat == DEAD)
-						to_chat(boomer, SPAN_WARNING("Little too late for that now!"))
+						to_chat(boomer, SPAN_WARNING("现在做这个已经太迟了！"))
 						return
 					if(boomer.stat != CONSCIOUS)
-						to_chat(boomer, SPAN_WARNING("Not while you're unconscious..."))
+						to_chat(boomer, SPAN_WARNING("在你昏迷时不行..."))
 						return
 					if(boomer.is_mob_incapacitated() || HAS_TRAIT(boomer, TRAIT_HAULED))
-						to_chat(boomer, SPAN_WARNING("You cannot do this in your current state."))
+						to_chat(boomer, SPAN_WARNING("你当前的状态无法执行此操作。"))
 						return
 					if(boomer.get_active_hand() == G && victim && victim.gloves == bracer && !bracer.exploding)
 						var/area/A = get_area(boomer)
@@ -1017,27 +1017,27 @@
 							log_attack("[key_name(boomer)] triggered the predator self-destruct sequence of [victim] ([victim.key]) in [A.name]")
 						if (!bracer.exploding)
 							bracer.explode(victim)
-						boomer.visible_message(SPAN_WARNING("[boomer] presses a few buttons on [victim]'s wrist bracer."),SPAN_DANGER("You activate the timer. May [victim]'s final hunt be swift."))
+						boomer.visible_message(SPAN_WARNING("[boomer]按下了[victim]腕带上的几个按钮。"),SPAN_DANGER("You activate the timer. May [victim]'s final hunt be swift."))
 						message_all_yautja("[boomer.real_name] has triggered [victim.real_name]'s bracer's self-destruction sequence.")
 			else
-				to_chat(boomer, SPAN_WARNING("<b>This [victim.species] does not have a bracer attached.</b>"))
+				to_chat(boomer, SPAN_WARNING("<b>这个[victim.species]没有佩戴腕带。</b>"))
 			return
 
 	if(boomer.gloves != src && !forced)
 		return
 
 	if(exploding)
-		if(forced || tgui_alert(boomer, "Are you sure you want to stop the countdown?", "Explosive Bracers", list("Yes", "No"), 20 SECONDS) == "Yes")
+		if(forced || tgui_alert(boomer, "你确定要停止倒计时吗？", "爆炸腕带", list("Yes", "No"), 20 SECONDS) == "Yes")
 			if(boomer.gloves != src)
 				return
 			if(boomer.stat == DEAD)
-				to_chat(boomer, SPAN_WARNING("Little too late for that now!"))
+				to_chat(boomer, SPAN_WARNING("现在做这个已经太迟了！"))
 				return
 			if(boomer.stat != CONSCIOUS)
-				to_chat(boomer, SPAN_WARNING("Not while you're unconscious..."))
+				to_chat(boomer, SPAN_WARNING("在你昏迷时不行..."))
 				return
 			exploding = FALSE
-			to_chat(boomer, SPAN_NOTICE("Your bracers stop beeping."))
+			to_chat(boomer, SPAN_NOTICE("你的腕带停止了哔哔声。"))
 			message_all_yautja("[boomer.real_name] has cancelled their bracer's self-destruction sequence.")
 			message_admins("[key_name(boomer)] has deactivated their Self-Destruct.")
 
@@ -1050,27 +1050,27 @@
 		return
 
 	if(istype(boomer.wear_mask,/obj/item/clothing/mask/facehugger) || (boomer.status_flags & XENO_HOST))
-		to_chat(boomer, SPAN_WARNING("Strange...something seems to be interfering with your bracer functions..."))
+		to_chat(boomer, SPAN_WARNING("奇怪……似乎有什么东西在干扰你的腕带功能……"))
 		return
 
-	if(forced || tgui_alert(boomer, "Detonate the bracers? Are you sure?\n\nNote: If you activate SD for any non-accidental reason during or after a fight, you commit to the SD. By initially activating the SD, you have accepted your impending death to preserve any lost honor.", "Explosive Bracers", list("Yes", "No"), 20 SECONDS) == "Yes")
+	if(forced || tgui_alert(boomer, "引爆腕带？你确定吗？\n\n注意：如果你在战斗期间或之后因任何非意外原因启动自毁程序，即视为接受自毁。启动自毁程序，意味着你已接受即将到来的死亡，以挽回任何失去的荣誉。", "爆炸腕带", list("Yes", "No"), 20 SECONDS) == "Yes")
 		if(boomer.gloves != src)
 			return
 		if(boomer.stat == DEAD)
-			to_chat(boomer, SPAN_WARNING("Little too late for that now!"))
+			to_chat(boomer, SPAN_WARNING("现在做这个已经太迟了！"))
 			return
 		if(boomer.stat != CONSCIOUS)
-			to_chat(boomer, SPAN_WARNING("Not while you're unconscious..."))
+			to_chat(boomer, SPAN_WARNING("在你昏迷时不行..."))
 			return
 		if(boomer.is_mob_incapacitated() || HAS_TRAIT(boomer, TRAIT_HAULED))
-			to_chat(boomer, SPAN_WARNING("You cannot do this in your current state."))
+			to_chat(boomer, SPAN_WARNING("你当前的状态无法执行此操作。"))
 			return
 		if(grounds?.flags_area & AREA_YAUTJA_HUNTING_GROUNDS) //Hunted need mask to escape
-			to_chat(boomer, SPAN_WARNING("Your bracer will not allow you to activate a self-destruction sequence in order to protect the hunting preserve."))
+			to_chat(boomer, SPAN_WARNING("你的臂铠不允许你启动自毁程序，以保护狩猎场。"))
 			return
 		if(exploding)
 			return
-		to_chat(boomer, SPAN_DANGER("You set the timer. May your journey to the great hunting grounds be swift."))
+		to_chat(boomer, SPAN_DANGER("你设定了计时器。愿你在通往伟大狩猎场的旅途中一路顺风。"))
 		var/area/A = get_area(boomer)
 		var/turf/T = get_turf(boomer)
 		message_admins(FONT_SIZE_HUGE("ALERT: [boomer] ([boomer.key]) triggered their predator self-destruct sequence [A ? "in [A.name]":""] [ADMIN_JMP(T)]"))
@@ -1098,11 +1098,11 @@
 		return
 
 	if(user.faction == FACTION_YAUTJA_YOUNG)
-		to_chat(user, SPAN_WARNING("This button is not for you."))
+		to_chat(user, SPAN_WARNING("这个按钮不属于你。"))
 		return
 
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		to_chat(user, SPAN_WARNING("A large list appears but you cannot understand what it means."))
+		to_chat(user, SPAN_WARNING("出现了一个长长的列表，但你无法理解其含义。"))
 		return
 
 	var/list/target_list = list()
@@ -1111,19 +1111,19 @@
 			target_list[target_youngbloods.real_name] = target_youngbloods
 
 	if(!length(target_list))
-		to_chat(user, SPAN_NOTICE("No youngbloods are currently alive."))
+		to_chat(user, SPAN_NOTICE("当前没有存活的年轻猎手。"))
 		return
 
-	var/choice = tgui_input_list(user, "Choose a young hunter to terminate:", "Kill Youngblood", target_list)
+	var/choice = tgui_input_list(user, "选择一名年轻猎手进行处决：", "Kill Youngblood", target_list)
 
 	if(!choice)
 		return
 
 	var/mob/living/target_youngblood = target_list[choice]
 
-	var/reason = tgui_input_text(user, "Youngblood Terminator", "Provide a reason for terminating [target_youngblood.real_name].")
+	var/reason = tgui_input_text(user, "年轻猎手处决者", "Provide a reason for terminating [target_youngblood.real_name].")
 	if(!reason)
-		to_chat(user, SPAN_WARNING("You must provide a reason for terminating [target_youngblood.real_name]."))
+		to_chat(user, SPAN_WARNING("你必须为处决[target_youngblood.real_name]提供一个理由。"))
 		return
 
 	var/area/location = get_area(target_youngblood)
@@ -1135,7 +1135,7 @@
 #define YAUTJA_CREATE_CRYSTAL_COOLDOWN "yautja_create_crystal_cooldown"
 
 /obj/item/clothing/gloves/yautja/hunter/verb/injectors()
-	set name = "Create Stabilising Crystal"
+	set name = "生成稳定水晶"
 	set category = "Yautja.Utility"
 	set desc = "Create a focus crystal to energize your natural healing processes."
 	set src in usr
@@ -1150,12 +1150,12 @@
 		return
 
 	if(user.get_active_hand())
-		to_chat(user, SPAN_WARNING("Your active hand must be empty!"))
+		to_chat(user, SPAN_WARNING("你的惯用手必须为空！"))
 		return FALSE
 
 	if(TIMER_COOLDOWN_CHECK(src, YAUTJA_CREATE_CRYSTAL_COOLDOWN))
 		var/remaining_time = DisplayTimeText(S_TIMER_COOLDOWN_TIMELEFT(src, YAUTJA_CREATE_CRYSTAL_COOLDOWN))
-		to_chat(user, SPAN_WARNING("You recently synthesized a stabilising crystal. A new crystal will be available in [remaining_time]."))
+		to_chat(user, SPAN_WARNING("你最近合成了一枚稳定水晶。新的水晶将在[remaining_time]后可用。"))
 		return FALSE
 
 	if(!drain_power(user, 400))
@@ -1163,7 +1163,7 @@
 
 	S_TIMER_COOLDOWN_START(src, YAUTJA_CREATE_CRYSTAL_COOLDOWN, 2 MINUTES)
 
-	to_chat(user, SPAN_NOTICE("You feel a faint hiss and a crystalline injector drops into your hand."))
+	to_chat(user, SPAN_NOTICE("你感到一阵轻微的嘶嘶声，一枚水晶注射器落入你手中。"))
 	var/obj/item/reagent_container/hypospray/autoinjector/yautja/O = new(user)
 	user.put_in_active_hand(O)
 	playsound(src, 'sound/machines/click.ogg', 15, 1)
@@ -1171,7 +1171,7 @@
 #undef YAUTJA_CREATE_CRYSTAL_COOLDOWN
 
 /obj/item/clothing/gloves/yautja/hunter/verb/healing_capsule()
-	set name = "Create Healing Capsule"
+	set name = "制造治疗胶囊"
 	set category = "Yautja.Utility"
 	set desc = "Create a healing capsule for your healing gun."
 	set src in usr
@@ -1187,12 +1187,12 @@
 		return
 
 	if(user.get_active_hand())
-		to_chat(user, SPAN_WARNING("Your active hand must be empty!"))
+		to_chat(user, SPAN_WARNING("你的惯用手必须为空！"))
 		return FALSE
 
 	if(TIMER_COOLDOWN_CHECK(src, YAUTJA_CREATE_CAPSULE_COOLDOWN))
 		var/remaining_time = DisplayTimeText(S_TIMER_COOLDOWN_TIMELEFT(src, YAUTJA_CREATE_CAPSULE_COOLDOWN))
-		to_chat(user, SPAN_WARNING("You recently synthesized a healing capsule. A new capsule will be available in [remaining_time]."))
+		to_chat(user, SPAN_WARNING("你最近合成了一枚治疗胶囊。新的胶囊将在[remaining_time]后可用。"))
 		return FALSE
 
 	if(!drain_power(user, 600))
@@ -1200,7 +1200,7 @@
 
 	S_TIMER_COOLDOWN_START(src, YAUTJA_CREATE_CAPSULE_COOLDOWN, 4 MINUTES)
 
-	to_chat(user, SPAN_NOTICE("You feel your bracer churn as it pops out a healing capsule."))
+	to_chat(user, SPAN_NOTICE("你感到你的腕带一阵搅动，弹出了一枚治疗胶囊。"))
 	var/obj/item/tool/surgery/healing_gel/O = new(user)
 	user.put_in_active_hand(O)
 	playsound(src, 'sound/machines/click.ogg', 15, 1)
@@ -1225,7 +1225,7 @@
 		return
 
 	if(disc_timer)
-		to_chat(user, SPAN_WARNING("Your bracers need some time to recuperate first."))
+		to_chat(user, SPAN_WARNING("你的腕带需要一些时间恢复。"))
 		return FALSE
 
 	if(!drain_power(user, 70))
@@ -1235,7 +1235,7 @@
 	addtimer(VARSET_CALLBACK(src, disc_timer, FALSE), 10 SECONDS)
 
 	for(var/mob/living/simple_animal/hostile/smartdisc/S in range(7))
-		to_chat(user, SPAN_WARNING("[S] skips back towards you!"))
+		to_chat(user, SPAN_WARNING("[S]向后跳跃，朝你而来！"))
 		new /obj/item/explosive/grenade/spawnergrenade/smartdisc(S.loc)
 		qdel(S)
 
@@ -1262,13 +1262,13 @@
 
 	var/obj/item/tracked_item = user.get_active_hand()
 	if(!tracked_item)
-		to_chat(user, SPAN_WARNING("You need the item in your active hand to remove it from the tracker!"))
+		to_chat(user, SPAN_WARNING("你需要将物品拿在手中才能将其从追踪系统移除！"))
 		return FALSE
 	if(!(tracked_item in GLOB.tracked_yautja_gear))
-		to_chat(user, SPAN_WARNING("[tracked_item] isn't on the tracking system."))
+		to_chat(user, SPAN_WARNING("[tracked_item]不在追踪系统上。"))
 		return FALSE
 	tracked_item.RemoveElement(/datum/element/yautja_tracked_item)
-	to_chat(user, SPAN_NOTICE("You remove <b>[tracked_item]</b> from the tracking system."))
+	to_chat(user, SPAN_NOTICE("你将<b>[tracked_item]</b>从追踪系统中移除。"))
 	return TRUE
 
 
@@ -1289,17 +1289,17 @@
 
 	var/obj/item/untracked_item = user.get_active_hand()
 	if(!untracked_item)
-		to_chat(user, SPAN_WARNING("You need the item in your active hand to remove it from the tracker!"))
+		to_chat(user, SPAN_WARNING("你需要将物品拿在手中才能将其从追踪系统移除！"))
 		return FALSE
 	if(untracked_item in GLOB.tracked_yautja_gear)
-		to_chat(user, SPAN_WARNING("[untracked_item] is already being tracked."))
+		to_chat(user, SPAN_WARNING("[untracked_item]已被追踪。"))
 		return FALSE
 	untracked_item.AddElement(/datum/element/yautja_tracked_item)
-	to_chat(user, SPAN_NOTICE("You add <b>[untracked_item]</b> to the tracking system."))
+	to_chat(user, SPAN_NOTICE("你将<b>[untracked_item]</b>添加到追踪系统。"))
 	return TRUE
 
 /obj/item/clothing/gloves/yautja/hunter/verb/translate()
-	set name = "Translator"
+	set name = "翻译器"
 	set desc = "Emit a message from your bracer to those nearby."
 	set category = "Yautja.Utility"
 	set src in usr
@@ -1314,7 +1314,7 @@
 		return
 
 	if(user.client.prefs.muted & MUTE_IC)
-		to_chat(user, SPAN_DANGER("You cannot translate (muted)."))
+		to_chat(user, SPAN_DANGER("你无法翻译（静音）。"))
 		return
 
 	var/list/heard = get_mobs_in_view(7, user)
@@ -1324,7 +1324,7 @@
 
 	var/image/translator_bubble = image('icons/mob/effects/talk.dmi', src, "pred_translator", TYPING_LAYER)
 	user.show_speech_bubble(heard, looping_bubble = TRUE, animated = FALSE, speech_bubble = translator_bubble)
-	var/message = tgui_input_text(user, "The bracer beeps and is awaiting to translate", "Translator", multiline = TRUE)
+	var/message = tgui_input_text(user, "腕带发出哔哔声，等待翻译", "翻译器", multiline = TRUE)
 	user.remove_speech_bubble(translator_bubble)
 	if(!message || !user.client)
 		return
@@ -1334,7 +1334,7 @@
 
 	user.show_speech_bubble(heard, "pred_translator1")
 
-	log_say("[user.name != "Unknown" ? user.name : "([user.real_name])"] \[Yautja Translator\]: [message] (CKEY: [user.key]) (JOB: [user.job]) (AREA: [get_area_name(user)])")
+	log_say("[user.name != "未知" ? user.name : "([user.real_name])"] \[Yautja Translator\]: [message] (CKEY: [user.key]) (JOB: [user.job]) (AREA: [get_area_name(user)])")
 
 	var/overhead_color = "#ff0505"
 	var/span_class = "yautja_translator"
@@ -1360,7 +1360,7 @@
 		to_chat(heard_human, "[SPAN_INFO("[voice_name] says,")] <span class='[span_class]'>'[message]'</span>")
 
 /obj/item/clothing/gloves/yautja/hunter/verb/bracername()
-	set name = "Toggle Bracer Name"
+	set name = "切换腕甲名称"
 	set desc = "Toggle whether fellow Yautja that examine you will be able to see your name."
 	set category = "Yautja.Misc"
 	set src in usr
@@ -1369,7 +1369,7 @@
 		return
 
 	name_active = !name_active
-	to_chat(usr, SPAN_NOTICE("[src] will [name_active ? "now" : "no longer"] show your name when fellow Yautja examine you."))
+	to_chat(usr, SPAN_NOTICE("[src]将[name_active ? "now" : "no longer"] show your name when fellow Yautja examine you."))
 
 /obj/item/clothing/gloves/yautja/hunter/verb/idchip()
 	set name = "Toggle ID Chip"
@@ -1382,18 +1382,18 @@
 
 	var/mob/living/carbon/human/H = usr
 	if(!istype(H) || !HAS_TRAIT(usr, TRAIT_YAUTJA_TECH))
-		to_chat(usr, SPAN_WARNING("You do not know how to use this."))
+		to_chat(usr, SPAN_WARNING("你不知道如何使用这个。"))
 		return
 
 	if(H.wear_id == embedded_id)
-		to_chat(H, SPAN_NOTICE("You retract your ID chip."))
+		to_chat(H, SPAN_NOTICE("你收回了你的身份芯片。"))
 		move_chip_to_bracer()
 	else if(H.wear_id)
-		to_chat(H, SPAN_WARNING("Something is obstructing the deployment of your ID chip!"))
+		to_chat(H, SPAN_WARNING("有东西阻碍了你的身份芯片部署！"))
 	else
-		to_chat(H, SPAN_NOTICE("You expose your ID chip."))
+		to_chat(H, SPAN_NOTICE("你暴露了你的身份芯片。"))
 		if(!H.equip_to_slot_if_possible(embedded_id, WEAR_ID))
-			to_chat(H, SPAN_WARNING("Something went wrong during your chip's deployment! (Make a Bug Report about this)"))
+			to_chat(H, SPAN_WARNING("芯片部署过程中出现错误！（请为此提交错误报告）"))
 			move_chip_to_bracer()
 
 /obj/item/clothing/gloves/yautja/hunter/proc/move_chip_to_bracer()
@@ -1417,10 +1417,10 @@
 	set src in usr
 
 	if(usr.stat)
-		to_chat(usr, SPAN_WARNING("You can't do that right now..."))
+		to_chat(usr, SPAN_WARNING("你现在无法这么做……"))
 		return FALSE
 	if(!HAS_TRAIT(usr, TRAIT_YAUTJA_TECH))
-		to_chat(usr, SPAN_WARNING("You have no idea how to use this..."))
+		to_chat(usr, SPAN_WARNING("你完全不知道如何使用这个……"))
 		return FALSE
 
 	attempt_toggle_lock(usr, FALSE)
@@ -1440,19 +1440,19 @@
 	var/mob/living/carbon/human/victim = held_mob.grabbed_thing
 	var/obj/item/clothing/gloves/yautja/bracer = victim.gloves
 	if(isspeciesyautja(victim) && !(victim.stat == DEAD))
-		to_chat(user, SPAN_WARNING("You cannot unlock the bracer of a living hunter!"))
+		to_chat(user, SPAN_WARNING("你无法解锁活着的猎手的腕带！"))
 		return FALSE
 
 	if(!istype(bracer))
-		to_chat(user, SPAN_WARNING("<b>This [victim.species] does not have a bracer attached.</b>"))
+		to_chat(user, SPAN_WARNING("<b>这个[victim.species]没有佩戴腕带。</b>"))
 		return FALSE
 
-	if(alert("Are you sure you want to unlock this [victim.species]'s bracer?", "Unlock Bracers", "Yes", "No") != "Yes")
+	if(alert("Are you sure you want to unlock this [victim.species]'s bracer?", "解锁腕带", "Yes", "No") != "Yes")
 		return FALSE
 
 	if(user.get_active_hand() == held_mob && victim && victim.gloves == bracer)
 		log_interact(user, victim, "[key_name(user)] unlocked the [bracer.name] of [key_name(victim)].")
-		user.visible_message(SPAN_WARNING("[user] presses a few buttons on [victim]'s wrist bracer."),SPAN_DANGER("You unlock the bracer."))
+		user.visible_message(SPAN_WARNING("[user]按下了[victim]手腕上腕带的几个按钮。"),SPAN_DANGER("You unlock the bracer."))
 		bracer.toggle_lock_internal(victim)
 		return TRUE
 
@@ -1468,9 +1468,9 @@
 	flags_inventory |= CANTSTRIP
 	if(wearer)
 		if(isyautja(wearer))
-			to_chat(wearer, SPAN_WARNING("The bracer clamps securely around your forearm and beeps in a comfortable, familiar way."))
+			to_chat(wearer, SPAN_WARNING("腕带牢固地扣在你的前臂上，并以一种舒适、熟悉的方式发出哔哔声。"))
 		else
-			to_chat(wearer, SPAN_WARNING("The bracer clamps painfully around your forearm and beeps angrily. It won't come off!"))
+			to_chat(wearer, SPAN_WARNING("臂铠紧紧箍住你的前臂，发出愤怒的蜂鸣声。它取不下来了！"))
 	playsound(src, 'sound/items/air_release.ogg', 15, 1)
 	return TRUE
 
@@ -1479,8 +1479,8 @@
 	flags_inventory &= ~CANTSTRIP
 	if(wearer)
 		if(!isyautja(wearer))
-			to_chat(wearer, SPAN_WARNING("The bracer beeps pleasantly, releasing its grip on your forearm."))
+			to_chat(wearer, SPAN_WARNING("臂铠发出悦耳的蜂鸣声，松开了你的前臂。"))
 		else
-			to_chat(wearer, SPAN_WARNING("With an angry blare, the bracer releases your forearm."))
+			to_chat(wearer, SPAN_WARNING("伴随着一声愤怒的鸣响，臂铠松开了你的前臂。"))
 	playsound(src, 'sound/items/air_release.ogg', 15, 1)
 	return TRUE

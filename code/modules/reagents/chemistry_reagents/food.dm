@@ -7,7 +7,7 @@
 // condiments, additives, and such go.
 
 /datum/reagent/nutriment
-	name = "Nutriment"
+	name = "营养素"
 	id = "nutriment"
 	description = "All the vitamins, minerals, and carbohydrates the body needs in pure form."
 	reagent_state = SOLID
@@ -40,86 +40,86 @@
 			subject.vomit()
 
 /datum/reagent/nutriment/egg
-	name = "Egg"
+	name = "鸡蛋"
 	id = "egg"
 	description = "The contents of an egg. Salmonella not included."
 	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/nutriment/tofu
-	name = "Tofu"
+	name = "豆腐"
 	id = "tofu"
 	description = "Meat substitute."
 	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/nutriment/cheese
-	name = "Cheese"
+	name = "奶酪"
 	id = "cheese"
 	description = "This used to be milk."
 	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/nutriment/meat
-	name = "Meat Protein"
+	name = "肉类蛋白"
 	id = "meatprotein"
 	description = "Proteins found in various types of meat."
 	chemclass = CHEM_CLASS_RARE
 
 /datum/reagent/nutriment/meat/fish
-	name = "Fish Meat"
+	name = "鱼肉"
 	id = "fish"
 	description = "It used to swim."
 	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/nutriment/grown
-	name = "Plant Matter"
+	name = "植物物质"
 	id = "plantmatter"
 	description = "Some sort of plant."
 	chemclass = CHEM_CLASS_RARE
 
 /datum/reagent/nutriment/grown/vegetable
-	name = "Vegetable"
+	name = "蔬菜"
 	id = "vegetable"
 	description = "Some sort of vegetable."
 	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/nutriment/grown/fruit
-	name = "Fruit"
+	name = "水果"
 	id = "fruit"
 	description = "Some sort of fruit."
 	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/nutriment/grown/mushroom
-	name = "Mushroom"
+	name = "蘑菇"
 	id = "mushroom"
 	description = "Some sort of fungus."
 	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/nutriment/dough
-	name = "Dough"
+	name = "面团"
 	id = "dough"
 	description = "Wet flour."
 	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/nutriment/dough/bread
-	name = "Bread"
+	name = "面包"
 	id = "bread"
 	description = "Cooked bread."
 	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/nutriment/dough/noodles
-	name = "Noodles"
+	name = "面条"
 	id = "noodles"
 	description = "Cooked noodles."
 	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/nutriment/nuts
-	name = "Nuts"
+	name = "坚果"
 	id = "nuts"
 	description = "Some sort of grinded nut, smells like almonds."
 	flags = REAGENT_NO_GENERATION
 
 
 /datum/reagent/lipozine
-	name = "Lipozine" // The anti-nutriment.
+	name = "脂解素" // The anti-nutriment.
 	id = "lipozine"
 	description = "Lowers satiation and reduces body weight by increasing ketosis and the rate of which fat is metabolized. Use to treat obesity. Large doses can cause extreme weight loss."
 	reagent_state = LIQUID
@@ -131,7 +131,7 @@
 	properties = list(PROPERTY_KETOGENIC = 4)
 
 /datum/reagent/soysauce
-	name = "Soysauce"
+	name = "酱油"
 	id = "soysauce"
 	description = "A salty sauce made from the soy plant."
 	reagent_state = LIQUID
@@ -142,7 +142,7 @@
 	properties = list(PROPERTY_NUTRITIOUS = 2)
 
 /datum/reagent/ketchup
-	name = "Ketchup"
+	name = "番茄酱"
 	id = "ketchup"
 	description = "Ketchup is a sweet and tangy sauce typically made from tomatoes, sugar, and vinegar, with assorted seasonings and spices."
 	reagent_state = LIQUID
@@ -152,7 +152,7 @@
 	properties = list(PROPERTY_NUTRITIOUS = 2)
 
 /datum/reagent/vegemite
-	name = "Vegemite"
+	name = "维吉麦酱"
 	id = "vegemite"
 	description = "A thick yeast extract food spread, salty, slightly bitter, malty, and has an umami flavour similar to beef bouillon, with a hint of radiation."
 	reagent_state = LIQUID
@@ -176,7 +176,7 @@
 		target_human.vomit()
 
 /datum/reagent/capsaicin
-	name = "Capsaicin Oil"
+	name = "辣椒油"
 	id = "capsaicin"
 	description = "Capsaicin is a chili pepper extract with analgesic properties. Capsaicin is a neuropeptide releasing agent selective for primary sensory peripheral neurons."
 	reagent_state = LIQUID
@@ -185,7 +185,7 @@
 	properties = list(PROPERTY_HYPERTHERMIC = 1)
 
 /datum/reagent/condensedcapsaicin
-	name = "Condensed Capsaicin"
+	name = "浓缩辣椒素"
 	id = "condensedcapsaicin"
 	description = "A chemical agent used for self-defense and in police work."
 	reagent_state = LIQUID
@@ -195,7 +195,7 @@
 	spray_warning = TRUE
 
 /datum/reagent/hotsauce
-	name = "Hot Sauce"
+	name = "辣酱"
 	id = "hotsauce"
 	description = "Hot sauce is a pungent condiment sauce made from hot peppers."
 	reagent_state = LIQUID
@@ -204,7 +204,7 @@
 	properties = list(PROPERTY_HYPERTHERMIC = 1)
 
 /datum/reagent/condensedcapsaicin/reaction_mob(mob/living/M, method=TOUCH, volume, permeable)
-	if(!istype(M, /mob/living) || has_species(M,"Horror"))
+	if(!istype(M, /mob/living) || has_species(M,"恐怖造物"))
 		return
 
 	if(method == TOUCH)
@@ -212,19 +212,19 @@
 			var/mob/living/carbon/human/victim = M
 			if(skillcheck(victim, SKILL_POLICE, SKILL_POLICE_SKILLED))
 				victim.AdjustEyeBlur(5)
-				to_chat(victim, SPAN_WARNING("Your training protects you from the pepperspray!"))
+				to_chat(victim, SPAN_WARNING("你的训练使你免受胡椒喷雾的伤害！"))
 				return
 
 			if(victim.pain.feels_pain)
 				victim.emote("scream")
-				to_chat(victim, SPAN_WARNING("You're sprayed directly in the eyes with pepperspray!"))
+				to_chat(victim, SPAN_WARNING("胡椒喷雾直接喷进了你的眼睛！"))
 				victim.AdjustEyeBlur(25)
 				victim.AdjustEyeBlind(10)
 				victim.apply_effect(3, STUN)
 				victim.apply_effect(3, WEAKEN)
 
 /datum/reagent/frostoil
-	name = "Frost Oil"
+	name = "冰霜油"
 	id = "frostoil"
 	description = "A special oil that noticeably chills the body. Extracted from Ice Peppers."
 	reagent_state = LIQUID
@@ -235,7 +235,7 @@
 // HYDRO HARD TIER CHEMS
 
 /datum/reagent/atropine //poppy
-	name = "Atropine"
+	name = "阿托品"
 	id = "atropine"
 	description = "Plant based chemical replaced and superseded by Epinephrine, it has a plethora of side effects but is considerably stronger than epinephrine" //I know, now stay shush
 	reagent_state = LIQUID
@@ -244,7 +244,7 @@
 	properties = list(PROPERTY_ELECTROGENETIC = 7, PROPERTY_INTRAVENOUS = 1, PROPERTY_NEUROTOXIC = 0.5)
 
 /datum/reagent/thymol //some kind of thyme
-	name = "Thymol"
+	name = "百里酚"
 	id = "thymol"
 	description = "Known chemical used in the 20th century as innovative way to combat hookworm parasites and generally all kinds of infections, it was since used as natural pesticide."
 	reagent_state = LIQUID
@@ -253,7 +253,7 @@
 	properties = list(PROPERTY_ANTIPARASITIC = 1.5)
 
 /datum/reagent/psoralen //cabbage, doesn't make sense but eh
-	name = "Psoralen"
+	name = "补骨脂素"
 	id = "psoralen"
 	description = "Naturally occurring carcinogenic, used commonly as mutagen for DNA research."
 	reagent_state = LIQUID
@@ -262,7 +262,7 @@
 	properties = list(PROPERTY_CARCINOGENIC = 6)
 
 /datum/reagent/coniine //carrot
-	name = "Coniine"
+	name = "毒芹碱"
 	id = "coniine"
 	description = "Potent toxic chemical causing loss of consciousness and respiratory failure in matter of seconds, although it was studied for a long time, it could have some undocumented use."
 	reagent_state = LIQUID
@@ -272,7 +272,7 @@
 	chemclass = CHEM_CLASS_HYDRO
 	properties = list(PROPERTY_HYPNOTIC = 7, PROPERTY_HYPOXEMIC = 6, PROPERTY_EXCRETING = 2, PROPERTY_HEPATOPEUTIC = 2)
 /datum/reagent/zygacine
-	name = "Zygacine"
+	name = "棋盘花碱"
 	id = "zygacine"
 	description = "Causes convulsing of the heart muscles before blocking the contractions entirely"
 	reagent_state = LIQUID
@@ -283,7 +283,7 @@
 	properties = list(PROPERTY_CARDIOTOXIC = 3)
 
 /datum/reagent/digoxin
-	name = "Digoxin"
+	name = "地高辛"
 	id = "digoxin"
 	description = "One of the oldest chemicals to enter field in treating many heart conditions, besides few sides effects, it can be used to great effect."
 	reagent_state = LIQUID
@@ -294,7 +294,7 @@
 	properties = list(PROPERTY_CARDIOPEUTIC = 3, PROPERTY_TRICHOGENIC = 1)
 
 /datum/reagent/urishiol
-	name = "Urishiol"
+	name = "漆酚"
 	id = "urishiol"
 	description = "Potent skin and tissue irritant causing burns which lasts weeks after the contact is made, commonly encountered in plants like Poison Ivy, Poison Oak, and similar toxicodendrons."
 	overdose = LOW_REAGENTS_OVERDOSE
@@ -306,7 +306,7 @@
 	properties = list(PROPERTY_ALLERGENIC = 6, PROPERTY_CORROSIVE = 3)
 
 /datum/reagent/phenol
-	name = "Phenol"
+	name = "苯酚"
 	id = "phenol"
 	description = "Skin analgesic used for targeted operation and mild pain relief of an area. While safe on the skin, extremely lethal on injection."
 	overdose = LOWM_REAGENTS_OVERDOSE
@@ -319,7 +319,7 @@
 
 //HARD TIER HYDRO END.
 /datum/reagent/sodiumchloride
-	name = "Table Salt"
+	name = "食盐"
 	id = "sodiumchloride"
 	description = "A salt made of sodium chloride. Commonly used to season food."
 	reagent_state = SOLID
@@ -333,7 +333,7 @@
 	chemclass = CHEM_CLASS_COMMON
 
 /datum/reagent/blackpepper
-	name = "Black Pepper"
+	name = "黑胡椒"
 	id = "blackpepper"
 	description = "Black pepper is the world's most traded spice, and is one of the most common spices added to cuisines around the world. Its spiciness is due to the chemical compound piperine, which is a different kind of spicy from the capsaicin characteristic of chili peppers."
 	reagent_state = SOLID
@@ -341,7 +341,7 @@
 	// no color (ie, black)
 
 /datum/reagent/coco
-	name = "Coco Powder"
+	name = "可可粉"
 	id = "coco"
 	description = "The cocoa bean or simply cocoa, which is also called the cacao bean or cacao, is the dried and fully fermented seed of Theobroma cacao, from which cocoa solids and cocoa butter can be extracted."
 	reagent_state = SOLID
@@ -351,7 +351,7 @@
 	properties = list(PROPERTY_NUTRITIOUS = 2)
 
 /datum/reagent/coco_drink_hazelnut
-	name = "Chocolate Hazelnut Drink"
+	name = "巧克力榛子饮料"
 	id = "coco_drink_hazelnut"
 	description = "Smooth and creamy chocolate drink, with a hint of hazelnut flavor."
 	reagent_state = LIQUID
@@ -362,7 +362,7 @@
 	properties = list(PROPERTY_NUTRITIOUS = 2)
 
 /datum/reagent/coco_drink
-	name = "Chocolate Drink"
+	name = "巧克力饮料"
 	id = "coco_drink"
 	description = "Smooth and creamy chocolate drink."
 	reagent_state = LIQUID
@@ -373,7 +373,7 @@
 	properties = list(PROPERTY_NUTRITIOUS = 2)
 
 /datum/reagent/psilocybin
-	name = "Psilocybin"
+	name = "裸盖菇素"
 	id = "psilocybin"
 	description = "Psilocybin is a naturally occurring psychedelic prodrug compound produced by more than 200 species of mushrooms, collectively known as psilocybin mushrooms or Magic Mushrooms."
 	color = "#E700E7" // rgb: 231, 0, 231
@@ -383,7 +383,7 @@
 	properties = list(PROPERTY_HALLUCINOGENIC = 3)
 
 /datum/reagent/sprinkles
-	name = "Sprinkles"
+	name = "糖屑"
 	id = "sprinkles"
 	description = "Multi-colored little bits of sugar, commonly found on donuts. Loved by cops."
 	nutriment_factor = 1 * REAGENTS_METABOLISM
@@ -392,7 +392,7 @@
 	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/cornoil
-	name = "Corn Oil"
+	name = "玉米油"
 	id = "cornoil"
 	description = "An oil derived from various types of corn."
 	reagent_state = LIQUID
@@ -402,7 +402,7 @@
 	properties = list(PROPERTY_NUTRITIOUS = 2)
 
 /datum/reagent/enzyme
-	name = "Universal Enzyme"
+	name = "通用酶"
 	id = "enzyme"
 	description = "A universal enzyme used in the preparation of certain chemicals and foods."
 	reagent_state = LIQUID
@@ -413,7 +413,7 @@
 	properties = list(PROPERTY_UNKNOWN = 2)
 
 /datum/reagent/dry_ramen
-	name = "Dry Ramen"
+	name = "干拉面"
 	id = "dry_ramen"
 	description = "Space age food, since August 25, 1958. Contains dried noodles, vegetables, and chemicals that boil in contact with water."
 	reagent_state = SOLID
@@ -423,7 +423,7 @@
 	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/hot_ramen
-	name = "Hot Ramen"
+	name = "辣味拉面"
 	id = "hot_ramen"
 	description = "The noodles are boiled, the flavors are artificial, just like being back in school."
 	reagent_state = LIQUID
@@ -433,7 +433,7 @@
 	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/hell_ramen
-	name = "Hell Ramen"
+	name = "地狱拉面"
 	id = "hell_ramen"
 	description = "The noodles are boiled, the flavors are artificial, just like being back in school."
 	reagent_state = LIQUID
@@ -443,7 +443,7 @@
 	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/rice
-	name = "Rice"
+	name = "大米"
 	id = "rice"
 	description = "The most widely consumed staple food on Earth. Rice is the most important grain with regard to human nutrition and caloric intake."
 	reagent_state = SOLID
@@ -452,7 +452,7 @@
 	properties = list(PROPERTY_NUTRITIOUS = 2)
 
 /datum/reagent/buckwheat
-	name = "Buckwheat"
+	name = "荞麦"
 	id = "buckwheat"
 	description = "A grain porridge made out of buckwheat."
 	reagent_state = SOLID
@@ -463,7 +463,7 @@
 	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/cherryjelly
-	name = "Cherry Jelly"
+	name = "樱桃果冻"
 	id = "cherryjelly"
 	description = "Sweet jelly made from the cherry fruit."
 	reagent_state = LIQUID
@@ -472,7 +472,7 @@
 	properties = list(PROPERTY_NUTRITIOUS = 2)
 
 /datum/reagent/honey
-	name = "Honey"
+	name = "蜂蜜"
 	id = "honey"
 	description = "Honey is a natural sweet, viscous food substance composed of mainly fructose and glucose."
 	color = COLOR_YELLOW
@@ -480,7 +480,7 @@
 	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/electrolyte_grape_beverage
-	name = "Grape Beverage"
+	name = "葡萄饮料"
 	id = "dehydrated_grape_beverage"
 	description = "Powderized electrolyte beverage with a grape flavor, ready to be mixed with water."
 	reagent_state = SOLID
@@ -490,7 +490,7 @@
 	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/electrolyte_orange_beverage
-	name = "Orange Beverage"
+	name = "橙味饮料"
 	id = "electrolyte_orange_beverage"
 	description = "Powderized electrolyte beverage with an orange flavor, ready to be mixed with water. Smells of, surprise surprise, oranges."
 	reagent_state = SOLID
@@ -500,7 +500,7 @@
 	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/electrolyte_lemonlime_beverage
-	name = "Lemon-Lime Beverage"
+	name = "青柠味饮料"
 	id = "electrolyte_lemonlime_beverage"
 	description = "Powderized electrolyte beverage with a lemon-lime flavor, ready to be mixed with water. Smells of, surprise surprise, lemons and limes."
 	reagent_state = SOLID
@@ -510,7 +510,7 @@
 	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/hazelnut_beverage
-	name = "Chocolate Hazelnut Protein Beverage"
+	name = "巧克力榛子蛋白饮料"
 	id = "hazelnut_beverage"
 	description = "Powderized chocolate and hazelnut protein drink beverage, ready to be mixed with water."
 	reagent_state = SOLID
@@ -520,7 +520,7 @@
 	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/coco_beverage
-	name = "Chocolate Protein Beverage"
+	name = "巧克力蛋白饮料"
 	id = "chocolate_beverage"
 	description = "Powderized chocolate drink beverage, ready to be mixed with water."
 	reagent_state = SOLID

@@ -1,5 +1,5 @@
 /datum/emergency_call/forecon
-	name = "FORECON (Squad)"
+	name = "前线侦察队（小队）"
 	arrival_message = "A Force Reconnaissance squad has been dispatched to your ship. Stand by."
 	objectives = "Handle whatever threat is present. Further orders may be provided."
 	home_base = /datum/lazy_template/ert/uscm_station
@@ -23,32 +23,32 @@
 	if(!leader && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = mob
 		arm_equipment(mob, /datum/equipment_preset/uscm/forecon/squad_leader, TRUE, TRUE)
-		to_chat(mob, SPAN_ROLE_HEADER("You are the FORECON Squad Leader!"))
+		to_chat(mob, SPAN_ROLE_HEADER("你是前线侦察队班长！"))
 
 	else if(medics < max_medics && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(mob.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
 		arm_equipment(mob, /datum/equipment_preset/uscm/forecon/tech, TRUE, TRUE)
-		to_chat(mob, SPAN_ROLE_HEADER("You are the FORECON Support Technician!"))
+		to_chat(mob, SPAN_ROLE_HEADER("你是前线侦察队支援技术员！"))
 
 	else if(smartgunners < max_smartgunners && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(mob.client, JOB_SQUAD_SMARTGUN))
 		smartgunners++
-		to_chat(mob, SPAN_ROLE_HEADER("You are a FORECON Smartgunner!"))
+		to_chat(mob, SPAN_ROLE_HEADER("你是前线侦察队智能枪手！"))
 		arm_equipment(mob, /datum/equipment_preset/uscm/forecon/smartgunner, TRUE, TRUE)
 
 	else if(heavies < max_heavies && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_HEAVY) && check_timelock(mob.client, JOB_SQUAD_SPECIALIST))
 		heavies++
-		to_chat(mob, SPAN_ROLE_HEADER("You are a FORECON Designated Marskman!"))
+		to_chat(mob, SPAN_ROLE_HEADER("你是前线侦察队指定射手！"))
 		arm_equipment(mob, /datum/equipment_preset/uscm/forecon/marksman, TRUE, TRUE)
 
 	else
 		arm_equipment(mob, /datum/equipment_preset/uscm/forecon/standard, TRUE, TRUE)
-		to_chat(mob, SPAN_ROLE_HEADER("You are a FORECON Rifleman!"))
+		to_chat(mob, SPAN_ROLE_HEADER("你是前线侦察队步枪兵！"))
 
-	to_chat(mob, SPAN_ROLE_BODY("You are a member of the USCM's Force Reconnisance. FORECON is a force that specializes in special operations behind enemy lines, or conducting reconnisance in situations regular Marines are not expected to handle."))
+	to_chat(mob, SPAN_ROLE_BODY("你是美国殖民地海军陆战队武装侦察部队的一员。武装侦察部队是一支专门负责敌后特种作战，或在常规陆战队员无法应对的情况下执行侦察任务的部队。"))
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
 
 /datum/emergency_call/forecon/platoon
-	name = "FORECON (Platoon)"
+	name = "武装侦察部队（排）"
 	mob_min = 6
 	mob_max = 30
 	probability = 0

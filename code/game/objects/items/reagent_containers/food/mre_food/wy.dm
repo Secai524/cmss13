@@ -15,7 +15,7 @@
 
 /obj/item/mre_food_packet/entree/wy
 	name = "\improper CFR main dish"
-	desc = "An CFR entree component. Contains a luxurious well prepared main course, preserved using high-tech methods."
+	desc = "一份CFR主菜组件。包含一道精心准备、采用高科技方法保存的豪华主菜。"
 	icon = 'icons/obj/items/food/mre_food/wy.dmi'
 	icon_state = "pmc_entree"
 	food_list = list(
@@ -30,9 +30,9 @@
 	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/reagent_container/food/snacks/mre_food/wy/entree/bakedfish
-	name = "baked salmon"
+	name = "烤三文鱼"
 	icon_state = "baked fish"
-	desc = "A creamy baked wild salmon, contains just the right amount of vitamin D3 you might need for the next four days."
+	desc = "一份奶油烤野生三文鱼，含有你未来四天可能所需的足量维生素D3。"
 
 /obj/item/reagent_container/food/snacks/mre_food/wy/entree/bakedfish/Initialize()
 	. = ..()
@@ -41,9 +41,9 @@
 	reagents.add_reagent("sodiumchloride", 2)
 
 /obj/item/reagent_container/food/snacks/mre_food/wy/entree/smokyribs
-	name = "smoky ribs"
-	icon_state = "smoky ribs"
-	desc = "A well smoked beef ribs, in a black pepper and apple sauce, very juicy and chewy."
+	name = "烟熏肋排"
+	icon_state = "烟熏肋排"
+	desc = "一份烟熏到位的牛肋排，配以黑胡椒和苹果酱，多汁且富有嚼劲。"
 
 /obj/item/reagent_container/food/snacks/mre_food/wy/entree/smokyribs/Initialize()
 	. = ..()
@@ -53,9 +53,9 @@
 	reagents.add_reagent("sodiumchloride", 1)
 
 /obj/item/reagent_container/food/snacks/mre_food/wy/entree/ham
-	name = "baked ham"
+	name = "烤火腿"
 	icon_state = "ham"
-	desc = "Medium-rare baked ham, with a peppery outer layer, moist and rich in flavor."
+	desc = "五分熟的烤火腿，外层带胡椒味，肉质湿润，风味浓郁。"
 
 /obj/item/reagent_container/food/snacks/mre_food/wy/entree/ham/Initialize()
 	. = ..()
@@ -67,7 +67,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/wy/entree/beefstake
 	name = "beefsteak"
 	icon_state = "beefstake"
-	desc = "Medium-well steak, finished with an orange juice sauce and thyme."
+	desc = "七分熟的牛排，佐以橙汁酱和百里香。"
 
 /obj/item/reagent_container/food/snacks/mre_food/wy/entree/beefstake/Initialize()
 	. = ..()
@@ -79,7 +79,7 @@
 
 /obj/item/mre_food_packet/wy/side
 	name = "\improper CFR side dish"
-	desc = "An CFR side component. Contains a side, to be eaten alongside the main."
+	desc = "一份CFR配菜组件。包含一份与主菜搭配食用的配菜。"
 	icon_state = "pmc_side"
 	food_list = list(
 		/obj/item/reagent_container/food/snacks/mre_food/uscm/side/cracker,
@@ -93,7 +93,7 @@
 
 /obj/item/mre_food_packet/wy/snack
 	name = "\improper CFR snack"
-	desc = "An CFR side component. Contains a sweet dessert, to be eaten after the main (or before, if you're rebellious)."
+	desc = "一份CFR甜点组件。包含一份甜点，用于主菜后食用（或者，如果你够叛逆，也可以在主菜前吃）。"
 	icon_state = "pmc_snack"
 	food_list = list(
 		/obj/item/reagent_container/food/snacks/mre_food/twe/snack/almond,
@@ -105,7 +105,7 @@
 
 /obj/item/mre_food_packet/wy/dessert
 	name = "\improper CFR dessert"
-	desc = "An CFR side component. Contains a sweet dessert, to be eaten after the main (or before, if you're rebellious)."
+	desc = "一份CFR甜点组件。包含一份甜点，用于主菜后食用（或者，如果你够叛逆，也可以在主菜前吃）。"
 	icon_state = "pmc_dessert"
 	food_list = list(
 		/obj/item/reagent_container/food/snacks/mre_food/wy/dessert/eclair,
@@ -118,7 +118,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/wy/dessert/eclair
 	name = "eclair"
 	icon_state = "eclair"
-	desc = "A gentle pastry, filled with an airy vanilla flavored cream, iced with a layer of chocolate on the top."
+	desc = "一份精致的糕点，内馅是轻盈的香草味奶油，顶部覆盖着一层巧克力糖霜。"
 
 /obj/item/reagent_container/food/snacks/mre_food/wy/dessert/eclair/Initialize()
 	. = ..()
@@ -128,9 +128,9 @@
 	reagents.add_reagent("sugar", 2)
 
 /obj/item/reagent_container/food/snacks/mre_food/wy/dessert/strawberrycake
-	name = "strawberry cake"
-	icon_state = "strawberry cake"
-	desc = "Light vanilla cake, with a thick layer of strawberry icing and a strawberry filling inside."
+	name = "草莓蛋糕"
+	icon_state = "草莓蛋糕"
+	desc = "轻盈的香草蛋糕，外层是厚厚的草莓糖霜，内层是草莓夹心。"
 
 /obj/item/reagent_container/food/snacks/mre_food/wy/dessert/strawberrycake/Initialize()
 	. = ..()
@@ -140,9 +140,9 @@
 	reagents.add_reagent("sprinkles", 2)
 
 /obj/item/reagent_container/food/snacks/mre_food/wy/dessert/cherrypie
-	name = "cherry pie"
-	icon_state = "cherry pie"
-	desc = "A pie with a crisp outer crust and a soft cherry jelly filling."
+	name = "樱桃派"
+	icon_state = "樱桃派"
+	desc = "一个外皮酥脆、内馅是柔软樱桃果冻的派。"
 
 /obj/item/reagent_container/food/snacks/mre_food/wy/dessert/cherrypie/Initialize()
 	. = ..()
@@ -151,9 +151,9 @@
 	reagents.add_reagent("sugar", 1)
 
 /obj/item/reagent_container/food/snacks/mre_food/wy/dessert/croissant
-	name = "chocolate croissant"
+	name = "巧克力可颂"
 	icon_state = "croissant"
-	desc = "A crisp croissant with dark chocolate filling."
+	desc = "一个酥脆的可颂，内馅是黑巧克力。"
 
 /obj/item/reagent_container/food/snacks/mre_food/wy/dessert/croissant/Initialize()
 	. = ..()
@@ -162,9 +162,9 @@
 	reagents.add_reagent("sugar", 1)
 
 /obj/item/reagent_container/food/snacks/mre_food/wy/dessert/whitecoco
-	name = "white chocolate bar"
-	icon_state = "white chocolate bar"
-	desc = "A white chocolate bar, with bits of almonds and coconut. Don't let the heretics call it a false chocolate, you are the one enjoying it here."
+	name = "白巧克力棒"
+	icon_state = "白巧克力棒"
+	desc = "一根白巧克力棒，内含杏仁和椰子碎。别让那些异端分子说它是假巧克力，享受它的人是你。"
 
 /obj/item/reagent_container/food/snacks/mre_food/wy/dessert/whitecoco/Initialize()
 	. = ..()
@@ -178,7 +178,7 @@
 
 /obj/item/mre_food_packet/entree/wy_colonist
 	name = "\improper W-Y brand ration main dish"
-	desc = "Probably the most edible component of it, contains main nutrition contents."
+	desc = "这大概是其中最能吃的部分了，含有主要的营养成分。"
 	icon = 'icons/obj/items/food/mre_food/wy.dmi'
 	icon_state = "wy_main"
 	food_list = list(
@@ -192,15 +192,15 @@
 //WY EMERGENCY RATION
 
 /obj/item/mre_food_packet/wy/cookie_brick
-	name = "emergency food packet (cookie briquette)"
-	desc = "A brick of a cookie, designed to be stored for prolonged periods of time, in extreme conditions, but still tastes like a compressed buttery cookie."
+	name = "应急食品包（饼干块）"
+	desc = "一块压缩饼干，专为在极端条件下长期储存而设计，但尝起来仍像一块压缩的黄油饼干。"
 	icon_state = "cookie_brick"
 	no_packet_label = TRUE
 	food_list = list(/obj/item/reagent_container/food/snacks/mre_food/wy_emergency_cookie)
 
 /obj/item/reagent_container/food/snacks/mre_food/wy_emergency_cookie
 	name = "\improper W-Y brand emergency nutrition briquette"
-	desc = "A brick of a cookie, designed to be stored for prolonged periods of time, in extreme conditions, but still tastes like a compressed buttery cookie."
+	desc = "一块压缩饼干，专为在极端条件下长期储存而设计，但尝起来仍像一块压缩的黄油饼干。"
 	icon = 'icons/obj/items/food/mre_food/wy.dmi'
 	icon_state = "cookie_brick_open"
 

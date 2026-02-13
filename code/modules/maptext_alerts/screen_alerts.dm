@@ -229,8 +229,8 @@
 /atom/movable/screen/alert
 	icon = 'icons/mob/screen_alert.dmi'
 	icon_state = "default"
-	name = "Alert"
-	desc = "Something seems to have gone wrong with this alert, so report this bug please."
+	name = "警报"
+	desc = "此警报似乎出现故障，请报告此错误。"
 	mouse_opacity = MOUSE_OPACITY_ICON
 	/// If set to a number, this alert will clear itself after that many deciseconds
 	var/timeout = 0
@@ -259,8 +259,8 @@
 	return
 
 /atom/movable/screen/alert/notify_action
-	name = "Notification"
-	desc = "A new notification. You can enter it."
+	name = "通知"
+	desc = "一条新通知。你可以进入查看。"
 	icon_state = "template"
 	timeout = 15 SECONDS
 	var/atom/target = null
@@ -290,8 +290,8 @@
 
 
 /atom/movable/screen/alert/multi_z
-	name = "Look Up"
-	desc = "There's an open space above you, Click the alert to look up."
+	name = "向上看"
+	desc = "你上方有片开阔空间。点击警报向上看。"
 	icon_state = "uphint1"
 	click_master = FALSE
 
@@ -336,34 +336,34 @@
 	if(istype(user, /mob/living/carbon/xenomorph))
 		if(above && istransparentturf(above))
 			icon_state = "uphint1_xeno"
-			desc = "There's an open space above you, Click the alert to look up."
+			desc = "你上方有片开阔空间。点击警报向上看。"
 		else
 			icon_state = "uphint0_xeno"
-			desc = "There's nothing to look up at right now."
+			desc = "目前没有东西可看。"
 
 	// Otherwise, use the stylized marine version.
 	else
 		if(above && istransparentturf(above))
 			icon_state = "uphint1"
-			desc = "There's an open space above you, Click the alert to look up."
+			desc = "你上方有片开阔空间。点击警报向上看。"
 		else
 			icon_state = "uphint0"
-			desc = "There's nothing to look up at right now."
+			desc = "目前没有东西可看。"
 
 
 /atom/movable/screen/alert/buckled
-	name = "Buckled"
-	desc = "You've been buckled to something. Click the alert to unbuckle unless you're handcuffed."
+	name = "被固定"
+	desc = "你被固定在某物上。点击警报以解除固定，除非你被铐住。"
 	icon_state = ALERT_BUCKLED
 
 /atom/movable/screen/alert/restrained/handcuffed
-	name = "Handcuffed"
-	desc = "You're handcuffed and can't act. If anyone drags you, you won't be able to move. Click the alert to free yourself."
+	name = "被铐住"
+	desc = "你被铐住了，无法行动。如果有人拖拽你，你将无法移动。点击警报以挣脱。"
 	click_master = FALSE
 
 /atom/movable/screen/alert/restrained/legcuffed
-	name = "Legcuffed"
-	desc = "You're legcuffed, which slows you down considerably. Click the alert to free yourself."
+	name = "脚镣"
+	desc = "你被戴上脚镣，移动速度大幅降低。点击警报以挣脱。"
 	click_master = FALSE
 
 /atom/movable/screen/alert/restrained/clicked()

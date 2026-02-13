@@ -9,7 +9,7 @@
 
 /obj/item/device/pdt_locator_tube
 	name = "\improper PDT locator tube"
-	desc = "The second half of the Personal Data Transmitter Bracelet/Locator Tube Set, also known as a PDT/L. When activated, this device attempts to locate the paired Personal Data Transmitter Bracelet. They both share a serial number for ease of detection in case of mixup."
+	desc = "个人数据发射手环/定位管套装的后半部分，也称为PDT/L。激活时，此设备会尝试定位配对的个人数据发射手环。两者共享一个序列号，以便在混淆时轻松识别。"
 	icon_state = "pdt_locator_tube"
 	w_class = SIZE_SMALL
 
@@ -62,11 +62,11 @@
 			return
 		user.drop_inv_item_to_loc(W, src)
 		battery = W
-		to_chat(user, SPAN_NOTICE("You insert \the [battery] into \the [src]."))
+		to_chat(user, SPAN_NOTICE("你将\the [battery]插入\the [src]。"))
 		playsound(src, 'sound/machines/pda_button2.ogg', 15, TRUE)
 		update_icon()
 	else if(istype(W, /obj/item/cell))
-		to_chat(user, SPAN_NOTICE("That industrial-sized battery is WAY too big for the tiny battery slot."))
+		to_chat(user, SPAN_NOTICE("那块工业级电池对于这个微小的电池槽来说实在太大了。"))
 	return ..()
 
 /obj/item/device/pdt_locator_tube/attack_hand(mob/user)
@@ -76,7 +76,7 @@
 			return
 		battery.update_icon()
 		user.put_in_hands(battery)
-		to_chat(user, SPAN_NOTICE("You pull \the [battery] out of \the [src]."))
+		to_chat(user, SPAN_NOTICE("你从\the [src]中取出\the [battery]。"))
 		battery = null
 		playsound(src, 'sound/machines/pda_button1.ogg', 15, TRUE)
 		update_icon()
@@ -98,13 +98,13 @@
 	update_icon()
 
 	if(!battery.use(PDT_BATTERY_LOCATE_DRAW))
-		to_chat(user, SPAN_WARNING("The display on \the [src] dimly lights up: <b> LOW POWER <b>"))
+		to_chat(user, SPAN_WARNING("\the [src]的显示屏微弱地亮起：<b> 电量低 <b>"))
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
 		return
 	update_icon()
 
 	if(!linked_bracelet)
-		to_chat(user, SPAN_BOLDWARNING("The display on \the [src] lights up: <b> ERROR: NO LINKED BRACELET DETECTED<b>"))
+		to_chat(user, SPAN_BOLDWARNING("\the [src]的显示屏亮起：<b> 错误：未检测到链接手环<b>"))
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
 		return
 
@@ -117,16 +117,16 @@
 	var/area/bracelet_area = get_area(bracelet_turf)
 
 	if(self_turf.z != bracelet_turf.z || self_area.fake_zlevel != bracelet_area.fake_zlevel)
-		to_chat(user, SPAN_BOLDWARNING("The display on \the [src] lights up: <b> UNABLE TO CONNECT TO LINKED BRACELET<b>"))
+		to_chat(user, SPAN_BOLDWARNING("\the [src]的显示屏亮起：<b> 无法连接到链接手环<b>"))
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
 		return
 
 	var/dist = get_dist(self_turf, bracelet_turf)
 	var/direction = dir2text_short(Get_Compass_Dir(self_turf, bracelet_turf))
 	if(dist > 1)
-		to_chat(user, SPAN_BOLDNOTICE("The display on \the [src] lights up: <b>[dist]-[direction]</b>"))
+		to_chat(user, SPAN_BOLDNOTICE("\the [src]的显示屏亮起：<b>[dist]-[direction]</b>"))
 	else
-		to_chat(user, SPAN_BOLDNOTICE("The display on \the [src] lights up: <b>--><--</b>"))
+		to_chat(user, SPAN_BOLDNOTICE("\the [src]的显示屏亮起：<b>--><--</b>"))
 	playsound(src, 'sound/machines/ping.ogg', 15, TRUE)
 
 	linked_bracelet.visible_message(SPAN_BOLDNOTICE("\The [src] lights up for a moment and makes a beeping noise!"), max_distance = 3)
@@ -144,7 +144,7 @@
 
 /obj/item/clothing/accessory/wrist/pdt_bracelet
 	name = "\improper PDT bracelet"
-	desc = "A personal data transmitter bracelet, also known as a PDT, is a form of personal locator typically surgically implanted into the body of extrasolar colonists, among others. Its purpose is to allow rapid location of the associated personnel anywhere within a certain radius of the receiving equipment, sometimes up to 30km distance. This bracelet forms part of the PDT/L variant, which is a wearable version of the PDT technology. Both it and the linked locator tube share a serial number for ease of detection in case of mixup."
+	desc = "个人数据发射手环，也称为PDT，是一种通常通过手术植入太阳系外殖民者等人员体内的个人定位器。其目的是在接收设备一定半径内（有时可达30公里）快速定位相关人员。此手环是PDT/L型号的一部分，是PDT技术的可穿戴版本。它与配套的定位管共享一个序列号，以便在混淆时轻松识别。"
 	icon = 'icons/obj/items/clothing/accessory/watches.dmi'
 	icon_state = ""
 	worn_accessory_limit = 1
@@ -166,7 +166,7 @@
 
 /obj/item/storage/box/pdt_kit
 	name = "\improper Boots! PDT/L Battle Buddy kit"
-	desc = "Contains a PDT/L set, consisting of the PDT bracelet and its sister locator tube, alongside a spare cell seemingly wedged into the kit."
+	desc = "包含一套PDT/L设备，包括PDT手环及其配套定位管，以及一个似乎塞在套件里的备用电池。"
 	desc_lore = "This kit was distributed in the 200th (Season 4) Issue of the Boots! magazine, 'Privates die without their battlebuddy!', to drive up sales. Many have noted the poor battery life of these units, leading many to speculate that these were faulty units that were repackaged and shipped off to various USCM-adjacent mil-surplus good stores. The Department of the Navy Observation in Photographs (DNOP) has not released a statement regarding these theories."
 	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "pdt_box"
@@ -183,15 +183,15 @@
 /// THE ADVANCED VERSION... ADMIN SPAWN ONLY... USES TGUI RADAR... ///
 
 /obj/item/storage/box/pdt_kit/advanced
-	name = "advanced PDT/L Battle Buddy kit"
-	desc = "Contains a PDT/L set, consisting of the advanced PDT bracelet and its sister locator tube, alongside a spare cell seemingly wedged into the kit."
+	name = "高级PDT/L战地伙伴套件"
+	desc = "包含一套PDT/L设备，包括高级PDT手环及其配套定位管，以及一个似乎塞在套件里的备用电池。"
 
 /obj/item/storage/box/pdt_kit/advanced/fill_preset_inventory()
 	new /obj/item/device/pdt_locator_tube/advanced(src, new /obj/item/clothing/accessory/wrist/pdt_bracelet/advanced(src))
 	new /obj/item/cell/crap(src) //it not fitting is intentional
 
 /obj/item/device/pdt_locator_tube/advanced
-	name = "advanced PDT locator tube"
+	name = "高级PDT定位管"
 	var/datum/radar/advanced_pdtl/radar
 
 /obj/item/device/pdt_locator_tube/advanced/Initialize(mapload, obj/item/clothing/accessory/wrist/pdt_bracelet/bracelet)
@@ -210,4 +210,4 @@
 	radar.tgui_interact(user)
 
 /obj/item/clothing/accessory/wrist/pdt_bracelet/advanced
-	name = "advanced PDT bracelet"
+	name = "高级PDT手环"

@@ -4,8 +4,8 @@
 
 
 /obj/structure/machinery/suit_storage_unit
-	name = "Suit Storage Unit"
-	desc = "An industrial U-Stor-It Storage unit designed to accommodate all kinds of space suits. Its on-board equipment also allows the user to decontaminate the contents through a UV-ray purging cycle. There's a warning label dangling from the control pad, reading \"STRICTLY NO BIOLOGICALS IN THE CONFINES OF THE UNIT\"."
+	name = "太空服存储单元"
+	desc = "一个工业U-Stor-It存储单元，设计用于容纳各种太空服。其内置设备还允许用户通过紫外线净化循环对内容物进行消毒。控制面板上悬挂着一个警告标签，上面写着\"STRICTLY NO BIOLOGICALS IN THE CONFINES OF THE UNIT\"."
 	icon = 'icons/obj/structures/machinery/suitstorage.dmi'
 	icon_state = "closed" //order is: [has helmet][has suit][has human][is open][is locked][is UV cycling][is powered][is dirty/broken] [is superUVcycling]
 	anchored = TRUE
@@ -124,7 +124,7 @@
 		dat += "<A href='byond://?src=\ref[src];start_UV=1'>Start Disinfection cycle</A><BR>"
 		dat += "<BR><BR><A href='byond://?src=\ref[user];mach_close=suit_storage_unit'>Close control panel</A>"
 
-	show_browser(user, dat, "Suit Storage Unit", "suit_storage_unit", width = 400, height = 500)
+	show_browser(user, dat, "太空服存储单元", "suit_storage_unit", width = 400, height = 500)
 	return
 
 
@@ -198,7 +198,7 @@
 
 /obj/structure/machinery/suit_storage_unit/proc/toggle_open(mob/user as mob)
 	if(isUV)
-		to_chat(user, "<font color='red'>Unable to open unit.</font>")
+		to_chat(user, "<font color='red'>无法打开单元。</font>")
 		return
 	isopen = !isopen
 	update_icon()
@@ -208,16 +208,16 @@
 	set waitfor = 0
 
 	if(isopen)
-		to_chat(user, "<font color='red'>Unit storage is not closed -- Aborting.</font>")
+		to_chat(user, "<font color='red'>单元存储未关闭——中止操作。</font>")
 		return
 
 	if(isUV)
 		return
 
 	if(!inserted_helmet && !inserted_mask && !inserted_suit) //shit's empty yo
-		to_chat(user, "<font color='red'>Unit storage bays empty. Nothing to disinfect -- Aborting.</font>")
+		to_chat(user, "<font color='red'>单元存储舱为空。没有物品需要消毒——中止操作。</font>")
 		return
-	to_chat(user, SPAN_NOTICE("You start the Unit's cauterisation cycle."))
+	to_chat(user, SPAN_NOTICE("你启动了单元的灼烧净化循环。"))
 	isUV = 1
 	update_icon()
 	updateUsrDialog()
@@ -250,10 +250,10 @@
 			if( istype(I,/obj/item/clothing/suit/space) )
 				var/obj/item/clothing/suit/space/S = I
 				if(inserted_suit)
-					to_chat(user, SPAN_WARNING("The unit already contains a suit."))
+					to_chat(user, SPAN_WARNING("单元内已有一件太空服。"))
 					return
 				if(user.drop_inv_item_to_loc(S, src))
-					to_chat(user, SPAN_NOTICE("You load the [S.name] into the storage compartment."))
+					to_chat(user, SPAN_NOTICE("你将[S.name]装入存储舱。"))
 					inserted_suit = S
 					update_icon()
 					updateUsrDialog()
@@ -262,9 +262,9 @@
 			if( istype(I,/obj/item/clothing/head/helmet) )
 				var/obj/item/clothing/head/helmet/H = I
 				if(inserted_helmet)
-					to_chat(user, SPAN_WARNING("The unit already contains a helmet."))
+					to_chat(user, SPAN_WARNING("单元内已有一个头盔。"))
 					return
-				to_chat(user, SPAN_NOTICE("You load the [H.name] into the storage compartment."))
+				to_chat(user, SPAN_NOTICE("你将[H.name]装入存储舱。"))
 				if(user.drop_inv_item_to_loc(H, src))
 					inserted_helmet = H
 					update_icon()
@@ -274,9 +274,9 @@
 			if( istype(I,/obj/item/clothing/mask) )
 				var/obj/item/clothing/mask/M = I
 				if(inserted_mask)
-					to_chat(user, SPAN_WARNING("The unit already contains a mask."))
+					to_chat(user, SPAN_WARNING("该单元已包含一个面罩。"))
 					return
-				to_chat(user, SPAN_NOTICE("You load the [M.name] into the storage compartment."))
+				to_chat(user, SPAN_NOTICE("你将[M.name]装入存储舱。"))
 				if(user.drop_inv_item_to_loc(M, src))
 					inserted_mask = M
 					update_icon()
@@ -286,9 +286,9 @@
 			if( istype(I,/obj/item/tank) )
 				var/obj/item/tank/T = I
 				if(inserted_tank)
-					to_chat(user, SPAN_WARNING("The unit already contains a tank."))
+					to_chat(user, SPAN_WARNING("该单元已包含一个气罐。"))
 					return
-				to_chat(user, SPAN_NOTICE("You load the [T.name] into the storage compartment."))
+				to_chat(user, SPAN_NOTICE("你将[T.name]装入存储舱。"))
 				if(user.drop_inv_item_to_loc(T, src))
 					inserted_tank = T
 					update_icon()

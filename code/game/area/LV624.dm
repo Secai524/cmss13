@@ -7,7 +7,7 @@
 	minimap_color = MINIMAP_AREA_COLONY
 
 /area/lv624/ground
-	name = "Ground"
+	name = "地面"
 	icon_state = "green"
 	always_unpowered = 1 //Will this mess things up? God only knows
 

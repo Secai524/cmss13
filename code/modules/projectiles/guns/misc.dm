@@ -3,7 +3,7 @@
 
 /obj/item/weapon/gun/minigun
 	name = "\improper Ol' Painless"
-	desc = "An enormous multi-barreled rotating gatling gun. This thing will no doubt pack a punch."
+	desc = "一门巨大的多管旋转加特林机枪。这东西无疑威力巨大。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/event.dmi'
 	icon_state = "painless"
 	item_state = "painless"
@@ -54,7 +54,7 @@
 //Minigun UPP
 /obj/item/weapon/gun/minigun/upp
 	name = "\improper GSh-7.62 rotary machine gun"
-	desc = "A gas-operated rotary machine gun used by UPP heavies. Its enormous volume of fire and ammunition capacity allows the suppression of large concentrations of enemy forces. Heavy weapons training is required control its recoil."
+	desc = "UPP重型单位使用的气动旋转机枪。其巨大的火力密度和弹药容量足以压制大规模敌军。需要重型武器训练来控制其后坐力。"
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER|GUN_RECOIL_BUILDUP|GUN_CAN_POINTBLANK
 
 /obj/item/weapon/gun/minigun/upp/able_to_fire(mob/living/user)
@@ -62,17 +62,17 @@
 	if(!. || !istype(user)) //Let's check all that other stuff first.
 		return 0
 	if(!skillcheck(user, SKILL_FIREARMS, SKILL_FIREARMS_TRAINED))
-		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
+		to_chat(user, SPAN_WARNING("你似乎不知道如何使用 [src]..."))
 		return 0
 	if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_UPP)
-		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
+		to_chat(user, SPAN_WARNING("你似乎不知道如何使用 [src]..."))
 		return 0
 
 
 //M60
 /obj/item/weapon/gun/m60
 	name = "\improper M60 General Purpose Machine Gun"
-	desc = "The M60. The Pig. The Action Hero's wet dream. \n<b>Alt-click it to open the feed cover and allow for reloading.</b>"
+	desc = "M60。猪猡。动作英雄的终极幻想。\n<b>Alt+点击以打开供弹盖进行装填。</b>"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/machineguns.dmi'
 	icon_state = "m60"
 	item_state = "m60"
@@ -134,28 +134,28 @@
 		if(!locate(src) in list(user.get_active_hand(), user.get_inactive_hand()))
 			return TRUE
 		if(user.get_active_hand() && user.get_inactive_hand())
-			to_chat(user, SPAN_WARNING("You can't do that with your hands full!"))
+			to_chat(user, SPAN_WARNING("你双手没空，做不到！"))
 			return TRUE
 		if(!cover_open)
 			playsound(src.loc, 'sound/handling/smartgun_open.ogg', 50, TRUE, 3)
-			to_chat(user, SPAN_NOTICE("You open [src]'s feed cover, allowing the belt to be removed."))
+			to_chat(user, SPAN_NOTICE("你打开[src]的供弹盖，可以取出弹链了。"))
 			cover_open = TRUE
 		else
 			playsound(src.loc, 'sound/handling/smartgun_close.ogg', 50, TRUE, 3)
-			to_chat(user, SPAN_NOTICE("You close [src]'s feed cover."))
+			to_chat(user, SPAN_NOTICE("你关上[src]的供弹盖。"))
 			cover_open = FALSE
 		update_icon()
 		return TRUE
 
 /obj/item/weapon/gun/m60/replace_magazine(mob/user, obj/item/ammo_magazine/magazine)
 	if(!cover_open)
-		to_chat(user, SPAN_WARNING("[src]'s feed cover is closed! You can't put a new belt in! <b>(alt-click to open it)</b>"))
+		to_chat(user, SPAN_WARNING("[src]的供弹盖关着！你无法放入新弹链！<b>(alt+点击打开)</b>"))
 		return
 	return ..()
 
 /obj/item/weapon/gun/m60/unload(mob/user, reload_override, drop_override, loc_override)
 	if(!cover_open)
-		to_chat(user, SPAN_WARNING("[src]'s feed cover is closed! You can't take out the belt! <b>(alt-click to open it)</b>"))
+		to_chat(user, SPAN_WARNING("[src]的供弹盖关着！你无法取出弹链！<b>(alt+点击打开)</b>"))
 		return
 	return ..()
 
@@ -170,13 +170,13 @@
 	. = ..()
 	if(.)
 		if(cover_open)
-			to_chat(user, SPAN_WARNING("You can't fire [src] with the feed cover open! <b>(alt-click to close)</b>"))
+			to_chat(user, SPAN_WARNING("供弹盖开着时无法射击[src]！<b>(alt+点击关闭)</b>"))
 			return FALSE
 
 
 /obj/item/weapon/gun/pkp
 	name = "\improper QYJ-72 General Purpose Machine Gun"
-	desc = "The QYJ-72 is the standard GPMG of the Union of Progressive Peoples, chambered in 7.62x54mmR, it fires a hard-hitting cartridge with a high rate of fire. With an extremely large box at 250 rounds, the QJY-72 is designed with suppressing fire and accuracy by volume of fire at its forefront. \n<b>Alt-click it to open the feed cover and allow for reloading.</b>"
+	desc = "QYJ-72是进步人民联盟的标准通用机枪，使用7.62x54mmR口径弹药，发射威力强大、射速高的子弹。配备250发超大弹箱，QJY-72的设计核心是压制火力和以火力密度保证的精度。\n<b>Alt+点击以打开供弹盖进行装填。</b>"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/machineguns.dmi'
 	icon_state = "qjy72"
 	item_state = "qjy72"
@@ -252,28 +252,28 @@
 		if(!locate(src) in list(user.get_active_hand(), user.get_inactive_hand()))
 			return TRUE
 		if(user.get_active_hand() && user.get_inactive_hand())
-			to_chat(user, SPAN_WARNING("You can't do that with your hands full!"))
+			to_chat(user, SPAN_WARNING("你双手没空，做不到！"))
 			return TRUE
 		if(!cover_open)
 			playsound(src.loc, 'sound/handling/smartgun_open.ogg', 50, TRUE, 3)
-			to_chat(user, SPAN_NOTICE("You open [src]'s feed cover, allowing the belt to be removed."))
+			to_chat(user, SPAN_NOTICE("你打开[src]的供弹盖，可以取出弹链了。"))
 			cover_open = TRUE
 		else
 			playsound(src.loc, 'sound/handling/smartgun_close.ogg', 50, TRUE, 3)
-			to_chat(user, SPAN_NOTICE("You close [src]'s feed cover."))
+			to_chat(user, SPAN_NOTICE("你关上[src]的供弹盖。"))
 			cover_open = FALSE
 		update_icon()
 		return TRUE
 
 /obj/item/weapon/gun/pkp/replace_magazine(mob/user, obj/item/ammo_magazine/magazine)
 	if(!cover_open)
-		to_chat(user, SPAN_WARNING("[src]'s feed cover is closed! You can't put a new belt in! <b>(alt-click to open it)</b>"))
+		to_chat(user, SPAN_WARNING("[src]的供弹盖关着！你无法放入新弹链！<b>(alt+点击打开)</b>"))
 		return
 	return ..()
 
 /obj/item/weapon/gun/pkp/unload(mob/user, reload_override, drop_override, loc_override)
 	if(!cover_open)
-		to_chat(user, SPAN_WARNING("[src]'s feed cover is closed! You can't take out the belt! <b>(alt-click to open it)</b>"))
+		to_chat(user, SPAN_WARNING("[src]的供弹盖关着！你无法取出弹链！<b>(alt+点击打开)</b>"))
 		return
 	return ..()
 
@@ -288,19 +288,19 @@
 	. = ..()
 	if(.)
 		if(cover_open)
-			to_chat(user, SPAN_WARNING("You can't fire [src] with the feed cover open! <b>(alt-click to close)</b>"))
+			to_chat(user, SPAN_WARNING("供弹盖开着时无法射击[src]！<b>(alt+点击关闭)</b>"))
 			return FALSE
 	if(!skillcheck(user, SKILL_FIREARMS, SKILL_FIREARMS_TRAINED))
-		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
+		to_chat(user, SPAN_WARNING("你似乎不知道如何使用 [src]..."))
 		return 0
 	if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_UPP)
-		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
+		to_chat(user, SPAN_WARNING("你似乎不知道如何使用 [src]..."))
 		return 0
 
 //PILLGUN
 /obj/item/weapon/gun/pill
-	name = "pill gun"
-	desc = "A spring-loaded rifle designed to fit pills, designed to inject patients from a distance."
+	name = "药丸枪"
+	desc = "一种装有弹簧的步枪，设计用于容纳药丸，旨在从远处为病人注射。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/event.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
@@ -327,7 +327,7 @@
 		return
 
 	if(current_mag.current_rounds >= current_mag.max_rounds)
-		to_chat(user, SPAN_WARNING("[src] is at maximum ammo capacity!"))
+		to_chat(user, SPAN_WARNING("[src]的弹药已达最大容量！"))
 		return
 
 	user.drop_inv_item_on_ground(I)
@@ -390,5 +390,5 @@
 
 // upgraded version, currently no way of getting it
 /obj/item/weapon/gun/pill/super
-	name = "large pill gun"
+	name = "大型药丸枪"
 	current_mag = /obj/item/ammo_magazine/internal/pillgun/super

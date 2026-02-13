@@ -5,7 +5,7 @@
 */
 
 /datum/ammo/rocket
-	name = "high explosive rocket"
+	name = "高爆火箭弹"
 	icon_state = "missile"
 	ping = null //no bounce off.
 	sound_bounce = "rocket_bounce"
@@ -51,7 +51,7 @@
 	smoke.start()
 
 /datum/ammo/rocket/ap
-	name = "anti-armor rocket"
+	name = "反装甲火箭弹"
 	damage_falloff = 0
 	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_ROCKET
 
@@ -124,7 +124,7 @@
 	smoke.start()
 
 /datum/ammo/rocket/ap/anti_tank
-	name = "anti-tank rocket"
+	name = "反坦克火箭弹"
 	damage = 100
 	var/vehicle_slowdown_time = 5 SECONDS
 	shrapnel_chance = 5
@@ -148,7 +148,7 @@
 	max_range = 8
 
 /datum/ammo/rocket/ltb
-	name = "cannon round"
+	name = "加农炮弹"
 	icon_state = "ltb"
 	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_ROCKET|AMMO_STRIKES_SURFACE
 
@@ -175,7 +175,7 @@
 	cell_explosion(get_turf(projectile), 200, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 
 /datum/ammo/rocket/wp
-	name = "white phosphorous rocket"
+	name = "白磷火箭弹"
 	flags_ammo_behavior = AMMO_ROCKET|AMMO_EXPLOSIVE|AMMO_STRIKES_SURFACE
 	damage_type = BURN
 
@@ -217,7 +217,7 @@
 	drop_flame(get_turf(projectile), projectile.weapon_cause_data)
 
 /datum/ammo/rocket/wp/upp
-	name = "extreme-intensity incendiary rocket"
+	name = "超强燃烧火箭弹"
 	flags_ammo_behavior = AMMO_ROCKET|AMMO_EXPLOSIVE|AMMO_STRIKES_SURFACE
 	damage_type = BURN
 
@@ -254,7 +254,7 @@
 	drop_flame(get_turf(projectile), projectile.weapon_cause_data)
 
 /datum/ammo/rocket/wp/quad
-	name = "thermobaric rocket"
+	name = "温压火箭弹"
 	flags_ammo_behavior = AMMO_ROCKET|AMMO_STRIKES_SURFACE
 
 	damage = 100
@@ -278,7 +278,7 @@
 	explosion(projectile.loc,  -1, 2, 4, 5, , , ,projectile.weapon_cause_data)
 
 /datum/ammo/rocket/custom
-	name = "custom rocket"
+	name = "定制火箭弹"
 	accuracy = HIT_ACCURACY_TIER_5
 	accurate_range = 7
 	max_range = 7
@@ -310,7 +310,7 @@
 
 /datum/ammo/rocket/brute
 	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_HITS_TARGET_TURF|AMMO_SNIPER //sniper as we want good acc
-	name = "M5510 Laser-Guided Rocket"
+	name = "M5510激光制导火箭弹"
 	icon_state = "brute"
 	///Chance per tile to spawn smoke
 	var/smoke_chance = 30

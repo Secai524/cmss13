@@ -6,7 +6,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	selection_class = "job_cl"
-	supervisors = "the acting commanding officer"
+	supervisors = "代理指挥官"
 	gear_preset = /datum/equipment_preset/uscm_ship/reporter
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	selection_class = "job_cl"

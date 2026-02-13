@@ -18,8 +18,8 @@
 	return
 
 /obj/structure/blocker/invisible_wall
-	name = "invisible wall"
-	desc = "You cannot go this way."
+	name = "隐形墙"
+	desc = "此路不通。"
 	icon_state = "invisible_wall"
 	opacity = FALSE
 	layer = ABOVE_FLY_LAYER + 0.1 //to make it visible in the map editor
@@ -28,7 +28,7 @@
 /obj/structure/blocker/invisible_wall/Collided(atom/movable/AM)
 	var/msg = desc
 	if(!msg)
-		msg = "You cannot go this way."
+		msg = "此路不通。"
 	to_chat(AM, SPAN_WARNING(msg))
 
 /obj/structure/blocker/invisible_wall/New()
@@ -36,12 +36,12 @@
 	icon_state = null
 
 /obj/structure/blocker/invisible_wall/water
-	desc = "You cannot wade out any further."
+	desc = "你无法再涉水前行。"
 	icon_state = "map_blocker"
 
 /obj/structure/blocker/fog
-	name = "dense fog"
-	desc = "It looks way too dangerous to traverse. Best wait until it has cleared up."
+	name = "浓雾"
+	desc = "看起来穿越此地过于危险。最好等它散去。"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "smoke"
 	opacity = TRUE
@@ -56,28 +56,28 @@
 	QDEL_IN(src, time_to_dispel + rand(-5 SECONDS, 5 SECONDS))
 
 /obj/structure/blocker/fog/attack_hand(mob/M)
-	to_chat(M, SPAN_NOTICE("You peer through the fog, but it's impossible to tell what's on the other side..."))
+	to_chat(M, SPAN_NOTICE("你透过浓雾窥视，但无法看清另一侧有什么……"))
 
 /obj/structure/blocker/fog/attack_alien(M)
 	attack_hand(M)
 	return XENO_NONCOMBAT_ACTION
 
 /obj/structure/blocker/preserve_edge
-	name = "dense fog"
-	desc = "You think you can see a way through."
+	name = "浓雾"
+	desc = "你觉得你看到了一条通路。"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "smoke"
 	opacity = TRUE
 
 /obj/structure/blocker/preserve_edge/attack_hand(mob/user)
 	if(isyautja(user))
-		to_chat(user, SPAN_WARNING("Why would you do this?"))///no leaving for preds
+		to_chat(user, SPAN_WARNING("你为什么要这么做？"))///no leaving for preds
 		return
 
 	if(user.action_busy)
 		return
 
-	var/choice = tgui_alert(user, "Are you sure you want to traverse the fog and escape the preserve?", "[src]", list("Yes", "No"), 15 SECONDS)
+	var/choice = tgui_alert(user, "你确定要穿越迷雾，逃离保护区吗？", "[src]", list("Yes", "No"), 15 SECONDS)
 	if(!choice)
 		return
 
@@ -85,10 +85,10 @@
 		return
 
 	if(choice == "Yes")
-		to_chat(user, SPAN_DANGER("You begin to make your escape!"))
+		to_chat(user, SPAN_DANGER("你开始逃亡！"))
 
 	if(!do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-		to_chat(user, SPAN_NOTICE("You lose your way and come back."))
+		to_chat(user, SPAN_NOTICE("你迷失了方向，又绕了回来。"))
 		return
 
 	announce_dchat("[user.real_name] has escaped from the hunting grounds!")
@@ -169,6 +169,6 @@
 // for fuel pump since it's a large sprite.
 /obj/structure/blocker/fuelpump
 	name = "\improper Fuel Pump"
-	desc = "It is a machine that pumps fuel around the ship."
+	desc = "这是一台为整艘舰船输送燃料的机器。"
 	invisibility = 101
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

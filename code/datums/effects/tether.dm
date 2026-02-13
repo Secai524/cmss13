@@ -100,7 +100,7 @@
 
 	// If the target turf is out of range, can't move
 	if (get_dist(target, A) > tether.range)
-		to_chat(affected_atom, SPAN_WARNING("Your tether to \the [A] prevents you from moving any further!"))
+		to_chat(affected_atom, SPAN_WARNING("你与 \the [A] 的连接阻止你移动得更远！"))
 		return COMPONENT_CANCEL_MOVE
 
 /datum/effects/tethered/Destroy()
@@ -123,10 +123,10 @@
 	INVOKE_ASYNC(src, PROC_REF(resisted))
 
 /datum/effects/tethered/proc/resisted()
-	to_chat(affected_atom, SPAN_DANGER("You attempt to break out of your tether to [tether.affected_atom]. (This will take around [resist_time/10] seconds and you need to stand still)"))
+	to_chat(affected_atom, SPAN_DANGER("你试图挣脱与 [tether.affected_atom] 的连接。（这将需要大约 [resist_time/10] 秒，并且你需要保持静止）"))
 	if(!do_after(affected_atom, resist_time, INTERRUPT_NO_NEEDHAND^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
 		return
-	to_chat(affected_atom, SPAN_WARNING("You have broken out of your tether to [tether.affected_atom]!"))
+	to_chat(affected_atom, SPAN_WARNING("你已挣脱与 [tether.affected_atom] 的连接！"))
 	qdel(src)
 
 // Tethers the tethered atom to the tetherer

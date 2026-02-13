@@ -1,89 +1,89 @@
 /datum/law/major_law/damage_to_government_property
-	name = "Damage to Government Property"
-	desc = "Damaging the ship or making any unauthorized modifications to it as outlined in Standard Operating Procedure on a major level, such as destroying/dismantling multiple walls or windows."
+	name = "破坏政府财产"
+	desc = "严重损坏舰船或对其进行任何未经授权的重大改装，如标准作业程序所述，例如破坏/拆除多面墙壁或窗户。"
 	special_punishment = "Reparation"
 	brig_time = 10
 
 /datum/law/major_law/disorderly_conduct
-	name = "Disorderly Conduct"
-	desc = "Directly and intentionally disrupting primary operations of the ship. Fighting in the RO line, disrupting the briefing."
+	name = "扰乱秩序行为"
+	desc = "直接且蓄意扰乱舰船的主要运作。在补给处队列中斗殴，扰乱简报会。"
 	brig_time = 10
 
 /datum/law/major_law/assault
-	name = "Assault"
-	desc = "To threaten or use physical force against someone with ill intent, but without intent to kill."
+	name = "袭击"
+	desc = "怀有恶意地威胁或对某人使用武力，但无杀人意图。"
 	brig_time = 15
 
 /datum/law/major_law/contraband
-	name = "Contraband"
-	desc = "Possessing, or distributing controlled substances or unauthorized items or weapons as defined in Standard Operating Procedure or impairing, intoxicating or addictive drugs such as Mindbreaker, this does not include custom mixes or dosages of medicinal drugs."
+	name = "违禁品"
+	desc = "持有或分发标准作业程序中定义的管制物品或未经授权的物品或武器，或损害性、致醉性或成瘾性药物，如Mindbreaker，这不包括医疗药物的定制混合物或剂量。"
 	special_punishment = "Confiscation of Contraband"
 	brig_time = 15
 
 /datum/law/major_law/insubordination
-	name = "Insubordination"
-	desc = "Failing to follow a lawful order from a superior that is personally directed at you."
+	name = "违抗命令"
+	desc = "未能遵守上级直接下达给你的合法命令。"
 	brig_time = 15
 
 /datum/law/major_law/interference
-	name = "Interference"
-	desc = "Interfering in a legal arrest being performed with ill intent. Clearly trying to hinder the arrest being performed."
+	name = "妨碍公务"
+	desc = "怀有恶意地干扰正在进行的合法逮捕。明显试图阻碍正在进行的逮捕。"
 	brig_time = 15
 
 /datum/law/major_law/neglect_of_duty
-	name = "Neglect of duty"
-	desc = "Failure to perform one’s role to an acceptable standard. For example, a Commanding Officer failing to properly organize and ensure their personnel are given orders, failing to follow proper procedure in detriment of one’s duties, or ship crew leaving the ship without authorization from the Commanding Officer or their Department Head. Any officer who commits a crime may be charged with Neglect of Duty in addition to the appropriate crimes."
+	name = "玩忽职守"
+	desc = "未能以可接受的标准履行自身职责。例如，指挥官未能妥善组织并确保其人员获得命令，未能遵循适当程序以致损害职责，或舰上人员在未经指挥官或其部门主管授权的情况下离舰。任何犯下罪行的军官，除相应罪行外，还可能被指控玩忽职守。"
 	brig_time = 15
 
 /datum/law/major_law/listening_bugs
-	name = "Unauthorized use of a Listening Device"
-	desc = "Using a listening device against SOP in a secure area such as the CIC. Use of listening devices tied to foreign governments or terror organisations is also considered subterfuge."
+	name = "未经授权使用监听设备"
+	desc = "在作战指挥中心等安全区域违反标准作业程序使用监听设备。使用与外国政府或恐怖组织有关的监听设备也被视为颠覆行为。"
 	special_punishment = "Listening Device Confiscation"
 	brig_time = 15
 
 /datum/law/major_law/subterfuge
-	name = "Subterfuge"
-	desc = "Carrying out objectives or being tied to material that describe planned actions that go against the USCM. Strong proof is required that the individual is working against USCM. Use of listening devices tied to foreign governments or terror organisations in secure areas is also considered subterfuge."
+	name = "颠覆行为"
+	desc = "执行目标或持有描述计划采取反USCM行动的材料。需要强有力的证据证明该个人正在对抗USCM。在安全区域使用与外国政府或恐怖组织有关的监听设备也被视为颠覆行为。"
 	special_punishment = "Termination of ID/Discharge to planet"
 	brig_time = 15
 
 /datum/law/major_law/assault_with_a_deadly_weapon
-	name = "Assault with a deadly weapon"
-	desc = "To threaten or use physical force against someone with ill intent and with a lethal weapon such as a sidearm, blade, or rifle."
+	name = "使用致命武器袭击"
+	desc = "怀有恶意地使用手枪、刀具或步枪等致命武器威胁或对某人使用武力。"
 	brig_time = 20
 
 /datum/law/major_law/illegal_confinement
-	name = "Illegal Confinement"
-	desc = "Unlawfully detaining a person against their will. Includes, kidnapping, hostage taking and confining people in cells without charging them for a crime. Does not apply to Prisoners of War."
+	name = "非法拘禁"
+	desc = "非法违背他人意愿拘留他人。包括绑架、劫持人质以及未指控犯罪便将人关押在牢房中。不适用于战俘。"
 	brig_time = 20
 
 /datum/law/major_law/manslaughter
-	name = "Manslaughter"
-	desc = "Killing someone without malicious intent. Manslaughter may be applied if someone dies as a result of a fight where the intent was not to kill."
+	name = "过失杀人"
+	desc = "非恶意杀人。若在无杀人意图的斗殴中致人死亡，可按过失杀人处理。"
 	brig_time = 20
 	special_punishment = "Demotion"
 
 /datum/law/major_law/prevarication
-	name = "Prevarication"
-	desc = "To intentionally order the arrest of a person on false charges who is then found to be innocent, or to apply an improper or abusive NJP. This includes intentionally arresting a person on false charges, on one's own initiative without orders."
+	name = "诬告"
+	desc = "故意以虚假指控下令逮捕随后被证明无罪的人员，或实施不当或滥用的非司法惩罚。这包括未经命令，主动以虚假指控故意逮捕人员。"
 	brig_time = 20
 
 /datum/law/major_law/sexual_harrasment
-	name = "Sexual Harrasment"
-	desc = "Unwelcome sexual advances, verbal or physical conduct of a sexual nature. Creating an intimidating, hostile or offensive work environment as a result of the harassment."
+	name = "性骚扰"
+	desc = "不受欢迎的性挑逗、具有性本质的言语或身体行为。因骚扰行为造成胁迫性、敌对性或冒犯性的工作环境。"
 	brig_time = 30
 
 /datum/law/major_law/animal_cruelty
-	name = "Animal Cruelty"
-	desc = "Injuring or killing any domestic animal or wild life with malicious intent. Research monkeys used for chemical research, scientific purposes or hostile wildlife are exempt."
+	name = "虐待动物"
+	desc = "恶意伤害或杀死任何家养动物或野生动物。用于化学研究、科学目的的研究用猴子或敌对性野生动物除外。"
 	brig_time = 30
 
 /datum/law/major_law/misuse_of_authority
-	name = "Misuse of Authority"
-	desc = "The exercising of power to a malicious extent by Military Police or deputized personnel acting as an MP; examples include beating a downed prisoner, excessive use of harmful or non-lethal force, or other abusive actions that led to the harm of a person in custody. Detained suspects should not have more force used on them than necessary in order to pacify them. Force may be used against retaliating or escaping parties only to the point where they are sufficiently pacified."
+	name = "滥用职权"
+	desc = "宪兵或被委任为宪兵的人员恶意行使其权力；例如殴打已倒地的囚犯、过度使用有害或非致命武力，或其他导致被拘留人员受到伤害的虐待行为。对被捕嫌疑人使用的武力不应超过使其平静所必需的程度。仅可对反抗或逃跑方使用足以使其平静的武力。"
 	brig_time = 20
 
 /datum/law/major_law/unauthorized_deployment
-	name = "Unauthorized Deployment"
-	desc = "To deploy into the area of operations without permission of the relevant head of department or Commander where appropriate whilst still performing assigned duties. (I.E A doctor deploying without permission, with the intentions to perform field surgery.) Deploying without intent to perform assigned duties remains desertion."
+	name = "未经授权部署"
+	desc = "在未获得相关部门主管或指挥官（视情况而定）许可的情况下，部署至作战区域，同时仍在执行分配的任务。（例如，医生未经许可部署，意图进行战地手术。）无执行分配任务意图的部署仍属擅离职守。"
 	brig_time = 10

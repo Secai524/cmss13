@@ -1,7 +1,7 @@
 GLOBAL_LIST_EMPTY(shuttle_controls)
 
 /obj/structure/machinery/computer/shuttle_control
-	name = "shuttle control console"
+	name = "穿梭机控制台"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "shuttle"
 	circuit = null
@@ -61,11 +61,11 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 		return
 
 	if(!allowed(user))
-		to_chat(user, SPAN_WARNING("Access denied."))
+		to_chat(user, SPAN_WARNING("权限被拒绝。"))
 		return 1
 
 	if(disabled)
-		to_chat(user, SPAN_WARNING("The console seems to be broken."))
+		to_chat(user, SPAN_WARNING("控制台似乎损坏了。"))
 		return
 
 	user.set_interaction(src)
@@ -79,39 +79,39 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	if(!isxeno(user) && (onboard || is_ground_level(z)) && !shuttle.iselevator)
 		if(shuttle.queen_locked)
 			if(onboard && skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
-				user.visible_message(SPAN_NOTICE("[user] starts to type on [src]."),
+				user.visible_message(SPAN_NOTICE("[user]开始在[src]上输入。"),
 					SPAN_NOTICE("You try to take back the control over the shuttle. It will take around 3 minutes."))
 				if(do_after(user, 3 MINUTES, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 					shuttle.last_locked = world.time
 					shuttle.queen_locked = 0
 					shuttle.last_door_override = world.time
 					shuttle.door_override = 0
-					user.visible_message(SPAN_NOTICE("[src] blinks with blue lights."),
+					user.visible_message(SPAN_NOTICE("[src]闪烁着蓝光。"),
 						SPAN_NOTICE("You have successfully taken back the control over the dropship."))
 					ui_interact(user)
 				return
 			else
 				if(world.time < shuttle.last_locked + SHUTTLE_LOCK_COOLDOWN)
-					to_chat(user, SPAN_WARNING("You can't seem to re-enable remote control, some sort of safety cooldown is in place. Please wait another [time_left_until(shuttle.last_locked + SHUTTLE_LOCK_COOLDOWN, world.time, 1 MINUTES)] minutes before trying again."))
+					to_chat(user, SPAN_WARNING("你似乎无法重新启用远程控制，某种安全冷却机制正在生效。请再等待[time_left_until(shuttle.last_locked + SHUTTLE_LOCK_COOLDOWN, world.time, 1 MINUTES)]分钟后再试。"))
 				else
-					to_chat(user, SPAN_NOTICE("You interact with the pilot's console and re-enable remote control."))
+					to_chat(user, SPAN_NOTICE("你操作了飞行员控制台，重新启用了远程控制。"))
 					shuttle.last_locked = world.time
 					shuttle.queen_locked = 0
 		if(shuttle.door_override)
 			if(world.time < shuttle.last_door_override + SHUTTLE_LOCK_COOLDOWN)
-				to_chat(user, SPAN_WARNING("You can't seem to reverse the door override. Please wait another [time_left_until(shuttle.last_door_override + SHUTTLE_LOCK_COOLDOWN, world.time, 1 MINUTES)] minutes before trying again."))
+				to_chat(user, SPAN_WARNING("你似乎无法解除舱门超控。请再等待[time_left_until(shuttle.last_door_override + SHUTTLE_LOCK_COOLDOWN, world.time, 1 MINUTES)]分钟后再试。"))
 			else
-				to_chat(user, SPAN_NOTICE("You reverse the door override."))
+				to_chat(user, SPAN_NOTICE("你解除了舱门超控。"))
 				shuttle.last_door_override = world.time
 				shuttle.door_override = 0
 
 	if(link && !shuttle.linked)
-		user.visible_message(SPAN_NOTICE("[src] blinks with blue lights."),
+		user.visible_message(SPAN_NOTICE("[src]闪烁着蓝光。"),
 			SPAN_NOTICE("Transport link activated."))
 		shuttle.linked = TRUE
 
 	if(shuttle.require_link && !shuttle.linked)
-		user.visible_message(SPAN_NOTICE("[src] blinks with red lights."),
+		user.visible_message(SPAN_NOTICE("[src]闪烁着红光。"),
 			SPAN_WARNING("Transport terminal unlinked. Manual activation required."))
 		return
 	ui_interact(user)
@@ -226,24 +226,24 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	if(href_list["move"])
 		if(shuttle.recharging) //Prevent the shuttle from moving again until it finishes recharging. This could be made to look better by using the shuttle computer's visual UI.
 			if(shuttle.iselevator)
-				to_chat(usr, SPAN_WARNING("The elevator is loading and unloading. Please hold."))
+				to_chat(usr, SPAN_WARNING("升降机正在装卸。请稍候。"))
 			else
-				to_chat(usr, SPAN_WARNING("The shuttle's engines are still recharging and cooling down."))
+				to_chat(usr, SPAN_WARNING("运输机的引擎仍在充能和冷却。"))
 			return
 		if(shuttle.queen_locked && !isqueen(usr))
-			to_chat(usr, SPAN_WARNING("The shuttle isn't responding to prompts, it looks like remote control was disabled."))
+			to_chat(usr, SPAN_WARNING("运输机未响应指令，看起来远程控制已被禁用。"))
 			return
 		//Comment to test
 		if(!skip_time_lock && world.time < SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK && istype(shuttle, /datum/shuttle/ferry/marine))
-			to_chat(usr, SPAN_WARNING("The shuttle is still undergoing pre-flight fueling and cannot depart yet. Please wait another [floor((SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK-world.time)/600)] minutes before trying again."))
+			to_chat(usr, SPAN_WARNING("运输机仍在进行起飞前燃料加注，尚不能出发。请再等待[floor((SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK-world.time)/600)]分钟再试。"))
 			return
 		if(SSticker.mode.active_lz != src && !onboard && isqueen(usr))
-			to_chat(usr, SPAN_WARNING("The shuttle isn't responding to prompts, it looks like this isn't the primary shuttle."))
+			to_chat(usr, SPAN_WARNING("运输机未响应指令，看起来这不是主运输机。"))
 			return
 		if(istype(shuttle, /datum/shuttle/ferry/marine))
 			var/datum/shuttle/ferry/marine/s = shuttle
 			if(!length(s.locs_land) && !s.transit_gun_mission)
-				to_chat(usr, SPAN_WARNING("There is no suitable LZ for this shuttle. Flight configuration changed to fire-mission."))
+				to_chat(usr, SPAN_WARNING("没有适合此运输机的着陆区。飞行配置已更改为火力任务模式。"))
 				s.transit_gun_mission = 1
 		if(shuttle.moving_status == SHUTTLE_IDLE) //Multi consoles, hopefully this will work
 
@@ -260,15 +260,15 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 
 				// Check if at least half of the hive is onboard. If not, we don't launch.
 				if(count < length(Q.hive.totalXenos) * 0.5)
-					to_chat(Q, SPAN_WARNING("More than half of your hive is not on board. Don't leave without them!"))
+					to_chat(Q, SPAN_WARNING("你超过一半的巢群成员不在船上。不要丢下它们！"))
 					return
 
 				// Allow the queen to choose the ship section to crash into
-				var/crash_target = tgui_input_list(usr, "Choose a ship section to target","Hijack", GLOB.almayer_ship_sections + list("Cancel"))
+				var/crash_target = tgui_input_list(usr, "选择目标舰船区域","劫持", GLOB.almayer_ship_sections + list("Cancel"))
 				if(crash_target == "Cancel")
 					return
 
-				var/i = tgui_alert(Q, "Warning: Once you launch the shuttle you will not be able to bring it back. Confirm anyways?", "WARNING", list("Yes", "No"))
+				var/i = tgui_alert(Q, "警告：一旦发射运输机，你将无法将其召回。是否确认？", "WARNING", list("Yes", "No"))
 				if(i != "Yes")
 					return
 
@@ -293,11 +293,11 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 					if(GLOB.round_statistics)
 						GLOB.round_statistics.track_hijack()
 
-					marine_announcement("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", "Dropship Alert", 'sound/AI/hijack.ogg', logging = ARES_LOG_SECURITY)
+					marine_announcement("侦测到作战区域发生非预定运输机离港。可能遭劫持。正在关闭自动驾驶。", "Dropship Alert", 'sound/AI/hijack.ogg', logging = ARES_LOG_SECURITY)
 					shuttle.alerts_allowed--
-					log_ares_flight("Unknown", "Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.")
+					log_ares_flight("未知", "侦测到作战区域发生非预定运输机离港。可能遭劫持。正在关闭自动驾驶。")
 
-					to_chat(Q, SPAN_DANGER("A loud alarm erupts from [src]! The fleshy hosts must know that you can access it!"))
+					to_chat(Q, SPAN_DANGER("一阵刺耳的警报从[src]响起！血肉宿主一定知道你能够操作它！"))
 					xeno_message(SPAN_XENOANNOUNCE("The Queen has commanded the metal bird to depart for the metal hive in the sky! Rejoice!"),3,Q.hivenumber)
 					xeno_message(SPAN_XENOANNOUNCE("The hive swells with power! You will now steadily gain burrowed larva over time."),2,Q.hivenumber)
 
@@ -326,7 +326,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 					shuttle.launch(src)
 
 			else if(!onboard && isqueen(M) && shuttle.location == 1 && !shuttle.iselevator)
-				to_chat(M, SPAN_WARNING("Hrm, that didn't work. Maybe try the one on the ship?"))
+				to_chat(M, SPAN_WARNING("嗯，那个没用。也许试试舰上的那个？"))
 				return
 			else
 				if(is_ground_level(z))
@@ -340,7 +340,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 
 
 /obj/structure/machinery/computer/shuttle_control/bullet_act(obj/projectile/Proj)
-	visible_message("[Proj] ricochets off [src]!")
+	visible_message("[Proj]从[src]弹开了！")
 	return 0
 
 /obj/structure/machinery/computer/shuttle_control/ex_act(severity)
@@ -354,8 +354,8 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 //Dropship control console
 
 /obj/structure/machinery/computer/shuttle_control/dropship1
-	name = "\improper 'Alamo' dropship console"
-	desc = "The remote controls for the 'Alamo' Dropship. Named after the Alamo Mission, stage of the Battle of the Alamo in the United States' state of Texas in the Spring of 1836. The defenders held to the last, encouraging other Texans to rally to the flag."
+	name = "\improper '阿拉莫' dropship console"
+	desc = "“阿拉莫”运输机的远程控制器。以阿拉莫传教站命名，该地是1836年春季美国德克萨斯州阿拉莫战役的战场。守军战斗到最后一人，激励了其他德克萨斯人集结到旗帜下。"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "shuttle"
 
@@ -370,16 +370,16 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	shuttle_tag = DROPSHIP_ALAMO
 
 /obj/structure/machinery/computer/shuttle_control/dropship1/onboard
-	name = "\improper 'Alamo' flight controls"
-	desc = "The flight controls for the 'Alamo' Dropship. Named after the Alamo Mission, stage of the Battle of the Alamo in the United States' state of Texas in the Spring of 1836. The defenders held to the last, encouraging other Texians to rally to the flag."
+	name = "\improper '阿拉莫' flight controls"
+	desc = "“阿拉莫”运输机的飞行控制器。以阿拉莫传教站命名，该地是1836年春季美国德克萨斯州阿拉莫战役的战场。守军战斗到最后一人，激励了其他德克萨斯人集结到旗帜下。"
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "console"
 	density = TRUE
 	onboard = 1
 
 /obj/structure/machinery/computer/shuttle_control/dropship2
-	name = "\improper 'Normandy' dropship console"
-	desc = "The remote controls for the 'Normandy' Dropship. Named after a department in France, noteworthy for the famous naval invasion of Normandy on the 6th of June 1944, a bloody but decisive victory in World War II and the campaign for the Liberation of France."
+	name = "\improper '诺曼底' dropship console"
+	desc = "“诺曼底”运输机的远程控制器。以法国的一个省份命名，以1944年6月6日著名的诺曼底海军登陆战而闻名，那是二战中一场血腥但决定性的胜利，也是法国解放战役的一部分。"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "shuttle"
 
@@ -394,16 +394,16 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	shuttle_tag = DROPSHIP_NORMANDY
 
 /obj/structure/machinery/computer/shuttle_control/dropship2/onboard
-	name = "\improper 'Normandy' flight controls"
-	desc = "The flight controls for the 'Normandy' Dropship. Named after a department in France, noteworthy for the famous naval invasion of Normandy on the 6th of June 1944, a bloody but decisive victory in World War II and the campaign for the Liberation of France."
+	name = "\improper '诺曼底' flight controls"
+	desc = "“诺曼底”运输机的飞行控制器。以法国的一个省份命名，以1944年6月6日著名的诺曼底海军登陆战而闻名，那是二战中一场血腥但决定性的胜利，也是法国解放战役的一部分。"
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "console"
 	onboard = 1
 	density = TRUE
 
 /obj/structure/machinery/computer/shuttle_control/dropship3
-	name = "\improper 'Saipan' dropship console"
-	desc = "The remote controls for the 'Saipan' Dropship."
+	name = "\improper '塞班' dropship console"
+	desc = "“塞班”运输机的远程控制器。"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "shuttle"
 
@@ -418,16 +418,16 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	shuttle_tag = DROPSHIP_SAIPAN
 
 /obj/structure/machinery/computer/shuttle_control/dropship3/onboard
-	name = "\improper 'Saipan' flight controls"
-	desc = "The flight controls for the 'Saipan' Dropship."
+	name = "\improper '塞班' flight controls"
+	desc = "“塞班”运输机的飞行控制器。"
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "console"
 	onboard = 1
 	density = TRUE
 
 /obj/structure/machinery/computer/shuttle_control/dropship_upp
-	name = "\improper 'Morana' dropship console"
-	desc = "The remote controls for the 'Morana' Dropship. Named after the slavic goddess of death and rebirth."
+	name = "\improper '莫拉娜' dropship console"
+	desc = "“莫拉娜”运输机的远程控制器。以斯拉夫神话中的死亡与重生女神命名。"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "shuttle"
 
@@ -442,16 +442,16 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	shuttle_tag = DROPSHIP_MORANA
 
 /obj/structure/machinery/computer/shuttle_control/dropship_upp/onboard
-	name = "\improper 'Morana' flight controls"
-	desc = "The flight controls for the 'Morana' Dropship. Named after the slavic goddess of death and rebirth."
+	name = "\improper '莫拉娜' flight controls"
+	desc = "“莫拉娜”运输机的飞行控制器。以斯拉夫神话中的死亡与重生女神命名。"
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "console_upp"
 	onboard = 1
 	density = TRUE
 
 /obj/structure/machinery/computer/shuttle_control/dropship_upp2
-	name = "\improper 'Devana' dropship console"
-	desc = "The remote controls for the 'Devana' Dropship. Named after the slavic goddess of nature, hunting and the moon."
+	name = "\improper '德瓦娜' dropship console"
+	desc = "“德瓦娜”运输机的远程控制器。以斯拉夫神话中的自然、狩猎与月亮女神命名。"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "shuttle"
 
@@ -466,8 +466,8 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	shuttle_tag = DROPSHIP_DEVANA
 
 /obj/structure/machinery/computer/shuttle_control/dropship_upp2/onboard
-	name = "\improper 'Devana' flight controls"
-	desc = "The flight controls for the 'Devana' Dropship. Named after the slavic goddess of nature, hunting and the moon."
+	name = "\improper '德瓦娜' flight controls"
+	desc = "“德瓦娜”运输机的飞行控制器。以斯拉夫神话中的自然、狩猎与月亮女神命名。"
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "console_upp"
 	onboard = 1
@@ -476,7 +476,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 //Elevator control console
 
 /obj/structure/machinery/computer/shuttle_control/ice_colony
-	name = "Elevator Console"
+	name = "电梯控制台"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "elevator_screen"
 
@@ -510,7 +510,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 //Trijent transit control console
 
 /obj/structure/machinery/computer/shuttle_control/trijent
-	name = "Transit Console"
+	name = "转运控制台"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "elevator_screen"
 

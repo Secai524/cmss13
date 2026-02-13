@@ -1,5 +1,5 @@
 /datum/action/xeno_action/activable/throw_hugger
-	name = "Use/Throw Facehugger"
+	name = "使用/投掷抱脸虫"
 	action_icon_state = "throw_hugger"
 	macro_path = /datum/action/xeno_action/verb/verb_throw_facehugger
 	action_type = XENO_ACTION_CLICK
@@ -12,12 +12,12 @@
 	return TRUE //When we first add the ability we still do this check, but owner is null, so a workaround
 
 /datum/action/xeno_action/activable/retrieve_egg
-	name = "Retrieve Egg"
+	name = "回收虫卵"
 	action_icon_state = "retrieve_egg"
 	macro_path = /datum/action/xeno_action/verb/verb_retrieve_egg
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/onclick/set_hugger_reserve
-	name = "Set Hugger Reserve"
+	name = "设置抱脸虫储备"
 	action_icon_state = "xeno_banish"

@@ -5,13 +5,13 @@
 		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/huds.dmi',
 	)
 	gender = NEUTER
-	desc = "A heads-up display that provides important info in (almost) real time."
+	desc = "一种平视显示器，能提供（近乎）实时的重要信息。"
 	flags_atom = null //doesn't protect eyes because it's a monocle, duh
 
 
 /obj/item/clothing/glasses/hud/health
 	name = "\improper HealthMate HUD"
-	desc = "A heads-up display that scans the humans in view and provides accurate data about their health status."
+	desc = "一种平视显示器，可扫描视野内的人类并提供其健康状况的准确数据。"
 	icon_state = "healthhud"
 	item_state = "healthhud"
 	deactive_state = "degoggles"
@@ -24,12 +24,12 @@
 
 /obj/item/clothing/glasses/hud/health/prescription
 	name = "\improper Prescription HealthMate HUD"
-	desc = "A heads-up display that scans the humans in view and provides accurate data about their health status. Contains prescription lenses."
+	desc = "一种平视显示器，可扫描视野内的人类并提供其健康状况的准确数据。包含处方镜片。"
 	prescription = TRUE
 
 /datum/action/item_action/view_publications/New(Target)
 	..()
-	name = "View Research Publications"
+	name = "查看研究出版物"
 	button.name = name
 	button.overlays.Cut()
 	var/image/IMG = image('icons/mob/hud/actions.dmi', button, "research")
@@ -85,7 +85,7 @@
 
 /obj/item/clothing/glasses/hud/health/verb/view_publications()
 	set category = "Object"
-	set name = "View Research Publications"
+	set name = "查看研究出版物"
 	set src in usr
 
 	if(!usr.stat && !usr.is_mob_restrained() && usr.faction != FACTION_SURVIVOR)
@@ -108,7 +108,7 @@
 
 /obj/item/clothing/glasses/hud/health/basic
 	name = "\improper Basic HealthMate HUD"
-	desc = "A heads-up display that scans the humans in view and provides accurate data about their health status. This one is a simpler model."
+	desc = "一种平视显示器，可扫描视野内的人类并提供其健康状况的准确数据。这是较简化的型号。"
 	hud_type = MOB_HUD_MEDICAL_BASIC
 	req_skill = NONE
 	req_skill_level = NONE
@@ -116,24 +116,24 @@
 
 /obj/item/clothing/glasses/hud/health/basic/prescription
 	name = "\improper Prescription Basic HealthMate HUD"
-	desc = "A heads-up display that scans the humans in view and provides accurate data about their health status. This simpler model contains prescription lenses."
+	desc = "一种平视显示器，可扫描视野内的人类并提供其健康状况的准确数据。这款简化型号包含处方镜片。"
 	prescription = TRUE
 
 /obj/item/clothing/glasses/hud/health/science
-	name = "custom HealthMate HUD" // combined HealthMateHUD and Reagent Scanner HUD for CMO
-	desc = "These HealthMate HUD googles are modified with a light-weight titantium-alloy frame that is custom fitted with extra wiring and low profile components from a reagent analyzer, allowing them to combine the functionality of a HealthMate and reagent scanner HUD without compromising on the form of the googles."
+	name = "定制版健康伴侣平视显示器" // combined HealthMateHUD and Reagent Scanner HUD for CMO
+	desc = "这副健康伴侣平视显示护目镜经过改装，采用轻质钛合金镜框，并定制集成了来自试剂分析仪的额外线路和低剖面组件，使其兼具健康伴侣和试剂扫描平视显示器的功能，同时不改变护目镜的外形。"
 	req_skill = SKILL_RESEARCH
 	req_skill_level = SKILL_RESEARCH_TRAINED
 	clothing_traits = list(TRAIT_REAGENT_SCANNER)
 
 /obj/item/clothing/glasses/hud/health/science/prescription
-	name = "prescription custom HealthMate HUD" // combined HealthMateHUD and Reagent Scanner HUD for CMO but prescription
+	name = "处方定制版健康伴侣平视显示器" // combined HealthMateHUD and Reagent Scanner HUD for CMO but prescription
 	desc = parent_type::desc + " This pair contains prescription lenses."
 	prescription = TRUE
 
 /obj/item/clothing/glasses/hud/sensor
 	name = "\improper SensorMate HUD"
-	desc = "A much older heads-up display that displays the last known biometric data from suit sensors of any given individual."
+	desc = "一种更老旧的平视显示器，能显示任何个体从其作战服传感器传来的最后已知生物特征数据。"
 	icon_state = "sensorhud"
 	deactive_state = "sensorhud_d"
 	flags_armor_protection = 0
@@ -145,12 +145,12 @@
 
 /obj/item/clothing/glasses/hud/sensor/prescription
 	name = "\improper Prescription SensorMate HUD"
-	desc = "A much older heads-up display that displays the last known biometric data from suit sensors of any given individual. Contains prescription lenses."
+	desc = "一种更老旧的平视显示器，能显示任何个体从其作战服传感器传来的最后已知生物特征数据。包含处方镜片。"
 	prescription = TRUE
 
 /obj/item/clothing/glasses/hud/security
 	name = "\improper PatrolMate HUD"
-	desc = "A heads-up display that scans the humans in view and provides accurate data about their ID status and security records."
+	desc = "一种平视显示器，可扫描视野内的人类并提供其身份状态和安保记录的准确数据。"
 	icon_state = "securityhud"
 	deactive_state = "degoggles"
 	toggleable = TRUE
@@ -160,13 +160,13 @@
 
 /obj/item/clothing/glasses/hud/security/prescription
 	name = "\improper Prescription PatrolMate HUD"
-	desc = "A heads-up display that scans the humans in view and provides accurate data about their ID status and security records."
+	desc = "一种平视显示器，可扫描视野内的人类并提供其身份状态和安保记录的准确数据。"
 	prescription = TRUE
 
 /obj/item/clothing/glasses/hud/security/jensenshades
-	name = "augmented shades"
+	name = "增强型墨镜"
 	gender = PLURAL
-	desc = "Polarized bioneural eyewear, designed to augment your vision. Why don't you try getting a job?"
+	desc = "偏振式生物神经眼镜，旨在增强你的视觉。你为什么不试着找份工作？"
 	icon = 'icons/obj/items/clothing/glasses/misc.dmi'
 	item_icons = list(
 		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/misc.dmi',

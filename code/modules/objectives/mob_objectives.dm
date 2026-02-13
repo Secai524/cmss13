@@ -2,7 +2,7 @@
 // *** Recover the dead ***
 // --------------------------------------------
 /datum/cm_objective/recover_corpses
-	name = "Recover corpses"
+	name = "回收尸体"
 	objective_flags = OBJECTIVE_DO_NOT_TREE
 	state = OBJECTIVE_ACTIVE
 	controller = TREE_MARINE
@@ -126,7 +126,7 @@
 		if(length(scored_humansynth_corpses) <= 48) // Limit human corpse recovery to 5 total points (.1 each)
 			return OBJECTIVE_LOW_VALUE
 		if(!max_humans)
-			marine_announcement("Maximum intel points for non-xenomorph corpses has been achieved.", "Intel Announcement", 'sound/misc/notice2.ogg')
+			marine_announcement("非异形尸体的最大情报点已达成。", "Intel Announcement", 'sound/misc/notice2.ogg')
 			max_humans = TRUE
 			return OBJECTIVE_LOW_VALUE
 
@@ -240,12 +240,12 @@
 	destination = /area/almayer
 
 /datum/cm_objective/move_mob/almayer/survivor
-	name = "Rescue the Survivor"
+	name = "营救幸存者"
 	mob_can_die = MOB_FAILS_ON_DEATH
 	value = OBJECTIVE_EXTREME_VALUE
 
 /datum/cm_objective/move_mob/almayer/vip
-	name = "Rescue the VIP"
+	name = "营救要员"
 	mob_can_die = MOB_FAILS_ON_DEATH
 	value = OBJECTIVE_ABSOLUTE_VALUE
 	objective_flags = OBJECTIVE_DO_NOT_TREE

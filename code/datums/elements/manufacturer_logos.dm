@@ -4,51 +4,51 @@
 
 /datum/element/corp_label/wy
 	manufacturer = "weyland_yutani"
-	full_name = "<span class='corp_label_gold'>Weyland-Yutani Corporation</span>"
+	full_name = "<span class='corp_label_gold'>维兰德-汤谷公司</span>"
 
 /datum/element/corp_label/armat
 	manufacturer = "armat"
-	full_name = "<span class='corp_label_green'>Armat Battlefield Systems</span>"
+	full_name = "<span class='corp_label_green'>阿玛特战场系统公司</span>"
 
 /datum/element/corp_label/seegson
 	manufacturer = "seegson"
-	full_name = "<span class='corp_label_green'>Seegson Corporation</span>"
+	full_name = "<span class='corp_label_green'>希格森公司</span>"
 
 /datum/element/corp_label/hyperdyne
 	manufacturer = "hyperdyne"
-	full_name = "<span class='corp_label_red'>Hyperdyne Systems</span>"
+	full_name = "<span class='corp_label_red'>海珀戴恩系统公司</span>"
 
 /datum/element/corp_label/gemba
 	manufacturer = "gemba_systec"
-	full_name = "<span class='corp_label_blue'>Gemba Systec</span>"
+	full_name = "<span class='corp_label_blue'>金巴系统科技公司</span>"
 
 /datum/element/corp_label/koorlander
 	manufacturer = "koorlander"
-	full_name = "<span class='corp_label_bluegreen'>Koorlander Corporation</span>"
+	full_name = "<span class='corp_label_bluegreen'>库兰德公司</span>"
 
 /datum/element/corp_label/chigusa
 	manufacturer = "chigusa"
-	full_name = "<span class='corp_label_gold'>Chigusa Corporation</span>"
+	full_name = "<span class='corp_label_gold'>千草公司</span>"
 
 /datum/element/corp_label/alphatech
 	manufacturer = "alphatech"
-	full_name = "<span class='corp_label_yellow'>AlphaTech Hardware</span>"
+	full_name = "<span class='corp_label_yellow'>阿尔法科技硬件公司</span>"
 
 /datum/element/corp_label/henjin_garcia
 	manufacturer = "henjin_garcia"
-	full_name = "<span class='corp_label_white'>Henjin-Garcia Armaments Company</span>"
+	full_name = "<span class='corp_label_white'>亨金-加西亚军械公司</span>"
 
 /datum/element/corp_label/bionational
 	manufacturer = "lasalle_bionational"
-	full_name = "<span class='corp_label_blue'>Lasalle Bionational</span>"
+	full_name = "<span class='corp_label_blue'>拉萨尔生物国家公司</span>"
 
 /datum/element/corp_label/kelland
 	manufacturer = "kelland"
-	full_name = "<span class='corp_label_gold'>Kelland Mining Company</span>"
+	full_name = "<span class='corp_label_gold'>凯兰矿业公司</span>"
 
 /datum/element/corp_label/lockmart
 	manufacturer = "lock_mart"
-	full_name = "<span class='corp_label_white'>Lockheed Martin Corporation</span>"
+	full_name = "<span class='corp_label_white'>洛克希德·马丁公司</span>"
 
 /datum/element/corp_label/spearhead
 	manufacturer = "spearhead"

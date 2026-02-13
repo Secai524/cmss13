@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(acid_pillar)
-	name   = "Acid Pillar"
+	name   = "酸液立柱"
 	wait   = 0.3 SECONDS
 	priority   = SS_PRIORITY_ACID_PILLAR
 	flags   = SS_NO_INIT

@@ -1,6 +1,6 @@
 
 /datum/action/xeno_action/onclick/feralrush
-	name = "Feral Rush"
+	name = "野性冲锋"
 	action_icon_state = "rage"
 	macro_path = /datum/action/xeno_action/verb/verb_feralrush
 	ability_primacy = XENO_PRIMARY_ACTION_1
@@ -18,7 +18,7 @@
 
 
 /datum/action/xeno_action/onclick/predalien_roar
-	name = "Roar"
+	name = "咆哮"
 	action_icon_state = "rage_screech"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
@@ -29,7 +29,7 @@
 	var/bonus_speed_scale = 0.05
 
 /datum/action/xeno_action/activable/feral_smash
-	name = "Feral Smash"
+	name = "野蛮粉碎"
 	action_icon_state = "powerful_pounce"
 	action_type = XENO_ACTION_CLICK
 	macro_path = /datum/action/xeno_action/verb/feral_smash
@@ -44,7 +44,7 @@
 	var/stun_duration = 3 SECONDS
 
 /datum/action/xeno_action/activable/feralfrenzy
-	name = "Feral Frenzy"
+	name = "野蛮狂怒"
 	action_icon_state = "butchering"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_4
@@ -64,7 +64,7 @@
 	var/range = 2
 
 /datum/action/xeno_action/onclick/toggle_gut_targeting
-	name = "Toggle Gutting Type"
+	name = "切换开膛类型"
 	action_icon_state = "rav_shard_shed" // starting targetting is SINGLETARGETGUT
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_gut_targeting
 	action_type = XENO_ACTION_ACTIVATE

@@ -7,10 +7,10 @@
 //  Programmer: Veryinky
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /obj/structure/machinery/door_display
-	name = "Door Display"
+	name = "门禁显示器"
 	icon = 'icons/obj/structures/machinery/status_display.dmi'
 	icon_state = "frame"
-	desc = "A remote control for a door."
+	desc = "一扇门的遥控器。"
 	anchored = TRUE // can't pick it up
 	density = FALSE // can walk through it.
 	var/open = 0 // If door should be open.
@@ -305,7 +305,7 @@
 /obj/structure/machinery/door_display/research_cell/attack_hand(mob/user)
 	. = ..()
 	if(!allowed(user))
-		to_chat(user, SPAN_WARNING("Access denied!"))
+		to_chat(user, SPAN_WARNING("权限被拒绝！"))
 
 	tgui_interact(user)
 

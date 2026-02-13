@@ -3,8 +3,8 @@
 /*----------------------*/
 
 /obj/structure/barricade/snow
-	name = "snow barricade"
-	desc = "A mound of snow shaped into a sloped wall. Statistically better than thin air as cover."
+	name = "雪地路障"
+	desc = "一堆雪塑成的斜坡墙。作为掩体，统计上比空气强。"
 	icon_state = "snow_0"
 	barricade_type = "snow"
 	health = 75 //Actual health depends on snow layer
@@ -27,7 +27,7 @@
 /obj/structure/barricade/snow/attackby(obj/item/W, mob/user)
 	for(var/obj/effect/xenomorph/acid/A in src.loc)
 		if(A.acid_t == src)
-			to_chat(user, "You can't get near that, it's melting!")
+			to_chat(user, "你无法靠近，它正在融化！")
 			return
 	//Removing the barricades
 	if(istype(W, /obj/item/tool/shovel) && user.a_intent != INTENT_HARM)
@@ -35,9 +35,9 @@
 		if(ET.folded)
 			return
 		if(user.action_busy)
-			to_chat(user, SPAN_WARNING("You are already shoveling!"))
+			to_chat(user, SPAN_WARNING("你已经在铲雪了！"))
 			return
-		user.visible_message("[user.name] starts clearing out \the [src].","You start removing \the [src].")
+		user.visible_message("[user.name]开始清理\the [src]。","You start removing \the [src].")
 		if(!do_after(user, ET.shovelspeed * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 			return
 		if(!ET.folded)
@@ -62,8 +62,8 @@
 /*----------------------*/
 
 /obj/structure/barricade/wooden
-	name = "wooden barricade"
-	desc = "A wall made out of wooden planks nailed together. Not very sturdy, but can provide some concealment."
+	name = "木质路障"
+	desc = "用钉在一起的木板制成的墙。不太坚固，但能提供一些隐蔽。"
 	icon_state = "wooden"
 	health = 100
 	maxhealth = 100
@@ -82,20 +82,20 @@
 /obj/structure/barricade/wooden/attackby(obj/item/W as obj, mob/user as mob)
 	for(var/obj/effect/xenomorph/acid/A in src.loc)
 		if(A.acid_t == src)
-			to_chat(user, "You can't get near that, it's melting!")
+			to_chat(user, "你无法靠近，它正在融化！")
 			return
 	if(istype(W, /obj/item/stack/sheet/wood))
 		var/obj/item/stack/sheet/wood/D = W
 		if(health < maxhealth)
 			if(D.get_amount() < 1)
-				to_chat(user, SPAN_WARNING("You need one plank of wood to repair [src]."))
+				to_chat(user, SPAN_WARNING("你需要一块木板来修复[src]。"))
 				return
-			visible_message(SPAN_NOTICE("[user] begins to repair [src]."))
+			visible_message(SPAN_NOTICE("[user]开始修复[src]。"))
 			if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src) && health < maxhealth)
 				if (D.use(1))
 					update_health(-0.5*maxhealth)
 					update_damage_state()
-					visible_message(SPAN_NOTICE("[user] clumsily repairs [src]."))
+					visible_message(SPAN_NOTICE("[user]笨拙地修复了[src]。"))
 		return
 
 	if(try_nailgun_usage(W, user))

@@ -8,7 +8,7 @@
 	gear_preset = /datum/equipment_preset/uscm/pfc
 
 /datum/job/marine/standard/on_config_load()
-	entry_message_body = "You are a rank-and-file <a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_MARINE_QUICKSTART]'>Marine of the USCM</a>, and that is your strength. What you lack alone, you gain standing shoulder to shoulder with the men and women of the corps. Ooh-rah!"
+	entry_message_body = "你是一名普通的<a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_MARINE_QUICKSTART]'>美国殖民地海军陆战队员</a>，而这正是你的力量所在。单枪匹马时你所欠缺的，将在与陆战队同袍并肩作战时获得。呜-哈！"
 	return ..()
 
 /datum/job/marine/standard/set_spawn_positions(count)

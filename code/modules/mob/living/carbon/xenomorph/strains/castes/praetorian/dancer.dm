@@ -30,7 +30,7 @@
 	prae.recalculate_everything()
 
 /datum/behavior_delegate/praetorian_dancer
-	name = "Praetorian Dancer Behavior Delegate"
+	name = "禁卫军舞者行为代理"
 
 	// State
 	var/dodge_activated = FALSE
@@ -67,17 +67,17 @@
 		return
 
 	if (!isxeno_human(target_atom) || dancer_user.can_not_harm(target_atom))
-		to_chat(dancer_user, SPAN_XENODANGER("We must target a hostile!"))
+		to_chat(dancer_user, SPAN_XENODANGER("我们必须以敌对目标为目标！"))
 		return
 
 	if (!dancer_user.Adjacent(target_atom))
-		to_chat(dancer_user, SPAN_XENODANGER("We must be adjacent to [target_atom]!"))
+		to_chat(dancer_user, SPAN_XENODANGER("我们必须与[target_atom]相邻！"))
 		return
 
 	var/mob/living/carbon/target_carbon = target_atom
 
 	if (target_carbon.stat == DEAD)
-		to_chat(dancer_user, SPAN_XENOWARNING("[target_atom] is dead, why would we want to attack it?"))
+		to_chat(dancer_user, SPAN_XENOWARNING("[target_atom]已经死了，我们为何还要攻击它？"))
 		return
 
 	if (!check_and_use_plasma_owner())
@@ -141,7 +141,7 @@
 
 	behavior.dodge_activated = TRUE
 	button.icon_state = "template_active"
-	to_chat(dodge_user, SPAN_XENOHIGHDANGER("We can now dodge through mobs!"))
+	to_chat(dodge_user, SPAN_XENOHIGHDANGER("我们现在可以穿过人群闪避了！"))
 	dodge_user.speed_modifier -= speed_buff_amount
 	dodge_user.add_temp_pass_flags(PASS_MOB_THRU)
 	dodge_user.recalculate_speed()
@@ -167,7 +167,7 @@
 		dodge_remove.speed_modifier += speed_buff_amount
 		dodge_remove.remove_temp_pass_flags(PASS_MOB_THRU)
 		dodge_remove.recalculate_speed()
-		to_chat(dodge_remove, SPAN_XENOHIGHDANGER("We can no longer dodge through mobs!"))
+		to_chat(dodge_remove, SPAN_XENOHIGHDANGER("我们无法再穿过人群闪避了！"))
 
 /datum/action/xeno_action/activable/prae_tail_trip/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/dancer_user = owner
@@ -184,13 +184,13 @@
 		return
 
 	if (!isxeno_human(target_atom) || dancer_user.can_not_harm(target_atom))
-		to_chat(dancer_user, SPAN_XENODANGER("We must target a hostile!"))
+		to_chat(dancer_user, SPAN_XENODANGER("我们必须以敌对目标为目标！"))
 		return
 
 	var/mob/living/carbon/target_carbon = target_atom
 
 	if (target_carbon.stat == DEAD)
-		to_chat(dancer_user, SPAN_XENOWARNING("[target_atom] is dead, why would we want to attack it?"))
+		to_chat(dancer_user, SPAN_XENOWARNING("[target_atom]已经死了，我们为何还要攻击它？"))
 		return
 
 	if (!check_and_use_plasma_owner())
@@ -204,18 +204,18 @@
 	var/dist = get_dist(dancer_user, target_carbon)
 
 	if (dist > range)
-		to_chat(dancer_user, SPAN_WARNING("[target_carbon] is too far away!"))
+		to_chat(dancer_user, SPAN_WARNING("[target_carbon]距离太远了！"))
 		return
 
 	if (dist > 1)
 		var/turf/targetTurf = get_step(dancer_user, get_dir(dancer_user, target_carbon))
 		if (targetTurf.density)
-			to_chat(dancer_user, SPAN_WARNING("We can't attack through [targetTurf]!"))
+			to_chat(dancer_user, SPAN_WARNING("我们无法穿过[targetTurf]攻击！"))
 			return
 		else
 			for (var/atom/atom_in_turf in targetTurf)
 				if (atom_in_turf.density && !atom_in_turf.throwpass && !istype(atom_in_turf, /obj/structure/barricade) && !istype(atom_in_turf, /mob/living))
-					to_chat(dancer_user, SPAN_WARNING("We can't attack through [atom_in_turf]!"))
+					to_chat(dancer_user, SPAN_WARNING("我们无法穿过[atom_in_turf]攻击！"))
 					return
 
 
@@ -249,17 +249,17 @@
 		if(Xeno.mob_size >= MOB_SIZE_BIG)
 			xeno_smashed = TRUE
 			shake_camera(Xeno, 10, 1)
-			dancer_user.visible_message(SPAN_XENODANGER("[dancer_user] smashes [Xeno] with it's tail!"), SPAN_XENODANGER("We smash [Xeno] with your tail!"))
-			to_chat(Xeno, SPAN_XENOHIGHDANGER("You feel dizzy as [dancer_user] smashes you with their tail!"))
+			dancer_user.visible_message(SPAN_XENODANGER("[dancer_user]用它的尾巴猛击[Xeno]！"), SPAN_XENODANGER("We smash [Xeno] with your tail!"))
+			to_chat(Xeno, SPAN_XENOHIGHDANGER("你感到一阵眩晕，因为[dancer_user]用尾巴猛击了你！"))
 			dancer_user.animation_attack_on(Xeno)
 
 	if(!xeno_smashed)
 		if (stun_duration > 0)
 			target_carbon.apply_effect(stun_duration, WEAKEN)
-		dancer_user.visible_message(SPAN_XENODANGER("[dancer_user] trips [target_atom] with it's tail!"), SPAN_XENODANGER("We trip [target_atom] with our tail!"))
+		dancer_user.visible_message(SPAN_XENODANGER("[dancer_user]用尾巴绊倒了[target_atom]！"), SPAN_XENODANGER("We trip [target_atom] with our tail!"))
 		dancer_user.spin_circle()
 		dancer_user.emote("tail")
-		to_chat(target_carbon, SPAN_XENOHIGHDANGER("You are swept off your feet by [dancer_user]!"))
+		to_chat(target_carbon, SPAN_XENOHIGHDANGER("你被[dancer_user]扫倒在地！"))
 	if (daze_duration > 0)
 		target_carbon.apply_effect(daze_duration, DAZE)
 	playsound(dancer_user, 'sound/effects/hit_kick.ogg', 75, 1)

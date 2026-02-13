@@ -1,5 +1,5 @@
 /obj/docking_port/mobile/crashable/escape_shuttle
-	name = "Escape Pod"
+	name = "逃生舱"
 	id = ESCAPE_SHUTTLE
 	area_type = /area/shuttle/escape_pod
 	width = 4
@@ -145,7 +145,7 @@
 	height = 4
 
 /obj/docking_port/stationary/escape_pod
-	name = "Escape Pod Dock"
+	name = "逃生舱泊位"
 
 /obj/docking_port/stationary/escape_pod/west
 	id = ESCAPE_SHUTTLE_WEST_PREFIX
@@ -178,21 +178,21 @@
 	height = 5
 
 /datum/map_template/shuttle/escape_pod_w
-	name = "Escape Pod W"
+	name = "逃生舱 W"
 	shuttle_id = ESCAPE_SHUTTLE_WEST
 
 /datum/map_template/shuttle/escape_pod_e
-	name = "Escape Pod E"
+	name = "逃生舱 E"
 	shuttle_id = ESCAPE_SHUTTLE_EAST
 
 /datum/map_template/shuttle/escape_pod_n
-	name = "Escape Pod N"
+	name = "逃生舱 N"
 	shuttle_id = ESCAPE_SHUTTLE_NORTH
 
 /datum/map_template/shuttle/escape_pod_s
-	name = "Escape Pod S"
+	name = "逃生舱 S"
 	shuttle_id = ESCAPE_SHUTTLE_SOUTH
 
 /datum/map_template/shuttle/escape_pod_e_cl
-	name = "Escape Pod E CL"
+	name = "逃生舱 E CL"
 	shuttle_id = ESCAPE_SHUTTLE_EAST_CL

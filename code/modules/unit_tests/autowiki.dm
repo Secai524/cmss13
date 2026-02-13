@@ -11,25 +11,25 @@
 	var/datum/autowiki/autowiki_api = new
 
 	TEST_ASSERT_EQUAL( \
-		autowiki_api.include_template("Template"), \
+		autowiki_api.include_template("模板"), \
 		"{{Template}}", \
 		"Basic template did not format correctly" \
 	)
 
 	TEST_ASSERT_EQUAL( \
-		autowiki_api.include_template("Template", list("name" = "Mothblocks")), \
+		autowiki_api.include_template("模板", list("name" = "Mothblocks")), \
 		"{{Template|name=Mothblocks}}", \
 		"Template with basic arguments did not format correctly" \
 	)
 
 	TEST_ASSERT_EQUAL( \
-		autowiki_api.include_template("Template", list("name" = autowiki_api.escape_value("P|peline"))), \
+		autowiki_api.include_template("模板", list("name" = autowiki_api.escape_value("P|peline"))), \
 		"{{Template|name=P{{!}}peline}}", \
 		"Template with escaped arguments did not format correctly" \
 	)
 
 	TEST_ASSERT_EQUAL( \
-		autowiki_api.include_template("Template", list("food" = list("fruit", "candy"))), \
+		autowiki_api.include_template("模板", list("food" = list("fruit", "candy"))), \
 		"{{Template|food1=fruit|food2=candy}}", \
 		"Template with array arguments did not format correctly" \
 	)

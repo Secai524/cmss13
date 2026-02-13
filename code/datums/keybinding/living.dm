@@ -9,7 +9,7 @@
 	hotkey_keys = list("B")
 	classic_keys = list("Unbound")
 	name = "resist"
-	full_name = "Resist"
+	full_name = "抵抗"
 	description = "Break free of your current state. Handcuffed? on fire? Resist!"
 	keybind_signal = COMSIG_KB_LIVING_RESIST_DOWN
 
@@ -25,7 +25,7 @@
 	hotkey_keys = list("Shift+R")
 	classic_keys = list("Unbound")
 	name = "rest"
-	full_name = "Rest"
+	full_name = "休息"
 	description = "Lay down, or get up."
 	keybind_signal = COMSIG_KB_LIVING_REST_DOWN
 
@@ -39,7 +39,7 @@
 
 /datum/keybinding/living/toggle_surgery
 	name = "toggle_surgery"
-	full_name = "Toggle Surgery Mode"
+	full_name = "切换手术模式"
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
 	description = "Ready yourself to perform surgery, or not. Also activates or disables Help Intent Safety, if you didn't have that set originally."
@@ -58,7 +58,7 @@
 	hotkey_keys = list("/")
 	classic_keys = list("Unbound")
 	name = "mov_intent"
-	full_name = "Move Intent"
+	full_name = "移动意图"
 	description = "Toggles your current move intent."
 	keybind_signal = COMSIG_KB_MOB_MOVINTENT_DOWN
 
@@ -74,7 +74,7 @@
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
 	name = "cancel_camera_view"
-	full_name = "Cancel Camera View"
+	full_name = "取消摄像头视角"
 	description = "Reset your view to your mob"
 	keybind_signal = COMSIG_KB_LIVING_CANCEL_CAMERA_VIEW
 
@@ -98,7 +98,7 @@
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
 	name = "look_up"
-	full_name = "Look Up"
+	full_name = "向上看"
 	description = ""
 	keybind_signal = COMSIG_KB_MOB_LOOK_UP
 

@@ -10,8 +10,8 @@
  * Toy gun: Why isn't this an /obj/item/weapon/gun?
  */
 /obj/item/toy/gun
-	name = "cap gun"
-	desc = "There are 0 caps left. Looks almost like the real thing! Ages 8 and up. Please recycle in an autolathe when you're out of caps!"
+	name = "玩具枪"
+	desc = "还剩0发玩具子弹。看起来几乎和真的一样！适合8岁及以上。子弹用完后请记得在自动制造机里回收！"
 	icon_state = "capgun"
 	item_state = "gun"
 	flags_equip_slot = SLOT_WAIST
@@ -19,7 +19,7 @@
 
 	matter = list("glass" = 10,"metal" = 10)
 
-	attack_verb = list("struck", "pistol whipped", "hit", "bashed")
+	attack_verb = list("struck", "用枪托击打", "hit", "bashed")
 	var/bullets = 7
 
 /obj/item/toy/gun/get_examine_text(mob/user)
@@ -29,10 +29,10 @@
 /obj/item/toy/gun/attackby(obj/item/toy/gun_ammo/A as obj, mob/user as mob)
 	if (istype(A, /obj/item/toy/gun_ammo))
 		if (src.bullets >= 7)
-			to_chat(user, SPAN_NOTICE("It's already fully loaded!"))
+			to_chat(user, SPAN_NOTICE("它已经装满了！"))
 			return 1
 		if (A.amount_left <= 0)
-			to_chat(user, SPAN_DANGER("There is no more caps!"))
+			to_chat(user, SPAN_DANGER("没有更多玩具子弹了！"))
 			return 1
 		if (A.amount_left < (7 - bullets))
 			src.bullets += A.amount_left
@@ -50,21 +50,21 @@
 	if (flag)
 		return
 	if (!(istype(usr, /mob/living/carbon/human) || SSticker) && SSticker.mode.name != "monkey")
-		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
+		to_chat(usr, SPAN_DANGER("你的手不够灵巧，无法完成此操作！"))
 		return
 	src.add_fingerprint(user)
 	if (src.bullets < 1)
-		user.show_message(SPAN_DANGER("*click* *click*"), SHOW_MESSAGE_AUDIBLE)
+		user.show_message(SPAN_DANGER("*咔哒* *咔哒*"), SHOW_MESSAGE_AUDIBLE)
 		playsound(user, 'sound/weapons/gun_empty.ogg', 15, 1)
 		return
 	playsound(user, 'sound/weapons/Gunshot.ogg', 15, 1)
 	src.bullets--
 	for(var/mob/O in viewers(user, null))
-		O.show_message(SPAN_DANGER("<B>[user] fires a cap gun at [target]!</B>"), SHOW_MESSAGE_VISIBLE, SPAN_DANGER("You hear a gunshot."), SHOW_MESSAGE_AUDIBLE)
+		O.show_message(SPAN_DANGER("<B>[user]用玩具枪朝[target]开了一枪！</B>"), SHOW_MESSAGE_VISIBLE, SPAN_DANGER("You hear a gunshot."), SHOW_MESSAGE_AUDIBLE)
 
 /obj/item/toy/gun_ammo
-	name = "ammo-caps"
-	desc = "There are 7 caps left! Make sure to recycle the box in an autolathe when it gets empty."
+	name = "玩具子弹"
+	desc = "还剩7发玩具子弹！子弹用完后请记得在自动制造机里回收盒子。"
 	icon_state = "cap_ammo"
 	w_class = SIZE_TINY
 
@@ -84,8 +84,8 @@
  */
 
 /obj/item/toy/crossbow
-	name = "foam dart crossbow"
-	desc = "A weapon favored by many overactive children. Ages 8 and up."
+	name = "泡沫飞镖弩"
+	desc = "许多精力过剩的儿童喜爱的武器。适合8岁及以上。"
 	icon_state = "foamcrossbow"
 	item_state = "crossbow"
 	w_class = SIZE_SMALL
@@ -95,7 +95,7 @@
 /obj/item/toy/crossbow/examine(mob/user)
 	..()
 	if (bullets)
-		to_chat(user, SPAN_NOTICE("It is loaded with [bullets] foam darts!"))
+		to_chat(user, SPAN_NOTICE("它已装填了[bullets]支泡沫飞镖！"))
 
 /obj/item/toy/crossbow/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I, /obj/item/toy/crossbow_ammo))
@@ -103,9 +103,9 @@
 			if(user.drop_held_item())
 				qdel(I)
 				bullets++
-				to_chat(user, SPAN_NOTICE("You load the foam dart into the crossbow."))
+				to_chat(user, SPAN_NOTICE("你将泡沫飞镖装填进弩里。"))
 		else
-			to_chat(usr, SPAN_DANGER("It's already fully loaded."))
+			to_chat(usr, SPAN_DANGER("它已经装满了。"))
 
 
 /obj/item/toy/crossbow/afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)
@@ -121,7 +121,7 @@
 		var/obj/effect/foam_dart_dummy/D = new/obj/effect/foam_dart_dummy(get_turf(src))
 		bullets--
 		D.icon_state = "foamdart"
-		D.name = "foam dart"
+		D.name = "泡沫飞镖"
 		playsound(user.loc, 'sound/items/syringeproj.ogg', 15, 1)
 
 		for(var/i=0, i<6, i++)
@@ -136,7 +136,7 @@
 					if(M == user)
 						continue
 					for(var/mob/O in viewers(GLOB.world_view_size, D))
-						O.show_message(SPAN_DANGER("[M] was hit by the foam dart!"), SHOW_MESSAGE_VISIBLE)
+						O.show_message(SPAN_DANGER("[M]被泡沫飞镖击中了！"), SHOW_MESSAGE_VISIBLE)
 					new /obj/item/toy/crossbow_ammo(M.loc)
 					qdel(D)
 					return
@@ -159,7 +159,7 @@
 	else if (bullets == 0)
 		user.apply_effect(5, WEAKEN)
 		for(var/mob/O in viewers(GLOB.world_view_size, user))
-			O.show_message(SPAN_DANGER("[user] realized they were out of ammo and starting scrounging for some!"), SHOW_MESSAGE_VISIBLE)
+			O.show_message(SPAN_DANGER("[user]意识到弹药耗尽，开始四处搜寻！"), SHOW_MESSAGE_VISIBLE)
 
 
 /obj/item/toy/crossbow/attack(mob/living/M as mob, mob/user as mob)
@@ -169,8 +169,8 @@
 
 		for(var/mob/O in viewers(M, null))
 			if(O.client)
-				O.show_message(SPAN_DANGER("<B>[user] casually lines up a shot with [M]'s head and pulls the trigger!</B>"), SHOW_MESSAGE_VISIBLE, SPAN_DANGER("You hear the sound of foam against skull!"), SHOW_MESSAGE_AUDIBLE)
-				O.show_message(SPAN_DANGER("[M] was hit in the head by the foam dart!"), SHOW_MESSAGE_VISIBLE)
+				O.show_message(SPAN_DANGER("<B>[user]漫不经心地瞄准[M]的头部，扣动了扳机！</B>"), SHOW_MESSAGE_VISIBLE, SPAN_DANGER("You hear the sound of foam against skull!"), SHOW_MESSAGE_AUDIBLE)
+				O.show_message(SPAN_DANGER("[M]的头部被泡沫飞镖击中了！"), SHOW_MESSAGE_VISIBLE)
 
 		playsound(user.loc, 'sound/items/syringeproj.ogg', 15, 1)
 		new /obj/item/toy/crossbow_ammo(M.loc)
@@ -178,13 +178,13 @@
 	else if (M.body_position == LYING_DOWN && src.bullets == 0)
 		for(var/mob/O in viewers(M, null))
 			if (O.client)
-				O.show_message(SPAN_DANGER("<B>[user] casually lines up a shot with [M]'s head, pulls the trigger, then realizes they are out of ammo and drops to the floor in search of some!</B>"), SHOW_MESSAGE_VISIBLE, SPAN_DANGER("You hear someone fall."), SHOW_MESSAGE_AUDIBLE)
+				O.show_message(SPAN_DANGER("<B>[user]漫不经心地瞄准[M]的头部，扣动扳机，然后发现弹药耗尽，立刻趴到地上寻找弹药！</B>"), SHOW_MESSAGE_VISIBLE, SPAN_DANGER("You hear someone fall."), SHOW_MESSAGE_AUDIBLE)
 		user.apply_effect(5, WEAKEN)
 	return
 
 /obj/item/toy/crossbow_ammo
-	name = "foam dart"
-	desc = "It's nerf or nothing! Ages 8 and up."
+	name = "泡沫飞镖"
+	desc = "要么是软弹枪，要么什么都不是！适合8岁及以上。"
 	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "foamdart"
 	w_class = SIZE_TINY
@@ -202,8 +202,8 @@
  * Toy swords
  */
 /obj/item/toy/sword
-	name = "blue toy light-sword"
-	desc = "A cheap, plastic replica of a light-sword, very popular toy among fans of those new Star Skirmishes movies. Realistic sounds! Ages 8 and up."
+	name = "蓝色玩具光剑"
+	desc = "一把廉价的光剑塑料复制品，在那些新《星球冲突》电影的粉丝中非常流行。逼真的音效！适合8岁及以上。"
 	icon = 'icons/obj/items/weapons/melee/energy.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/energy_lefthand.dmi',
@@ -217,15 +217,15 @@
 	attack_verb = list("attacked", "struck", "hit")
 
 /obj/item/toy/sword/red
-	name = "red toy light-sword"
+	name = "红色玩具光剑"
 	sword_type = "red"
 
 /obj/item/toy/sword/green
-	name = "green toy light-sword"
+	name = "绿色玩具光剑"
 	sword_type = "green"
 
 /obj/item/toy/sword/purple
-	name = "green toy light-sword"
+	name = "绿色玩具光剑"
 	sword_type = "purple"
 
 /obj/item/toy/sword/attack_self(mob/user)
@@ -233,13 +233,13 @@
 
 	active = !active
 	if (active)
-		to_chat(user, SPAN_NOTICE("You extend the plastic blade with a quick flick of your wrist."))
+		to_chat(user, SPAN_NOTICE("你手腕一抖，弹出了塑料剑刃。"))
 		playsound(user, 'sound/weapons/saberon.ogg', 15, 1)
 		icon_state = "sword[sword_type]"
 		item_state = "sword[sword_type]"
 		w_class = SIZE_LARGE
 	else
-		to_chat(user, SPAN_NOTICE("You push the plastic blade back down into the handle."))
+		to_chat(user, SPAN_NOTICE("你将塑料剑刃按回剑柄。"))
 		playsound(user, 'sound/weapons/saberoff.ogg', 15, 1)
 		icon_state = "sword0"
 		item_state = "sword0"
@@ -253,8 +253,8 @@
 	add_fingerprint(user)
 
 /obj/item/toy/katana
-	name = "replica katana"
-	desc = "Woefully underpowered in D20."
+	name = "仿制武士刀"
+	desc = "在D20规则中弱得可怜。"
 	icon = 'icons/obj/items/weapons/melee/swords.dmi'
 	icon_state = "katana"
 	flags_atom = FPRINT|CONDUCT

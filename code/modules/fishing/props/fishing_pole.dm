@@ -1,6 +1,6 @@
 /obj/structure/prop/fishing
-	name = "fishing pole"
-	desc = "For god's sake I just want to fish."
+	name = "鱼竿"
+	desc = "看在上帝的份上，我只想钓鱼。"
 	icon = 'icons/obj/structures/fishing.dmi'
 	icon_state = "pole"
 	density = FALSE
@@ -33,9 +33,9 @@
 /obj/structure/prop/fishing/pole_interactive/examine(mob/user)
 	. = ..()
 	if(loaded_bait)
-		to_chat(user, SPAN_NOTICE("It has [loaded_bait] loaded on its hook."))
+		to_chat(user, SPAN_NOTICE("它的鱼钩上挂着[loaded_bait]。"))
 	else
-		to_chat(user, SPAN_WARNING("It doesn't have any bait attached!"))
+		to_chat(user, SPAN_WARNING("它没有挂任何鱼饵！"))
 
 /obj/structure/prop/fishing/pole_interactive/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/fish_bait))
@@ -44,7 +44,7 @@
 			return
 		if(user.drop_inv_item_to_loc(I, src))
 			loaded_bait = I
-			user.visible_message(SPAN_NOTICE("[user] loads \the [I] onto \the [src]'s hook."), SPAN_NOTICE("You load \the [I] onto \the [src]'s hook."))
+			user.visible_message(SPAN_NOTICE("[user]将\the [I]挂到\the [src]的鱼钩上。"), SPAN_NOTICE("You load \the [I] onto \the [src]'s hook."))
 			return
 	return ..()
 
@@ -52,16 +52,16 @@
 	if(CAN_PICKUP(usr, src) && over_object == usr)
 		var/mob/user = over_object
 		if(waiting_for_fish || fish_check_progress)
-			to_chat(user, SPAN_WARNING("It is EXTREMELY disrespectful to pack up a rod while someone's fishing!"))
+			to_chat(user, SPAN_WARNING("在别人钓鱼时收竿是极其不尊重的行为！"))
 			return
-		user.visible_message(SPAN_NOTICE("[user] starts packing up \the [src]..."), SPAN_NOTICE("You start packing up \the [src]..."))
+		user.visible_message(SPAN_NOTICE("[user]开始收起\the [src]..."), SPAN_NOTICE("You start packing up \the [src]..."))
 		if(do_after(user, 3 SECONDS, show_busy_icon = BUSY_ICON_BUILD))
 			var/obj/item/fishing_pole/FP = new pole_type(loc)
 			FP.transfer_to_user(src, user)
 
 /obj/structure/prop/fishing/pole_interactive/attack_hand(mob/user)
 	if(waiting_for_fish)
-		to_chat(user, SPAN_WARNING("You're already fishing."))
+		to_chat(user, SPAN_WARNING("你已经在钓鱼了。"))
 		return
 
 	if(fish_check_progress)//are we doing the click minigame?
@@ -87,7 +87,7 @@
 	if(do_after(user, rand(0.5 SECONDS, 2 SECONDS)) && fish_check_progress)
 		fish_check_progress = FALSE
 		playsound(src, fishing_failure, 50, 1)
-		user.visible_message(SPAN_NOTICE("[user] fails to fish up anything."), SPAN_NOTICE("You don't seem to catch much of anything..."))
+		user.visible_message(SPAN_NOTICE("[user]什么都没钓到。"), SPAN_NOTICE("You don't seem to catch much of anything..."))
 		remove_filter("fish_ready")
 
 /obj/structure/prop/fishing/pole_interactive/proc/spawn_loot(mob/M)
@@ -97,7 +97,7 @@
 	var/obj/item/caught_item = get_fishing_loot(T, A, get_common_weight(), get_uncommon_weight(), get_rare_weight(), get_ultra_rare_weight())
 	caught_item.throw_atom(get_turf(M), 2, 2, spin = TRUE, launch_type = HIGH_LAUNCH)
 	playsound(src, fishing_success, 50, 1)
-	M.visible_message(SPAN_NOTICE("[M] fishes up \the [caught_item]!"), SPAN_NOTICE("You fish up \the [caught_item]!"))
+	M.visible_message(SPAN_NOTICE("[M]钓到了\the [caught_item]！"), SPAN_NOTICE("You fish up \the [caught_item]!"))
 
 	QDEL_NULL(loaded_bait)
 

@@ -1,7 +1,7 @@
 
 // Rav charge
 /datum/action/xeno_action/activable/pounce/charge
-	name = "Charge"
+	name = "冲锋"
 	action_icon_state = "charge"
 	action_text = "charge"
 	macro_path = /datum/action/xeno_action/verb/verb_charge_rav
@@ -19,7 +19,7 @@
 
 // Base ravager shield ability
 /datum/action/xeno_action/onclick/empower
-	name = "Empower"
+	name = "赋能"
 	action_icon_state = "empower"
 	macro_path = /datum/action/xeno_action/verb/verb_empower
 	action_type = XENO_ACTION_CLICK
@@ -38,9 +38,9 @@
 	// State
 	var/activated_once = FALSE
 
-// Rav "Scissor Cut"
+// Rav "剪裂斩"
 /datum/action/xeno_action/activable/scissor_cut
-	name = "Scissor Cut"
+	name = "剪裂斩"
 	action_icon_state = "rav_scissor_cut"
 	macro_path = /datum/action/xeno_action/verb/verb_scissorcut
 	action_type = XENO_ACTION_CLICK
@@ -56,7 +56,7 @@
 //// BERSERKER ACTIONS
 
 /datum/action/xeno_action/onclick/apprehend
-	name = "Apprehend"
+	name = "擒拿"
 	action_icon_state = "rav_enrage"
 	macro_path = /datum/action/xeno_action/verb/verb_apprehend
 	action_type = XENO_ACTION_CLICK
@@ -70,7 +70,7 @@
 
 
 /datum/action/xeno_action/activable/clothesline
-	name = "Clothesline"
+	name = "绊马索"
 	action_icon_state = "rav_clothesline"
 	macro_path = /datum/action/xeno_action/verb/verb_clothesline
 	action_type = XENO_ACTION_CLICK
@@ -86,7 +86,7 @@
 	var/daze_amount = 2
 
 /datum/action/xeno_action/activable/eviscerate
-	name = "Eviscerate"
+	name = "开膛破肚"
 	action_icon_state = "rav_eviscerate"
 	macro_path = /datum/action/xeno_action/verb/verb_eviscerate
 	action_type = XENO_ACTION_ACTIVATE
@@ -106,7 +106,7 @@
 ////// HEDGEHOG ABILITIES
 
 /datum/action/xeno_action/onclick/spike_shield
-	name = "Spike Shield (150 shards)"
+	name = "骨刺护盾（150碎片）"
 	action_icon_state = "rav_shard_shield"
 	macro_path = /datum/action/xeno_action/verb/verb_spike_shield
 	action_type = XENO_ACTION_CLICK
@@ -123,7 +123,7 @@
 	var/real_hp_per_shield_hp = 0.5 // How many real HP we get for each shield HP
 
 /datum/action/xeno_action/activable/rav_spikes
-	name = "Fire Spikes (75 shards)"
+	name = "发射骨刺（75碎片）"
 	action_icon_state = "rav_spike"
 	macro_path = /datum/action/xeno_action/verb/verb_fire_spikes
 	action_type = XENO_ACTION_CLICK
@@ -136,7 +136,7 @@
 	var/ammo_type = /datum/ammo/xeno/bone_chips
 
 /datum/action/xeno_action/onclick/spike_shed
-	name = "Spike Shed (50 shards)"
+	name = "骨刺脱落（50碎片）"
 	action_icon_state = "rav_shard_shed"
 	macro_path = /datum/action/xeno_action/verb/verb_shed_spikes
 	action_type = XENO_ACTION_CLICK

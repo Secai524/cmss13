@@ -10,7 +10,7 @@
 
 /datum/unarmed_attack/proc/is_usable(mob/living/carbon/human/user)
 	if(!user.melee_allowed)
-		to_chat(user, SPAN_DANGER("You are currently unable to attack."))
+		to_chat(user, SPAN_DANGER("你目前无法攻击。"))
 		return FALSE
 
 	return TRUE

@@ -1,6 +1,6 @@
 /obj/structure/prop/tower
-	name = "destroyed comms tower"
-	desc = "An old company comms tower used to transmit communications between subspace bodies. Looks like this one has seen better days."
+	name = "被摧毁的通讯塔"
+	desc = "一座旧的公司通讯塔，曾用于在亚空间实体间传输通讯。看来这座塔有过更好的日子。"
 	icon = 'icons/obj/structures/machinery/comm_tower.dmi'
 	icon_state = "comm_tower_destroyed"
 	unslashable = TRUE
@@ -13,8 +13,8 @@
 	density = TRUE
 
 /obj/structure/prop/dam/drill
-	name = "mining drill"
-	desc = "An old mining drill, seemingly used for mining. And possibly drilling."
+	name = "矿用钻机"
+	desc = "一台老旧的矿用钻机，似乎是用来采矿的。也可能用来钻孔。"
 	icon = 'icons/obj/structures/props/industrial/drill.dmi'
 	icon_state = "drill"
 	bound_height = 96
@@ -26,7 +26,7 @@
 		return
 	else if (ishuman(user) && HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		on = !on
-		visible_message("You wrench the controls of \the [src]. The drill jumps to life." , "[user] wrenches the controls of \the [src]. The drill jumps to life.")
+		visible_message("你用力扳动\the [src]的控制杆。钻机轰鸣着启动。" , "[user] wrenches the controls of \the [src]. The drill jumps to life.")
 
 		update()
 
@@ -46,7 +46,7 @@
 
 /obj/structure/prop/dam/truck
 	name = "truck"
-	desc = "An old truck, seems to be broken down."
+	desc = "一辆旧卡车，看起来抛锚了。"
 	icon = 'icons/obj/structures/props/vehicles/vehicles.dmi'
 	icon_state = "truck"
 	bound_height = 64
@@ -58,18 +58,18 @@
 	icon_state = "truck_damaged"
 
 /obj/structure/prop/dam/truck/mining
-	name = "mining truck"
-	desc = "An old mining truck, seems to be broken down."
+	name = "矿用卡车"
+	desc = "一辆老旧的矿用卡车，看起来抛锚了。"
 	icon_state = "truck_mining"
 
 /obj/structure/prop/dam/truck/cargo
-	name = "cargo truck"
-	desc = "An old cargo truck, seems to be broken down."
+	name = "货运卡车"
+	desc = "一辆旧货运卡车，看起来抛锚了。"
 	icon_state = "truck_cargo"
 
 /obj/structure/prop/dam/van
 	name = "van"
-	desc = "An old van, seems to be broken down."
+	desc = "一辆旧厢式货车，看起来抛锚了。"
 	icon = 'icons/obj/structures/props/vehicles/vehicles.dmi'
 	icon_state = "van"
 	bound_height = 64
@@ -81,7 +81,7 @@
 	icon_state = "van_damaged"
 
 /obj/structure/prop/dam/crane
-	name = "cargo crane"
+	name = "货物起重机"
 	icon = 'icons/obj/structures/props/vehicles/vehicles.dmi'
 	icon_state = "crane"
 	bound_height = 64
@@ -96,8 +96,8 @@
 	icon_state = "crane_cargo"
 
 /obj/structure/prop/dam/torii
-	name = "torii arch"
-	desc = "A traditional Japanese archway, made out of wood, and adorned with lanterns."
+	name = "鸟居"
+	desc = "一座传统的日式拱门，由木材制成，装饰着灯笼。"
 	icon = 'icons/obj/structures/props/furniture/torii.dmi'
 	icon_state = "torii"
 	density = FALSE
@@ -123,7 +123,7 @@
 	..()
 	if(lit)
 		lit = !lit
-		visible_message("[user] extinguishes the lanterns on [src].",
+		visible_message("[user]熄灭了[src]上的灯笼。",
 			"You extinguish the fires on [src].")
 		Update()
 	return
@@ -165,7 +165,7 @@
 		if(!(F.flags_gun_features & GUN_TRIGGER_SAFETY))
 			L = 1
 		else
-			to_chat(user, SPAN_WARNING("Turn on the pilot light first!"))
+			to_chat(user, SPAN_WARNING("先打开引火器！"))
 
 	else if(isgun(W))
 		var/obj/item/weapon/gun/G = W
@@ -183,13 +183,13 @@
 		if(W.heat_source > 200)
 			L = 1
 	if(L)
-		visible_message("[user] quietly goes from lantern to lantern on the torii, lighting the wicks in each one.")
+		visible_message("[user]在鸟居上从一个灯笼到另一个灯笼，安静地点燃每个灯芯。")
 		lit = TRUE
 		Update()
 
 /obj/structure/prop/dam/gravestone
-	name = "grave marker"
-	desc = "A grave marker, in the traditional Japanese style."
+	name = "墓碑"
+	desc = "一座传统日式风格的墓碑。"
 	icon = 'icons/obj/structures/props/props.dmi'
 	icon_state = "gravestone1"
 
@@ -200,7 +200,7 @@
 /obj/structure/prop/dam/boulder
 	name = "boulder"
 	icon_state = "boulder1"
-	desc = "A large rock. It's not cooking anything."
+	desc = "一块大石头。它没在烹饪任何东西。"
 	icon = 'icons/obj/structures/props/natural/vegetation/dam.dmi'
 
 /obj/structure/prop/dam/boulder/boulder1
@@ -215,7 +215,7 @@
 
 /obj/structure/prop/dam/large_boulder
 	name = "boulder"
-	desc = "A large rock. It's not cooking anything."
+	desc = "一块大石头。它没在烹饪任何东西。"
 	icon = 'icons/obj/structures/props/natural/boulder_large.dmi'
 	bound_height = 64
 	bound_width = 64
@@ -228,7 +228,7 @@
 
 /obj/structure/prop/dam/wide_boulder
 	name = "boulder"
-	desc = "A large rock. It's not cooking anything."
+	desc = "一块大石头。它没在烹饪任何东西。"
 	icon = 'icons/obj/structures/props/natural/boulder_wide.dmi'
 	bound_height = 32
 	bound_width = 64
@@ -239,22 +239,22 @@
 //Use these to replace non-functional machinery 'props' around maps from bay12
 
 /obj/structure/prop/server_equipment
-	name = "server rack"
-	desc = "A rack full of hard drives, micro-computers, and ethernet cables."
+	name = "服务器机架"
+	desc = "一个装满硬盘、微型计算机和以太网电缆的机架。"
 	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	icon_state = "rackframe"
 	density = TRUE
 	health = 150
 
 /obj/structure/prop/server_equipment/broken
-	name = "broken server rack"
-	desc = "A rack that was once full of hard drives, micro-computers, and ethernet cables. Though most of those are scattered on the floor now."
+	name = "损坏的服务器机架"
+	desc = "一个曾经装满硬盘、微型计算机和以太网电缆的机架。不过现在大部分都散落在地板上了。"
 	icon_state = "rackframe_broken"
 	health = 100
 
 /obj/structure/prop/server_equipment/yutani_server
-	name = "Yutani OS server box"
-	desc = "Yutani OS is a proprietary operating system used by the Company to run most all of their servers, banking, and management systems. A code leak in 2144 led some amateur hackers to believe that Yutani OS is loosely based on the 2017 release of TempleOS. But the Company has refuted these claims."
+	name = "汤谷操作系统服务器箱"
+	desc = "汤谷操作系统是公司使用的专有操作系统，用于运行其大部分服务器、银行和管理系统。2144年的一次代码泄露让一些业余黑客认为汤谷操作系统大致基于2017年发布的TempleOS。但公司已驳斥了这些说法。"
 	icon_state = "yutani_server_on"
 
 /obj/structure/prop/server_equipment/yutani_server/Initialize()
@@ -269,7 +269,7 @@
 
 /obj/structure/prop/server_equipment/laptop
 	name = "laptop"
-	desc = "Laptops, porta-comps, and reel-back computers, all of these and more available at your local Wey-Mart electronics section!"
+	desc = "笔记本电脑、便携式电脑、卷盘式电脑，所有这些以及更多产品，尽在您当地的维兰德超市电子产品区！"
 	icon_state = "laptop_off"
 	density = FALSE
 
@@ -278,15 +278,15 @@
 
 /obj/structure/prop/server_equipment/laptop/on
 	icon_state = "laptop_on"
-	desc = "The screen is stuck on some sort of boot-loop in terrible garish green. All the text is in Rusoek, a creole language spawned out of the borders of UA and UPP space from some Korean settlements."
+	desc = "屏幕卡在某种可怕的、花哨的绿色启动循环中。所有文字都是鲁索埃克语，这是一种在UA和UPP空间边界的一些韩国定居点产生的克里奥尔语。"
 
 //biomass turbine
 
 /obj/structure/prop/turbine //maybe turn this into an actual power generation device? Would be cool!
-	name = "power turbine"
+	name = "动力涡轮机"
 	icon = 'icons/obj/structures/props/industrial/biomass_turbine.dmi'
 	icon_state = "biomass_turbine"
-	desc = "A gigantic turbine that runs on god knows what. It could probably be turned on by someone with the correct know-how."
+	desc = "一个靠天知道什么东西运行的巨型涡轮机。或许懂行的人能把它启动。"
 	density = TRUE
 	breakable = FALSE
 	explo_proof = TRUE
@@ -302,7 +302,7 @@
 		return
 	else if (ishuman(user) && HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		on = !on
-		visible_message("You pry at the control valve on [src]. The machine shudders." , "[user] pries at the control valve on [src]. The entire machine shudders.")
+		visible_message("你撬动[src]上的控制阀。机器一阵颤动。" , "[user] pries at the control valve on [src]. The entire machine shudders.")
 
 		Update()
 
@@ -320,10 +320,10 @@
 	return
 
 /obj/structure/prop/turbine_extras
-	name = "power turbine struts"
+	name = "动力涡轮机支架"
 	icon = 'icons/obj/structures/props/industrial/biomass_turbine.dmi'
 	icon_state = "support_struts_r"
-	desc = "Pipes, or maybe support struts that lead into, or perhaps support that big ol' turbine."
+	desc = "管道，或者是通向那个大家伙涡轮机的支撑架，也可能是用来支撑它的。"
 	density = FALSE
 	breakable = FALSE
 	explo_proof = TRUE
@@ -331,13 +331,13 @@
 	unacidable = TRUE
 
 /obj/structure/prop/turbine_extras/border
-	name = "power turbine warning stripes"
+	name = "动力涡轮机警示条纹"
 	icon_state = "biomass_turbine_border"
-	desc = "Warning markers. Keep a safe distance, high voltage!"
+	desc = "警示标记。保持安全距离，高压危险！"
 	layer = 2.5
 
 /obj/structure/prop/turbine_extras/left
-	name = "power turbine struts"
+	name = "动力涡轮机支架"
 	icon_state = "support_struts_l"
 
 /obj/structure/prop/turbine_extras/ex_act(severity, direction)
@@ -346,18 +346,18 @@
 //power transformer
 
 /obj/structure/prop/power_transformer
-	name = "power transformer"
+	name = "电力变压器"
 	icon = 'icons/obj/structures/props/industrial/power_transformer.dmi'
 	icon_state = "transformer"
 	bound_width = 64
 	bound_height = 64
-	desc = "A passive electrical component that controls where and which circuits power flows into."
+	desc = "一种无源电气元件，用于控制电力流向哪些电路以及流向何处。"
 
 //cash registers
 
 /obj/structure/prop/cash_register
-	name = "digital cash register"
-	desc = "A Seegson brand point of sales system that accepts credit chits... and cash assuming it is operated. Rumor has it these use the same logic board as Seegson Working Joes. You are becoming financially unstable."
+	name = "数字收银机"
+	desc = "一款西格森品牌的销售点系统，接受信用芯片……如果有人操作的话也收现金。传闻说它们和西格森工作乔用的是同一款逻辑板。你的财务状况正变得不稳定。"
 	icon = 'icons/obj/structures/props/cash_register.dmi'
 	icon_state = "cash_register"
 	density = TRUE
@@ -379,22 +379,22 @@
 	icon_state = "cash_register_off_open"
 
 /obj/structure/prop/structure_lattice //instance me by direction for color variants
-	name = "structural lattice"
-	desc = "Like rebar, but in space."
+	name = "结构框架"
+	desc = "就像钢筋，不过是太空版的。"
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "structure_lattice"
 	density = TRUE //impassable by default
 
 /obj/structure/prop/resin_prop
-	name = "resin coated object"
-	desc = "Well, it's useless now."
+	name = "树脂覆盖的物体"
+	desc = "好吧，现在它没用了。"
 	icon = 'icons/obj/resin_objects.dmi'
 	icon_state = "watertank"
 
 //indestructible props
 /obj/structure/prop/invuln
-	name = "instanceable object"
-	desc = "This needs to be defined by a coder."
+	name = "可实例化对象"
+	desc = "这需要由程序员来定义。"
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "structure_lattice"
 	explo_proof = TRUE
@@ -407,16 +407,16 @@
 /obj/structure/prop/invuln/static_corpse
 
 /obj/structure/prop/invuln/static_corpse/afric_zimmer
-	name = "Maj. Afric Zimmerman"
-	desc = "What remains of Maj. Afric Zimmerman. Their entire head is missing. Someone shed a tear."
+	name = "阿夫里克·齐默曼少校"
+	desc = "阿夫里克·齐默曼少校的遗骸。他们的整个头部都不见了。有人该为此落泪。"
 	icon = 'icons/obj/structures/props/64x64.dmi'
 	icon_state = "afric_zimmerman"
 	density = FALSE
 
 /obj/structure/prop/invuln/lifeboat_hatch_placeholder
 	density = FALSE
-	name = "non-functional hatch"
-	desc = "You'll need more than a prybar for this one."
+	name = "故障舱口"
+	desc = "对付这个，光靠撬棍可不够。"
 	icon = 'icons/obj/structures/machinery/bolt_target.dmi'
 	icon_state = "closed"
 
@@ -434,7 +434,7 @@
 		. &= ~MOVE_TURF
 
 /obj/structure/prop/invuln/dropship_parts/lifeboat
-	name = "Lifeboat"
+	name = "救生艇"
 	icon_state = ""
 	icon = 'icons/turf/lifeboat.dmi'
 
@@ -444,7 +444,7 @@
 
 /obj/structure/prop/brazier
 	name = "brazier"
-	desc = "The fire inside the brazier emits a relatively dim glow to flashlights and flares, but nothing can replace the feeling of sitting next to a fireplace with your friends."
+	desc = "火盆内的火焰为手电和照明弹提供了相对微弱的光芒，但没有什么能替代与朋友围坐在壁炉旁的感觉。"
 	icon = 'icons/obj/structures/bonfire.dmi'
 	icon_state = "brazier"
 	density = TRUE
@@ -479,69 +479,69 @@
 				return ..()
 			var/obj/item/stack/sheet/wood/wooden_boards = hit_item
 			if(!wooden_boards.use(5))
-				to_chat(user, SPAN_WARNING("Not enough wood!"))
+				to_chat(user, SPAN_WARNING("木材不足！"))
 				return
-			user.visible_message(SPAN_NOTICE("[user] fills [src] with [hit_item]."))
+			user.visible_message(SPAN_NOTICE("[user]用[hit_item]填满了[src]。"))
 		if(STATE_IGNITE)
 			if(!hit_item.heat_source)
 				return ..()
 			if(!do_after(user, 3 SECONDS, INTERRUPT_MOVED, BUSY_ICON_BUILD))
 				return
-			user.visible_message(SPAN_NOTICE("[user] ignites [src] with [hit_item]."))
+			user.visible_message(SPAN_NOTICE("[user]用[hit_item]点燃了[src]。"))
 
 	new frame_type(loc)
 	qdel(src)
 
 /obj/structure/prop/brazier/frame
-	name = "empty brazier"
-	desc = "An empty brazier."
+	name = "空火盆"
+	desc = "一个空火盆。"
 	icon_state = "brazier_frame"
 	light_on = FALSE
 	frame_type = /obj/structure/prop/brazier/frame/full
 	state = STATE_FUEL
 
 /obj/structure/prop/brazier/frame/full
-	name = "empty full brazier"
-	desc = "An empty brazier. Yet it's also full. What??? Use something hot to ignite it, like a welding tool."
+	name = "空置的满火盆"
+	desc = "一个空火盆。但它又是满的。什么情况？？？用热源点燃它，比如焊枪。"
 	icon_state = "brazier_frame_filled"
 	frame_type = /obj/structure/prop/brazier
 	state = STATE_IGNITE
 
 /obj/structure/prop/brazier/torch
 	name = "torch"
-	desc = "It's a torch."
+	desc = "这是一支火把。"
 	icon_state = "torch"
 	density = FALSE
 	light_range = 5
 
 /obj/structure/prop/brazier/frame/full/torch
-	name = "unlit torch"
-	desc = "It's a torch, but it's not lit. Use something hot to ignite it, like a welding tool."
+	name = "未点燃的火把"
+	desc = "这是一支火把，但没点燃。用热源点燃它，比如焊枪。"
 	icon_state = "torch_frame"
 	frame_type = /obj/structure/prop/brazier/torch
 
 /obj/item/prop/torch_frame
-	name = "unlit torch"
+	name = "未点燃的火把"
 	icon = 'icons/obj/structures/bonfire.dmi'
-	desc = "It's a torch, but it's not lit or placed down. Click on a wall to place it."
+	desc = "这是一支火把，但没点燃也没放置。点击墙壁来放置它。"
 	icon_state = "torch_frame"
 
 /obj/structure/prop/brazier/frame/full/campfire
-	name = "unlit campfire"
-	desc = "A circle of stones surrounding a pile of wood. If only you were to light it."
+	name = "未点燃的篝火"
+	desc = "一圈石头围着一堆木头。要是能点燃就好了。"
 	icon_state = "campfire"
 	frame_type = /obj/structure/prop/brazier/campfire
 	density = FALSE
 
 /obj/structure/prop/brazier/frame/full/campfire/smolder
-	name = "smoldering campfire"
-	desc = "A campfire that used to be lit, but was extinguished. You can still see the embers, and smoke rises from it."
+	name = "闷烧的篝火"
+	desc = "一堆曾经点燃但已熄灭的篝火。你仍能看到余烬，并有烟雾从中升起。"
 	state = STATE_FUEL
 	frame_type = /obj/structure/prop/brazier/frame/full/campfire
 
 /obj/structure/prop/brazier/campfire
 	name = "campfire"
-	desc = "A circle of stones surrounding a burning pile of wood. The fire is roaring and you can hear its crackle. You could probably stomp the fire out."
+	desc = "一圈石头围着一堆燃烧的木头。火焰熊熊，你能听到噼啪声。你或许可以踩灭它。"
 	icon = 'icons/obj/structures/bonfire.dmi'
 	icon_state = "campfire_on"
 	density = FALSE
@@ -592,41 +592,41 @@
 /obj/structure/prop/brazier/campfire/attack_hand(mob/user)
 	. = ..()
 	if(!extinguishable)
-		to_chat(user, SPAN_WARNING("You cannot extinguish [src]."))
+		to_chat(user, SPAN_WARNING("你无法熄灭[src]。"))
 		return
-	to_chat(user, SPAN_NOTICE("You begin to extinguish [src]."))
+	to_chat(user, SPAN_NOTICE("你开始熄灭[src]。"))
 	while(remaining_fuel)
 		if(user.action_busy || !do_after(user, 3 SECONDS, INTERRUPT_MOVED, BUSY_ICON_BUILD))
 			return
 		fuel_drain()
-		to_chat(user, SPAN_NOTICE("You continue to extinguish [src]."))
-	visible_message(SPAN_NOTICE("[user] extinguishes [src]."))
+		to_chat(user, SPAN_NOTICE("你继续熄灭[src]。"))
+	visible_message(SPAN_NOTICE("[user]熄灭了[src]。"))
 
 /obj/structure/prop/brazier/campfire/attackby(obj/item/attacking_item, mob/user)
 	if(!istype(attacking_item, /obj/item/stack/sheet/wood))
-		to_chat(user, SPAN_NOTICE("You cannot fuel [src] with [attacking_item]."))
+		to_chat(user, SPAN_NOTICE("你无法用[attacking_item]给[src]添加燃料。"))
 		return
 	var/obj/item/stack/sheet/wood/fuel = attacking_item
 	if(remaining_fuel >= initial(remaining_fuel))
-		to_chat(user, SPAN_NOTICE("You cannot fuel [src] further."))
+		to_chat(user, SPAN_NOTICE("你无法再给[src]添加更多燃料。"))
 		return
 	if(!fuel.use(1))
-		to_chat(user, SPAN_NOTICE("You do not have enough [attacking_item] to fuel [src]."))
+		to_chat(user, SPAN_NOTICE("你没有足够的[attacking_item]来给[src]添加燃料。"))
 		return
-	visible_message(SPAN_NOTICE("[user] fuels [src] with [fuel]."))
+	visible_message(SPAN_NOTICE("[user]用[fuel]给[src]添加了燃料。"))
 	remaining_fuel++
 
 /obj/structure/prop/brazier/campfire/attack_alien(mob/living/carbon/xenomorph/xeno)
 	if(!extinguishable)
-		to_chat(xeno, SPAN_WARNING("You cannot extinguish [src]."))
+		to_chat(xeno, SPAN_WARNING("你无法熄灭[src]。"))
 		return
-	to_chat(xeno, SPAN_NOTICE("You begin to extinguish [src]."))
+	to_chat(xeno, SPAN_NOTICE("你开始熄灭[src]。"))
 	while(remaining_fuel)
 		if(xeno.action_busy || !do_after(xeno, 1 SECONDS, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 			return
 		fuel_drain()
-		to_chat(xeno, SPAN_NOTICE("You continue to extinguish [src]."))
-	visible_message(SPAN_WARNING("[xeno] extinguishes [src]!"))
+		to_chat(xeno, SPAN_NOTICE("你继续熄灭[src]。"))
+	visible_message(SPAN_WARNING("[xeno]熄灭了[src]！"))
 
 /obj/structure/prop/brazier/campfire/proc/fuel_drain(looping)
 	remaining_fuel--
@@ -651,40 +651,40 @@
 
 /obj/structure/prop/ice_colony
 	name = "prop"
-	desc = "Call a coder (or a mapper) you shouldn't be seeing this!"
+	desc = "呼叫程序员（或地图设计师）——你不该看到这个！"
 	icon = 'icons/obj/structures/props/ice_colony/props.dmi'
 	projectile_coverage = 10
 
 /obj/structure/prop/ice_colony/soil_net
-	name = "soil net"
-	desc = "Scientists use these suspended nets to superimpose a grid over a patch of ground for study."
+	name = "土壤网格"
+	desc = "科学家使用这些悬挂的网格在地面上叠加一个坐标格网进行研究。"
 	icon_state = "soil_grid"
 
 /obj/structure/prop/ice_colony/ice_crystal
-	name = "ice crystal"
-	desc = "It is a giant crystal of ice. The chemical process that keeps it frozen despite major seasonal temperature flux is what the United American Greater Argentinian science team is studying here on the Snowball."
+	name = "冰晶"
+	desc = "这是一个巨大的冰晶。尽管季节温度变化剧烈，但使其保持冻结的化学过程，正是美国大阿根廷科学团队在这颗“雪球”上研究的内容。"
 	icon_state = "ice_crystal"
 
 /obj/structure/prop/ice_colony/ground_wire
-	name = "ground wire"
-	desc = "A small string of black wire hangs between two marker posts. Probably used to mark off an area."
+	name = "地线"
+	desc = "一小段黑色电线悬挂在两个标记柱之间。可能用于标记区域。"
 	icon_state = "small_wire"
 
 /obj/structure/prop/ice_colony/poly_kevlon_roll
-	name = "plastic roll"
-	desc = "A big roll of poly-kevlon plastic used in temporary shelter construction."
+	name = "塑料卷"
+	desc = "一大卷用于临时庇护所建造的聚凯夫拉塑料。"
 	icon_state = "kevlon_roll"
 	anchored = FALSE
 
 /obj/structure/prop/ice_colony/surveying_device
-	name = "surveying device"
-	desc = "A small laser measuring tool and camera mounted on a tripod. Comes in a stark safety yellow."
+	name = "测量设备"
+	desc = "一个安装在三角架上的小型激光测量工具和摄像头。采用醒目的安全黄色。"
 	icon_state = "surveying_device"
 	anchored = FALSE
 
 /obj/structure/prop/ice_colony/surveying_device/measuring_device
-	name = "measuring device"
-	desc = "Some sort of doohickey that measures stuff."
+	name = "测量装置"
+	desc = "某种用来测量东西的小玩意儿。"
 	icon_state = "measuring_device"
 
 /obj/structure/prop/ice_colony/dense
@@ -697,7 +697,7 @@
 			return
 		xeno.animation_attack_on(src)
 		playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
-		xeno.visible_message(SPAN_DANGER("[xeno] slices [src] apart!"),
+		xeno.visible_message(SPAN_DANGER("[xeno]将[src]切碎！"),
 		SPAN_DANGER("We slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		deconstruct(FALSE)
 		return XENO_ATTACK_ACTION
@@ -710,51 +710,51 @@
 		return TAILSTAB_COOLDOWN_NONE
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	deconstruct(FALSE)
-	xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+	xeno.visible_message(SPAN_DANGER("[xeno]用它的尾巴摧毁了[src]！"),
 	SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/prop/ice_colony/dense/ice_tray
-	name = "ice slab tray"
+	name = "冰板托盘"
 	icon_state = "ice_tray"
-	desc = "It is a tray filled with slabs of dark ice."
+	desc = "这是一个装满深色冰板的托盘。"
 
 /obj/structure/prop/ice_colony/dense/planter_box
 	icon_state = "planter_box_soil"
-	name = "grow box"
-	desc = "A root lattice is half buried inside the grow box."
+	name = "培育箱"
+	desc = "一个根茎格栅半埋在培育箱里。"
 
 /obj/structure/prop/ice_colony/dense/planter_box/hydro
 	icon_state = "hydro_tray"
-	name = "hydroponics lattice"
-	desc = "A root lattice connected to two floating pontoons."
+	name = "水培格栅"
+	desc = "一个连接着两个浮动浮筒的根茎格栅。"
 
 /obj/structure/prop/ice_colony/dense/planter_box/plated
 	icon_state = "planter_box_empty"
-	name = "plated grow box"
-	desc = "The planter box is empty."
+	name = "板式培育箱"
+	desc = "种植箱是空的。"
 
 /obj/structure/prop/ice_colony/flamingo
 	density = FALSE
-	name = "lawn flamingo"
-	desc = "For ornamenting your suburban lawn... or your ice colony."
+	name = "草坪火烈鸟"
+	desc = "用于装饰你的郊区草坪……或者你的冰雪殖民地。"
 	icon_state = "flamingo"
 
 /obj/structure/prop/ice_colony/flamingo/festive
-	name = "festive lawn flamingo"
-	desc = "For ornamenting your suburban lawn... or your ice colony during the festive season. Not that anyone has an Earth calendar out here."
+	name = "节日草坪火烈鸟"
+	desc = "用于在节日期间装饰你的郊区草坪……或者你的冰雪殖民地。虽然在这地方没人有地球日历。"
 	icon_state = "flamingo_santa"
 
 /obj/structure/prop/ice_colony/hula_girl //todo, animate based on dropship movement -Monkey
-	name = "hula girl"
-	desc = "Apparently at one point, Hawaii had beaches."
+	name = "草裙舞女郎"
+	desc = "显然，夏威夷曾经有过海滩。"
 	icon = 'icons/obj/structures/props/ice_colony/Hula.dmi'
 	icon_state = "Hula_Gal"
 
 /obj/structure/prop/ice_colony/tiger_rug
-	name = "tiger rug"
-	desc = "A rather tasteless but impressive tiger rug. Must've costed a fortune to get this exported to the rim."
+	name = "虎皮地毯"
+	desc = "一张相当俗气但令人印象深刻的虎皮地毯。把它运到边疆地带一定花了笔巨款。"
 	icon = 'icons/obj/structures/props/ice_colony/Tiger_Rugs.dmi'
 	icon_state = "Bengal" //instanceable, lots of variants!
 
@@ -764,14 +764,14 @@
 	projectile_coverage = 0
 	density = FALSE
 	icon = 'icons/obj/structures/props/holiday_props.dmi'
-	desc = "Parent object for temporary holiday structures. If you are reading this, go find a mapper and tell them to search up error code: TOO MUCH EGGNOG"//hello future mapper. Next time use the sub types or instance the desc. Thanks -past mapper.
+	desc = "临时节日结构物的父对象。如果你看到这条信息，去找个地图编辑员，告诉他们搜索错误代码：蛋奶酒喝太多了"//hello future mapper. Next time use the sub types or instance the desc. Thanks -past mapper.
 	layer = 4
 	health = 50
 	anchored = TRUE
 
 /obj/structure/prop/holidays/string_lights
-	name = "M1 pattern festive bulb strings"
-	desc = "Strung from strut to strut, these standard issue M1 pattern 'festive bulb strings' flicker and shimmer to the tune of the output frequency of the Almayer's Engine... or the local power grid. Might want to ask the Bravo's to check which one it is for ya. Ya damn jarhead."
+	name = "M1型节日彩灯串"
+	desc = "这些标准配发的M1型‘节日彩灯串’在结构支架间悬挂，随着阿尔迈耶号引擎的输出频率……或是本地电网的节奏闪烁发光。你最好让布拉沃班的人帮你查查到底是哪个。你这该死的陆战队员。"
 	icon_state = "string_lights"
 
 
@@ -782,12 +782,12 @@
 	icon_state = "string_lights_cap"
 
 /obj/structure/prop/holidays/wreath
-	name = "M1 pattern festive needle torus"
-	desc = "In 2140 after a two different sub levels of the São Luís Bay Underground Habitat burned out (evidence points to a Bladerunner incident, but local police denies such claims) due to actual wreaths made with REAL needles, these have been issued ever since. They're made of ''''''pine'''''' scented poly-kevlon. According to the grunts from the American Corridor, during the SACO riots, protestors would pack these things into pillow cases, forming rudimentary body armor against soft point ballistics."
+	name = "M1型节日针叶花环"
+	desc = "2140年，圣路易斯湾地下栖息地的两个不同下层区域因使用真针叶制成的花环而烧毁（证据指向一起‘银翼杀手’事件，但当地警方否认此说法），此后便配发这种花环。它们由‘松木’香味的聚凯夫拉材料制成。据美国走廊区的士兵说，在SACO骚乱期间，抗议者曾将这些花环塞进枕套，制成抵御软尖弹药的简易护甲。"
 	icon_state = "wreath"
 /obj/structure/prop/vehicles
 	name = "van"
-	desc = "An old van, seems to be broken down."
+	desc = "一辆旧厢式货车，看起来抛锚了。"
 	icon = 'icons/obj/structures/props/vehicles/vehicles.dmi'
 	icon_state = "van"
 	bound_height = 64
@@ -796,14 +796,14 @@
 	unacidable = FALSE
 
 /obj/structure/prop/vehicles/crawler
-	name = "colony crawler"
-	desc = "It is a tread bound crawler used in harsh conditions. Supplied by Orbital Blue International; 'Your friends, in the Aerospace business.' A subsidiary of Weyland Yutani."
+	name = "殖民地履带车"
+	desc = "这是一种用于恶劣环境的履带式爬行车。由轨道蓝国际公司提供；‘您在航空航天领域的朋友。’维兰德-汤谷的子公司。"
 	icon_state = "crawler"
 	density = TRUE
 
 /obj/structure/prop/vehicles/tank/twe
 	name = "\improper FV150 Shobo MKII"
-	desc = "The FV150 Shobo MKII is a Combat Reconnaissance Vehicle Tracked, abbreviated to CVR(T) in official documentation. It was co-developed in 2175 by Weyland-Yutani and Gallar Co., a Titan based heavy vehicle manufacturer. Taking into account lessons learned from the MkI's performance in the Australian Wars, major structural changes were made, and the MKII went into production in 2178. It is armed with a twin 30mm cannon and a L56A2 10x28mm coaxial, complimented by its ammunition stores of 170 rounds of 30mm and 1600 rounds of 10x28mm. The maximum speed of the Shobo is 60 mph, but on a standard deployment after the ammo stores are fully loaded and the terrain is taken into account, it consistently sits at 55mph."
+	desc = "FV150 肖博 MKII 是一款战斗侦察履带车，官方文件缩写为 CVR(T)。它于2175年由维兰德-汤谷公司与总部位于土星的重型车辆制造商加拉尔公司联合开发。考虑到从MKI在澳大利亚战争中的表现吸取的教训，MKII进行了重大的结构改动，并于2178年投入生产。它配备一门双联30毫米机炮和一挺L56A2型10x28毫米同轴机枪，辅以170发30毫米弹药和1600发10x28毫米弹药的存储量。肖博的最高时速为60英里，但在标准部署中，弹药满载并考虑地形因素后，其速度通常保持在55英里/小时。"
 	icon = 'icons/obj/vehicles/twe_tank.dmi'
 	icon_state = "twe_tank"
 	density = TRUE
@@ -816,8 +816,8 @@
 	icon_state = "flammable_pipe_1"
 
 /obj/structure/prop/invuln/overhead/flammable_pipe
-	name = "dense fuel line"
-	desc = "Likely to be incredibly flammable."
+	name = "致密燃料管线"
+	desc = "很可能极其易燃。"
 	density = TRUE
 
 /obj/structure/prop/invuln/overhead/flammable_pipe/fly
@@ -825,25 +825,25 @@
 
 
 /obj/structure/prop/static_tank
-	name = "liquid tank"
-	desc = "Warning, contents under pressure!"
+	name = "液体储罐"
+	desc = "警告，内容物处于压力下！"
 	icon = 'icons/obj/structures/props/industrial/generic_props.dmi'
 	icon_state = "tank"
 	density = TRUE
 
 /obj/structure/prop/static_tank/fuel
-	desc = "It contains Decatuxole-Hypospaldirol. A non-volatile liquid fuel type that tastes like oranges. Can't really be used for anything outside of atmos-rocket boosters."
+	desc = "内含十烷托索-海波司帕迪醇。一种非挥发性液体燃料，尝起来像橙子。除了用于大气层火箭助推器外，基本没什么其他用处。"
 	icon_state = "weldtank_old"
 
 /obj/structure/prop/static_tank/water
-	desc = "It contains non-potable water. A label on the side instructs you to boil before consumption. It smells vaguely like the showers on the Almayer."
+	desc = "内含非饮用水。侧面的标签指示你在饮用前需煮沸。它闻起来隐约有点像阿尔迈耶号上的淋浴间。"
 	icon_state = "watertank_old"
 
 /obj/structure/prop/broken_arcade
-	desc = "You can't see anything behind the screen, it looks half human and half machine."
+	desc = "你无法看清屏幕后的东西，看起来半人半机械。"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "arcadeb"
-	name = "Spirit Phone, The Game, The Movie: II"
+	name = "灵异电话，游戏，电影：II"
 
 //INVULNERABLE PROPS
 
@@ -854,9 +854,9 @@
 	icon_state = "ice_tray"
 
 /obj/structure/prop/invuln/catwalk_support
-	name = "support lattice"
+	name = "支撑格栅"
 	icon_state = "support_lattice"
-	desc = "The middle of a large set of steel support girders."
+	desc = "一组大型钢制支撑梁的中间部分。"
 	density = FALSE
 
 /obj/structure/prop/invuln/minecart_tracks
@@ -864,30 +864,30 @@
 	icon_state = "rail"
 	icon = 'icons/obj/structures/props/mining.dmi'
 	density =  0
-	desc = "Minecarts and rail vehicles go on these."
+	desc = "矿车和轨道车辆在此行驶。"
 	layer = 3
 
 /obj/structure/prop/invuln/minecart_tracks/bumper
-	name = "rail bumpers"
+	name = "轨道缓冲器"
 	icon_state = "rail_bumpers"
-	desc = "This (usually) stops minecarts and other rail vehicles at the end of a line of track."
+	desc = "这（通常）用于在线路末端阻止矿车和其他轨道车辆。"
 
 /obj/structure/prop/invuln/dense
 	density = TRUE
 
 /obj/structure/prop/invuln/dense/catwalk_support
-	name = "support lattice"
+	name = "支撑格栅"
 	icon_state = "support_lattice"
-	desc = "The base of a large set of steel support girders."
+	desc = "一组大型钢制支撑梁的基座。"
 
 /obj/structure/prop/invuln/dense/ice_tray
-	name = "ice slab tray"
+	name = "冰板托盘"
 	icon_state = "ice_tray"
-	desc = "It is a tray filled with slabs of dark ice."
+	desc = "这是一个装满深色冰板的托盘。"
 
 /obj/structure/prop/invuln/ice_prefab
-	name = "prefabricated structure"
-	desc = "This structure is made of metal support rods and robust poly-kevlon plastics. A derivative of the stuff used in UA ballistics vests, USCM and UPP uniforms. The loose walls roll with each gust of wind."
+	name = "预制结构"
+	desc = "该结构由金属支撑杆和坚固的聚凯夫拉塑料制成。这种材料衍生自UA防弹背心、USCM和UPP制服所用的材料。松散的墙壁随着每一阵风晃动。"
 	icon = 'icons/obj/structures/props/ice_colony/fabs_tileset.dmi'
 	icon_state = "fab"
 	density = TRUE
@@ -903,7 +903,7 @@
 	icon = 'icons/obj/structures/props/ice_colony/fabs_greebles.dmi'
 	icon_state = "antenna"
 	layer = ABOVE_MOB_LAYER
-	desc = "Windsocks, Air-Con units, solarpanels, oh my!"
+	desc = "风向袋、空调机组、太阳能板，哦，我的天！"
 	density = FALSE
 
 
@@ -921,14 +921,14 @@
 	density = FALSE
 
 /obj/structure/prop/invuln/remote_console_pod
-	name = "Remote Console Pod"
-	desc = "A drop pod used to launch remote piloting equipment to USCM areas of operation."
+	name = "远程控制台舱"
+	desc = "一种用于将远程操控设备投送至USCM作战区域的空投舱。"
 	icon = 'icons/obj/structures/droppod_32x64.dmi'
 	icon_state = "techpod_open"
 	layer = DOOR_CLOSED_LAYER
 
 /obj/structure/prop/invuln/overhead_pipe
-	name = "overhead pipe segment"
+	name = "架空管道段"
 	desc = ""
 	icon = 'icons/obj/pipes/pipes.dmi'
 	icon_state = "intact-scrubbers"
@@ -943,7 +943,7 @@
 ///Decorative fire.
 /obj/structure/prop/invuln/fire
 	name = "fire"
-	desc = "That isn't going out any time soon."
+	desc = "这火一时半会儿灭不了。"
 	color = "#FF7700"
 	icon = 'icons/effects/fire.dmi'
 	icon_state = "dynamic_2"
@@ -953,12 +953,12 @@
 
 /obj/structure/prop/invuln/fusion_reactor
 	name = "\improper S-52 fusion reactor"
-	desc = "A Westingland S-52 Fusion Reactor. Takes fuels cells and converts them to power. Also produces a large amount of heat."
+	desc = "一台威斯汀兰S-52聚变反应堆。消耗燃料电池并将其转化为能量。同时产生大量热量。"
 	icon = 'icons/obj/structures/machinery/fusion_eng.dmi'
 	icon_state = "off"
 
 /obj/structure/prop/invuln/pipe_water
-	name = "pipe water"
+	name = "管道水"
 	desc = ""
 	icon = 'icons/obj/structures/props/watercloset.dmi'
 	icon_state = "water"
@@ -969,7 +969,7 @@
 	desc = "The [is_mainship_level(z) ? copytext(MAIN_SHIP_NAME, 5) : "colony"] has sprung a leak!"
 
 /obj/structure/prop/invuln/lattice_prop
-	desc = "A lightweight support lattice."
+	desc = "一个轻质支撑框架。"
 	name = "lattice"
 	icon = 'icons/obj/structures/props/smoothlattice.dmi'
 	icon_state = "lattice0"
@@ -977,8 +977,8 @@
 	layer = RIPPLE_LAYER
 
 /obj/structure/prop/wooden_cross
-	name = "wooden cross"
-	desc = "A wooden grave marker. Is it more respectful because someone made it by hand, or less, because it's crude and misshapen?"
+	name = "木制十字架"
+	desc = "一个木制墓碑。是因为有人亲手制作而更显尊重，还是因为它粗糙且形状不规则而显得不那么尊重？"
 	icon = 'icons/obj/structures/props/furniture/crosses.dmi'
 	icon_state = "cross1"
 	density = FALSE
@@ -1009,7 +1009,7 @@
 		var/obj/item/dogtag/dog = W
 		if(!tagged)
 			tagged = TRUE
-			user.visible_message(SPAN_NOTICE("[user] drapes [W] around [src]."))
+			user.visible_message(SPAN_NOTICE("[user]将[W]披在[src]上。"))
 			dogtag_name = popleft(dog.fallen_names)
 			dogtag_assign = popleft(dog.fallen_assgns)
 			dogtag_blood = popleft(dog.fallen_blood_types)
@@ -1021,12 +1021,12 @@
 			else
 				return
 		else
-			to_chat(user, SPAN_WARNING("There's already a dog tag on [src]!"))
-			balloon_alert(user, "already a tag here!")
+			to_chat(user, SPAN_WARNING("[src]上已经有一个身份牌了！"))
+			balloon_alert(user, "这里已经有身份牌了！")
 
 	if(istype(W, /obj/item/clothing/head))
 		if(helmet)
-			to_chat(user, SPAN_WARNING("[helmet] is already resting atop [src]!"))
+			to_chat(user, SPAN_WARNING("[helmet]已经放在[src]上了！"))
 			return
 		if(!user.drop_inv_item_to_loc(W, src))
 			return
@@ -1035,7 +1035,7 @@
 		var/image/visual_overlay = W.get_mob_overlay(null, WEAR_HEAD)
 		visual_overlay.pixel_y = -10 //Base image is positioned to go on a human's head.
 		overlays += visual_overlay
-		to_chat(user, SPAN_NOTICE("You set \the [W] atop \the [src]."))
+		to_chat(user, SPAN_NOTICE("你将\the [W]放在\the [src]上。"))
 		return
 
 	if(user.a_intent == INTENT_HARM)
@@ -1055,16 +1055,16 @@
 			action_msg = "write something on"
 			time_multiplier = 2
 
-		var/message = sanitize(input(user, "What do you write on [src]?", "Inscription"))
+		var/message = sanitize(input(user, "你要在[src]上写什么？", "Inscription"))
 		if(!message)
 			return
-		user.visible_message(SPAN_NOTICE("[user] begins to [action_msg] [src]."),
+		user.visible_message(SPAN_NOTICE("[user]开始[action_msg][src]。"),
 			SPAN_NOTICE("You begin to [action_msg] [src]."), null, 4)
 
 		if(!do_after(user, length(message) * time_multiplier, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-			to_chat(user, SPAN_WARNING("You were interrupted!"))
+			to_chat(user, SPAN_WARNING("你被打断了！"))
 		else
-			user.visible_message(SPAN_NOTICE("[user] uses \his [W.name] to [action_msg] [src]."),
+			user.visible_message(SPAN_NOTICE("[user]使用\his [W.name]来[action_msg][src]。"),
 				SPAN_NOTICE("You [action_msg] [src] with your [W.name]."), null, 4)
 			if(inscription)
 				inscription += "\n[message]"
@@ -1081,7 +1081,7 @@
 	if(helmet)
 		helmet.forceMove(loc)
 		user.put_in_hands(helmet)
-		to_chat(user, SPAN_NOTICE("You lift \the [helmet] off of \the [src]."))
+		to_chat(user, SPAN_NOTICE("你将\the [helmet]从\the [src]上取下。"))
 		helmet = null
 		overlays.Cut()
 
@@ -1090,10 +1090,10 @@
 	update_health(rand(M.melee_damage_lower, M.melee_damage_upper))
 	playsound(src, 'sound/effects/woodhit.ogg', 25, 1)
 	if(health <= 0)
-		M.visible_message(SPAN_DANGER("[M] slices [src] apart!"),
+		M.visible_message(SPAN_DANGER("[M]将[src]切碎！"),
 		SPAN_DANGER("You slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
-		M.visible_message(SPAN_DANGER("[M] slashes [src]!"),
+		M.visible_message(SPAN_DANGER("[M]劈砍[src]！"),
 		SPAN_DANGER("You slash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_ATTACK_ACTION
 
@@ -1103,10 +1103,10 @@
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	update_health(xeno.melee_damage_upper)
 	if(health <= 0)
-		xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno]用它的尾巴摧毁了[src]！"),
 		SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
-		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno] 用它的尾巴抽打 [src]！"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
@@ -1118,21 +1118,21 @@
 
 /obj/structure/prop/invuln/rope
 	name = "rope"
-	desc = "A secure rope looks like someone might've been hiding out on those rocks."
+	desc = "一条牢固的绳索看起来像是有人可能曾在那片岩石上藏身。"
 	icon = 'icons/obj/structures/props/dropship/dropship_equipment.dmi'
 	icon_state = "rope"
 	density = FALSE
 
 /obj/structure/prop/pred_flight
-	name = "hunter flight console"
-	desc = "A console designed by the Hunters to assist in flight pathing and navigation."
+	name = "猎手飞行控制台"
+	desc = "由猎手设计的控制台，用于辅助飞行路径规划和导航。"
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	icon_state = "overwatch"
 	density = TRUE
 
 /obj/structure/prop/invuln/joey
-	name = "Workin' Joey"
-	desc = "A defunct Seegson-brand Working Joe lifted from deep storage by a crew of marines after the last shore leave. Attempts have been made to modify the janitorial synthetic to serve as a crude bartender, but with little success."
+	name = "工作乔伊"
+	desc = "一个从深库存中被一队陆战队员在上次上岸休假后取出的、已失效的西格森品牌工作乔。有人试图将这个清洁用合成人改装成简陋的酒保，但收效甚微。"
 	icon = 'icons/obj/structures/props/props.dmi'
 	icon_state = "joey"
 	unslashable = FALSE
@@ -1198,7 +1198,7 @@
 		return FALSE
 
 	for(var/mob/mob in hearers(src, null))
-		mob.show_message("<span class='game say'><span class='name'>[src]</span> says, \"[initial(emote.say_message)]\"</span>", SHOW_MESSAGE_AUDIBLE)
+		mob.show_message("<span class='game say'><span class='name'>[src]</span>说，\"[initial(emote.say_message)]\"</span>", SHOW_MESSAGE_AUDIBLE)
 
 	var/list/viewers = get_mobs_in_view(7, src)
 	for(var/mob/current_mob in viewers)
@@ -1213,8 +1213,8 @@
 // Body Bag Pile
 
 /obj/structure/prop/body_bag_pile
-	name = "bodybag pile"
-	desc = "A grim mound of body bags stacked haphazardly."
+	name = "尸袋堆"
+	desc = "一堆随意堆放的尸袋，景象阴森。"
 	icon = 'icons/obj/structures/props/64x64_bodybag_pile.dmi'
 	icon_state = "bodybag_pile"
 	bound_height = 64
@@ -1223,8 +1223,8 @@
 	layer = BIG_XENO_LAYER
 
 /obj/structure/prop/body_bag_pile/charred
-	name = "charred bodybag pile"
-	desc = "A grim mound of body bags stacked haphazardly, their surfaces blackened and blistered from intense heat. The contents are partially burned."
+	name = "烧焦的尸袋堆"
+	desc = "一堆阴森的裹尸袋杂乱地堆成小山，表面因高温而焦黑起泡。里面的东西已经部分烧毁。"
 	icon = 'icons/obj/structures/props/64x64_bodybag_pile.dmi'
 	icon_state = "bodybag_pile"
 	bound_height = 64
@@ -1234,7 +1234,7 @@
 	layer = BIG_XENO_LAYER
 
 /obj/effect/decal/large_stain
-	name = "large stain"
+	name = "大片污渍"
 	desc = FALSE
 	icon = 'icons/obj/structures/props/64x64_bodybag_pile.dmi'
 	icon_state = "large_stain"

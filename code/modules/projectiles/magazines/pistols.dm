@@ -4,7 +4,7 @@
 
 /obj/item/ammo_magazine/pistol
 	name = "\improper M4A3 magazine (9mm)"
-	desc = "A 9mm pistol magazine for the M4A3."
+	desc = "一个用于M4A3的9mm手枪弹匣。"
 	caliber = "9mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/pistols.dmi'
 	icon_state = "m4a3"
@@ -17,37 +17,37 @@
 
 /obj/item/ammo_magazine/pistol/hp
 	name = "\improper M4A3 hollowpoint magazine (9mm)"
-	desc = "A hollow-point 9mm pistol magazine for the M4A3. These hollow-point bullets have noticeably higher stopping power on unarmored targets, and noticeably less on armored targets."
+	desc = "一个用于M4A3的空尖弹9mm手枪弹匣。这些空尖弹对无护甲目标有明显更高的停止作用，对护甲目标则明显更低。"
 	default_ammo = /datum/ammo/bullet/pistol/hollow
 	ammo_band_color = AMMO_BAND_COLOR_HOLLOWPOINT
 
 /obj/item/ammo_magazine/pistol/ap
 	name = "\improper M4A3 AP magazine (9mm)"
-	desc = "An armor-piercing 9mm pistol magazine for the M4A3. These armor-piercing rounds have noticeably higher stopping power on armored targets, and noticeably less on unarmored targets."
+	desc = "一个用于M4A3的穿甲弹9mm手枪弹匣。这些穿甲弹对护甲目标有明显更高的停止作用，对无护甲目标则明显更低。"
 	default_ammo = /datum/ammo/bullet/pistol/ap
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
 /obj/item/ammo_magazine/pistol/rubber
 	name = "\improper M4A3 Rubber magazine (9mm)"
-	desc = "A 9mm pistol magazine for the M4A3. This one contains rubber bullets."
+	desc = "一个用于M4A3的9mm手枪弹匣。这个装有橡胶子弹。"
 	default_ammo = /datum/ammo/bullet/pistol/rubber
 	ammo_band_color = AMMO_BAND_COLOR_RUBBER
 
 /obj/item/ammo_magazine/pistol/incendiary
 	name = "\improper M4A3 incendiary magazine (9mm)"
-	desc = "An incendiary 9mm pistol magazine for the M4A3."
+	desc = "一个用于M4A3的燃烧弹9mm手枪弹匣。"
 	default_ammo = /datum/ammo/bullet/pistol/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
 
 /obj/item/ammo_magazine/pistol/penetrating
 	name = "\improper M4A3 wall-penetrating magazine (9mm)"
-	desc = "A wall-penetrating 9mm pistol magazine for the M4A3."
+	desc = "一个用于M4A3的穿墙弹9mm手枪弹匣。"
 	default_ammo = /datum/ammo/bullet/pistol/ap/penetrating
 	ammo_band_color = AMMO_BAND_COLOR_PENETRATING
 
 /obj/item/ammo_magazine/pistol/toxin
 	name = "\improper M4A3 toxin magazine (9mm)"
-	desc = "A toxin 9mm pistol magazine for the M4A3."
+	desc = "一个用于M4A3的毒素弹9mm手枪弹匣。"
 	default_ammo = /datum/ammo/bullet/pistol/ap/toxin
 	ammo_band_color = AMMO_BAND_COLOR_TOXIN
 
@@ -56,7 +56,7 @@
 
 /obj/item/ammo_magazine/pistol/m1911
 	name = "\improper M1911 magazine (.45)"
-	desc = "A magazine for the legendary M1911 pistol. Holds eight standard rounds."
+	desc = "一个用于传奇M1911手枪的弹匣。可容纳八发标准子弹。"
 	default_ammo = /datum/ammo/bullet/pistol/heavy
 	caliber = ".45"
 	icon_state = "m4a345"//rename later
@@ -67,13 +67,13 @@
 
 /obj/item/ammo_magazine/pistol/m1911/highimpact
 	name = "\improper M1911 high-impact magazine (.45)"
-	desc = "A magazine for the legendary M1911 pistol. Holds eight concussive rounds that can briefly knock people down."
+	desc = "一个用于传奇M1911手枪的弹匣。可容纳八发能短暂击倒目标的震荡弹。"
 	default_ammo = /datum/ammo/bullet/pistol/heavy/highimpact
 	ammo_band_color = AMMO_BAND_COLOR_HIGH_IMPACT
 
 /obj/item/ammo_magazine/pistol/m1911/highimpact/ap
 	name = "\improper M1911 high-impact armor-piercing magazine (.45)"
-	desc = "A magazine for the legendary M1911 pistol. Holds eight concussive armor-piercing rounds that can briefly knock people down."
+	desc = "一个用于传奇M1911手枪的弹匣。可容纳八发能短暂击倒目标的震荡穿甲弹。"
 	default_ammo = /datum/ammo/bullet/pistol/heavy/highimpact/ap
 	ammo_band_color = AMMO_BAND_COLOR_HIGH_IMPACT_AP
 //-------------------------------------------------------
@@ -81,7 +81,7 @@
 
 /obj/item/ammo_magazine/pistol/mod88
 	name = "\improper 88M4 AP magazine (9mm)"
-	desc = "A 9mm pistol magazine for the Mod88."
+	desc = "一个用于Mod88的9mm手枪弹匣。"
 	default_ammo = /datum/ammo/bullet/pistol/ap
 	caliber = "9mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/WY/pistols.dmi'
@@ -106,25 +106,25 @@
 
 /obj/item/ammo_magazine/pistol/mod88/toxin
 	name = "\improper 88M4 toxic magazine (9mm)"
-	desc = "A toxin 9mm pistol magazine for the Mod88."
+	desc = "一个用于Mod88的毒素弹9mm手枪弹匣。"
 	default_ammo = /datum/ammo/bullet/pistol/ap/toxin
 	ammo_band_color = AMMO_BAND_COLOR_TOXIN
 
 /obj/item/ammo_magazine/pistol/mod88/penetrating
 	name = "\improper 88M4 wall-penetrating magazine (9mm)"
-	desc = "A wall-penetrating 9mm pistol magazine for the Mod88."
+	desc = "一个用于Mod88的穿墙弹9mm手枪弹匣。"
 	default_ammo = /datum/ammo/bullet/pistol/ap/penetrating
 	ammo_band_color = AMMO_BAND_COLOR_PENETRATING
 
 /obj/item/ammo_magazine/pistol/mod88/incendiary
 	name = "\improper 88M4 incendiary magazine (9mm)"
-	desc = "An incendiary 9mm pistol magazine for the Mod88."
+	desc = "一个用于Mod88的燃烧弹9mm手枪弹匣。"
 	default_ammo = /datum/ammo/bullet/pistol/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
 
 /obj/item/ammo_magazine/pistol/mod88/rubber
 	name = "\improper 88M4 rubber magazine (9mm)"
-	desc = "A 9mm pistol magazine for the Mod88. This one contains rubber bullets."
+	desc = "一个用于Mod88的9mm手枪弹匣。这个装有橡胶子弹。"
 	default_ammo = /datum/ammo/bullet/pistol/rubber
 	ammo_band_color = AMMO_BAND_COLOR_RUBBER
 
@@ -135,7 +135,7 @@
 	name = "\improper ES-4 stun magazine (9mm)"
 	default_ammo = /datum/ammo/bullet/pistol/rubber/es4
 	caliber = "9mm"
-	desc = "Holds 19 rounds of specialized Conductive 9mm. Electrostatic propulsion in the ES-4 functions by propelling an cV9mm round, at a proportionally slower velocity to maintain a higher kinetic energy transfer rate. All this turns a penetrative round into a less-than-lethal round."
+	desc = "可容纳19发特制导电9mm子弹。ES-4中的静电推进功能通过发射cV9mm子弹实现，其速度按比例降低以保持更高的动能传递率。所有这些将一枚穿透性子弹变成了非致命子弹。"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/WY/pistols.dmi'
 	icon_state = "es4"
 	max_rounds = 19
@@ -146,7 +146,7 @@
 
 /obj/item/ammo_magazine/pistol/vp78
 	name = "\improper VP78 magazine (9mm)"
-	desc = "A 9mm pistol magazine for the VP78."
+	desc = "一个用于VP78的9mm手枪弹匣。"
 	default_ammo = /datum/ammo/bullet/pistol/squash
 	caliber = "9mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/WY/pistols.dmi'
@@ -158,25 +158,25 @@
 
 /obj/item/ammo_magazine/pistol/vp78/toxin
 	name = "\improper VP78 toxic magazine (9mm)"
-	desc = "A toxin 9mm pistol magazine for the VP78."
+	desc = "一个用于VP78的9毫米毒素手枪弹匣。"
 	default_ammo = /datum/ammo/bullet/pistol/squash/toxin
 	ammo_band_color = AMMO_BAND_COLOR_TOXIN
 
 /obj/item/ammo_magazine/pistol/vp78/penetrating
 	name = "\improper VP78 wall-penetrating magazine (9mm)"
-	desc = "A wall-penetrating 9mm pistol magazine for the VP78."
+	desc = "一个用于VP78的9毫米穿甲手枪弹匣。"
 	default_ammo = /datum/ammo/bullet/pistol/squash/penetrating
 	ammo_band_color = AMMO_BAND_COLOR_PENETRATING
 
 /obj/item/ammo_magazine/pistol/vp78/incendiary
 	name = "\improper VP78 incendiary magazine (9mm)"
-	desc = "An incendiary 9mm pistol magazine for the VP78."
+	desc = "一个用于VP78的9毫米燃烧手枪弹匣。"
 	default_ammo = /datum/ammo/bullet/pistol/squash/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
 
 /obj/item/ammo_magazine/pistol/vp78/rubber
 	name = "\improper VP78 rubber magazine (9mm)"
-	desc = "A 9mm pistol magazine for the VP78. This one is loaded with rubber bullets."
+	desc = "一个用于VP78的9毫米手枪弹匣。此弹匣装填的是橡胶子弹。"
 	default_ammo = /datum/ammo/bullet/pistol/squash/rubber
 	ammo_band_color = AMMO_BAND_COLOR_RUBBER
 
@@ -185,7 +185,7 @@
 
 /obj/item/ammo_magazine/pistol/b92fs
 	name = "\improper Beretta 92FS magazine (9mm)"
-	desc = "A 9mm pistol magazine for the Beretta 92FS."
+	desc = "一个用于贝雷塔92FS的9毫米手枪弹匣。"
 	caliber = "9mm"
 	icon_state = "m4a3" //PLACEHOLDER
 	max_rounds = 15
@@ -198,7 +198,7 @@
 
 /obj/item/ammo_magazine/pistol/heavy
 	name = "\improper Desert Eagle magazine (.50)"
-	desc = "Seven rounds of powerful 50-caliber destruction."
+	desc = "七发威力强大的.50口径毁灭性弹药。"
 	default_ammo = /datum/ammo/bullet/pistol/deagle
 	caliber = ".50"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/pistols.dmi'
@@ -210,21 +210,21 @@
 	ammo_band_icon_empty = "+deagle_band_e"
 
 /obj/item/ammo_magazine/pistol/heavy/super //Commander's variant
-	name = "heavy Desert Eagle magazine (.50)"
-	desc = "Seven rounds of devastatingly powerful 50-caliber destruction."
+	name = "重型沙漠之鹰弹匣 (.50)"
+	desc = "七发毁灭性威力的.50口径弹药。"
 	gun_type = /obj/item/weapon/gun/pistol/heavy/co
 	default_ammo = /datum/ammo/bullet/pistol/deagle
 	ammo_band_color = AMMO_BAND_COLOR_SUPER
 
 /obj/item/ammo_magazine/pistol/heavy/super/highimpact
-	name = "high impact heavy Desert Eagle magazine (.50)"
-	desc = "Seven rounds of devastatingly powerful 50-caliber destruction. The bullets are tipped with a synthesized osmium and lead alloy to stagger absolutely anything they hit. Point away from anything you value."
+	name = "高冲击重型沙漠之鹰弹匣 (.50)"
+	desc = "七发毁灭性威力的.50口径弹药。弹头采用合成锇铅合金，足以击退任何被命中的目标。请勿对准任何你珍视之物。"
 	default_ammo = /datum/ammo/bullet/pistol/deagle/highimpact
 	ammo_band_color = AMMO_BAND_COLOR_HIGH_IMPACT
 
 /obj/item/ammo_magazine/pistol/heavy/super/highimpact/ap
 	name = "\improper High Impact Armor-Piercing Desert Eagle magazine (.50)"
-	desc = "Seven rounds of devastatingly powerful 50-caliber destruction. Packs a devastating punch. The bullets are tipped with an osmium-tungsten carbide alloy to not only stagger but also shred through any target's armor. Issued in few numbers due to the massive production cost and worries about hull breaches. Point away from anything you value."
+	desc = "七发毁灭性威力的.50口径弹药。威力惊人。弹头采用锇-碳化钨合金，不仅能击退目标，还能撕裂任何目标的护甲。由于生产成本高昂且担心船体破损，配发数量极少。请勿对准任何你珍视之物。"
 	default_ammo = /datum/ammo/bullet/pistol/deagle/highimpact/ap
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
@@ -233,7 +233,7 @@
 
 /obj/item/ammo_magazine/pistol/np92
 	name = "\improper NP92 magazine (9x18mm Makarov)"
-	desc = "A 9x18mm Makarov pistol magazine, for use in the NP92."
+	desc = "一个9x18毫米马卡洛夫手枪弹匣，用于NP92手枪。"
 	default_ammo = /datum/ammo/bullet/pistol
 	caliber = "9x18mm Makarov"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/pistols.dmi'
@@ -243,7 +243,7 @@
 
 /obj/item/ammo_magazine/pistol/np92/suppressed
 	name = "\improper NPZ92 magazine (9x18mm Makarov)"
-	desc = "A 9x18mm Makarov pistol magazine, for use in the NPZ92."
+	desc = "一个9x18毫米马卡洛夫手枪弹匣，用于NPZ92手枪。"
 	default_ammo = /datum/ammo/bullet/pistol
 	caliber = "9x18mm Makarov"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/pistols.dmi'
@@ -252,7 +252,7 @@
 
 /obj/item/ammo_magazine/pistol/np92/tranq
 	name = "\improper NPZ92 tranq magazine (9x18mm Makarov)"
-	desc = "A tranquilizer 9x18mm Makaraov pistol magazine."
+	desc = "一个9x18毫米马卡洛夫镇静剂手枪弹匣。"
 	default_ammo = /datum/ammo/bullet/pistol/tranq
 	caliber = "9x18mm Makarov"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/pistols.dmi'
@@ -264,7 +264,7 @@
 
 /obj/item/ammo_magazine/pistol/t73
 	name = "\improper Type 73 magazine (7.62x25mm Tokarev)"
-	desc = "A 7.62x25mm pistol magazine."
+	desc = "一个7.62x25毫米手枪弹匣。"
 	default_ammo = /datum/ammo/bullet/pistol/heavy
 	caliber = "7.62x25mm Tokarev"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/pistols.dmi'
@@ -274,7 +274,7 @@
 
 /obj/item/ammo_magazine/pistol/t73_impact
 	name = "\improper High Impact Type 74 magazine (7.62x25mm Tokarev)"
-	desc = "A high-impact 7.62x25mm Tokarev pistol magazine. The bullets are tipped with a tungsten-lead alloy to stagger absolutely anything they hit. Point towards dissidents."
+	desc = "一个高冲击7.62x25毫米托卡列夫手枪弹匣。弹头采用钨铅合金，足以击退任何被命中的目标。对准异议分子。"
 	default_ammo = /datum/ammo/bullet/pistol/deagle/highimpact/upp
 	caliber = "7.62x25mm Tokarev"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/pistols.dmi'
@@ -287,7 +287,7 @@
 
 /obj/item/ammo_magazine/pistol/kt42
 	name = "\improper KT-42 magazine (.44)"
-	desc = "A .44 pistol magazine."
+	desc = "一个.44手枪弹匣。"
 	default_ammo = /datum/ammo/bullet/pistol/heavy
 	caliber = ".44"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/pistols.dmi'
@@ -299,8 +299,8 @@
 //W62 'Whisper' (.22 LR)
 
 /obj/item/ammo_magazine/pistol/holdout
-	name = "W62 magazine (.22)"
-	desc = "A surprisingly small magazine, holding .22 bullets. No Kolibri, but it's getting there."
+	name = "W62弹匣 (.22)"
+	desc = "一个出奇小的弹匣，装填.22子弹。虽不是蜂鸟手枪，但也差不多了。"
 	default_ammo = /datum/ammo/bullet/pistol/tiny
 	caliber = ".22"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/pistols.dmi'
@@ -313,8 +313,8 @@
 //AC71 (.380 ACP)
 
 /obj/item/ammo_magazine/pistol/action
-	name = "AC71 magazine (.380 ACP)"
-	desc = "A small mag holding 8 .380 ACP rounds."
+	name = "AC71弹匣 (.380 ACP)"
+	desc = "一个小型弹匣，装填8发.380 ACP子弹。"
 	default_ammo = /datum/ammo/bullet/pistol/tiny
 	caliber = ".380 ACP"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/pistols.dmi'
@@ -326,8 +326,8 @@
 //-------------------------------------------------------
 //CLF HOLDOUT PISTOL
 /obj/item/ammo_magazine/pistol/clfpistol
-	name = "D18 magazine (9mm)"
-	desc = "A small D18 magazine storing 7 9mm bullets. How is it even this small?"
+	name = "D18弹匣 (9毫米)"
+	desc = "一个小型D18弹匣，存储7发9毫米子弹。它怎么会这么小？"
 	default_ammo = /datum/ammo/bullet/pistol
 	caliber = "9mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/pistols.dmi'
@@ -344,7 +344,7 @@
 
 /obj/item/ammo_magazine/pistol/highpower
 	name = "\improper MK-45 Automagnum magazine (.45)"
-	desc = "A .45 pistol magazine."
+	desc = "一个.45手枪弹匣。"
 	default_ammo = /datum/ammo/bullet/pistol/highpower
 	caliber = ".45"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/pistols.dmi'
@@ -365,7 +365,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 
 /obj/item/ammo_magazine/pistol/auto9
 	name = "\improper Auto-9 magazine (9mm)"
-	desc = "A 9mm pistol magazine for the Auto-9 pistol. Squash-head to squash criminal's heads."
+	desc = "一个用于Auto-9手枪的9毫米手枪弹匣。平头弹，专为击碎罪犯头颅而设计。"
 	default_ammo = /datum/ammo/bullet/pistol/squash
 	caliber = "9mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/WY/pistols.dmi'
@@ -379,7 +379,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 //The first rule of monkey pistol is we don't talk about monkey pistol.
 /obj/item/ammo_magazine/pistol/chimp
 	name = "\improper CHIMP70 magazine (.70M)"
-	desc = "A .70M banana-mag."
+	desc = "一个.70M口径的香蕉形弹匣。"
 	default_ammo = /datum/ammo/bullet/pistol/mankey
 	caliber = ".70M"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/event.dmi'
@@ -394,7 +394,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 
 /obj/item/ammo_magazine/pistol/smart
 	name = "\improper SU-6 Smartpistol magazine (.45)"
-	desc = "An IFF-compatible .45 pistol magazine, for use in the SU-6."
+	desc = "一个IFF兼容的.45口径手枪弹匣，用于SU-6手枪。"
 	default_ammo = /datum/ammo/bullet/pistol/smart
 	caliber = ".45"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/pistols.dmi'
@@ -407,7 +407,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 
 /obj/item/ammo_magazine/pistol/skorpion
 	name = "\improper CZ-81 20-round magazine (.32ACP)"
-	desc = "A .32ACP magazine for the CZ-81."
+	desc = "一个用于CZ-81手枪的.32ACP口径弹匣。"
 	caliber = ".32ACP"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/smgs.dmi'
 	icon_state = "skorpion" //PLACEHOLDER
@@ -423,7 +423,7 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, magazi
 
 /obj/item/ammo_magazine/pistol/m10
 	name = "\improper M10 HV magazine (10x20mm-APC)"
-	desc = "A compact 40-round high-velocity magazine, designed for rapid reloads and reliable performance in close-quarters combat."
+	desc = "一个紧凑的40发高速弹匣，专为近距离战斗中的快速装填和可靠性能而设计。"
 	default_ammo = /datum/ammo/bullet/pistol/m10
 	caliber = "10x20mm-APC"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/pistols.dmi'
@@ -435,7 +435,7 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, magazi
 
 /obj/item/ammo_magazine/pistol/m10/extended
 	name = "\improper M10 HV extended magazine (10x20mm-APC)"
-	desc = "An extended 62-round high-velocity magazine, offering additional firepower for sustained engagements without significantly increasing reload time."
+	desc = "一个加长的62发高速弹匣，为持续交火提供额外火力，且不会显著增加装填时间。"
 	default_ammo = /datum/ammo/bullet/pistol/m10
 	caliber = "10x20mm-APC"
 	icon_state = "m10_ext"
@@ -445,7 +445,7 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, magazi
 
 /obj/item/ammo_magazine/pistol/m10/drum
 	name = "\improper M10 HV drum magazine (10x20mm-APC)"
-	desc = "A super-extended 84-round drum magazine designed for prolonged firefights, delivering maximum ammunition capacity at the cost of a longer reload."
+	desc = "一个超长的84发弹鼓，专为持久交火设计，以更长的装填时间为代价，提供最大的弹药容量。"
 	default_ammo = /datum/ammo/bullet/pistol/m10
 	caliber = "10x20mm-APC"
 	icon_state = "m10_drum"
@@ -455,7 +455,7 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, magazi
 
 /obj/item/ammo_magazine/pistol/m10/ap
 	name = "\improper M10 AP magazine (10x20mm-APC)"
-	desc = "A 40-round magazine loaded with armor-piercing rounds. Designed to punch through body armor and light cover, though with reduced muzzle velocity compared to standard HV loads."
+	desc = "一个装有穿甲弹的40发弹匣。设计用于击穿护甲和轻型掩体，但枪口初速比标准高速弹低。"
 	default_ammo = /datum/ammo/bullet/pistol/m10/ap
 	caliber = "10x20mm-APC"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/pistols.dmi'
@@ -467,7 +467,7 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, magazi
 
 /obj/item/ammo_magazine/pistol/m10/ap/extended
 	name = "\improper M10 AP extended magazine (10x20mm-APC)"
-	desc = "A 62-round extended magazine loaded with armor-piercing rounds. Designed to punch through body armor and light cover, though with reduced muzzle velocity compared to standard HV loads."
+	desc = "一个装有穿甲弹的62发加长弹匣。设计用于击穿护甲和轻型掩体，但枪口初速比标准高速弹低。"
 	default_ammo = /datum/ammo/bullet/pistol/m10/ap
 	caliber = "10x20mm-APC"
 	icon_state = "m10_ap_ext"
@@ -477,7 +477,7 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, magazi
 
 /obj/item/ammo_magazine/pistol/m10/ap/drum
 	name = "\improper M10 AP drum magazine (10x20mm-APC)"
-	desc = "A super-extended 84-round drum loaded with armor-piercing rounds. Designed to punch through body armor and light cover, though with reduced muzzle velocity compared to standard HV loads."
+	desc = "一个装有穿甲弹的超长84发弹鼓。设计用于击穿护甲和轻型掩体，但枪口初速比标准高速弹低。"
 	default_ammo = /datum/ammo/bullet/pistol/m10/ap
 	caliber = "10x20mm-APC"
 	icon_state = "m10_ap_drum"
@@ -494,7 +494,7 @@ L54 service pistol
 
 /obj/item/ammo_magazine/pistol/l54
 	name = "\improper L54 magazine (9mm)"
-	desc = "A pistol magazine that fits the L54."
+	desc = "一个适用于L54手枪的弹匣。"
 	caliber = "9mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/TWE/pistols.dmi'
 	icon_state = "l54"
@@ -507,7 +507,7 @@ L54 service pistol
 
 /obj/item/ammo_magazine/pistol/l54_custom
 	name = "\improper L54-S magazine (.9x20mm)"
-	desc = "A modified L54 pistol magazine loaded with proprietary .9x20mm ammunition. Incompatible with standard 9mm weapons or magazines."
+	desc = "一个改装过的L54手枪弹匣，装有专用的.9x20mm弹药。与标准的9mm武器或弹匣不兼容。"
 	caliber = "9mm (special)"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/TWE/pistols.dmi'
 	icon_state = "l54"
@@ -521,13 +521,13 @@ L54 service pistol
 
 /obj/item/ammo_magazine/pistol/l54/hp
 	name = "\improper L54 hollowpoint magazine (9mm)"
-	desc = "A pistol magazine for the L54. This one contains hollowpoint bullets, which have noticeably higher stopping power on unarmored targets, and noticeably less on armored targets."
+	desc = "一个用于L54手枪的弹匣。此弹匣装有空尖弹，对无护甲目标有显著更高的停止作用，但对有护甲目标效果明显较差。"
 	default_ammo = /datum/ammo/bullet/pistol/hollow
 	ammo_band_color = AMMO_BAND_COLOR_HOLLOWPOINT
 
 /obj/item/ammo_magazine/pistol/l54/ap
 	name = "\improper L54 AP magazine (9mm)"
-	desc = "A pistol magazine for the L54. This one contains armor-piercing bullets, which have noticeably higher stopping power on well-armored targets, and noticeably less on unarmored or lightly-armored targets."
+	desc = "一个用于L54手枪的弹匣。此弹匣装有穿甲弹，对有良好护甲的目标有显著更高的停止作用，但对无护甲或轻护甲目标效果明显较差。"
 	default_ammo = /datum/ammo/bullet/pistol/ap
 	ammo_band_color = AMMO_BAND_COLOR_AP
 

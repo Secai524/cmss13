@@ -1,5 +1,5 @@
 /datum/action/xeno_action/activable/pounce/crusher_charge
-	name = "Charge"
+	name = "冲锋"
 	action_icon_state = "ready_charge"
 	action_text = "charge"
 	macro_path = /datum/action/xeno_action/verb/verb_crusher_charge
@@ -33,7 +33,7 @@
 	pounce_pass_flags = PASS_CRUSHER_CHARGE
 
 /datum/action/xeno_action/onclick/crusher_stomp
-	name = "Stomp"
+	name = "践踏"
 	action_icon_state = "stomp"
 	macro_path = /datum/action/xeno_action/verb/verb_crusher_stomp
 	action_type = XENO_ACTION_CLICK
@@ -48,7 +48,7 @@
 	var/effect_duration = 1 SECONDS
 
 /datum/action/xeno_action/onclick/crusher_stomp/charger
-	name = "Crush"
+	name = "碾压"
 	action_icon_state = "stomp"
 	macro_path = /datum/action/xeno_action/verb/verb_crusher_charger_stomp
 	action_type = XENO_ACTION_CLICK
@@ -60,7 +60,7 @@
 
 
 /datum/action/xeno_action/onclick/crusher_shield
-	name = "Defensive Shield"
+	name = "防御护盾"
 	action_icon_state = "empower"
 	macro_path = /datum/action/xeno_action/verb/verb_crusher_charge
 	action_type = XENO_ACTION_CLICK
@@ -72,7 +72,7 @@
 	var/shield_dur = 7 SECONDS
 
 /datum/action/xeno_action/activable/fling/charger
-	name = "Headbutt"
+	name = "头槌"
 	action_icon_state = "ram"
 	macro_path = /datum/action/xeno_action/verb/verb_fling
 	action_type = XENO_ACTION_CLICK
@@ -87,7 +87,7 @@
 
 
 /datum/action/xeno_action/onclick/charger_charge
-	name = "Toggle Charging"
+	name = "切换冲锋状态"
 	action_icon_state = "ready_charge"
 	plasma_cost = 0 // manually applied in the proc
 	macro_path = /datum/action/xeno_action/verb/verb_crusher_toggle_charging
@@ -182,7 +182,7 @@
 
 	for(var/mob/living/carbon/human/Mob in Xeno.loc)
 		if(Mob.body_position == LYING_DOWN && Mob.stat != DEAD)
-			Xeno.visible_message(SPAN_DANGER("[Xeno] runs [Mob] over!"),
+			Xeno.visible_message(SPAN_DANGER("[Xeno]碾过了[Mob]！"),
 				SPAN_DANGER("We run [Mob] over!")
 			)
 			var/ram_dir = pick(get_perpen_dir(Xeno.dir))
@@ -217,7 +217,7 @@
 	SIGNAL_HANDLER
 	var/mob/living/carbon/xenomorph/Xeno = owner
 	if(momentum == max_momentum)
-		Xeno.visible_message(SPAN_DANGER("[Xeno] skids to a halt!"))
+		Xeno.visible_message(SPAN_DANGER("[Xeno]急停下来！"))
 
 	REMOVE_TRAIT(Xeno, TRAIT_CHARGING, TRAIT_SOURCE_XENO_ACTION_CHARGE)
 	steps_taken = 0
@@ -251,7 +251,7 @@
 
 
 /datum/action/xeno_action/activable/tumble
-	name = "Tumble"
+	name = "翻滚"
 	action_icon_state = "tumble"
 	macro_path = /datum/action/xeno_action/verb/verb_crusher_tumble
 	action_type = XENO_ACTION_CLICK
@@ -269,7 +269,7 @@
 
 /datum/action/xeno_action/activable/tumble/proc/handle_mob_collision(mob/living/carbon/Mob)
 	var/mob/living/carbon/xenomorph/Xeno = owner
-	Xeno.visible_message(SPAN_XENODANGER("[Xeno] Sweeps to the side, knocking down [Mob]!"), SPAN_XENODANGER("We knock over [Mob] as we sweep to the side!"))
+	Xeno.visible_message(SPAN_XENODANGER("[Xeno]向侧面横扫，击倒了[Mob]！"), SPAN_XENODANGER("We knock over [Mob] as we sweep to the side!"))
 	var/turf/target_turf = get_turf(Mob)
 	playsound(Mob,'sound/weapons/alien_claw_block.ogg', 50, 1)
 	Mob.apply_damage(15,BRUTE)

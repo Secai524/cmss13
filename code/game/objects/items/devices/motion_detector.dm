@@ -54,8 +54,8 @@
 	SSminimaps.add_marker(src, minimap_flags, image('icons/ui_icons/map_blips.dmi', null, "motion", HIGH_FLOAT_LAYER))
 
 /obj/item/device/motiondetector
-	name = "motion detector"
-	desc = "A device that detects movement, but ignores marines. Can also be used to scan a vehicle interior from outside, but accuracy of such scanning is low and there is no way to differentiate friends from foes."
+	name = "动态探测器"
+	desc = "一种能探测移动但会忽略陆战队员的设备。也可用于从外部扫描载具内部，但扫描精度较低，且无法区分敌友。"
 	icon = 'icons/obj/items/marine-items.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
@@ -137,7 +137,7 @@
 	if(!long_range_locked)
 		toggle_mode(usr)
 	else
-		to_chat(usr, SPAN_WARNING("ERROR: 'SHORT-RANGE' MODE NOT LOCATED."))
+		to_chat(usr, SPAN_WARNING("错误：未找到‘短程’模式。"))
 
 /obj/item/device/motiondetector/proc/toggle_mode(mob/user)
 	if(isobserver(user) || isxeno(user) || !Adjacent(user))
@@ -145,10 +145,10 @@
 
 	detector_mode = !detector_mode
 	if(detector_mode)
-		to_chat(user, SPAN_NOTICE("You switch [src] to short-range mode."))
+		to_chat(user, SPAN_NOTICE("你将[src]切换至短程模式。"))
 		detector_range = 7
 	else
-		to_chat(user, SPAN_NOTICE("You switch [src] to long-range mode."))
+		to_chat(user, SPAN_NOTICE("你将[src]切换至远程模式。"))
 		detector_range = 14
 	update_icon()
 	playsound(usr,'sound/machines/click.ogg', 15, TRUE)
@@ -162,7 +162,7 @@
 		if(!long_range_locked)
 			toggle_mode(usr)
 		else
-			to_chat(usr, SPAN_WARNING("ERROR: 'SHORT-RANGE' MODE NOT LOCATED."))
+			to_chat(usr, SPAN_WARNING("错误：未找到‘短程’模式。"))
 		return TRUE
 
 	return ..()
@@ -186,7 +186,7 @@
 	if(forced)
 		visible_message(SPAN_NOTICE("\The [src] turns on."), SPAN_NOTICE("You hear a beep."), 3)
 	else if(user)
-		to_chat(user, SPAN_NOTICE("You activate \the [src]."))
+		to_chat(user, SPAN_NOTICE("你启动了\the [src]。"))
 	playsound(loc, 'sound/items/detector_turn_on.ogg', 30, FALSE, 5, 2)
 	START_PROCESSING(SSobj, src)
 
@@ -194,7 +194,7 @@
 	if(forced)
 		visible_message(SPAN_NOTICE("\The [src] shorts out."), SPAN_NOTICE("You hear a click."), 3)
 	else if(user)
-		to_chat(user, SPAN_NOTICE("You deactivate \the [src]."))
+		to_chat(user, SPAN_NOTICE("你关闭了\the [src]。"))
 	scanning = FALSE // safety if MD runtimes in scan and stops scanning
 	icon_state = "[initial(icon_state)]"
 	playsound(loc, 'sound/items/detector_turn_off.ogg', 30, FALSE, 5, 2)
@@ -361,8 +361,8 @@
 		user.client.remove_from_screen(DB)
 
 /obj/item/device/motiondetector/m717
-	name = "M717 pocket motion detector"
-	desc = "This prototype motion detector sacrifices versatility, having only the long-range mode, for size, being so small it can even fit in pockets."
+	name = "M717袖珍动态探测器"
+	desc = "这款原型动态探测器牺牲了多功能性，仅保留远程模式，以换取极小的尺寸，小到甚至可以放入口袋。"
 	icon_state = "pocket"
 	item_state = "motion_detector"
 	flags_atom = FPRINT| CONDUCT
@@ -372,41 +372,41 @@
 	long_range_locked = TRUE
 
 /obj/item/device/motiondetector/m717/hacked/contractor
-	name = "modified M717 pocket motion detector"
-	desc = "This prototype motion detector sacrifices versatility, having only the long-range mode, for size, being so small it can even fit in pockets. This one has been modified with an after-market IFF sensor to filter out Vanguard's Arrow Incorporated signals instead of USCM ones. Fight fire with fire!"
+	name = "改装型M717袖珍动态探测器"
+	desc = "这款原型动态探测器牺牲了多功能性，仅保留远程模式，以换取极小的尺寸，小到甚至可以放入口袋。此探测器经过改装，加装了售后IFF传感器，用于过滤先锋箭公司的信号，而非USCM的信号。以火攻火！"
 	iff_signal = FACTION_CONTRACTOR
 	minimap_flag = MINIMAP_FLAG_CLF
 
 /obj/item/device/motiondetector/hacked
-	name = "hacked motion detector"
-	desc = "A device that usually picks up non-USCM signals, but this one's been hacked to detect all non-UPP movement instead. Fight fire with fire!"
+	name = "被入侵的动态探测器"
+	desc = "一种通常侦测非USCM信号的设备，但这个已被入侵，改为侦测所有非UPP的移动。以火攻火！"
 	iff_signal = FACTION_UPP
 	minimap_flag = MINIMAP_FLAG_UPP
 
 /obj/item/device/motiondetector/hacked/clf
-	name = "hacked motion detector"
-	desc = "A device that usually picks up non-USCM signals, but this one's been reprogrammed to detect all non-CLF movement instead."
+	name = "被入侵的动态探测器"
+	desc = "一种通常侦测非USCM信号的设备，但这个已被重新编程，改为侦测所有非CLF的移动。"
 	iff_signal = FACTION_CLF
 
 /obj/item/device/motiondetector/hacked/elite_merc
-	name = "hacked motion detector"
-	desc = "A device that usually picks up non-USCM signals, but this one's been hacked to detect all non-freelancer movement instead. Fight fire with fire!"
+	name = "被入侵的动态探测器"
+	desc = "一种通常侦测非USCM信号的设备，但这个已被入侵，改为侦测所有非自由佣兵的移动。以火攻火！"
 	iff_signal = FACTION_MERCENARY
 
 /obj/item/device/motiondetector/hacked/pmc
-	name = "corporate motion detector"
-	desc = "A device that usually picks up non-USCM signals, but this one's been reprogrammed to detect all non-PMC movement instead. Very corporate."
+	name = "企业动态探测器"
+	desc = "一种通常侦测非USCM信号的设备，但这个已被重新编程，改为侦测所有非PMC的移动。非常企业化。"
 	iff_signal = FACTION_PMC
 	minimap_flag = MINIMAP_FLAG_PMC
 
 /obj/item/device/motiondetector/hacked/dutch
-	name = "hacked motion detector"
-	desc = "A device that usually picks up non-USCM signals, but this one's been hacked to detect all non-Dutch's Dozen movement instead. Fight fire with fire!"
+	name = "被入侵的动态探测器"
+	desc = "一种通常侦测非USCM信号的设备，但这个已被入侵，改为侦测所有非荷兰十二人组的移动。以火攻火！"
 	iff_signal = FACTION_DUTCH
 
 /obj/item/device/motiondetector/hacked/contractor
-	name = "modified motion detector"
-	desc = "A device that usually picks up non-USCM signals, but this one's been modified with after-market IFF sensors to detect all non-Vanguard's Arrow Incorporated movement instead. Fight fire with fire!"
+	name = "改装动态探测器"
+	desc = "一种通常侦测非USCM信号的设备，但这个经过改装，加装了售后IFF传感器，改为侦测所有非先锋箭公司的移动。以火攻火！"
 	iff_signal = FACTION_CONTRACTOR
 
 #undef MOTION_DETECTOR_RANGE_LONG

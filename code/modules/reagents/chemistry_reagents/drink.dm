@@ -5,7 +5,7 @@
 //*****************************************************************************************************/
 
 /datum/reagent/drink
-	name = "Drink"
+	name = "饮品"
 	id = "drink"
 	description = "Uh, some kind of drink."
 	reagent_state = LIQUID
@@ -31,14 +31,14 @@
 		M.sleeping = max(0,M.sleeping + adj_sleepy * delta_time)
 
 /datum/reagent/drink/cold
-	name = "Cold drink"
+	name = "冷饮"
 	adj_temp = 0
 
 
 //FRUIT JUICE//
 
 /datum/reagent/drink/orangejuice
-	name = "Orange juice"
+	name = "橙汁"
 	id = "orangejuice"
 	description = "Both delicious AND rich in Vitamin C, what more do you need?"
 	color = "#E78108" // rgb: 231, 129, 8
@@ -51,7 +51,7 @@
 		M.apply_damage(-1, OXY)
 
 /datum/reagent/drink/tomatojuice
-	name = "Tomato Juice"
+	name = "番茄汁"
 	id = "tomatojuice"
 	description = "Tomatoes made into juice. What a waste of big, juicy tomatoes, huh?"
 	color = "#731008" // rgb: 115, 16, 8
@@ -65,7 +65,7 @@
 
 
 /datum/reagent/drink/limejuice
-	name = "Lime Juice"
+	name = "青柠汁"
 	id = "limejuice"
 	description = "The sweet-sour juice of limes."
 	color = "#365E30" // rgb: 54, 94, 48
@@ -78,9 +78,9 @@
 		M.apply_damage(-1*REM, TOX)
 
 /datum/reagent/drink/carrotjuice
-	name = "Carrot juice"
+	name = "胡萝卜汁"
 	id = "carrotjuice"
-	description = "It is just like a carrot but without crunching."
+	description = "就像胡萝卜一样，只是不用嚼。"
 	color = "#973800" // rgb: 151, 56, 0
 
 /datum/reagent/drink/carrotjuice/on_mob_life(mob/living/M)
@@ -98,19 +98,19 @@
 	data++
 
 /datum/reagent/drink/berryjuice
-	name = "Berry Juice"
+	name = "浆果汁"
 	id = "berryjuice"
 	description = "A delicious blend of several different kinds of berries."
 	color = "#990066" // rgb: 153, 0, 102
 
 /datum/reagent/drink/grapejuice
-	name = "Grape Juice"
+	name = "葡萄汁"
 	id = "grapejuice"
-	description = "It's grrrrrape!"
+	description = "是葡~萄~汁！"
 	color = "#863333" // rgb: 134, 51, 51
 
 /datum/reagent/drink/poisonberryjuice
-	name = "Poison Berry Juice"
+	name = "毒浆果汁"
 	id = "poisonberryjuice"
 	description = "A tasty juice blended from various kinds of very deadly and toxic berries."
 	color = "#863353" // rgb: 134, 51, 83
@@ -122,32 +122,32 @@
 	M.apply_damage(1, TOX)
 
 /datum/reagent/drink/watermelonjuice
-	name = "Watermelon Juice"
+	name = "西瓜汁"
 	id = "watermelonjuice"
 	description = "Delicious juice made from watermelon."
 	color = "#a71d1d" // rgb: 167, 29, 29
 
 /datum/reagent/drink/lemonjuice
-	name = "Lemon Juice"
+	name = "柠檬汁"
 	id = "lemonjuice"
 	description = "This juice is VERY sour."
 	color = "#d1db42" // rgb: 209, 219, 66
 
 /datum/reagent/drink/banana
-	name = "Banana Juice"
+	name = "香蕉汁"
 	id = "banana"
 	description = "The raw essence of a banana."
 	color = "#e4c439" // rgb: 228, 196, 57
 
 /datum/reagent/drink/potato_juice
-	name = "Potato Juice"
+	name = "土豆汁"
 	id = "potato"
 	description = "Juice of the potato. Bleh."
 	nutriment_factor = 2 * FOOD_METABOLISM
 	color = "#302000" // rgb: 48, 32, 0
 
 /datum/reagent/drink/grenadine
-	name = "Grenadine Syrup"
+	name = "石榴糖浆"
 	id = "grenadine"
 	description = "Made in the modern day with proper pomegranate substitute. Who uses real fruit, anyways?"
 	color = "#FF004F" // rgb: 255, 0, 79
@@ -157,7 +157,7 @@
 //MILK//
 
 /datum/reagent/drink/milk
-	name = "Milk"
+	name = "牛奶"
 	id = "milk"
 	description = "An opaque white liquid produced by the mammary glands of mammals."
 	color = "#DFDFDF" // rgb: 223, 223, 223
@@ -172,13 +172,13 @@
 	holder.remove_reagent("hotsauce", 10*REAGENTS_METABOLISM)
 
 /datum/reagent/drink/milk/soymilk
-	name = "Soy Milk"
+	name = "豆奶"
 	id = "soymilk"
 	description = "An opaque white liquid made from soybeans."
 	color = "#DFDFC7" // rgb: 223, 223, 199
 
 /datum/reagent/drink/milk/coconut
-	name = "Coconut Milk"
+	name = "椰奶"
 	id = "coconutmilk"
 	description = "A very light, half opaque milk from coconuts, barely has any taste on its own."
 	color = "#DFDFC7" // rgb: 223, 223, 199
@@ -186,34 +186,34 @@
 	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/drink/milk/cream
-	name = "Cream"
+	name = "奶油"
 	id = "cream"
 	description = "The fatty, still liquid part of milk. Why don't you mix this with sum scotch, eh?"
 	color = "#DFD7AF" // rgb: 223, 215, 175
 
 /datum/reagent/drink/milk/eggnog
-	name = "Eggnog"
+	name = "蛋奶酒"
 	id = "eggnog"
 	description = "A rich, sweet, non-alcoholic beverage traditionally consumed around Christmastime."
 	color = "#DFD7AF" // rgb: 223, 215, 175
 
 /datum/reagent/drink/milk/chocolate
-	name = "Chocolate Milk"
+	name = "巧克力牛奶"
 	id = "chocolate_milk"
 	description = "Nectar of the gods and nectar of the cow. Fucking delicious."
 	color = "#AD8F70" // rgb: 123, 63, 0
 
 /datum/reagent/drink/cold/milkshake
-	name = "Milkshake"
-	description = "Glorious brainfreezing mixture."
+	name = "奶昔"
+	description = "令人大脑冻结的绝妙混合物。"
 	id = "milkshake"
 	color = "#AEE5E4" // rgb: 174, 229, 228
 	adj_temp = -2
 	target_temp = T0C
 
 /datum/reagent/drink/cold/milkshake/chocolate
-	name = "Chocolate Milkshake"
-	description = "Glorious brainfreezing mixture in classic chocolate flavor."
+	name = "巧克力奶昔"
+	description = "经典巧克力口味的、令人大脑冻结的绝妙混合物。"
 	id = "chocolate_milkshake"
 	color = "#AF9B86" // rgb: 175, 155, 134
 	adj_temp = -2
@@ -235,7 +235,7 @@
 //SOUTO//
 
 /datum/reagent/drink/souto
-	name = "Souto Classic"
+	name = "经典索托汽水"
 	id = "souto_classic"
 	description = "A tangerine flavored soda that's canned in Havana."
 	color = "#802b00"
@@ -243,49 +243,49 @@
 	chemclass = CHEM_CLASS_RARE
 
 /datum/reagent/drink/souto/cherry
-	name = "Cherry Souto"
+	name = "樱桃索托汽水"
 	id = "souto_cherry"
 	description = "A cherry flavored soda that's canned in Havana."
 	color = COLOR_MAROON
 
 /datum/reagent/drink/souto/lime
-	name = "Lime Souto"
+	name = "青柠索托汽水"
 	id = "souto_lime"
 	description = "A lime flavored soda that's canned in Havana."
 	color = "#878F00"
 
 /datum/reagent/drink/souto/grape
-	name = "Grape Souto"
+	name = "葡萄索托汽水"
 	id = "souto_grape"
 	description = "A grape flavored soda that's canned in Havana."
 	color = "#421C52"
 
 /datum/reagent/drink/souto/blueraspberry
-	name = "Blue Raspberry Souto"
+	name = "蓝莓索托"
 	id = "souto_blueraspberry"
 	description = "A blue fruit flavored soda that's canned in Havana."
 	color = "#005B96"
 
 /datum/reagent/drink/souto/peach
-	name = "Peach Souto"
+	name = "蜜桃索托"
 	id = "souto_peach"
 	description = "A peach flavored soda with flecks of peach pit floating inside that's canned in Havana."
 	color = "#FFE5B4"
 
 /datum/reagent/drink/souto/cranberry
-	name = "Cranberry Souto"
+	name = "蔓越莓索托"
 	id = "souto_cranberry"
 	description = "A cranberry flavored soda that's canned in Havana."
 	color = "#950714"
 
 /datum/reagent/drink/souto/vanilla
-	name = "Vanilla Souto"
+	name = "香草索托"
 	id = "souto_vanilla"
 	description = "A vanilla flavored soda that's canned in Havana"
 	color = "#F9E5BC"
 
 /datum/reagent/drink/souto/pineapple
-	name = "Pineapple Souto"
+	name = "菠萝索托"
 	id = "souto_pineapple"
 	description = "A pineapple flavored soda that's canned in Havana"
 	color = "#FEEB75"
@@ -293,7 +293,7 @@
 //OTHER SODA//
 
 /datum/reagent/drink/cold/sodawater
-	name = "Soda Water"
+	name = "苏打水"
 	id = "sodawater"
 	description = "A can of club soda. Why not make a scotch and soda?"
 	color = "#619494" // rgb: 97, 148, 148
@@ -301,14 +301,14 @@
 	adj_drowsy = -3
 
 /datum/reagent/drink/cold/grapesoda
-	name = "Grape Soda"
+	name = "葡萄汽水"
 	id = "grapesoda"
 	description = "Grapes made into a fine drank."
 	color = "#421C52" // rgb: 98, 57, 53
 	adj_drowsy = -3
 
 /datum/reagent/drink/cold/space_cola
-	name = "Space Cola"
+	name = "太空可乐"
 	id = "cola"
 	description = "A refreshing beverage."
 	reagent_state = LIQUID
@@ -316,14 +316,14 @@
 	adj_drowsy = -3
 
 /datum/reagent/drink/cold/wy_cola
-	name = "Fruit Beer"
+	name = "果味啤酒"
 	id = "fruit_beer"
 	description = "An insulting Mango flavored beverage. Tastes like rotten fruit."
 	color = "#100800" // rgb: 16, 8, 0
 	adj_drowsy = -3
 
 /datum/reagent/drink/cold/nuka_cola
-	name = "Nuka Cola"
+	name = "核子可乐"
 	id = "nuka_cola"
 	description = "Cola, cola never changes."
 	color = "#100800" // rgb: 16, 8, 0
@@ -339,24 +339,24 @@
 	M.drowsiness = 0
 
 /datum/reagent/drink/cold/spacemountainwind
-	name = "Mountain Wind"
+	name = "山风"
 	id = "spacemountainwind"
-	description = "Blows right through you like a space wind."
+	description = "像太空风一样穿透你的身体。"
 	color = "#102000" // rgb: 16, 32, 0
 	adj_drowsy = -7
 	adj_sleepy = -1
 
 /datum/reagent/drink/cold/dr_gibb
-	name = "Dr. Gibb"
+	name = "吉布博士"
 	id = "dr_gibb"
 	description = "A delicious blend of 42 different flavours"
 	color = "#102000" // rgb: 16, 32, 0
 	adj_drowsy = -6
 
 /datum/reagent/drink/cold/space_up
-	name = "Space-Up"
+	name = "太空汽水"
 	id = "space_up"
-	description = "Tastes like a hull breach in your mouth."
+	description = "尝起来像船体破裂的味道。"
 	color = "#202800" // rgb: 32, 40, 0
 	adj_temp = 0
 
@@ -365,9 +365,9 @@
 //BEER//
 
 /datum/reagent/drink/wy_beer
-	name = "Aspen Beer"
+	name = "白杨啤酒"
 	id = "aspen"
-	description = "Pretty good when you get past the fact that it tastes like piss. Canned by the Weyland-Yutani Corporation."
+	description = "一旦忽略它尝起来像尿的事实，其实还不错。维兰德-汤谷公司罐装。"
 	color = "#ffcc66"
 
 
@@ -375,7 +375,7 @@
 //COFFEE/TEA//
 
 /datum/reagent/drink/coffee
-	name = "Coffee"
+	name = "咖啡"
 	id = "coffee"
 	description = "Coffee is a brewed drink prepared from roasted seeds, commonly called coffee beans, of the coffee plant."
 	color = "#482000" // rgb: 72, 32, 0
@@ -412,7 +412,7 @@
 				M.emote(pick("twitch", "blink_r", "shiver"))
 
 /datum/reagent/drink/coffee/icecoffee
-	name = "Iced Coffee"
+	name = "冰咖啡"
 	id = "icecoffee"
 	description = "Coffee and ice, refreshing and cool."
 	color = "#102838" // rgb: 16, 40, 56
@@ -420,7 +420,7 @@
 	chemclass = CHEM_CLASS_NONE
 
 /datum/reagent/drink/coffee/soy_latte
-	name = "Soy Latte"
+	name = "豆奶拿铁"
 	id = "soy_latte"
 	description = "A nice and tasty beverage while you are reading your hippie books."
 	color = "#664300" // rgb: 102, 67, 0
@@ -438,7 +438,7 @@
 		M.heal_limb_damage(1,0)
 
 /datum/reagent/drink/coffee/cafe_latte
-	name = "Cafe Latte"
+	name = "咖啡拿铁"
 	id = "cafe_latte"
 	description = "A nice, strong and tasty beverage while you are reading."
 	color = "#664300" // rgb: 102, 67, 0
@@ -455,7 +455,7 @@
 		M.heal_limb_damage(1,0)
 
 /datum/reagent/drink/tea
-	name = "Tea"
+	name = "茶"
 	id = "tea"
 	description = "Black tea, containing antioxidants."
 	color = "#101000" // rgb: 16, 16, 0
@@ -474,14 +474,14 @@
 		M.apply_damage(-1, TOX)
 
 /datum/reagent/drink/tea/icetea
-	name = "Iced Tea"
+	name = "冰茶"
 	id = "icetea"
-	description = "No relation to a certain rap artist/ actor."
+	description = "与某位说唱歌手/演员无关。"
 	color = "#104038" // rgb: 16, 64, 56
 	adj_temp = 0
 
 /datum/reagent/drink/tea_leaves
-	name = "Tea leaves"
+	name = "茶叶"
 	id = "tea_leaves"
 	description = "Black tea leaves, freeze dried."
 	color = "#1a2b1c" // rgb: 16, 16, 0
@@ -494,12 +494,12 @@
 //OTHER//
 
 /datum/reagent/drink/nothing
-	name = "Nothing"
+	name = "无"
 	id = "nothing"
-	description = "Absolutely nothing."
+	description = "空空如也。"
 
 /datum/reagent/machosauce
-	name = "Macho Sauce"
+	name = "猛男酱"
 	id = "machosauce"
 	description = "A backalley abomination born in the darkest corner of the brig. This cocktail of pepper spray and Souto is only drank by the craziest servicemen."
 	reagent_state = LIQUID
@@ -512,7 +512,7 @@
 	properties = list(PROPERTY_HYPERTHERMIC = 8)
 
 /datum/reagent/drink/cold/tonic
-	name = "Tonic Water"
+	name = "汤力水"
 	id = "tonic"
 	description = "It tastes strange but at least the quinine keeps the Space Malaria at bay."
 	color = "#664300" // rgb: 102, 67, 0
@@ -521,27 +521,27 @@
 	adj_sleepy = -2
 
 /datum/reagent/drink/cold/ice
-	name = "Ice"
+	name = "冰块"
 	id = "ice"
 	description = "Frozen water, your dentist wouldn't like you chewing this."
 	reagent_state = SOLID
 	color = "#619494" // rgb: 97, 148, 148
 
 /datum/reagent/drink/cold/lemon_lime
-	name = "Lemon Lime"
+	name = "柠檬青柠"
 	description = "A tangy substance made of 0.5% natural citrus!"
 	id = "lemon_lime"
 	color = "#878F00" // rgb: 135, 40, 0
 	adj_temp = 0
 
 /datum/reagent/drink/cold/lemonade
-	name = "Lemonade"
-	description = "Oh the nostalgia..."
+	name = "柠檬水"
+	description = "哦，怀旧之情……"
 	id = "lemonade"
 	color = COLOR_YELLOW
 
 /datum/reagent/drink/chocolate
-	name = "Chocolate Syrup"
+	name = "巧克力糖浆"
 	description = "Nectar of the gods."
 	id = "chocolatesyrup"
 	color = "#7B3F00" // rgb: 123, 163, 0
@@ -551,7 +551,7 @@
 //*****************************************************************************************************/
 
 /datum/reagent/atomicbomb
-	name = "Atomic Bomb"
+	name = "原子弹"
 	id = "atomicbomb"
 	description = "Nuclear proliferation never tasted so good."
 	reagent_state = LIQUID
@@ -578,7 +578,7 @@
 			M.apply_damage(2, TOX)
 
 /datum/reagent/gargle_blaster
-	name = "Pan-Galactic Gargle Blaster"
+	name = "泛银河系含漱爆破液"
 	id = "gargleblaster"
 	description = "Whoah, this stuff looks volatile!"
 	reagent_state = LIQUID
@@ -604,7 +604,7 @@
 		M.apply_damage(2, TOX)
 
 /datum/reagent/neurotoxin
-	name = "Neurotoxin"
+	name = "神经毒素"
 	id = "neurotoxin"
 	description = "A strong neurotoxin that puts the subject into a death-like state."
 	reagent_state = LIQUID
@@ -631,7 +631,7 @@
 		M.apply_damage(2, TOX)
 
 /datum/reagent/hippies_delight
-	name = "Hippies' Delight"
+	name = "嬉皮士之悦"
 	id = "hippiesdelight"
 	description = "You just don't get it maaaan."
 	reagent_state = LIQUID
@@ -681,8 +681,8 @@
 	holder.remove_reagent(src.id, 0.2)
 
 /datum/reagent/drink/cold/rewriter
-	name = "Rewriter"
-	description = "The secret of the sanctuary of the Librarian..."
+	name = "改写者"
+	description = "图书馆员圣殿的秘密……"
 	id = "rewriter"
 	color = "#485000" // rgb:72, 080, 0
 
@@ -693,7 +693,7 @@
 	M.make_jittery(5)
 
 /datum/reagent/drink/doctor_delight
-	name = "The Doctor's Delight"
+	name = "医生的喜悦"
 	id = "doctorsdelight"
 	description = "A gulp a day keeps the MediBot away. That's probably for the best."
 	color = "#FF8CFF" // rgb: 255, 140, 255
@@ -704,21 +704,21 @@
 	chemclass = CHEM_CLASS_RARE
 
 /datum/reagent/drink/cold/kiraspecial
-	name = "Kira Special"
-	description = "Long live the guy who everyone had mistaken for a girl. Baka!"
+	name = "基拉特调"
+	description = "那位被所有人误认为是女孩的家伙万岁。笨蛋！"
 	id = "kiraspecial"
 	color = "#CCCC99" // rgb: 204, 204, 153
 
 /datum/reagent/drink/cold/brownstar
-	name = "Brown Star"
-	description = "It's not what it sounds like..."
+	name = "棕色之星"
+	description = "它听起来不是你想的那样……"
 	id = "brownstar"
 	color = "#9F3400" // rgb: 159, 052, 000
 	adj_temp = 0
 
 
 /datum/reagent/drink/hot_coco
-	name = "Hot Chocolate"
+	name = "热巧克力"
 	id = "hot_coco"
 	description = "Heated beverage of chocolate."
 	reagent_state = LIQUID
@@ -729,7 +729,7 @@
 	target_temp = T90C
 
 /datum/reagent/drink/bugjuice
-	name = "Bug Juice"
+	name = "虫汁"
 	id = "bugjuice"
 	description = "Soda drink made from all kinds of insects, very nutritious."
 	nutriment_factor = 2 * FOOD_METABOLISM

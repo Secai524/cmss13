@@ -1,6 +1,6 @@
 /datum/tutorial/ss13/basic
-	name = "Space Station 13 - Basic"
-	desc = "Learn the very basics of Space Station 13. Recommended if you haven't played before."
+	name = "空间站13 - 基础"
+	desc = "学习空间站13的最基础知识。如果你是新手，推荐游玩。"
 	tutorial_id = "ss13_basic_1"
 	tutorial_template = /datum/map_template/tutorial/s7x7
 
@@ -18,8 +18,8 @@
 	addtimer(CALLBACK(src, PROC_REF(require_move)), 4 SECONDS) // check if this is a good amount of time
 
 /datum/tutorial/ss13/basic/proc/require_move()
-	message_to_player("Now, move in any direction using <b>[retrieve_bind("North")]</b>, <b>[retrieve_bind("West")]</b>, <b>[retrieve_bind("South")]</b>, or <b>[retrieve_bind("East")]</b>.")
-	update_objective("Move in any direction using the [retrieve_bind("North")][retrieve_bind("West")][retrieve_bind("South")][retrieve_bind("East")] keys.")
+	message_to_player("Now, move in any direction using <b>[retrieve_bind("北")]</b>, <b>[retrieve_bind("西")]</b>, <b>[retrieve_bind("南")]</b>, or <b>[retrieve_bind("东")]</b>.")
+	update_objective("Move in any direction using the [retrieve_bind("北")][retrieve_bind("西")][retrieve_bind("南")][retrieve_bind("东")] keys.")
 
 	RegisterSignal(tutorial_mob, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(on_move))
 

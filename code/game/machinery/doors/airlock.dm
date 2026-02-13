@@ -99,7 +99,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, flatten_numeric_alist(alist(
 					justzap = 0
 				return
 		else if(user.hallucination > 50 && prob(10) && !operating)
-			to_chat(user, SPAN_DANGER("<B>You feel a powerful shock course through your body!</B>"))
+			to_chat(user, SPAN_DANGER("<B>你感到一股强大的电流贯穿全身！</B>"))
 			user.halloss += 10
 			user.apply_effect(10, STUN)
 			return
@@ -131,7 +131,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, flatten_numeric_alist(alist(
 		if(M && istype(M))
 			M.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_DOORS, 1)
 			SEND_SIGNAL(M, COMSIG_MOB_DESTROY_AIRLOCK, src)
-		to_chat(loc, SPAN_DANGER("[src] blows apart!"))
+		to_chat(loc, SPAN_DANGER("[src]炸成了碎片！"))
 		deconstruct(FALSE)
 		playsound(src, 'sound/effects/metal_crash.ogg', 25, 1)
 		return TRUE
@@ -212,7 +212,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, flatten_numeric_alist(alist(
 				usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Electrified the [name] at [x] [y] [z]</font>")
 				secondsElectrified = 30
 				start_processing()
-				visible_message(SPAN_DANGER("Electric arcs shoot off from \the [src] airlock!"))
+				visible_message(SPAN_DANGER("电弧从\the [src]气闸门上迸发而出！"))
 				spawn(10)
 					//TODO: Move this into process() and make pulsing reset secondsElectrified to 30
 					while (secondsElectrified>0)
@@ -274,7 +274,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, flatten_numeric_alist(alist(
 				usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Electrified the [name] at [x] [y] [z]</font>")
 				secondsElectrified = -1
 				start_processing()
-				visible_message(SPAN_DANGER("Electric arcs shoot off from \the [src] airlock!"))
+				visible_message(SPAN_DANGER("电弧从\the [src]气闸门上迸发而出！"))
 
 		if(AIRLOCK_WIRE_SAFETY)
 			safe = 0
@@ -375,7 +375,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, flatten_numeric_alist(alist(
 					cont = 1
 			spawnPowerRestoreRunning = 0
 
-	visible_message(SPAN_NOTICE("The slight, droning sound of \the [src] airlock slowly fades out."))
+	visible_message(SPAN_NOTICE("\the [src]气闸门轻微的嗡鸣声逐渐消失。"))
 
 /obj/structure/machinery/door/airlock/proc/loseBackupPower()
 	if(secondsBackupPowerLost < 60)
@@ -456,7 +456,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, flatten_numeric_alist(alist(
 
 	if(panel_open)
 		if(ishuman(usr) && !skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-			to_chat(usr, SPAN_WARNING("You look into \the [src]'s access panel and can only see a jumbled mess of colored wires..."))
+			to_chat(usr, SPAN_WARNING("你查看了\the [src]的权限面板，只看到一团杂乱无章的彩色电线……"))
 			return FALSE
 
 		tgui_interact(user)
@@ -500,7 +500,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, flatten_numeric_alist(alist(
 
 	if((in_range(src, usr) && istype(loc, /turf)) && panel_open)
 		if(ishuman(usr) && !skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-			to_chat(usr, SPAN_WARNING("You don't understand anything about [src]'s wiring!"))
+			to_chat(usr, SPAN_WARNING("你对[src]的线路一窍不通！"))
 			return FALSE
 
 		var/target_wire = params["wire"]
@@ -509,7 +509,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, flatten_numeric_alist(alist(
 			if("cut")
 				var/obj/item/held_item = usr.get_held_item()
 				if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
-					to_chat(usr, SPAN_WARNING("You need wirecutters!"))
+					to_chat(usr, SPAN_WARNING("你需要剪线钳！"))
 					return TRUE
 
 				if(isWireCut(target_wire))
@@ -524,7 +524,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, flatten_numeric_alist(alist(
 			if("pulse")
 				var/obj/item/held_item = usr.get_held_item()
 				if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
-					to_chat(usr, SPAN_WARNING("You need a multitool!"))
+					to_chat(usr, SPAN_WARNING("你需要万用工具！"))
 					return TRUE
 
 				pulse(target_wire)
@@ -532,7 +532,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, flatten_numeric_alist(alist(
 			if("attach")
 				if(isnull(getAssembly(target_wire)))
 					if(!issignaller(usr.get_active_hand()))
-						to_chat(usr, SPAN_WARNING("You need a signaller in your hand!"))
+						to_chat(usr, SPAN_WARNING("你手上需要一个信号器！"))
 						return TRUE
 
 					if(getAssembly(target_wire))
@@ -546,7 +546,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, flatten_numeric_alist(alist(
 					attached_signallers.Add(signaller)
 
 					attached_signallers[signaller] = target_wire
-					to_chat(usr, SPAN_NOTICE("You add [signaller] to [src]."))
+					to_chat(usr, SPAN_NOTICE("你将[signaller]添加到[src]上。"))
 					. = TRUE
 				else
 					var/obj/item/device/assembly/signaller/signaller = getAssembly(target_wire)
@@ -555,12 +555,12 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, flatten_numeric_alist(alist(
 						return TRUE
 
 					if(!usr.put_in_active_hand(signaller))
-						to_chat(usr, SPAN_WARNING("Your hand needs to be free!"))
+						to_chat(usr, SPAN_WARNING("你的手必须是空闲的！"))
 						return TRUE
 
 					signaller.airlock_wire = null
 					attached_signallers -= signaller
-					to_chat(usr, SPAN_NOTICE("You remove [signaller] from [src]."))
+					to_chat(usr, SPAN_NOTICE("你从[src]上移除了[signaller]。"))
 					. = TRUE
 
 	add_fingerprint(usr)
@@ -584,12 +584,12 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, flatten_numeric_alist(alist(
 	add_fingerprint(user)
 
 	if(istype(attacking_item, /obj/item/weapon/zombie_claws) && (welded || locked))
-		user.visible_message(SPAN_NOTICE("[user] starts tearing into the door on [src]!"),
+		user.visible_message(SPAN_NOTICE("[user]开始猛砸[src]上的门！"),
 			SPAN_NOTICE("You start prying your hand into the gaps of the door with your fingers... This will take about 30 seconds."),
 			SPAN_NOTICE("You hear tearing noises!"))
 
 		if(do_after(user, 300, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			user.visible_message(SPAN_NOTICE("[user] slams the door open [src]!"),
+			user.visible_message(SPAN_NOTICE("[user]猛地撞开了[src]的门！"),
 			SPAN_NOTICE("You slam the door open!"),
 			SPAN_NOTICE("You hear metal screeching!"))
 			locked = 0
@@ -607,16 +607,16 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, flatten_numeric_alist(alist(
 			weldtime = 70
 
 		if(not_weldable)
-			to_chat(user, SPAN_WARNING("[src] would require something a lot stronger than [welder] to weld!"))
+			to_chat(user, SPAN_WARNING("[src]需要比[welder]强得多的工具才能焊接！"))
 			return TRUE
 		if(!welder.isOn())
-			to_chat(user, SPAN_WARNING("[welder] needs to be on!"))
+			to_chat(user, SPAN_WARNING("[welder]需要处于开启状态！"))
 			return TRUE
 		if(construction_busy)
-			to_chat(user, SPAN_WARNING("Someone else is already working on [src]."))
+			to_chat(user, SPAN_WARNING("其他人已经在处理[src]了。"))
 			return TRUE
 		if(welder.remove_fuel(0,user))
-			user.visible_message(SPAN_NOTICE("[user] starts working on [src] with [welder]."),
+			user.visible_message(SPAN_NOTICE("[user]开始用[welder]处理[src]。"),
 			SPAN_NOTICE("You start working on [src] with [welder]."),
 			SPAN_NOTICE("You hear welding."))
 			playsound(loc, 'sound/items/weldingtool_weld.ogg', 25)
@@ -632,14 +632,14 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, flatten_numeric_alist(alist(
 
 	else if(HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER))
 		if(no_panel)
-			to_chat(user, SPAN_WARNING("[src] has no panel to open!"))
+			to_chat(user, SPAN_WARNING("[src]没有可以打开的面板！"))
 			return TRUE
 		if(construction_busy)
-			to_chat(user, SPAN_WARNING("Someone else is already working on [src]."))
+			to_chat(user, SPAN_WARNING("其他人已经在处理[src]了。"))
 			return TRUE
 
 		panel_open = !panel_open
-		to_chat(user, SPAN_NOTICE("You [panel_open ? "open" : "close"] [src]'s panel."))
+		to_chat(user, SPAN_NOTICE("你[panel_open ? "open" : "close"] [src]'s panel."))
 		update_icon()
 		return TRUE
 
@@ -655,36 +655,36 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, flatten_numeric_alist(alist(
 			if(istype(gun_item.attachments[slot], /obj/item/attachable/bayonet))
 				var/obj/item/attachable/bayonet/a_bayonet = gun_item.attachments[slot]
 				if(arePowerSystemsOn())
-					to_chat(user, SPAN_WARNING("The airlock's motors resist your efforts to force it."))
+					to_chat(user, SPAN_WARNING("气闸门的马达抵抗着你强行打开的企图。"))
 				else if(locked)
-					to_chat(user, SPAN_WARNING("The airlock's bolts prevent it from being forced."))
+					to_chat(user, SPAN_WARNING("气闸门的门栓使其无法被强行打开。"))
 				else if(welded)
-					to_chat(user, SPAN_WARNING("The airlock is welded shut."))
+					to_chat(user, SPAN_WARNING("气闸门已被焊死。"))
 				else if(!operating)
 					spawn(0)
 						if(density)
-							to_chat(user, SPAN_NOTICE("You start forcing the airlock open with [a_bayonet]."))
+							to_chat(user, SPAN_NOTICE("你开始用[a_bayonet]强行撬开气闸门。"))
 							if(do_after(user, a_bayonet.pry_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 								open(1)
 						else
-							to_chat(user, SPAN_NOTICE("You start forcing the airlock shut with [a_bayonet]."))
+							to_chat(user, SPAN_NOTICE("你开始用[a_bayonet]强行关闭气闸门。"))
 							if(do_after(user, a_bayonet.pry_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 								close(1)
 
 	else if(attacking_item.pry_capable)
 		if(attacking_item.pry_capable == IS_PRY_CAPABLE_CROWBAR && panel_open && welded)
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-				to_chat(user, SPAN_WARNING("You don't seem to know how to deconstruct machines."))
+				to_chat(user, SPAN_WARNING("你似乎不知道如何拆卸机器。"))
 				return TRUE
 			if(construction_busy)
-				to_chat(user, SPAN_WARNING("Someone else is already working on [src]."))
+				to_chat(user, SPAN_WARNING("其他人已经在处理[src]了。"))
 				return TRUE
 			playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
-			user.visible_message("[user] starts removing the electronics from the airlock assembly.", "You start removing electronics from the airlock assembly.")
+			user.visible_message("[user]开始从气闸组件中拆除电子设备。", "You start removing electronics from the airlock assembly.")
 			construction_busy = TRUE
 			if(do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 				construction_busy = FALSE
-				to_chat(user, SPAN_NOTICE("You removed the airlock electronics!"))
+				to_chat(user, SPAN_NOTICE("你已拆除气闸门的电子设备！"))
 
 				var/obj/structure/airlock_assembly/doors_assembly = new assembly_type(loc)
 				if(istype(doors_assembly, /obj/structure/airlock_assembly/multi_tile))
@@ -727,13 +727,13 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, flatten_numeric_alist(alist(
 			return TRUE
 
 		else if(arePowerSystemsOn() && attacking_item.pry_capable != IS_PRY_CAPABLE_FORCE)
-			to_chat(user, SPAN_WARNING("The airlock's motors resist your efforts to force it."))
+			to_chat(user, SPAN_WARNING("气闸门的马达抵抗着你强行打开的企图。"))
 
 		else if(locked)
-			to_chat(user, SPAN_WARNING("The airlock's bolts prevent it from being forced."))
+			to_chat(user, SPAN_WARNING("气闸门的门栓使其无法被强行打开。"))
 
 		else if(welded)
-			to_chat(user, SPAN_WARNING("The airlock is welded shut."))
+			to_chat(user, SPAN_WARNING("气闸门已被焊死。"))
 
 		else if(attacking_item.pry_capable == IS_PRY_CAPABLE_FORCE)
 			return FALSE //handled by the item's afterattack
@@ -849,7 +849,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, flatten_numeric_alist(alist(
 
 	playsound(loc, 'sound/machines/hydraulics_1.ogg', 25)
 	locked = TRUE
-	visible_message(SPAN_NOTICE("[src] airlock emits a loud thunk, then a click."))
+	visible_message(SPAN_NOTICE("[src]气闸发出一声沉重的闷响，接着是咔哒一声。"))
 	update_icon()
 	return TRUE
 
@@ -862,7 +862,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, flatten_numeric_alist(alist(
 	if(forced || arePowerSystemsOn()) //only can raise bolts if power's on
 		locked = FALSE
 		playsound(loc, 'sound/machines/hydraulics_2.ogg', 25)
-		visible_message(SPAN_NOTICE("[src] airlock emits a click, then hums slightly."))
+		visible_message(SPAN_NOTICE("[src]气闸发出一声咔哒声，随后轻微嗡鸣。"))
 		update_icon()
 		return TRUE
 
@@ -914,7 +914,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, flatten_numeric_alist(alist(
 		for(var/i in resin_smushables)
 			if(istype(x,i)) //I would like to just use a if(locate() in ) here but Im not gonna add every child to GLOB.resin_smushables so it works
 				playsound(loc, "alien_resin_break", 25)
-				visible_message(SPAN_WARNING("The [src.name] closes on [x], smushing it!"))
+				visible_message(SPAN_WARNING("[src.name]在[x]上关闭，把它压扁了！"))
 				if(isturf(x))
 					var/turf/closed/wall/resin_wall_to_destroy = x
 					resin_wall_to_destroy.dismantle_wall()
@@ -931,7 +931,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, flatten_numeric_alist(alist(
 		xeno.Stun(1)
 
 	playsound(src, 'sound/effects/metalhit.ogg', 50, TRUE)
-	xeno.visible_message(SPAN_XENOWARNING("[xeno] strikes [src] with its tail!"), SPAN_XENOWARNING("We strike [src] with our tail!"))
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] 用它的尾巴抽打 [src]！"), SPAN_XENOWARNING("We strike [src] with our tail!"))
 	xeno.tail_stab_animation(src, blunt_stab)
 	var/damage = xeno.melee_damage_upper * TAILSTAB_AIRLOCK_DAMAGE_MULTIPLIER
 	take_damage(damage, xeno)

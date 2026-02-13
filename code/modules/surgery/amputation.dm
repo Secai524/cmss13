@@ -5,7 +5,7 @@
 
 //Sever a limb cleanly.
 /datum/surgery/amputate
-	name = "Amputation"
+	name = "截肢"
 	priority = SURGERY_PRIORITY_LOW
 	possible_locs = EXTREMITY_LIMBS
 	invasiveness = list(SURGERY_DEPTH_SHALLOW)
@@ -20,7 +20,7 @@
 
 //Mend the stump left by a traumatic amputation. Can be performed by medics/nurses. Torn-off limbs should bleed heavily.
 /datum/surgery/amputate/repair
-	name = "Repair Traumatic Amputation Stump"
+	name = "修复创伤性截肢残端"
 	priority = SURGERY_PRIORITY_HIGH
 	possible_locs = EXTREMITY_LIMBS
 	invasiveness = list(SURGERY_DEPTH_SURFACE)
@@ -37,7 +37,7 @@
 
 //Mend the stump left by a traumatic amputation of a prosthetic. Needs a doctor, prosthetics are hard.
 /datum/surgery/amputate/repair/robot
-	name = "Remove Prosthetic Stump"
+	name = "移除假肢残端"
 	required_surgery_skill = SKILL_SURGERY_TRAINED
 	steps = list(
 		/datum/surgery_step/sever_prosthetic_clamps,
@@ -49,8 +49,8 @@
 //------------------------------------
 
 /datum/surgery_step/cut_muscle
-	name = "Cut Muscular Tissue"
-	desc = "begin an amputation"
+	name = "切断肌肉组织"
+	desc = "开始截肢手术"
 	tools = SURGERY_TOOLS_INCISION
 	time = 5 SECONDS
 	preop_sound = 'sound/surgery/scalpel1.ogg'
@@ -92,8 +92,8 @@
 //------------------------------------
 
 /datum/surgery_step/abort_amputation
-	name = "Reconnect Muscular Tissue (Surgery Abort)"
-	desc = "reconnect the muscles and abort the amputation"
+	name = "重连肌肉组织（手术中止）"
+	desc = "重连肌肉并中止截肢"
 	tools = SURGERY_TOOLS_SUTURE
 	time = 3 SECONDS
 	preop_sound = 'sound/surgery/retractor1.ogg'
@@ -137,8 +137,8 @@
 //------------------------------------
 
 /datum/surgery_step/saw_off_limb
-	name = "Sever Bone"
-	desc = "cut off the limb"
+	name = "切断骨骼"
+	desc = "切断肢体"
 	tools = SURGERY_TOOLS_SEVER_BONE
 	time = 6 SECONDS
 	///Tools which cannot instantly hack off a limb when amputating. Bayonet is for sawing, butcher/hatchet are smaller substitutes for machete/fire axe.
@@ -205,8 +205,8 @@
 //------------------------------------
 
 /datum/surgery_step/carve_amputation
-	name = "Remove Excess Flesh"
-	desc = "cut excess flesh from the stump"
+	name = "切除多余组织"
+	desc = "切除残端多余组织"
 	tools = SURGERY_TOOLS_INCISION
 	time = 3 SECONDS
 	preop_sound = 'sound/surgery/scalpel1.ogg'
@@ -245,8 +245,8 @@
 //------------------------------------
 
 /datum/surgery_step/close_ruptured_veins
-	name = "Close Ruptured Veins"
-	desc = "mend the torn blood vessels"
+	name = "缝合破裂血管"
+	desc = "修复撕裂的血管"
 	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
 	time = 4 SECONDS
 	success_sound = 'sound/surgery/organ1.ogg'
@@ -292,8 +292,8 @@
 //------------------------------------
 
 /datum/surgery_step/close_amputation
-	name = "Seal Stump"
-	desc = "stitch the stump closed"
+	name = "缝合残端"
+	desc = "缝合残端"
 	tools = SURGERY_TOOLS_SUTURE
 	time = 3 SECONDS
 	preop_sound = 'sound/surgery/retractor1.ogg'
@@ -334,8 +334,8 @@
 //------------------------------------
 
 /datum/surgery_step/sever_prosthetic_clamps
-	name = "Sever Damaged Prosthetic Clamps"
-	desc = "cut through the jammed clamps holding the prosthesis' stump on"
+	name = "切断受损假肢夹具"
+	desc = "切断卡住假肢残端的夹具"
 	tools = SURGERY_TOOLS_SEVER_BONE
 	time = 5 SECONDS
 	success_sound = 'sound/surgery/saw.ogg'
@@ -371,8 +371,8 @@
 //------------------------------------
 
 /datum/surgery_step/remove_old_prosthetic
-	name = "Remove Damaged Prosthetic"
-	desc = "remove the damaged prosthesis"
+	name = "移除受损假肢"
+	desc = "移除受损假肢"
 	accept_hand = TRUE
 	time = 3 SECONDS
 	success_sound = 'sound/surgery/organ1.ogg'

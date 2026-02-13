@@ -3,7 +3,7 @@
 
 /obj/item/tool/shovel
 	name = "shovel"
-	desc = "A large tool for digging and moving dirt."
+	desc = "用于挖掘和移动泥土的大型工具。"
 	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "shovel"
 	item_state = "shovel"
@@ -56,7 +56,7 @@
 	add_fingerprint(user)
 
 	if(dirt_amt)
-		to_chat(user, SPAN_NOTICE("You dump the [dirt_type == DIRT_TYPE_SNOW ? "snow" : "dirt"]!"))
+		to_chat(user, SPAN_NOTICE("你倒掉了[dirt_type == DIRT_TYPE_SNOW ? "snow" : "dirt"]!"))
 		if(dirt_type == DIRT_TYPE_SNOW)
 			var/turf/T = get_turf(user.loc)
 			var/obj/item/stack/snow/S = locate() in T
@@ -80,10 +80,10 @@
 		var/turf/T = target
 		var/turfdirt = T.get_dirt_type()
 		if(turfdirt)
-			to_chat(user, SPAN_NOTICE("You start digging."))
+			to_chat(user, SPAN_NOTICE("你开始挖掘。"))
 			playsound(user.loc, 'sound/effects/thud.ogg', 40, 1, 6)
 			if(!do_after(user, shovelspeed * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				to_chat(user, SPAN_NOTICE("You stop digging."))
+				to_chat(user, SPAN_NOTICE("你停止挖掘。"))
 				return
 
 			var/transfer_amount = dirt_amt_per_dig
@@ -97,7 +97,7 @@
 					else
 						OT.bleed_layer -= transfer_amount
 						OT.update_icon(1,0)
-			to_chat(user, SPAN_NOTICE("You dig up some [dirt_type_to_name(turfdirt)]."))
+			to_chat(user, SPAN_NOTICE("你挖出了一些[dirt_type_to_name(turfdirt)]。"))
 			dirt_amt = transfer_amount
 			dirt_type = turfdirt
 			update_icon()
@@ -112,14 +112,14 @@
 						break
 
 				if(!istype(SB, /obj/item/stack/sandbags_empty)) // Checks sandbag a second time to confirm, if none are found, cancels everything
-					to_chat(user, SPAN_NOTICE("There are no sandbags nearby to fill up."))
+					to_chat(user, SPAN_NOTICE("附近没有沙袋可供填充。"))
 					break
 
 				if(sandbagcheck == FALSE)
 					sandbagcheck = TRUE
-					to_chat(user, SPAN_NOTICE("You begin filling the sandbags with [dirt_type_to_name(turfdirt)]."))
+					to_chat(user, SPAN_NOTICE("你开始用[dirt_type_to_name(turfdirt)]填充沙袋。"))
 					if(!do_after(user, shovelspeed / 2, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) // Sandbag filling speed faster than normal, no skillchecks required since filling bags is almost instant
-						to_chat(user, SPAN_NOTICE("You stop filling the sandbags with [dirt_type_to_name(turfdirt)]."))
+						to_chat(user, SPAN_NOTICE("你停止用[dirt_type_to_name(turfdirt)]填充沙袋。"))
 						return
 
 				if(get_dist(user, SB) > 1) // check if sandbag still beside them
@@ -156,7 +156,7 @@
 
 /obj/item/tool/shovel/proc/dump_shovel(atom/target, mob/user)
 	var/turf/T = target
-	to_chat(user, SPAN_NOTICE("You dump the [dirt_type_to_name(dirt_type)]!"))
+	to_chat(user, SPAN_NOTICE("你倒掉了[dirt_type_to_name(dirt_type)]！"))
 	playsound(user.loc, "rustle", 30, 1, 6)
 	if(dirt_type == DIRT_TYPE_SNOW)
 		var/obj/item/stack/snow/S = locate() in T
@@ -187,7 +187,7 @@
 
 /obj/item/tool/shovel/spade
 	name = "spade"
-	desc = "A small tool for digging and moving dirt."
+	desc = "用于挖掘和移动泥土的小型工具。"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/hydroponics_tools_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/hydroponics_tools_righthand.dmi',
@@ -206,8 +206,8 @@
 
 //Snow Shovel----------
 /obj/item/tool/shovel/snow
-	name = "snow shovel"
-	desc = "I had enough winter for this year!"
+	name = "雪铲"
+	desc = "今年的冬天我受够了！"
 	w_class = SIZE_LARGE
 	force = 5
 	throwforce = 3
@@ -217,8 +217,8 @@
 
 // Entrenching tool.
 /obj/item/tool/shovel/etool
-	name = "entrenching tool"
-	desc = "Used to dig holes and bash heads in. Folds in to fit in small spaces."
+	name = "工兵铲"
+	desc = "用于挖掘坑洞和砸碎脑袋。可折叠以放入狭小空间。"
 	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "etool"
 	item_state = "etool"

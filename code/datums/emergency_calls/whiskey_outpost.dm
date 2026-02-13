@@ -2,7 +2,7 @@
 
 //whiskey outpost extra marines
 /datum/emergency_call/wo
-	name = "Marine Reinforcements (Squad)"
+	name = "陆战队员增援（班）"
 	mob_max = 15
 	mob_min = 1
 	probability = 0
@@ -29,29 +29,29 @@
 	if(!leader && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = mob
 		arm_equipment(mob, /datum/equipment_preset/dust_raider/leader, TRUE, TRUE)
-		to_chat(mob, SPAN_BOLDNOTICE("You are a Squad Leader in the USCM, your squad is here to assist in the defence of [SSmapping.configs[GROUND_MAP].map_name]."))
+		to_chat(mob, SPAN_BOLDNOTICE("你是USCM的一名班长，你的班奉命前来协助防御[SSmapping.configs[GROUND_MAP].map_name]。"))
 	else if (heavies < max_heavies && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_HEAVY) && check_timelock(mob.client, JOB_SQUAD_SPECIALIST, time_required_for_job))
 		heavies++
 		arm_equipment(mob, /datum/equipment_preset/dust_raider/specialist, TRUE, TRUE)
-		to_chat(mob, SPAN_BOLDNOTICE("You are a Specialist in the USCM, your squad is here to assist in the defence of [SSmapping.configs[GROUND_MAP].map_name]."))
+		to_chat(mob, SPAN_BOLDNOTICE("你是USCM的一名专家，你的班奉命前来协助防御[SSmapping.configs[GROUND_MAP].map_name]。"))
 	else if(smartgunners < max_smartgunners && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(mob.client, JOB_SQUAD_SMARTGUN, time_required_for_job))
 		smartgunners++
 		arm_equipment(mob, /datum/equipment_preset/dust_raider/smartgunner, TRUE, TRUE)
-		to_chat(mob, SPAN_BOLDNOTICE("You are a Smartgunner in the USCM, your squad is here to assist in the defence of [SSmapping.configs[GROUND_MAP].map_name]."))
+		to_chat(mob, SPAN_BOLDNOTICE("你是USCM的一名智能枪手，你的班奉命前来协助防御[SSmapping.configs[GROUND_MAP].map_name]。"))
 	else if(engineers < max_engineers && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_ENGINEER) && check_timelock(mob.client, JOB_SQUAD_ENGI, time_required_for_job))
 		engineers++
 		arm_equipment(mob, /datum/equipment_preset/dust_raider/engineer, TRUE, TRUE)
-		to_chat(mob, SPAN_BOLDNOTICE("You are an Engineer in the USCM, your squad is here to assist in the defence of [SSmapping.configs[GROUND_MAP].map_name]."))
+		to_chat(mob, SPAN_BOLDNOTICE("你是USCM的一名工程师，你的班奉命前来协助防御[SSmapping.configs[GROUND_MAP].map_name]。"))
 	else if (medics < max_medics && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(mob.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
 		arm_equipment(mob, /datum/equipment_preset/dust_raider/medic, TRUE, TRUE)
-		to_chat(mob, SPAN_BOLDNOTICE("You are a Hospital Corpsman in the USCM, your squad is here to assist in the defence of [SSmapping.configs[GROUND_MAP].map_name]."))
+		to_chat(mob, SPAN_BOLDNOTICE("你是USCM的一名医疗兵，你的班奉命前来协助防御[SSmapping.configs[GROUND_MAP].map_name]。"))
 	else
 		arm_equipment(mob, /datum/equipment_preset/dust_raider/private, TRUE, TRUE)
-		to_chat(mob, SPAN_BOLDNOTICE("You are a Rifleman in the USCM, your squad is here to assist in the defence of [SSmapping.configs[GROUND_MAP].map_name]."))
+		to_chat(mob, SPAN_BOLDNOTICE("你是USCM的一名步枪兵，你的小队前来协助防御[SSmapping.configs[GROUND_MAP].map_name]。"))
 
 	sleep(10)
-	to_chat(mob, "<B>Objectives:</b> [objectives]")
+	to_chat(mob, "<B>任务目标：</b>[objectives]")
 
 	GLOB.RoleAuthority.randomize_squad(mob)
 
@@ -67,7 +67,7 @@
 	return
 
 /datum/emergency_call/wo/platoon
-	name = "Marine Reinforcements (Platoon)"
+	name = "陆战队员增援（排级）"
 	mob_min = 8
 	mob_max = 30
 	probability = 0
@@ -76,13 +76,13 @@
 	max_smartgunners = 4
 
 /datum/emergency_call/wo/platoon/cryo
-	name = "Marine Reinforcements (Platoon) (Cryo)"
+	name = "陆战队员增援（排级）（冷冻）"
 	probability = 0
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_cryo
 	shuttle_id = ""
 
 /datum/emergency_call/wo/cryo
-	name = "Marine Reinforcements (Squad) (Cryo)"
+	name = "陆战队员增援（班级）（冷冻）"
 	probability = 0
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_cryo
 	shuttle_id = ""

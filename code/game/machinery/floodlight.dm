@@ -1,6 +1,6 @@
 /obj/structure/machinery/floodlight
-	name = "emergency floodlight"
-	desc = "A powerful light usually stationed near landing zones to provide better visibility."
+	name = "应急泛光灯"
+	desc = "一种通常部署在着陆区附近以提供更好视野的强力照明灯。"
 	icon = 'icons/obj/structures/machinery/floodlight.dmi'
 	icon_state = "flood_0"
 	density = TRUE
@@ -39,23 +39,23 @@
 
 /obj/structure/machinery/floodlight/attack_hand(mob/living/user)
 	if(!toggleable)
-		to_chat(user, SPAN_NOTICE("[src] doesn't seem to have a switch to toggle the light."))
+		to_chat(user, SPAN_NOTICE("[src]似乎没有切换灯光的开关。"))
 		return
 
 	if(user.is_mob_incapacitated())
 		return
 
 	if(!is_valid_user(user))
-		to_chat(user, SPAN_NOTICE("You don't have the dexterity to do this."))
+		to_chat(user, SPAN_NOTICE("你的手不够灵巧，无法完成此操作。"))
 		return
 
 	turned_on = !turned_on
 
 	if(inoperable())
-		to_chat(user, SPAN_NOTICE("You turn [turned_on ? "on" : "off"] the floodlight. It seems to be inoperable."))
+		to_chat(user, SPAN_NOTICE("你将[turned_on ? "on" : "off"] the floodlight. It seems to be inoperable."))
 		return
 
-	to_chat(user, SPAN_NOTICE("You turn [turned_on ? "on" : "off"] the light."))
+	to_chat(user, SPAN_NOTICE("你将[turned_on ? "on" : "off"] the light."))
 	turn_light(user, toggle_on = turned_on)
 	update_use_power(turned_on ? USE_POWER_ACTIVE : USE_POWER_IDLE)
 
@@ -70,8 +70,8 @@
 
 //Magical floodlight that cannot be destroyed or interacted with.
 /obj/structure/machinery/floodlight/landing
-	name = "landing light"
-	desc = "A powerful light usually stationed near landing zones to provide better visibility. This one seems to have been bolted down and is unable to be moved."
+	name = "着陆指示灯"
+	desc = "一种通常部署在着陆区附近以提供更好视野的强力照明灯。这个似乎已被螺栓固定，无法移动。"
 	icon_state = "flood_1"
 	use_power = USE_POWER_NONE
 	needs_power = FALSE

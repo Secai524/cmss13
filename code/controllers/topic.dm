@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(topic)
-	name = "Topic"
+	name = "主题"
 	init_order = SS_INIT_TOPIC
 	flags = SS_NO_FIRE
 

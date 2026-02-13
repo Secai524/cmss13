@@ -8,7 +8,7 @@
 
 /obj/item/reagent_container/food/snacks/csandwich
 	name = "sandwich"
-	desc = "The best thing since sliced bread."
+	desc = "切片面包问世以来最棒的东西。"
 	icon_state = "breadslice"
 	icon = 'icons/obj/items/food/bread.dmi'
 	trash = /obj/item/trash/plate
@@ -19,7 +19,7 @@
 /obj/item/reagent_container/food/snacks/csandwich/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/reagent_container/food/snacks/csandwich))
 		//No sandwich inception, it causes some bugs...
-		to_chat(user, SPAN_NOTICE("You can't put \a [W] in [src]."))
+		to_chat(user, SPAN_NOTICE("你不能把\a [W]放进[src]里。"))
 		return
 
 	var/sandwich_limit = 4
@@ -28,18 +28,18 @@
 			sandwich_limit += 4
 
 	if(length(src.contents) > sandwich_limit)
-		to_chat(user, SPAN_DANGER("If you put anything else on \the [src] it's going to collapse."))
+		to_chat(user, SPAN_DANGER("如果你再往\the [src]上放任何东西，它就要塌了。"))
 		return
 	if(length(src.contents) >= 15)
 		to_chat(user, SPAN_DANGER("\The [src] is already massive! You can't add more without ruining it."))
 		return
 	else if(istype(W,/obj/item/shard))
-		to_chat(user, SPAN_NOTICE("You hide [W] in \the [src]."))
+		to_chat(user, SPAN_NOTICE("你将[W]藏进了\the [src]里。"))
 		user.drop_inv_item_to_loc(W, src)
 		update()
 		return
 	else if(istype(W,/obj/item/reagent_container/food/snacks))
-		to_chat(user, SPAN_NOTICE("You layer [W] over \the [src]."))
+		to_chat(user, SPAN_NOTICE("你将[W]铺在\the [src]上。"))
 		var/obj/item/reagent_container/F = W
 		if(F.reagents)
 			F.reagents.trans_to(src, F.reagents.total_volume)
@@ -104,6 +104,6 @@
 		H = M
 
 	if(H && shard && M == user) //This needs a check for feeding the food to other people, but that could be abusable.
-		to_chat(H, SPAN_DANGER("You lacerate your mouth on a [shard.name] in the sandwich!"))
+		to_chat(H, SPAN_DANGER("你被三明治里的[shard.name]割伤了嘴！"))
 		H.apply_damage(5, BRUTE)
 	..()

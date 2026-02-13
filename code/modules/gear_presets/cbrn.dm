@@ -1,5 +1,5 @@
 /datum/equipment_preset/uscm/cbrn
-	name = "Generic CBRN" //Parent type for easier gear
+	name = "通用CBRN人员" //Parent type for easier gear
 	assignment = JOB_SQUAD_MARINE
 	job_title = JOB_SQUAD_MARINE
 	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
@@ -25,7 +25,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre(new_human), WEAR_IN_JACKET)
 
 /datum/equipment_preset/uscm/cbrn/standard
-	name = "CBRN Rifleman"
+	name = "CBRN步枪兵"
 	role_comm_title = "RFN"
 
 /datum/equipment_preset/uscm/cbrn/standard/load_gear(mob/living/carbon/human/new_human)
@@ -66,7 +66,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/bodybag(new_human), WEAR_IN_BACK)
 
 /datum/equipment_preset/uscm/cbrn/engineer
-	name = "CBRN Combat Technician"
+	name = "CBRN战斗技术员"
 	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_SQUAD_ENGI
 	job_title = JOB_SQUAD_ENGI
@@ -110,7 +110,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/bodybag(new_human), WEAR_IN_BACK)
 
 /datum/equipment_preset/uscm/cbrn/medic
-	name = "CBRN Hospital Corpsman"
+	name = "CBRN医疗兵"
 	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_SQUAD_MEDIC
 	job_title = JOB_SQUAD_MEDIC
@@ -153,7 +153,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/tool/surgery/synthgraft(new_human), WEAR_IN_ACCESSORY)
 
 /datum/equipment_preset/uscm/cbrn/leader
-	name = "CBRN Fireteam Leader"
+	name = "CBRN火力组长"
 	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_SQUAD_TEAM_LEADER
 	job_title = JOB_SQUAD_TEAM_LEADER
@@ -188,7 +188,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m41aMK1/ap(new_human), WEAR_IN_JACKET)
 
 /datum/equipment_preset/uscm/cbrn/specialist
-	name = "CBRN Specialist"
+	name = "CBRN专家"
 	paygrades = list(PAY_SHORT_OPR = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_SQUAD_SPECIALIST
 	job_title = JOB_SQUAD_SPECIALIST
@@ -239,7 +239,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/syringes(new_human), WEAR_IN_BELT)
 
 /datum/equipment_preset/uscm/cbrn/specialist/lead //Same gear, better title
-	name = "CBRN Specialist SL"
+	name = "CBRN专家班长"
 	assignment = JOB_SQUAD_LEADER
 	job_title = JOB_SQUAD_LEADER
 	role_comm_title = "Spc SL"

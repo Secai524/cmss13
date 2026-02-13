@@ -26,7 +26,7 @@
 
 /obj/item/storage/box/spec/demolitionist
 	name = "\improper Demolitionist equipment case"
-	desc = "A large case containing a heavy-caliber anti-tank M5 RPG rocket launcher, M3-T light armor, five 84mm rockets and additional pieces of equipment.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
+	desc = "一个大箱子，内含一门大口径反坦克M5火箭筒、M3-T轻型护甲、五枚84毫米火箭弹以及其他装备。\n将此图标拖到自己身上以打开！注意：你无法将物品放回此箱内。"
 	kit_overlay = "demo"
 	kit_name = "demolitionist"
 
@@ -85,7 +85,7 @@
 
 /obj/item/storage/box/spec/sniper
 	name = "\improper Sniper equipment case"
-	desc = "A large case containing your very own long-range M42A sniper rifle, M45 ghillie armor and helmet, M42 scout sight, ammunition, spotter equipment, and additional pieces of equipment.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
+	desc = "一个大箱子，内含你自己的远程M42A狙击步枪、M45吉利护甲和头盔、M42侦察瞄准镜、弹药、观察员装备以及其他装备。\n将此图标拖到自己身上以打开！注意：你无法将物品放回此箱内。"
 	kit_overlay = "sniper"
 	kit_name = "sniper"
 
@@ -110,7 +110,7 @@
 
 /obj/item/storage/box/spec/sniper/anti_materiel
 	name = "\improper AMR equipment case"
-	desc = "A large case containing an experimental XM43E1, a set of M45 ghillie armor and helmet, an M42 scout sight, ammunition, a set of spotter gear, and additional pieces of equipment.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
+	desc = "一个大箱子，内含一把实验性XM43E1、一套M45吉利护甲和头盔、一个M42侦察瞄准镜、弹药、一套观察员装备以及其他装备。\n将此图标拖到自己身上以打开！注意：你无法将物品放回此箱内。"
 	kit_name = "sniper_anti_materiel"
 
 /obj/item/storage/box/spec/sniper/anti_materiel/fill_preset_inventory()
@@ -130,7 +130,7 @@
 
 /obj/item/storage/box/spec/scout
 	name = "\improper Scout equipment case"
-	desc = "A large case containing an M4RA battle rifle, M3-S light armor and helmet, M4RA battle sight, M68 thermal cloak, V3 reactive thermal tarp, improved scout laser designator, ammunition and additional pieces of equipment.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
+	desc = "一个大型箱子，内含M4RA战斗步枪、M3-S轻型护甲和头盔、M4RA战斗瞄准镜、M68热光学斗篷、V3反应式热光学篷布、改进型侦察激光指示器、弹药及其他装备。\n将此图标拖到自己身上以打开！注意：你无法将物品放回此箱内。"
 	kit_overlay = "scout"
 	kit_name = "scout"
 
@@ -162,7 +162,7 @@
 
 /obj/item/storage/box/spec/pyro
 	name = "\improper Pyrotechnician equipment case"
-	desc = "A large case containing M240-T incinerator unit, M35 pyrotechnician armor and helmet, Broiler-T flexible refueling system and additional pieces of equipment.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
+	desc = "一个大型箱子，内含M240-T焚烧器单元、M35烟火技术员护甲和头盔、Broiler-T柔性燃料补给系统及其他装备。\n将此图标拖到自己身上以打开！注意：你无法将物品放回此箱内。"
 	kit_overlay = "pyro"
 	kit_name = "pyro"
 
@@ -182,7 +182,7 @@
 
 /obj/item/storage/box/spec/heavy_grenadier
 	name = "\improper Heavy Grenadier equipment case"
-	desc = "A large case containing a heavy-duty multi-shot Armat Systems M92 grenade launcher, M3-G4 grenadier armor and helmet, significant amount of various M40 grenades and additional pieces of equipment.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
+	desc = "一个大型箱子，内含重型多管阿玛特系统M92榴弹发射器、M3-G4榴弹兵护甲和头盔、大量各类M40榴弹及其他装备。\n将此图标拖到自己身上以打开！注意：你无法将物品放回此箱内。"
 	kit_overlay = "grenadier"
 	kit_name = "grenadier"
 
@@ -201,7 +201,7 @@
 
 /obj/item/storage/box/spec/sharp_operator
 	name = "\improper SHARP Operator equipment case"
-	desc = "A large case containing a P9 SHARP rifle, M3-G4 Grenadier armor and helmet, and various pieces of additional equipment.\nDrag this sprite onto yourself to open it up!"
+	desc = "一个大型箱子，内含P9 SHARP步枪、M3-G4榴弹兵护甲和头盔，以及各种额外装备。\n将此图标拖到自己身上以打开！"
 	kit_overlay = "grenadier"
 	kit_name = "sharp_operator"
 
@@ -228,7 +228,7 @@
 //maybe put in req for later use?
 /obj/item/storage/box/spec/B18
 	name = "\improper B18 heavy armor case"
-	desc = "A large case containing the experimental B18 armor platform. Handle with care, it's more expensive than all of Delta combined.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
+	desc = "一个大型箱子，内含实验性B18护甲平台。小心轻放，它比整个德尔塔班加起来都贵。\n将此图标拖到自己身上以打开！注意：你无法将物品放回此箱内。"
 	kit_overlay = "b18"
 
 /obj/item/storage/box/spec/B18/fill_preset_inventory()
@@ -238,7 +238,7 @@
 
 /obj/item/storage/box/spec/mortar
 	name = "\improper Mortar Kit"
-	desc = "Contains the equipment needed for the mortar."
+	desc = "内含迫击炮所需装备。"
 	kit_overlay = "mortar"
 
 /obj/item/storage/box/spec/mortar/fill_preset_inventory()
@@ -265,8 +265,8 @@
 //For events/WO, allows the user to choose a specalist kit out of available ones in spec_kit_boxes_left list in gloabl_lists.dm
 
 /obj/item/spec_kit
-	name = "specialist kit"
-	desc = "A paper box. Open it and get a specialist kit."
+	name = "专家装备箱"
+	desc = "一个纸箱。打开它获得一个专家装备箱。"
 	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "spec_kit"
 	var/list/allowed_roles_list = list(JOB_SQUAD_SPECIALIST, JOB_WO_SQUAD_SPECIALIST, JOB_WO_CREWMAN)
@@ -283,7 +283,7 @@
 	for(var/allowed_role in allowed_roles_list)
 		if(user.job == allowed_role)
 			if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_DEFAULT))//Expects no skill in specialist weapons at all.
-				to_chat(user, SPAN_WARNING("You already have specialization, give this kit to someone else!"))
+				to_chat(user, SPAN_WARNING("你已有专长，将此装备箱交给其他人！"))
 				return FALSE
 			return TRUE
 
@@ -313,7 +313,7 @@
 /obj/item/spec_kit/attack_self(mob/living/carbon/human/user)
 	..()
 	if(!ishuman(user))
-		to_chat(user, SPAN_WARNING("You can't use \the [src]!"))
+		to_chat(user, SPAN_WARNING("你无法使用\the [src]！"))
 		return
 
 	if(can_use(user))
@@ -321,7 +321,7 @@
 			qdel(src)
 			return
 	else
-		to_chat(user, SPAN_WARNING("You can't use this [name]!"))
+		to_chat(user, SPAN_WARNING("你无法使用这个[name]！"))
 	return
 
 /obj/item/spec_kit/proc/can_use(mob/living/carbon/human/user)
@@ -331,7 +331,7 @@
 	for(var/allowed_role in allowed_roles_list)
 		if(user.job == allowed_role)
 			if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
-				to_chat(user, SPAN_WARNING("You already have specialization, give this kit to someone else!"))
+				to_chat(user, SPAN_WARNING("你已有专长，将此装备箱交给其他人！"))
 				return FALSE
 			return TRUE
 
@@ -342,18 +342,18 @@
 		if(specset.get_available_kit_num() >= 1)
 			available_specialist_kits += specset.get_name()
 
-	var/selection = tgui_input_list(user, "Pick your specialist equipment type.", "Specialist Kit Selection", available_specialist_kits, 10 SECONDS)
+	var/selection = tgui_input_list(user, "选择你的专家装备类型。", "Specialist Kit Selection", available_specialist_kits, 10 SECONDS)
 	if(!selection || QDELETED(src))
 		return FALSE
 	if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
-		to_chat(user, SPAN_WARNING("You already unwrapped your [name], give this one to someone else!"))
+		to_chat(user, SPAN_WARNING("你已经拆封了你的[name]，把这个交给其他人！"))
 		return FALSE
 	if(!GLOB.specialist_set_name_dict[selection] || (GLOB.specialist_set_name_dict[selection].get_available_kit_num() <= 0))
-		to_chat(user, SPAN_WARNING("No more kits of this type may be chosen!"))
+		to_chat(user, SPAN_WARNING("无法再选择此类型的装备箱！"))
 		return FALSE
 	var/obj/item/card/id/card = user.get_idcard()
 	if(!card || card.registered_ref != WEAKREF(user))
-		to_chat(user, SPAN_WARNING("You must be wearing your [SPAN_INFO("ID card")] or [SPAN_INFO("dog tags")] to select a specialization!"))
+		to_chat(user, SPAN_WARNING("你必须穿着你的[SPAN_INFO("ID card")] or [SPAN_INFO("狗牌")] to select a specialization!"))
 		return FALSE
 	return GLOB.specialist_set_name_dict[selection].redeem_set(user, TRUE)
 
@@ -575,7 +575,7 @@
 
 /obj/item/storage/box/kit/cryo_self_defense
 	name = "\improper Cryo Self Defense Kit"
-	desc = "A basic self-defense kit reserved for emergencies. As you might expect, not much care was put into keeping the stock fresh, who would be insane enough to attack a USCM ship directly?"
+	desc = "一个为紧急情况预留的基本自卫装备箱。正如你所料，没人费心去保持库存新鲜——谁会疯狂到直接攻击一艘USCM的船？"
 	icon_state = "cryo_defense_kit"
 	storage_slots = 4
 
@@ -635,7 +635,7 @@
 
 /obj/item/storage/box/kit/k9_handler/mp
 	name = "\improper Police K9 handler Kit"
-	desc = "Contains the equipment needed for a Police K9 Handler to perform their duties."
+	desc = "内含警用K9训导员履行职责所需的装备。"
 	pro_case_overlay = "k9_handler"
 
 /obj/item/storage/box/kit/k9_handler/mp/fill_preset_inventory()
@@ -651,7 +651,7 @@
 
 /obj/item/storage/box/kit/k9_handler/corpsman
 	name = "\improper Medical K9 handler Kit"
-	desc = "Contains the equipment needed for a Medical K9 Handler to perform their duties."
+	desc = "内含医疗K9训导员履行职责所需的装备。"
 	pro_case_overlay = "k9_handler"
 
 /obj/item/storage/box/kit/k9_handler/corpsman/fill_preset_inventory()

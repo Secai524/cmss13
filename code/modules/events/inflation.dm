@@ -1,5 +1,5 @@
 /datum/round_event_control/economy_inflation
-	name = "Economy Inflation"
+	name = "经济通胀"
 	typepath = /datum/round_event/economy_inflation
 	weight = 10 // probably could use some defines in the future - EVENT_UNLIKELY, EVENT_COMMON, etc.
 	earliest_start = 5 MINUTES
@@ -34,7 +34,7 @@
 	Colony vendors aren't updated because the colony's network has collapsed. */
 	if(GLOB.security_level >= SEC_LEVEL_RED)
 		return
-	shipwide_ai_announcement("An encrypted broadband signal from Weyland-Yutani has been received notifying the sector of sudden changes in the UA's economy during cryosleep, due to [get_random_story()], and have requested UA vessels to increase the prices of [product_type] products by [get_percentage()]%. This change will come into effect in [time_to_update] minutes.", quiet = TRUE)
+	shipwide_ai_announcement("已收到来自维兰德-汤谷的加密宽带信号，通知本星区在冷冻休眠期间，由于[get_random_story()]，UA经济发生突变，并要求UA舰船将[product_type]类产品的价格提高[get_percentage()]%。此变更将在[time_to_update]分钟后生效。", quiet = TRUE)
 
 /datum/round_event/economy_inflation/start()
 	for(var/obj/structure/machinery/vending/vending_machine as anything in GLOB.total_vending_machines)

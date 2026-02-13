@@ -55,11 +55,11 @@
 
 	if(sdisabilities & DISABILITY_DEAF || ear_deaf)
 		if(speaker == src)
-			to_chat(src, SPAN_WARNING("You cannot hear yourself speak!"))
+			to_chat(src, SPAN_WARNING("你听不到自己说话！"))
 		else
-			to_chat(src, SPAN_LOCALSAY("<span class='prefix'>[comm_paygrade][speaker_name]</span>[alt_name] talks but you cannot hear them."))
+			to_chat(src, SPAN_LOCALSAY("<span class='prefix'>[comm_paygrade][speaker_name]</span>[alt_name]在说话，但你听不见。"))
 	else
-		to_chat(src, SPAN_LOCALSAY("<span class='prefix'>[comm_paygrade][speaker_name]</span>[alt_name] [verb], <span class='[style]'>\"[message]\"</span>"))
+		to_chat(src, SPAN_LOCALSAY("<span class='prefix'>[comm_paygrade][speaker_name]</span>[alt_name][verb]，<span class='[style]'>\"[message]\"</span>"))
 		if (speech_sound && (get_dist(speaker, src) <= GLOB.world_view_size && src.z == speaker.z))
 			var/turf/source = speaker? get_turf(speaker) : get_turf(src)
 			playsound_client(src.client, speech_sound, source, sound_vol, GET_RANDOM_FREQ)
@@ -135,15 +135,15 @@
 
 	if(sdisabilities & DISABILITY_DEAF || ear_deaf)
 		if(prob(20))
-			to_chat(src, SPAN_WARNING("You feel your headset vibrate but can hear nothing from it!"), type = MESSAGE_TYPE_RADIO)
+			to_chat(src, SPAN_WARNING("你感觉到耳机震动，但听不到任何声音！"), type = MESSAGE_TYPE_RADIO)
 	else if(track)
 		if(!command)
-			to_chat(src, "[part_a][comm_paygrade][track][part_b][verb], <span class=\"[style]\">\"[message]\"</span></span></span>", type = MESSAGE_TYPE_RADIO)
+			to_chat(src, "[part_a][comm_paygrade][track][part_b][verb]，<span class=\"[style]\">\"[message]\"</span></span></span>", type = MESSAGE_TYPE_RADIO)
 		else
 			to_chat(src, "<span class=\"[fontsize_style]\">[part_a][comm_paygrade][track][part_b][verb], <span class=\"[style]\">\"[message]\"</span></span></span></span>", type = MESSAGE_TYPE_RADIO)
 	else
 		if(!command)
-			to_chat(src, "[part_a][comm_paygrade][speaker_name][part_b][verb], <span class=\"[style]\">\"[message]\"</span></span></span>", type = MESSAGE_TYPE_RADIO)
+			to_chat(src, "[part_a][comm_paygrade][speaker_name][part_b][verb]，<span class=\"[style]\">\"[message]\"</span></span></span>", type = MESSAGE_TYPE_RADIO)
 		else
 			to_chat(src, "<span class=\"[fontsize_style]\">[part_a][comm_paygrade][speaker_name][part_b][verb], <span class=\"[style]\">\"[message]\"</span></span></span></span>", type = MESSAGE_TYPE_RADIO)
 
@@ -156,7 +156,7 @@
 		comm_paygrade = H.get_paygrade()
 
 	if(say_understands(speaker, language))
-		message = "<B>[comm_paygrade][src]</B> [verb], \"[message]\""
+		message = "<B>[comm_paygrade][src]</B>[verb]，\"[message]\""
 	else
 		message = "<B>[comm_paygrade][src]</B> [verb]."
 
@@ -187,9 +187,9 @@
 
 	if(sdisabilities & DISABILITY_DEAF || ear_deaf)
 		if(speaker == src)
-			to_chat(src, SPAN_WARNING("You cannot hear yourself speak!"))
+			to_chat(src, SPAN_WARNING("你听不到自己说话！"))
 		else
-			to_chat(src, SPAN_LOCALSAY("Someone near talks but you cannot hear them."))
+			to_chat(src, SPAN_LOCALSAY("附近有人在说话，但你听不见。"))
 		return
 
 	if(hearing_self)

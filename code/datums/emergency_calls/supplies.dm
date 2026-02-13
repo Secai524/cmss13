@@ -2,7 +2,7 @@
 
 //Supply drop. Just docks and has a crapload of stuff inside.
 /datum/emergency_call/supplies
-	name = "Supply Drop"
+	name = "补给投放"
 	mob_max = 0
 	mob_min = 0
 	arrival_message = "Weyland-Yutani Automated Supply Drop 334-Q signal received. Docking procedures have commenced."

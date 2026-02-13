@@ -26,25 +26,25 @@
 /datum/buildmode_mode/varedit/change_settings(client/c)
 	var/list/locked = list("vars", "key", "ckey", "client", "icon")
 
-	selected_key = input(usr,"Enter variable name:" ,"Name", "name")
+	selected_key = input(usr,"输入变量名：" ,"姓名", "name")
 	if((selected_key in locked) && !check_rights(R_DEBUG, FALSE))
 		return TRUE
-	var/type = tgui_input_list(usr,"Select variable type:", "Type", list(TYPE_TEXT, TYPE_NUMBER, TYPE_MOB_REFERENCE, TYPE_OBJ_REFERENCE, TYPE_TURF_REFERENCE))
+	var/type = tgui_input_list(usr,"选择变量类型：", "类型", list(TYPE_TEXT, TYPE_NUMBER, TYPE_MOB_REFERENCE, TYPE_OBJ_REFERENCE, TYPE_TURF_REFERENCE))
 
 	if(!type)
 		return TRUE
 
 	switch(type)
 		if(TYPE_TEXT)
-			selected_value = input(usr,"Enter variable value:" ,"Value", "value") as text
+			selected_value = input(usr,"输入变量值：" ,"Value", "value") as text
 		if(TYPE_NUMBER)
-			selected_value = input(usr,"Enter variable value:" ,"Value", 0) as num
+			selected_value = input(usr,"输入变量值：" ,"Value", 0) as num
 		if(TYPE_MOB_REFERENCE)
-			selected_value = input(usr,"Enter variable value:" ,"Value") as mob in GLOB.mob_list
+			selected_value = input(usr,"输入变量值：" ,"Value") as mob in GLOB.mob_list
 		if(TYPE_OBJ_REFERENCE)
-			selected_value = input(usr,"Enter variable value:" ,"Value") as obj in world
+			selected_value = input(usr,"输入变量值：" ,"Value") as obj in world
 		if(TYPE_TURF_REFERENCE)
-			selected_value = input(usr,"Enter variable value:" ,"Value") as turf in GLOB.turfs
+			selected_value = input(usr,"输入变量值：" ,"Value") as turf in GLOB.turfs
 
 #undef TYPE_TEXT
 #undef TYPE_NUMBER
@@ -58,19 +58,19 @@
 	if(LAZYACCESS(modifiers, LEFT_CLICK))
 		if(object.vars.Find(selected_key))
 			if(!object.vv_edit_var(selected_key, selected_value))
-				to_chat(usr, SPAN_WARNING("Your edit was rejected by the object."))
+				to_chat(usr, SPAN_WARNING("你的编辑被对象拒绝了。"))
 				return
 			message_admins("[key_name(usr)] modified [object.name]'s [selected_key] to [selected_value]")
 		else
-			to_chat(usr, SPAN_DANGER("[initial(object.name)] does not have a var called '[selected_key]'"))
+			to_chat(usr, SPAN_DANGER("[initial(object.name)] 没有名为 '[selected_key]' 的变量"))
 	if(LAZYACCESS(modifiers, RIGHT_CLICK))
 		if(object.vars.Find(selected_key))
 			var/reset_value = initial(object.vars[selected_key])
 			if(!object.vv_edit_var(selected_key, reset_value))
-				to_chat(usr, SPAN_WARNING("Your edit was rejected by the object."))
+				to_chat(usr, SPAN_WARNING("你的编辑被对象拒绝了。"))
 				return
 			message_admins("[key_name(usr)] modified [object.name]'s [selected_key] to [reset_value]")
 		else
-			to_chat(usr, SPAN_DANGER("[initial(object.name)] does not have a var called '[selected_key]'"))
+			to_chat(usr, SPAN_DANGER("[initial(object.name)] 没有名为 '[selected_key]' 的变量"))
 
 

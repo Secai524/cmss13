@@ -37,7 +37,7 @@
 				first_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male_pmc) : pick(GLOB.first_names_female_pmc))
 			else // MALE
 				first_name = capitalize(pick(GLOB.first_names_male_pmc))
-				new_human.f_style = "5 O'clock Shadow"
+				new_human.f_style = "五点钟胡茬"
 	if(prob(25))
 		last_name = capitalize(randomly_generate_japanese_word(rand(2, 4)))
 	else
@@ -45,7 +45,7 @@
 	new_human.change_real_name(new_human, "[first_name] [last_name]")
 
 	new_human.age = rand(25,35)
-	new_human.h_style = "Shaved Head"
+	new_human.h_style = "光头"
 	new_human.r_hair = 25
 	new_human.g_hair = 25
 	new_human.b_hair = 35
@@ -60,7 +60,7 @@
 
 //*****************************************************************************************************/
 /datum/equipment_preset/pmc/pmc_standard
-	name = "Weyland-Yutani PMC (Standard)"
+	name = "维兰德-汤谷PMC（标准）"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_PMC_STANDARD
@@ -242,7 +242,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 //*****************************************************************************************************/
 /datum/equipment_preset/pmc/pmc_security
-	name = "Weyland-Yutani PMC (Security)"
+	name = "维兰德-汤谷PMC（安保）"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_PMC_SECURITY
@@ -376,7 +376,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	)
 
 /datum/equipment_preset/pmc/pmc_riot_control
-	name = "Weyland-Yutani PMC (Crowd Control Specialist)"
+	name = "维兰德-汤谷PMC（人群控制专家）"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_PMC_CROWD_CONTROL
@@ -420,7 +420,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 //*****************************************************************************************************/
 /datum/equipment_preset/pmc/pmc_medic
-	name = "Weyland-Yutani PMC (Corporate Medic)"
+	name = "维兰德-汤谷PMC（公司医疗兵）"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_PMC_MEDIC
@@ -519,12 +519,12 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Large Magazine Pouch", 0, /obj/item/storage/pouch/magazine/large, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Medical Pouch", 0, /obj/item/storage/pouch/medical, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 		list("Medical Kit Pouch", 0, /obj/item/storage/pouch/medkit, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
-		list("Pressurized Reagent Canister Pouch (Bicaridine)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/bicaridine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
-		list("Pressurized Reagent Canister Pouch (Kelotane)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/kelotane, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
+		list("加压试剂罐包（碧卡利定）", 0, /obj/item/storage/pouch/pressurized_reagent_canister/bicaridine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
+		list("加压试剂罐包（凯洛坦）", 0, /obj/item/storage/pouch/pressurized_reagent_canister/kelotane, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 		list("Pressurized Reagent Canister Pouch (Revival Mix - Tricordrazine)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 		list("Pressurized Reagent Canister Pouch (Revival Mix - Peridaxon)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/revival_peri, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
-		list("Pressurized Reagent Canister Pouch (Tricordrazine)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
-		list("Pressurized Reagent Canister Pouch (Field Anesthetic)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
+		list("加压试剂罐包（三合剂）", 0, /obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
+		list("加压试剂罐包（野战麻醉剂）", 0, /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 		list("Pressurized Reagent Canister Pouch (EMPTY)", 0, /obj/item/storage/pouch/pressurized_reagent_canister, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 
 		list("ATTACHMENT (CHOOSE 1)", 0, null, null, null),
@@ -613,7 +613,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 //*****************************************************************************************************/
 /datum/equipment_preset/pmc/pmc_med_investigator
-	name = "Weyland-Yutani PMC (Medical Investigator)"
+	name = "维兰德-汤谷PMC（医疗调查员）"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_PMC_INVESTIGATOR
@@ -713,12 +713,12 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Large Magazine Pouch", 0, /obj/item/storage/pouch/magazine/large, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Medical Pouch", 0, /obj/item/storage/pouch/medical, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 		list("Medical Kit Pouch", 0, /obj/item/storage/pouch/medkit, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
-		list("Pressurized Reagent Canister Pouch (Bicaridine)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/bicaridine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
-		list("Pressurized Reagent Canister Pouch (Kelotane)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/kelotane, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
+		list("加压试剂罐包（碧卡利定）", 0, /obj/item/storage/pouch/pressurized_reagent_canister/bicaridine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
+		list("加压试剂罐包（凯洛坦）", 0, /obj/item/storage/pouch/pressurized_reagent_canister/kelotane, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 		list("Pressurized Reagent Canister Pouch (Revival Mix - Tricordrazine)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 		list("Pressurized Reagent Canister Pouch (Revival Mix - Peridaxon)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/revival_peri, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
-		list("Pressurized Reagent Canister Pouch (Tricordrazine)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
-		list("Pressurized Reagent Canister Pouch (Field Anesthetic)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
+		list("加压试剂罐包（三合剂）", 0, /obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
+		list("加压试剂罐包（野战麻醉剂）", 0, /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 		list("Pressurized Reagent Canister Pouch (EMPTY)", 0, /obj/item/storage/pouch/pressurized_reagent_canister, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 
 		list("ATTACHMENT (CHOOSE 1)", 0, null, null, null),
@@ -808,7 +808,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 //*****************************************************************************************************/
 
 /datum/equipment_preset/pmc/pmc_leader
-	name = "Weyland-Yutani PMC (Leader)"
+	name = "维兰德-汤谷PMC（队长）"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_PMC_LEADER
@@ -878,7 +878,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Combat Pack", 0, /obj/item/storage/backpack/pmc/backpack, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 		list("Armored Balaclava", 0, /obj/item/clothing/mask/gas/pmc, MARINE_CAN_BUY_MASK, VENDOR_ITEM_MANDATORY),
 		list("Armored Beret", 0, /obj/item/clothing/head/helmet/marine/veteran/pmc/leader, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
-		list("Armor", 0, /obj/item/clothing/suit/storage/marine/veteran/pmc/leader, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
+		list("护甲", 0, /obj/item/clothing/suit/storage/marine/veteran/pmc/leader, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 
 		list("BELT (CHOOSE 1)", 0, null, null, null),
 		list("G8-A General Utility Pouch", 0, /obj/item/storage/backpack/general_belt, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
@@ -968,7 +968,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 //*****************************************************************************************************/
 
 /datum/equipment_preset/pmc/pmc_lead_investigator
-	name = "Weyland-Yutani PMC (Lead Investigator)"
+	name = "维兰德-汤谷PMC（首席调查员）"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_PMC_LEAD_INVEST
@@ -1025,7 +1025,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Combat Pack", 0, /obj/item/storage/backpack/pmc, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 		list("Armored Balaclava", 0, /obj/item/clothing/mask/gas/pmc, MARINE_CAN_BUY_MASK, VENDOR_ITEM_MANDATORY),
 		list("Armored Beret", 0, /obj/item/clothing/head/helmet/marine/veteran/pmc/leader, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
-		list("Armor", 0, /obj/item/clothing/suit/storage/marine/veteran/pmc/leader, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
+		list("护甲", 0, /obj/item/clothing/suit/storage/marine/veteran/pmc/leader, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 
 		list("BELT (CHOOSE 1)", 0, null, null, null),
 		list("G8-A General Utility Pouch", 0, /obj/item/storage/backpack/general_belt, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
@@ -1115,7 +1115,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 //*****************************************************************************************************/
 
 /datum/equipment_preset/pmc/pmc_gunner
-	name = "Weyland-Yutani PMC (Gunner)"
+	name = "维兰德-汤谷PMC（机枪手）"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_PMC_GUNNER
@@ -1162,7 +1162,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("CFR", 0,  /obj/item/storage/box/mre/pmc, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 		list("Armored Balaclava", 0, /obj/item/clothing/mask/gas/pmc/leader, MARINE_CAN_BUY_MASK, VENDOR_ITEM_MANDATORY),
 		list("Helmet", 0, /obj/item/clothing/head/helmet/marine/veteran/pmc/enclosed, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
-		list("Armor", 0, /obj/item/clothing/suit/storage/marine/smartgunner/veteran/pmc, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
+		list("护甲", 0, /obj/item/clothing/suit/storage/marine/smartgunner/veteran/pmc, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 
 		list("BELT", 0, null, null, null),
 		list("M802 Smartgunner Sidearm Belt", 0, /obj/item/storage/belt/gun/smartgunner/pmc/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_MANDATORY),
@@ -1226,7 +1226,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 //*****************************************************************************************************/
 
 /datum/equipment_preset/pmc/pmc_sniper
-	name = "Weyland-Yutani PMC (Sniper)"
+	name = "维兰德-汤谷PMC（狙击手）"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_PMC_SNIPER
@@ -1280,7 +1280,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Combat Pack", 0, /obj/item/storage/backpack/pmc/backpack, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 		list("Armored Balaclava", 0, /obj/item/clothing/mask/gas/pmc/leader, MARINE_CAN_BUY_MASK, VENDOR_ITEM_MANDATORY),
 		list("Helmet", 0, /obj/item/clothing/head/helmet/marine/veteran/pmc/sniper, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
-		list("Armor", 0, /obj/item/clothing/suit/storage/marine/veteran/pmc/light/bulletproof, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
+		list("护甲", 0, /obj/item/clothing/suit/storage/marine/veteran/pmc/light/bulletproof, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 
 		list("BELT (CHOOSE 1)", 0, null, null, null),
 		list("M276 Ammo Load Rig", 0, /obj/item/storage/belt/marine, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
@@ -1350,7 +1350,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 //*****************************************************************************************************/
 /datum/equipment_preset/pmc/pmc_crewman
-	name = "Weyland-Yutani PMC (Crewman)"
+	name = "维兰德-汤谷PMC（船员）"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_PMC_CREWMAN
@@ -1397,7 +1397,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Combat Pack", 0, /obj/item/storage/backpack/pmc, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 		list("Armored Balaclava", 0, /obj/item/clothing/mask/gas/pmc, MARINE_CAN_BUY_MASK, VENDOR_ITEM_MANDATORY),
 		list("Armored Beret", 0, /obj/item/clothing/head/helmet/marine/veteran/pmc/leader, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
-		list("Armor", 0, /obj/item/clothing/suit/storage/marine/veteran/pmc/leader, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
+		list("护甲", 0, /obj/item/clothing/suit/storage/marine/veteran/pmc/leader, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 
 		list("BELT (CHOOSE 1)", 0, null, null, null),
 		list("M276 Ammo Load Rig", 0, /obj/item/storage/belt/marine, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
@@ -1485,7 +1485,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 /*****************************************************************************************************/
 
 /datum/equipment_preset/pmc/doctor
-	name = "Weyland-Yutani PMC (Trauma Surgeon)"
+	name = "维兰德-汤谷PMC（创伤外科医生）"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_PMC_DOCTOR
@@ -1574,12 +1574,12 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Large Magazine Pouch", 0, /obj/item/storage/pouch/magazine/large, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Medical Pouch", 0, /obj/item/storage/pouch/medical, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 		list("Medical Kit Pouch", 0, /obj/item/storage/pouch/medkit, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
-		list("Pressurized Reagent Canister Pouch (Bicaridine)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/bicaridine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
-		list("Pressurized Reagent Canister Pouch (Kelotane)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/kelotane, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
+		list("加压试剂罐包（碧卡利定）", 0, /obj/item/storage/pouch/pressurized_reagent_canister/bicaridine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
+		list("加压试剂罐包（凯洛坦）", 0, /obj/item/storage/pouch/pressurized_reagent_canister/kelotane, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 		list("Pressurized Reagent Canister Pouch (Revival Mix - Tricordrazine)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 		list("Pressurized Reagent Canister Pouch (Revival Mix - Peridaxon)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/revival_peri, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
-		list("Pressurized Reagent Canister Pouch (Tricordrazine)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
-		list("Pressurized Reagent Canister Pouch (Field Anesthetic)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
+		list("加压试剂罐包（三合剂）", 0, /obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
+		list("加压试剂罐包（野战麻醉剂）", 0, /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 		list("Pressurized Reagent Canister Pouch (EMPTY)", 0, /obj/item/storage/pouch/pressurized_reagent_canister, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 
 		list("ATTACHMENT (CHOOSE 1)", 0, null, null, null),
@@ -1669,7 +1669,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 /*****************************************************************************************************/
 
 /datum/equipment_preset/pmc/technician
-	name = "Weyland-Yutani PMC (Corporate Technician)"
+	name = "维兰德-汤谷PMC（公司技术员）"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_PMC_ENGINEER
@@ -1784,8 +1784,8 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 		list("HANDHELD DEFENSE (CHOOSE 1)", 0, null, null, null),
 		list("WY Planted Flag", 0, /obj/item/defenses/handheld/planted_flag/wy, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
-		list("WY 406-FE2 Smart Sentry", 0, /obj/item/defenses/handheld/sentry/flamer/wy, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
-		list("WY 202-GMA1 Smart Sentry", 0, /obj/item/defenses/handheld/sentry/wy, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
+		list("维兰德 406-FE2 智能哨戒炮", 0, /obj/item/defenses/handheld/sentry/flamer/wy, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
+		list("维兰德202-GMA1智能哨戒炮", 0, /obj/item/defenses/handheld/sentry/wy, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
 
 		list("ENGINEERING SUPPLIES", 0, null, null, null),
 		list("Airlock Circuit Board", 2, /obj/item/circuitboard/airlock, null, VENDOR_ITEM_REGULAR),
@@ -1830,7 +1830,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 /*****************************************************************************************************/
 
 /datum/equipment_preset/pmc/director
-	name = "Weyland-Yutani PMC (Site Director)"
+	name = "维兰德-汤谷PMC（站点主管）"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	languages = ALL_HUMAN_LANGUAGES
@@ -1871,7 +1871,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 //*****************************************************************************************************/
 
 /datum/equipment_preset/pmc/synth
-	name = "Weyland-Yutani PMC (Support Synthetic)"
+	name = "维兰德-汤谷PMC（支援合成人）"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	languages = ALL_SYNTH_LANGUAGES
@@ -1902,7 +1902,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 			random_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male_pmc) : pick(GLOB.first_names_female_pmc))
 		else // MALE
 			random_name = capitalize(pick(GLOB.first_names_male_pmc))
-			new_human.f_style = "5 O'clock Shadow"
+			new_human.f_style = "五点钟胡茬"
 
 	new_human.change_real_name(new_human, random_name)
 	new_human.r_hair = 15
@@ -1977,8 +1977,8 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Surgical Webbing Vest (Equipped)", 0, /obj/item/clothing/accessory/storage/surg_vest/equipped, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Surgical Webbing Vest (Blue)(Equipped)", 0, /obj/item/clothing/accessory/storage/surg_vest/blue/equipped, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-		list("Tool Webbing", 0, /obj/item/clothing/accessory/storage/tool_webbing/equipped, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-		list("Tool Drop Pouch", 0, /obj/item/clothing/accessory/storage/tool_webbing/yellow_drop/equipped, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("工具背带", 0, /obj/item/clothing/accessory/storage/tool_webbing/equipped, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("工具垂降挂包", 0, /obj/item/clothing/accessory/storage/tool_webbing/yellow_drop/equipped, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 0, /obj/item/clothing/accessory/storage/droppouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 
 		list("BACKPACK (CHOOSE 1)", 0, null, null, null),
@@ -2014,13 +2014,13 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Sling Pouch", 0, /obj/item/storage/pouch/sling, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Medical Pouch", 0, /obj/item/storage/pouch/medical, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Medical Kit Pouch", 0, /obj/item/storage/pouch/medkit, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Pressurized Reagent Canister Pouch (Bicaridine)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/bicaridine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Pressurized Reagent Canister Pouch (Kelotane)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/kelotane, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("加压试剂罐包（碧卡利定）", 0, /obj/item/storage/pouch/pressurized_reagent_canister/bicaridine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("加压试剂罐包（凯洛坦）", 0, /obj/item/storage/pouch/pressurized_reagent_canister/kelotane, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Pressurized Reagent Canister Pouch (Revival Mix - Tricordrazine)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Pressurized Reagent Canister Pouch (Revival Mix - Peridaxon)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/revival_peri, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
-		list("Pressurized Reagent Canister Pouch (Tricordrazine)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("加压试剂罐包（三合剂）", 0, /obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Pressurized Reagent Canister Pouch (Oxycodone)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Pressurized Reagent Canister Pouch (Field Anesthetic)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
+		list("加压试剂罐包（野战麻醉剂）", 0, /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 		list("Pressurized Reagent Canister Pouch (EMPTY)", 0, /obj/item/storage/pouch/pressurized_reagent_canister, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Tools Pouch (Full)", 0, /obj/item/storage/pouch/tools/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Machete Pouch (Full)", 0, /obj/item/storage/pouch/machete/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
@@ -2097,7 +2097,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 ///Hunting Grounds PMC///
 
 /datum/equipment_preset/pmc/pmc_standard/hunted
-	name = "Weyland-Yutani PMC (Standard) (Hunted)"
+	name = "维兰德-汤谷PMC（标准）（被猎杀）"
 	faction = FACTION_HUNTED_PMC
 
 /datum/equipment_preset/pmc/pmc_standard/hunted/load_gear(mob/living/carbon/human/new_human)
@@ -2125,7 +2125,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/wy/nsg_ext, WEAR_L_STORE)
 
 /datum/equipment_preset/pmc/pmc_medic/hunted
-	name = "Weyland-Yutani PMC (Corporate Medic) (Hunted)"
+	name = "维兰德-汤谷PMC（公司医疗兵）（被猎杀）"
 	faction = FACTION_HUNTED_PMC
 
 /datum/equipment_preset/pmc/pmc_medic/hunted/load_gear(mob/living/carbon/human/new_human)
@@ -2161,7 +2161,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/fp9000, WEAR_IN_JACKET)
 
 /datum/equipment_preset/pmc/technician/hunted
-	name = "Weyland-Yutani PMC (Corporate Technician) (Hunted)"
+	name = "维兰德-汤谷PMC（公司技术员）（被猎杀）"
 	faction = FACTION_HUNTED_PMC
 
 /datum/equipment_preset/pmc/technician/hunted/load_gear(mob/living/carbon/human/new_human)

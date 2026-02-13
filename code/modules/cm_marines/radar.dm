@@ -203,8 +203,8 @@
 		var/mob/living/carbon/human/humanoid = i
 		if(!trackable(humanoid))
 			continue
-		var/crewmember_name = "Unknown"
-		var/crewmember_rank = "Unknown"
+		var/crewmember_name = "未知"
+		var/crewmember_rank = "未知"
 		var/obj/item/card/id/card = humanoid.get_idcard()
 		if(card)
 			if(card.registered_name)
@@ -245,8 +245,8 @@
 	. = ..()
 	objects = list()
 	for(var/mob/living/carbon/human/humanoid as anything in GLOB.human_mob_list)
-		var/crewmember_name = "Unknown"
-		var/crewmember_rank = "Unknown"
+		var/crewmember_name = "未知"
+		var/crewmember_rank = "未知"
 		if(humanoid.get_idcard())
 			var/obj/item/card/id/ID = humanoid.get_idcard()
 			if(ID?.registered_name)

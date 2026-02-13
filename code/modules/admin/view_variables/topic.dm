@@ -23,10 +23,10 @@
 
 			var/mob/M = locate(href_list["rename"]) in GLOB.mob_list
 			if(!istype(M))
-				to_chat(usr, "This can only be used on instances of type /mob", confidential = TRUE)
+				to_chat(usr, "此操作仅能用于 /mob 类型的实例", confidential = TRUE)
 				return
 
-			var/new_name = stripped_input(usr,"What would you like to name this mob?","Input a name",M.real_name,MAX_NAME_LEN)
+			var/new_name = stripped_input(usr,"你想为此生物体命名为什么？","Input a name",M.real_name,MAX_NAME_LEN)
 
 			if( !new_name || !M )
 				return
@@ -42,7 +42,7 @@
 
 			var/atom/A = locate(href_list["rotatedatum"])
 			if(!istype(A))
-				to_chat(usr, "This can only be done to instances of type /atom", confidential = TRUE)
+				to_chat(usr, "此操作仅能用于 /atom 类型的实例", confidential = TRUE)
 				return
 
 			switch(href_list["rotatedir"])
@@ -62,13 +62,13 @@
 
 			var/Text = href_list["adjustDamage"]
 
-			var/amount = tgui_input_number(usr, "Deal how much damage to mob? (Negative values here heal)", "Adjust [Text]loss", 0, 10000, -10000)
+			var/amount = tgui_input_number(usr, "对生物体造成多少伤害？（负值表示治疗）", "Adjust [Text]loss", 0, 10000, -10000)
 
 			if (isnull(amount))
 				return
 
 			if(!L)
-				to_chat(usr, "Mob doesn't exist anymore", confidential = TRUE)
+				to_chat(usr, "生物体已不存在", confidential = TRUE)
 				return
 
 			var/newamt
@@ -89,7 +89,7 @@
 					L.adjustCloneLoss(amount)
 					newamt = L.getCloneLoss()
 				else
-					to_chat(usr, "You caused an error. DEBUG: Text:[Text] Mob:[L]", confidential = TRUE)
+					to_chat(usr, "你引发了一个错误。调试信息：文本：[Text] 生物体：[L]", confidential = TRUE)
 					return
 
 			if(amount != 0)

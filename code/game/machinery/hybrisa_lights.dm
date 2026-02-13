@@ -1,8 +1,8 @@
 /// A variant of a colony_floodlight_switch that instead uses GLOB.all_electric_fences
 /obj/structure/machinery/colony_floodlight_switch/electrified_fence_switch
-	name = "colony electrified fence switch"
+	name = "殖民地电网围栏开关"
 	icon_state = "panelbnopower"
-	desc = "This switch controls the electrified fences. It only functions when there is power."
+	desc = "此开关控制电网围栏。仅在通电时有效。"
 	machinery_type_whitelist = list()
 	/// The power each fence takes up per process
 	var/power_usage_per_fence = 5
@@ -80,7 +80,7 @@
 // Hybrisa Streetlights
 
 /obj/structure/machinery/colony_floodlight/street
-	name = "colony streetlight"
+	name = "殖民地路灯"
 	icon = 'icons/obj/structures/props/streetlights.dmi'
 	icon_state = "street_off"
 	layer = BILLBOARD_LAYER
@@ -120,8 +120,8 @@
 
 // Traffic
 /obj/structure/machinery/colony_floodlight/traffic
-	name = "traffic light"
-	desc = "A traffic light."
+	name = "交通信号灯"
+	desc = "一个交通信号灯。"
 	icon = 'icons/obj/structures/props/streetlights.dmi'
 	icon_state = "trafficlight"
 	health = 200
@@ -168,10 +168,10 @@
 
 // Engineer Floor lights
 /obj/structure/machinery/colony_floodlight_switch/engineerconsole_switch
-	name = "giant alien console"
+	name = "巨型异形控制台"
 	icon = 'icons/obj/structures/props/engineers/consoles.dmi'
 	icon_state = "engineerconsole"
-	desc = "A giant alien console of some kind, unlike anything you've ever seen before. Who knows the purpose of this strange technology..."
+	desc = "某种巨型异形控制台，与你见过的任何东西都不同。谁知道这奇怪技术的用途……"
 	use_power = USE_POWER_NONE
 	needs_power = FALSE
 	ispowered = TRUE
@@ -188,9 +188,9 @@
 	return // It just works
 
 /obj/structure/machinery/colony_floodlight/engineer_circular
-	name = "circular light"
+	name = "圆形灯"
 	icon_state = "engineerlight_off"
-	desc = "A huge circular light."
+	desc = "一个巨大的圆形光源。"
 	icon = 'icons/obj/structures/props/engineers/light.dmi'
 	density = FALSE
 	unslashable = TRUE

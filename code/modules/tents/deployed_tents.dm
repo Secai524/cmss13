@@ -3,7 +3,7 @@
 /obj/structure/tent
 	name = "tent"
 	icon = 'icons/obj/structures/tents_deployed_classic.dmi'
-	desc = "Can be torn down with an entrenching tool."
+	desc = "可用工兵铲拆除。"
 	opacity = FALSE // Seems only the initial turf blocks light, not all of the multitile. Therefore, useless.
 	layer = INTERIOR_WALL_SOUTH_LAYER // This should be below FLY_LAYER but just thank chairs and other bs
 	health = 200
@@ -108,7 +108,7 @@
 	SPAN_DANGER("You [M.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 
 	if(health <= 0)
-		visible_message(SPAN_BOLDWARNING("[src] collapses!"))
+		visible_message(SPAN_BOLDWARNING("[src]倒塌了！"))
 		qdel(src)
 
 	return XENO_ATTACK_ACTION
@@ -119,11 +119,11 @@
 	playsound(src, 'sound/items/paper_ripped.ogg', 25, 1)
 	health -= xeno.melee_damage_upper
 	if(health <= 0)
-		xeno.visible_message(SPAN_DANGER("[xeno] collapses [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno]用尾巴撞倒了[src]！"),
 		SPAN_DANGER("We collapse [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		qdel(src)
 	else
-		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno] 用它的尾巴抽打 [src]！"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
@@ -132,13 +132,13 @@
 	var/obj/item/tool/shovel/shovel = item
 	if(!istype(shovel) || shovel.folded || user.action_busy)
 		return
-	visible_message(SPAN_HIGHDANGER("[user] is trying to tear down [src]"))
+	visible_message(SPAN_HIGHDANGER("[user]正试图拆除[src]"))
 	playsound(src, 'sound/items/paper_ripped.ogg', 25, 1)
 
 	if(!do_after(user, 150, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE, src) || QDELETED(src))
 		return
 
-	visible_message(SPAN_HIGHDANGER("[user] tears down [src]"))
+	visible_message(SPAN_HIGHDANGER("[user]拆除了[src]"))
 	playsound(src, 'sound/items/paper_ripped.ogg', 25, 1)
 	qdel(src)
 
@@ -150,13 +150,13 @@
 /obj/structure/tent/cmd
 	icon_state = "cmd_interior"
 	roof_state = "cmd_top"
-	desc = "A standard USCM Command Tent. This one comes equipped with a self-powered Overwatch Console and a Telephone. It is very frail, do not burn, expose to sharp objects, or explosives. Can be torn down with an entrenching tool."
+	desc = "标准USCM指挥帐篷。此帐篷配备自供电监控控制台和电话。它非常脆弱，请勿焚烧、接触尖锐物体或爆炸物。可用工兵铲拆除。"
 
 /// Medical tent, procures a buff to surgery speed
 /obj/structure/tent/med
 	icon_state = "med_interior"
 	roof_state = "med_top"
-	desc = "A standard USCM Medical Tent. This one comes equipped with advanced field surgery facilities. It is very fragile however and won't withstand the rigors of war. Can be torn down with an entrenching tool."
+	desc = "标准USCM医疗帐篷。此帐篷配备先进的野战手术设施。但它非常脆弱，无法承受战争的严酷考验。可用工兵铲拆除。"
 	var/surgery_speed_mult = 0.9
 	var/surgery_pain_reduction = 5
 

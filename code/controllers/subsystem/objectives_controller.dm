@@ -1,7 +1,7 @@
 #define CORPSES_TO_SPAWN 100
 
 SUBSYSTEM_DEF(objectives)
-	name = "Objectives"
+	name = "目标"
 	init_order = SS_INIT_OBJECTIVES
 	wait = 5.5 SECONDS
 	var/list/objectives = list()

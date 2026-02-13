@@ -21,36 +21,36 @@
 		attack_hand(user)
 	else
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-			to_chat(user, SPAN_WARNING("You stare at [src] cluelessly..."))
+			to_chat(user, SPAN_WARNING("你茫然地盯着[src]..."))
 			return FALSE
 
 	if(construction_busy)
-		to_chat(user, SPAN_WARNING("Someone else is already working on [src]."))
+		to_chat(user, SPAN_WARNING("其他人已经在处理[src]了。"))
 		return
 
 	switch(construct_op)
 		if(0)
 			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER) && deconstructable)
-				to_chat(user, "You unfasten the bolts.")
+				to_chat(user, "你拧松了螺栓。")
 				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				construct_op++
 		if(1)
 			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER))
-				to_chat(user, "You fasten the bolts.")
+				to_chat(user, "你拧紧了螺栓。")
 				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				construct_op--
 			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_WRENCH))
-				to_chat(user, "You dislodge the external plating.")
+				to_chat(user, "你撬开了外部护板。")
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 				construct_op++
 		if(2)
 			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_WRENCH))
-				to_chat(user, "You secure the external plating.")
+				to_chat(user, "你固定好了外部护板。")
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 				construct_op--
 			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_WIRECUTTERS))
 				playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
-				to_chat(user, "You remove the cables.")
+				to_chat(user, "你移除了电缆。")
 				construct_op++
 				var/obj/item/stack/cable_coil/coil = new /obj/item/stack/cable_coil( user.loc )
 				coil.amount = 5
@@ -59,18 +59,18 @@
 			if(istype(attacking_item, /obj/item/stack/cable_coil))
 				var/obj/item/stack/cable_coil/coil = attacking_item
 				if(coil.use(5))
-					to_chat(user, SPAN_NOTICE("You insert the cables."))
+					to_chat(user, SPAN_NOTICE("你插入了电缆。"))
 					construct_op--
 					stat &= ~BROKEN // the machine'new_item not borked anymore!
 				else
-					to_chat(user, SPAN_WARNING("You need five coils of wire for this."))
+					to_chat(user, SPAN_WARNING("这需要五卷电线。"))
 			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_CROWBAR))
-				to_chat(user, "You begin prying out the circuit board other components...")
+				to_chat(user, "你开始撬出电路板和其他组件...")
 				playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
 				construction_busy = TRUE
 				if(do_after(user, 60 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 					construction_busy = FALSE
-					to_chat(user, "You finish prying out the components.")
+					to_chat(user, "你撬出了所有组件。")
 
 					// Drop all the component stuff
 					if(length(contents) > 0)
@@ -108,7 +108,7 @@
 	// You need a multitool to use this, or be silicon
 	if(!isSilicon(user))
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-			to_chat(user, SPAN_WARNING("You stare at \the [src] cluelessly..."))
+			to_chat(user, SPAN_WARNING("你茫然地盯着\the [src]..."))
 			return
 		// istype returns false if the value is null
 		var/obj/item/held_item = user.get_active_hand()
@@ -249,7 +249,7 @@
 
 	if(href_list["change_freq"])
 
-		var/newfreq = input(usr, "Specify a new frequency for new signals to change to. Enter null to turn off frequency changing. Decimals assigned automatically.", src, network) as null|num
+		var/newfreq = input(usr, "指定新信号切换的频率。输入null以关闭频率切换。小数位将自动分配。", src, network) as null|num
 		if(canAccess(usr))
 			if(newfreq)
 				if(findtext(num2text(newfreq), "."))
@@ -289,13 +289,13 @@
 			*/
 
 			if("id")
-				var/newid = copytext(reject_bad_text(input(usr, "Specify the new ID for this machine", src, id) as null|text),1,MAX_MESSAGE_LEN)
+				var/newid = copytext(reject_bad_text(input(usr, "指定此机器的新ID。", src, id) as null|text),1,MAX_MESSAGE_LEN)
 				if(newid && canAccess(usr))
 					id = newid
 					temp = "<font color = #666633>-% New ID assigned: \"[id]\" %-</font color>"
 
 			if("network")
-				var/newnet = stripped_input(usr, "Specify the new network for this machine. This will break all current links.", src, network)
+				var/newnet = stripped_input(usr, "指定此机器的新网络。这将中断所有现有链接。", src, network)
 				if(newnet && canAccess(usr))
 
 					if(length(newnet) > 15)
@@ -311,7 +311,7 @@
 
 
 			if("freq")
-				var/newfreq = input(usr, "Specify a new frequency to filter (GHz). Decimals assigned automatically.", src, network) as null|num
+				var/newfreq = input(usr, "指定要过滤的新频率（GHz）。小数位将自动分配。", src, network) as null|num
 				if(newfreq && canAccess(usr))
 					if(findtext(num2text(newfreq), "."))
 						newfreq *= 10 // shift the decimal one place

@@ -39,7 +39,7 @@
 
 // Remote resin building
 /datum/action/xeno_action/activable/secrete_resin/remote
-	name = "Coerce Resin (100)"
+	name = "强制塑形树脂（100）"
 	action_icon_state = "secrete_resin"
 	xeno_cooldown = 2.5 SECONDS
 	thick = FALSE
@@ -63,7 +63,7 @@
 
 /datum/action/xeno_action/activable/secrete_resin/remote/use_ability(atom/target_atom, mods)
 	if(!can_remote_build())
-		to_chat(owner, SPAN_XENONOTICE("We must be standing on weeds to establish a connection to the resin."))
+		to_chat(owner, SPAN_XENONOTICE("我们必须站在菌毯上才能建立与树脂的连接。"))
 		return
 
 	if(!action_cooldown_check())
@@ -77,7 +77,7 @@
 		return
 
 	if(care_about_adjacency && !(target_turf in view(10, owner)))
-		to_chat(owner, SPAN_XENONOTICE("We must have a direct line of sight!"))
+		to_chat(owner, SPAN_XENONOTICE("必须有直接视线！"))
 		return
 
 	/// Check if the target is a resin door and open or close it
@@ -88,9 +88,9 @@
 			var/obj/structure/mineral_door/resin/resin_door = target_atom
 			if(resin_door.TryToSwitchState(owner))
 				if(resin_door.open)
-					to_chat(owner, SPAN_XENONOTICE("We focus our connection to the resin and remotely close the resin door."))
+					to_chat(owner, SPAN_XENONOTICE("我们集中与树脂的连接，远程关闭了树脂门。"))
 				else
-					to_chat(owner, SPAN_XENONOTICE("We focus our connection to the resin and remotely open the resin door."))
+					to_chat(owner, SPAN_XENONOTICE("我们集中与树脂的连接，远程打开了树脂门。"))
 			return
 
 	// since actions are instanced per hivelord, and only one construction can be made at a time, tweaking the datum on the fly here is fine. you're going to have to figure something out if these conditions change, though
@@ -110,8 +110,8 @@
 		return
 
 	var/datum/resin_construction/resing_construction = GLOB.resin_constructions_list[hivelord.selected_resin]
-	target_turf.visible_message(SPAN_XENONOTICE("The weeds begin pulsating wildly and secrete resin in the shape of \a [resing_construction.construction_name]!"), null, 5)
-	to_chat(owner, SPAN_XENONOTICE("We focus our plasma into the weeds below us and force the weeds to secrete resin in the shape of \a [resing_construction.construction_name]."))
+	target_turf.visible_message(SPAN_XENONOTICE("菌毯开始剧烈脉动，并分泌出\a [resing_construction.construction_name]形状的树脂！"), null, 5)
+	to_chat(owner, SPAN_XENONOTICE("我们将等离子能量聚焦于下方的菌毯，迫使菌毯分泌树脂，形成\a [resing_construction.construction_name]。"))
 	playsound(target_turf, "alien_resin_build", 25)
 	return TRUE
 

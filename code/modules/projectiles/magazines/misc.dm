@@ -3,8 +3,8 @@
 //Minigun
 
 /obj/item/ammo_magazine/minigun
-	name = "rotating ammo drum (7.62x51mm)"
-	desc = "A huge 7.62x51mm ammo drum for a huge rotary machine gun."
+	name = "旋转弹鼓 (7.62x51mm)"
+	desc = "一个用于大型旋转机枪的巨大7.62x51mm弹鼓。"
 	caliber = "7.62x51mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/event.dmi'
 	icon_state = "painless" //PLACEHOLDER
@@ -19,8 +19,8 @@
 //M60
 
 /obj/item/ammo_magazine/m60
-	name = "M60 ammo box (7.62x51mm)"
-	desc = "A blast from the past, chambered in 7.62x51mm NATO."
+	name = "M60弹药箱 (7.62x51mm)"
+	desc = "来自过去的冲击，使用7.62x51mm NATO弹药。"
 	caliber = "7.62x51mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/machineguns.dmi'
 	icon_state = "m60" //PLACEHOLDER
@@ -32,8 +32,8 @@
 	gun_type = /obj/item/weapon/gun/m60
 
 /obj/item/ammo_magazine/pkp
-	name = "QYJ-72 ammo box (7.62x54mmR)"
-	desc = "A 7.62x54mmR 250-round box magazine for the UPP's standard GPMG, the QYJ-72."
+	name = "QYJ-72弹药箱 (7.62x54mmR)"
+	desc = "一个用于UPP标准通用机枪QYJ-72的7.62x54mmR 250发弹箱。"
 	caliber = "7.62x54mmR"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/machineguns.dmi'
 	icon_state = "qjy72"
@@ -50,7 +50,7 @@
 	AUTOWIKI_SKIP(TRUE)
 
 	name = "\improper GRENADE SPAWNER AMMO"
-	desc = "OH GOD OH FUCK"
+	desc = "哦天哪 哦该死"
 	default_ammo = /datum/ammo/grenade_container/rifle
 	ammo_band_color = AMMO_BAND_COLOR_LIGHT_EXPLOSIVE
 
@@ -58,15 +58,15 @@
 	AUTOWIKI_SKIP(TRUE)
 
 	name = "\improper HUGGER SPAWNER AMMO"
-	desc = "OH GOD OH FUCK"
+	desc = "哦天哪 哦该死"
 	default_ammo = /datum/ammo/hugger_container
 	ammo_band_color = AMMO_BAND_COLOR_SUPER
 
 //pill gun
 
 /obj/item/ammo_magazine/internal/pillgun
-	name = "pill tube"
-	desc = "An internal magazine. It is not supposed to be seen or removed."
+	name = "药丸管"
+	desc = "一个内置弹仓。它本不应被看到或移除。"
 	default_ammo = /datum/ammo/pill
 	caliber = "pill"
 	max_rounds = 1

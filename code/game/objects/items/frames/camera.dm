@@ -1,6 +1,6 @@
 /obj/item/frame/camera
-	name = "camera assembly"
-	desc = "The basic construction for Corporate-Always-Watching-You cameras."
+	name = "摄像头组件"
+	desc = "公司“永远注视着你”摄像头的基本构造。"
 	icon = 'icons/obj/structures/machinery/monitors.dmi'
 	icon_state = "cameracase"
 	w_class = SIZE_SMALL
@@ -29,7 +29,7 @@
 			// State 0
 			if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && isturf(src.loc))
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-				to_chat(user, "You wrench the assembly into place.")
+				to_chat(user, "你将组件扳到位。")
 				anchored = TRUE
 				state = 1
 				update_icon()
@@ -40,17 +40,17 @@
 			// State 1
 			if(iswelder(W))
 				if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
-					to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+					to_chat(user, SPAN_WARNING("你需要一把更强的喷枪！"))
 					return
 				if(weld(W, user))
-					to_chat(user, "You weld the assembly securely into place.")
+					to_chat(user, "你将组件牢固地焊接到位。")
 					anchored = TRUE
 					state = 2
 				return
 
 			else if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-				to_chat(user, "You unattach the assembly from it's place.")
+				to_chat(user, "你将组件从其位置拆下。")
 				anchored = FALSE
 				update_icon()
 				state = 0
@@ -61,18 +61,18 @@
 			if(iscoil(W))
 				var/obj/item/stack/cable_coil/C = W
 				if(C.use(2))
-					to_chat(user, SPAN_NOTICE("You add wires to the assembly."))
+					to_chat(user, SPAN_NOTICE("你为组件添加电线。"))
 					state = 3
 				else
-					to_chat(user, SPAN_WARNING("You need 2 coils of wire to wire the assembly."))
+					to_chat(user, SPAN_WARNING("你需要2卷电线来为组件布线。"))
 				return
 
 			else if(iswelder(W))
 				if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
-					to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+					to_chat(user, SPAN_WARNING("你需要一把更强的喷枪！"))
 					return
 				if(weld(W, user))
-					to_chat(user, "You unweld the assembly from it's place.")
+					to_chat(user, "你将组件从其位置焊开。")
 					state = 1
 					anchored = TRUE
 				return
@@ -83,19 +83,19 @@
 			if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 
-				var/input = strip_html(input(usr, "Which networks would you like to connect this camera to? Separate networks with a comma. No Spaces!\nFor example: military, Security,Secret ", "Set Network", "military"))
+				var/input = strip_html(input(usr, "你想将此摄像头连接到哪些网络？用逗号分隔网络。不要空格！例如：military,Security,Secret", "Set Network", "military"))
 				if(!input)
-					to_chat(usr, "No input found please hang up and try your call again.")
+					to_chat(usr, "未找到输入，请挂断并重试。")
 					return
 
 				var/list/tempnetwork = splittext(input, ",")
 				if(length(tempnetwork) < 1)
-					to_chat(usr, "No network found please hang up and try your call again.")
+					to_chat(usr, "未找到网络，请挂断并重试。")
 					return
 
 				var/area/camera_area = get_area(src)
 				var/temptag = "[strip_html(camera_area.name)] ([rand(1, 999)])"
-				input = strip_html(input(usr, "How would you like to name the camera?", "Set Camera Name", temptag))
+				input = strip_html(input(usr, "你想如何命名这个摄像头？", "Set Camera Name", temptag))
 
 				state = 4
 				var/obj/structure/machinery/camera/C = new(src.loc)
@@ -107,11 +107,11 @@
 				C.c_tag = input
 
 				for(var/i = 5; i >= 0; i -= 1)
-					var/direct = tgui_input_list(user, "Direction?", "Assembling Camera", list("LEAVE IT", "NORTH", "EAST", "SOUTH", "WEST" ))
+					var/direct = tgui_input_list(user, "方向？", "Assembling Camera", list("LEAVE IT", "NORTH", "EAST", "SOUTH", "WEST" ))
 					if(direct != "LEAVE IT")
 						C.setDir(text2dir(direct))
 					if(i != 0)
-						var/confirm = alert(user, "Is this what you want? Chances Remaining: [i]", "Confirmation", "Yes", "No")
+						var/confirm = alert(user, "这是你想要的吗？剩余机会：[i]", "确认", "Yes", "No")
 						if(confirm == "Yes")
 							break
 				return
@@ -120,13 +120,13 @@
 
 				new/obj/item/stack/cable_coil(get_turf(src), 2)
 				playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
-				to_chat(user, "You cut the wires from the circuits.")
+				to_chat(user, "你切断了电路上的电线。")
 				state = 2
 				return
 
 	// Upgrades!
 	if(is_type_in_list(W, possible_upgrades) && !is_type_in_list(W, upgrades)) // Is a possible upgrade and isn't in the camera already.
-		to_chat(user, "You attach \the [W] into the assembly inner circuits.")
+		to_chat(user, "你将\the [W]连接到组件内部电路。")
 		upgrades += W
 		user.drop_held_item()
 		W.forceMove(src)
@@ -136,7 +136,7 @@
 	else if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR) && length(upgrades))
 		var/obj/U = locate(/obj) in upgrades
 		if(U)
-			to_chat(user, "You unattach an upgrade from the assembly.")
+			to_chat(user, "你从组件上拆下一个升级模块。")
 			playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 			U.forceMove(get_turf(src))
 			upgrades -= U
@@ -162,7 +162,7 @@
 		to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
 		return 0
 
-	to_chat(user, SPAN_NOTICE("You start to weld [src].."))
+	to_chat(user, SPAN_NOTICE("你开始焊接[src].."))
 	playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)
 	WT.eyecheck(user)
 	if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))

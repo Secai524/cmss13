@@ -1,5 +1,5 @@
 /datum/faction/wo
-	name = "Whiteout"
+	name = "白化"
 	faction_tag = FACTION_WY_DEATHSQUAD
 	base_icon_file = 'icons/mob/hud/factions/wy.dmi'
 

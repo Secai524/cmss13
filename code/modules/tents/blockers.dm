@@ -1,6 +1,6 @@
 /// Invisible Blocker Walls, they link up with the main tent and collapse with it
 /obj/structure/blocker/tent
-	name = "Tent Blocker"
+	name = "帐篷阻挡物"
 	icon = 'icons/obj/structures/barricades.dmi'
 	icon_state = "folding_0" // for map editing only
 	flags_atom = ON_BORDER

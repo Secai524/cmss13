@@ -18,7 +18,7 @@
 
 /obj/structure/machinery/door/airlock/sandstone/runed/proc/can_use(mob/user as mob, loud = 0)
 	if(!in_range(src, user))
-		to_chat(usr, "You cannot operate the door from this far away.")
+		to_chat(usr, "你无法从这么远的距离操作这扇门。")
 		return FALSE
 
 /obj/structure/machinery/door/airlock/sandstone/runed/attackby(obj/item/W as obj, mob/user as mob)
@@ -42,7 +42,7 @@
 
 		sleep(1 SECONDS)
 
-		var/input = tgui_input_list(user, "Rotate your wristblades to operate the door", "Temple Door Control", options)
+		var/input = tgui_input_list(user, "旋转你的腕刃来操作这扇门", "Temple Door Control", options)
 
 		if(!input)
 			return
@@ -144,7 +144,7 @@
 				addtimer(CALLBACK(src, PROC_REF(close), forced), 6 SECONDS + openspeed, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 				return FALSE
 	playsound(loc, 'sound/effects/runedsanddoor.ogg', 25, 0)
-	visible_message(SPAN_NOTICE("[src] makes a loud grating sound as hidden workings force it shut."))
+	visible_message(SPAN_NOTICE("[src]发出刺耳的摩擦声，隐藏的机械装置将其强行关闭。"))
 
 	operating = DOOR_OPERATING_CLOSING
 	density = TRUE
@@ -185,9 +185,9 @@
 	playsound(loc, 'sound/effects/stonedoor_openclose.ogg', 25)
 	locked = TRUE
 	if(density)
-		visible_message(SPAN_NOTICE("[src] makes a loud grating sound as heavy stone bolts seal it shut."))
+		visible_message(SPAN_NOTICE("[src]发出刺耳的摩擦声，沉重的石栓将其密封关闭。"))
 	else
-		visible_message(SPAN_NOTICE("[src] makes a loud grating sound as heavy stone bolts seal it open."))
+		visible_message(SPAN_NOTICE("[src]发出刺耳的摩擦声，沉重的石栓将其锁定在开启状态。"))
 	update_icon()
 
 /obj/structure/machinery/door/airlock/sandstone/runed/unlock(forced = FALSE)
@@ -198,7 +198,7 @@
 
 	locked = FALSE
 	playsound(loc, 'sound/effects/stonedoor_openclose.ogg', 25)
-	visible_message(SPAN_NOTICE("[src] makes a loud grating sound as heavy stone bolts retract."))
+	visible_message(SPAN_NOTICE("[src]发出刺耳的摩擦声，沉重的石栓缩回。"))
 	update_icon()
 	return TRUE
 
@@ -213,7 +213,7 @@
 		if(M && istype(M))
 			M.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_DOORS, 1)
 			SEND_SIGNAL(M, COMSIG_MOB_DESTROY_AIRLOCK, src)
-		to_chat(loc, SPAN_DANGER("[src] blows apart!"))
+		to_chat(loc, SPAN_DANGER("[src]炸成了碎片！"))
 		deconstruct(FALSE)
 		playsound(src, 'sound/effects/metal_crash.ogg', 25, 1)
 

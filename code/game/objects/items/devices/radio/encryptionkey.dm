@@ -1,6 +1,6 @@
 /obj/item/device/encryptionkey
-	name = "Standard Encryption Key"
-	desc = "An encryption key for a radio headset."
+	name = "标准加密密钥"
+	desc = "无线电耳机的加密密钥。"
 	icon = 'icons/obj/items/radio.dmi'
 	icon_state = "cypherkey"
 	item_state = ""
@@ -16,20 +16,20 @@
 	translate_apollo = TRUE
 
 /obj/item/device/encryptionkey/almayer
-	name = "Almayer Radio Encryption Key"
+	name = "阿尔迈耶号无线电加密密钥"
 	icon_state = "stripped_key"
 	channels = list(RADIO_CHANNEL_ALMAYER = TRUE)
 	abstract = TRUE
 
 /obj/item/device/encryptionkey/colony
-	name = "Colony Radio Encryption Key"
+	name = "殖民地无线电加密密钥"
 	icon_state = "stripped_key"
 	channels = list(RADIO_CHANNEL_COLONY= TRUE)
 
 // MARINE ONE CHANNEL
 
 /obj/item/device/encryptionkey/command
-	name = "Command Encryption Key"
+	name = "指挥加密密钥"
 	icon_state = "cap_key"
 	channels = list(RADIO_CHANNEL_COMMAND = TRUE)
 
@@ -46,8 +46,8 @@
 //MARINE ENCRYPTION KEYS
 
 /obj/item/device/encryptionkey/sentry_laptop
-	name = "Sentry Network Status Encryption Key"
-	desc = "Automated channel to broadcast sentry gun updates."
+	name = "哨戒炮网络状态加密密钥"
+	desc = "用于广播哨戒炮更新的自动频道。"
 	icon_state = "eng_key"
 	channels = list(RADIO_CHANNEL_SENTRY = TRUE)
 
@@ -68,29 +68,29 @@
 // MARINE ENGINEERING
 
 /obj/item/device/encryptionkey/ce
-	name = "Chief Engineer's Encryption Key"
+	name = "总工程师加密密钥"
 	icon_state = "ce_key"
 	channels = list(RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE, SQUAD_MARINE_1 = FALSE, SQUAD_MARINE_2 = FALSE, SQUAD_MARINE_3 = FALSE, SQUAD_MARINE_4 = FALSE, SQUAD_MARINE_5 = FALSE, SQUAD_MARINE_CRYO = FALSE)
 
 /obj/item/device/encryptionkey/engi
-	name = "Engineering Radio Encryption Key"
+	name = "工程部无线电加密密钥"
 	icon_state = "eng_key"
 	channels = list(RADIO_CHANNEL_ENGI = TRUE)
 
 // MARINE MEDICAL
 
 /obj/item/device/encryptionkey/cmo
-	name = "Chief Medical Officer's Encryption Key"
+	name = "医疗长加密密钥"
 	icon_state = "cmo_key"
 	channels = list(RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_INTEL = TRUE, SQUAD_MARINE_1 = FALSE, SQUAD_MARINE_2 = FALSE, SQUAD_MARINE_3 = FALSE, SQUAD_MARINE_4 = FALSE, SQUAD_MARINE_5 = FALSE, SQUAD_MARINE_CRYO = FALSE, RADIO_CHANNEL_ENGI = TRUE)
 
 /obj/item/device/encryptionkey/med
-	name = "Medical Radio Encryption Key"
+	name = "医疗无线电加密密钥"
 	icon_state = "med_key"
 	channels = list(RADIO_CHANNEL_MEDSCI = TRUE)
 
 /obj/item/device/encryptionkey/medres
-	name = "Research Radio Encryption Key"
+	name = "研究部无线电加密密钥"
 	icon_state = "med_key"
 	channels = list(RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_INTEL = TRUE)
 
@@ -107,24 +107,24 @@
 	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_MP = TRUE, SQUAD_MARINE_1 = TRUE, SQUAD_MARINE_2 = TRUE, SQUAD_MARINE_3 = TRUE, SQUAD_MARINE_4 = TRUE, SQUAD_MARINE_5 = TRUE, SQUAD_MARINE_CRYO = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE,)
 
 /obj/item/device/encryptionkey/sec
-	name = "Security Radio Encryption Key"
+	name = "安保无线电加密密钥"
 	icon_state = "sec_key"
 	channels = list(RADIO_CHANNEL_MP = TRUE)
 
 // MARINE REQUISTIONS
 
 /obj/item/device/encryptionkey/qm
-	name = "Requisition Officer's Encryption Key"
+	name = "补给官加密密钥"
 	icon_state = "ce_key"
 	channels = list(RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_ENGI = FALSE, RADIO_CHANNEL_MEDSCI = FALSE, SQUAD_MARINE_1 = FALSE, SQUAD_MARINE_2 = FALSE, SQUAD_MARINE_3 = FALSE, SQUAD_MARINE_4 = FALSE, SQUAD_MARINE_5 = FALSE, SQUAD_MARINE_CRYO = FALSE)
 
 /obj/item/device/encryptionkey/req/ct
-	name = "Supply Radio Encryption Key"
+	name = "补给无线电加密密钥"
 	icon_state = "req_key"
 	channels = list(RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_COMMAND = FALSE, RADIO_CHANNEL_ENGI = FALSE)
 
 /obj/item/device/encryptionkey/req
-	name = "Supply Radio Encryption Key"
+	name = "补给无线电加密密钥"
 	icon_state = "req_key"
 	channels = list(RADIO_CHANNEL_REQ = TRUE)
 
@@ -160,12 +160,12 @@
 	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE)
 
 /obj/item/device/encryptionkey/req/mst
-	name = "Supply Radio Encryption Key"
+	name = "补给无线电加密密钥"
 	icon_state = "req_key"
 	channels = list(RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_COMMAND = FALSE)
 
 /obj/item/device/encryptionkey/cmpcom/synth/ai //AI only.
-	name = "AI Integrated Radio Encryption Key"
+	name = "AI集成无线电加密密钥"
 	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_MP = TRUE, SQUAD_MARINE_1 = TRUE, SQUAD_MARINE_2 = TRUE, SQUAD_MARINE_3 = TRUE, SQUAD_MARINE_4 = TRUE, SQUAD_MARINE_5 = TRUE, SQUAD_MARINE_CRYO = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_INTEL = TRUE, RADIO_CHANNEL_WY = TRUE)
 	translate_apollo = TRUE
 
@@ -232,7 +232,7 @@
 	name = "\improper Weyland-Yutani Corporate encryption key"
 	icon_state = "wy_key"
 	channels = list(RADIO_CHANNEL_WY_PUB = TRUE, RADIO_CHANNEL_WY = TRUE)
-	tracking_options = list("Corporate Liaison" = TRACKER_CL)
+	tracking_options = list("公司联络官" = TRACKER_CL)
 
 /obj/item/device/encryptionkey/wy_sec
 	name = "\improper Weyland-Yutani Security encryption key"
@@ -276,7 +276,7 @@
 	name = "\improper Hyperdyne Corporation encryption key"
 	icon_state = "ce_key"
 	channels = list(RADIO_CHANNEL_HYPERDYNE = TRUE)
-	tracking_options = list("Corporate Liaison" = TRACKER_CL)
+	tracking_options = list("公司联络官" = TRACKER_CL)
 
 //---------------------------------------------------
 //UPP Keys

@@ -1,52 +1,52 @@
 /datum/paygrade/freelancer
-	name = "Freelancer Paygrade"
+	name = "自由佣兵薪级"
 	fprefix = "Frl."
 	pay_multiplier = 0.75 //these are shitty mercs.
 
 /datum/paygrade/freelancer/standard
-	name = "Freelancer"
+	name = "自由佣兵"
 	paygrade = PAY_SHORT_FL_S
 	prefix = "Merc."
 
 /datum/paygrade/freelancer/medic
-	name = "Freelancer Medic"
+	name = "自由佣兵医疗兵"
 	paygrade = PAY_SHORT_FL_M
 	prefix = "Med."
 
 /datum/paygrade/freelancer/leader
-	name = "Freelancer Leader"
+	name = "自由佣兵队长"
 	paygrade = PAY_SHORT_FL_WL
 	prefix = "Warlord"
 	pay_multiplier = 1
 	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/freelancer/elite
-	name = "Elite Freelancer Paygrade"
+	name = "精英自由佣兵薪级"
 	fprefix = "Elt."
 	pay_multiplier = 1.25
 
 /datum/paygrade/freelancer/elite/standard
-	name = "Elite Freelancer"
+	name = "精英自由佣兵"
 	paygrade = PAY_SHORT_EFL_S
 	prefix = "Merc."
 
 /datum/paygrade/freelancer/elite/heavy
-	name = "Elite Freelancer Heavy"
+	name = "精英自由佣兵重装兵"
 	paygrade = PAY_SHORT_EFL_H
 	prefix = "Hvy."
 
 /datum/paygrade/freelancer/elite/engineer
-	name = "Elite Freelancer Engineer"
+	name = "精英自由工程师"
 	paygrade = PAY_SHORT_EFL_E
 	prefix = "Eng."
 
 /datum/paygrade/freelancer/elite/medic
-	name = "Elite Freelancer Medic"
+	name = "精英自由医疗兵"
 	paygrade = PAY_SHORT_EFL_M
 	prefix = "Med."
 
 /datum/paygrade/freelancer/elite/leader
-	name = "Elite Freelancer Leader"
+	name = "精英自由队长"
 	paygrade = PAY_SHORT_EFL_TL
 	prefix = "Warlord"
 	pay_multiplier = 1.5

@@ -52,62 +52,62 @@ GLOBAL_LIST_INIT_TYPED(underwear_f, /datum/sprite_accessory/underwear, setup_und
 
 // Both
 /datum/sprite_accessory/underwear/boxers
-	name = "Boxers"
+	name = "平角裤"
 	icon_state = "boxers"
 	gender = NEUTER
 	camo_conforming = TRUE
 
 /datum/sprite_accessory/underwear/briefs
-	name = "Briefs"
+	name = "三角裤"
 	icon_state = "briefs"
 	gender = NEUTER
 	camo_conforming = TRUE
 
 /datum/sprite_accessory/underwear/lowriders
-	name = "Lowriders"
+	name = "低腰裤"
 	icon_state = "lowriders"
 	gender = NEUTER
 	camo_conforming = TRUE
 
 /datum/sprite_accessory/underwear/satin
-	name = "Satin"
+	name = "缎面"
 	icon_state = "satin"
 	gender = NEUTER
 	camo_conforming = TRUE
 
 /datum/sprite_accessory/underwear/tanga
-	name = "Tanga"
+	name = "丁字裤"
 	icon_state = "tanga"
 	gender = NEUTER
 	camo_conforming = TRUE
 
 
 /datum/sprite_accessory/underwear/boxers/black
-	name = "Boxers (Black)"
+	name = "平角裤（黑色）"
 	icon_state = "b_boxers"
 	gender = NEUTER
 	camo_conforming = FALSE
 
 /datum/sprite_accessory/underwear/briefs/black
-	name = "Briefs (Black)"
+	name = "三角裤（黑色）"
 	icon_state = "b_briefs"
 	gender = NEUTER
 	camo_conforming = FALSE
 
 /datum/sprite_accessory/underwear/lowriders/black
-	name = "Lowriders (Black)"
+	name = "低腰裤（黑色）"
 	icon_state = "b_lowriders"
 	gender = NEUTER
 	camo_conforming = FALSE
 
 /datum/sprite_accessory/underwear/satin/black
-	name = "Satin (Black)"
+	name = "缎面（黑色）"
 	icon_state = "b_satin"
 	gender = NEUTER
 	camo_conforming = FALSE
 
 /datum/sprite_accessory/underwear/tanga/black
-	name = "Tanga (Black)"
+	name = "丁字裤（黑色）"
 	icon_state = "b_tanga"
 	gender = NEUTER
 	camo_conforming = FALSE

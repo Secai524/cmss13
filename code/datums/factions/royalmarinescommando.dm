@@ -1,5 +1,5 @@
 /datum/faction/royal_marines_commando
-	name = "Royal Marines Commando"
+	name = "皇家海军陆战队突击队"
 	faction_tag = FACTION_TWE
 	base_icon_file = 'icons/mob/hud/factions/twe.dmi'
 

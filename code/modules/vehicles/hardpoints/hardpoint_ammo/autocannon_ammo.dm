@@ -1,6 +1,6 @@
 /obj/item/ammo_magazine/hardpoint/ace_autocannon
-	name = "AC3-E Autocannon Magazine"
-	desc = "A 40 round magazine holding 20mm shells for the AC3-E autocannon."
+	name = "AC3-E自动机炮弹匣"
+	desc = "AC3-E自动机炮的40发弹匣，内装20毫米炮弹。"
 	caliber = "20mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/vehicles.dmi'
 	icon_state = "ace_autocannon"

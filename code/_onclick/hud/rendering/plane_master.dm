@@ -31,7 +31,7 @@
 		relay_render_to_plane(mymob, render_relay_plane)
 
 /atom/movable/screen/plane_master/turf
-	name = "turf plane master"
+	name = "地表平面主控"
 	plane = TURF_PLANE
 	appearance_flags = PLANE_MASTER
 	blend_mode = BLEND_OVERLAY
@@ -43,14 +43,14 @@
 		add_filter("AO", 1, drop_shadow_filter(x = 0, y = -2, size = 4, color = "#04080FAA"))
 
 /atom/movable/screen/plane_master/floor
-	name = "floor plane master"
+	name = "地板平面主控"
 	plane = FLOOR_PLANE
 	appearance_flags = PLANE_MASTER
 	blend_mode = BLEND_OVERLAY
 
 ///Contains most things in the game world
 /atom/movable/screen/plane_master/game_world
-	name = "game world plane master"
+	name = "游戏世界平面主控"
 	plane = GAME_PLANE
 	appearance_flags = PLANE_MASTER //should use client color
 	blend_mode = BLEND_OVERLAY
@@ -62,13 +62,13 @@
 		add_filter("AO", 1, drop_shadow_filter(x = 0, y = -2, size = 4, color = "#04080FAA"))
 
 /atom/movable/screen/plane_master/game_world_above
-	name = "above game world plane master"
+	name = "游戏世界上层平面主控"
 	plane = ABOVE_GAME_PLANE
 	appearance_flags = PLANE_MASTER //should use client color
 	blend_mode = BLEND_OVERLAY
 
 /atom/movable/screen/plane_master/above_blackness
-	name = "above blackness plane master"
+	name = "黑幕上层平面主控"
 	plane = ABOVE_BLACKNESS_PLANE
 	appearance_flags = PLANE_MASTER
 	blend_mode = BLEND_OVERLAY
@@ -79,7 +79,7 @@
 	add_filter("above_blur", 1, angular_blur_filter(0, 0, 0.3))
 
 /atom/movable/screen/plane_master/above_blackness_backdrop
-	name = "above blackness backdrop plane master"
+	name = "黑幕上层背景平面主控"
 	plane = ABOVE_BLACKNESS_BACKDROP_PLANE
 	appearance_flags = PLANE_MASTER
 	blend_mode = BLEND_MULTIPLY
@@ -91,7 +91,7 @@
 	add_filter("inset_shadow", 1, drop_shadow_filter(color = "#04080FAA", size = -20))
 
 /atom/movable/screen/plane_master/ghost
-	name = "ghost plane master"
+	name = "幽灵平面主控"
 	plane = GHOST_PLANE
 	appearance_flags = PLANE_MASTER //should use client color
 	blend_mode = BLEND_OVERLAY
@@ -99,7 +99,7 @@
 
 /// Plane master handling display of building roofs. They're meant to become invisible when inside a building.
 /atom/movable/screen/plane_master/roof
-	name = "roof plane master"
+	name = "屋顶平面主控"
 	plane = ROOF_PLANE
 	appearance_flags = PLANE_MASTER
 	blend_mode = BLEND_OVERLAY
@@ -110,7 +110,7 @@
  * do not touch this unless you know what you are doing
  */
 /atom/movable/screen/plane_master/blackness
-	name = "darkness plane master"
+	name = "黑暗平面主控"
 	plane = BLACKNESS_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	blend_mode = BLEND_MULTIPLY
@@ -130,7 +130,7 @@
 
 ///Contains all lighting objects
 /atom/movable/screen/plane_master/lighting
-	name = "lighting plane master"
+	name = "光照平面主控"
 	plane = LIGHTING_PLANE
 	blend_mode_override = BLEND_MULTIPLY
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
@@ -146,14 +146,14 @@
 	add_filter("object_lighting", 2, alpha_mask_filter(render_source = O_LIGHTING_VISUAL_RENDER_TARGET, flags = MASK_INVERSE))
 
 /atom/movable/screen/plane_master/lighting/exterior
-	name = "exterior lighting plane master"
+	name = "外部光照平面主控"
 	plane = EXTERIOR_LIGHTING_PLANE
 
 /**
  * Handles emissive overlays and emissive blockers.
  */
 /atom/movable/screen/plane_master/emissive
-	name = "emissive plane master"
+	name = "自发光平面主控"
 	plane = EMISSIVE_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	render_target = EMISSIVE_RENDER_TARGET
@@ -164,21 +164,21 @@
 	add_filter("em_block_masking", 1, color_matrix_filter(GLOB.em_mask_matrix))
 
 /atom/movable/screen/plane_master/above_lighting
-	name = "above lighting plane master"
+	name = "上层光照平面主控"
 	plane = ABOVE_LIGHTING_PLANE
 	appearance_flags = PLANE_MASTER //should use client color
 	blend_mode = BLEND_OVERLAY
 	render_relay_plane = RENDER_PLANE_GAME
 
 /atom/movable/screen/plane_master/runechat
-	name = "runechat plane master"
+	name = "符文聊天平面主控"
 	plane = RUNECHAT_PLANE
 	appearance_flags = PLANE_MASTER
 	blend_mode = BLEND_OVERLAY
 	render_relay_plane = RENDER_PLANE_NON_GAME
 
 /atom/movable/screen/plane_master/o_light_visual
-	name = "overlight light visual plane master"
+	name = "过亮视觉平面主控"
 	plane = O_LIGHTING_VISUAL_PLANE
 	render_target = O_LIGHTING_VISUAL_RENDER_TARGET
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
@@ -191,7 +191,7 @@
 	add_filter("AO", 1, drop_shadow_filter(x = 0, y = -2, size = 4, color = "#04080FAA"))
 
 /atom/movable/screen/plane_master/nvg_plane
-	name = "NVG plane"
+	name = "夜视仪平面"
 	plane = NVG_PLANE
 	render_relay_plane = RENDER_PLANE_GAME
 	blend_mode_override = BLEND_MULTIPLY
@@ -199,50 +199,50 @@
 	//icon_state = "noise"
 
 /atom/movable/screen/plane_master/fullscreen
-	name = "fullscreen alert plane"
+	name = "全屏警报平面"
 	plane = FULLSCREEN_PLANE
 	render_relay_plane = RENDER_PLANE_NON_GAME
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /atom/movable/screen/plane_master/hud
-	name = "HUD plane"
+	name = "HUD平面"
 	plane = HUD_PLANE
 	render_relay_plane = RENDER_PLANE_NON_GAME
 
 /atom/movable/screen/plane_master/above_hud
-	name = "above HUD plane"
+	name = "HUD上层平面"
 	plane = ABOVE_HUD_PLANE
 	render_relay_plane = RENDER_PLANE_NON_GAME
 
 /atom/movable/screen/plane_master/cinematic
-	name = "cinematic plane"
+	name = "过场动画平面"
 	plane = CINEMATIC_PLANE
 	render_relay_plane = RENDER_PLANE_NON_GAME
 
 /atom/movable/screen/plane_master/escape_menu
-	name = "Escape Menu"
+	name = "退出菜单"
 	plane = ESCAPE_MENU_PLANE
 	render_relay_plane = null
 
 /atom/movable/screen/plane_master/displacement
-	name = "displacement plane"
+	name = "位移平面"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	plane = DISPLACEMENT_PLATE_RENDER_LAYER
 	render_target = DISPLACEMENT_PLATE_RENDER_TARGET
 	render_relay_plane = null
 
 /atom/movable/screen/plane_master/open_space
-	name = "open space plane"
+	name = "开放空间平面"
 	plane = OPEN_SPACE_PLANE_START
 
 /atom/movable/screen/plane_master/open_space/Initialize(mapload, offset)
-	name = "open space plane [offset]"
+	name = "开放空间平面[offset]"
 	plane -= offset
 	. = ..()
 	add_filter("multizblur", 1, gauss_blur_filter(0.5 + 0.25 * (offset + 1)))
 
 /atom/movable/screen/plane_master/openspace_backdrop
-	name = "open space plane master"
+	name = "开放空间平面主控"
 	plane = OPENSPACE_BACKDROP_PLANE
 	appearance_flags = PLANE_MASTER
 	blend_mode = BLEND_MULTIPLY
@@ -256,12 +256,12 @@
 	filters += filter(type = "drop_shadow", color = "#04080FAA", size = -20)
 
 /atom/movable/screen/plane_master/seethrough
-	name = "seethrough plane"
+	name = "透视平面"
 	plane = SEETHROUGH_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /atom/movable/screen/plane_master/minimap
-	name = "minimap plane"
+	name = "小地图平面"
 	plane = TACMAP_PLANE
 	appearance_flags = PLANE_MASTER|NO_CLIENT_COLOR|PIXEL_SCALE
 	render_relay_plane = null

@@ -122,7 +122,7 @@
 	CONFIG_SET(flag/remove_gun_restrictions, TRUE)
 	sleep(10)
 	to_world(SPAN_ROUND_HEADER("The current game mode is - WHISKEY OUTPOST!"))
-	to_world(SPAN_ROUNDBODY("It is the year 2177 on the planet LV-624, five years before the arrival of the USS Almayer and the 2nd 'Falling Falcons' Battalion in the sector."))
+	to_world(SPAN_ROUNDBODY("It is the year 2177 on the planet LV-624, five years before the arrival of the USS Almayer and the 2nd '坠落猎鹰' Battalion in the sector."))
 	to_world(SPAN_ROUNDBODY("The 3rd 'Dust Raiders' Battalion is charged with establishing a USCM presence in the Neroid Sector."))
 	to_world(SPAN_ROUNDBODY("[SSmapping.configs[GROUND_MAP].map_name], one of the Dust Raider bases being established in the sector, has come under attack from unrecognized alien forces."))
 	to_world(SPAN_ROUNDBODY("With casualties mounting and supplies running thin, the Dust Raiders at [SSmapping.configs[GROUND_MAP].map_name] must survive for an hour to alert the rest of their battalion in the sector."))
@@ -132,18 +132,18 @@
 	sleep(10)
 	switch(map_locale) //Switching it up.
 		if(0)
-			marine_announcement("This is Captain Hans Naiche, commander of the 3rd Battalion 'Dust Raiders' forces here on LV-624. In our attempts to establish a base on this planet, several of our patrols were wiped out by hostile creatures. We're setting up a distress call, but we need you to hold [SSmapping.configs[GROUND_MAP].map_name] in order for our engineers to set up the relay. We're prepping several M402 mortar units to provide fire support. If they overrun your position, we will be wiped out with no way to call for help. Hold the line or we all die.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
+			marine_announcement("我是汉斯·奈切上尉，LV-624上第三营‘沙暴奇袭者’部队的指挥官。在我们试图于该星球建立基地的过程中，数支巡逻队被敌对生物歼灭。我们正在建立求救信号，但需要你们守住[SSmapping.configs[GROUND_MAP].map_name]，以便我方工程师架设中继器。我们正在准备数台M402迫击炮单位以提供火力支援。如果它们突破了你们的阵地，我们将被全歼且无法呼救。守住防线，否则我们都得死。", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
 	addtimer(CALLBACK(src, PROC_REF(story_announce), 0), 3 MINUTES)
 	return ..()
 
 /datum/game_mode/whiskey_outpost/proc/story_announce(time)
 	switch(time)
 		if(0)
-			marine_announcement("This is Captain Hans Naiche, Commander of the 3rd Battalion, 'Dust Raiders' forces on LV-624. As you already know, several of our patrols have gone missing and were likely wiped out by hostile local creatures as we attempted to set up our base.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
+			marine_announcement("我是汉斯·奈切上尉，LV-624上第三营‘沙暴奇袭者’部队的指挥官。如你们所知，在我们试图建立基地时，数支巡逻队失踪，很可能已被当地的敌对生物歼灭。", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
 		if(1)
-			marine_announcement("Our scouts report increased activity in the area and given our intel, we're already preparing for the worst. We're setting up a comms relay to send out a distress call, but we're going to need time while our engineers get everything ready. All other stations should prepare accordingly and maximize combat readiness, effective immediately.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
+			marine_announcement("我方侦察兵报告该区域活动加剧，根据情报，我们已做好最坏打算。我们正在架设通讯中继器以发出求救信号，但工程师需要时间准备。所有其他站点应立即进入最高战备状态。", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
 		if(2)
-			marine_announcement("Captain Naiche here. We've tracked the bulk of enemy forces on the move and [SSmapping.configs[GROUND_MAP].map_name] is likely to be hit before they reach the base. We need you to hold them off while we finish sending the distress call. Expect incoming within a few minutes. Godspeed, [SSmapping.configs[GROUND_MAP].map_name].", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
+			marine_announcement("奈切上尉报告。我们已追踪到敌军主力正在移动，[SSmapping.configs[GROUND_MAP].map_name]很可能在它们抵达基地前遭到攻击。我们需要你们挡住它们，直到我们完成求救信号发送。预计数分钟内接敌。祝好运，[SSmapping.configs[GROUND_MAP].map_name]。", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
 
 	if(time <= 2)
 		addtimer(CALLBACK(src, PROC_REF(story_announce), time+1), 3 MINUTES)
@@ -197,12 +197,12 @@
 	announce_xeno_wave(wave)
 	announce_dchat("A new xenomorph wave is available, use the Join as Xeno verb to take one of them.")
 	if(xeno_wave == 1)
-		xeno_announcement("It is time, dear Queen. Release the hive!", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
+		xeno_announcement("时机已到，亲爱的女王。释放巢穴！", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
 	if(xeno_wave == 7)
 		//Wave when Marines get reinforcements!
-		get_specific_call(/datum/emergency_call/wo, FALSE, TRUE) // "Marine Reinforcements (Squad)"
+		get_specific_call(/datum/emergency_call/wo, FALSE, TRUE) // "陆战队员增援（班）"
 	if(xeno_wave == 14)
-		xeno_announcement("We sense that they are sending signals for help, we have little time left. We have granted you vision of all humans in the area, slaughter them all!", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
+		xeno_announcement("我们感应到他们正在发送求救信号，时间不多了。我们已赋予你们该区域所有人类的视野，将他们全部屠杀！", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
 		var/datum/hive_status/main_hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
 		main_hive.see_humans_on_tacmap = TRUE
 		main_hive.tacmap_requires_queen_ovi = FALSE
@@ -277,7 +277,7 @@
 		log_game("Round end result - xenos won")
 		to_world(SPAN_ROUND_HEADER("The Xenos have successfully defended their hive from colonization."))
 		to_world(SPAN_ROUNDBODY("Well done, you've secured LV-624 for the hive!"))
-		to_world(SPAN_ROUNDBODY("It will be another five years before the USCM returns to the Neroid Sector, with the arrival of the 2nd 'Falling Falcons' Battalion and the USS Almayer."))
+		to_world(SPAN_ROUNDBODY("It will be another five years before the USCM returns to the Neroid Sector, with the arrival of the 2nd '坠落猎鹰' Battalion and the USS Almayer."))
 		to_world(SPAN_ROUNDBODY("The xenomorph hive on LV-624 remains unthreatened until then..."))
 		world << sound('sound/misc/Game_Over_Man.ogg')
 		if(GLOB.round_statistics)
@@ -291,7 +291,7 @@
 		to_world(SPAN_ROUND_HEADER("Against the onslaught, the marines have survived."))
 		to_world(SPAN_ROUNDBODY("The signal rings out to the USS Alistoun, and Dust Raiders stationed elsewhere in the Neroid Sector begin to converge on LV-624."))
 		to_world(SPAN_ROUNDBODY("Eventually, the Dust Raiders secure LV-624 and the entire Neroid Sector in 2182, pacifiying it and establishing peace in the sector for decades to come."))
-		to_world(SPAN_ROUNDBODY("The USS Almayer and the 2nd 'Falling Falcons' Battalion are never sent to the sector and are spared their fate in 2186."))
+		to_world(SPAN_ROUNDBODY("The USS Almayer and the 2nd '坠落猎鹰' Battalion are never sent to the sector and are spared their fate in 2186."))
 		world << sound('sound/misc/hell_march.ogg')
 		if(GLOB.round_statistics)
 			GLOB.round_statistics.round_result = MODE_INFESTATION_M_MAJOR
@@ -519,8 +519,8 @@
 	icon_state = "grinder-o0"
 	var/icon_on = "grinder-o1"
 
-	name = "Recycler"
-	desc = "Instructions: Place objects you want to destroy on top of it and use the machine. Use with care."
+	name = "回收器"
+	desc = "说明：将想要销毁的物品放置其上并启动机器。小心使用。"
 	density = FALSE
 	anchored = TRUE
 	unslashable = TRUE
@@ -533,23 +533,23 @@
 	if(user.is_mob_incapacitated())
 		return
 	if(istype(usr, /mob/living/carbon/xenomorph))
-		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
+		to_chat(usr, SPAN_DANGER("你的手不够灵巧，无法完成此操作！"))
 		return
 	if(working)
-		to_chat(user, SPAN_DANGER("Wait for it to recharge first."))
+		to_chat(user, SPAN_DANGER("先等它充能完毕。"))
 		return
 
 	var/remove_max = 10
 	var/turf/T = src.loc
 	if(T)
-		to_chat(user, SPAN_DANGER("You turn on the recycler."))
+		to_chat(user, SPAN_DANGER("你启动了回收器。"))
 		var/removed = 0
 		for(var/i, i < remove_max, i++)
 			for(var/obj/O in T)
 				if(istype(O,/obj/structure/closet/crate))
 					var/obj/structure/closet/crate/C = O
 					if(length(C.contents))
-						to_chat(user, SPAN_DANGER("[O] must be emptied before it can be recycled."))
+						to_chat(user, SPAN_DANGER("[O]必须清空后才能回收。"))
 						continue
 					new /obj/item/stack/sheet/metal(get_step(src,dir))
 					O.forceMove(get_turf(locate(84,237,2))) //z.2
@@ -601,8 +601,8 @@
 //This should at least give SLs the ability to rearm their squad at the frontlines.
 
 /obj/item/device/whiskey_supply_beacon //Whiskey Outpost Supply beacon. Might as well reuse the IR target beacon (Time to spook the fucking shit out of people.)
-	name = "ASB beacon"
-	desc = "Ammo Supply Beacon, it has 5 different settings for different supplies. Look at your weapons verb tab to be able to switch ammo drops."
+	name = "ASB信标"
+	desc = "弹药补给信标，有5种不同设置对应不同补给。查看你的武器指令选项卡以切换弹药投放类型。"
 	icon = 'icons/obj/items/weapons/grenade.dmi'
 	icon_state = "ir_beacon"
 	w_class = SIZE_SMALL
@@ -616,7 +616,7 @@
 	if(!ishuman(user))
 		return
 	if(!user.mind)
-		to_chat(user, "It doesn't seem to do anything for you.")
+		to_chat(user, "它对你似乎没什么用。")
 		return
 
 	playsound(src,'sound/machines/click.ogg', 15, 1)
@@ -633,45 +633,45 @@
 		"Smartgun ammo",
 	)
 
-	var/supply_drop_choice = tgui_input_list(user, "Which supplies to call down?", "Supply Drop", supplies)
+	var/supply_drop_choice = tgui_input_list(user, "呼叫何种补给？", "补给投放", supplies)
 
 	switch(supply_drop_choice)
 		if("10x24mm, slugs, buckshot, and 10x20mm rounds")
 			supply_drop = 0
-			to_chat(usr, SPAN_NOTICE("10x24mm, slugs, buckshot, and 10x20mm rounds will now drop!"))
+			to_chat(usr, SPAN_NOTICE("现在将投放10x24mm、独头弹、鹿弹和10x20mm弹药！"))
 		if("Rocket ammo")
 			supply_drop = 1
-			to_chat(usr, SPAN_NOTICE("Rocket ammo will now drop!"))
+			to_chat(usr, SPAN_NOTICE("现在将投放火箭弹！"))
 		if("Smartgun ammo")
 			supply_drop = 2
-			to_chat(usr, SPAN_NOTICE("Smartgun ammo will now drop!"))
+			to_chat(usr, SPAN_NOTICE("现在将投放智能枪弹药！"))
 		if("Sniper ammo")
 			supply_drop = 3
-			to_chat(usr, SPAN_NOTICE("Sniper ammo will now drop!"))
+			to_chat(usr, SPAN_NOTICE("狙击弹药即将投放！"))
 		if("Anti-Material Sniper ammo")
 			supply_drop = 4
-			to_chat(usr, SPAN_NOTICE("Anti-Material Sniper ammo will now drop!"))
+			to_chat(usr, SPAN_NOTICE("反器材狙击弹药即将投放！"))
 		if("Explosives and grenades")
 			supply_drop = 5
-			to_chat(usr, SPAN_NOTICE("Explosives and grenades will now drop!"))
+			to_chat(usr, SPAN_NOTICE("爆炸物和手榴弹即将投放！"))
 		if("SHARP ammo")
 			supply_drop = 6
-			to_chat(usr, SPAN_NOTICE("SHARP ammo will now drop!"))
+			to_chat(usr, SPAN_NOTICE("SHARP弹药即将投放！"))
 		if("Pyrotechnician tanks")
 			supply_drop = 7
-			to_chat(usr, SPAN_NOTICE("Pyrotechnician tanks will now drop!"))
+			to_chat(usr, SPAN_NOTICE("火焰喷射器燃料罐即将投放！"))
 		if("Scout ammo")
 			supply_drop = 8
-			to_chat(usr, SPAN_NOTICE("Scout ammo will now drop!"))
+			to_chat(usr, SPAN_NOTICE("侦察兵弹药即将投放！"))
 		else
 			return
 
 	if(activated)
-		to_chat(user, "Toss it to get supplies!")
+		to_chat(user, "投掷它以获取补给！")
 		return
 
 	if(!is_ground_level(user.z))
-		to_chat(user, "You have to be on the ground to use this or it won't transmit.")
+		to_chat(user, "你必须在地面使用此设备，否则无法传输信号。")
 		return
 
 	activated = 1
@@ -679,7 +679,7 @@
 	w_class = 10
 	icon_state = "[icon_activated]"
 	playsound(src, 'sound/machines/twobeep.ogg', 15, 1)
-	to_chat(user, "You activate the [src]. Now toss it, the supplies will arrive in a moment!")
+	to_chat(user, "你激活了[src]。现在投掷它，补给即将送达！")
 
 	var/mob/living/carbon/C = user
 	if(istype(C) && !C.throw_mode)
@@ -784,8 +784,8 @@
 		new path(crate)
 
 /obj/item/storage/box/attachments
-	name = "attachment package"
-	desc = "A package containing some random attachments. Why not see what's inside?"
+	name = "配件包"
+	desc = "一个包含随机配件的包裹。何不看看里面有什么？"
 	icon_state = "circuit"
 	w_class = SIZE_TINY
 	can_hold = list()

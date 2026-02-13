@@ -1,6 +1,6 @@
 /obj/item/clothing/suit/storage/marine/veteran/pmc/commando
 	name = "\improper MY7 pattern Commando armor"
-	desc = "A modification of the W-Y PMC armor patterns. Designed for elite corporate mercenaries in mind."
+	desc = "对W-Y PMC护甲款式的改良。专为精英企业佣兵设计。"
 	icon_state = "commando_armor"
 	item_state_slots = list(WEAR_JACKET = "commando_armor")
 	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS|BODY_FLAG_ARMS
@@ -15,8 +15,8 @@
 	actions_types = null
 
 /obj/item/clothing/suit/storage/marine/veteran/pmc/commando/damaged //survivor variant
-	name = "damaged MY7 pattern Commando armor"
-	desc = "A modification of the W-Y PMC armor patterns. Designed for elite corporate mercenaries in mind. This one has a lot of scratches and acid damage."
+	name = "受损的MY7型突击队护甲"
+	desc = "对W-Y PMC护甲款式的改良。专为精英企业佣兵设计。这件上面有很多划痕和酸蚀损伤。"
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
@@ -24,13 +24,13 @@
 
 /obj/item/clothing/suit/storage/marine/veteran/pmc/commando/leader
 	name = "\improper MY7 pattern Commando leader armor"
-	desc = "A modification of the W-Y PMC armor patterns. Designed for elite corporate mercenaries in mind. This particular suit looks like it belongs to a high-ranking officer."
+	desc = "对W-Y PMC护甲款式的改良。专为精英企业佣兵设计。这套特别的护甲看起来属于一名高级军官。"
 	icon_state = "commando_armor_leader"
 	item_state_slots = list(WEAR_JACKET = "commando_armor_leader")
 
 /obj/item/clothing/suit/storage/marine/smartgunner/veteran/pmc/commando
 	name = "\improper MY7 pattern Commando gunner armor"
-	desc = "A modification of the standard Armat Systems M3 armor. Hooked up with harnesses and straps allowing the user to carry an M56 Smartgun."
+	desc = "对标准阿玛特系统M3护甲的改良。配有背带和固定带，允许使用者携带M56智能枪。"
 	icon_state = "commando_armor_sg"
 	flags_inventory = BLOCKSHARPOBJ|BLOCK_KNOCKDOWN|SMARTGUN_HARNESS
 	flags_bodypart_hidden = BODY_FLAG_CHEST|BODY_FLAG_LEGS|BODY_FLAG_ARMS
@@ -45,7 +45,7 @@
 
 /obj/item/clothing/suit/storage/marine/veteran/pmc/apesuit
 	name = "\improper M5X Apesuit"
-	desc = "A complex system of overlapping plates intended to render the wearer all but impervious to small arms fire. A passive exoskeleton supports the weight of the armor, allowing a human to carry its massive bulk."
+	desc = "一套复杂的重叠板甲系统，旨在使穿戴者几乎不受轻武器火力伤害。一套被动外骨骼支撑着护甲的重量，使人类能够承载其巨大的体积。"
 	icon_state = "ape_suit"
 	slowdown = SLOWDOWN_ARMOR_MEDIUM
 	movement_compensation = SLOWDOWN_ARMOR_VERY_HEAVY

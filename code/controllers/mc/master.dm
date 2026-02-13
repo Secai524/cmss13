@@ -21,7 +21,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 //GOT IT MEMORIZED?
 
 /datum/controller/master
-	name = "Master"
+	name = "主控"
 
 	/// Are we processing (higher values increase the processing delay by n ticks)
 	var/processing = TRUE
@@ -204,7 +204,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		current_runlevel = Master.current_runlevel
 		StartProcessing(10)
 	else
-		to_chat(world, SPAN_BOLDANNOUNCE("The Master Controller is having some issues, we will need to re-initialize EVERYTHING!"))
+		to_chat(world, SPAN_BOLDANNOUNCE("主控制器出现故障，我们需要重新初始化所有系统！"))
 		Initialize(20, TRUE)
 
 // Please don't stuff random bullshit here,
@@ -221,7 +221,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	init_stage_completed = 0
 	var/mc_started = FALSE
 
-	to_chat(world, SPAN_BOLDANNOUNCE("Initializing subsystems..."))
+	to_chat(world, SPAN_BOLDANNOUNCE("正在初始化子系统..."))
 
 	var/list/stage_sorted_subsystems = new(INITSTAGE_MAX)
 	for (var/i in 1 to INITSTAGE_MAX)

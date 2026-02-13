@@ -1,5 +1,5 @@
 /obj/item/device/assembly_holder
-	name = "Assembly"
+	name = "组装件"
 	icon = 'icons/obj/items/new_assemblies.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_lefthand.dmi',
@@ -38,7 +38,7 @@
 	if(!D)
 		return FALSE
 	if(!secured)
-		visible_message("[icon2html(src, hearers(src))] *beep* *beep*", "*beep* *beep*")
+		visible_message("[icon2html(src, hearers(src))] *哔* *哔*", "*beep* *beep*")
 	if((normal) && (a_right) && (a_left))
 		if(a_right != D)
 			a_right.pulsed(0)
@@ -75,7 +75,7 @@
 	D2.forceMove(src)
 	a_left = D
 	a_right = D2
-	name = "[D.name]-[D2.name] assembly"
+	name = "[D.name]-[D2.name]组装件"
 	update_icon()
 	usr.put_in_hands(src)
 
@@ -143,7 +143,7 @@
 /obj/item/device/assembly_holder/attackby(obj/item/W as obj, mob/user as mob)
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		if(!a_left || !a_right)
-			to_chat(user, SPAN_DANGER("BUG:Assembly part missing, please report this!"))
+			to_chat(user, SPAN_DANGER("BUG：组装部件缺失，请报告此问题！"))
 			return
 		a_left.toggle_secure()
 		a_right.toggle_secure()
@@ -165,10 +165,10 @@
 	src.add_fingerprint(user)
 	if(src.secured)
 		if(!a_left || !a_right)
-			to_chat(user, SPAN_DANGER("Assembly part missing!"))
+			to_chat(user, SPAN_DANGER("组装部件缺失！"))
 			return
 		if(istype(a_left,a_right.type))//If they are the same type it causes issues due to window code
-			var/response = tgui_alert(user, "Which side would you like to use?", "Side selection", list("Left","Right"))
+			var/response = tgui_alert(user, "你想使用哪一侧？", "Side selection", list("Left","Right"))
 			if(response && (user.l_hand == src || user.r_hand == src))
 				switch(response)
 					if("Left")
@@ -202,7 +202,7 @@
 		a_left.hear_talk(M,msg)
 
 /obj/item/device/assembly_holder/timer_igniter
-	name = "timer-igniter assembly"
+	name = "定时-点火器组装件"
 
 /obj/item/device/assembly_holder/timer_igniter/Initialize(mapload, timer_time)
 	. = ..()
@@ -243,18 +243,18 @@
 		if(!istype(tmr,/obj/item/device/assembly/timer))
 			tmr = holder.a_right
 		if(!istype(tmr,/obj/item/device/assembly/timer))
-			to_chat(usr, SPAN_NOTICE("This detonator has no timer."))
+			to_chat(usr, SPAN_NOTICE("这个起爆器没有定时器。"))
 			return
 
 		if(tmr.timing)
-			to_chat(usr, SPAN_NOTICE("Clock is ticking already."))
+			to_chat(usr, SPAN_NOTICE("倒计时已经开始了。"))
 		else
-			var/ntime = tgui_input_number(usr, "Enter desired time in seconds", "Time", 5, 1000, 0)
+			var/ntime = tgui_input_number(usr, "输入期望的时间（秒）", "Time", 5, 1000, 0)
 			if (ntime>0 && ntime<1000)
 				tmr.time = ntime
 				name = initial(name) + "([tmr.time] secs)"
-				to_chat(usr, SPAN_NOTICE("Timer set to [tmr.time] seconds."))
+				to_chat(usr, SPAN_NOTICE("定时器设置为[tmr.time]秒。"))
 			else
-				to_chat(usr, SPAN_NOTICE("Timer can't be [ntime<=0?"negative":"more than 1000 seconds"]."))
+				to_chat(usr, SPAN_NOTICE("定时器不能[ntime<=0?"negative":"more than 1000 seconds"]."))
 	else
-		to_chat(usr, SPAN_NOTICE("You cannot do this while [usr.stat?"unconscious/dead":"restrained"]."))
+		to_chat(usr, SPAN_NOTICE("你无法在[usr.stat?"unconscious/dead":"restrained"]时执行此操作。."))

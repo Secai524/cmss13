@@ -1,6 +1,6 @@
 /obj/structure/window_frame
-	name = "window frame"
-	desc = "A big hole in the wall that used to sport a large window. Can be vaulted through."
+	name = "窗框"
+	desc = "墙上一个曾装有大型窗户的大洞。可以翻越过去。"
 	icon = 'icons/turf/walls/window_frames.dmi'
 	icon_state = "window0_frame"
 	layer = WINDOW_FRAME_LAYER
@@ -86,13 +86,13 @@
 	if(istype(W, sheet_type))
 		var/obj/item/stack/sheet/sheet = W
 		if(sheet.get_amount() < 2)
-			to_chat(user, SPAN_WARNING("You need more [W.name] to install a new window."))
+			to_chat(user, SPAN_WARNING("你需要更多[W.name]来安装新窗户。"))
 			return
-		user.visible_message(SPAN_NOTICE("[user] starts installing a new glass window on the frame."),
+		user.visible_message(SPAN_NOTICE("[user]开始在窗框上安装新的玻璃窗。"),
 		SPAN_NOTICE("You start installing a new window on the frame."))
 		playsound(src, 'sound/items/Deconstruct.ogg', 25, 1)
 		if(do_after(user, 20 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			user.visible_message(SPAN_NOTICE("[user] installs a new glass window on the frame."),
+			user.visible_message(SPAN_NOTICE("[user]在窗框上安装了新的玻璃窗。"),
 			SPAN_NOTICE("You install a new window on the frame."))
 			sheet.use(2)
 			new window_type(loc) //This only works on Almayer windows!
@@ -101,11 +101,11 @@
 
 	else if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		if(buildstacktype)
-			to_chat(user, SPAN_NOTICE("You start to deconstruct [src]."))
+			to_chat(user, SPAN_NOTICE("你开始拆除[src]。"))
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 			if(do_after(user, 30 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) // takes 3 seconds to deconstruct
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-				to_chat(user, SPAN_NOTICE("You deconstruct [src]."))
+				to_chat(user, SPAN_NOTICE("你拆除了[src]。"))
 				SEND_SIGNAL(user, COMSIG_MOB_DISASSEMBLE_W_FRAME, src)
 				deconstruct()
 
@@ -117,21 +117,21 @@
 			var/mob/living/M = G.grabbed_thing
 			if(user.grab_level >= GRAB_AGGRESSIVE)
 				if(get_dist(src, M) > 1)
-					to_chat(user, SPAN_WARNING("[M] needs to be next to [src]."))
+					to_chat(user, SPAN_WARNING("[M]需要紧邻[src]。"))
 				else
 					if(user.action_busy)
 						return
-					user.visible_message(SPAN_NOTICE("[user] starts pulling [M] onto [src]."),
+					user.visible_message(SPAN_NOTICE("[user]开始将[M]拖到[src]上。"),
 					SPAN_NOTICE("You start pulling [M] onto [src]!"))
 					var/oldloc = loc
 					if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC, M) || loc != oldloc)
 						return
 					M.apply_effect(2, WEAKEN)
-					user.visible_message(SPAN_WARNING("[user] pulls [M] onto [src]."),
+					user.visible_message(SPAN_WARNING("[user]将[M]拖到了[src]上。"),
 					SPAN_NOTICE("You pull [M] onto [src]."))
 					M.forceMove(loc)
 			else
-				to_chat(user, SPAN_WARNING("You need a better grip to do that!"))
+				to_chat(user, SPAN_WARNING("你需要抓得更稳才能做到！"))
 	else
 		. = ..()
 
@@ -153,10 +153,10 @@
 	var/hits_divisor = reinforced ? XENO_HITS_TO_DESTROY_R_WINDOW_FRAME : XENO_HITS_TO_DESTROY_WINDOW_FRAME
 	take_damage((max_health / hits_divisor) + 1)
 	if(health <= 0)
-		xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno]用它的尾巴摧毁了[src]！"),
 		SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
-		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno] 用它的尾巴抽打 [src]！"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
@@ -206,7 +206,7 @@
 
 /obj/structure/window_frame/almayer/requisitions/attackby(obj/item/W, mob/living/user)
 	if(istype(W, sheet_type))
-		to_chat(user, SPAN_WARNING("You can't repair this window."))
+		to_chat(user, SPAN_WARNING("你无法修复这扇窗户。"))
 		return
 	. = ..()
 
@@ -303,7 +303,7 @@
 //Shivas Snowball (Ice v3) frames
 
 /obj/structure/window_frame/shiva
-	name = "poly-kevlon window frame"
+	name = "聚凯夫拉窗框"
 	icon = 'icons/turf/walls/ice_colony/shiva_windows.dmi'
 	icon_state = "shiva_window0_frame"
 	basestate = "shiva_window"

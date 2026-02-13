@@ -1,6 +1,6 @@
 //Seed packet object/procs.
 /obj/item/seeds
-	name = "packet of seeds"
+	name = "种子包"
 	icon = 'icons/obj/items/seeds.dmi'
 	icon_state = "seed"
 	flags_atom = NO_FLAGS
@@ -28,12 +28,12 @@
 	var/mob/living/carbon/human/user = usr
 	var/obj/item/seeds/S = user.get_active_hand()
 	if(!istype(S))
-		to_chat(user, SPAN_WARNING("Where did you put those seeds you wanted to rename?"))
+		to_chat(user, SPAN_WARNING("你把要重命名的种子放哪了？"))
 		return
 	if (seed.roundstart)
-		to_chat(user, SPAN_WARNING("You can't rename basic seeds!"))
+		to_chat(user, SPAN_WARNING("无法重命名基础种子！"))
 		return
-	var/new_name = copytext(reject_bad_text(tgui_input_text(user,"Rename seed variety?", "Set new seed variety name", "")), 1, MAX_NAME_LEN)
+	var/new_name = copytext(reject_bad_text(tgui_input_text(user,"重命名种子品种？", "Set new seed variety name", "")), 1, MAX_NAME_LEN)
 	if (!new_name)
 		return
 	S.seed.seed_name = new_name
@@ -44,7 +44,7 @@
 		if (SS.seed.uid == S.seed.uid)
 			SS.update_appearance() //updates the name
 
-	to_chat(user, SPAN_INFO("Variety #[seed.uid] renamed to \"[new_name]\""))
+	to_chat(user, SPAN_INFO("品种#[seed.uid]已重命名为\"[new_name]\""))
 	msg_admin_niche("[user] renamed seed variety #[seed.uid] to \"[new_name]\"")
 
 
@@ -69,249 +69,249 @@
 
 /obj/item/seeds/cutting
 	name = "cuttings"
-	desc = "Some plant cuttings."
+	desc = "一些植物插条。"
 
 /obj/item/seeds/cutting/update_appearance()
 	..()
 
-	name = "packet of [seed.seed_name] cuttings"
+	name = "[seed.seed_name]插条包"
 
 /obj/item/seeds/poppyseed
 	seed_type = "poppies"
-	name = "pack of poppie seeds"
+	name = "罂粟种子包"
 
 /obj/item/seeds/chiliseed
 	seed_type = "chili"
-	name = "pack of chili seeds"
+	name = "辣椒种子包"
 
 /obj/item/seeds/plastiseed
 	seed_type = "plastic"
-	name = "pack of plastic seeds"
+	name = "塑料种子包"
 
 /obj/item/seeds/grapeseed
 	seed_type = "grapes"
-	name = "pack of grape seeds"
+	name = "葡萄种子包"
 
 /obj/item/seeds/greengrapeseed
 	seed_type = "greengrapes"
-	name = "pack of greengrape seeds"
+	name = "绿葡萄种子包"
 
 /obj/item/seeds/peanutseed
 	seed_type = "peanut"
-	name = "pack of peanut seeds"
+	name = "花生种子包"
 
 /obj/item/seeds/cabbageseed
 	seed_type = "cabbage"
-	name = "pack of cabbageseeds"
+	name = "卷心菜种子包"
 
 /obj/item/seeds/shandseed
 	seed_type = "shand"
-	name = "pack of shand seeds"
+	name = "沙恩种子包"
 
 /obj/item/seeds/mtearseed
 	seed_type = "mtear"
-	name = "pack of Messa's tear seeds"
+	name = "梅萨之泪种子包"
 
 /obj/item/seeds/berryseed
 	seed_type = "berries"
-	name = "pack of berry seeds"
+	name = "浆果种子包"
 
 /obj/item/seeds/glowberryseed
 	seed_type = "glowberries"
-	name = "pack of glowberrie seeds"
+	name = "发光浆果种子包"
 
 /obj/item/seeds/bananaseed
 	seed_type = "banana"
-	name = "pack of banana seeds"
+	name = "香蕉种子包"
 
 /obj/item/seeds/eggplantseed
 	seed_type = "eggplant"
-	name = "pack of eggplant seeds"
+	name = "茄子种子包"
 
 /obj/item/seeds/eggyseed
 	seed_type = "realeggplant"
-	name = "pack of real eggplant seeds"
+	name = "一包真茄子种子"
 
 /obj/item/seeds/bloodtomatoseed
 	seed_type = "bloodtomato"
-	name = "pack of blood tomato seeds"
+	name = "一包血番茄种子"
 
 /obj/item/seeds/tomatoseed
 	seed_type = "tomato"
-	name = "pack of tomato seeds"
+	name = "一包番茄种子"
 
 /obj/item/seeds/killertomatoseed
 	seed_type = "killertomato"
-	name = "pack of killer tomato seeds"
+	name = "一包杀手番茄种子"
 
 /obj/item/seeds/bluetomatoseed
 	seed_type = "bluetomato"
-	name = "pack of blue tomato seeds"
+	name = "一包蓝番茄种子"
 
 /obj/item/seeds/bluespacetomatoseed
 	seed_type = "bluespacetomato"
-	name = "pack of bluespace tomato seeds"
+	name = "一包蓝空番茄种子"
 
 /obj/item/seeds/cornseed
 	seed_type = "corn"
-	name = "pack of corn seeds"
+	name = "一包玉米种子"
 
 /obj/item/seeds/poppyseed
 	seed_type = "poppies"
-	name = "pack of poppie seeds"
+	name = "罂粟种子包"
 
 /obj/item/seeds/potatoseed
 	seed_type = "potato"
-	name = "pack of potato seeds"
+	name = "一包土豆种子"
 
 /obj/item/seeds/icepepperseed
 	seed_type = "icechili"
-	name = "pack of ice chili seeds"
+	name = "一包冰辣椒种子"
 
 /obj/item/seeds/soyaseed
 	seed_type = "soybean"
-	name = "pack of soybean seeds"
+	name = "一包大豆种子"
 
 /obj/item/seeds/wheatseed
 	seed_type = "wheat"
-	name = "pack of wheat seeds"
+	name = "一包小麦种子"
 
 /obj/item/seeds/riceseed
 	seed_type = "rice"
-	name = "pack of rice seeds"
+	name = "一包水稻种子"
 
 /obj/item/seeds/carrotseed
 	seed_type = "carrot"
-	name = "pack of carrot seeds"
+	name = "一包胡萝卜种子"
 
 /obj/item/seeds/reishimycelium
 	seed_type = "reishi"
-	name = "pack of reishi spores"
+	name = "一包灵芝孢子"
 
 /obj/item/seeds/amanitamycelium
 	seed_type = "amanita"
-	name = "pack of amanita spores"
+	name = "一包毒蝇伞孢子"
 
 /obj/item/seeds/angelmycelium
 	seed_type = "destroyingangel"
-	name = "pack of destroying angel spores"
+	name = "一包毁灭天使孢子"
 
 /obj/item/seeds/libertymycelium
 	seed_type = "libertycap"
-	name = "pack of liberty cap spores"
+	name = "一包自由帽孢子"
 
 /obj/item/seeds/chantermycelium
 	seed_type = "mushrooms"
-	name = "pack of mushrooms spores"
+	name = "一包蘑菇孢子"
 
 /obj/item/seeds/towermycelium
 	seed_type = "towercap"
-	name = "pack of towercap spores"
+	name = "一包塔帽孢子"
 
 /obj/item/seeds/glowshroom
 	seed_type = "glowshroom"
-	name = "pack of glowshroom spores"
+	name = "一包发光菇孢子"
 
 /obj/item/seeds/plumpmycelium
 	seed_type = "plumphelmet"
-	name = "pack of plumphelmet"
+	name = "一包胖头盔菇"
 
 /obj/item/seeds/walkingmushroommycelium
 	seed_type = "walkingmushroom"
-	name = "pack of walking mushroom spores"
+	name = "一包行走蘑菇孢子"
 
 /obj/item/seeds/nettleseed
 	seed_type = "nettle"
-	name = "pack of nettle seeds"
+	name = "一包荨麻种子"
 
 /obj/item/seeds/deathnettleseed
 	seed_type = "deathnettle"
-	name = "pack of deathnettle seeds"
+	name = "一包死亡荨麻种子"
 
 /obj/item/seeds/weeds
 	seed_type = "weeds"
-	name = "pack of weed seeds"
+	name = "一包杂草种子"
 
 /obj/item/seeds/harebell
 	seed_type = "harebells"
-	name = "pack of harebell seeds"
+	name = "一包风铃草种子"
 
 /obj/item/seeds/sunflowerseed
 	seed_type = "sunflowers"
-	name = "pack of sunflower seeds"
+	name = "一包向日葵种子"
 
 /obj/item/seeds/brownmold
 	seed_type = "mold"
-	name = "pack of mold spores"
+	name = "一包霉菌孢子"
 
 /obj/item/seeds/appleseed
 	seed_type = "apple"
-	name = "pack of apple seeds"
+	name = "一包苹果种子"
 
 /obj/item/seeds/poisonedappleseed
 	seed_type = "poisonapple"
-	name = "pack of poisonous apple seeds"
+	name = "一包有毒苹果种子"
 
 /obj/item/seeds/goldappleseed
 	seed_type = "goldapple"
-	name = "pack of golden apple seeds"
+	name = "一包金苹果种子"
 
 /obj/item/seeds/ambrosiavulgarisseed
 	seed_type = "ambrosia"
-	name = "pack of ambrosia seeds"
+	name = "一包神食种子"
 
 /obj/item/seeds/ambrosiadeusseed
 	seed_type = "ambrosiadeus"
-	name = "pack of ambrosiadeus seeds"
+	name = "一包神食之种"
 
 /obj/item/seeds/whitebeetseed
 	seed_type = "whitebeet"
-	name = "pack of whitebeet seeds"
+	name = "一包白甜菜种子"
 
 /obj/item/seeds/sugarcaneseed
 	seed_type = "sugarcane"
-	name = "pack of sugarcane seeds"
+	name = "一包甘蔗种子"
 
 /obj/item/seeds/watermelonseed
 	seed_type = "watermelon"
-	name = "pack of watermelon seeds"
+	name = "一包西瓜种子"
 
 /obj/item/seeds/pumpkinseed
 	seed_type = "pumpkin"
-	name = "pack of pumpkin seeds"
+	name = "一包南瓜种子"
 
 /obj/item/seeds/limeseed
 	seed_type = "lime"
-	name = "pack of lime seeds"
+	name = "一包青柠种子"
 
 /obj/item/seeds/lemonseed
 	seed_type = "lemon"
-	name = "pack of lemon seeds"
+	name = "一包柠檬种子"
 
 /obj/item/seeds/orangeseed
 	seed_type = "orange"
-	name = "pack of orange seeds"
+	name = "一包橙子种子"
 
 /obj/item/seeds/poisonberryseed
 	seed_type = "poisonberries"
-	name = "pack of poisonous berry seeds"
+	name = "一包有毒浆果种子"
 
 /obj/item/seeds/deathberryseed
 	seed_type = "deathberries"
-	name = "pack of deathberry seeds"
+	name = "一包死亡浆果种子"
 
 /obj/item/seeds/grassseed
 	seed_type = "grass"
-	name = "pack of grass seeds"
+	name = "一包草籽"
 
 /obj/item/seeds/cocoapodseed
 	seed_type = "cocoa"
-	name = "pack of cocoa seeds"
+	name = "一包可可豆种子"
 
 /obj/item/seeds/cherryseed
 	seed_type = "cherry"
-	name = "pack of cherry seeds"
+	name = "一包樱桃种子"
 
 /obj/item/seeds/kudzuseed
 	seed_type = "kudzu"
-	name = "pack of kudzu seeds"
+	name = "一包野葛种子"

@@ -4,7 +4,7 @@
 	plasma_cost = 75
 
 /datum/action/xeno_action/onclick/corrosive_slash
-	name = "Corrosive Slash"
+	name = "腐蚀劈砍"
 	action_icon_state = "corrosive_slash"
 	macro_path = /datum/action/xeno_action/verb/corrosive_slash
 	ability_primacy = XENO_PRIMARY_ACTION_2
@@ -16,12 +16,12 @@
 	var/slash_speedup = 2
 
 /datum/action/xeno_action/activable/tail_stab/despoiler
-	name = "Finishing Acid Stab"
+	name = "终结酸液刺击"
 	charge_time = 2 SECONDS
 
 
 /datum/action/xeno_action/onclick/decomposing_enzymes
-	name = "Decomposing Enzymes"
+	name = "分解酶"
 	action_icon_state = "decomposing_enzymes"
 	macro_path = /datum/action_xeno_action/verb/decomposing_enzymes
 	xeno_cooldown = 24 SECONDS

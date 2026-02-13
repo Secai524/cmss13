@@ -1,6 +1,6 @@
 /obj/item/clothing/head/helmet
 	name = "helmet"
-	desc = "Standard Security gear. Protects the head from impacts."
+	desc = "标准安保装备。保护头部免受冲击。"
 	icon_state = "helmet"
 	item_state = "helmet"
 	armor_melee = CLOTHING_ARMOR_MEDIUM
@@ -34,10 +34,10 @@
 
 	if(flags_inv_hide & HIDETOPHAIR)
 		flags_inv_hide &= ~HIDETOPHAIR
-		to_chat(usr, "You let your hair out from [src].")
+		to_chat(usr, "你将头发从[src]中散开。")
 	else
 		flags_inv_hide |= HIDETOPHAIR
-		to_chat(usr, "You tuck your hair into \the [src].")
+		to_chat(usr, "你将头发塞进\the [src]里。")
 
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc
@@ -45,8 +45,8 @@
 			H.update_hair()
 
 /obj/item/clothing/head/helmet/riot
-	name = "riot helmet"
-	desc = "It's a helmet specifically designed to protect against close range attacks. It covers your ears."
+	name = "防暴头盔"
+	desc = "这是一种专门设计用于防护近距离攻击的头盔。它覆盖了你的耳朵。"
 	icon_state = "riot"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	item_icons = list(
@@ -64,7 +64,7 @@
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDETOPHAIR
 
 /obj/item/clothing/head/helmet/riot/vintage_riot
-	desc = "A scarred riot helmet covered in cobwebs. It still protects your ears."
+	desc = "一顶布满蛛网的带伤防暴头盔。它仍然保护着你的耳朵。"
 	icon_state = "old_riot"
 	icon = 'icons/obj/items/clothing/hats/hats.dmi'
 	item_icons = list(
@@ -72,8 +72,8 @@
 	)
 
 /obj/item/clothing/head/helmet/augment
-	name = "augment array"
-	desc = "A helmet with optical and cranial augments coupled to it."
+	name = "增强阵列"
+	desc = "一顶连接了视觉与颅脑增强装置的头盔。"
 	icon_state = "v62"
 	item_state = "v62"
 	armor_melee = CLOTHING_ARMOR_MEDIUM
@@ -87,16 +87,16 @@
 	siemens_coefficient = 0.5
 
 /obj/item/clothing/head/helmet/warden
-	name = "warden's hat"
-	desc = "It's a special helmet issued to the Warden of a security force. Protects the head from impacts."
+	name = "典狱长帽"
+	desc = "这是颁发给安保部队典狱长的特殊头盔。保护头部免受冲击。"
 	icon_state = "policehelm"
 	flags_inventory = NO_FLAGS
 	flags_inv_hide = NO_FLAGS
 	flags_armor_protection = 0
 
 /obj/item/clothing/head/helmet/hop
-	name = "crew resource's hat"
-	desc = "A stylish hat that both protects you from enraged former-crewmembers and gives you a false sense of authority."
+	name = "船员资源部帽子"
+	desc = "一顶时髦的帽子，既能保护你免受愤怒的前船员伤害，又能给你一种虚假的权威感。"
 	icon_state = "hopcap"
 	flags_inventory = NO_FLAGS
 	flags_inv_hide = NO_FLAGS
@@ -104,7 +104,7 @@
 
 /obj/item/clothing/head/helmet/swat
 	name = "\improper SWAT helmet"
-	desc = "They're often used by highly trained Swat Members."
+	desc = "它们常被训练有素的SWAT成员使用。"
 	icon_state = "swat"
 	item_state = "swat"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
@@ -123,8 +123,8 @@
 	anti_hug = 1
 
 /obj/item/clothing/head/helmet/gladiator
-	name = "gladiator helmet"
-	desc = "Ave, Imperator, morituri te salutant."
+	name = "角斗士头盔"
+	desc = "Ave, Imperator, morituri te salutant.（万岁，皇帝，赴死者向您致敬。）"
 	icon_state = "gladiator"
 	item_state = "gladiator"
 	flags_inventory = COVEREYES|BLOCKSHARPOBJ
@@ -141,7 +141,7 @@
 
 /obj/item/clothing/head/helmet/roman
 	name = "\improper imperial galea helmet"
-	desc = "An extremely old helmet that was used by Roman heavy infantry units called the Legionares."
+	desc = "一顶极其古老的头盔，曾被罗马重型步兵单位——军团士兵使用。"
 	icon_state = "legionary_helm"
 	item_state = "legionary_helm"
 	icon = 'icons/obj/items/clothing/hats/misc_ert_colony.dmi'
@@ -161,7 +161,7 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 
 /obj/item/clothing/head/helmet/roman/centurion
-	desc = "An extremely old helmet that was used by Roman heavy infantry units called the Legionares. This one has a crest indicating it was used by Centurions."
+	desc = "一顶极其古老的头盔，曾被罗马重型步兵单位——军团士兵使用。这顶头盔上的羽饰表明它曾被百夫长使用。"
 	icon_state = "centurion_helm"
 	item_state = "centurion_helm"
 	worn_x_dimension = 64
@@ -173,7 +173,7 @@
 
 /obj/item/clothing/head/helmet/roman/eaglebearer
 	name = "\improper Aquilifier's bear pelt mask"
-	desc = "a bear pelt and mask that was worn by a Roman Aquilifier, a prestigious role meant to inspire troops in battles."
+	desc = "一张熊皮和面具，曾由罗马鹰帜手佩戴，这是一个旨在战斗中激励部队的显赫角色。"
 	icon_state = "eaglebearer_hat"
 	item_state = "eaglebearer_hat"
 	worn_x_dimension = 64
@@ -416,7 +416,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine
 	name = "\improper M10 pattern marine helmet"
-	desc = "A standard M10 Pattern Helmet. The inside label, along with washing information, reads, 'The difference between an open-casket and closed-casket funeral. Wear on head for best results.'. There is a built-in camera on the right side."
+	desc = "一顶标准的M10式头盔。内侧标签连同洗涤说明写着：‘开棺葬礼与闭棺葬礼的区别。戴在头上效果最佳。’右侧有一个内置摄像头。"
 	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
 	icon_state = "helmet"
 	item_state = "helmet"
@@ -582,7 +582,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			ammo_level = "almost empty."
 		if(M.current_rounds == 0)
 			ammo_level = "empty. Uh oh."
-		user.visible_message("[user] bashes [M] against their helmet", "You bash [M] against your helmet. It is [ammo_level]")
+		user.visible_message("[user]用[M]猛击自己的头盔。", "You bash [M] against your helmet. It is [ammo_level]")
 		helmet_bash_cooldown = world.time + 20 SECONDS
 		return
 
@@ -590,22 +590,22 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		var/obj/item/device/helmet_visor/new_visor = attacking_item
 
 		if(!new_visor.can_attach_to(src))
-			to_chat(user, SPAN_NOTICE("The [new_visor] does not fit on the [src]."))
+			to_chat(user, SPAN_NOTICE("这个[new_visor]无法安装在[src]上。"))
 			return
 
 		if(length(inserted_visors) >= max_inserted_visors)
-			to_chat(user, SPAN_NOTICE("[src] has used all of its visor attachment sockets."))
+			to_chat(user, SPAN_NOTICE("[src]的护目镜插槽已全部占用。"))
 			return
 
 		for(var/obj/item/device/helmet_visor/cycled_visor as anything in (built_in_visors + inserted_visors))
 			if(cycled_visor.type == new_visor.type)
-				to_chat(user, SPAN_NOTICE("[src] already has this type of HUD connected."))
+				to_chat(user, SPAN_NOTICE("[src]已连接同类型的抬头显示器。"))
 				return
 		if(!user.drop_held_item())
 			return
 
 		inserted_visors += new_visor
-		to_chat(user, SPAN_NOTICE("You connect [new_visor] to the [src]."))
+		to_chat(user, SPAN_NOTICE("你将[new_visor]连接到[src]。"))
 		new_visor.forceMove(src)
 		if(!(locate(/datum/action/item_action/cycle_helmet_huds) in actions))
 			var/datum/action/item_action/cycle_helmet_huds/new_action = new(src)
@@ -618,9 +618,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			// If the user is trying to remove a built-in visor, give them a more helpful failure message.
 			switch(length(built_in_visors))
 				if(1) // Messy plural handling
-					to_chat(user, SPAN_WARNING("The visor on [src] is built-in!"))
+					to_chat(user, SPAN_WARNING("[src]的护目镜是内置的！"))
 				if(2 to INFINITY)
-					to_chat(user, SPAN_WARNING("The visors on [src] are built-in!"))
+					to_chat(user, SPAN_WARNING("[src]的护目镜是内置的！"))
 			return
 
 		if(active_visor)
@@ -632,7 +632,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			visor.forceMove(get_turf(src))
 
 		inserted_visors = list()
-		to_chat(user, SPAN_NOTICE("You remove the inserted visors."))
+		to_chat(user, SPAN_NOTICE("你移除了已安装的护目镜。"))
 
 		var/datum/action/item_action/cycle_helmet_huds/cycle_action = locate() in actions
 		cycle_action.set_default_overlay()
@@ -707,7 +707,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/dropped(mob/living/carbon/human/mob)
 	if(camera)
-		camera.c_tag = "Unknown"
+		camera.c_tag = "未知"
 	if(pockets)
 		for(var/obj/item/attachable/flashlight/F in pockets)
 			if(F.light_on)
@@ -775,7 +775,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	var/list/total_visors = built_in_visors + inserted_visors
 
 	if(!length(total_visors))
-		to_chat(user, SPAN_WARNING("There are no visors to swap to."))
+		to_chat(user, SPAN_WARNING("没有可切换的护目镜。"))
 		return FALSE
 
 	if(active_visor)
@@ -818,7 +818,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		toggle_visor(user)
 		return active_visor
 
-	to_chat(user, SPAN_WARNING("There are no visors to swap to currently."))
+	to_chat(user, SPAN_WARNING("当前没有可切换的护目镜。"))
 	return FALSE
 
 
@@ -839,7 +839,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /datum/action/item_action/cycle_helmet_huds/New(Target, obj/item/holder)
 	. = ..()
-	name = "Cycle helmet HUD"
+	name = "切换头盔抬头显示器"
 	button.name = name
 	set_default_overlay()
 
@@ -871,7 +871,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/tech
 	name = "\improper M10 technician helmet"
-	desc = "A modified M10 marine helmet for ComTechs. Features a toggleable welding screen for eye protection."
+	desc = "为战斗技术员改装的M10陆战队员头盔。配备可切换的焊接面罩以保护眼睛。"
 	icon_state = "tech_helmet"
 	specialty = "M10 technician"
 	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/welding_visor)
@@ -879,14 +879,14 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/welding
 	name = "\improper M10 welding helmet"
-	desc = "A modified M10 marine helmet, Features a toggleable welding screen for eye protection. Completely invisible while toggled off as opposed to the technician helmet."
+	desc = "一款改装的M10陆战队员头盔，配备可切换的焊接面罩以保护眼睛。关闭时完全隐形，与技师头盔不同。"
 	specialty = "M10 welding"
 	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/welding_visor)
 	clothing_traits = list(TRAIT_EAR_PROTECTION)
 
 
 /obj/item/clothing/head/helmet/marine/grey
-	desc = "A standard M10 Pattern Helmet. This one has not had a camouflage pattern applied to it yet. There is a built-in camera on the right side."
+	desc = "一款标准的M10型头盔。此头盔尚未涂装迷彩。右侧有一个内置摄像头。"
 	icon = 'icons/obj/items/clothing/hats/hats_by_map/classic.dmi'
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 	item_icons = list(
@@ -934,7 +934,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/tech/tanker
 	name = "\improper M50 tanker helmet"
-	desc = "The lightweight M50 tanker helmet is designed for use by armored crewmen in the USCM. It offers low weight protection, and allows agile movement inside the confines of an armored vehicle. Features a toggleable welding screen for eye protection."
+	desc = "轻量化的M50坦克兵头盔专为USCM装甲车组成员设计。它提供轻量防护，并允许在装甲车辆内部灵活移动。配备可切换的焊接面罩以保护眼睛。"
 	icon_state = "tanker_helmet"
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
@@ -947,7 +947,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/medic
 	name = "\improper M10 corpsman helmet"
-	desc = "An M10 marine helmet version worn by marine hospital corpsmen. Has red cross painted on its front."
+	desc = "陆战队医疗兵佩戴的M10陆战队员头盔版本。正面绘有红十字。"
 	icon_state = "med_helmet"
 	specialty = "M10 pattern medic"
 	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced)
@@ -955,7 +955,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/medic/white
 	name = "\improper M10 white corpsman helmet"
-	desc = "An M10 marine helmet version worn by marine hospital corpsmen. Painted in medical white and has white cross in a red square painted on its front."
+	desc = "陆战队医疗兵佩戴的M10陆战队员头盔版本。涂装医疗白色，正面绘有红底白十字。"
 	icon_state = "med_helmet_white"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	item_icons = list(
@@ -971,7 +971,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_marine_helmet = HELMET_GARB_OVERLAY|HELMET_DAMAGE_OVERLAY
 
 /obj/item/clothing/head/helmet/marine/medic/grey
-	desc = "An M10 marine helmet version worn by marine hospital corpsmen. Has red cross painted on its front. This one has not had a camouflage pattern applied to it yet. There is a built-in camera on the right side."
+	desc = "陆战队医疗兵佩戴的M10陆战队员头盔版本。正面绘有红十字。此头盔尚未涂装迷彩。右侧有一个内置摄像头。"
 	icon = 'icons/obj/items/clothing/hats/hats_by_map/classic.dmi'
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 	item_icons = list(
@@ -1019,7 +1019,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/covert
 	name = "\improper M10 covert helmet"
-	desc = "An M10 marine helmet version designed for use in darkened environments. It is coated with a special anti-reflective paint."
+	desc = "专为黑暗环境使用而设计的M10陆战队员头盔版本。涂有特殊的防反光涂料。"
 	icon_state = "marsoc_helmet"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	item_icons = list(
@@ -1043,14 +1043,14 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/leader
 	name = "\improper M11 pattern helmet"
-	desc = "A variant of the standard M10 pattern. The front plate is reinforced. This one contains a small built-in camera and has cushioning to project your fragile brain."
+	desc = "标准M10型的变体。前板得到加固。此头盔包含一个小型内置摄像头，并配有衬垫以保护你脆弱的大脑。"
 	icon_state = "sl_helmet"
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	specialty = "M11 pattern marine"
 
 /obj/item/clothing/head/helmet/marine/rto
 	name = "\improper M12 pattern dust helmet"
-	desc = "An experimental brain-bucket. A dust ruffle hangs from back instead of the standard lobster shell design. Moderately better at deflecting blunt objects at the cost of humiliation, can also hold a second visor optic. But who will be laughing at the memorial? Not you, you'll be busy getting medals for your fantastic leadership."
+	desc = "一款实验性的“脑壳桶”。后部悬挂着防尘褶边，而非标准的龙虾壳设计。在承受羞辱的代价下，能更好地偏转钝器攻击，还可容纳第二个护目镜光学器件。但在追悼会上谁会笑呢？不是你，你将忙于为你卓越的领导才能领取勋章。"
 	icon_state = "io"
 	item_state = "io"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
@@ -1064,11 +1064,11 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/rto/intel
 	name = "\improper XM12 pattern intelligence helmet"
-	desc = "An experimental brain-bucket. A dust ruffle hangs from back. Moderately better at deflecting blunt objects at the cost of humiliation, can also hold a second visor optic. But who will be laughing at the memorial? Not you, you'll be busy getting medals for your intel work."
+	desc = "一款实验性的“脑壳桶”。后部悬挂着防尘褶边。在承受羞辱的代价下，能更好地偏转钝器攻击，还可容纳第二个护目镜光学器件。但在追悼会上谁会笑呢？不是你，你将忙于为你出色的情报工作领取勋章。"
 	specialty = "XM12 pattern intel"
 
 /obj/item/clothing/head/helmet/marine/rto/intel/grey
-	desc = "An experimental brain-bucket. A dust ruffle hangs from back. Moderately better at deflecting blunt objects at the cost of humiliation, can also hold a second visor optic. But who will be laughing at the memorial? Not you, you'll be busy getting medals for your intel work. This one has not had a camouflage pattern applied to it yet."
+	desc = "一款实验性的“脑壳桶”。后部悬挂着防尘褶边。在承受羞辱的代价下，能更好地偏转钝器攻击，还可容纳第二个护目镜光学器件。但在追悼会上谁会笑呢？不是你，你将忙于为你出色的情报工作领取勋章。此头盔尚未涂装迷彩。"
 	icon = 'icons/obj/items/clothing/hats/hats_by_map/classic.dmi'
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 	item_icons = list(
@@ -1116,7 +1116,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/specialist
 	name = "\improper B18 helmet"
-	desc = "The B18 Helmet that goes along with the B18 Defensive Armor. It's heavy, reinforced, and protects more of the face."
+	desc = "与B18防御护甲配套的B18头盔。它厚重、加固，能保护更多面部区域。"
 	icon_state = "grenadier_helmet"
 	item_state = "grenadier_helmet"
 	item_state_slots = list(
@@ -1136,7 +1136,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/grenadier
 	name = "\improper M3-G4 grenadier helmet"
-	desc = "Pairs with the M3-G4 heavy grenadier plating. A distant cousin of the experimental B18 defensive helmet. Comes with inbuilt ear blast protection."
+	desc = "与M3-G4重型掷弹兵护甲配套。是实验性B18防御头盔的远亲。配备内置的耳部爆炸防护。"
 	icon_state = "grenadier_helmet"
 	item_state = "grenadier_helmet"
 	item_state_slots = list(
@@ -1158,8 +1158,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/radio_helmet
 
-	name = "M3 antenna helmet"
-	desc = "You should not be seeing this!"
+	name = "M3天线头盔"
+	desc = "你不应该看到这个！"
 	icon_state = "scout_helmet"
 	item_state = "scout_helmet"
 
@@ -1177,7 +1177,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /datum/action/item_action/radio_helmet/use_phone/New(mob/living/user, obj/item/holder)
 	..()
-	name = "Use Phone"
+	name = "使用电话"
 	button.name = name
 	button.overlays.Cut()
 	var/image/IMG = image('icons/mob/hud/actions.dmi', button, "microphone")
@@ -1285,7 +1285,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 /obj/item/clothing/head/helmet/marine/radio_helmet/scout
 	name = "\improper M3-S light helmet"
 	icon_state = "scout_helmet"
-	desc = "A custom helmet designed for USCM Scouts. Has a built-in small microphone for long-range communications."
+	desc = "为USCM侦察兵设计的定制头盔。内置小型麦克风，用于远距离通信。"
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	specialty = "M3-S light"
 	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
@@ -1295,7 +1295,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 /obj/item/clothing/head/helmet/marine/pyro
 	name = "\improper M35 pyrotechnician helmet"
 	icon_state = "pyro_helmet"
-	desc = "A helmet designed for USCM Pyrotechnicians."
+	desc = "为USCM爆破技术员设计的头盔。"
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROT
 	specialty = "M35 pyrotechnician"
@@ -1304,7 +1304,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 /obj/item/clothing/head/helmet/marine/M3T
 	name = "\improper M3-T bombardier helmet"
 	icon_state = "sadar_helmet"
-	desc = "A custom-built helmet for explosive weaponry users. Comes with inbuilt ear blast protection, firing a rocket launcher without this is not recommended."
+	desc = "为爆炸性武器使用者定制的头盔。内置防爆耳罩，不建议在没有此头盔的情况下发射火箭筒。"
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	armor_bomb = CLOTHING_ARMOR_HIGH
 	specialty = "M3-T bombardier"
@@ -1314,7 +1314,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/pilot
 	name = "\improper MK30 tactical helmet"
-	desc = "The MK30 tactical helmet has an eyepiece filter used to filter tactical data. It is required to fly the dropships manually and in safety."
+	desc = "MK30战术头盔配有目镜过滤器，用于筛选战术数据。手动安全驾驶运输机需要此装备。"
 	icon_state = "helmetp"
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
@@ -1332,7 +1332,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/pilot/tex
 	name = "\improper Tex's MK30 tactical helmet"
-	desc = "The MK30 tactical helmet has an eyepiece filter used to filter tactical data. It is required to fly the dropships manually and in safety. This one belonged to Tex: the craziest sum'bitch pilot the Almayer ever had. He's not dead or anything, but he did get a medical discharge after he was hit by a car on shore leave last year."
+	desc = "MK30战术头盔配有目镜过滤器，用于筛选战术数据。手动安全驾驶运输机需要此装备。这个头盔属于泰克斯：阿尔迈耶号有史以来最疯狂的混蛋飞行员。他没死，但去年在岸上休假时被车撞了，之后被医疗退役。"
 	icon_state = "helmetp_tex"
 	item_state = "helmetp_tex"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
@@ -1343,7 +1343,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/ghillie
 	name = "\improper M45 ghillie helmet"
-	desc = "A lightweight M45 helmet with ghillie coif used by USCM snipers on recon missions."
+	desc = "USCM狙击手在侦察任务中使用的轻量化M45头盔，配有吉利兜帽。"
 	icon_state = "ghillie_coif"
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
 	armor_bio = CLOTHING_ARMOR_LOW
@@ -1358,11 +1358,11 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	. = ..()
 	if(SSmapping.configs[GROUND_MAP].camouflage_type == "urban"	|| "classic")
 		name = "\improper M10-LS pattern sniper helmet"
-		desc = "A lightweight version of M10 helmet with thermal signature dampering used by USCM snipers on urban recon missions."
+		desc = "USCM狙击手在城市侦察任务中使用的M10头盔轻量化版本，具有热信号抑制功能。"
 
 /obj/item/clothing/head/helmet/marine/leader/CO
 	name = "\improper M11C pattern commanding officer helmet"
-	desc = "A special M11 Pattern Helmet worn by Commanding Officers of the USCM. It reads on the label, 'The difference between an open-casket and closed-casket funeral. Wear on head for best results.'."
+	desc = "USCM指挥官佩戴的特殊M11式头盔。标签上写着：‘开棺葬礼和闭棺葬礼的区别。戴在头上效果最佳。’"
 	icon_state = "co"
 	item_state = "co"
 	item_state_slots = list(
@@ -1379,7 +1379,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/leader/CO/general
 	name = "\improper M11 pattern ceremonial helmet"
-	desc = "A special M11 pattern ceremonial helmet worn occasionally by general officers of the USCM."
+	desc = "USCM将官偶尔佩戴的特殊M11式礼仪头盔。"
 	icon_state = "golden"
 	item_state = "golden"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
@@ -1393,7 +1393,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/MP
 	name = "\improper M10 pattern MP helmet"
-	desc = "A special variant of the M10 Pattern Helmet worn by the Military Police of the USCM. Whether you're facing a crime syndicate or a mutiny, this bucket will keep your brains intact."
+	desc = "USCM宪兵佩戴的M10式头盔特殊变体。无论你面对的是犯罪集团还是兵变，这个头盔都能保住你的脑子。"
 	icon_state = "mp_helmet"
 	item_state = "mp_helmet"
 	item_state_slots = list(
@@ -1405,7 +1405,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	built_in_visors = list(new /obj/item/device/helmet_visor/security)
 
 /obj/item/clothing/head/helmet/marine/MP/grey
-	desc = "A special variant of the M10 Pattern Helmet worn by the Military Police of the USCM. Whether you're facing a crime syndicate or a mutiny, this bucket will keep your brains intact. This one has not had a camouflage pattern applied to it yet."
+	desc = "USCM宪兵佩戴的M10式头盔特殊变体。无论你面对的是犯罪集团还是兵变，这个头盔都能保住你的脑子。这个头盔尚未涂装迷彩图案。"
 	icon = 'icons/obj/items/clothing/hats/hats_by_map/classic.dmi'
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 	item_icons = list(
@@ -1453,14 +1453,14 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/MP/WO
 	name = "\improper M3 pattern chief MP helmet"
-	desc = "A well-crafted variant of the M10 Helmet typically distributed to Chief MPs. Useful for letting your men know who is in charge."
+	desc = "M10头盔的精良变体，通常配发给宪兵长。有助于让你的手下知道谁在负责。"
 	icon_state = "cmp_helmet"
 	item_state = "cmp_helmet"
 	specialty = "M10 pattern chief MP"
 
 /obj/item/clothing/head/helmet/marine/MP/SO
 	name = "\improper M10 pattern Officer Helmet"
-	desc = "A special variant of the M10 Pattern Helmet worn by Officers of the USCM, attracting the attention of the grunts and sniper fire alike."
+	desc = "USCM军官佩戴的M10式头盔特殊变体，能吸引大头兵和狙击火力的同等关注。"
 	icon_state = "officer"
 	item_state = "officer"
 	item_state_slots = list(
@@ -1475,7 +1475,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/MP/provost/marshal
 	name = "\improper M10 pattern MP riot helmet"
-	desc = "A variant of the M10 for the Military Police deployed to deal with riots, often worn by MPs from the Provost Office."
+	desc = "为处理骚乱部署的宪兵准备的M10变体，通常由宪兵司令部的宪兵佩戴。"
 	icon_state = "pvmarshalhat"
 	item_state = "pvmarshalhat"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
@@ -1487,7 +1487,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/sof
 	name = "\improper SOF Operator Helmet"
-	desc = "A special variant of the M10 Pattern Helmet worn by USCM SOF."
+	desc = "USCM特种作战部队佩戴的M10式头盔特殊变体。"
 	icon_state = "marsoc_helmet"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	item_icons = list(
@@ -1512,7 +1512,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/veteran/ua_riot
 	name = "\improper RC6 helmet"
-	desc = "The standard UA Riot Control 6 helmet is of odd design, lacking a face shield by default (mounting points are available). The distinct white pattern and red emblem are synonymous with oppression throughout the rim."
+	desc = "标准UA防暴6型头盔设计奇特，默认没有面罩（但留有安装点）。独特的白色图案和红色徽章在整个边缘世界都是压迫的代名词。"
 	icon_state = "ua_riot"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	item_icons = list(
@@ -1531,8 +1531,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 // KUTJEVO HELMET
 
 /obj/item/clothing/head/helmet/marine/veteran/kutjevo
-	name = "Kutjevo Helmet"
-	desc = "Standard issued helmet for the workers of Kutjevo. Contains a small webbing to hold small items like pens, oil or even a photo of a loved one."
+	name = "库特耶沃头盔"
+	desc = "库特耶沃工人的标准配发头盔。包含一个小网兜，可放置笔、油甚至爱人照片等小物品。"
 	icon_state = "kutjevo_helmet"
 	item_state = "kutjevo_helmet"
 	icon = 'icons/obj/items/clothing/hats/misc_ert_colony.dmi'
@@ -1545,8 +1545,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 //=======================================================================\\
 
 /obj/item/clothing/head/helmet/marine/veteran/cmb
-	name = "M11R pattern CMB Riot helmet"
-	desc = "A CMB variant of the standard M10 pattern. The front plate is reinforced. This one is a lot more tight fitting, also protects from flashbangs."
+	name = "M11R式CMB防暴头盔"
+	desc = "标准M10式的CMB变体。前板得到加固。这款头盔更贴合头部，也能防护闪光弹。"
 	icon_state = "cmb_helmet"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/CMB.dmi'
 	item_icons = list(
@@ -1571,7 +1571,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	built_in_visors = list(new /obj/item/device/helmet_visor/security, new /obj/item/device/helmet_visor/welding_visor)
 
 /obj/item/clothing/head/helmet/marine/veteran/cmb/spec
-	name = "M11R-S pattern CMB SWAT helmet"
+	name = "M11R-S式CMB特警头盔"
 	icon_state = "cmb_elite_helmet"
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_bio = CLOTHING_ARMOR_HIGH
@@ -1584,7 +1584,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/veteran/dutch
 	name = "\improper Dutch's Dozen helmet"
-	desc = "A protective helmet worn by some seriously experienced mercs."
+	desc = "一些经验极其丰富的雇佣兵佩戴的防护头盔。"
 	icon_state = "dutch_helmet"
 	icon = 'icons/obj/items/clothing/hats/misc_ert_colony.dmi'
 	item_icons = list(
@@ -1600,11 +1600,11 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/veteran/dutch/vietnam
 	name = "\improper M1 pattern army helmet"
-	desc = "A protective helmet worn by US Army Riflemen during the peak of the Vietnam War."
+	desc = "越南战争高峰期美国陆军步枪兵佩戴的防护头盔。"
 
 /obj/item/clothing/head/helmet/marine/veteran/dutch/cap
 	name = "\improper Dutch's Dozen cap"
-	desc = "A protective cap worn by some seriously experienced mercs."
+	desc = "一些经验极其丰富的雇佣兵佩戴的防护帽。"
 	icon_state = "dutch_cap"
 	flags_inventory = NO_FLAGS
 	flags_inv_hide = NO_FLAGS
@@ -1612,7 +1612,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/veteran/dutch/band
 	name = "\improper Dutch's Dozen band"
-	desc = "A protective band worn by some seriously experienced mercs."
+	desc = "一些经验极其丰富的雇佣兵佩戴的防护头带。"
 	icon_state = "dutch_band"
 	flags_inventory = NO_FLAGS
 	flags_inv_hide = NO_FLAGS
@@ -1621,7 +1621,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 // UPP Are very powerful against bullets (marines) but middling against melee (xenos)
 /obj/item/clothing/head/helmet/marine/veteran/UPP
 	name = "\improper UM4 helmet"
-	desc = "Using highly skilled manufacturing techniques this UM4 helmet manages to be very resistant to ballistics damage, at the cost of its huge weight causing an extreme stress on the occupant's head that will most likely cause neck problems."
+	desc = "采用高超制造工艺，这款UM4头盔对弹道伤害有极强抵抗力，但其巨大重量会给佩戴者的头部带来极大压力，很可能导致颈部问题。"
 	icon_state = "upp_helmet"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UPP.dmi'
 	item_icons = list(
@@ -1645,7 +1645,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/veteran/UPP/engi
 	name = "\improper UM4-V helmet"
-	desc = "This version of the UM4 helmet has a ballistic-glass visor, allowing for the UPP Engineers to safely weld, but by some reports hindering sight in the process."
+	desc = "这款UM4头盔版本配有防弹玻璃面罩，使UPP工程师能安全焊接，但据报告会在此过程中妨碍视线。"
 	icon_state = "upp_helmet_engi"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_energy = CLOTHING_ARMOR_MEDIUM
@@ -1654,7 +1654,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/veteran/UPP/heavy
 	name = "\improper UH7 helmet"
-	desc = "Like the UM4, this helmet is very resistant to ballistic damage, but both its flaws and benefits have been doubled. The few UPP Zhergeants that have lived past age 30 have all needed to retire from terminal neck problems caused from the stress of wearing this helmet."
+	desc = "与UM4类似，这款头盔对弹道伤害抵抗力极强，但其优缺点都被放大了。少数活过30岁的UPP中士都因佩戴此头盔的压力导致严重颈部问题而被迫退役。"
 	icon_state = "upp_helmet_heavy"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
@@ -1665,12 +1665,12 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/veteran/UPP/army
 	name = "\improper 6B82 combat helmet"
-	desc = "An older version of the UPP Army's 6B92 combat helmet, still worn by certain units on planets the UPP deems less important."
+	desc = "UPP陆军6B92战斗头盔的旧型号，仍在UPP认为不太重要的星球上由某些部队使用。"
 	icon_state = "upp_army_helmet"
 
 /obj/item/clothing/head/helmet/marine/veteran/UPP/heavy/SOF_helmet
 	name = "\improper CCC5-L composite helmet"
-	desc = "A UPP-manufactured combat helmet with a distinctive spherical design. Made from a reinforced polymer composite, it offers ballistic protection while incorporating an integrated HUD, encrypted comms, and a rebreather system. Its limited visor visibility is a tradeoff for enhanced durability."
+	desc = "UPP制造的球形设计战斗头盔。由强化聚合物复合材料制成，提供弹道防护，并集成了平视显示器、加密通讯和呼吸循环系统。有限的视野可视范围是其增强耐久性的代价。"
 	icon_state = "sof_helmet"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
@@ -1682,12 +1682,12 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/uppcap/peaked/police
 	name = "\improper UL3 PaP peaked cap"
-	desc = "Standard issue peaked cap of the People's Armed Police."
+	desc = "人民武装警察的标准制式大檐帽。"
 	icon_state = "upp_peaked_police"
 
 /obj/item/clothing/head/uppcap
 	name = "\improper UL2 UPP cap"
-	desc = "UPP headgear issued to soldiers when they're not expected to face combat, and may be requested by officers and above."
+	desc = "UPP配发给预计不会遭遇战斗的士兵的头饰，军官及以上级别也可申请。"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UPP.dmi'
 	icon_state = "upp_cap"
 	item_icons = list(
@@ -1709,20 +1709,20 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_inv_hide = HIDEEARS
 
 /obj/item/clothing/head/helmet/marine/veteran/UPP/firefighter
-	name = "T-20 firefighter helmet"
-	desc = "A reinforced, heat-resistant helmet issued to UPP emergency responders. Its durable composite shell provides protection against falling debris and extreme heat, while the attached fire-resistant shroud shields the wearer’s neck and shoulders. A red star is emblazoned on the front, marking its service within the Union."
+	name = "T-20消防头盔"
+	desc = "配发给UPP应急人员的强化耐热头盔。其耐用的复合外壳可抵御坠物和极端高温，附着的防火罩保护佩戴者的颈部和肩部。正面的红星标志着其在联盟内的服役。"
 	icon_state = "firefighter"
 	flags_heat_protection = BODY_FLAG_HEAD
 	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROT
 
 /obj/item/clothing/head/uppcap/civi
 	name = "\improper UL2C UPP cap"
-	desc = "UPP civilian headgear. It's of poor quality, and isn't expected to last all that long, however for as long as it's whole, it appears quite stylish."
+	desc = "UPP民用头饰。质量低劣，预计使用寿命不长，但只要完好，看起来相当时尚。"
 	icon_state = "upp_cap_civi"
 
 /obj/item/clothing/head/uppcap/civi/plant_worker
-	name = "white worker cap"
-	desc = "A simple white fabric cap, commonly worn by various UPP workers to keep hair contained and maintain cleanliness. Lightweight and practical, but not very durable."
+	name = "白色工人帽"
+	desc = "简单的白色织物帽，UPP各类工人常用以束发和保持清洁。轻便实用，但不太耐用。"
 	icon_state = "plant_work_cap"
 
 /obj/item/clothing/head/uppcap/beret
@@ -1731,7 +1731,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/uppcap/peaked
 	name = "\improper UL3 UPP peaked cap"
-	desc = "UPP headgear issued to Kapitans and above. It is made of high-quality materials, and has the officers rank in gold placed upon the front of the cap."
+	desc = "配发给UPP上尉及以上军官的头饰。由优质材料制成，帽前饰有军官的金色军衔。"
 	icon_state = "upp_peaked"
 
 /obj/item/clothing/head/uppcap/ushanka
@@ -1750,10 +1750,10 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 	tied = !tied
 	if(tied)
-		to_chat(usr, SPAN_NOTICE("You tie \the [src] up."))
+		to_chat(usr, SPAN_NOTICE("你将\the [src]绑了起来。"))
 		icon_state += "_up"
 	else
-		to_chat(usr, SPAN_NOTICE("You untie \the [src]."))
+		to_chat(usr, SPAN_NOTICE("你解开了\the [src]。"))
 		icon_state = original_state
 
 
@@ -1769,8 +1769,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	original_state = "upp_ushanka_civi"
 
 /obj/item/clothing/head/helmet/marine/veteran/van_bandolier
-	name = "pith helmet"
-	desc = "A stylish pith helmet, made from space-age materials. Lightweight, breathable, cool, and protective."
+	name = "软木盔"
+	desc = "时尚的软木盔，由太空时代材料制成。轻便、透气、凉爽且具有防护性。"
 	icon_state = "van_bandolier"
 	item_state = "s_helmet"
 	icon = 'icons/obj/items/clothing/hats/misc_ert_colony.dmi'
@@ -1784,8 +1784,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 //head rag
 
 /obj/item/clothing/head/helmet/specrag
-	name = "weapons specialist head-rag"
-	desc = "A hat worn by heavy-weapons operators to block sweat."
+	name = "武器专家头巾"
+	desc = "重型武器操作员佩戴的帽子，用于阻挡汗水。"
 	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
 	icon_state = "spec"
 	armor_melee = CLOTHING_ARMOR_MEDIUM
@@ -1829,7 +1829,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/skullcap
 	name = "skullcap"
-	desc = "Good for keeping sweat out of your eyes."
+	desc = "能有效防止汗水流入眼睛。"
 	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
 	icon_state = "skullcap"
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
@@ -1873,7 +1873,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/skullcap/jungle
 	name = "\improper M8 marksman cowl"
-	desc = "A cowl worn to conceal the face of a marksman in the jungle."
+	desc = "狙击手在丛林中用于隐藏面部的兜帽。"
 	icon_state = "skullcapm"
 
 /obj/item/clothing/head/helmet/skullcap/jungle/New(loc, type,
@@ -1882,7 +1882,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	..()
 	switch(icon_state)
 		if("s_skullcapm")
-			desc = "A hood meant to protect the wearer from both the cold and the guise of the enemy in the tundra."
+			desc = "旨在保护佩戴者免受冻原寒冷和敌人窥视的兜帽。"
 			flags_inv_hide = HIDEEARS|HIDEALLHAIR
 
 //===========================//HELGHAST - MERCENARY\\================================\\
@@ -1890,7 +1890,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/veteran/mercenary
 	name = "\improper K12 ceramic helmet"
-	desc = "A sturdy helmet worn by an unknown mercenary group."
+	desc = "一顶由未知雇佣兵团体佩戴的坚固头盔。"
 	icon_state = "mercenary_heavy_helmet"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/CLF.dmi'
 	item_icons = list(
@@ -1911,7 +1911,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/veteran/mercenary/heavy
 	name = "\improper Modified K12 ceramic helmet"
-	desc = "A sturdy helmet worn by an unknown mercenary group. Reinforced with extra plating."
+	desc = "一顶由未知雇佣兵团体佩戴的坚固头盔。额外加装了防护板。"
 	armor_melee = CLOTHING_ARMOR_ULTRAHIGH
 	armor_bullet = CLOTHING_ARMOR_ULTRAHIGHPLUS
 	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
@@ -1922,7 +1922,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/veteran/mercenary/miner
 	name = "\improper Y8 miner helmet"
-	desc = "A sturdy helmet, specialised for mining, worn by an unknown mercenary group."
+	desc = "一顶坚固的头盔，专为采矿设计，由未知雇佣兵团体佩戴。"
 	icon_state = "mercenary_miner_helmet"
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	armor_melee = CLOTHING_ARMOR_VERYHIGH
@@ -1935,7 +1935,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/veteran/mercenary/support
 	name = "\improper Z7 helmet"
-	desc = "A sturdy helmet worn by an unknown mercenary group."
+	desc = "一顶由未知雇佣兵团体佩戴的坚固头盔。"
 	icon_state = "mercenary_engineer_helmet"
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	armor_melee = CLOTHING_ARMOR_VERYHIGH
@@ -1944,7 +1944,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_internaldamage = CLOTHING_ARMOR_HIGHPLUS
 
 /obj/item/clothing/head/helmet/marine/veteran/mercenary/support/engineer
-	desc = "A sturdy helmet worn by an unknown mercenary group. Features a toggleable welding screen for eye protection."
+	desc = "一顶由未知雇佣兵团体佩戴的坚固头盔。配有可切换的焊接面罩以保护眼睛。"
 	built_in_visors = list(new /obj/item/device/helmet_visor/welding_visor/mercenary)
 
 //=============================//MEME\\==================================\\
@@ -1953,7 +1953,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 /obj/item/clothing/head/helmet/marine/specialist/hefa
 	name = "\improper HEFA helmet"
 	specialty = "HEFA"
-	desc = "For some reason, seeing this helmet causes you to feel extremely distressed."
+	desc = "不知为何，看到这顶头盔让你感到极度不安。"
 	icon_state = "hefa_helmet"
 	item_state = "hefa_helmet"
 	icon = 'icons/obj/items/clothing/hats/misc_ert_colony.dmi'
@@ -2017,8 +2017,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	qdel(src)
 
 /obj/item/clothing/head/helmet/marine/reporter
-	name = "press helmet"
-	desc = "A helmet designed to make it clear that the wearer is safety aware and not looking for a fight."
+	name = "记者头盔"
+	desc = "一项旨在明确表明佩戴者注重安全且无意挑起争斗的头盔。"
 	icon_state = "cc_helmet"
 	item_state = "cc_helmet"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
@@ -2037,7 +2037,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/cbrn_hood
 	name = "\improper M3 MOPP mask"
-	desc = "The M3 MOPP mask includes a full covering cowl that securely attaches to the MOPP suit. The mask filters out harmful particles in the air to allow the wearer to breathe safely in the field. Depending on the hostility of the contaminated area the mask’s filter will last an average of 12 hours or less."
+	desc = "M3 MOPP防毒面具包含一个全覆盖式头罩，可牢固连接到MOPP防护服上。该面具能过滤空气中的有害颗粒，使佩戴者能在污染区域安全呼吸。根据污染区域的危害程度，面具滤芯平均可持续使用12小时或更短。"
 	icon_state = "cbrn_hood"
 	item_state = "cbrn_hood"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
@@ -2072,7 +2072,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/veteran/royal_marine
 	name = "\improper L5A2 ballistic helmet"
-	desc = "A High-cut ballistic helmet. Designed by Lindenthal-Ehrenfeld Militärindustrie it is intended to be used by Royal Marines Commando as part of the kestrel armour system."
+	desc = "一款高切防弹头盔。由Lindenthal-Ehrenfeld Militärindustrie设计，旨在供皇家海军陆战队突击队使用，作为雀鹰护甲系统的一部分。"
 	icon_state = "rmc_helm1"
 	item_state = "rmc_helm1"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/TWE.dmi'
@@ -2096,7 +2096,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/veteran/royal_marine/generic
 	name = "\improper L1 ballistic helmet"
-	desc = "A versatile ballistic helmet designed by Alphatech for general use across various branches of the TWE military and affiliated organizations. Drawing some design inspiration from the USCM’s M10 Pattern Helmet, the L1 offers reliable protection against shrapnel and ballistic threats."
+	desc = "一款由Alphatech设计的多用途防弹头盔，适用于三世界帝国军队各分支及相关机构的通用需求。借鉴了USCM M10型头盔的部分设计灵感，L1型头盔能可靠防护破片和弹道威胁。"
 	icon_state = "generic_helm"
 	item_state = "generic_helm"
 	flags_marine_helmet = HELMET_GARB_OVERLAY
@@ -2107,7 +2107,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/veteran/royal_marine/pilot
 	name = "\improper PH-4 'Spitfire' flight helmet"
-	desc = "Standard flight helmet used across the Three World Empire’s aerospace forces, from fighter pilots to atmospheric crews. This PH-4 variant is tailored for dropship operations in space, featuring reinforced plating, HUD optics, and encrypted comms. Essential for high-risk insertions, landings, and exfil missions. Nicknamed “Spitfire” for its reliability under fire."
+	desc = "三世界帝国航空航天部队的标准飞行头盔，从战斗机飞行员到大气层机组人员均有使用。这款PH-4变体专为太空运输机行动设计，具备强化护板、平视显示器光学系统和加密通讯功能。是高危突入、着陆和撤离任务的必备装备。因其在火力下的可靠性，绰号“喷火”。"
 	icon_state = "pilot_helm"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
@@ -2121,7 +2121,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/veteran/iasf_beret
 	name = "\improper IASF beret"
-	desc = "A distinctive crimson beret worn by the Imperial Armed Space Force. Reinforced with flexible Kevlar, it offers minimal protection while maintaining a traditional and respected appearance."
+	desc = "帝国武装太空部队佩戴的独特深红色贝雷帽。采用柔性凯夫拉材料加固，在保持传统且受人尊敬外观的同时提供最低限度的防护。"
 	icon_state = "beret_iasf"
 	item_state = "beret_iasf"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/TWE.dmi'
@@ -2143,7 +2143,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/veteran/royal_marine/breacher
 	name = "\improper L5A3 ballistic helmet"
-	desc = "A High-cut ballistic helmet featuring an attached mandible. Designed by Lindenthal-Ehrenfeld Militärindustrie it is intended to be used by Royal Marines Commando as part of the kestrel armour system."
+	desc = "一款配有下颌护板的高切防弹头盔。由Lindenthal-Ehrenfeld Militärindustrie设计，旨在供皇家海军陆战队突击队使用，作为雀鹰护甲系统的一部分。"
 	icon_state = "rmc_helm_br"
 	item_state = "rmc_helm_br"
 	armor_melee = CLOTHING_ARMOR_HIGH
@@ -2155,7 +2155,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/veteran/royal_marine/medic
 	name = "\improper L5A2 ballistic medic helmet"
-	desc = "A High-cut ballistic helmet. Designed by Lindenthal-Ehrenfeld Militärindustrie it is intended to be used by Royal Marines Commando as part of the kestrel armour system. This one comes with an advanced medical HUD and a dark-green patch on the back, denoting that the wearer is a corpsman."
+	desc = "一款高切防弹头盔。由Lindenthal-Ehrenfeld Militärindustrie设计，旨在供皇家海军陆战队突击队使用，作为雀鹰护甲系统的一部分。此款配有先进的医疗平视显示器，背面有一个深绿色徽章，表明佩戴者是医疗兵。"
 	icon_state = "rmc_helm_medic"
 	item_state = "rmc_helm_medic"
 	built_in_visors = list(new /obj/item/device/helmet_visor/medical/advanced)

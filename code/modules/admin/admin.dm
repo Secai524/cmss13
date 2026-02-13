@@ -78,7 +78,7 @@
 	if (!istype(src,/datum/admins))
 		src = usr.client.admin_holder
 	if (!istype(src,/datum/admins) || !(src.rights & R_MOD))
-		to_chat(usr, "Error: you are not an admin!")
+		to_chat(usr, "错误：你不是管理员！")
 		return
 
 	var/dat = "<html>"
@@ -191,7 +191,7 @@
 	if(length(matches)==1)
 		chosen = matches[1]
 	else
-		chosen = tgui_input_list(usr, "Select an atom type", "Spawn Atom", matches)
+		chosen = tgui_input_list(usr, "选择原子类型", "Spawn Atom", matches)
 		if(!chosen)
 			return
 
@@ -210,7 +210,7 @@
 	set desc = "Should fix any mob sprite update errors."
 
 	if (!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return
 
 	if(istype(H))
@@ -240,14 +240,14 @@
 	if(SSticker)
 		var/success = SSticker.send_tip_of_the_round()
 		if(!success)
-			to_chat(usr, SPAN_ADMINNOTICE("Sending tip failed!"))
+			to_chat(usr, SPAN_ADMINNOTICE("发送提示失败！"))
 
 /// Allow admin to add or remove traits of datum
 /datum/admins/proc/modify_traits(datum/D)
 	if(!D)
 		return
 
-	var/add_or_remove = input("Remove/Add?", "Trait Remove/Add") as null|anything in list("Add","Remove")
+	var/add_or_remove = input("Remove/Add?", "特质移除/添加") as null|anything in list("Add","Remove")
 	if(!add_or_remove)
 		return
 	var/list/available_traits = list()
@@ -264,7 +264,7 @@
 				var/name = GLOB.trait_name_map[trait] || trait
 				available_traits[name] = trait
 
-	var/chosen_trait = input("Select trait to modify", "Trait") as null|anything in sort_list(available_traits)
+	var/chosen_trait = input("Select trait to modify", "特质") as null|anything in sort_list(available_traits)
 	if(!chosen_trait)
 		return
 	chosen_trait = available_traits[chosen_trait]
@@ -274,14 +274,14 @@
 		if("Add") //Not doing source choosing here intentionally to make this bit faster to use, you can always vv it.
 			ADD_TRAIT(D,chosen_trait,source)
 		if("Remove")
-			var/specific = input("All or specific source?", "Trait Remove/Add") as null|anything in list("All","Specific")
+			var/specific = input("All or specific source?", "特质移除/添加") as null|anything in list("All","Specific")
 			if(!specific)
 				return
 			switch(specific)
 				if("All")
 					source = null
 				if("Specific")
-					source = input("Source to be removed","Trait Remove/Add") as null|anything in sort_list(D._status_traits[chosen_trait])
+					source = input("Source to be removed","特质移除/添加") as null|anything in sort_list(D._status_traits[chosen_trait])
 					if(!source)
 						return
 			REMOVE_TRAIT(D,chosen_trait,source)

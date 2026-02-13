@@ -37,7 +37,7 @@ structure:
 
 //no dynamic lighting, powered.
 /area/event
-	name = "Open grounds (event P)"
+	name = "开阔地（事件 P）"
 	icon = 'icons/turf/areas_event.dmi'
 	icon_state = "event"
 
@@ -57,7 +57,7 @@ structure:
 
 //no dynamic lighting, unpowered.
 /area/event/unpowered
-	name = "Open grounds (event)"
+	name = "开阔地（事件）"
 	icon_state = "event_nopower"
 
 	requires_power = TRUE
@@ -65,7 +65,7 @@ structure:
 
 //dynamic lighting, powered.
 /area/event/dynamic
-	name = "Open grounds (event PD)"
+	name = "开阔地（事件 PD）"
 	icon_state = "event_dyn"
 	requires_power = TRUE
 	unlimited_power = TRUE
@@ -74,21 +74,21 @@ structure:
 
 //dynamic lighting, unpowered.
 /area/event/dynamic/unpowered
-	name = "Open grounds (event D)"
+	name = "开阔地（事件 D）"
 	icon_state = "event_dyn_nopower"
 
 	unlimited_power = FALSE
 
 //dynamic lighting, lit, powered.
 /area/event/dynamic/lit
-	name = "Open grounds (event PDL)"
+	name = "开阔地（事件 PDL）"
 	icon_state = "event_dyn_lit"
 
 	base_lighting_alpha = 255
 
 //dynamic lighting, lit, unpowered.
 /area/event/dynamic/lit/unpowered
-	name = "Open grounds (event DL)"
+	name = "开阔地（事件 DL）"
 	icon_state = "event_dyn_lit_nopower"
 
 	unlimited_power = FALSE
@@ -98,14 +98,14 @@ structure:
 //no dynamic lighting, powered.
 /area/event/metal
 
-	name = "Building interior (event P)"
-	name = "Event interior area"
+	name = "建筑内部（事件 P）"
+	name = "事件内部区域"
 	icon_state = "metal"
 	ceiling = CEILING_METAL
 
 //no dynamic lighting, unpowered.
 /area/event/metal/unpowered
-	name = "Building interior (event)"
+	name = "建筑内部（事件）"
 	icon_state = "metal_nopower"
 
 	requires_power = TRUE
@@ -113,7 +113,7 @@ structure:
 
 //dynamic lighting, powered.
 /area/event/metal/dynamic
-	name = "Building interior (event PD)"
+	name = "建筑内部（事件 PD）"
 	icon_state = "metal_dyn"
 	requires_power = TRUE
 	unlimited_power = TRUE
@@ -122,7 +122,7 @@ structure:
 
 //dynamic lighting, unpowered.
 /area/event/metal/dynamic/unpowered
-	name = "Building interior (event D)"
+	name = "建筑内部（事件 D）"
 	icon_state = "metal_dyn_nopower"
 
 	requires_power = TRUE
@@ -130,14 +130,14 @@ structure:
 
 //dynamic lighting, lit, powered.
 /area/event/metal/dynamic/lit
-	name = "Building interior (event PDL)"
+	name = "建筑内部（事件 PDL）"
 	icon_state = "metal_dyn_lit"
 
 	base_lighting_alpha = 255
 
 //dynamic lighting, lit, unpowered.
 /area/event/metal/dynamic/lit/unpowered
-	name = "Building interior (event DL)"
+	name = "建筑内部（事件 DL）"
 	icon_state = "metal_dyn_lit_nopower"
 
 	requires_power = TRUE
@@ -148,7 +148,7 @@ structure:
 //no dynamic lighting, powered.
 /area/event/underground
 
-	name = "Small caves (event P)"
+	name = "小型洞穴（事件 P）"
 	icon_state = "under"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
@@ -160,7 +160,7 @@ structure:
 
 //no dynamic lighting, unpowered.
 /area/event/underground/unpowered
-	name = "Small caves (event)"
+	name = "小型洞穴（事件）"
 	icon_state = "under_nopower"
 
 	requires_power = TRUE
@@ -168,7 +168,7 @@ structure:
 
 //dynamic lighting, powered.
 /area/event/underground/dynamic
-	name = "Small caves (event PD)"
+	name = "小型洞穴（事件 PD）"
 	icon_state = "under_dyn"
 	requires_power = TRUE
 	unlimited_power = TRUE
@@ -177,7 +177,7 @@ structure:
 
 //dynamic lighting, unpowered.
 /area/event/underground/dynamic/unpowered
-	name = "Small caves (event D)"
+	name = "小型洞穴（事件 D）"
 	icon_state = "under_dyn_nopower"
 
 	requires_power = TRUE
@@ -185,14 +185,14 @@ structure:
 
 //dynamic lighting, lit, powered.
 /area/event/underground/dynamic/lit
-	name = "Small caves (event PDL)"
+	name = "小型洞穴（事件 PDL）"
 	icon_state = "under_dyn_lit"
 
 	base_lighting_alpha = 255
 
 //dynamic lighting, lit, unpowered.
 /area/event/underground/dynamic/lit/unpowered
-	name = "Small caves (event DL)"
+	name = "小型洞穴（事件 DL）"
 	icon_state = "under_dyn_lit_nopower"
 
 	requires_power = TRUE
@@ -203,8 +203,8 @@ structure:
 //no dynamic lighting, powered.
 /area/event/underground_no_CAS
 
-	name = "Caves (event P)"
-	name = "Event underground area"
+	name = "洞穴（事件 P）"
+	name = "事件地下区域"
 	icon_state = "undercas"
 	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
 
@@ -217,7 +217,7 @@ structure:
 
 //no dynamic lighting, unpowered.
 /area/event/underground_no_CAS/unpowered
-	name = "Caves (event)"
+	name = "洞穴（事件）"
 	icon_state = "undercas_nopower"
 
 	requires_power = TRUE
@@ -225,7 +225,7 @@ structure:
 
 //dynamic lighting, powered.
 /area/event/underground_no_CAS/dynamic
-	name = "Caves (event PD)"
+	name = "洞穴（事件 PD）"
 	icon_state = "undercas_dyn"
 	requires_power = TRUE
 	unlimited_power = TRUE
@@ -234,21 +234,21 @@ structure:
 
 //dynamic lighting, unpowered.
 /area/event/underground_no_CAS/dynamic/unpowered
-	name = "Caves (event D)"
+	name = "洞穴（事件 D）"
 	icon_state = "undercas_dyn_nopower"
 
 	unlimited_power = FALSE
 
 //dynamic lighting, lit, powered.
 /area/event/underground_no_CAS/dynamic/lit
-	name = "Caves (event PDL)"
+	name = "洞穴（事件 PDL）"
 	icon_state = "undercas_dyn_lit"
 
 	base_lighting_alpha = 255
 
 //dynamic lighting, lit, unpowered.
 /area/event/underground_no_CAS/dynamic/lit/unpowered
-	name = "Caves (event DL)"
+	name = "洞穴（事件 DL）"
 	icon_state = "undercas_dyn_lit_nopower"
 
 	unlimited_power = FALSE
@@ -258,7 +258,7 @@ structure:
 //no dynamic lighting, powered.
 /area/event/deep_underground
 
-	name = "Deep underground (event P)"
+	name = "地下深处（事件 P）"
 	icon_state = "deep"
 
 	ceiling = CEILING_DEEP_UNDERGROUND
@@ -272,7 +272,7 @@ structure:
 
 //no dynamic lighting, unpowered.
 /area/event/deep_underground/unpowered
-	name = "Deep underground (event)"
+	name = "地下深处（事件）"
 	icon_state = "deep_nopower"
 
 	requires_power = TRUE
@@ -280,7 +280,7 @@ structure:
 
 //dynamic lighting, powered.
 /area/event/deep_underground/dynamic
-	name = "Deep underground (event PD)"
+	name = "地下深处（事件 PD）"
 	icon_state = "deep_dyn"
 	requires_power = TRUE
 	unlimited_power = TRUE
@@ -289,7 +289,7 @@ structure:
 
 //dynamic lighting, unpowered.
 /area/event/deep_underground/dynamic/unpowered
-	name = "Deep underground (event D)"
+	name = "地下深处（事件 D）"
 	icon_state = "deep_dyn_nopower"
 
 	requires_power = TRUE
@@ -297,14 +297,14 @@ structure:
 
 //dynamic lighting, lit, powered.
 /area/event/deep_underground/dynamic/lit
-	name = "Deep underground (event PDL)"
+	name = "地下深处（事件 PDL）"
 	icon_state = "deep_dyn_lit"
 
 	base_lighting_alpha = 255
 
 //dynamic lighting, lit, unpowered.
 /area/event/deep_underground/dynamic/lit/unpowered
-	name = "Deep underground (event DL)"
+	name = "地下深处（事件 DL）"
 	icon_state = "deep_dyn_lit_nopower"
 
 	requires_power = TRUE

@@ -1,6 +1,6 @@
 /obj/item/hardpoint/armor/ballistic
 	name = "\improper Ballistic Armor"
-	desc = "Protects the vehicle from high-penetration weapons."
+	desc = "保护载具免受高穿透性武器攻击。"
 
 	icon_state = "ballistic_armor"
 	disp_icon = "tank"

@@ -1,7 +1,7 @@
 //Autodoc
 /obj/structure/machinery/medical_pod/autodoc
-	name = "autodoc emergency medical system"
-	desc = "An emergency surgical device designed to perform life-saving treatments and basic surgeries on patients automatically, without the need of a surgeon. <br>It still requires someone with medical knowledge to program the treatments correctly; for this reason, colonies that use these often have paramedics trained in autodoc operation."
+	name = "自动医疗急救系统"
+	desc = "一种紧急外科设备，旨在无需外科医生的情况下自动对患者进行救生治疗和基础手术。<br>它仍需要具备医疗知识的人员来正确编程治疗方案；因此，使用此类设备的殖民地通常会培训护理人员操作自动医疗系统。"
 	icon_state = "autodoc_open"
 
 	entry_timer = 2 SECONDS
@@ -77,13 +77,13 @@
 /obj/structure/machinery/medical_pod/autodoc/extra_eject_checks()
 	if(usr == occupant)
 		if(surgery)
-			to_chat(usr, SPAN_WARNING("There's no way you're getting out while this thing is operating on you!"))
+			to_chat(usr, SPAN_WARNING("这东西正在给你做手术，你休想出去！"))
 			return FALSE
 		else
-			visible_message("[usr] engages the internal release mechanism, and climbs out of \the [src].")
+			visible_message("[usr]启动了内部释放机制，从\the [src]中爬了出来。")
 			return TRUE
 	if(surgery)
-		visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> malfunctions as [usr] aborts the surgery in progress.")
+		visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b>发生故障，因为[usr]中止了正在进行的手术。")
 		occupant.take_limb_damage(rand(30,50),rand(30,50))
 		// message_admins for now, may change to message_admins later
 		message_admins("[key_name(usr)] ejected [key_name(occupant)] from the autodoc during surgery causing damage.")
@@ -128,7 +128,7 @@
 	updateUsrDialog()
 	if(occupant)
 		if(occupant.stat == DEAD)
-			visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Patient has expired.")
+			visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b>发声：患者已死亡。")
 			go_out()
 			return
 		if(surgery)
@@ -142,49 +142,49 @@
 					filtered += 3
 				if(!filtered)
 					filtering = 0
-					visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Blood filtering complete.")
+					visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b>发声：血液过滤完成。")
 				else if(prob(10))
-					visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> whirrs and gurgles as the dialysis module operates.")
-					to_chat(occupant, SPAN_INFO("You feel slightly better."))
+					visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b>在透析模块运行时发出嗡鸣和汩汩声。")
+					to_chat(occupant, SPAN_INFO("你感觉好一些了。"))
 			if(blood_transfer)
 				if(occupant.blood_volume < BLOOD_VOLUME_NORMAL)
 					if(blood_pack.reagents.get_reagent_amount("blood") < 4)
 						blood_pack.reagents.add_reagent("blood", 195, list("viruses"=null,"blood_type"="O-","resistances"=null))
-						visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Blood reserves depleted, switching to fresh container.")
+						visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> 说道：血液储备耗尽，正在切换至新容器。")
 					occupant.inject_blood(blood_pack, 8) // double iv stand rate
 					if(prob(10))
 						visible_message("\The [src] whirrs and gurgles as it transfuses blood.")
-						to_chat(occupant, SPAN_INFO("You feel slightly less faint."))
+						to_chat(occupant, SPAN_INFO("你感觉没那么晕眩了。"))
 				else
 					blood_transfer = 0
-					visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Blood transfusion complete.")
+					visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> 说道：输血完成。")
 			if(heal_brute)
 				if(occupant.getBruteLoss() > 0)
 					occupant.heal_limb_damage(3, 0, robo_repair=TRUE)
 					if(prob(10))
 						visible_message("\The [src] whirrs and clicks as it stitches flesh together.")
-						to_chat(occupant, SPAN_INFO("You feel your wounds being stitched and sealed shut."))
+						to_chat(occupant, SPAN_INFO("你感觉伤口被缝合并封闭了。"))
 				else
 					heal_brute = 0
-					visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Trauma repair surgery complete.")
+					visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> 说道：创伤修复手术完成。")
 			if(heal_burn)
 				if(occupant.getFireLoss() > 0)
 					occupant.heal_limb_damage(0, 3, robo_repair=TRUE)
 					if(prob(10))
 						visible_message("\The [src] whirrs and clicks as it grafts synthetic skin.")
-						to_chat(occupant, SPAN_INFO("You feel your burned flesh being sliced away and replaced."))
+						to_chat(occupant, SPAN_INFO("你感觉烧焦的皮肉被切除并替换了。"))
 				else
 					heal_burn = 0
-					visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Skin grafts complete.")
+					visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> 说道：皮肤移植完成。")
 			if(heal_toxin)
 				if(occupant.getToxLoss() > 0)
 					occupant.apply_damage(-3, TOX)
 					if(prob(10))
 						visible_message("\The [src] whirrs and gurgles as it chelates the occupant.")
-						to_chat(occupant, SPAN_INFO("You feel slightly less ill."))
+						to_chat(occupant, SPAN_INFO("你感觉没那么难受了。"))
 				else
 					heal_toxin = 0
-					visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Toxin removal complete.")
+					visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> 说道：毒素清除完成。")
 
 
 #define LIMB_SURGERY 1
@@ -266,7 +266,7 @@
 	if(!occupant || !ishuman(occupant) || occupant.stat == DEAD || surgery)
 		return
 	if(isnull(generated_surgery_list) || generated_surgery_list.len < 1)
-		visible_message("[src] buzzes, no data to import.")
+		visible_message("[src] 发出嗡嗡声，没有数据可导入。")
 		return
 	surgery_todo_list = list()
 	var/list/researched_upgrades = list()
@@ -292,7 +292,7 @@
 			continue
 		surgery_todo_list += surgery_item
 	if(skipped > 0)
-		visible_message("[src] buzzes, some surgeries cannot be completed by this machine.")
+		visible_message("[src] 发出嗡嗡声，某些手术无法由本机器完成。")
 
 /obj/structure/machinery/medical_pod/autodoc/proc/surgery_op(mob/living/carbon/enclosed)
 	set background = 1
@@ -315,7 +315,7 @@
 		visible_message("\The [src] buzzes, no surgical procedures were queued.")
 		return
 
-	visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> begins to operate, loud audible clicks lock the pod.")
+	visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> 开始运作，响亮的咔哒声锁定了医疗舱。")
 	surgery = 1
 	update_icon()
 
@@ -349,10 +349,10 @@
 				switch(current_surgery.surgery_procedure)
 					if("organdamage")
 						if(prob(30))
-							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Beginning organ restoration.")
+							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> 说道：开始器官修复。")
 						if(current_surgery.unneeded)
 							sleep(UNNEEDED_DELAY)
-							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.")
+							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> 说道：判定该程序为不必要。")
 							surgery_todo_list -= current_surgery
 							continue
 						open_incision(patient,current_surgery.limb_ref)
@@ -371,7 +371,7 @@
 						if(istype(current_surgery.organ_ref,/datum/internal_organ))
 							current_surgery.organ_ref.rejuvenate()
 						else
-							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Organ is missing.")
+							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> 说道：器官缺失。")
 
 						// close them
 						if(current_surgery.limb_ref.name != "groin") // TODO: fix brute damage before closing
@@ -380,10 +380,10 @@
 
 					if("eyes")
 						if(prob(30))
-							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Beginning corrective eye surgery.")
+							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> 说道：开始矫正眼部手术。")
 						if(current_surgery.unneeded)
 							sleep(UNNEEDED_DELAY)
-							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.")
+							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> 说道：判定该程序为不必要。")
 							surgery_todo_list -= current_surgery
 							continue
 						if(istype(current_surgery.organ_ref,/datum/internal_organ/eyes))
@@ -425,10 +425,10 @@
 								eye.eye_surgery_stage = 0
 					if("larva")
 						if(prob(30))
-							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b>beeps: Removing unknown parasites.")
+							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> 发出哔哔声：正在移除未知寄生虫。")
 						if(!locate(/obj/item/alien_embryo) in occupant)
 							sleep(UNNEEDED_DELAY)
-							visible_message("[icon2html(src, viewers(src))] <b>[src]</b> speaks: Procedure has been deemed unnecessary.")// >:)
+							visible_message("[icon2html(src, viewers(src))] <b>[src]</b> 说道：判定该程序为不必要。")// >:)
 							surgery_todo_list -= current_surgery
 							continue
 						sleep(SCALPEL_MAX_DURATION + HEMOSTAT_MAX_DURATION + REMOVE_OBJECT_MAX_DURATION)
@@ -446,10 +446,10 @@
 				switch(current_surgery.surgery_procedure)
 					if("internal")
 						if(prob(30))
-							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Beginning internal bleeding procedure.")
+							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> 说道：开始内出血处理程序。")
 						if(current_surgery.unneeded)
 							sleep(UNNEEDED_DELAY)
-							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.")
+							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> 说道：判定该程序为不必要。")
 							surgery_todo_list -= current_surgery
 							continue
 						open_incision(patient,current_surgery.limb_ref)
@@ -467,10 +467,10 @@
 
 					if("broken")
 						if(prob(30))
-							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Beginning broken bone procedure.")
+							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> 说道：开始骨折处理程序。")
 						if(current_surgery.unneeded)
 							sleep(UNNEEDED_DELAY)
-							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.")
+							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> 说道：判定该程序为不必要。")
 							surgery_todo_list -= current_surgery
 							continue
 						open_incision(patient,current_surgery.limb_ref)
@@ -491,10 +491,10 @@
 
 					if("missing")
 						if(prob(30))
-							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Beginning limb replacement.")
+							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> 说道：开始肢体替换。")
 						if(current_surgery.unneeded)
 							sleep(UNNEEDED_DELAY)
-							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.")
+							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> 说道：判定该程序为不必要。")
 							surgery_todo_list -= current_surgery
 							continue
 
@@ -503,7 +503,7 @@
 						sleep(CAUTERY_MAX_DURATION*surgery_mod)
 
 						if(stored_metal < LIMB_METAL_AMOUNT)
-							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> croaks: Metal reserves depleted.")
+							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> 发出嘶哑声：金属储备耗尽。")
 							playsound(src.loc, 'sound/machines/buzz-two.ogg', 15, 1)
 							surgery_todo_list -= current_surgery
 							continue // next surgery
@@ -511,7 +511,7 @@
 						stored_metal -= LIMB_METAL_AMOUNT
 
 						if(current_surgery.limb_ref.parent.status & LIMB_DESTROYED) // there's nothing to attach to
-							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> croaks: Limb attachment failed.")
+							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> 发出嘶哑声：肢体连接失败。")
 							playsound(src.loc, 'sound/machines/buzz-two.ogg', 15, 1)
 							surgery_todo_list -= current_surgery
 							continue
@@ -535,10 +535,10 @@
 
 					if("shrapnel")
 						if(prob(30))
-							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Beginning shrapnel removal.");
+							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> 说道：开始弹片移除。");
 						if(current_surgery.unneeded)
 							sleep(UNNEEDED_DELAY)
-							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.");
+							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> 说道：判定该程序为不必要。");
 							surgery_todo_list -= current_surgery
 							continue
 
@@ -562,7 +562,7 @@
 
 					if("open")
 						if(prob(30))
-							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b>croaks: Closing surgical incision.");
+							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b>发出嘶哑的声音：正在闭合手术切口。");
 						close_encased(patient,current_surgery.limb_ref)
 						close_incision(patient,current_surgery.limb_ref)
 						switch(current_surgery.limb_ref.name)
@@ -574,7 +574,7 @@
 								patient.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_open")
 
 		if(prob(30))
-			visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Procedure complete.");
+			visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b>说道：手术完成。");
 		surgery_todo_list -= current_surgery
 		continue
 
@@ -583,10 +583,10 @@
 			break
 		sleep(20)
 		if(prob(5))
-			visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> beeps as it continues working.");
+			visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b>在继续工作时发出哔哔声。");
 
 	patient.pain.recalculate_pain()
-	visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> clicks and opens up having finished the requested operations.")
+	visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b>咔哒一声打开，已完成请求的操作。")
 	SStgui.close_uis(connected)
 	go_out()
 
@@ -637,8 +637,8 @@
 
 //Auto Doc console that links up to it.
 /obj/structure/machinery/autodoc_console
-	name = "autodoc medical system control console"
-	desc = "The control interface used to operate the adjoining autodoc. Requires training to use properly."
+	name = "自动医疗系统控制台"
+	desc = "用于操作相邻自动医疗机的控制界面。需要经过培训才能正确使用。"
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "sleeperconsole"
 	var/obj/structure/machinery/medical_pod/autodoc/connected = null
@@ -693,15 +693,15 @@
 	if(istype(with, /obj/item/research_upgrades/autodoc))
 		var/obj/item/research_upgrades/autodoc/upgrd = with
 		if(!upgrd.value)
-			to_chat(user, SPAN_NOTICE("There is no data loaded in [upgrd]!"))
+			to_chat(user, SPAN_NOTICE("[upgrd]中没有加载数据！"))
 			return
 		for(var/iter in upgrades)
 			if(iter == upgrd.value)
-				to_chat(user, SPAN_NOTICE("This data is already present in [src]!"))
+				to_chat(user, SPAN_NOTICE("该数据已存在于[src]中！"))
 				return
 		if(!user.drop_inv_item_to_loc(with, src))
 			return
-		to_chat(user, SPAN_NOTICE("You insert the data into [src] and the drive whirrs to life, reading the data."))
+		to_chat(user, SPAN_NOTICE("你将数据插入[src]，驱动器开始运转并读取数据。"))
 		upgrades += upgrd.value
 
 /obj/structure/machinery/autodoc_console/attack_hand(mob/living/user)
@@ -709,11 +709,11 @@
 		return
 
 	if(!connected || (connected.inoperable()))
-		to_chat(user, "This console seems to be powered down.")
+		to_chat(user, "这个控制台似乎已断电。")
 		return
 
 	if(connected.skilllock && !skillcheck(user, SKILL_SURGERY, connected.skilllock))
-		to_chat(user, SPAN_WARNING("The interface looks too complicated for you. You're going to need someone trained in the usage of \the [connected.name]!"))
+		to_chat(user, SPAN_WARNING("这个界面对你来说太复杂了。你需要一个受过\the [connected.name]使用培训的人！"))
 		return
 
 	tgui_interact(user)
@@ -911,7 +911,7 @@
 		return FALSE
 
 /obj/structure/machinery/autodoc_console/yautja
-	name = "medical pod console"
+	name = "医疗舱控制台"
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	upgrades = list(
 		RESEARCH_UPGRADE_TIER_1,
@@ -929,11 +929,11 @@
 	)
 
 /obj/structure/machinery/medical_pod/autodoc/unskilled
-	name = "advanced autodoc emergency medical system"
-	desc = "A much more expensive model of autodoc modified with an A.I. diagnostic unit. The result is a much simpler, point-and-click interface that anyone, regardless of training, can use. Often employed in autodoc systems deployed to military front lines for soldiers to use."
+	name = "高级自动医疗机紧急医疗系统"
+	desc = "一种更昂贵的自动医疗机型号，配备了人工智能诊断单元。其结果是界面更简单，采用点击式操作，无论是否受过培训，任何人都可以使用。通常部署在军事前线的自动医疗系统中供士兵使用。"
 	skilllock = null
 
 /obj/structure/machinery/medical_pod/autodoc/yautja
-	name = "automated medical pod"
-	desc = "An emergency surgical alien device designed to perform life-saving treatments and basic surgeries on patients automatically, without the need of a surgeon."
+	name = "自动化医疗舱"
+	desc = "一种紧急外科异形设备，旨在无需外科医生的情况下，自动对患者进行救生治疗和基本手术。"
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'

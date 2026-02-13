@@ -1,44 +1,44 @@
 // Ravager macro stubs
 /datum/action/xeno_action/verb/verb_empower()
 	set category = "Alien"
-	set name = "Empower"
+	set name = "赋能"
 	set hidden = TRUE
-	var/action_name = "Empower"
+	var/action_name = "赋能"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_apprehend()
 	set category = "Alien"
-	set name = "Apprehend"
+	set name = "擒拿"
 	set hidden = TRUE
-	var/action_name = "Apprehend"
+	var/action_name = "擒拿"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_clothesline()
 	set category = "Alien"
-	set name = "Clothesline"
+	set name = "绊马索"
 	set hidden = TRUE
-	var/action_name = "Clothesline"
+	var/action_name = "绊马索"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_eviscerate()
 	set category = "Alien"
-	set name = "Eviscerate"
+	set name = "开膛破肚"
 	set hidden = TRUE
-	var/action_name = "Eviscerate"
+	var/action_name = "开膛破肚"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_charge_rav()
 	set category = "Alien"
-	set name = "Charge"
+	set name = "冲锋"
 	set hidden = TRUE
-	var/action_name = "Charge"
+	var/action_name = "冲锋"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_scissorcut()
 	set category = "Alien"
-	set name = "Scissor Cut"
+	set name = "剪裂斩"
 	set hidden = TRUE
-	var/action_name = "Scissor Cut"
+	var/action_name = "剪裂斩"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_spike_shield()
@@ -52,12 +52,12 @@
 	set category = "Alien"
 	set name = "Fire Spikes"
 	set hidden = TRUE
-	var/action_name = "Fire Spikes (75 shards)"
+	var/action_name = "发射骨刺（75碎片）"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_shed_spikes()
 	set category = "Alien"
 	set name = "Shed Spikes"
 	set hidden = TRUE
-	var/action_name = "Spike Shed (50 shards)"
+	var/action_name = "骨刺脱落（50碎片）"
 	handle_xeno_macro(src, action_name)

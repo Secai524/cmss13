@@ -195,7 +195,7 @@
 /mob/living/carbon/xenomorph/runner/ventcrawl_carry()
 	var/datum/behavior_delegate/runner_acider/behavior_delegates = behavior_delegate
 	if(istype(behavior_delegates) && behavior_delegates.caboom_trigger)
-		to_chat(src, SPAN_XENOWARNING("You cannot ventcrawl when you are about to explode!"))
+		to_chat(src, SPAN_XENOWARNING("即将爆炸时无法进行管道爬行！"))
 		return FALSE
 	return ..()
 

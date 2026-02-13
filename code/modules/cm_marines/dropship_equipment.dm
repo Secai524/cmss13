@@ -43,7 +43,7 @@
 		return XENO_NO_DELAY_ACTION
 	current_xenomorph.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] 挥爪攻击 [src]！"),
 	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
@@ -54,10 +54,10 @@
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	update_health(xeno.melee_damage_upper)
 	if(health <= 0)
-		xeno.visible_message(SPAN_DANGER("[xeno] smashes [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno] 用它的尾巴猛击 [src]！"),
 		SPAN_DANGER("We smash [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
-		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno] 用它的尾巴抽打 [src]！"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
@@ -67,7 +67,7 @@
 		var/obj/item/powerloader_clamp/PC = I
 		if(PC.loaded)
 			if(ammo_equipped)
-				to_chat(user, SPAN_WARNING("You need to unload \the [ammo_equipped] from \the [src] first!"))
+				to_chat(user, SPAN_WARNING("你需要先从\the [src]中卸下\the [ammo_equipped]！"))
 				return TRUE
 			if(uses_ammo)
 				load_ammo(PC, user) //it handles on it's own whether the ammo fits
@@ -85,7 +85,7 @@
 		return
 	var/obj/structure/ship_ammo/SA = PC.loaded
 	if(SA.equipment_type != type)
-		to_chat(user, SPAN_WARNING("[SA] doesn't fit in [src]."))
+		to_chat(user, SPAN_WARNING("[SA]无法装入[src]。"))
 		return
 	playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
 	var/point_loc = ship_base.loc
@@ -98,7 +98,7 @@
 		PC.loaded = null
 		playsound(src, 'sound/machines/hydraulics_2.ogg', 40, 1)
 		PC.update_icon()
-		to_chat(user, SPAN_NOTICE("You load [SA] into [src]."))
+		to_chat(user, SPAN_NOTICE("你将[SA]装入[src]。"))
 		ammo_equipped = SA
 		update_equipment()
 
@@ -113,7 +113,7 @@
 		return
 	if(!ammo_equipped.ammo_count)
 		ammo_equipped.moveToNullspace()
-		to_chat(user, SPAN_NOTICE("You discard the empty [ammo_equipped.name] in \the [src]."))
+		to_chat(user, SPAN_NOTICE("你丢弃了\the [src]中的空[ammo_equipped.name]。"))
 		qdel(ammo_equipped)
 	else
 		if(ammo_equipped.ammo_name == "rocket")
@@ -168,7 +168,7 @@
 		if(linked_console.selected_equipment)
 			return
 		linked_console.selected_equipment = src
-		to_chat(user, SPAN_NOTICE("You select [src]."))
+		to_chat(user, SPAN_NOTICE("你选择了[src]。"))
 
 
 
@@ -176,13 +176,13 @@
 /obj/structure/dropship_equipment/sentry_holder
 	equip_categories = list(DROPSHIP_WEAPON, DROPSHIP_CREW_WEAPON)
 	name = "\improper A/A-32-P Sentry Defense System"
-	desc = "A box that deploys a sentry turret. Fits on both the external weapon and crew compartment attach points of dropships. You need a powerloader to lift it."
+	desc = "一个可部署哨戒炮塔的箱子。可安装在运输机的外部武器挂点和乘员舱挂点上。你需要一台动力装载机来搬运它。"
 	density = FALSE
 	health = null
 	icon_state = "sentry_system"
 	is_interactable = TRUE
 	point_cost = 200
-	shorthand = "Sentry"
+	shorthand = "哨戒炮"
 	var/deployment_cooldown
 	var/obj/structure/machinery/defenses/sentry/premade/dropship/deployed_turret
 	combat_equipment = FALSE
@@ -234,19 +234,19 @@
 /obj/structure/dropship_equipment/sentry_holder/equipment_interact(mob/user)
 	if(deployed_turret)
 		if(deployment_cooldown > world.time)
-			to_chat(user, SPAN_WARNING("[src] is busy."))
+			to_chat(user, SPAN_WARNING("[src]正忙。"))
 			return //prevents spamming deployment/undeployment
 		if(deployed_turret.loc == src) //not deployed
 			if(is_reserved_level(z) && ship_base.base_category == DROPSHIP_WEAPON)
-				to_chat(user, SPAN_WARNING("[src] can't deploy mid-flight."))
+				to_chat(user, SPAN_WARNING("[src]无法在飞行途中部署。"))
 			else
-				to_chat(user, SPAN_NOTICE("You deploy [src]."))
+				to_chat(user, SPAN_NOTICE("你部署了[src]。"))
 				deploy_sentry()
 		else
-			to_chat(user, SPAN_NOTICE("You retract [src]."))
+			to_chat(user, SPAN_NOTICE("你收回了[src]。"))
 			undeploy_sentry()
 	else
-		to_chat(user, SPAN_WARNING("[src] is unresponsive."))
+		to_chat(user, SPAN_WARNING("[src]无响应。"))
 
 /obj/structure/dropship_equipment/sentry_holder/update_equipment()
 	if(ship_base)
@@ -343,7 +343,7 @@
 /// Holder for the dropship mannable machinegun system
 /obj/structure/dropship_equipment/mg_holder
 	name = "\improper MTU-4B Door Gunner Hardpoint System"
-	desc = "A box that deploys a crew-served scoped M56D heavy machine gun. Fits on both the external weapon and crew compartment attach points of dropships. You need a powerloader to lift it."
+	desc = "一个可部署班组操作的带瞄准镜M56D重机枪的箱子。可安装在运输机的外部武器挂点和乘员舱挂点上。你需要一台动力装载机来搬运它。"
 	density = FALSE
 	equip_categories = list(DROPSHIP_WEAPON, DROPSHIP_CREW_WEAPON)
 	icon_state = "mg_system"
@@ -393,19 +393,19 @@
 	if(ship_base)
 		if(deployed_mg)
 			if(deployment_cooldown > world.time)
-				to_chat(user, SPAN_WARNING("[src] is not ready."))
+				to_chat(user, SPAN_WARNING("[src]尚未就绪。"))
 				return //prevents spamming deployment/undeployment
 			if(deployed_mg.loc == src) //not deployed
 				if(is_reserved_level(z) && ship_base.base_category == DROPSHIP_WEAPON)
-					to_chat(user, SPAN_WARNING("[src] can't be deployed mid-flight."))
+					to_chat(user, SPAN_WARNING("[src]无法在飞行途中部署。"))
 				else
-					to_chat(user, SPAN_NOTICE("You pull out [deployed_mg]."))
+					to_chat(user, SPAN_NOTICE("你拉出[deployed_mg]。"))
 					deploy_mg(user)
 			else
-				to_chat(user, SPAN_NOTICE("You stow [deployed_mg]."))
+				to_chat(user, SPAN_NOTICE("你收起[deployed_mg]。"))
 				undeploy_mg()
 		else
-			to_chat(user, SPAN_WARNING("[src] is empty."))
+			to_chat(user, SPAN_WARNING("[src]是空的。"))
 		return
 
 	..()
@@ -503,13 +503,13 @@
 
 /obj/structure/dropship_equipment/fuel/fuel_enhancer
 	name = "\improper fuel enhancer"
-	desc = "A fuel enhancement system for dropships. It improves the thrust produced by the fuel combustion for faster travels. Fits inside the engine attach points. You need a powerloader to lift it."
+	desc = "一种用于运输机的燃料增强系统。它通过改善燃料燃烧产生的推力来实现更快的航行。安装在引擎挂点内。你需要一台动力装载机来搬运它。"
 	icon_state = "fuel_enhancer"
 	point_cost = 800
 
 /obj/structure/dropship_equipment/fuel/cooling_system
 	name = "\improper cooling system"
-	desc = "A cooling system for dropships. It produces additional cooling reducing delays between launch. Fits inside the engine attach points. You need a powerloader to lift it."
+	desc = "一种用于运输机的冷却系统。它提供额外的冷却，减少发射间隔。安装在引擎挂点内。你需要一台动力装载机来搬运它。"
 	icon_state = "cooling_system"
 	point_cost = 800
 
@@ -529,7 +529,7 @@
 	name = "\improper AN/LEN-15 Spotlight"
 	shorthand = "Spotlight"
 	icon_state = "spotlights"
-	desc = "A set of high-powered spotlights to illuminate large areas. Fits on electronics attach points of dropships. Moving this will require a powerloader."
+	desc = "一套用于照亮大片区域的高功率聚光灯。可安装在运输机的电子设备连接点上。移动它需要一台动力装载机。"
 	is_interactable = TRUE
 	point_cost = 50
 	var/spotlights_cooldown
@@ -537,16 +537,16 @@
 
 /obj/structure/dropship_equipment/electronics/spotlights/equipment_interact(mob/user)
 	if(spotlights_cooldown > world.time)
-		to_chat(user, SPAN_WARNING("[src] is busy."))
+		to_chat(user, SPAN_WARNING("[src]正忙。"))
 		return //prevents spamming deployment/undeployment
 	if(!light_on)
 		set_light(brightness)
 		icon_state = "spotlights_on"
-		to_chat(user, SPAN_NOTICE("You turn on [src]."))
+		to_chat(user, SPAN_NOTICE("你打开了[src]。"))
 	else
 		set_light(0)
 		icon_state = "spotlights_off"
-		to_chat(user, SPAN_NOTICE("You turn off [src]."))
+		to_chat(user, SPAN_NOTICE("你关闭了[src]。"))
 	spotlights_cooldown = world.time + 50
 
 /obj/structure/dropship_equipment/electronics/spotlights/update_equipment()
@@ -580,7 +580,7 @@
 	name = "\improper AN/AAQ-178 Weapon Targeting System"
 	shorthand = "Targeting"
 	icon_state = "targeting_system"
-	desc = "A targeting system for dropships. It improves firing accuracy on laser targets. Fits on electronics attach points. You need a powerloader to lift this."
+	desc = "运输机的目标锁定系统。它能提高对激光标记目标的射击精度。可安装在电子设备连接点上。你需要一台动力装载机来抬起它。"
 	point_cost = 800
 
 /obj/structure/dropship_equipment/electronics/targeting_system/update_equipment()
@@ -592,7 +592,7 @@
 /obj/structure/dropship_equipment/electronics/landing_zone_detector
 	name = "\improper AN/AVD-60 LZ detector"
 	shorthand = "LZ Detector"
-	desc = "An electronic device linked to the dropship's camera system that lets you observe your landing zone mid-flight."
+	desc = "一种与运输机摄像系统连接的电子设备，让你能在飞行途中观察着陆区。"
 	icon_state = "lz_detector"
 	point_cost = 50
 	var/obj/structure/machinery/computer/cameras/dropship/linked_cam_console
@@ -648,7 +648,7 @@
 
 /// CAS Dropship weaponry, used for aerial bombardment
 /obj/structure/dropship_equipment/weapon
-	name = "abstract weapon"
+	name = "抽象武器"
 	icon = 'icons/obj/structures/props/dropship/dropship_equipment64.dmi'
 	equip_categories = list(DROPSHIP_WEAPON)
 	bound_width = 32
@@ -691,7 +691,7 @@
 		if(ammo_info)
 			. += ammo_info
 	else
-		. += "It's empty."
+		. += "它是空的。"
 
 
 
@@ -774,7 +774,7 @@
 
 /obj/structure/dropship_equipment/weapon/heavygun
 	name = "\improper GAU-21 30mm cannon"
-	desc = "A dismounted GAU-21 'Rattler' 30mm rotary cannon. It seems to be missing its feed links and has exposed connection wires. Capable of firing 5200 rounds a minute, feared by many for its power. Earned the nickname 'Rattler' from the vibrations it would cause on dropships in its initial production run. Accepts PGU-100/PGU-105 ammo crates."
+	desc = "一门拆下的GAU-21 '响尾蛇' 30毫米转管机炮。它似乎缺少供弹链，连接线也暴露在外。每分钟能发射5200发子弹，其威力令许多人畏惧。因其在最初生产批次中在运输机上引起的震动而获得了'响尾蛇'的绰号。可使用PGU-100/PGU-105弹药箱。"
 	icon_state = "30mm_cannon"
 	firing_sound = 'sound/effects/gau_incockpit.ogg'
 	point_cost = 400
@@ -795,7 +795,7 @@
 /obj/structure/dropship_equipment/weapon/rocket_pod
 	name = "\improper LAU-444 Guided Missile Launcher"
 	icon_state = "rocket_pod" //I want to force whoever used rocket and missile interchangeably to come back and look at this god damn mess.
-	desc = "A missile pod weapon system capable of launching a single laser-guided missile. Moving this will require some sort of lifter. Accepts AGM, AIM, BLU, and GBU missile systems."
+	desc = "一种能够发射单枚激光制导导弹的导弹荚武器系统。移动它需要某种起重设备。可使用AGM、AIM、BLU和GBU导弹系统。"
 	firing_sound = 'sound/effects/rocketpod_fire.ogg'
 	firing_delay = 5
 	point_cost = 600
@@ -818,7 +818,7 @@
 /obj/structure/dropship_equipment/weapon/minirocket_pod
 	name = "\improper LAU-229 Rocket Pod"
 	icon_state = "minirocket_pod"
-	desc = "A rocket pod capable of launching six laser-guided mini rockets. Moving this will require some sort of lifter. Accepts the AGR-59 series of minirockets."
+	desc = "一种能够发射六枚激光制导微型火箭的火箭荚。移动它需要某种起重设备。可使用AGR-59系列微型火箭。"
 	firing_sound = 'sound/effects/rocketpod_fire.ogg'
 	firing_delay = 10 //1 seconds
 	point_cost = 600
@@ -845,7 +845,7 @@
 /obj/structure/dropship_equipment/weapon/laser_beam_gun
 	name = "\improper LWU-6B Laser Cannon"
 	icon_state = "laser_beam"
-	desc = "State of the art technology recently acquired by the USCM, it fires a battery-fed pulsed laser beam at near lightspeed setting on fire everything it touches. Moving this will require some sort of lifter. Accepts the BTU-17/LW Hi-Cap Laser Batteries."
+	desc = "USCM最近获得的最先进技术，它发射由电池供能的脉冲激光束，以近光速点燃其接触的一切。移动它需要某种起重设备。可使用BTU-17/LW高容量激光电池。"
 	firing_sound = 'sound/effects/phasein.ogg'
 	firing_delay = 50 //5 seconds
 	point_cost = 500
@@ -865,7 +865,7 @@
 /obj/structure/dropship_equipment/weapon/launch_bay
 	name = "\improper LAG-14 Internal Sentry Launcher"
 	icon_state = "launch_bay"
-	desc = "A launch bay to drop special ordnance. Fits inside the dropship's crew weapon emplacement. Moving this will require some sort of lifter. Accepts the A/C-49-P Air Deployable Sentry as ammunition."
+	desc = "用于投放特种弹药的发射舱。可安装在运输机的乘员武器基座内。移动它需要某种起重设备。可使用A/C-49-P空投式哨戒炮作为弹药。"
 	icon = 'icons/obj/structures/props/dropship/dropship_equipment.dmi'
 	firing_sound = 'sound/weapons/gun_flare_explode.ogg'
 	firing_delay = 10 //1 seconds
@@ -888,7 +888,7 @@
 /obj/structure/dropship_equipment/medevac_system
 	name = "\improper RMU-4M Medevac System"
 	shorthand = "Medevac"
-	desc = "A winch system to lift injured marines on medical stretchers onto the dropship. Acquire lift target through the dropship equipment console."
+	desc = "一套用于将担架上的受伤陆战队员吊上运输机的绞盘系统。通过运输机设备控制台获取吊运目标。"
 	equip_categories = list(DROPSHIP_CREW_WEAPON)
 	icon_state = "medevac_system"
 	point_cost = 300
@@ -957,21 +957,21 @@
 		return FALSE
 
 	if(linked_shuttle.mode != SHUTTLE_CALL)
-		to_chat(user, SPAN_WARNING("[src] can only be used while in flight."))
+		to_chat(user, SPAN_WARNING("[src]只能在飞行中使用。"))
 		return FALSE
 
 	if(busy_winch)
-		to_chat(user, SPAN_WARNING("The winch is already in motion."))
+		to_chat(user, SPAN_WARNING("绞盘已在运行中。"))
 		return FALSE
 
 	if(world.time < medevac_cooldown)
-		to_chat(user, SPAN_WARNING("[src] was just used, you need to wait a bit before using it again."))
+		to_chat(user, SPAN_WARNING("[src]刚刚使用过，你需要稍等片刻才能再次使用。"))
 		return FALSE
 
 	var/list/possible_stretchers = get_targets()
 
 	if(!length(possible_stretchers))
-		to_chat(user, SPAN_WARNING("No active medevac stretcher detected."))
+		to_chat(user, SPAN_WARNING("未检测到活动的医疗后送担架。"))
 		return FALSE
 	return TRUE
 
@@ -986,44 +986,44 @@
 		return
 
 	if(!selected_stretcher.buckled_mob && !selected_stretcher.buckled_bodybag)
-		to_chat(user, SPAN_WARNING("This medevac stretcher is empty."))
+		to_chat(user, SPAN_WARNING("这个医疗后送担架是空的。"))
 		return
 
 	if(selected_stretcher.linked_medevac && selected_stretcher.linked_medevac != src)
-		to_chat(user, SPAN_WARNING("There's another dropship hovering over that medevac stretcher."))
+		to_chat(user, SPAN_WARNING("有另一架运输机悬停在那副医疗后送担架上方。"))
 		return
 
 	if(!linked_shuttle)
 		return
 
 	if(linked_shuttle.mode != SHUTTLE_CALL)
-		to_chat(user, SPAN_WARNING("[src] can only be used while in flight."))
+		to_chat(user, SPAN_WARNING("[src]只能在飞行中使用。"))
 		return
 
 	if(busy_winch)
-		to_chat(user, SPAN_WARNING("The winch is already in motion."))
+		to_chat(user, SPAN_WARNING("绞盘已在运行中。"))
 		return
 
 	if(world.time < medevac_cooldown)
-		to_chat(user, SPAN_WARNING("[src] was just used, you need to wait a bit before using it again."))
+		to_chat(user, SPAN_WARNING("[src]刚刚使用过，你需要稍等片刻才能再次使用。"))
 		return
 
 	if(selected_stretcher == linked_stretcher) //already linked to us, unlink it
-		to_chat(user, SPAN_NOTICE("You move your dropship away from that stretcher's beacon."))
-		linked_stretcher.visible_message(SPAN_NOTICE("[linked_stretcher] detects a dropship is no longer overhead."))
+		to_chat(user, SPAN_NOTICE("你将运输机驶离了那副担架的信标。"))
+		linked_stretcher.visible_message(SPAN_NOTICE("[linked_stretcher]检测到运输机已不再悬停在上方。"))
 		linked_stretcher.linked_medevac = null
 		linked_stretcher = null
 		return
 
-	to_chat(user, SPAN_NOTICE("You move your dropship above the selected stretcher's beacon. You can now manually activate the medevac system to hoist the patient up."))
+	to_chat(user, SPAN_NOTICE("你将运输机移动到所选担架信标的上方。你现在可以手动启动医疗后送系统将伤员吊起。"))
 
 	if(linked_stretcher)
 		linked_stretcher.linked_medevac = null
-		linked_stretcher.visible_message(SPAN_NOTICE("[linked_stretcher] detects a dropship is no longer overhead."))
+		linked_stretcher.visible_message(SPAN_NOTICE("[linked_stretcher]检测到运输机已不再悬停在上方。"))
 
 	linked_stretcher = selected_stretcher
 	linked_stretcher.linked_medevac = src
-	linked_stretcher.visible_message(SPAN_NOTICE("[linked_stretcher] detects a dropship overhead."))
+	linked_stretcher.visible_message(SPAN_NOTICE("[linked_stretcher]检测到有运输机悬停在上方。"))
 
 /obj/structure/dropship_equipment/medevac_system/proc/automate_interact(mob/user, stretcher_choice)
 	if(!can_medevac(user))
@@ -1042,7 +1042,7 @@
 
 	var/list/possible_stretchers = get_targets()
 
-	var/stretcher_choice = tgui_input_list(usr, "Which emitting stretcher would you like to link with?", "Available stretchers", possible_stretchers)
+	var/stretcher_choice = tgui_input_list(usr, "你希望与哪个正在发射信号的担架建立连接？", "Available stretchers", possible_stretchers)
 	if(!stretcher_choice)
 		return
 
@@ -1065,18 +1065,18 @@
 	if(!ship_base) //not installed
 		return
 	if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED) && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_DOCTOR))
-		to_chat(user, SPAN_WARNING("You don't know how to use [src]."))
+		to_chat(user, SPAN_WARNING("你不知道如何使用[src]。"))
 		return
 
 	if(!linked_shuttle)
 		return
 
 	if(linked_shuttle.mode != SHUTTLE_CALL)
-		to_chat(user, SPAN_WARNING("[src] can only be used while in flight."))
+		to_chat(user, SPAN_WARNING("[src]只能在飞行中使用。"))
 		return
 
 	if(busy_winch)
-		to_chat(user, SPAN_WARNING("The winch is already in motion."))
+		to_chat(user, SPAN_WARNING("绞盘已在运行中。"))
 		return
 
 	if(!linked_stretcher)
@@ -1086,11 +1086,11 @@
 	if(!is_ground_level(linked_stretcher.z))
 		linked_stretcher.linked_medevac = null
 		linked_stretcher = null
-		to_chat(user, SPAN_WARNING("There seems to be no medevac stretcher connected to [src]."))
+		to_chat(user, SPAN_WARNING("似乎没有医疗后送担架连接到[src]。"))
 		return
 
 	if(world.time < medevac_cooldown)
-		to_chat(user, SPAN_WARNING("[src] was just used, you need to wait a bit before using it again."))
+		to_chat(user, SPAN_WARNING("[src]刚刚使用过，你需要稍等片刻才能再次使用。"))
 		return
 
 	activate_winch(user)
@@ -1137,7 +1137,7 @@
 	busy_winch = TRUE
 	playsound(loc, 'sound/machines/medevac_extend.ogg', 40, 1)
 	flick("medevac_system_active", src)
-	user.visible_message(SPAN_NOTICE("[user] activates [src]'s winch."),
+	user.visible_message(SPAN_NOTICE("[user]启动了[src]的绞盘。"),
 						SPAN_NOTICE("You activate [src]'s winch."))
 	sleep(30)
 
@@ -1156,7 +1156,7 @@
 		if(linked_stretcher)
 			linked_stretcher.linked_medevac = null
 			linked_stretcher = null
-		to_chat(user, SPAN_WARNING("The winch finishes lifting but there seems to be no medevac stretchers connected to [src]."))
+		to_chat(user, SPAN_WARNING("绞盘完成提升，但似乎没有医疗后送担架连接到[src]。"))
 		return
 
 	var/atom/movable/lifted_object
@@ -1170,13 +1170,13 @@
 		T.ceiling_debris_check(2)
 		lifted_object.forceMove(loc)
 	else
-		to_chat(user, SPAN_WARNING("The winch finishes lifting the medevac stretcher but it's empty!"))
+		to_chat(user, SPAN_WARNING("绞盘完成了医疗后送担架的提升，但它是空的！"))
 		linked_stretcher.linked_medevac = null
 		linked_stretcher = null
 		return
 
 	flick("winched_stretcher", linked_stretcher)
-	linked_stretcher.visible_message(SPAN_NOTICE("A winch hook falls from the sky and starts lifting [linked_stretcher] up."))
+	linked_stretcher.visible_message(SPAN_NOTICE("一个绞盘挂钩从天而降，开始将[linked_stretcher]向上提升。"))
 
 	medevac_cooldown = world.time + DROPSHIP_MEDEVAC_COOLDOWN
 	linked_stretcher.linked_medevac = null
@@ -1187,7 +1187,7 @@
 /obj/structure/dropship_equipment/fulton_system
 	name = "\improper RMU-19 Fulton Recovery System"
 	shorthand = "Fulton"
-	desc = "A winch system to collect any fulton recovery balloons in high altitude. Make sure you turn it on!"
+	desc = "一个用于回收高空富尔顿救援气球的绞盘系统。确保你已将其打开！"
 	equip_categories = list(DROPSHIP_CREW_WEAPON)
 	icon_state = "fulton_system"
 	point_cost = 200
@@ -1227,25 +1227,25 @@
 		return
 
 	if(!fult.attached_atom)
-		to_chat(user, SPAN_WARNING("This balloon stretcher is empty."))
+		to_chat(user, SPAN_WARNING("这个气球担架是空的。"))
 		return
 
 	if(!linked_shuttle)
 		return
 
 	if(linked_shuttle.mode != SHUTTLE_CALL)
-		to_chat(user, SPAN_WARNING("[src] can only be used while in flight."))
+		to_chat(user, SPAN_WARNING("[src]只能在飞行中使用。"))
 		return
 
 	if(busy_winch)
-		to_chat(user, SPAN_WARNING("The winch is already in motion."))
+		to_chat(user, SPAN_WARNING("绞盘已在运行中。"))
 		return
 
 	if(world.time < fulton_cooldown)
-		to_chat(user, SPAN_WARNING("[src] was just used, you need to wait a bit before using it again."))
+		to_chat(user, SPAN_WARNING("[src]刚刚使用过，你需要稍等片刻才能再次使用。"))
 		return
 
-	to_chat(user, SPAN_NOTICE("You move your dropship above the selected balloon's beacon."))
+	to_chat(user, SPAN_NOTICE("你将运输机移动到所选气球信标的上方。"))
 
 	activate_winch(user, fult)
 
@@ -1255,15 +1255,15 @@
 		return FALSE
 
 	if(linked_shuttle.mode != SHUTTLE_CALL)
-		to_chat(user, SPAN_WARNING("[src] can only be used while in flight."))
+		to_chat(user, SPAN_WARNING("[src]只能在飞行中使用。"))
 		return FALSE
 
 	if(busy_winch)
-		to_chat(user, SPAN_WARNING("The winch is already in motion."))
+		to_chat(user, SPAN_WARNING("绞盘已在运行中。"))
 		return FALSE
 
 	if(world.time < fulton_cooldown)
-		to_chat(user, SPAN_WARNING("[src] was just used, you need to wait a bit before using it again."))
+		to_chat(user, SPAN_WARNING("[src]刚刚使用过，你需要稍等片刻才能再次使用。"))
 		return FALSE
 	return TRUE
 
@@ -1293,10 +1293,10 @@
 	var/list/possible_fultons = get_targets()
 
 	if(!length(possible_fultons))
-		to_chat(user, SPAN_WARNING("No active balloons detected."))
+		to_chat(user, SPAN_WARNING("未检测到活动气球。"))
 		return
 
-	var/fulton_choice = tgui_input_list(usr, "Which balloon would you like to link with?", "Available balloons", possible_fultons)
+	var/fulton_choice = tgui_input_list(usr, "你想与哪个气球建立连接？", "Available balloons", possible_fultons)
 	if(!fulton_choice)
 		return
 
@@ -1311,25 +1311,25 @@
 		return
 
 	if(!fulton.attached_atom)
-		to_chat(user, SPAN_WARNING("This balloon stretcher is empty."))
+		to_chat(user, SPAN_WARNING("这个气球担架是空的。"))
 		return
 
 	if(!linked_shuttle)
 		return
 
 	if(linked_shuttle.mode != SHUTTLE_CALL)
-		to_chat(user, SPAN_WARNING("[src] can only be used while in flight."))
+		to_chat(user, SPAN_WARNING("[src]只能在飞行中使用。"))
 		return
 
 	if(busy_winch)
-		to_chat(user, SPAN_WARNING("The winch is already in motion."))
+		to_chat(user, SPAN_WARNING("绞盘已在运行中。"))
 		return
 
 	if(world.time < fulton_cooldown)
-		to_chat(user, SPAN_WARNING("[src] was just used, you need to wait a bit before using it again."))
+		to_chat(user, SPAN_WARNING("[src]刚刚使用过，你需要稍等片刻才能再次使用。"))
 		return
 
-	to_chat(user, SPAN_NOTICE("You move your dropship above the selected balloon's beacon."))
+	to_chat(user, SPAN_NOTICE("你将运输机移动到所选气球信标的上方。"))
 
 	activate_winch(user, fulton)
 
@@ -1338,7 +1338,7 @@
 	busy_winch = TRUE
 	playsound(loc, 'sound/machines/medevac_extend.ogg', 40, 1)
 	flick("fulton_system_active", src)
-	user.visible_message(SPAN_NOTICE("[user] activates [src]'s winch."),
+	user.visible_message(SPAN_NOTICE("[user]启动了[src]的绞盘。"),
 						SPAN_NOTICE("You activate [src]'s winch."))
 	sleep(30)
 
@@ -1354,13 +1354,13 @@
 		fail = TRUE
 
 	if(fail)
-		to_chat(user, SPAN_WARNING("The winch finishes lifting but there seems to be no balloon connected to [src]."))
+		to_chat(user, SPAN_WARNING("绞盘完成提升，但似乎没有气球连接到[src]。"))
 		return
 
 	if(linked_fulton.attached_atom)
 		linked_fulton.return_fulton(get_turf(src))
 	else
-		to_chat(user, SPAN_WARNING("The winch finishes lifting the medevac stretcher but it's empty!"))
+		to_chat(user, SPAN_WARNING("绞盘完成了医疗后送担架的提升，但它是空的！"))
 		return
 
 	fulton_cooldown = world.time + 50

@@ -11,7 +11,7 @@
 	// Metadata; you should define these.
 
 	/// Name of the subsystem - you must change this
-	name = "fire coderbus"
+	name = "解雇程序员"
 
 	/// Order of initialization. Higher numbers are initialized first, lower numbers later. Use or create defines such as [INIT_ORDER_DEFAULT] so we can see the order in one file.
 	var/init_order = SS_INIT_UNSPECIFIED

@@ -9,16 +9,16 @@
  * Banhammer
  */
 /obj/item/weapon/banhammer/attack(mob/M as mob, mob/user as mob)
-	to_chat(M, "<font color='red'><b> You have been banned FOR NO REISIN by [user]<b></font>")
-	to_chat(user, "<font color='red'> You have <b>BANNED</b> [M]</font>")
+	to_chat(M, "<font color='red'><b>你已被[user]无理由封禁<b></font>")
+	to_chat(user, "<font color='red'>你已<b>封禁</b>[M]</font>")
 
 
 /*
  * Classic Baton
  */
 /obj/item/weapon/classic_baton
-	name = "police baton"
-	desc = "A wooden truncheon for beating criminal scum."
+	name = "警棍"
+	desc = "一根用于痛揍罪犯渣滓的木制警棍。"
 	icon = 'icons/obj/items/weapons/melee/non_lethal.dmi'
 	icon_state = "baton"
 	item_state = "classic_baton"
@@ -39,12 +39,12 @@
 	if(M.stuttering < 8)
 		M.stuttering = 8
 
-	user.visible_message(SPAN_DANGER("<B>[M] has been beaten with \the [src] by [user]!</B>"), SPAN_DANGER("You hear someone fall."))
+	user.visible_message(SPAN_DANGER("<B>[user]用\the [src]痛揍了[M]！</B>"), SPAN_DANGER("You hear someone fall."))
 
 //Telescopic baton
 /obj/item/weapon/telebaton
-	name = "telescopic baton"
-	desc = "A compact yet rebalanced personal defense weapon. Can be concealed when folded. It will knock down humans when not on harm intent."
+	name = "伸缩警棍"
+	desc = "一款紧凑但重新平衡过的个人防卫武器。折叠时可隐藏。在非伤害意图下使用时可将人类击倒。"
 	icon = 'icons/obj/items/weapons/melee/non_lethal.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/non_lethal_lefthand.dmi',
@@ -128,10 +128,10 @@
 	var/target_zone = check_zone(user.zone_selected)
 	target.apply_stamina_damage(final_stun_force, target_zone, ARMOR_MELEE)
 	if(target.stamina.current_stamina <= 0)
-		user.visible_message(SPAN_DANGER("[user] knocks down [target] with \the [src]!"),
+		user.visible_message(SPAN_DANGER("[user]用\the [src]击倒了[target]！"),
 							SPAN_WARNING("You knock down [target] with \the [src]!"))
 	else
-		user.visible_message(SPAN_DANGER("[user] thwacks [target] with \the [src]!"),
+		user.visible_message(SPAN_DANGER("[user]用\the [src]猛击了[target]！"),
 							SPAN_WARNING("You beat [target] with \the [src]!"))
 	return TRUE
 
@@ -148,7 +148,7 @@
 		icon_state = "eshield[active]"
 		w_class = SIZE_LARGE
 		playsound(user, 'sound/weapons/saberon.ogg', 25, 1)
-		to_chat(user, SPAN_NOTICE("[src] is now active."))
+		to_chat(user, SPAN_NOTICE("[src]现已激活。"))
 		shield_chance = readied_block
 
 	else
@@ -156,7 +156,7 @@
 		icon_state = "eshield[active]"
 		w_class = SIZE_TINY
 		playsound(user, 'sound/weapons/saberoff.ogg', 25, 1)
-		to_chat(user, SPAN_NOTICE("[src] can now be concealed."))
+		to_chat(user, SPAN_NOTICE("[src]现在可以隐藏了。"))
 		shield_chance = SHIELD_CHANCE_NONE
 
 	if(istype(user,/mob/living/carbon/human))

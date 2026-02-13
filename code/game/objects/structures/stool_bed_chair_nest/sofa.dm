@@ -1,6 +1,6 @@
 /obj/structure/bed/sofa
-	name = "Sofa"
-	desc = "Just like Space Ikea would have wanted."
+	name = "沙发"
+	desc = "正如太空宜家所期望的那样。"
 	icon = 'icons/obj/structures/props/furniture/chairs.dmi'
 	icon_state = "sofa" //use child icons
 	anchored = TRUE //can't rotate sofas
@@ -10,57 +10,57 @@
 
 /obj/structure/bed/sofa/pews
 	name = "pews"
-	desc = "Smells like cedar."
+	desc = "闻起来像雪松。"
 	icon_state = "pews"
 
 /obj/structure/bed/sofa/pews/flipped
 	icon_state = "pews_f"
 /obj/structure/bed/sofa/south/grey //center
-	name = "Couch"
+	name = "沙发"
 	icon_state = "couch_hori2"
 
 /obj/structure/bed/sofa/south/grey/left //left
-	name = "Couch edge"
+	name = "沙发边缘"
 	icon_state = "couch_hori1"
 
 /obj/structure/bed/sofa/south/grey/right //right
-	name = "Couch edge"
+	name = "沙发边缘"
 	icon_state = "couch_hori3"
 
 /obj/structure/bed/sofa/south/white //center
-	name = "Couch"
+	name = "沙发"
 	icon_state = "bench_hor2"
 
 /obj/structure/bed/sofa/south/white/left //left
-	name = "Couch edge"
+	name = "沙发边缘"
 	icon_state = "bench_hor1"
 
 /obj/structure/bed/sofa/south/white/right //right
-	name = "Couch edge"
+	name = "沙发边缘"
 	icon_state = "bench_hor3"
 
 //Vertical double sided couches. Think airport lounge.
 
 /obj/structure/bed/sofa/vert/grey //center
-	name = "Couch"
+	name = "沙发"
 	icon_state = "couch_vet2"
 
 /obj/structure/bed/sofa/vert/grey/bot //bottom
-	name = "Couch edge"
+	name = "沙发边缘"
 	icon_state = "couch_vet1"
 
 /obj/structure/bed/sofa/vert/grey/top //top
-	name = "Couch edge"
+	name = "沙发边缘"
 	icon_state = "couch_vet3"
 
 /obj/structure/bed/sofa/vert/white //center
-	name = "Couch"
+	name = "沙发"
 	icon_state = "bench_vet2"
 
 /obj/structure/bed/sofa/vert/white/bot //bottom
-	name = "Couch edge"
+	name = "沙发边缘"
 	icon_state = "bench_vet1"
 
 /obj/structure/bed/sofa/vert/white/top //top
-	name = "Couch edge"
+	name = "沙发边缘"
 	icon_state = "bench_vet3"

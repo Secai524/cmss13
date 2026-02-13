@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(ipcheck)
-	name = "IPCheck"
+	name = "IP检查"
 	flags = SS_NO_FIRE | SS_NO_INIT
 
 	/// Cache for previously queried IP addresses and those stored in the database
@@ -183,14 +183,14 @@ SUBSYSTEM_DEF(ipcheck)
 	if(!CLIENT_HAS_RIGHTS(src, R_BAN))
 		return
 
-	var/whitelist_ckey = ckey(tgui_input_text(src, "What's the ckey to be whitelisted?", "Whitelist VPN"))
+	var/whitelist_ckey = ckey(tgui_input_text(src, "要加入白名单的ckey是什么？", "Whitelist VPN"))
 	if(!whitelist_ckey)
 		return
 
 	if (!SSipcheck.is_enabled())
-		to_chat(src, "The ipcheck system is not currently enabled but you can still edit the whitelists.")
+		to_chat(src, "IP检查系统当前未启用，但你仍然可以编辑白名单。")
 	if(SSipcheck.is_whitelisted(whitelist_ckey))
-		to_chat(src, "Player is already whitelisted.")
+		to_chat(src, "玩家已在白名单中。")
 		return
 
 	var/datum/entity/vpn_whitelist/whitelist = DB_ENTITY(/datum/entity/vpn_whitelist)
@@ -210,20 +210,20 @@ SUBSYSTEM_DEF(ipcheck)
 	if(!CLIENT_HAS_RIGHTS(src, R_BAN))
 		return
 
-	var/dewhitelist_ckey = ckey(tgui_input_text(src, "What's the ckey to be de-whitelisted?", "Dewhitelist VPN"))
+	var/dewhitelist_ckey = ckey(tgui_input_text(src, "要从白名单中移除的ckey是什么？", "Dewhitelist VPN"))
 	if(!dewhitelist_ckey)
 		return
 
 
 	if (!SSipcheck.is_enabled())
-		to_chat(src, "The ipcheck system is not currently enabled but you can still edit the whitelists.")
+		to_chat(src, "IP检查系统当前未启用，但你仍然可以编辑白名单。")
 	if(!SSipcheck.is_whitelisted(dewhitelist_ckey))
-		to_chat(src, "Player is not whitelisted.")
+		to_chat(src, "玩家不在白名单中。")
 		return
 
 	var/list/datum/view/vpn_whitelist/whitelists = DB_VIEW(/datum/view/vpn_whitelist, DB_COMP("ckey", DB_EQUALS, dewhitelist_ckey))
 	if(!length(whitelists))
-		to_chat(src, "Player is not whitelisted.")
+		to_chat(src, "玩家不在白名单中。")
 		return
 
 	for(var/datum/view/vpn_whitelist/whitelist in whitelists)

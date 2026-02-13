@@ -46,141 +46,141 @@ GLOBAL_LIST_INIT(grenade_packets, list(
 
 /obj/item/storage/box/packet/high_explosive
 	name = "\improper HEDP grenade packet"
-	desc = "It contains three HEDP high explosive grenades."
+	desc = "它包含三枚HEDP高爆手榴弹。"
 	icon_state = "hedp_packet"
 	item_state = "hedp_packet"
 	content_type = /obj/item/explosive/grenade/high_explosive
 
 /obj/item/storage/box/packet/high_explosive/upp
 	name = "\improper Type 6 grenade packet"
-	desc = "It contains three type 6 fragmentation grenades."
+	desc = "它包含三枚6型破片手榴弹。"
 	icon_state = "hefa_packet"
 	item_state = "hefa_packet"
 	content_type = /obj/item/explosive/grenade/high_explosive/upp
 
 /obj/item/storage/box/packet/baton_slug
 	name = "\improper HIRR baton slug packet"
-	desc = "It contains three HIRR (High Impact Rubber Rounds) Baton Slugs."
+	desc = "它包含三枚HIRR（高冲击橡胶弹）防暴弹头。"
 	icon_state = "baton_packet"
 	item_state = "baton_packet"
 	content_type = /obj/item/explosive/grenade/slug/baton
 
 /obj/item/storage/box/packet/flare
 	name = "\improper M74 AGM-S star shell packet"
-	desc = "It contains three M40-F Star Shell Grenades. 40mm grenades that explode into burning ash. Great for temporarily lighting an area."
+	desc = "它包含三枚M40-F星壳手榴弹。这种40毫米榴弹会爆燃成燃烧的灰烬，非常适合临时照亮一片区域。"
 	icon_state = "starshell_packet"
 	item_state = "starshell_packet"
 	content_type = /obj/item/explosive/grenade/high_explosive/airburst/starshell
 
 /obj/item/storage/box/packet/hornet
 	name = "\improper M74 AGM-H hornet shell packet"
-	desc = "It contains three M74 AGM-H Hornet shells. 40mm grenades that explode into a cluster of .22lr bullets at range, dealing massive damage to anything caught in the way."
+	desc = "它包含三枚M74 AGM-H黄蜂弹。这种40毫米榴弹会在射程内爆炸成一簇.22lr子弹，对路径上的任何目标造成巨大伤害。"
 	icon_state = "hornet_packet"
 	item_state = "hornet_packet"
 	content_type = /obj/item/explosive/grenade/high_explosive/airburst/hornet_shell
 
 /obj/item/storage/box/packet/incendiary
 	name = "\improper HIDP grenade packet"
-	desc = "It contains three HIDP incendiary grenades."
+	desc = "它包含三枚HIDP燃烧手榴弹。"
 	icon_state = "hidp_packet"
 	item_state = "hidp_packet"
 	content_type = /obj/item/explosive/grenade/incendiary
 
 /obj/item/storage/box/packet/smoke
 	name = "\improper HSDP grenade packet"
-	desc = "It contains three HSDP smoke grenades."
+	desc = "它包含三枚HSDP烟雾弹。"
 	icon_state = "hsdp_packet"
 	item_state = "hsdp_packet"
 	content_type = /obj/item/explosive/grenade/smokebomb
 
 /obj/item/storage/box/packet/phosphorus
 	name = "\improper WPDP grenade packet"
-	desc = "It contains three WPDP white phosphorus grenades."
+	desc = "它包含三枚WPDP白磷手榴弹。"
 	icon_state = "wpdp_packet"
 	item_state = "wpdp_packet"
 	content_type = /obj/item/explosive/grenade/phosphorus/weak
 
 /obj/item/storage/box/packet/phosphorus/strong
 	name = "\improper CCDP grenade packet"
-	desc = "It contains three CCDP chemical compound grenades."
+	desc = "它包含三枚CCDP化合物手榴弹。"
 	icon_state = "ccdp_packet"
 	item_state = "ccdp_packet"
 	content_type = /obj/item/explosive/grenade/phosphorus
 
 /obj/item/storage/box/packet/phosphorus/upp
 	name = "\improper Type 8 WP grenade packet"
-	desc = "It contains three type 8 white phosphorus grenades."
+	desc = "它包含三枚8型白磷手榴弹。"
 	content_type = /obj/item/explosive/grenade/phosphorus/upp
 
 /obj/item/storage/box/packet/hefa
 	name = "\improper HEFA grenade packet"
-	desc = "It contains three HEFA grenades. Don't tell the HEFA order."
+	desc = "它包含三枚HEFA手榴弹。别告诉HEFA命令。"
 	icon_state = "hefa_packet"
 	item_state = "hefa_packet"
 	content_type = /obj/item/explosive/grenade/high_explosive/frag
 
 /obj/item/storage/box/packet/hefa/toy
-	name = "toy HEFA grenade packet"
-	desc = "These little packets of joy were distributed in the 100th (Season 2) Issue of the Boots! magazine as commemorative rewards for subscribers. Nobody knows how anyone, at any point, never asked 'wait, is this a terrible idea?' during the process."
+	name = "玩具HEFA手榴弹包"
+	desc = "这些小小的欢乐包曾作为纪念品奖励，随《军靴！》杂志第100期（第二季）分发给订阅者。没人知道在这个过程中，为什么没有任何人在任何时刻问一句‘等等，这主意是不是糟透了？’。"
 	content_type = /obj/item/explosive/grenade/high_explosive/frag/toy
 
 /obj/item/storage/box/packet/foam
 	name = "\improper MFHS foam grenade packet"
-	desc = "It contains three MFHS metal-foam grenades."
+	desc = "它包含三枚MFHS金属泡沫手榴弹。"
 	icon_state = "mfhs_packet"
 	item_state = "mfhs_packet"
 	content_type = /obj/item/explosive/grenade/metal_foam
 
 /obj/item/storage/box/packet/m15
 	name = "\improper M15 fragmentation grenade packet"
-	desc = "It contains three M15 fragmentation grenades. Handle with care."
+	desc = "它包含三枚M15破片手榴弹。小心轻放。"
 	icon_state = "general_packet"
 	item_state = "m15_packet"
 	content_type = /obj/item/explosive/grenade/high_explosive/m15
 
 /obj/item/storage/box/packet/m15/rubber
-	name = "M15 rubber pellet grenade packet"
-	desc = "It contains three M15 rubber pellet grenades, for riot control or combat exercises."
+	name = "M15橡胶弹手榴弹包"
+	desc = "它包含三枚M15橡胶弹手榴弹，用于防暴或战斗演习。"
 	icon_state = "general_packet"
 	content_type = /obj/item/explosive/grenade/high_explosive/m15/rubber
 
 /obj/item/storage/box/packet/sebb
 	name = "\improper G2 Electroshock grenade packet"
-	desc = "It contains three G2 Electroshock grenades. Handle with care."
+	desc = "它包含三枚G2电击手榴弹。小心轻放。"
 	icon_state = "sebb_packet"
 	item_state = "sebb_packet"
 	content_type = /obj/item/explosive/grenade/sebb
 
 /obj/item/storage/box/packet/airburst_he
 	name = "\improper M74 airburst grenade packet"
-	desc = "It contains three M74 airburst fragmentation grenades. This end towards the enemy."
+	desc = "它包含三枚M74空爆破片手榴弹。此端朝向敌人。"
 	icon_state = "agmf_packet"
 	content_type = /obj/item/explosive/grenade/high_explosive/airburst
 
 /obj/item/storage/box/packet/airburst_incen
 	name = "\improper M74 airburst incendiary grenade packet"
-	desc = "It contains three M74 airburst incendiary grenades. This end towards the enemy."
+	desc = "它包含三枚M74空爆燃烧手榴弹。此端朝向敌人。"
 	icon_state = "agmi_packet"
 	item_state = "agmi_packet"
 	content_type = /obj/item/explosive/grenade/incendiary/airburst
 
 /obj/item/storage/box/packet/airburst_smoke
 	name = "\improper M74 airburst smoke grenade packet"
-	desc = "It contains three M74 airburst smoke grenades. This end towards the enemy."
+	desc = "内装三枚M74空爆烟雾弹。此端朝向敌人。"
 	icon_state = "agms_packet"
 	item_state = "agms_packet"
 	content_type = /obj/item/explosive/grenade/smokebomb/airburst
 
 /obj/item/storage/box/packet/rmc/he
 	name = "\improper R2175/A HEDP grenade packet"
-	desc = "It contains three R2175/A HEDP grenades. Handle with care."
+	desc = "内装三枚R2175/A HEDP手榴弹。小心轻放。"
 	icon_state = "hedp_packet"
 	item_state = "hedp_packet"
 	content_type = /obj/item/explosive/grenade/high_explosive/rmc
 
 /obj/item/storage/box/packet/rmc/incin
 	name = "\improper R2175/B HIDP grenade packet"
-	desc = "It contains three R2175/B HIDP grenades. Handle with care."
+	desc = "内装三枚R2175/B HIDP手榴弹。小心轻放。"
 	icon_state = "hidp_packet"
 	item_state = "hidp_packet"
 	content_type = /obj/item/explosive/grenade/incendiary/rmc

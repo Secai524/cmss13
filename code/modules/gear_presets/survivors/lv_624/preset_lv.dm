@@ -1,5 +1,5 @@
 /datum/equipment_preset/survivor/scientist/lv
-	name = "Survivor - LV-624 Archeologist"
+	name = "幸存者 - LV-624考古学家"
 	assignment = "LV-624 Archeologist"
 
 /datum/equipment_preset/survivor/scientist/lv/load_gear(mob/living/carbon/human/new_human)
@@ -14,8 +14,8 @@
 	..()
 
 /datum/equipment_preset/survivor/colonial_marshal/lv
-	name = "Survivor - LV-624 Colonial Marshal Deputy"
-	assignment = "CMB Deputy"
+	name = "幸存者 - LV-624殖民地法警副手"
+	assignment = "CMB副手"
 
 /datum/equipment_preset/survivor/colonial_marshal/lv/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform(new_human), WEAR_BODY)
@@ -25,7 +25,7 @@
 	..()
 
 /datum/equipment_preset/survivor/trucker/lv
-	name = "Survivor - LV-624 Cargo Technician"
+	name = "幸存者 - LV-624货舱技术员"
 	assignment = "LV-624 Cargo Technician"
 
 /datum/equipment_preset/survivor/trucker/lv/load_gear(mob/living/carbon/human/new_human)
@@ -39,7 +39,7 @@
 	..()
 
 /datum/equipment_preset/survivor/engineer/lv
-	name = "Survivor - LV-624 Engineer"
+	name = "幸存者 - LV-624工程师"
 	assignment = "LV-624 Engineer"
 
 /datum/equipment_preset/survivor/engineer/lv/load_gear(mob/living/carbon/human/new_human)
@@ -51,7 +51,7 @@
 	..()
 
 /datum/equipment_preset/survivor/chaplain/lv
-	name = "Survivor - LV-624 Priest"
+	name = "幸存者 - LV-624牧师"
 	assignment = "LV-624 Priest"
 
 /datum/equipment_preset/survivor/chaplain/lv/load_gear(mob/living/carbon/human/new_human)
@@ -62,7 +62,7 @@
 	..()
 
 /datum/equipment_preset/survivor/doctor/lv
-	name = "Survivor - LV-624 Emergency Medical Technician"
+	name = "幸存者 - LV-624紧急医疗技术员"
 	assignment = "LV-624 Emergency Medical Technician"
 	skills = /datum/skills/civilian/survivor/paramedic
 
@@ -78,7 +78,7 @@
 	..()
 
 /datum/equipment_preset/survivor/security/lv
-	name = "Survivor - LV-624 Security Guard"
+	name = "幸存者 - LV-624保安"
 	assignment = JOB_WY_SEC
 	job_title = JOB_WY_SEC
 	minimap_background = "background_goon"
@@ -99,7 +99,7 @@
 	..()
 
 /datum/equipment_preset/survivor/corporate/lv
-	name = "Survivor - LV-624 Corporate Liaison"
+	name = "幸存者 - LV-624公司联络官"
 	assignment = "LV-624 Corporate Liaison"
 
 /datum/equipment_preset/survivor/corporate/lv/load_gear(mob/living/carbon/human/new_human)

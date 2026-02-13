@@ -1,6 +1,6 @@
 /obj/effect/spawner/random
-	name = "Random Object"
-	desc = "This item type is used to spawn random objects at round-start."
+	name = "随机物品"
+	desc = "此物品类型用于在回合开始时生成随机物品。"
 	icon = 'icons/landmarks.dmi'
 	icon_state = "x3"
 	var/spawn_nothing_percentage = 0 // this variable determines the likelyhood that this random object will not spawn anything
@@ -37,8 +37,8 @@
 
 
 /obj/effect/spawner/random/tool
-	name = "Random Tool"
-	desc = "This is a random tool."
+	name = "随机工具"
+	desc = "这是一件随机工具。"
 	icon_state = "random_tool"
 
 /obj/effect/spawner/random/tool/item_to_spawn()
@@ -51,8 +51,8 @@
 
 
 /obj/effect/spawner/random/technology_scanner
-	name = "Random Scanner"
-	desc = "This is a random technology scanner."
+	name = "随机扫描仪"
+	desc = "这是一个随机科技扫描仪。"
 	icon = 'icons/obj/items/devices.dmi'
 	icon_state = "atmos"
 
@@ -66,8 +66,8 @@
 	))
 
 /obj/effect/spawner/random/powercell
-	name = "Random Powercell"
-	desc = "This is a random powercell."
+	name = "随机电池"
+	desc = "这是一个随机电池。"
 	icon_state = "random_cell_battery"
 
 /obj/effect/spawner/random/powercell/item_to_spawn()
@@ -79,8 +79,8 @@
 
 
 /obj/effect/spawner/random/bomb_supply
-	name = "Bomb Supply"
-	desc = "This is a random bomb supply."
+	name = "炸弹补给"
+	desc = "这是一个随机炸弹补给。"
 	icon = 'icons/obj/items/new_assemblies.dmi'
 	icon_state = "signaller"
 
@@ -92,8 +92,8 @@
 
 
 /obj/effect/spawner/random/toolbox
-	name = "Random Toolbox"
-	desc = "This is a random toolbox."
+	name = "随机工具箱"
+	desc = "这是一个随机工具箱。"
 	icon_state = "random_toolbox"
 
 /obj/effect/spawner/random/toolbox/item_to_spawn()
@@ -104,8 +104,8 @@
 
 
 /obj/effect/spawner/random/tech_supply
-	name = "Random Tech Supply"
-	desc = "This is a random piece of technology supplies."
+	name = "随机科技补给"
+	desc = "这是一件随机科技补给品。"
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "cell"
 	spawn_nothing_percentage = 50
@@ -124,8 +124,8 @@
 
 
 /obj/effect/spawner/random/attachment
-	name = "Random Attachment"
-	desc = "This is a random attachment."
+	name = "随机配件"
+	desc = "这是一个随机配件。"
 	icon_state = "random_attachment"
 
 /obj/effect/spawner/random/attachment/item_to_spawn()
@@ -142,8 +142,8 @@
 				prob(1);/obj/item/attachable/scope/mini)
 
 /obj/effect/spawner/random/balaclavas
-	name = "Random Balaclava"
-	desc = "This is a randomly chosen balaclava."
+	name = "随机巴拉克拉瓦头套"
+	desc = "这是一个随机选择的巴拉克拉瓦头套。"
 	icon_state = "loot_goggles"
 	spawn_nothing_percentage = 50
 
@@ -158,8 +158,8 @@
 
 ///If anyone wants to make custom sprites for this and the bala random spawner, be my guest.
 /obj/effect/spawner/random/facepaint
-	name = "Random Facepaint"
-	desc = "This is a randomly chosen facepaint."
+	name = "随机面部迷彩"
+	desc = "这是一个随机选择的面部迷彩。"
 	icon_state = "loot_goggles"
 	spawn_nothing_percentage = 50
 
@@ -172,8 +172,8 @@
 				prob(10);/obj/item/facepaint/skull)
 
 /obj/effect/spawner/random/supply_kit
-	name = "Random Supply Kit"
-	desc = "This is a random kit."
+	name = "随机补给包"
+	desc = "这是一个随机补给包。"
 	icon_state = "random_kit"
 
 /obj/effect/spawner/random/supply_kit/item_to_spawn()
@@ -191,8 +191,8 @@
 				prob(1);/obj/item/storage/box/kit/heavy_support)
 
 /obj/effect/spawner/random/toy
-	name = "Random Toy"
-	desc = "This is a random toy."
+	name = "随机玩具"
+	desc = "这是一个随机玩具。"
 	icon_state = "ipool"
 
 /obj/effect/spawner/random/toy/item_to_spawn()
@@ -235,8 +235,8 @@
 				/obj/item/clothing/head/collectable/tophat/super)
 
 /obj/effect/spawner/random/pills
-	name = "Pill Bottle Loot Spawner" // 60% chance for strong loot
-	desc = "This is a random pill bottle, for survivors. Remember to set spawn nothing percentage chance in instancing."
+	name = "药瓶战利品生成器" // 60% chance for strong loot
+	desc = "这是一个为幸存者准备的随机药瓶。请记得在实例化中设置无生成物的百分比几率。"
 	icon_state = "loot_pills"
 
 /obj/effect/spawner/random/pills/item_to_spawn()
@@ -264,8 +264,8 @@
 	icon_state = "loot_pills_80"
 
 /obj/effect/spawner/random/goggles
-	name = "Goggles Loot Spawner"
-	desc = "This is a random set of goggles, for survivors. Remember to set spawn nothing percentage chance in instancing."
+	name = "护目镜战利品生成器"
+	desc = "这是一套为幸存者准备的随机护目镜。记得在实例化中设置不生成物品的百分比几率。"
 	icon_state = "loot_goggles"
 
 /obj/effect/spawner/random/goggles/item_to_spawn()
@@ -289,8 +289,8 @@
 	icon_state = "loot_goggles_80"
 
 /obj/effect/spawner/random/sentry
-	name = "sentry Loot Spawner"
-	desc = "This is a random sentry, for survivors. Remember to set spawn nothing percentage chance in instancing."
+	name = "哨戒炮战利品生成器"
+	desc = "这是一台为幸存者准备的随机哨戒炮。记得在实例化中设置不生成物品的百分比几率。"
 	icon_state = "loot_sentry"
 
 /obj/effect/spawner/random/sentry/item_to_spawn()
@@ -318,8 +318,8 @@
 */
 
 /obj/effect/spawner/random/gun
-	name = "PARENT TYPE"
-	desc = "Don't spawn this."
+	name = "父类型"
+	desc = "不要生成这个。"
 	icon_state = "map_hazard"
 	var/scatter = TRUE
 	var/mags_max = 5
@@ -377,8 +377,8 @@
 */
 
 /obj/effect/spawner/random/gun/pistol
-	name = "pistol loot spawner"
-	desc = "Spawns a surv pistol and some ammo."
+	name = "手枪战利品生成器"
+	desc = "生成一把幸存者手枪和一些弹药。"
 	icon_state = "loot_pistol"
 	mags_max = 4
 	mags_min = 1
@@ -414,8 +414,8 @@
 	icon_state = "loot_pistol_80"
 
 /obj/effect/spawner/random/gun/rifle
-	name = "rifle loot spawner"
-	desc = "Spawns a surv rifle and some ammo."
+	name = "步枪战利品生成器"
+	desc = "生成一把幸存者步枪和一些弹药。"
 	icon_state = "loot_rifle"
 	guns = list(
 		/obj/item/weapon/gun/boltaction = /obj/item/ammo_magazine/rifle/boltaction,
@@ -448,8 +448,8 @@
 	icon_state = "loot_rifle_80"
 
 /obj/effect/spawner/random/gun/shotgun
-	name = "shotgun loot spawner"
-	desc = "Spawns a surv shotgun and some ammo."
+	name = "霰弹枪战利品生成器"
+	desc = "生成一把幸存者霰弹枪和一些弹药。"
 	icon_state = "loot_shotgun"
 	mags_min = 1
 	mags_max = 2
@@ -480,8 +480,8 @@
 	icon_state = "loot_shotgun_80"
 
 /obj/effect/spawner/random/gun/smg
-	name = "smg loot spawner"
-	desc = "Spawns a surv smg and some ammo."
+	name = "冲锋枪战利品生成器"
+	desc = "生成一把幸存者冲锋枪和一些弹药。"
 	icon_state = "loot_smg"
 	guns = list(
 		/obj/item/weapon/gun/smg/mp5 = /obj/item/ammo_magazine/smg/mp5,
@@ -512,8 +512,8 @@
 	icon_state = "loot_smg_80"
 
 /obj/effect/spawner/random/gun/special
-	name = "special gun loot spawner"
-	desc = "Spawns a surv special gun and some ammo."
+	name = "特殊武器战利品生成器"
+	desc = "生成一把幸存者特殊武器和一些弹药。"
 	icon_state = "loot_special"
 	guns = list(
 		/obj/item/weapon/gun/rifle/mar40/lmg = /obj/item/ammo_magazine/rifle/mar40/lmg,
@@ -538,8 +538,8 @@
 	icon_state = "loot_special_80"
 
 /obj/effect/spawner/random/gun/cmb
-	name = "cmb gun loot spawner"
-	desc = "spawns a surv cmb gun and some ammo"
+	name = "战斗刀战利品生成器"
+	desc = "生成一把幸存者战斗刀和一些弹药"
 	//icon_state = "loot_cmb"
 	icon_state = "loot_shotgun"
 	//TODO: re-add icons after removing for ASS test
@@ -576,8 +576,8 @@
 	icon_state = "loot_shotgun_80"
 
 /obj/effect/spawner/random/gun/corporate
-	name = "corporate gun loot spawner"
-	desc = "spawns a surv corporate gun and some ammo"
+	name = "公司武器战利品生成器"
+	desc = "生成一把幸存者公司武器和一些弹药"
 	//icon_state = "loot_corporate"
 	icon_state = "loot_smg"
 	guns = list(
@@ -609,8 +609,8 @@
 	icon_state = "loot_smg_80"
 
 /obj/effect/spawner/random/gun/civ
-	name = "civilian gun loot spawner"
-	desc = "spawns a surv civ gun and some ammo"
+	name = "民用武器战利品生成器"
+	desc = "生成一把幸存者民用武器和一些弹药"
 	mags_min = 1
 	mags_max = 3
 	//icon_state = "loot_civ"
@@ -650,8 +650,8 @@
 */
 
 /obj/effect/spawner/random/claymore
-	name = "Random Claymore"
-	desc = "This is a random deployed and active claymore."
+	name = "随机阔剑地雷"
+	desc = "这是一个随机部署并激活的阔剑地雷。"
 	icon_state = "claymore"
 
 /obj/effect/spawner/random/claymore/item_to_spawn()
@@ -682,8 +682,8 @@
 */
 
 /obj/effect/spawner/random/warhead
-	name = "random orbital warhead"
-	desc = "This is a random orbital warhead."
+	name = "随机轨道弹头"
+	desc = "这是一枚随机轨道弹头。"
 	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi'
 	icon_state = "ob_warhead_1"
 	spawn_on_roundstart = TRUE

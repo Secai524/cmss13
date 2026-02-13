@@ -1,5 +1,5 @@
 /datum/equipment_preset/twe
-	name = "Three World Empire"
+	name = "三世界帝国"
 	faction = FACTION_TWE
 	faction_group = list(FACTION_TWE, FACTION_MARINE)
 	origin_override = ORIGIN_TWE
@@ -29,10 +29,10 @@
 	new_human.b_eyes = colors[eye_color][3]
 	idtype = /obj/item/card/id/dogtag
 	if(new_human.gender == MALE)
-		new_human.h_style = pick("Crewcut", "Shaved Head", "Buzzcut", "Undercut", "Side Undercut", "Pvt. Joker", "Marine Fade", "Low Fade", "Medium Fade", "High Fade", "No Fade", "Coffee House Cut", "Flat Top",)
-		new_human.f_style = pick("5 O'clock Shadow", "Shaved", "Full Beard", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache", "7 O'clock Shadow", "7 O'clock Moustache",)
+		new_human.h_style = pick("平头", "光头", "板寸", "底层剃光", "侧边削短", "列兵 Joker", "陆战队员渐变", "低渐变", "中渐变", "高渐变", "无渐变", "咖啡馆发型", "平头",)
+		new_human.f_style = pick("五点钟胡茬", "剃光", "全脸胡须", "三点钟小胡子", "五点钟胡茬", "五点钟小胡子", "七点钟胡茬", "七点钟小胡子",)
 	else
-		new_human.h_style = pick("Ponytail 1", "Ponytail 2", "Ponytail 3", "Ponytail 4", "Pvt. Redding", "Pvt. Clarison", "Cpl. Dietrich", "Pvt. Vasquez", "Marine Bun", "Marine Bun 2", "Marine Flat Top",)
+		new_human.h_style = pick("马尾辫 1", "马尾辫 2", "马尾辫 3", "马尾辫 4", "列兵 Redding", "列兵 Clarison", "下士 Dietrich", "列兵 Vasquez", "陆战队员发髻", "陆战队员发髻 2", "陆战队员平顶",)
 
 /datum/equipment_preset/twe/royal_marine/load_id(mob/living/carbon/human/new_human, client/mob_client)
 	if(human_versus_human)
@@ -44,7 +44,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/twe/royal_marine
-	name = "Royal Marines Commando"
+	name = "皇家海军陆战队突击队"
 	assignment = "Royal Marine"
 	job_title = JOB_TWE_RMC_RIFLEMAN
 	var/human_versus_human = FALSE
@@ -55,7 +55,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/twe/royal_marine/standard
-	name = "TWE Royal Marine Commando (Rifleman)"
+	name = "TWE皇家海军陆战队突击队（步枪兵）"
 	paygrades = list(PAY_SHORT_RMC1 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "RMC"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -103,7 +103,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/full_rmc_aid, WEAR_R_STORE)
 
 /datum/equipment_preset/twe/royal_marine/standard/mre_pack
-	name = "TWE Royal Marine Commando (Gear Rifleman)" //finally useful preset
+	name = "TWE皇家海军陆战队突击队（装备步枪兵）" //finally useful preset
 
 /datum/equipment_preset/twe/royal_marine/standard/mre_pack/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/rmc/frame, WEAR_BACK)
@@ -120,7 +120,7 @@
 	skills = /datum/skills/rmc/specialist
 
 /datum/equipment_preset/twe/royal_marine/spec/marksman
-	name = "TWE Royal Marine Commando (Marksman)"
+	name = "TWE皇家海军陆战队突击队（精确射手）"
 	assignment = "Royal Marines Marksman"
 	job_title = JOB_TWE_RMC_MARKSMAN
 	minimap_icon = "rmc_marksman"
@@ -164,7 +164,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/twe/royal_marine/spec/breacher
-	name = "TWE Royal Marine Commando (Breacher)"
+	name = "TWE皇家海军陆战队突击队（破门手）"
 	role_comm_title = "RMC BRC"
 	assignment = "Royal Marines Breacher"
 	job_title = JOB_TWE_RMC_BREACHER
@@ -214,7 +214,7 @@
 
 //*****************************************************************************************************/
 /datum/equipment_preset/twe/royal_marine/spec/machinegun
-	name = "TWE Royal Marine Commando (Smartgunner)"
+	name = "TWE皇家海军陆战队突击队（智能枪手）"
 	role_comm_title = "RMC SG"
 	assignment = "Royal Marines Smartgunner"
 	job_title = JOB_TWE_RMC_SMARTGUNNER
@@ -263,7 +263,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/twe/royal_marine/medic
-	name = "TWE Royal Marine Commando (Medical Technician)"
+	name = "TWE皇家海军陆战队突击队（医疗技术员）"
 	paygrades = list(PAY_SHORT_RMC3 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "RMC MED"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -312,7 +312,7 @@
 
 //*****************************************************************************************************/
 /datum/equipment_preset/twe/royal_marine/team_leader
-	name = "TWE Royal Marine Commando (Teamleader)"
+	name = "TWE皇家海军陆战队突击队（组长）"
 	paygrades = list(PAY_SHORT_RMC4 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "RMC TL"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -365,7 +365,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/twe/royal_marine/lieuteant //they better say it Lef-tenant or they should be banned for LRP. More importantly this guy doesn't spawn in the ERT
-	name = "TWE Royal Marine Commando (Officer)"
+	name = "TWE皇家海军陆战队突击队（军官）"
 	paygrades = list(PAY_SHORT_RNO1A = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "RMC LT"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -417,7 +417,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/full_rmc_officer_aid, WEAR_R_STORE)
 
 /datum/equipment_preset/twe/royal_marine/lieuteant/service
-	name = "TWE Royal Marine Commando (SO)"
+	name = "TWE皇家海军陆战队突击队（SO）"
 
 /datum/equipment_preset/twe/royal_marine/lieuteant/service/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
@@ -434,7 +434,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator, WEAR_IN_L_STORE)
 
 /datum/equipment_preset/twe/royal_marine/captain //RMC Captain. Exists purely for admin spawns (you never know when you need a high ranking RMC Officer, eh?)
-	name = "TWE Royal Marine Commando (Captain)"
+	name = "TWE皇家海军陆战队突击队（上尉）"
 	paygrades = list(PAY_SHORT_RNO2 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "RMC CPT"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -485,7 +485,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/full_rmc_officer_aid, WEAR_R_STORE)
 
 /datum/equipment_preset/twe/royal_marine/captain/service
-	name = "TWE Royal Marine Commando (XO)"
+	name = "TWE皇家海军陆战队突击队（副指挥官）"
 
 /datum/equipment_preset/twe/royal_marine/captain/service/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
@@ -503,7 +503,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator, WEAR_IN_L_STORE)
 
 /datum/equipment_preset/twe/royal_marine/major //RMC Major. The top brass of the RMC forces in Neroid. Custom pistol coming soon(tm)
-	name = "TWE Royal Marine Commando (Major)"
+	name = "TWE皇家海军陆战队突击队（少校）"
 	paygrades = list(PAY_SHORT_RNO3 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "RMC MJR"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -554,7 +554,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/full_rmc_officer_aid, WEAR_R_STORE)
 
 /datum/equipment_preset/twe/royal_marine/major/service
-	name = "TWE Royal Marine Commando (CO)"
+	name = "TWE皇家海军陆战队突击队（指挥官）"
 
 /datum/equipment_preset/twe/royal_marine/major/service/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
@@ -577,7 +577,7 @@
 ///Hunting Grounds Royal Marines///
 
 /datum/equipment_preset/twe/royal_marine/standard/hunted
-	name = "TWE Royal Marine Commando (Hunted)"
+	name = "TWE皇家海军陆战队突击队（被猎杀）"
 	faction = FACTION_HUNTED_TWE
 
 /datum/equipment_preset/twe/royal_marine/standard/hunted/load_gear(mob/living/carbon/human/new_human)
@@ -615,7 +615,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/full_rmc_aid, WEAR_R_STORE)
 
 /datum/equipment_preset/twe/royal_marine/team_leader/hunted
-	name = "TWE Royal Marine Commando TL (Hunted)"
+	name = "TWE皇家海军陆战队突击队队长（被猎杀）"
 	faction = FACTION_HUNTED_TWE
 
 /datum/equipment_preset/twe/royal_marine/team_leader/hunted/load_gear(mob/living/carbon/human/new_human)
@@ -653,7 +653,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/full_rmc_aid, WEAR_R_STORE)
 
 /datum/equipment_preset/twe/royal_marine/lieuteant/hunted
-	name = "TWE Royal Marine Commando Officer (Hunted)"
+	name = "TWE皇家海军陆战队突击队军官（被猎杀）"
 	faction = FACTION_HUNTED_TWE
 
 /datum/equipment_preset/twe/royal_marine/lieuteant/hunted/load_gear(mob/living/carbon/human/new_human)

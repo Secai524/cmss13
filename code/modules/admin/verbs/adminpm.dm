@@ -33,7 +33,7 @@
 				targets["[client.mob.real_name](as [client.mob.name]) - [client]"] = client
 		else
 			targets["(No Mob) - [client]"] = client
-	var/target = input(src,"To whom shall we send a message?","Admin PM",null) as null|anything in sort_list(targets)
+	var/target = input(src,"向谁发送信息？","Admin PM",null) as null|anything in sort_list(targets)
 	cmd_admin_pm(targets[target],null)
 
 /client/proc/cmd_ahelp_reply(whom)
@@ -58,7 +58,7 @@
 
 	var/datum/admin_help/AH = C.current_ticket
 
-	var/message_prompt = "Message:"
+	var/message_prompt = "信息："
 
 	if(AH && !AH.marked_admin)
 		AH.mark_ticket()
@@ -138,7 +138,7 @@
 
 	//get message text, limit it's length.and clean/escape html
 	if(!msg)
-		msg = input(src,"Message:", "Private message to [recipient.admin_holder?.fakekey ? "an Administrator" : key_name(recipient, 0, 0)].") as message|null
+		msg = input(src,"信息：", "Private message to [recipient.admin_holder?.fakekey ? "an Administrator" : key_name(recipient, 0, 0)].") as message|null
 		msg = trim(msg)
 		if(!msg)
 			return

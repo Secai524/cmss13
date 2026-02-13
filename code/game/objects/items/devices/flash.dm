@@ -1,6 +1,6 @@
 /obj/item/device/flash
 	name = "flash"
-	desc = "Used for blinding and being an asshole. Recharges one flash every 30 seconds. You must wait 1 second between uses for the capacitor to recharge."
+	desc = "用于致盲和当个混蛋。每30秒充能一次闪光。每次使用后必须等待1秒让电容器重新充电。"
 	icon_state = "flash"
 	item_state = "flash_device1" //Replace me later (Yes sir! *Salute*)
 	throwforce = 5
@@ -28,14 +28,14 @@
 	if(broken)
 		. += "This one's bulb has popped. Oh well."
 	else
-		. += SPAN_NOTICE("[flashes_stored] / [max_flashes_stored] flashes remaining.")
+		. += SPAN_NOTICE("剩余闪光次数：[flashes_stored] / [max_flashes_stored]。")
 
 /obj/item/device/flash/proc/add_charge()
 	if(broken)
 		return
 	flashes_stored++
 	if(flashes_stored <= max_flashes_stored)
-		visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] \The [src] pings as it recharges!"), SPAN_NOTICE("You hear a ping."), 3)
+		visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] \The [src] 在充能时发出提示音！"), SPAN_NOTICE("You hear a ping."), 3)
 	flashes_stored = min(max_flashes_stored, floor(flashes_stored)) //sanity
 
 /obj/item/device/flash/proc/check_if_can_use_flash(mob/user) //checks for using the flash
@@ -44,7 +44,7 @@
 	var/mob/living/carbon/human/H = user
 
 	if(skilllock && !skillcheck(H, SKILL_POLICE, skilllock))
-		to_chat(user, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
+		to_chat(user, SPAN_WARNING("你似乎不知道如何使用\the [src]……"))
 		return FALSE
 
 	if(broken)
@@ -63,20 +63,20 @@
 		flashes_stored--
 		if(prob(10 - (flashes_stored*2))) //it has a 10% chance to break on the final flash
 			broken = TRUE
-			to_chat(user, SPAN_WARNING("The bulb has burnt out!"))
+			to_chat(user, SPAN_WARNING("灯泡烧坏了！"))
 			update_icon()
 			return
 		addtimer(CALLBACK(src, PROC_REF(add_charge)), recharge_time_per_flash)
-		to_chat(user, SPAN_DANGER("[flashes_stored] / [max_flashes_stored] flashes remaining."))
+		to_chat(user, SPAN_DANGER("剩余闪光次数：[flashes_stored] / [max_flashes_stored]。"))
 	else
-		to_chat(user, SPAN_WARNING("*click* *click*"))
+		to_chat(user, SPAN_WARNING("*咔哒* *咔哒*"))
 		playsound(src.loc, 'sound/weapons/gun_empty.ogg', 25, 1)
 		return
 
 	if(aoe)
 		playsound(src.loc, 'sound/weapons/flash.ogg', 25, 1)
 		flick("[icon_state]_flashing", src)
-		user.visible_message(SPAN_DANGER("[user] activates \the [src]'s bulb, emitting a brilliant light!"))
+		user.visible_message(SPAN_DANGER("[user] 激活了 \the [src] 的灯泡，发出刺眼的光芒！"))
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] in hand to flash everyone around them in [src.loc.name] ([src.loc.x],[src.loc.y],[src.loc.z])</font>")
 		msg_admin_attack("[key_name(user)] used the [src.name] to flash everyone around them in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 		for(var/mob/living/carbon/human/victim in oviewers(3, null))
@@ -106,11 +106,11 @@
 
 		if(!flashfail)
 			if(!isSilicon(M))
-				user.visible_message(SPAN_DANGER("[user] blinds [M] with \the [src]!"))
+				user.visible_message(SPAN_DANGER("[user] 用 \the [src] 闪瞎了 [M]！"))
 			else
-				user.visible_message(SPAN_WARNING("[user] overloads [M]'s sensors with \the [src]!"))
+				user.visible_message(SPAN_WARNING("[user] 用 \the [src] 过载了 [M] 的传感器！"))
 		else
-			user.visible_message(SPAN_WARNING("[user] fails to blind [M] with \the [src]!"))
+			user.visible_message(SPAN_WARNING("[user] 未能用 \the [src] 闪瞎 [M]！"))
 
 		if(!flashfail)
 			M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been flashed (attempt) with [src.name] by [key_name(user)]</font>")
@@ -127,11 +127,11 @@
 
 	if(check_if_can_use_flash(user))
 		if(isxeno(M))
-			to_chat(user, SPAN_WARNING("You can't find any eyes!"))
+			to_chat(user, SPAN_WARNING("你找不到任何眼睛！"))
 			return
 
 		if(M == user && user.a_intent != INTENT_HARM)
-			to_chat(user, SPAN_WARNING("You point \the [src] towards your eyes, but stop yourself from activating it at the last moment!"))
+			to_chat(user, SPAN_WARNING("你将\the [src]对准自己的眼睛，但在最后一刻停住了！"))
 			return
 
 		do_flash(M, user, FALSE)
@@ -164,5 +164,5 @@
 				var/mob/living/carbon/M = loc
 				if(M.flash_eyes())
 					M.apply_effect(10, WEAKEN)
-					M.visible_message(SPAN_DISARM("[M] is blinded by \the [src]!"))
+					M.visible_message(SPAN_DISARM("[M]被\the [src]致盲了！"))
 

@@ -5,7 +5,7 @@
 
 	var/method = 0 //0 means strict type detection while 1 means this type and all subtypes (IE: /obj/item with this set to 1 will set it to ALL items)
 
-	if(tgui_alert(usr, "Are you sure you'd like to mass-modify every instance of the [var_name] variable? This can break everything if you do not know what you are doing.", "Slow down, chief!", list("Yes", "No"), 60 SECONDS) != "Yes")
+	if(tgui_alert(usr, "确定要批量修改所有[var_name]变量的实例吗？如果操作不当，可能导致一切崩溃。", "Slow down, chief!", list("Yes", "No"), 60 SECONDS) != "Yes")
 		return
 
 	if(!check_rights(R_VAREDIT))
@@ -30,7 +30,7 @@
 
 		names = sort_list(names)
 
-		variable = tgui_input_list(src, "Which var?", "Var", names)
+		variable = tgui_input_list(src, "哪个变量？", "变量", names)
 	else
 		variable = var_name
 
@@ -40,7 +40,7 @@
 	var/var_value = O.vars[variable]
 
 	if(variable in GLOB.VVckey_edit)
-		to_chat(src, "It's forbidden to mass-modify ckeys. It'll crash everyone's client you dummy.", confidential = TRUE)
+		to_chat(src, "禁止批量修改ckey。你这蠢货，这会让所有人的客户端崩溃。", confidential = TRUE)
 		return
 	if(variable in GLOB.VVlocked)
 		if(!check_rights(R_DEBUG))
@@ -51,18 +51,18 @@
 	if(variable in GLOB.VVpixelmovement)
 		if(!check_rights(R_DEBUG))
 			return
-		var/prompt = tgui_alert(usr, "Editing this var may irreparably break tile gliding for the rest of the round. THIS CAN'T BE UNDONE", "DANGER", list("ABORT ", "Continue", " ABORT"))
+		var/prompt = tgui_alert(usr, "编辑此变量可能会不可逆地破坏本回合剩余时间的瓦片滑动效果。此操作无法撤销", "DANGER", list("ABORT ", "Continue", " ABORT"))
 		if (prompt != "Continue")
 			return
 
 	default = vv_get_class(variable, var_value)
 
 	if(isnull(default))
-		to_chat(src, "Unable to determine variable type.", confidential = TRUE)
+		to_chat(src, "无法确定变量类型。", confidential = TRUE)
 	else
-		to_chat(src, "Variable appears to be <b>[uppertext(default)]</b>.", confidential = TRUE)
+		to_chat(src, "变量显示为<b>[uppertext(default)]</b>。", confidential = TRUE)
 
-	to_chat(src, "Variable contains: [var_value]", confidential = TRUE)
+	to_chat(src, "变量包含：[var_value]", confidential = TRUE)
 
 	if(default == VV_NUM)
 		var/dir_text = ""
@@ -77,7 +77,7 @@
 				dir_text += "WEST"
 
 		if(dir_text)
-			to_chat(src, "If a direction, direction is: [dir_text]", confidential = TRUE)
+			to_chat(src, "如果是方向，方向为：[dir_text]", confidential = TRUE)
 
 	var/value = vv_get_value(default_class = default)
 	var/new_value = value["value"]
@@ -99,9 +99,9 @@
 
 	switch(class)
 		if(VV_RESTORE_DEFAULT)
-			to_chat(src, "Finding items...", confidential = TRUE)
+			to_chat(src, "正在查找物品...", confidential = TRUE)
 			var/list/items = get_all_of_type(O.type, method)
-			to_chat(src, "Changing [length(items)] items...", confidential = TRUE)
+			to_chat(src, "正在修改[length(items)]个物品...", confidential = TRUE)
 			for(var/thing in items)
 				if (!thing)
 					continue
@@ -117,7 +117,7 @@
 			var/pre_processing = new_value
 			var/unique
 			if (LAZYLEN(varsvars))
-				unique = tgui_alert(usr, "Process vars unique to each instance, or same for all?", "Variable Association", list("Unique", "Same"))
+				unique = tgui_alert(usr, "每个实例的进程变量是唯一的，还是所有实例共用？", "Variable Association", list("Unique", "Same"))
 				if(unique == "Unique")
 					unique = TRUE
 				else
@@ -125,9 +125,9 @@
 					for(var/V in varsvars)
 						new_value = replacetext(new_value,"\[[V]]","[O.vars[V]]")
 
-			to_chat(src, "Finding items...", confidential = TRUE)
+			to_chat(src, "正在查找物品...", confidential = TRUE)
 			var/list/items = get_all_of_type(O.type, method)
-			to_chat(src, "Changing [length(items)] items...", confidential = TRUE)
+			to_chat(src, "正在修改[length(items)]个物品...", confidential = TRUE)
 			for(var/thing in items)
 				if (!thing)
 					continue
@@ -144,7 +144,7 @@
 				CHECK_TICK
 
 		if (VV_NEW_TYPE)
-			var/many = tgui_alert(usr, "Create only one [value["type"]] and assign each or a new one for each thing", "How Many", list("One", "Many", "Cancel"))
+			var/many = tgui_alert(usr, "仅创建一个[value["type"]] and assign each or a new one for each thing", "How Many", list("One", "Many", "Cancel"))
 			if (many == "Cancel")
 				return
 			if (many == "Many")
@@ -153,9 +153,9 @@
 				many = FALSE
 
 			var/type = value["type"]
-			to_chat(src, "Finding items...", confidential = TRUE)
+			to_chat(src, "正在查找物品...", confidential = TRUE)
 			var/list/items = get_all_of_type(O.type, method)
-			to_chat(src, "Changing [length(items)] items...", confidential = TRUE)
+			to_chat(src, "正在修改[length(items)]个物品...", confidential = TRUE)
 			for(var/thing in items)
 				if (!thing)
 					continue
@@ -171,9 +171,9 @@
 				CHECK_TICK
 
 		else
-			to_chat(src, "Finding items...", confidential = TRUE)
+			to_chat(src, "正在查找物品...", confidential = TRUE)
 			var/list/items = get_all_of_type(O.type, method)
-			to_chat(src, "Changing [length(items)] items...", confidential = TRUE)
+			to_chat(src, "正在修改[length(items)]个物品...", confidential = TRUE)
 			for(var/thing in items)
 				if (!thing)
 					continue
@@ -187,13 +187,13 @@
 
 	var/count = rejected+accepted
 	if (!count)
-		to_chat(src, "No objects found", confidential = TRUE)
+		to_chat(src, "未找到对象", confidential = TRUE)
 		return
 	if (!accepted)
-		to_chat(src, "Every object rejected your edit", confidential = TRUE)
+		to_chat(src, "所有对象都拒绝了你的编辑", confidential = TRUE)
 		return
 	if (rejected)
-		to_chat(src, "[rejected] out of [count] objects rejected your edit", confidential = TRUE)
+		to_chat(src, "[rejected]个对象（共[count]个）拒绝了你的编辑", confidential = TRUE)
 
 	log_world("### MassVarEdit by [src]: [O.type] (A/R [accepted]/[rejected]) [variable]=[html_encode("[O.vars[variable]]")]([list2params(value)])")
 	log_admin("[key_name(src)] mass modified [original_name]'s [variable] to [O.vars[variable]] ([accepted] objects modified)")

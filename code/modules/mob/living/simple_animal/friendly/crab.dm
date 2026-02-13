@@ -1,14 +1,14 @@
 //Look Sir, free crabs!
 /mob/living/simple_animal/small/crab
 	name = "crab"
-	desc = "A hard-shelled crustacean. Seems quite content to lounge around all the time."
+	desc = "一种硬壳甲壳类动物。似乎很满足于整天闲躺着。"
 	icon_state = "crab"
 	icon_living = "crab"
 	icon_dead = "crab_dead"
 	mob_size = MOB_SIZE_SMALL
 	speak_emote = list("clicks")
 	emote_hear = list("clicks.")
-	emote_see = list("clacks.")
+	emote_see = list("发出咔哒声。")
 	speak_chance = 1
 	turns_per_move = 5
 	meat_type = /obj/item/reagent_container/food/snacks/meat
@@ -35,9 +35,9 @@
 
 //COFFEE! SQUEEEEEEEEE!
 /mob/living/simple_animal/small/crab/Coffee
-	name = "Coffee"
-	real_name = "Coffee"
-	desc = "It's Coffee, the other pet!"
+	name = "咖啡"
+	real_name = "咖啡"
+	desc = "这是咖啡，另一只宠物！"
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"
 	response_harm   = "stomps"

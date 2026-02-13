@@ -1,7 +1,7 @@
 //Research stuff to extract stuff from xenomorphs for goodies. In other words, to extract useful material that could be used to upgrade marines etc.
 
 /datum/surgery/xenomorph
-	name = "Experimental Harvesting Surgery"
+	name = "实验性器官采集手术"
 	invasiveness = list(SURGERY_DEPTH_SURFACE)
 	required_surgery_skill = SKILL_SURGERY_TRAINED
 	possible_locs = list("head")
@@ -18,18 +18,18 @@
 
 /datum/surgery/xenomorph/can_start(mob/user, mob/living/carbon/xenomorph/patient, obj/limb/L, obj/item/tool)
 	if(islarva(patient) || isfacehugger(patient))
-		to_chat(user, SPAN_DANGER("This organism is probably too small to have a mature organ worthy of extraction..."))
+		to_chat(user, SPAN_DANGER("这个生物体可能太小，没有值得提取的成熟器官..."))
 		return FALSE
 	if((patient.tier > 2 || isqueen(patient)) && !istype(tool, /obj/item/tool/surgery/scalpel/laser/advanced))
-		to_chat(user, SPAN_DANGER("Chitin of this kind is too thick for an ordinary tool, you would need something special."))
+		to_chat(user, SPAN_DANGER("这种几丁质外壳太厚，普通工具无法处理，你需要特殊工具。"))
 		return FALSE
 	if(patient.stat == DEAD && !patient.organ_removed)
 		return TRUE
 	return FALSE
 
 /datum/surgery_step/xenomorph/cut_exoskeleton
-	name = "Cut Exoskeleton Carapace"
-	desc = "cut the carapace open"
+	name = "切开外骨骼甲壳"
+	desc = "切开甲壳"
 	tools = list(
 		/obj/item/tool/surgery/scalpel/laser/advanced = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/tool/surgery/circular_saw = SURGERY_TOOL_MULT_IDEAL,
@@ -79,8 +79,8 @@
 		target.add_splatter_floor(get_turf(target.loc))
 
 /datum/surgery_step/xenomorph/open_exoskeleton
-	name = "Pry exoskeleton open"
-	desc = "open the exoskeleton in the incision"
+	name = "撬开外骨骼"
+	desc = "在切口处撬开外骨骼"
 	tools = SURGERY_TOOLS_PRY_ENCASED
 	time = 2 SECONDS
 	preop_sound = 'sound/surgery/retractor1.ogg'
@@ -124,8 +124,8 @@
 	return FALSE
 
 /datum/surgery_step/xenomorph/severe_connections
-	name = "Sever Organ Connections"
-	desc = "detach tubes and connections from organ"
+	name = "切断器官连接"
+	desc = "分离器官上的管状物和连接"
 	tools = list(
 		/obj/item/tool/surgery/scalpel = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/tool/surgery/scalpel/pict_system = SURGERY_TOOL_MULT_IDEAL,
@@ -175,8 +175,8 @@
 		target.add_splatter_floor(get_turf(target.loc))
 
 /datum/surgery_step/xenomorph/remove_organ
-	name = "Remove Xenomorph Organ"
-	desc = "grab a hold of it and pull the organ out"
+	name = "取出异形器官"
+	desc = "抓住并拉出器官"
 	accept_hand = TRUE
 	tools = list(
 		/obj/item/tool/surgery/hemostat = SURGERY_TOOL_MULT_IDEAL,

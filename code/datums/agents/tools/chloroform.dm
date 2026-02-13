@@ -1,6 +1,6 @@
 /obj/item/weapon/chloroform
 	name = "cloth"
-	desc = "A piece of cloth. It smells funny."
+	desc = "一块布。闻起来怪怪的。"
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "rag"
 
@@ -26,11 +26,11 @@
 		return . = ..()
 
 	if(M.dir != user.dir || M.loc != get_step(user, user.dir))
-		to_chat(user, SPAN_WARNING("You must be behind your target!"))
+		to_chat(user, SPAN_WARNING("你必须在你目标的背后！"))
 		return
 
-	user.visible_message(SPAN_DANGER("[user] grabs [M] and smothers their face with [src]."), SPAN_DANGER("You cover [M]'s face with [src]."))
-	to_chat(M, SPAN_HIGHDANGER("[user] grabs you and smothers [src] onto your face."))
+	user.visible_message(SPAN_DANGER("[user]抓住[M]并用[src]捂住了他们的脸。"), SPAN_DANGER("You cover [M]'s face with [src]."))
+	to_chat(M, SPAN_HIGHDANGER("[user]抓住你并将[src]捂在你脸上。"))
 
 	grab_stun(M, user)
 
@@ -38,7 +38,7 @@
 		remove_stun(M)
 		return
 
-	to_chat(M, SPAN_HIGHDANGER("[user] knocks you out!"))
+	to_chat(M, SPAN_HIGHDANGER("[user]将你击昏了！"))
 	M.apply_effect(knockout_strength, PARALYZE)
 
 	remove_stun(M)

@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(mob)
-	name   = "Misc Mobs"
+	name   = "杂项生物"
 	wait   = 2 SECONDS
 	flags  = SS_NO_INIT | SS_KEEP_TIMING
 	priority   = SS_PRIORITY_MOB

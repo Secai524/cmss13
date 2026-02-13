@@ -3,7 +3,7 @@
 
 GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_title)
 /obj/structure/filingcabinet/documentation
-	name = "documents cabinet"
+	name = "文件柜"
 	color = "#e78738"
 
 	/// The categories available from this cabinet. Manually populated.
@@ -31,11 +31,11 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 	return
 
 /obj/structure/filingcabinet/documentation/attack_hand(mob/user as mob)
-	var/choice = tgui_alert(user, "Do you wish to open the cabinet, or retrieve a document template?", "Action", list("Open", "Document"), 20 SECONDS)
+	var/choice = tgui_alert(user, "你要打开柜子，还是取一份文件模板？", "Action", list("Open", "Document"), 20 SECONDS)
 	switch(choice)
 		if("Open")
 			if(!length(contents))
-				to_chat(user, SPAN_NOTICE("[src] is empty."))
+				to_chat(user, SPAN_NOTICE("[src]是空的。"))
 				return
 
 			user.set_interaction(src)
@@ -47,16 +47,16 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 			return
 		if("Document")
 			if(remaining_documents <= 0)
-				to_chat(user, SPAN_WARNING("[src] has no remaining official forms!"))
+				to_chat(user, SPAN_WARNING("[src]里没有剩余的正式表格了！"))
 				return
 			give_document(user)
 			return
 
 /obj/structure/filingcabinet/documentation/proc/give_document(mob/user as mob)
 	if(remaining_documents <= 0)
-		to_chat(user, SPAN_WARNING("[src] has no remaining official forms!"))
+		to_chat(user, SPAN_WARNING("[src]里没有剩余的正式表格了！"))
 		return FALSE
-	var/chosen = tgui_input_list(usr, "What document do you need?", "Choose Document", available_documents)
+	var/chosen = tgui_input_list(usr, "你需要什么文件？", "Choose Document", available_documents)
 	var/selected = GLOB.prefab_papers[chosen].type
 	if(!user.Adjacent(src))
 		return
@@ -64,7 +64,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 	var/obj/item/paper/prefab/document = new selected
 	document.forceMove(user.loc)
 	user.put_in_hands(document)
-	to_chat(user, SPAN_NOTICE("You take [document] out of [src]."))
+	to_chat(user, SPAN_NOTICE("你从[src]中取出了[document]。"))
 	remaining_documents--
 	return TRUE
 
@@ -129,7 +129,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 // ########## Provost MP Forms  ########## \\
 
 /obj/item/paper/prefab/carbon/military_police
-	name = "Blank MP Document"
+	name = "空白宪兵文件"
 	document_category = PAPER_CATEGORY_MP
 	icon_state = "paper_uscm_words"
 
@@ -156,7 +156,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 // ########## Provost HC Forms  ########## \\
 
 /obj/item/paper/prefab/provost
-	name = "Blank Provost Document"
+	name = "空白宪兵长文件"
 	document_category = PAPER_CATEGORY_PROVOST
 	icon_state = "paper_uscm_words"
 
@@ -179,7 +179,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 // ########## USCM Standard Forms  ########## \\
 
 /obj/item/paper/prefab/uscm
-	name = "Blank USCM Document"
+	name = "空白USCM文件"
 	document_category = PAPER_CATEGORY_USCM
 	icon_state = "paper_uscm_words"
 
@@ -190,7 +190,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 // ########## USCM HC Forms  ########## \\
 
 /obj/item/paper/prefab/uscm_highcom
-	name = "Blank USCMHC Document"
+	name = "空白USCMHC文件"
 	document_category = PAPER_CATEGORY_USCM_HC
 	icon_state = "paper_uscm_words"
 
@@ -209,7 +209,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 // ########## Wey-Yu Liaison Forms  ########## \\
 
 /obj/item/paper/prefab/liaison
-	name = "Blank WY Document"
+	name = "空白维兰德文件"
 	document_category = PAPER_CATEGORY_LIAISON
 	icon_state = "paper_wy_words"
 
@@ -240,7 +240,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 // ########## Wey-Yu HC Forms  ########## \\
 
 /obj/item/paper/prefab/wey_yu
-	name = "Blank WYC Document"
+	name = "空白WYC文件"
 	document_category = PAPER_CATEGORY_WEYYU_HC
 	icon_state = "paper_wy_words"
 

@@ -3,10 +3,10 @@
 
 //Vehicle version of NanoMed
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/vehicle
-	name = "Vehicle NanoMed"
+	name = "车载纳米医疗机"
 	icon = 'icons/obj/vehicles/interiors/general.dmi'
 	icon_state = "nanomed"
-	desc = "A wall-mounted vendor containing medical supplies vital to survival."
+	desc = "一个壁挂式贩卖机，装有生存必需的医疗物资。"
 
 	unacidable = TRUE
 	unslashable = TRUE
@@ -24,7 +24,7 @@
 //MED APC version of WY Med, provides resupply for basic stuff. Provides a decent amount of cryobags for evacuating hugged marines.
 /obj/structure/machinery/cm_vending/sorted/medical/vehicle
 	name = "\improper Wey-Med Resupply Station"
-	desc = "A more compact vehicle version of the widely known Wey-Med Plus Medical Pharmaceutical dispenser. Designed to be a field resupply station for medical personnel. Provided by Wey-Yu Pharmaceuticals Division(TM)."
+	desc = "这是广为人知的维兰德医疗增强型药品分发器的更紧凑车载版本。设计用作医疗人员的战地补给站。由维兰德-汤谷制药部门提供。"
 	icon = 'icons/obj/vehicles/interiors/general.dmi'
 	icon_state = "med"
 
@@ -92,7 +92,7 @@
 //MED APC version of Blood Dispenser
 /obj/structure/machinery/cm_vending/sorted/medical/blood/vehicle
 	name = "\improper MM Blood Dispenser"
-	desc = "A Marine Med brand Blood Pack Dispenser for vehicles."
+	desc = "陆战队医疗品牌的车载血包分发器。"
 	icon = 'icons/obj/vehicles/interiors/general.dmi'
 
 	req_access = list()
@@ -109,7 +109,7 @@
 //Combined vehicle version of req guns and ammo vendors. Starts, basically, empty, but can become a resupply point if marines bother to stock it with ammo and weapons.
 /obj/structure/machinery/cm_vending/sorted/vehicle_supply
 	name = "\improper ColMarTech Automated Supply Vendor"
-	desc = "An automated supply rack hooked up to a vehicle storage of various firearms, explosives and ammunition types. Used for storing and transporting supplies between forward operating bases and the frontline."
+	desc = "一个连接至车载存储的自动化补给架，存储各种枪械、爆炸物和弹药类型。用于在前沿作战基地和前线之间存储和运输补给。"
 	icon = 'icons/obj/vehicles/interiors/general.dmi'
 	icon_state = "supply"
 	vendor_theme = VENDOR_THEME_USCM
@@ -151,13 +151,13 @@
 
 	being_restocked = TRUE
 
-	user.visible_message(SPAN_NOTICE("[user] starts stocking a bunch of supplies into \the [src]."),
+	user.visible_message(SPAN_NOTICE("[user]开始将一批补给品装入\the [src]。"),
 	SPAN_NOTICE("You start stocking a bunch of supplies into \the [src]."))
 
 	//done this way because for obj in range creates a list and goes through list even if items themselves being picked up or moved.
 	while(being_restocked)
 		if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, src))
-			user.visible_message(SPAN_NOTICE("[user] stopped stocking \the [src] with supplies."),
+			user.visible_message(SPAN_NOTICE("[user]停止向\the [src]装入补给品。"),
 			SPAN_NOTICE("You stop stocking \the [src] with supplies."))
 			being_restocked = FALSE
 			return
@@ -168,7 +168,7 @@
 				being_restocked = TRUE
 				break
 
-	user.visible_message(SPAN_NOTICE("[user] finishes stocking \the [src] with supplies."),
+	user.visible_message(SPAN_NOTICE("[user]完成了向\the [src]装入补给品。"),
 	SPAN_NOTICE("You finish stocking \the [src] with supplies."))
 	return
 
@@ -303,7 +303,7 @@
 	//storage items except few are exempted because checks would be huge and not worth it
 	if(istype(item_to_stock, /obj/item/storage) && !istype(item_to_stock, /obj/item/storage/box/m94) && !istype(item_to_stock, /obj/item/storage/large_holster/machete))
 		if(user)
-			to_chat(user, SPAN_WARNING("Can't restock \the [item_to_stock]."))
+			to_chat(user, SPAN_WARNING("无法补充\the [item_to_stock]。"))
 		return FALSE
 	var/list/R
 
@@ -375,7 +375,7 @@
 				qdel(item_to_stock)
 
 			if(user)
-				user.visible_message(SPAN_NOTICE("[user] stocks \the [src] with \a [R[1]]."),
+				user.visible_message(SPAN_NOTICE("[user]向\the [src]补充了\a [R[1]]。"),
 				SPAN_NOTICE("You stock \the [src] with \a [R[1]]."))
 
 			updateUsrDialog()
@@ -384,7 +384,7 @@
 
 /// Modified Restockable APC-based vendor for use by Req in the deployable tent
 /obj/structure/machinery/cm_vending/sorted/vehicle_supply/tent
-	desc = "An automated restockable storage vendor for use in organizing FOB supplies."
+	desc = "一个可自动补给的存储贩卖机，用于整理前线作战基地的补给品。"
 	req_access = list(ACCESS_MARINE_CARGO)
 	density = TRUE
 	explo_proof = TRUE // Deleted with the tent instead

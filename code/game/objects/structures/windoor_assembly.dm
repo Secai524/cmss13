@@ -12,7 +12,7 @@
 /obj/structure/windoor_assembly
 	icon = 'icons/obj/structures/doors/windoor.dmi'
 
-	name = "Windoor Assembly"
+	name = "风门组件"
 	icon_state = "l_windoor_assembly01"
 	anchored = FALSE
 	density = FALSE
@@ -52,7 +52,7 @@
 
 /obj/structure/windoor_assembly/attackby(obj/item/attacking_item, mob/living/user, list/mods)
 	if(construction_busy)
-		to_chat(user, SPAN_WARNING("Someone else is already working on [src]."))
+		to_chat(user, SPAN_WARNING("其他人已经在处理[src]了。"))
 		return
 
 	//I really should have spread this out across more states but thin little windoors are hard to sprite.
@@ -60,11 +60,11 @@
 		if(WINDOOR_STATE_01)
 			if(iswelder(attacking_item) && !anchored)
 				if(!HAS_TRAIT(attacking_item, TRAIT_TOOL_BLOWTORCH))
-					to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+					to_chat(user, SPAN_WARNING("你需要一把更强的喷枪！"))
 					return
 				var/obj/item/tool/weldingtool/welder = attacking_item
 				if(welder.remove_fuel(0,user))
-					user.visible_message("[user] dissassembles the windoor assembly.", "You start to dissassemble the windoor assembly.")
+					user.visible_message("[user]拆解了风门组件。", "You start to dissassemble the windoor assembly.")
 					playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 
 					construction_busy = TRUE
@@ -72,90 +72,90 @@
 						construction_busy = FALSE
 						if(QDELETED(src) || !welder.isOn())
 							return
-						to_chat(user, SPAN_NOTICE("You dissasembled the windoor assembly!"))
+						to_chat(user, SPAN_NOTICE("你已拆解风门组件！"))
 						deconstruct()
 					construction_busy = FALSE
 				else
-					to_chat(user, SPAN_NOTICE("You need more welding fuel to dissassemble the windoor assembly."))
+					to_chat(user, SPAN_NOTICE("你需要更多焊料来拆解风门组件。"))
 					return
 
 			//Wrenching an unsecure assembly anchors it in place. Step 4 complete
 			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_WRENCH) && !anchored)
 				var/area/area = get_area(attacking_item)
 				if(!area.allow_construction)
-					to_chat(user, SPAN_WARNING("[src] must be secured on a proper surface!"))
+					to_chat(user, SPAN_WARNING("[src]必须被固定在合适的表面上！"))
 					return
 				var/turf/open/turf = loc
 				if(!(istype(turf) && turf.allow_construction))
-					to_chat(user, SPAN_WARNING("[src] must be secured on a proper surface!"))
+					to_chat(user, SPAN_WARNING("[src]必须被固定在合适的表面上！"))
 					return
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-				user.visible_message("[user] secures the windoor assembly to the floor.", "You start to secure the windoor assembly to the floor.")
+				user.visible_message("[user]将风门组件固定在地板上。", "You start to secure the windoor assembly to the floor.")
 
 				construction_busy = TRUE
 				if(do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					construction_busy = FALSE
 					if(QDELETED(src))
 						return
-					to_chat(user, SPAN_NOTICE("You've secured the windoor assembly!"))
+					to_chat(user, SPAN_NOTICE("你已固定风门组件！"))
 					anchored = TRUE
 					if(secure)
-						name = "Secure Anchored Windoor Assembly"
+						name = "固定已锚定的风门组件"
 					else
-						name = "Anchored Windoor Assembly"
+						name = "已锚定的风门组件"
 				construction_busy = FALSE
 
 			//Unwrenching an unsecure assembly un-anchors it. Step 4 undone
 			else if(HAS_TRAIT(attacking_item, TRAIT_TOOL_WRENCH) && anchored)
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-				user.visible_message("[user] unsecures the windoor assembly to the floor.", "You start to unsecure the windoor assembly to the floor.")
+				user.visible_message("[user]解除了风门组件与地板的固定。", "You start to unsecure the windoor assembly to the floor.")
 
 				construction_busy = TRUE
 				if(do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					construction_busy = FALSE
 					if(QDELETED(src))
 						return
-					to_chat(user, SPAN_NOTICE("You've unsecured the windoor assembly!"))
+					to_chat(user, SPAN_NOTICE("你已解除了风门组件的固定！"))
 					anchored = FALSE
 					if(secure)
-						name = "Secure Windoor Assembly"
+						name = "固定风门组件"
 					else
-						name = "Windoor Assembly"
+						name = "风门组件"
 				construction_busy = FALSE
 
 			//Adding plasteel makes the assembly a secure windoor assembly. Step 2 (optional) complete.
 			else if(istype(attacking_item, /obj/item/stack/rods) && !secure)
 				var/obj/item/stack/rods/rods = attacking_item
 				if(rods.get_amount() < 4)
-					to_chat(user, SPAN_WARNING("You need more rods to do this."))
+					to_chat(user, SPAN_WARNING("你需要更多金属杆来完成此操作。"))
 					return
-				to_chat(user, SPAN_NOTICE("You start to reinforce the windoor with rods."))
+				to_chat(user, SPAN_NOTICE("你开始用金属杆加固风门。"))
 
 				construction_busy = TRUE
 				if(do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && !secure)
 					if(rods.use(4))
-						to_chat(user, SPAN_NOTICE("You reinforce the windoor."))
+						to_chat(user, SPAN_NOTICE("你加固了风门。"))
 						secure = "secure_"
 						if(anchored)
-							name = "Secure Anchored Windoor Assembly"
+							name = "固定已锚定的风门组件"
 						else
-							name = "Secure Windoor Assembly"
+							name = "固定风门组件"
 				construction_busy = FALSE
 
 			//Adding cable to the assembly. Step 5 complete.
 			else if(istype(attacking_item, /obj/item/stack/cable_coil) && anchored)
-				user.visible_message("[user] wires the windoor assembly.", "You start to wire the windoor assembly.")
+				user.visible_message("[user]给风门组件接线。", "You start to wire the windoor assembly.")
 
 				var/obj/item/stack/cable_coil/coil = attacking_item
 				construction_busy = TRUE
 				if(do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(coil.use(1))
-						to_chat(user, SPAN_NOTICE("You wire the windoor!"))
+						to_chat(user, SPAN_NOTICE("你给风门接好了线！"))
 						state = WINDOOR_STATE_02
 						if(secure)
-							name = "Secure Wired Windoor Assembly"
+							name = "固定已接线的风门组件"
 						else
-							name = "Wired Windoor Assembly"
+							name = "已接线的风门组件"
 				construction_busy = FALSE
 			else
 				. = ..()
@@ -164,7 +164,7 @@
 			//Removing wire from the assembly. Step 5 undone.
 			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_WIRECUTTERS) && !electronics)
 				playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
-				user.visible_message("[user] cuts the wires from the airlock assembly.", "You start to cut the wires from airlock assembly.")
+				user.visible_message("[user]切断了风门组件的电线。", "You start to cut the wires from airlock assembly.")
 
 				construction_busy = TRUE
 				if(do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -172,13 +172,13 @@
 					if(QDELETED(src))
 						return
 
-					to_chat(user, SPAN_NOTICE("You cut the windoor wires!"))
+					to_chat(user, SPAN_NOTICE("你切断了风门的电线！"))
 					new/obj/item/stack/cable_coil(get_turf(user), 1)
 					state = WINDOOR_STATE_01
 					if(secure)
-						name = "Secure Anchored Windoor Assembly"
+						name = "固定已锚定的风门组件"
 					else
-						name = "Anchored Windoor Assembly"
+						name = "已锚定的风门组件"
 				construction_busy = FALSE
 
 			//Adding airlock electronics for access. Step 6 complete.
@@ -187,7 +187,7 @@
 				if(board.fried)
 					return
 				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
-				user.visible_message("[user] installs the electronics into the airlock assembly.", "You start to install electronics into the airlock assembly.")
+				user.visible_message("[user]将电子元件安装到风门组件中。", "You start to install electronics into the airlock assembly.")
 
 				construction_busy = TRUE
 				if(do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -197,8 +197,8 @@
 
 					user.drop_held_item()
 					attacking_item.forceMove(src)
-					to_chat(user, SPAN_NOTICE("You've installed the airlock electronics!"))
-					name = "Near finished Windoor Assembly"
+					to_chat(user, SPAN_NOTICE("你已安装好风门电子元件！"))
+					name = "接近完成的风门组件"
 					electronics = attacking_item
 				else
 					construction_busy = FALSE
@@ -207,18 +207,18 @@
 			//Screwdriver to remove airlock electronics. Step 6 undone.
 			else if(HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER) && electronics)
 				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
-				user.visible_message("[user] removes the electronics from the airlock assembly.", "You start to uninstall electronics from the airlock assembly.")
+				user.visible_message("[user]从风门组件中拆除了电子元件。", "You start to uninstall electronics from the airlock assembly.")
 
 				construction_busy = TRUE
 				if(do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					construction_busy = FALSE
 					if(QDELETED(src) || !electronics)
 						return
-					to_chat(user, SPAN_NOTICE("You've removed the airlock electronics!"))
+					to_chat(user, SPAN_NOTICE("你已拆除风门电子元件！"))
 					if(secure)
-						name = "Secure Wired Windoor Assembly"
+						name = "固定已接线的风门组件"
 					else
-						name = "Wired Windoor Assembly"
+						name = "已接线的风门组件"
 					var/obj/item/circuitboard/airlock/airlock_board = electronics
 					electronics = null
 					airlock_board.forceMove(loc)
@@ -227,11 +227,11 @@
 			//Crowbar to complete the assembly, Step 7 complete.
 			else if(HAS_TRAIT(attacking_item, TRAIT_TOOL_CROWBAR))
 				if(!electronics)
-					to_chat(user, SPAN_DANGER("The assembly is missing electronics."))
+					to_chat(user, SPAN_DANGER("该组件缺少电子元件。"))
 					return
 				close_browser(user, "windoor_access")
 				playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
-				user.visible_message("[user] pries the windoor into the frame.", "You start prying the windoor into the frame.")
+				user.visible_message("[user]将风门撬入框架。", "You start prying the windoor into the frame.")
 
 				construction_busy = TRUE
 				if(do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -240,7 +240,7 @@
 						return
 
 					density = TRUE //Shouldn't matter but just incase
-					to_chat(user, SPAN_NOTICE("You finish the windoor!"))
+					to_chat(user, SPAN_NOTICE("你完成了风门的安装！"))
 
 					if(secure)
 						var/obj/structure/machinery/door/window/brigdoor/windoor = new /obj/structure/machinery/door/window/brigdoor(loc)
@@ -303,7 +303,7 @@
 	set src in oview(1)
 
 	if(anchored)
-		to_chat(usr, "It is fastened to the floor; therefore, you can't rotate it!")
+		to_chat(usr, "它已固定在地板上，因此你无法旋转它！")
 		return
 	setDir(turn(dir, 270))
 	update_icon()
@@ -316,11 +316,11 @@
 	set src in oview(1)
 
 	if(facing == "l")
-		to_chat(usr, "The windoor will now slide to the right.")
+		to_chat(usr, "风门现在将向右滑动。")
 		facing = "r"
 	else
 		facing = "l"
-		to_chat(usr, "The windoor will now slide to the left.")
+		to_chat(usr, "风门现在将向左滑动。")
 
 	update_icon()
 	return

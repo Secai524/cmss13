@@ -5,7 +5,7 @@
 	selection_class = "job_predator"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_WHITELISTED|ROLE_NO_ACCOUNT|ROLE_CUSTOM_SPAWN
 	flags_whitelist = WHITELIST_YAUTJA
-	supervisors = "Ancients"
+	supervisors = "远古"
 	gear_preset = /datum/equipment_preset/yautja/blooded
 
 	handle_spawn_and_equip = TRUE
@@ -52,10 +52,10 @@
 
 
 /datum/job/antag/predator/announce_entry_message(mob/new_predator, account, whitelist_status)
-	to_chat(new_predator, SPAN_NOTICE("You are <B>Yautja</b>, a great and noble hunter!"))
-	to_chat(new_predator, SPAN_NOTICE("Follow the guidance of your elders and experienced hunters."))
-	to_chat(new_predator, SPAN_NOTICE("Hunt at your discretion, yet be observant rather than violent."))
-	to_chat(new_predator, SPAN_NOTICE("Most importantly, remember that dying in battle is the highest honour a Yautja could ask for."))
+	to_chat(new_predator, SPAN_NOTICE("你是<B>铁血战士</b>，一位伟大而高贵的猎手！"))
+	to_chat(new_predator, SPAN_NOTICE("遵循你族中长者和经验丰富猎手的指引。"))
+	to_chat(new_predator, SPAN_NOTICE("自行决定狩猎，但要善于观察而非一味暴力。"))
+	to_chat(new_predator, SPAN_NOTICE("最重要的是，记住战死沙场是铁血战士所能追求的最高荣誉。"))
 
 /datum/job/antag/predator/generate_entry_conditions(mob/living/M, whitelist_status)
 	. = ..()
@@ -68,7 +68,7 @@
 	title = ERT_JOB_YOUNGBLOOD
 	selection_class = "ert_job_youngblood"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_NO_ACCOUNT|ROLE_CUSTOM_SPAWN
-	supervisors = "Ancients"
+	supervisors = "远古者"
 	flags_whitelist = NO_FLAGS
 	gear_preset = /datum/equipment_preset/yautja/non_wl
 
@@ -81,7 +81,7 @@
 		SSticker.mode.initialize_predator(hunter, ignore_pred_num = TRUE)
 
 /datum/timelock/young_blood
-	name = "Young Blood Roles"
+	name = "新血角色"
 
 /datum/timelock/young_blood/New(name, time_required, list/roles)
 	. = ..()

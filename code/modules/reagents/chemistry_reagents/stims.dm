@@ -31,7 +31,7 @@
 	animate(pixel_x = 0, pixel_y = 0, time = time_per_animate)
 
 /datum/reagent/stimulant/speed_stimulant
-	name = "Speed Stimulant"
+	name = "速度兴奋剂"
 	id = "speed_stimulant"
 	description = "A highly experimental performance enhancement stimulant. It is not addictive."
 	color = "#d4d42b" //rgb: 212, 212, 43
@@ -41,7 +41,7 @@
 	)
 
 /datum/reagent/stimulant/brain_stimulant
-	name = "Brain Stimulant"
+	name = "大脑兴奋剂"
 	id = "brain_stimulant"
 	description = "A highly experimental CNS stimulant."
 	color = "#7b23a9" //rgb: 123, 35, 169
@@ -52,7 +52,7 @@
 	)
 
 /datum/reagent/stimulant/redemption_stimulant
-	name = "Redemption Stimulant"
+	name = "救赎兴奋剂"
 	id = "redemption_stimulant"
 	overdose = LOW_REAGENTS_OVERDOSE
 	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL

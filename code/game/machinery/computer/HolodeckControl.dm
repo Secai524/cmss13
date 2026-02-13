@@ -1,6 +1,6 @@
 /obj/structure/machinery/computer/HolodeckControl
-	name = "Holodeck Control Computer"
-	desc = "A computer used to control a nearby holodeck."
+	name = "全息甲板控制电脑"
+	desc = "一台用于控制附近全息甲板的电脑。"
 	icon_state = "holocontrol"
 	var/area/linkedholodeck = null
 	var/area/target = null
@@ -21,7 +21,7 @@
 	dir = SOUTH
 
 /turf/open/floor/holofloor/grass
-	name = "lush grass"
+	name = "茂盛草地"
 	icon_state = "grass1"
 
 /turf/open/floor/holofloor/grass/Initialize(mapload, ...)
@@ -53,7 +53,7 @@
 
 /obj/structure/surface/table/holotable
 	name = "table"
-	desc = "A square piece of metal standing on four metal legs. It can not move."
+	desc = "一块由四条金属腿支撑的方形金属板。它无法移动。"
 	icon_state = "table"
 	density = TRUE
 	anchored = TRUE
@@ -72,36 +72,36 @@
 		if(ismob(G.grabbed_thing))
 			var/mob/M = G.grabbed_thing
 			if(user.grab_level < GRAB_AGGRESSIVE)
-				to_chat(user, SPAN_WARNING("You need a better grip to do that!"))
+				to_chat(user, SPAN_WARNING("你需要抓得更稳才能做到！"))
 				return
 			M.forceMove(loc)
 			M.apply_effect(5, WEAKEN)
-			user.visible_message(SPAN_DANGER("[user] puts [M] on the table."))
+			user.visible_message(SPAN_DANGER("[user]将[M]放在桌上。"))
 		return
 
 	if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
-		to_chat(user, "It's a holotable!  There are no bolts!")
+		to_chat(user, "这是全息桌！没有螺栓！")
 		return
 
 	. = ..()
 
 /obj/structure/surface/table/holotable/wood
 	name = "table"
-	desc = "A square piece of wood standing on four wooden legs. It can not move."
+	desc = "一块由四条木腿支撑的方形木板。它无法移动。"
 	icon_state = "woodtable"
 	table_prefix = "wood"
 
 /obj/item/clothing/gloves/boxing/hologlove
-	name = "boxing gloves"
-	desc = "Because you really needed another excuse to punch your crewmates."
+	name = "拳击手套"
+	desc = "因为你确实需要另一个借口来揍你的船员。"
 	icon_state = "boxing"
 	item_state = "boxing"
 
 /obj/structure/holowindow
-	name = "reinforced window"
+	name = "强化窗"
 	icon = 'icons/turf/walls/windows.dmi'
 	icon_state = "rwindow"
-	desc = "A window."
+	desc = "一扇窗户。"
 	density = TRUE
 	layer = WINDOW_LAYER
 	anchored = TRUE
@@ -118,12 +118,12 @@
 	name = "basketball"
 	icon_state = "basketball"
 	item_state = "basketball"
-	desc = "Here's your chance, do your dance at the Space Jam."
+	desc = "机会来了，在太空大灌篮秀出你的舞步。"
 	w_class = SIZE_LARGE //Stops people from hiding it in their bags/pockets
 
 /obj/structure/holohoop
-	name = "basketball hoop"
-	desc = "Boom, Shakalaka!"
+	name = "篮球框"
+	desc = "砰，沙卡拉卡！"
 	icon = 'icons/obj/structures/props/furniture/misc.dmi'
 	icon_state = "hoop"
 	anchored = TRUE
@@ -138,7 +138,7 @@
 		if(ismob(G.grabbed_thing))
 			var/mob/M = G.grabbed_thing
 			if(user.grab_level < GRAB_AGGRESSIVE)
-				to_chat(user, SPAN_WARNING("You need a better grip to do that!"))
+				to_chat(user, SPAN_WARNING("你需要抓得更稳才能做到！"))
 				return
 			M.forceMove(loc)
 			M.apply_effect(5, WEAKEN)
@@ -146,7 +146,7 @@
 				if(X.id == id)
 					X.score(side, 3)// 3 points for dunking a mob
 					// no break, to update multiple scoreboards
-			visible_message(SPAN_DANGER("[user] dunks [M] into [src]!"))
+			visible_message(SPAN_DANGER("[user]将[M]扣入[src]！"))
 		return
 	else if (istype(W, /obj/item) && get_dist(src,user)<2)
 		user.drop_inv_item_to_loc(W, loc)
@@ -154,7 +154,7 @@
 			if(X.id == id)
 				X.score(side)
 				// no break, to update multiple scoreboards
-		visible_message(SPAN_NOTICE("[user] dunks [W] into [src]!"))
+		visible_message(SPAN_NOTICE("[user]将[W]扣入[src]！"))
 		return
 
 /obj/structure/holohoop/BlockedPassDirs(atom/movable/mover, target_dir)
@@ -168,7 +168,7 @@
 				if(X.id == id)
 					X.score(side)
 					// no break, to update multiple scoreboards
-			visible_message(SPAN_NOTICE("Swish! \the [I] lands in \the [src]."), null, null, 3)
+			visible_message(SPAN_NOTICE("唰！\the [I]落入\the [src]。"), null, null, 3)
 		else
 			visible_message(SPAN_DANGER("\the [I] bounces off of \the [src]'s rim!"), null, null, 3)
 		return NO_BLOCKED_MOVEMENT
@@ -177,8 +177,8 @@
 
 
 /obj/structure/machinery/readybutton
-	name = "Ready Declaration Device"
-	desc = "This device is used to declare ready. If all devices in an area are ready, the event will begin!"
+	name = "就绪宣告装置"
+	desc = "此装置用于宣告就绪。若区域内所有装置均已就绪，事件将开始！"
 	icon = 'icons/obj/structures/machinery/monitors.dmi'
 	icon_state = "auth_off"
 	var/ready = 0
@@ -192,15 +192,15 @@
 	power_channel = POWER_CHANNEL_ENVIRON
 
 /obj/structure/machinery/readybutton/attack_remote(mob/user as mob)
-	to_chat(user, "The station AI is not to interact with these devices!")
+	to_chat(user, "空间站AI不得与这些设备交互！")
 	return
 
 /obj/structure/machinery/readybutton/attackby(obj/item/W as obj, mob/user as mob)
-	to_chat(user, "The device is a solid button, there's nothing you can do with it!")
+	to_chat(user, "该设备是一个实心按钮，你无法操作它！")
 
 /obj/structure/machinery/readybutton/attack_hand(mob/user as mob)
 	if(user.stat || inoperable())
-		to_chat(user, "This device is not powered.")
+		to_chat(user, "此装置未通电。")
 		return
 
 	currentarea = get_area(src.loc)
@@ -208,7 +208,7 @@
 		qdel(src)
 
 	if(eventstarted)
-		to_chat(usr, "The event has already begun!")
+		to_chat(usr, "事件已经开始了！")
 		return
 
 	ready = !ready
@@ -240,5 +240,5 @@
 		qdel(W)
 
 	for(var/mob/M in currentarea)
-		to_chat(M, "FIGHT!")
+		to_chat(M, "开火！")
 

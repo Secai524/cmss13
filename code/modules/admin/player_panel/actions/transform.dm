@@ -2,27 +2,27 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 	"Humanoid" = list(
 
 	list(
-	name = "Human",
+	name = "人类",
 	key = /mob/living/carbon/human,
 	color = "green"
 	),
 	list(
-	name = "Farwa",
+	name = "法瓦",
 	key = /mob/living/carbon/human/farwa,
 	color = "green"
 	),
 	list(
-	name = "Monkey",
+	name = "猴子",
 	key = /mob/living/carbon/human/monkey,
 	color = "green"
 	),
 	list(
-	name = "Neaera",
+	name = "尼艾拉",
 	key = /mob/living/carbon/human/neaera,
 	color = "green"
 	),
 	list(
-	name = "Yiren",
+	name = "伊伦",
 	key = /mob/living/carbon/human/yiren,
 	color = "green"
 	)
@@ -30,17 +30,17 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 
 	"Alien Tier 0" = list(
 	list(
-	name = "Larva",
+	name = "幼虫",
 	key = /mob/living/carbon/xenomorph/larva,
 	color = "purple"
 	),
 	list(
-	name = "Facehugger",
+	name = "抱脸虫",
 	key = /mob/living/carbon/xenomorph/facehugger,
 	color = "purple"
 	),
 	list(
-	name = "Lesser Drone",
+	name = "次级工蜂",
 	key = /mob/living/carbon/xenomorph/lesser_drone,
 	color = "purple"
 	)
@@ -155,17 +155,17 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 
 	"Miscellaneous" = list(
 	list(
-	name = "Cat",
+	name = "猫",
 	key = /mob/living/simple_animal/small/cat,
 	color = "orange"
 	),
 	list(
-	name = "Crab",
+	name = "蟹",
 	key = /mob/living/simple_animal/small/crab,
 	color = "orange"
 	),
 	list(
-	name = "Corgi",
+	name = "柯基犬",
 	key = /mob/living/simple_animal/big/corgi,
 	color = "orange"
 	),
@@ -179,7 +179,7 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 
 /datum/player_action/transform
 	action_tag = "mob_transform"
-	name = "Transform"
+	name = "转化"
 	permissions_required = R_SPAWN
 
 /datum/player_action/transform/act(client/user, mob/target, list/params)

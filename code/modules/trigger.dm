@@ -3,7 +3,7 @@
 	var/once = 1
 
 /obj/effect/step_trigger/message/memorial
-	message = "Please stand silently for a moment of reflection and respect."
+	message = "请静立片刻，以示反思与敬意。"
 	once = 0
 
 /obj/effect/step_trigger/message/Trigger(mob/M)

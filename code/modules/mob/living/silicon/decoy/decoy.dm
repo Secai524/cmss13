@@ -18,7 +18,7 @@
 /mob/living/silicon/decoy/ship_ai/Initialize()
 	. = ..()
 	name = MAIN_AI_SYSTEM
-	desc = "This is the artificial intelligence system for the [MAIN_SHIP_NAME]. Like many other military-grade AI systems, this one was manufactured by Weyland-Yutani."
+	desc = "这是[MAIN_SHIP_NAME]的人工智能系统。与许多其他军用级AI系统一样，这个也是由维兰德-汤谷制造的。"
 	ai_headset = new(src)
 	GLOB.ai_mob_list += src
 	real_name = MAIN_AI_SYSTEM

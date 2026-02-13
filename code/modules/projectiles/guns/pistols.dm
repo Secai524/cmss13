@@ -56,7 +56,7 @@
 
 /obj/item/weapon/gun/pistol/m4a3
 	name = "\improper M4A3 service pistol"
-	desc = "An M4A3 Service Pistol, once the standard issue sidearm of the Colonial Marines but has recently been replaced with the 88 Mod 4 combat pistol. Fires 9mm pistol rounds."
+	desc = "一把M4A3制式手枪，曾是殖民地海军陆战队的标准配发副武器，但最近已被88型4号战斗手枪取代。发射9毫米手枪弹。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/pistols.dmi'
 	icon_state = "m4a3"
 	item_state = "m4a3"
@@ -96,7 +96,7 @@
 
 /obj/item/weapon/gun/pistol/m4a3/m4a4
 	name = "\improper M4A4 service pistol"
-	desc = "An M4A4 service pistol, a standard issue sidearm of the USCM, an updated edition of the previous A3 model. Fires 9mm pistol rounds."
+	desc = "一把M4A4制式手枪，是USCM的标准配发副武器，是先前A3型号的升级版。发射9毫米手枪弹。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/pistols.dmi'
 	icon_state = "m4a4"
 	item_state = "m4a4"
@@ -113,7 +113,7 @@
 
 /obj/item/weapon/gun/pistol/m4a3/custom
 	name = "\improper M4A3 custom pistol"
-	desc = "This M4A3 sports a nickel finish and faux ivory grips. This one is a slightly customized variant produced by a well known gunsmith on Gateway Station. These are commonly purchased by low level enlisted men and junior officers who have nothing better to spend their salary on. Chambered in 9mm."
+	desc = "这把M4A3采用镀镍表面和仿象牙握把。这是由盖特威空间站一位知名枪匠生产的轻度定制型号。通常由那些薪水无处可花的低级士兵和初级军官购买。口径9毫米。"
 	icon_state = "m4a3c"
 	item_state = "m4a3c"
 
@@ -134,7 +134,7 @@
 
 /obj/item/weapon/gun/pistol/m1911
 	name = "\improper M1911 service pistol"
-	desc = "A timeless classic since the first World War, produced in limited amount by Armat Battlefield Systems after their aquisison of Colt's Manufacturing Company. Once standard issue for the USCM, now back order only. Chambered in .45 ACP."
+	desc = "自第一次世界大战以来的永恒经典，由阿玛特战场系统公司在收购柯尔特制造公司后限量生产。曾是USCM的标准配发武器，现已仅接受预订。口径.45 ACP。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/pistols.dmi'
 	icon_state = "m4a345"
 	item_state = "m4a3"
@@ -159,7 +159,7 @@
 
 /obj/item/weapon/gun/pistol/m1911/socom
 	name = "\improper M48A4 service pistol"
-	desc = "A timeless classic since the first World War, the M1911A1 has limited use with the USCM, and is often used as a sidearm by non-governmental bodies due to its reliability. This is a modernized version with an ammo counter and a polymer grip, designated M48A4. Chambered in .45 ACP."
+	desc = "自第一次世界大战以来的永恒经典，M1911A1在USCM中应用有限，因其可靠性常被非政府组织用作副武器。这是现代化版本，带有弹药计数器和聚合物握把，型号为M48A4。口径.45 ACP。"
 	icon_state = "m4a345_s"
 	item_state = "m4a3"
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
@@ -179,7 +179,7 @@
 
 /obj/item/weapon/gun/pistol/m1911/custom
 	name = "\improper M1911C service pistol"
-	desc = "A variant of the legendary M1911 pistol in use by USCM command elements. Based off the modernized M48A4, it has been modified to more closely resemble a classic M1911 in shape, while retaining modern technology features like a discreet ammo counter. Chambered in .45 ACP."
+	desc = "USCM指挥单位使用的传奇M1911手枪变体。基于现代化的M48A4，其外形经过修改以更接近经典M1911，同时保留了现代技术特征，如隐蔽的弹药计数器。口径.45 ACP。"
 	icon_state = "m1911c"
 	item_state = "m4a3"
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
@@ -207,7 +207,7 @@
 
 /obj/item/weapon/gun/pistol/b92fs
 	name = "\improper Beretta 92FS pistol"
-	desc = "A popular police firearm in the 20th century, often employed by hardboiled cops while confronting terrorists. A classic of its time, chambered in 9mm."
+	desc = "20世纪流行的警用枪械，常被硬汉警察用于对抗恐怖分子。时代的经典，口径9毫米。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/pistols.dmi'
 	icon_state = "b92fs"
 	item_state = "b92fs"
@@ -284,7 +284,7 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_3
 
 /obj/item/weapon/gun/pistol/heavy/co
-	name = "polished Desert Eagle"
+	name = "抛光沙漠之鹰"
 	icon_state = "c_deagle"
 	item_state = "c_deagle"
 	current_mag = /obj/item/ammo_magazine/pistol/heavy/super/highimpact
@@ -309,8 +309,8 @@
 		return ..()
 
 /obj/item/weapon/gun/pistol/heavy/co/gold
-	name = "golden vintage Desert Eagle"
-	desc = "A Desert Eagle anodized in gold and adorned with rosewood grips. The living definition of ostentatious, it's flashy, unwieldy, tremendously heavy, and kicks like a mule. But as a symbol of power, there's nothing like it."
+	name = "金色复古沙漠之鹰"
+	desc = "一把镀金阳极氧化并饰有红木握把的沙漠之鹰。炫耀的代名词，它华丽、笨重、极其沉重，后坐力如骡子踢腿。但作为权力的象征，无出其右。"
 	icon_state = "g_deagle"
 	item_state = "g_deagle"
 
@@ -320,7 +320,7 @@
 
 /obj/item/weapon/gun/pistol/np92
 	name = "\improper NP92 pistol"
-	desc = "The standard issue sidearm of the UPP. The NP92 is a small but powerful sidearm, well-liked by most it is issued to, although some prefer the weapon it was meant to replace, the Type 73. Takes 12 round magazines."
+	desc = "UPP的标准配发副武器。NP92是一款小巧但威力强大的副武器，深受大多数配发人员的喜爱，尽管有些人更喜欢它旨在取代的73式手枪。使用12发弹匣。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/pistols.dmi'
 	icon_state = "np92"
 	item_state = "np92"
@@ -355,7 +355,7 @@
 
 /obj/item/weapon/gun/pistol/np92/suppressed
 	name = "\improper NPZ92 pistol"
-	desc = "The NPZ92 is a version of the NP92 that includes an integrated suppressor, issued sparingly to Kommando units."
+	desc = "NPZ92是NP92的版本，包含一个集成消音器，限量配发给科曼多部队。"
 	icon_state = "npz92"
 	item_state = "npz92"
 	inherent_traits = list(TRAIT_GUN_SILENCED)
@@ -378,7 +378,7 @@
 
 /obj/item/weapon/gun/pistol/t73
 	name = "\improper Type 73 pistol"
-	desc = "The Type 73 is the once-standard issue sidearm of the UPP. Replaced by the NP92 in UPP use, it remains popular with veteran UPP troops due to familiarity and extra power. Due to an extremely large amount being produced, they tend to end up in the hands of forces attempting to arm themselves on a budget. Users include the Union of Progressive Peoples, Colonial Liberation Front, and just about any mercenary or pirate group out there."
+	desc = "73式曾是UPP的标准配发副武器。在UPP中被NP92取代，但由于熟悉感和额外威力，它仍然受UPP老兵欢迎。由于产量极大，它们往往最终落入那些预算有限、试图武装自己的部队手中。使用者包括进步人民联盟、殖民地解放阵线，以及几乎所有的雇佣兵或海盗团体。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/pistols.dmi'
 	icon_state = "tt"
 	item_state = "tt"
@@ -416,7 +416,7 @@
 
 /obj/item/weapon/gun/pistol/t73/leader
 	name = "\improper Type 74 pistol"
-	desc = "The Type 74 is the designation for a specially modified Type 73 with an integrated laser sight system, multiple lightning cuts to reduce weight in order to allow a higher pressure round to be used with the same recoil sping, and a more comfortable grip. Due to the adoption of the NP92, the Type 74 was produced in limited numbers, because of this it is typically only issued on request to high-ranking officers."
+	desc = "74式是经过特殊改装的73式型号，配有集成激光瞄准系统、多处减重闪电槽以允许使用更高膛压弹药而保持相同后坐力弹簧，以及更舒适的握把。由于NP92的采用，74式产量有限，因此通常仅应高级军官要求配发。"
 	icon_state = "ttb"
 	item_state = "ttb"
 	current_mag = /obj/item/ammo_magazine/pistol/t73_impact
@@ -460,7 +460,7 @@
 
 /obj/item/weapon/gun/pistol/kt42
 	name = "\improper KT-42 automag"
-	desc = "The KT-42 Automag is an archaic but reliable design, going back many decades. There have been many versions and variations, but the 42 is by far the most common. You can't go wrong with this handcannon."
+	desc = "KT-42自动马格南是一款古老但可靠的设计，可追溯至数十年前。有许多版本和变体，但42型是目前最常见的。这款手持火炮绝不会错。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/pistols.dmi'
 	icon_state = "kt42"
 	item_state = "kt42"
@@ -484,8 +484,8 @@
 //W62 'Whisper' //.22 plinker made by Spearhead Armory
 
 /obj/item/weapon/gun/pistol/holdout
-	name = "W62 'Whisper' pistol"
-	desc = "A small plinker in .22LR made by Spearhead. Designed for target shooting or quietly dealing with interplanetary vermin. Integrally suppressed and has tritium paint on the ironsights as standard."
+	name = "W62‘耳语’手枪"
+	desc = "一把由矛头公司制造的.22LR口径小型靶枪。设计用于打靶或安静地处理星际害虫。集成消音器，机械瞄具标配氚光涂料。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/pistols.dmi'
 	icon_state = "whisper"
 	item_state = "whisper"
@@ -527,8 +527,8 @@
 	update_attachable(S.slot)
 
 /obj/item/weapon/gun/pistol/holdout/custom
-	name = "W62 'Whisper' custom pistol"
-	desc = "A small plinker in .22LR made by Spearhead. Designed for target shooting or quietly dealing with interplanetary vermin. This one is custom fitted with ivory grip plates and a bluesteel finish."
+	name = "W62‘耳语’定制手枪"
+	desc = "一把由矛头公司制造的.22LR口径小型靶枪。设计用于打靶或安静地处理星际害虫。这把定制了象牙握把板和蓝钢表面处理。"
 	icon_state = "whisperc"
 	item_state = "whisperc"
 
@@ -537,8 +537,8 @@
 //AC71 'Action' // .380 ACP pocket pistol made by Spearhead Armory
 
 /obj/item/weapon/gun/pistol/action
-	name = "AC71 'Action' holdout pistol"
-	desc = "A .380 ACP pistol made by Spearhead Armory. Often used by the marshals as a backup weapon."
+	name = "AC71‘行动’隐藏手枪"
+	desc = "一把由矛头军械厂制造的.380 ACP手枪。常被执法官用作备用武器。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/pistols.dmi'
 	icon_state = "action"
 	item_state = "action"
@@ -577,8 +577,8 @@
 //-------------------------------------------------------
 //CLF HOLDOUT PISTOL
 /obj/item/weapon/gun/pistol/clfpistol
-	name = "D18 Hummingbird Pistol"
-	desc = "The D18 Hummingbird Pistol was produced in the mid-2170s as a cheap and concealable firearm for CLF Sleeper Cell agents for assassinations and ambushes, and is able to be concealed in shoes and workboots."
+	name = "D18蜂鸟手枪"
+	desc = "D18蜂鸟手枪于2170年代中期生产，作为CLF休眠特工用于刺杀和伏击的廉价隐蔽枪械，可藏于鞋和工作靴中。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/pistols.dmi'
 	icon_state = "m43"
 	item_state = "m43"
@@ -615,7 +615,7 @@
 
 /obj/item/weapon/gun/pistol/highpower
 	name = "\improper MK-45 'High-Power' Automagnum"
-	desc = "Originally designed as a replacement for the USCM's M44 combat revolver, it was rejected at the last minute by a committee, citing its need to be cocked after every loaded magazine to be too cumbersone and antiquated. The design has recently been purchased by the Henjin-Garcia company, refitted for .45 ACP, and sold to the Colonial Marshals and other various unscrupulous armed groups."
+	desc = "最初设计用于取代USCM的M44战斗左轮手枪，但在最后一刻被委员会否决，理由是每次装填弹匣后都需要扳动击锤，过于繁琐和过时。该设计最近被亨金-加西亚公司收购，改装为.45 ACP口径，并出售给殖民地执法官及其他各种无良武装团体。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/pistols.dmi'
 	icon_state = "highpower"
 	item_state = "highpower"
@@ -670,7 +670,7 @@
 
 /obj/item/weapon/gun/pistol/highpower/unique_action(mob/user)
 	if(!manually_slided)
-		user.visible_message(SPAN_NOTICE("[user] racks \the [src]'s slide."), SPAN_NOTICE("You rack \the [src]'s slide, loading the next bullet in."))
+		user.visible_message(SPAN_NOTICE("[user] 拉动了 \the [src] 的套筒。"), SPAN_NOTICE("You rack \the [src]'s slide, loading the next bullet in."))
 		manually_slided = TRUE
 		cock_gun(user, TRUE)
 		return
@@ -712,7 +712,7 @@
 //unimplemented
 /obj/item/weapon/gun/pistol/highpower/tactical
 	name = "\improper MK-44 SOCOM Automagnum"
-	desc = "Originally designed as a replacement for the USCM's M44 combat revolver, it was rejected at the last minute by a committee, citing its need to be cocked after every loaded magazine to be too cumbersone and antiquated. The design has recently been purchased by the Henjin-Garcia company and sold to the Colonial Marshals and other various unscrupulous armed groups. This one has a sleek, dark design."
+	desc = "最初设计作为USCM M44战斗左轮手枪的替代品，但在最后一刻被委员会否决，理由是每次装填弹匣后都需要手动击锤待击，被认为过于繁琐和过时。该设计最近被Henjin-Garcia公司收购，并出售给殖民地执法官及其他各种无良武装团体。这把枪采用光滑的深色设计。"
 	current_mag = /obj/item/ammo_magazine/pistol/highpower/black
 	icon_state = "highpower_tac"
 	item_state = "highpower_tac"
@@ -726,7 +726,7 @@
 
 /obj/item/weapon/gun/pistol/mod88
 	name = "\improper 88 Mod 4 combat pistol"
-	desc = "Standard issue USCM firearm. Also found in the hands of Weyland-Yutani PMC teams. Fires 9mm armor shredding rounds and is capable of 3-round burst."
+	desc = "USCM标准配发枪械。也常见于维兰德-汤谷PMC小队手中。发射9毫米穿甲弹，并具备三连发功能。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/pistols.dmi'
 	icon_state = "_88m4" // to comply with css standards
 	item_state = "_88m4"
@@ -790,7 +790,7 @@
 
 /obj/item/weapon/gun/pistol/es4
 	name = "\improper ES-4 electrostatic pistol"
-	desc = "A Weyland Corp manufactured less-than-lethal pistol. Originally manufactured in the 2080s, the ES-4 electrostatic pistol fires electrically-charged bullets with high accuracy, though its cost and constant need for cleaning makes it a rare sight."
+	desc = "一款维兰德公司制造的非致命手枪。最初于2080年代生产，ES-4静电手枪能高精度地发射带电子弹，但其高昂的成本和持续的清洁需求使其十分罕见。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/pistols.dmi'
 	icon_state = "es4"
 	item_state = "es4"
@@ -833,7 +833,7 @@
 
 /obj/item/weapon/gun/pistol/vp78
 	name = "\improper VP78 pistol"
-	desc = "A massive, formidable semi-automatic handgun chambered in 9mm squash-head rounds. A common sight throughout both UA and 3WE space, often held by both Weyland-Yutani PMC units and corporate executives. This weapon is also undergoing limited field testing as part of the USCM's next generation pistol program. The slide is engraved with the Weyland-Yutani logo reminding you who's really in charge."
+	desc = "一款庞大、令人生畏的半自动手枪，使用9毫米碎甲弹。在UA和3WE星域都很常见，通常由维兰德-汤谷PMC部队和公司高管持有。该武器也正作为USCM下一代手枪计划的一部分进行有限的实地测试。套筒上刻有维兰德-汤谷的标志，提醒你谁才是真正的主宰。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/pistols.dmi'
 	icon_state = "vp78"
 	item_state = "vp78"
@@ -899,7 +899,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 
 /obj/item/weapon/gun/pistol/auto9
 	name = "\improper Auto-9 pistol"
-	desc = "An advanced, select-fire machine pistol capable of three-round burst. Last seen cleaning up the mean streets of Detroit."
+	desc = "一款先进、可选射击模式的冲锋手枪，具备三连发功能。上次出现是在清理底特律的险恶街头。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/event.dmi'
 	icon_state = "auto9"
 	item_state = "auto9"
@@ -929,7 +929,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 
 /obj/item/weapon/gun/pistol/chimp
 	name = "\improper CHIMP70 pistol"
-	desc = "A powerful sidearm issued mainly to highly trained elite assassin necro-cyber-agents."
+	desc = "一款威力强大的手枪，主要配发给训练有素的精英刺客-赛博特工。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/event.dmi'
 	icon_state = "c70"
 	item_state = "c70"
@@ -961,7 +961,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 
 /obj/item/weapon/gun/pistol/smart
 	name = "\improper SU-6 Smartpistol"
-	desc = "The SU-6 Smartpistol is an IFF-based sidearm currently undergoing field testing in the Colonial Marines. Uses modified .45 ACP IFF bullets. Capable of firing in bursts."
+	desc = "SU-6智能手枪是一款基于敌我识别（IFF）的手枪，目前正在殖民地海军陆战队进行实地测试。使用改进的.45 ACP IFF子弹。能够进行连发射击。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/pistols.dmi'
 	icon_state = "smartpistol"
 	item_state = "smartpistol"
@@ -999,7 +999,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 
 /obj/item/weapon/gun/pistol/skorpion
 	name = "\improper CZ-81 machine pistol"
-	desc = "A robust, 20th century firearm that's a combination of pistol and submachinegun. Fires .32ACP caliber rounds from a 20-round magazine."
+	desc = "一款坚固耐用的20世纪枪械，结合了手枪和冲锋枪的特点。使用.32ACP口径子弹，弹匣容量20发。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/smgs.dmi'
 	icon_state = "skorpion"
 	item_state = "skorpion"
@@ -1050,7 +1050,7 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, underb
 
 /obj/item/weapon/gun/pistol/m10
 	name = "\improper M10 auto pistol"
-	desc = "The Armat Battlefield Systems M10 Auto Pistol, a compact, rapid-firing sidearm designed for close-quarters defense. With a 40-round magazine, it emphasizes fire rate over precision, providing effective suppressive fire in short-range engagements."
+	desc = "阿玛特战场系统M10自动手枪，一款紧凑、射速快的随身武器，专为近距离防御设计。配备40发弹匣，强调射速而非精度，能在短距离交火中提供有效的压制火力。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_map/classic/guns_obj.dmi'
 	icon_state = "m10"
 	item_state = "m10"
@@ -1111,7 +1111,7 @@ L54 service pistol
 
 /obj/item/weapon/gun/pistol/l54
 	name = "\improper L54 service pistol"
-	desc = "Standard issue semi-automatic service pistol of the NSPA. Chambered in 9mm, it is comparable to the popular M4A3 pistol utilized by the USCM."
+	desc = "NSPA标准配发的半自动制式手枪。使用9毫米口径，可与USCM广泛使用的M4A3手枪相媲美。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/pistols.dmi'
 	icon_state = "l54"
 	item_state = "l54"
@@ -1150,7 +1150,7 @@ L54 service pistol
 
 /obj/item/weapon/gun/pistol/l54_custom
 	name = "\improper L54 custom service pistol"
-	desc = "The standard-issue semi-automatic sidearm of the NSPA and various military forces within the Three World Empire, chambered in 9mm. Functionally comparable to the USCM’s M4A3 service pistol, this particular example has been heavily customized—featuring a gold-alloy finish, extended barrel with an integrated compensator, and precision-tuned internals, as well as an auto-eject feature. These modifications push its performance well beyond standard service specifications."
+	desc = "NSPA及三世界帝国内各军事力量的标准配发半自动手枪，使用9毫米口径。功能上可与USCM的M4A3制式手枪相媲美，但这把样品经过了深度定制——采用金合金涂层、带一体式制退器的加长枪管、精密调校的内部结构以及自动退壳功能。这些改装使其性能远超标准制式规格。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/pistols.dmi'
 	icon_state = "l54_custom"
 	item_state = "l54_custom"
@@ -1180,6 +1180,6 @@ L54 service pistol
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AUTO_EJECTOR
 
 /obj/item/weapon/gun/pistol/l54_custom/alt
-	desc = "The standard-issue semi-automatic sidearm of the NSPA and various military forces within the Three World Empire, chambered in 9mm. Functionally comparable to the USCM’s M4A3 service pistol, this particular example has been heavily customized—featuring a dark special-alloy finish, extended barrel with an integrated compensator, and precision-tuned internals, as well as an auto-eject feature. These modifications push its performance well beyond standard service specifications."
+	desc = "NSPA及三世界帝国内各军事力量的标准配发半自动手枪，使用9毫米口径。功能上可与USCM的M4A3制式手枪相媲美，但这把样品经过了深度定制——采用深色特种合金涂层、带一体式制退器的加长枪管、精密调校的内部结构以及自动退壳功能。这些改装使其性能远超标准制式规格。"
 	icon_state = "l54_custom_alt"
 	item_state = "l54_custom_alt"

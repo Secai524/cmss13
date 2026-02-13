@@ -4,7 +4,7 @@
 	name = "terminal"
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "term"
-	desc = "It's an underfloor wiring terminal for power equipment."
+	desc = "这是一个用于电力设备的暗线接线端子。"
 	level = 1
 	var/obj/structure/machinery/power/master = null
 	anchored = TRUE

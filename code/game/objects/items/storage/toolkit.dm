@@ -1,6 +1,6 @@
 /obj/item/storage/toolkit
-	name = "engineer kit"
-	desc = "An combat engineering toolkit intended to carry electrical and mechanical supplies into combat. With engineering training you can fit this in a backpack."
+	name = "工程师套件"
+	desc = "一个旨在将电气和机械补给品带入战场的战斗工程工具包。经过工程训练后，你可以将其放入背包。"
 	icon = 'icons/obj/items/storage/kits.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
@@ -62,7 +62,7 @@
 
 
 /obj/item/storage/toolkit/tactical
-	name = "breaching engineer kit"
+	name = "破门工程师套件"
 
 /obj/item/storage/toolkit/tactical/fill_preset_inventory()
 	new /obj/item/explosive/plastic/breaching_charge/rubber(src)

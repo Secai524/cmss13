@@ -47,7 +47,7 @@
 	. = ..()
 	if(. && istype(user) && skill_locked) //Let's check all that other stuff first.
 		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SNIPER)
-			to_chat(user, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
+			to_chat(user, SPAN_WARNING("你似乎不知道如何使用\the [src]……"))
 			return 0
 
 // Aimed shot ability
@@ -57,7 +57,7 @@
 
 /datum/action/item_action/specialist/aimed_shot/New(mob/living/user, obj/item/holder)
 	..()
-	name = "Aimed Shot"
+	name = "瞄准射击"
 	button.name = name
 	button.overlays.Cut()
 	var/image/IMG = image('icons/mob/hud/actions.dmi', button, "sniper_aim")
@@ -74,11 +74,11 @@
 		return
 	var/mob/living/carbon/human/H = owner
 	if(H.selected_ability == src)
-		to_chat(H, "You will no longer use [name] with [H.get_ability_mouse_name()].")
+		to_chat(H, "你将不再使用[H.get_ability_mouse_name()]来使用[name]。")
 		button.icon_state = "template"
 		H.set_selected_ability(null)
 	else
-		to_chat(H, "You will now use [name] with [H.get_ability_mouse_name()].")
+		to_chat(H, "你现在将使用[H.get_ability_mouse_name()]来使用[name]。")
 		if(H.selected_ability)
 			H.selected_ability.button.icon_state = "template"
 			H.set_selected_ability(null)
@@ -199,11 +199,11 @@
 		return FALSE
 
 	if(sniper_rifle != H.r_hand && sniper_rifle != H.l_hand)
-		to_chat(H, SPAN_WARNING("How do you expect to do this without your sniper rifle?"))
+		to_chat(H, SPAN_WARNING("没有狙击步枪你打算怎么做到？"))
 		return FALSE
 
 	if(!(sniper_rifle.flags_item & WIELDED))
-		to_chat(H, SPAN_WARNING("Your aim is not stable enough with one hand. Use both hands!"))
+		to_chat(H, SPAN_WARNING("单手瞄准不够稳定。用双手！"))
 		return FALSE
 
 	if(!sniper_rifle.in_chamber)
@@ -217,9 +217,9 @@
 	var/obj/projectile/P = sniper_rifle.in_chamber
 	// TODO: Make the below logic only occur in certain circumstances. Check goggles, maybe? -Kaga
 	if(check_shot_is_blocked(H, M, P))
-		to_chat(H, SPAN_WARNING("Something is in the way, or you're out of range!"))
+		to_chat(H, SPAN_WARNING("有东西挡路，或者超出射程！"))
 		if(cover_lose_focus)
-			to_chat(H, SPAN_WARNING("You lose focus."))
+			to_chat(H, SPAN_WARNING("你失去了专注。"))
 			COOLDOWN_START(sniper_rifle, aimed_shot_cooldown, sniper_rifle.aimed_shot_cooldown_delay * 0.5)
 		return FALSE
 
@@ -261,7 +261,7 @@
 
 /datum/action/item_action/specialist/toggle_laser/New(mob/living/user, obj/item/holder)
 	..()
-	name = "Toggle Tracker Laser"
+	name = "切换追踪激光"
 	button.name = name
 	button.overlays.Cut()
 	var/image/IMG = image('icons/mob/hud/actions.dmi', button, "sniper_toggle_laser_on")
@@ -285,7 +285,7 @@
 		return FALSE
 
 	if(owner.get_held_item() != sniper_rifle)
-		to_chat(owner, SPAN_WARNING("How do you expect to do this without the sniper rifle in your hand?"))
+		to_chat(owner, SPAN_WARNING("手里没有狙击步枪你打算怎么做到？"))
 		return FALSE
 	return TRUE
 
@@ -294,13 +294,13 @@
 	var/obj/item/weapon/gun/rifle/sniper/sniper_rifle = holder_item
 
 	if(owner.get_held_item() != sniper_rifle)
-		to_chat(owner, SPAN_WARNING("How do you expect to do this without the sniper rifle in your hand?"))
+		to_chat(owner, SPAN_WARNING("手里没有狙击步枪你打算怎么做到？"))
 		return FALSE
 	sniper_rifle.toggle_laser(owner, src)
 
 /obj/item/weapon/gun/rifle/sniper/proc/toggle_laser(mob/user, datum/action/toggling_action)
 	enable_aimed_shot_laser = !enable_aimed_shot_laser
-	to_chat(user, SPAN_NOTICE("You flip a switch on \the [src] and [enable_aimed_shot_laser ? "enable" : "disable"] its targeting laser."))
+	to_chat(user, SPAN_NOTICE("你拨动了\the [src]上的一个开关，并且[enable_aimed_shot_laser ? "enable" : "disable"] its targeting laser."))
 	playsound(user, 'sound/machines/click.ogg', 15, TRUE)
 	if(!toggling_action)
 		toggling_action = locate(/datum/action/item_action/specialist/toggle_laser) in actions
@@ -323,7 +323,7 @@
 
 /obj/item/weapon/gun/rifle/sniper/M42A
 	name = "\improper M42A scoped rifle"
-	desc = "A heavy sniper rifle manufactured by Armat Systems. It has a scope system and fires armor penetrating rounds out of a 15-round magazine.\n'Peace Through Superior Firepower'"
+	desc = "阿玛特系统制造的重型狙击步枪。配备瞄准镜系统，使用15发弹匣发射穿甲弹。\n'以优势火力求和平'"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/marksman_rifles.dmi'
 	icon_state = "m42a"
 	item_state = "m42a"
@@ -403,7 +403,7 @@
 
 /obj/item/weapon/gun/rifle/sniper/XM43E1
 	name = "\improper XM43E1 experimental anti-materiel rifle"
-	desc = "An experimental anti-materiel rifle produced by Armat Systems, recently reacquired from the deep storage of an abandoned prototyping facility. This one in particular is currently undergoing field testing. Chambered in 10x99mm Caseless.\n\nThis weapon can punch through thin metal plating and walls, though it'll lose most of its lethality in the process. It can even work for demolitions, with experienced users known to disassemble segments of solid, reinforced walls in the field with just a single standard magazine of 10x99mm. In lieu of explosives or an engineer, they instead use each of the 8 shots to break down vital structural supports, taking the wall apart in the process."
+	desc = "阿玛特系统生产的实验性反器材步枪，最近从一个废弃原型设施的深层存储中重新获得。这一把目前正在进行实地测试。使用10x99mm无壳弹。\n\n该武器可以击穿薄金属板和墙壁，但在此过程中会失去大部分杀伤力。它甚至可用于爆破，有经验的用户仅用一个10x99mm标准弹匣（8发）就能在战场上拆解坚固的加固墙段。在没有炸药或工程师的情况下，他们利用每一发子弹破坏关键的结构支撑，从而拆毁墙壁。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/marksman_rifles.dmi'
 	icon_state = "xm43e1"
 	item_state = "xm43e1"
@@ -474,14 +474,14 @@
 /obj/item/weapon/gun/rifle/sniper/M42B/afterattack(atom/target, mob/user, flag)
 	if(able_to_fire(user))
 		if(get_dist(target,user) <= 8)
-			to_chat(user, SPAN_WARNING("The [src.name] beeps, indicating that the target is within an unsafe proximity to the rifle, refusing to fire."))
+			to_chat(user, SPAN_WARNING("[src.name]发出哔哔声，表示目标距离步枪过近，拒绝开火。"))
 			return
 		else ..()
 */
 
 /obj/item/weapon/gun/rifle/sniper/elite
 	name = "\improper M42C anti-tank sniper rifle"
-	desc = "A high-end superheavy magrail sniper rifle from Weyland-Armat chambered in a specialized variant of the heaviest ammo available, 10x99mm Caseless. This weapon requires a specialized armor rig for recoil mitigation in order to be used effectively."
+	desc = "维兰德-阿玛特生产的高端超重型磁轨狙击步枪，使用现有最重型弹药10x99mm无壳弹的特制型号。此武器需要专用的装甲背心以抵消后坐力才能有效使用。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/marksman_rifles.dmi'
 	icon_state = "m42c"
 	item_state = "m42c" //NEEDS A TWOHANDED STATE
@@ -531,7 +531,7 @@
 	if(.)
 		var/mob/living/carbon/human/PMC_sniper = user
 		if(PMC_sniper.body_position == STANDING_UP && !istype(PMC_sniper.wear_suit,/obj/item/clothing/suit/storage/marine/smartgunner/veteran/pmc) && !istype(PMC_sniper.wear_suit,/obj/item/clothing/suit/storage/marine/veteran))
-			PMC_sniper.visible_message(SPAN_WARNING("[PMC_sniper] is blown backwards from the recoil of the [src.name]!"),SPAN_HIGHDANGER("You are knocked prone by the blowback!"))
+			PMC_sniper.visible_message(SPAN_WARNING("[PMC_sniper]被[src.name]的后坐力震得向后倒去！"),SPAN_HIGHDANGER("You are knocked prone by the blowback!"))
 			step(PMC_sniper,turn(PMC_sniper.dir,180))
 			PMC_sniper.KnockDown(5)
 			PMC_sniper.Stun(5)
@@ -540,7 +540,7 @@
 
 /obj/item/weapon/gun/rifle/sniper/svd
 	name = "\improper Type 88 designated marksman rifle"
-	desc = "The standard issue DMR of the UPP, the Type 88 is sought after by competitive shooters and terrorists alike for its high degree of accuracy. Typically loaded with armor-piercing 7.62x54mmR rounds in a 12 round magazine."
+	desc = "UPP的标准制式精确射手步枪，88式因其高精度而受到竞技射手和恐怖分子的青睐。通常使用12发弹匣装载7.62x54mmR穿甲弹。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/marksman_rifles.dmi'
 	icon_state = "type88"
 	item_state = "type88"

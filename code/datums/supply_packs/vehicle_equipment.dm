@@ -1,5 +1,5 @@
 /datum/supply_packs/arcsentry_replacement
-	name = "Replacement RE700 Rotary Cannon (x1)"
+	name = "备用RE700转轮机炮（x1）"
 	contains = list(
 		/obj/item/hardpoint/primary/arc_sentry,
 	)

@@ -9,25 +9,25 @@ GLOBAL_VAR_INIT(security_level, SEC_LEVEL_GREEN)
 		switch(level)
 			if(SEC_LEVEL_GREEN)
 				if(announce)
-					ai_announcement("Attention: Security level lowered to GREEN - all clear.", no_sound ? null : 'sound/AI/code_green.ogg', log)
+					ai_announcement("注意：安全等级已降至绿色——威胁解除。", no_sound ? null : 'sound/AI/code_green.ogg', log)
 				GLOB.security_level = SEC_LEVEL_GREEN
 
 			if(SEC_LEVEL_BLUE)
 				if(GLOB.security_level < SEC_LEVEL_BLUE)
 					if(announce)
-						ai_announcement("Attention: Security level elevated to BLUE - potentially hostile activity on board.", no_sound ? null : 'sound/AI/code_blue_elevated.ogg', log)
+						ai_announcement("注意：安全等级已提升至蓝色——舰上可能存在敌对活动。", no_sound ? null : 'sound/AI/code_blue_elevated.ogg', log)
 				else
 					if(announce)
-						ai_announcement("Attention: Security level lowered to BLUE - potentially hostile activity on board.", no_sound ? null : 'sound/AI/code_blue_lowered.ogg', log)
+						ai_announcement("注意：安全等级已降至蓝色——舰上可能存在敌对活动。", no_sound ? null : 'sound/AI/code_blue_lowered.ogg', log)
 				GLOB.security_level = SEC_LEVEL_BLUE
 
 			if(SEC_LEVEL_RED)
 				if(GLOB.security_level < SEC_LEVEL_RED)
 					if(announce)
-						ai_announcement("Attention: Security level elevated to RED - there is an immediate threat to the ship.", no_sound ? null : 'sound/AI/code_red_elevated.ogg', log)
+						ai_announcement("注意：安全等级已提升至红色——舰船面临直接威胁。", no_sound ? null : 'sound/AI/code_red_elevated.ogg', log)
 				else
 					if(announce)
-						ai_announcement("Attention: Security level lowered to RED - there is an immediate threat to the ship.", no_sound ? null : 'sound/AI/code_red_lowered.ogg', log)
+						ai_announcement("注意：安全等级已降至红色——舰船面临直接威胁。", no_sound ? null : 'sound/AI/code_red_lowered.ogg', log)
 				GLOB.security_level = SEC_LEVEL_RED
 
 			if(SEC_LEVEL_DELTA)

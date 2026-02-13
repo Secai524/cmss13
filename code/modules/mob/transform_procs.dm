@@ -43,7 +43,7 @@
 	if(mind)
 		mind.transfer_to(O)
 
-	to_chat(O, "<B>You are now [O]. </B>")
+	to_chat(O, "<B>你现在是[O]。</B>")
 
 	qdel(src)
 	qdel(animation)
@@ -110,17 +110,17 @@
 	if(new_xeno.client)
 		new_xeno.client.change_view(GLOB.world_view_size)
 
-	to_chat(new_xeno, "<B>You are now an alien.</B>")
+	to_chat(new_xeno, "<B>你现在是一只异形。</B>")
 	qdel(src)
 	return
 
 /mob/living/carbon/human/Animalize()
 
 	var/list/mobtypes = typesof(/mob/living/simple_animal)
-	var/mobpath = tgui_input_list(usr, "Which type of mob should [src] turn into?", "Choose a type", mobtypes)
+	var/mobpath = tgui_input_list(usr, "[src]应转变为哪种生物类型？", "Choose a type", mobtypes)
 
 	if(!safe_animal(mobpath))
-		to_chat(usr, SPAN_DANGER("Sorry but this mob type is currently unavailable."))
+		to_chat(usr, SPAN_DANGER("抱歉，此生物类型当前不可用。"))
 		return
 
 	if(monkeyizing)
@@ -145,17 +145,17 @@
 	new_mob.a_intent = INTENT_HARM
 
 
-	to_chat(new_mob, "You suddenly feel more... animalistic.")
+	to_chat(new_mob, "你突然感到自己变得更加... 兽性了。")
 	QDEL_IN(src, 1)
 	return
 
 /mob/proc/Animalize()
 
 	var/list/mobtypes = typesof(/mob/living/simple_animal)
-	var/mobpath = tgui_input_list(usr, "Which type of mob should [src] turn into?", "Choose a type", mobtypes)
+	var/mobpath = tgui_input_list(usr, "[src]应转变为哪种生物类型？", "Choose a type", mobtypes)
 
 	if(!safe_animal(mobpath))
-		to_chat(usr, SPAN_DANGER("Sorry but this mob type is currently unavailable."))
+		to_chat(usr, SPAN_DANGER("抱歉，此生物类型当前不可用。"))
 		return
 
 	var/mob/new_mob = new mobpath(src.loc)
@@ -164,7 +164,7 @@
 	if(new_mob.client)
 		new_mob.client.change_view(GLOB.world_view_size)
 	new_mob.a_intent = INTENT_HARM
-	to_chat(new_mob, "You feel more... animalistic.")
+	to_chat(new_mob, "你感到自己变得更加... 兽性了。")
 
 	qdel(src)
 

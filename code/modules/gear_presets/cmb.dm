@@ -1,5 +1,5 @@
 /datum/equipment_preset/cmb
-	name = "Colonial Marshal"
+	name = "殖民地执法官"
 	faction = FACTION_MARSHAL
 	faction_group = list(FACTION_MARSHAL, FACTION_MARINE)
 	job_title = JOB_CMB
@@ -37,10 +37,10 @@
 	new_human.g_eyes = colors[eye_color][2]
 	new_human.b_eyes = colors[eye_color][3]
 	if(new_human.gender == MALE)
-		new_human.h_style = pick("Crewcut", "Shaved Head", "Buzzcut", "Undercut", "Side Undercut", "Pvt. Joker", "Marine Fade", "Low Fade", "Medium Fade", "High Fade", "No Fade", "Coffee House Cut", "Flat Top",)
-		new_human.f_style = pick("5 O'clock Shadow", "Shaved", "Full Beard", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache", "7 O'clock Shadow", "7 O'clock Moustache",)
+		new_human.h_style = pick("平头", "光头", "板寸", "底层剃光", "侧边削短", "列兵 Joker", "陆战队员渐变", "低渐变", "中渐变", "高渐变", "无渐变", "咖啡馆发型", "平头",)
+		new_human.f_style = pick("五点钟胡茬", "剃光", "全脸胡须", "三点钟小胡子", "五点钟胡茬", "五点钟小胡子", "七点钟胡茬", "七点钟小胡子",)
 	else
-		new_human.h_style = pick("Ponytail 1", "Ponytail 2", "Ponytail 3", "Ponytail 4", "Pvt. Redding", "Pvt. Clarison", "Cpl. Dietrich", "Pvt. Vasquez", "Marine Bun", "Marine Bun 2", "Marine Flat Top",)
+		new_human.h_style = pick("马尾辫 1", "马尾辫 2", "马尾辫 3", "马尾辫 4", "列兵 Redding", "列兵 Clarison", "下士 Dietrich", "列兵 Vasquez", "陆战队员发髻", "陆战队员发髻 2", "陆战队员平顶",)
 
 /datum/equipment_preset/cmb/load_id(mob/living/carbon/human/new_human, client/mob_client)
 	if(human_versus_human)
@@ -52,11 +52,11 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/cmb/standard
-	name = "CMB - Colonial Marshal Deputy"
+	name = "CMB - 殖民地执法官副手"
 	paygrades = list(PAY_SHORT_CMBD = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CMB DEP"
 	flags = EQUIPMENT_PRESET_EXTRA
-	assignment = "CMB Deputy"
+	assignment = "CMB副手"
 	job_title = JOB_CMB
 
 	minimap_icon = "deputy"
@@ -138,7 +138,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/cmb/leader
-	name = "CMB - The Colonial Marshal"
+	name = "CMB - 殖民地执法官"
 	paygrades = list(PAY_SHORT_CMBM = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/marshal
 	role_comm_title = "CMB MAR"
@@ -146,7 +146,7 @@
 
 	minimap_icon = "xo"
 
-	assignment = "CMB Marshal"
+	assignment = "CMB执法官"
 	job_title = JOB_CMB_TL
 	skills = /datum/skills/cmb/leader
 	minimum_age = 30
@@ -193,7 +193,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
 
 /datum/equipment_preset/cmb/leader/riot
-	name = "CMB - The Colonial Marshal Riot Control"
+	name = "CMB - 殖民地执法官防暴控制"
 
 /datum/equipment_preset/cmb/leader/riot/load_gear(mob/living/carbon/human/new_human)
 	//clothes
@@ -246,7 +246,7 @@
 
 
 /datum/equipment_preset/cmb/riot
-	name = "CMB - Riot Control Officer"
+	name = "CMB - 防暴控制官"
 	paygrades = list(PAY_SHORT_CMBR = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/deputy/riot
 	role_comm_title = "CMB RCO"
@@ -254,7 +254,7 @@
 
 	minimap_icon = "mp"
 
-	assignment = "CMB Riot Control Officer"
+	assignment = "CMB防暴控制官"
 	job_title = JOB_CMB_RIOT
 
 	skills = /datum/skills/cmb
@@ -363,7 +363,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol, WEAR_IN_BELT)
 
 /datum/equipment_preset/cmb/med
-	name = "CMB - Medical Technician"
+	name = "CMB - 医疗技术员"
 	paygrades = list(PAY_SHORT_CMBMT = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/deputy/riot
 	role_comm_title = "CMB MDT"
@@ -371,7 +371,7 @@
 
 	minimap_icon = "medic"
 
-	assignment = "CMB Medical Technician"
+	assignment = "CMB医疗技术员"
 	job_title = JOB_CMB_MED
 	skills = /datum/skills/cmb/medic
 
@@ -414,7 +414,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical, WEAR_IN_BACK)
 
 /datum/equipment_preset/cmb/eng
-	name = "CMB - Breaching Technician"
+	name = "CMB - 突入技术员"
 	paygrades = list(PAY_SHORT_CMBBT = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/deputy/riot
 	role_comm_title = "CMB BT"
@@ -422,7 +422,7 @@
 
 	minimap_icon = "engi"
 
-	assignment = "CMB Breaching Technician"
+	assignment = "CMB破门技术员"
 	job_title = JOB_CMB_ENG
 	skills = /datum/skills/cmb/engi
 
@@ -468,7 +468,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/cmb/spec
-	name = "CMB - SWAT Specialist"
+	name = "CMB - 特警专家"
 	paygrades = list(PAY_SHORT_CMBSWS = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/deputy/riot
 	role_comm_title = "CMB Spec"
@@ -476,7 +476,7 @@
 
 	minimap_icon = "cmb_spc"
 
-	assignment = "CMB SWAT Specialist"
+	assignment = "CMB特警专家"
 	job_title = JOB_CMB_SWAT
 	skills = /datum/skills/cmb/spec
 
@@ -519,7 +519,7 @@
 
 //*****************************************************************************************************/
 /datum/equipment_preset/cmb/synth
-	name = "CMB - Colonial Marshal Investigative Synthetic"
+	name = "CMB - 殖民地执法官调查合成人"
 	paygrades = list(PAY_SHORT_CMBS = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/deputy
 	role_comm_title = "CMB Syn"
@@ -527,7 +527,7 @@
 
 	minimap_icon = "cmb_syn"
 
-	assignment = "CMB Investigative Synthetic"
+	assignment = "CMB调查型合成人"
 	job_title = JOB_CMB_SYN
 	languages = ALL_SYNTH_LANGUAGES
 
@@ -549,10 +549,10 @@
 			random_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male) : pick(GLOB.first_names_female))
 		else // MALE
 			random_name = capitalize(pick(GLOB.first_names_male))
-			new_human.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
+			new_human.f_style = pick("三点钟胡茬", "三点钟小胡子", "五点钟胡茬", "五点钟小胡子")
 
 	new_human.change_real_name(new_human, random_name)
-	new_human.h_style = pick("Crewcut", "Shaved Head", "Buzzcut", "Undercut", "Side Undercut")
+	new_human.h_style = pick("平头", "光头", "板寸", "底层剃光", "侧边削短")
 	var/static/list/colors = list("BLACK" = list(15, 15, 25), "BROWN" = list(102, 51, 0), "AUBURN" = list(139, 62, 19))
 	var/static/list/hair_colors = colors.Copy() + list("BLONDE" = list(197, 164, 30), "CARROT" = list(174, 69, 42))
 	var/hair_color = pick(hair_colors)
@@ -622,12 +622,12 @@
 	new_human.equip_to_slot_or_del(new /obj/item/tool/weldingtool/hugetank, WEAR_IN_R_STORE)
 
 /datum/equipment_preset/cmb/synth/riot
-	name = "CMB - Colonial Marshal Riot Control Synthetic"
+	name = "CMB - 殖民地执法官防暴控制合成人"
 	paygrades = list(PAY_SHORT_CMBRS = JOB_PLAYTIME_TIER_0)
 
 	minimap_icon = "pmc_syn"
 
-	assignment = "CMB Riot Control Synthetic"
+	assignment = "CMB防暴控制合成人"
 	job_title = JOB_CMB_RSYN
 	skills = /datum/skills/synthetic
 
@@ -681,7 +681,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/cmb/liaison
-	name = "CMB - ICC Liaison"
+	name = "CMB - ICC联络官"
 	paygrades = list(PAY_SHORT_ICCL = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "ICC Rep."
@@ -689,7 +689,7 @@
 
 	minimap_icon = "icc"
 
-	assignment = "Interstellar Commerce Commission Corporate Liaison"
+	assignment = "星际商业委员会公司联络官"
 	job_title = JOB_CMB_ICC
 	skills = /datum/skills/civilian/survivor
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_SPANISH, LANGUAGE_JAPANESE)
@@ -731,7 +731,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/red, WEAR_IN_BACK)
 
 /datum/equipment_preset/cmb/liaison/black_market
-	name = "CMB - ICC Liaison - Black Market ERT"
+	name = "CMB - ICC联络官 - 黑市ERT"
 	skills = /datum/skills/civilian/icc_investigation
 
 /datum/equipment_preset/cmb/liaison/black_market/load_gear(mob/living/carbon/human/new_human)
@@ -742,7 +742,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/cmb/observer
-	name = "CMB - Interstellar Human Rights Observer"
+	name = "CMB - 星际人权观察员"
 	paygrades = list(PAY_SHORT_IHRO = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/lanyard
 	role_comm_title = "OBS"
@@ -750,7 +750,7 @@
 
 	minimap_icon = "obs"
 
-	assignment = "Interstellar Human Rights Observer"
+	assignment = "星际人权观察员"
 	job_title = JOB_CMB_OBS
 	skills = /datum/skills/civilian/survivor/doctor
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_SPANISH, LANGUAGE_RUSSIAN)
@@ -795,7 +795,7 @@
 //Anchorpoint Station Squad Marine - Similar to the Movie squad but nerfed a bit.
 
 /datum/equipment_preset/uscm/cmb
-	name = "USCM Anchorpoint Station Squad Marine"
+	name = "USCM锚点站陆战队员"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 	assignment = "Anchorpoint Station Marine Rifleman"
@@ -849,7 +849,7 @@
 //Anchorpoint Station Marine Squad Leader
 
 /datum/equipment_preset/uscm/cmb/leader
-	name = "USCM Anchorpoint Station Team Leader"
+	name = "USCM锚点站队长"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 	assignment = "Anchorpoint Station Marine Team Leader"
 	job_title = JOB_SQUAD_LEADER
@@ -892,7 +892,7 @@
 
 //Anchorpoint Station Marine RTO - technical specialist, has the responsibility of engineering as well
 /datum/equipment_preset/uscm/cmb/rto
-	name = "USCM Anchorpoint Station Technical Specialist"
+	name = "USCM锚点站技术专家"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 	assignment = "Anchorpoint Station Marine Technical Specialist"
 	job_title = JOB_SQUAD_TEAM_LEADER
@@ -935,7 +935,7 @@
 
 //Anchorpoint Station Corpsman
 /datum/equipment_preset/uscm/cmb/medic
-	name = "USCM Anchorpoint Station Corpsman"
+	name = "USCM锚点站医疗兵"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 	assignment = "Anchorpoint Station Hospital Corpsman"
 	job_title = JOB_SQUAD_MEDIC
@@ -994,7 +994,7 @@
 
 //Anchorpoint Station Marine Smartgunnner
 /datum/equipment_preset/uscm/cmb/smartgunner
-	name = "USCM Anchorpoint Station Smartgunner"
+	name = "USCM锚点站智能枪手"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 	assignment = "Anchorpoint Station Marine Smartgunner"
 	job_title = JOB_SQUAD_SMARTGUN

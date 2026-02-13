@@ -1,6 +1,6 @@
 /obj/item/hardpoint/locomotion/van_wheels
-	name = "vehicle wheels"
-	desc = "Integral to the movement of the van."
+	name = "载具车轮"
+	desc = "厢式货车移动的核心部件。"
 	icon = 'icons/obj/vehicles/hardpoints/van.dmi'
 
 	icon_state = "tires"

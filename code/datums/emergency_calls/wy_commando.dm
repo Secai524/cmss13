@@ -1,7 +1,7 @@
 
 //Weyland-Yutani commandos. Friendly to USCM, hostile to xenos.
 /datum/emergency_call/wy_commando
-	name = "Weyland-Yutani Commando (Squad)"
+	name = "维兰德-汤谷突击队（班级）"
 	mob_max = 6
 	probability = 5
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT2
@@ -29,14 +29,14 @@
 
 	if(!leader && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = mob
-		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani Commando Squad Leader!"))
+		to_chat(mob, SPAN_ROLE_HEADER("你是维兰德-汤谷突击队班长！"))
 		arm_equipment(mob, /datum/equipment_preset/pmc/commando/leader/low_threat, TRUE, TRUE)
 	else if(smartgunners < max_smartgunners && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(mob.client, JOB_SQUAD_SMARTGUN))
 		smartgunners++
-		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani Commando Heavy Gunner!"))
+		to_chat(mob, SPAN_ROLE_HEADER("你是维兰德-汤谷突击队重火力手！"))
 		arm_equipment(mob, /datum/equipment_preset/pmc/commando/gunner/low_threat, TRUE, TRUE)
 	else
-		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani Commando!"))
+		to_chat(mob, SPAN_ROLE_HEADER("你是维兰德-汤谷突击队员！"))
 		arm_equipment(mob, /datum/equipment_preset/pmc/commando/standard/low_threat, TRUE, TRUE)
 
 	print_backstory(mob)
@@ -45,25 +45,25 @@
 
 /datum/emergency_call/wy_commando/print_backstory(mob/living/carbon/human/M)
 	to_chat(M, SPAN_BOLD("You were born [pick(75;"in Europe", 15;"in Asia", 10;"on Mars")] to a [pick(75;"well-off", 15;"well-established", 10;"average")] family."))
-	to_chat(M, SPAN_BOLD("Joining the ranks of Weyland-Yutani has proven to be very profitable for you."))
-	to_chat(M, SPAN_BOLD("While you are officially an employee, much of your work is off the books. You work as a skilled mercenary."))
-	to_chat(M, SPAN_BOLD("You are well-informed of the xenomorph threat."))
-	to_chat(M, SPAN_BOLD("You are part of Weyland-Yutani Task Force Oberon that arrived in 2182 following the UA withdrawal of the Neroid Sector."))
-	to_chat(M, SPAN_BOLD("Task-force Titan is stationed aboard the USCSS Nisshoku, a weaponized science Weyland-Yutani vessel that is stationed at the edge of the Neroid Sector."))
-	to_chat(M, SPAN_BOLD("Under the directive of Weyland-Yutani board member Johan Almric, you act as private security for Weyland-Yutani science teams."))
-	to_chat(M, SPAN_BOLD("The USCSS Nisshoku contains a crew of roughly fifty commandos, and thirty scientists and support personnel."))
-	to_chat(M, SPAN_BOLD("Ensure no damage is incurred against Weyland-Yutani. Make sure the CL is safe."))
-	to_chat(M, SPAN_BOLD("Deny Weyland-Yutani's involvement and do not trust the UA/USCM forces."))
+	to_chat(M, SPAN_BOLD("加入维兰德-汤谷为你带来了丰厚的回报。"))
+	to_chat(M, SPAN_BOLD("虽然你名义上是公司雇员，但你的大部分工作都见不得光。你是一名技艺精湛的雇佣兵。"))
+	to_chat(M, SPAN_BOLD("你对异形威胁了如指掌。"))
+	to_chat(M, SPAN_BOLD("你是维兰德-汤谷奥伯伦特遣队的一员，该部队于2182年美军撤离内罗伊德扇区后抵达。"))
+	to_chat(M, SPAN_BOLD("泰坦特遣队驻扎在USCSS Nisshoku号上，这是一艘维兰德-汤谷的武装科研船，停泊在内罗伊德扇区边缘。"))
+	to_chat(M, SPAN_BOLD("根据维兰德-汤谷董事会成员约翰·阿尔姆里克的指示，你作为维兰德-汤谷科学团队的私人安保力量。"))
+	to_chat(M, SPAN_BOLD("USCSS Nisshoku号上约有五十名突击队员，以及三十名科学家和后勤人员。"))
+	to_chat(M, SPAN_BOLD("确保维兰德-汤谷的利益不受损害。保证公司联络官的安全。"))
+	to_chat(M, SPAN_BOLD("否认维兰德-汤谷的参与，不要信任美军/USCM部队。"))
 
 /datum/emergency_call/wy_commando/platoon
-	name = "Weyland-Yutani Commando (Platoon)"
+	name = "维兰德-汤谷突击队（排级）"
 	mob_min = 8
 	mob_max = 25
 	probability = 0
 	max_smartgunners = 4
 
 /datum/emergency_call/wy_commando/deathsquad
-	name = "Weyland-Yutani Commando (Squad) (!DEATHSQUAD!)"
+	name = "维兰德-汤谷突击队（班级）（！死亡小队！）"
 	mob_max = 8
 	probability = 0
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT2
@@ -88,14 +88,14 @@
 
 	if(!leader && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = mob
-		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani Commando Squad Leader!"))
+		to_chat(mob, SPAN_ROLE_HEADER("你是维兰德-汤谷突击队班长！"))
 		arm_equipment(mob, /datum/equipment_preset/pmc/commando/leader, TRUE, TRUE)
 	else if(smartgunners < max_smartgunners && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(mob.client, JOB_SQUAD_SMARTGUN))
 		smartgunners++
-		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani Commando Heavy Gunner!"))
+		to_chat(mob, SPAN_ROLE_HEADER("你是维兰德-汤谷突击队重火力手！"))
 		arm_equipment(mob, /datum/equipment_preset/pmc/commando/gunner, TRUE, TRUE)
 	else
-		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani Commando!"))
+		to_chat(mob, SPAN_ROLE_HEADER("你是维兰德-汤谷突击队员！"))
 		arm_equipment(mob, /datum/equipment_preset/pmc/commando/standard, TRUE, TRUE)
 
 	print_backstory(mob)

@@ -1,6 +1,6 @@
 /obj/item/device/taperecorder
-	name = "tape recorder"
-	desc = "A device that can record dialogue using magnetic tapes. It automatically translates the content in playback."
+	name = "磁带录音机"
+	desc = "一种可以使用磁带录制对话的设备。播放时会自动翻译内容。"
 	icon = 'icons/obj/items/walkman.dmi'
 	icon_state = "taperecorder_idle"
 	item_state = "analyzer"
@@ -89,7 +89,7 @@
 		if(!user.drop_inv_item_to_loc(I, src))
 			return
 		mytape = I
-		to_chat(user, SPAN_NOTICE("You insert [I] into [src]."))
+		to_chat(user, SPAN_NOTICE("你将[I]插入[src]。"))
 		playsound(src, 'sound/items/taperecorder/taperecorder_close.ogg', 50, FALSE)
 		update_icon()
 
@@ -97,7 +97,7 @@
 /obj/item/device/taperecorder/proc/eject(mob/user)
 	if(mytape)
 		playsound(src, 'sound/items/taperecorder/taperecorder_open.ogg', 50, FALSE)
-		to_chat(user, SPAN_NOTICE("You remove [mytape] from [src]."))
+		to_chat(user, SPAN_NOTICE("你从[src]中取出[mytape]。"))
 		stop()
 		user.put_in_hands(mytape)
 		mytape = null
@@ -167,7 +167,7 @@
 	if(mytape && recording)
 		mytape.timestamp += mytape.used_capacity
 		var/language_known = (M.universal_speak || (speaking && (speaking.name in known_languages)))
-		var/mob_name = language_known ? M.GetVoice() : "Unknown"
+		var/mob_name = language_known ? M.GetVoice() : "未知"
 		var/message = (!speaking || language_known) ? msg : speaking.scramble(msg)
 		mytape.storedinfo += "\[[time2text(mytape.used_capacity,"mm:ss")]\] [mob_name] [verb], \"[italics ? "<i>" : null][message][italics ? "</i>" : null]\""
 
@@ -317,7 +317,7 @@
 	if(!mytape)
 		return
 	if(!canprint)
-		to_chat(usr, SPAN_WARNING("The recorder can't print that fast!"))
+		to_chat(usr, SPAN_WARNING("录音机无法打印得那么快！"))
 		return
 	if(recording || playing)
 		return
@@ -343,7 +343,7 @@
 
 /obj/item/tape
 	name = "tape"
-	desc = "A magnetic tape that can hold up to twenty minutes of content on either side. Has a little paper strip on the top to let you label it with a pen."
+	desc = "一种磁带，每面最多可容纳二十分钟内容。顶部有一个小纸条，可以用笔做标记。"
 	icon_state = "cassette_gray"
 	icon = 'icons/obj/items/walkman.dmi'
 	item_state = "analyzer"
@@ -428,7 +428,7 @@
 
 	if(unspooled)
 		tapeflip()
-		to_chat(user, SPAN_NOTICE("You turn \the [src] over."))
+		to_chat(user, SPAN_NOTICE("你将\the [src]翻面。"))
 		playsound(src, 'sound/items/taperecorder/tape_flip.ogg', 70, FALSE)
 		return
 
@@ -442,13 +442,13 @@
 				if(loc != user)
 					return
 				tapeflip()
-				to_chat(user, SPAN_NOTICE("You turn \the [src] over."))
+				to_chat(user, SPAN_NOTICE("你将\the [src]翻面。"))
 				playsound(src, 'sound/items/taperecorder/tape_flip.ogg', 70, FALSE)
 			if("Unwind tape")
 				if(loc != user)
 					return
 				unspool()
-				to_chat(user, SPAN_WARNING("You pull out all the tape!"))
+				to_chat(user, SPAN_WARNING("你把所有磁带都拉出来了！"))
 
 /obj/item/tape/attackby(obj/item/W, mob/user)
 	. = ..()
@@ -456,11 +456,11 @@
 		if(!unspooled)
 			return FALSE
 		playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
-		to_chat(user, SPAN_NOTICE("You start winding the tape back in..."))
+		to_chat(user, SPAN_NOTICE("你开始将磁带卷回..."))
 		if(!(do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC)))
-			to_chat(user, SPAN_NOTICE("You stop rewinding the tape."))
+			to_chat(user, SPAN_NOTICE("你停止了倒带。"))
 			return
-		to_chat(user, SPAN_NOTICE("You wind the tape back in."))
+		to_chat(user, SPAN_NOTICE("你将磁带倒回。"))
 		respool()
 
 /obj/item/tape/proc/unspool()
@@ -505,5 +505,5 @@
 	. = ..()
 
 /obj/item/tape/regulation
-	name = "regulation tape"
+	name = "制式追踪磁带"
 	icon_state = "cassette_regulation"

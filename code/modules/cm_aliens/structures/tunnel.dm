@@ -6,7 +6,7 @@
 
 /obj/structure/tunnel
 	name = "tunnel"
-	desc = "A tunnel entrance. Looks like it was dug by some kind of clawed beast."
+	desc = "一个隧道入口。看起来像是某种带爪的野兽挖掘出来的。"
 	icon = 'icons/mob/xenos/effects.dmi'
 	icon_state = "hole"
 
@@ -70,7 +70,7 @@
 
 	for(var/mob/living/carbon/xenomorph/X in contents)
 		X.forceMove(loc)
-		to_chat(X, SPAN_DANGER("[src] suddenly collapses, forcing you out!"))
+		to_chat(X, SPAN_DANGER("[src]突然坍塌，将你挤了出来！"))
 	. = ..()
 
 /obj/structure/tunnel/proc/isfriendly(mob/target)
@@ -87,7 +87,7 @@
 
 /obj/structure/tunnel/proc/healthcheck()
 	if(health <= 0)
-		visible_message(SPAN_DANGER("[src] suddenly collapses!"))
+		visible_message(SPAN_DANGER("[src]突然坍塌了！"))
 		qdel(src)
 
 /obj/structure/tunnel/bullet_act(obj/projectile/Proj)
@@ -107,14 +107,14 @@
 
 			playsound(user.loc, 'sound/effects/thud.ogg', 40, 1, 6)
 
-			user.visible_message(SPAN_NOTICE("[user] starts to collapse [src]!"), SPAN_NOTICE("You start collapsing [src]!"))
+			user.visible_message(SPAN_NOTICE("[user]开始弄塌[src]！"), SPAN_NOTICE("You start collapsing [src]!"))
 
 			if(user.action_busy || !do_after(user, TUNNEL_COLLAPSING_TIME * ((100 - destroying_shovel.shovelspeed) * 0.01), INTERRUPT_ALL, BUSY_ICON_BUILD))
 				return
 
 			playsound(loc, 'sound/effects/tunnel_collapse.ogg', 50)
 
-			visible_message(SPAN_NOTICE("[src] collapses in on itself."))
+			visible_message(SPAN_NOTICE("[src]向内坍塌了。"))
 
 			qdel(src)
 
@@ -129,7 +129,7 @@
 	if(isxeno(usr) && isfriendly(usr) && (usr.loc == src))
 		pick_tunnel(usr)
 	else
-		to_chat(usr, "You stare into the dark abyss" + "[length(contents) ? ", making out what appears to be two little lights... almost like something is watching." : "."]")
+		to_chat(usr, "你凝视着黑暗的深渊" + "[length(contents) ? ", making out what appears to be two little lights... almost like something is watching." : "."]")
 
 /obj/structure/tunnel/verb/exit_tunnel_verb()
 	set name = "Exit Tunnel"
@@ -154,7 +154,7 @@
 				continue
 
 			input_tunnels += list(T.tunnel_desc = T)
-		var/pick = tgui_input_list(usr, "Which tunnel would you like to move to?", "Tunnel", input_tunnels, theme="hive_status")
+		var/pick = tgui_input_list(usr, "你想移动到哪个隧道？", "Tunnel", input_tunnels, theme="hive_status")
 		if(!pick)
 			return FALSE
 
@@ -163,7 +163,7 @@
 			//No teleporting!
 			return FALSE
 
-		to_chat(X, SPAN_XENONOTICE("We begin moving to our destination."))
+		to_chat(X, SPAN_XENONOTICE("我们开始向目的地移动。"))
 
 		var/tunnel_time = TUNNEL_MOVEMENT_XENO_DELAY
 
@@ -178,14 +178,14 @@
 		var/obj/structure/tunnel/T = input_tunnels[pick]
 
 		if(length(T.contents) > 2)// max 3 xenos in a tunnel
-			to_chat(X, SPAN_WARNING("The tunnel is too crowded, wait for others to exit!"))
+			to_chat(X, SPAN_WARNING("隧道太拥挤了，等其他人先出去！"))
 			return FALSE
 		if(!T.loc)
-			to_chat(X, SPAN_WARNING("The tunnel has collapsed before we reached its exit!"))
+			to_chat(X, SPAN_WARNING("隧道在我们到达出口前就坍塌了！"))
 			return FALSE
 
 		X.forceMove(T)
-		to_chat(X, SPAN_XENONOTICE("We have reached our destination."))
+		to_chat(X, SPAN_XENONOTICE("我们已到达目的地。"))
 		return TRUE
 
 /obj/structure/tunnel/proc/exit_tunnel(mob/living/carbon/xenomorph/X)
@@ -224,41 +224,41 @@
 
 	if(user.hivenumber != hivenumber)
 		if(user.mob_size < MOB_SIZE_BIG)
-			to_chat(user, SPAN_XENOWARNING("We aren't large enough to collapse this tunnel!"))
+			to_chat(user, SPAN_XENOWARNING("我们的体型不足以弄塌这条隧道！"))
 			return XENO_NO_DELAY_ACTION
 
-		user.visible_message(SPAN_XENODANGER("[user] begins to fill [src] with dirt."),
+		user.visible_message(SPAN_XENODANGER("[user]开始用泥土填埋[src]。"),
 		SPAN_XENONOTICE("We begin to fill [src] with dirt using our massive claws."), max_distance = 3)
 		xeno_attack_delay(user)
 
 		if(!do_after(user, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL_OUT_OF_RANGE, max_dist = 1))
-			to_chat(user, SPAN_XENOWARNING("We decide not to cave the tunnel in."))
+			to_chat(user, SPAN_XENOWARNING("我们决定不弄塌隧道。"))
 			return XENO_NO_DELAY_ACTION
 
-		src.visible_message(SPAN_XENODANGER("[src] caves in!"), max_distance = 3)
+		src.visible_message(SPAN_XENODANGER("[src]塌陷了！"), max_distance = 3)
 		qdel(src)
 
 		return XENO_NO_DELAY_ACTION
 
 	if(user.action_busy)
-		to_chat(user, SPAN_WARNING("We are already busy with something."))
+		to_chat(user, SPAN_WARNING("我们正忙于其他事情。"))
 		return XENO_NO_DELAY_ACTION
 
 	if(user.anchored)
-		to_chat(user, SPAN_XENOWARNING("We can't climb through a tunnel while immobile."))
+		to_chat(user, SPAN_XENOWARNING("我们无法在无法移动时爬过隧道。"))
 		return XENO_NO_DELAY_ACTION
 
 	if(user.hauled_mob)
-		to_chat(user, SPAN_WARNING("We can't tunnel and haul someone at the same time."))
-		user.balloon_alert(user, "we're hauling someone!", text_color = "#7d32bb", delay = 1 SECONDS)
+		to_chat(user, SPAN_WARNING("我们不能同时挖掘隧道和拖拽某人。"))
+		user.balloon_alert(user, "我们正拖拽着某人！", text_color = "#7d32bb", delay = 1 SECONDS)
 		return XENO_NO_DELAY_ACTION
 
 	if(!length(hive.tunnels))
-		to_chat(user, SPAN_WARNING("[src] doesn't seem to lead anywhere."))
+		to_chat(user, SPAN_WARNING("[src]似乎不通往任何地方。"))
 		return XENO_NO_DELAY_ACTION
 
 	if(length(contents) > 2)
-		to_chat(user, SPAN_WARNING("The tunnel is too crowded, wait for others to exit!"))
+		to_chat(user, SPAN_WARNING("隧道太拥挤了，等其他人先出去！"))
 		return XENO_NO_DELAY_ACTION
 
 	var/tunnel_time = TUNNEL_ENTER_XENO_DELAY
@@ -272,24 +272,24 @@
 		tunnel_time = TUNNEL_ENTER_LARVA_DELAY
 
 	if(user.mob_size >= MOB_SIZE_BIG)
-		user.visible_message(SPAN_XENONOTICE("[user] begins heaving their huge bulk down into [src]."),
+		user.visible_message(SPAN_XENONOTICE("[user]开始将其庞大的身躯挤入[src]。"),
 			SPAN_XENONOTICE("We begin heaving our monstrous bulk into [src] (<i>[tunnel_desc]</i>)."))
 	else
-		user.visible_message(SPAN_XENONOTICE("[user] begins crawling down into [src]."),
+		user.visible_message(SPAN_XENONOTICE("[user]开始爬入[src]。"),
 			SPAN_XENONOTICE("We begin crawling down into [src] (<i>[tunnel_desc]</i>)."))
 
 	xeno_attack_delay(user)
 	if(!do_after(user, tunnel_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
-		to_chat(user, SPAN_WARNING("Our crawling was interrupted!"))
+		to_chat(user, SPAN_WARNING("我们的爬行被打断了！"))
 		return XENO_NO_DELAY_ACTION
 
 	if(user.hauled_mob)
-		to_chat(user, SPAN_WARNING("We can't tunnel and haul someone at the same time."))
-		user.balloon_alert(user, "we're hauling someone!", text_color = "#7d32bb", delay = 1 SECONDS)
+		to_chat(user, SPAN_WARNING("我们不能同时挖掘隧道和拖拽某人。"))
+		user.balloon_alert(user, "我们正拖拽着某人！", text_color = "#7d32bb", delay = 1 SECONDS)
 		return XENO_NO_DELAY_ACTION
 
 	if(!length(hive.tunnels)) //Make sure other tunnels exist
-		to_chat(user, SPAN_WARNING("[src] doesn't seem to lead anywhere anymore."))
+		to_chat(user, SPAN_WARNING("[src]似乎不再通往任何地方了。"))
 		return XENO_NO_DELAY_ACTION
 
 	user.forceMove(src) //become one with the tunnel
@@ -298,34 +298,34 @@
 		var/mob/living/carbon/xenomorph/queen/queen_user = user
 		queen_user.end_temporary_maturity()
 
-	to_chat(user, SPAN_HIGHDANGER("Alt + Click the tunnel to exit, Ctrl + Click to choose a destination."))
+	to_chat(user, SPAN_HIGHDANGER("Alt + 点击隧道出口，Ctrl + 点击选择目的地。"))
 	pick_tunnel(user)
 	return XENO_NO_DELAY_ACTION
 
 /obj/structure/tunnel/maint_tunnel
 	name = "\improper Maintenance Hatch"
-	desc = "An entrance to a maintenance tunnel. You can see bits of slime and resin within. Pieces of debris keep you from getting a closer look."
+	desc = "一个维修隧道的入口。你能看到里面有些许粘液和树脂。碎片挡住了你的视线，无法看得更清楚。"
 	icon = 'icons/obj/structures/ladders.dmi'
 	icon_state = "hatchclosed"
 
 /obj/structure/tunnel/maint_tunnel/no_xeno_desc
-	desc = "An entrance to a maintenance tunnel. Pieces of debris keep you from getting a closer look."
+	desc = "一个维修隧道的入口。碎片挡住了你的视线，无法看得更清楚。"
 
 // Hybrisa tunnels
 /obj/structure/tunnel/maint_tunnel/hybrisa
 	name = "\improper Maintenance Hatch"
-	desc = "An entrance to a maintenance tunnel. You can see bits of slime and resin within. Pieces of debris keep you from getting a closer look."
+	desc = "一个维修隧道的入口。你能看到里面有些许粘液和树脂。碎片挡住了你的视线，无法看得更清楚。"
 	icon = 'icons/obj/structures/ladders.dmi'
 	icon_state = "maintenancehatch_alt"
 
 /obj/structure/tunnel/maint_tunnel/hybrisa/no_xeno_desc
-	desc = "An entrance to a maintenance tunnel. Pieces of debris keep you from getting a closer look."
+	desc = "一个维修隧道的入口。碎片挡住了你的视线，无法看得更清楚。"
 
 /obj/structure/tunnel/maint_tunnel/hybrisa/grate
 	name = "\improper Sewer Manhole"
-	desc = "An entrance to a sewage maintenance tunnel. You can see bits of slime and resin within. Pieces of debris keep you from getting a closer look."
+	desc = "一个污水维修隧道的入口。你能看到里面有些许粘液和树脂。碎片挡住了你的视线，无法看得更清楚。"
 	icon = 'icons/obj/structures/ladders.dmi'
 	icon_state = "wymanhole"
 
 /obj/structure/tunnel/maint_tunnel/hybrisa/grate/no_xeno_desc
-	desc = "An entrance to a sewage maintenance tunnel. Pieces of debris keep you from getting a closer look."
+	desc = "一个污水维修隧道的入口。碎片挡住了你的视线，无法看得更清楚。"

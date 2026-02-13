@@ -108,8 +108,8 @@ GLOBAL_LIST_EMPTY(marine_officers)
 GLOBAL_LIST_EMPTY(tech_controls_marine)
 
 /obj/structure/machinery/computer/tech_control
-	name = "tech control console"
-	desc = "A console used to make tech purchases."
+	name = "技术控制台"
+	desc = "用于购买技术的控制台。"
 
 	icon_state = "techweb"
 
@@ -139,7 +139,7 @@ GLOBAL_LIST_EMPTY(tech_controls_marine)
 	. = ..()
 
 	if(!skillcheck(M, SKILL_INTEL, SKILL_INTEL_TRAINED) && SSmapping.configs[GROUND_MAP].map_name != MAP_WHISKEY_OUTPOST)
-		to_chat(M, SPAN_WARNING("You don't have the training to use \the [src]."))
+		to_chat(M, SPAN_WARNING("你没有接受过使用\the [src]的训练。"))
 		return
 
 	if(!attached_tree)

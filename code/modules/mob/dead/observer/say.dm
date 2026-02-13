@@ -6,7 +6,7 @@
 
 	if(client)
 		if(client.prefs?.muted & MUTE_DEADCHAT)
-			to_chat(src, SPAN_DANGER("You cannot talk in deadchat (muted)."))
+			to_chat(src, SPAN_DANGER("你无法在死亡频道发言（已禁言）。"))
 			return
 
 		if(client.handle_spam_prevention(message, MUTE_DEADCHAT))
@@ -59,7 +59,7 @@
 	if(client.prefs?.toggles_chat & CHAT_GHOSTEARS && speaker.z == z && get_dist(speaker, src) <= GLOB.world_view_size)
 		message = "<b>[message]</b>"
 
-	to_chat(src, "<span class='game say'><span class='name'>[comm_paygrade][speaker_name]</span>[alt_name] [track][verb], <span class='message'><span class='[style]'>\"[message]\"</span></span></span>")
+	to_chat(src, "<span class='game say'><span class='name'>[comm_paygrade][speaker_name]</span>[alt_name] [track][verb]，<span class='message'><span class='[style]'>\"[message]\"</span></span></span>")
 	if(speech_sound && speaker.z == z && get_dist(speaker, src) <= GLOB.world_view_size)
 		var/turf/source = get_turf(speaker)
 		playsound_client(client, speech_sound, source, sound_vol)

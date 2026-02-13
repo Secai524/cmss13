@@ -113,7 +113,7 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 
 /// Something went very, very wrong during load so let's abort
 /datum/tutorial/proc/abort_tutorial()
-	to_chat(tutorial_mob, SPAN_BOLDWARNING("Something went wrong during tutorial load, please try again!"))
+	to_chat(tutorial_mob, SPAN_BOLDWARNING("教程加载出错，请重试！"))
 	end_tutorial(FALSE)
 
 /datum/tutorial/proc/add_highlight(atom/target, color = "#d19a02")
@@ -200,7 +200,7 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 		else
 			player_bind_dict[action[1]] = list(bind)
 
-/// Getter for player_bind_dict. Provide an action name like "North" or "quick_equip"
+/// Getter for player_bind_dict. Provide an action name like "北" or "quick_equip"
 /datum/tutorial/proc/retrieve_bind(action_name)
 	if(!action_name)
 		return
@@ -215,7 +215,7 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 	completion_marked = TRUE
 
 /datum/action/tutorial_end
-	name = "Stop Tutorial"
+	name = "停止教程"
 	action_icon_state = "hologram_exit"
 	/// Weakref to the tutorial this is related to
 	var/datum/weakref/tutorial
@@ -237,7 +237,7 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 
 
 /datum/map_template/tutorial
-	name = "Tutorial Zone (12x12)"
+	name = "教程区域（12x12）"
 	mappath = "maps/tutorial/tutorial_12x12.dmm"
 	width = 12
 	height = 12
@@ -245,23 +245,23 @@ GLOBAL_LIST_EMPTY_TYPED(ongoing_tutorials, /datum/tutorial)
 /datum/map_template/tutorial/s12x12
 
 /datum/map_template/tutorial/s8x9
-	name = "Tutorial Zone (8x9)"
+	name = "教程区域（8x9）"
 	mappath = "maps/tutorial/tutorial_8x9.dmm"
 	width = 8
 	height = 9
 
 /datum/map_template/tutorial/s8x9/no_baselight
-	name = "Tutorial Zone (8x9) (No Baselight)"
+	name = "教程区域（8x9）（无基础照明）"
 	mappath = "maps/tutorial/tutorial_8x9_nb.dmm"
 
 /datum/map_template/tutorial/s7x7
-	name = "Tutorial Zone (7x7)"
+	name = "教程区域（7x7）"
 	mappath = "maps/tutorial/tutorial_7x7.dmm"
 	width = 7
 	height = 7
 
 /datum/map_template/tutorial/s15x10/hm
-	name = "Tutorial Zone (15x10) (HM Tutorial)"
+	name = "教程区域（15x10）（HM教程）"
 	mappath = "maps/tutorial/tutorial_15x10_hm.dmm"
 	width = 15
 	height = 10

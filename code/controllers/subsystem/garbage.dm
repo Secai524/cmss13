@@ -22,7 +22,7 @@ By using these methods of finding references, you can make your life far, far ea
 */
 
 SUBSYSTEM_DEF(garbage)
-	name = "Garbage"
+	name = "垃圾"
 	priority = SS_PRIORITY_GARBAGE
 	wait = 2 SECONDS
 	flags = SS_POST_FIRE_TIMING|SS_BACKGROUND|SS_NO_INIT
@@ -215,7 +215,7 @@ SUBSYSTEM_DEF(garbage)
 					var/client/admin = c
 					if(!check_rights_for(admin, R_ADMIN))
 						continue
-					to_chat(admin, "## TESTING: GC: -- [ADMIN_VV(D)] | [type] was unable to be GC'd --")
+					to_chat(admin, "## 测试：垃圾回收：-- [ADMIN_VV(D)] | [type] 无法被垃圾回收 --")
 				#endif
 				I.failures++
 

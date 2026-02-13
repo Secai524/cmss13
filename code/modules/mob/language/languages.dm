@@ -1,6 +1,6 @@
 /datum/language/common
 	name = LANGUAGE_ENGLISH
-	desc = "Common Earth English. The standard language of the United Americas."
+	desc = "通用地球英语。美利坚合众国的标准语言。"
 	speech_verb = "says"
 	ask_verb = "asks"
 	exclaim_verb = list("exclaims","shouts","yells")
@@ -15,7 +15,7 @@
 // Galactic common languages (systemwide accepted standards).
 /datum/language/scandinavian
 	name = LANGUAGE_SCANDINAVIAN
-	desc = "While not technically one language, Scandinavian languages have grown similar and are nearly indistinguishable from one another unless you actually know the languages."
+	desc = "虽然严格来说并非单一语言，但斯堪的纳维亚诸语言已变得极为相似，除非真正通晓这些语言，否则几乎无法区分。"
 	speech_verb = "utters"
 	ask_verb = "queries"
 	exclaim_verb = "yelps"
@@ -26,14 +26,14 @@
 
 /datum/language/generated/japanese
 	name = LANGUAGE_JAPANESE
-	desc = "A notoriously complex language boasting an extensive grammatical system, three writing systems, and a new smattering of English loanwords. It has gained popularity due to high cultural contact in the 3WE, and finds use outside due to emigration."
+	desc = "一种以复杂著称的语言，拥有庞大的语法体系、三种书写系统以及少量英语外来词。由于在3WE地区的高频文化交流而流行，并因移民传播至外部世界。"
 	speech_verb = "vocalizes"
 	color = "japanese"
 	key = "2"
 
 /datum/language/russian
 	name = LANGUAGE_RUSSIAN
-	desc = "An East Slavic language from Earth. The dominant tongue of the UPP and frequently used by Slavic minorities in the United Americas."
+	desc = "一种源自地球的东斯拉夫语。是UPP的主导语言，也常被联合美洲的斯拉夫少数民族使用。"
 	speech_verb = "enunciates"
 	color = "soghun"
 	key = "3"
@@ -42,7 +42,7 @@
 
 /datum/language/german
 	name = LANGUAGE_GERMAN
-	desc = "Standard High-German, a language spoken mostly in Central Europe, and by German immigrants elsewhere."
+	desc = "标准高地德语，主要在中欧地区使用，也由德国移民传播至其他地方。"
 	speech_verb = "proclaims"
 	ask_verb = "inquires"
 	exclaim_verb = "bellows"
@@ -53,7 +53,7 @@
 
 /datum/language/spanish
 	name = LANGUAGE_SPANISH
-	desc = "The second most common language spoken in the UA, brought from marines from the Latin American territories and in the former southern USA."
+	desc = "联合美洲第二常用的语言，由来自拉丁美洲领土和前美国南部的陆战队员带来。"
 	speech_verb = "states"
 	ask_verb = "quizes"
 	exclaim_verb = "yells"
@@ -64,7 +64,7 @@
 
 /datum/language/event_hivemind
 	name = LANGUAGE_TELEPATH
-	desc = "An event only language that provides a hivemind for its users."
+	desc = "一种仅在特定事件中出现的语言，为其使用者提供蜂巢思维连接。"
 	speech_verb = "resonates"
 	ask_verb = "resonates"
 	exclaim_verb = "resonates"
@@ -74,7 +74,7 @@
 
 /datum/language/generated/chinese
 	name = LANGUAGE_CHINESE
-	desc = "The secondary language of the UPP, widespread around Asia and with a notable immigrant population in other parts of the world. The most spoken language in charted space."
+	desc = "UPP的次要语言，在亚洲广泛使用，并在世界其他地区有显著的移民人口。是已勘测太空中最常用的语言。"
 	speech_verb = "voices"
 	ask_verb = "questions"
 	exclaim_verb = "shouts"
@@ -83,7 +83,7 @@
 
 /datum/language/french
 	name = LANGUAGE_FRENCH
-	desc = "Standard French, spoken by the French Republic, one of the few independent countries left on Earth."
+	desc = "标准法语，由法兰西共和国使用，这是地球上仅存的少数独立国家之一。"
 	speech_verb = "declares"
 	ask_verb = "inquires"
 	exclaim_verb = "exclaims"
@@ -94,7 +94,7 @@
 
 /datum/language/forgotten
 	name = LANGUAGE_FORGOTTEN
-	desc = "An old human language forgotten to time. Doubt you will find anyone speaking this unless they got cryogenically frozen."
+	desc = "一种被时间遗忘的古老人类语言。除非有人被低温冷冻，否则你不太可能找到会说这种语言的人。"
 	speech_verb = "utters"
 	ask_verb = "questions"
 	exclaim_verb = "shouts"
@@ -105,7 +105,7 @@
 
 /datum/language/hellhound
 	name = LANGUAGE_HELLHOUND
-	desc = "A growling, guttural method of communication, only Hellhounds seem to be capable of producing these sounds."
+	desc = "一种低吼、喉音式的交流方式，似乎只有地狱犬能发出这种声音。"
 	speech_verb = "growls"
 	ask_verb = "grumbles"
 	exclaim_verb = "snarls"
@@ -117,7 +117,7 @@
 
 /datum/language/commando
 	name = LANGUAGE_TSL
-	desc = "TSL is a modern technique with a combination of modified American sign language, tactical hand signals and discreet and esoteric code names for radios only known by elite commando groups."
+	desc = "战术手语是一种现代技术，结合了改良的美式手语、战术手势以及只有精英突击队才知道的无线电隐秘代号。"
 	speech_verb = "discreetly communicates"
 	ask_verb = "interrogates"
 	exclaim_verb = "orders"
@@ -130,7 +130,7 @@
 
 /datum/language/sainja //Yautja tongue
 	name = LANGUAGE_YAUTJA
-	desc = "The deep, rumbling, guttural sounds of the Yautja predators. It is difficult to speak for those without facial mandibles."
+	desc = "铁血战士那深沉、隆隆作响的喉音。对于没有面部颌骨的人来说很难模仿。"
 	speech_verb = "rumbles"
 	ask_verb = "rumbles"
 	exclaim_verb = "roars"
@@ -144,7 +144,7 @@
 /datum/language/xenomorph
 	name = LANGUAGE_XENOMORPH
 	color = "xenotalk"
-	desc = "The common tongue of the xenomorphs."
+	desc = "异形的通用语。"
 	speech_verb = "hisses"
 	ask_verb = "hisses"
 	exclaim_verb = "hisses"
@@ -154,7 +154,7 @@
 
 /datum/language/xenos
 	name = LANGUAGE_HIVEMIND
-	desc = "Xenomorphs have the strange ability to commune over a psychic hivemind."
+	desc = "异形拥有通过心灵蜂巢思维进行交流的奇特能力。"
 	speech_verb = "hiveminds"
 	ask_verb = "hiveminds"
 	exclaim_verb = "hiveminds"
@@ -174,7 +174,7 @@
 
 /datum/language/apollo
 	name = LANGUAGE_APOLLO
-	desc = "The APOLLO Link is an AI subprocessor designed by SEEGSON, allowing for coordination of maintenance drones and Working Joes. WY denies claims the processor was stolen for ARES."
+	desc = "APOLLO链接是SEEGSON设计的人工智能子处理器，用于协调维护无人机和工作乔。维兰德否认该处理器被ARES窃取的指控。"
 	color = "skrell"
 	speech_verb = "states"
 	ask_verb = "queries"
@@ -201,7 +201,7 @@
 
 	GLOB.STUI.game.Add("\[[time_stamp()]]<font color='#FFFF00'>APOLLO: [key_name(speaker)] : [message]</font><br>")
 	GLOB.STUI.processing |= STUI_LOG_GAME_CHAT
-	log_say("[speaker.name != "Unknown" ? speaker.name : "([speaker.real_name])"] \[APOLLO\]: [message] (CKEY: [speaker.key]) (JOB: [speaker.job]) (AREA: [get_area_name(speaker)])")
+	log_say("[speaker.name != "未知" ? speaker.name : "([speaker.real_name])"] \[APOLLO\]: [message] (CKEY: [speaker.key]) (JOB: [speaker.job]) (AREA: [get_area_name(speaker)])")
 	log_ares_apollo(speaker.real_name, message)
 	for (var/mob/dead in GLOB.dead_mob_list)
 		if(!istype(dead,/mob/new_player) && !istype(dead,/mob/living/brain)) //No meta-evesdropping
@@ -221,11 +221,11 @@
 	for (var/mob/living/M in listening)
 		if(isSilicon(M) || M.hear_apollo())
 			continue
-		M.show_message("<i><span class='game say'><span class='name'>synthesised voice</span> <span class='message'>beeps, \"beep beep beep\"</span></span></i>",2)
+		M.show_message("<i><span class='game say'><span class='name'>合成语音</span> <span class='message'>发出哔哔声，\"beep beep beep\"</span></span></i>",2)
 
 /datum/language/primitive
 	name = LANGUAGE_MONKEY
-	desc = "Ook ook ook."
+	desc = "呜克呜克呜克。"
 	speech_verb = "chimpers"
 	ask_verb = "chimpers"
 	exclaim_verb = "screeches"

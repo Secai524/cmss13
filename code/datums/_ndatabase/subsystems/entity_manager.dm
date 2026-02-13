@@ -22,7 +22,7 @@
 GLOBAL_REAL(SSentity_manager, /datum/controller/subsystem/entity_manager)
 
 /datum/controller/subsystem/entity_manager
-	name   = "Entity Manager"
+	name   = "实体管理器"
 	init_order = SS_INIT_ENTITYMANAGER
 	init_stage = INITSTAGE_EARLY
 	priority   = SS_PRIORITY_ENTITY

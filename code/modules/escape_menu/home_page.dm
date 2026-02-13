@@ -33,7 +33,7 @@
 		new /atom/movable/screen/escape_menu/home_button/admin_help(
 			null,
 			src,
-			"Admin Help",
+			"管理员求助",
 			/* offset = */ 3,
 		)
 	)
@@ -42,7 +42,7 @@
 		new /atom/movable/screen/escape_menu/home_button(
 			null,
 			src,
-			"Mentor Help",
+			"导师帮助",
 			/* offset = */ 4,
 			CALLBACK(src, PROC_REF(home_mentor_help)),
 		)

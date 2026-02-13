@@ -19,8 +19,8 @@
 #define FA_ICON_DOLLAR_SIGN "fas fa-dollar-sign"
 
 /obj/structure/machinery/computer/hybrisa/misc/slotmachine
-	name = "slot machine"
-	desc = "A slot machine."
+	name = "老虎机"
+	desc = "一台老虎机。"
 	icon = 'icons/obj/structures/props/furniture/slot_machines.dmi'
 	icon_state = "slotmachine"
 	bound_width = 32
@@ -101,7 +101,7 @@
 		var/obj/item/coin/inserted_coin = inserted
 		if(!user.drop_inv_item_on_ground(inserted_coin))
 			return
-		to_chat(user, SPAN_WARNING("Coin insterted."))
+		to_chat(user, SPAN_WARNING("硬币已投入。"))
 		balance += inserted_coin.black_market_value
 		qdel(inserted_coin)
 		return
@@ -110,7 +110,7 @@
 		var/obj/item/spacecash/inserted_cash = inserted
 		if(!user.drop_inv_item_on_ground(inserted_cash))
 			return
-		to_chat(user, SPAN_WARNING("Cash insterted."))
+		to_chat(user, SPAN_WARNING("现金已投入。"))
 		balance += inserted_cash.worth
 		qdel(inserted_cash)
 		return
@@ -156,14 +156,14 @@
 	switch(action)
 		if("spin")
 			if(get_turf(ui.user) != get_step(src, dir))
-				to_chat(ui.user, SPAN_WARNING("You aren't close enough to the lever to spin [src]!"))
+				to_chat(ui.user, SPAN_WARNING("你离拉杆不够近，无法转动[src]！"))
 				return FALSE
 			if(balance >= SPIN_PRICE)
 				spin_slots(ui.user)
 				return TRUE
 		if("payout")
 			if(get_turf(ui.user) != get_step(src, dir))
-				to_chat(ui.user, SPAN_WARNING("You aren't close enough to [src]!"))
+				to_chat(ui.user, SPAN_WARNING("你离[src]不够近！"))
 				return FALSE
 			if(balance > 0)
 				dispense(balance, ui.user)
@@ -174,7 +174,7 @@
 	if(!can_spin(user))
 		return
 
-	user.visible_message(SPAN_WARNING("[user] pulls the lever and [src] starts spinning!"), max_distance = 1)
+	user.visible_message(SPAN_WARNING("[user]拉动拉杆，[src]开始旋转！"), max_distance = 1)
 
 	balance -= SPIN_PRICE
 	prize_money += SPIN_PRICE
@@ -203,16 +203,16 @@
 /// Check if the machine can be spun
 /obj/structure/machinery/computer/hybrisa/misc/slotmachine/proc/can_spin(mob/user)
 	if(stat & NOPOWER)
-		to_chat(user, SPAN_WARNING("[src] isn't powered!"))
+		to_chat(user, SPAN_WARNING("[src]没有通电！"))
 		return FALSE
 	if(stat & BROKEN)
-		to_chat(user, SPAN_WARNING("[src] is broken!"))
+		to_chat(user, SPAN_WARNING("[src]已损坏！"))
 		return FALSE
 	if(rolling)
-		to_chat(user, SPAN_WARNING("[src] is already spinning!"))
+		to_chat(user, SPAN_WARNING("[src]已经在旋转了！"))
 		return FALSE
 	if(balance < SPIN_PRICE)
-		to_chat(user, SPAN_WARNING("[src] flashes insufficient balance!"))
+		to_chat(user, SPAN_WARNING("[src]闪烁显示余额不足！"))
 		return FALSE
 	return TRUE
 
@@ -245,7 +245,7 @@
 
 	if(check_jackpot(JACKPOT_SEVENS))
 		var/prize = prize_money + JACKPOT
-		visible_message(SPAN_WARNING("<b>[src]</b> says, 'JACKPOT! You win [prize] dollars!'"))
+		visible_message(SPAN_WARNING("<b>[src]</b>说：'头奖！你赢得了[prize]美元！'"))
 		jackpots++
 		give_money(prize)
 		prize_money = 0
@@ -254,22 +254,22 @@
 
 	switch(linelength)
 		if(5)
-			visible_message(SPAN_WARNING("<b>[src]</b> says, 'Big Winner! You win five hundred dollars!'"))
+			visible_message(SPAN_WARNING("<b>[src]</b>说：'大奖！你赢得了五百美元！'"))
 			give_money(BIG_PRIZE)
 			playsound(src, 'sound/machines/slotmachine/bigwin-slotmachine.ogg', 45)
 
 		if(4)
-			visible_message(SPAN_WARNING("<b>[src]</b> says, 'Winner! You win one hundred dollars!'"))
+			visible_message(SPAN_WARNING("<b>[src]</b>说：'中奖！你赢得了一百美元！'"))
 			give_money(SMALL_PRIZE)
 			playsound(src, 'sound/machines/slotmachine/smallwin-slotmachine.ogg', 50)
 
 		if(3)
-			to_chat(user, SPAN_WARNING("You win three free games!"))
+			to_chat(user, SPAN_WARNING("你赢得了三次免费游戏！"))
 			balance += SPIN_PRICE * 3
 			playsound(src, 'sound/machines/slotmachine/bonus-slotmachine.ogg', 50)
 
 		else
-			to_chat(user, SPAN_WARNING("No luck!"))
+			to_chat(user, SPAN_WARNING("运气不佳！"))
 			playsound(src, 'sound/machines/slotmachine/lose-slotmachine.ogg', 50)
 
 

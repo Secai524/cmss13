@@ -12,7 +12,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	"Power Generation Failure",
 	"Electrical Fault",
 	"Support",
-	"Other"
+	"其他"
 	))
 
 /datum/ares_link
@@ -157,7 +157,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	if(!ares_can_log() || !ares_can_apollo())
 		return FALSE
 	if(!speaker)
-		speaker = "Unknown"
+		speaker = "未知"
 	var/datum/ares_datacore/datacore = GLOB.ares_datacore
 	datacore.apollo_log.Add("[worldtime2text()]: [speaker], '[message]'")
 
@@ -261,7 +261,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 		if(ARES_ACCESS_SENIOR)
 			return "[MAIN_SHIP_NAME] Senior Command"
 		if(ARES_ACCESS_CE)
-			return "Chief Engineer"
+			return "总工程师"
 		if(ARES_ACCESS_SYNTH)
 			return "USCM Synthetic"
 		if(ARES_ACCESS_CO)
@@ -294,7 +294,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 			to_chat(admin, msg)
 			var/admin_user = GLOB.ares_link.admin_interface.logged_in
 			if(admin_user && !fake)
-				to_chat(admin, SPAN_STAFF_IC("<b>ADMINS/MODS: [SPAN_RED("[admin_user] is logged in to ARES Remote Interface! They may be replying to this message!")]</b>"))
+				to_chat(admin, SPAN_STAFF_IC("<b>管理员/模组：[SPAN_RED("[admin_user] is logged in to ARES Remote Interface! They may be replying to this message!")]</b>"))
 
 /obj/structure/machinery/computer/ares_console/proc/response_from_ares(text, ref)
 	var/datum/ares_record/talk_log/conversation = locate(ref)
@@ -305,10 +305,10 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 
 /proc/ares_final_words()
 	//APOLLO
-	ares_apollo_talk("APOLLO sub-system shutting down. STOP CODE: 0x000000f4|CRITICAL_PROCESS_DIED")
+	ares_apollo_talk("APOLLO子系统正在关闭。停止代码：0x000000f4|关键进程已终止")
 
 	//GENERAL CREW
-	shipwide_ai_announcement("A Problem has been detected and the [MAIN_AI_SYSTEM] system has been shutdown. \nTechnical Information: \n\n*** STOP CODE: 0x000000f4|CRITICAL_PROCESS_DIED\n\nPossible caused by: Rapid Unscheduled Disassembly\nContact an AI Service Technician for further assistance.", title = ":(", ares_logging = null)
+	shipwide_ai_announcement("检测到问题，[MAIN_AI_SYSTEM]系统已关闭。\n技术信息：\n\n*** 停止代码：0x000000f4|关键进程已终止\n\n可能原因：快速非计划拆解\n请联系AI服务技术员获取进一步帮助。", title = ":(", ares_logging = null)
 
 /obj/structure/machinery/computer/working_joe/get_ares_access(obj/item/card/id/card)
 	if(ACCESS_ARES_DEBUG in card.access)

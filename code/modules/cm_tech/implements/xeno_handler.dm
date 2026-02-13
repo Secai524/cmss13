@@ -1,6 +1,6 @@
 //Xenomorphs, hostile to everyone.
 /datum/emergency_call/xeno_handler
-	name = "Xenomorph Handler"
+	name = "异形处理器"
 	mob_max = 8
 	probability = 0
 	auto_shuttle_launch = TRUE //because xenos can't use the shuttle console.

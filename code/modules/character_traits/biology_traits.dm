@@ -50,13 +50,13 @@
 	var/string_paygrade = preset.load_rank(target)
 	var/datum/paygrade/paygrade_datum = GLOB.paygrades[string_paygrade]
 	if(paygrade_datum?.ranking > maximum_ranking)
-		to_chat(target, SPAN_WARNING("Your paygrade is too high for you to be able to receive the lisping trait."))
+		to_chat(target, SPAN_WARNING("你的军衔太高，无法获得口齿不清特质。"))
 		return
 	if(target.job in inapplicable_roles)
-		to_chat(target, SPAN_WARNING("Your office is too high for you to be able to receive the lisping trait."))
+		to_chat(target, SPAN_WARNING("你的职位太高，无法获得口齿不清特质。"))
 		return
 	if(target.species.group in inapplicable_species)
-		to_chat(target, SPAN_WARNING("Your species is too sophisticated for you be able to receive the lisping trait."))
+		to_chat(target, SPAN_WARNING("你的种族过于高级，无法获得口齿不清特质。"))
 		return
 
 	ADD_TRAIT(target, TRAIT_LISPING, ROUNDSTART_TRAIT)
@@ -90,10 +90,10 @@
 
 /datum/character_trait/biology/bad_leg/apply_trait(mob/living/carbon/human/target, datum/equipment_preset/preset)
 	if(target.job in inapplicable_roles)
-		to_chat(target, SPAN_WARNING("Your office is too combat-geared for you to be able to receive the bad leg trait."))
+		to_chat(target, SPAN_WARNING("你的职位过于偏向战斗，无法获得腿部残疾特质。"))
 		return
 	if(target.species.group in inapplicable_species)
-		to_chat(target, SPAN_WARNING("Your species is too sophisticated for you be able to receive the bad leg trait."))
+		to_chat(target, SPAN_WARNING("你的种族过于高级，无法获得‘腿部残疾’特质。"))
 		return
 
 	target.AddComponent(/datum/component/bad_leg)
@@ -122,7 +122,7 @@
 
 /datum/character_trait/biology/hardcore/apply_trait(mob/living/carbon/human/target, datum/equipment_preset/preset)
 	if(target.job != JOB_SQUAD_MARINE)
-		to_chat(target, SPAN_WARNING("Only riflemen can have the Hardcore trait."))
+		to_chat(target, SPAN_WARNING("只有步枪兵才能拥有‘硬核’特质。"))
 		return
 
 	ADD_TRAIT(target, TRAIT_HARDCORE, ROUNDSTART_TRAIT)

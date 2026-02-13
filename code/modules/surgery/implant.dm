@@ -6,7 +6,7 @@
 
 //Implant and removal surgeries allow either removing the implant just inserted or replacing a removed one with a new item.
 /datum/surgery/implant
-	name = "Implant Surgery"
+	name = "植入物手术"
 	priority = SURGERY_PRIORITY_LOW
 	possible_locs = list("chest", "head")
 	invasiveness = list(SURGERY_DEPTH_DEEP)
@@ -28,7 +28,7 @@
 //------------------------------------
 
 /datum/surgery/implant/removal
-	name = "Implant Removal Surgery"
+	name = "植入物移除手术"
 	steps = list(
 		/datum/surgery_step/create_cavity,
 		/datum/surgery_step/remove_implant,
@@ -45,8 +45,8 @@
 //------------------------------------
 
 /datum/surgery_step/create_cavity
-	name = "Create Implant Cavity"
-	desc = "open an implant cavity"
+	name = "创建植入物腔"
+	desc = "切开植入物腔"
 	tools = list(
 		/obj/item/tool/surgery/surgicaldrill = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/tool/pen = SURGERY_TOOL_MULT_SUBSTITUTE,
@@ -84,8 +84,8 @@
 //------------------------------------
 
 /datum/surgery_step/place_item
-	name = "Insert Implant"
-	desc = "implant an object"
+	name = "插入植入物"
+	desc = "植入物体"
 	accept_any_item = TRUE //Any item except a surgery tool or substitute for such.
 	time = 5 SECONDS
 
@@ -109,7 +109,7 @@
 		if(HAS_TRAIT(tool, TRAIT_ITEM_NOT_IMPLANTABLE))
 			return FALSE
 		if(tool.w_class > get_max_wclass(surgery))
-			to_chat(user, SPAN_WARNING("[tool] is too big to implant into [surgery.target]'s [surgery.affected_limb.cavity]!"))
+			to_chat(user, SPAN_WARNING("[tool]太大，无法植入[surgery.target]的[surgery.affected_limb.cavity]！"))
 			return FALSE
 
 /datum/surgery_step/place_item/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -130,7 +130,7 @@
 	log_interact(user, target, "[key_name(user)] put \the [tool] inside [key_name(target)]'s [surgery.affected_limb.cavity].")
 
 	if(tool.w_class >= SIZE_SMALL)
-		to_chat(user, SPAN_WARNING("You tear some blood vessels trying to fit such a bulky object in the cavity."))
+		to_chat(user, SPAN_WARNING("你试图将如此庞大的物体塞入腔体，撕裂了一些血管。"))
 		log_interact(user, target, "[key_name(user)] damaged some blood vessels while putting \the [tool] inside [key_name(target)]'s [surgery.affected_limb.cavity].")
 
 		var/datum/wound/internal_bleeding/I = new (0)
@@ -154,8 +154,8 @@
 //------------------------------------
 
 /datum/surgery_step/remove_implant
-	name = "Remove Embedded Implant"
-	desc = "remove an implant"
+	name = "移除嵌入式植入物"
+	desc = "移除植入物"
 	tools = SURGERY_TOOLS_PINCH
 	time = 5 SECONDS
 
@@ -212,8 +212,8 @@
 //------------------------------------
 
 /datum/surgery_step/cauterize/close_cavity
-	name = "Cauterize Implant Cavity"
-	desc = "seal the implant cavity"
+	name = "烧灼植入物腔"
+	desc = "封闭植入物腔"
 	time = 5 SECONDS
 
 /datum/surgery_step/cauterize/close_cavity/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -250,7 +250,7 @@
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery/embedded
-	name = "Embedded Object Removal Surgery"
+	name = "嵌入式物体移除手术"
 	priority = SURGERY_PRIORITY_LOW
 	invasiveness = list(SURGERY_DEPTH_SHALLOW, SURGERY_DEPTH_DEEP)
 	steps = list(/datum/surgery_step/remove_embedded)
@@ -265,8 +265,8 @@
 //------------------------------------
 
 /datum/surgery_step/remove_embedded
-	name = "Remove Foreign Body"
-	desc = "extract a foreign body"
+	name = "移除异物"
+	desc = "取出异物"
 	tools = SURGERY_TOOLS_PINCH
 	time = 5 SECONDS
 
@@ -341,7 +341,7 @@
 	if(length(surgery.affected_limb.implants) && prob(10 + 100 * (tools[tool_type] - 1)))
 		var/obj/item/implant/imp = surgery.affected_limb.implants[1]
 		if(istype(imp))
-			target.visible_message(SPAN_WARNING("Something beeps inside [target]'s [surgery.affected_limb.display_name]!"))
+			target.visible_message(SPAN_WARNING("有东西在[target]的[surgery.affected_limb.display_name]里发出哔哔声！"))
 			playsound(target, 'sound/items/countdown.ogg', 25, TRUE)
 			addtimer(CALLBACK(imp, TYPE_PROC_REF(/obj/item/implant, activate)), 2.5 SECONDS)
 	return FALSE

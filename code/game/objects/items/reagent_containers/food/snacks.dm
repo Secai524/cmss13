@@ -6,7 +6,7 @@
 
 /obj/item/reagent_container/food/snacks
 	name = "snack"
-	desc = "Yummy."
+	desc = "美味。"
 	icon = 'icons/obj/items/food/junkfood.dmi'
 	icon_state = null
 	item_icons = list(
@@ -32,8 +32,8 @@
 
 	if(!reagents.total_volume)
 		if(M == usr)
-			to_chat(usr, SPAN_NOTICE("You finish eating \the [src]."))
-		M.visible_message(SPAN_NOTICE("[M] finishes eating \the [src]."))
+			to_chat(usr, SPAN_NOTICE("你吃完了\the [src]。"))
+		M.visible_message(SPAN_NOTICE("[M]吃完了\the [src]。"))
 		usr.drop_inv_item_on_ground(src) //so icons update :[
 
 		if(trash)
@@ -55,7 +55,7 @@
 
 /obj/item/reagent_container/food/snacks/attack(mob/M, mob/user)
 	if(reagents && !reagents.total_volume) //Shouldn't be needed but it checks to see if it has anything left in it.
-		to_chat(user, SPAN_DANGER("None of [src] left, oh no!"))
+		to_chat(user, SPAN_DANGER("[src]一点不剩了，糟糕！"))
 		M.drop_inv_item_on_ground(src) //so icons update :[
 		qdel(src)
 		return FALSE
@@ -65,9 +65,9 @@
 			return ..() // chunk box gaming
 
 		if(user == M)
-			to_chat(M, SPAN_WARNING("How do you expect to eat this with the package still on?"))
+			to_chat(M, SPAN_WARNING("包装都没拆，你怎么吃？"))
 		else
-			to_chat(M, SPAN_WARNING("[user] made an endearing attempt to force feed you a snack with the packaging still on."))
+			to_chat(M, SPAN_WARNING("[user]试图把带着包装的零食硬塞给你。"))
 		return FALSE
 
 	if(istype(M, /mob/living/carbon))
@@ -88,15 +88,15 @@
 
 		if(M == user)//If you're eating it yourself
 			if (fullness <= NUTRITION_VERYLOW)
-				to_chat(M, SPAN_WARNING("You ravenously shovel down a hunk of [src] and gobble it whole!"))
+				to_chat(M, SPAN_WARNING("你狼吞虎咽地吞下一大块[src]，囫囵吞下！"))
 			if (fullness > NUTRITION_VERYLOW && fullness <= NUTRITION_LOW)
-				to_chat(M, SPAN_NOTICE("You hungrily chomp down on a chunk of [src]."))
+				to_chat(M, SPAN_NOTICE("你饥饿地咬下一块[src]。"))
 			if (fullness > NUTRITION_LOW && fullness <= NUTRITION_NORMAL)
-				to_chat(M, SPAN_NOTICE("You take a bite of [src]."))
+				to_chat(M, SPAN_NOTICE("你咬了一口[src]。"))
 			if (fullness > NUTRITION_NORMAL && fullness <= NUTRITION_HIGH)
-				to_chat(M, SPAN_NOTICE("You unwillingly chew a bit of [src]."))
+				to_chat(M, SPAN_NOTICE("你勉强嚼了一点[src]。"))
 			if (fullness > NUTRITION_HIGH)
-				to_chat(M, SPAN_WARNING("You reluctantly force more of [src] to go down your throat."))
+				to_chat(M, SPAN_WARNING("你强忍着又咽下一些[src]。"))
 		else
 			if (fullness <= NUTRITION_HIGH)
 				user.affected_message(M,
@@ -171,7 +171,7 @@
 			U.create_reagents(5)
 
 		if (U.reagents.total_volume > 0)
-			to_chat(user, SPAN_DANGER("You already have something on your [U]."))
+			to_chat(user, SPAN_DANGER("你的[U]上已经有东西了。"))
 			return
 
 		user.visible_message(
@@ -206,7 +206,7 @@
 			!(locate(/obj/structure/machinery/optable) in src.loc) && \
 			!(locate(/obj/item/tool/kitchen/tray) in src.loc)) \
 		)
-		to_chat(user, SPAN_DANGER("You cannot slice [src] here! You need a table or at least a tray to do it."))
+		to_chat(user, SPAN_DANGER("这里不能切[src]！你需要一张桌子或至少一个托盘。"))
 		return 1
 	var/slices_lost = 0
 	if (!inaccurate)
@@ -231,7 +231,7 @@
 	if(isanimal(M))
 		if(iscorgi(M))
 			if(bitecount == 0 || prob(50))
-				M.emote("nibbles away at [src]")
+				M.emote("小口啃着[src]")
 			bitecount++
 			if(bitecount >= 5)
 				var/sattisfaction_text = pick("burps from enjoyment", "yaps for more", "woofs twice", "looks at the area where [src] was")
@@ -242,7 +242,7 @@
 			var/mob/living/simple_animal/small/mouse/N = M
 			to_chat(N, text(SPAN_NOTICE("You nibble away at [src].")))
 			if(prob(50))
-				N.visible_message("[N] nibbles away at [src].", "")
+				N.visible_message("[N]小口啃着[src]。", "")
 			//N.emote("nibbles away at the [src]")
 			N.health = min(N.health + 1, N.maxHealth)
 
@@ -275,7 +275,7 @@
 * here is an example of the new formatting for anyone who wants to add more food items.
 * /obj/item/reagent_container/food/snacks/xenoburger ///Identification path for the object.
 * name = "Xenoburger" ///Name that displays in the UI.
-* desc = "Smells caustic. Tastes like heresy." ///Duh
+* desc = "闻起来有腐蚀性。尝起来像异端邪说。" ///Duh
 * icon_state = "xburger" ///Refers to an icon in food.dmi
 * /obj/item/reagent_container/food/snacks/xenoburger/Initialize() ///Don't mess with this.
 * . = ..() ///Same here.
@@ -285,8 +285,8 @@
 */
 
 /obj/item/reagent_container/food/snacks/aesirsalad
-	name = "Aesir salad"
-	desc = "Probably too incredible for mortal men to fully enjoy."
+	name = "埃希尔沙拉"
+	desc = "凡人可能无福完全享受此等美味。"
 	icon_state = "aesirsalad"
 	icon = 'icons/obj/items/food/soups_salads.dmi'
 	trash = /obj/item/trash/snack_bowl
@@ -301,7 +301,7 @@
 
 /obj/item/reagent_container/food/snacks/candy
 	name = "candy"
-	desc = "Nougat, love it or hate it."
+	desc = "牛轧糖，爱憎分明。"
 	icon_state = "candy"
 	trash = /obj/item/trash/candy
 	filling_color = "#7D5F46"
@@ -314,8 +314,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/candy/donor
-	name = "Donor Candy"
-	desc = "A little treat for blood donors."
+	name = "献血者糖果"
+	desc = "给献血者的一点小奖励。"
 	trash = /obj/item/trash/candy
 
 /obj/item/reagent_container/food/snacks/candy/donor/Initialize()
@@ -325,8 +325,8 @@
 	bitesize = 5
 
 /obj/item/reagent_container/food/snacks/candy_corn
-	name = "candy corn"
-	desc = "It's a handful of candy corn. Cannot be stored in a detective's hat, alas."
+	name = "玉米糖"
+	desc = "这是一把玉米糖。可惜不能存放在侦探帽里。"
 	icon_state = "candy_corn"
 	icon = 'icons/obj/items/food/candies.dmi'
 	filling_color = "#FFFCB0"
@@ -339,7 +339,7 @@
 
 /obj/item/reagent_container/food/snacks/chips
 	name = "chips"
-	desc = "Commander Riker's What-The-Crisps."
+	desc = "瑞克指挥官的神秘薯片。"
 	icon_state = "chips"
 	trash = /obj/item/trash/chips
 	filling_color = "#E8C31E"
@@ -350,8 +350,8 @@
 	reagents.add_reagent("blackpepper", 1)
 
 /obj/item/reagent_container/food/snacks/wy_chips/pepper
-	name = "Weyland-Yutani Pepper Chips"
-	desc = "Premium high-quality chips, now with 0% trans fat and added black pepper."
+	name = "维兰德-汤谷胡椒薯片"
+	desc = "优质薯片，零反式脂肪，添加黑胡椒。"
 	icon_state = "wy_chips_pepper"
 	item_state = "wy_chips_pepper"
 	trash = /obj/item/trash/wy_chips_pepper
@@ -365,7 +365,7 @@
 
 /obj/item/reagent_container/food/snacks/cookie
 	name = "cookie"
-	desc = "A delicious and crumbly chocolate chip cookie. Don't feed to parrots."
+	desc = "美味酥脆的巧克力曲奇。别喂给鹦鹉。"
 	icon_state = "COOKIE!!!"
 	item_state = "COOKIE!!!"
 	icon = 'icons/obj/items/food/bakery.dmi'
@@ -377,8 +377,8 @@
 	reagents.add_reagent("sugar", 1)
 
 /obj/item/reagent_container/food/snacks/chocolatebar
-	name = "Chocolate Bar"
-	desc = "Such sweet, fattening food."
+	name = "巧克力棒"
+	desc = "如此甜美、令人发胖的食物。"
 	icon_state = "chocolatebar"
 	icon = 'icons/obj/items/food/candies.dmi'
 	filling_color = "#7D5F46"
@@ -391,8 +391,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/chocolateegg
-	name = "Chocolate Egg"
-	desc = "Such sweet, fattening food."
+	name = "巧克力蛋"
+	desc = "如此甜美、令人发胖的食物。"
 	icon_state = "chocolateegg"
 	icon = 'icons/obj/items/food/eggs.dmi'
 	filling_color = "#7D5F46"
@@ -406,7 +406,7 @@
 
 /obj/item/reagent_container/food/snacks/donut
 	name = "donut"
-	desc = "A donut pastry, which is a common snack on Earth. Goes great with coffee."
+	desc = "一种甜甜圈糕点，地球上的常见零食。与咖啡是绝配。"
 	icon_state = "donut1"
 	icon = 'icons/obj/items/food/donuts.dmi'
 	filling_color = "#D9C386"
@@ -415,7 +415,7 @@
 
 /obj/item/reagent_container/food/snacks/donut/normal
 	name = "donut"
-	desc = "A donut. Rare on the frontier, so take care of it."
+	desc = "一个甜甜圈。在边疆很罕见，请珍惜。"
 	icon_state = "donut1"
 
 /obj/item/reagent_container/food/snacks/donut/normal/Initialize()
@@ -425,13 +425,13 @@
 	if(prob(40))
 		icon_state = "donut2"
 		overlay_state = "fdonut"
-		name = "frosted donut"
-		desc = "A pink frosted donut. Even more rare on the frontier."
+		name = "糖霜甜甜圈"
+		desc = "一个粉色糖霜甜甜圈。在边疆更为罕见。"
 		reagents.add_reagent("sprinkles", 2)
 
 /obj/item/reagent_container/food/snacks/donut/chaos
-	name = "Chaos Donut"
-	desc = "Like life, it never quite tastes the same."
+	name = "混沌甜甜圈"
+	desc = "就像生活一样，它的味道从不完全相同。"
 	icon_state = "donut1"
 	filling_color = "#ED11E6"
 
@@ -467,8 +467,8 @@
 		reagents.add_reagent("sprinkles", 2)
 
 /obj/item/reagent_container/food/snacks/donut/jelly
-	name = "Jelly Donut"
-	desc = "You jelly?"
+	name = "果冻甜甜圈"
+	desc = "你嫉妒吗？"
 	icon_state = "jdonut1"
 	filling_color = "#ED1169"
 
@@ -485,8 +485,8 @@
 		reagents.add_reagent("sprinkles", 2)
 
 /obj/item/reagent_container/food/snacks/donut/cherryjelly
-	name = "Jelly Donut"
-	desc = "You jelly?"
+	name = "果冻甜甜圈"
+	desc = "你嫉妒吗？"
 	icon_state = "jdonut1"
 	filling_color = "#ED1169"
 
@@ -504,7 +504,7 @@
 
 /obj/item/reagent_container/food/snacks/egg
 	name = "egg"
-	desc = "An egg!"
+	desc = "一个蛋！"
 	icon_state = "egg"
 	icon = 'icons/obj/items/food/eggs.dmi'
 	filling_color = "#FDFFD1"
@@ -519,7 +519,7 @@
 	new/obj/effect/decal/cleanable/egg_smudge(loc)
 	if(reagents)
 		reagents.reaction(hit_atom, TOUCH)
-	visible_message(SPAN_WARNING("[name] has been squashed."),SPAN_WARNING("You hear a smack."))
+	visible_message(SPAN_WARNING("[name]被压扁了。"),SPAN_WARNING("You hear a smack."))
 	qdel(src)
 
 /obj/item/reagent_container/food/snacks/egg/blue
@@ -561,8 +561,8 @@
 	qdel(src)
 
 /obj/item/reagent_container/food/snacks/friedegg
-	name = "Fried egg"
-	desc = "A fried egg, with a touch of salt and pepper."
+	name = "煎蛋"
+	desc = "一个煎蛋，带点盐和胡椒。"
 	icon_state = "friedegg"
 	icon = 'icons/obj/items/food/dishes.dmi'
 	filling_color = "#FFDF78"
@@ -574,8 +574,8 @@
 	reagents.add_reagent("blackpepper", 1)
 
 /obj/item/reagent_container/food/snacks/boiledegg
-	name = "Boiled egg"
-	desc = "A hard-boiled egg."
+	name = "煮鸡蛋"
+	desc = "一个煮熟的鸡蛋。"
 	icon_state = "egg"
 	icon = 'icons/obj/items/food/eggs.dmi'
 	filling_color = COLOR_WHITE
@@ -586,7 +586,7 @@
 
 /obj/item/reagent_container/food/snacks/flour
 	name = "flour"
-	desc = "A small bag filled with some flour."
+	desc = "一个装满面粉的小袋子。"
 	icon_state = "flour"
 	icon = 'icons/obj/items/food/condiments.dmi'
 
@@ -597,7 +597,7 @@
 /obj/item/reagent_container/food/snacks/organ
 
 	name = "organ"
-	desc = "It's good for you."
+	desc = "这对你有好处。"
 	icon = 'icons/obj/items/organs.dmi'
 	icon_state = "appendix"
 	filling_color = "#E00D34"
@@ -609,8 +609,8 @@
 	src.bitesize = 3
 
 /obj/item/reagent_container/food/snacks/tofu
-	name = "Tofu"
-	desc = "We all love tofu."
+	name = "豆腐"
+	desc = "我们都爱豆腐。"
 	icon_state = "tofu"
 	icon = 'icons/obj/items/food/cheese.dmi'
 	filling_color = "#FFFEE0"
@@ -621,8 +621,8 @@
 	src.bitesize = 3
 
 /obj/item/reagent_container/food/snacks/tofurkey
-	name = "Tofurkey"
-	desc = "A fake turkey made from tofu."
+	name = "豆腐火鸡"
+	desc = "一种用豆腐制成的假火鸡。"
 	icon_state = "tofurkey"
 	icon = 'icons/obj/items/food/dishes.dmi'
 	filling_color = "#FFFEE0"
@@ -634,8 +634,8 @@
 	bitesize = 3
 
 /obj/item/reagent_container/food/snacks/stuffing
-	name = "Stuffing"
-	desc = "Moist, peppery breadcrumbs for filling the body cavities of dead birds. Dig in!"
+	name = "填料"
+	desc = "湿润、带胡椒味的面包屑，用于填充死鸟的体腔。开动吧！"
 	icon_state = "stuffing"
 	icon = 'icons/obj/items/food/food_ingredients.dmi'
 	filling_color = "#C9AC83"
@@ -646,8 +646,8 @@
 	reagents.add_reagent("blackpepper",1)
 
 /obj/item/reagent_container/food/snacks/carpmeat
-	name = "carp fillet"
-	desc = "A fillet of spess carp meat."
+	name = "鲤鱼鱼片"
+	desc = "一片太空鲤鱼肉片。"
 	icon_state = "fishfillet"
 	icon = 'icons/obj/items/food/fish.dmi'
 	filling_color = "#FFDEFE"
@@ -659,16 +659,16 @@
 	src.bitesize = 6
 
 /obj/item/reagent_container/food/snacks/carpmeat/processed
-	name = "processed carp fillet"
-	desc = "A fillet of spess carp meat. This one has been processed to remove carpotoxin."
+	name = "加工过的鲤鱼鱼片"
+	desc = "一块太空鲤鱼肉排。这块肉经过处理，已去除鲤毒素。"
 
 /obj/item/reagent_container/food/snacks/carpmeat/processed/Initialize()
 	. = ..()
 	reagents.remove_reagent("carpotoxin", 6)
 
 /obj/item/reagent_container/food/snacks/fishfingers
-	name = "Fish Fingers"
-	desc = "A finger of fish."
+	name = "鱼条"
+	desc = "一条鱼肉条。"
 	icon_state = "fishfingers"
 	icon = 'icons/obj/items/food/fish.dmi'
 	filling_color = "#FFDEFE"
@@ -679,8 +679,8 @@
 	bitesize = 3
 
 /obj/item/reagent_container/food/snacks/hugemushroomslice
-	name = "huge mushroom slice"
-	desc = "A slice from a huge mushroom."
+	name = "巨型蘑菇切片"
+	desc = "一片来自巨型蘑菇的切片。"
 	icon_state = "hugemushroomslice"
 	icon = 'icons/obj/items/food/slices.dmi'
 	filling_color = "#E0D7C5"
@@ -692,8 +692,8 @@
 	src.bitesize = 6
 
 /obj/item/reagent_container/food/snacks/tomatomeat
-	name = "tomato slice"
-	desc = "A slice from a huge tomato."
+	name = "番茄切片"
+	desc = "一片来自巨型番茄的切片。"
 	icon_state = "tomatomeat"
 	icon = 'icons/obj/items/food/slices.dmi'
 	filling_color = "#DB0000"
@@ -704,8 +704,8 @@
 	src.bitesize = 6
 
 /obj/item/reagent_container/food/snacks/bearmeat
-	name = "bear meat"
-	desc = "A very manly slab of meat."
+	name = "熊肉"
+	desc = "一块非常爷们儿的肉排。"
 	icon_state = "bearmeat"
 	icon = 'icons/obj/items/food/meat.dmi'
 	filling_color = "#DB0000"
@@ -717,7 +717,7 @@
 
 /obj/item/reagent_container/food/snacks/meatball
 	name = "meatball"
-	desc = "A great meal all round."
+	desc = "一顿各方面都很棒的餐食。"
 	icon_state = "meatball"
 	icon = 'icons/obj/items/food/meat.dmi'
 	filling_color = "#DB0000"
@@ -729,7 +729,7 @@
 
 /obj/item/reagent_container/food/snacks/sausage
 	name = "sausage"
-	desc = "A piece of mixed, long meat."
+	desc = "一块混合的长条肉。"
 	icon_state = "sausage"
 	icon = 'icons/obj/items/food/meat.dmi'
 	filling_color = "#DB0000"
@@ -741,7 +741,7 @@
 
 /obj/item/reagent_container/food/snacks/donkpocket
 	name = "\improper Donk-pocket"
-	desc = "The food of choice for the seasoned traitor."
+	desc = "经验丰富的叛徒的首选食物。"
 	icon = 'icons/obj/items/food/bakery.dmi'
 	icon_state = "donkpocket"
 	item_state_slots = list(WEAR_AS_GARB = "donkpocket")
@@ -759,11 +759,11 @@
 			if(!QDELETED(src)) //not qdel'd
 				warm = 0
 				reagents.del_reagent("tricordrazine")
-				name = "donk-pocket"
+				name = "唐克口袋饼"
 
 /obj/item/reagent_container/food/snacks/brainburger
 	name = "brainburger"
-	desc = "A strange looking burger. It looks almost sentient."
+	desc = "一个看起来奇怪的汉堡。它看起来几乎是有知觉的。"
 	icon_state = "brainburger"
 	icon = 'icons/obj/items/food/burgers.dmi'
 	filling_color = "#F2B6EA"
@@ -775,8 +775,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/ghostburger
-	name = "ghost burger"
-	desc = "Spooky! It doesn't look very filling."
+	name = "幽灵汉堡"
+	desc = "诡异！它看起来不太管饱。"
 	icon_state = "ghostburger"
 	icon = 'icons/obj/items/food/burgers.dmi'
 	filling_color = "#FFF2FF"
@@ -790,8 +790,8 @@
 	filling_color = "#D63C3C"
 
 /obj/item/reagent_container/food/snacks/human/burger
-	name = "bob burger"
-	desc = "A bloody burger."
+	name = "鲍勃汉堡"
+	desc = "一个血淋淋的汉堡。"
 	icon_state = "hamburger"
 	icon = 'icons/obj/items/food/burgers.dmi'
 
@@ -803,7 +803,7 @@
 
 /obj/item/reagent_container/food/snacks/cheeseburger
 	name = "cheeseburger"
-	desc = "The cheese adds a good flavor."
+	desc = "奶酪增添了绝佳风味。"
 	icon_state = "hamburger"
 	icon = 'icons/obj/items/food/burgers.dmi'
 
@@ -815,7 +815,7 @@
 
 /obj/item/reagent_container/food/snacks/monkeyburger
 	name = "burger"
-	desc = "The cornerstone of every nutritious breakfast."
+	desc = "每顿营养早餐的基石。"
 	icon_state = "hburger"
 	icon = 'icons/obj/items/food/burgers.dmi'
 	filling_color = "#D63C3C"
@@ -827,8 +827,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/fishburger
-	name = "Fillet -o- Carp Sandwich"
-	desc = "Almost like a carp is yelling somewhere... Give me back that fillet -o- carp, give me that carp."
+	name = "鲤鱼排三明治"
+	desc = "几乎能听到鲤鱼在某个地方呐喊……把我的鲤鱼排还给我，把那条鲤鱼给我。"
 	icon_state = "fishburger"
 	icon = 'icons/obj/items/food/burgers.dmi'
 	filling_color = "#FFDEFE"
@@ -840,8 +840,8 @@
 	bitesize = 3
 
 /obj/item/reagent_container/food/snacks/tofuburger
-	name = "Tofu Burger"
-	desc = "What... is that meat?"
+	name = "豆腐汉堡"
+	desc = "那……是什么肉？"
 	icon_state = "tofuburger"
 	icon = 'icons/obj/items/food/burgers.dmi'
 	filling_color = "#FFFEE0"
@@ -854,7 +854,7 @@
 
 /obj/item/reagent_container/food/snacks/roburger
 	name = "roburger"
-	desc = "The lettuce is the only organic component. Beep."
+	desc = "生菜是唯一的有机成分。哔。"
 	icon_state = "roburger"
 	icon = 'icons/obj/items/food/burgers.dmi'
 	filling_color = "#CCCCCC"
@@ -867,7 +867,7 @@
 
 /obj/item/reagent_container/food/snacks/xenoburger
 	name = "xenoburger"
-	desc = "Smells caustic. Tastes like heresy."
+	desc = "闻起来有腐蚀性。尝起来像异端邪说。"
 	icon_state = "xburger"
 	icon = 'icons/obj/items/food/burgers.dmi'
 	filling_color = "#43DE18"
@@ -879,8 +879,8 @@
 	bitesize = 3
 
 /obj/item/reagent_container/food/snacks/clownburger
-	name = "Clown Burger"
-	desc = "This tastes funny..."
+	name = "小丑汉堡"
+	desc = "这味道有点怪..."
 	icon_state = "clownburger"
 	icon = 'icons/obj/items/food/burgers.dmi'
 	filling_color = COLOR_MAGENTA
@@ -891,8 +891,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/mimeburger
-	name = "Mime Burger"
-	desc = "Its taste defies language."
+	name = "默剧汉堡"
+	desc = "它的味道无法用语言形容。"
 	icon_state = "mimeburger"
 	icon = 'icons/obj/items/food/burgers.dmi'
 	filling_color = COLOR_WHITE
@@ -903,8 +903,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/omelette
-	name = "Omelette Du Fromage"
-	desc = "That's all you can say!"
+	name = "奶酪煎蛋卷"
+	desc = "你只能说出这句话！"
 	icon_state = "omelette"
 	icon = 'icons/obj/items/food/dishes.dmi'
 	trash = /obj/item/trash/plate
@@ -917,8 +917,8 @@
 	reagents.add_reagent("cheese", 4)
 
 /obj/item/reagent_container/food/snacks/muffin
-	name = "Muffin"
-	desc = "A little muffin. Spongy, moist, and delicious."
+	name = "松饼"
+	desc = "一小块松饼。松软、湿润、美味。"
 	icon_state = "muffin"
 	icon = 'icons/obj/items/food/bakery.dmi'
 	filling_color = "#E0CF9B"
@@ -930,8 +930,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/pie
-	name = "Banana Cream Pie"
-	desc = "Just like back home, on clown planet! HONK!"
+	name = "香蕉奶油派"
+	desc = "就像回到小丑星球的老家一样！嘀嘀！"
 	icon_state = "pie"
 	icon = 'icons/obj/items/food/bakery.dmi'
 	trash = /obj/item/trash/plate
@@ -946,12 +946,12 @@
 /obj/item/reagent_container/food/snacks/pie/launch_impact(atom/hit_atom)
 	..()
 	new/obj/effect/decal/cleanable/pie_smudge(src.loc)
-	src.visible_message(SPAN_DANGER("[src.name] splats."),SPAN_DANGER("You hear a splat."))
+	src.visible_message(SPAN_DANGER("[src.name] 啪嗒一声。"),SPAN_DANGER("You hear a splat."))
 	qdel(src)
 
 /obj/item/reagent_container/food/snacks/berryclafoutis
-	name = "Berry Clafoutis"
-	desc = "No black birds, this is a good sign."
+	name = "浆果克拉芙缇"
+	desc = "没有黑鸟，这是个好兆头。"
 	icon_state = "berryclafoutis"
 	icon = 'icons/obj/items/food/dishes.dmi'
 	trash = /obj/item/trash/plate
@@ -964,7 +964,7 @@
 
 /obj/item/reagent_container/food/snacks/waffles
 	name = "waffles"
-	desc = "Mmm, waffles."
+	desc = "嗯，华夫饼。"
 	icon_state = "waffles"
 	icon = 'icons/obj/items/food/bakery.dmi'
 	trash = /obj/item/trash/waffles
@@ -978,7 +978,7 @@
 
 /obj/item/reagent_container/food/snacks/pancakes
 	name = "pancakes"
-	desc = "Golden brown creamy pancakes fresh from the griddle. Drizzled with maple syrup and topped with a slice of butter."
+	desc = "刚从烤盘上取出的金棕色奶油煎饼。淋上枫糖浆，顶部放一片黄油。"
 	icon_state = "pancakes"
 	icon = 'icons/obj/items/food/bakery.dmi'
 	filling_color = "#bb9857"
@@ -991,8 +991,8 @@
 	reagents.add_reagent("milk", 5)
 
 /obj/item/reagent_container/food/snacks/eggplantparm
-	name = "Eggplant Parmigiana"
-	desc = "The only good recipe for eggplant."
+	name = "帕尔马干酪烤茄子"
+	desc = "茄子唯一的好食谱。"
 	icon_state = "eggplantparm"
 	icon = 'icons/obj/items/food/dishes.dmi'
 	trash = /obj/item/trash/plate
@@ -1005,8 +1005,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/soylentgreen
-	name = "Soylent Green"
-	desc = "Not made of people. Honest." //Totally people.
+	name = "绿色索伦"
+	desc = "不是用人做的。真的。" //Totally people.
 	icon_state = "soylent_green"
 	icon = 'icons/obj/items/food/bakery.dmi'
 	trash = /obj/item/trash/waffles
@@ -1019,8 +1019,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/soylentviridians
-	name = "Soylen Virdians"
-	desc = "Not made of people. Honest." //Actually honest for once.
+	name = "维迪安索伦"
+	desc = "不是用人做的。真的。" //Actually honest for once.
 	icon_state = "soylent_yellow"
 	icon = 'icons/obj/items/food/bakery.dmi'
 	trash = /obj/item/trash/waffles
@@ -1032,8 +1032,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/meatpie
-	name = "Meat-pie"
-	desc = "An old barber recipe, very delicious!"
+	name = "肉馅饼"
+	desc = "一个老理发师的食谱，非常美味！"
 	icon_state = "meatpie"
 	icon = 'icons/obj/items/food/bakery.dmi'
 	trash = /obj/item/trash/plate
@@ -1046,8 +1046,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/tofupie
-	name = "Tofu-pie"
-	desc = "A delicious tofu pie."
+	name = "豆腐馅饼"
+	desc = "美味的豆腐馅饼。"
 	icon_state = "meatpie"
 	icon = 'icons/obj/items/food/bakery.dmi'
 	trash = /obj/item/trash/plate
@@ -1060,8 +1060,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/amanita_pie
-	name = "amanita pie"
-	desc = "Sweet and tasty poison pie."
+	name = "毒蝇伞派"
+	desc = "香甜可口的毒派。"
 	icon_state = "amanita_pie"
 	icon = 'icons/obj/items/food/bakery.dmi'
 	filling_color = "#FFCCCC"
@@ -1074,8 +1074,8 @@
 	bitesize = 3
 
 /obj/item/reagent_container/food/snacks/plump_pie
-	name = "plump pie"
-	desc = "I bet you love stuff made out of plump helmets!"
+	name = "肥菇派"
+	desc = "我打赌你喜欢肥菇头盔做的东西！"
 	icon_state = "plump_pie"
 	icon = 'icons/obj/items/food/bakery.dmi'
 	filling_color = "#B8279B"
@@ -1083,8 +1083,8 @@
 /obj/item/reagent_container/food/snacks/plump_pie/Initialize()
 	. = ..()
 	if(prob(10))
-		name = "exceptional plump pie"
-		desc = "Microwave is taken by a fey mood! It has cooked an exceptional plump pie!"
+		name = "极品肥菇派"
+		desc = "微波炉被精灵附体了！它做出了一个极品肥菇派！"
 		reagents.add_reagent("bread", 4)
 		reagents.add_reagent("mushroom", 4)
 		reagents.add_reagent("tricordrazine", 5)
@@ -1095,8 +1095,8 @@
 		bitesize = 2
 
 /obj/item/reagent_container/food/snacks/xemeatpie
-	name = "Xeno-pie"
-	desc = "A delicious meatpie. Probably heretical."
+	name = "异形派"
+	desc = "美味的肉派。可能属于异端。"
 	icon_state = "xenomeatpie"
 	icon = 'icons/obj/items/food/bakery.dmi'
 	trash = /obj/item/trash/plate
@@ -1109,8 +1109,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/wingfangchu
-	name = "Wing Fang Chu"
-	desc = "A savory dish of alien wing wang in soy."
+	name = "钟芳翅"
+	desc = "一道用酱油烹制的风味外星翅肉。"
 	icon_state = "wingfangchu"
 	icon = 'icons/obj/items/food/dishes.dmi'
 	trash = /obj/item/trash/snack_bowl
@@ -1124,7 +1124,7 @@
 
 /obj/item/reagent_container/food/snacks/human/kabob
 	name = "kabob"
-	desc = "A human meat, on a stick."
+	desc = "人肉串。"
 	icon_state = "kabob"
 	icon = 'icons/obj/items/food/meat.dmi'
 	trash = /obj/item/stack/rods
@@ -1136,8 +1136,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/monkeykabob
-	name = "Meat-kabob"
-	desc = "Delicious meat, on a stick."
+	name = "烤肉串"
+	desc = "美味的肉，串在签子上。"
 	icon_state = "kabob"
 	icon = 'icons/obj/items/food/meat.dmi'
 	trash = /obj/item/stack/rods
@@ -1149,8 +1149,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/tofukabob
-	name = "Tofu-kabob"
-	desc = "Vegan meat, on a stick."
+	name = "豆腐串"
+	desc = "素食肉，串在签子上。"
 	icon_state = "kabob"
 	icon = 'icons/obj/items/food/meat.dmi'
 	trash = /obj/item/stack/rods
@@ -1162,8 +1162,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/cubancarp
-	name = "Cuban Carp"
-	desc = "A grifftastic sandwich that burns your tongue and then leaves it numb!"
+	name = "古巴鲤鱼三明治"
+	desc = "一个恶作剧般的三明治，先灼烧你的舌头，然后让它麻木！"
 	icon_state = "cubancarp"
 	icon = 'icons/obj/items/food/fish.dmi'
 	trash = /obj/item/trash/plate
@@ -1176,8 +1176,8 @@
 	bitesize = 3
 
 /obj/item/reagent_container/food/snacks/popcorn
-	name = "Popcorn"
-	desc = "Buttery movie theater-style popcorn. Now to find a movie to watch while eating it."
+	name = "爆米花"
+	desc = "电影院风格的黄油爆米花。现在得找部电影边看边吃。"
 	icon_state = "popcorn"
 	trash = /obj/item/trash/popcorn
 	var/unpopped = 0
@@ -1192,13 +1192,13 @@
 
 /obj/item/reagent_container/food/snacks/popcorn/On_Consume()
 	if(prob(unpopped)) //lol ...what's the point?
-		to_chat(usr, SPAN_DANGER("You bite down on an un-popped kernel!"))
+		to_chat(usr, SPAN_DANGER("你咬到了一个没爆开的玉米粒！"))
 		unpopped = max(0, unpopped-1)
 	..()
 
 /obj/item/reagent_container/food/snacks/sosjerky
-	name = "Scaredy's Private Reserve Beef Jerky"
-	desc = "Beef jerky made from the finest space cows."
+	name = "胆小鬼私藏牛肉干"
+	desc = "用最优质太空牛肉制成的牛肉干。"
 	icon_state = "sosjerky"
 	trash = /obj/item/trash/sosjerky
 	filling_color = "#631212"
@@ -1209,9 +1209,9 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/no_raisin
-	name = "4no Raisins"
+	name = "4no葡萄干"
 	icon_state = "4no_raisins"
-	desc = "Best raisins in the universe. Not sure why."
+	desc = "全宇宙最好的葡萄干。不知道为什么。"
 	trash = /obj/item/trash/raisins
 	filling_color = "#343834"
 
@@ -1221,9 +1221,9 @@
 	reagents.add_reagent("grapejuice", 2)
 
 /obj/item/reagent_container/food/snacks/spacetwinkie
-	name = "Space Twinkie"
+	name = "太空夹心蛋糕"
 	icon_state = "space_twinkie"
-	desc = "Guaranteed to survive longer than you will."
+	desc = "保证比你活得更久。"
 	filling_color = "#FFE591"
 
 /obj/item/reagent_container/food/snacks/spacetwinkie/Initialize()
@@ -1232,9 +1232,9 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/cheesiehonkers
-	name = "Cheesie Honkers"
+	name = "奇西喇叭饼"
 	icon_state = "cheesie_honkers"
-	desc = "Bite sized cheesie snacks that will honk all over your mouth."
+	desc = "一口大小的芝士零食，让你的嘴巴充满浓郁风味。"
 	trash = /obj/item/trash/cheesie
 	filling_color = "#FFA305"
 
@@ -1244,9 +1244,9 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/syndicake
-	name = "Syndi-Cakes"
+	name = "辛迪蛋糕"
 	icon_state = "syndi_cakes"
-	desc = "An extremely moist snack cake that tastes just as good after being nuked."
+	desc = "一款极其湿润的零食蛋糕，即使加热后味道也一样好。"
 	filling_color = "#FF5D05"
 	trash = /obj/item/trash/syndi_cakes
 
@@ -1257,8 +1257,8 @@
 	bitesize = 3
 
 /obj/item/reagent_container/food/snacks/loadedbakedpotato
-	name = "Loaded Baked Potato"
-	desc = "Totally baked."
+	name = "满载烤土豆"
+	desc = "完全烤透了。"
 	icon_state = "loadedbakedpotato"
 	icon = 'icons/obj/items/food/dishes.dmi'
 	filling_color = "#9C7A68"
@@ -1270,8 +1270,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/fries
-	name = "Space Fries"
-	desc = "AKA: French Fries, Freedom Fries, etc."
+	name = "太空薯条"
+	desc = "又名：法式薯条、自由薯条等。"
 	icon_state = "fries"
 	icon = 'icons/obj/items/food/dishes.dmi'
 	trash = /obj/item/trash/plate
@@ -1284,8 +1284,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/soydope
-	name = "Soy Dope"
-	desc = "Dope from a soy."
+	name = "大豆糊"
+	desc = "来自大豆的糊状物。"
 	icon_state = "soydope"
 	icon = 'icons/obj/items/food/dishes.dmi'
 	trash = /obj/item/trash/plate
@@ -1297,8 +1297,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/spagetti
-	name = "Spaghetti"
-	desc = "A bundle of raw spaghetti."
+	name = "意大利面"
+	desc = "一捆生的意大利面。"
 	icon_state = "spagetti"
 	icon = 'icons/obj/items/food/food_ingredients.dmi'
 	filling_color = "#EDDD00"
@@ -1308,8 +1308,8 @@
 	reagents.add_reagent("dough", 1)
 
 /obj/item/reagent_container/food/snacks/cheesyfries
-	name = "Cheesy Fries"
-	desc = "Fries. Covered in cheese. Duh."
+	name = "芝士薯条"
+	desc = "薯条。覆盖着芝士。显而易见。"
 	icon_state = "cheesyfries"
 	icon = 'icons/obj/items/food/dishes.dmi'
 	trash = /obj/item/trash/plate
@@ -1322,8 +1322,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/badrecipe
-	name = "Burned mess"
-	desc = "Someone should be demoted from chef for this."
+	name = "烧焦的烂摊子"
+	desc = "有人该为这个被降职，别当厨师了。"
 	icon_state = "badrecipe"
 	icon = 'icons/obj/items/food/dishes.dmi'
 	filling_color = "#211F02"
@@ -1336,7 +1336,7 @@
 
 /obj/item/reagent_container/food/snacks/meatsteak
 	name = "steak"
-	desc = "A fine cut of grilled meat, spiced with salt and pepper. Where the meat came from is, well, probably best left unanswered."
+	desc = "一块上好的烤肉排，用盐和胡椒调味。至于肉的来源嘛，嗯，最好还是别问了。"
 	icon_state = "meatstake"
 	icon = 'icons/obj/items/food/meat.dmi'
 	trash = /obj/item/trash/plate
@@ -1350,8 +1350,8 @@
 	bitesize = 3
 
 /obj/item/reagent_container/food/snacks/spacylibertyduff
-	name = "Spacy Liberty Duff"
-	desc = "Jello gelatin, from Alfred Hubbard's cookbook."
+	name = "太空自由达夫"
+	desc = "果冻，源自阿尔弗雷德·哈伯德的食谱。"
 	icon_state = "spacylibertyduff"
 	icon = 'icons/obj/items/food/dishes.dmi'
 	trash = /obj/item/trash/snack_bowl
@@ -1364,8 +1364,8 @@
 	bitesize = 3
 
 /obj/item/reagent_container/food/snacks/amanitajelly
-	name = "Amanita Jelly"
-	desc = "Looks curiously toxic."
+	name = "毒蝇伞果冻"
+	desc = "看起来有种可疑的毒性。"
 	icon_state = "amanitajelly"
 	icon = 'icons/obj/items/food/dishes.dmi'
 	trash = /obj/item/trash/snack_bowl
@@ -1379,8 +1379,8 @@
 	bitesize = 3
 
 /obj/item/reagent_container/food/snacks/poppypretzel
-	name = "Poppy pretzel"
-	desc = "It's all twisted up!"
+	name = "罂粟椒盐卷饼"
+	desc = "它完全扭曲了！"
 	icon_state = "poppypretzel"
 	icon = 'icons/obj/items/food/bakery.dmi'
 	bitesize = 2
@@ -1393,8 +1393,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/meatballsoup
-	name = "Meatball soup"
-	desc = "You've got balls kid, BALLS!"
+	name = "肉丸汤"
+	desc = "小子，你有种，真有胆量！"
 	icon_state = "meatballsoup"
 	icon = 'icons/obj/items/food/soups_salads.dmi'
 	trash = /obj/item/trash/snack_bowl
@@ -1407,8 +1407,8 @@
 	bitesize = 5
 
 /obj/item/reagent_container/food/snacks/bloodsoup
-	name = "Tomato soup"
-	desc = "Smells like copper."
+	name = "番茄汤"
+	desc = "闻起来有股铜腥味。"
 	icon_state = "tomatosoup"
 	icon = 'icons/obj/items/food/soups_salads.dmi'
 	filling_color = COLOR_RED
@@ -1421,8 +1421,8 @@
 	bitesize = 5
 
 /obj/item/reagent_container/food/snacks/clownstears
-	name = "Clown's Tears"
-	desc = "Not very funny."
+	name = "小丑的眼泪"
+	desc = "不怎么好笑。"
 	icon_state = "clownstears"
 	icon = 'icons/obj/items/food/soups_salads.dmi'
 	filling_color = "#C4FBFF"
@@ -1435,8 +1435,8 @@
 	bitesize = 5
 
 /obj/item/reagent_container/food/snacks/vegetablesoup
-	name = "Vegetable soup"
-	desc = "A true vegan meal."
+	name = "蔬菜汤"
+	desc = "一顿真正的素食餐。"
 	icon_state = "vegetablesoup"
 	icon = 'icons/obj/items/food/soups_salads.dmi'
 	trash = /obj/item/trash/snack_bowl
@@ -1449,8 +1449,8 @@
 	bitesize = 5
 
 /obj/item/reagent_container/food/snacks/nettlesoup
-	name = "Nettle soup"
-	desc = "To think, the botanist would've beat you to death with one of these."
+	name = "荨麻汤"
+	desc = "想想看，植物学家可能会用这东西打死你。"
 	icon_state = "nettlesoup"
 	icon = 'icons/obj/items/food/soups_salads.dmi'
 	trash = /obj/item/trash/snack_bowl
@@ -1464,8 +1464,8 @@
 	bitesize = 5
 
 /obj/item/reagent_container/food/snacks/mysterysoup
-	name = "Mystery soup"
-	desc = "The mystery is, why aren't you eating it?"
+	name = "神秘汤"
+	desc = "神秘之处在于，你为什么不吃？"
 	icon_state = "mysterysoup"
 	icon = 'icons/obj/items/food/soups_salads.dmi'
 	trash = /obj/item/trash/snack_bowl
@@ -1509,8 +1509,8 @@
 	bitesize = 5
 
 /obj/item/reagent_container/food/snacks/wishsoup
-	name = "Wish Soup"
-	desc = "I wish this was soup."
+	name = "愿望汤"
+	desc = "我真希望这是汤。"
 	icon_state = "wishsoup"
 	icon = 'icons/obj/items/food/soups_salads.dmi'
 	trash = /obj/item/trash/snack_bowl
@@ -1525,8 +1525,8 @@
 		reagents.add_reagent("nutriment", 8)
 
 /obj/item/reagent_container/food/snacks/hotchili
-	name = "Hot Chili"
-	desc = "A five alarm Texan Chili!"
+	name = "辣味辣椒"
+	desc = "五级警报的德克萨斯辣椒！"
 	icon_state = "hotchili"
 	icon = 'icons/obj/items/food/soups_salads.dmi'
 	trash = /obj/item/trash/snack_bowl
@@ -1540,8 +1540,8 @@
 	bitesize = 5
 
 /obj/item/reagent_container/food/snacks/coldchili
-	name = "Cold Chili"
-	desc = "This slush is barely a liquid!"
+	name = "冷辣椒"
+	desc = "这糊状物几乎算不上液体！"
 	icon_state = "coldchili"
 	icon = 'icons/obj/items/food/soups_salads.dmi'
 	filling_color = "#2B00FF"
@@ -1556,8 +1556,8 @@
 	bitesize = 5
 
 /obj/item/reagent_container/food/snacks/monkeycube
-	name = "monkey cube"
-	desc = "Just add water!"
+	name = "猴子方块"
+	desc = "只需加水！"
 	icon_state = "monkeycube"
 	icon = 'icons/obj/items/food/monkeycubes.dmi'
 	bitesize = 12
@@ -1573,7 +1573,7 @@
 	if(!proximity)
 		return
 	if(istype(O,/obj/structure/sink) && !package)
-		to_chat(user, "You place \the [name] under a stream of water...")
+		to_chat(user, "你将\the [name]放在水流下...")
 		user.drop_held_item()
 		return Expand()
 	..()
@@ -1583,12 +1583,12 @@
 
 	if(package)
 		icon_state = "monkeycube"
-		desc = "Just add water!"
-		to_chat(user, "You unwrap the cube.")
+		desc = "只需加水！"
+		to_chat(user, "你拆开了方块包装。")
 		package = 0
 
 /obj/item/reagent_container/food/snacks/monkeycube/On_Consume(mob/M)
-	to_chat(M, SPAN_WARNING("Something inside of you suddently expands!"))
+	to_chat(M, SPAN_WARNING("你体内的某个东西突然膨胀了！"))
 
 	if (istype(M, /mob/living/carbon/human))
 		//Do not try to understand.
@@ -1627,41 +1627,41 @@
 		Expand()
 
 /obj/item/reagent_container/food/snacks/monkeycube/wrapped
-	desc = "Still wrapped in some paper."
+	desc = "仍然用纸包裹着。"
 	icon_state = "monkeycubewrap"
 	package = 1
 
 /obj/item/reagent_container/food/snacks/monkeycube/farwacube
-	name = "farwa cube"
+	name = "法瓦方块"
 	monkey_type = /mob/living/carbon/human/farwa
 /obj/item/reagent_container/food/snacks/monkeycube/wrapped/farwacube
-	name = "farwa cube"
+	name = "法瓦方块"
 	monkey_type =/mob/living/carbon/human/farwa
 
 /obj/item/reagent_container/food/snacks/monkeycube/stokcube
-	name = "stok cube"
+	name = "斯托克方块"
 	monkey_type = /mob/living/carbon/human/stok
 /obj/item/reagent_container/food/snacks/monkeycube/wrapped/stokcube
-	name = "stok cube"
+	name = "斯托克方块"
 	monkey_type =/mob/living/carbon/human/stok
 
 /obj/item/reagent_container/food/snacks/monkeycube/neaeracube
-	name = "neaera cube"
+	name = "尼埃拉方块"
 	monkey_type = /mob/living/carbon/human/neaera
 /obj/item/reagent_container/food/snacks/monkeycube/wrapped/neaeracube
-	name = "neaera cube"
+	name = "尼埃拉方块"
 	monkey_type =/mob/living/carbon/human/neaera
 
 /obj/item/reagent_container/food/snacks/monkeycube/yirencube
-	name = "yiren cube"
+	name = "伊伦方块"
 	monkey_type = /mob/living/carbon/human/yiren
 /obj/item/reagent_container/food/snacks/monkeycube/wrapped/yirencube
-	name = "yiren cube"
+	name = "伊伦方块"
 	monkey_type =/mob/living/carbon/human/yiren
 
 /obj/item/reagent_container/food/snacks/spellburger
-	name = "Spell Burger"
-	desc = "This is absolutely Ei Nath."
+	name = "咒术汉堡"
+	desc = "这绝对是艾·纳特。"
 	icon_state = "spellburger"
 	icon = 'icons/obj/items/food/burgers.dmi'
 	filling_color = "#D505FF"
@@ -1672,8 +1672,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/bigbiteburger
-	name = "Big Bite Burger"
-	desc = "Forget the Big Mac. THIS is the future!"
+	name = "巨无霸汉堡"
+	desc = "忘掉巨无霸吧。这才是未来！"
 	icon_state = "bigbiteburger"
 	icon = 'icons/obj/items/food/burgers.dmi'
 	filling_color = "#E3D681"
@@ -1685,8 +1685,8 @@
 	bitesize = 3
 
 /obj/item/reagent_container/food/snacks/enchiladas
-	name = "Enchiladas"
-	desc = "Viva La Mexico!"
+	name = "墨西哥卷饼"
+	desc = "墨西哥万岁！"
 	icon_state = "enchiladas"
 	icon = 'icons/obj/items/food/dishes.dmi'
 	trash = /obj/item/trash/tray
@@ -1700,8 +1700,8 @@
 	bitesize = 4
 
 /obj/item/reagent_container/food/snacks/monkeysdelight
-	name = "monkey's Delight"
-	desc = "Eeee Eee!"
+	name = "猴子的喜悦"
+	desc = "咿咿咿！"
 	icon_state = "monkeysdelight"
 	icon = 'icons/obj/items/food/meat.dmi'
 	trash = /obj/item/trash/tray
@@ -1716,8 +1716,8 @@
 	bitesize = 6
 
 /obj/item/reagent_container/food/snacks/baguette
-	name = "Baguette"
-	desc = "Bon appetit!"
+	name = "法棍面包"
+	desc = "祝你好胃口！"
 	icon_state = "baguette"
 	icon = 'icons/obj/items/food/bread.dmi'
 	filling_color = "#E3D796"
@@ -1730,8 +1730,8 @@
 	bitesize = 3
 
 /obj/item/reagent_container/food/snacks/fishandchips
-	name = "Fish and Chips"
-	desc = "I do say so myself chap."
+	name = "炸鱼薯条"
+	desc = "我自己也这么说，老兄。"
 	icon_state = "fishandchips"
 	icon = 'icons/obj/items/food/fish.dmi'
 	filling_color = "#E3D796"
@@ -1742,8 +1742,8 @@
 	bitesize = 3
 
 /obj/item/reagent_container/food/snacks/sandwich
-	name = "Sandwich"
-	desc = "A grand creation of meat, cheese, bread, and several leaves of lettuce! Arthur Dent would be proud."
+	name = "三明治"
+	desc = "肉、奶酪、面包和几片生菜组成的伟大创造！亚瑟·邓特会为此骄傲。"
 	icon_state = "sandwich"
 	icon = 'icons/obj/items/food/bread.dmi'
 	trash = /obj/item/trash/plate
@@ -1757,8 +1757,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/toastedsandwich
-	name = "Toasted Sandwich"
-	desc = "Now if you only had a pepper bar."
+	name = "烤三明治"
+	desc = "现在要是再来根胡椒棒就好了。"
 	icon_state = "toastedsandwich"
 	icon = 'icons/obj/items/food/bread.dmi'
 	trash = /obj/item/trash/plate
@@ -1771,8 +1771,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/grilledcheese
-	name = "Grilled Cheese Sandwich"
-	desc = "Goes great with Tomato soup!"
+	name = "烤奶酪三明治"
+	desc = "和番茄汤是绝配！"
 	icon_state = "toastedsandwich"
 	icon = 'icons/obj/items/food/bread.dmi'
 	trash = /obj/item/trash/plate
@@ -1785,8 +1785,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/tomatosoup
-	name = "Tomato Soup"
-	desc = "Drinking this feels like being a vampire! A tomato vampire..."
+	name = "番茄汤"
+	desc = "喝这个感觉就像变成了吸血鬼！一个番茄吸血鬼……"
 	icon_state = "tomatosoup"
 	icon = 'icons/obj/items/food/soups_salads.dmi'
 	trash = /obj/item/trash/snack_bowl
@@ -1799,8 +1799,8 @@
 	bitesize = 3
 
 /obj/item/reagent_container/food/snacks/rofflewaffles
-	name = "Roffle Waffles"
-	desc = "Waffles from Roffle. Co."
+	name = "罗夫华夫饼"
+	desc = "来自罗夫公司的华夫饼。"
 	icon_state = "rofflewaffles"
 	icon = 'icons/obj/items/food/bakery.dmi'
 	trash = /obj/item/trash/waffles
@@ -1813,8 +1813,8 @@
 	bitesize = 4
 
 /obj/item/reagent_container/food/snacks/stew
-	name = "Stew"
-	desc = "A nice and warm stew. Healthy and strong."
+	name = "炖菜"
+	desc = "一份美味温热的炖菜。健康又强身。"
 	icon_state = "stew"
 	icon = 'icons/obj/items/food/soups_salads.dmi'
 	filling_color = "#9E673A"
@@ -1830,8 +1830,8 @@
 	bitesize = 10
 
 /obj/item/reagent_container/food/snacks/jelliedtoast
-	name = "Jellied Toast"
-	desc = "A slice of bread covered with delicious jam."
+	name = "果酱吐司"
+	desc = "一片涂满美味果酱的面包。"
 	icon_state = "jellytoast"
 	icon = 'icons/obj/items/food/bread.dmi'
 	trash = /obj/item/trash/plate
@@ -1849,8 +1849,8 @@
 	reagents.add_reagent("cherryjelly", 5)
 
 /obj/item/reagent_container/food/snacks/jellyburger
-	name = "Jelly Burger"
-	desc = "Culinary delight..?"
+	name = "果冻汉堡"
+	desc = "烹饪界的享受..？"
 	icon_state = "jellyburger"
 	icon = 'icons/obj/items/food/burgers.dmi'
 	filling_color = "#B572AB"
@@ -1867,8 +1867,8 @@
 	reagents.add_reagent("cherryjelly", 5)
 
 /obj/item/reagent_container/food/snacks/milosoup
-	name = "Milosoup"
-	desc = "The universes best soup! Yum!!!"
+	name = "米洛汤"
+	desc = "全宇宙最好的汤！美味！！！"
 	icon_state = "milosoup"
 	icon = 'icons/obj/items/food/soups_salads.dmi'
 	trash = /obj/item/trash/snack_bowl
@@ -1880,8 +1880,8 @@
 	bitesize = 4
 
 /obj/item/reagent_container/food/snacks/stewedsoymeat
-	name = "Stewed Soy Meat"
-	desc = "Even non-vegetarians will LOVE this!"
+	name = "炖素肉"
+	desc = "就连非素食者也会爱上它！"
 	icon_state = "stewedsoymeat"
 	icon = 'icons/obj/items/food/dishes.dmi'
 	trash = /obj/item/trash/plate
@@ -1892,8 +1892,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/boiledspagetti
-	name = "Boiled Spaghetti"
-	desc = "A plain dish of noodles, this sucks."
+	name = "水煮意面"
+	desc = "一盘寡淡的面条，真差劲。"
 	icon_state = "spagettiboiled"
 	icon = 'icons/obj/items/food/dishes.dmi'
 	trash = /obj/item/trash/plate
@@ -1905,8 +1905,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/boiledrice
-	name = "Boiled Rice"
-	desc = "A boring dish of boring rice."
+	name = "白米饭"
+	desc = "一碗无聊的米饭，无聊的菜。"
 	icon_state = "boiledrice"
 	icon = 'icons/obj/items/food/soups_salads.dmi'
 	trash = /obj/item/trash/snack_bowl
@@ -1918,8 +1918,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/ricepudding
-	name = "Rice Pudding"
-	desc = "Where's the Jam!"
+	name = "米布丁"
+	desc = "果酱在哪儿！"
 	icon_state = "rpudding"
 	icon = 'icons/obj/items/food/soups_salads.dmi'
 	trash = /obj/item/trash/snack_bowl
@@ -1932,8 +1932,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/pastatomato
-	name = "Spaghetti"
-	desc = "Spaghetti and crushed tomatoes. Just like your abusive father used to make!"
+	name = "意大利面"
+	desc = "意面和碎番茄。就像你那虐待成性的老爹以前做的那样！"
 	icon_state = "pastatomato"
 	icon = 'icons/obj/items/food/dishes.dmi'
 	trash = /obj/item/trash/plate
@@ -1946,8 +1946,8 @@
 	bitesize = 4
 
 /obj/item/reagent_container/food/snacks/meatballspagetti
-	name = "Spaghetti & Meatballs"
-	desc = "Now thats a nic'e meatball!"
+	name = "意面肉丸"
+	desc = "这才叫好肉丸！"
 	icon_state = "meatballspagetti"
 	icon = 'icons/obj/items/food/dishes.dmi'
 	trash = /obj/item/trash/plate
@@ -1960,8 +1960,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/spesslaw
-	name = "Spesslaw"
-	desc = "A lawyer's favourite."
+	name = "太空法条"
+	desc = "律师的最爱。"
 	icon_state = "spesslaw"
 	icon = 'icons/obj/items/food/dishes.dmi'
 	filling_color = "#DE4545"
@@ -1973,8 +1973,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/carrotfries
-	name = "Carrot Fries"
-	desc = "Tasty fries from fresh Carrots."
+	name = "胡萝卜薯条"
+	desc = "用新鲜胡萝卜制成的美味薯条。"
 	icon_state = "carrotfries"
 	icon = 'icons/obj/items/food/dishes.dmi'
 	trash = /obj/item/trash/plate
@@ -1987,8 +1987,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/superbiteburger
-	name = "Super Bite Burger"
-	desc = "This is a mountain of a burger. FOOD!"
+	name = "超级一口堡"
+	desc = "这是一座汉堡山。食物！"
 	icon_state = "superbiteburger"
 	icon = 'icons/obj/items/food/burgers.dmi'
 	filling_color = "#CCA26A"
@@ -2005,8 +2005,8 @@
 	bitesize = 10
 
 /obj/item/reagent_container/food/snacks/candiedapple
-	name = "Candied Apple"
-	desc = "An apple coated in sugary sweetness."
+	name = "糖衣苹果"
+	desc = "一个裹着糖衣的甜美苹果。"
 	icon_state = "candiedapple"
 	icon = 'icons/obj/items/food/candies.dmi'
 	filling_color = "#F21873"
@@ -2018,8 +2018,8 @@
 	bitesize = 3
 
 /obj/item/reagent_container/food/snacks/applepie
-	name = "Apple Pie"
-	desc = "A pie containing sweet sweet love... or apple."
+	name = "苹果派"
+	desc = "一个馅饼，里面充满了甜蜜的爱……或者是苹果。"
 	icon_state = "applepie"
 	icon = 'icons/obj/items/food/bakery.dmi'
 	filling_color = "#E0EDC5"
@@ -2033,8 +2033,8 @@
 
 
 /obj/item/reagent_container/food/snacks/cherrypie
-	name = "Cherry Pie"
-	desc = "Taste so good, make a grown man cry."
+	name = "樱桃派"
+	desc = "美味到让硬汉落泪。"
 	icon_state = "cherrypie"
 	icon = 'icons/obj/items/food/bakery.dmi'
 	filling_color = "#FF525A"
@@ -2047,8 +2047,8 @@
 	bitesize = 3
 
 /obj/item/reagent_container/food/snacks/twobread
-	name = "Two Bread"
-	desc = "It is very bitter and winy."
+	name = "双份面包"
+	desc = "它非常苦涩，带有酒味。"
 	icon_state = "twobread"
 	icon = 'icons/obj/items/food/bread.dmi'
 	filling_color = "#DBCC9A"
@@ -2060,8 +2060,8 @@
 	bitesize = 3
 
 /obj/item/reagent_container/food/snacks/jellysandwich
-	name = "Jelly Sandwich"
-	desc = "You wish you had some peanut butter to go with this..."
+	name = "果冻三明治"
+	desc = "你多希望有点花生酱来配这个……"
 	icon_state = "jellysandwich"
 	icon = 'icons/obj/items/food/bread.dmi'
 	trash = /obj/item/trash/plate
@@ -2080,7 +2080,7 @@
 
 /obj/item/reagent_container/food/snacks/mint
 	name = "mint"
-	desc = "It is only wafer thin."
+	desc = "它薄如威化。"
 	icon_state = "mint"
 	icon = 'icons/obj/items/food/dishes.dmi'
 	filling_color = "#F2F2F2"
@@ -2090,8 +2090,8 @@
 	reagents.add_reagent("minttoxin", 1)
 
 /obj/item/reagent_container/food/snacks/mushroomsoup
-	name = "chantrelle soup"
-	desc = "A delicious and hearty mushroom soup."
+	name = "鸡油菌汤"
+	desc = "一道美味丰盛的蘑菇汤。"
 	icon_state = "mushroomsoup"
 	icon = 'icons/obj/items/food/soups_salads.dmi'
 	trash = /obj/item/trash/snack_bowl
@@ -2104,8 +2104,8 @@
 	bitesize = 3
 
 /obj/item/reagent_container/food/snacks/plumphelmetbiscuit
-	name = "plump helmet biscuit"
-	desc = "This is a finely-prepared plump helmet biscuit. The ingredients are exceptionally minced plump helmet, and well-minced dwarven wheat flour."
+	name = "肥美菌帽饼干"
+	desc = "这是一块精心制作的肥美菌帽饼干。配料是切得极细的肥美菌帽和研磨精细的矮人小麦粉。"
 	icon_state = "phelmbiscuit"
 	icon = 'icons/obj/items/food/bakery.dmi'
 	filling_color = "#CFB4C4"
@@ -2113,8 +2113,8 @@
 /obj/item/reagent_container/food/snacks/plumphelmetbiscuit/Initialize()
 	. = ..()
 	if(prob(10))
-		name = "exceptional plump helmet biscuit"
-		desc = "Microwave is taken by a fey mood! It has cooked an exceptional plump helmet biscuit!"
+		name = "极品肥美菌帽饼干"
+		desc = "微波炉被一阵奇思妙想占据！它烹制出了一块极品的肥美菌帽饼干！"
 		reagents.add_reagent("bread", 4)
 		reagents.add_reagent("mushroom", 4)
 		reagents.add_reagent("tricordrazine", 5)
@@ -2126,7 +2126,7 @@
 
 /obj/item/reagent_container/food/snacks/chawanmushi
 	name = "chawanmushi"
-	desc = "A legendary egg custard that makes friends out of enemies. Probably too hot for a cat to eat."
+	desc = "一份传奇的蛋奶冻，能让敌人化敌为友。可能太烫了，猫吃不了。"
 	icon_state = "chawanmushi"
 	icon = 'icons/obj/items/food/bakery.dmi'
 	trash = /obj/item/trash/snack_bowl
@@ -2139,8 +2139,8 @@
 	reagents.add_reagent("soysauce", 1)
 
 /obj/item/reagent_container/food/snacks/beetsoup
-	name = "beet soup"
-	desc = "Wait, how do you spell it again..?"
+	name = "甜菜汤"
+	desc = "等等，这词怎么拼来着..？"
 	icon_state = "beetsoup"
 	icon = 'icons/obj/items/food/soups_salads.dmi'
 	trash = /obj/item/trash/snack_bowl
@@ -2165,8 +2165,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/tossedsalad
-	name = "tossed salad"
-	desc = "A proper salad, basic and simple, with little bits of carrot, tomato and apple intermingled. Vegan!"
+	name = "拌沙拉"
+	desc = "一份像样的沙拉，基础而简单，混合着小块的胡萝卜、番茄和苹果。纯素！"
 	icon_state = "herbsalad"
 	icon = 'icons/obj/items/food/soups_salads.dmi'
 	trash = /obj/item/trash/snack_bowl
@@ -2179,8 +2179,8 @@
 	bitesize = 3
 
 /obj/item/reagent_container/food/snacks/validsalad
-	name = "valid salad"
-	desc = "It's just a salad of questionable 'herbs' with meatballs and fried potato slices. Nothing suspicious about it."
+	name = "可疑沙拉"
+	desc = "这只是一份由可疑‘香草’、肉丸和炸土豆片组成的沙拉。没什么可疑的。"
 	icon_state = "validsalad"
 	icon = 'icons/obj/items/food/soups_salads.dmi'
 	trash = /obj/item/trash/snack_bowl
@@ -2194,8 +2194,8 @@
 	bitesize = 3
 
 /obj/item/reagent_container/food/snacks/appletart
-	name = "golden apple streusel tart"
-	desc = "A tasty dessert that won't make it through a metal detector."
+	name = "黄金苹果酥皮挞"
+	desc = "一道美味的甜点，但它过不了金属探测器。"
 	icon_state = "gappletart"
 	icon = 'icons/obj/items/food/bakery.dmi'
 	trash = /obj/item/trash/plate
@@ -2218,8 +2218,8 @@
 	slices_num = 6
 
 /obj/item/reagent_container/food/snacks/sliceable/meatbread
-	name = "meatbread loaf"
-	desc = "The culinary base of every self-respecting eloquent gentleman."
+	name = "肉面包卷"
+	desc = "每一位自尊自爱的雄辩绅士的烹饪基础。"
 	icon_state = "meatbread"
 	icon = 'icons/obj/items/food/bread.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/meatbreadslice
@@ -2233,8 +2233,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/meatbreadslice
-	name = "meatbread slice"
-	desc = "A slice of delicious meatbread."
+	name = "肉面包切片"
+	desc = "一片美味的肉面包。"
 	icon_state = "meatbreadslice"
 	icon = 'icons/obj/items/food/bread.dmi'
 	trash = /obj/item/trash/plate
@@ -2242,8 +2242,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/sliceable/xenomeatbread
-	name = "xenomeatbread loaf"
-	desc = "The culinary base of every self-respecting eloquent gentleman. Extra Heretical."
+	name = "异形肉面包条"
+	desc = "每一位自尊自爱的雄辩绅士的烹饪基础。额外异端。"
 	icon_state = "xenomeatbread"
 	icon = 'icons/obj/items/food/bread.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/xenomeatbreadslice
@@ -2257,8 +2257,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/xenomeatbreadslice
-	name = "xenomeatbread slice"
-	desc = "A slice of delicious meatbread. Extra Heretical."
+	name = "异形肉面包切片"
+	desc = "一片美味的肉面包。额外异端。"
 	icon_state = "xenobreadslice"
 	icon = 'icons/obj/items/food/bread.dmi'
 	trash = /obj/item/trash/plate
@@ -2266,8 +2266,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/sliceable/bananabread
-	name = "Banana-nut bread"
-	desc = "A heavenly and filling treat."
+	name = "香蕉坚果面包"
+	desc = "一份天堂般的美味，饱腹感十足。"
 	icon_state = "bananabread"
 	icon = 'icons/obj/items/food/bread.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/bananabreadslice
@@ -2281,8 +2281,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/bananabreadslice
-	name = "Banana-nut bread slice"
-	desc = "A slice of delicious banana bread."
+	name = "香蕉坚果面包切片"
+	desc = "一片美味的香蕉面包。"
 	icon_state = "bananabreadslice"
 	icon = 'icons/obj/items/food/bread.dmi'
 	trash = /obj/item/trash/plate
@@ -2290,7 +2290,7 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/sliceable/tofubread
-	name = "Tofubread"
+	name = "豆腐面包"
 	icon_state = "Like meatbread but for vegetarians. Not guaranteed to give superpowers."
 	icon_state = "tofubread"
 	icon = 'icons/obj/items/food/bread.dmi'
@@ -2305,8 +2305,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/tofubreadslice
-	name = "Tofubread slice"
-	desc = "A slice of delicious tofubread."
+	name = "豆腐面包切片"
+	desc = "一片美味的豆腐面包。"
 	icon_state = "tofubreadslice"
 	icon = 'icons/obj/items/food/bread.dmi'
 	trash = /obj/item/trash/plate
@@ -2314,8 +2314,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/sliceable/carrotcake
-	name = "Carrot Cake"
-	desc = "A favorite desert of a certain wascally wabbit. Not a lie."
+	name = "胡萝卜蛋糕"
+	desc = "某只狡猾兔子的最爱甜点。此言不虚。"
 	icon_state = "carrotcake"
 	icon = 'icons/obj/items/food/cakes.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/carrotcakeslice
@@ -2330,8 +2330,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/carrotcakeslice
-	name = "Carrot Cake slice"
-	desc = "Carroty slice of Carrot Cake, carrots are good for your eyes! Also not a lie."
+	name = "胡萝卜蛋糕切片"
+	desc = "胡萝卜蛋糕的胡萝卜切片，胡萝卜对你的眼睛有好处！同样不是谎言。"
 	icon_state = "carrotcake_slice"
 	icon = 'icons/obj/items/food/cakes.dmi'
 	trash = /obj/item/trash/plate
@@ -2339,8 +2339,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/sliceable/braincake
-	name = "Brain Cake"
-	desc = "A squishy cake-thing."
+	name = "脑蛋糕"
+	desc = "一个软趴趴的蛋糕状物体。"
 	icon_state = "braincake"
 	icon = 'icons/obj/items/food/cakes.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/braincakeslice
@@ -2354,8 +2354,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/braincakeslice
-	name = "Brain Cake slice"
-	desc = "Lemme tell you something about prions. THEY'RE DELICIOUS."
+	name = "脑蛋糕切片"
+	desc = "让我告诉你一些关于朊病毒的事。它们美味极了。"
 	icon_state = "braincakeslice"
 	icon = 'icons/obj/items/food/cakes.dmi'
 	trash = /obj/item/trash/plate
@@ -2363,8 +2363,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/sliceable/cheesecake
-	name = "Cheese Cake"
-	desc = "DANGEROUSLY cheesy."
+	name = "芝士蛋糕"
+	desc = "危险地充满芝士。"
 	icon_state = "cheesecake"
 	icon = 'icons/obj/items/food/cakes.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/cheesecakeslice
@@ -2378,8 +2378,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/cheesecakeslice
-	name = "Cheese Cake slice"
-	desc = "Slice of pure cheestisfaction."
+	name = "芝士蛋糕切片"
+	desc = "一片纯粹的芝士满足感。"
 	icon_state = "cheesecake_slice"
 	icon = 'icons/obj/items/food/cakes.dmi'
 	trash = /obj/item/trash/plate
@@ -2388,8 +2388,8 @@
 	black_market_value = 20
 
 /obj/item/reagent_container/food/snacks/sliceable/plaincake
-	name = "Vanilla Cake"
-	desc = "A plain cake, not a lie."
+	name = "香草蛋糕"
+	desc = "一个普通的蛋糕，不是谎言。"
 	icon_state = "plaincake"
 	icon = 'icons/obj/items/food/cakes.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/plaincakeslice
@@ -2401,8 +2401,8 @@
 	reagents.add_reagent("sugar", 15)
 
 /obj/item/reagent_container/food/snacks/plaincakeslice
-	name = "Vanilla Cake slice"
-	desc = "Just a slice of cake, it is enough for everyone."
+	name = "香草蛋糕切片"
+	desc = "只是一片蛋糕，足够分给每个人。"
 	icon_state = "plaincake_slice"
 	icon = 'icons/obj/items/food/cakes.dmi'
 	trash = /obj/item/trash/plate
@@ -2410,8 +2410,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/sliceable/orangecake
-	name = "Orange Cake"
-	desc = "A cake with added orange."
+	name = "橙子蛋糕"
+	desc = "添加了橙子的蛋糕。"
 	icon_state = "orangecake"
 	icon = 'icons/obj/items/food/cakes.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/orangecakeslice
@@ -2425,8 +2425,8 @@
 	reagents.add_reagent("orangejuice", 10)
 
 /obj/item/reagent_container/food/snacks/orangecakeslice
-	name = "Orange Cake slice"
-	desc = "Just a slice of cake, it is enough for everyone."
+	name = "橙子蛋糕切片"
+	desc = "只是一片蛋糕，足够分给每个人。"
 	icon_state = "orangecake_slice"
 	icon = 'icons/obj/items/food/cakes.dmi'
 	trash = /obj/item/trash/plate
@@ -2434,8 +2434,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/sliceable/limecake
-	name = "Lime Cake"
-	desc = "A cake with added lime."
+	name = "青柠蛋糕"
+	desc = "添加了青柠的蛋糕。"
 	icon_state = "limecake"
 	icon = 'icons/obj/items/food/cakes.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/limecakeslice
@@ -2449,8 +2449,8 @@
 	reagents.add_reagent("limejuice", 10)
 
 /obj/item/reagent_container/food/snacks/limecakeslice
-	name = "Lime Cake slice"
-	desc = "Just a slice of cake, it is enough for everyone."
+	name = "青柠蛋糕切片"
+	desc = "只是一片蛋糕，足够分给每个人。"
 	icon_state = "limecake_slice"
 	icon = 'icons/obj/items/food/cakes.dmi'
 	trash = /obj/item/trash/plate
@@ -2458,8 +2458,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/sliceable/lemoncake
-	name = "Lemon Cake"
-	desc = "A cake with added lemon."
+	name = "柠檬蛋糕"
+	desc = "添加了柠檬的蛋糕。"
 	icon_state = "lemoncake"
 	icon = 'icons/obj/items/food/cakes.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/lemoncakeslice
@@ -2473,8 +2473,8 @@
 	reagents.add_reagent("lemonjuice", 10)
 
 /obj/item/reagent_container/food/snacks/lemoncakeslice
-	name = "Lemon Cake slice"
-	desc = "Just a slice of cake, it is enough for everyone."
+	name = "柠檬蛋糕切片"
+	desc = "只是一片蛋糕，足够分给每个人。"
 	icon_state = "lemoncake_slice"
 	icon = 'icons/obj/items/food/cakes.dmi'
 	trash = /obj/item/trash/plate
@@ -2482,8 +2482,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/sliceable/chocolatecake
-	name = "Chocolate Cake"
-	desc = "A cake with added chocolate."
+	name = "巧克力蛋糕"
+	desc = "添加了巧克力的蛋糕。"
 	icon_state = "chocolatecake"
 	icon = 'icons/obj/items/food/cakes.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/chocolatecakeslice
@@ -2496,8 +2496,8 @@
 	reagents.add_reagent("coco", 10)
 
 /obj/item/reagent_container/food/snacks/chocolatecakeslice
-	name = "Chocolate Cake slice"
-	desc = "Just a slice of cake, it is enough for everyone."
+	name = "巧克力蛋糕切片"
+	desc = "只是一片蛋糕，足够分给每个人。"
 	icon_state = "chocolatecake_slice"
 	icon = 'icons/obj/items/food/cakes.dmi'
 	trash = /obj/item/trash/plate
@@ -2505,8 +2505,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/sliceable/cheesewheel
-	name = "Cheese wheel"
-	desc = "A big wheel of delicious Cheddar."
+	name = "奶酪轮"
+	desc = "一大轮美味的切达干酪。"
 	icon_state = "cheesewheel"
 	icon = 'icons/obj/items/food/cheese.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/cheesewedge
@@ -2519,8 +2519,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/cheesewedge
-	name = "Cheese wedge"
-	desc = "A wedge of delicious Cheddar. The cheese wheel it was cut from can't have gone far."
+	name = "奶酪楔"
+	desc = "一块美味的切达干酪楔。切下它的奶酪轮肯定没走远。"
 	icon_state = "cheesewedge"
 	icon = 'icons/obj/items/food/cheese.dmi'
 	filling_color = "#FFF700"
@@ -2528,8 +2528,8 @@
 	black_market_value = 10
 
 /obj/item/reagent_container/food/snacks/sliceable/cheesewheel/immature
-	name = "immature cheese wheel"
-	desc = "A big wheel of supposedly delicious Cheddar, but it hasn't been aged enough and as such tastes rather crap."
+	name = "未熟成奶酪轮"
+	desc = "一大轮据说是美味的切达干酪，但熟成时间不够，因此味道相当糟糕。"
 	slice_path = /obj/item/reagent_container/food/snacks/cheesewedge/immature
 
 /obj/item/reagent_container/food/snacks/sliceable/cheesewheel/immature/Initialize()
@@ -2539,13 +2539,13 @@
 	bitesize = 4
 
 /obj/item/reagent_container/food/snacks/cheesewedge/immature
-	name = "immature cheese wedge"
-	desc = "A wedge of immature Cheddar, without any noticeable good taste. The cheese wheel it was cut from can't have gone far. It's so weak you can basically eat it all in one bite."
+	name = "未熟成奶酪楔"
+	desc = "一块未熟成的切达干酪楔，没有任何明显的好味道。切下它的奶酪轮肯定没走远。它太嫩了，你基本上可以一口吃完。"
 	bitesize = 4
 
 /obj/item/reagent_container/food/snacks/sliceable/cheesewheel/mature
-	name = "mature cheese wheel"
-	desc = "A big wheel of delicious Cheddar, sufficiently aged."
+	name = "熟成奶酪轮"
+	desc = "一大轮美味的切达干酪，已充分陈化。"
 	slice_path = /obj/item/reagent_container/food/snacks/cheesewedge/mature
 
 /obj/item/reagent_container/food/snacks/sliceable/cheesewheel/mature/Initialize()
@@ -2555,13 +2555,13 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/cheesewedge/mature
-	name = "mature cheese wedge"
-	desc = "A wedge of mature Cheddar, tastes pretty nice. The cheese wheel it was cut from can't have gone far."
+	name = "成熟干酪块"
+	desc = "一块成熟的切达干酪，味道相当不错。切下它的那轮干酪应该没走远。"
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/sliceable/cheesewheel/verymature
-	name = "aged cheese wheel"
-	desc = "A big wheel of delicious Cheddar, it has been aged for a long time and is pretty strong."
+	name = "陈年干酪轮"
+	desc = "一大轮美味的切达干酪，已陈化很长时间，味道相当浓烈。"
 	slice_path = /obj/item/reagent_container/food/snacks/cheesewedge/verymature
 
 /obj/item/reagent_container/food/snacks/sliceable/cheesewheel/verymature/Initialize()
@@ -2570,13 +2570,13 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/cheesewedge/verymature
-	name = "aged cheese wedge"
-	desc = "A wedge of very mature Cheddar. This one's been aged for a while. The cheese wheel it was cut from can't have gone far."
+	name = "陈年干酪块"
+	desc = "一块非常成熟的切达干酪。这块已经陈化了一段时间。切下它的那轮干酪应该没走远。"
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/sliceable/cheesewheel/extramature
-	name = "primordial cheese wheel"
-	desc = "A big wheel of delicious Cheddar, it has been aged for practically aeons. Merely seeing this cheese causes you to break into a cold sweat. Due to its strength, you can't eat in big bites."
+	name = "太古干酪轮"
+	desc = "一大轮美味的切达干酪，它几乎已经陈化了无数个世纪。光是看到这块干酪就让你冒出一身冷汗。由于其浓烈程度，你无法大口食用。"
 	slice_path = /obj/item/reagent_container/food/snacks/cheesewedge/extramature
 
 /obj/item/reagent_container/food/snacks/sliceable/cheesewheel/extramature/Initialize()
@@ -2587,12 +2587,12 @@
 	reagents.add_reagent("enzyme", 1)
 
 /obj/item/reagent_container/food/snacks/cheesewedge/extramature
-	name = "primordial cheese wedge"
-	desc = "A wedge of extra mature Cheddar. So strong you can barely put more than a few grammes in your mouth at a time. The cheese wheel it was cut from can't have gone far."
+	name = "太古干酪块"
+	desc = "一块特级成熟的切达干酪。味道浓烈到你一次只能放几克在嘴里。切下它的那轮干酪应该没走远。"
 
 /obj/item/reagent_container/food/snacks/sliceable/birthdaycake
-	name = "Birthday Cake"
-	desc = "Happy Birthday..."
+	name = "生日蛋糕"
+	desc = "生日快乐……"
 	icon_state = "birthdaycake"
 	icon = 'icons/obj/items/food/cakes.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/birthdaycakeslice
@@ -2606,8 +2606,8 @@
 	bitesize = 3
 
 /obj/item/reagent_container/food/snacks/birthdaycakeslice
-	name = "Birthday Cake slice"
-	desc = "A slice of your birthday."
+	name = "生日蛋糕切片"
+	desc = "属于你生日的一片。"
 	icon_state = "birthdaycakeslice"
 	icon = 'icons/obj/items/food/cakes.dmi'
 	trash = /obj/item/trash/plate
@@ -2615,8 +2615,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/sliceable/bread
-	name = "Bread"
-	desc = "Some plain old Earthen bread."
+	name = "面包"
+	desc = "一些普通的老式地球面包。"
 	icon_state = "bread"
 	icon = 'icons/obj/items/food/bread.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/breadslice
@@ -2628,8 +2628,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/breadslice
-	name = "Bread slice"
-	desc = "A slice of home."
+	name = "面包切片"
+	desc = "一片家乡的味道。"
 	icon_state = "breadslice"
 	icon = 'icons/obj/items/food/bread.dmi'
 	trash = /obj/item/trash/plate
@@ -2637,8 +2637,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/sliceable/creamcheesebread
-	name = "Cream Cheese Bread"
-	desc = "Yum yum yum!"
+	name = "奶油芝士面包"
+	desc = "好吃好吃好吃！"
 	icon_state = "creamcheesebread"
 	icon = 'icons/obj/items/food/bread.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/creamcheesebreadslice
@@ -2651,8 +2651,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/creamcheesebreadslice
-	name = "Cream Cheese Bread slice"
-	desc = "A slice of yum!"
+	name = "奶油芝士面包切片"
+	desc = "一片美味！"
 	icon_state = "creamcheesebreadslice"
 	icon = 'icons/obj/items/food/bread.dmi'
 	trash = /obj/item/trash/plate
@@ -2660,16 +2660,16 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/watermelonslice
-	name = "Watermelon Slice"
-	desc = "A slice of watery goodness."
+	name = "西瓜切片"
+	desc = "一片多汁的美味。"
 	icon_state = "watermelonslice"
 	icon = 'icons/obj/items/food/slices.dmi'
 	filling_color = "#FF3867"
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/sliceable/applecake
-	name = "Apple Cake"
-	desc = "A cake centred with Apple."
+	name = "苹果蛋糕"
+	desc = "以苹果为中心点缀的蛋糕。"
 	icon_state = "applecake"
 	icon = 'icons/obj/items/food/cakes.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/applecakeslice
@@ -2682,8 +2682,8 @@
 	reagents.add_reagent("sugar", 10)
 
 /obj/item/reagent_container/food/snacks/applecakeslice
-	name = "Apple Cake slice"
-	desc = "A slice of heavenly cake."
+	name = "苹果蛋糕切片"
+	desc = "一片天堂般的美味蛋糕。"
 	icon_state = "applecakeslice"
 	icon = 'icons/obj/items/food/cakes.dmi'
 	trash = /obj/item/trash/plate
@@ -2691,8 +2691,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/sliceable/pumpkinpie
-	name = "Pumpkin Pie"
-	desc = "A delicious treat for the autumn months."
+	name = "南瓜派"
+	desc = "秋日的美味佳品。"
 	icon_state = "pumpkinpie"
 	icon = 'icons/obj/items/food/cakes.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/pumpkinpieslice
@@ -2705,8 +2705,8 @@
 	reagents.add_reagent("sugar", 10)
 
 /obj/item/reagent_container/food/snacks/pumpkinpieslice
-	name = "Pumpkin Pie slice"
-	desc = "A slice of pumpkin pie, with whipped cream on top. Perfection."
+	name = "南瓜派切片"
+	desc = "一片南瓜派，顶上配有搅打奶油。完美。"
 	icon_state = "pumpkinpieslice"
 	icon = 'icons/obj/items/food/cakes.dmi'
 	trash = /obj/item/trash/plate
@@ -2714,8 +2714,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/cracker
-	name = "Cracker"
-	desc = "It's a salted cracker."
+	name = "薄脆饼干"
+	desc = "这是一块咸味薄脆饼干。"
 	icon_state = "cracker"
 	icon = 'icons/obj/items/food/mre_food/uscm.dmi'
 	filling_color = "#F5DEB8"
@@ -2740,8 +2740,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/sliceable/pizza/mystery
-	name = "Mystery Pizza"
-	desc = "Edible looking, hunger inducing, mysterious pizza."
+	name = "神秘披萨"
+	desc = "看起来能吃，勾起食欲的神秘披萨。"
 	slice_path = /obj/item/reagent_container/food/snacks/mysteryslice
 
 /obj/item/reagent_container/food/snacks/sliceable/pizza/mystery/Initialize()
@@ -2755,8 +2755,8 @@
 		reagents.add_reagent(ingredient, rand(6,12))
 
 /obj/item/reagent_container/food/snacks/mysteryslice
-	name = "Mysterious pizza slice"
-	desc = "You go first."
+	name = "神秘披萨切片"
+	desc = "你先请。"
 	icon = 'icons/obj/items/food/pizza.dmi'
 	filling_color = "#BAA14C"
 	bitesize = 2
@@ -2766,8 +2766,8 @@
 	icon_state = pick("pizzamargheritaslice","meatpizzaslice","mushroompizzaslice","vegetablepizzaslice")
 
 /obj/item/reagent_container/food/snacks/sliceable/pizza/margherita
-	name = "Margherita"
-	desc = "The golden standard of pizzas."
+	name = "玛格丽塔披萨"
+	desc = "披萨的黄金标准。"
 	icon_state = "pizzamargherita"
 	slice_path = /obj/item/reagent_container/food/snacks/margheritaslice
 
@@ -2778,16 +2778,16 @@
 	reagents.add_reagent("tomatojuice", 6)
 
 /obj/item/reagent_container/food/snacks/margheritaslice
-	name = "Margherita slice"
-	desc = "A slice of the classic pizza."
+	name = "玛格丽塔披萨切片"
+	desc = "一片经典披萨。"
 	icon_state = "pizzamargheritaslice"
 	icon = 'icons/obj/items/food/pizza.dmi'
 	filling_color = "#BAA14C"
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/sliceable/pizza/meatpizza
-	name = "Meatpizza"
-	desc = "A pizza with meat topping."
+	name = "肉类披萨"
+	desc = "配有肉类配料的披萨。"
 	icon_state = "meatpizza"
 	slice_path = /obj/item/reagent_container/food/snacks/meatpizzaslice
 
@@ -2799,8 +2799,8 @@
 	reagents.add_reagent("tomatojuice", 6)
 
 /obj/item/reagent_container/food/snacks/meatpizzaslice
-	name = "Meatpizza slice"
-	desc = "A slice of a meaty pizza."
+	name = "肉类披萨切片"
+	desc = "一片多肉的披萨。"
 	icon = 'icons/obj/items/food/pizza.dmi'
 	icon_state = "meatpizzaslice"
 	item_state_slots = list(WEAR_AS_GARB = "pizza")
@@ -2808,8 +2808,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/sliceable/pizza/mushroompizza
-	name = "Mushroompizza"
-	desc = "Very special pizza."
+	name = "蘑菇披萨"
+	desc = "非常特别的披萨。"
 	icon_state = "mushroompizza"
 	slice_path = /obj/item/reagent_container/food/snacks/mushroompizzaslice
 
@@ -2819,8 +2819,8 @@
 	reagents.add_reagent("mushroom", 20)
 
 /obj/item/reagent_container/food/snacks/mushroompizzaslice
-	name = "Mushroompizza slice"
-	desc = "Maybe it is the last slice of pizza in your life."
+	name = "蘑菇披萨切片"
+	desc = "也许这是你人生中最后一片披萨。"
 	icon = 'icons/obj/items/food/pizza.dmi'
 	icon_state = "mushroompizzaslice"
 	item_state_slots = list(WEAR_AS_GARB = "pizza")
@@ -2828,8 +2828,8 @@
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/sliceable/pizza/vegetablepizza
-	name = "Vegetable pizza"
-	desc = "No one of Tomato Sapiens were harmed during making this pizza."
+	name = "素食披萨"
+	desc = "制作此披萨时，没有任何番茄智人受到伤害。"
 	icon_state = "vegetablepizza"
 	slice_path = /obj/item/reagent_container/food/snacks/vegetablepizzaslice
 
@@ -2841,8 +2841,8 @@
 	reagents.add_reagent("imidazoline", 12)
 
 /obj/item/reagent_container/food/snacks/vegetablepizzaslice
-	name = "Vegetable pizza slice"
-	desc = "A slice of the most green pizza of all pizzas not containing green ingredients "
+	name = "素食披萨切片"
+	desc = "一片所有不含绿色配料的披萨中最绿的披萨。"
 	icon = 'icons/obj/items/food/pizza.dmi'
 	icon_state = "vegetablepizzaslice"
 	item_state_slots = list(WEAR_AS_GARB = "pizza")
@@ -2852,8 +2852,8 @@
 //pizzabox
 
 /obj/item/pizzabox
-	name = "pizza box"
-	desc = "A box suited for pizzas."
+	name = "披萨盒"
+	desc = "一个适合装披萨的盒子。"
 	icon = 'icons/obj/items/food/pizza.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/food_lefthand.dmi',
@@ -2877,19 +2877,19 @@
 
 	// Set appropriate description
 	if( open && pizza )
-		desc = "A box suited for pizzas. It appears to have a [pizza.name] inside."
+		desc = "一个适合装披萨的盒子。里面似乎有一个[pizza.name]。"
 	else if( length(boxes) > 0 )
-		desc = "A pile of boxes suited for pizzas. There appears to be [length(boxes) + 1] boxes in the pile."
+		desc = "一堆适合装披萨的盒子。这堆里似乎有[length(boxes) + 1]个盒子。"
 
 		var/obj/item/pizzabox/topbox = boxes[length(boxes)]
 		var/toptag = topbox.boxtag
 		if( toptag != "" )
-			desc = "[desc] The box on top has a tag, it reads: '[toptag]'."
+			desc = "[desc] 最上面的盒子有一个标签，上面写着：'[toptag]'。"
 	else
-		desc = "A box suited for pizzas."
+		desc = "一个适合装披萨的盒子。"
 
 		if( boxtag != "" )
-			desc = "[desc] The box has a tag, it reads: '[boxtag]'."
+			desc = "[desc] 这个盒子有一个标签，上面写着：'[boxtag]'。"
 
 	// Icon states and overlays
 	if( open )
@@ -2927,7 +2927,7 @@
 	if( open && pizza )
 		user.put_in_hands( pizza )
 
-		to_chat(user, SPAN_DANGER("You take the [src.pizza] out of [src]."))
+		to_chat(user, SPAN_DANGER("你从[src]中取出了[src.pizza]。"))
 		src.pizza = null
 		update_icon()
 		return
@@ -2941,7 +2941,7 @@
 		boxes -= box
 
 		user.put_in_hands( box )
-		to_chat(user, SPAN_DANGER("You remove the topmost [src] from your hand."))
+		to_chat(user, SPAN_DANGER("你从手中移除了最上面的[src]。"))
 		box.update_icon()
 		update_icon()
 		return
@@ -2978,11 +2978,11 @@
 				box.update_icon()
 				update_icon()
 
-				to_chat(user, SPAN_DANGER("You put [box] ontop of [src]!"))
+				to_chat(user, SPAN_DANGER("你将[box]放到了[src]上面！"))
 			else
-				to_chat(user, SPAN_DANGER("The stack is too high!"))
+				to_chat(user, SPAN_DANGER("堆得太高了！"))
 		else
-			to_chat(user, SPAN_DANGER("Close [box] first!"))
+			to_chat(user, SPAN_DANGER("先把[box]关上！"))
 
 		return
 
@@ -2994,9 +2994,9 @@
 
 			update_icon()
 
-			to_chat(user, SPAN_DANGER("You put [I] in [src]!"))
+			to_chat(user, SPAN_DANGER("你将[I]放入了[src]！"))
 		else
-			to_chat(user, SPAN_DANGER("You try to push [I] through the lid but it doesn't work!"))
+			to_chat(user, SPAN_DANGER("你试图将[I]从盒盖塞进去，但失败了！"))
 		return
 
 	if( istype(I, /obj/item/tool/pen/) )
@@ -3004,7 +3004,7 @@
 		if( src.open )
 			return
 
-		var/t = stripped_input(user,"Enter what you want to add to the tag:", "Write", "", 30)
+		var/t = stripped_input(user,"输入你想添加到标签上的内容：", "Write", "", 30)
 
 		var/obj/item/pizzabox/boxtotagto = src
 		if( length(boxes) > 0 )
@@ -3040,7 +3040,7 @@
 /obj/item/pizzabox/mystery/Initialize(mapload, ...)
 	. = ..()
 	pizza = new /obj/item/reagent_container/food/snacks/sliceable/pizza/mystery(src)
-	boxtag = "Mystery Pizza"
+	boxtag = "神秘披萨"
 
 // Pre-stacked boxes for reqs
 /obj/item/pizzabox/mystery/stack/Initialize(mapload, ...)
@@ -3079,7 +3079,7 @@
 /obj/item/pizzabox/pizza_galaxy/mystery/Initialize(mapload, ...)
 	. = ..()
 	pizza = new /obj/item/reagent_container/food/snacks/sliceable/pizza/mystery(src)
-	boxtag = "Mystery Pizza"
+	boxtag = "神秘披萨"
 
 // Pre-stacked boxes for reqs
 /obj/item/pizzabox/pizza_galaxy/mystery/stack/Initialize(mapload, ...)
@@ -3097,7 +3097,7 @@
 /obj/item/reagent_container/food/snacks/flour/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/reagent_container/food/snacks/egg))
 		new /obj/item/reagent_container/food/snacks/dough(get_turf(src))
-		to_chat(user, "You make some dough.")
+		to_chat(user, "你揉了些面团。")
 		qdel(W)
 		qdel(src)
 
@@ -3105,7 +3105,7 @@
 /obj/item/reagent_container/food/snacks/egg/attackby(obj/item/W, mob/living/user, list/mods)
 	if(istype(W, /obj/item/reagent_container/food/snacks/flour))
 		new /obj/item/reagent_container/food/snacks/dough(get_turf(src))
-		to_chat(user, "You make some dough.")
+		to_chat(user, "你揉了些面团。")
 		qdel(W)
 		qdel(src)
 		return TRUE
@@ -3115,10 +3115,10 @@
 		var/clr = C.colorName
 
 		if(!(clr in list("blue","green","mime","orange","purple","rainbow","red","yellow")))
-			to_chat(usr, SPAN_NOTICE("The egg refuses to take on this color!"))
+			to_chat(usr, SPAN_NOTICE("鸡蛋拒绝染上这种颜色！"))
 			return
 
-		to_chat(usr, SPAN_NOTICE("You color [src] [clr]"))
+		to_chat(usr, SPAN_NOTICE("你将[src]染成了[clr]色"))
 		icon_state = "egg-[clr]"
 		egg_color = clr
 		return TRUE
@@ -3127,7 +3127,7 @@
 
 /obj/item/reagent_container/food/snacks/dough
 	name = "dough"
-	desc = "A piece of dough."
+	desc = "一块面团。"
 	icon = 'icons/obj/items/food/food_ingredients.dmi'
 	icon_state = "dough"
 	bitesize = 2
@@ -3140,15 +3140,15 @@
 /obj/item/reagent_container/food/snacks/dough/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/tool/kitchen/rollingpin))
 		new /obj/item/reagent_container/food/snacks/sliceable/flatdough(get_turf(src))
-		to_chat(user, "You flatten the dough.")
+		to_chat(user, "你将面团压平。")
 		qdel(src)
 
 // slicable into 3xdoughslices
 /obj/item/reagent_container/food/snacks/sliceable/flatdough
-	name = "flat dough"
-	desc = "A flattened dough."
+	name = "压平的面团"
+	desc = "一块被压平的面团。"
 	icon = 'icons/obj/items/food/food_ingredients.dmi'
-	icon_state = "flat dough"
+	icon_state = "压平的面团"
 	slice_path = /obj/item/reagent_container/food/snacks/doughslice
 
 /obj/item/reagent_container/food/snacks/sliceable/flatdough/Initialize()
@@ -3156,8 +3156,8 @@
 	reagents.add_reagent("dough", 3)
 
 /obj/item/reagent_container/food/snacks/doughslice
-	name = "dough slice"
-	desc = "A building block of an impressive dish."
+	name = "生面团片"
+	desc = "一道佳肴的基石。"
 	icon = 'icons/obj/items/food/food_ingredients.dmi'
 	icon_state = "doughslice"
 	bitesize = 2
@@ -3168,7 +3168,7 @@
 
 /obj/item/reagent_container/food/snacks/bun
 	name = "bun"
-	desc = "A base for any self-respecting burger."
+	desc = "任何体面汉堡的基础。"
 	icon = 'icons/obj/items/food/food_ingredients.dmi'
 	icon_state = "bun"
 	bitesize = 2
@@ -3181,21 +3181,21 @@
 	// Bun + meatball = burger
 	if(istype(W,/obj/item/reagent_container/food/snacks/meatball))
 		new /obj/item/reagent_container/food/snacks/monkeyburger(get_turf(src))
-		to_chat(user, "You make a burger.")
+		to_chat(user, "你做了一个汉堡。")
 		qdel(W)
 		qdel(src)
 
 	// Bun + cutlet = hamburger
 	else if(istype(W,/obj/item/reagent_container/food/snacks/cutlet))
 		new /obj/item/reagent_container/food/snacks/monkeyburger(get_turf(src))
-		to_chat(user, "You make a burger.")
+		to_chat(user, "你做了一个汉堡。")
 		qdel(W)
 		qdel(src)
 
 	// Bun + sausage = hotdog
 	else if(istype(W,/obj/item/reagent_container/food/snacks/sausage))
 		new /obj/item/reagent_container/food/snacks/hotdog(get_turf(src))
-		to_chat(user, "You make a hotdog.")
+		to_chat(user, "你做了一个热狗。")
 		qdel(W)
 		qdel(src)
 
@@ -3203,7 +3203,7 @@
 /obj/item/reagent_container/food/snacks/monkeyburger/attackby(obj/item/reagent_container/food/snacks/cheesewedge/W as obj, mob/user as mob)
 	if(istype(W))// && !istype(src,/obj/item/reagent_container/food/snacks/cheesewedge))
 		new /obj/item/reagent_container/food/snacks/cheeseburger(get_turf(src))
-		to_chat(user, "You make a cheeseburger.")
+		to_chat(user, "你做了一个芝士汉堡。")
 		qdel(W)
 		qdel(src)
 		return
@@ -3214,7 +3214,7 @@
 /obj/item/reagent_container/food/snacks/human/burger/attackby(obj/item/reagent_container/food/snacks/cheesewedge/W as obj, mob/user as mob)
 	if(istype(W))
 		new /obj/item/reagent_container/food/snacks/cheeseburger(get_turf(src))
-		to_chat(user, "You make a cheeseburger.")
+		to_chat(user, "你做了一个芝士汉堡。")
 		qdel(W)
 		qdel(src)
 		return
@@ -3223,7 +3223,7 @@
 
 /obj/item/reagent_container/food/snacks/taco
 	name = "taco"
-	desc = "Take a bite!"
+	desc = "咬一口！"
 	icon_state = "taco"
 	bitesize = 3
 
@@ -3232,8 +3232,8 @@
 	reagents.add_reagent("nutriment", 7)
 
 /obj/item/reagent_container/food/snacks/rawcutlet
-	name = "raw cutlet"
-	desc = "A thin piece of raw meat."
+	name = "生肉排"
+	desc = "一片薄生肉。"
 	icon = 'icons/obj/items/food/food_ingredients.dmi'
 	icon_state = "rawcutlet"
 
@@ -3243,7 +3243,7 @@
 
 /obj/item/reagent_container/food/snacks/cutlet
 	name = "cutlet"
-	desc = "A tasty meat slice."
+	desc = "一片美味的肉片。"
 	icon = 'icons/obj/items/food/food_ingredients.dmi'
 	icon_state = "cutlet"
 	bitesize = 2
@@ -3253,8 +3253,8 @@
 	reagents.add_reagent("meatprotein", 2)
 
 /obj/item/reagent_container/food/snacks/rawmeatball
-	name = "raw meatball"
-	desc = "A raw meatball."
+	name = "生肉丸"
+	desc = "一个生肉丸。"
 	icon = 'icons/obj/items/food/food_ingredients.dmi'
 	icon_state = "rawmeatball"
 	bitesize = 2
@@ -3265,7 +3265,7 @@
 
 /obj/item/reagent_container/food/snacks/hotdog
 	name = "hotdog"
-	desc = "Unrelated to dogs, maybe."
+	desc = "可能和狗无关。"
 	icon_state = "open-hotdog"
 	bitesize = 2
 
@@ -3276,7 +3276,7 @@
 
 /obj/item/reagent_container/food/snacks/flatbread
 	name = "flatbread"
-	desc = "Bland but filling."
+	desc = "平淡但管饱。"
 	icon = 'icons/obj/items/food/food_ingredients.dmi'
 	icon_state = "flatbread"
 	bitesize = 2
@@ -3289,14 +3289,14 @@
 /obj/item/reagent_container/food/snacks/grown/potato/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/tool/kitchen/utensil/knife))
 		new /obj/item/reagent_container/food/snacks/rawsticks(get_turf(src))
-		to_chat(user, "You cut the potato.")
+		to_chat(user, "你切了土豆。")
 		qdel(src)
 		return TRUE
 
 	if(istype(W, /obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/C = W
 		if(C.use(5))
-			to_chat(user, SPAN_NOTICE("You add some cable to the potato and slide it inside the battery encasing."))
+			to_chat(user, SPAN_NOTICE("你在土豆上加了些电缆，然后把它滑进电池外壳里。"))
 			var/obj/item/cell/potato/pocell = new /obj/item/cell/potato(user.loc)
 			pocell.maxcharge = src.potency * 10
 			pocell.charge = pocell.maxcharge
@@ -3306,8 +3306,8 @@
 	return ..()
 
 /obj/item/reagent_container/food/snacks/rawsticks
-	name = "raw potato sticks"
-	desc = "Raw fries, not very tasty."
+	name = "生土豆条"
+	desc = "生薯条，不太好吃。"
 	icon = 'icons/obj/items/food/food_ingredients.dmi'
 	icon_state = "rawsticks"
 	bitesize = 2
@@ -3318,8 +3318,8 @@
 	reagents.add_reagent("potato", 3)
 
 /obj/item/reagent_container/food/snacks/packaged_burrito
-	name = "Packaged Burrito"
-	desc = "A hard microwavable burrito. There's no time given for how long to cook it. Packaged by the Weyland-Yutani Corporation."
+	name = "包装墨西哥卷饼"
+	desc = "一个硬邦邦的微波卷饼。包装上没有标明加热时间。由维兰德-汤谷公司包装。"
 	icon_state = "packaged-burrito"
 	item_state = "pburrito"
 	bitesize = 2
@@ -3337,7 +3337,7 @@
 
 	if(package)
 		playsound(src.loc,'sound/effects/pageturn2.ogg', 15, 1)
-		to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy burrito!"))
+		to_chat(user, SPAN_NOTICE("你从软趴趴的卷饼上扯下了包装！"))
 		RemoveElement(/datum/element/corp_label/wy)
 		package = 0
 		new /obj/item/trash/buritto (user.loc)
@@ -3345,8 +3345,8 @@
 		item_state = "burrito"
 
 /obj/item/reagent_container/food/snacks/packaged_burger
-	name = "Packaged Cheeseburger"
-	desc = "A soggy microwavable burger. There's no time given for how long to cook it. Packaged by the Weyland-Yutani Corporation."
+	name = "包装芝士汉堡"
+	desc = "一个湿乎乎的微波汉堡。包装上没有标明加热时间。由维兰德-汤谷公司包装。"
 	icon_state = "burger"
 	item_state = "pburger"
 	icon = 'icons/obj/items/food/burgers.dmi'
@@ -3365,7 +3365,7 @@
 
 	if(package)
 		playsound(src.loc,'sound/effects/pageturn2.ogg', 15, 1)
-		to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy hamburger!"))
+		to_chat(user, SPAN_NOTICE("你从软趴趴的汉堡上扯下了包装！"))
 		RemoveElement(/datum/element/corp_label/wy)
 		package = 0
 		new /obj/item/trash/burger (user.loc)
@@ -3373,8 +3373,8 @@
 		item_state = "burger"
 
 /obj/item/reagent_container/food/snacks/packaged_hdogs
-	name = "Packaged Hotdog"
-	desc = "A singular squishy, room temperature, hot dog. There's no time given for how long to cook it, so you assume its probably good to go. Packaged by the Weyland-Yutani Corporation."
+	name = "包装热狗"
+	desc = "一根软趴趴、室温状态的热狗。包装上没有注明烹饪时间，所以你估计直接吃也行。由维兰德-汤谷公司包装。"
 	icon_state = "packaged-hotdog"
 	item_state = "photdog"
 	flags_obj = OBJ_NO_HELMET_BAND|OBJ_IS_HELMET_GARB
@@ -3393,7 +3393,7 @@
 
 	if(package)
 		playsound(src.loc,'sound/effects/pageturn2.ogg', 15, 1)
-		to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy hotdog!"))
+		to_chat(user, SPAN_NOTICE("你撕开了软趴趴热狗的包装！"))
 		RemoveElement(/datum/element/corp_label/wy)
 		package = 0
 		new /obj/item/trash/hotdog (user.loc)
@@ -3401,8 +3401,8 @@
 		item_state = "hotdog"
 
 /obj/item/reagent_container/food/snacks/eat_bar
-	name = "MEAT Bar"
-	desc = "It is a vacuum sealed tube of suspicious meat. Artificially packed full of nutrients you can't pronounce. The M is printed on the side, so it just reads EAT. Guess that's where the slogan comes from."
+	name = "肉条"
+	desc = "这是一个真空密封的、可疑的肉管。人工填满了你念都念不出来的营养成分。侧面印着M，所以看起来就是EAT（吃）。看来这就是口号的来源。"
 	icon_state = "eat_bar"
 	item_state_slots = list(WEAR_AS_GARB = "snack_eat")
 	bitesize = 2
@@ -3416,8 +3416,8 @@
 	AddElement(/datum/element/corp_label/wy) //Had WY logo (wings) in Alien Isolation
 
 /obj/item/reagent_container/food/snacks/kepler_crisps
-	name = "Kepler Crisps"
-	desc = "'They're disturbingly good!' Now with 0% trans fat and added genuine sea salts."
+	name = "开普勒薯片"
+	desc = "“它们好吃得吓人！” 现在含0%反式脂肪，并添加了真正的海盐。"
 	icon_state = "kepler"
 	item_state = "kepler"
 	bitesize = 2
@@ -3430,8 +3430,8 @@
 	AddElement(/datum/element/corp_label/wy) //Had WY logo (wings) in Alien Isolation
 
 /obj/item/reagent_container/food/snacks/kepler_crisps/flamehot
-	name = "Kepler Flamehot"
-	desc = "'They're disturbingly good!' Due to an exceptionally well-timed ad campaign with the release of Kepler Flamehot in 2165, the Kepler brand was able to overtake other confectionary Weyland products by quarter three of that year. Contains 0% trans fat."
+	name = "开普勒烈焰辣条"
+	desc = "“它们好吃得吓人！” 由于在2165年开普勒烈焰辣条发布时进行了一场时机绝佳的广告活动，开普勒品牌得以在当年第三季度超越了维兰德的其他糖果产品。含0%反式脂肪。"
 	icon_state = "flamehotkepler"
 	item_state = "flamehotkepler"
 	bitesize = 2
@@ -3455,7 +3455,7 @@
 	..()
 
 	if(package)
-		to_chat(user, SPAN_NOTICE("You pull open the package of [src]!"))
+		to_chat(user, SPAN_NOTICE("你撕开了[src]的包装！"))
 		playsound(loc,'sound/effects/pageturn2.ogg', 15, 1)
 
 		if(wrapper)
@@ -3467,7 +3467,7 @@
 //CM SNACKS
 /obj/item/reagent_container/food/snacks/wrapped/booniebars
 	name = "\improper Boonie Bars"
-	desc = "Two delicious bars of minty chocolate. <i>\"Sometimes things are just... out of reach.\"</i>"
+	desc = "两条美味的薄荷巧克力棒。<i>\"Sometimes things are just... out of reach.\"</i>"
 	icon_state = "boonie"
 	item_state = "boonie"
 	item_state_slots = list(WEAR_AS_GARB = "boonie-bars")
@@ -3480,7 +3480,7 @@
 
 /obj/item/reagent_container/food/snacks/wrapped/chunk
 	name = "\improper CHUNK box"
-	desc = "A bar of \"The <b>CHUNK</b>\" brand chocolate. <i>\"The densest chocolate permitted to exist according to federal law. We are legally required to ask you not to use this blunt object for anything other than nutrition.\"</i>"
+	desc = "一条\"The <b>CHUNK</b>\" brand chocolate. <i>\"The densest chocolate permitted to exist according to federal law. We are legally required to ask you not to use this blunt object for anything other than nutrition.\"</i>"
 	icon_state = "chunk"
 	item_state = "chunk"
 	item_state_slots = list(WEAR_AS_GARB = "chunkbox")
@@ -3498,8 +3498,8 @@
 	reagents.add_reagent("coco", 10)
 
 /obj/item/reagent_container/food/snacks/wrapped/chunk/hunk
-	name = "HUNK crate"
-	desc = "A 'crate', as the marketing called it, of \"The <b>HUNK</b>\" brand chocolate. An early version of the CHUNK box, the HUNK bar was hit by a class action lawsuit and forced to go into bankruptcy and get bought out by the Company when hundreds of customers had their teeth crack from simply attempting to eat the bar."
+	name = "HUNK箱"
+	desc = "一个按营销说法叫“箱”的东西，装着\"The <b>HUNK</b>\" brand chocolate. An early version of the CHUNK box, the HUNK bar was hit by a class action lawsuit and forced to go into bankruptcy and get bought out by the Company when hundreds of customers had their teeth crack from simply attempting to eat the bar."
 	icon_state = "hunk"
 	item_state = "hunk"
 	w_class = SIZE_MEDIUM
@@ -3515,8 +3515,8 @@
 	reagents.add_reagent("coco", 5)
 
 /obj/item/reagent_container/food/snacks/wrapped/barcardine
-	name = "Barcardine Bars"
-	desc = "A bar of chocolate, it smells like the medical bay. <i>\"Chocolate always helps the pain go away.\"</i>"
+	name = "碧卡利定条"
+	desc = "一条巧克力，闻起来像医疗舱。<i>\"Chocolate always helps the pain go away.\"</i>"
 	icon_state = "barcardine"
 	item_state = "barcardine"
 	item_state_slots = list(WEAR_AS_GARB = "barcardine-bars")
@@ -3530,8 +3530,8 @@
 	reagents.add_reagent("bicaridine", 2) //The namesake of the bar.
 
 /obj/item/reagent_container/food/snacks/wrapped/twe_bar
-	name = "ORP oat bisuit"
-	desc = "A bar of oat biscuit, has some bits of dried fruits in it. Goes well with a cup of tea."
+	name = "ORP燕麦饼干"
+	desc = "一条燕麦饼干，里面有些干果碎。配茶很不错。"
 	icon = 'icons/obj/items/food/mre_food/twe.dmi'
 	icon_state = "cookie_bar"
 	wrapper = null
@@ -3543,8 +3543,8 @@
 	reagents.add_reagent("sugar", 1)
 
 /obj/item/reagent_container/food/snacks/wrapped/upp_biscuits
-	name = "IRP army biscuits"
-	desc = "Also known as army galets. An oven baked, crunchy and salty biscuits, can be combined with some spread or eaten on themselves."
+	name = "IRP军用饼干"
+	desc = "也被称为军用硬饼干。一种烤箱烘烤的、酥脆咸香的饼干，可以搭配酱料或直接食用。"
 	icon = 'icons/obj/items/food/mre_food/upp.dmi'
 	icon_state = "Biscuits_package"
 	wrapper = null

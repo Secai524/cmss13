@@ -28,7 +28,7 @@
 	prae.recalculate_everything()
 
 /datum/behavior_delegate/praetorian_vanguard
-	name = "Praetorian Vanguard Behavior Delegate"
+	name = "禁卫军先锋行为代表"
 
 	// Config
 	var/shield_recharge_time = 20 SECONDS  // 20 seconds to recharge 1-hit shield
@@ -84,7 +84,7 @@
 		bound_xeno.explosivearmor_modifier += 1.5*XENO_EXPOSIVEARMOR_MOD_VERY_LARGE
 		bound_xeno.recalculate_armor()
 		new_shield.explosive_armor_amount = 1.5*XENO_EXPOSIVEARMOR_MOD_VERY_LARGE
-		to_chat(praetorian, SPAN_XENOHIGHDANGER("We feel our defensive shell regenerate! It will block one hit!"))
+		to_chat(praetorian, SPAN_XENOHIGHDANGER("我们感到防御外壳再生了！它将能抵挡一次攻击！"))
 
 	var/datum/action/xeno_action/activable/cleave/caction = get_action(bound_xeno, /datum/action/xeno_action/activable/cleave)
 	if (istype(caction))
@@ -147,7 +147,7 @@
 				if(!(mob_to_act in target_mobs))
 					target_mobs += mob_to_act
 
-	pierce_user.visible_message(SPAN_XENODANGER("[pierce_user] slashes its claws through the area in front of it!"), SPAN_XENODANGER("We slash our claws through the area in front of us!"))
+	pierce_user.visible_message(SPAN_XENODANGER("[pierce_user]用利爪扫过面前区域！"), SPAN_XENODANGER("We slash our claws through the area in front of us!"))
 	pierce_user.animation_attack_on(targetted_atom, 15)
 
 	pierce_user.emote("roar")
@@ -227,7 +227,7 @@
 		dash_user.flick_attack_overlay(targets_in_range, "slash")
 		targets_in_range.apply_armoured_damage(get_xeno_damage_slash(targets_in_range, damage), ARMOR_MELEE, BRUTE)
 		playsound(get_turf(targets_in_range), "alien_claw_flesh", 30, 1)
-	dash_user.visible_message(SPAN_XENODANGER("[dash_user] slashes its claws through the area around it!"), SPAN_XENODANGER("We slash our claws through the area around us!"))
+	dash_user.visible_message(SPAN_XENODANGER("[dash_user]挥舞利爪扫过周围区域！"), SPAN_XENODANGER("We slash our claws through the area around us!"))
 	dash_user.spin_circle()
 
 
@@ -248,17 +248,17 @@
 		return
 
 	if (!isxeno_human(target_atom) || cleave_user.can_not_harm(target_atom))
-		to_chat(cleave_user, SPAN_XENODANGER("We must target a hostile!"))
+		to_chat(cleave_user, SPAN_XENODANGER("我们必须以敌对目标为目标！"))
 		return
 
 	var/mob/living/carbon/target_carbon = target_atom
 
 	if (!cleave_user.Adjacent(target_carbon))
-		to_chat(cleave_user, SPAN_XENOWARNING("We must be adjacent to our target!"))
+		to_chat(cleave_user, SPAN_XENOWARNING("我们必须紧邻目标！"))
 		return
 
 	if (target_carbon.stat == DEAD)
-		to_chat(cleave_user, SPAN_XENODANGER("[target_carbon] is dead, why would we want to touch it?"))
+		to_chat(cleave_user, SPAN_XENODANGER("[target_carbon]已经死亡，我们为何要触碰它？"))
 		return
 
 	// Flick overlay and play sound
@@ -270,15 +270,15 @@
 	if (root_toggle)
 		var/root_duration = buffed ? root_duration_buffed : root_duration_unbuffed
 
-		cleave_user.visible_message(SPAN_XENODANGER("[cleave_user] slams [target_atom] into the ground!"), SPAN_XENOHIGHDANGER("We slam [target_atom] into the ground!"))
-		ADD_TRAIT(target_carbon, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Cleave"))
+		cleave_user.visible_message(SPAN_XENODANGER("[cleave_user]将[target_atom]猛砸在地！"), SPAN_XENOHIGHDANGER("We slam [target_atom] into the ground!"))
+		ADD_TRAIT(target_carbon, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("劈砍"))
 
 		if (ishuman(target_carbon))
 			var/mob/living/carbon/human/Hu = target_carbon
 			Hu.update_xeno_hostile_hud()
 
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), target_carbon, TRAIT_SOURCE_ABILITY("Cleave")), get_xeno_stun_duration(target_carbon, root_duration))
-		to_chat(target_carbon, SPAN_XENOHIGHDANGER("[cleave_user] has pinned you to the ground! You cannot move!"))
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), target_carbon, TRAIT_SOURCE_ABILITY("劈砍")), get_xeno_stun_duration(target_carbon, root_duration))
+		to_chat(target_carbon, SPAN_XENOHIGHDANGER("[cleave_user]已将你压制在地！你无法移动！"))
 		cleave_user.flick_attack_overlay(target_carbon, "punch")
 
 	else
@@ -286,7 +286,7 @@
 
 		if(target_carbon.mob_size >= MOB_SIZE_BIG)
 			fling_distance *= 0.1
-		cleave_user.visible_message(SPAN_XENODANGER("[cleave_user] deals [target_atom] a massive blow, sending them flying!"), SPAN_XENOHIGHDANGER("We deal [target_atom] a massive blow, sending them flying!"))
+		cleave_user.visible_message(SPAN_XENODANGER("[cleave_user]给予[target_atom]沉重一击，将其击飞！"), SPAN_XENOHIGHDANGER("We deal [target_atom] a massive blow, sending them flying!"))
 		cleave_user.flick_attack_overlay(target_carbon, "slam")
 		cleave_user.throw_carbon(target_atom, null, fling_distance)
 

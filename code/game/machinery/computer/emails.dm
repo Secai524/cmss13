@@ -2,8 +2,8 @@
 //computer that displays random emails from the Almayer crew, purely for backstory.
 
 /obj/structure/machinery/computer/emails
-	name = "Personal Computer"
-	desc = "A personal computer used to view emails."
+	name = "个人电脑"
+	desc = "一台用于查看电子邮件的个人电脑。"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "terminal1"
 	var/screen = 0
@@ -51,7 +51,7 @@
 					var/datum/fluff_email/FE = mail
 					dat += "<A href='byond://?src=\ref[src];selectmail=[i]'>[FE.title]</A><BR>"
 
-	show_browser(user, dat, "Personal Computer", "email", width = 600, height = 520)
+	show_browser(user, dat, "个人电脑", "email", width = 600, height = 520)
 
 
 /obj/structure/machinery/computer/emails/Topic(href, href_list)

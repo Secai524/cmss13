@@ -35,7 +35,7 @@
 /obj/structure/attack_animal(mob/living/user)
 	if(breakable)
 		if(user.wall_smash)
-			visible_message(SPAN_DANGER("[user] smashes [src] apart!"))
+			visible_message(SPAN_DANGER("[user]砸碎了[src]！"))
 			deconstruct(FALSE)
 
 /obj/structure/attackby(obj/item/W, mob/user)
@@ -124,7 +124,7 @@
 	var/final_climb_delay = climbdata["climb_delay"] //so it doesn't set structure's climb_delay to permanently be modified
 
 	var/climb_over_string = final_climb_delay < 1 SECONDS ? "vaulting over" : "climbing onto"
-	user.visible_message(SPAN_WARNING("[user] starts [flags_atom & ON_BORDER ? "leaping over" : climb_over_string] \the [src]!"))
+	user.visible_message(SPAN_WARNING("[user]开始[flags_atom & ON_BORDER ? "leaping over" : climb_over_string] \the [src]!"))
 
 	if(!do_after(user, final_climb_delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC, numticks = 2))
 		return FALSE
@@ -162,14 +162,14 @@
 			return //No spamming this on people.
 
 		M.apply_effect(5, WEAKEN)
-		to_chat(M, SPAN_WARNING("You topple as \the [src] moves under you!"))
+		to_chat(M, SPAN_WARNING("当\the [src]在你身下移动时，你摔倒了！"))
 
 		if(prob(25))
 
 			var/damage = rand(15,30)
 			var/mob/living/carbon/human/H = M
 			if(!istype(H))
-				to_chat(H, SPAN_DANGER("You land heavily!"))
+				to_chat(H, SPAN_DANGER("你重重地摔在地上！"))
 				M.apply_damage(damage, BRUTE)
 				return
 
@@ -188,12 +188,12 @@
 					affecting = H.get_limb("head")
 
 			if(affecting)
-				to_chat(M, SPAN_DANGER("You land heavily on your [affecting.display_name]!"))
+				to_chat(M, SPAN_DANGER("你重重地摔在你的[affecting.display_name]上！"))
 				affecting.take_damage(damage, 0)
 				if(affecting.parent)
 					affecting.parent.add_autopsy_data("Misadventure", damage)
 			else
-				to_chat(H, SPAN_DANGER("You land heavily!"))
+				to_chat(H, SPAN_DANGER("你重重地摔在地上！"))
 				H.apply_damage(damage, BRUTE)
 	return
 
@@ -203,18 +203,18 @@
 	if(!Adjacent(user) || !isturf(user.loc))
 		return 0
 	if(user.is_mob_restrained() || user.buckled)
-		to_chat(user, SPAN_NOTICE("You need your hands and legs free for this."))
+		to_chat(user, SPAN_NOTICE("你需要手脚自由才能这么做。"))
 		return 0
 	if(user.is_mob_incapacitated(TRUE) || user.body_position == LYING_DOWN)
 		return 0
 	if(isRemoteControlling(user))
-		to_chat(user, SPAN_NOTICE("You need hands for this."))
+		to_chat(user, SPAN_NOTICE("你需要双手才能这么做。"))
 		return 0
 	return 1
 
 /obj/structure/proc/toggle_anchored(obj/item/W, mob/user)
 	if(!wrenchable)
-		to_chat(user, SPAN_WARNING("[src] cannot be [anchored ? "un" : ""]anchored."))
+		to_chat(user, SPAN_WARNING("[src]无法被[anchored ? "un" : ""]anchored."))
 		return FALSE
 	else
 		// Wrenching is faster if we are better at engineering
@@ -223,11 +223,11 @@
 			anchored = !anchored
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 			if(anchored)
-				user.visible_message(SPAN_NOTICE("[user] anchors [src] into place."),SPAN_NOTICE("You anchor [src] into place."))
+				user.visible_message(SPAN_NOTICE("[user]将[src]固定到位。"),SPAN_NOTICE("You anchor [src] into place."))
 				for(var/obj/medlink in loc)
 					SEND_SIGNAL(medlink, COMSIG_STRUCTURE_WRENCHED, src)
 			else
-				user.visible_message(SPAN_NOTICE("[user] unanchors [src]."),SPAN_NOTICE("You unanchor [src]."))
+				user.visible_message(SPAN_NOTICE("[user]解除了[src]的固定。"),SPAN_NOTICE("You unanchor [src]."))
 				for(var/obj/medlink in loc)
 					SEND_SIGNAL(medlink, COMSIG_STRUCTURE_UNWRENCHED, src)
 			return TRUE

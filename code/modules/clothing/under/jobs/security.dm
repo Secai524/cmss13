@@ -9,8 +9,8 @@
  * Security
  */
 /obj/item/clothing/under/rank/warden
-	desc = "It's made of a slightly sturdier material than standard jumpsuits, to allow for more robust protection. It has the word \"Warden\" written on the shoulders."
-	name = "warden's jumpsuit"
+	desc = "采用比标准连体服更坚固的材料制成，以提供更可靠的防护。上面印有\"典狱长\" written on the shoulders."
+	name = "典狱长连体服"
 	icon_state = "warden"
 	item_state = "r_suit"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/security.dmi'
@@ -28,8 +28,8 @@
 	siemens_coefficient = 0.9
 
 /obj/item/clothing/under/rank/security
-	name = "security officer's jumpsuit"
-	desc = "It's made of a slightly sturdier material than standard jumpsuits, to allow for robust protection."
+	name = "安保官员连体服"
+	desc = "采用比标准连体服更坚固的材料制成，以提供可靠的防护。"
 	icon_state = "security"
 	item_state = "r_suit"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/security.dmi'
@@ -48,8 +48,8 @@
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/dispatch
-	name = "dispatcher's uniform"
-	desc = "A dress shirt and khakis with a security patch sewn on."
+	name = "调度员制服"
+	desc = "一件正装衬衫和卡其裤，缝有安保徽章。"
 	icon_state = "dispatch"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/security.dmi'
 	item_icons = list(
@@ -68,8 +68,8 @@
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/security2
-	name = "security officer's uniform"
-	desc = "It's made of a slightly sturdier material, to allow for robust protection."
+	name = "安保官员制服"
+	desc = "采用更坚固的材料制成，以提供可靠的防护。"
 	icon_state = "redshirt2"
 	item_state = "r_suit"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/security.dmi'
@@ -100,7 +100,7 @@
  */
 /obj/item/clothing/under/detective
 	name = "\improper detective suit pants"
-	desc = "A washed out white shirt with a black tie and brown slacks."
+	desc = "一件褪色的白衬衫，配黑色领带和棕色休闲裤。"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/security.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/security.dmi',
@@ -117,17 +117,17 @@
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 
 /obj/item/clothing/under/detective/neutral
-	name = "brown suit pants"
+	name = "棕色西裤"
 
 /obj/item/clothing/under/detective/grey
 	name = "\improper grey suit pants"
-	desc = "A washed out white shirt with a red tie and black slacks."
+	desc = "一件褪色的白衬衫，配红色领带和黑色休闲裤。"
 	icon_state = "detective_grey"
 	worn_state = "detective_grey"
 
 /obj/item/clothing/under/rank/warden/navyblue
-	desc = "The insignia on this uniform tells you that this uniform belongs to the Warden."
-	name = "warden's uniform"
+	desc = "这套制服上的徽章表明它属于典狱长。"
+	name = "典狱长制服"
 	icon_state = "wardenblueclothes"
 	item_state = "wardenblueclothes"
 	flags_jumpsuit = FALSE

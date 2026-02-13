@@ -39,7 +39,7 @@
 		var/mob/living/carbon/human/wielder = user
 		var/obj/limb/hand = wielder.get_limb(check_hand)
 		if( !istype(hand) || !hand.is_usable() )
-			to_chat(user, SPAN_WARNING("Your other hand can't hold [src]!"))
+			to_chat(user, SPAN_WARNING("你的另一只手无法握住[src]！"))
 			return
 
 	flags_item    ^= WIELDED
@@ -59,7 +59,7 @@
 	return TRUE
 
 /obj/item/proc/place_offhand(mob/user,item_name)
-	to_chat(user, SPAN_NOTICE("You grab [item_name] with both hands."))
+	to_chat(user, SPAN_NOTICE("你用双手抓住了[item_name]。"))
 	user.recalculate_move_delay = TRUE
 	var/obj/item/weapon/twohanded/offhand/offhand = new /obj/item/weapon/twohanded/offhand(user)
 	offhand.name = "[item_name] - offhand"
@@ -72,7 +72,7 @@
 	user.update_inv_r_hand()
 
 /obj/item/proc/remove_offhand(mob/user)
-	to_chat(user, SPAN_NOTICE("You are now carrying [name] with one hand."))
+	to_chat(user, SPAN_NOTICE("你现在正用一只手提着[name]。"))
 	user.recalculate_move_delay = TRUE
 	var/obj/item/weapon/twohanded/offhand/offhand = user.get_inactive_hand()
 	if(istype(offhand))
@@ -101,7 +101,7 @@
 /obj/item/weapon/twohanded/attack_self(mob/user)
 	..()
 	if(ismonkey(user))
-		to_chat(user, SPAN_WARNING("It's too heavy for you to wield fully!"))
+		to_chat(user, SPAN_WARNING("它太重了，你无法完全挥舞！"))
 		return
 
 	if(flags_item & WIELDED)
@@ -141,8 +141,8 @@
  * Fireaxe
  */
 /obj/item/weapon/twohanded/fireaxe
-	name = "fire axe"
-	desc = "Truly, the weapon of a madman. Who would think to fight fire with an axe?"
+	name = "消防斧"
+	desc = "这真是疯子的武器。谁会想到用斧头来对抗火焰？"
 	icon_state = "fireaxe"
 	item_state = "fireaxe"
 	icon = 'icons/obj/items/weapons/melee/axes.dmi'
@@ -181,7 +181,7 @@
 
 /obj/item/weapon/twohanded/sledgehammer
 	name = "sledgehammer"
-	desc = "A large block of metal on the end of a pole. Smashing!"
+	desc = "一根杆子末端的大金属块。粉碎一切！"
 	icon_state = "sledgehammer"
 	item_state = "sledgehammer"
 	icon = 'icons/obj/items/weapons/melee/hammers.dmi'
@@ -205,8 +205,8 @@
  * Double-Bladed Energy Swords - Cheridan
  */
 /obj/item/weapon/twohanded/dualsaber
-	name = "double-bladed energy sword"
-	desc = "Handle with care."
+	name = "双刃能量剑"
+	desc = "小心轻放。"
 	icon_state = "dualsaber"
 	item_state = "dualsaber"
 	icon = 'icons/obj/items/weapons/melee/energy.dmi'
@@ -254,7 +254,7 @@
 
 /obj/item/weapon/twohanded/spear
 	name = "spear"
-	desc = "A haphazardly-constructed yet still deadly weapon of ancient design."
+	desc = "一把仓促制造但依然致命的古代设计武器。"
 	icon_state = "spearglass"
 	item_state = "spearglass"
 	icon = 'icons/obj/items/weapons/melee/spears.dmi'
@@ -275,7 +275,7 @@
 	shield_chance = SHIELD_CHANCE_LOW
 
 /obj/item/weapon/twohanded/lungemine
-	name = "lunge mine"
+	name = "突刺地雷"
 	icon_state = "lungemine"
 	item_state = "lungemine"
 	icon = 'icons/obj/items/weapons/melee/spears.dmi'
@@ -283,7 +283,7 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/spears_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/spears_righthand.dmi'
 	)
-	desc = "A crude but intimidatingly bulky shaped explosive charge, fixed to the end of a pole. To use it, one must grasp it firmly in both hands, and thrust the prongs of the shaped charge into the target. That the resulting explosion occurs directly in front of the user's face was not an apparent concern of the designer. A true hero's weapon."
+	desc = "一个粗糙但外形庞大、令人生畏的聚能装药爆炸物，固定在杆子末端。使用它时，必须用双手牢牢抓住，并将聚能装药的尖刺刺入目标。由此产生的爆炸直接发生在使用者面前，这显然不是设计者关心的问题。一把真正的英雄武器。"
 	force = MELEE_FORCE_WEAK
 	force_wielded = 1
 	attack_verb = list("whacked")
@@ -353,14 +353,14 @@
 	qdel(src)
 
 /obj/item/weapon/twohanded/lungemine/damaged
-	name = "damaged lunge mine"
-	desc = "A crude but intimidatingly bulky shaped explosive charge, fixed to the end of a pole. To use it, one must grasp it firmly in both hands, and thrust the prongs of the shaped charge into the target. That the resulting explosion occurs directly in front of the user's face was not an apparent concern of the designer. A true hero's weapon. This one seems pretty badly damaged, you probably shouldn't even pick it up from the ground."
+	name = "损坏的突刺地雷"
+	desc = "一个粗糙但外形庞大、令人生畏的聚能装药爆炸物，固定在杆子末端。使用它时，必须用双手牢牢抓住，并将聚能装药的尖刺刺入目标。由此产生的爆炸直接发生在使用者面前，这显然不是设计者关心的问题。一把真正的英雄武器。这个看起来损坏得很严重，你甚至可能不应该把它从地上捡起来。"
 	detonation_force = 50
 	gib_user = FALSE
 
 /obj/item/weapon/twohanded/breacher
 	name = "\improper D2 Breaching Hammer"
-	desc = "A much lighter version of the B5 Breaching Hammer, this destructive tool packs enough force in its swings to take down walls with relative ease. It can punch through almost anything, hit like a truck, and unlike its predecessor it can be wielded by most adult humans."
+	desc = "这是B5破门锤的轻量版本，这种破坏性工具在挥动时能产生足够的力量，可以相对轻松地摧毁墙壁。它几乎可以击穿任何东西，威力巨大，并且与它的前身不同，大多数成年人类都可以挥舞它。"
 	icon = 'icons/obj/items/weapons/melee/hammers.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
@@ -379,7 +379,7 @@
 
 /obj/item/weapon/twohanded/breacher/synth
 	name = "\improper B5 Breaching Hammer"
-	desc = "This 100-pound monstrosity of a sledgehammer is made of solid tungsten carbide, and packs enough force in its swing to take down walls with ease. It can punch through steel and concrete, hit like a truck, and is utterly unusable by anyone who isn't superhuman."
+	desc = "这把重达100磅的怪物大锤由实心碳化钨制成，挥动时能产生足够的力量，可以轻松摧毁墙壁。它可以击穿钢铁和混凝土，威力巨大，并且任何非超人类都完全无法使用。"
 	icon_state = "syn_breacher"
 	item_state = "syn_breacher"
 	force_wielded = MELEE_FORCE_VERY_STRONG
@@ -390,7 +390,7 @@
 /obj/item/weapon/twohanded/breacher/synth/pickup(mob/user)
 	. = ..()
 	if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG)))
-		to_chat(user, SPAN_HIGHDANGER("You barely manage to lift [src] above your knees. This thing will probably be useless to you."))
+		to_chat(user, SPAN_HIGHDANGER("你勉强将[src]抬到膝盖以上。这东西对你来说可能毫无用处。"))
 		user.apply_effect(3, EYE_BLUR)
 		RegisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY, PROC_REF(handle_movedelay))
 

@@ -1,7 +1,7 @@
 //Commander
 /datum/job/command/commander
 	title = JOB_CO
-	supervisors = "USCM high command"
+	supervisors = "USCM（殖民地海军陆战队）最高指挥部"
 	selection_class = "job_co"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
 	flags_whitelist = WHITELIST_COMMANDER
@@ -22,7 +22,7 @@
 			"[JOB_CO][WHITELIST_COUNCIL]" = /datum/equipment_preset/uscm_co/intel/council,
 			"[JOB_CO][WHITELIST_LEADER]" = /datum/equipment_preset/uscm_co/intel/council/plus,
 			)
-		if("Medical")
+		if("医疗区")
 			gear_preset_whitelist = list(
 			"[JOB_CO][WHITELIST_NORMAL]" = /datum/equipment_preset/uscm_co/medical,
 			"[JOB_CO][WHITELIST_COUNCIL]" = /datum/equipment_preset/uscm_co/medical/council,
@@ -40,7 +40,7 @@
 			"[JOB_CO][WHITELIST_COUNCIL]" = /datum/equipment_preset/uscm_co/tanker/council,
 			"[JOB_CO][WHITELIST_LEADER]" = /datum/equipment_preset/uscm_co/tanker/council/plus,
 			)
-		if("Engineering")
+		if("工程部")
 			gear_preset_whitelist = list(
 			"[JOB_CO][WHITELIST_NORMAL]" = /datum/equipment_preset/uscm_co/engineering,
 			"[JOB_CO][WHITELIST_COUNCIL]" = /datum/equipment_preset/uscm_co/engineering/council,
@@ -62,7 +62,7 @@
 	)
 
 /datum/job/command/commander/generate_entry_message()
-	entry_message_body = "<a href='[generate_wiki_link()]'>You are the Commanding Officer of the [MAIN_SHIP_NAME] as well as the operation.</a> Your goal is to lead the Marines on their mission as well as protect and command the ship and her crew. Your job involves heavy roleplay and requires you to behave like a high-ranking officer and to stay in character at all times. As the Commanding Officer your only superior is High Command itself. You must abide by the <a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_CO_RULES]'>Commanding Officer Code of Conduct</a>. Failure to do so may result in punitive action against you. Godspeed."
+	entry_message_body = "<a href='[generate_wiki_link()]'>您不仅是此次行动的指挥官，也是[MAIN_SHIP_NAME]号的舰长。</a>您的任务是带领海军陆战队员执行任务，同时保护并指挥舰船及其船员。您的工作涉及深度角色扮演，需要您始终以高级军官的身份行事并保持角色一致性。作为指挥官，您的唯一上级是最高指挥部。您必须遵守<a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_CO_RULES]'>指挥官行为准则</a>。违反准则可能导致对您的纪律处分。祝您顺利。"
 	return ..()
 
 /datum/job/command/commander/get_whitelist_status(client/player)
@@ -117,7 +117,7 @@
 	var/obj/structure/machinery/faxmachine/receiver
 	for(var/target_machine_code as anything in GLOB.fax_network.all_faxcodes)
 		var/obj/structure/machinery/faxmachine/target_machine = GLOB.fax_network.all_faxcodes[target_machine_code]
-		if(target_machine.sub_name == "Commanding Officer")
+		if(target_machine.sub_name == "指挥官")
 			receiver = target_machine
 			break
 	if(!receiver)
@@ -127,7 +127,7 @@
 	co_briefing.forceMove(receiver.loc)
 	playsound(receiver.loc, "sound/machines/twobeep.ogg", 45)
 	receiver.langchat_speech("beeps with a priority message", get_mobs_in_view(GLOB.world_view_size, receiver), GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small", "emote"))
-	receiver.visible_message("[SPAN_BOLD(receiver)] beeps with a priority message.")
+	receiver.visible_message("[SPAN_BOLD(receiver)]发出哔声，收到一条优先信息。")
 	if(!receiver.radio_alert_tag)
 		return
 	ai_silent_announcement("COMMUNICATIONS REPORT: Fax Machine [receiver.machine_id_tag], [receiver.sub_name ? "[receiver.sub_name]" : ""], now receiving priority fax.", "[receiver.radio_alert_tag]")

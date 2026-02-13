@@ -23,7 +23,7 @@
 	name = XENO_CASTE_FACEHUGGER
 	caste_type = XENO_CASTE_FACEHUGGER
 	speak_emote = list("hisses")
-	icon_state = "Facehugger"
+	icon_state = "抱脸虫"
 	icon_size = 48
 	pixel_x = -8
 	pixel_y = -6
@@ -133,7 +133,7 @@
 		if(time_of_birth + 3 SECONDS > world.time)
 			return
 		if(morpher.linked_hive.hivenumber != hivenumber)
-			to_chat(src, SPAN_XENOWARNING("This isn't your hive's eggmorpher!"))
+			to_chat(src, SPAN_XENOWARNING("这不是你们巢穴的筑卵者！"))
 			return
 		if(morpher.stored_huggers >= morpher.huggers_max_amount)
 			to_chat(src, SPAN_XENOWARNING("\The [morpher] is already full of children."))
@@ -146,19 +146,19 @@
 	if(ishuman(A))
 		var/mob/living/carbon/human/human = A
 		if((human.body_position != LYING_DOWN) && (!HAS_TRAIT(human, TRAIT_NESTED)))
-			to_chat(src, SPAN_WARNING("You can't reach \the [human], they need to be lying down or nested."))
+			to_chat(src, SPAN_WARNING("你够不到\the [human]，他们需要躺下或被筑巢。"))
 			return
 		if(!can_hug(human, hivenumber))
-			to_chat(src, SPAN_WARNING("You can't infect \the [human]..."))
+			to_chat(src, SPAN_WARNING("你无法感染\the [human]……"))
 			return
 		visible_message(SPAN_WARNING("\The [src] starts climbing onto \the [human]'s face..."), SPAN_XENONOTICE("You start climbing onto \the [human]'s face..."))
 		if(!do_after(src, FACEHUGGER_CLIMB_DURATION, INTERRUPT_ALL, BUSY_ICON_HOSTILE, human, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 			return
 		if((human.body_position != LYING_DOWN) && (!HAS_TRAIT(human, TRAIT_NESTED)))
-			to_chat(src, SPAN_WARNING("You can't reach \the [human], they need to be lying down or nested."))
+			to_chat(src, SPAN_WARNING("你够不到\the [human]，他们需要躺下或被筑巢。"))
 			return
 		if(!can_hug(human, hivenumber))
-			to_chat(src, SPAN_WARNING("You can't infect \the [human]..."))
+			to_chat(src, SPAN_WARNING("你无法感染\the [human]……"))
 			return
 		handle_hug(human)
 		return
@@ -236,7 +236,7 @@
 	return null
 
 /mob/living/carbon/xenomorph/facehugger/handle_queen_screech(mob/living/carbon/xenomorph/queen/queen)
-	to_chat(src, SPAN_DANGER("The mighty roar of the queen makes you tremble and fall over!"))
+	to_chat(src, SPAN_DANGER("女王强大的咆哮让你颤抖并摔倒在地！"))
 	adjust_effect(6, STUN)
 	apply_effect(6, WEAKEN)
 
@@ -250,14 +250,14 @@
 
 	switch(stat)
 		if(UNCONSCIOUS)
-			to_chat(src, SPAN_WARNING("You cannot emote while unconscious!"))
+			to_chat(src, SPAN_WARNING("昏迷时无法做表情！"))
 			return FALSE
 		if(DEAD)
-			to_chat(src, SPAN_WARNING("You cannot emote while dead!"))
+			to_chat(src, SPAN_WARNING("死亡时无法做表情！"))
 			return FALSE
 	if(client)
 		if(client.prefs.muted & MUTE_IC)
-			to_chat(src, SPAN_DANGER("You cannot emote (muted)."))
+			to_chat(src, SPAN_DANGER("你无法使用表情动作（已禁言）。"))
 			return FALSE
 		if(!client.attempt_talking())
 			return FALSE
@@ -265,7 +265,7 @@
 	// Otherwise, ""roar""!
 	var/current_time = world.time
 	if(current_time - last_roar_time < 1 SECONDS)
-		to_chat(src, SPAN_WARNING("You must wait before roaring again."))
+		to_chat(src, SPAN_WARNING("你必须等待才能再次咆哮。"))
 		return FALSE
 
 	last_roar_time = current_time
@@ -280,7 +280,7 @@
 		. += "Lifetime Hugs: [total_facehugs]"
 
 /datum/behavior_delegate/facehugger_base
-	name = "Base Facehugger Behavior Delegate"
+	name = "基础抱脸虫行为委托"
 
 /datum/behavior_delegate/facehugger_base/on_life()
 	if(!(locate(/obj/effect/alien/weeds) in get_turf(bound_xeno)))

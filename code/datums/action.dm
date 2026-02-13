@@ -188,7 +188,7 @@
 			return action
 
 /datum/action/item_action
-	name = "Use item"
+	name = "使用物品"
 	var/obj/item/holder_item //the item that has this action in its list of actions. Is not necessarily the target
 								//e.g. gun attachment action: target = attachment, holder = gun.
 	unique = FALSE
@@ -199,7 +199,7 @@
 		holder = target
 	holder_item = holder
 	LAZYADD(holder_item.actions, src)
-	name = "Use [target]"
+	name = "使用[target]"
 	button.name = name
 
 	update_button_icon()
@@ -226,7 +226,7 @@
 
 /datum/action/item_action/toggle/New(Target)
 	..()
-	name = "Toggle [target]"
+	name = "切换[target]"
 	button.name = name
 
 /datum/action/item_action/toggle/action_activate()
@@ -237,7 +237,7 @@
 
 /datum/action/item_action/toggle/use/New(target)
 	. = ..()
-	name = "Use [target]"
+	name = "使用[target]"
 	button.name = name
 
 /datum/action/item_action/toggle/use/whistle/New(target)

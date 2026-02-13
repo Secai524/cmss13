@@ -45,7 +45,7 @@
 	var/mob/living/carbon/human/H = A
 
 	if (last_chew + 1 > world.time)
-		to_chat(H, SPAN_DANGER("You can't bite your hand again yet..."))
+		to_chat(H, SPAN_DANGER("你还不能再次咬自己的手..."))
 		return
 
 
@@ -82,7 +82,7 @@
 
 	var/obj/limb/temp = get_limb(hand ? "l_hand" : "r_hand")
 	if(temp && !temp.is_usable())
-		to_chat(src, SPAN_NOTICE("You try to move your [temp.display_name], but cannot!"))
+		to_chat(src, SPAN_NOTICE("你试图移动你的[temp.display_name]，但无法做到！"))
 		return
 
 	SEND_SIGNAL(src, COMSIG_HUMAN_UNARMED_ATTACK, A)
@@ -110,12 +110,12 @@
 					user.visible_message(SPAN_WARNING("\The [user] tried to unstrap \the [back_item] from [xeno] but instead gets a tail swipe to the head!"))
 					return
 			if(user.get_active_hand())
-				to_chat(user, SPAN_WARNING("You can't unstrap \the [back_item] from [xeno] with your hands full."))
+				to_chat(user, SPAN_WARNING("你双手没空，无法从[xeno]身上解开\the [back_item]。"))
 				return
 			user.visible_message(SPAN_NOTICE("\The [user] starts unstrapping \the [back_item] from [xeno]"),
 			SPAN_NOTICE("You start unstrapping \the [back_item] from [xeno]."), null, 5, CHAT_TYPE_FLUFF_ACTION)
 			if(!do_after(user, HUMAN_STRIP_DELAY * user.get_skill_duration_multiplier(SKILL_CQC), INTERRUPT_ALL, BUSY_ICON_GENERIC, xeno, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
-				to_chat(user, SPAN_WARNING("You were interrupted!"))
+				to_chat(user, SPAN_WARNING("你被打断了！"))
 				return
 
 			if(user.get_active_hand())
@@ -137,18 +137,18 @@
 	carry_delay = carrydata["carry_delay"]
 
 	if(!skillcheck(src, SKILL_FIREMAN, SKILL_FIREMAN_TRAINED) && !(signal_flags & COMPONENT_CARRY_ALLOW)) // Checking if they have fireman carry as a skill.
-		to_chat(src, SPAN_WARNING("You aren't trained to carry people!"))
+		to_chat(src, SPAN_WARNING("你没受过搬运人员的训练！"))
 		return . = ..()
 
 	var/mob/living/carbon/human/target = dropping
 
-	user.visible_message(SPAN_WARNING("[src] starts loading [target] onto their back."),
+	user.visible_message(SPAN_WARNING("[src]开始将[target]背到背上。"),
 	SPAN_WARNING("You start loading [target] onto your back."))
 
 	if(!do_after(src, carry_delay * get_skill_duration_multiplier(SKILL_FIREMAN), INTERRUPT_ALL, BUSY_ICON_HOSTILE, pulling, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 		return
 
-	user.visible_message(SPAN_WARNING("[src] loads [target] onto their back."),
+	user.visible_message(SPAN_WARNING("[src]将[target]背到了背上。"),
 	SPAN_WARNING("You load [target] onto your back."))
 
 	if(pulling != dropping || !dropping || QDELETED(dropping))

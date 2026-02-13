@@ -1,6 +1,6 @@
 /obj/item/storage/pouch
-	name = "abstract pouch"
-	desc = "The physical manifestation of a concept of a pouch. Woah."
+	name = "抽象收纳袋"
+	desc = "一个收纳袋概念的物理实体。哇哦。"
 	icon = 'icons/obj/items/clothing/pouches.dmi'
 	icon_state = "small_drop"
 	w_class = SIZE_LARGE //does not fit in backpack
@@ -51,8 +51,8 @@
 
 
 /obj/item/storage/pouch/general
-	name = "light general pouch"
-	desc = "A general-purpose pouch used to carry a small item, or two tiny ones."
+	name = "轻型通用收纳袋"
+	desc = "一种通用收纳袋，用于携带一个小型物品，或两个微型物品。"
 	icon_state = "small_drop"
 	storage_flags = STORAGE_FLAGS_DEFAULT
 	max_w_class = SIZE_MEDIUM
@@ -66,22 +66,22 @@
 	max_storage_space = 2
 
 /obj/item/storage/pouch/general/medium
-	name = "medium general pouch"
-	desc = "A general-purpose pouch used to carry a variety of differently sized items."
+	name = "中型通用收纳袋"
+	desc = "一种通用收纳袋，用于携带各种不同尺寸的物品。"
 	icon_state = "medium_drop"
 	storage_slots = null
 	max_storage_space = 4
 
 /obj/item/storage/pouch/general/large
-	name = "large general pouch"
-	desc = "A general-purpose pouch used to carry more differently sized items."
+	name = "大型通用收纳袋"
+	desc = "一种通用收纳袋，用于携带更多不同尺寸的物品。"
 	icon_state = "large_drop"
 	storage_slots = null
 	max_storage_space = 6
 
 /obj/item/storage/pouch/flamertank
-	name = "fuel tank strap pouch"
-	desc = "Two ring straps to loop around M240-pattern napalm tanks. Handle with care."
+	name = "燃料罐绑带收纳袋"
+	desc = "两条环形带，用于固定M240型凝固汽油弹罐。小心处理。"
 	storage_slots = 2
 	icon_state = "fueltank_pouch"
 	storage_flags = STORAGE_FLAGS_POUCH
@@ -102,8 +102,8 @@
 		new /obj/item/ammo_magazine/smg/m39/ap(src)
 
 /obj/item/storage/pouch/bayonet
-	name = "bayonet sheath"
-	desc = "Knife to meet you!"
+	name = "刺刀鞘"
+	desc = "刀锋相见！"
 	can_hold = list(
 		/obj/item/weapon/throwing_knife,
 		/obj/item/attachable/bayonet,
@@ -138,12 +138,12 @@
 		COOLDOWN_START(src, draw_cooldown, BAYONET_DRAW_DELAY)
 		playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 	else
-		to_chat(user, SPAN_WARNING("You need to wait before drawing another knife!"))
+		to_chat(user, SPAN_WARNING("你需要等待片刻才能拔出另一把刀！"))
 		return 0
 
 /obj/item/storage/pouch/survival
-	name = "survival pouch"
-	desc = "A pouch given to colonists in the event of an emergency."
+	name = "生存挎包"
+	desc = "在紧急情况下分发给殖民者的挎包。"
 	icon_state = "tools"
 	storage_slots = 7
 	max_w_class = SIZE_MEDIUM
@@ -185,8 +185,8 @@
 	new /obj/item/stack/medical/splint(src)
 
 /obj/item/storage/pouch/survival/synth
-	name = "synth survival pouch"
-	desc = "An emergency pouch given to synthetics in the event of an emergency."
+	name = "合成人生存挎包"
+	desc = "在紧急情况下分发给合成人的应急挎包。"
 	icon_state = "tools"
 	storage_slots = 6
 	max_w_class = SIZE_MEDIUM
@@ -220,8 +220,8 @@
 	new /obj/item/attachable/bayonet(src)
 
 /obj/item/storage/pouch/firstaid
-	name = "first-aid pouch"
-	desc = "A small pouch that can hold basic medical equipment, such as autoinjectors and bandages."
+	name = "急救挎包"
+	desc = "一个小挎包，可容纳基本医疗设备，如自动注射器和绷带。"
 	icon_state = "firstaid"
 	storage_slots = 4
 	can_hold = list(
@@ -236,7 +236,7 @@
 	icon_state = "wy_firstaid"
 
 /obj/item/storage/pouch/firstaid/full
-	desc = "Contains a variety of autoinjectors for quickly treating injuries."
+	desc = "包含多种自动注射器，用于快速处理伤势。"
 
 /obj/item/storage/pouch/firstaid/full/fill_preset_inventory()
 	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine(src)
@@ -248,10 +248,10 @@
 	icon_state = "wy_firstaid"
 
 /obj/item/storage/pouch/firstaid/full/alternate
-	desc = "Contains a first-aid autoinjector, bandages, ointment, and splints."
+	desc = "包含急救自动注射器、绷带、药膏和夹板。"
 
 /obj/item/storage/pouch/firstaid/full/alternate/wy
-	name = "W-Y first-aid pouch"
+	name = "维兰德急救挎包"
 	icon_state = "wy_firstaid"
 
 /obj/item/storage/pouch/firstaid/full/alternate/fill_preset_inventory()
@@ -264,10 +264,10 @@
 	icon_state = "wy_firstaid"
 
 /obj/item/storage/pouch/firstaid/full/pills
-	desc = "Contains a variety of pill packets for treating many injuries."
+	desc = "包含多种药片包，用于治疗多种伤势。"
 
 /obj/item/storage/pouch/firstaid/full/pills/wy
-	name = "W-Y first-aid pouch"
+	name = "维兰德急救挎包"
 	icon_state = "wy_firstaid"
 
 /obj/item/storage/pouch/firstaid/full/pills/fill_preset_inventory()
@@ -280,8 +280,8 @@
 	icon_state = "wy_firstaid"
 
 /obj/item/storage/pouch/firstaid/hunted
-	name = "old pouch"
-	desc = "A general-purpose pouch used to carry neccessary survival items."
+	name = "旧挎包"
+	desc = "一种通用挎包，用于携带必要的生存物品。"
 	icon_state = "survival"
 	storage_slots = 5
 	can_hold = list(
@@ -299,7 +299,7 @@
 	new /obj/item/reagent_container/pill/bicaridine/natural(src)
 
 /obj/item/storage/pouch/firstaid/ert
-	desc = "It can contain autoinjectors, ointments, and bandages. This one has some extra stuff."
+	desc = "可容纳自动注射器、药膏和绷带。这个里面还有些额外的东西。"
 	icon_state = "firstaid"
 	storage_slots = 5
 
@@ -315,8 +315,8 @@
 
 ///Pistol pouch.
 /obj/item/storage/pouch/pistol
-	name = "sidearm pouch"
-	desc = "You could carry a pistol in this; more importantly, you could draw it quickly. Useful for emergencies."
+	name = "副武器挎包"
+	desc = "你可以用这个装手枪；更重要的是，你可以快速拔枪。适用于紧急情况。"
 	icon_state = "pistol"
 	use_sound = null
 	max_w_class = SIZE_MEDIUM
@@ -348,7 +348,7 @@
 		return
 	if(current_gun && isgun(W))
 		if(!stop_messages)
-			to_chat(usr, SPAN_WARNING("[src] already holds a gun."))
+			to_chat(usr, SPAN_WARNING("[src]已经持有一把枪。"))
 		return FALSE
 
 /obj/item/storage/pouch/pistol/_item_insertion(obj/item/I, prevent_warning = 0, mob/user)
@@ -378,8 +378,8 @@
 
 ///CO pouch. This pouch can hold only 1 of each type of item: 1 sidearm, 1 pair of binoculars, 1 CO tablet
 /obj/item/storage/pouch/pistol/command
-	name = "command pouch"
-	desc = "A specialized, sturdy pouch issued to Commanding Officers. Can hold their sidearm, the command tablet and a set of binoculars."
+	name = "指挥挎包"
+	desc = "一种专门、坚固的挎包，配发给指挥官。可容纳其副武器、指挥平板电脑和一副望远镜。"
 	storage_slots = 3
 	icon_state = "command_pouch"
 	can_hold = list(
@@ -412,11 +412,11 @@
 		return
 	if(binos && istype(I, /obj/item/device/binoculars))
 		if(!stop_messages)
-			to_chat(usr, SPAN_WARNING("[src] already holds a pair of binoculars."))
+			to_chat(usr, SPAN_WARNING("[src]已经装有一副望远镜。"))
 		return FALSE
 	else if(tablet && istype(I, /obj/item/device/cotablet))
 		if(!stop_messages)
-			to_chat(usr, SPAN_WARNING("[src] already holds a tablet."))
+			to_chat(usr, SPAN_WARNING("[src]已经装有一台平板电脑。"))
 		return FALSE
 
 /obj/item/storage/pouch/pistol/command/_item_insertion(obj/item/I, prevent_warning = 0, mob/user)
@@ -463,8 +463,8 @@
 //// MAGAZINE POUCHES /////
 
 /obj/item/storage/pouch/magazine
-	name = "magazine pouch"
-	desc = "It can carry magazines."
+	name = "弹匣包"
+	desc = "可携带弹匣。"
 	icon_state = "medium_ammo_mag"
 	max_w_class = SIZE_MEDIUM
 	storage_slots = 3
@@ -496,8 +496,8 @@
 		return ..()
 
 /obj/item/storage/pouch/magazine/large
-	name = "large magazine pouch"
-	desc = "It can carry many magazines."
+	name = "大型弹匣包"
+	desc = "可容纳多个弹匣。"
 	icon_state = "large_ammo_mag"
 	storage_slots = 4
 
@@ -505,8 +505,8 @@
 	icon_state = "wy_ammo_mag"
 
 /obj/item/storage/pouch/magazine/pistol
-	name = "pistol magazine pouch"
-	desc = "It can carry pistol magazines and revolver speedloaders."
+	name = "手枪弹匣包"
+	desc = "可容纳手枪弹匣和左轮手枪快速装弹器。"
 	max_w_class = SIZE_SMALL
 	icon_state = "pistol_mag"
 	storage_slots = 4
@@ -518,8 +518,8 @@
 	)
 
 /obj/item/storage/pouch/magazine/pistol/large
-	name = "large pistol magazine pouch"
-	desc = "It can carry many pistol magazines or revolver speedloaders."
+	name = "大型手枪弹匣包"
+	desc = "可容纳多个手枪弹匣或左轮手枪快速装弹器。"
 	storage_slots = 6
 	icon_state = "large_pistol_mag"
 
@@ -603,8 +603,8 @@
 		new /obj/item/ammo_magazine/smg/m39/heap(src)
 
 /obj/item/storage/pouch/magazine/large/pmc_sg
-	name = "smartgun drum pouch"
-	desc = "A heavy pouch designed for carrying a surplus of smargun drums."
+	name = "智能枪弹鼓包"
+	desc = "一个重型弹包，用于携带大量智能枪弹鼓。"
 	icon_state = "wy_sgdrums_ammo"
 	storage_slots = 3
 	can_hold = list(
@@ -653,8 +653,8 @@
 		new /obj/item/ammo_magazine/m60(src)
 
 /obj/item/storage/pouch/shotgun
-	name = "shotgun shell pouch"
-	desc = "It can contain handfuls of shells, or bullets if you choose to for some reason."
+	name = "霰弹枪弹壳包"
+	desc = "可容纳数把弹壳，或者如果你出于某种原因选择的话，也可以装子弹。"
 	icon_state = "medium_shotshells"
 	max_w_class = SIZE_SMALL
 	storage_slots = 5
@@ -684,8 +684,8 @@
 		new /obj/item/ammo_magazine/handful/shotgun/heavy/flechette(src)
 
 /obj/item/storage/pouch/shotgun/large
-	name = "large shotgun shell pouch"
-	desc = "It can contain more handfuls of shells, or bullets if you choose to for some reason."
+	name = "大型霰弹枪弹壳包"
+	desc = "可容纳更多把弹壳，或者如果你出于某种原因选择的话，也可以装子弹。"
 	icon_state = "large_shotshells"
 	storage_slots = 7
 
@@ -706,8 +706,8 @@
 		new /obj/item/ammo_magazine/handful/shotgun/buckshot(src)
 
 /obj/item/storage/pouch/explosive
-	name = "explosive pouch"
-	desc = "It can carry grenades, plastic explosives, mine boxes, and other explosives."
+	name = "爆炸物包"
+	desc = "可携带手榴弹、塑胶炸药、地雷箱及其他爆炸物。"
 	icon_state = "large_explosive"
 	storage_slots = 6
 	max_w_class = SIZE_MEDIUM
@@ -741,8 +741,8 @@
 		new /obj/item/explosive/grenade/empgrenade/dutch(src)
 
 /obj/item/storage/pouch/medical
-	name = "medical pouch"
-	desc = "It can carry small medical supplies."
+	name = "医疗包"
+	desc = "可携带小型医疗用品。"
 	icon_state = "medical"
 	storage_slots = 4
 
@@ -776,8 +776,8 @@
 	new /obj/item/storage/pill_bottle/dexalin(src)
 
 /obj/item/storage/pouch/medical/socmed
-	name = "tactical medical pouch"
-	desc = "A heavy pouch containing everything one needs to get themselves back on their feet. Quite the selection."
+	name = "战术医疗包"
+	desc = "一个重型医疗包，内含让伤员重新站起来所需的一切物品。种类相当齐全。"
 	icon_state = "socmed"
 	storage_slots = 13
 	can_hold = list(
@@ -849,7 +849,7 @@
 
 /obj/item/storage/pouch/medical/socmed/dutch
 	name = "\improper Dutch's Medical Pouch"
-	desc = "A pouch bought from a black market trader by Dutch quite a few years ago. Rumoured to be stolen from secret USCM assets. Its contents have been slowly used up and replaced over the years."
+	desc = "这是荷兰人几年前从黑市商人那里买来的一个包。据传是从USCM的秘密资产中偷来的。多年来，其中的物品已被慢慢用掉并替换。"
 
 /obj/item/storage/pouch/medical/socmed/dutch/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
@@ -867,12 +867,12 @@
 	new /obj/item/tool/extinguisher/mini(src)
 
 /obj/item/storage/pouch/medical/socmed/dutch/unmarked
-	name = "tactical medical pouch"
-	desc = "A heavy pouch containing everything one needs to get themselves back on their feet. Quite the selection. Somehow, the whole pouch manages to look classified, you feel like you're going to get court-marshalled for even looking at it."
+	name = "战术医疗包"
+	desc = "一个重型医疗包，内含让伤员重新站起来所需的一切物品。种类相当齐全。不知何故，整个包看起来都像是机密物品，你感觉光是看着它都可能被送上军事法庭。"
 
 /obj/item/storage/pouch/first_responder
-	name = "first responder pouch"
-	desc = "A pouch designed for carrying supplies to assist medical personnel and quickly respond to injuries on the battlefield without immediately treating them. Can hold supplies such as roller beds, stasis bags, and health analysers."
+	name = "急救员包"
+	desc = "专为携带补给品而设计的包，用于协助医疗人员并快速应对战场上的伤情，而非立即治疗。可容纳诸如担架床、静滞袋和健康分析仪等物资。"
 	icon_state = "frt_med"
 	storage_slots = 4
 
@@ -897,8 +897,8 @@
 
 
 /obj/item/storage/pouch/vials
-	name = "vial pouch"
-	desc = "A pouch for carrying glass vials."
+	name = "小瓶包"
+	desc = "用于携带玻璃小瓶的包。"
 	icon_state = "vial"
 	storage_slots = 6
 	can_hold = list(/obj/item/reagent_container/glass/beaker/vial)
@@ -915,8 +915,8 @@
 		new /obj/item/reagent_container/glass/beaker/vial(src)
 
 /obj/item/storage/pouch/chem
-	name = "chemistry pouch"
-	desc = "A pouch for carrying glass beakers."
+	name = "化学包"
+	desc = "用于携带玻璃烧杯的包。"
 	icon_state = "chemist"
 	storage_slots = 2
 	can_hold = list(
@@ -929,8 +929,8 @@
 	new /obj/item/reagent_container/glass/beaker(src)
 
 /obj/item/storage/pouch/autoinjector
-	name = "autoinjector pouch"
-	desc = "A pouch specifically for autoinjectors."
+	name = "自动注射器包"
+	desc = "专为存放自动注射器设计的包。"
 	icon_state = "injectors"
 	storage_slots = 7
 	can_hold = list(/obj/item/reagent_container/hypospray/autoinjector)
@@ -948,8 +948,8 @@
 	icon_state = "wy_medicpack"
 
 /obj/item/storage/pouch/syringe
-	name = "syringe pouch"
-	desc = "It can carry syringes."
+	name = "注射器包"
+	desc = "可携带注射器。"
 	icon_state = "syringe"
 	storage_slots = 6
 	can_hold = list(/obj/item/reagent_container/syringe)
@@ -959,10 +959,10 @@
 		new /obj/item/reagent_container/syringe(src)
 
 /obj/item/storage/pouch/engikit
-	name = "engineer kit pouch"
+	name = "工程师工具包"
 	storage_flags = STORAGE_FLAGS_POUCH
 	icon_state = "construction"
-	desc = "It's specifically made to hold engineering items. Requires engineering skills to use effectively."
+	desc = "专为存放工程部物品设计。需要工程技能才能有效使用。"
 	storage_slots = 6
 	can_hold_skill = list(
 		/obj/item/circuitboard = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
@@ -982,10 +982,10 @@
 	can_hold_skill_only = TRUE
 
 /obj/item/storage/pouch/medkit
-	name = "medical kit pouch"
+	name = "医疗包"
 	storage_flags = STORAGE_FLAGS_POUCH
 	icon_state = "medkit"
-	desc = "It's specifically made to hold medical items. Requires medical skills to use effectively."
+	desc = "专为存放医疗物品设计。需要医疗技能才能有效使用。"
 	storage_slots = 7
 	can_hold_skill = list(
 		/obj/item/device/healthanalyzer = list(SKILL_MEDICAL, SKILL_MEDICAL_MEDIC),
@@ -1089,11 +1089,11 @@
 	new /obj/item/stack/medical/splint(src)
 
 /obj/item/storage/pouch/pressurized_reagent_canister
-	name = "Pressurized Reagent Canister Pouch"
+	name = "加压试剂罐包"
 	max_w_class = SIZE_SMALL
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
 	icon_state = "pressurized_reagent_canister"
-	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser."
+	desc = "一个加压试剂罐包。用于补充定制注射器，也可存放一个。可用试剂罐或化学分配器补充。"
 	can_hold = list(/obj/item/reagent_container/hypospray/autoinjector/empty)
 	var/obj/item/reagent_container/glass/pressurized_canister/inner
 	matter = list("plastic" = 2000, "glass" = 2000)
@@ -1101,28 +1101,28 @@
 
 
 /obj/item/storage/pouch/pressurized_reagent_canister/bicaridine
-	name = "Pressurized Reagent Canister Pouch (Bicaridine)"
-	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with the reliable brute-mending Bicaridine."
+	name = "加压试剂罐包（碧卡利定）"
+	desc = "一个加压试剂罐包。用于补充定制注射器，也可存放一个。可用试剂罐或化学分配器补充。此包预装了可靠的钝伤治疗剂碧卡利定。"
 
 /obj/item/storage/pouch/pressurized_reagent_canister/kelotane
-	name = "Pressurized Reagent Canister Pouch (Kelotane)"
-	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with the reliable burn-healing Kelotane."
+	name = "加压试剂罐包（凯洛坦）"
+	desc = "一个加压试剂罐包。用于补充定制注射器，也可存放一个。可用试剂罐或化学分配器补充。此包预装了可靠的烧伤治疗剂凯洛坦。"
 
 /obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine
-	name = "Pressurized Reagent Canister Pouch (Tricordrazine)"
-	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with the reliable medicine that slowly heals brute, burn, toxin, and oxy damage, Tricordrazine."
+	name = "加压试剂罐包（三合剂）"
+	desc = "一个加压试剂罐包。用于补充定制注射器，也可存放一个。可用试剂罐或化学分配器补充。此包预装了能缓慢治疗钝伤、烧伤、毒素和缺氧损伤的可靠药物——三合剂。"
 
 /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone
-	name = "Pressurized Reagent Canister Pouch (Field Anesthetic)"
-	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with the most robust painkiller available from your local chem dispenser, Oxycodone."
+	name = "加压试剂罐包（野战麻醉剂）"
+	desc = "一个加压试剂罐包。用于补充定制注射器，也可存放一个。可用试剂罐或化学分配器补充。此包预装了从本地化学分配器可获得的最强效止痛药——羟考酮。"
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord
-	name = "Pressurized Reagent Canister Pouch (Tricordrazine Revival Mix)"
-	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with equal-parts Epinephrine, Inaprovaline, and Tricordrazine for stablizing and minimizing damage to defibrillated patients."
+	name = "加压试剂罐包（三合剂复苏混合剂）"
+	desc = "一个加压试剂罐包。用于补充定制注射器，也可存放一个。可用试剂罐或化学分配器补充。此包预装了等量的肾上腺素、伊纳普罗瓦林和三合剂，用于稳定除颤后患者并最小化其损伤。"
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_peri
-	name = "Pressurized Reagent Canister Pouch (Peridaxon Revival Mix)"
-	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with equal-parts Epinephrine, Inaprovaline, and Peridaxon to stablize patients and stave off symptoms of post-defibrillation heart damage."
+	name = "加压试剂罐包（培利达松复苏混合剂）"
+	desc = "一个加压试剂罐包。用于补充定制注射器，也可存放一个。可用试剂罐或化学分配器补充。此包预装了等量的肾上腺素、伊纳普罗瓦林和培利达松，用于稳定患者并抵御除颤后心脏损伤的症状。"
 
 /obj/item/storage/pouch/pressurized_reagent_canister/Initialize()
 	. = ..()
@@ -1191,12 +1191,12 @@
 /obj/item/storage/pouch/pressurized_reagent_canister/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/reagent_container/glass/pressurized_canister))
 		if(inner)
-			to_chat(user, SPAN_WARNING("There already is a container inside [src]!"))
+			to_chat(user, SPAN_WARNING("[src]里已经有一个容器了！"))
 		else
 			user.drop_inv_item_to_loc(W, src)
 			inner = W
 			contents -= W
-			to_chat(user, SPAN_NOTICE("You insert [W] into [src]!"))
+			to_chat(user, SPAN_NOTICE("你将[W]插入[src]！"))
 			update_icon()
 		return
 
@@ -1205,7 +1205,7 @@
 		fill_autoinjector(A)
 		return ..()
 	else if(istype(W, /obj/item/reagent_container/hypospray/autoinjector))
-		to_chat(user, SPAN_WARNING("[W] is not compatible with this system!"))
+		to_chat(user, SPAN_WARNING("[W]与此系统不兼容！"))
 	return ..()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/proc/fill_autoinjector(obj/item/reagent_container/hypospray/autoinjector/autoinjector)
@@ -1224,19 +1224,19 @@
 		return ..()
 
 	if(!inner)
-		to_chat(user, SPAN_WARNING("[src] has no internal container!"))
+		to_chat(user, SPAN_WARNING("[src]没有内部容器！"))
 		return ..()
 
 	if(istype(target, /obj/structure/machinery/chem_dispenser))
 		var/obj/structure/machinery/chem_dispenser/cd = target
 		if(!cd.beaker)
-			to_chat(user, SPAN_NOTICE("You unhook the inner container and connect it to [target]."))
+			to_chat(user, SPAN_NOTICE("你取下内部容器并将其连接到[target]。"))
 			inner.forceMove(cd)
 			cd.beaker = inner
 			inner = null
 			update_icon()
 		else
-			to_chat(user, SPAN_WARNING("[cd] already has a container!"))
+			to_chat(user, SPAN_WARNING("[cd]已经有一个容器了！"))
 		return
 
 	if(!istype(target, /obj/structure/reagent_dispensers/tank/fuel))
@@ -1246,12 +1246,12 @@
 
 	var/obj/O = target
 	if(!O.reagents || length(O.reagents.reagent_list) < 1)
-		to_chat(user, SPAN_WARNING("[O] is empty!"))
+		to_chat(user, SPAN_WARNING("[O]是空的！"))
 		return
 
 	var/amt_to_remove = clamp(O.reagents.total_volume, 0, inner.volume)
 	if(!amt_to_remove)
-		to_chat(user, SPAN_WARNING("[O] is empty!"))
+		to_chat(user, SPAN_WARNING("[O]是空的！"))
 		return
 
 	//Fill our inner reagent canister
@@ -1268,7 +1268,7 @@
 
 	playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
 
-	to_chat(user, SPAN_NOTICE("You refill the [src]."))
+	to_chat(user, SPAN_NOTICE("你重新填满了[src]。"))
 	update_icon()
 
 /obj/item/storage/pouch/pressurized_reagent_canister/get_examine_text(mob/user)
@@ -1341,13 +1341,13 @@
 	set desc = "Forces the container to empty its reagents."
 	set src in usr
 	if(!inner)
-		to_chat(usr, SPAN_WARNING("There is no container inside this pouch!"))
+		to_chat(usr, SPAN_WARNING("这个袋子里没有容器！"))
 		return
 
-	to_chat(usr, SPAN_NOTICE("You hold down the emergency flush button. Wait 3 seconds..."))
+	to_chat(usr, SPAN_NOTICE("你按下了紧急冲洗按钮。等待3秒..."))
 	if(do_after(usr, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		if(inner)
-			to_chat(usr, SPAN_NOTICE("You flush the [src]."))
+			to_chat(usr, SPAN_NOTICE("你冲洗了[src]。"))
 			inner.reagents.clear_reagents()
 			update_icon()
 
@@ -1357,7 +1357,7 @@
 	set desc = "Removes the Pressurized Canister from the pouch."
 	set src in usr
 	if(!inner)
-		to_chat(usr, SPAN_WARNING("There is no container inside this pouch!"))
+		to_chat(usr, SPAN_WARNING("这个袋子里没有容器！"))
 		return
 
 	var/had_empty_hand = usr.put_in_any_hand_if_possible(inner, disable_warning = TRUE)
@@ -1368,8 +1368,8 @@
 	update_icon()
 
 /obj/item/storage/pouch/document
-	name = "large document pouch"
-	desc = "It can contain papers, folders, disks, technical manuals, and clipboards."
+	name = "大型文件袋"
+	desc = "可容纳纸张、文件夹、磁盘、技术手册和写字板。"
 	icon_state = "document"
 	storage_slots = 21
 	max_w_class = SIZE_MEDIUM
@@ -1386,13 +1386,13 @@
 	)
 
 /obj/item/storage/pouch/document/small
-	name = "small document pouch"
-	desc = "A smaller version of the document pouch. It can contain papers, folders, disks, technical manuals, and clipboards."
+	name = "小型文件袋"
+	desc = "文件袋的缩小版。可容纳纸张、文件夹、磁盘、技术手册和写字板。"
 	storage_slots = 7
 
 /obj/item/storage/pouch/flare
-	name = "flare pouch"
-	desc = "A pouch designed to hold flares. Refillable with an M94 flare pack."
+	name = "照明弹袋"
+	desc = "专为存放照明弹设计的袋子。可使用M94照明弹包补充。"
 	max_w_class = SIZE_SMALL
 	storage_slots = 16
 	max_storage_space = 16
@@ -1412,17 +1412,17 @@
 		new /obj/item/device/flashlight/flare(src)
 
 /obj/item/storage/pouch/radio
-	name = "radio pouch"
+	name = "无线电袋"
 	storage_slots = 2
 	icon_state = "radio"
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
-	desc = "It can contain two handheld radios."
+	desc = "可容纳两部手持无线电。"
 	can_hold = list(/obj/item/device/radio)
 
 
 /obj/item/storage/pouch/electronics
-	name = "electronics pouch"
-	desc = "It is designed to hold most electronics, power cells and circuit boards."
+	name = "电子设备袋"
+	desc = "专为存放大多数电子设备、电池和电路板设计。"
 	icon_state = "electronics"
 	storage_slots = 6
 	can_hold = list(
@@ -1446,8 +1446,8 @@
 	new /obj/item/cell/high(src)
 
 /obj/item/storage/pouch/construction
-	name = "construction pouch"
-	desc = "It's designed to hold construction materials - glass/metal sheets, metal rods, barbed wire, cable coil, and empty sandbags. It also has two hooks for an entrenching tool and light replacer."
+	name = "工程材料袋"
+	desc = "专为存放工程材料设计——玻璃/金属板、金属棒、铁丝网、电缆卷和空沙袋。还有两个挂钩，用于放置工兵铲和灯具更换器。"
 	storage_slots = 3
 	max_w_class = SIZE_MEDIUM
 	icon_state = "construction"
@@ -1485,8 +1485,8 @@
 	new /obj/item/stack/barbed_wire(src, 15)
 
 /obj/item/storage/pouch/tools
-	name = "tools pouch"
-	desc = "It's designed to hold maintenance tools - screwdriver, wrench, cable coil, etc. It also has a hook for an entrenching tool or light replacer."
+	name = "工具袋"
+	desc = "专为存放维修工具设计——螺丝刀、扳手、电缆卷等。还有一个挂钩，用于放置工兵铲或灯具更换器。"
 	storage_slots = 4
 	max_w_class = SIZE_MEDIUM
 	icon_state = "tools"
@@ -1520,8 +1520,8 @@
 	)
 
 /obj/item/storage/pouch/tools/tactical
-	name = "tactical tools pouch"
-	desc = "This particular toolkit full of sharp, heavy objects was designed for breaking into things rather than fixing them. Still does the latter pretty well, though."
+	name = "战术工具袋"
+	desc = "这个装满尖锐沉重物体的特殊工具包是为破坏而非修理设计的。不过，后者也干得不错。"
 	icon_state = "soctools"
 	storage_slots = 8
 
@@ -1581,8 +1581,8 @@
 	new /obj/item/tool/weldingtool(src)
 
 /obj/item/storage/pouch/tools/tactical/upp
-	name = "synthetic tools pouch"
-	desc = "Special issue tools pouch for UPP synthetics. Due to the enhanced strength of the synthetic and its inability to feel discomfort, this pouch is designed to maximize internal space with no concern for its wearer's comfort."
+	name = "合成人工具袋"
+	desc = "UPP合成人专用工具袋。由于合成人力量增强且无不适感，此袋设计旨在最大化内部空间，无需考虑使用者的舒适度。"
 	icon_state = "tools"
 	storage_slots = 7
 
@@ -1629,8 +1629,8 @@
 	new /obj/item/tool/wrench(src)
 
 /obj/item/storage/pouch/tools/tactical/sec
-	name = "tactical security pouch"
-	desc = "A custom fit security pouch, capable of fitting a variety of security tools in different compartments."
+	name = "战术安保挎包"
+	desc = "一款定制安保挎包，不同隔层可容纳多种安保工具。"
 	storage_slots = 5
 	can_hold = list(
 		/obj/item/explosive/grenade/flashbang,
@@ -1662,8 +1662,8 @@
 	new /obj/item/reagent_container/spray/pepper(src)
 
 /obj/item/storage/pouch/sling
-	name = "sling strap"
-	desc = "Keeps a single item attached to a strap."
+	name = "枪背带"
+	desc = "将单个物品固定在背带上。"
 	storage_slots = 1
 	max_w_class = SIZE_MEDIUM
 	icon_state = "sling"
@@ -1686,7 +1686,7 @@
 			return FALSE
 	else if(SEND_SIGNAL(I, COMSIG_DROP_RETRIEVAL_CHECK) & COMPONENT_DROP_RETRIEVAL_PRESENT)
 		if(!stop_messages)
-			to_chat(usr, SPAN_WARNING("[I] is already attached to another sling."))
+			to_chat(usr, SPAN_WARNING("[I]已经连接到另一条枪背带上了。"))
 		return FALSE
 	return ..()
 
@@ -1695,12 +1695,12 @@
 		slung = I
 		slung.AddElement(/datum/element/drop_retrieval/pouch_sling, src)
 		if(!prevent_warning)
-			to_chat(user, SPAN_NOTICE("You attach the sling to [I]."))
+			to_chat(user, SPAN_NOTICE("你将枪背带连接到[I]上。"))
 	..()
 
 /obj/item/storage/pouch/sling/attack_self(mob/user)
 	if(slung)
-		to_chat(user, SPAN_NOTICE("You retract the sling from [slung]."))
+		to_chat(user, SPAN_NOTICE("你从[slung]上收回枪背带。"))
 		unsling()
 		return
 	return ..()
@@ -1722,7 +1722,7 @@
 		return FALSE
 	if(handle_item_insertion(slung))
 		if(user)
-			to_chat(user, SPAN_NOTICE("[slung] snaps back into [src]."))
+			to_chat(user, SPAN_NOTICE("[slung]弹回[src]中。"))
 		return TRUE
 
 /obj/item/storage/pouch/sling/proc/attempt_retrieval(mob/living/carbon/human/user)
@@ -1730,7 +1730,7 @@
 		return
 	unsling()
 	if(user && src.loc == user)
-		to_chat(user, SPAN_WARNING("The sling of your [src] snaps back empty!"))
+		to_chat(user, SPAN_WARNING("你的[src]的枪背带空弹而回！"))
 
 /obj/item/storage/pouch/sling/proc/handle_retrieval(mob/living/carbon/human/user)
 	if(slung && slung.loc == src)
@@ -1738,8 +1738,8 @@
 	addtimer(CALLBACK(src, PROC_REF(attempt_retrieval), user), 0.3 SECONDS, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
 
 /obj/item/storage/pouch/cassette
-	name = "cassette pouch"
-	desc = "A finely crafted pouch, made specifically to keep cassettes safe during wartime."
+	name = "磁带包"
+	desc = "一个制作精良的包，专为在战时安全存放磁带而设计。"
 	icon_state = "cassette_pouch_closed"
 	item_state_slots = list(WEAR_AS_GARB = "cassette_pouch")
 	item_icons = list(
@@ -1780,7 +1780,7 @@
 
 /obj/item/storage/pouch/machete
 	name = "\improper H6B pattern M2132 machete scabbard"
-	desc = "A large leather scabbard used to carry a M2132 machete. It can be strapped to the pouch slot."
+	desc = "一个用于携带M2132砍刀的大型皮质刀鞘。可固定在挎包槽位。"
 	icon = 'icons/obj/items/storage/holsters.dmi'
 	icon_state = "macheteB_holster"
 	item_state = "machete_holster"

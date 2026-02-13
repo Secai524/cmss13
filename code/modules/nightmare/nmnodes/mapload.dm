@@ -42,7 +42,7 @@
  */
 /datum/nmnode/mapload/variations
 	id = "map_variations"
-	name = "Map Variations"
+	name = "地图变体"
 	var/landmark
 /datum/nmnode/mapload/variations/New(list/spec)
 	. = ..()
@@ -89,7 +89,7 @@
  */
 /datum/nmnode/mapload/sprinkles
 	id = "map_sprinkle"
-	name = "Map Sprinkles"
+	name = "地图点缀"
 /datum/nmnode/mapload/sprinkles/resolve(datum/nmcontext/context, list/statsmap)
 	. = ..()
 	if(!.)

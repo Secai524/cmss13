@@ -97,7 +97,7 @@
 	overlays += maptext_overlay
 
 /atom/movable/screen/action_button/hide_toggle
-	name = "Hide Buttons"
+	name = "隐藏按钮"
 	icon = 'icons/mob/hud/actions.dmi'
 	icon_state = "hide"
 	var/hidden = 0
@@ -119,10 +119,10 @@
 		base_icon = "marine"
 
 	if(hidden)
-		name = "Show Buttons"
+		name = "显示按钮"
 		icon_state = "[base_icon]_show"
 	else
-		name = "Hide Buttons"
+		name = "隐藏按钮"
 		icon_state = "[base_icon]_hide"
 
 /atom/movable/screen/action_button/ghost/minimap/get_button_screen_loc(button_number)
@@ -155,7 +155,7 @@
 				color = null
 
 /atom/movable/screen/zone_sel
-	name = "damage zone"
+	name = "伤害区域"
 	icon_state = "zone_sel"
 	var/selecting = "chest"
 
@@ -241,27 +241,27 @@
 		INVOKE_ASYNC(held_item, gun_proc_ref)
 
 /atom/movable/screen/gun/attachment
-	name = "Activate weapon attachment"
+	name = "激活武器配件"
 	icon_state = "gun_attach"
 	gun_proc_ref = TYPE_VERB_REF(/obj/item/weapon/gun, activate_attachment_verb)
 
 /atom/movable/screen/gun/rail_light
-	name = "Toggle rail flashlight"
+	name = "切换导轨手电筒"
 	icon_state = "gun_raillight"
 	gun_proc_ref = TYPE_VERB_REF(/obj/item/weapon/gun, activate_rail_attachment_verb)
 
 /atom/movable/screen/gun/eject_magazine
-	name = "Eject magazine"
+	name = "退弹匣"
 	icon_state = "gun_loaded"
 	gun_proc_ref = TYPE_VERB_REF(/obj/item/weapon/gun, empty_mag)
 
 /atom/movable/screen/gun/toggle_firemode
-	name = "Toggle firemode"
+	name = "切换开火模式"
 	icon_state = "gun_burst"
 	gun_proc_ref = TYPE_VERB_REF(/obj/item/weapon/gun, use_toggle_burst)
 
 /atom/movable/screen/gun/unique_action
-	name = "Use unique action"
+	name = "使用特殊动作"
 	icon_state = "gun_unique"
 	gun_proc_ref = TYPE_VERB_REF(/obj/item/weapon/gun, use_unique_action)
 
@@ -325,7 +325,7 @@
 	user.mob.put_in_active_hand(dropping)
 
 /atom/movable/screen/throw_catch
-	name = "throw/catch"
+	name = "投掷/接住"
 	icon = 'icons/mob/hud/human_midnight.dmi'
 	icon_state = "act_throw_off"
 
@@ -368,7 +368,7 @@
 		return 1
 
 /atom/movable/screen/mov_intent
-	name = "run/walk toggle"
+	name = "奔跑/行走切换"
 	icon = 'icons/mob/hud/human_midnight.dmi'
 	icon_state = "running"
 
@@ -386,7 +386,7 @@
 
 /mob/living/proc/toggle_mov_intent()
 	if(legcuffed)
-		to_chat(src, SPAN_NOTICE("You are legcuffed! You cannot run until you get \the [legcuffed] removed!"))
+		to_chat(src, SPAN_NOTICE("你被上了脚镣！在移除\the [legcuffed]之前你无法奔跑！"))
 		set_movement_intent(MOVE_INTENT_WALK)
 		return FALSE
 	switch(m_intent)
@@ -443,7 +443,7 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /atom/movable/screen/pull
-	name = "stop pulling"
+	name = "停止拖拽"
 	icon = 'icons/mob/hud/human_midnight.dmi'
 	icon_state = "pull0"
 
@@ -464,7 +464,7 @@
 
 
 /atom/movable/screen/squad_leader_locator
-	name = "beacon tracker"
+	name = "信标追踪器"
 	icon = 'icons/mob/hud/human_midnight.dmi'
 	icon_state = "trackoff"
 	alpha = 0 //invisible
@@ -475,11 +475,11 @@
 		return
 	var/obj/item/device/radio/headset/earpiece = user.get_type_in_ears(/obj/item/device/radio/headset)
 	if(!istype(earpiece) || !earpiece.has_hud)
-		to_chat(user, SPAN_WARNING("Unauthorized access detected."))
+		to_chat(user, SPAN_WARNING("检测到未授权访问。"))
 		return
 	if(mods[SHIFT_CLICK])
 		var/area/current_area = get_area(user)
-		to_chat(user, SPAN_NOTICE("You are currently at: <b>[current_area.name]</b>."))
+		to_chat(user, SPAN_NOTICE("你当前位于：<b>[current_area.name]</b>。"))
 		return
 	else if(mods[ALT_CLICK])
 		earpiece.switch_tracker_target()
@@ -490,7 +490,7 @@
 		user.assigned_squad.tgui_interact(user)
 
 /atom/movable/screen/mark_locator
-	name = "mark locator"
+	name = "标记定位器"
 	icon = 'icons/mob/hud/alien_standard.dmi'
 	icon_state = "marker"
 
@@ -501,17 +501,17 @@
 		if(user.observed_xeno == user.tracked_marker)
 			user.overwatch(user.tracked_marker, TRUE) //passing in an obj/effect into a proc that expects mob/xenomorph B)
 		else
-			to_chat(user, SPAN_XENONOTICE("We psychically observe the [user.tracked_marker.mark_meaning.name] resin mark in [get_area_name(user.tracked_marker)]."))
+			to_chat(user, SPAN_XENONOTICE("我们通过心灵感应观察到[get_area_name(user.tracked_marker)]处的[user.tracked_marker.mark_meaning.name]树脂标记。"))
 			user.overwatch(user.tracked_marker) //this is so scuffed, sorry if this causes errors
 		return
 	if(mods[ALT_CLICK] && user.tracked_marker)
 		user.stop_tracking_resin_mark()
 		return
 	if(!user.hive)
-		to_chat(user, SPAN_WARNING("We don't belong to a hive!"))
+		to_chat(user, SPAN_WARNING("我们不属于任何巢穴！"))
 		return FALSE
 	if(!user.hive.living_xeno_queen)
-		to_chat(user, SPAN_WARNING("Without a queen our psychic link is broken!"))
+		to_chat(user, SPAN_WARNING("没有女王，我们的心灵链接已中断！"))
 		return FALSE
 	if(HAS_TRAIT(user, TRAIT_ABILITY_BURROWED) || user.is_mob_incapacitated() || user.buckled)
 		return FALSE
@@ -519,7 +519,7 @@
 	user.hive.mark_ui.open_mark_menu(user)
 
 /atom/movable/screen/queen_locator
-	name = "queen locator"
+	name = "女王定位器"
 	icon = 'icons/mob/hud/alien_standard.dmi'
 	icon_state = "trackoff"
 	/// A weak reference to the atom currently being tracked.
@@ -533,10 +533,10 @@
 		return FALSE
 	if(mods[SHIFT_CLICK])
 		var/area/current_area = get_area(user)
-		to_chat(user, SPAN_NOTICE("We are currently at: <b>[current_area.name]</b>."))
+		to_chat(user, SPAN_NOTICE("我们当前位于：<b>[current_area.name]</b>。"))
 		return
 	if(!user.hive)
-		to_chat(user, SPAN_WARNING("We don't belong to a hive!"))
+		to_chat(user, SPAN_WARNING("我们不属于任何巢穴！"))
 		return FALSE
 	if(mods[ALT_CLICK])
 		var/list/options = list()
@@ -554,7 +554,7 @@
 		for(var/obj/structure/tunnel/tunnel as anything in sorted_tunnels)
 			options["Tunnel [tunnel.tunnel_desc]"] = list(tunnel, TRACKER_TUNNEL)
 
-		var/list/selected = tgui_input_list(user, "Select what you want the locator to track.", "Locator Options", options)
+		var/list/selected = tgui_input_list(user, "选择你想要定位器追踪的目标。", "Locator Options", options)
 		if(selected)
 			var/selected_data = options[selected]
 			tracking_ref = WEAKREF(selected_data[1]) // Weakref to the tracked atom (or null)
@@ -562,7 +562,7 @@
 		return
 
 	if(!user.hive.living_xeno_queen)
-		to_chat(user, SPAN_WARNING("Our hive doesn't have a living queen!"))
+		to_chat(user, SPAN_WARNING("我们的巢穴没有存活的女王！"))
 		return FALSE
 	if(HAS_TRAIT(user, TRAIT_ABILITY_BURROWED) || user.is_mob_incapacitated() || user.buckled)
 		return FALSE
@@ -580,7 +580,7 @@
 
 /atom/movable/screen/xenonightvision
 	icon = 'icons/mob/hud/alien_standard.dmi'
-	name = "toggle night vision"
+	name = "切换夜视模式"
 	icon_state = "nightvision_full"
 
 /atom/movable/screen/xenonightvision/clicked(mob/user)
@@ -607,7 +607,7 @@
 		if(LIGHTING_PLANE_ALPHA_VISIBLE)
 			icon_state = "nightvision_off"
 			vision_define = XENO_VISION_LEVEL_NO_NVG
-	to_chat(owner, SPAN_NOTICE("Night vision mode switched to <b>[vision_define]</b>."))
+	to_chat(owner, SPAN_NOTICE("夜视模式已切换为<b>[vision_define]</b>。"))
 
 /atom/movable/screen/equip
 	name = "equip"
@@ -623,7 +623,7 @@
 	human_user.quick_equip()
 
 /atom/movable/screen/bodytemp
-	name = "body temperature"
+	name = "体温"
 	icon_state = "temp0"
 
 /atom/movable/screen/oxygen

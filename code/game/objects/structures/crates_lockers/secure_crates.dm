@@ -1,6 +1,6 @@
 /obj/structure/closet/crate/secure
-	desc = "A secure crate."
-	name = "Secure crate"
+	desc = "一个安全的板条箱。"
+	name = "安全货箱"
 	icon_state = "secure_locked_basic"
 	icon_opened = "secure_open_basic"
 	icon_closed = "secure_locked_basic"
@@ -34,19 +34,19 @@
 
 /obj/structure/closet/crate/secure/proc/togglelock(mob/user as mob)
 	if(src.opened)
-		to_chat(user, SPAN_NOTICE("Close the crate first."))
+		to_chat(user, SPAN_NOTICE("先关上货箱。"))
 		return
 	if(src.broken)
-		to_chat(user, SPAN_WARNING("The crate appears to be broken."))
+		to_chat(user, SPAN_WARNING("货箱似乎已损坏。"))
 		return
 	if(src.allowed(user))
 		src.locked = !src.locked
 		for(var/mob/O in viewers(user, 3))
 			if((O.client && !( O.blinded )))
-				to_chat(O, SPAN_NOTICE("The crate has been [locked ? null : "un"]locked by [user]."))
+				to_chat(O, SPAN_NOTICE("货箱已被[locked ? null : "un"]locked by [user]."))
 		icon_state = locked ? icon_locked : icon_unlocked
 	else
-		to_chat(user, SPAN_NOTICE("Access Denied."))
+		to_chat(user, SPAN_NOTICE("权限被拒绝。"))
 
 /obj/structure/closet/crate/secure/verb/verb_togglelock()
 	set src in oview(1) // One square distance
@@ -60,7 +60,7 @@
 		src.add_fingerprint(usr)
 		src.togglelock(usr)
 	else
-		to_chat(usr, SPAN_WARNING("This mob type can't use this verb."))
+		to_chat(usr, SPAN_WARNING("此单位类型无法使用此指令。"))
 
 /obj/structure/closet/crate/secure/attack_hand(mob/user as mob)
 	src.add_fingerprint(user)
@@ -114,16 +114,16 @@
 //------------------------------------
 
 /obj/structure/closet/crate/secure/ammo
-	name = "secure ammunitions crate"
-	desc = "A secure ammunitions crate."
+	name = "安全弹药箱"
+	desc = "一个安全弹药箱。"
 	icon_state = "secure_locked_ammo"
 	icon_opened = "secure_open_ammo"
 	icon_locked = "secure_locked_ammo"
 	icon_unlocked = "secure_unlocked_ammo"
 
 /obj/structure/closet/crate/secure/explosives
-	name = "explosives crate"
-	desc = "An explosives crate."
+	name = "爆炸物箱"
+	desc = "一个爆炸物箱。"
 	icon_state = "secure_locked_explosives"
 	icon_opened = "secure_open_explosives"
 	icon_locked = "secure_locked_explosives"
@@ -132,62 +132,62 @@
 // Needs to be converted to new system that does not use overlays
 // using default secure crate for now
 /obj/structure/closet/crate/secure/phoron
-	name = "phoron crate"
-	desc = "A secure phoron crate."
+	name = "氪石货箱"
+	desc = "一个安全氪石货箱。"
 
 // Needs to be converted to new system that does not use overlays
 // using Wayland crate for now
 /obj/structure/closet/crate/secure/gear
-	name = "gear crate"
-	desc = "A secure gear crate."
+	name = "装备箱"
+	desc = "一个安全装备箱。"
 	icon_state = "secure_locked_ammo"
 	icon_opened = "secure_open_ammo"
 	icon_locked = "secure_locked_ammo"
 	icon_unlocked = "secure_unlocked_ammo"
 
 /obj/structure/closet/crate/secure/hydrosec
-	name = "secure hydroponics crate"
-	desc = "A crate with a lock on it, painted in the scheme of the station's botanists."
+	name = "安全水培箱"
+	desc = "一个带锁的货箱，涂有空间站植物学家的配色。"
 	icon_state = "secure_locked_hydro"
 	icon_opened = "secure_open_hydro"
 	icon_locked = "secure_locked_hydro"
 	icon_unlocked = "secure_unlocked_hydro"
 
 /obj/structure/closet/crate/secure/surgery
-	name = "surgery crate"
-	desc = "A surgery crate."
+	name = "手术箱"
+	desc = "一个手术箱。"
 	icon_state = "secure_locked_surgery"
 	icon_opened = "secure_open_surgery"
 	icon_locked = "secure_locked_surgery"
 	icon_unlocked = "secure_unlocked_surgery"
 
 /obj/structure/closet/crate/secure/medical
-	name = "medical crate"
-	desc = "A medical crate with a secure lock on it."
+	name = "医疗箱"
+	desc = "一个带安全锁的医疗箱。"
 	icon_state = "secure_locked_medical"
 	icon_opened = "secure_open_medical"
 	icon_locked = "secure_locked_medical"
 	icon_unlocked = "secure_unlocked_medical"
 
 /obj/structure/closet/crate/secure/weapon
-	name = "weapons crate"
-	desc = "A secure weapons crate."
+	name = "武器箱"
+	desc = "一个安全武器箱。"
 	icon_state = "secure_locked_weapons"
 	icon_opened = "secure_open_weapons"
 	icon_locked = "secure_locked_weapons"
 	icon_unlocked = "secure_unlocked_weapons"
 
 /obj/structure/closet/crate/secure/weyland
-	name = "secure W-Y crate"
-	desc = "A secure crate with a W-Y insignia on it."
+	name = "安全维兰德货箱"
+	desc = "一个带有维兰德标志的安全货箱。"
 	icon_state = "secure_locked_weyland"
 	icon_opened = "secure_open_weyland"
 	icon_locked = "secure_locked_weyland"
 	icon_unlocked = "secure_unlocked_weyland"
 
 /obj/structure/closet/crate/secure/vulture
-	name = "secure M707 crate"
-	desc = "A secure crate, containing an M707 anti-materiel rifle."
+	name = "安全M707货箱"
+	desc = "一个安全货箱，内含一把M707反器材步枪。"
 	icon_state = "secure_locked_vulture"
 	icon_opened = "secure_open_vulture"
 	icon_locked = "secure_locked_vulture"
@@ -199,8 +199,8 @@
 
 //special version, able to store OB fuel and warheads only
 /obj/structure/closet/crate/secure/ob
-	name = "secure orbital bombardment ammunition crate"
-	desc = "A secure crate capable of storing orbital bombardment warheads and fuel."
+	name = "安全轨道轰炸弹药箱"
+	desc = "一个能够储存轨道轰炸弹头和燃料的安全货箱。"
 	icon_state = "secure_locked_ob"
 	icon_opened = "secure_open_ob"
 	icon_locked = "secure_locked_ob"

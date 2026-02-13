@@ -3,7 +3,7 @@
 	icon_state = "plating_catwalk"
 	var/base_state = "catwalk" //Post mapping
 	name = "catwalk"
-	desc = "Cats really don't like these things."
+	desc = "猫真的很不喜欢这些东西。"
 	var/covered = 1 //1 for theres the cover, 0 if there isn't.
 	unslashable = TRUE
 	unacidable = TRUE

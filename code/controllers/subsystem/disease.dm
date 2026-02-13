@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(disease)
-	name  = "Disease"
+	name  = "疾病"
 	wait  = 2 SECONDS
 	flags = SS_NO_INIT | SS_KEEP_TIMING
 	priority = SS_PRIORITY_DISEASE

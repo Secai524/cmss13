@@ -128,7 +128,7 @@
 		if(FIRE_MISSION_STATE_IDLE)
 			return "Idle"
 		if(FIRE_MISSION_STATE_IN_TRANSIT)
-			return "In Transit"
+			return "运输中"
 		if(FIRE_MISSION_STATE_ON_TARGET)
 			return "On Target"
 		if(FIRE_MISSION_STATE_FIRING)
@@ -300,7 +300,7 @@
 		stat = FIRE_MISSION_STATE_IDLE
 		mission_error = "Target is off bounds or obstructed."
 		return
-	to_chat(usr, SPAN_ALERT("Fire Mission underway!"))
+	to_chat(usr, SPAN_ALERT("火力任务进行中！"))
 
 	var/obj/effect/firemission_effect = new(target_turf)
 
@@ -355,7 +355,7 @@
 		mission_error = "Fire Mission is under way already."
 		return FALSE
 	if(!missions[mission_id])
-		mission_error = "Fire Mission ID corrupted or already deleted."
+		mission_error = "火力任务ID已损坏或已被删除。"
 		return FALSE
 	var/mission = missions[mission_id]
 	missions -= mission

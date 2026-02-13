@@ -1,7 +1,7 @@
 /obj/item/clothing/shoes/black
-	name = "black shoes"
+	name = "黑色鞋子"
 	icon_state = "black"
-	desc = "A pair of black shoes."
+	desc = "一双黑色鞋子。"
 
 	flags_cold_protection = BODY_FLAG_FEET
 	min_cold_protection_temperature = SHOE_MIN_COLD_PROT
@@ -9,39 +9,39 @@
 	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
 
 /obj/item/clothing/shoes/morgue
-	name = "morgue shoes"
+	name = "停尸房鞋子"
 	icon_state = "morgue"
-	desc = "A pair of all-black shoes to wear in the morgue."
+	desc = "一双在停尸房穿的全黑鞋子。"
 
 /obj/item/clothing/shoes/brown
-	name = "brown shoes"
-	desc = "A pair of brown shoes."
+	name = "棕色鞋子"
+	desc = "一双棕色鞋子。"
 	icon_state = "brown"
 
 /obj/item/clothing/shoes/blue
-	name = "blue shoes"
+	name = "蓝色鞋子"
 	icon_state = "blue"
 
 /obj/item/clothing/shoes/green
-	name = "green shoes"
+	name = "绿色鞋子"
 	icon_state = "green"
 
 /obj/item/clothing/shoes/yellow
-	name = "yellow shoes"
+	name = "黄色鞋子"
 	icon_state = "yellow"
 
 /obj/item/clothing/shoes/purple
-	name = "purple shoes"
+	name = "紫色鞋子"
 	icon_state = "purple"
 
 /obj/item/clothing/shoes/red
-	name = "red shoes"
-	desc = "Stylish red shoes."
+	name = "红色鞋子"
+	desc = "时尚的红色鞋子。"
 	icon_state = "red"
 
 /obj/item/clothing/shoes/red/knife
-	name = "dirty red shoes"
-	desc = "Stylish red shoes with a small space to hold a knife."
+	name = "肮脏的红色鞋子"
+	desc = "时尚的红色鞋子，带有一个可存放小刀的空间。"
 	allowed_items_typecache = list(
 		/obj/item/attachable/bayonet,
 		/obj/item/weapon/throwing_knife,
@@ -52,28 +52,28 @@
 	)
 
 /obj/item/clothing/shoes/white
-	name = "white shoes"
-	desc = "A pair of white shoes. Not sterile."
+	name = "白色鞋子"
+	desc = "一双白色鞋子。并非无菌。"
 	icon_state = "white"
 
 
 /obj/item/clothing/shoes/leather
-	name = "leather shoes"
-	desc = "A sturdy pair of leather shoes."
+	name = "皮鞋"
+	desc = "一双结实的皮鞋。"
 	icon_state = "leather"
 
 /obj/item/clothing/shoes/leather/fancy
-	name = "fancy leather shoes"
-	desc = "A fancy pair of leather shoes."
+	name = "高档皮鞋"
+	desc = "一双高档皮鞋。"
 	icon_state = "fancy"
 
 /obj/item/clothing/shoes/rainbow
-	name = "rainbow shoes"
-	desc = "Very gay shoes."
+	name = "彩虹鞋子"
+	desc = "非常花哨的鞋子。"
 	icon_state = "rain_bow"
 
 /obj/item/clothing/shoes/orange
-	name = "orange shoes"
+	name = "橙色鞋子"
 	icon_state = "orange"
 	var/obj/item/restraint/handcuffs/chained = null
 

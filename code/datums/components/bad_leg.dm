@@ -30,7 +30,7 @@
 		chosen_leg = "r_leg"
 		affected_limb = parent_human.get_limb(chosen_leg)
 	if(!affected_limb || affected_limb.status & LIMB_ROBOT)
-		to_chat(parent_human, SPAN_NOTICE("You feel a strange, uncomfortable phantom sensation where your [chosen_leg] used to be."))
+		to_chat(parent_human, SPAN_NOTICE("你[chosen_leg]原先的位置传来一种怪异、令人不适的幻肢感。"))
 		qdel(src)
 
 /datum/component/bad_leg/Destroy(force, silent)
@@ -86,14 +86,14 @@
 	switch(steps_walking)
 		if(MAX_STEPS * 0.3 to MAX_STEPS * 0.6)
 			if(last_message_time + MESSAGE_COOLDOWN < world.time)
-				to_chat(parent_human, SPAN_WARNING("Your damaged [affected_limb.display_name] skips half a step as you lose control of it from the increasing pain."))
+				to_chat(parent_human, SPAN_WARNING("你受损的[affected_limb.display_name]因剧痛失控，踉跄了半步。"))
 				last_message_time = world.time
 		if(MAX_STEPS * 0.6 to MAX_STEPS - 1)
 			if(last_message_time + MESSAGE_COOLDOWN < world.time)
-				to_chat(parent_human, SPAN_DANGER("You stumble for an agonizing moment as your [affected_limb.display_name] rebels against you. You feel like you need to take a breath before walking again."))
+				to_chat(parent_human, SPAN_DANGER("你的[affected_limb.display_name]剧烈反抗，让你痛苦地踉跄了一下。你觉得需要喘口气才能继续前进。"))
 				last_message_time = world.time
 		if(MAX_STEPS to INFINITY)
-			to_chat(parent_human, SPAN_HIGHDANGER("Your [affected_limb.display_name] jerks wildly from incoherent pain!"))
+			to_chat(parent_human, SPAN_HIGHDANGER("你的[affected_limb.display_name]因难以名状的剧痛而剧烈抽搐！"))
 			steps_walking = POSITIVE(steps_walking - MAX_STEPS * 0.3) //pity reduction
 			INVOKE_ASYNC(parent_human, TYPE_PROC_REF(/mob/living/carbon/human, emote), "pain")
 			var/stun_time = 2.5
@@ -105,7 +105,7 @@
 	INVOKE_ASYNC(src, PROC_REF(rest_legs), parent_human, FALSE)
 
 /datum/component/bad_leg/proc/rest_legs_pain(mob/living/parent_human, action = FALSE)
-	to_chat(parent_human, SPAN_NOTICE("You can move again, but you should probably rest for a bit."))
+	to_chat(parent_human, SPAN_NOTICE("你可以再次移动了，但或许应该再休息片刻。"))
 	rest_legs(parent_human, action)
 
 /datum/component/bad_leg/proc/rest_legs(mob/living/parent_human, action = FALSE)
@@ -114,7 +114,7 @@
 		bound_action.in_use = FALSE
 		if(!action)
 			return FALSE
-		to_chat(parent_human, SPAN_WARNING("Your [affected_limb.display_name] seems to be as stable as it's going to get."))
+		to_chat(parent_human, SPAN_WARNING("你的[affected_limb.display_name]似乎已经稳定到极限了。"))
 		return FALSE
 
 	var/show_icon = action ? BUSY_ICON_FRIENDLY : NO_BUSY_ICON
@@ -123,18 +123,18 @@
 		bound_action.in_use = FALSE
 		if(!action)
 			return FALSE
-		to_chat(parent_human, SPAN_WARNING("You need to stand still to rest your [affected_limb.display_name] for a moment."))
+		to_chat(parent_human, SPAN_WARNING("你需要静止站立，让你的[affected_limb.display_name]休息片刻。"))
 		return FALSE
 
 	if(action)
-		to_chat(parent_human, SPAN_HELPFUL("The pain in your [affected_limb.display_name] [ (steps_walking > MAX_STEPS * 0.3) ? "slightly abates" : "subsides"] after your short rest."))
+		to_chat(parent_human, SPAN_HELPFUL("短暂休息后，你[affected_limb.display_name]的疼痛[(steps_walking > MAX_STEPS * 0.3) ? "略有缓解" : "消退了"]。"))
 	steps_walking = max(steps_walking - MAX_STEPS * 0.3, 0)
 	bound_action.in_use = FALSE
 	rest_legs(parent_human, action)
 	return TRUE
 
 /datum/action/human_action/rest_legs
-	name = "Rest Leg"
+	name = "腿部休息"
 	action_icon_state = "stumble"
 	var/in_use = FALSE
 	var/datum/component/bad_leg/bound_component
@@ -142,7 +142,7 @@
 /datum/action/human_action/rest_legs/New(target, override_icon_state, datum/component/bad_leg/bound_component)
 	. = ..()
 	if(bound_component)
-		name = "Rest [bound_component.affected_limb.display_name]"
+		name = "休息[bound_component.affected_limb.display_name]"
 		src.bound_component = bound_component
 		src.bound_component.bound_action = src
 	else
@@ -152,7 +152,7 @@
 	. = ..()
 	var/mob/living/carbon/human/homan = owner
 	if(in_use)
-		to_chat(homan, SPAN_WARNING("You're already doing that!"))
+		to_chat(homan, SPAN_WARNING("你已经在这么做了！"))
 		return
 	in_use = bound_component.rest_legs(homan, TRUE)
 

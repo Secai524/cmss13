@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(lighting)
-	name = "Lighting"
+	name = "光照"
 	wait = 2
 	init_order = SS_INIT_LIGHTING
 

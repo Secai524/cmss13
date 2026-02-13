@@ -1,5 +1,5 @@
 /datum/map_template/tent
-	name = "Base Tent"
+	name = "基地帐篷"
 	var/map_id = "change this"
 
 /datum/map_template/tent/New()
@@ -7,21 +7,21 @@
 	return ..()
 
 /datum/map_template/tent/cmd
-	name = "CMD Tent"
+	name = "指挥帐篷"
 	map_id = "tent_cmd"
 
 /datum/map_template/tent/med
-	name = "MED Tent"
+	name = "医疗帐篷"
 	map_id = "tent_med"
 
 /datum/map_template/tent/big
-	name = "Big Tent"
+	name = "大型帐篷"
 	map_id = "tent_big"
 
 /datum/map_template/tent/reqs
-	name = "Reqs Tent"
+	name = "补给帐篷"
 	map_id = "tent_reqs"
 
 /datum/map_template/tent/mess
-	name = "Mess Tent"
+	name = "食堂帐篷"
 	map_id = "tent_mess"

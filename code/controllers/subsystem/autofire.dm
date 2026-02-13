@@ -11,7 +11,7 @@
  * Doesn't support any event scheduled for more than 100 ticks in the future, as it has no secondary queue by design
  */
 SUBSYSTEM_DEF(automatedfire)
-	name = "Automated fire"
+	name = "自动开火"
 	flags = SS_TICKER | SS_NO_INIT
 	wait = 1
 	priority = SS_PRIORITY_AUTOFIRE

@@ -2,7 +2,7 @@
 
 /obj/structure/machinery/bioprinter
 	name = "\improper Weyland-Yutani synthetic limb printer 2000"
-	desc = "A machine that can produce synthetic limbs of dubious quality. Smells of smoke and battery acid. The USCM has recently rejected an offer for the 3000 series, which can also print synthetic organs, on the basis of unreliability."
+	desc = "一台能制造质量可疑的合成肢体的机器。闻起来有烟味和电池酸液的味道。USCM最近拒绝了3000系列的报价，该系列还能打印合成器官，理由是可靠性不足。"
 	icon = 'icons/obj/structures/machinery/surgery.dmi'
 
 	anchored = TRUE
@@ -115,7 +115,7 @@
 		if("print")
 			if(working)
 				//If we're already printing something then we're too busy to multi task.
-				to_chat(usr, SPAN_NOTICE("[src] is busy at the moment."))
+				to_chat(usr, SPAN_NOTICE("[src]目前正忙。"))
 				return FALSE
 			var/recipe = params["recipe_id"]
 			var/valid_recipe = FALSE
@@ -129,7 +129,7 @@
 				return FALSE
 			var/datum/bioprinter_recipe/recipe_datum = new recipe
 			if(stored_metal < recipe_datum.metal)
-				to_chat(usr, SPAN_NOTICE("[src] does not have enough stored metal."))
+				to_chat(usr, SPAN_NOTICE("[src]没有足够的储存金属。"))
 				QDEL_NULL(recipe_datum)
 				return FALSE
 			stored_metal -= recipe_datum.metal
@@ -172,17 +172,17 @@
 	var/metal = LIMB_METAL_AMOUNT
 
 /datum/bioprinter_recipe/l_arm
-	title = "synthetic left arm"
+	title = "合成左臂"
 	path = /obj/item/robot_parts/arm/l_arm
 
 /datum/bioprinter_recipe/r_arm
-	title = "synthetic right arm"
+	title = "合成右臂"
 	path = /obj/item/robot_parts/arm/r_arm
 
 /datum/bioprinter_recipe/r_leg
-	title = "synthetic right leg"
+	title = "合成右腿"
 	path = /obj/item/robot_parts/leg/r_leg
 
 /datum/bioprinter_recipe/l_leg
-	title = "synthetic left leg"
+	title = "合成左腿"
 	path = /obj/item/robot_parts/leg/l_leg

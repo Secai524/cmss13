@@ -37,7 +37,7 @@
 	))
 
 /datum/ammo/bullet/shrapnel/rubber
-	name = "rubber pellets"
+	name = "橡胶弹丸"
 	icon_state = "rubber_pellets"
 	flags_ammo_behavior = AMMO_STOPPED_BY_COVER
 
@@ -47,7 +47,7 @@
 
 
 /datum/ammo/bullet/shrapnel/hornet_rounds
-	name = ".22 hornet round"
+	name = ".22大黄蜂弹"
 	icon_state = "hornet_round"
 	flags_ammo_behavior = AMMO_BALLISTIC
 	damage = 8
@@ -67,7 +67,7 @@
 
 
 /datum/ammo/bullet/shrapnel/incendiary
-	name = "flaming shrapnel"
+	name = "燃烧破片"
 	icon_state = "beanbag" // looks suprisingly a lot like flaming shrapnel chunks
 	flags_ammo_behavior = AMMO_STOPPED_BY_COVER
 	shell_speed = AMMO_SPEED_TIER_1
@@ -81,7 +81,7 @@
 	))
 
 /datum/ammo/bullet/shrapnel/neuro
-	name = "neurotoxin coated shrapnel"
+	name = "神经毒素涂层破片"
 	icon_state = "neurotoxin"
 	flags_ammo_behavior = AMMO_STOPPED_BY_COVER
 
@@ -94,7 +94,7 @@
 		mob.adjust_effect(0.8, SLOW)
 
 /datum/ammo/bullet/shrapnel/metal
-	name = "metal shrapnel"
+	name = "金属破片"
 	icon_state = "shrapnelshot_bit"
 	flags_ammo_behavior = AMMO_STOPPED_BY_COVER|AMMO_BALLISTIC
 	shell_speed = AMMO_SPEED_TIER_1
@@ -104,7 +104,7 @@
 	penetration = ARMOR_PENETRATION_TIER_4
 
 /datum/ammo/bullet/shrapnel/light // weak shrapnel
-	name = "light shrapnel"
+	name = "轻型破片"
 	icon_state = "shrapnel_light"
 
 	damage = 10
@@ -113,10 +113,10 @@
 	shrapnel_chance = 0
 
 /datum/ammo/bullet/shrapnel/light/resin
-	name = "resin shrapnel"
+	name = "树脂破片"
 
 /datum/ammo/bullet/shrapnel/light/human
-	name = "human bone fragments"
+	name = "人骨碎片"
 	icon_state = "shrapnel_human"
 
 	shrapnel_chance = 50
@@ -129,7 +129,7 @@
 	icon_state = "shrapnel_human2"
 
 /datum/ammo/bullet/shrapnel/light/xeno
-	name = "alien bone fragments"
+	name = "异形骨碎片"
 	icon_state = "shrapnel_xeno"
 
 	shrapnel_chance = 50
@@ -145,7 +145,7 @@
 	shrapnel_chance = 0
 
 /datum/ammo/bullet/shrapnel/light/glass
-	name = "glass shrapnel"
+	name = "玻璃破片"
 	icon_state = "shrapnel_glass"
 
 /particles/shrapnel
@@ -193,7 +193,7 @@
 //========
 */
 /datum/ammo/bullet/shrapnel/gau  //for the GAU to have a impact bullet instead of firecrackers
-	name = "30mm Multi-Purpose shell"
+	name = "30毫米多用途炮弹"
 
 	damage = 1 // ALL DAMAGE IS IN dropship_ammo SO WE CAN DEAL DAMAGE TO RESTING MOBS, these will still remain however so that we can get cause_data and status effects.
 	damage_type = BRUTE
@@ -203,7 +203,7 @@
 	shrapnel_chance = 100 //the least of your problems
 
 /datum/ammo/bullet/shrapnel/gau/at
-	name = "30mm Anti-Tank shell"
+	name = "30毫米反坦克炮弹"
 
 	damage = 1 // ALL DAMAGE IS IN dropship_ammo SO WE CAN DEAL DAMAGE TO RESTING MOBS, these will still remain however so that we can get cause_data and status effects.
 	penetration = ARMOR_PENETRATION_TIER_8

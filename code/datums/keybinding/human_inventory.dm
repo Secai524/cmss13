@@ -10,7 +10,7 @@
 	hotkey_keys = list("E")
 	classic_keys = list("E")
 	name = "quick_equip"
-	full_name = "Unholster"
+	full_name = "拔枪"
 	description = "Take out an available weapon"
 	keybind_signal = COMSIG_KB_HUMAN_INTERACT_QUICKEQUIP_DOWN
 
@@ -26,7 +26,7 @@
 	hotkey_keys = list("Shift+E")
 	classic_keys = list("Shift+E")
 	name = "quick_equip_secondary"
-	full_name = "Unholster secondary"
+	full_name = "拔出副武器"
 	description = "Take out your secondary weapon"
 	keybind_signal = COMSIG_KB_HUMAN_INTERACT_SECONDARY_DOWN
 
@@ -42,7 +42,7 @@
 	hotkey_keys = list("Ctrl+E", "Alt+E")
 	classic_keys = list("Ctrl+E", "Alt+E")
 	name = "quick_equip_tertiary"
-	full_name = "Unholster tertiary"
+	full_name = "拔出第三武器"
 	description = "Take out your tertiary item."
 	keybind_signal = COMSIG_KB_HUMAN_INTERACT_TERTIARY_DOWN
 
@@ -58,7 +58,7 @@
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
 	name = "quick_equip_quaternary"
-	full_name = "Unholster quaternary"
+	full_name = "拔出第四武器"
 	description = "Take out your quaternary item."
 	keybind_signal = COMSIG_KB_HUMAN_INTERACT_QUATERNARY_DOWN
 
@@ -79,7 +79,7 @@
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
 	name = "quick_equip_inventory"
-	full_name = "Quick equip inventory"
+	full_name = "快速装备物品栏"
 	description = "Quickly puts an item in the best slot available"
 	keybind_signal = COMSIG_KB_HUMAN_INTERACT_QUICK_EQUIP_DOWN
 
@@ -95,7 +95,7 @@
 	hotkey_keys = list("F")
 	classic_keys = list("Unbound")
 	name = "pick_up"
-	full_name = "Pick Up Dropped Items"
+	full_name = "拾取掉落物品"
 	keybind_signal = COMSIG_KB_HUMAN_INTERACT_PICK_UP
 
 /datum/keybinding/human/inventory/pick_up/down(client/user)
@@ -111,7 +111,7 @@
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
 	name = "interact_other_hand"
-	full_name = "Interact With Other Hand"
+	full_name = "与另一只手交互"
 	keybind_signal = COMSIG_KB_HUMAN_INTERACT_OTHER_HAND
 
 /datum/keybinding/human/inventory/interact_other_hand/down(client/user)
@@ -153,7 +153,7 @@
 	var/mob/living/carbon/human/human_user = user.mob
 
 	if((human_user.is_mob_incapacitated(TRUE) || human_user.is_mob_restrained() || human_user.IsKnockDown() || HAS_TRAIT_FROM(human_user, TRAIT_UNDENSE, LYING_DOWN_TRAIT)) && !HAS_TRAIT(human_user, TRAIT_HAULED))
-		to_chat(user, SPAN_WARNING("You can't do that in your current state."))
+		to_chat(user, SPAN_WARNING("你当前状态无法执行此操作。"))
 		return
 
 	var/obj/item/current_item = check_slot(human_user)
@@ -175,7 +175,7 @@
 
 /datum/keybinding/human/inventory/interact_slot/back
 	name = "interact_storage_back"
-	full_name = "Interact With Back Slot"
+	full_name = "与背部栏位交互"
 	keybind_signal = COMSIG_KB_HUMAN_INTERACT_SLOT_BACK
 	storage_slot = WEAR_BACK
 
@@ -184,7 +184,7 @@
 
 /datum/keybinding/human/inventory/interact_slot/belt
 	name = "interact_storage_belt"
-	full_name = "Interact With Belt Slot"
+	full_name = "与腰带栏位交互"
 	keybind_signal = COMSIG_KB_HUMAN_INTERACT_SLOT_BELT
 	storage_slot = WEAR_WAIST
 
@@ -193,7 +193,7 @@
 
 /datum/keybinding/human/inventory/interact_slot/pouch_left
 	name = "interact_storage_pouch_left"
-	full_name = "Interact With Left Pouch Slot"
+	full_name = "与左袋栏位交互"
 	keybind_signal = COMSIG_KB_HUMAN_INTERACT_SLOT_LEFT_POUCH
 	storage_slot = WEAR_L_STORE
 
@@ -202,7 +202,7 @@
 
 /datum/keybinding/human/inventory/interact_slot/pouch_right
 	name = "interact_storage_pouch_right"
-	full_name = "Interact With Right Pouch Slot"
+	full_name = "与右袋栏位交互"
 	keybind_signal = COMSIG_KB_HUMAN_INTERACT_SLOT_RIGHT_POUCH
 	storage_slot = WEAR_R_STORE
 
@@ -211,7 +211,7 @@
 
 /datum/keybinding/human/inventory/interact_slot/uniform
 	name = "interact_storage_uniform"
-	full_name = "Interact With Uniform Slot"
+	full_name = "与制服栏位交互"
 	keybind_signal = COMSIG_KB_HUMAN_INTERACT_SLOT_UNIFORM
 	storage_slot = WEAR_BODY
 
@@ -220,7 +220,7 @@
 
 /datum/keybinding/human/inventory/interact_slot/suit
 	name = "interact_storage_suit"
-	full_name = "Interact With Suit Slot"
+	full_name = "与护甲栏位交互"
 	keybind_signal = COMSIG_KB_HUMAN_INTERACT_SLOT_SUIT
 	storage_slot = WEAR_JACKET
 
@@ -229,7 +229,7 @@
 
 /datum/keybinding/human/inventory/interact_slot/helmet
 	name = "interact_storage_helmet"
-	full_name = "Interact With Head Slot"
+	full_name = "与头部栏位交互"
 	keybind_signal = COMSIG_KB_HUMAN_INTERACT_SLOT_HELMET
 	storage_slot = WEAR_HEAD
 
@@ -238,7 +238,7 @@
 
 /datum/keybinding/human/inventory/interact_slot/suit_storage
 	name = "interact_storage_suit_store"
-	full_name = "Interact With Suit Storage Slot"
+	full_name = "与护甲存储栏位交互"
 	keybind_signal = COMSIG_KB_HUMAN_INTERACT_SUIT_S_STORE
 	storage_slot = WEAR_J_STORE
 

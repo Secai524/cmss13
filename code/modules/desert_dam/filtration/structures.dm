@@ -133,7 +133,7 @@
 
 /obj/structure/prop/almayer/anti_air_cannon
 	name = "\improper Anti-air Cannon"
-	desc = "An anti-air cannon for shooting spaceships. It looks broken."
+	desc = "一门用于射击飞船的防空炮。它看起来坏了。"
 	icon = 'icons/effects/128x128.dmi'
 	icon_state = "anti_air_cannon"
 	density = TRUE
@@ -144,11 +144,11 @@
 	bound_y = 64
 */
 /obj/structure/filtration
-	name = "filtration machine"
+	name = "过滤机"
 
 /obj/structure/filtration/machine_32x32
 	icon = 'icons/turf/floors/32x32.dmi'
-	name = "filtration catwalks"
+	name = "过滤通道"
 	//bound_x = 96
 	//bound_y = 96
 	density = FALSE
@@ -231,8 +231,8 @@
 	return
 
 /obj/structure/filtration/coagulation_arm
-	name = "coagulation arm"
-	desc = "An axel with four sides, made to spin to help filter the water."
+	name = "凝结臂"
+	desc = "一个带有四面的轴，设计用于旋转以帮助过滤水。"
 	density = TRUE
 	icon = 'icons/obj/structures/props/industrial/coagulation_arm.dmi'
 	icon_state = "arm"
@@ -241,8 +241,8 @@
 	bound_height = 96
 
 /obj/structure/filtration/flacculation_arm
-	name = "flocculation arm"
-	desc = "A long metal filtering rod on an axel, made to spin for flocculation."
+	name = "絮凝臂"
+	desc = "一根安装在轴上的长金属过滤杆，用于旋转进行絮凝。"
 	density = TRUE
 	icon = 'icons/obj/structures/props/industrial/flacculation_arm.dmi'
 	icon_state = "flacculation_arm"
@@ -251,8 +251,8 @@
 	layer = ABOVE_MOB_LAYER + 0.1
 
 /obj/structure/filtration/collector_pipes
-	name = "collection pipes"
-	desc = "A series of pipes collecting water from the river to take it to the plant for filtration."
+	name = "集水管"
+	desc = "一系列从河流中收集水并将其输送到工厂进行过滤的管道。"
 	icon = 'icons/obj/structures/props/industrial/pipes.dmi'
 	icon_state = "upper_1" //use instances to set the types.
 	bound_height = 32
@@ -262,21 +262,21 @@
 	icon = 'icons/obj/structures/props/industrial/96x96.dmi'
 
 /obj/structure/filtration/machine_96x96/distribution
-	name = "Waste Distribution System"
-	desc = "This machine separates the leftover waste from the purification processes to be discarded into space, recycled for supplies, or used for research."
+	name = "废物分配系统"
+	desc = "这台机器将净化过程中剩余的废物分离出来，以便排入太空、回收利用或用于研究。"
 	icon_state = "distribution"
 
 /obj/structure/filtration/machine_96x96/sedimentation
-	name = "Sedimentation Filter"
-	desc = "A water filter specifically designed to capture and remove sediment, such as sand, silt, dirt, and rust, from water without removing the nutritious minerals for that crisp, clean taste every time."
+	name = "沉淀过滤器"
+	desc = "一种专门设计用于捕获和去除水中沉积物（如沙子、淤泥、泥土和铁锈）的水过滤器，同时保留营养矿物质，确保每次都能获得清爽、干净的口感。"
 	icon_state = "sedimentation"
 
 /obj/structure/filtration/machine_96x96/filtration
-	name = "Water Filtration System"
-	desc = "A water filter that separates both organic and inorganic matter, hazardous waste, and corrosive acids from water so it may be further processed."
+	name = "水过滤系统"
+	desc = "一种水过滤器，用于分离水中的有机和无机物质、有害废物以及腐蚀性酸，以便进行进一步处理。"
 	icon_state = "filtration"
 
 /obj/structure/filtration/machine_96x96/disinfection
-	name = "Disinfection Filter"
-	desc = "A water filter specifically designed to separate micro-organisms, such as viruses and bacteria, from water."
+	name = "消毒过滤器"
+	desc = "一种专门设计用于分离水中微生物（如病毒和细菌）的水过滤器。"
 	icon_state = "disinfection"

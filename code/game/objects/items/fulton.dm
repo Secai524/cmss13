@@ -4,7 +4,7 @@
 GLOBAL_LIST_EMPTY(deployed_fultons)
 
 /obj/item/stack/fulton
-	name = "fulton recovery device"
+	name = "富尔顿回收装置"
 	icon = 'icons/obj/items/marine-items.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
@@ -13,7 +13,7 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 	icon_state = "fulton"
 	amount = 20
 	max_amount = 20
-	desc = "A system used by the USCM for retrieving objects of interest on the ground from an AUD-25 dropship. Can be used to extract unrevivable corpses, or crates, typically lasting around 3 minutes in the air."
+	desc = "USCM用于从AUD-25运输机上回收地面目标物品的系统。可用于提取无法复苏的尸体或板条箱，通常能在空中持续约3分钟。"
 	throwforce = 10
 	w_class = SIZE_SMALL
 	throw_speed = SPEED_SLOW
@@ -66,7 +66,7 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 
 /obj/item/stack/fulton/attack_hand(mob/user as mob)
 	if (attached_atom)
-		to_chat(user, SPAN_WARNING("It's firmly secured to [attached_atom], and there's no way to remove it now!"))
+		to_chat(user, SPAN_WARNING("它已牢固地固定在[attached_atom]上，现在无法移除！"))
 		return
 	else
 		..()
@@ -76,16 +76,16 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 		return
 
 	if(get_dist(target_atom,user) > 1)
-		to_chat(user, SPAN_WARNING("You can't attach [src] to something that far away."))
+		to_chat(user, SPAN_WARNING("你无法将[src]连接到那么远的东西上。"))
 		return
 
 	if(!is_ground_level(target_atom.z))
-		to_chat(user, SPAN_WARNING("You can't attach [src] to something here."))
+		to_chat(user, SPAN_WARNING("你无法将[src]连接到这里的物体上。"))
 		return
 
 	var/area/A = get_area(target_atom)
 	if(A && CEILING_IS_PROTECTED(A.ceiling, CEILING_PROTECTION_TIER_2))
-		to_chat(usr, SPAN_WARNING("You can't attach [src] to something when underground!"))
+		to_chat(usr, SPAN_WARNING("你无法在地下将[src]连接到任何东西上！"))
 		return
 
 	var/can_attach = FALSE
@@ -96,14 +96,14 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 			if(isyautja(H) && H.stat == DEAD)
 				can_attach = TRUE
 			else if((H.stat != DEAD || H.check_tod() && H.is_revivable()))
-				to_chat(user, SPAN_WARNING("You can't attach [src] to [target_atom], they still have a chance!"))
+				to_chat(user, SPAN_WARNING("你无法将[src]连接到[target_atom]上，他们还有机会！"))
 				return
 			else
 				can_attach = TRUE
 		else if(isxeno(target_atom))
 			var/mob/living/carbon/xenomorph/X = target_atom
 			if(X.stat != DEAD)
-				to_chat(user, SPAN_WARNING("You can't attach [src] to [target_atom], kill it first!"))
+				to_chat(user, SPAN_WARNING("你无法将[src]连接到[target_atom]上，先干掉它！"))
 				return
 			can_attach = TRUE
 		else
@@ -117,7 +117,7 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 				break
 
 	if(can_attach)
-		user.visible_message(SPAN_WARNING("[user] begins attaching [src] onto [target_atom]."),
+		user.visible_message(SPAN_WARNING("[user]开始将[src]安装到[target_atom]上。"),
 					SPAN_WARNING("You begin to attach [src] onto [target_atom]."))
 		if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_INTEL), INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			if(!amount || get_dist(target_atom,user) > 1)
@@ -133,7 +133,7 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 			F.faction = user.faction
 			F.deploy_fulton()
 	else
-		to_chat(user, SPAN_WARNING("You can't attach [src] to [target_atom]."))
+		to_chat(user, SPAN_WARNING("你无法将[src]连接到[target_atom]上。"))
 
 /obj/item/stack/fulton/proc/deploy_fulton()
 	if(!attached_atom)
@@ -153,7 +153,7 @@ GLOBAL_LIST_EMPTY(deployed_fultons)
 	var/middle_y = bottom_left_turf.y + floor((top_right_turf.y - bottom_left_turf.y) / 2)
 	var/turf/space_tile = locate(middle_x, middle_y, bottom_left_turf.z)
 	if(!space_tile)
-		visible_message(SPAN_WARNING("[src] begins beeping like crazy. Something is wrong!"))
+		visible_message(SPAN_WARNING("[src]开始疯狂地发出哔哔声。出问题了！"))
 		return
 
 	icon_state = ""

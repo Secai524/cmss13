@@ -1,7 +1,7 @@
 //generic procs copied from obj/effect/alien
 /obj/effect/spider
 	name = "web"
-	desc = "It's stringy and sticky."
+	desc = "它又粘又稠。"
 	icon = 'icons/effects/effects.dmi'
 	anchored = TRUE
 	density = FALSE
@@ -22,9 +22,9 @@
 
 /obj/effect/spider/attackby(obj/item/W, mob/user)
 	if(LAZYLEN(W.attack_verb))
-		visible_message(SPAN_DANGER("[src] has been [pick(W.attack_verb)] with [W][(user ? " by [user]." : ".")]"))
+		visible_message(SPAN_DANGER("[src]被[W][(user ? " by [user]." : ".")]"))
 	else
-		visible_message(SPAN_DANGER("[src] has been attacked with [W][(user ? " by [user]." : ".")]"))
+		visible_message(SPAN_DANGER("[src]被[W]攻击了[(user ? " by [user]." : ".")]"))
 
 	var/damage = W.force / 4
 
@@ -65,7 +65,7 @@
 		return NO_BLOCKED_MOVEMENT
 	else if(isliving(mover))
 		if(prob(50))
-			to_chat(mover, SPAN_WARNING("You get stuck in [src] for a moment."))
+			to_chat(mover, SPAN_WARNING("你被[src]卡住了一会儿。"))
 			return BLOCKED_MOVEMENT
 	else if(istype(mover, /obj/projectile))
 		if(prob(30))
@@ -73,8 +73,8 @@
 	return NO_BLOCKED_MOVEMENT
 
 /obj/effect/spider/eggcluster
-	name = "egg cluster"
-	desc = "They seem to pulse slightly with an inner life."
+	name = "虫卵簇"
+	desc = "它们似乎随着内部的生命力而微微脉动。"
 	icon_state = "eggs"
 	var/amount_grown = 0
 /obj/effect/spider/eggcluster/Initialize(mapload, ...)
@@ -97,7 +97,7 @@
 
 /obj/effect/spider/spiderling
 	name = "spiderling"
-	desc = "It never stays still for long."
+	desc = "它从来不会静止太久。"
 	icon_state = "spiderling"
 	anchored = FALSE
 	layer = BELOW_TABLE_LAYER
@@ -132,7 +132,7 @@
 		..()
 
 /obj/effect/spider/spiderling/proc/die()
-	visible_message(SPAN_ALERT("[src] dies!"))
+	visible_message(SPAN_ALERT("[src]死亡！"))
 	new /obj/effect/decal/cleanable/spiderling_remains(src.loc)
 	qdel(src)
 
@@ -187,15 +187,15 @@
 		src.visible_message(SPAN_NOTICE("\the [src] chitters."))
 
 /obj/effect/decal/cleanable/spiderling_remains
-	name = "spiderling remains"
+	name = "幼蛛残骸"
 	gender = PLURAL
-	desc = "Green squishy mess."
+	desc = "绿色的黏糊糊的一团。"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "greenshatter"
 
 /obj/effect/spider/cocoon
 	name = "cocoon"
-	desc = "Something wrapped in silky spider web."
+	desc = "被丝质蜘蛛网包裹的某物。"
 	icon_state = "cocoon1"
 	health = 60
 
@@ -203,7 +203,7 @@
 	icon_state = pick("cocoon1","cocoon2","cocoon3")
 
 /obj/effect/spider/cocoon/Destroy()
-	visible_message(SPAN_DANGER("[src] splits open."))
+	visible_message(SPAN_DANGER("[src]裂开了。"))
 	for(var/atom/movable/A in contents)
 		A.forceMove(loc)
 	. = ..()

@@ -1,6 +1,6 @@
 /// Sends generic round running statistics to the InfluxDB backend
 SUBSYSTEM_DEF(influxstats)
-	name       = "InfluxDB Game Stats"
+	name       = "InfluxDB游戏统计"
 	wait       = 60 SECONDS
 	priority   = SS_PRIORITY_INFLUXSTATS
 	init_order = SS_INIT_INFLUXSTATS

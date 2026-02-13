@@ -1,8 +1,8 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
 
 /obj/item/implant/freedom
-	name = "freedom implant"
-	desc = "Use this to escape from those evil Red Shirts."
+	name = "自由植入物"
+	desc = "用这个来逃离那些邪恶的红衫军。"
 	implant_color= "r"
 	var/activation_emote = "chuckle"
 	var/uses = 1
@@ -19,7 +19,7 @@
 	if (src.uses < 1) return 0
 	if (emote == src.activation_emote)
 		src.uses--
-		to_chat(source, "You feel a faint click.")
+		to_chat(source, "你感觉到一声轻微的咔哒声。")
 		if (source.handcuffed)
 			var/obj/item/W = source.handcuffed
 			source.handcuffed = null
@@ -35,7 +35,7 @@
 
 /obj/item/implant/freedom/implanted(mob/living/carbon/source)
 	source.mind.store_memory("Freedom implant can be activated by using the [src.activation_emote] emote, <B>say *[src.activation_emote]</B> to attempt to activate.", 0, 0)
-	to_chat(source, "The implanted freedom implant can be activated by using the [src.activation_emote] emote, <B>say *[src.activation_emote]</B> to attempt to activate.")
+	to_chat(source, "已植入的自由植入物可以通过使用[src.activation_emote]表情激活，<B>说 *[src.activation_emote]</B>来尝试激活。")
 	return 1
 
 

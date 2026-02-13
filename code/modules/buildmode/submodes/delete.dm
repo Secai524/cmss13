@@ -29,7 +29,7 @@
 			if(action_type == DELETE_CANCEL || !action_type)
 				return
 
-			if(tgui_alert(usr,"Are you really sure you want to delete all instances of type [deleting.type]?", "Confirmation", list(CONFIRM_YES, CONFIRM_NO)) != CONFIRM_YES)
+			if(tgui_alert(usr,"Are you really sure you want to delete all instances of type [deleting.type]?", "确认", list(CONFIRM_YES, CONFIRM_NO)) != CONFIRM_YES)
 				return
 
 			if(tgui_alert(usr,"Second confirmation required. Delete?", "Double Confirmation", list(CONFIRM_YES, CONFIRM_NO)) != CONFIRM_YES)
@@ -45,7 +45,7 @@
 							qdel(obj)
 						CHECK_TICK
 					if(!i)
-						to_chat(usr, "No instances of this type exist.")
+						to_chat(usr, "不存在此类型的实例。")
 						return
 					log_admin("[key_name(usr)] deleted all instances of type [o_type] ([i] instances deleted) ")
 					message_admins(SPAN_NOTICE("[key_name(usr)] deleted all instances of type [o_type] ([i] instances deleted) "))
@@ -57,7 +57,7 @@
 							qdel(obj)
 						CHECK_TICK
 					if(!i)
-						to_chat(usr, "No instances of this type exist.")
+						to_chat(usr, "不存在此类型的实例。")
 						return
 					log_admin("[key_name(usr)] deleted all instances of type or subtype of [o_type] ([i] instances deleted) ")
 					message_admins(SPAN_NOTICE("[key_name(usr)] deleted all instances of type or subtype of [o_type] ([i] instances deleted) "))

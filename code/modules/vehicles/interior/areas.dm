@@ -11,7 +11,7 @@
 	sound_environment = SOUND_ENVIRONMENT_ROOM
 
 /area/interior/vehicle/tank
-	name = "tank interior"
+	name = "坦克内部"
 	icon_state = "tank"
 
 /area/interior/vehicle/apc
@@ -27,19 +27,19 @@
 	icon_state = "apc_cmd"
 
 /area/interior/vehicle/van
-	name = "van interior"
+	name = "厢式货车内部"
 	icon_state = "van"
 
 /area/interior/vehicle/clf_van
-	name = "CLF van interior"
+	name = "CLF厢式货车内部"
 	icon_state = "van"
 
 /area/interior/vehicle/box_van
-	name = "box-van interior"
+	name = "箱式货车内部"
 	icon_state = "van"
 
 /area/interior/vehicle/pizza_van
-	name = "pizza-van interior"
+	name = "披萨车内部"
 	icon_state = "van"
 
 /area/interior/vehicle/arc

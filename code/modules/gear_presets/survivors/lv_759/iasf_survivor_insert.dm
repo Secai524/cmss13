@@ -3,7 +3,7 @@
 /// Hybrisa - IASF - Paratrooper survivors
 
 /datum/equipment_preset/survivor/iasf
-	name = "Survivor - IASF"
+	name = "幸存者 - IASF"
 	paygrades = list(PAY_SHORT_IASFE2 = JOB_PLAYTIME_TIER_0)
 	job_title = JOB_SURVIVOR
 	skills = /datum/skills/iasf
@@ -59,9 +59,9 @@
 ///////////////////////////////////////////////////////////////////
 
 /datum/equipment_preset/survivor/iasf/paratrooper
-	name = "Survivor - IASF Paratrooper"
+	name = "幸存者 - IASF伞兵"
 	paygrades = list(PAY_SHORT_IASFE2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_IASFE2 = JOB_PLAYTIME_TIER_1)
-	assignment = "IASF - Paratrooper"
+	assignment = "IASF - 伞兵"
 	job_title = JOB_TWE_IASF_PARA
 	skills = /datum/skills/iasf
 
@@ -81,7 +81,7 @@
 ///////////////////////////////////////////////////////////////////
 
 /datum/equipment_preset/survivor/iasf/engi
-	name = "Survivor - IASF Combat Engineer"
+	name = "幸存者 - IASF战斗工程师"
 	paygrades = list(PAY_SHORT_IASFE3 = JOB_PLAYTIME_TIER_0)
 	assignment = "IASF - Combat Engineer"
 	job_title = JOB_TWE_IASF_PARA_ENGI
@@ -115,7 +115,7 @@
 ///////////////////////////////////////////////////////////////////
 
 /datum/equipment_preset/survivor/iasf/medic
-	name = "Survivor - IASF Combat Medical Technician"
+	name = "幸存者 - IASF战斗医疗技术员"
 	paygrades = list(PAY_SHORT_IASFE3 = JOB_PLAYTIME_TIER_0)
 	assignment = "IASF - Combat Medical Technician"
 	job_title = JOB_TWE_IASF_PARA_MEDIC
@@ -151,7 +151,7 @@
 ///////////////////////////////////////////////////////////////////
 
 /datum/equipment_preset/survivor/iasf/pilot
-	name = "Survivor - IASF Dropship Pilot"
+	name = "幸存者 - IASF运输机飞行员"
 	assignment = "IASF - Dropship Pilot"
 	job_title = JOB_TWE_IASF_PARA_PILOT
 	minimap_icon = "pilot"
@@ -172,7 +172,7 @@
 ///////////////////////////////////////////////////////////////////
 
 /datum/equipment_preset/survivor/iasf/squad_leader
-	name = "Survivor - IASF Squad Leader"
+	name = "幸存者 - IASF班长"
 	paygrades = list(PAY_SHORT_IASFE5 = JOB_PLAYTIME_TIER_0)
 	assignment = "IASF - Squad Leader"
 	job_title = JOB_TWE_IASF_PARA_SQUAD_LEADER
@@ -197,7 +197,7 @@
 ///////////////////////////////////////////////////////////////////
 
 /datum/equipment_preset/synth/survivor/iasf_synth
-	name = "Survivor - IASF - Support Synthetic"
+	name = "幸存者 - IASF - 支援型合成人"
 	assignment = "IASF - Support Synthetic"
 	flags = EQUIPMENT_PRESET_EXTRA
 	languages = ALL_SYNTH_LANGUAGES
@@ -247,7 +247,7 @@
 // Hybrisa - IASF - CO Survivor.
 
 /datum/equipment_preset/survivor/hybrisa/iasf_commander
-	name = "Survivor - IASF Commander"
+	name = "幸存者 - IASF指挥官"
 	assignment = "IASF - Commander"
 	faction = FACTION_IASF
 	faction_group = FACTION_LIST_SURVIVOR_IASF

@@ -1,7 +1,7 @@
 
 //A gaggle of gladiators
 /datum/emergency_call/pirates
-	name = "Fun - Pirates"
+	name = "娱乐 - 海盗"
 	mob_max = 35
 	mob_min = 10
 	arrival_message = "'What shall we do with a drunken sailor? What shall we do with a drunken sailor? What shall we do with a drunken sailor early in the morning?'"
@@ -20,11 +20,11 @@
 	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = H
 		arm_equipment(H, /datum/equipment_preset/fun/pirate/captain, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are the leader of these jolly pirates!"))
-		to_chat(H, SPAN_ROLE_BODY("Loot this place for all its worth! Take everything of value that's not nailed down!"))
+		to_chat(H, SPAN_ROLE_HEADER("你是这群快乐海盗的头儿！"))
+		to_chat(H, SPAN_ROLE_BODY("把这地方值钱的东西都抢光！所有没钉死的好东西都拿走！"))
 	else
 		arm_equipment(H, /datum/equipment_preset/fun/pirate, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are a jolly pirate! Yarr!"))
-		to_chat(H, SPAN_ROLE_BODY("Loot this place for all its worth! Take everything of value that's not nailed down!"))
+		to_chat(H, SPAN_ROLE_HEADER("你是个快乐的海盗！哟嚯！"))
+		to_chat(H, SPAN_ROLE_BODY("把这地方值钱的东西都抢光！所有没钉死的好东西都拿走！"))
 
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("任务目标：[objectives]")), 1 SECONDS)

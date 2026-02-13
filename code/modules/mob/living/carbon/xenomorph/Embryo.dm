@@ -1,8 +1,8 @@
 //This is to replace the previous datum/disease/alien_embryo for slightly improved handling and maintainability
 //It functions almost identically (see code/datums/diseases/alien_embryo.dm)
 /obj/item/alien_embryo
-	name = "alien embryo"
-	desc = "All slimy and yucky."
+	name = "异形胚胎"
+	desc = "全是黏糊糊的恶心东西。"
 	icon = 'icons/mob/xenos/castes/tier_0/larva.dmi'
 	icon_state = "Embryo"
 	var/mob/living/affected_mob
@@ -117,7 +117,7 @@
 			if(prob(4))
 				if(!HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
 					affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
-					affected_mob.visible_message(SPAN_DANGER("[affected_mob] starts shaking uncontrollably!"),
+					affected_mob.visible_message(SPAN_DANGER("[affected_mob]开始不受控制地颤抖！"),
 												SPAN_DANGER("You feel something moving inside you! You start shaking uncontrollably!"))
 					affected_mob.apply_effect(1, PARALYZE)
 					affected_mob.make_jittery(105)
@@ -130,7 +130,7 @@
 				var/message = SPAN_WARNING("[pick("Your throat feels sore", "Mucous runs down the back of your throat")].")
 				to_chat(affected_mob, message)
 			else if(prob(1))
-				to_chat(affected_mob, SPAN_WARNING("Your muscles ache."))
+				to_chat(affected_mob, SPAN_WARNING("你的肌肉酸痛。"))
 				if(prob(20))
 					affected_mob.take_limb_damage(1)
 			else if(prob(2))
@@ -154,7 +154,7 @@
 			if(prob(6))
 				if(!HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
 					affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
-					affected_mob.visible_message(SPAN_DANGER("[affected_mob] starts shaking uncontrollably!"),
+					affected_mob.visible_message(SPAN_DANGER("[affected_mob]开始不受控制地颤抖！"),
 												SPAN_DANGER("You feel something moving inside you! You start shaking uncontrollably!"))
 					affected_mob.apply_effect(3, PARALYZE)
 					affected_mob.make_jittery(105)
@@ -212,7 +212,7 @@
 							cur_obs.ManualFollow(affected_mob)
 							if(cur_obs.client.prefs?.toggles_flashing & FLASH_POOLSPAWN)
 								window_flash(cur_obs.client)
-						if(is_nested || tgui_alert(cur_obs, "An unnested host you hugged is about to burst! Do you want to control the new larva?", "Larva maturation", list("Yes", "No"), 10 SECONDS) == "Yes")
+						if(is_nested || tgui_alert(cur_obs, "你抱脸过的未筑巢宿主即将破胸！是否要控制新幼虫？", "Larva maturation", list("Yes", "No"), 10 SECONDS) == "Yes")
 							picked = cur_obs
 							candidates -= cur_obs
 							message_alien_candidates(candidates, dequeued = 0)
@@ -242,7 +242,7 @@
 						cur_candidate.ManualFollow(affected_mob)
 						if(cur_candidate.client.prefs?.toggles_flashing & FLASH_POOLSPAWN)
 							window_flash(cur_candidate.client)
-						if(tgui_alert(cur_candidate, "An unnested host is about to burst! Do you want to control the new larva?", "Larva maturation", list("Yes", "No"), 10 SECONDS) == "Yes")
+						if(tgui_alert(cur_candidate, "一个未筑巢宿主即将破胸！是否要控制新幼虫？", "Larva maturation", list("Yes", "No"), 10 SECONDS) == "Yes")
 							picked = cur_candidate
 							candidates -= cur_candidate
 							message_alien_candidates(candidates, dequeued = 0)
@@ -279,9 +279,9 @@
 		if(HAS_TRAIT(affected_mob, TRAIT_LISPING))
 			ADD_TRAIT(new_xeno, TRAIT_LISPING, affected_mob)
 
-		to_chat(new_xeno, SPAN_XENOANNOUNCE("You are a xenomorph larva inside a host! Move to burst out of it!"))
-		to_chat(new_xeno, "<B>Your job is to spread the hive and protect the Queen. If there's no Queen, you can become the Queen yourself by evolving into a drone.</B>")
-		to_chat(new_xeno, "Talk in Hivemind using <strong>;</strong> (e.g. ';My life for the queen!')")
+		to_chat(new_xeno, SPAN_XENOANNOUNCE("你是宿主体内的异形幼虫！移动到宿主体外破胸而出！"))
+		to_chat(new_xeno, "<B>你的任务是扩张巢穴并保护女王。如果没有女王，你可以进化工蜂后自己成为女王。</B>")
+		to_chat(new_xeno, "使用<strong>;</strong>在蜂巢思维中交流（例如‘;为女王献出生命！’）")
 		playsound_client(new_xeno.client, 'sound/effects/xeno_newlarva.ogg', 25, 1)
 
 	// Inform observers to grab some popcorn if it isn't nested
@@ -307,7 +307,7 @@
 	if(victim.chestburst || loc != victim)
 		return
 	victim.chestburst = TRUE
-	to_chat(src, SPAN_DANGER("We start bursting out of [victim]'s chest!"))
+	to_chat(src, SPAN_DANGER("我们开始从[victim]的胸口破出！"))
 	if(!HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
 		victim.apply_effect(20, DAZE)
 	victim.visible_message(SPAN_DANGER("\The [victim] starts shaking uncontrollably!"),
@@ -357,7 +357,7 @@
 		burstcount++
 
 		if(!larva_embryo.ckey && larva_embryo.burrowable && loc && is_ground_level(loc.z) && (locate(/obj/structure/bed/nest) in loc) && hive.living_xeno_queen && hive.living_xeno_queen.z == loc.z)
-			larva_embryo.visible_message(SPAN_XENODANGER("[larva_embryo] quickly burrows into the ground."))
+			larva_embryo.visible_message(SPAN_XENODANGER("[larva_embryo]迅速钻入地下。"))
 			if(GLOB.round_statistics && !larva_embryo.statistic_exempt)
 				GLOB.round_statistics.track_new_participant(faction, 0) // keep stats sane
 			hive.stored_larva++
@@ -366,7 +366,7 @@
 
 		if(!victim.first_xeno)
 			if(hive.hive_orders)
-				to_chat(larva_embryo, SPAN_XENOHIGHDANGER("The Queen's will overwhelms our instincts..."))
+				to_chat(larva_embryo, SPAN_XENOHIGHDANGER("女王的意志压倒了我们的本能..."))
 				to_chat(larva_embryo, SPAN_XENOHIGHDANGER("\"[hive.hive_orders]\""))
 			log_attack("[key_name(victim)] chestbursted in [get_area_name(larva_embryo)] at X[victim.x], Y[victim.y], Z[victim.z]. The larva was [key_name(larva_embryo)].") //this is so that admins are not spammed with los logs
 

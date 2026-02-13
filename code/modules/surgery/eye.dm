@@ -5,7 +5,7 @@
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery/eye_repair
-	name = "Eye Repair Surgery"
+	name = "眼部修复手术"
 	possible_locs = list("eyes")
 	invasiveness = list(SURGERY_DEPTH_SURFACE)
 	required_surgery_skill = SKILL_SURGERY_TRAINED
@@ -32,8 +32,8 @@
 //------------------------------------
 
 /datum/surgery_step/separate_corneas
-	name = "Separate Corneas"
-	desc = "separate the corneas"
+	name = "分离角膜"
+	desc = "分离角膜"
 	tools = SURGERY_TOOLS_INCISION
 	time = 2 SECONDS
 
@@ -58,7 +58,7 @@
 
 	log_interact(user, target, "[key_name(user)] separated the corneas on [key_name(target)]'s eyes with [tool], starting [surgery].")
 
-	to_chat(target, SPAN_WARNING("Everything goes blurry."))
+	to_chat(target, SPAN_WARNING("视线变得模糊。"))
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SHALLOW
 	target.disabilities |= NEARSIGHTED // My corneas! I can't see!
 
@@ -77,8 +77,8 @@
 //------------------------------------
 
 /datum/surgery_step/lift_corneas
-	name = "Lift Corneas and Move Lenses"
-	desc = "lift the corneas and move the lenses"
+	name = "抬起角膜并移动晶状体"
+	desc = "抬起角膜并移动晶状体"
 	tools = SURGERY_TOOLS_PINCH
 	time = 2 SECONDS
 
@@ -118,8 +118,8 @@
 //------------------------------------
 
 /datum/surgery_step/open_eyes
-	name = "Open Eyes"
-	desc = "open the eyeballs"
+	name = "打开眼球"
+	desc = "打开眼球"
 	tools = SURGERY_TOOLS_PRY_DELICATE
 	time = 4 SECONDS
 
@@ -159,8 +159,8 @@
 //------------------------------------
 
 /datum/surgery_step/mend_eyes
-	name = "Mend the Eyes"
-	desc = "mend the damage inside the eyeballs"
+	name = "修复眼球"
+	desc = "修复眼球内部损伤"
 	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
 	time = 5 SECONDS
 
@@ -216,8 +216,8 @@
 //------------------------------------
 
 /datum/surgery_step/cauterize/eyes
-	name = "Cauterize Eye Incisions"
-	desc = "reattach the corneas and lenses and close the eyeballs"
+	name = "灼合眼部切口"
+	desc = "重新连接角膜和晶状体并闭合眼球"
 	time = 3 SECONDS
 
 /datum/surgery_step/cauterize/eyes/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -237,7 +237,7 @@
 
 	log_interact(user, target, "[key_name(user)] cauterized the incision around [key_name(target)]'s eyes with [tool], ending [surgery].")
 
-	to_chat(target, SPAN_NOTICE("The pain in your eyeballs is gone and you can see again!"))
+	to_chat(target, SPAN_NOTICE("你眼球的疼痛消失了，又能看见了！"))
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE
 	target.disabilities &= ~NEARSIGHTED
 	target.sdisabilities &= ~DISABILITY_BLIND

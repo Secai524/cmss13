@@ -52,13 +52,13 @@
 	if(istype(object_to_insert, /obj/item/reagent_container/glass/beaker))
 		var/obj/item/reagent_container/glass/beaker/beaker_check = object_to_insert
 		if(!beaker_check.reagents || beaker_check.reagents.maximum_volume > ACID_CONTAINER_MAXIMUM_VOLUME)
-			to_chat(user, SPAN_WARNING("[object_to_insert] is too large for [src]."))
+			to_chat(user, SPAN_WARNING("[object_to_insert]对于[src]来说太大了。"))
 			return
 	. = ..()
 
 /obj/item/clothing/accessory/storage/black_vest/acid_harness
-	name = "A.C.I.D. Harness"
-	desc = "Automated Chemical Integrated Delivery Harness, or really just a franken webbing made by a researcher with poor tailoring skills. Can be configured with a multitool."
+	name = "A.C.I.D. 战术背心"
+	desc = "自动化学集成输送背心，或者说只是一个由缝纫技术很差的研究员拼凑出来的战术背心。可以用万用工具进行配置。"
 	icon_state = "vest_acid_black"
 	hold = /obj/item/storage/internal/accessory/black_vest/acid_harness
 	var/obj/item/reagent_container/glass/beaker/beaker
@@ -121,8 +121,8 @@
 
 	damagelist["Brute"] = list("flag" = HAS_FLAG(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_BRUTE), "value" = ACID_SCAN_DAMAGE_BRUTE)
 	damagelist["Burn"] = list("flag" = HAS_FLAG(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_BURN), "value" = ACID_SCAN_DAMAGE_BURN)
-	damagelist["Toxin"] = list("flag" = HAS_FLAG(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_TOXIN), "value" = ACID_SCAN_DAMAGE_TOXIN)
-	damagelist["Oxygen"] = list("flag" = HAS_FLAG(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_OXYGEN), "value" = ACID_SCAN_DAMAGE_OXYGEN)
+	damagelist["毒素"] = list("flag" = HAS_FLAG(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_TOXIN), "value" = ACID_SCAN_DAMAGE_TOXIN)
+	damagelist["氧气"] = list("flag" = HAS_FLAG(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_OXYGEN), "value" = ACID_SCAN_DAMAGE_OXYGEN)
 	damagelist["Genetic"] = list("flag" = HAS_FLAG(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_CLONE), "value" = ACID_SCAN_DAMAGE_CLONE)
 	damagelist["Heart"] = list("flag" = HAS_FLAG(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_HEART), "value" = ACID_SCAN_DAMAGE_HEART)
 	damagelist["Liver"] = list("flag" = HAS_FLAG(acid_core.inject_damage_types, ACID_SCAN_DAMAGE_LIVER), "value" = ACID_SCAN_DAMAGE_LIVER)
@@ -143,7 +143,7 @@
 	conditionslist["Death"] = list("flag" = HAS_FLAG(acid_core.inject_conditions, ACID_SCAN_CONDITION_DEATH), "value" = ACID_SCAN_CONDITION_DEATH)
 	conditionslist["Defibrillation"] = list("flag" = HAS_FLAG(acid_core.inject_conditions, ACID_SCAN_CONDITION_DEFIB), "value" = ACID_SCAN_CONDITION_DEFIB)
 	conditionslist["Concussion"] = list("flag" = HAS_FLAG(acid_core.inject_conditions, ACID_SCAN_CONDITION_CONCUSSION), "value" = ACID_SCAN_CONDITION_CONCUSSION)
-	conditionslist["Intoxication"] = list("flag" = HAS_FLAG(acid_core.inject_conditions, ACID_SCAN_CONDITION_INTOXICATION), "value" = ACID_SCAN_CONDITION_INTOXICATION)
+	conditionslist["醉酒执勤"] = list("flag" = HAS_FLAG(acid_core.inject_conditions, ACID_SCAN_CONDITION_INTOXICATION), "value" = ACID_SCAN_CONDITION_INTOXICATION)
 	conditionslist["Foreign Object"] = list("flag" = HAS_FLAG(acid_core.inject_conditions, ACID_SCAN_CONDITION_FOREIGN_OBJECT), "value" = ACID_SCAN_CONDITION_FOREIGN_OBJECT)
 
 	// vitals
@@ -216,10 +216,10 @@
 								acid_core.inject_vitals |= flag_value
 					. = TRUE
 		else
-			to_chat(human_wearer, SPAN_WARNING("You need a multi-tool to modify these configurations."))
+			to_chat(human_wearer, SPAN_WARNING("你需要万用工具来修改这些配置。"))
 
 /obj/structure/machinery/acid_core
-	name = "A.C.I.D. CORE"
+	name = "A.C.I.D. 核心"
 	use_power = USE_POWER_NONE
 	var/obj/item/clothing/accessory/storage/black_vest/acid_harness/acid_harness
 	var/mob/living/carbon/human/user
@@ -255,11 +255,11 @@
 /obj/structure/machinery/acid_core/proc/boot_sequence()
 	if(!user || !acid_harness.battery)
 		return
-	var/text = SPAN_HELPFUL("A.C.I.D. states: ")
+	var/text = SPAN_HELPFUL("A.C.I.D. 状态: ")
 	switch(boot_status)
 		if(0)
 			if(acid_harness.battery.charge <= 100)
-				to_chat(user, SPAN_HELPFUL("A.C.I.D. states: ") + SPAN_WARNING("Insufficient power, booting sequence aborted."))
+				to_chat(user, SPAN_HELPFUL("A.C.I.D. 状态: ") + SPAN_WARNING("Insufficient power, booting sequence aborted."))
 				return
 			text += SPAN_NOTICE("Welcome, to the Automated Chemical Integrated Delivery harness.")
 		if(1)
@@ -283,7 +283,7 @@
 /obj/structure/machinery/acid_core/proc/voice(voiceline, report_vitals = FALSE)
 	if(!user)
 		return
-	var/text = SPAN_HELPFUL("A.C.I.D. states: ")
+	var/text = SPAN_HELPFUL("A.C.I.D. 状态: ")
 	if(report_vitals)
 		switch(voiceline)
 			if(ACID_VITALS_OPTIMAL)

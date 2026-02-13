@@ -1,8 +1,8 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
 
 /obj/item/device/mmi
-	name = "Man-Machine Interface"
-	desc = "The Warrior's bland acronym, MMI, obscures the true horror of this monstrosity."
+	name = "人机接口"
+	desc = "战士公司平淡的缩写‘MMI’，掩盖了这怪物的真正恐怖。"
 	icon = 'icons/obj/items/assemblies.dmi'
 	icon_state = "mmi_empty"
 	w_class = SIZE_MEDIUM
@@ -23,10 +23,10 @@
 
 		var/obj/item/organ/brain/B = O
 		if(B.health <= 0)
-			to_chat(user, SPAN_DANGER("That brain is well and truly dead."))
+			to_chat(user, SPAN_DANGER("那个大脑已经彻底死亡了。"))
 			return
 		else if(!B.brainmob)
-			to_chat(user, SPAN_DANGER("You aren't sure where this brain came from, but you're pretty sure it's a useless brain."))
+			to_chat(user, SPAN_DANGER("你不确定这个大脑从何而来，但你很确定它是个无用的大脑。"))
 			return
 
 		for(var/mob/V in viewers(src, null))
@@ -43,7 +43,7 @@
 		user.drop_held_item()
 		qdel(O)
 
-		name = "Man-Machine Interface: [brainmob.real_name]"
+		name = "人机接口：[brainmob.real_name]"
 		icon_state = "mmi_full"
 
 		locked = 1
@@ -53,9 +53,9 @@
 	if((istype(O,/obj/item/card/id)) && brainmob)
 		if(allowed(user))
 			locked = !locked
-			to_chat(user, SPAN_NOTICE("You [locked ? "lock" : "unlock"] the brain holder."))
+			to_chat(user, SPAN_NOTICE("你[locked ? "lock" : "unlock"] the brain holder."))
 		else
-			to_chat(user, SPAN_DANGER("Access denied."))
+			to_chat(user, SPAN_DANGER("权限被拒绝。"))
 		return
 	if(brainmob)
 		O.attack(brainmob, user)//Oh noooeeeee
@@ -66,11 +66,11 @@
 	..()
 
 	if(!brainmob)
-		to_chat(user, SPAN_DANGER("You upend the MMI, but there's nothing in it."))
+		to_chat(user, SPAN_DANGER("你倒空了人机接口，但里面空无一物。"))
 	else if(locked)
-		to_chat(user, SPAN_DANGER("You upend the MMI, but the brain is clamped into place."))
+		to_chat(user, SPAN_DANGER("你试图倒空人机接口，但大脑被牢牢固定住了。"))
 	else
-		to_chat(user, SPAN_NOTICE("You upend the MMI, spilling the brain onto the floor."))
+		to_chat(user, SPAN_NOTICE("你倒空了人机接口，将大脑倾倒在地板上。"))
 		var/obj/item/organ/brain/brain = new(user.loc)
 		brainmob.container = null//Reset brainmob mmi var.
 		brainmob.forceMove(brain)//Throw mob into brain.
@@ -79,7 +79,7 @@
 		brainmob = null//Set mmi brainmob var to null
 
 		icon_state = "mmi_empty"
-		name = "Man-Machine Interface"
+		name = "人机接口"
 
 /obj/item/device/mmi/proc/transfer_identity(mob/living/carbon/human/H)//Same deal as the regular brain proc. Used for human-->robot people.
 	brainmob = new(src)
@@ -88,14 +88,14 @@
 	brainmob.blood_type = H.blood_type
 	brainmob.container = src
 
-	name = "Man-Machine Interface: [brainmob.real_name]"
+	name = "人机接口：[brainmob.real_name]"
 	icon_state = "mmi_full"
 	locked = 1
 	return
 
 /obj/item/device/mmi/radio_enabled
-	name = "Radio-enabled Man-Machine Interface"
-	desc = "The Warrior's bland acronym, MMI, obscures the true horror of this monstrosity. This one comes with a built-in radio."
+	name = "无线电人机接口"
+	desc = "战士公司平淡的缩写‘MMI’，掩盖了这怪物的真正恐怖。这个型号内置了无线电。"
 
 
 	var/obj/item/device/radio/radio = null//Let's give it a radio.
@@ -114,10 +114,10 @@
 	set popup_menu = 0//Will not appear when right clicking.
 
 	if(brainmob.stat)//Only the brainmob will trigger these so no further check is necessary.
-		to_chat(brainmob, "Can't do that while incapacitated or dead.")
+		to_chat(brainmob, "在丧失行动能力或死亡时无法执行此操作。")
 
 	radio.broadcasting = radio.broadcasting==1 ? 0 : 1
-	to_chat(brainmob, SPAN_NOTICE("Radio is [radio.broadcasting==1 ? "now" : "no longer"] broadcasting."))
+	to_chat(brainmob, SPAN_NOTICE("无线电[radio.broadcasting==1 ? "now" : "no longer"] broadcasting."))
 
 /obj/item/device/mmi/radio_enabled/verb/Toggle_Listening()
 	set name = "Toggle Listening"
@@ -127,7 +127,7 @@
 	set popup_menu = 0
 
 	if(brainmob.stat)
-		to_chat(brainmob, "Can't do that while incapacitated or dead.")
+		to_chat(brainmob, "在丧失行动能力或死亡时无法执行此操作。")
 
 	radio.listening = radio.listening==1 ? 0 : 1
 	to_chat(brainmob, SPAN_NOTICE("Radio is [radio.listening==1 ? "now" : "no longer"] receiving broadcast."))

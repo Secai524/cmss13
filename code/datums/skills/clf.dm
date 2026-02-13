@@ -5,7 +5,7 @@ COLONIAL LIBERATION FRONT
 */
 
 /datum/skills/clf
-	name = "CLF Soldier"
+	name = "CLF士兵"
 	skills = list(
 		SKILL_FIREARMS = SKILL_FIREARMS_TRAINED,
 		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
@@ -20,7 +20,7 @@ COLONIAL LIBERATION FRONT
 	)
 
 /datum/skills/clf/combat_engineer
-	name = "CLF Engineer"
+	name = "CLF工程师"
 	skills = list(
 		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI,
@@ -33,7 +33,7 @@ COLONIAL LIBERATION FRONT
 	)
 
 /datum/skills/clf/combat_medic
-	name = "CLF Medic"
+	name = "CLF医疗兵"
 	skills = list(
 		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
 		SKILL_MEDICAL = SKILL_MEDICAL_MEDIC,
@@ -44,7 +44,7 @@ COLONIAL LIBERATION FRONT
 	)
 
 /datum/skills/clf/specialist
-	name = "CLF Specialist"
+	name = "CLF专家"
 	skills = list(
 		SKILL_FIREARMS = SKILL_FIREARMS_SKILLED,
 		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
@@ -58,7 +58,7 @@ COLONIAL LIBERATION FRONT
 	)
 
 /datum/skills/clf/leader
-	name = "CLF Leader"
+	name = "CLF领袖"
 	skills = list(
 		SKILL_FIREARMS = SKILL_FIREARMS_TRAINED,
 		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED, // to use their C4
@@ -76,7 +76,7 @@ COLONIAL LIBERATION FRONT
 	)
 
 /datum/skills/clf/commander
-	name = "CLF Cell Commander"
+	name = "CLF小组指挥官"
 	skills = list(
 		SKILL_FIREARMS = SKILL_FIREARMS_MASTER,
 		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED,
@@ -95,7 +95,7 @@ COLONIAL LIBERATION FRONT
 	)
 
 /datum/skills/clf/coordinator
-	name = "CLF Coordinator"
+	name = "CLF协调员"
 	skills = list(
 		SKILL_CQC = SKILL_CQC_SKILLED,
 		SKILL_FIREARMS = SKILL_FIREARMS_TRAINED,

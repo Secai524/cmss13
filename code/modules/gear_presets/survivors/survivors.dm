@@ -56,8 +56,8 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 // 1 ----- Scientist Survivor
 
 /datum/equipment_preset/survivor/scientist
-	name = "Survivor - Scientist"
-	assignment = "Scientist"
+	name = "幸存者 - 科学家"
+	assignment = "科学家"
 	skills = /datum/skills/civilian/survivor/scientist
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/clearance_badge/scientist
@@ -84,8 +84,8 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 // 2 ----- Doctor Survivor
 
 /datum/equipment_preset/survivor/doctor
-	name = "Survivor - Doctor"
-	assignment = "Doctor"
+	name = "幸存者 - 医生"
+	assignment = "医生"
 	skills = /datum/skills/civilian/survivor/doctor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/clearance_badge
@@ -121,8 +121,8 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 // 3 ----- Chef Survivor
 
 /datum/equipment_preset/survivor/chef
-	name = "Survivor - Chef"
-	assignment = "Chef"
+	name = "幸存者 - 厨师"
+	assignment = "厨师"
 	skills = /datum/skills/civilian/survivor/chef
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC)
@@ -142,7 +142,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 // 4 ----- Chaplain Survivor
 
 /datum/equipment_preset/survivor/chaplain
-	name = "Survivor - Chaplain"
+	name = "幸存者 - 牧师"
 	assignment = "Chaplain"
 	skills = /datum/skills/civilian/survivor/chaplain
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -162,7 +162,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 // 5 ----- Miner Survivor
 
 /datum/equipment_preset/survivor/miner
-	name = "Survivor - Miner"
+	name = "幸存者 - 矿工"
 	assignment = "Miner"
 	skills = /datum/skills/civilian/survivor/miner
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -184,8 +184,8 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 // 6 ---- Colonial Marshal Survivor
 
 /datum/equipment_preset/survivor/colonial_marshal
-	name = "Survivor - Colonial Marshal Deputy"
-	assignment = "CMB Deputy"
+	name = "幸存者 - 殖民地法警副手"
+	assignment = "CMB副手"
 	paygrades = list(PAY_SHORT_CMBD = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian/survivor/marshal
 	minimap_icon = "deputy"
@@ -229,8 +229,8 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 // 7 ----- Engineering Survivor
 
 /datum/equipment_preset/survivor/engineer
-	name = "Survivor - Engineer"
-	assignment = "Engineer"
+	name = "幸存者 - 工程师"
+	assignment = "工程师"
 	skills = /datum/skills/civilian/survivor/engineer
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS)
@@ -257,7 +257,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 // 8 -- Security Survivor
 
 /datum/equipment_preset/survivor/security
-	name = "Survivor - Security"
+	name = "幸存者 - 安保人员"
 	assignment = "Security"
 	skills = /datum/skills/civilian/survivor/marshal
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -292,8 +292,8 @@ Everything bellow is a parent used as a base for one or multiple maps.
 // Used in Solaris Ridge and LV-624.
 
 /datum/equipment_preset/survivor/corporate
-	name = "Survivor - Corporate Liaison"
-	assignment = "Corporate Liaison"
+	name = "幸存者 - 公司联络官"
+	assignment = "公司联络官"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	paygrades = list(PAY_SHORT_WYC2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_WYC3 = JOB_PLAYTIME_TIER_2, PAY_SHORT_WYC4 = JOB_PLAYTIME_TIER_3, PAY_SHORT_WYC5 = JOB_PLAYTIME_TIER_4)
@@ -354,7 +354,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 // Used in Kutjevo Refinery, LV-624, New Varadero, Solaris Ridge and Trijent Dam.
 
 /datum/equipment_preset/survivor/trucker
-	name = "Survivor - Trucker"
+	name = "幸存者 - 卡车司机"
 	assignment = "Trucker"
 	skills = /datum/skills/civilian/survivor/trucker
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -379,7 +379,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 // Used in Solaris Ridge.
 
 /datum/equipment_preset/survivor/flight_control_operator
-	name = "Survivor - Flight Control Operator"
+	name = "幸存者 - 飞行管制员"
 	assignment = "Flight Control Operator"
 	skills = /datum/skills/civilian/survivor/trucker
 	idtype = /obj/item/card/id/data
@@ -403,7 +403,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 
 // Used in Sorokyne Strata and Fiorina Science Annex.
 /datum/equipment_preset/survivor/interstellar_human_rights_observer
-	name = "Survivor - Interstellar Human Rights Observer"
+	name = "幸存者 - 星际人权观察员"
 	assignment = "Interstellar Human Rights Observer(Colony)"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -428,8 +428,8 @@ Everything bellow is a parent used as a base for one or multiple maps.
 
 // Used in Trijent Dam and New Varadero.
 /datum/equipment_preset/survivor/interstellar_commerce_commission_liaison
-	name = "Survivor - Interstellar Commerce Commission Liaison"
-	assignment = "Interstellar Commerce Commission Corporate Liaison"
+	name = "幸存者 - 星际商业委员会联络官"
+	assignment = "星际商业委员会公司联络官"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	paygrades = list(PAY_SHORT_ICCL = JOB_PLAYTIME_TIER_0)
@@ -464,7 +464,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 
 // Used for Solaris Ridge.
 /datum/equipment_preset/survivor/uscm
-	name = "Survivor - USCM Remnant"
+	name = "幸存者 - USCM残部"
 	assignment = "USCM Survivor"
 	skills = /datum/skills/civilian/survivor/marshal
 	idtype = /obj/item/card/id/dogtag

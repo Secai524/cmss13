@@ -10,8 +10,8 @@
 
 /// Simulates the Requisitions Line experience for newcomers
 /datum/tutorial/marine/reqs_line
-	name = "Marine - Requistions Line"
-	desc = "Learn how to tend to the requisitions line as a Cargo Technician."
+	name = "陆战队员 - 补给线"
+	desc = "学习如何作为一名货物技术员处理补给线。"
 	icon_state = "cargotech"
 	tutorial_id = "marine_req_1"
 	tutorial_template = /datum/map_template/tutorial/reqs_line
@@ -61,7 +61,7 @@
 		/obj/item/attachable/reddot = list("RDS", "Red Dot", "S5", "Red Dot Sight", "reddot"),
 		/obj/item/attachable/reflex = list("Reflex", "S6 sight", "Reflex Sight", "S6"),
 		/obj/item/attachable/scope = list("S8", "S8", "4x", "4x sight", "4x scope", "S8 scope"),
-		/obj/item/attachable/angledgrip = list("AG", "agrip", "Agrip", "Angled", "angled grip"),
+		/obj/item/attachable/angledgrip = list("AG", "agrip", "Agrip", "Angled", "倾斜握把"),
 		/obj/item/attachable/gyro = list("Gyro"),
 		/obj/item/attachable/lasersight = list("Laser", "Laser sight", "LS"),
 		/obj/item/attachable/attached_gun/shotgun = list("U7", "Underbarrel", "Underbarrel Shotgun", "Mini Shotgun", "UBS"),
@@ -118,8 +118,8 @@
 		/obj/item/explosive/grenade/incendiary = list("M40 HIDP", "Incendiary nade", "Incendiary grenade", "HIDP", "Fire grenade"),
 		/obj/item/explosive/grenade/phosphorus = list("M40 CCDP", "CCDP", "CCDP White Phosphorus"),
 		/obj/item/explosive/grenade/sebb = list("Sonic Electric Ballbreaker", "SEBB", "G2 Electroshock"),
-		/obj/item/explosive/plastic = list("C4", "C4", "plastic explosives"),
-		/obj/item/explosive/plastic/breaching_charge = list("Breaching", "breach charge", "breaching charge"),
+		/obj/item/explosive/plastic = list("C4", "C4", "塑胶炸药"),
+		/obj/item/explosive/plastic/breaching_charge = list("Breaching", "breach charge", "破门炸药"),
 		/* AMMO */
 		/obj/item/ammo_magazine/rifle/m4ra/ap = list("AP M4RA", "AP M4RA mag", "M4RA AP"),
 		/obj/item/ammo_magazine/smg/m39/ap = list("M39 AP", "M39 AP", "SMG AP"),
@@ -258,7 +258,7 @@
 		return
 	restock_vendors()
 	var/speech = verbalize_request(request)
-	var/greeting = pick("Hello! ", "hi, ", "hey, ", "Good day. ", "I need ", "Please give me ", "", "") // Yes, no greeting is a greeting option for real world accuracy
+	var/greeting = pick("Hello! ", "hi, ", "hey, ", "日安。 ", "I need ", "Please give me ", "", "") // Yes, no greeting is a greeting option for real world accuracy
 	var/trailing = pick("", "", ", please.", " - please and thank you", ", thanks.", ", hurry")
 	challenger.say("[greeting][speech][trailing]") // Pleasantries for the first exchange only
 	remind_timer = addtimer(CALLBACK(src, PROC_REF(remind_request)), 15 SECONDS, TIMER_STOPPABLE)
@@ -311,7 +311,7 @@
 		confused_types |= item_type
 		if(COOLDOWN_FINISHED(src, confused_cooldown))
 			COOLDOWN_START(src, confused_cooldown, 5 SECONDS)
-			active_agent.say("Huh?")
+			active_agent.say("嗯？")
 		QDEL_IN(item, 30 SECONDS)
 		return
 
@@ -355,7 +355,7 @@
 		return // Nani?
 
 	if(success && prob(80))
-		var/speech = pick("Thanks!", "Thanks", "Thanks bro", "Thank you.", "Bye", "Nice.")
+		var/speech = pick("Thanks!", "Thanks", "Thanks bro", "Thank you.", "Bye", "不错。")
 		active_agent.say(speech)
 
 	// Immediately step the agent through the turnstile and towards exit
@@ -405,7 +405,7 @@
 			TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo/blend/tutorial, ammo_vendor)
 			add_highlight(ammo_vendor)
 			add_highlight(loser_agent)
-			loser_agent.say("Wait! I really NEED a Mk2 Extended Mag. Throw me one!")
+			loser_agent.say("等等！我真的需要一个Mk2加长弹匣。扔一个给我！")
 			message_to_player("Seems the marine wanted ammo too. Grab some and high-toss it over to him, with <b>[retrieve_bind("toggle_high_throw_mode")]</b>.")
 			update_objective("Get the M41 Extended magazine and perform a high toss to give it to the forgetful marine.")
 
@@ -458,7 +458,7 @@
 	if(prop.original_type != /obj/item/ammo_magazine/rifle/extended)
 		return
 	qdel(prop)
-	loser_agent.say("Nice.")
+	loser_agent.say("不错。")
 	remove_highlight(loser_agent)
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/cm_vending/sorted/cargo_ammo/cargo/blend/tutorial, ammo_vendor)
 	remove_highlight(ammo_vendor)
@@ -482,7 +482,7 @@
 	stage = TUTORIAL_REQS_LINE_STAGE_SURVIVAL
 
 /datum/map_template/tutorial/reqs_line
-	name = "Reqs Line Tutorial (8x11)"
+	name = "补给线教程 (8x11)"
 	mappath = "maps/tutorial/tutorial_reqs_line.dmm"
 	width = 8
 	height = 11

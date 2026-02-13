@@ -1,5 +1,5 @@
 /datum/supply_packs/m56_hmg
-	name = "M56D Heavy Machine Gun (x1)"
+	name = "M56D重机枪（x1）"
 	contains = list(
 		/obj/item/storage/box/guncase/m56d,
 	)
@@ -9,7 +9,7 @@
 	group = "Weapons"
 
 /datum/supply_packs/m2c_hmg
-	name = "M2C Heavy Machine Gun (x1)"
+	name = "M2C重机枪（x1）"
 	contains = list(
 		/obj/item/storage/box/guncase/m2c,
 	)
@@ -19,7 +19,7 @@
 	group = "Weapons"
 
 /datum/supply_packs/flamethrower
-	name = "M240 Flamethrower Crate (M240 x2, Broiler-T Fuelback x2)"
+	name = "M240火焰喷射器箱（M240 x2，Broiler-T燃料背包 x2）"
 	contains = list(
 		/obj/item/storage/box/guncase/flamer,
 		/obj/item/storage/box/guncase/flamer,
@@ -32,7 +32,7 @@
 	group = "Weapons"
 
 /datum/supply_packs/grenade_launchers
-	name = "M85A1 Grenade Launcher Crate (x2 Guncases)"
+	name = "M85A1榴弹发射器箱（x2 枪箱）"
 	contains = list(
 		/obj/item/storage/box/guncase/m85a1,
 		/obj/item/storage/box/guncase/m85a1,
@@ -43,7 +43,7 @@
 	group = "Weapons"
 
 /datum/supply_packs/mou53
-	name = "MOU-53 Break Action Shotgun Crate (x2)"
+	name = "MOU-53撅把式霰弹枪箱（x2）"
 	contains = list(
 		/obj/item/storage/box/guncase/mou53,
 		/obj/item/storage/box/guncase/mou53,
@@ -54,7 +54,7 @@
 	group = "Weapons"
 
 /datum/supply_packs/smartpistol
-	name = "SU-6 Smart Pistol Crate (x2)"
+	name = "SU-6智能手枪箱（x2）"
 	contains = list(
 		/obj/item/storage/box/guncase/smartpistol,
 		/obj/item/storage/box/guncase/smartpistol,
@@ -65,7 +65,7 @@
 	group = "Weapons"
 
 /datum/supply_packs/vp78
-	name = "VP-78 Hand Cannon Crate (x2)"
+	name = "VP-78手持加农炮箱（x2）"
 	contains = list(
 		/obj/item/storage/box/guncase/vp78,
 		/obj/item/storage/box/guncase/vp78,
@@ -82,7 +82,7 @@
 		/obj/item/ammo_magazine/rifle/m41aMK1,
 		/obj/item/ammo_magazine/rifle/m41aMK1,
 	)
-	name = "M41A MK1 Rifle Crate (x2 MK1, x2 magazines)"
+	name = "M41A MK1步枪箱（MK1 x2，弹匣 x2）"
 	cost = 40
 	containertype = /obj/structure/closet/crate/weapon
 	containername = "M41A MK1 Rifle Crate"
@@ -93,7 +93,7 @@
 		/obj/item/storage/box/guncase/lmg,
 		/obj/item/storage/box/guncase/lmg,
 	)
-	name = "M41AE2 HPR crate (HPR x2, HPR ammo box x2)"
+	name = "M41AE2 HPR箱（HPR x2，HPR弹药箱 x2）"
 	cost = 40
 	containertype = /obj/structure/closet/crate/weapon
 	containername = "\improper M41AE2 HPR crate"
@@ -104,7 +104,7 @@
 		/obj/item/storage/box/guncase/xm88,
 		/obj/item/storage/box/guncase/xm88,
 	)
-	name = "XM88 Heavy Rifle crate (XM88 x2)"
+	name = "XM88重型步枪箱（XM88 x2）"
 	cost = 40
 	containertype = /obj/structure/closet/crate/weapon
 	containername = "\improper XM88 Heavy Rifle crate"
@@ -112,7 +112,7 @@
 
 /* Uncomment me if it's decided to let the m707 be purchasable through req
 /datum/supply_packs/gun/m707
-	name = "M707 Anti-Materiel Rifle crate (M707 x1)"
+	name = "M707反器材步枪箱（M707 x1）"
 	contains = list()
 	cost = 120
 	containertype = /obj/structure/closet/crate/secure/vulture

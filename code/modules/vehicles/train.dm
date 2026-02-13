@@ -93,17 +93,17 @@
 
 	if (get_dist(src, T) > 1)
 		if(display_to_chat)
-			to_chat(user, SPAN_DANGER("[src] is too far away from [T] to hitch them together."))
+			to_chat(user, SPAN_DANGER("[src]距离[T]太远，无法将它们连接在一起。"))
 		return
 
 	if (lead)
 		if(display_to_chat)
-			to_chat(user, SPAN_DANGER("[src] is already hitched to something."))
+			to_chat(user, SPAN_DANGER("[src]已经连接到某个物体上了。"))
 		return
 
 	if (T.tow)
 		if(display_to_chat)
-			to_chat(user, SPAN_DANGER("[T] is already towing something."))
+			to_chat(user, SPAN_DANGER("[T]已经在拖拽某物了。"))
 		return
 
 	//check for cycles.
@@ -111,7 +111,7 @@
 	while (next_car)
 		if (next_car == src)
 			if(display_to_chat)
-				to_chat(user, SPAN_DANGER("That seems very silly."))
+				to_chat(user, SPAN_DANGER("这看起来非常愚蠢。"))
 			return
 		next_car = next_car.lead
 
@@ -121,7 +121,7 @@
 	setDir(lead.dir)
 
 	if(user && display_to_chat)
-		to_chat(user, SPAN_NOTICE("You hitch [src] to [T]."))
+		to_chat(user, SPAN_NOTICE("你将[src]连接到[T]上。"))
 
 	update_stats()
 
@@ -133,14 +133,14 @@
 
 	if (!lead)
 		if(display_to_chat)
-			to_chat(user, SPAN_DANGER("[src] is not hitched to anything."))
+			to_chat(user, SPAN_DANGER("[src]没有连接到任何东西上。"))
 		return
 
 	lead.tow = null
 	lead.update_stats()
 
 	if(display_to_chat)
-		to_chat(user, SPAN_NOTICE("You unhitch [src] from [lead]."))
+		to_chat(user, SPAN_NOTICE("你将[src]从[lead]上断开。"))
 	lead = null
 
 	update_stats()

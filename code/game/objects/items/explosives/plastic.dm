@@ -1,6 +1,6 @@
 /obj/item/explosive/plastic
-	name = "plastic explosives"
-	desc = "Used to put holes in specific areas without too much extra hole."
+	name = "塑胶炸药"
+	desc = "用于在特定区域开洞，且不会造成过多额外破坏。"
 	gender = PLURAL
 	icon = 'icons/obj/items/assemblies.dmi'
 	item_icons = list(
@@ -45,13 +45,13 @@
 
 /obj/item/explosive/plastic/attack_hand(mob/user)
 	if(active)
-		to_chat(user, SPAN_WARNING("You can't just pickup [src] while it is active! Use a multitool!"))
+		to_chat(user, SPAN_WARNING("你不能在[src]处于激活状态时直接拾取！使用万用工具！"))
 		return
 	. = ..()
 
 /obj/item/explosive/plastic/attack_self(mob/user)
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
-		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
+		to_chat(user, SPAN_WARNING("你似乎不知道如何使用 [src]..."))
 		return
 
 	. = ..()
@@ -59,29 +59,29 @@
 		if(istimer(detonator.a_right) || istimer(detonator.a_left))
 			detonator.attack_self(user)
 		return
-	var/new_time = tgui_input_number(usr, "Please set the timer.", "Timer", min_timer, 60, min_timer)
+	var/new_time = tgui_input_number(usr, "请设置定时器。", "计时器", min_timer, 60, min_timer)
 	if(new_time < min_timer)
 		new_time = min_timer
 	else if(new_time > 60)
 		new_time = 60
 	timer = new_time
-	to_chat(user, SPAN_NOTICE("Timer set for [timer] seconds."))
+	to_chat(user, SPAN_NOTICE("定时器设定为[timer]秒。"))
 
 /obj/item/explosive/plastic/afterattack(atom/target, mob/user, flag)
 	if(user.action_busy || !flag)
 		return
 	if(!skillcheck(user, req_skill, req_skill_level))
-		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
+		to_chat(user, SPAN_WARNING("你似乎不知道如何使用 [src]..."))
 		return
 	if(!can_place(user, target))
 		return
 
 	if(antigrief_protection && user.faction == FACTION_MARINE && explosive_antigrief_check(src, user))
-		to_chat(user, SPAN_WARNING("[name]'s safe-area accident inhibitor prevents you from planting it!"))
+		to_chat(user, SPAN_WARNING("[name]的安全区事故抑制器阻止了你布设它！"))
 		msg_admin_niche("[key_name(user)] attempted to prime \a [name] in [get_area(src)] [ADMIN_JMP(src.loc)]")
 		return
 
-	user.visible_message(SPAN_WARNING("[user] is trying to plant [name] on [target]!"),
+	user.visible_message(SPAN_WARNING("[user]正试图将[name]布设在[target]上！"),
 	SPAN_WARNING("You are trying to plant [name] on [target]!"))
 	if(ismob(target))
 		var/mob/M = target
@@ -119,13 +119,13 @@
 		log_game("[key_name(user)] planted [src.name] on [target.name] at ([target.x],[target.y],[target.z]) with [timer] second fuse")
 
 	if(customizable)
-		user.visible_message(SPAN_WARNING("[user] plants [name] on [target]!"),
+		user.visible_message(SPAN_WARNING("[user]在[target]上安放了[name]！"),
 		SPAN_WARNING("You plant [name] on [target]!"))
 		activate_sensors()
 		if(!istimer(detonator.a_right) && !istimer(detonator.a_left))
 			icon_state = overlay_image
 	else
-		user.visible_message(SPAN_WARNING("[user] plants [name] on [target]!"),
+		user.visible_message(SPAN_WARNING("[user]在[target]上安放了[name]！"),
 		SPAN_WARNING("You plant [name] on [target]! Timer counting down from [timer]."))
 		active = TRUE
 		anchored = TRUE
@@ -136,15 +136,15 @@
 		if(active)
 			if(user.action_busy)
 				return
-			user.visible_message(SPAN_NOTICE("[user] starts disarming [src]."),
+			user.visible_message(SPAN_NOTICE("[user]开始拆除[src]。"),
 			SPAN_NOTICE("You start disarming [src]."))
 			if(!do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-				user.visible_message(SPAN_WARNING("[user] stops disarming [src]."),
+				user.visible_message(SPAN_WARNING("[user]停止拆除[src]。"),
 					SPAN_WARNING("You stop disarming [src]."))
 				return
 			if(!active)//someone beat us to it
 				return
-			user.visible_message(SPAN_NOTICE("[user] finishes disarming [src]."),
+			user.visible_message(SPAN_NOTICE("[user]完成了对[src]的拆除。"),
 			SPAN_NOTICE("You finish disarming [src]."))
 			disarm()
 	else
@@ -152,7 +152,7 @@
 
 /obj/item/explosive/plastic/pull_response(mob/puller)
 	if(active)
-		to_chat(puller, SPAN_WARNING("You can't just grab [src] while it is active! Use a multitool!"))
+		to_chat(puller, SPAN_WARNING("在[src]激活时你无法直接抓取！使用万用工具！"))
 		return FALSE
 	return TRUE
 
@@ -182,7 +182,7 @@
 		return FALSE
 
 	if(target.explo_proof)
-		to_chat(user, SPAN_WARNING("[name] would do nothing to [target]!"))
+		to_chat(user, SPAN_WARNING("[name]对[target]不会产生任何效果！"))
 		return FALSE
 
 	if(istype(target, /obj/structure/closet))
@@ -196,7 +196,7 @@
 
 	//vehicle interior stuff checks
 	if(SSinterior.in_interior(target))
-		to_chat(user, SPAN_WARNING("It's too cramped in here to deploy [src]."))
+		to_chat(user, SPAN_WARNING("这里空间太狭窄，无法部署[src]。"))
 		return FALSE
 
 	if(istype(target, /obj/effect) || istype(target, /obj/structure/machinery))
@@ -207,22 +207,22 @@
 	if(istype(target, /turf/closed/wall))
 		var/turf/closed/wall/W = target
 		if(W.turf_flags & TURF_HULL)
-			to_chat(user, SPAN_WARNING("You are unable to stick [src] to [W]!"))
+			to_chat(user, SPAN_WARNING("你无法将[src]粘附到[W]上！"))
 			return FALSE
 
 	if(istype(target, /obj/structure/window))
 		var/obj/structure/window/W = target
 		if(W.not_damageable)
-			to_chat(user, SPAN_WARNING("[W] is much too tough for you to do anything to it with [src].")) //On purpose to mimic wall message
+			to_chat(user, SPAN_WARNING("[W]过于坚固，你用[src]无法对其造成任何影响。")) //On purpose to mimic wall message
 			return FALSE
 
 	if(ishuman(target))
 		if(SSticker.mode && MODE_HAS_MODIFIER(/datum/gamemode_modifier/no_body_c4))
-			to_chat(user, SPAN_WARNING("This feels wrong, you do not want to do it."))
+			to_chat(user, SPAN_WARNING("这感觉不对，你不想这么做。"))
 			return FALSE
 		var/mob/living/carbon/human/H = target
 		if(user.faction == H.faction)
-			to_chat(user, SPAN_WARNING("ARE YOU OUT OF YOUR MIND?!"))
+			to_chat(user, SPAN_WARNING("你疯了吗？！"))
 			return FALSE
 
 	if(customizable && assembly_stage < ASSEMBLY_LOCKED)
@@ -316,8 +316,8 @@
 	prime(TRUE)
 
 /obj/item/explosive/plastic/custom
-	name = "custom plastic explosive"
-	desc = "A custom plastic explosive."
+	name = "定制塑胶炸药"
+	desc = "一枚定制塑胶炸药。"
 	icon_state = "custom_plastic_explosive"
 	overlay_image = "custom_plastic_explosive_sensing"
 	customizable = TRUE
@@ -325,8 +325,8 @@
 	has_blast_wave_dampener = TRUE
 
 /obj/item/explosive/plastic/breaching_charge
-	name = "breaching charge"
-	desc = "An explosive device used to break into areas while protecting the user from the blast as well as deploying deadly shrapnel on the other side."
+	name = "破门炸药"
+	desc = "一种用于突破区域的爆炸装置，既能保护使用者免受爆炸伤害，又能在另一侧散布致命的破片。"
 	icon_state = "satchel-charge"
 	item_state = "satchel-charge"
 	overlay_image = "satchel-active"
@@ -342,27 +342,27 @@
 
 /obj/item/explosive/plastic/breaching_charge/can_place(mob/user, atom/target)
 	if(!is_type_in_list(target, breachable))//only items on the list are allowed
-		to_chat(user, SPAN_WARNING("You cannot plant [name] on [target]!"))
+		to_chat(user, SPAN_WARNING("你无法在[target]上安放[name]！"))
 		return FALSE
 
 	if(target.explo_proof)
-		to_chat(user, SPAN_WARNING("[name] would do nothing to [target]!"))
+		to_chat(user, SPAN_WARNING("[name]对[target]不会产生任何效果！"))
 		return FALSE
 
 	if(SSinterior.in_interior(target))// vehicle checks again JUST IN CASE
-		to_chat(user, SPAN_WARNING("It's too cramped in here to deploy [src]."))
+		to_chat(user, SPAN_WARNING("这里空间太狭窄，无法部署[src]。"))
 		return FALSE
 
 	if(istype(target, /obj/structure/window))//no breaching charges on the briefing windows / brig / CIC e.e
 		var/obj/structure/window/window = target
 		if(window.not_damageable)
-			to_chat(user, SPAN_WARNING("[window] is much too tough for you to do anything to it with [src].")) //On purpose to mimic wall message
+			to_chat(user, SPAN_WARNING("[window]过于坚固，你用[src]无法对其造成任何影响。")) //On purpose to mimic wall message
 			return FALSE
 
 	if(istype(target, /turf/closed/wall))
 		var/turf/closed/wall/targeted_wall = target
 		if(targeted_wall.turf_flags & TURF_HULL)
-			to_chat(user, SPAN_WARNING("You are unable to stick [src] to [targeted_wall]!"))
+			to_chat(user, SPAN_WARNING("你无法将[src]粘附到[targeted_wall]上！"))
 			return FALSE
 
 	return TRUE
@@ -377,8 +377,8 @@
 	qdel(src)
 
 /obj/item/explosive/plastic/breaching_charge/rubber
-	name = "X17 riot charge"
-	desc = "An explosive device used to break into areas while protecting the user from the blast. Unlike the standard breaching charge, the X17 deploys a cone spray of rubber pellets to incapacitate rather than kill."
+	name = "X17防暴炸药"
+	desc = "一种用于突破区域的爆炸装置，能保护使用者免受爆炸伤害。与标准破门炸药不同，X17会喷射锥形橡胶弹丸以制服目标，而非致命。"
 	icon_state = "riot-charge"
 	overlay_image = "riot-active"
 	shrapnel_volume = 20
@@ -388,8 +388,8 @@
 	antigrief_protection = FALSE
 
 /obj/item/explosive/plastic/breaching_charge/plasma
-	name = "plasma charge"
-	desc = "An alien explosive device. Who knows what it might do."
+	name = "等离子炸药"
+	desc = "一种外星爆炸装置。谁知道它会有什么效果。"
 	icon_state = "plasma-charge"
 	overlay_image = "plasma-active"
 	w_class = SIZE_SMALL
@@ -405,7 +405,7 @@
 
 /obj/item/explosive/plastic/breaching_charge/plasma/can_place(mob/user, atom/target)
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		to_chat(user, SPAN_WARNING("You don't quite understand how the device works..."))
+		to_chat(user, SPAN_WARNING("你不太理解这个装置的工作原理..."))
 		return FALSE
 	. = ..()
 

@@ -30,7 +30,7 @@
 		if(user.client && user.client.admin_holder && (user.client.admin_holder.rights & R_MOD))
 			P.rank = user.client.admin_holder.rank
 		else
-			to_chat(user, "NA01: Something went wrong, tell a coder.")
+			to_chat(user, "NA01：出现错误，请通知程序员。")
 			return
 	else
 		P.author = "Adminbot"

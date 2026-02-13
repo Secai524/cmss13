@@ -3,7 +3,7 @@
 
 /obj/item/weapon/gun
 	name = "gun"
-	desc = "It's a gun. It's pretty terrible, though."
+	desc = "这是一把枪。不过相当糟糕。"
 	icon_state = ""
 	item_state = "gun"
 	pickup_sound = "gunequip"
@@ -785,7 +785,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		var/mob/living/carbon/human/wielder = user
 		var/obj/limb/hand = wielder.get_limb(check_hand)
 		if(!istype(hand) || !hand.is_usable())
-			to_chat(user, SPAN_WARNING("Your other hand can't hold \the [src]!"))
+			to_chat(user, SPAN_WARNING("你的另一只手拿不住\the [src]！"))
 			return
 
 	flags_item ^= WIELDED
@@ -843,13 +843,13 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 /obj/item/weapon/gun/proc/replace_ammo(mob/user = null, obj/item/ammo_magazine/magazine)
 	if(!magazine.default_ammo)
-		to_chat(user, "Something went horribly wrong. Ahelp the following: ERROR CODE A1: null ammo while reloading.")
+		to_chat(user, "发生了严重错误。请向管理员报告以下内容：错误代码 A1：装填时弹药为空。")
 		log_debug("ERROR CODE A1: null ammo while reloading. User: <b>[user]</b> Weapon: <b>[src]</b> Magazine: <b>[magazine]</b>")
 		ammo = GLOB.ammo_list[/datum/ammo/bullet] //Looks like we're defaulting it.
 	else
 		ammo = GLOB.ammo_list[magazine.default_ammo]
 	if(!magazine.caliber)
-		to_chat(user, "Something went horribly wrong. Ahelp the following: ERROR CODE A2: null calibre while reloading.")
+		to_chat(user, "发生了严重错误。请向管理员报告以下内容：错误代码 A2：装填时口径为空。")
 		log_debug("ERROR CODE A2: null calibre while reloading. User: <b>[user]</b> Weapon: <b>[src]</b> Magazine: <b>[magazine]</b>")
 		caliber = "bugged calibre"
 	else
@@ -877,32 +877,32 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 	//code for manually inserting a bullet into a chamber
 	if(magazine.flags_magazine & AMMUNITION_HANDFUL)
 		if(in_chamber)
-			to_chat(user, SPAN_WARNING("[src] needs to be unchambered first."))
+			to_chat(user, SPAN_WARNING("需要先清空[src]的枪膛。"))
 			return
 		insert_bullet(user)
 		return
 
 	if(!magazine || !istype(magazine))
-		to_chat(user, SPAN_WARNING("That's not a magazine!"))
+		to_chat(user, SPAN_WARNING("那不是弹匣！"))
 		return
 
 	if(magazine.current_rounds <= 0)
-		to_chat(user, SPAN_WARNING("[magazine] is empty!"))
+		to_chat(user, SPAN_WARNING("[magazine]是空的！"))
 		return
 
 	if(!istype(src, magazine.gun_type) && !((magazine.type) in src.accepted_ammo))
-		to_chat(user, SPAN_WARNING("That magazine doesn't fit in there!"))
+		to_chat(user, SPAN_WARNING("那个弹匣装不进去！"))
 		return
 
 	if(current_mag)
-		to_chat(user, SPAN_WARNING("It's still got something loaded."))
+		to_chat(user, SPAN_WARNING("里面还有子弹。"))
 		return
 
 	if(user)
 		if(magazine.reload_delay > 1)
-			to_chat(user, SPAN_NOTICE("You begin reloading [src]. Hold still..."))
+			to_chat(user, SPAN_NOTICE("你开始为[src]装弹。保持不动..."))
 			if(!do_after(user, magazine.reload_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-				to_chat(user, SPAN_WARNING("Your reload was interrupted!"))
+				to_chat(user, SPAN_WARNING("你的装填被打断了！"))
 				return
 		replace_magazine(user, magazine)
 		SEND_SIGNAL(user, COMSIG_MOB_RELOADED_GUN, src)
@@ -940,7 +940,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 	if(!in_chamber)
 		ready_in_chamber()
 		cock_gun(user)
-	user.visible_message(SPAN_NOTICE("[user] loads [magazine] into [src]!"),
+	user.visible_message(SPAN_NOTICE("[user]将[magazine]装入[src]！"),
 		SPAN_NOTICE("You load [magazine] into [src]!"), null, 3, CHAT_TYPE_COMBAT_ACTION)
 	if(reload_sound)
 		playsound(user, reload_sound, 25, 1, 5)
@@ -964,7 +964,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		user.put_in_hands(current_mag)
 
 	playsound(user, unload_sound, 25, 1, 5)
-	user.visible_message(SPAN_NOTICE("[user] unloads [current_mag] from [src]."),
+	user.visible_message(SPAN_NOTICE("[user]从[src]中卸下[current_mag]。"),
 	SPAN_NOTICE("You unload [current_mag] from [src]."), null, 4, CHAT_TYPE_COMBAT_ACTION)
 	current_mag.update_icon()
 	current_mag = null
@@ -1009,14 +1009,14 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 	cock_gun(user)
 	if(in_chamber)
 		if(user.client?.prefs?.toggle_prefs & TOGGLE_COCKING_TO_HAND && !user.get_inactive_hand())
-			user.visible_message(SPAN_NOTICE("[user] cocks [src], catching the [in_chamber.name] after it leaves its chamber!"),
+			user.visible_message(SPAN_NOTICE("[user]拉动[src]的枪机，接住了从枪膛退出的[in_chamber.name]！"),
 			SPAN_NOTICE("You cock [src], catching the [in_chamber.name] after leaving its chamber!"), null, 4, CHAT_TYPE_COMBAT_ACTION)
 		else
-			user.visible_message(SPAN_NOTICE("[user] cocks [src], clearing a [in_chamber.name] from its chamber."),
+			user.visible_message(SPAN_NOTICE("[user]拉动[src]的枪机，从枪膛中清出一发[in_chamber.name]。"),
 			SPAN_NOTICE("You cock [src], clearing a [in_chamber.name] from its chamber."), null, 4, CHAT_TYPE_COMBAT_ACTION)
 		unload_chamber(user)
 	else
-		user.visible_message(SPAN_NOTICE("[user] cocks [src]."),
+		user.visible_message(SPAN_NOTICE("[user]拉动[src]的枪机。"),
 		SPAN_NOTICE("You cock [src]."), null, 4, CHAT_TYPE_COMBAT_ACTION)
 	display_ammo(user)
 	ready_in_chamber() //This will already check for everything else, loading the next bullet.
@@ -1061,8 +1061,8 @@ and you're good to go.
 				bullet.apply_bullet_trait(L)
 			return bullet
 		else
-			to_chat(user, SPAN_WARNING("[active_attachable] is empty!"))
-			to_chat(user, SPAN_NOTICE("You disable [active_attachable]."))
+			to_chat(user, SPAN_WARNING("[active_attachable]是空的！"))
+			to_chat(user, SPAN_NOTICE("你关闭了[active_attachable]。"))
 			playsound(user, active_attachable.activation_sound, 15, 1)
 			active_attachable.activate_attachment(src, null, TRUE)
 	else
@@ -1107,7 +1107,7 @@ and you're good to go.
 
 /obj/item/weapon/gun/proc/create_bullet(datum/ammo/chambered, bullet_source)
 	if(!chambered)
-		to_chat(usr, "Something has gone horribly wrong. Ahelp the following: ERROR CODE I2: null ammo while create_bullet()")
+		to_chat(usr, "发生了严重错误。请向管理员报告以下内容：错误代码 I2：create_bullet() 时弹药为空")
 		log_debug("ERROR CODE I2: null ammo while create_bullet(). User: <b>[usr]</b> Weapon: <b>[src]</b> Magazine: <b>[current_mag]</b>")
 		chambered = GLOB.ammo_list[/datum/ammo/bullet] //Slap on a default bullet if somehow ammo wasn't passed.
 
@@ -1162,7 +1162,7 @@ and you're good to go.
 	delete_bullet(projectile_to_fire, 1) //We're going to clear up anything inside if we need to.
 	//If it's a regular bullet, we're just going to keep it chambered.
 	extra_delay = 2 + (burst_delay + extra_delay)*2 // Some extra delay before firing again.
-	to_chat(user, SPAN_WARNING("[src] jammed! You'll need a second to get it fixed!"))
+	to_chat(user, SPAN_WARNING("[src]卡弹了！你需要几秒钟来修复它！"))
 
 //----------------------------------------------------------
 		//    \\
@@ -1181,7 +1181,7 @@ and you're good to go.
 	if(user.interactee && istype(user.interactee, /obj/structure/ladder))
 		var/obj/structure/ladder/ladder = user.interactee
 		if(ladder.is_watching)
-			to_chat(user, SPAN_WARNING("You can't shoot while looking from the ladder!"))
+			to_chat(user, SPAN_WARNING("在梯子上无法射击！"))
 			return NONE
 
 	if(!able_to_fire(user) || !target || !get_turf(user) || !get_turf(target))
@@ -1198,8 +1198,8 @@ and you're good to go.
 		if(!(active_attachable.flags_attach_features & ATTACH_PROJECTILE)) //If it's unique projectile, this is where we fire it.
 			if((active_attachable.current_rounds <= 0) && !(active_attachable.flags_attach_features & ATTACH_IGNORE_EMPTY))
 				click_empty(user) //If it's empty, let them know.
-				to_chat(user, SPAN_WARNING("[active_attachable] is empty!"))
-				to_chat(user, SPAN_NOTICE("You disable [active_attachable]."))
+				to_chat(user, SPAN_WARNING("[active_attachable]是空的！"))
+				to_chat(user, SPAN_NOTICE("你关闭了[active_attachable]。"))
 				active_attachable.activate_attachment(src, null, TRUE)
 			else
 				active_attachable.fire_attachment(target, src, user) //Fire it.
@@ -1292,7 +1292,7 @@ and you're good to go.
 
 	//Finally, make with the pew pew!
 	if(QDELETED(projectile_to_fire) || !isobj(projectile_to_fire))
-		to_chat(user, "ERROR CODE I1: Gun malfunctioned due to invalid chambered projectile, clearing it. AHELP if this persists.")
+		to_chat(user, "错误代码 I1：因弹膛内弹丸无效导致武器故障，正在清除。若问题持续，请向管理员报告。")
 		log_debug("ERROR CODE I1: projectile malfunctioned while firing. User: <b>[user]</b> Weapon: <b>[src]</b> Magazine: <b>[current_mag]</b>")
 		flags_gun_features &= ~GUN_BURST_FIRING
 		in_chamber = null
@@ -1391,13 +1391,13 @@ and you're good to go.
 
 		var/obj/item/weapon/gun/revolver/current_revolver = src
 		if(istype(current_revolver) && current_revolver.russian_roulette)
-			attacked_mob.visible_message(SPAN_WARNING("[user] puts their revolver to their head, ready to pull the trigger."))
+			attacked_mob.visible_message(SPAN_WARNING("[user]将左轮手枪抵在头上，准备扣动扳机。"))
 		else
-			attacked_mob.visible_message(SPAN_WARNING("[user] sticks their gun in their mouth, ready to pull the trigger."))
+			attacked_mob.visible_message(SPAN_WARNING("[user]将枪口塞进嘴里，准备扣动扳机。"))
 
 		flags_gun_features ^= GUN_CAN_POINTBLANK //If they try to click again, they're going to hit themselves.
 		if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !able_to_fire(user))
-			attacked_mob.visible_message(SPAN_NOTICE("[user] decided life was worth living."))
+			attacked_mob.visible_message(SPAN_NOTICE("[user]觉得生命还是值得珍惜的。"))
 			flags_gun_features ^= GUN_CAN_POINTBLANK //Reset this.
 			return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
@@ -1406,7 +1406,7 @@ and you're good to go.
 			active_attachable.activate_attachment(src, null, TRUE)//We're not firing off a nade into our mouth.
 		var/obj/projectile/projectile_to_fire = load_into_chamber(user)
 		if(projectile_to_fire) //We actually have a projectile, let's move on.
-			user.visible_message(SPAN_WARNING("[user] pulls the trigger!"))
+			user.visible_message(SPAN_WARNING("[user]扣动了扳机！"))
 			var/actual_sound
 			if(active_attachable && active_attachable.fire_sound)
 				actual_sound = active_attachable.fire_sound
@@ -1421,7 +1421,7 @@ and you're good to go.
 			if(projectile_to_fire.ammo.damage == 0)
 				t += "\[[time_stamp()]\] <b>[key_name(user)]</b> tried to commit suicide with a [name]"
 				cause_data = create_cause_data("failed suicide by [initial(name)]")
-				to_chat(user, SPAN_DANGER("Ow..."))
+				to_chat(user, SPAN_DANGER("嗷..."))
 				msg_admin_ff("[key_name(user)] tried to commit suicide with a [name] in [get_area(user)] [ffl]")
 				user.apply_damage(200, HALLOSS)
 			else
@@ -1434,7 +1434,7 @@ and you're good to go.
 					HM.death(create_cause_data("russian roulette with \a [name]", user)) //Make sure they're dead. permanent_kill above will make them unrevivable.
 					HM.update_headshot_overlay(projectile_to_fire.ammo.headshot_state) //Add headshot overlay.
 					msg_admin_ff("[key_name(user)] lost at Russian Roulette with \a [name] in [get_area(user)] [ffl]")
-					to_chat(user, SPAN_HIGHDANGER("Your life flashes before you as your spirit is torn from your body!"))
+					to_chat(user, SPAN_HIGHDANGER("你的灵魂被从躯体中撕扯出来，一生在你眼前闪过！"))
 					user.ghostize(0) //No return.
 				else
 					HM.apply_damage(projectile_to_fire.damage * 2.5, projectile_to_fire.ammo.damage_type, "head", used_weapon = "Point blank shot in the mouth with \a [projectile_to_fire]", no_limb_loss = TRUE, permanent_kill = TRUE)
@@ -1466,7 +1466,7 @@ and you're good to go.
 			return ..()
 		if(flags_gun_features & GUN_CANT_EXECUTE)
 			return ..()
-		user.visible_message(SPAN_DANGER("[user] puts [src] up to [attacked_mob], steadying their aim."), SPAN_WARNING("You put [src] up to [attacked_mob], steadying your aim."),null, null, CHAT_TYPE_COMBAT_ACTION)
+		user.visible_message(SPAN_DANGER("[user]将[src]对准[attacked_mob]，稳住准星。"), SPAN_WARNING("You put [src] up to [attacked_mob], steadying your aim."),null, null, CHAT_TYPE_COMBAT_ACTION)
 		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|INTERRUPT_DIFF_INTENT, BUSY_ICON_HOSTILE))
 			return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
@@ -1550,7 +1550,7 @@ and you're good to go.
 			damage_buff += BULLET_DAMAGE_MULT_TIER_4
 		projectile_to_fire.damage *= damage_buff //Multiply the damage for point blank.
 		if(bullets_fired == 1) //First shot gives the PB message.
-			user.visible_message(SPAN_DANGER("[user] fires [src] point blank at [attacked_mob]!"),
+			user.visible_message(SPAN_DANGER("[user]用[src]抵近射击[attacked_mob]！"),
 				SPAN_WARNING("You fire [src] point blank at [attacked_mob]!"), null, null, CHAT_TYPE_WEAPON_USE)
 
 		user.track_shot(initial(name))
@@ -1584,7 +1584,7 @@ and you're good to go.
 					if(!BP.handle_mob(attacked_mob) && attacked_mob.body_position == LYING_DOWN) //This is the 'handle impact' proc for a flying projectile, including hit RNG, on_hit_mob and bullet_act. If it misses, it doesn't go anywhere. We'll pretend it slams into the ground or punches a hole in the ceiling, because trying to make it bypass the xeno or shoot from the tile beyond it is probably more spaghet than my life is worth.
 						if(BP.ammo.sound_bounce)
 							playsound(attacked_mob.loc, BP.ammo.sound_bounce, 35, 1)
-						attacked_mob.visible_message(SPAN_AVOIDHARM("[BP] slams into [get_turf(attacked_mob)]!"), //Managing to miss an immobile target flat on the ground deserves some recognition, don't you think?
+						attacked_mob.visible_message(SPAN_AVOIDHARM("[BP]猛击在[get_turf(attacked_mob)]上！"), //Managing to miss an immobile target flat on the ground deserves some recognition, don't you think?
 							SPAN_AVOIDHARM("[BP] narrowly misses you!"), null, 4, CHAT_TYPE_TAKING_HIT)
 				else
 					BP.ammo.on_hit_mob(attacked_mob, BP, user)
@@ -1597,7 +1597,7 @@ and you're good to go.
 			if(!projectile_to_fire.handle_mob(attacked_mob) && attacked_mob.body_position == LYING_DOWN)
 				if(projectile_to_fire.ammo.sound_bounce)
 					playsound(attacked_mob.loc, projectile_to_fire.ammo.sound_bounce, 35, 1)
-				attacked_mob.visible_message(SPAN_AVOIDHARM("[projectile_to_fire] slams into [get_turf(attacked_mob)]!"),
+				attacked_mob.visible_message(SPAN_AVOIDHARM("[projectile_to_fire]猛击在[get_turf(attacked_mob)]上！"),
 					SPAN_AVOIDHARM("[projectile_to_fire] narrowly misses you!"), null, 4, CHAT_TYPE_TAKING_HIT)
 		else
 			projectile_to_fire.ammo.on_hit_mob(attacked_mob, projectile_to_fire, user)
@@ -1622,7 +1622,7 @@ and you're good to go.
 					INVOKE_ASYNC(akimbo, PROC_REF(attack), attacked_mob, user, TRUE)
 
 		if(EXECUTION_CHECK) //Continue execution if on the correct intent. Accounts for change via the earlier do_after
-			user.visible_message(SPAN_DANGER("[user] has executed [attacked_mob] with [src]!"), SPAN_DANGER("You have executed [attacked_mob] with [src]!"), message_flags = CHAT_TYPE_WEAPON_USE)
+			user.visible_message(SPAN_DANGER("[user]用[src]处决了[attacked_mob]！"), SPAN_DANGER("You have executed [attacked_mob] with [src]!"), message_flags = CHAT_TYPE_WEAPON_USE)
 			attacked_mob.death()
 			bullets_to_fire = bullets_fired //Giant bursts are not compatible with precision killshots.
 		// No projectile code to handhold us, we do the cleaning ourselves:
@@ -1685,42 +1685,42 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 	if(ismob(user)) //Could be an object firing the gun.
 		if(!user.IsAdvancedToolUser() && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
-			to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
+			to_chat(user, SPAN_WARNING("你的手不够灵巧，无法完成此操作！"))
 			return
 
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			if(!H.allow_gun_usage)
 				if(issynth(user))
-					to_chat(user, SPAN_WARNING("Your programming does not allow you to use firearms."))
+					to_chat(user, SPAN_WARNING("你的程序设定不允许你使用枪械。"))
 				else if(isthrall(user))
-					to_chat(user, SPAN_WARNING("Your master probably wouldn't be happy if you used this."))
+					to_chat(user, SPAN_WARNING("你的主人大概不会乐意看到你使用这个。"))
 				else
-					to_chat(user, SPAN_WARNING("You are unable to use firearms."))
+					to_chat(user, SPAN_WARNING("你无法使用枪械。"))
 				return
 			if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/ceasefire))
-				to_chat(user, SPAN_WARNING("You will not break the ceasefire by doing that!"))
+				to_chat(user, SPAN_WARNING("你那样做会破坏停火协议！"))
 				return FALSE
 
 		if(flags_gun_features & GUN_TRIGGER_SAFETY)
-			to_chat(user, SPAN_WARNING("The safety is on!"))
-			gun_user.balloon_alert(gun_user, "safety on")
+			to_chat(user, SPAN_WARNING("保险开着！"))
+			gun_user.balloon_alert(gun_user, "保险开启")
 			return
 
 		if(gun_user.client?.prefs?.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY && (gun_user.a_intent == INTENT_HELP))
 			if(world.time % 3) // Limits how often this message pops up, saw this somewhere else and thought it was clever
-				to_chat(gun_user, SPAN_DANGER("Help intent safety is on! Switch to another intent to fire your weapon."))
-				gun_user.balloon_alert(gun_user, "help intent safety")
+				to_chat(gun_user, SPAN_DANGER("援助意图保险已开启！切换到其他意图以开火。"))
+				gun_user.balloon_alert(gun_user, "援助意图保险")
 				click_empty(gun_user)
 			return FALSE
 
 		if(active_attachable)
 			if(active_attachable.flags_attach_features & ATTACH_PROJECTILE)
 				if(!(active_attachable.flags_attach_features & ATTACH_WIELD_OVERRIDE) && !(flags_item & WIELDED))
-					to_chat(user, SPAN_WARNING("You must wield [src] to fire [active_attachable]!"))
+					to_chat(user, SPAN_WARNING("你必须手持[src]才能开火[active_attachable]！"))
 					return
 		if((flags_gun_features & GUN_WIELDED_FIRING_ONLY) && !(flags_item & WIELDED) && !active_attachable) //If we're not holding the weapon with both hands when we should.
-			to_chat(user, SPAN_WARNING("You need a more secure grip to fire this weapon!"))
+			to_chat(user, SPAN_WARNING("你需要更稳固的握持才能开火！"))
 			return
 
 		if((flags_gun_features & GUN_WY_RESTRICTED) && !wy_allowed_check(user))
@@ -1770,7 +1770,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(istype(current_gun, /obj/item/weapon/gun/flamer))
 		dry_fire_text = "<b>*pshhhh*</b>"
 	else
-		dry_fire_text = "<b>*click*</b>"
+		dry_fire_text = "<b>*咔哒*</b>"
 
 	if(user)
 		to_chat(user, SPAN_WARNING(dry_fire_text))
@@ -2019,7 +2019,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(slashed_light)
 		playsound(loc, "alien_claw_metal", 25, 1)
 		xeno.animation_attack_on(src)
-		xeno.visible_message(SPAN_XENOWARNING("[xeno] slashes the lights on [src]!"), SPAN_XENONOTICE("You slash the lights on [src]!"))
+		xeno.visible_message(SPAN_XENOWARNING("[xeno]劈开了[src]上的灯光！"), SPAN_XENONOTICE("You slash the lights on [src]!"))
 	return XENO_ATTACK_ACTION
 
 /// Setter proc to toggle burst firing
@@ -2155,8 +2155,8 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 	if(gun_user.client?.prefs?.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY && (gun_user.a_intent == INTENT_HELP))
 		if(world.time % 3) // Limits how often this message pops up, saw this somewhere else and thought it was clever
-			to_chat(gun_user, SPAN_DANGER("Help intent safety is on! Switch to another intent to fire your weapon."))
-			gun_user.balloon_alert(gun_user, "help intent safety")
+			to_chat(gun_user, SPAN_DANGER("援助意图保险已开启！切换到其他意图以开火。"))
+			gun_user.balloon_alert(gun_user, "援助意图保险")
 			click_empty(gun_user)
 		return FALSE
 

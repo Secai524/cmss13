@@ -2,7 +2,7 @@
 
 
 /obj/structure/machinery/medical_pod/bodyscanner
-	name = "body scanner"
+	name = "身体扫描仪"
 	icon_state = "body_scanner"
 
 	use_power = USE_POWER_IDLE
@@ -73,7 +73,7 @@
 #endif // ifdef OBJECTS_PROXY_SPEECH
 
 /obj/structure/machinery/body_scanconsole
-	name = "body scanner console"
+	name = "身体扫描仪控制台"
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "body_scannerconsole"
 	density = FALSE
@@ -143,18 +143,18 @@
 	if(..())
 		return
 	if(inoperable())
-		to_chat(user, SPAN_WARNING("This console is not functional."))
+		to_chat(user, SPAN_WARNING("此控制台无法运作。"))
 		return
 	if(!connected || (connected.inoperable()))
-		to_chat(user, SPAN_WARNING("This console is not connected to a functioning body scanner."))
+		to_chat(user, SPAN_WARNING("此控制台未连接到正常运作的身体扫描仪。"))
 		return
 
 	if(!connected.occupant)
-		to_chat(user, SPAN_WARNING("No lifeform detected."))
+		to_chat(user, SPAN_WARNING("未检测到生命体。"))
 		return
 
 	if(!ishuman(connected.occupant))
-		to_chat(user, SPAN_WARNING("This device can only scan compatible lifeforms."))
+		to_chat(user, SPAN_WARNING("此设备只能扫描兼容的生命体。"))
 		return
 
 	var/mob/living/carbon/human/H = connected.occupant
@@ -236,7 +236,7 @@
 		if(0)
 			aux = "Conscious"
 		if(1)
-			aux = "Unconscious"
+			aux = "昏迷"
 		else
 			aux = "Dead"
 	var/s_class = occ["health"] > 50 ? INTERFACE_GOOD : INTERFACE_BAD
@@ -351,7 +351,7 @@
 				imp += "Unknown body present<br>"
 
 		if(!AN && !open && !imp && !bled && !internal_bleeding && !lung_ruptured)
-			AN = "None"
+			AN = "无"
 
 		if(!(e.status & LIMB_DESTROYED))
 			dat += "<td>[e.display_name]</td><td>[e.burn_dam]</td><td>[e.brute_dam]</td><td>[robot][bled][AN][splint][open][imp][internal_bleeding][lung_ruptured]</td>"
@@ -367,7 +367,7 @@
 			mech += "Mechanical<br>"
 
 		if(!mech)
-			mech = "None"
+			mech = "无"
 
 		dat += "<tr>"
 		dat += "<td>[i.name]</td><td>N/A</td><td>[i.damage]</td><td>[mech]</td>"

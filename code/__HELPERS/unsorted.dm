@@ -1174,18 +1174,18 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 
 /proc/parse_zone(zone)
 	if(zone == "r_hand")
-		return "right hand"
-	else if (zone == "l_hand") return "left hand"
-	else if (zone == "l_arm") return "left arm"
-	else if (zone == "r_arm") return "right arm"
-	else if (zone == "l_leg") return "left leg"
-	else if (zone == "r_leg") return "right leg"
-	else if (zone == "l_foot") return "left foot"
-	else if (zone == "r_foot") return "right foot"
-	else if (zone == "l_hand") return "left hand"
-	else if (zone == "r_hand") return "right hand"
-	else if (zone == "l_foot") return "left foot"
-	else if (zone == "r_foot") return "right foot"
+		return "右手"
+	else if (zone == "l_hand") return "左手"
+	else if (zone == "l_arm") return "左臂"
+	else if (zone == "r_arm") return "右臂"
+	else if (zone == "l_leg") return "左腿"
+	else if (zone == "r_leg") return "右腿"
+	else if (zone == "l_foot") return "左脚"
+	else if (zone == "r_foot") return "右脚"
+	else if (zone == "l_hand") return "左手"
+	else if (zone == "r_hand") return "右手"
+	else if (zone == "l_foot") return "左脚"
+	else if (zone == "r_foot") return "右脚"
 	else
 		return zone
 
@@ -1432,7 +1432,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	return dview(range, center, invis_flags) - center
 
 /mob/dview
-	name = "INTERNAL DVIEW MOB"
+	name = "内部视图实体"
 	invisibility = INVISIBILITY_ABSTRACT
 	density = FALSE
 	see_in_dark = INFINITY
@@ -1701,7 +1701,7 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 		if(current.client?.admin_holder)
 			if(current.client.admin_holder.fakekey || current.client.admin_holder.invisimined) //stealthmins
 				continue
-		var/name = avoid_assoc_duplicate_keys(current.name ? current.name : "Unknown", namecounts)
+		var/name = avoid_assoc_duplicate_keys(current.name ? current.name : "未知", namecounts)
 
 		if(current.real_name && current.real_name != current.name)
 			name += " \[[current.real_name]\]"

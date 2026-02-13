@@ -1,6 +1,6 @@
 /// CDN Webroot asset transport.
 /datum/asset_transport/webroot
-	name = "CDN Webroot asset transport"
+	name = "CDN Webroot 资产传输"
 
 /datum/asset_transport/webroot/Load()
 	if (validate_config(log = FALSE))

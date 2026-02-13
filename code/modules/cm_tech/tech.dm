@@ -30,18 +30,18 @@
 	SHOULD_CALL_PARENT(TRUE)
 
 	if(!holder.has_access(M, TREE_ACCESS_MODIFY))
-		to_chat(M, SPAN_WARNING("You lack the necessary permission required to use this tree."))
+		to_chat(M, SPAN_WARNING("你缺乏使用此科技树所需的必要权限。"))
 		return
 
 	if(!check_tier_level(M))
 		return
 
 	if(!(type in holder.all_techs[tier.type]))
-		to_chat(M, SPAN_WARNING("You cannot purchase this node!"))
+		to_chat(M, SPAN_WARNING("你无法购买此节点！"))
 		return
 
 	if(!holder.can_use_points(required_points))
-		to_chat(M, SPAN_WARNING("Not enough points to purchase this node."))
+		to_chat(M, SPAN_WARNING("点数不足，无法购买此节点。"))
 		return
 
 	return TRUE
@@ -49,13 +49,13 @@
 /datum/tech/proc/check_tier_level(mob/M)
 	if(holder.tier.tier < tier.tier)
 		if(M)
-			to_chat(M, SPAN_WARNING("This tier level has not been unlocked yet!"))
+			to_chat(M, SPAN_WARNING("此等级尚未解锁！"))
 		return FALSE
 
 	var/datum/tier/t_target = holder.tree_tiers[tier.type]
 	if(t_target.max_techs != INFINITE_TECHS && LAZYLEN(holder.unlocked_techs[tier.type]) >= t_target.max_techs)
 		if(M)
-			to_chat(M, SPAN_WARNING("You can't purchase any more techs of this tier!"))
+			to_chat(M, SPAN_WARNING("你无法购买此等级的更多科技！"))
 		return FALSE
 
 	return TRUE
@@ -70,7 +70,7 @@
 	SHOULD_CALL_PARENT(TRUE)
 
 	unlocked = TRUE
-	to_chat(user, SPAN_HELPFUL("You have purchased the '[name]' tech node."))
+	to_chat(user, SPAN_HELPFUL("你已购买'[name]'科技节点。"))
 	log_admin("[key_name_admin(user)] has bought '[name]' via tech points.")
 	if(!is_tier_changer)
 		var/log_details = announce_message

@@ -5,9 +5,9 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 	var/direction
 
 /obj/effect/landmark/railgun_computer
-	name = "Railgun computer landmark"
+	name = "磁轨炮计算机坐标点"
 	icon_state = "computer_spawn"
-	desc = "A computer with an orange interface, it's idly blinking, awaiting a password."
+	desc = "一台带有橙色界面的计算机，正漫不经心地闪烁着，等待输入密码。"
 
 /obj/effect/landmark/railgun_computer/Initialize(mapload, ...)
 	. = ..()
@@ -16,7 +16,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/railgun_camera_pos
-	name = "Railgun camera position landmark"
+	name = "磁轨炮摄像机位置坐标点"
 	icon_state = "railgun_cam"
 
 /obj/effect/landmark/railgun_camera_pos/Initialize(mapload, ...)
@@ -27,7 +27,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 	return INITIALIZE_HINT_QDEL
 
 /obj/structure/machinery/computer/railgun
-	name = "railgun computer"
+	name = "磁轨炮计算机"
 
 	icon_state = "terminal"
 
@@ -104,22 +104,22 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 		return FALSE
 
 	if(locked)
-		to_chat(H, SPAN_WARNING("Railgun Safeties are on, unable to fire!"))
+		to_chat(H, SPAN_WARNING("磁轨炮安全装置已开启，无法开火！"))
 		return FALSE
 
 	if(istype(T, /turf/open/space)) // No firing into space
 		return FALSE
 
 	if(protected_by_pylon(TURF_PROTECTION_OB, T))
-		to_chat(H, SPAN_WARNING("[icon2html(src)] This area is too reinforced to fire into."))
+		to_chat(H, SPAN_WARNING("[icon2html(src)] 该区域加固程度过高，无法射击。"))
 		return FALSE
 
 	if(next_fire > world.time)
-		to_chat(H, SPAN_WARNING("[icon2html(src)] The barrel is still hot! Wait [SPAN_BOLD((next_fire - world.time)/10)] more seconds before firing."))
+		to_chat(H, SPAN_WARNING("[icon2html(src)] 炮管仍然过热！请等待 [SPAN_BOLD((next_fire - world.time)/10)] 秒后再开火。"))
 		return FALSE
 
 	if(ammo <= 0)
-		to_chat(H, SPAN_WARNING("[icon2html(src)] No more shells remaining in the barrel. Please wait for automatic reloading. [SPAN_BOLD("([ammo]/[max_ammo])")]"))
+		to_chat(H, SPAN_WARNING("[icon2html(src)] 炮管内已无炮弹。请等待自动装填。 [SPAN_BOLD("([ammo]/[max_ammo])")]"))
 		return FALSE
 
 	return TRUE
@@ -131,7 +131,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 		addtimer(CALLBACK(src, PROC_REF(recharge_ammo)), ammo_recharge_time, TIMER_UNIQUE|TIMER_OVERRIDE)
 
 	if(operator)
-		to_chat(operator, SPAN_NOTICE("[icon2html(src)] Loaded in a shell [SPAN_BOLD("([ammo]/[max_ammo] shells left).")]"))
+		to_chat(operator, SPAN_NOTICE("[icon2html(src)] 已装填一发炮弹 [SPAN_BOLD("([ammo]/[max_ammo] shells left).")]"))
 
 /obj/effect/warning/railgun
 	color = "#0000ff"
@@ -154,7 +154,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 	addtimer(CALLBACK(src, PROC_REF(recharge_ammo)), ammo_recharge_time, TIMER_UNIQUE)
 	ammo--
 
-	to_chat(H, SPAN_NOTICE("[icon2html(src)] Firing shell. [SPAN_BOLD("([ammo]/[max_ammo] shells left).")]"))
+	to_chat(H, SPAN_NOTICE("[icon2html(src)] 正在发射炮弹。 [SPAN_BOLD("([ammo]/[max_ammo] shells left).")]"))
 
 	var/obj/effect/warning/railgun/warning_zone = new(T)
 
@@ -203,15 +203,15 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 		return
 
 	if(locked)
-		to_chat(H, SPAN_WARNING("The railgun safeties prevent you from using the firing system!"))
+		to_chat(H, SPAN_WARNING("磁轨炮安全装置阻止你使用开火系统！"))
 		return FALSE
 
 	if(operator && operator.stat == CONSCIOUS)
-		to_chat(H, SPAN_WARNING("Someone is already using this computer!"))
+		to_chat(H, SPAN_WARNING("已有人在操作此计算机！"))
 		return
 
 	#define INPUT_COORD "Input Co-ordinates"
-	if(tgui_alert(H, "View a specific co-ordinate, or continue without inputting a co-ordinate?", \
+	if(tgui_alert(H, "查看特定坐标，还是不输入坐标继续？", \
 		"Railgun Computer", list(INPUT_COORD, "Continue without inputting a co-ordinate")) == INPUT_COORD)
 		var/x_coord = tgui_input_real_number(H, "Longitude")
 		var/y_coord = tgui_input_real_number(H, "Latitude")
@@ -225,7 +225,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 	set_operator(H)
 
 /mob/hologram/railgun
-	name = "Camera"
+	name = "相机"
 	density = FALSE
 
 /mob/hologram/railgun/handle_view(mob/M, atom/target)
@@ -242,7 +242,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 
 	if(allow_turf_entry(src, loc) & COMPONENT_TURF_DENY_MOVEMENT)
 		loc = GLOB.railgun_eye_location.get_turf_from_coord()
-		to_chat(M, SPAN_WARNING("[icon2html(src)] Observation area was blocked. Switched to a viewable location."))
+		to_chat(M, SPAN_WARNING("[icon2html(src)] 观测区域被阻挡。已切换至可观测位置。"))
 
 	RegisterSignal(M, COMSIG_HUMAN_UPDATE_SIGHT, PROC_REF(see_only_turf))
 	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTER, PROC_REF(allow_turf_entry))
@@ -267,7 +267,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 	SIGNAL_HANDLER
 
 	if(protected_by_pylon(TURF_PROTECTION_OB, to_enter))
-		to_chat(linked_mob, SPAN_WARNING("[icon2html(src)] This area is too reinforced to enter."))
+		to_chat(linked_mob, SPAN_WARNING("[icon2html(src)] 该区域加固程度过高，无法进入。"))
 		return COMPONENT_TURF_DENY_MOVEMENT
 
 	if(istype(to_enter, /turf/closed/wall))

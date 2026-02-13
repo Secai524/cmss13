@@ -100,11 +100,11 @@
 			// Otherwise the preview dummy will runtime
 			// because atoms aren't initialized yet
 			if(SSticker.current_state < GAME_STATE_PREGAME)
-				to_chat(src, SPAN_WARNING("Game is still starting up, please wait."))
+				to_chat(src, SPAN_WARNING("游戏仍在启动中，请稍候。"))
 				return FALSE
 
 			if(!SSentity_manager.ready)
-				to_chat(src, SPAN_WARNING("DB is still starting up, please wait."))
+				to_chat(src, SPAN_WARNING("数据库仍在启动中，请稍候。"))
 				return FALSE
 
 			client.prefs.ShowChoices(src)
@@ -112,7 +112,7 @@
 
 		if("playtimes")
 			if(!SSentity_manager.ready)
-				to_chat(src, SPAN_WARNING("DB is still starting up, please wait."))
+				to_chat(src, SPAN_WARNING("数据库仍在启动中，请稍候。"))
 				return FALSE
 
 			if(client.player_data)
@@ -129,15 +129,15 @@
 
 		if("late_join")
 			if(SSticker.current_state != GAME_STATE_PLAYING || !SSticker.mode)
-				to_chat(src, SPAN_WARNING("The round is either not ready, or has already finished..."))
+				to_chat(src, SPAN_WARNING("本回合要么尚未准备就绪，要么已经结束……"))
 				return FALSE
 
 			if(SSticker.mode.flags_round_type & MODE_NO_LATEJOIN)
-				to_chat(src, SPAN_WARNING("Sorry, you cannot late join during [SSticker.mode.name]. You have to start at the beginning of the round. You may observe or try to join as an alien, if possible."))
+				to_chat(src, SPAN_WARNING("抱歉，在[SSticker.mode.name]期间你无法中途加入。你必须在本回合开始时加入。你可以选择旁观，或者如果可能的话，尝试以异形身份加入。"))
 				return FALSE
 
 			if(client.player_data?.playtime_loaded && (client.get_total_human_playtime() < CONFIG_GET(number/notify_new_player_age)) && !length(client.prefs.completed_tutorials))
-				if(tgui_alert(src, "You have little playtime and haven't completed any tutorials. Would you like to go to the tutorial menu?", "Tutorial", list("Yes", "No")) == "Yes")
+				if(tgui_alert(src, "你的游戏时间很短，且未完成任何教程。是否前往教程菜单？", "教程", list("Yes", "No")) == "Yes")
 					tutorial_menu()
 					return FALSE
 
@@ -146,15 +146,15 @@
 
 		if("late_join_upp")
 			if(SSticker.current_state != GAME_STATE_PLAYING || !SSticker.mode)
-				to_chat(src, SPAN_WARNING("The round is either not ready, or has already finished..."))
+				to_chat(src, SPAN_WARNING("本回合要么尚未准备就绪，要么已经结束……"))
 				return FALSE
 
 			if(SSticker.mode.flags_round_type & MODE_NO_LATEJOIN)
-				to_chat(src, SPAN_WARNING("Sorry, you cannot late join during [SSticker.mode.name]. You have to start at the beginning of the round. You may observe or try to join as an alien, if possible."))
+				to_chat(src, SPAN_WARNING("抱歉，在[SSticker.mode.name]期间你无法中途加入。你必须在本回合开始时加入。你可以选择旁观，或者如果可能的话，尝试以异形身份加入。"))
 				return FALSE
 
 			if(client.player_data?.playtime_loaded && (client.get_total_human_playtime() < CONFIG_GET(number/notify_new_player_age)) && !length(client.prefs.completed_tutorials))
-				if(tgui_alert(src, "You have little playtime and haven't completed any tutorials. Would you like to go to the tutorial menu?", "Tutorial", list("Yes", "No")) == "Yes")
+				if(tgui_alert(src, "你的游戏时间很短，且未完成任何教程。是否前往教程菜单？", "教程", list("Yes", "No")) == "Yes")
 					tutorial_menu()
 					return FALSE
 
@@ -163,7 +163,7 @@
 
 		if("late_join_xeno")
 			if(SSticker.current_state != GAME_STATE_PLAYING || !SSticker.mode)
-				to_chat(src, SPAN_WARNING("The round is either not ready, or has already finished..."))
+				to_chat(src, SPAN_WARNING("本回合要么尚未准备就绪，要么已经结束……"))
 				return FALSE
 
 			if(!client)
@@ -181,31 +181,31 @@
 
 		if("late_join_pred")
 			if(SSticker.current_state != GAME_STATE_PLAYING || !SSticker.mode)
-				to_chat(src, SPAN_WARNING("The round is either not ready, or has already finished..."))
+				to_chat(src, SPAN_WARNING("本回合要么尚未准备就绪，要么已经结束……"))
 				return FALSE
 
 			if(SSticker.mode.check_predator_late_join(src, FALSE))
 				SSticker.mode.attempt_to_join_as_predator(src)
 				return TRUE
 
-			to_chat(src, SPAN_WARNING("You are no longer able to join as predator."))
+			to_chat(src, SPAN_WARNING("你已无法再以铁血战士身份加入。"))
 			return FALSE
 
 		if("late_join_faxes")
 			if(SSticker.current_state != GAME_STATE_PLAYING || !SSticker.mode)
-				to_chat(src, SPAN_WARNING("The round is either not ready, or has already finished..."))
+				to_chat(src, SPAN_WARNING("本回合要么尚未准备就绪，要么已经结束……"))
 				return FALSE
 
 			if(SSticker.mode.check_fax_responder_late_join(src, FALSE))
 				SSticker.mode.attempt_to_join_as_fax_responder(src, TRUE)
 				return TRUE
 
-			to_chat(src, SPAN_WARNING("You are no longer able to join as a Fax Responder."))
+			to_chat(src, SPAN_WARNING("你已无法再以传真响应者身份加入。"))
 			return FALSE
 
 		if("observe")
 			if(!SSticker || SSticker.current_state == GAME_STATE_STARTUP)
-				to_chat(src, SPAN_WARNING("The game is still setting up, please try again later."))
+				to_chat(src, SPAN_WARNING("游戏仍在设置中，请稍后再试。"))
 				return
 
 			attempt_observe()
@@ -250,7 +250,7 @@
 
 	if(client.prefs && !(client.prefs.be_special & BE_ALIEN))
 		client.prefs.be_special |= BE_ALIEN
-		to_chat(src, SPAN_BOLDNOTICE("SpecialRole Candidacy was forced so you can be considered for Xenomorph."))
+		to_chat(src, SPAN_BOLDNOTICE("特殊角色候选资格已被强制开启，因此你有可能被选为异形。"))
 
 	var/client/current_client = client
 

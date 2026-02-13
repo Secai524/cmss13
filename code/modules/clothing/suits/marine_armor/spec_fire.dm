@@ -2,7 +2,7 @@
 
 /obj/item/clothing/suit/storage/marine/M35
 	name = "\improper M35 pyrotechnician armor"
-	desc = "A custom set of M35 armor designed for use by USCM Pyrotechnicians."
+	desc = "一套为USCM爆破专家定制的M35护甲。"
 	icon_state = "pyro_armor"
 	slowdown = SLOWDOWN_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
@@ -27,7 +27,7 @@
 	..()
 
 /obj/item/clothing/suit/storage/marine/M35/verb/fire_shield()
-	set name = "Activate Fire Shield"
+	set name = "激活火焰护盾"
 	set desc = "Activate your armor's FIREWALK protocol for a short duration."
 	set category = "Pyro"
 	set src in usr
@@ -38,22 +38,22 @@
 	var/mob/living/carbon/human/H = usr
 
 	if(H.wear_suit != src)
-		to_chat(H, SPAN_WARNING("You must be wearing the M35 pyro armor to activate FIREWALK protocol!"))
+		to_chat(H, SPAN_WARNING("你必须装备M35火焰护甲才能激活‘火步’协议！"))
 		return
 
 	if(!skillcheck(H, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && H.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_PYRO)
-		to_chat(H, SPAN_WARNING("You don't seem to know how to use [src]..."))
+		to_chat(H, SPAN_WARNING("你似乎不知道如何使用 [src]..."))
 		return
 
 	if(fire_shield_on)
-		to_chat(H, SPAN_WARNING("You already have FIREWALK protocol activated!"))
+		to_chat(H, SPAN_WARNING("‘火步’协议已激活！"))
 		return
 
 	if(!can_activate)
-		to_chat(H, SPAN_WARNING("FIREWALK protocol was recently activated, wait before trying to activate it again."))
+		to_chat(H, SPAN_WARNING("‘火步’协议最近刚激活，请等待片刻再尝试激活。"))
 		return
 
-	to_chat(H, SPAN_NOTICE("FIREWALK protocol has been activated. You will now be immune to fire for 6 seconds!"))
+	to_chat(H, SPAN_NOTICE("‘火步’协议已激活。接下来6秒你将免疫火焰伤害！"))
 	RegisterSignal(H, COMSIG_LIVING_PREIGNITION, PROC_REF(fire_shield_is_on))
 	RegisterSignal(H, list(
 		COMSIG_LIVING_FLAMER_FLAMED,
@@ -70,7 +70,7 @@
 /obj/item/clothing/suit/storage/marine/M35/proc/end_fire_shield(mob/living/carbon/human/user)
 	if(!istype(user))
 		return
-	to_chat(user, SPAN_NOTICE("FIREWALK protocol has finished."))
+	to_chat(user, SPAN_NOTICE("‘火步’协议已结束。"))
 	UnregisterSignal(user, list(
 		COMSIG_LIVING_PREIGNITION,
 		COMSIG_LIVING_FLAMER_FLAMED,
@@ -84,7 +84,7 @@
 /obj/item/clothing/suit/storage/marine/M35/proc/enable_fire_shield(mob/living/carbon/human/user)
 	if(!istype(user))
 		return
-	to_chat(user, SPAN_NOTICE("FIREWALK protocol can be activated again."))
+	to_chat(user, SPAN_NOTICE("‘火步’协议可以再次激活。"))
 	can_activate = TRUE
 
 	for(var/X in actions)
@@ -127,7 +127,7 @@
 
 /datum/action/item_action/specialist/fire_shield/New(mob/living/user, obj/item/holder)
 	..()
-	name = "Activate Fire Shield"
+	name = "激活火焰护盾"
 	button.name = name
 	button.overlays.Cut()
 	var/image/IMG = image('icons/obj/items/clothing/suits/suits_by_map/jungle.dmi', button, "pyro_armor")

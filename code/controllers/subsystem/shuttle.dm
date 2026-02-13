@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(oldshuttle)
-	name = "Old Shuttle"
+	name = "旧运输机"
 	wait = 5.5 SECONDS
 	init_order = SS_INIT_SHUTTLE
 	priority = SS_PRIORITY_SHUTTLE

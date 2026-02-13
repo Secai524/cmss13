@@ -1,6 +1,6 @@
 /obj/item/ammo_magazine/hardpoint/turret_smoke
-	name = "Turret Smoke Screen Magazine"
-	desc = "A smoke grenades magazine used by tank turret."
+	name = "炮塔烟雾弹弹匣"
+	desc = "坦克炮塔使用的烟雾弹弹匣。"
 	caliber = "grenade"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/vehicles.dmi'
 	icon_state = "slauncher_1"

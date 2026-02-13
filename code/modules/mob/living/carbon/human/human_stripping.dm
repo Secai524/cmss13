@@ -59,15 +59,15 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 	if(user.action_busy || user.is_mob_incapacitated() || !source.Adjacent(user))
 		return
 	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && (sourcehuman.stat == DEAD || sourcehuman.health < sourcehuman.health_threshold_crit) && !sourcehuman.get_target_lock(user.faction_group))
-		to_chat(user, SPAN_WARNING("You can't toggle internals of a crit or dead member of another faction!"))
+		to_chat(user, SPAN_WARNING("你不能切换其他阵营危急或死亡成员的生命维持系统！"))
 		return
 
 	sourcehuman.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their internals toggled by [key_name(user)]</font>")
 	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to toggle [key_name(src)]'s' internals</font>")
 	if(sourcehuman.internal)
-		user.visible_message(SPAN_DANGER("<B>[user] is trying to disable [sourcehuman]'s internals</B>"), null, null, 3)
+		user.visible_message(SPAN_DANGER("<B>[user]正试图关闭[sourcehuman]的生命维持系统</B>"), null, null, 3)
 	else
-		user.visible_message(SPAN_DANGER("<B>[user] is trying to enable [sourcehuman]'s internals.</B>"), null, null, 3)
+		user.visible_message(SPAN_DANGER("<B>[user]正试图开启[sourcehuman]的生命维持系统。</B>"), null, null, 3)
 
 	if(!do_after(user, POCKET_STRIP_DELAY, INTERRUPT_ALL, BUSY_ICON_GENERIC, sourcehuman, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 		return
@@ -75,7 +75,7 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 	if(sourcehuman.internal)
 		sourcehuman.internal.add_fingerprint(user)
 		sourcehuman.internal = null
-		sourcehuman.visible_message("[sourcehuman] is no longer running on internals.", max_distance = 1)
+		sourcehuman.visible_message("[sourcehuman]不再依赖生命维持系统。", max_distance = 1)
 		return
 
 	if(!istype(sourcehuman.wear_mask, /obj/item/clothing/mask))
@@ -91,7 +91,7 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 	if(!sourcehuman.internal)
 		return
 
-	sourcehuman.visible_message(SPAN_NOTICE("[sourcehuman] is now running on internals."), max_distance = 1)
+	sourcehuman.visible_message(SPAN_NOTICE("[sourcehuman]现在依赖生命维持系统运行。"), max_distance = 1)
 	sourcehuman.internal.add_fingerprint(user)
 
 /datum/strippable_item/mob_item_slot/eyes
@@ -123,7 +123,7 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 	if(user.action_busy || user.is_mob_incapacitated() || !source.Adjacent(user))
 		return
 	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && (sourcemob.stat == DEAD || sourcemob.health < sourcemob.health_threshold_crit) && !sourcemob.get_target_lock(user.faction_group))
-		to_chat(user, SPAN_WARNING("You can't strip a crit or dead member of another faction!"))
+		to_chat(user, SPAN_WARNING("你不能扒取其他阵营重伤或死亡成员的装备！"))
 		return
 	if(!sourcemob.w_uniform || !istype(sourcemob.w_uniform, /obj/item/clothing))
 		return
@@ -138,15 +138,15 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 	sourcemob.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their accessory ([accessory]) removed by [key_name(user)]</font>")
 	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to remove [key_name(sourcemob)]'s' accessory ([accessory])</font>")
 	if(istype(accessory, /obj/item/clothing/accessory/holobadge) || istype(accessory, /obj/item/clothing/accessory/medal))
-		sourcemob.visible_message(SPAN_DANGER("<B>[user] tears off [accessory] from [sourcemob]'s [uniform]!</B>"), null, null, 5)
+		sourcemob.visible_message(SPAN_DANGER("<B>[user]从[sourcemob]的[uniform]上扯下了[accessory]！</B>"), null, null, 5)
 		if(uniform == sourcemob.w_uniform)
 			uniform.remove_accessory(user, accessory)
 		return
 
 	if(HAS_TRAIT(sourcemob, TRAIT_UNSTRIPPABLE) && !sourcemob.is_mob_incapacitated()) //Can't strip the unstrippable!
-		to_chat(user, SPAN_DANGER("[sourcemob] has an unbreakable grip on their equipment!"))
+		to_chat(user, SPAN_DANGER("[sourcemob]对其装备有着不可动摇的抓握！"))
 		return
-	sourcemob.visible_message(SPAN_DANGER("<B>[user] is trying to take off \a [accessory] from [source]'s [uniform]!</B>"), null, null, 5)
+	sourcemob.visible_message(SPAN_DANGER("<B>[user]正试图从[source]的[uniform]上取下\a [accessory]！</B>"), null, null, 5)
 
 	if(!do_after(user, sourcemob.get_strip_delay(user, sourcemob), INTERRUPT_ALL, BUSY_ICON_GENERIC, sourcemob, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 		return
@@ -180,7 +180,7 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 	if(user.action_busy || user.is_mob_incapacitated() || !source.Adjacent(user))
 		return
 	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && (sourcemob.stat == DEAD || sourcemob.health < sourcemob.health_threshold_crit) && !sourcemob.get_target_lock(user.faction_group))
-		to_chat(user, SPAN_WARNING("You can't remove splints of a crit or dead member of another faction!"))
+		to_chat(user, SPAN_WARNING("你不能移除其他阵营危急或死亡成员的夹板！"))
 		return
 	sourcemob.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their splints removed by [key_name(user)]</font>")
 	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to remove [key_name(sourcemob)]'s' splints </font>")
@@ -220,7 +220,7 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 	if(user.action_busy || user.is_mob_incapacitated() || !source.Adjacent(user))
 		return
 	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && (sourcemob.stat == DEAD || sourcemob.health < sourcemob.health_threshold_crit) && !sourcemob.get_target_lock(user.faction_group))
-		to_chat(user, SPAN_WARNING("You can't strip a crit or dead member of another faction!"))
+		to_chat(user, SPAN_WARNING("你不能扒取其他阵营重伤或死亡成员的装备！"))
 		return
 	if(!istype(sourcemob.wear_id, /obj/item/card/id/dogtag))
 		return
@@ -228,14 +228,14 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 		return
 	var/obj/item/card/id/dogtag/tag = sourcemob.wear_id
 	if(tag.dogtag_taken)
-		to_chat(user, SPAN_WARNING("Someone's already taken [sourcemob]'s information tag."))
+		to_chat(user, SPAN_WARNING("已经有人拿走了[sourcemob]的信息标签。"))
 		return
 
 	if(sourcemob.stat != DEAD)
-		to_chat(user, SPAN_WARNING("You can't take a dogtag's information tag while its owner is alive."))
+		to_chat(user, SPAN_WARNING("在狗牌主人还活着时，你不能取走其信息牌。"))
 		return
 
-	to_chat(user, SPAN_NOTICE("You take [sourcemob]'s information tag, leaving the ID tag."))
+	to_chat(user, SPAN_NOTICE("你取走了[sourcemob]的信息标签，留下了身份标签。"))
 	tag.dogtag_taken = TRUE
 	tag.icon_state = tag.tags_taken_icon
 	var/obj/item/dogtag/newtag = new(sourcemob.loc)

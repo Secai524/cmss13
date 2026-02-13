@@ -1,6 +1,6 @@
 /obj/item/clothing/mask/breath
-	desc = "A close-fitting mask that can be connected to an air supply."
-	name = "breath mask"
+	desc = "一款贴合面部的面具，可连接供气系统。"
+	name = "呼吸面罩"
 	icon_state = "breath"
 	item_state = "breath"
 	icon = 'icons/obj/items/clothing/masks/gasmasks.dmi'
@@ -27,19 +27,19 @@
 			gas_transfer_coefficient = 1 //gas is now escaping to the turf and vice versa
 			flags_inventory &= ~(COVERMOUTH|ALLOWINTERNALS)
 			icon_state = "breathdown"
-			to_chat(usr, "Your mask is now hanging on your neck.")
+			to_chat(usr, "你的面罩现在挂在脖子上。")
 
 		else
 			src.hanging = !src.hanging
 			gas_transfer_coefficient = 0.10
 			flags_inventory |= COVERMOUTH|ALLOWINTERNALS
 			icon_state = "breath"
-			to_chat(usr, "You pull the mask up to cover your face.")
+			to_chat(usr, "你拉上面罩遮住脸。")
 		update_clothing_icon()
 
 /obj/item/clothing/mask/breath/medical
-	desc = "A close-fitting sterile mask that can be connected to an air supply."
-	name = "medical mask"
+	desc = "一款贴合面部的无菌面罩，可连接供气系统。"
+	name = "医用面罩"
 	icon_state = "medical"
 	item_state = "medical"
 
@@ -47,7 +47,7 @@
 
 /obj/item/clothing/mask/rebreather
 	name = "rebreather"
-	desc = "A close-fitting device that instantly heats or cools down air when you inhale so it doesn't damage your lungs."
+	desc = "一款贴合面部的装置，能在你吸气时瞬间加热或冷却空气，以免损伤肺部。"
 	icon_state = "rebreather"
 	item_state = "rebreather"
 	icon = 'icons/obj/items/clothing/masks/gasmasks.dmi'
@@ -62,8 +62,8 @@
 	flags_inv_hide = HIDELOWHAIR
 
 /obj/item/clothing/mask/rebreather/skull
-	name = "skull balaclava"
-	desc = "The face of your nightmares. Or at least that's how you imagined it'd be. Additionally protects against the cold."
+	name = "骷髅头套"
+	desc = "你梦魇中的面孔。或者至少你想象中是这样。此外还能抵御寒冷。"
 	icon_state = "blue_skull_balaclava"
 	item_state = "blue_skull_balaclava"
 	icon = 'icons/obj/items/clothing/masks/balaclava.dmi'
@@ -76,14 +76,14 @@
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 
 /obj/item/clothing/mask/rebreather/skull/black
-	desc = "The face of your nightmares. Or at least that's how you imagined it'd be. Now in black!"
+	desc = "你梦魇中的面孔。或者至少你想象中是这样。现在有黑色款了！"
 	icon_state = "black_skull_balaclava"
 	item_state = "black_skull_balaclava"
 
 
 /obj/item/clothing/mask/rebreather/scarf
-	name = "heat absorbent coif"
-	desc = "A close-fitting cap that covers the top, back, and sides of the head. Can also be adjusted to cover the lower part of the face so it keeps the user warm in harsh conditions."
+	name = "吸热头套"
+	desc = "一款贴合头部的帽子，覆盖头顶、后脑和两侧。也可调整以覆盖面部下半部分，使使用者在严酷环境中保持温暖。"
 	icon_state = "coif"
 	item_state = "coif"
 	icon = 'icons/obj/items/clothing/masks/balaclava.dmi'
@@ -110,10 +110,10 @@
 	flags_inv_hide ^= HIDEFACE
 	pulled = !pulled
 	if(pulled)
-		to_chat(usr, SPAN_NOTICE("You pull \the [src] down."))
+		to_chat(usr, SPAN_NOTICE("你将\the [src]拉下。"))
 		icon_state += "_down"
 	else
-		to_chat(usr, SPAN_NOTICE("You pull \the [src] up."))
+		to_chat(usr, SPAN_NOTICE("你将\the [src]拉上。"))
 		icon_state = original_state
 
 	update_clothing_icon(src) //Update the on-mob icon.
@@ -121,26 +121,26 @@
 
 
 /obj/item/clothing/mask/rebreather/scarf/green
-	name = "Green Balaclava"
+	name = "绿色巴拉克拉法帽"
 	icon_state = "balaclava_green"
 	item_state = "balaclava_green"
 	original_state = "balaclava_green"
 
 /obj/item/clothing/mask/rebreather/scarf/tan
-	name = "Tan Balaclava"
+	name = "棕褐色巴拉克拉法帽"
 	icon_state = "balaclava_tan"
 	item_state = "balaclava_tan"
 	original_state = "balaclava_tan"
 
 /obj/item/clothing/mask/rebreather/scarf/gray
-	name = "Gray Balaclava"
+	name = "灰色巴拉克拉法帽"
 	icon_state = "balaclava_gray"
 	item_state = "balacvlava_gray"
 	original_state = "balaclava_gray"
 
 /obj/item/clothing/mask/rebreather/scarf/tacticalmask
-	name = "tactical wrap"
-	desc = "A tactical wrap used by soldiers to conceal their face."
+	name = "战术裹布"
+	desc = "士兵用于隐藏面部的战术裹布。"
 	icon_state = "scarf_gray"
 	item_state = "scarf_gray"
 	icon = 'icons/obj/items/clothing/masks/scarves.dmi'
@@ -219,8 +219,8 @@
 
 
 /obj/item/clothing/mask/tornscarf
-	name = "tactical scarf"
-	desc = "A tactical scarf used to keep warm in the cold."
+	name = "战术围巾"
+	desc = "用于在寒冷中保暖的战术围巾。"
 	icon_state = "torn_scarf_classic"
 	item_state = "torn_scarf_classic"
 	icon = 'icons/obj/items/clothing/masks/scarves.dmi'
@@ -257,7 +257,7 @@
 
 /obj/item/clothing/mask/rebreather/scarf/keffiyeh
 	name = "keffiyeh"
-	desc = "A traditional headscarf worn for protection from the elements and to conceal the face. Typically made of cotton, it can provide shade from the sun, guard against dust, and serve as camouflage in arid environments. Often worn by soldiers and civilians alike in desert and hostile regions, the keffiyeh has become a symbol of cultural identity and resilience."
+	desc = "一种传统的头巾，用于抵御恶劣天气并隐藏面部。通常由棉制成，可以提供遮阳、防尘，并在干旱环境中充当伪装。在沙漠和敌对地区，士兵和平民都经常佩戴，这种头巾已成为文化认同和坚韧精神的象征。"
 	icon_state = "keffiyeh"
 	item_state = "keffiyeh"
 	original_state = "keffiyeh"
@@ -280,11 +280,11 @@
 
 	pulled = !pulled
 	if(pulled)
-		to_chat(usr, SPAN_NOTICE("You pull \the [src] down."))
+		to_chat(usr, SPAN_NOTICE("你将\the [src]拉下。"))
 		icon_state += "_down"
 		flags_inv_hide = HIDEFACE|HIDELOWHAIR
 	else
-		to_chat(usr, SPAN_NOTICE("You pull \the [src] up."))
+		to_chat(usr, SPAN_NOTICE("你将\the [src]拉上。"))
 		icon_state = original_state
 		flags_inv_hide = HIDEFACE|HIDEALLHAIR|HIDEEARS
 	if(ishuman(loc))
@@ -320,8 +320,8 @@
 	original_state = "keffiyeh_blue"
 
 /obj/item/clothing/mask/tornscarf/smock
-	name = "tactical smock"
-	desc = "A tactical smock used to keep warm in the cold, and provide increased camouflage."
+	name = "战术罩衫"
+	desc = "一种用于在寒冷中保暖并提供增强伪装效果的战术罩衫。"
 	icon_state = "smock_jungle"
 	item_state = "smock_jungle"
 	w_class = SIZE_SMALL
@@ -354,7 +354,7 @@
 
 /obj/item/clothing/mask/neckerchief
 	name = "neckerchief"
-	desc = "A simple cloth worn around the neck, adjustable between a loose fit or a more tightly secured style."
+	desc = "一种简单的布制颈饰，可在宽松或更紧密的佩戴方式之间调整。"
 	icon_state = "neckerchief"
 	item_state = "neckerchief"
 	icon = 'icons/obj/items/clothing/masks/scarves.dmi'
@@ -381,10 +381,10 @@
 
 	adjust = !adjust
 	if(adjust)
-		to_chat(usr, SPAN_NOTICE("You adjust \the [src]"))
+		to_chat(usr, SPAN_NOTICE("你调整了\the [src]"))
 		icon_state += "_alt"
 	else
-		to_chat(usr, SPAN_NOTICE("You adjust \the [src]"))
+		to_chat(usr, SPAN_NOTICE("你调整了\the [src]"))
 		icon_state = original_state
 
 	update_clothing_icon(src)
@@ -453,7 +453,7 @@
 
 /obj/item/clothing/mask/owlf_mask
 	name = "\improper OWLF gas mask"
-	desc = "A close-fitting mask that can be connected to an air supply."
+	desc = "一款贴合面部的面具，可连接供气系统。"
 	icon_state = "owlf_mask"
 	item_state = "owlf_mask"
 	icon = 'icons/obj/items/clothing/masks/gasmasks.dmi'

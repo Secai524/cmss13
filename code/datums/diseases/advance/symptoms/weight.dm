@@ -17,7 +17,7 @@ Bonus
 
 /datum/symptom/weight_gain
 
-	name = "Weight Gain"
+	name = "体重增加"
 	stealth = -3
 	resistance = -3
 	stage_speed = -2
@@ -58,7 +58,7 @@ Bonus
 
 /datum/symptom/weight_loss
 
-	name = "Weight Loss"
+	name = "体重减轻"
 	stealth = -3
 	resistance = -2
 	stage_speed = -2
@@ -73,7 +73,7 @@ Bonus
 			if(1, 2, 3, 4)
 				to_chat(M, SPAN_NOTICE("[pick("You feel hungry.", "You crave for food.")]"))
 			else
-				to_chat(M, SPAN_NOTICE("Your stomach rumbles."))
+				to_chat(M, SPAN_NOTICE("你的胃在咕咕叫。"))
 				M.overeatduration = max(M.overeatduration - 100, 0)
 				M.nutrition = max(M.nutrition - 100, 0)
 
@@ -100,7 +100,7 @@ Bonus
 
 /datum/symptom/weight_even
 
-	name = "Weight Even"
+	name = "体重正常"
 	stealth = -3
 	resistance = -2
 	stage_speed = -2

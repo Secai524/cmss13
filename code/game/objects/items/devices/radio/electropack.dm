@@ -1,6 +1,6 @@
 /obj/item/device/radio/electropack
 	name = "electropack"
-	desc = "Dance my monkeys! DANCE!!!"
+	desc = "跳起来，我的猴子们！跳起来！！！"
 	icon_state = "electropack0"
 	item_state = "electropack"
 	item_icons = list(
@@ -21,7 +21,7 @@
 
 /obj/item/device/radio/electropack/attack_hand(mob/user as mob)
 	if(src == user.back)
-		to_chat(user, SPAN_NOTICE("You need help taking this off!"))
+		to_chat(user, SPAN_NOTICE("你需要帮忙才能脱下这个！"))
 		return
 	..()
 
@@ -77,7 +77,7 @@
 			if((world.time - mob_move_time) >= (5 SECONDS) && M.last_move_dir && M.stat == CONSCIOUS)
 				mob_move_time = world.time
 				step(M, M.last_move_dir)
-		to_chat(M, SPAN_DANGER("You feel a sharp shock!"))
+		to_chat(M, SPAN_DANGER("你感到一阵强烈的电击！"))
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(3, 1, M)
 		s.start()

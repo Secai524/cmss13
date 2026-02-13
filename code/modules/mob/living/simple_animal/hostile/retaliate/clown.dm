@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/retaliate/clown
-	name = "Clown"
-	desc = "A denizen of clown planet."
+	name = "小丑"
+	desc = "小丑星球的居民。"
 	icon_state = "clown"
 	icon_living = "clown"
 	icon_dead = "clown_dead"

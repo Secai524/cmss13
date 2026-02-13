@@ -102,12 +102,12 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 
 	//Announce the numbers to Yautja, they have good scanners
 	for(var/mob/living/carbon/human/yautja as anything in GLOB.yautja_mob_list)
-		to_chat(yautja, "<h2 class='alert'>Bioscan complete</h2>")
+		to_chat(yautja, "<h2 class='alert'>生物扫描完成</h2>")
 		to_chat(yautja, yautja_scan)
 
 	//Let the ghosts know what's up, they also get good numbers
 	for(var/mob/dead/observer/ghost as anything in GLOB.observer_list)
-		to_chat(ghost, "<h2 class='alert'>Bioscan complete</h2>")
+		to_chat(ghost, "<h2 class='alert'>生物扫描完成</h2>")
 		to_chat(ghost, ghost_scan)
 
 
@@ -152,7 +152,7 @@ GLOBAL_DATUM_INIT(bioscan_data, /datum/bioscan_data, new)
 	var/planet_hosts = "[marines_on_planet ? "[marines_on_planet]" : "none"]"
 	var/planet_location = "[marines_on_planet && marine_planet_location ? ", including one in [marine_planet_location]" : ""]"
 
-	var/title = SPAN_XENOANNOUNCE("The Queen Mother reaches into your mind from worlds away.")
+	var/title = SPAN_XENOANNOUNCE("异形女皇的意识从遥远的世界探入你的脑海。")
 	var/content = SPAN_XENOANNOUNCE("To my children and their Queen: I sense [metalhive_hosts] host[plural] in the metal hive[metalhive_location] and [planet_hosts] scattered elsewhere[planet_location].")
 
 	log_game("BIOSCAN: Queen Mother bioscan completed. [content]")

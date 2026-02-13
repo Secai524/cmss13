@@ -28,7 +28,7 @@
 			first_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male_dutch) : pick(GLOB.first_names_female_dutch))
 		else // MALE
 			first_name = capitalize(pick(GLOB.first_names_male_dutch))
-			new_human.f_style = "5 O'clock Shadow"
+			new_human.f_style = "五点钟胡茬"
 
 	new_human.change_real_name(new_human, "[first_name] [last_name]")
 	new_human.age = rand(25,35)
@@ -83,7 +83,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/dutch/m60(new_human), WEAR_WAIST)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/m60(new_human), WEAR_L_STORE)
 
-	to_chat(new_human, SPAN_WARNING("You are a member of the Dutch's Dozen! You are fully aware of anything and everything regarding the Yautja, down to every minute detail. The Yautja mask on your leader's face serves to let the Yautja track you, or for you to place traps. The Yautja can detect their gear signatures, and will track this mask as soon as you arrive. The EMP grenades in your backpack have a very wide area range. They will interrupt Predator cloak and consume their bracer charge. REMEMBER: Your objective is to hunt, kill and loot the Predators planetside, and NOT hunt Xenomorphs. You have a very wide variety of skills, put them to use!"))
+	to_chat(new_human, SPAN_WARNING("你是荷兰佬十二人队的一员！你对铁血战士的一切了如指掌，包括最微小的细节。你们队长脸上的铁血战士面具能让铁血战士追踪你们，或者让你用来设置陷阱。铁血战士能侦测到他们装备的信号，你们一抵达就会被这个面具吸引。你背包里的EMP手榴弹作用范围极广。它们能打断铁血战士的光学迷彩并消耗其腕部能量。记住：你的目标是猎杀、消灭并掠夺地面上的铁血战士，而不是猎杀异形。你拥有多种多样的技能，好好利用它们！"))
 
 /datum/equipment_preset/dutch/minigun
 	name = JOB_DUTCH_MINIGUNNER
@@ -116,7 +116,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/emp_dutch(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/jungle/knife(new_human), WEAR_FEET)
 
-	to_chat(new_human, SPAN_WARNING("You are a member of the Dutch's Dozen! You are fully aware of anything and everything regarding the Yautja, down to every minute detail. The Yautja mask on your leader's face serves to let the Yautja track you, or for you to place traps. The Yautja can detect their gear signatures, and will track this mask as soon as you arrive. The EMP grenades in your backpack have a very wide area range. They will interrupt Predator cloak and consume their bracer charge. REMEMBER: Your objective is to hunt, kill and loot the Predators planetside, and NOT hunt Xenomorphs."))
+	to_chat(new_human, SPAN_WARNING("你是荷兰佬十二人队的一员！你对铁血战士的一切了如指掌，包括最微小的细节。你们队长脸上的铁血战士面具能让铁血战士追踪你们，或者让你用来设置陷阱。铁血战士能侦测到他们装备的信号，你们一抵达就会被这个面具吸引。你背包里的EMP手榴弹作用范围极广。它们能打断铁血战士的光学迷彩并消耗其腕部能量。记住：你的目标是猎杀、消灭并掠夺地面上的铁血战士，而不是猎杀异形。"))
 
 /datum/equipment_preset/dutch/flamer
 	name = JOB_DUTCH_FLAMETHROWER
@@ -150,7 +150,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/jungle/knife(new_human), WEAR_FEET)
 
-	to_chat(new_human, SPAN_WARNING("You are a member of the Dutch's Dozen! You are fully aware of anything and everything regarding the Yautja, down to every minute detail. The Yautja mask on your leader's face serves to let the Yautja track you, or for you to place traps. The Yautja can detect their gear signatures, and will track this mask as soon as you arrive. The EMP grenades in your backpack have a very wide area range. They will interrupt Predator cloak and consume their bracer charge. REMEMBER: Your objective is to hunt, kill and loot the Predators planetside, and NOT hunt Xenomorphs."))
+	to_chat(new_human, SPAN_WARNING("你是荷兰佬十二人队的一员！你对铁血战士的一切了如指掌，包括最微小的细节。你们队长脸上的铁血战士面具能让铁血战士追踪你们，或者让你用来设置陷阱。铁血战士能侦测到他们装备的信号，你们一抵达就会被这个面具吸引。你背包里的EMP手榴弹作用范围极广。它们能打断铁血战士的光学迷彩并消耗其腕部能量。记住：你的目标是猎杀、消灭并掠夺地面上的铁血战士，而不是猎杀异形。"))
 
 /datum/equipment_preset/dutch/medic
 	name = JOB_DUTCH_MEDIC
@@ -193,10 +193,10 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/full_advanced(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/jungle/knife(new_human), WEAR_FEET)
 
-	to_chat(new_human, SPAN_WARNING("You are a medic of the Dutch's Dozen! You are fully aware of anything and everything regarding the Yautja, down to every minute detail. The Yautja mask on your leader's face serves to let the Yautja track you, or for you to place traps. The Yautja can detect their gear signatures, and will track this mask as soon as you arrive. The EMP grenades in your backpack have a very wide area range. They will interrupt Predator cloak and consume their bracer charge. REMEMBER: Your objective is to help your team members hunt, kill and loot the Predators planetside, and NOT hunt Xenomorphs."))
+	to_chat(new_human, SPAN_WARNING("你是荷兰佬十二人队的医疗兵！你对铁血战士的一切了如指掌，包括最微小的细节。你们队长脸上的铁血战士面具能让铁血战士追踪你们，或者让你用来设置陷阱。铁血战士能侦测到他们装备的信号，你们一抵达就会被这个面具吸引。你背包里的EMP手榴弹作用范围极广。它们能打断铁血战士的光学迷彩并消耗其腕部能量。记住：你的目标是协助你的队员猎杀、消灭并掠夺地面上的铁血战士，而不是猎杀异形。"))
 
 /datum/equipment_preset/dutch/arnie
-	name = "Dutch's Dozen - Arnold"
+	name = "荷兰佬十二人队 - 阿诺德"
 	paygrades = list(PAY_SHORT_DTCA = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_DUTCH_ARNOLD
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -206,9 +206,9 @@
 
 /datum/equipment_preset/dutch/arnie/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = MALE
-	new_human.change_real_name(new_human, "Arnold 'Dutch' Schäfer")
-	new_human.f_style = "5 O'clock Shadow"
-	new_human.h_style = "Mulder"
+	new_human.change_real_name(new_human, "Arnold '达奇' Schäfer")
+	new_human.f_style = "五点钟胡茬"
+	new_human.h_style = "穆德发型"
 
 	new_human.age = 38
 	new_human.r_hair = 15
@@ -240,6 +240,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/dutch(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/jungle/knife(new_human), WEAR_FEET)
 
-	new_human.set_species("Human Hero") //Arnold is STRONG.
+	new_human.set_species("人类英雄") //Arnold is STRONG.
 
-	to_chat(new_human, SPAN_WARNING("You are Dutch, the leader of the Dutch's Dozen! You are fully aware of anything and everything regarding the Yautja, down to every minute detail. The Yautja mask on your face serves to let the Yautja track you, or for you to place traps. The Yautja can detect their gear signatures, and will track this mask as soon as you arrive. The EMP grenades in your pouch have a very wide area range. They will interrupt Predator cloak and consume their bracer charge. REMEMBER: Your objective is to hunt, kill and loot the Predators planetside, and NOT hunt Xenomorphs."))
+	to_chat(new_human, SPAN_WARNING("你是荷兰佬，荷兰佬十二人队的队长！你对铁血战士的一切了如指掌，包括最微小的细节。你脸上的铁血战士面具能让铁血战士追踪你，或者让你用来设置陷阱。铁血战士能侦测到他们装备的信号，你们一抵达就会被这个面具吸引。你腰包里的EMP手榴弹作用范围极广。它们能打断铁血战士的光学迷彩并消耗其腕部能量。记住：你的目标是猎杀、消灭并掠夺地面上的铁血战士，而不是猎杀异形。"))

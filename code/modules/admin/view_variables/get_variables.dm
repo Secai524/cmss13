@@ -109,7 +109,7 @@
 		if(extra_classes)
 			classes += extra_classes
 
-		.["class"] = tgui_input_list(src, "What kind of data?", "Variable Type", classes)
+		.["class"] = tgui_input_list(src, "什么类型的数据？", "Variable Type", classes)
 		if(admin_holder && admin_holder.marked_datum && .["class"] == markstring)
 			.["class"] = VV_MARKED_DATUM
 
@@ -121,12 +121,12 @@
 
 	switch(.["class"])
 		if(VV_TEXT)
-			.["value"] = tgui_input_text(usr, "Enter new text:", "Text", current_value, encode = FALSE, trim = FALSE)
+			.["value"] = tgui_input_text(usr, "输入新文本：", "文本", current_value, encode = FALSE, trim = FALSE)
 			if(.["value"] == null)
 				.["class"] = null
 				return
 		if(VV_MESSAGE)
-			.["value"] = tgui_input_text(usr, "Enter new text:", "Text", current_value, encode = FALSE, trim = FALSE)
+			.["value"] = tgui_input_text(usr, "输入新文本：", "文本", current_value, encode = FALSE, trim = FALSE)
 			if(.["value"] == null)
 				.["class"] = null
 				return
@@ -160,7 +160,7 @@
 			var/type = current_value
 			var/error = ""
 			do
-				type = tgui_input_text(usr, "Enter type:[error]", "Type", type)
+				type = tgui_input_text(usr, "输入类型：[error]", "类型", type)
 				if(!type)
 					break
 				type = text2path(type)
@@ -178,7 +178,7 @@
 				.["class"] = null
 				return
 			var/list/things = vv_reference_list(type, subtypes)
-			var/value = tgui_input_list(usr, "Select reference:", "Reference", things)
+			var/value = tgui_input_list(usr, "选择参考：", "引用", things)
 			if(!value)
 				.["class"] = null
 				return
@@ -191,7 +191,7 @@
 				.["class"] = null
 				return
 			var/list/things = vv_reference_list(type, subtypes)
-			var/value = tgui_input_list(usr, "Select reference:", "Reference", things)
+			var/value = tgui_input_list(usr, "选择参考：", "引用", things)
 			if(!value)
 				.["class"] = null
 				return
@@ -204,7 +204,7 @@
 				.["class"] = null
 				return
 			var/list/things = vv_reference_list(type, subtypes)
-			var/value = tgui_input_list(usr, "Select reference:", "Reference", things)
+			var/value = tgui_input_list(usr, "选择参考：", "引用", things)
 			if(!value)
 				.["class"] = null
 				return
@@ -217,20 +217,20 @@
 				.["class"] = null
 				return
 			var/list/things = vv_reference_list(type, subtypes)
-			var/value = tgui_input_list(usr, "Select reference:", "Reference", things)
+			var/value = tgui_input_list(usr, "选择参考：", "引用", things)
 			if(!value)
 				.["class"] = null
 				return
 			.["value"] = WEAKREF(things[value])
 
 		if(VV_CLIENT)
-			.["value"] = tgui_input_list(usr, "Select reference:", "Reference", GLOB.clients)
+			.["value"] = tgui_input_list(usr, "选择参考：", "引用", GLOB.clients)
 			if(.["value"] == null)
 				.["class"] = null
 				return
 
 		if(VV_FILE)
-			.["value"] = input("Pick file:", "File") as null|file
+			.["value"] = input("Pick file:", "文件") as null|file
 			if(.["value"] == null)
 				.["class"] = null
 				return
@@ -284,7 +284,7 @@
 			var/type = current_value
 			var/error = ""
 			do
-				type = tgui_input_text("Enter type:[error]", "Type", type)
+				type = tgui_input_text("输入类型：[error]", "类型", type)
 				if(!type)
 					break
 				type = text2path(type)
@@ -306,22 +306,22 @@
 		if(VV_TEXT_LOCATE)
 			var/datum/D
 			do
-				var/ref = tgui_input_text("Enter reference:", "Reference")
+				var/ref = tgui_input_text("Enter reference:", "引用")
 				if(!ref)
 					break
 				D = locate(ref)
 				if(!D)
-					tgui_alert(usr,"Invalid ref!")
+					tgui_alert(usr,"无效参考！")
 					continue
 				if(!D.can_vv_mark())
-					tgui_alert(usr,"Datum can not be marked!")
+					tgui_alert(usr,"数据无法标记！")
 					continue
 			while(!D)
 			.["type"] = D.type
 			.["value"] = D
 
 		if(VV_COLOR)
-			.["value"] = input("Enter new color:", "Color", current_value) as color|null
+			.["value"] = input("Enter new color:", "颜色", current_value) as color|null
 			if(.["value"] == null)
 				.["class"] = null
 				return
@@ -337,10 +337,10 @@
 		if(VV_MATRIX)
 			if(!stored_matrices)
 				.["class"] = null
-				to_chat(usr, SPAN_NOTICE("No matrices!"))
+				to_chat(usr, SPAN_NOTICE("没有矩阵！"))
 				return
 
-			var/matrix_name = tgui_input_list(usr, "Choose a matrix", "Matrix", (stored_matrices + "Cancel"))
+			var/matrix_name = tgui_input_list(usr, "选择矩阵", "Matrix", (stored_matrices + "Cancel"))
 			if(!matrix_name || matrix_name == "Cancel")
 				.["class"] = null
 				return
@@ -366,7 +366,7 @@
 
 /proc/pick_closest_path(value, list/matches = get_fancy_list_of_atom_types())
 	if(value == FALSE) //nothing should be calling us with a number, so this is safe
-		value = tgui_input_text(usr, "Enter type to find (blank for all, cancel to cancel)", "Search for type")
+		value = tgui_input_text(usr, "输入要查找的类型（留空为全部，取消以取消）", "Search for type")
 		if(isnull(value))
 			return
 	value = trim(value)
@@ -380,7 +380,7 @@
 	if(length(matches) == 1)
 		chosen = matches[1]
 	else
-		chosen = tgui_input_list(usr, "Select a type", "Pick Type", matches)
+		chosen = tgui_input_list(usr, "选择一个类型", "Pick Type", matches)
 		if(!chosen)
 			return
 	chosen = matches[chosen]

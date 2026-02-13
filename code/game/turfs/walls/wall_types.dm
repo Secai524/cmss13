@@ -4,7 +4,7 @@
 
 /turf/closed/wall/almayer
 	name = "hull"
-	desc = "A metal wall used to separate rooms and make up the ship."
+	desc = "用于分隔舱室并构成舰船结构的金属墙壁。"
 	icon = 'icons/turf/walls/almayer.dmi'
 	icon_state = "testwall"
 	walltype = WALL_HULL
@@ -57,15 +57,15 @@
 	..()
 
 /turf/closed/wall/almayer/reinforced
-	name = "reinforced hull"
-	desc = "A reinforced metal wall used to separate rooms and make up the ship."
+	name = "强化船体"
+	desc = "用于分隔舱室并构成舰船结构的强化金属墙壁。"
 	damage_cap = HEALTH_WALL_REINFORCED
 	icon_state = "reinforced"
 
 /// Acts like /turf/closed/wall/almayer/outer until post-hijack where it reverts to /turf/closed/wall/almayer/reinforced.
 /turf/closed/wall/almayer/reinforced/temphull
-	name = "heavy reinforced hull"
-	desc = "A highly reinforced metal wall used to separate rooms and make up the ship. It would take a great impact to weaken this wall."
+	name = "重型强化船体"
+	desc = "用于分隔舱室并构成舰船结构的高度强化金属墙壁。需要巨大的冲击才能削弱这面墙。"
 	icon_state = "temphull"
 	damage_cap = HEALTH_WALL_REINFORCED
 	turf_flags = TURF_HULL
@@ -78,11 +78,11 @@
 /turf/closed/wall/almayer/reinforced/temphull/proc/de_hull()
 	SIGNAL_HANDLER
 	turf_flags = NO_FLAGS
-	desc = "A highly reinforced metal wall used to separate rooms and make up the ship. It has been weakened by a great impact."
+	desc = "用于分隔舱室并构成舰船结构的高度强化金属墙壁。它已被巨大的冲击所削弱。"
 
 /turf/closed/wall/almayer/outer
-	name = "outer hull"
-	desc = "A metal wall used to separate space from the ship."
+	name = "外层船体"
+	desc = "用于分隔太空与舰船的金属墙壁。"
 	icon_state = "hull" //Codersprite to make it more obvious in the map maker what's a hull wall and what's not
 	//icon_state = "testwall0_debug" //Uncomment to check hull in the map editor.
 	walltype = WALL_HULL
@@ -95,8 +95,8 @@
 	return
 
 /turf/closed/wall/almayer/outer/internal
-	name = "structural hull"
-	desc = "The core structure of the hull, it holds the ship together."
+	name = "结构船体"
+	desc = "船体的核心结构，它将舰船各部分连接在一起。"
 	icon_state = "innerhull" //Codersprite to make it more obvious in the map maker what's a hull wall and what's not
 
 /turf/closed/wall/almayer/white
@@ -105,7 +105,7 @@
 	icon_state = "wwall"
 
 /turf/closed/wall/almayer/white/reinforced
-	name = "reinforced hull"
+	name = "强化船体"
 	damage_cap = HEALTH_WALL_REINFORCED
 	icon_state = "reinforced"
 
@@ -113,8 +113,8 @@
 	tiles_with = list(/turf/closed/wall/almayer/white,/turf/closed/wall/almayer/outer)
 
 /turf/closed/wall/almayer/white/hull
-	name = "ultra reinforced hull"
-	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas."
+	name = "超强化船体"
+	desc = "用于隔离潜在危险区域的极度强化的金属墙壁。"
 	icon_state = "hull"
 	turf_flags = TURF_HULL
 
@@ -122,7 +122,7 @@
 	return 0
 
 /turf/closed/wall/almayer/research/containment/wall
-	name = "cell wall"
+	name = "牢房墙壁"
 	icon = 'icons/turf/almayer.dmi'
 	icon_state = null
 	tiles_with = null
@@ -218,7 +218,7 @@
 	icon_state = "containment_wall_connect_s2"
 
 /turf/closed/wall/almayer/research/containment/wall/purple
-	name = "cell window"
+	name = "牢房窗户"
 	icon_state = "containment_window"
 	opacity = FALSE
 
@@ -230,13 +230,13 @@
 	icon_state = "aiwall"
 
 /turf/closed/wall/almayer/aicore/reinforced
-	name = "reinforced hull"
+	name = "强化船体"
 	damage_cap = HEALTH_WALL_REINFORCED
 	icon_state = "reinforced"
 
 /turf/closed/wall/almayer/aicore/hull
-	name = "ultra reinforced hull"
-	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas."
+	name = "超强化船体"
+	desc = "用于隔离潜在危险区域的极度强化的金属墙壁。"
 	icon_state = "hull"
 	turf_flags = TURF_HULL
 
@@ -246,21 +246,21 @@
 	icon_state = "aiwall"
 
 /turf/closed/wall/almayer/aicore/white/reinforced
-	name = "reinforced hull"
+	name = "强化船体"
 	damage_cap = HEALTH_WALL_REINFORCED
 	icon_state = "reinforced"
 
 /turf/closed/wall/almayer/aicore/white/hull
-	name = "ultra reinforced hull"
-	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas."
+	name = "超强化船体"
+	desc = "用于隔离潜在危险区域的极度强化的金属墙壁。"
 	icon_state = "hull"
 	turf_flags = TURF_HULL
 
 
 //Sulaco walls.
 /turf/closed/wall/sulaco
-	name = "spaceship hull"
-	desc = "A metal wall used to separate rooms on spaceships from the cold void of space."
+	name = "飞船船体"
+	desc = "用于分隔飞船舱室与冰冷太空的金属墙壁。"
 	icon = 'icons/turf/walls/walls.dmi'
 	icon_state = "sulaco"
 	turf_flags = NO_FLAGS  //Can't be deconstructed
@@ -269,15 +269,15 @@
 	walltype = WALL_SULACO //Changes all the sprites and icons.
 
 /turf/closed/wall/sulaco/hull
-	name = "outer hull"
-	desc = "A reinforced outer hull, probably to prevent breaches."
+	name = "外层船体"
+	desc = "强化外层船体，可能是为了防止船体破裂。"
 	walltype = WALL_SULACO
 	turf_flags = TURF_HULL
 
 
 /turf/closed/wall/sulaco/unmeltable
-	name = "outer hull"
-	desc = "A reinforced outer hull, probably to prevent breaches."
+	name = "外层船体"
+	desc = "强化外层船体，可能是为了防止船体破裂。"
 	walltype = WALL_SULACO
 	turf_flags = TURF_HULL
 
@@ -303,13 +303,13 @@
 	)
 
 /turf/closed/wall/upp_ship/reinforced
-	name = "reinforced hull"
+	name = "强化船体"
 	damage_cap = HEALTH_WALL_REINFORCED
 	icon_state = "uppwall_reinforced"
 
 /turf/closed/wall/upp_ship/reinforced/outer
-	name = "ultra reinforced hull"
-	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas."
+	name = "超强化船体"
+	desc = "用于隔离潜在危险区域的极度强化的金属墙壁。"
 	turf_flags = TURF_HULL
 	icon_state = "uppwall_hull"
 
@@ -321,34 +321,34 @@
 	icon_state = "uppwall"
 
 /turf/closed/wall/almayer/upp/reinforced
-	name = "reinforced hull"
+	name = "强化船体"
 	damage_cap = HEALTH_WALL_REINFORCED
 	icon_state = "reinforced"
 
 /turf/closed/wall/almayer/upp/reinforced/outer
-	name = "ultra reinforced hull"
-	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas."
+	name = "超强化船体"
+	desc = "用于隔离潜在危险区域的极度强化的金属墙壁。"
 	turf_flags = TURF_HULL
 	icon_state = "hull"
 
 /turf/closed/wall/strata_outpost
-	name = "bare outpost walls"
+	name = "裸露的前哨站墙壁"
 	icon = 'icons/turf/walls/strata_outpost.dmi'
 	icon_state = "strata_bare_outpost_"
-	desc = "A thick and chunky metal wall. The surface is barren and imposing."
+	desc = "一面厚重、光秃且气势逼人的金属墙。"
 	walltype = WALL_STRATA_OUTPOST_BARE
 
 /turf/closed/wall/strata_outpost/reinforced
-	name = "ribbed outpost walls"
+	name = "带肋前哨墙"
 	icon_state = "strata_ribbed_outpost_"
-	desc = "A thick and chunky metal wall covered in jagged ribs."
+	desc = "一面厚重、布满锯齿状肋骨的金属墙。"
 	walltype = WALL_STRATA_OUTPOST_RIBBED
 	damage_cap = HEALTH_WALL_REINFORCED
 
 /turf/closed/wall/strata_outpost/reinforced/hull
 	turf_flags = TURF_HULL
 	icon_state = "strata_hull"
-	desc = "A thick and chunky metal wall that is, just by virtue of its placement and imposing presence, entirely indestructible."
+	desc = "一面厚重、仅凭其位置和压迫感就完全坚不可摧的金属墙。"
 
 /turf/closed/wall/indestructible
 	name = "wall"
@@ -359,7 +359,7 @@
 
 /turf/closed/wall/indestructible/bulkhead
 	name = "bulkhead"
-	desc = "It is a large metal bulkhead."
+	desc = "这是一扇巨大的金属舱壁。"
 	icon_state = "hull"
 
 /turf/closed/wall/indestructible/fakeglass
@@ -380,8 +380,8 @@
 // Mineral Walls
 
 /turf/closed/wall/mineral
-	name = "mineral wall"
-	desc = "This shouldn't exist."
+	name = "矿物墙"
+	desc = "这不应该存在。"
 	icon = 'icons/turf/walls/stone.dmi'
 	icon_state = "stone"
 	walltype = WALL_STONE
@@ -391,8 +391,8 @@
 	tiles_with = list(/turf/closed/wall/mineral)
 
 /turf/closed/wall/mineral/gold
-	name = "gold wall"
-	desc = "A wall with gold plating. Swag!"
+	name = "金墙"
+	desc = "一面镀金的墙。真炫！"
 	icon = 'icons/turf/walls/walls.dmi'
 	icon_state = "gold0"
 	walltype = WALL_GOLD
@@ -401,16 +401,16 @@
 	//var/shocked = null
 
 /turf/closed/wall/mineral/silver
-	name = "silver wall"
-	desc = "A wall with silver plating. Shiny!"
+	name = "银墙"
+	desc = "一面镀银的墙。闪闪发光！"
 	mineral = "silver"
 	color = "#e5e5e5"
 	//var/electro = 0.75
 	//var/shocked = null
 
 /turf/closed/wall/mineral/diamond
-	name = "diamond wall"
-	desc = "A wall with diamond plating. You monster."
+	name = "钻石墙"
+	desc = "一面镀钻的墙。你这怪物。"
 	mineral = "diamond"
 	color = "#3d9191"
 
@@ -419,27 +419,27 @@
 
 
 /turf/closed/wall/mineral/sandstone
-	name = "sandstone wall"
-	desc = "A wall with sandstone plating."
+	name = "砂岩墙"
+	desc = "一面覆有砂岩板的墙。"
 	mineral = "sandstone"
 	color = "#c6a480"
 	baseturfs = /turf/open/gm/dirt
 
 /turf/closed/wall/mineral/sandstone/runed
-	name = "sandstone temple wall"
-	desc = "A heavy wall of sandstone."
+	name = "砂岩神庙墙"
+	desc = "一堵厚重的砂岩墙。"
 	mineral = "runed sandstone"
 	color = "#b29082"
 	damage_cap = HEALTH_WALL_REINFORCED//Strong, but only available to Hunters, can can still be blown up or melted by boilers.
 	baseturfs = /turf/open/floor/sandstone/runed
 
 /turf/closed/wall/mineral/sandstone/runed/attack_alien(mob/living/carbon/xenomorph/user)
-	visible_message("[user] scrapes uselessly against [src] with their claws.")
+	visible_message("[user]用爪子徒劳地刮擦着[src]。")
 	return
 
 /turf/closed/wall/mineral/sandstone/runed/decor
-	name = "runed sandstone temple wall"
-	desc = "A heavy wall of sandstone, with elegant carvings and runes inscribed upon its face."
+	name = "刻有符文的砂岩神庙墙"
+	desc = "一堵厚重的砂岩墙，表面刻有精美的雕刻和符文。"
 	icon = 'icons/turf/walls/runedstone.dmi'
 	icon_state = "runedstone"
 	walltype = "runedstone"
@@ -448,8 +448,8 @@
 	return 2
 
 /turf/closed/wall/mineral/uranium
-	name = "uranium wall"
-	desc = "A wall with uranium plating. This is probably a bad idea."
+	name = "铀墙"
+	desc = "一面镀铀的墙。这可能是个坏主意。"
 	mineral = "uranium"
 	color = "#1b4506"
 
@@ -467,9 +467,9 @@
 	return
 
 /turf/closed/wall/mineral/uranium/leaking
-	name = "broken uranium wall"
+	name = "破损的铀墙"
 	damage = 666
-	desc = "A uranium plated wall that's leaking something. Just looking at it makes you dizzy."
+	desc = "一面正在泄漏某种物质的镀铀墙。光是看着它就让你头晕目眩。"
 	color = "#660202"
 
 /turf/closed/wall/mineral/uranium/attack_hand(mob/user as mob)
@@ -485,8 +485,8 @@
 	..()
 
 /turf/closed/wall/mineral/phoron
-	name = "phoron wall"
-	desc = "A wall with phoron plating. This is definitely a bad idea."
+	name = "菲隆墙"
+	desc = "一面镀菲隆的墙。这绝对是个坏主意。"
 	mineral = "phoron"
 	color = "#9635aa"
 
@@ -494,8 +494,8 @@
 //BONE RESIN WALLS
 
 /turf/closed/wall/mineral/bone_resin //mineral wall because, reasons bro.
-	name = "skeletal resin"
-	desc = "A wall made of molted old resin. This place is more alive than you are."
+	name = "骨骼树脂"
+	desc = "一堵由蜕落的旧树脂构成的墙。这地方比你更有生命力。"
 	icon = 'icons/turf/walls/prison/bone_resin.dmi'
 	icon_state = "bone_resin"
 	walltype = WALL_BONE_RESIN
@@ -509,7 +509,7 @@
 
 /turf/closed/wall/cult
 	name = "wall"
-	desc = "The patterns engraved on the wall seem to shift as you try to focus on them. You feel sick."
+	desc = "当你试图聚焦时，墙上雕刻的图案似乎在移动。你感到一阵恶心。"
 	icon = 'icons/turf/walls/cult.dmi'
 	icon_state = "cult"
 	walltype = WALL_CULT
@@ -528,7 +528,7 @@
 
 //Hangar walls
 /turf/closed/wall/hangar
-	name = "hangar wall"
+	name = "机库墙壁"
 	icon = 'icons/turf/walls/hangar.dmi'
 	icon_state = "hangar"
 	walltype = WALL_HANGAR
@@ -536,7 +536,7 @@
 //Prison wall
 
 /turf/closed/wall/prison
-	name = "metal wall"
+	name = "金属墙"
 	icon = 'icons/turf/walls/prison.dmi'
 	icon_state = "metal"
 	walltype = WALL_METAL
@@ -544,7 +544,7 @@
 //Biodome wall
 
 /turf/closed/wall/biodome
-	name = "metal wall"
+	name = "金属墙"
 	icon = 'icons/turf/walls/corsat.dmi'
 	icon_state = "dome"
 	walltype = WALL_DOME
@@ -552,7 +552,7 @@
 //Wood wall
 
 /turf/closed/wall/wood
-	name = "wood wall"
+	name = "木墙"
 	icon = 'icons/turf/walls/wood.dmi'
 	icon_state = "wood"
 	walltype = WALL_WOOD
@@ -570,8 +570,8 @@
 //Colorable rocks. Looks like moonsand.
 
 /turf/closed/wall/rock
-	name = "rock wall"
-	desc = "A rough wall of hardened rock."
+	name = "岩壁"
+	desc = "一面由硬化岩石构成的粗糙墙壁。"
 	icon = 'icons/turf/walls/cave.dmi'
 	icon_state = "cavewall"
 	color = "#535963"
@@ -593,13 +593,13 @@
 
 /turf/closed/wall/rock/orange
 	color = "#994a16"
-	desc = "A rough wall of granite and sandstone."
+	desc = "由花岗岩和砂岩粗糙堆砌而成的墙壁。"
 
 /turf/closed/wall/rock/red
 	color = "#822d21"
 
 /turf/closed/wall/rock/ice
-	name = "dense ice wall"
+	name = "厚冰墙"
 	color = "#4b94b3"
 
 /turf/closed/wall/rock/ice/thin
@@ -608,10 +608,10 @@
 //Strata New Blendy Ice
 
 /turf/closed/wall/strata_ice
-	name = "ice columns"
+	name = "冰柱群"
 	icon = 'icons/turf/walls/strata_ice.dmi'
 	icon_state = "strata_ice"
-	desc = "An absolutely massive collection of columns made of ice. The longer you stare, the deeper the ice seems to go."
+	desc = "由冰构成的绝对庞大的柱群。凝视越久，冰层似乎就越深邃。"
 	walltype = WALL_STRATA_ICE //Not a metal wall
 	turf_flags = TURF_HULL //Can't break this ice.
 	minimap_color = MINIMAP_BLACK
@@ -625,14 +625,14 @@
 
 /turf/closed/wall/strata_ice/dirty
 	icon_state = "strata_ice_dirty"
-	desc = "Columns and crags stacked atop one another. They defiantly push towards the heavens, but are stopped short by dripping frigid excess."
+	desc = "层层堆叠的冰柱与峭壁。它们桀骜地刺向天空，却被滴落的冰冷余烬所阻。"
 	walltype = WALL_STRATA_ICE_DIRTY
 
 /turf/closed/wall/strata_ice/jungle
-	name = "jungle vegetation"
+	name = "丛林植被"
 	icon = 'icons/turf/walls/jungle_veg.dmi'
 	icon_state = "jungle_veg"
-	desc = "Exceptionally dense vegetation that you can't see through."
+	desc = "异常茂密的植被，无法看透。"
 	walltype = WALL_JUNGLE_UPDATED //Not a metal wall
 	turf_flags = TURF_HULL
 	minimap_color = MINIMAP_BLACK
@@ -645,57 +645,57 @@
 			minimap_color = MINIMAP_SOLID
 
 /turf/closed/wall/strata_outpost_ribbed //this guy is our reinforced replacement
-	name = "ribbed outpost walls"
+	name = "带肋前哨墙"
 	icon = 'icons/turf/walls/strata_outpost.dmi'
 	icon_state = "strata_ribbed_outpost_"
-	desc = "A thick and chunky metal wall covered in jagged ribs."
+	desc = "一面厚重、布满锯齿状肋骨的金属墙。"
 	walltype = WALL_STRATA_OUTPOST_RIBBED
 	damage_cap = HEALTH_WALL_REINFORCED
 
 /turf/closed/wall/strata_outpost
-	name = "bare outpost walls"
+	name = "裸露的前哨站墙壁"
 	icon = 'icons/turf/walls/strata_outpost.dmi'
 	icon_state = "strata_bare_outpost_"
-	desc = "A thick and chunky metal wall. The surface is barren and imposing."
+	desc = "一面厚重、光秃且气势逼人的金属墙。"
 	walltype = WALL_STRATA_OUTPOST_BARE
 
 /turf/closed/wall/strata_outpost/reinforced
-	name = "ribbed outpost walls"
+	name = "带肋前哨墙"
 	icon_state = "strata_ribbed_outpost_"
-	desc = "A thick and chunky metal wall covered in jagged ribs."
+	desc = "一面厚重、布满锯齿状肋骨的金属墙。"
 	walltype = WALL_STRATA_OUTPOST_RIBBED
 	damage_cap = HEALTH_WALL_REINFORCED
 
 /turf/closed/wall/strata_outpost/reinforced/hull
-	desc = "A thick and chunky metal wall that is, just by virtue of its placement and imposing presence, entirely indestructible."
+	desc = "一面厚重、仅凭其位置和压迫感就完全坚不可摧的金属墙。"
 	icon_state = "strata_hull"
 	turf_flags = TURF_HULL
 
 //SOLARIS RIDGE TILESET//
 
 /turf/closed/wall/solaris
-	name = "colony wall"
+	name = "殖民地墙壁"
 	icon = 'icons/turf/walls/solaris/solaris.dmi'
 	icon_state = "solaris_interior"
-	desc = "Tough looking walls that have been blasted by sand since the day they were erected. A testament to human willpower."
+	desc = "外观坚固的墙壁，自建成之日起便饱受风沙侵蚀。这是人类意志力的证明。"
 	walltype = WALL_SOLARIS
 
 /turf/closed/wall/solaris/reinforced
-	name = "reinforced colony wall"
+	name = "强化殖民地墙壁"
 	icon_state = "solaris_interior_r"
 	walltype = WALL_SOLARISR
 	damage_cap = HEALTH_WALL_REINFORCED
 
 /turf/closed/wall/solaris/reinforced/hull
-	name = "heavy reinforced colony wall"
+	name = "重型强化殖民地墙壁"
 	icon_state = "solaris_interior_h"
 	turf_flags = TURF_HULL
 
 /turf/closed/wall/solaris/reinforced/hull/lv522
-	name = "Colony Windbreaker"
+	name = "殖民地防风墙"
 
 /turf/closed/wall/solaris/rock
-	name = "rock wall"
+	name = "岩壁"
 	icon_state = "solaris_rock"
 	walltype = WALL_SOLARIS_ROCK
 	turf_flags = TURF_HULL
@@ -706,29 +706,29 @@
 //GREYBOX DEVELOPMENT WALLS
 
 /turf/closed/wall/dev
-	name = "greybox wall"
+	name = "灰盒墙壁"
 	icon = 'icons/turf/walls/dev/dev.dmi'
 	icon_state = "devwall"
-	desc = "Just like in the orange box!"
+	desc = "就像在橙盒里一样！"
 	walltype = WALL_DEVWALL
 
 /turf/closed/wall/dev/reinforced
-	name = "greybox reinforced wall"
+	name = "灰盒强化墙壁"
 	icon_state = "devwall_r"
-	desc = "Just like in the orange box! This one is reinforced."
+	desc = "就像在橙盒里一样！这个是强化过的。"
 	walltype = WALL_DEVWALL_R
 	damage_cap = HEALTH_WALL_REINFORCED
 
 /turf/closed/wall/dev/reinforced/hull
-	name = "greybox hull wall"
-	desc = "Just like in the orange box! This one is indestructible."
+	name = "灰盒船体外墙"
+	desc = "就像在橙盒里一样！这个是坚不可摧的。"
 	turf_flags = TURF_HULL
 
 //KUTJEVO DESERT WALLS / SHARED TRIJENT TILESET
 
 /turf/closed/wall/kutjevo/rock
-	name = "rock wall"
-	desc = "Tall sandy rocks. Imposing. Impressive. Attention grabbing."
+	name = "岩壁"
+	desc = "高耸的沙岩。气势恢宏，引人注目。"
 	icon = 'icons/turf/walls/kutjevo/kutjevo.dmi'
 	icon_state = "rock"
 	walltype = WALL_KUTJEVO_ROCK
@@ -747,23 +747,23 @@
 	walltype = WALL_KUTJEVO_ROCK_BORDER
 
 /turf/closed/wall/kutjevo/colony
-	name = "colony wall"
+	name = "殖民地墙壁"
 	icon = 'icons/turf/walls/kutjevo/kutjevo.dmi'
 	icon_state = "colony"
-	desc = "Dusty worn down walls that were once built to last."
+	desc = "布满灰尘、破败不堪的墙壁，曾经被建造得坚不可摧。"
 	walltype = WALL_KUTJEVO_COLONY
 
 /turf/closed/wall/kutjevo/colony/reinforced
-	name = "reinforced colony wall"
+	name = "强化殖民地墙壁"
 	icon_state = "colonyr"
-	desc = "Dusty worn down walls that were once built to last. This one is reinforced."
+	desc = "布满灰尘、破败不堪的墙壁，曾经被建造得坚不可摧。这个是强化过的。"
 	walltype = WALL_KUTJEVO_COLONYR
 	damage_cap = HEALTH_WALL_REINFORCED
 
 /turf/closed/wall/kutjevo/colony/reinforced/hull
 	icon_state = "colonyh"
-	name = "reinforced colony wall"
-	desc = "Dusty worn down walls that were once built to last. This one is indestructible."
+	name = "强化殖民地墙壁"
+	desc = "布满灰尘、破败不堪的墙壁，曾经被建造得坚不可摧。这个是坚不可摧的。"
 	turf_flags = TURF_HULL
 
 //ICE COLONY, AKA SHIVA'S SNOWBALL TOBLERONE WALLS
@@ -772,30 +772,30 @@
 	walltype = WALL_SHIVA_ICE
 
 /turf/closed/wall/shiva/ice
-	name = "black ice slabs"
+	name = "黑冰板"
 	icon_state = "shiva_ice"
-	desc = "Slabs on slabs of dirty black ice crusted over ancient rock formations. The permafrost fluctuates between 20in and 12in during the summer months."
+	desc = "层层叠叠的肮脏黑冰板覆盖在古老的岩层上。永冻层厚度在夏季月份会在20英寸到12英寸之间波动。"
 	walltype = WALL_SHIVA_ICE //Not a metal wall
 	turf_flags = TURF_HULL //Can't break this ice.
 
 /turf/closed/wall/shiva/prefabricated
-	name = "prefabricated structure wall"
+	name = "预制结构墙"
 	icon_state = "shiva_fab"
-	desc = "This structure is made of metal support rods and robust poly-kevlon plastics. A derivative of the stuff used in UA ballistics vests, USCM and UPP uniforms. These walls are pulled taught and have been reinforced into a more permanent structure."
+	desc = "此结构由金属支撑杆和坚固的聚凯夫龙塑料制成。这种材料衍生自UA防弹背心、USCM和UPP制服所用的材质。这些墙体被拉紧并加固成更永久的结构。"
 	walltype = WALL_SHIVA_FAB
 	damage_cap = HEALTH_WALL
 
 /turf/closed/wall/shiva/prefabricated/reinforced
-	name = "reinforced prefabricated structure wall"
+	name = "强化预制结构墙"
 	icon_state = "shiva_fab_r"
-	desc = "This structure is made of metal support rods. The poly-kevlon has been replaced with sheet metal, reinforcing it."
+	desc = "此结构由金属支撑杆制成。聚凯夫龙已被金属板取代，以增强其强度。"
 	walltype = WALL_SHIVA_FAB_R
 	damage_cap = HEALTH_WALL + HEALTH_WALL_XENO_THICK
 
 /turf/closed/wall/shiva/prefabricated/reinforced/hull
-	name = "reinforced prefabricated structure wall"
+	name = "强化预制结构墙"
 	icon_state = "shiva_fab_r_h"
-	desc = "It cannot be destroyed by any means you have available. Perhaps praying to the gods may help."
+	desc = "你手头的任何手段都无法摧毁它。也许向神明祈祷会有点用。"
 	walltype = WALL_SHIVA_FAB_R
 	turf_flags = TURF_HULL
 
@@ -823,8 +823,8 @@
 //Xenomorph's Resin Walls
 
 /turf/closed/wall/resin
-	name = "resin wall"
-	desc = "Weird slime solidified into a wall."
+	name = "树脂墙"
+	desc = "奇怪的粘液凝固成了一堵墙。"
 	icon = 'icons/mob/xenos/structures.dmi'
 	icon_state = "resin"
 	walltype = WALL_RESIN
@@ -908,7 +908,7 @@
 	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 
 /turf/closed/wall/resin/pillar
-	name = "resin pillar segment"
+	name = "树脂柱段"
 	turf_flags = TURF_HULL
 
 /turf/closed/wall/resin/proc/set_resin_builder(mob/M)
@@ -929,8 +929,8 @@
 	baseturfs = /turf/open/floor/strata
 
 /turf/closed/wall/resin/thick
-	name = "thick resin wall"
-	desc = "Weird slime solidified into a thick wall."
+	name = "厚树脂墙"
+	desc = "奇怪的粘液凝固成了一堵厚墙。"
 	damage_cap = HEALTH_WALL_XENO_THICK
 	icon_state = "thickresin"
 	walltype = WALL_THICKRESIN
@@ -952,16 +952,16 @@
 	COOLDOWN_START(src, automatic_heal, 10 SECONDS)
 
 /turf/closed/wall/resin/tutorial
-	name = "tutorial resin wall"
-	desc = "Weird slime solidified into a wall. Remarkably resilient."
+	name = "教程树脂墙"
+	desc = "奇怪的粘液凝固成了一堵墙。异常坚韧。"
 	hivenumber = XENO_HIVE_TUTORIAL
 
 /turf/closed/wall/resin/tutorial/attack_alien(mob/living/carbon/xenomorph/xeno)
 	return
 
 /turf/closed/wall/resin/membrane
-	name = "resin membrane"
-	desc = "Weird slime translucent enough to let light pass through."
+	name = "树脂膜"
+	desc = "奇怪的粘液足够半透明，可以让光线通过。"
 	icon_state = "membrane"
 	walltype = WALL_MEMBRANE
 	damage_cap = HEALTH_WALL_XENO_MEMBRANE
@@ -1094,8 +1094,8 @@
 
 // Not a turf because it is movable, but still very much an obstacle/wall.
 /obj/structure/alien/movable_wall
-	name = "shifting resin wall"
-	desc = "A resin wall that can shift about."
+	name = "可移动树脂墙"
+	desc = "可以移动的树脂墙。"
 	icon = 'icons/turf/walls/xeno.dmi'
 	health = HEALTH_WALL_XENO
 	icon_state = "resin"
@@ -1282,7 +1282,7 @@
 	return ..()
 
 /obj/structure/alien/movable_wall/membrane
-	name = "shifting resin membrane"
+	name = "可移动树脂膜"
 	health = HEALTH_WALL_XENO_MEMBRANE
 	icon_state = "membrane"
 	wall_type = "membrane"
@@ -1290,20 +1290,20 @@
 	opacity = FALSE
 
 /obj/structure/alien/movable_wall/thick
-	name = "shifting thick resin wall"
+	name = "可移动厚树脂墙"
 	health = HEALTH_WALL_XENO_THICK
 	icon_state = "thickresin"
 	wall_type = "thickresin"
 
 /obj/structure/alien/movable_wall/membrane/thick
-	name = "shifting thick resin membrane"
+	name = "可移动厚树脂膜"
 	health = HEALTH_WALL_XENO_MEMBRANE_THICK
 	icon_state = "thickmembrane"
 	wall_type = "thickmembrane"
 
 /turf/closed/wall/resin/reflective
-	name = "resin reflective wall"
-	desc = "Weird hardened slime solidified into a fine, smooth wall."
+	name = "树脂反射墙"
+	desc = "奇怪的硬化粘液凝固成了一面光滑平整的墙。"
 	icon = 'icons/turf/walls/prison/bone_resin.dmi'
 	icon_state = "resin"
 	walltype = WALL_BONE_RESIN
@@ -1366,8 +1366,8 @@
 	baseturfs = /turf/open/floor/strata
 
 /turf/closed/wall/resin/membrane/thick
-	name = "thick resin membrane"
-	desc = "Weird thick slime just translucent enough to let light pass through."
+	name = "厚树脂膜"
+	desc = "奇怪的厚粘液刚好足够半透明，可以让光线通过。"
 	damage_cap = HEALTH_WALL_XENO_MEMBRANE_THICK
 	icon_state = "thickmembrane"
 	walltype = WALL_THICKMEMBRANE
@@ -1411,7 +1411,7 @@
 
 
 /turf/closed/wall/resin/attack_animal(mob/living/M)
-	M.visible_message(SPAN_DANGER("[M] tears \the [src]!"),
+	M.visible_message(SPAN_DANGER("[M]撕开了\the [src]！"),
 	SPAN_DANGER("You tear \the [name]."))
 	playsound(src, "alien_resin_break", 25)
 	M.animation_attack_on(src)
@@ -1424,7 +1424,7 @@
 		var/mob/living/carbon/xenomorph/user_as_xenomorph = user
 		user_as_xenomorph.do_nesting_host(grab_item_dummy.grabbed_thing, src)
 
-	to_chat(user, SPAN_WARNING("You scrape ineffectively at \the [src]."))
+	to_chat(user, SPAN_WARNING("你徒劳地刮擦着\the [src]。"))
 
 /turf/closed/wall/resin/attackby(obj/item/W, mob/living/user)
 	if(SEND_SIGNAL(src, COMSIG_WALL_RESIN_ATTACKBY, W, user) & COMPONENT_CANCEL_ATTACKBY)
@@ -1456,8 +1456,8 @@
 			set_hive_data(W, W.hivenumber)
 
 /turf/closed/wall/resin/weak
-	name = "weak resin wall"
-	desc = "Weird slime solidified into a wall. It already looks on the verge of collapsing..."
+	name = "脆弱树脂墙"
+	desc = "奇怪的粘液凝固成了一堵墙。它看起来已经濒临崩塌……"
 	damage_cap = HEALTH_WALL_XENO_WEAK
 	var/duration = 5 SECONDS
 
@@ -1469,8 +1469,8 @@
 	addtimer(CALLBACK(src, PROC_REF(ScrapeAway)), duration)
 
 /turf/closed/wall/resin/reflective/weak
-	name = "weakened reflective wall"
-	desc = "Weird slime with strange hardened fragments solidified into a wall. It looks like it last for moment before it will collapse."
+	name = "弱化的反射壁"
+	desc = "奇怪的粘液与硬化碎片凝固成了一堵墙。看起来它只能维持片刻，随后便会崩塌。"
 	damage_cap = HEALTH_WALL_XENO_REFLECTIVE_WEAK
 	var/duration = 13 SECONDS
 
@@ -1485,15 +1485,15 @@
 	return FALSE
 
 /turf/closed/wall/huntership
-	name = "hunter wall"
-	desc = "Nigh indestructible walls that make up the hull of a hunter ship."
+	name = "猎手舰壁"
+	desc = "构成猎手飞船船体的近乎坚不可摧的墙壁。"
 	icon = 'icons/turf/walls/hunter.dmi'
 	icon_state = "metal"//DMI specific name
 	walltype = WALL_HUNTERSHIP
 	turf_flags = TURF_HULL
 
 /turf/closed/wall/huntership/destructible
-	name = "degraded hunter wall"
+	name = "劣化的猎手舰壁"
 	color = "#c5beb4"
-	desc = "Ancient beyond measure, these walls make up the hull of a vessel of non human origin. Despite this, they can be felled with plastic explosives like any other opaque blocker."
+	desc = "这些墙壁古老得无法估量，构成了一艘非人类起源飞船的船体。尽管如此，它们仍可像其他不透明障碍物一样，被塑胶炸药摧毁。"
 	turf_flags = NO_FLAGS

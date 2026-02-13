@@ -1,7 +1,7 @@
 /obj/item/ammo_magazine/hardpoint/ltaaap_minigun
-	name = "LTAA-AP Minigun Magazine"
+	name = "LTAA-AP转轮机枪弹箱"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/vehicles.dmi'
-	desc = "A magazine of 7.62x51mm AP ammo for a heavy minigun. Filled to the brim with highly precise armor-penetrating rounds."
+	desc = "为重机枪准备的7.62x51mm穿甲弹弹箱。装满了高精度的穿甲弹。"
 	caliber = "7.62x51mm" //Correlates to miniguns
 	icon_state = "ltaa"
 	w_class = SIZE_LARGE //Primary weapon ammo should probably all be the same w_class

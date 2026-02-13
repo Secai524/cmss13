@@ -8,7 +8,7 @@
 /obj/structure/machinery/defenses/bell_tower
 	name = "\improper R-1NG bell tower"
 	icon = 'icons/obj/structures/machinery/defenses/bell_tower.dmi'
-	desc = "A tactical advanced version of a normal alarm. Designed to trigger an old instinct ingrained in humans when they hear a wake-up alarm, for fast response."
+	desc = "普通警报的战术升级版。旨在触发人类听到唤醒警报时根深蒂固的古老本能，以实现快速响应。"
 	var/list/tripwires_placed = list()
 	var/mob/last_mob_activated
 	var/bell_cooldown = 0 //cooldown between BING BONG BING BONGs
@@ -78,7 +78,7 @@
 
 
 /obj/effect/bell_tripwire
-	name = "bell tripwire"
+	name = "铃铛绊线"
 	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	invisibility = 101
@@ -117,7 +117,7 @@
 	if(linked_bell.last_mob_activated == M)
 		return
 	if(HAS_TRAIT(M, TRAIT_CHARGING))
-		to_chat(M, SPAN_WARNING("You ignore some weird noises as you charge."))
+		to_chat(M, SPAN_WARNING("你无视了一些奇怪的声音，继续冲锋。"))
 		return
 
 	if(linked_bell.bell_cooldown > world.time)
@@ -133,7 +133,7 @@
 	linked_bell.flick_image.flick_overlay(linked_bell, 11)
 	linked_bell.mob_crossed(M)
 	M.adjust_effect(BELL_TOWER_EFFECT, SUPERSLOW)
-	to_chat(M, SPAN_DANGER("The frequency of the noise slows you down!"))
+	to_chat(M, SPAN_DANGER("噪音的频率让你慢了下来！"))
 	linked_bell.bell_cooldown = world.time + BELL_TOWER_COOLDOWN //1.5s cooldown between RINGS
 
 	// checks if cloaked bell, if it is, then it reduces the cloaked bells alpha
@@ -142,7 +142,7 @@
 		cloakedbell.cloaker_fade_in()
 
 /obj/item/device/motiondetector/internal
-	name = "internal motion detector"
+	name = "内置动态探测器"
 	detector_range = 7 //yeah no offscreen bs with this
 
 	var/obj/structure/machinery/defenses/bell_tower/md/linked_tower
@@ -150,19 +150,19 @@
 /obj/item/device/motiondetector/internal/apply_debuff(mob/target)
 	var/mob/living/to_apply = target
 	if(HAS_TRAIT(to_apply, TRAIT_CHARGING))
-		to_chat(to_apply, SPAN_WARNING("You ignore some weird noises as you charge."))
+		to_chat(to_apply, SPAN_WARNING("你无视了一些奇怪的声音，继续冲锋。"))
 		return
 	if(istype(to_apply))
 		to_apply.set_effect(2, SUPERSLOW)
-		to_chat(to_apply, SPAN_WARNING("You feel very heavy."))
+		to_chat(to_apply, SPAN_WARNING("你感觉身体异常沉重。"))
 		sound_to(to_apply, 'sound/items/detector.ogg')
 
 	var/minimap_flag = get_minimap_flag_for_faction(linked_tower.selected_categories[SENTRY_CATEGORY_IFF])
 	new /obj/effect/temp_visual/minimap_blip(get_turf(target), minimap_flag)
 
 /obj/structure/machinery/defenses/bell_tower/md
-	name = "R-1NG motion detector tower"
-	desc = "A tactical advanced version of the motion detector. Has an increased range, disrupts the activity of hostiles nearby."
+	name = "R-1NG动态探测器塔"
+	desc = "动态探测器的战术升级版。探测范围增加，并能干扰附近敌对单位的活动。"
 	handheld_type = /obj/item/defenses/handheld/bell_tower/md
 	var/obj/item/device/motiondetector/internal/md
 	defense_type = "MD"
@@ -187,8 +187,8 @@
 
 
 /obj/structure/machinery/defenses/bell_tower/cloaker
-	name = "camouflaged R-1NG bell tower"
-	desc = "A tactical advanced version of a normal alarm. Designed to trigger an old instinct ingrained in humans when they hear a wake-up alarm, for fast response. This one is camouflaged and reinforced."
+	name = "伪装型R-1NG钟楼"
+	desc = "普通警报的战术升级版。旨在触发人类听到唤醒警报时根深蒂固的古老本能，以实现快速响应。此型号经过伪装和加固。"
 	handheld_type = /obj/item/defenses/handheld/bell_tower/cloaker
 	var/cloak_alpha_max = BELL_TOWER_CLOAKER_ALPHA
 	var/cloak_alpha_current = BELL_TOWER_CLOAKER_ALPHA
@@ -227,7 +227,7 @@
 		cloak_alpha_current = cloak_alpha_max
 
 /obj/item/storage/backpack/imp
-	name = "IMP frame mount"
+	name = "IMP框架底座"
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi'
@@ -270,7 +270,7 @@
 		return
 
 	for(var/mob/living/carbon/xenomorph/X in targets)
-		to_chat(X, SPAN_XENOWARNING("Augh! You are slowed by the incessant ringing!"))
+		to_chat(X, SPAN_XENOWARNING("啊！持续不断的铃声让你行动迟缓！"))
 		X.set_effect(slowdown_amount, SUPERSLOW)
 		playsound(X, 'sound/misc/bell.ogg', 25, 0, 13)
 

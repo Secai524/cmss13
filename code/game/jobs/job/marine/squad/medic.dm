@@ -5,7 +5,7 @@
 	allow_additional = 1
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/uscm/medic
-	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>You tend the wounds of your squad mates</a> and make sure they are healthy and active. You may not be a fully-fledged doctor, but you stand between life and death when it matters."
+	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>你治疗小队队友的伤口</a>，确保他们健康且活跃。你可能不是一名完全合格的医生，但在关键时刻你站在生与死之间。"
 
 /datum/job/marine/medic/set_spawn_positions(count)
 	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)

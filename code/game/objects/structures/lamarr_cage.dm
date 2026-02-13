@@ -1,8 +1,8 @@
 /obj/structure/lamarr
-	name = "Lab Cage"
+	name = "实验室笼子"
 	icon = 'icons/obj/structures/props/furniture/display_case.dmi'
 	icon_state = "labcage1"
-	desc = "A glass lab container for storing interesting creatures."
+	desc = "一个用于存放有趣生物的玻璃实验室容器。"
 	density = TRUE
 	anchored = TRUE
 	unacidable = FALSE
@@ -62,10 +62,10 @@
 	if (src.destroyed)
 		return
 	else
-		to_chat(user, SPAN_NOTICE("You kick the lab cage."))
+		to_chat(user, SPAN_NOTICE("你踢了实验室笼子。"))
 		for(var/mob/O in oviewers())
 			if ((O.client && !( O.blinded )))
-				to_chat(O, SPAN_DANGER("[user] kicks the lab cage."))
+				to_chat(O, SPAN_DANGER("[user]踢了实验室笼子。"))
 		src.health -= 2
 		healthcheck()
 		return
@@ -78,8 +78,8 @@
 	return
 
 /obj/item/clothing/mask/facehugger/lamarr
-	name = "Lamarr"
-	desc = "The worst she might do is attempt to... couple with your head."//hope we don't get sued over a harmless reference, rite?
+	name = "拉玛"
+	desc = "它最坏的情况可能是试图……与你的头部结合。"//hope we don't get sued over a harmless reference, rite?
 	sterile = TRUE
 	gender = FEMALE
 	black_market_value = 50
@@ -91,7 +91,7 @@
 	icon_state = "[initial(icon_state)]_dead"
 	stat = DEAD
 
-	visible_message("[icon2html(src, viewers(src))] <span class='danger'>\The [src] curls up into a ball!</span>")
+	visible_message("[icon2html(src, viewers(src))] <span class='danger'>\The [src]蜷缩成一团！</span>")
 	playsound(src.loc, 'sound/voice/alien_facehugger_dies.ogg', 25, 1)
 
 	if(ismob(loc)) //Make it fall off the person so we can update their icons. Won't update if they're in containers thou

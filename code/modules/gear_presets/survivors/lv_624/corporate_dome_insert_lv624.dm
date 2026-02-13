@@ -2,7 +2,7 @@
 // corporatedomehold.dmm
 
 /datum/equipment_preset/survivor/corporate/executive
-	name = "Survivor - LV-624 Paranoid Corporate Liaison"
+	name = "幸存者 - LV-624偏执狂公司联络官"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	paygrades = list(PAY_SHORT_WYC5 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian/survivor/manager
@@ -51,7 +51,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/document(new_human), WEAR_R_STORE)
 
 /datum/equipment_preset/survivor/goon/medic
-	name = "Survivor - Corporate Security Goon Medic"
+	name = "幸存者 - 公司安保打手医疗兵"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = JOB_WY_GOON_MEDIC
 	job_title = JOB_WY_GOON_MEDIC
@@ -88,7 +88,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/wy(new_human), WEAR_L_STORE)
 
 /datum/equipment_preset/survivor/goon/engineer
-	name = "Survivor - Corporate Security Goon Technician"
+	name = "幸存者 - 公司安保打手技术员"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = JOB_WY_GOON_TECH
 	job_title = JOB_WY_GOON_TECH
@@ -121,7 +121,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/wy(new_human), WEAR_L_STORE)
 
 /datum/equipment_preset/survivor/goon/lead
-	name = "Survivor - Corporate Security Goon Lead"
+	name = "幸存者 - 公司安保打手头目"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = JOB_WY_GOON_LEAD
 	job_title = JOB_WY_GOON_LEAD
@@ -155,7 +155,7 @@
 
 // only used on the spawner of all of those above...
 /datum/equipment_preset/synth/survivor/wy/security_synth/goon
-	name = "Survivor - Synthetic - Corporate Security Goon Synthetic"
+	name = "幸存者 - 合成人 - 公司安保打手合成人"
 	idtype = /obj/item/card/id/silver/cl
 	assignment = JOB_WY_GOON_SYNTH
 	job_title = JOB_WY_GOON_SYNTH

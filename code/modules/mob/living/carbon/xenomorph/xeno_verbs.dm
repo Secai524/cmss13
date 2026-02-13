@@ -1,6 +1,6 @@
 //// Holds Xeno verbs that don't belong anywhere else.
 /mob/living/carbon/xenomorph/verb/hive_status()
-	set name = "Hive Status"
+	set name = "巢穴状态"
 	set desc = "Check the status of our current hive."
 	set category = "Alien"
 
@@ -8,11 +8,11 @@
 		return
 
 	if((!hive.living_xeno_queen) && !hive.allow_no_queen_actions)
-		to_chat(src, SPAN_WARNING("There is no Queen. We are alone."))
+		to_chat(src, SPAN_WARNING("没有女王。我们是孤独的。"))
 		return
 
 	if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
-		to_chat(src, SPAN_WARNING("Our psychic connection has been temporarily disabled!"))
+		to_chat(src, SPAN_WARNING("我们的心灵连接已被暂时禁用！"))
 		return
 
 	hive.hive_ui.open_hive_status(src)
@@ -27,17 +27,17 @@
 
 	if(hive.hivenumber == XENO_HIVE_RENEGADE) //Renegade's ability to attack someone depends on IFF settings, not on alliance
 		if(!iff_tag)
-			to_chat(src, SPAN_NOTICE("You are not obligated to protect anyone."))
+			to_chat(src, SPAN_NOTICE("你没有义务保护任何人。"))
 			return
-		to_chat(src, SPAN_NOTICE("You seem compelled to protect [english_list(iff_tag.faction_groups, "no one")]."))
+		to_chat(src, SPAN_NOTICE("你似乎被驱使着去保护[english_list(iff_tag.faction_groups, "no one")]."))
 		return
 
 	if((!hive.living_xeno_queen || Check_WO()) && !hive.allow_no_queen_actions) //No Hive status on WO
-		to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
+		to_chat(src, SPAN_WARNING("没有女王。你是孤身一人。"))
 		return
 
 	if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
-		to_chat(src, SPAN_WARNING("Our psychic connection has been temporarily disabled!"))
+		to_chat(src, SPAN_WARNING("我们的心灵连接已被暂时禁用！"))
 		return
 
 	hive.faction_ui.tgui_interact(src)
@@ -48,7 +48,7 @@
 	set category = "Alien"
 
 	if(!length(built_structures))
-		to_chat(usr, SPAN_WARNING("You don't have any built structures!"))
+		to_chat(usr, SPAN_WARNING("你没有任何已建造的结构！"))
 		return
 
 	var/list/options = list()
@@ -56,7 +56,7 @@
 		var/atom/A = i
 		options[initial(A.name)] = i
 
-	var/input = tgui_input_list(usr, "Choose a structure type to clear", "Clear Built Structures", options, theme="hive_status")
+	var/input = tgui_input_list(usr, "选择要清除的结构类型", "Clear Built Structures", options, theme="hive_status")
 
 	if(!input)
 		return
@@ -73,7 +73,7 @@
 			continue
 		qdel(i)
 
-	to_chat(usr, SPAN_INFO("Destroyed [cleared_amount] of [input]."))
+	to_chat(usr, SPAN_INFO("摧毁了[cleared_amount]个[input]。"))
 
 
 /mob/living/carbon/xenomorph/verb/toggle_xeno_mobhud()
@@ -114,9 +114,9 @@
 	client.prefs.toggle_prefs ^= TOGGLE_AUTO_SHOVE_OFF
 	client.prefs.save_preferences()
 	if (client.prefs.toggle_prefs & TOGGLE_AUTO_SHOVE_OFF)
-		to_chat(src, SPAN_NOTICE("You will no longer automatically shove people in the way as the Queen."))
+		to_chat(src, SPAN_NOTICE("作为女王，你将不再自动推开挡路的人。"))
 	else
-		to_chat(src, SPAN_NOTICE("You will now automatically shove people in the way as the Queen."))
+		to_chat(src, SPAN_NOTICE("作为女王，你现在将自动推开挡路的人。"))
 
 
 /mob/living/carbon/xenomorph/verb/ability_deactivation_toggle()
@@ -145,9 +145,9 @@
 	client.prefs.toggle_prefs ^= TOGGLE_DIRECTIONAL_ATTACK
 	client.prefs.save_preferences()
 	if(client.prefs.toggle_prefs & TOGGLE_DIRECTIONAL_ATTACK)
-		to_chat(src, SPAN_NOTICE("Attacks will now use directional assist."))
+		to_chat(src, SPAN_NOTICE("攻击现在将使用方向辅助。"))
 	else
-		to_chat(src, SPAN_NOTICE("Attacks will no longer use directional assist."))
+		to_chat(src, SPAN_NOTICE("攻击将不再使用方向辅助。"))
 
 /mob/living/carbon/xenomorph/cancel_camera()
 	. = ..()
@@ -162,7 +162,7 @@
 
 /mob/living/carbon/xenomorph/look_up()
 	if(is_zoomed)
-		to_chat(src, SPAN_WARNING("You cannot look up while zoomed!"))
+		to_chat(src, SPAN_WARNING("缩放时无法向上看！"))
 		return
 
 	. = ..()

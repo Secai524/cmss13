@@ -107,7 +107,7 @@
 
 	//we didn't find a turf to drop them... This shouldn't happen usually
 	if(crosser.can_paradrop()) //don't delete them if they were supposed to paradrop
-		to_chat(crosser, SPAN_BOLDWARNING("Your harness got stuck and you got thrown back in the dropship."))
+		to_chat(crosser, SPAN_BOLDWARNING("你的安全带卡住了，你被甩回了运输机里。"))
 		var/turf/projected = get_ranged_target_turf(crosser, turn(dir, 180), 15)
 		INVOKE_ASYNC(crosser, TYPE_PROC_REF(/atom/movable, throw_atom), projected, 50, SPEED_FAST, null, TRUE)
 		return
@@ -237,7 +237,7 @@
 	Stun(3)
 	// take a little bit more damage otherwise
 	take_overall_damage(400, used_weapon = "falling", limb_damage_chance = 100)
-	visible_message(SPAN_WARNING("[src] falls out of the sky."), SPAN_HIGHDANGER("As you fall out of the [dropship_name], you plummet towards the ground."))
+	visible_message(SPAN_WARNING("[src]从天上掉了下来。"), SPAN_HIGHDANGER("As you fall out of the [dropship_name], you plummet towards the ground."))
 
 /mob/living/carbon/human/handle_airdrop(turf/target, dropship_name)
 	..()

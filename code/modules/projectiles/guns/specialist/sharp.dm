@@ -3,7 +3,7 @@
 
 /obj/item/weapon/gun/rifle/sharp
 	name = "\improper P9 SHARP rifle"
-	desc = "An experimental harpoon launcher rifle with an inbuilt magnetic harness manufactured by Armat Systems. It's specialized for specific ammo types out of a 10-round magazine, best used for area denial and disruption."
+	desc = "一款由阿玛特系统公司制造的实验性鱼叉发射步枪，内置磁性背带。它专为10发弹匣中的特定弹药类型设计，最适合用于区域拒止和干扰。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/grenade_launchers.dmi'
 	icon_state = "sharprifle"
 	item_state = "sharp"
@@ -71,7 +71,7 @@
 	. = ..()
 	if (. && istype(user))
 		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_GRENADIER)
-			to_chat(user, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
+			to_chat(user, SPAN_WARNING("你似乎不知道如何使用\the [src]……"))
 			return FALSE
 
 //code for changing explosion delay on direct hits
@@ -80,8 +80,8 @@
 	. = ..()
 	explosion_delay_sharp = !explosion_delay_sharp
 	playsound(user, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
-	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You [explosion_delay_sharp ? SPAN_BOLD("enable") : SPAN_BOLD("disable")] [src]'s delayed fire mode. Explosive ammo will blow up in [explosion_delay_sharp ? SPAN_BOLD("5 seconds") : SPAN_BOLD("2.5 seconds")]."))
-	user.balloon_alert(user, "explosion delay [explosion_delay_sharp ? "5 seconds" : "2.5 seconds"].")
+	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] 你[explosion_delay_sharp ? SPAN_BOLD("enable") : SPAN_BOLD("disable")] [src]'s delayed fire mode. Explosive ammo will blow up in [explosion_delay_sharp ? SPAN_BOLD("5 seconds") : SPAN_BOLD("2.5 seconds")]."))
+	user.balloon_alert(user, "爆炸延迟[explosion_delay_sharp ? "5 seconds" : "2.5 seconds"].")
 
 
 
@@ -131,7 +131,7 @@
 	new embed_object(loc, P.dir)
 
 /datum/ammo/rifle/sharp/explosive
-	name = "9X-E sticky explosive dart"
+	name = "9X-E粘性爆破镖"
 
 /datum/ammo/rifle/sharp/explosive/on_hit_mob(mob/living/target, obj/projectile/shot_dart)
 	if(!target || target == shot_dart.firer)
@@ -140,7 +140,7 @@
 	var/mob/shooter = shot_dart.firer
 	shake_camera(target, 2, 1)
 	if(shooter && ismob(shooter))
-		target.balloon_alert(target, "you have been hit by an explosive dart!", text_color = "#ce1e1e")
+		target.balloon_alert(target, "你被一枚爆破镖击中了！", text_color = "#ce1e1e")
 		if(!target.get_target_lock(shooter.faction_group))
 			var/obj/item/weapon/gun/rifle/sharp/weapon = shot_dart.shot_from
 			playsound(get_turf(target), 'sound/weapons/gun_sharp_explode.ogg', 100)
@@ -171,7 +171,7 @@
 
 
 /datum/ammo/rifle/sharp/incendiary
-	name = "9X-T sticky incendiary dart"
+	name = "9X-T粘性燃烧镖"
 	icon_state = "sharp_incendiary_dart"
 	handful_state = "sharp_incendiary"
 	embed_object = /obj/item/sharp/incendiary
@@ -182,7 +182,7 @@
 	var/mob/shooter = shot_dart.firer
 	shake_camera(target, 2, 1)
 	if(shooter && ismob(shooter))
-		target.balloon_alert(target, "you have been hit by an incendiary dart!", text_color = "#ce1e1e")
+		target.balloon_alert(target, "你被一枚燃烧镖击中了！", text_color = "#ce1e1e")
 		if(!target.get_target_lock(shooter.faction_group))
 			var/obj/item/weapon/gun/rifle/sharp/weapon = shot_dart.shot_from
 			playsound(get_turf(target), 'sound/weapons/gun_sharp_explode.ogg', 100)
@@ -212,7 +212,7 @@
 		smoke.start()
 
 /datum/ammo/rifle/sharp/flechette
-	name = "9X-F flechette dart"
+	name = "9X-F箭形镖"
 	icon_state = "sharp_flechette_dart"
 	handful_state = "sharp_flechette"
 	embed_object = /obj/item/sharp/flechette

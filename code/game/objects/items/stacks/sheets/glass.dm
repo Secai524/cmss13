@@ -35,7 +35,7 @@ GLOBAL_LIST_INIT_TYPED(phoronglass_recipes, /datum/stack_recipe, list ( \
  */
 /obj/item/stack/sheet/glass
 	name = "glass"
-	desc = "Glass is a non-crystalline solid, made out of silicate, the primary constituent of sand. It is valued for its transparency, albeit it is not too resistant to damage."
+	desc = "玻璃是一种非晶态固体，由硅酸盐制成，这是沙子的主要成分。它因其透明度而受到重视，尽管抗损伤能力不强。"
 	singular_name = "glass sheet"
 	icon_state = "sheet-glass"
 	matter = list("glass" = 3750)
@@ -65,18 +65,18 @@ GLOBAL_LIST_INIT_TYPED(phoronglass_recipes, /datum/stack_recipe, list ( \
 		if(istype(W,/obj/item/stack/cable_coil))
 			var/obj/item/stack/cable_coil/CC = W
 			if (get_amount() < 1 || CC.get_amount() < 5)
-				to_chat(user, SPAN_WARNING("You need five lengths of coil and one sheet of glass to make wired glass."))
+				to_chat(user, SPAN_WARNING("你需要五段线圈和一张玻璃来制作缠线玻璃。"))
 				return
 
 			CC.use(5)
 			new /obj/item/stack/light_w(user.loc, 1)
 			use(1)
-			to_chat(user, SPAN_NOTICE("You attach wire to the [name]."))
+			to_chat(user, SPAN_NOTICE("你将电线连接到[name]上。"))
 			return
 		else if(istype(W, /obj/item/stack/rods))
 			var/obj/item/stack/rods/V  = W
 			if (V.get_amount() < 1 || get_amount() < 1)
-				to_chat(user, SPAN_WARNING("You need one rod and one sheet of glass to make reinforced glass."))
+				to_chat(user, SPAN_WARNING("你需要一根杆子和一张玻璃来制作强化玻璃。"))
 				return
 
 			var/obj/item/stack/sheet/glass/reinforced/RG = new (user.loc)
@@ -97,8 +97,8 @@ GLOBAL_LIST_INIT_TYPED(phoronglass_recipes, /datum/stack_recipe, list ( \
  * Reinforced glass sheets
  */
 /obj/item/stack/sheet/glass/reinforced
-	name = "reinforced glass"
-	desc = "Reinforced glass is made out of squares of regular silicate glass layered on a metallic rod matrix. This glass is more resistant to direct impacts, even if it may crack."
+	name = "强化玻璃"
+	desc = "强化玻璃由普通硅酸盐玻璃方块层叠在金属杆矩阵上制成。这种玻璃更能抵抗直接冲击，即使它可能会破裂。"
 	singular_name = "reinforced glass sheet"
 	icon_state = "sheet-rglass"
 	stack_id = "reinf glass sheet"
@@ -127,8 +127,8 @@ GLOBAL_LIST_INIT_TYPED(phoronglass_recipes, /datum/stack_recipe, list ( \
  * Phoron Glass sheets
  */
 /obj/item/stack/sheet/glass/phoronglass
-	name = "phoron glass"
-	desc = "Phoron glass is a silicate-phoron alloy turned into a non-crystalline solid. It is transparent just like glass, even if visibly tainted pink, and very resistant to damage and heat."
+	name = "福隆玻璃"
+	desc = "福隆玻璃是一种硅酸盐-福隆合金制成的非晶态固体。它像玻璃一样透明，尽管明显带有粉红色调，并且非常抗损伤和耐热。"
 	singular_name = "phoron glass sheet"
 	icon_state = "sheet-phoronglass"
 	matter = list("glass" = 7500)
@@ -162,8 +162,8 @@ GLOBAL_LIST_INIT_TYPED(phoronglass_recipes, /datum/stack_recipe, list ( \
  * Reinforced phoron glass sheets
  */
 /obj/item/stack/sheet/glass/phoronrglass
-	name = "reinforced phoron glass"
-	desc = "Reinforced phoron glass is made out of squares of silicate-phoron alloy glass layered on a metallic rod matrix. It is insanely resistant to both physical shock and heat."
+	name = "强化福隆玻璃"
+	desc = "强化型福玻斯玻璃由硅酸盐-福玻斯合金玻璃方块层叠在金属棒矩阵上制成。它对物理冲击和高温都具有惊人的抵抗力。"
 	singular_name = "reinforced phoron glass sheet"
 	icon_state = "sheet-phoronrglass"
 	matter = list("glass" = 7500,"metal" = 1875)

@@ -18,35 +18,35 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	ceiling = CEILING_METAL
 
 /area/supply/station //only to be common ancestor use faction areas
-	name = "Supply Shuttle"
+	name = "补给穿梭机"
 	icon_state = "shuttle3"
 	requires_power = 0
 	ambience_exterior = AMBIENCE_ALMAYER
 /area/supply/station/uscm
-	name = "Supply Shuttle USCM"
+	name = "补给穿梭机 USCM"
 
 /area/supply/station/upp
-	name = "Supply Shuttle UPP"
+	name = "补给穿梭机 UPP"
 
 
 
 /area/supply/dock
-	name = "Supply Shuttle"
+	name = "补给穿梭机"
 	icon_state = "shuttle3"
 	requires_power = 0
 /area/supply/dock/uscm
-	name = "USCM Supply Shuttle"
+	name = "USCM补给穿梭机"
 
 /area/supply/dock/upp
-	name = "Supply Shuttle UPP"
+	name = "补给穿梭机 UPP"
 
 /area/supply/station_vehicle
-	name = "Vehicle ASRS"
+	name = "载具自动存储检索系统"
 	icon_state = "shuttle3"
 	requires_power = 0
 
 /area/supply/dock_vehicle
-	name = "Vehicle ASRS"
+	name = "载具自动存储检索系统"
 	icon_state = "shuttle3"
 	requires_power = 0
 
@@ -54,7 +54,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 /obj/structure/plasticflaps //HOW DO YOU CALL THOSE THINGS ANYWAY
 	name = "\improper plastic flaps"
-	desc = "Completely impassable - or are they?"
+	desc = "完全无法通过——真的吗？"
 	icon = 'icons/obj/structures/props/stationobjs.dmi' //Change this.
 	icon_state = "plasticflaps"
 	gender = PLURAL
@@ -84,7 +84,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		return
 
 	collide_message_busy = world.time + 3 SECONDS
-	C.visible_message(SPAN_NOTICE("[C] tries to go through \the [src]."),
+	C.visible_message(SPAN_NOTICE("[C]试图穿过\the [src]。"),
 	SPAN_NOTICE("You try to go through \the [src]."))
 
 	if(do_after(C, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
@@ -103,10 +103,10 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 /obj/structure/plasticflaps/mining //A specific type for mining that doesn't allow airflow because of them damn crates
 	name = "\improper Airtight plastic flaps"
-	desc = "Heavy-duty, airtight, plastic flaps."
+	desc = "重型、气密、塑料挡板。"
 
 /obj/structure/machinery/computer/supply
-	name = "Supply ordering console"
+	name = "补给订购控制台"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "request"
 	density = TRUE
@@ -352,7 +352,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	reqform.info += "REQUESTED BY: [order.orderedby]<br>"
 	reqform.info += "RANK: [order.orderedby_rank]<br>"
 	reqform.info += "REASON: [order.reason]<br>"
-	reqform.info += "ACCESS RESTRICTION: [english_list(accesses, nothing_text = "None")]<br>"
+	reqform.info += "ACCESS RESTRICTION: [english_list(accesses, nothing_text = "无")]<br>"
 	reqform.info += "CONTENTS:<br>"
 	for(var/datum/supply_packs/supply_pack as anything in order.objects)
 		reqform.info += supply_pack.manifest
@@ -377,8 +377,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	return FALSE
 
 /obj/structure/machinery/computer/supply/asrs
-	name = "ASRS console"
-	desc = "A console for the Automated Storage Retrieval System."
+	name = "自动存储检索系统控制台"
+	desc = "自动存储检索系统的控制台。"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "supply"
 	density = TRUE
@@ -399,13 +399,13 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		if(can_order_contraband)
 			var/obj/item/spacecash/slotted_cash = hit_item
 			if(slotted_cash.counterfeit == TRUE)
-				to_chat(user, SPAN_NOTICE("You find a small horizontal slot at the bottom of the console. You try to feed \the [slotted_cash] into it, but it rejects it! Maybe it's counterfeit?"))
+				to_chat(user, SPAN_NOTICE("你在控制台底部发现一个小的水平插槽。你试图将\the [slotted_cash]塞进去，但它拒收了！也许是假钞？"))
 				return
-			to_chat(user, SPAN_NOTICE("You find a small horizontal slot at the bottom of the console. You feed \the [slotted_cash] into it.."))
+			to_chat(user, SPAN_NOTICE("你在控制台底部发现一个小的水平插槽。你将\the [slotted_cash]塞了进去.."))
 			linked_supply_controller.black_market_points += slotted_cash.worth
 			qdel(slotted_cash)
 		else
-			to_chat(user, SPAN_NOTICE("You find a small horizontal slot at the bottom of the console. You try to feed \the [hit_item] into it, but it's seemingly blocked off from the inside."))
+			to_chat(user, SPAN_NOTICE("你在控制台底部发现一个小的水平插槽。你试图将\the [hit_item]塞进去，但里面似乎被堵住了。"))
 			return
 	. = ..()
 
@@ -429,8 +429,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			computer.black_market_lockout = TRUE
 
 /obj/structure/machinery/computer/supply_drop_console
-	name = "Supply Drop Console"
-	desc = "An old-fashioned computer hooked into the nearby Supply Drop system."
+	name = "补给投放控制台"
+	desc = "一台连接到附近补给投放系统的老式计算机。"
 	icon_state = "security_cam"
 	circuit = /obj/item/circuitboard/computer/supply_drop_console
 	req_access = list(ACCESS_MARINE_CARGO)
@@ -549,7 +549,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	if(..())  //Checks for power outages
 		return
 	if(!allowed(user))
-		to_chat(user, SPAN_WARNING("Access denied."))
+		to_chat(user, SPAN_WARNING("权限被拒绝。"))
 		return TRUE
 	tgui_interact(user)
 	return
@@ -611,7 +611,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	var/obj/structure/droppod/supply/pod = new(null, crate)
 	crate.forceMove(pod)
 	pod.launch(T)
-	log_ares_requisition("Supply Drop", "Launch [crate.name] to X[x_supply], Y[y_supply].", usr.real_name)
+	log_ares_requisition("补给投放", "Launch [crate.name] to X[x_supply], Y[y_supply].", usr.real_name)
 	log_game("[key_name(usr)] launched supply drop '[crate.name]' to X[x_coord], Y[y_coord].")
 	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[crate.name]' supply drop launched! Another launch will be available in five minutes.")]")
 
@@ -772,8 +772,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		"Weapons Specialist Ammo",
 		"Restricted Equipment",
 		"Clothing",
-		"Medical",
-		"Engineering",
+		"医疗区",
+		"工程部",
 		"Research",
 		"Supplies",
 		"Food",
@@ -944,7 +944,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			computer.balloon_alert_to_viewers("you hear horrifying noises coming from the elevator!")
 
 /proc/maul_human(mob/living/carbon/human/mauled_human)
-	mauled_human.visible_message(SPAN_HIGHDANGER("The machinery crushes [mauled_human]"), SPAN_HIGHDANGER("The elevator machinery is CRUSHING YOU!"))
+	mauled_human.visible_message(SPAN_HIGHDANGER("机械装置碾碎了[mauled_human]"), SPAN_HIGHDANGER("The elevator machinery is CRUSHING YOU!"))
 
 	if(mauled_human.stat != DEAD)
 		mauled_human.emote("scream")
@@ -1025,7 +1025,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	shoppinglist.Cut()
 
 /obj/item/paper/manifest
-	name = "Supply Manifest"
+	name = "补给清单"
 	var/ordername
 	var/ordernum
 	var/orderedby
@@ -1094,7 +1094,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	if(!is_mainship_level(z))
 		return
 	if(!allowed(user))
-		to_chat(user, SPAN_DANGER("Access Denied."))
+		to_chat(user, SPAN_DANGER("权限被拒绝。"))
 		return
 
 	if(..())
@@ -1315,7 +1315,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 /datum/controller/supply/proc/black_market_investigation()
 	black_market_heat = -1
-	SSticker.mode.get_specific_call(/datum/emergency_call/inspection_cmb/black_market, TRUE, TRUE) // "Inspection - Colonial Marshals Ledger Investigation Team"
+	SSticker.mode.get_specific_call(/datum/emergency_call/inspection_cmb/black_market, TRUE, TRUE) // "检查 - 殖民地执法官账目调查组"
 	log_game("Black Market Inspection auto-triggered.")
 
 /obj/structure/machinery/computer/supply/asrs/proc/post_signal(command)
@@ -1333,8 +1333,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	frequency.post_signal(src, status_signal)
 
 /obj/structure/machinery/computer/supply/asrs/vehicle
-	name = "vehicle ASRS console"
-	desc = "A console for an Automated Storage and Retrieval System. This one is tied to a deep storage unit for vehicles."
+	name = "载具自动存取系统控制台"
+	desc = "一套自动存储和检索系统的控制台。此控制台连接至一个用于存放载具的深层存储单元。"
 	req_access = list(ACCESS_MARINE_CREWMAN)
 	circuit = /obj/item/circuitboard/computer/supplycomp/vehicle
 	// Can only retrieve one vehicle per round
@@ -1358,38 +1358,38 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	return
 
 /datum/vehicle_order/tank
-	name = "M34A2 Longstreet Light Tank"
+	name = "M34A2长街轻型坦克"
 	ordered_vehicle = /obj/effect/vehicle_spawner/tank/decrepit
 
 /datum/vehicle_order/tank/has_vehicle_lock()
 	return
 
 /datum/vehicle_order/tank/broken
-	name = "Smashed M34A2 Longstreet Light Tank"
+	name = "损毁的M34A2长街轻型坦克"
 	ordered_vehicle = /obj/effect/vehicle_spawner/tank/hull/broken
 
 /datum/vehicle_order/tank/plain
-	name = "M34A2 Longstreet Light Tank"
+	name = "M34A2长街轻型坦克"
 	ordered_vehicle = /obj/effect/vehicle_spawner/tank
 
 /datum/vehicle_order/apc
-	name = "M577 Armored Personnel Carrier"
+	name = "M577装甲运兵车"
 	ordered_vehicle = /obj/effect/vehicle_spawner/apc/decrepit
 
 /datum/vehicle_order/apc/med
-	name = "M577-MED Armored Personnel Carrier"
+	name = "M577-MED装甲运兵车"
 	ordered_vehicle = /obj/effect/vehicle_spawner/apc_med/decrepit
 
 /datum/vehicle_order/apc/cmd
-	name = "M577-CMD Armored Personnel Carrier"
+	name = "M577-CMD装甲运兵车"
 	ordered_vehicle = /obj/effect/vehicle_spawner/apc_cmd/decrepit
 
 /datum/vehicle_order/apc/empty
-	name = "Barebones M577 Armored Personal Carrier"
+	name = "基础型M577装甲运兵车"
 	ordered_vehicle = /obj/effect/vehicle_spawner/apc/unarmed/broken
 
 /datum/vehicle_order/arc
-	name = "M540-B Armored Recon Carrier"
+	name = "M540-B装甲侦察车"
 	ordered_vehicle = /obj/effect/vehicle_spawner/arc
 
 /datum/vehicle_order/arc/has_vehicle_lock()
@@ -1414,11 +1414,11 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		return
 
 	if(LAZYLEN(allowed_roles) && !allowed_roles.Find(H.job)) //replaced Z-level restriction with role restriction.
-		to_chat(H, SPAN_WARNING("This console isn't for you."))
+		to_chat(H, SPAN_WARNING("这个控制台不是给你用的。"))
 		return
 
 	if(!allowed(H))
-		to_chat(H, SPAN_DANGER("Access Denied."))
+		to_chat(H, SPAN_DANGER("权限被拒绝。"))
 		return
 
 	H.set_interaction(src)
@@ -1485,7 +1485,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 	if(href_list["get_vehicle"])
 		if((SSshuttle.vehicle_elevator.z == upper_turf.z) || SSshuttle.vehicle_elevator.mode != SHUTTLE_IDLE)
-			to_chat(usr, SPAN_WARNING("The elevator needs to be in the cargo bay dock to call a vehicle up!"))
+			to_chat(usr, SPAN_WARNING("电梯必须位于货舱对接位才能将载具调上来！"))
 			return
 
 		var/turf/middle_turf = get_turf(SSshuttle.vehicle_elevator)
@@ -1512,7 +1512,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			return
 
 		if(SSshuttle.vehicle_elevator.z == lower_turf.z)
-			to_chat(usr, SPAN_WARNING("The elevator is already lowered!"))
+			to_chat(usr, SPAN_WARNING("电梯已经降下了！"))
 			return
 
 		SSshuttle.vehicle_elevator.request(SSshuttle.getDock("adminlevel vehicle"))

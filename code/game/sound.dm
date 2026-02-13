@@ -460,11 +460,11 @@
 	set desc = "Stress test this bich."
 	set category = "Debug"
 
-	var/ammount = tgui_input_number(usr, "How many sounds to queue?")
-	var/range = tgui_input_number(usr, "Range")
-	var/x = tgui_input_number(usr, "Center X")
-	var/y = tgui_input_number(usr, "Center Y")
-	var/z = tgui_input_number(usr, "Z level")
+	var/ammount = tgui_input_number(usr, "队列多少音效？")
+	var/range = tgui_input_number(usr, "范围")
+	var/x = tgui_input_number(usr, "中心X")
+	var/y = tgui_input_number(usr, "中心Y")
+	var/z = tgui_input_number(usr, "Z层级")
 	var/datum/sound_template/template
 	for(var/i = 1, i <= ammount, i++)
 		template = new
@@ -482,4 +482,4 @@
 	set category = "Debug"
 
 	for(var/sound/soundin in SoundQuery())
-		to_chat(src, "channel#[soundin.channel]: [soundin.status] - [soundin.file] - len=[length(soundin)], wait=[soundin.wait], offset=[soundin.offset], repeat=[soundin.repeat]")
+		to_chat(src, "频道#[soundin.channel]: [soundin.status] - [soundin.file] - 长度=[length(soundin)], 等待=[soundin.wait], 偏移=[soundin.offset], 重复=[soundin.repeat]")

@@ -4,15 +4,15 @@
 
 	var/mob/user = usr
 	if(!check_rights(R_MOD))
-		to_chat(user, SPAN_WARNING("You do not have access to this command."))
+		to_chat(user, SPAN_WARNING("你无权使用此命令。"))
 		return FALSE
 
 	if(!SSticker.mode)
-		to_chat(user, SPAN_WARNING("The round has not started yet."))
+		to_chat(user, SPAN_WARNING("回合尚未开始。"))
 		return FALSE
 
 	if(!GLOB.ares_link || !GLOB.ares_link.admin_interface || !GLOB.ares_link.interface)
-		to_chat(usr, SPAN_BOLDWARNING("ERROR: ARES Link or Interface not found!"))
+		to_chat(usr, SPAN_BOLDWARNING("错误：未找到ARES链接或接口！"))
 		return FALSE
 	GLOB.ares_link.tgui_interact(user)
 	var/log = "[key_name(user)] opened the remote ARES Interface."
@@ -37,7 +37,7 @@
 
 /datum/ares_link/tgui_interact(mob/user, datum/tgui/ui)
 	if(!interface || !admin_interface)
-		to_chat(user, SPAN_WARNING("ARES ADMIN DATA LINK FAILED."))
+		to_chat(user, SPAN_WARNING("ARES管理数据链接失败。"))
 		return FALSE
 	ui = SStgui.try_update_ui(user, GLOB.ares_link, ui)
 	if(!ui)
@@ -46,7 +46,7 @@
 
 /datum/ares_link/ui_data(mob/user)
 	if(!interface)
-		to_chat(user, SPAN_WARNING("ARES ADMIN DATA LINK FAILED."))
+		to_chat(user, SPAN_WARNING("ARES管理数据链接失败。"))
 		return FALSE
 	var/list/data = datacore.get_interface_data()
 
@@ -95,12 +95,12 @@
 		return
 	var/mob/user = ui.user
 	if(!check_rights_for(user.client, R_MOD))
-		to_chat(user, SPAN_WARNING("You require staff identification to access this terminal!"))
+		to_chat(user, SPAN_WARNING("需要员工身份验证才能访问此终端！"))
 		return FALSE
 	switch (action)
 		if("go_back")
 			if(!admin_interface.last_menu)
-				to_chat(user, SPAN_WARNING("Error, no previous page detected."))
+				to_chat(user, SPAN_WARNING("错误，未检测到上一页。"))
 				return FALSE
 			var/temp_holder = admin_interface.current_menu
 			admin_interface.current_menu = admin_interface.last_menu
@@ -195,17 +195,17 @@
 			datacore.records_talking -= conversation
 
 		if("fake_message_ares")
-			var/message = tgui_input_text(user, "What do you wish to say to ARES?", "ARES Message", encode = FALSE)
+			var/message = tgui_input_text(user, "你想对ARES说什么？", "ARES Message", encode = FALSE)
 			if(message)
 				interface.message_ares(message, user, params["local_active_convo"], TRUE)
 		if("ares_reply")
-			var/message = tgui_input_text(user, "What do you wish to reply with?", "ARES Response", encode = FALSE)
+			var/message = tgui_input_text(user, "你希望如何回复？", "ARES Response", encode = FALSE)
 			if(message)
 				interface.response_from_ares(message, params["local_active_convo"])
 				var/datum/ares_record/talk_log/conversation = locate(params["local_active_convo"])
 				if(!istype(conversation))
 					return FALSE
-				var/admin_log = SPAN_STAFF_IC("<b>ADMINS/MODS: [SPAN_RED("[key_name(user)] replied to [conversation.user]'s ARES message")] [SPAN_GREEN("via Remote Interface")] with: [SPAN_BLUE(message)] </b>")
+				var/admin_log = SPAN_STAFF_IC("<b>管理员/模组：[SPAN_RED("[key_name(user)] replied to [conversation.user]'s ARES message")] [SPAN_GREEN("via Remote Interface")] with: [SPAN_BLUE(message)] </b>")
 				for(var/client/admin in GLOB.admins)
 					if((R_ADMIN|R_MOD) & admin.admin_holder.rights)
 						to_chat(admin, admin_log)
@@ -226,14 +226,14 @@
 			var/assigned = ticket.ticket_assignee
 			if(assigned)
 				if(assigned == MAIN_AI_SYSTEM)
-					var/prompt = tgui_alert(user, "ARES already claimed this ticket! Do you wish to drop the claim?", "Unclaim ticket", list("Yes", "No"))
+					var/prompt = tgui_alert(user, "ARES已认领此工单！是否要放弃认领？", "Unclaim ticket", list("Yes", "No"))
 					if(prompt != "Yes")
 						return FALSE
 					/// set ticket back to pending
 					ticket.ticket_assignee = null
 					ticket.ticket_status = TICKET_PENDING
 					return claim
-				var/choice = tgui_alert(user, "This ticket has already been claimed by [assigned]! Do you wish to override their claim?", "Claim Override", list("Yes", "No"))
+				var/choice = tgui_alert(user, "此工单已被[assigned]认领！是否要覆盖其认领？", "Claim Override", list("Yes", "No"))
 				if(choice != "Yes")
 					claim = FALSE
 			if(claim)
@@ -266,29 +266,29 @@
 			if(!istype(access_ticket))
 				return FALSE
 			access_ticket.ticket_status = TICKET_REJECTED
-			to_chat(user, SPAN_NOTICE("[access_ticket.ticket_type] [access_ticket.ticket_id] marked as rejected."))
+			to_chat(user, SPAN_NOTICE("[access_ticket.ticket_type] [access_ticket.ticket_id] 标记为已拒绝。"))
 			ares_apollo_talk("Access Ticket [access_ticket.ticket_id] rejected.")
 			return TRUE
 
 		if("new_report")
 			var/priority_report = FALSE
-			var/maint_type = tgui_input_list(user, "What is the type of maintenance item you wish to report?", "Report Category", GLOB.maintenance_categories, 30 SECONDS)
+			var/maint_type = tgui_input_list(user, "你要报告哪种类型的维护项目？", "Report Category", GLOB.maintenance_categories, 30 SECONDS)
 			switch(maint_type)
 				if("Major Structural Damage", "Fire", "Communications Failure",	"Power Generation Failure")
 					priority_report = TRUE
 
 			if(!maint_type)
 				return FALSE
-			var/details = tgui_input_text(user, "What are the details for this report?", "Ticket Details", encode = FALSE)
+			var/details = tgui_input_text(user, "此报告的详细内容是什么？", "Ticket Details", encode = FALSE)
 			if(!details)
 				return FALSE
 
 			if(!priority_report)
-				var/is_priority = tgui_alert(user, "Is this a priority report?", "Priority designation", list("Yes", "No"))
+				var/is_priority = tgui_alert(user, "这是优先报告吗？", "Priority designation", list("Yes", "No"))
 				if(is_priority == "Yes")
 					priority_report = TRUE
 
-			var/confirm = alert(user, "Please confirm the submission of your maintenance report. \n\n Priority: [priority_report ? "Yes" : "No"]\n Category: '[maint_type]'\n Details: '[details]'\n\n Is this correct?", "Confirmation", "Yes", "No")
+			var/confirm = alert(user, "请确认提交你的维护报告。\n\n 优先级：[priority_report ? "Yes" : "No"]\n Category: '[maint_type]'\n Details: '[details]'\n\n Is this correct?", "确认", "Yes", "No")
 			if(confirm == "Yes")
 				var/datum/ares_ticket/maintenance/maint_ticket = new(MAIN_AI_SYSTEM, maint_type, details, priority_report)
 				tickets_maintenance += maint_ticket
@@ -303,9 +303,9 @@
 			if(!istype(ticket))
 				return FALSE
 			if(ticket.ticket_submitter != MAIN_AI_SYSTEM)
-				to_chat(user, SPAN_WARNING("You cannot cancel a ticket that does not belong to [MAIN_AI_SYSTEM]!"))
+				to_chat(user, SPAN_WARNING("你无法取消不属于[MAIN_AI_SYSTEM]的工单！"))
 				return FALSE
-			to_chat(user, SPAN_WARNING("[ticket.ticket_type] [ticket.ticket_id] has been cancelled."))
+			to_chat(user, SPAN_WARNING("[ticket.ticket_type] [ticket.ticket_id] 已被取消。"))
 			ticket.ticket_status = TICKET_CANCELLED
 			if(ticket.ticket_priority)
 				ares_apollo_talk("Priority [ticket.ticket_type] [ticket.ticket_id] has been cancelled.")
@@ -320,7 +320,7 @@
 				options_list += TICKET_NON_PRIORITY
 			else
 				options_list += TICKET_PRIORITY
-			var/choice = tgui_alert(user, "What do you wish to mark the ticket as?", "Mark", options_list, 20 SECONDS)
+			var/choice = tgui_alert(user, "你希望将工单标记为什么状态？", "Mark", options_list, 20 SECONDS)
 			switch(choice)
 				if(TICKET_PRIORITY)
 					ticket.ticket_priority = TRUE
@@ -338,20 +338,20 @@
 					return FALSE
 			if(ticket.ticket_priority)
 				ares_apollo_talk("Priority [ticket.ticket_type] [ticket.ticket_id] has been [choice] by [MAIN_AI_SYSTEM].")
-			to_chat(user, SPAN_NOTICE("[ticket.ticket_type] [ticket.ticket_id] marked as [choice]."))
+			to_chat(user, SPAN_NOTICE("[ticket.ticket_type] [ticket.ticket_id] 标记为[choice]。"))
 			return TRUE
 
 		if("trigger_vent")
 			var/obj/structure/pipes/vents/pump/no_boom/gas/ares/sec_vent = locate(params["vent"])
 			if(!istype(sec_vent) || sec_vent.welded)
-				to_chat(user, SPAN_WARNING("ERROR: Gas release failure."))
+				to_chat(user, SPAN_WARNING("错误：气体释放失败。"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
 			if(!COOLDOWN_FINISHED(sec_vent, vent_trigger_cooldown))
-				to_chat(user, SPAN_WARNING("ERROR: Insufficient gas reserve for this vent."))
+				to_chat(user, SPAN_WARNING("错误：此通风口气体储备不足。"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
-			to_chat(user, SPAN_WARNING("Initiating gas release from [sec_vent.vent_tag]."))
+			to_chat(user, SPAN_WARNING("正在从[sec_vent.vent_tag]启动气体释放。"))
 			playsound(src, 'sound/machines/chime.ogg', 15, 1)
 			COOLDOWN_START(sec_vent, vent_trigger_cooldown, COOLDOWN_ARES_VENT)
 			ares_apollo_talk("Nerve Gas release imminent from [sec_vent.vent_tag].")
@@ -362,11 +362,11 @@
 		if("update_sentries")
 			var/new_iff = params["chosen_iff"]
 			if(!new_iff)
-				to_chat(user, SPAN_WARNING("ERROR: Unknown setting."))
+				to_chat(user, SPAN_WARNING("错误：未知设置。"))
 				return FALSE
 			if(new_iff == faction_label)
 				return FALSE
 			change_iff(new_iff)
 			message_admins("ARES: [key_name(user)] updated ARES Sentry IFF to [new_iff].")
-			to_chat(user, SPAN_WARNING("Sentry IFF settings updated!"))
+			to_chat(user, SPAN_WARNING("哨戒炮敌我识别设置已更新！"))
 			return TRUE

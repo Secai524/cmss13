@@ -70,10 +70,10 @@
 		if(istype(M, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = M
 			if(H.species.flags & IS_SYNTHETIC)
-				to_chat(H, SPAN_DANGER("You can't eat \the [fluff_text]s."))
+				to_chat(H, SPAN_DANGER("你不能吃\the [fluff_text]。"))
 				return
 
-		M.visible_message(SPAN_NOTICE("[user] swallows [src]."),
+		M.visible_message(SPAN_NOTICE("[user]吞下了[src]。"),
 		SPAN_HELPFUL("You swallow [src]."))
 		var/list/reagents_in_pill = list()
 		for(var/datum/reagent/R in reagents.reagent_list)
@@ -91,7 +91,7 @@
 	else if(istype(M, /mob/living/carbon/human) )
 		var/mob/living/carbon/human/H = M
 		if(H.species.flags & IS_SYNTHETIC)
-			to_chat(H, SPAN_DANGER("They have a monitor for a head, where do you think you're going to put that?"))
+			to_chat(H, SPAN_DANGER("他们头是个显示器，你觉得你能把这东西放哪儿？"))
 			return
 
 		user.affected_message(M,
@@ -150,7 +150,7 @@
 		var/loss = amount - target.reagents.maximum_volume
 
 		reagents.trans_to(target, reagents.total_volume)
-		user.visible_message(SPAN_NOTICE("[user] drops a [fluff_text] into [target]..."),
+		user.visible_message(SPAN_NOTICE("[user]将一个[fluff_text]丢进[target]..."),
 		SPAN_NOTICE("You drop a [fluff_text] into [target][loss > 0 ? " but [target] overflows and takes [loss]u of your pill with it." : "..."]"),
 		SPAN_NOTICE("You hear somebody drop a pill into some liquid."), 2)
 
@@ -174,7 +174,7 @@
 	pill_icon_class = "tox"
 
 /obj/item/reagent_container/pill/cyanide
-	desc = "A cyanide pill. Don't swallow this!"
+	desc = "一粒氰化物药片。千万别吞下去！"
 	pill_desc = null//so even non medics can see what this pill is.
 	pill_initial_reagents = list("cyanide" = 50)
 	pill_icon_class = "tox"
@@ -195,7 +195,7 @@
 	pill_icon_class = "oxy"
 
 /obj/item/reagent_container/pill/oxycodone/natural
-	name = "numbing herb"
+	name = "麻醉草药"
 	pill_desc = "A powerful painkilling herb, eating it will numb the pain."
 	icon = 'icons/obj/items/harvest.dmi'
 	icon_state = "mtear"
@@ -241,8 +241,8 @@
 	pill_icon_class = "drug"
 
 /obj/item/reagent_container/pill/zombie_powder
-	desc = "A strange pill that smells like death itself."
-	pill_desc = "A strange pill that smells like death itself."
+	desc = "一颗闻起来像死亡本身的奇怪药片。"
+	pill_desc = "一颗闻起来像死亡本身的奇怪药片。"
 	pill_initial_reagents = list("zombiepowder" = 8, "copper" = 2) //roughly two minutes of death
 	pill_icon_class = "drug"
 
@@ -271,7 +271,7 @@
 	pill_icon_class = "bica"
 
 /obj/item/reagent_container/pill/bicaridine/natural
-	name = "healing herb"
+	name = "治疗草药"
 	pill_desc = "A remarkable healing herb, eating it will heal brute damage."
 	icon = 'icons/obj/items/harvest.dmi'
 	icon_state = "shand"

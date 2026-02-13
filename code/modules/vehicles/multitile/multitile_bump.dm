@@ -92,11 +92,11 @@
 /obj/structure/mortar/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(fixed)
 		if(V.seats[VEHICLE_DRIVER])
-			to_chat(V.seats[VEHICLE_DRIVER], SPAN_WARNING("[src]'s supports are bolted and welded into the floor. You need to find a way around!"))
+			to_chat(V.seats[VEHICLE_DRIVER], SPAN_WARNING("[src]的支撑架已用螺栓固定并焊死在地板上。你需要另寻他路！"))
 		return FALSE
 	if(firing)
 		if(V.seats[VEHICLE_DRIVER])
-			to_chat(V.seats[VEHICLE_DRIVER], SPAN_WARNING("[src]'s barrel is still steaming hot. Wait a few seconds and try again!"))
+			to_chat(V.seats[VEHICLE_DRIVER], SPAN_WARNING("[src]的枪管仍然滚烫。等待几秒钟再试！"))
 		return FALSE
 	playsound(V, 'sound/effects/metal_crash.ogg', 20)
 	var/obj/item/mortar_kit/M = new /obj/item/mortar_kit(loc)
@@ -148,7 +148,7 @@
 /obj/structure/dropship_equipment/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(V.seats[VEHICLE_DRIVER])
 		var/last_moved = V.l_move_time //in case VC moves before answering
-		if(alert(V.seats[VEHICLE_DRIVER], "Are you sure you want to crush \the [name]?", "Ramming confirmation","Yes","No") == "Yes")
+		if(alert(V.seats[VEHICLE_DRIVER], "你确定要碾碎\the [name]吗？", "Ramming confirmation","Yes","No") == "Yes")
 			if(last_moved == V.l_move_time)
 				visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
 				playsound(V, 'sound/effects/metal_crash.ogg', 20)
@@ -407,7 +407,7 @@
 		update_health(health + 1)
 	else if(health < health_max * 0.15)
 		if(V.seats[VEHICLE_DRIVER])
-			to_chat(V.seats[VEHICLE_DRIVER], SPAN_WARNING("[src]'s was too damaged already and didn't handle well being rammed."))
+			to_chat(V.seats[VEHICLE_DRIVER], SPAN_WARNING("[src]已经严重受损，无法承受撞击。"))
 			destroyed_action()
 	else
 		HD.forceMove(get_turf(src))
@@ -429,7 +429,7 @@
 /obj/structure/machinery/defenses/sentry/launchable/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(V.seats[VEHICLE_DRIVER])
 		var/last_moved = V.l_move_time //in case VC moves before answering
-		if(alert(V.seats[VEHICLE_DRIVER], "Are you sure you want to crush \the [name]?", "Ramming confirmation","Yes","No") == "Yes")
+		if(alert(V.seats[VEHICLE_DRIVER], "你确定要碾碎\the [name]吗？", "Ramming confirmation","Yes","No") == "Yes")
 			if(last_moved == V.l_move_time)
 				visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
 				playsound(V, 'sound/effects/metal_crash.ogg', 20)
@@ -761,11 +761,11 @@
 /mob/living/carbon/xenomorph/defender/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(fortify)
 		if(V.vehicle_flags & VEHICLE_CLASS_WEAK) //defenders being able to completely block armored vehicles by crawling into a boulder is ridiculous
-			visible_message(SPAN_DANGER("[src] digs it's claws into the ground, anchoring itself in place and halting [V] in it's tracks!"),
+			visible_message(SPAN_DANGER("[src]将利爪插入地面，将自己固定住，并拦停了[V]！"),
 			SPAN_DANGER("You dig your claws into the ground, stopping [V] in it's tracks!"))
 			return FALSE
 		else if(V.vehicle_flags & VEHICLE_CLASS_LIGHT)
-			visible_message(SPAN_DANGER("[src] digs it's claws into the ground, slowing [V]'s movement!"),
+			visible_message(SPAN_DANGER("[src]将利爪插入地面，减缓了[V]的移动！"),
 			SPAN_DANGER("You dig your claws into the ground, slowing [V]'s movement!"))
 			var/mob_moved = step(src, V.last_move_dir)
 			V.move_momentum = floor(V.move_momentum/3)
@@ -808,7 +808,7 @@
 					break
 		if(do_move)
 			try_move(C.dir, force=TRUE)
-			visible_message(SPAN_DANGER("The sheer force of the impact makes \the [src] slide back!"))
+			visible_message(SPAN_DANGER("巨大的冲击力使\the [src]向后滑行！"))
 		log_attack("\The [src] was rammed [do_move ? "and pushed " : " "]by [key_name(C)].")
 		playsound(loc, 'sound/effects/metal_crash.ogg', 35)
 		interior_crash_effect()

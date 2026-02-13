@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(round_recording)
-	name  = "Round Recording"
+	name  = "回合录制"
 	wait  = 5 SECONDS
 	priority = SS_PRIORITY_ROUND_RECORDING
 	flags = SS_KEEP_TIMING

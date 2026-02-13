@@ -1,6 +1,6 @@
 //this machine does nothing
 /obj/structure/machinery/disease2/diseaseanalyser
-	name = "Disease Analyser"
+	name = "疾病分析仪"
 	icon = 'icons/obj/structures/machinery/virology.dmi'
 	icon_state = "analyser"
 	anchored = TRUE
@@ -8,7 +8,7 @@
 
 
 /obj/structure/machinery/computer/pandemic
-	name = "PanD.E.M.I.C 2200"
+	name = "泛流行病2200"
 	density = TRUE
 	anchored = TRUE
 	icon = 'icons/obj/structures/machinery/science_machines.dmi'
@@ -96,7 +96,7 @@
 				if(virus_type in GLOB.diseases) // Make sure this is a disease
 					D = new virus_type(0, null)
 			var/list/data = list("viruses"=list(D))
-			var/name = strip_html(input(user,"Name:","Name the culture",D.name))
+			var/name = strip_html(input(user,"名称：","Name the culture",D.name))
 			if(!name || name == " ")
 				name = D.name
 			B.name = "[name] culture bottle"
@@ -124,7 +124,7 @@
 		updateUsrDialog()
 		return
 	else if(href_list["name_disease"])
-		var/new_name = stripped_input(user, "Name the Disease", "New Name", "", MAX_NAME_LEN)
+		var/new_name = stripped_input(user, "命名疾病", "New Name", "", MAX_NAME_LEN)
 		if(inoperable())
 			return
 		if(user.stat || user.is_mob_restrained())
@@ -189,7 +189,7 @@
 								var/datum/disease/advance/A = D
 								D = GLOB.archive_diseases[A.GetDiseaseID()]
 								disease_creation = A.GetDiseaseID()
-								if(D.name == "Unknown")
+								if(D.name == "未知")
 									dat += "<b><a href='byond://?src=\ref[src];name_disease=[A.GetDiseaseID()]'>Name Disease</a></b><BR>"
 
 							if(!D)
@@ -216,7 +216,7 @@
 				if(length(res))
 					dat += "<ul>"
 					for(var/type in Blood.data_properties["resistances"])
-						var/disease_name = "Unknown"
+						var/disease_name = "未知"
 
 						if(!ispath(type))
 							var/datum/disease/advance/A = GLOB.archive_diseases[type]
@@ -246,12 +246,12 @@
 		if(inoperable())
 			return
 		if(beaker)
-			to_chat(user, SPAN_WARNING("A beaker is already loaded into the machine."))
+			to_chat(user, SPAN_WARNING("烧杯已装入机器。"))
 			return
 
 		beaker =  I
 		user.drop_inv_item_to_loc(I, src)
-		to_chat(user, SPAN_NOTICE("You add the beaker to the machine!"))
+		to_chat(user, SPAN_NOTICE("你将烧杯加入机器！"))
 		updateUsrDialog()
 		update_icon()
 

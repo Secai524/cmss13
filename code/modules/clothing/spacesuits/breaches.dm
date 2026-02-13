@@ -55,7 +55,7 @@ GLOBAL_LIST_INIT(breach_burn_descriptors, list(
 /obj/item/clothing/suit/space/proc/repair_breaches(damtype, amount, mob/user)
 
 	if(!can_breach || !LAZYLEN(breaches) || !damage)
-		to_chat(user, "There are no breaches to repair on \the [src].")
+		to_chat(user, "\the [src]上没有需要修补的破口。")
 		return
 
 	var/list/valid_breaches = list()
@@ -65,7 +65,7 @@ GLOBAL_LIST_INIT(breach_burn_descriptors, list(
 			valid_breaches += B
 
 	if(!length(valid_breaches))
-		to_chat(user, "There are no breaches to repair on \the [src].")
+		to_chat(user, "\the [src]上没有需要修补的破口。")
 		return
 
 	var/amount_left = amount
@@ -82,7 +82,7 @@ GLOBAL_LIST_INIT(breach_burn_descriptors, list(
 			amount_left = 0
 			B.update_descriptor()
 
-	user.visible_message("<b>[user]</b> patches some of the damage on \the [src].")
+	user.visible_message("<b>[user]</b>修补了\the [src]上的一些损伤。")
 	calc_breach_damage()
 
 /obj/item/clothing/suit/space/proc/create_breaches(damtype, amount)
@@ -166,11 +166,11 @@ GLOBAL_LIST_INIT(breach_burn_descriptors, list(
 
 	if(damage >= 3)
 		if(brute_damage >= 3 && brute_damage > burn_damage)
-			name = "punctured [base_name]"
+			name = "被刺穿的[base_name]"
 		else if(burn_damage >= 3 && burn_damage > brute_damage)
-			name = "scorched [base_name]"
+			name = "被烧焦的[base_name]"
 		else
-			name = "damaged [base_name]"
+			name = "受损的[base_name]"
 	else
 		name = "[base_name]"
 
@@ -182,11 +182,11 @@ GLOBAL_LIST_INIT(breach_burn_descriptors, list(
 	if(istype(W,/obj/item/stack/sheet/mineral/plastic) || istype(W,/obj/item/stack/sheet/metal))
 
 		if(istype(src.loc,/mob/living))
-			to_chat(user, SPAN_DANGER("How do you intend to patch a hardsuit while someone is wearing it?"))
+			to_chat(user, SPAN_DANGER("你打算怎么在别人穿着的时候修补硬质护甲？"))
 			return
 
 		if(!damage || !burn_damage)
-			to_chat(user, "There is no surface damage on \the [src] to repair.")
+			to_chat(user, "\the [src]没有表面损伤需要修复。")
 			return
 
 		var/obj/item/stack/sheet/P = W
@@ -201,20 +201,20 @@ GLOBAL_LIST_INIT(breach_burn_descriptors, list(
 	else if(iswelder(W))
 
 		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
-			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			to_chat(user, SPAN_WARNING("你需要一把更强的喷枪！"))
 			return
 
 		if(istype(src.loc,/mob/living))
-			to_chat(user, SPAN_DANGER("How do you intend to patch a hardsuit while someone is wearing it?"))
+			to_chat(user, SPAN_DANGER("你打算怎么在别人穿着的时候修补硬质护甲？"))
 			return
 
 		if (!damage || ! brute_damage)
-			to_chat(user, "There is no structural damage on \the [src] to repair.")
+			to_chat(user, "\the [src]没有结构损伤需要修复。")
 			return
 
 		var/obj/item/tool/weldingtool/WT = W
 		if(!WT.remove_fuel(5))
-			to_chat(user, SPAN_DANGER("You need more welding fuel to repair this suit."))
+			to_chat(user, SPAN_DANGER("你需要更多焊料来修复这套护甲。"))
 			return
 
 		repair_breaches(BRUTE, 3, user)

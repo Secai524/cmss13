@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(thunderdome)
-	name = "Thunderdome"
+	name = "雷霆穹顶"
 	wait = 1 SECONDS
 	flags = SS_NO_INIT
 

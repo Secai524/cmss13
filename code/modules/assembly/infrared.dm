@@ -1,8 +1,8 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
 
 /obj/item/device/assembly/infra
-	name = "infrared emitter"
-	desc = "Emits a visible or invisible beam and is triggered when the beam is interrupted."
+	name = "红外发射器"
+	desc = "发射可见或不可见光束，光束被中断时触发。"
 	icon_state = "infrared"
 	matter = list("metal" = 1000, "glass" = 500, "waste" = 100)
 
@@ -104,7 +104,7 @@
 		return 0
 	pulse(0)
 	if(!holder)
-		visible_message("[icon2html(src, hearers(src))] *beep* *beep*")
+		visible_message("[icon2html(src, hearers(src))] *哔* *哔*")
 	cooldown = 2
 	spawn(10)
 		process_cooldown()
@@ -178,7 +178,7 @@
 //***************************IBeam*********************************/
 
 /obj/effect/beam/i_beam
-	name = "i beam"
+	name = "红外光束"
 	icon = 'icons/obj/items/weapons/projectiles.dmi'
 	icon_state = "ibeam"
 	var/obj/effect/beam/i_beam/next = null

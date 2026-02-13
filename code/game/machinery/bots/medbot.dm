@@ -4,8 +4,8 @@
 
 
 /obj/structure/machinery/bot/medbot
-	name = "Medibot"
-	desc = "A little medical robot. He looks somewhat underwhelmed."
+	name = "医疗机器人"
+	desc = "一个小型医疗机器人。它看起来有些无精打采。"
 	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	icon_state = "medibot0"
 	density = FALSE
@@ -39,8 +39,8 @@
 	var/shut_up = 0 //self explanatory :)
 
 /obj/structure/machinery/bot/medbot/mysterious
-	name = "Mysterious Medibot"
-	desc = "International Medibot of mystery."
+	name = "神秘医疗机器人"
+	desc = "神秘的国际医疗机器人。"
 	skin = "bezerk"
 	treatment_oxy = "dexalinp"
 	treatment_brute = "bicaridine"
@@ -173,7 +173,7 @@
 			src.reagent_glass.forceMove(get_turf(src))
 			src.reagent_glass = null
 		else
-			to_chat(usr, SPAN_NOTICE("You cannot eject the beaker because the panel is locked."))
+			to_chat(usr, SPAN_NOTICE("面板已锁定，无法弹出烧杯。"))
 
 	else if ((href_list["togglevoice"]) && (!src.locked || isRemoteControlling(usr)))
 		src.shut_up = !src.shut_up
@@ -188,25 +188,25 @@
 	if (istype(W, /obj/item/card/id))
 		if (src.allowed(user) && !open)
 			src.locked = !src.locked
-			to_chat(user, SPAN_NOTICE("Controls are now [src.locked ? "locked." : "unlocked."]"))
+			to_chat(user, SPAN_NOTICE("控制面板现已[src.locked ? "locked." : "unlocked."]"))
 			src.updateUsrDialog()
 		else
 			if(open)
-				to_chat(user, SPAN_WARNING("Please close the access panel before locking it."))
+				to_chat(user, SPAN_WARNING("请先关闭检修面板再上锁。"))
 			else
-				to_chat(user, SPAN_WARNING("Access denied."))
+				to_chat(user, SPAN_WARNING("权限被拒绝。"))
 
 	else if (istype(W, /obj/item/reagent_container/glass))
 		if(src.locked)
-			to_chat(user, SPAN_NOTICE("You cannot insert a beaker because the panel is locked."))
+			to_chat(user, SPAN_NOTICE("面板已锁定，无法插入烧杯。"))
 			return
 		if(!isnull(src.reagent_glass))
-			to_chat(user, SPAN_NOTICE("There is already a beaker loaded."))
+			to_chat(user, SPAN_NOTICE("已装载烧杯。"))
 			return
 
 		if(user.drop_inv_item_to_loc(W, src))
 			reagent_glass = W
-			to_chat(user, SPAN_NOTICE("You insert [W]."))
+			to_chat(user, SPAN_NOTICE("你插入了[W]。"))
 			src.updateUsrDialog()
 		return
 
@@ -261,7 +261,7 @@
 				if((src.last_newpatient_speak + 300) < world.time) //Don't spam these messages!
 					var/message = pick("Hey, [C.name]! Hold on, I'm coming.","Wait [C.name]! I want to help!","[C.name], you appear to be injured!")
 					src.speak(message)
-					src.visible_message("<b>[src]</b> points at [C.name]!")
+					src.visible_message("<b>[src]</b>指向[C.name]！")
 					src.last_newpatient_speak = world.time
 // if(declare_treatment)
 // var/area/location = get_area(src)
@@ -413,17 +413,17 @@
 		return
 	else
 		src.icon_state = "medibots"
-		visible_message(SPAN_DANGER("<B>[src] is trying to inject [src.patient]!</B>"))
+		visible_message(SPAN_DANGER("<B>[src]正试图给[src.patient]注射！</B>"))
 		spawn(30)
 			if ((get_dist(src, src.patient) <= 1) && (src.on))
 				if (!assess_patient(C))
-					visible_message(SPAN_DANGER("<B>[src] pulls the syringe away. Safety protocol engaged!</B>"))
+					visible_message(SPAN_DANGER("<B>[src]收回了注射器。安全协议已启动！</B>"))
 				else if (reagent_id == "internal_beaker" && reagent_glass && reagent_glass.reagents.total_volume)
 					src.reagent_glass.reagents.trans_to(src.patient,src.injection_amount) //Inject from beaker instead.
 					src.reagent_glass.reagents.reaction(src.patient, 2)
 				else
 					src.patient.reagents.add_reagent(reagent_id,src.injection_amount)
-				visible_message(SPAN_DANGER("<B>[src] injects [src.patient] with the syringe!</B>"))
+				visible_message(SPAN_DANGER("<B>[src]给[src.patient]注射了注射器！</B>"))
 
 			src.icon_state = "medibot[src.on]"
 			src.currently_healing = 0
@@ -437,12 +437,12 @@
 /obj/structure/machinery/bot/medbot/proc/speak(message)
 	if((!src.on) || (!message))
 		return
-	visible_message("[src] beeps, \"[message]\"")
+	visible_message("[src]哔哔作响，\"[message]\"")
 	return
 
 /obj/structure/machinery/bot/medbot/explode()
 	src.on = 0
-	visible_message(SPAN_DANGER("<B>[src] blows apart!</B>"), null, null, 1)
+	visible_message(SPAN_DANGER("<B>[src]炸得粉碎！</B>"), null, null, 1)
 	var/turf/Tsec = get_turf(src)
 
 	new /obj/item/storage/firstaid(Tsec)
@@ -488,7 +488,7 @@
 
 	//Making a medibot!
 	if(length(src.contents) >= 1)
-		to_chat(user, SPAN_NOTICE("You need to empty [src] out first."))
+		to_chat(user, SPAN_NOTICE("你需要先清空[src]。"))
 		return
 
 	var/obj/item/frame/firstaid_arm_assembly/A = new /obj/item/frame/firstaid_arm_assembly
@@ -501,6 +501,6 @@
 
 	qdel(S)
 	user.put_in_hands(A)
-	to_chat(user, SPAN_NOTICE("You add the robot arm to the first aid kit."))
+	to_chat(user, SPAN_NOTICE("你将机器人手臂加入了急救包。"))
 	user.temp_drop_inv_item(src)
 	qdel(src)

@@ -1,6 +1,6 @@
 /obj/structure/closet/phonebox
 	name = "phonebox"
-	desc = "It's a phonebox, outdated but reliable technology. These are used to communicate throughout the colony and connected colonies without interference. As reliable as they are, it seems the line is down."
+	desc = "这是一个电话亭，技术虽旧但可靠。用于在整个殖民地及相连殖民地间进行无干扰通讯。尽管可靠，但线路似乎中断了。"
 	icon = 'icons/obj/structures/props/phonebox.dmi'
 	icon_state = "phonebox_on_empty_closed"
 	density = TRUE
@@ -24,7 +24,7 @@
 
 /obj/structure/closet/phonebox/off
 	name = "phonebox"
-	desc = "It's a phonebox, outdated but reliable technology. These are used to communicate throughout the colony and connected colonies without interference. As reliable as they are, the bulb has been smashed and it seems the line is down."
+	desc = "这是一个电话亭，技术虽旧但可靠。用于在整个殖民地及相连殖民地间进行无干扰通讯。尽管可靠，但灯泡已被打碎，线路似乎也中断了。"
 	icon = 'icons/obj/structures/props/phonebox.dmi'
 	icon_state = "phonebox_off_empty_closed"
 	density = TRUE
@@ -47,7 +47,7 @@
 			icon_state = "phonebox_off_full_closed"
 
 /obj/structure/closet/phonebox/proc/explode()
-	visible_message(SPAN_DANGER("[src] breaks apart!"), max_distance = 1)
+	visible_message(SPAN_DANGER("[src]碎裂了！"), max_distance = 1)
 	deconstruct(FALSE)
 
 /obj/structure/closet/phonebox/proc/healthcheck()
@@ -67,7 +67,7 @@
 		return XENO_NO_DELAY_ACTION
 	current_xenomorph.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] 挥爪攻击 [src]！"),
 	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
@@ -78,10 +78,10 @@
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	update_health(xeno.melee_damage_upper)
 	if(health <= 0)
-		xeno.visible_message(SPAN_DANGER("[xeno] smashes [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno] 用它的尾巴猛击 [src]！"),
 		SPAN_DANGER("We smash [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
-		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno] 用它的尾巴抽打 [src]！"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
@@ -91,7 +91,7 @@
 	name = "phonebox"
 	icon = 'icons/obj/structures/props/phonebox.dmi'
 	icon_state = "phonebox_off_empty_closed"
-	desc = "It's a phonebox, outdated but reliable technology. These are used to communicate throughout the colony and connected colonies without interference. As reliable as they are, it seems the line is down."
+	desc = "这是一个电话亭，技术虽旧但可靠。用于在整个殖民地及相连殖民地间进行无干扰通讯。尽管可靠，但线路似乎中断了。"
 	bound_width = 32
 	bound_height = 64
 	density = TRUE
@@ -112,7 +112,7 @@
 
 /obj/structure/machinery/phonebox/Destroy()
 	if(occupant)
-		to_chat(occupant, SPAN_NOTICE("<B>[name] colapses around you.</B>"))
+		to_chat(occupant, SPAN_NOTICE("<B>[name]在你周围坍塌了。</B>"))
 		go_out()
 	return ..()
 
@@ -165,7 +165,7 @@
 	if(exit_stun)
 		synth.Stun(exit_stun) //Action delay when going out of a closet
 	if(synth.mobility_flags & MOBILITY_MOVE)
-		synth.visible_message(SPAN_WARNING("[synth] suddenly gets out of [src]!"), SPAN_WARNING("You get out of [src] and get your bearings!"))
+		synth.visible_message(SPAN_WARNING("[synth]突然从[src]里出来了！"), SPAN_WARNING("You get out of [src] and get your bearings!"))
 
 	occupant = null
 	open = TRUE

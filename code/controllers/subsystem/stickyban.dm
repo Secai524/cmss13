@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(stickyban)
-	name = "Sticky Ban"
+	name = "粘性封禁"
 	init_order = SS_INIT_STICKY
 	flags = SS_NO_FIRE
 

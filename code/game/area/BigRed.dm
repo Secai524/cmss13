@@ -308,7 +308,7 @@
 	soundscape_interval = 50
 
 /area/bigredv2/oob
-	name = "Big Red Out of Bounds"
+	name = "大红禁区"
 	ceiling = CEILING_MAX
 	icon = 'icons/turf/area_kutjevo.dmi'
 	icon_state = "oob"

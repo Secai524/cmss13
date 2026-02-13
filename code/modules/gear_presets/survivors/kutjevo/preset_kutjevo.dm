@@ -1,5 +1,5 @@
 /datum/equipment_preset/survivor/engineer/kutjevo
-	name = "Survivor - Kutjevo Engineer"
+	name = "幸存者 - 库特耶沃工程师"
 	assignment = "Kutjevo Engineer"
 
 /datum/equipment_preset/survivor/engineer/kutjevo/load_gear(mob/living/carbon/human/new_human)
@@ -12,7 +12,7 @@
 	..()
 
 /datum/equipment_preset/survivor/chaplain/kutjevo
-	name = "Survivor - Kutjevo Chaplain"
+	name = "幸存者 - 库特耶沃牧师"
 	assignment = "Kutjevo Chaplain"
 
 /datum/equipment_preset/survivor/chaplain/kutjevo/load_gear(mob/living/carbon/human/new_human)
@@ -24,7 +24,7 @@
 	..()
 
 /datum/equipment_preset/survivor/doctor/kutjevo
-	name = "Survivor - Kutjevo Doctor"
+	name = "幸存者 - 库特耶沃医生"
 	assignment = "Kutjevo Doctor"
 
 /datum/equipment_preset/survivor/doctor/kutjevo/load_gear(mob/living/carbon/human/new_human)
@@ -39,8 +39,8 @@
 	..()
 
 /datum/equipment_preset/survivor/colonial_marshal/kutjevo
-	name = "Survivor - Kutjevo Colonial Marshal Deputy"
-	assignment = "CMB Deputy"
+	name = "幸存者 - 库特耶沃殖民地执法官副手"
+	assignment = "CMB副手"
 
 /datum/equipment_preset/survivor/colonial_marshal/kutjevo/load_gear(mob/living/carbon/human/new_human)
 	add_random_kutjevo_survivor_uniform(new_human)
@@ -50,7 +50,7 @@
 	..()
 
 /datum/equipment_preset/survivor/trucker/kutjevo
-	name = "Survivor - Kutjevo Heavy Vehicle Operator"
+	name = "幸存者 - 库特耶沃重型载具操作员"
 	assignment = "Kutjevo Heavy Vehicle Operator"
 
 /datum/equipment_preset/survivor/trucker/kutjevo/load_gear(mob/living/carbon/human/new_human)
@@ -62,7 +62,7 @@
 	..()
 
 /datum/equipment_preset/survivor/corporate/kutjevo
-	name = "Survivor - Kutjevo Corporate Liaison"
+	name = "幸存者 - 库特耶沃公司联络官"
 	assignment = "Kutjevo Corporate Liaison"
 
 /datum/equipment_preset/survivor/corporate/kutjevo/load_gear(mob/living/carbon/human/new_human)
@@ -76,7 +76,7 @@
 	..()
 
 /datum/equipment_preset/survivor/goon/kutjevo
-	name = "Survivor - Corporate Security Goon (Kutjevo)"
+	name = "幸存者 - 公司安保打手（库特耶沃）"
 
 /datum/equipment_preset/survivor/goon/kutjevo/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc/corporate/kutjevo, WEAR_BODY)
@@ -90,7 +90,7 @@
 	flags = EQUIPMENT_PRESET_STUB
 
 /datum/equipment_preset/synth/survivor/kutjevo/civilian
-	name = "Survivor - Kutjevo - Synthetic - Civilian"
+	name = "幸存者 - 库特耶沃 - 合成人 - 平民"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	survivor_variant = CIVILIAN_SURVIVOR
@@ -106,7 +106,7 @@
 	..()
 
 /datum/equipment_preset/synth/survivor/kutjevo/engineer
-	name = "Survivor - Kutjevo - Synthetic - Engineer"
+	name = "幸存者 - 库特耶沃 - 合成人 - 工程师"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	survivor_variant = ENGINEERING_SURVIVOR
@@ -133,7 +133,7 @@
 	..()
 
 /datum/equipment_preset/synth/survivor/kutjevo/medical
-	name = "Survivor - Kutjevo - Synthetic - Medical"
+	name = "幸存者 - 库特耶沃 - 合成人 - 医疗"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	survivor_variant = MEDICAL_SURVIVOR
@@ -153,7 +153,7 @@
 	..()
 
 /datum/equipment_preset/synth/survivor/kutjevo/corporate_security
-	name = "Survivor - Kutjevo - Synthetic - Corporate Security Goon"
+	name = "幸存者 - 库特耶沃 - 合成人 - 公司安保打手"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "WY Syn"
@@ -180,7 +180,7 @@
 	..()
 
 /datum/equipment_preset/synth/survivor/kutjevo/cmb_synth
-	name = "Survivor - Kutjevo - Synthetic - CMB"
+	name = "幸存者 - 库特耶沃 - 合成人 - CMB"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/deputy
 	role_comm_title = "CMB Syn"
@@ -209,7 +209,7 @@
 	..()
 
 /datum/equipment_preset/synth/survivor/kutjevo/scientist
-	name = "Survivor - Kutjevo - Synthetic - Scientist"
+	name = "幸存者 - 库特耶沃 - 合成人 - 科学家"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	survivor_variant = SCIENTIST_SURVIVOR
@@ -229,7 +229,7 @@
 	..()
 
 /datum/equipment_preset/synth/survivor/kutjevo/corporate
-	name = "Survivor - Kutjevo - Synthetic - Corporate Assistant"
+	name = "幸存者 - 库特耶沃 - 合成人 - 公司助理"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "WY Syn"

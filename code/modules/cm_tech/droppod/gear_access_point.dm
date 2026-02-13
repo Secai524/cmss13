@@ -1,6 +1,6 @@
 /obj/structure/techpod_vendor
-	name = "ColMarTech Techpod Vendor"
-	desc = "An automated gear rack hooked up to a tech gear storage."
+	name = "殖民地海军陆战队技术舱自动售货机"
+	desc = "一个连接到技术装备存储处的自动化装备架。"
 	icon = 'icons/obj/structures/machinery/vending.dmi'
 	icon_state = "intel_gear"
 	anchored = TRUE
@@ -21,7 +21,7 @@
 		return
 
 	if(!ishuman(user) || !get_access_permission(user))
-		to_chat(user, SPAN_WARNING("Access denied."))
+		to_chat(user, SPAN_WARNING("权限被拒绝。"))
 		return
 
 	var/list/list_of_techs = list()
@@ -35,17 +35,17 @@
 	*/
 
 	if(!length(list_of_techs))
-		to_chat(user, SPAN_WARNING("No tech gear is available at the moment!"))
+		to_chat(user, SPAN_WARNING("目前没有可用的技术装备！"))
 		return
 
-	var/user_input = tgui_input_list(user, "Choose a tech to retrieve an item from.", name, list_of_techs)
+	var/user_input = tgui_input_list(user, "选择一个技术类别以从中取回物品。", name, list_of_techs)
 	if(!user_input)
 		return
 
 /obj/structure/techpod_vendor/proc/get_access_permission(mob/living/carbon/human/user)
 	if(SSticker.mode == GAMEMODE_WHISKEY_OUTPOST || GLOB.master_mode == GAMEMODE_WHISKEY_OUTPOST) //all WO has lifted access restrictions
 		return TRUE
-	else if(SSticker.mode == "Distress Signal" || GLOB.master_mode == "Distress Signal")
+	else if(SSticker.mode == "求救信号" || GLOB.master_mode == "求救信号")
 		if(access_settings_override) //everyone allowed to grab stuff
 			return TRUE
 		else if(user.get_target_lock(faction_requirement)) //only it's faction group allowed

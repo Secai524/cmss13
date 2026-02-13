@@ -1,5 +1,5 @@
 /*
- * Areas for the Ice Colony map (nickname is "Shiva's Snowball")
+ * Areas for the Ice Colony map (nickname is "湿婆雪球")
  * Area inheritance logic :
  * Exterior Areas all use the same code, under /exterior branch. Those are NOT homogenous but used to give rough locations to area scanners. THIS INCLUDES UNDERGROUND UNBUILT AREAS
  * Exterior is divided into /surface and /underground for ease of navigation. BOTH PATHS MUST INHERIT EXTERIOR

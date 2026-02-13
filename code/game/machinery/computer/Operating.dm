@@ -1,7 +1,7 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
 /obj/structure/machinery/computer/operating
-	name = "Operating Computer"
+	name = "操作计算机"
 	density = TRUE
 	anchored = TRUE
 	icon_state = "operating"
@@ -66,7 +66,7 @@
 <BR>
 <B>No Patient Detected</B>
 "}
-	show_browser(user, dat, "Operating Computer", "op")
+	show_browser(user, dat, "操作计算机", "op")
 
 
 /obj/structure/machinery/computer/operating/Topic(href, href_list)

@@ -1,6 +1,6 @@
 /datum/origin/upp
 	name = ORIGIN_UPP
-	desc = "You were born in the Union of Progressive Peoples."
+	desc = "你出生在进步人民联盟。"
 
 /datum/origin/upp/generate_human_name(gender = MALE)
 	var/first_name

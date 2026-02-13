@@ -1,6 +1,6 @@
 /obj/structure/machinery/compressor
 	name = "compressor"
-	desc = "The compressor stage of a gas turbine generator."
+	desc = "燃气涡轮发电机的压缩级。"
 	icon = 'icons/obj/pipes/pipes3.dmi'
 	icon_state = "compressor"
 	anchored = TRUE
@@ -14,8 +14,8 @@
 	var/comp_id = 0
 
 /obj/structure/machinery/power/turbine
-	name = "gas turbine generator"
-	desc = "A gas turbine used for backup power generation."
+	name = "燃气涡轮发电机"
+	desc = "用于备用发电的燃气涡轮。"
 	icon = 'icons/obj/pipes/pipes3.dmi'
 	icon_state = "turbine"
 	anchored = TRUE
@@ -26,8 +26,8 @@
 	var/lastgen
 
 /obj/structure/machinery/computer/turbine_computer
-	name = "Gas turbine control computer"
-	desc = "A computer to remotely control a gas turbine."
+	name = "燃气涡轮控制计算机"
+	desc = "用于远程控制燃气涡轮的计算机。"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "turbinecomp"
 	circuit = /obj/item/circuitboard/computer/turbine_control

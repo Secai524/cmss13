@@ -11,8 +11,8 @@
  * Oxygen
  */
 /obj/item/tank/oxygen
-	name = "oxygen tank"
-	desc = "A tank of oxygen."
+	name = "氧气罐"
+	desc = "一个氧气罐。"
 	icon_state = "oxygen"
 	distribute_pressure = ONE_ATMOSPHERE*O2STANDARD
 	gas_type = GAS_TYPE_OXYGEN
@@ -20,11 +20,11 @@
 
 
 /obj/item/tank/oxygen/yellow
-	desc = "A tank of oxygen, this one is yellow."
+	desc = "一个氧气罐，这个是黄色的。"
 	icon_state = "oxygen_f"
 
 /obj/item/tank/oxygen/red
-	desc = "A tank of oxygen, this one is red."
+	desc = "一个氧气罐，这个是红色的。"
 	icon_state = "oxygen_fr"
 
 
@@ -32,8 +32,8 @@
  * Anesthetic
  */
 /obj/item/tank/anesthetic
-	name = "anesthetic tank"
-	desc = "A tank with an N2O/O2 gas mix."
+	name = "麻醉气罐"
+	desc = "一个装有N2O/O2混合气体的气罐。"
 	icon_state = "anesthetic"
 	item_state = "anesthetic"
 	gas_type = GAS_TYPE_N2O
@@ -43,16 +43,16 @@
  * Air
  */
 /obj/item/tank/air
-	name = "air tank"
-	desc = "Mixed anyone?"
+	name = "空气罐"
+	desc = "混合气体？"
 	icon_state = "oxygen"
 
 /*
  * Emergency Oxygen
  */
 /obj/item/tank/emergency_oxygen
-	name = "emergency oxygen tank"
-	desc = "Used for emergencies. Contains very little oxygen, so try to conserve it until you actually need it."
+	name = "应急氧气罐"
+	desc = "用于紧急情况。内含氧气极少，请尽量节省使用，直到真正需要时。"
 	icon_state = "emergency"
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
@@ -70,14 +70,14 @@
 		. += SPAN_DANGER("The meter on \the [src] indicates you are almost out of air!")
 
 /obj/item/tank/emergency_oxygen/engi
-	name = "extended-capacity emergency oxygen tank"
+	name = "大容量应急氧气罐"
 	icon_state = "emergency_engi"
 	volume = 6
 	pressure = 5*ONE_ATMOSPHERE
 	pressure_full = 5*ONE_ATMOSPHERE
 
 /obj/item/tank/emergency_oxygen/double
-	name = "double emergency oxygen tank"
+	name = "双联应急氧气罐"
 	icon_state = "emergency_double"
 	volume = 10
 	pressure = 5*ONE_ATMOSPHERE
@@ -87,16 +87,16 @@
  * Nitrogen
  */
 /obj/item/tank/nitrogen
-	name = "nitrogen tank"
-	desc = "A tank of nitrogen."
+	name = "氮气罐"
+	desc = "一个氮气罐。"
 	icon_state = "oxygen_fr"
 	distribute_pressure = ONE_ATMOSPHERE*O2STANDARD
 	gas_type = GAS_TYPE_NITROGEN
 
 // Phoron, used for generators.
 /obj/item/tank/phoron
-	name = "phoron tank"
-	desc = "A tank of liquid phoron. WARNING: Phumes are extremely dangerous."
+	name = "佛隆气罐"
+	desc = "一个液态佛隆气罐。警告：佛隆气体极其危险。"
 	icon_state = "phoron"
 	distribute_pressure = ONE_ATMOSPHERE*O2STANDARD
 	gas_type = GAS_TYPE_PHORON

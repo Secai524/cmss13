@@ -1,6 +1,6 @@
 /obj/item/storage/briefcase
-	name = "brown briefcase"
-	desc = "It's made of AUTHENTIC faux-leather and has a price-tag still attached. Its owner must be a real professional."
+	name = "棕色公文包"
+	desc = "它由<em>正宗</em>人造革制成，价格标签还挂着。它的主人一定是个真正的专业人士。"
 	icon = 'icons/obj/items/storage/briefcases.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/briefcases_lefthand.dmi',
@@ -44,34 +44,34 @@
 
 /obj/item/storage/briefcase/stowaway
 	name = "suitcase"
-	desc = "An old suitcase suited for when you want to travel. This one sure has seen better days."
+	desc = "一个适合旅行的旧手提箱。这个箱子肯定经历过更好的日子。"
 	icon_state = "suitcase"
 	item_state = "suitcase"
 	force = 8
 
 /obj/item/storage/briefcase/black
-	name = "black briefcase"
+	name = "黑色公文包"
 	icon_state = "briefcase_b"
 	item_state = "briefcase_b"
 
 /obj/item/storage/briefcase/maroon
-	name = "maroon briefcase"
+	name = "褐红色公文包"
 	icon_state = "briefcase_c"
 	item_state = "briefcase_c"
 
 /obj/item/storage/briefcase/flap
-	name = "flap-closure brown briefcase"
-	desc = "It's made of AUTHENTIC faux-leather and has a price-tag still attached. Its owner must be a real professional. This one is less rigid, made with a flap and softer leather."
+	name = "翻盖棕色公文包"
+	desc = "它由<em>正宗</em>人造革制成，价格标签还挂着。它的主人一定是个真正的专业人士。这个款式不那么硬挺，采用翻盖和更柔软的皮革制成。"
 	icon_state = "briefcase_d"
 	item_state = "briefcase_d"
 
 /obj/item/storage/briefcase/flap/black
-	name = "flap-closure black briefcase"
+	name = "翻盖黑色公文包"
 	icon_state = "briefcase_e"
 	item_state = "briefcase_e"
 
 /obj/item/storage/briefcase/flap/maroon
-	name = "flap-closure maroon briefcase"
+	name = "翻盖褐红色公文包"
 	icon_state = "briefcase_f"
 	item_state = "briefcase_f"
 

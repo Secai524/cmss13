@@ -5,8 +5,8 @@
 #define SMESMAXOUTPUT 250000
 
 /obj/structure/machinery/power/smes
-	name = "power storage unit"
-	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit."
+	name = "电力储存单元"
+	desc = "一个高容量的超导磁能储存（SMES）单元。"
 	icon_state = "smes"
 	density = TRUE
 	anchored = TRUE
@@ -177,7 +177,7 @@
 //Will return 1 on failure
 /obj/structure/machinery/power/smes/proc/make_terminal(const/mob/user)
 	if (user.loc == loc)
-		to_chat(user, SPAN_WARNING("You must not be on the same tile as \the [src]."))
+		to_chat(user, SPAN_WARNING("你不能与\the [src]处于同一格内。"))
 		return 1
 
 	//Direction the terminal will face to
@@ -191,13 +191,13 @@
 	if(user.dir == tempDir)
 		tempLoc = user.loc
 	if (istype(tempLoc, /turf/open/space))
-		to_chat(user, SPAN_WARNING("You can't build a terminal on space."))
+		to_chat(user, SPAN_WARNING("你不能在太空中建造终端。"))
 		return 1
 	else if (istype(tempLoc))
 		if(tempLoc.intact_tile)
-			to_chat(user, SPAN_WARNING("You must remove the floor plating first."))
+			to_chat(user, SPAN_WARNING("你必须先移除地板。"))
 			return 1
-	to_chat(user, SPAN_NOTICE("You start adding cable to \the [src]."))
+	to_chat(user, SPAN_NOTICE("你开始向\the [src]添加电缆。"))
 	if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		terminal = new /obj/structure/terminal(tempLoc)
 		terminal.setDir(tempDir)
@@ -223,22 +223,22 @@
 	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_SCREWDRIVER))
 		if(!open_hatch)
 			open_hatch = TRUE
-			to_chat(user, SPAN_NOTICE("You open the maintenance hatch of [src]."))
+			to_chat(user, SPAN_NOTICE("你打开了[src]的维护舱口。"))
 			return FALSE
 		else
 			open_hatch = FALSE
-			to_chat(user, SPAN_NOTICE("You close the maintenance hatch of [src]."))
+			to_chat(user, SPAN_NOTICE("你关闭了[src]的维护舱口。"))
 			return FALSE
 
 	if (!open_hatch)
-		to_chat(user, SPAN_WARNING("You need to open access hatch on [src] first!"))
+		to_chat(user, SPAN_WARNING("你需要先打开[src]上的检修舱口！"))
 		return FALSE
 
 	if(istype(attacking_item, /obj/item/stack/cable_coil) && !terminal && !building_terminal)
 		building_terminal = TRUE
 		var/obj/item/stack/cable_coil/CC = attacking_item
 		if (CC.get_amount() < 10)
-			to_chat(user, SPAN_WARNING("You need more cables."))
+			to_chat(user, SPAN_WARNING("你需要更多电缆。"))
 			building_terminal = FALSE
 			return FALSE
 		if (make_terminal(user))
@@ -258,9 +258,9 @@
 		var/turf/tempTDir = terminal.loc
 		if (istype(tempTDir))
 			if(tempTDir.intact_tile)
-				to_chat(user, SPAN_WARNING("You must remove the floor plating first."))
+				to_chat(user, SPAN_WARNING("你必须先移除地板。"))
 			else
-				to_chat(user, SPAN_NOTICE("You begin to cut the cables..."))
+				to_chat(user, SPAN_NOTICE("你开始切割电缆..."))
 				playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 25, 1)
 				if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 					if (prob(50) && electrocute_mob(usr, powernet, terminal))
@@ -414,8 +414,8 @@
 
 
 /obj/structure/machinery/power/smes/magical
-	name = "magical power storage unit"
-	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit. Magically produces power."
+	name = "魔法电力储存单元"
+	desc = "一个高容量的超导磁能储存（SMES）单元。能魔法般地产生电力。"
 	capacity = 9000000
 	output_level = 250000
 	should_be_mapped = 1
@@ -432,8 +432,8 @@
 	return rate
 
 /obj/structure/machinery/power/smes/magical/yautja
-	name = "Yautja Energy Core"
-	desc = "A highly advanced power source of Yautja design, utilizing unknown technology to generate and distribute energy efficiently throughout the vessel."
+	name = "铁血战士能量核心"
+	desc = "一个铁血战士设计的高度先进能源，利用未知技术高效地为整艘舰船产生和分配能量。"
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 
 #undef SMESRATE

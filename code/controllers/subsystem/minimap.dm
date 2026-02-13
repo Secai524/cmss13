@@ -26,7 +26,7 @@ GLOBAL_PROTECT(roles_allowed_minimap_draw)
  * *: add a system for viscontents so things like minimap draw are more responsive
  */
 SUBSYSTEM_DEF(minimaps)
-	name = "Minimaps"
+	name = "小地图"
 	init_order = SS_INIT_MINIMAP
 	priority = SS_PRIORITY_MINIMAPS
 	wait = 10
@@ -453,7 +453,7 @@ SUBSYSTEM_DEF(minimaps)
 
 ///Default HUD screen minimap object
 /atom/movable/screen/minimap
-	name = "Minimap"
+	name = "小地图"
 	icon = null
 	icon_state = ""
 	layer = TACMAP_LAYER
@@ -620,7 +620,7 @@ SUBSYSTEM_DEF(minimaps)
 	return COMSIG_MOB_CLICK_CANCELED
 
 /atom/movable/screen/minimap_locator
-	name = "You are here"
+	name = "你的位置"
 	icon = 'icons/ui_icons/map_blips.dmi'
 	icon_state = "locator"
 	plane = TACMAP_PLANE
@@ -663,7 +663,7 @@ SUBSYSTEM_DEF(minimaps)
  * Action that gives the owner access to the minimap pool
  */
 /datum/action/minimap
-	name = "Toggle Minimap"
+	name = "切换小地图"
 	action_icon_state = "minimap"
 	///Flags to allow the owner to see others of this type
 	var/minimap_flags = MINIMAP_FLAG_ALL
@@ -675,7 +675,7 @@ SUBSYSTEM_DEF(minimaps)
 	var/atom/movable/screen/minimap/map
 	///Overrides what the locator tracks aswell what z the map displays as opposed to always tracking the minimap's owner. Default behavior when null.
 	var/atom/movable/locator_override
-	///Minimap "You are here" indicator for when it's up
+	///Minimap "你的位置" indicator for when it's up
 	var/atom/movable/screen/minimap_locator/locator
 	///Sets a fixed z level to be tracked by this minimap action instead of being influenced by the owner's / locator override's z level.
 	var/default_overwatch_level = 0
@@ -720,7 +720,7 @@ SUBSYSTEM_DEF(minimaps)
 	var/atom/movable/tracking = locator_override ? locator_override : owner
 	if(force_state)
 		if(locate(/atom/movable/screen/minimap) in owner.client.screen) //This seems like the most effective way to do this without some wacky code
-			to_chat(owner, SPAN_WARNING("You already have a minimap open!"))
+			to_chat(owner, SPAN_WARNING("您已打开一个小地图！"))
 			return FALSE
 		owner.client.add_to_screen(map)
 		owner.client.add_to_screen(locator)
@@ -872,7 +872,7 @@ SUBSYSTEM_DEF(minimaps)
 		return
 
 	if(!minimap_displayed && !xeno?.hive?.living_xeno_queen?.ovipositor && xeno != xeno?.hive?.living_xeno_queen && xeno?.hive?.tacmap_requires_queen_ovi)
-		to_chat(xeno, SPAN_WARNING("You cannot access that right now, The Queen has shed her ovipositor."))
+		to_chat(xeno, SPAN_WARNING("你现在无法访问那个，女王已脱落了她的产卵器。"))
 		return
 
 	. = ..()
@@ -927,8 +927,8 @@ SUBSYSTEM_DEF(minimaps)
 	toggle_minimap(FALSE)
 
 /atom/movable/screen/exit_map
-	name = "Close Minimap"
-	desc = "Close the minimap."
+	name = "关闭小地图"
+	desc = "关闭小地图。"
 	icon = 'icons/ui_icons/minimap_buttons.dmi'
 	icon_state = "close"
 	screen_loc = "RIGHT,TOP"
@@ -1035,7 +1035,7 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/minimap_tool/draw_tool
 	icon_state = "draw"
-	desc = "Draw using a color. Drag to draw freely, middle click to place a dot. Middle click this button to unselect."
+	desc = "使用颜色绘制。拖动以自由绘制，中键单击放置一个点。中键单击此按钮取消选择。"
 	// color that this draw tool will be drawing in
 	color = COLOR_PINK
 	///temporary existing list used to calculate a line between the start of a click and the end of a click
@@ -1271,7 +1271,7 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/minimap_tool/draw_tool/erase
 	icon_state = "erase"
-	desc = "Drag to erase freely, middle click to erase a dot. Middle click this button to unselect."
+	desc = "拖动以自由擦除，中键单击擦除一个点。中键单击此按钮取消选择。"
 	active_mouse_icon = 'icons/ui_icons/minimap_mouse/draw_erase.dmi'
 	screen_loc = "15,10"
 	color = null
@@ -1279,7 +1279,7 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/minimap_tool/label
 	icon_state = "label"
-	desc = "Click to place a label. Middle click a label to remove it. Middle click this button to remove all labels."
+	desc = "单击放置一个标签。中键单击标签将其移除。中键单击此按钮移除所有标签。"
 	active_mouse_icon = 'icons/ui_icons/minimap_mouse/label.dmi'
 	screen_loc = "15,9"
 
@@ -1353,7 +1353,7 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/minimap_tool/clear
 	icon_state = "clear"
-	desc = "Remove all current labels and drawings."
+	desc = "移除所有当前标签和绘图。"
 	screen_loc = "15,8"
 
 /atom/movable/screen/minimap_tool/clear/clicked(mob/user, list/mods)
@@ -1363,7 +1363,7 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/minimap_tool/update
 	icon_state = "update"
-	desc = "Send a tacmap update."
+	desc = "发送战术地图更新。"
 	screen_loc = "15,7"
 
 /atom/movable/screen/minimap_tool/update/proc/cooldown_finished()
@@ -1373,7 +1373,7 @@ SUBSYSTEM_DEF(minimaps)
 	var/time_left = get_cooldown_for_minimap_flag(minimap_flag) - world.time
 
 	if(time_left > 0)
-		to_chat(user, SPAN_WARNING("Wait another [DisplayTimeText(time_left)] before sending another update."))
+		to_chat(user, SPAN_WARNING("等待[DisplayTimeText(time_left)]后再发送下一次更新。"))
 		if(icon_state != "update_cooldown")
 			icon_state = "update_cooldown"
 			addtimer(CALLBACK(src, PROC_REF(cooldown_finished)), time_left, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
@@ -1398,7 +1398,7 @@ SUBSYSTEM_DEF(minimaps)
 	user.client.images -= drawn_image
 	var/icon/flat_map = icon(user.client.RenderIcon(linked_map))
 	if(!flat_map || !flat_drawing)
-		to_chat(user, SPAN_WARNING("A critical error has occurred!! Contact a coder."))
+		to_chat(user, SPAN_WARNING("发生严重错误！！联系程序员。"))
 		return FALSE
 
 	var/list/faction_clients = list()
@@ -1418,7 +1418,7 @@ SUBSYSTEM_DEF(minimaps)
 	var/flat_tacmap_key = icon2html(flat_map, faction_clients, keyonly = TRUE)
 	var/flat_drawing_key = icon2html(flat_drawing, faction_clients, keyonly = TRUE)
 	if(!flat_tacmap_key || !flat_drawing_key)
-		to_chat(user, SPAN_WARNING("A critical error has occurred! Contact a coder."))
+		to_chat(user, SPAN_WARNING("发生严重错误！联系程序员。"))
 		return FALSE
 	var/flat_tacmap_png = SSassets.transport.get_asset_url(flat_tacmap_key)
 	var/flat_drawing_png = SSassets.transport.get_asset_url(flat_drawing_key)
@@ -1444,7 +1444,7 @@ SUBSYSTEM_DEF(minimaps)
 	user.client.images -= drawn_image
 	var/icon/flat_map = icon(user.client.RenderIcon(linked_map))
 	if(!flat_map || !flat_drawing)
-		to_chat(user, SPAN_WARNING("A critical error has occurred!! Contact a coder."))
+		to_chat(user, SPAN_WARNING("发生严重错误！！联系程序员。"))
 		return FALSE
 
 	var/list/faction_clients = list()
@@ -1464,7 +1464,7 @@ SUBSYSTEM_DEF(minimaps)
 	var/flat_tacmap_key = icon2html(flat_map, faction_clients, keyonly = TRUE)
 	var/flat_drawing_key = icon2html(flat_drawing, faction_clients, keyonly = TRUE)
 	if(!flat_tacmap_key || !flat_drawing_key)
-		to_chat(user, SPAN_WARNING("A critical error has occurred! Contact a coder."))
+		to_chat(user, SPAN_WARNING("发生严重错误！联系程序员。"))
 		return FALSE
 	var/flat_tacmap_png = SSassets.transport.get_asset_url(flat_tacmap_key)
 	var/flat_drawing_png = SSassets.transport.get_asset_url(flat_drawing_key)
@@ -1509,7 +1509,7 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/minimap_tool/up
 	icon_state = "up"
-	desc = "Move up a level."
+	desc = "向上一级移动。"
 	screen_loc = "15,6"
 
 /atom/movable/screen/minimap_tool/up/clicked(mob/user, list/modifiers)
@@ -1520,7 +1520,7 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/minimap_tool/down
 	icon_state = "down"
-	desc = "Move down a level."
+	desc = "向下一级移动。"
 	screen_loc = "15,5"
 
 /atom/movable/screen/minimap_tool/down/clicked(mob/user, list/modifiers)
@@ -1533,7 +1533,7 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/minimap_tool/popout
 	icon_state = "popout"
-	desc = "Pop the minimap to a window."
+	desc = "将小地图弹出为窗口。"
 	screen_loc = "15,4"
 
 /atom/movable/screen/minimap_tool/popout/clicked(mob/user, list/modifiers)

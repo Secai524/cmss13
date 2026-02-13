@@ -11,7 +11,7 @@
 	page_holder.give_screen_object(
 		new /atom/movable/screen/escape_menu/leave_body_button(
 			src,
-			"Ghost",
+			"幽灵",
 			"Exit quietly, leaving your body",
 			/* pixel_offset = */ 0,
 			CALLBACK(src, PROC_REF(leave_ghost)),

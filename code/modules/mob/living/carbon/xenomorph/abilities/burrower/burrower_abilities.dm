@@ -2,7 +2,7 @@
 
 // Burrow
 /datum/action/xeno_action/activable/burrow
-	name = "Burrow"
+	name = "掘地"
 	action_icon_state = "agility_on"
 	macro_path = /datum/action/xeno_action/verb/verb_burrow
 	action_type = XENO_ACTION_CLICK
@@ -21,7 +21,7 @@
 	return ..()
 
 /datum/action/xeno_action/onclick/tremor
-	name = "Tremor (100)"
+	name = "震颤 (100)"
 	action_icon_state = "stomp"
 	macro_path = /datum/action/xeno_action/verb/verb_tremor
 	action_type = XENO_ACTION_CLICK
@@ -30,7 +30,7 @@
 	plasma_cost = 100
 
 /datum/action/xeno_action/onclick/build_tunnel
-	name = "Dig Tunnel (200)"
+	name = "挖掘隧道 (200)"
 	action_icon_state = "build_tunnel"
 	plasma_cost = 200
 	macro_path = /datum/action/xeno_action/verb/verb_dig_tunnel

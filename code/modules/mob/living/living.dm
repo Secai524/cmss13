@@ -148,11 +148,11 @@
 
 	if(CONFIG_GET(flag/allow_Metadata))
 		if(client)
-			to_chat(usr, "[src]'s Metainfo:<br>[client.prefs.metadata]")
+			to_chat(usr, "[src]的元信息：<br>[client.prefs.metadata]")
 		else
-			to_chat(usr, "[src] does not have any stored information!")
+			to_chat(usr, "[src]没有任何存储信息！")
 	else
-		to_chat(usr, "OOC Metadata is not supported by this server!")
+		to_chat(usr, "本服务器不支持OOC元数据！")
 
 	return
 
@@ -244,11 +244,11 @@
 
 	if(prob(chance))
 		playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
-		visible_message(SPAN_DANGER("[src] has broken free of [pulledby]'s grip!"), max_distance = 5)
+		visible_message(SPAN_DANGER("[src]挣脱了[pulledby]的控制！"), max_distance = 5)
 		pulledby.stop_pulling()
 		return TRUE
 	if(moving_resist && client) //we resisted by trying to move
-		visible_message(SPAN_DANGER("[src] struggles to break free of [pulledby]'s grip!"), max_distance = 5)
+		visible_message(SPAN_DANGER("[src]挣扎着试图摆脱[pulledby]的控制！"), max_distance = 5)
 		// +1 delay if super strong, also done as passive grabs would have a modifier of 0 otherwise, causing spam
 		if(pulledby_is_strong && !src_is_strong)
 			client.next_movement = world.time + (10*(pulledby.grab_level + 1)) + client.move_delay
@@ -357,7 +357,7 @@
 
 	if(living_mob.pulledby && living_mob.pulledby != src && living_mob.is_mob_restrained() && ishumansynth_strict(src))
 		if(!(world.time % 5))
-			to_chat(src, SPAN_WARNING("[living_mob] is restrained, you cannot push past."))
+			to_chat(src, SPAN_WARNING("[living_mob]被束缚住了，你无法挤过去。"))
 		now_pushing = FALSE
 		return
 
@@ -372,7 +372,7 @@
 			var/mob/pulled_mob = living_mob.pulling
 			if(pulled_mob.is_mob_restrained())
 				if(!(world.time % 5))
-					to_chat(src, SPAN_WARNING("[living_mob] is restraining [pulled_mob], you cannot push past."))
+					to_chat(src, SPAN_WARNING("[living_mob]正束缚着[pulled_mob]，你无法挤过去。"))
 				now_pushing = FALSE
 				return
 		if(!pulling)

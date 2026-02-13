@@ -31,7 +31,7 @@
 	..()
 	var/mob/living/carbon/affected_mob = affected_atom
 	if(HAS_TRAIT(affected_mob, TRAIT_CHARGING))
-		to_chat(affected_mob, SPAN_XENOWARNING("The speed boast wanes as you charge!"))
+		to_chat(affected_mob, SPAN_XENOWARNING("冲锋时，速度增益正在消退！"))
 		qdel(src)
 		return FALSE
 	return ..()
@@ -46,6 +46,6 @@
 		if(effect_end_message)
 			to_chat(xeno, effect_end_message)
 		if(istype(xeno) && show_baloon_alert)
-			xeno.balloon_alert(xeno, "our speed returns to normal", text_color = "#5B248C")
+			xeno.balloon_alert(xeno, "我们的速度恢复正常", text_color = "#5B248C")
 			playsound(xeno, 'sound/effects/squish_and_exhaust.ogg', 25, 1)
 	return ..()

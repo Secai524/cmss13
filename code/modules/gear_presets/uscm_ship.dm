@@ -1,5 +1,5 @@
 /datum/equipment_preset/uscm_ship
-	name = "USCM (ship roles)"
+	name = "USCM（舰上职务）"
 	faction = FACTION_MARINE
 	faction_group = FACTION_LIST_MARINE
 	minimum_age = 20
@@ -25,7 +25,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/liaison
-	name = "USCM Corporate Liaison (CL)"
+	name = "USCM公司联络官（CL）"
 	faction = FACTION_WY
 	faction_group =	FACTION_LIST_MARINE_WY
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -75,7 +75,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/corp_sec
-	name = "USCM CL Bodyguard (CB)"
+	name = "USCM公司联络官保镖（CB）"
 	faction = FACTION_WY
 	faction_group =	FACTION_LIST_MARINE_WY
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -136,7 +136,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/reporter
-	name = "Combat Correspondent (Press)"
+	name = "战地记者（媒体）"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	origin_override = ORIGIN_CIVILIAN
 
@@ -181,7 +181,7 @@
 	new_human.marine_buyable_categories[CIVILIAN_CAN_BUY_UTILITY] = 1
 
 /datum/equipment_preset/uscm_ship/reporter_uscm
-	name = "Combat Correspondent"
+	name = "战地记者"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 	access = list(
 		ACCESS_MARINE_COMMAND,
@@ -223,7 +223,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/chief_engineer
-	name = "USCM Chief Engineer (CE)"
+	name = "USCM总工程师（CE）"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/silver
@@ -268,7 +268,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/maint
-	name = "USCM Maintenance Technician (MT)"
+	name = "USCM维护技术员（MT）"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	access = list(
@@ -303,7 +303,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/ordn
-	name = "USCM Ordnance Technician (OT)"
+	name = "USCM军械技术员（OT）"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	access = list(
@@ -344,7 +344,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/qm
-	name = "USCM Quartermaster (QM)"
+	name = "USCM军需官（QM）"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/silver
@@ -389,7 +389,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/cargo
-	name = "USCM Cargo Technician (CT)"
+	name = "USCM货舱技术员（CT）"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	access = list(ACCESS_MARINE_CARGO)
@@ -427,7 +427,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/xo
-	name = "USCM Executive Officer (XO)"
+	name = "USCM副指挥官（XO）"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/silver
@@ -466,7 +466,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/so
-	name = "USCM Staff Officer (SO)"
+	name = "USCM参谋官（SO）"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/silver
@@ -498,7 +498,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/sea
-	name = "USCM Senior Enlisted Advisor (SEA)"
+	name = "USCM高级士官顾问（SEA）"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/silver
@@ -547,7 +547,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/auxiliary_officer
-	name = "USCM Auxiliary Support Officer (ASO)"
+	name = "USCM辅助支援官（ASO）"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/silver
@@ -608,7 +608,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/gp
-	name = "USCM Gunship Pilot (GP) (Cryo)"
+	name = "USCM炮艇飞行员（GP）（冷冻）"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/silver
@@ -636,7 +636,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/gp/full
-	name = "USCM Gunship Pilot (GP)"
+	name = "USCM炮艇飞行员（GP）"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/pilot)
@@ -660,7 +660,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/dp
-	name = "USCM Dropship Pilot (DP) (Cryo)"
+	name = "USCM运输机飞行员（DP）（冷冻）"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/silver
@@ -688,7 +688,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/dp/full
-	name = "USCM Dropship Pilot (DP)"
+	name = "USCM运输机飞行员（DP）"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/pilot)
@@ -712,7 +712,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/dcc
-	name = "USCM Dropship Crew Chief (DCC) (Cryo)"
+	name = "USCM运输机机组长（DCC）（冷冻）"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/silver
@@ -742,7 +742,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/dcc/full
-	name = "USCM Dropship Crew Chief (DCC)"
+	name = "USCM运输机机组长（DCC）"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/pilot/dcc)
@@ -766,7 +766,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/officer
-	name = "USCM Officer (USCM Command)"
+	name = "USCM军官（USCM指挥部）"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/general
@@ -805,7 +805,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/chef
-	name = "USCM Mess Technician (MST)"
+	name = "USCM食堂技术员（MST）"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	access = list(ACCESS_MARINE_KITCHEN)

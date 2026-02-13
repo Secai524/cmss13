@@ -1,7 +1,7 @@
 //The return of data disks?? Just for transferring between genetics machine/cloning machine.
 //TO-DO: Make the genetics machine accept them.
 /obj/item/disk/data
-	name = "Cloning Data Disk"
+	name = "克隆数据盘"
 	icon_state = "datadisk0" //Gosh I hope syndies don't mistake them for the nuke disk.
 	item_state = "card-id"
 	w_class = SIZE_TINY
@@ -17,7 +17,7 @@
 /obj/item/disk/data/attack_self(mob/user as mob)
 	..()
 	src.read_only = !src.read_only
-	to_chat(user, "You flip the write-protect tab to [src.read_only ? "protected" : "unprotected"].")
+	to_chat(user, "你将写保护开关拨到[src.read_only ? "protected" : "unprotected"].")
 
 /obj/item/disk/data/get_examine_text(mob/user)
 	. = ..()
@@ -26,7 +26,7 @@
 //Health Tracker Implant
 
 /obj/item/implant/health
-	name = "health implant"
+	name = "健康植入体"
 	var/healthstring = ""
 
 /obj/item/implant/health/proc/sensehealth()
@@ -46,7 +46,7 @@
 
 
 /obj/item/storage/box/disks
-	name = "Diskette Box"
+	name = "磁盘盒"
 	icon_state = "disk_kit"
 
 /obj/item/storage/box/disks/Initialize()

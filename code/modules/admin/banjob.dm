@@ -81,14 +81,14 @@ GLOBAL_LIST_EMPTY(jobban_keylist)
 
 /datum/admins/proc/job_ban(mob/M)
 	if(!ismob(M))
-		to_chat(usr, "This can only be used on instances of type /mob.")
+		to_chat(usr, "这只能用于类型为 /mob 的实例。")
 		return
 
 	if(!M.ckey) //sanity
-		to_chat(usr, "This mob has no ckey.")
+		to_chat(usr, "此生物没有ckey。")
 		return
 	if(!GLOB.RoleAuthority)
-		to_chat(usr, "The Role Authority is not set up!")
+		to_chat(usr, "角色权限未设置！")
 		return
 
 	var/datum/entity/player/P = M.client?.player_data
@@ -116,13 +116,13 @@ WARNING!*/
 	jobs += generate_job_ban_list(M, P, GLOB.ROLES_POLICE, "Police", "ffdddd")
 	jobs += "<br>"
 //Engineering (Yellow)
-	jobs += generate_job_ban_list(M, P, GLOB.ROLES_ENGINEERING, "Engineering", "fff5cc")
+	jobs += generate_job_ban_list(M, P, GLOB.ROLES_ENGINEERING, "工程部", "fff5cc")
 	jobs += "<br>"
 //Cargo (Yellow) //Copy paste, yada, yada. Hopefully Snail can rework this in the future.
 	jobs += generate_job_ban_list(M, P, GLOB.ROLES_REQUISITION, "Requisition", "fff5cc")
 	jobs += "<br>"
 //Medical (White)
-	jobs += generate_job_ban_list(M, P, GLOB.ROLES_MEDICAL, "Medical", "ffeef0")
+	jobs += generate_job_ban_list(M, P, GLOB.ROLES_MEDICAL, "医疗区", "ffeef0")
 	jobs += "<br>"
 //Marines
 	jobs += generate_job_ban_list(M, P, GLOB.ROLES_MARINES, "Marines", "ffeeee")
@@ -151,7 +151,7 @@ WARNING!*/
 		jobs += "<td width='20%'><a href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=[ERT_JOB_YOUNGBLOOD];jobban4=\ref[M]'>[ERT_JOB_YOUNGBLOOD]</a></td>"
 
 	//Survivor
-	if(jobban_isbanned(M, "Survivor", P) || isbanned_dept)
+	if(jobban_isbanned(M, "幸存者", P) || isbanned_dept)
 		jobs += "<td width='20%'><a href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Survivor;jobban4=\ref[M]'><font color=red>Survivor</font></a></td>"
 	else
 		jobs += "<td width='20%'><a href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Survivor;jobban4=\ref[M]'>Survivor</a></td>"

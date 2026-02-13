@@ -47,7 +47,7 @@
 // Helper to check that the thread is still open
 /datum/mentorhelp/proc/check_open(client/C)
 	if(!open)
-		to_chat(C, SPAN_NOTICE("This mentorhelp thread is closed!"))
+		to_chat(C, SPAN_NOTICE("此导师帮助线程已关闭！"))
 		return FALSE
 	return TRUE
 
@@ -79,7 +79,7 @@
 	if(mentor)
 		return TRUE // No need
 
-	var/message = strip_html(input("Please enter your message:", "MentorHelp", null, null) as message|null)
+	var/message = strip_html(input("Please enter your message:", "导师帮助", null, null) as message|null)
 	if(!message)
 		return FALSE
 	broadcast_unhandled(message, opener)
@@ -147,14 +147,14 @@
 
 		// Some other mentor is already taking care of this thread
 		else if(mentor != sender)
-			to_chat(sender, SPAN_MENTORHELP("<b>NOTICE:</b> A mentor is already handling this thread!"))
+			to_chat(sender, SPAN_MENTORHELP("<b>注意：</b>已有导师正在处理此线程！"))
 			return
 
 	var/target = mentor
 	if(sender == mentor)
 		target = author
 
-	var/message = input("Please enter your message:", "Mentor Help", null, null) as message|null
+	var/message = input("Please enter your message:", "导师帮助", null, null) as message|null
 	if(message)
 		message = strip_html(message)
 		message_handlers(message, sender, target)
@@ -168,7 +168,7 @@
 
 	// The message is being sent to the mentor and should be formatted as a mentorhelp message
 	if(sender == author)
-		message_title = "MentorHelp"
+		message_title = "导师帮助"
 		// If there's a mentor, let them mark it. If not, let them unmark it
 		message_sender_options = " (<a href='byond://?src=\ref[src];action=mark'>Mark/Unmark</a>"
 		message_sender_options += " | <a href='byond://?src=\ref[src];action=close'>Close</a> | <a href='byond://?src=\ref[src];action=autorespond'>AutoResponse</a>)"
@@ -192,7 +192,7 @@
 
 	// Already marked
 	if(mentor)
-		to_chat(thread_mentor, SPAN_MENTORHELP("<b>NOTICE:</b> A mentor is already handling this thread!"))
+		to_chat(thread_mentor, SPAN_MENTORHELP("<b>注意：</b>已有导师正在处理此线程！"))
 		return
 
 	if(!thread_mentor)
@@ -206,7 +206,7 @@
 
 	log_mhelp("[mentor.key] has marked [author_key]'s mentorhelp")
 	notify("<font style='color:red;'>[mentor.key]</font> has marked <font style='color:red;'>[author_key]</font>'s mentorhelp.")
-	to_chat(author, SPAN_NOTICE("<b>NOTICE:</b> <font style='color:red;'>[mentor.key]</font> has marked your thread and is preparing to respond."))
+	to_chat(author, SPAN_NOTICE("<b>注意：</b><font style='color:red;'>[mentor.key]</font>已标记你的线程并准备回复。"))
 
 // Unmarks the mentorhelp thread and notifies the author that the thread is no longer being handled by a mentor
 /datum/mentorhelp/proc/unmark(client/thread_mentor)
@@ -226,7 +226,7 @@
 
 	log_mhelp("[mentor.key] has unmarked [author_key]'s mentorhelp")
 	notify("<font style='color:red;'>[mentor.key]</font> has unmarked <font style='color:red;'><a href='byond://?src=\ref[src];action=message'>[author_key]</a></font>'s mentorhelp.")
-	to_chat(author, SPAN_NOTICE("<b>NOTICE:</b> <font style='color:red;'>[mentor.key]</font> has unmarked your thread and is no longer responding to it."))
+	to_chat(author, SPAN_NOTICE("<b>注意：</b><font style='color:red;'>[mentor.key]</font>已取消标记你的线程，不再回复。"))
 	mentor = null
 
 /*
@@ -246,17 +246,17 @@
 
 	// Make sure it's being closed by staff or the mentor handling the thread
 	if(mentor && closer && (closer != mentor) && (closer != author) && !CLIENT_IS_STAFF(closer))
-		to_chat(closer, SPAN_MENTORHELP("<b>NOTICE:</b> Another mentor is handling this thread!"))
+		to_chat(closer, SPAN_MENTORHELP("<b>注意：</b>另一位导师正在处理此线程！"))
 		return
 
 	open = FALSE
 	if(closer)
 		log_mhelp("[closer.key] closed [author_key]'s mentorhelp")
 		if(closer == author)
-			to_chat(author, SPAN_NOTICE("You have closed your mentorhelp thread."))
+			to_chat(author, SPAN_NOTICE("你已关闭你的导师帮助线程。"))
 			notify("<font style='color:red;'>[author_key]</font> closed their mentorhelp thread.")
 			return
-	to_chat(author, SPAN_NOTICE("Your mentorhelp thread has been closed."))
+	to_chat(author, SPAN_NOTICE("你的导师帮助线程已被关闭。"))
 	notify("<font style='color:red;'>[author_key]</font>'s mentorhelp thread has been closed.")
 
 /datum/mentorhelp/Topic(href, list/href_list)
@@ -300,10 +300,10 @@
 	if(!mentor)
 		mark(responder)
 	else if(mentor != responder)
-		to_chat(responder, SPAN_NOTICE("<b>NOTICE:</b> A mentor is already handling this thread!"))
+		to_chat(responder, SPAN_NOTICE("<b>注意：</b>已有导师正在处理此线程！"))
 		return
 
-	var/choice = tgui_input_list(usr, "Which autoresponse option do you want to send to the player?", "Autoresponse", GLOB.mentorreplies)
+	var/choice = tgui_input_list(usr, "你想向玩家发送哪个自动回复选项？", "Autoresponse", GLOB.mentorreplies)
 	var/datum/autoreply/mentor/response = GLOB.mentorreplies[choice]
 
 	if(!response || !istype(response))
@@ -322,7 +322,7 @@
 	if(!mentor)
 		mark(responder)
 	else if(mentor != responder)
-		to_chat(responder, SPAN_NOTICE("<b>NOTICE:</b> A mentor is already handling this thread!"))
+		to_chat(responder, SPAN_NOTICE("<b>注意：</b>已有导师正在处理此线程！"))
 		return
 
 	var/msg = "[SPAN_ORANGE(SPAN_BOLD("- MentorHelp marked as [response.title]! -"))]<br>"

@@ -1,7 +1,7 @@
 /obj/structure/pipes/vents
 	icon = 'icons/obj/pipes/vent_scrubber.dmi'
 	icon_state = "map_vent"
-	desc = "Has a valve and pump attached to it."
+	desc = "上面连接着一个阀门和泵。"
 	valid_directions = list(NORTH, SOUTH, EAST, WEST)
 
 	var/area/initial_loc = null
@@ -77,7 +77,7 @@
 			weldtime = 60
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.remove_fuel(1, user))
-			user.visible_message(SPAN_NOTICE("[user] starts welding \the [src] with \the [WT]."),
+			user.visible_message(SPAN_NOTICE("[user]开始用	he [WT]焊接	he [src]。"),
 			SPAN_NOTICE("You start welding \the [src] with \the [WT]."))
 			playsound(loc, 'sound/items/weldingtool_weld.ogg', 25)
 			if(do_after(user, weldtime * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -85,14 +85,14 @@
 					return 0
 				playsound(get_turf(src), 'sound/items/Welder2.ogg', 25, 1)
 				if(!welded)
-					user.visible_message(SPAN_NOTICE("[user] welds \the [src] shut."),
+					user.visible_message(SPAN_NOTICE("[user]将	he [src]焊死了。"),
 					SPAN_NOTICE("You weld \the [src] shut."))
 					welded = 1
 					update_icon()
 					msg_admin_niche("[key_name(user)] welded a vent pump.")
 					return 1
 				else
-					user.visible_message(SPAN_NOTICE("[user] welds \the [src] open."),
+					user.visible_message(SPAN_NOTICE("[user]将	he [src]焊开了。"),
 					SPAN_NOTICE("You weld \the [src] open."))
 					welded = 0
 					msg_admin_niche("[key_name(user)] un-welded a vent pump.")
@@ -102,22 +102,22 @@
 				to_chat(user, SPAN_WARNING("\The [W] needs to be on to start this task."))
 				return 0
 		else
-			to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
+			to_chat(user, SPAN_WARNING("你需要更多焊枪燃料来完成此任务。"))
 			return 1
 
 	if(!HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		return ..()
 	var/turf/T = src.loc
 	if(isturf(T) && T.intact_tile)
-		to_chat(user, SPAN_WARNING("You must remove the plating first."))
+		to_chat(user, SPAN_WARNING("你必须先移除护板。"))
 		return 1
 
 	playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-	user.visible_message(SPAN_NOTICE("[user] begins unfastening [src]."),
+	user.visible_message(SPAN_NOTICE("[user]开始松开[src]。"),
 	SPAN_NOTICE("You begin unfastening [src]."))
 	if(do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-		user.visible_message(SPAN_NOTICE("[user] unfastens [src]."),
+		user.visible_message(SPAN_NOTICE("[user]松开了[src]。"),
 		SPAN_NOTICE("You unfasten [src]."))
 		new /obj/item/pipe(loc, null, null, src)
 		qdel(src)
@@ -138,17 +138,17 @@
 	var/mob/user = usr
 	if(href_list[VV_HK_GAS] && check_rights(R_EVENT))
 		if(welded)
-			to_chat(usr, SPAN_WARNING("You cannot release gas from a welded vent."))
+			to_chat(usr, SPAN_WARNING("你无法从焊死的通风口释放气体。"))
 			return FALSE
 		var/list/options = list(VENT_GAS_SMOKE, VENT_GAS_CN20, VENT_GAS_CN20_XENO)
-		var/gas_choice = tgui_input_list(user, "What gas do you wish to use?", "Gas Choice", options, 20 SECONDS)
+		var/gas_choice = tgui_input_list(user, "你希望使用哪种气体？", "Gas Choice", options, 20 SECONDS)
 		if(!gas_choice)
 			return FALSE
-		var/radius_choice = tgui_input_number(user, "What radius do you wish to use?", "Gas Radius", 4, 10, 1, 20 SECONDS)
-		var/warn_choice = tgui_input_number(user, "How many seconds warning do you wish to give?", "Release Warning", 5, 30, 1, 20 SECONDS)
+		var/radius_choice = tgui_input_number(user, "你希望使用多大半径？", "Gas Radius", 4, 10, 1, 20 SECONDS)
+		var/warn_choice = tgui_input_number(user, "你希望给出多少秒的警告？", "Release Warning", 5, 30, 1, 20 SECONDS)
 		warn_choice = warn_choice SECONDS
 
-		var/confirm = alert(user, "Confirm gas setup. \n\nGas: '[gas_choice]'\nRadius: '[radius_choice]'\nWarn Time: '[warn_choice / 10] seconds' \n\n Is this correct?", "Confirmation", "Yes", "No")
+		var/confirm = alert(user, "确认气体设置。\n\n气体：'[gas_choice]'\n半径：'[radius_choice]'\n警告时间：'[warn_choice / 10] 秒' \n\n 是否正确？", "确认", "Yes", "No")
 		if(confirm != "Yes")
 			return FALSE
 		log_admin("[key_name(user)] released gas (Gas: [gas_choice], Radius: [radius_choice], Delay: [warn_choice]) from [name] at X[x], Y[y], Z[z].")
@@ -157,7 +157,7 @@
 
 /obj/structure/pipes/vents/proc/create_gas(gas_type = VENT_GAS_SMOKE, radius = 4, warning_time = 5 SECONDS)
 	if(welded)
-		to_chat(usr, SPAN_WARNING("You cannot release gas from a welded vent."))
+		to_chat(usr, SPAN_WARNING("你无法从焊死的通风口释放气体。"))
 		return FALSE
 	var/datum/effect_system/smoke_spread/spreader
 	switch(gas_type)
@@ -173,7 +173,7 @@
 	spreader.attach(src)
 
 	new /obj/effect/warning/explosive/gas(loc, warning_time)
-	visible_message(SPAN_HIGHDANGER("[src] begins to hiss as gas builds up within it."), SPAN_HIGHDANGER("You hear a hissing."), radius)
+	visible_message(SPAN_HIGHDANGER("[src]开始嘶嘶作响，内部气体正在积聚。"), SPAN_HIGHDANGER("You hear a hissing."), radius)
 	addtimer(CALLBACK(src, PROC_REF(release_gas), radius), warning_time)
 
 /obj/structure/pipes/vents/proc/release_gas(radius = 4)

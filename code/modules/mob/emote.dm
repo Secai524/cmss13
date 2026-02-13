@@ -11,7 +11,7 @@
 
 	if(!length(key_emotes))
 		if(intentional && !force_silence)
-			to_chat(src, SPAN_NOTICE("'[act]' emote does not exist. Say *help for a list."))
+			to_chat(src, SPAN_NOTICE("表情动作'[act]'不存在。输入*help查看列表。"))
 		return FALSE
 	var/silenced = FALSE
 	for(var/datum/emote/current_emote in key_emotes)
@@ -25,7 +25,7 @@
 			SEND_SIGNAL(src, COMSIG_MOB_EMOTE, current_emote, act, m_type, message, intentional)
 			return TRUE
 	if(intentional && !silenced && !force_silence)
-		to_chat(src, SPAN_NOTICE("Unusable emote '[act]'. Say *help for a list."))
+		to_chat(src, SPAN_NOTICE("无法使用表情动作'[act]'。输入*help查看列表。"))
 	return FALSE
 
 /datum/emote/help
@@ -59,7 +59,7 @@
 
 /datum/emote/custom/run_emote(mob/user, params, type_override, intentional = FALSE, prefix)
 	if(user.client && user.client.prefs.muted & MUTE_IC)
-		to_chat(user, SPAN_DANGER("You cannot emote (muted)."))
+		to_chat(user, SPAN_DANGER("你无法使用表情动作（已禁言）。"))
 		return
 	message = params
 	return ..()

@@ -1,12 +1,12 @@
 GLOBAL_LIST_INIT(snow_recipes, list(
-	new /datum/stack_recipe("snow barricade", /obj/structure/barricade/snow, 3, time = 2 SECONDS, one_per_turf = ONE_TYPE_PER_BORDER, on_floor = TRUE, flags = RESULT_REQUIRES_SNOW),
+	new /datum/stack_recipe("雪地路障", /obj/structure/barricade/snow, 3, time = 2 SECONDS, one_per_turf = ONE_TYPE_PER_BORDER, on_floor = TRUE, flags = RESULT_REQUIRES_SNOW),
 	new /datum/stack_recipe("snowball", /obj/item/snowball, 1)
 	))
 
 
 /obj/item/stack/snow
-	name = "snow pile"
-	desc = "Some snow pile."
+	name = "雪堆"
+	desc = "一个雪堆。"
 	singular_name = "layer"
 	icon = 'icons/obj/items/marine-items.dmi'
 	icon_state = "snow_stack"
@@ -16,7 +16,7 @@ GLOBAL_LIST_INIT(snow_recipes, list(
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 1
 	max_amount = 25
-	stack_id = "snow pile"
+	stack_id = "雪堆"
 
 /obj/item/stack/snow/Initialize(mapload, amount)
 	recipes = GLOB.snow_recipes
@@ -35,17 +35,17 @@ GLOBAL_LIST_INIT(snow_recipes, list(
 					ET.dirt_amt = 0
 					ET.update_icon()
 			else
-				to_chat(user, SPAN_NOTICE("You start taking snow from [src]."))
+				to_chat(user, SPAN_NOTICE("你开始从[src]取雪。"))
 				playsound(user.loc, 'sound/effects/thud.ogg', 40, 1, 6)
 				if(!do_after(user, ET.shovelspeed * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					to_chat(user, SPAN_NOTICE("You stop taking snow from [src]."))
+					to_chat(user, SPAN_NOTICE("你停止从[src]取雪。"))
 					return
 				var/transf_amt = ET.dirt_amt_per_dig
 				if(amount < ET.dirt_amt_per_dig)
 					transf_amt = amount
 				ET.dirt_amt = transf_amt
 				ET.dirt_type = DIRT_TYPE_SNOW
-				to_chat(user, SPAN_NOTICE("You take snow from [src]."))
+				to_chat(user, SPAN_NOTICE("你从[src]取了一些雪。"))
 				ET.update_icon()
 				use(transf_amt)
 				return TRUE
@@ -64,15 +64,15 @@ GLOBAL_LIST_INIT(snow_recipes, list(
 		var/turf/open/T = target
 		if(istype(T,/turf/open/snow) || istype(T,/turf/open/auto_turf/snow))
 			if(T.bleed_layer >= 3)
-				to_chat(user, "This ground is already full of snow.")
+				to_chat(user, "这片地面已经满是积雪了。")
 				return
-			to_chat(user, "You start putting some snow back on the ground.")
+			to_chat(user, "你开始把一些雪放回地面。")
 			if(!do_after(user, 15, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				to_chat(user, "You stop putting some snow back on the ground.")
+				to_chat(user, "你停止把雪放回地面。")
 				return
 			if(T.bleed_layer >= 3)
 				return
-			to_chat(user, "You put a new snow layer on the ground.")
+			to_chat(user, "你在地面上铺了一层新雪。")
 			if(istype(T,/turf/open/auto_turf/snow))
 				var/turf/open/auto_turf/snow/AT = T
 				AT.changing_layer(AT.bleed_layer += 1)
@@ -83,7 +83,7 @@ GLOBAL_LIST_INIT(snow_recipes, list(
 
 /obj/item/snowball
 	name = "snowball"
-	desc = "A weapon of mass destruction, this perfectly crafted item can be used to decimate the enemy forces, provided there isn't a shoebill to block your shot..."
+	desc = "一件大规模杀伤性武器，这件完美打造的物品可以用来歼灭敌军，前提是没有一只鞋嘴鹳挡住你的射击……"
 	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "snowball"
 	item_state = "latex"

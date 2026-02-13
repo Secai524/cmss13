@@ -1,5 +1,5 @@
 /datum/equipment_preset/cia
-	name = "CIA Agent (Civilian Clothing)"
+	name = "CIA特工（便服）"
 	flags = EQUIPMENT_PRESET_EXTRA
 	minimum_age = 25
 	job_title = JOB_CIA
@@ -61,7 +61,7 @@
 /// USCM Placements ///
 
 /datum/equipment_preset/cia/officer
-	name = "CIA Agent (USCM Liaison - 1st Lieutenant)"
+	name = "CIA特工（USCM联络官 - 中尉）"
 	job_title = JOB_CIA_LIAISON
 	assignment = JOB_CIA_LIAISON
 	paygrades = list(PAY_SHORT_MO2 = JOB_PLAYTIME_TIER_0)
@@ -86,13 +86,13 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/portable_vendor/antag/cia/covert(new_human), WEAR_IN_BACK)
 
 /datum/equipment_preset/cia/officer/o3
-	name = "CIA Senior Agent (USCM Liaison - Captain)"
+	name = "CIA高级特工（USCM联络官 - 上尉）"
 	paygrades = list(PAY_SHORT_MO3 = JOB_PLAYTIME_TIER_0)
 	minimum_age = 30
 	skills = /datum/skills/cia_senior
 
 /datum/equipment_preset/uscm/marsoc/low_threat/cia
-	name = "CIA Senior Agent (Marine Raider Advisor)"
+	name = "CIA高级特工（陆战突袭队顾问）"
 	minimum_age = 30
 	skills = /datum/skills/cia_senior
 
@@ -137,7 +137,7 @@
 /// Spies ///
 
 /datum/equipment_preset/clf/engineer/cia
-	name = "CIA Spy (CLF Engineer)"
+	name = "CIA间谍（CLF工程师）"
 	skills = /datum/skills/cia
 	selection_categories = list("CIA")
 
@@ -177,7 +177,7 @@
 
 
 /datum/equipment_preset/upp/soldier/dressed/cia
-	name = "CIA Spy (UPP Soldier)"
+	name = "CIA间谍（UPP士兵）"
 	skills = /datum/skills/cia
 	selection_categories = list("CIA")
 
@@ -191,7 +191,7 @@
 
 
 /datum/equipment_preset/upp/officer/senior/dressed/cia
-	name = "CIA Spy (UPP Senior Officer)"
+	name = "CIA间谍（UPP高级军官）"
 	skills = /datum/skills/cia_senior
 	selection_categories = list("CIA")
 
@@ -207,7 +207,7 @@
 /// UACQS ///
 
 /datum/equipment_preset/cia/uacqs
-	name = "CIA Agent (UACQS Administrator)"
+	name = "CIA特工（UACQS管理员）"
 	job_title = JOB_CIA_UACQS_ADMN
 	assignment = JOB_CIA_UACQS_ADMN
 	paygrades = list(PAY_SHORT_CADMIN = JOB_PLAYTIME_TIER_0)
@@ -254,7 +254,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/camera(new_human), WEAR_IN_BACK)
 
 /datum/equipment_preset/cia/uacqs/commissioner
-	name = "CIA Senior Agent (UACQS Commissioner)"
+	name = "CIA高级特工（UACQS专员）"
 	job_title = JOB_CIA_UACQS_COMR
 	assignment = JOB_CIA_UACQS_COMR
 	paygrades = list(PAY_SHORT_COM = JOB_PLAYTIME_TIER_0)
@@ -267,7 +267,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/paper/prefab/uacqs_notice(new_human), WEAR_IN_BACK)
 
 /datum/equipment_preset/cia/uacqs/security
-	name = "CIA Agent (UACQS Security)"
+	name = "CIA特工（UACQS安保）"
 	job_title = JOB_CIA_UACQS_SEC
 	assignment = JOB_CIA_UACQS_SEC
 	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)

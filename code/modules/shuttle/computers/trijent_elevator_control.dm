@@ -1,6 +1,6 @@
 /obj/structure/machinery/computer/shuttle/elevator_controller/elevator_call
 	name = "\improper Elevator Call"
-	desc = "Control panel for the elevator."
+	desc = "电梯控制面板。"
 	shuttleId = MOBILE_TRIJENT_ELEVATOR
 	is_call = TRUE
 	var/dockId
@@ -29,7 +29,7 @@
 
 /obj/structure/machinery/computer/shuttle/elevator_controller
 	name = "\improper Elevator Panel"
-	desc = "Control panel for the elevator."
+	desc = "电梯控制面板。"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "elevator_screen"
 
@@ -65,7 +65,7 @@
 /obj/structure/machinery/computer/shuttle/elevator_controller/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
 	if(inoperable())
-		to_chat(user, SPAN_WARNING("The panel is inoperable."))
+		to_chat(user, SPAN_WARNING("面板无法操作。"))
 		return UI_CLOSE
 
 /obj/structure/machinery/computer/shuttle/elevator_controller/ui_data(mob/user)

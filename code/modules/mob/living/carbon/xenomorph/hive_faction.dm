@@ -2,15 +2,15 @@ GLOBAL_LIST_INIT(hive_alliable_factions, generate_alliable_factions())
 
 /proc/generate_alliable_factions()
 	. = list()
-	.["Xenomorph"] = list()
+	.["异形"] = list()
 
 	for(var/hivenumber in GLOB.hive_datum)
 		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-		.["Xenomorph"] += hive.internal_faction
+		.["异形"] += hive.internal_faction
 
-	.["Human"] = FACTION_LIST_HUMANOID
+	.["人类"] = FACTION_LIST_HUMANOID
 
-	.["Raw"] = .["Human"] + .["Xenomorph"]
+	.["Raw"] = .["人类"] + .["异形"]
 
 /datum/hive_faction_ui
 	var/name = "Hive Faction"

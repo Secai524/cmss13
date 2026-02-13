@@ -4,7 +4,7 @@
 
 /obj/item/weapon/gun/boltaction
 	name = "\improper Basira-Armstrong bolt-action hunting rifle"
-	desc = "Named after its eccentric designers, the Basira-Armstrong is a cheap but reliable civilian bolt-action rifle frequently found in the outer colonies. Despite its legally-mandated limited magazine capacity, its light weight and legendary accuracy makes it popular among hunters and competitive shooters."
+	desc = "以其古怪的设计师命名，巴希拉-阿姆斯特朗是一款廉价但可靠的民用栓动步枪，常见于外殖民地。尽管法律强制限制了其弹匣容量，但其轻量化和传奇般的精准度使其深受猎人和竞技射手欢迎。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/marksman_rifles.dmi'
 	icon_state = "boltaction"
 	item_state = "hunting"
@@ -97,18 +97,18 @@
 
 /obj/item/weapon/gun/boltaction/unique_action(mob/user)
 	if(world.time < (recent_cycle + bolt_delay) )  //Don't spam it.
-		to_chat(user, SPAN_DANGER("You can't cycle the bolt again right now."))
+		to_chat(user, SPAN_DANGER("你现在无法再次拉动枪栓。"))
 		return
 
 	bolted = !bolted
 
 	if(bolted)
-		to_chat(user, SPAN_DANGER("You close the bolt of [src]!"))
+		to_chat(user, SPAN_DANGER("你合上了[src]的枪栓！"))
 		playsound(get_turf(src), open_bolt_sound, 15, TRUE, 1)
 		ready_in_chamber()
 		recent_cycle = world.time
 	else
-		to_chat(user, SPAN_DANGER("You open the bolt of [src]!"))
+		to_chat(user, SPAN_DANGER("你拉开了[src]的枪栓！"))
 		playsound(get_turf(src), close_bolt_sound, 65, TRUE, 1)
 		unload_chamber(user)
 
@@ -118,7 +118,7 @@
 	. = ..()
 
 	if(. && !bolted)
-		to_chat(user, SPAN_WARNING("The bolt is still open, you can't fire [src]."))
+		to_chat(user, SPAN_WARNING("枪栓还开着，你无法开火[src]。"))
 		return FALSE
 
 /obj/item/weapon/gun/boltaction/load_into_chamber(mob/user)
@@ -135,7 +135,7 @@
 	user.drop_inv_item_to_loc(magazine, src) //Click!
 	current_mag = magazine
 	replace_ammo(user,magazine)
-	user.visible_message(SPAN_NOTICE("[user] loads [magazine] into [src]!"),
+	user.visible_message(SPAN_NOTICE("[user]将[magazine]装入[src]！"),
 		SPAN_NOTICE("You load [magazine] into [src]!"), null, 3, CHAT_TYPE_COMBAT_ACTION)
 	if(reload_sound)
 		playsound(user, reload_sound, 25, 1, 5)
@@ -143,7 +143,7 @@
 
 /obj/item/weapon/gun/boltaction/vulture
 	name = "\improper M707 \"Vulture\" anti-materiel rifle"
-	desc = "The M707 is a crude but highly powerful rifle, designed for disabling lightly armored vehicles and hitting targets inside buildings. Its unwieldy scope and caliber necessitates a spotter to be fully effective, suffering severe scope drift without one."
+	desc = "M707是一款粗糙但威力巨大的步枪，设计用于瘫痪轻装甲车辆和打击建筑物内的目标。其笨重的瞄准镜和口径需要一名观察员才能完全发挥效力，否则会遭受严重的瞄准偏移。"
 	desc_lore = {"
 		Put into production in 2175 as an economical answer to rising militancy in the Outer Rim, the M707 was derived from jury-rigged anti-materiel rifles that were captured during the Linna 349 campaign.
 
@@ -219,7 +219,7 @@
 
 /obj/item/weapon/gun/boltaction/vulture/able_to_fire(mob/user)
 	if(!bypass_trait && !HAS_TRAIT(user, TRAIT_VULTURE_USER))
-		to_chat(user, SPAN_WARNING("You don't know how to use this!"))
+		to_chat(user, SPAN_WARNING("你不知道怎么用这个！"))
 		return FALSE
 
 	return ..()
@@ -240,7 +240,7 @@
 	for(var/mob/current_mob as anything in get_mobs_in_z_level_range(get_turf(user), fire_message_range) - user)
 		var/relative_dir = Get_Compass_Dir(current_mob, user)
 		var/final_dir = dir2text(relative_dir)
-		to_chat(current_mob, SPAN_HIGHDANGER("You hear a massive boom coming from [final_dir ? "the [final_dir]" : "nearby"]!"))
+		to_chat(current_mob, SPAN_HIGHDANGER("你听到一声巨大的轰鸣从[final_dir ? "the [final_dir]" : "nearby"]!"))
 		if(current_mob.client)
 			playsound_client(current_mob.client, 'sound/weapons/gun_vulture_report.ogg', src, 25)
 
@@ -254,7 +254,7 @@
 /// Someone tried to fire this without using a bipod, so we break their arm along with sending them flying backwards
 /obj/item/weapon/gun/boltaction/vulture/proc/fired_without_bipod(mob/living/user)
 	SEND_SIGNAL(src, COMSIG_GUN_VULTURE_FIRED_ONEHAND)
-	to_chat(user, SPAN_HIGHDANGER("You get flung backwards as you fire [src], breaking your firing arm in the process!"))
+	to_chat(user, SPAN_HIGHDANGER("你开火[src]时被后坐力向后掀飞，过程中折断了你的射击手臂！"))
 	user.apply_effect(0.7, WEAKEN)
 	user.apply_effect(1, SUPERSLOW)
 	user.apply_effect(2, SLOW)
@@ -269,7 +269,7 @@
 	var/direction = REVERSE_DIR(user.dir)
 	if(direction && !step(user, direction))
 		user.animation_attack_on(get_step(user, direction))
-		user.visible_message(SPAN_DANGER("[user] slams into an obstacle!"), SPAN_HIGHDANGER("You slam into an obstacle!"), null, 4, CHAT_TYPE_TAKING_HIT)
+		user.visible_message(SPAN_DANGER("[user]撞上了障碍物！"), SPAN_HIGHDANGER("You slam into an obstacle!"), null, 4, CHAT_TYPE_TAKING_HIT)
 		user.apply_damage(MELEE_FORCE_TIER_2)
 
 	shake_camera(user, 7, 6) // Around 2x worse than getting hit with a heavy round
@@ -296,7 +296,7 @@
 		if(!(limb.status & LIMB_SPLINTED_INDESTRUCTIBLE) && (limb.status & LIMB_SPLINTED)) //If they have it splinted, the splint won't hold.
 			limb.status &= ~LIMB_SPLINTED
 			playsound(user, 'sound/items/splintbreaks.ogg', 20)
-			to_chat(user, SPAN_DANGER("The splint on your [limb.display_name] comes apart under the recoil!"))
+			to_chat(user, SPAN_DANGER("你[limb.display_name]上的夹板在后坐力作用下散架了！"))
 			user.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
 			user.update_med_icon()
 

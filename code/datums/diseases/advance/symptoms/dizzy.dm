@@ -17,7 +17,7 @@ Bonus
 
 /datum/symptom/dizzy // Not the egg
 
-	name = "Dizziness"
+	name = "眩晕"
 	stealth = 2
 	resistance = -2
 	stage_speed = -3
@@ -32,6 +32,6 @@ Bonus
 			if(1, 2, 3, 4)
 				to_chat(M, SPAN_NOTICE("[pick("You feel dizzy.", "Your head starts spinning.")]"))
 			else
-				to_chat(M, SPAN_NOTICE("You are unable to look straight!"))
+				to_chat(M, SPAN_NOTICE("你无法直视前方！"))
 				M.make_dizzy(5)
 	return

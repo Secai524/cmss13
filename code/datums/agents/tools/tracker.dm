@@ -1,6 +1,6 @@
 /obj/item/device/tracker
-	name = "OoI tracker"
-	desc = "A tracker that tracks Objects of Interest, it is not widely available."
+	name = "OoI追踪器"
+	desc = "一种追踪目标物体的追踪器，并非广泛配发。"
 	icon_state = "tracker"
 	item_state = "tracker"
 	var/active = FALSE
@@ -22,7 +22,7 @@
 		select_object(user)
 		return
 
-	to_chat(user, SPAN_NOTICE("You start tracking the [tracked_object.name]."))
+	to_chat(user, SPAN_NOTICE("你开始追踪[tracked_object.name]。"))
 	if(!do_after(user, ping_speed, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		return
 
@@ -49,7 +49,7 @@
 
 /obj/item/device/tracker/proc/select_object(mob/user)
 	if(!LAZYLEN(GLOB.objects_of_interest))
-		to_chat(user, SPAN_WARNING("There are nothing of interest to track."))
+		to_chat(user, SPAN_WARNING("没有可供追踪的目标。"))
 		return
 
 	var/list/object_choices = list()
@@ -62,12 +62,12 @@
 			object_choices += O
 
 	if(!length(object_choices))
-		to_chat(user, SPAN_WARNING("There are nothing of interest to track."))
+		to_chat(user, SPAN_WARNING("没有可供追踪的目标。"))
 		return
 
-	tracked_object = tgui_input_list(usr, "What Object of Interest do you want to track?", "Object type", object_choices)
+	tracked_object = tgui_input_list(usr, "你想追踪哪个目标？", "Object type", object_choices)
 
-	to_chat(user, SPAN_WARNING("New interest to track selected as [tracked_object.name]."))
+	to_chat(user, SPAN_WARNING("已选定新的追踪目标：[tracked_object.name]。"))
 
 /obj/item/device/tracker/Destroy()
 	if(tracked_object)

@@ -51,7 +51,7 @@
 
 /obj/item/weapon/gun/smg/m39
 	name = "\improper M39 submachinegun"
-	desc = "The Armat Battlefield Systems M-39 submachinegun. Occasionally carried by light-infantry, scouts, engineers and medics. A lightweight, lower caliber alternative to the various Pulse weapons used the USCM. Fires 10x20mm rounds out of 48 round magazines."
+	desc = "阿玛特战场系统M-39冲锋枪。偶尔由轻步兵、侦察兵、工程师和医疗兵携带。是USCM使用的各种脉冲武器的轻量化、小口径替代品。使用48发弹匣发射10x20mm子弹。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/smgs.dmi'
 	icon_state = "m39"
 	item_state = "m39"
@@ -133,7 +133,7 @@
 
 /obj/item/weapon/gun/smg/m39/elite
 	name = "\improper M39B/2 submachinegun"
-	desc = "A modified version M-39 submachinegun, re-engineered for better weight, handling and accuracy. Given only to elite units."
+	desc = "M-39冲锋枪的改良版本，经过重新设计以改善重量、操控性和精度。仅配发给精英单位。"
 	icon_state = "m39b2"
 	item_state = "m39b2"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/smgs.dmi'
@@ -188,7 +188,7 @@
 	random_spawn_under = null
 
 /obj/item/weapon/gun/smg/m39/corporate
-	desc = "A Weyland-Yutani creation, this M-39 comes equipped in corporate white. Uses 10x20mm caseless ammunition."
+	desc = "维兰德-汤谷的造物，这款M-39采用公司白色涂装。使用10x20mm无壳弹药。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_map/snow/guns_obj.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/obj/items/weapons/guns/guns_by_map/snow/guns_lefthand.dmi',
@@ -201,7 +201,7 @@
 	starting_attachment_types = list(/obj/item/attachable/stock/smg/collapsible)
 
 /obj/item/weapon/gun/smg/m39/corporate/no_lock //for PMC nightmares.
-	desc = "A Weyland-Yutani creation, this M-39 comes equipped in corporate white. Uses 10x20mm caseless ammunition. This one had its IFF electronics removed."
+	desc = "维兰德-汤谷的造物，这款M-39采用公司白色涂装。使用10x20mm无壳弹药。此型号的IFF电子元件已被移除。"
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 
 /obj/item/weapon/gun/smg/m39/elite/whiteout//attachies + heap mag for whiteout.
@@ -213,7 +213,7 @@
 
 /obj/item/weapon/gun/smg/mp5
 	name = "\improper MP5 submachinegun"
-	desc = "A German design, this was one of the most widely used submachine guns in the world. It's still possible to find this firearm in the hands of collectors or gun fanatics."
+	desc = "一款德国设计，曾是世界上使用最广泛的冲锋枪之一。仍有可能在收藏家或枪械狂热者手中找到此枪。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/smgs.dmi'
 	icon_state = "mp5"
 	item_state = "mp5"
@@ -283,7 +283,7 @@
 
 /obj/item/weapon/gun/smg/mp5/mp5a5
 	name = "\improper MP5A5 submachinegun"
-	desc = "A German design, this was one of the most widely used submachine guns in the world. Modernized design for limited use by colonial security and Office of the Colonial Marshals."
+	desc = "一款德国设计，曾是世界上使用最广泛的冲锋枪之一。经过现代化改造，供殖民地安保部门和殖民地治安官办公室有限使用。"
 	icon_state = "mp5_alt"
 	item_state = "mp5_alt"
 	attachable_allowed = list(
@@ -361,7 +361,7 @@
 
 /obj/item/weapon/gun/smg/mp27
 	name = "\improper MP27 submachinegun"
-	desc = "An archaic design going back almost a century, the MP27 was common in its day. Today it sees limited use as cheap computer-printed replicas or family heirlooms. An extremely ergonomic and lightweight design allows easy mass production and surpisingly good handling, but the cheap materials used hurt the weapon's scatter noticeably."
+	desc = "一种可追溯近一个世纪的古老设计，MP27在其时代很常见。如今，它作为廉价的计算机打印复制品或家族传家宝被有限使用。极其符合人体工程学且轻量化的设计便于大规模生产和出奇良好的操控性，但使用的廉价材料明显损害了武器的散射精度。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/smgs.dmi'
 	icon_state = "mp7"
 	item_state = "mp7"
@@ -429,7 +429,7 @@
 
 /obj/item/weapon/gun/smg/ppsh
 	name = "\improper PPSh-17b submachinegun"
-	desc = "An unauthorized copy of a replica of a prototype submachinegun developed in a third world shit hole somewhere."
+	desc = "一款未经授权的复制品，其原型是在某个第三世界粪坑开发的冲锋枪。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/smgs.dmi'
 	icon_state = "ppsh17b"
 	item_state = "ppsh17b"
@@ -470,14 +470,14 @@
 	if(jammed)
 		if(world.time % 3)
 			playsound(src, 'sound/weapons/handling/gun_jam_click.ogg', 35, TRUE)
-			to_chat(user, SPAN_WARNING("Your gun is jammed! Mash Unique-Action to unjam it!"))
-			balloon_alert(user, "*jammed*")
+			to_chat(user, SPAN_WARNING("你的枪卡壳了！猛按特殊动作键来排除故障！"))
+			balloon_alert(user, "*卡壳*")
 		return NONE
 	else if(prob(ppsh_mag?.jam_chance))
 		jammed = TRUE
 		playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 50, FALSE)
-		user.visible_message(SPAN_DANGER("[src] makes a noticeable clicking noise!"), SPAN_HIGHDANGER("\The [src] suddenly jams and refuses to fire! Mash Unique-Action to unjam it."))
-		balloon_alert(user, "*jammed*")
+		user.visible_message(SPAN_DANGER("[src]发出了明显的咔哒声！"), SPAN_HIGHDANGER("\The [src] suddenly jams and refuses to fire! Mash Unique-Action to unjam it."))
+		balloon_alert(user, "*卡壳*")
 		return NONE
 	else
 		return ..()
@@ -485,15 +485,15 @@
 /obj/item/weapon/gun/smg/ppsh/unique_action(mob/user)
 	if(jammed)
 		if(prob(PPSH_UNJAM_CHANCE))
-			to_chat(user, SPAN_GREEN("You successfully unjam \the [src]!"))
+			to_chat(user, SPAN_GREEN("你成功排除了\the [src]的故障！"))
 			playsound(src, 'sound/weapons/handling/gun_jam_rack_success.ogg', 50, FALSE)
 			jammed = FALSE
 			cock_cooldown += 1 SECONDS //so they don't accidentally cock a bullet away
-			balloon_alert(user, "*unjammed!*")
+			balloon_alert(user, "*故障排除！*")
 		else
-			to_chat(user, SPAN_NOTICE("You start wildly racking the bolt back and forth attempting to unjam \the [src]!"))
+			to_chat(user, SPAN_NOTICE("你开始疯狂地来回拉动枪栓，试图排除\the [src]的故障！"))
 			playsound(src, "gun_jam_rack", 50, FALSE)
-			balloon_alert(user, "*rack*")
+			balloon_alert(user, "*拉动*")
 		return
 	. = ..()
 
@@ -527,7 +527,7 @@
 
 /obj/item/weapon/gun/smg/pps43
 	name = "\improper Type-19 Submachinegun" //placeholder
-	desc = "An outdated, but reliable and powerful, submachinegun originating in the Union of Progressive Peoples, it is still in limited service in the UPP but is most often used by paramilitary groups or corporate security forces. It is usually used with a 35 round stick magazine, or a 71 round drum."
+	desc = "一款源自进步人民联盟的过时但可靠且威力强大的冲锋枪，仍在UPP中有限服役，但最常被准军事团体或公司安保部队使用。通常使用35发直弹匣或71发弹鼓。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/smgs.dmi'
 	icon_state = "insasu"
 	item_state = "insasu"
@@ -578,7 +578,7 @@
 
 /obj/item/weapon/gun/smg/bizon
 	name = "\improper Type 64 Submachinegun"
-	desc = "The standard submachinegun of the UPP, sporting an unusual 64 round helical magazine, it has a high fire-rate, but is unusually accurate. This one has a faux-wood grip, denoting it as civilian use or as an export model."
+	desc = "UPP的标准冲锋枪，配备不寻常的64发螺旋弹匣，射速高，但异常精准。此型号带有仿木握把，表明为民用或出口型号。"
 	desc_lore = "The Type 64 finds its way into the hands of more than just UPP soldiers, it has an active life with rebel groups, corporate security forces, mercenaries, less well-armed militaries, and just about everything or everyone in between."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/smgs.dmi'
 	icon_state = "type64"
@@ -612,7 +612,7 @@
 
 /obj/item/weapon/gun/smg/bizon/upp
 	name = "\improper Type 64 Submachinegun"
-	desc = "The standard submachinegun of the UPP, sporting an unusual 64 round helical magazine, it has a high fire-rate, but is unusually accurate. This one has a black polymer grip, denoting it as in-use by the UPP military."
+	desc = "UPP的标准冲锋枪，配备不寻常的64发螺旋弹匣，射速高，但异常精准。此型号带有黑色聚合物握把，表明为UPP军队使用。"
 	desc_lore = "The Type 64 finds its way into the hands of more than just UPP soldiers, it has an active life with rebel groups, corporate security forces, mercenaries, less well-armed militaries, and just about everything or everyone in between."
 	icon_state = "type64_u"
 	item_state = "type64"
@@ -622,7 +622,7 @@
 
 /obj/item/weapon/gun/smg/mac15
 	name = "\improper MAC-15 submachinegun"
-	desc = "A cheap, reliable design and manufacture make this ubiquitous submachinegun useful despite the age." //Includes proprietary 'full-auto' mode, banned in several Geneva Suggestions rim-wide.
+	desc = "这款冲锋枪设计制造廉价可靠，使其尽管年代久远却依然无处不在，非常实用。" //Includes proprietary 'full-auto' mode, banned in several Geneva Suggestions rim-wide.
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/smgs.dmi'
 	icon_state = "mac15"
 	item_state = "mac15"
@@ -673,7 +673,7 @@
 
 /obj/item/weapon/gun/smg/uzi
 	name = "\improper UZI"
-	desc = "Exported to over 90 countries, somehow this relic has managed to end up here. Couldn't be simpler to use."
+	desc = "这款老古董出口到90多个国家，不知怎的最终流落至此。操作再简单不过了。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/smgs.dmi'
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/guns.dmi',
@@ -731,14 +731,14 @@
 	if(jammed)
 		if(world.time % 3)
 			playsound(src, 'sound/weapons/handling/gun_jam_click.ogg', 35, TRUE)
-			to_chat(user, SPAN_WARNING("Your gun is jammed! Mash Unique-Action to unjam it!"))
-			balloon_alert(user, "*jammed*")
+			to_chat(user, SPAN_WARNING("你的枪卡壳了！猛按特殊动作键来排除故障！"))
+			balloon_alert(user, "*卡壳*")
 		return NONE
 	else if(prob(uzi_mag.jam_chance))
 		jammed = TRUE
 		playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 35, TRUE)
-		user.visible_message(SPAN_DANGER("[src] makes a noticeable clicking noise!"), SPAN_HIGHDANGER("\The [src] suddenly jams and refuses to fire! Mash Unique-Action to unjam it."))
-		balloon_alert(user, "*jammed*")
+		user.visible_message(SPAN_DANGER("[src]发出了明显的咔哒声！"), SPAN_HIGHDANGER("\The [src] suddenly jams and refuses to fire! Mash Unique-Action to unjam it."))
+		balloon_alert(user, "*卡壳*")
 		return NONE
 	else
 		return ..()
@@ -746,15 +746,15 @@
 /obj/item/weapon/gun/smg/uzi/unique_action(mob/user)
 	if(jammed)
 		if(prob(UZI_UNJAM_CHANCE))
-			to_chat(user, SPAN_GREEN("You successfully unjam \the [src]!"))
+			to_chat(user, SPAN_GREEN("你成功排除了\the [src]的故障！"))
 			playsound(src, 'sound/weapons/handling/gun_jam_rack_success.ogg', 35, TRUE)
 			jammed = FALSE
 			cock_cooldown += 1 SECONDS //so they don't accidentally cock a bullet away
-			balloon_alert(user, "*unjammed!*")
+			balloon_alert(user, "*故障排除！*")
 		else
-			to_chat(user, SPAN_NOTICE("You start wildly racking the bolt back and forth attempting to unjam \the [src]!"))
+			to_chat(user, SPAN_NOTICE("你开始疯狂地来回拉动枪栓，试图排除\the [src]的故障！"))
 			playsound(src, "gun_jam_rack", 50, FALSE)
-			balloon_alert(user, "*rack*")
+			balloon_alert(user, "*拉动*")
 		return
 	. = ..()
 
@@ -765,7 +765,7 @@
 
 /obj/item/weapon/gun/smg/fp9000
 	name = "\improper FN FP9000 Submachinegun"
-	desc = "An old design, but one that's stood the test of time. A leaked and unencrypted 3D-printing pattern alongside an extremely robust and reasonably cheap to manufacture frame have ensured this weapon be a mainstay of rim colonies and private security firms for over a century."
+	desc = "一个古老的设计，却经受住了时间的考验。一份泄露且未加密的3D打印图纸，加上极其坚固且制造成本相对低廉的框架，确保了这款武器在一个多世纪以来一直是边缘殖民地和私人安保公司的中流砥柱。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/smgs.dmi'
 	icon_state = "fp9000"
 	item_state = "fp9000"
@@ -818,7 +818,7 @@
 
 /obj/item/weapon/gun/smg/fp9000/pmc
 	name = "\improper FN FP9000/2 Submachinegun"
-	desc = "Despite the rather ancient design, the FN FP9K sees frequent use in PMC teams due to its extreme reliability and versatility, allowing it to excel in any situation, especially due to the fact that they use the patented, official version of the gun, which has received several upgrades and tuning to its design over time."
+	desc = "尽管设计相当古老，但FN FP9K因其极高的可靠性和多功能性而在PMC团队中频繁使用，使其在任何情况下都能表现出色，尤其是因为它们使用的是获得专利的官方版本，该版本的设计随着时间的推移已经进行了多次升级和调校。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/smgs.dmi'
 	icon_state = "fp9000_pmc"
 	item_state = "fp9000_pmc"
@@ -851,7 +851,7 @@
 
 /obj/item/weapon/gun/smg/nailgun
 	name = "nailgun"
-	desc = "A carpentry tool, used to drive nails into tough surfaces. Of course, if there isn't anything there, that's just a very sharp nail launching at high velocity..."
+	desc = "一种木工工具，用于将钉子钉入坚硬的表面。当然，如果那里什么都没有，那就只是一枚高速发射的锋利钉子……"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/nailguns.dmi'
 	icon_state = "nailgun"
 	item_state = "nailgun"
@@ -907,8 +907,8 @@
 	return //Can't remove nails from mags or gun.
 
 /obj/item/weapon/gun/smg/nailgun/compact
-	name = "compact nailgun"
-	desc = "A carpentry tool, used to drive nails into tough surfaces. Cannot fire nails offensively due to a lack of a gas seal around the nail, meaning it cannot build up the pressure to fire."
+	name = "紧凑型射钉枪"
+	desc = "一种木工工具，用于将钉子钉入坚硬的表面。由于钉子周围缺乏气体密封，无法积聚发射压力，因此不能将钉子作为弹丸发射。"
 	icon_state = "cnailgun"
 	item_state = "nailgun"
 	w_class = SIZE_SMALL
@@ -919,8 +919,8 @@
 	return FALSE
 
 /obj/item/weapon/gun/smg/nailgun/compact/tactical
-	name = "tactical compact nailgun"
-	desc = "A carpentry tool, used to drive nails into tough surfaces. This one is military grade, it's olive drab and tacticool. Cannot fire nails as a projectile."
+	name = "战术紧凑型射钉枪"
+	desc = "一种木工工具，用于将钉子钉入坚硬的表面。这个是军用级别的，橄榄绿色，战术范儿。不能将钉子作为弹丸发射。"
 	icon_state = "tnailgun"
 	item_state = "tnailgun"
 	w_class = SIZE_SMALL
@@ -932,7 +932,7 @@
 
 /obj/item/weapon/gun/smg/p90
 	name = "\improper FN P90 submachinegun"
-	desc = "The FN P90 submachine gun. An archaic design, but still widely used by corporate and mercenary groups, sometimes seen in the hands of civilian populations. This weapon only accepts 5.7x28mm rounds."
+	desc = "FN P90冲锋枪。一个古老的设计，但仍被企业和雇佣兵团体广泛使用，有时也见于平民手中。此武器仅使用5.7x28mm弹药。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/smgs.dmi'
 	icon_state = "p90"
 	item_state = "p90"
@@ -975,7 +975,7 @@
 
 /obj/item/weapon/gun/smg/p90/twe
 	name = "\improper FN-TWE P90 submachinegun"
-	desc = "A variation of the FN P90 submachine gun. Used by mercenaries and royal marines commandos. This weapon only accepts 5.7x28mm rounds."
+	desc = "FN P90冲锋枪的一个变种。被雇佣兵和皇家海军陆战队突击队使用。此武器仅使用5.7x28mm弹药。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/smgs.dmi'
 	icon_state = "p90_twe"
 	item_state = "p90_twe"

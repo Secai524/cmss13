@@ -12,7 +12,7 @@
 /datum/emote/living/carbon/human/synthetic/synth_k9/bark
 	key = "bark"
 	key_third_person = "barks"
-	message = "barks."
+	message = "吠叫。"
 	audio_cooldown = 3 SECONDS
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
@@ -23,7 +23,7 @@
 /datum/emote/living/carbon/human/synthetic/synth_k9/growl
 	key = "growl"
 	key_third_person = "growls"
-	message = "growls."
+	message = "发出低吼。"
 	audio_cooldown = 3 SECONDS
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
@@ -34,7 +34,7 @@
 /datum/emote/living/carbon/human/synthetic/synth_k9/whine
 	key = "whine"
 	key_third_person = "whines"
-	message = "whines."
+	message = "哀鸣。"
 	audio_cooldown = 3 SECONDS
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
@@ -44,6 +44,6 @@
 //Wagging Tail
 /datum/emote/living/carbon/human/synthetic/synth_k9/tail
 	key = "tail"
-	key_third_person = "wags their tail"
-	message = "wags their tail."
+	key_third_person = "摇尾巴"
+	message = "摇尾巴。"
 	emote_type = EMOTE_VISIBLE

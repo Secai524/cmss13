@@ -7,14 +7,14 @@
 		if(istype(O,/obj/item/explosive/plastic))
 			var/obj/item/explosive/plastic/E = O
 			if(E.plant_target && !E.plant_target.Adjacent(src))
-				to_chat(src, SPAN_WARNING("We can't reach [O]."))
+				to_chat(src, SPAN_WARNING("我们无法触及[O]。"))
 				return
 		else
-			to_chat(src, SPAN_WARNING("[O] is too far away."))
+			to_chat(src, SPAN_WARNING("[O]距离太远。"))
 			return
 
 	if(!isturf(loc) || HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
-		to_chat(src, SPAN_WARNING("We can't melt [O] from here!"))
+		to_chat(src, SPAN_WARNING("我们无法从这里融化[O]！"))
 		return
 
 	face_atom(O)
@@ -25,7 +25,7 @@
 
 	for(var/obj/effect/xenomorph/acid/A in turf)
 		if(acid_type == A.type && A.acid_t == O)
-			to_chat(src, SPAN_WARNING("[A] is already drenched in acid."))
+			to_chat(src, SPAN_WARNING("[A]已经浸满了酸液。"))
 			return
 
 	var/obj/I
@@ -35,7 +35,7 @@
 
 		wait_time = I.get_applying_acid_time()
 		if(wait_time == -1)
-			to_chat(src, SPAN_WARNING("We cannot dissolve \the [I]."))
+			to_chat(src, SPAN_WARNING("我们无法溶解\the [I]。"))
 			return
 
 	//TURF CHECK
@@ -44,19 +44,19 @@
 		if(istype(O, /turf/closed/wall))
 			var/turf/closed/wall/wall_target = O
 			if(wall_target.acided_hole)
-				to_chat(src, SPAN_WARNING("[O] is already weakened."))
+				to_chat(src, SPAN_WARNING("[O]已经被削弱了。"))
 				return
 
 		var/dissolvability = turf.can_be_dissolved()
 		switch(dissolvability)
 			if(0)
-				to_chat(src, SPAN_WARNING("We cannot dissolve [turf]."))
+				to_chat(src, SPAN_WARNING("我们无法溶解[turf]。"))
 				return
 			if(1)
 				wait_time = 50
 			if(2)
 				if(acid_type != /obj/effect/xenomorph/acid/strong)
-					to_chat(src, SPAN_WARNING("This [turf.name] is too tough to be melted by our weak acid."))
+					to_chat(src, SPAN_WARNING("这个[turf.name]太坚固了，我们的弱酸无法将其融化。"))
 					return
 				wait_time = 100
 			else
@@ -90,11 +90,11 @@
 						return
 
 			var/acided_hole_type = W.acided_hole_dir & (EAST|WEST) ? "a hole horizontally" : "a hole vertically"
-			to_chat(src, SPAN_XENOWARNING("We begin generating enough acid to melt [acided_hole_type] through [W]."))
+			to_chat(src, SPAN_XENOWARNING("我们开始生成足够的酸液，以在[W]上熔穿一个[acided_hole_type]。"))
 		else
-			to_chat(src, SPAN_XENOWARNING("We begin generating enough acid to melt through [turf]."))
+			to_chat(src, SPAN_XENOWARNING("我们开始生成足够的酸液来熔穿[turf]。"))
 	else
-		to_chat(src, SPAN_WARNING("You cannot dissolve [O]."))
+		to_chat(src, SPAN_WARNING("你无法溶解[O]。"))
 		return
 
 	if(!do_after(src, wait_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
@@ -103,11 +103,11 @@
 	// AGAIN BECAUSE SOMETHING COULD'VE ACIDED THE PLACE
 	for(var/obj/effect/xenomorph/acid/A in turf)
 		if(acid_type == A.type && A.acid_t == O)
-			to_chat(src, SPAN_WARNING("[A] is already drenched in acid."))
+			to_chat(src, SPAN_WARNING("[A]已经浸满了酸液。"))
 			return
 
 	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED)) //Checked again to account for people trying to place acid while channeling the burrow ability
-		to_chat(src, SPAN_WARNING("We can't melt [O] from here!"))
+		to_chat(src, SPAN_WARNING("我们无法从这里融化[O]！"))
 		return
 
 	if(!check_state())
@@ -123,10 +123,10 @@
 		if(istype(O,/obj/item/explosive/plastic))
 			var/obj/item/explosive/plastic/E = O
 			if(E.plant_target && !E.plant_target.Adjacent(src))
-				to_chat(src, SPAN_WARNING("We can't reach [O]."))
+				to_chat(src, SPAN_WARNING("我们无法触及[O]。"))
 				return
 		else
-			to_chat(src, SPAN_WARNING("[O] is too far away."))
+			to_chat(src, SPAN_WARNING("[O]距离太远。"))
 			return
 
 	use_plasma(plasma_cost)
@@ -136,7 +136,7 @@
 	if(istype(O, /obj/vehicle/multitile))
 		var/obj/vehicle/multitile/R = O
 		R.take_damage_type(40 / A.acid_delay, "acid", src)
-		visible_message(SPAN_XENOWARNING("[src] vomits globs of vile stuff at \the [O]. It sizzles under the bubbling mess of acid!"),
+		visible_message(SPAN_XENOWARNING("[src]向\the [O]呕吐出大团污秽物。它在冒泡的酸液中嘶嘶作响！"),
 			SPAN_XENOWARNING("We vomit globs of vile stuff at [O]. It sizzles under the bubbling mess of acid!"), null, 5)
 		playsound(loc, "sound/bullets/acid_impact1.ogg", 25)
 		QDEL_IN(A, 20)
@@ -156,7 +156,7 @@
 	if(!isturf(O))
 		msg_admin_attack("[src.name] ([src.ckey]) spat acid on [O] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 		attack_log += text("\[[time_stamp()]\] <font color='green'>Spat acid on [O]</font>")
-	visible_message(SPAN_XENOWARNING("[src] vomits globs of vile stuff all over [O]. It begins to sizzle and melt under the bubbling mess of acid!"),
+	visible_message(SPAN_XENOWARNING("[src]向[O]全身呕吐出大团污秽物。它在冒泡的酸液下开始嘶嘶作响并融化！"),
 	SPAN_XENOWARNING("We vomit globs of vile stuff all over [O]. It begins to sizzle and melt under the bubbling mess of acid!"), null, 5)
 	playsound(loc, "sound/bullets/acid_impact1.ogg", 25)
 
@@ -169,7 +169,7 @@
 	if(ishuman(H))
 		var/mob/living/carbon/human/turf = H
 		turf.update_xeno_hostile_hud()
-	to_chat(H, SPAN_XENOHIGHDANGER("We can move again!"))
+	to_chat(H, SPAN_XENOHIGHDANGER("我们可以再次移动了！"))
 
 /mob/living/carbon/xenomorph/proc/zoom_in()
 	if(!HAS_TRAIT(src, TRAIT_ABILITY_SIGHT_IGNORE_REST) && (stat || resting))
@@ -318,8 +318,8 @@
 	if(!check_can_transfer_plasma(target, max_range))
 		return
 
-	to_chat(src, SPAN_NOTICE("We start focusing our plasma towards [target]."))
-	to_chat(target, SPAN_NOTICE("We feel that [src] starts transferring some of their plasma to us."))
+	to_chat(src, SPAN_NOTICE("我们开始将等离子体集中向[target]。"))
+	to_chat(target, SPAN_NOTICE("我们感觉到[src]开始向我们转移一些等离子体。"))
 	face_atom(target)
 	target.flick_heal_overlay(transfer_delay, COLOR_CYAN)
 
@@ -334,8 +334,8 @@
 	use_plasma(amount)
 	target.gain_plasma(amount)
 	target.xeno_jitter(1 SECONDS)
-	to_chat(target, SPAN_XENOWARNING("[src] has transfered [amount] plasma to us. We now have [target.plasma_stored]."))
-	to_chat(src, SPAN_XENOWARNING("We have transferred [amount] plasma to [target]. We now have [plasma_stored]."))
+	to_chat(target, SPAN_XENOWARNING("[src]向我们转移了[amount]等离子体。我们现在有[target.plasma_stored]。"))
+	to_chat(src, SPAN_XENOWARNING("我们已向[target]转移了[amount]等离子体。我们现在有[plasma_stored]。"))
 	playsound(src, "alien_drool", 25)
 
 /mob/living/carbon/xenomorph/proc/check_can_transfer_plasma(mob/living/carbon/xenomorph/target, max_range)
@@ -343,23 +343,23 @@
 		return FALSE
 
 	if(target.stat == DEAD)
-		to_chat(src, SPAN_WARNING("[target] is dead!"))
+		to_chat(src, SPAN_WARNING("[target]已死亡！"))
 		return FALSE
 
 	if(!isturf(loc))
-		to_chat(src, SPAN_WARNING("We can't transfer plasma from here!"))
+		to_chat(src, SPAN_WARNING("我们无法从这里转移等离子体！"))
 		return FALSE
 
 	if(get_dist(src, target) > max_range)
-		to_chat(src, SPAN_WARNING("We need to be closer to [target]."))
+		to_chat(src, SPAN_WARNING("我们需要更靠近[target]。"))
 		return FALSE
 
 	if(HAS_TRAIT(target, TRAIT_ABILITY_OVIPOSITOR))
-		to_chat(src, SPAN_WARNING("We can't transfer plasma to a queen mounted on her ovipositor."))
+		to_chat(src, SPAN_WARNING("我们无法向正在产卵器上的女王转移等离子体。"))
 		return FALSE
 
 	if(HAS_TRAIT(target, TRAIT_ABILITY_NO_PLASMA_TRANSFER))
-		to_chat(src, SPAN_WARNING("We can't transfer plasma to \the [target]."))
+		to_chat(src, SPAN_WARNING("我们无法向\the [target]转移等离子体。"))
 		return FALSE
 
 	if(target.plasma_max == XENO_NO_PLASMA)
@@ -367,7 +367,7 @@
 		return FALSE
 
 	if(target == src)
-		to_chat(src, SPAN_WARNING("We can't transfer plasma to ourself!"))
+		to_chat(src, SPAN_WARNING("我们无法向自己转移等离子体！"))
 		return FALSE
 
 	return TRUE

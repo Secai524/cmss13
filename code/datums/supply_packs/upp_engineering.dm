@@ -1,5 +1,5 @@
 /datum/supply_packs/upp/sandbags
-	name = "UPP empty sandbags crate (x50)"
+	name = "UPP空沙袋箱 (x50)"
 	contains = list(/obj/item/stack/sandbags_empty/full)
 	cost = 20
 	containertype = /obj/structure/closet/crate/supply
@@ -7,7 +7,7 @@
 	group = "UPP Engineering"
 
 /datum/supply_packs/upp/sandbagskit
-	name = "UPP sandbags construction kit (sandbags x50, etool x2)"
+	name = "UPP沙袋建造套件 (沙袋x50，工兵铲x2)"
 	contains = list(
 		/obj/item/stack/sandbags_empty/full,
 		/obj/item/tool/shovel/etool,
@@ -19,7 +19,7 @@
 	group = "UPP Engineering"
 
 /datum/supply_packs/upp/metal
-	name = "UPP metal sheets (x50)"
+	name = "UPP金属板 (x50)"
 	contains = list(/obj/item/stack/sheet/metal/large_stack)
 	cost = 20
 	containertype = /obj/structure/closet/crate/supply
@@ -27,7 +27,7 @@
 	group = "UPP Engineering"
 
 /datum/supply_packs/upp/plas
-	name = "UPP plasteel sheets (x40)"
+	name = "UPP塑钢板 (x40)"
 	contains = list(/obj/item/stack/sheet/plasteel/med_large_stack)
 	cost = 30
 	containertype = /obj/structure/closet/crate/supply
@@ -35,7 +35,7 @@
 	group = "UPP Engineering"
 
 /datum/supply_packs/upp/glass
-	name = "UPP glass sheets (x50)"
+	name = "UPP玻璃板 (x50)"
 	contains = list(/obj/item/stack/sheet/glass/large_stack)
 	cost = 20
 	containertype = /obj/structure/closet/crate/supply
@@ -43,7 +43,7 @@
 	group = "UPP Engineering"
 
 /datum/supply_packs/upp/wood50
-	name = "UPP wooden planks (x50)"
+	name = "UPP木板 (x50)"
 	contains = list(/obj/item/stack/sheet/wood/large_stack)
 	cost = 20
 	containertype = /obj/structure/closet/crate/supply
@@ -51,7 +51,7 @@
 	group = "UPP Engineering"
 
 /datum/supply_packs/upp/folding_barricades
-	name = "UPP Folding Barricades (x3)"
+	name = "UPP折叠式路障 (x3)"
 	contains = list(
 		/obj/item/stack/folding_barricade/three,
 	)
@@ -61,7 +61,7 @@
 	group = "UPP Engineering"
 
 /datum/supply_packs/upp/smescoil
-	name = "UPP superconducting magnetic coil crate (x1)"
+	name = "UPP超导磁线圈箱 (x1)"
 	contains = list(/obj/item/stock_parts/smes_coil)
 	cost = 30
 	containertype = /obj/structure/closet/crate/construction
@@ -69,7 +69,7 @@
 	group = "UPP Engineering"
 
 /datum/supply_packs/upp/flashlights
-	name = "UPP Flashlights (x8)"
+	name = "UPP手电筒 (x8)"
 	contains = list(
 		/obj/item/ammo_box/magazine/misc/flashlight,
 	)
@@ -79,7 +79,7 @@
 	group = "UPP Engineering"
 
 /datum/supply_packs/upp/batteries
-	name = "UPP High-Capacity Power Cells (x8)"
+	name = "UPP高容量电池 (x8)"
 	contains = list(
 		/obj/item/ammo_box/magazine/misc/power_cell,
 	)

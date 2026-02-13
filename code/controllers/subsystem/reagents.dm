@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(reagents)
-	name = "Reagents"
+	name = "试剂"
 	init_order = SS_INIT_REAGENTS
 	flags = SS_NO_FIRE
 

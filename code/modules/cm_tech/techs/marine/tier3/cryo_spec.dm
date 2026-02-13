@@ -1,6 +1,6 @@
 /datum/tech/cryomarine
-	name = "Wake Up Additional Specialist"
-	desc = "Wakes up an additional specialist to fight against any threats."
+	name = "唤醒额外专家"
+	desc = "唤醒一名额外专家以对抗任何威胁。"
 	icon_state = "overshield"
 
 	announce_message = "An additional specialist is being taken out of cryo."
@@ -15,9 +15,9 @@
 	if(!.)
 		return
 	if(!SSticker.mode)
-		to_chat(user, SPAN_WARNING("You can't do this right now!"))
+		to_chat(user, SPAN_WARNING("你现在无法执行此操作！"))
 		return
 
 /datum/tech/cryomarine/on_unlock()
 	. = ..()
-	SSticker.mode.get_specific_call(/datum/emergency_call/cryo_spec, TRUE, FALSE) // "Marine Cryo Reinforcement (Spec)"
+	SSticker.mode.get_specific_call(/datum/emergency_call/cryo_spec, TRUE, FALSE) // "陆战队员冷冻增援（专家）"

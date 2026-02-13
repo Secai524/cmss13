@@ -37,13 +37,13 @@
 	z = dead_xeno.z || -1
 	death_minute = floor((world.time * 0.1) / 60)
 	hive = dead_xeno.hive.name || "Unknown Hive"
-	caste = dead_xeno.caste.caste_type || "Unknown"
-	strain = dead_xeno.strain?.name || "None"
+	caste = dead_xeno.caste.caste_type || "未知"
+	strain = dead_xeno.strain?.name || "无"
 	leader = (dead_xeno in dead_xeno.hive.xeno_leader_list)
 	minutes_alive = floor(((world.time - dead_xeno.creation_time) * 0.1) / 60) || -1
 	ckey = dead_xeno.ckey || dead_xeno.persistent_ckey || ""
 	damage_taken = dead_xeno.life_damage_taken_total || 0
-	killed_by = strip_improper(death_cause.cause_name) || "Unknown"
+	killed_by = strip_improper(death_cause.cause_name) || "未知"
 	round_id = GLOB.round_id || -1
 	kill_count = dead_xeno.life_kills_total || 0
 

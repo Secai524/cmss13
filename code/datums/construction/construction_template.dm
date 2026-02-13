@@ -46,7 +46,7 @@
 	if(plasma_stored >= plasma_required)
 		to_chat(xeno, SPAN_WARNING("\The [name] does not require plasma."))
 		return
-	to_chat(xeno, SPAN_NOTICE("We begin adding \the plasma to \the [name]."))
+	to_chat(xeno, SPAN_NOTICE("我们开始向\the [name]添加\the 等离子体。"))
 	xeno_attack_delay(xeno)
 	if(!do_after(xeno, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
@@ -69,7 +69,7 @@
 		if(!materials_required[S.stack_id])
 			to_chat(user, SPAN_WARNING("\The [name] has enough [I.name]."))
 			return
-		to_chat(user, SPAN_NOTICE("You begin adding \the [I.name] to \the [name]."))
+		to_chat(user, SPAN_NOTICE("你开始向\the [name]添加\the [I.name]。"))
 		if(!do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return
 		//double-check amount required
@@ -83,7 +83,7 @@
 		if(!extras_required[I.type])
 			to_chat(user, SPAN_WARNING("\The [name] has enough [I.name]."))
 			return
-		to_chat(user, SPAN_NOTICE("You begin adding \the [I.name] to \the [name]."))
+		to_chat(user, SPAN_NOTICE("你开始向\the [name]添加\the [I.name]。"))
 		if(!do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return
 		//double-check amount required

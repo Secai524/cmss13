@@ -47,7 +47,7 @@
 
 /datum/effects/stamina/human/tier3
 	pain_message = "You feel exhausted."
-	emote_message = list("yawns.")
+	emote_message = list("打了个哈欠。")
 	slowdown = STAMINA_SPEED_HIGH
 
 /datum/effects/stamina/human/tier3/process_mob()

@@ -3,7 +3,7 @@
 //Eggmorpher - Basically a big reusable egg
 /obj/effect/alien/resin/special/eggmorph
 	name = XENO_STRUCTURE_EGGMORPH
-	desc = "A disgusting biomass generator that reeks of rotting flesh. Capable of producing facehuggers on its own."
+	desc = "一个散发着腐肉恶臭的恶心生物质生成器。能够自行生产抱脸虫。"
 	icon_state = "eggmorph"
 	health = 300
 	appearance_flags = KEEP_TOGETHER
@@ -41,7 +41,7 @@
 		//Hugger explosion, like a carrier
 		var/obj/item/clothing/mask/facehugger/F
 		var/chance = 60
-		visible_message(SPAN_XENOWARNING("The chittering mass of tiny aliens is trying to escape [src]!"))
+		visible_message(SPAN_XENOWARNING("这团吱吱作响的微小异形正试图逃离[src]！"))
 		for(var/i in 1 to stored_huggers)
 			if(prob(chance))
 				F = new(loc, linked_hive.hivenumber)
@@ -76,15 +76,15 @@
 				to_chat(user, SPAN_XENOWARNING("\The [src] is full of children."))
 				return
 			if(user)
-				visible_message(SPAN_XENOWARNING("[user] slides [hugger] back into \the [src]."),
+				visible_message(SPAN_XENOWARNING("[user]将[hugger]滑回了\the [src]。"),
 					SPAN_XENONOTICE("You place the child back into \the [src]."))
 				user.temp_drop_inv_item(hugger)
 			else
-				visible_message(SPAN_XENOWARNING("[hugger] crawls back into \the [src]!"))
+				visible_message(SPAN_XENOWARNING("[hugger]爬回了\the [src]！"))
 			stored_huggers = min(huggers_max_amount, stored_huggers + 1)
 			qdel(hugger)
 		else
-			to_chat(user, SPAN_XENOWARNING("This child is dead."))
+			to_chat(user, SPAN_XENOWARNING("这个幼体已经死亡。"))
 		return
 
 	//refill egg morpher from an egg
@@ -94,7 +94,7 @@
 			to_chat(user, SPAN_XENOWARNING("\The [src] is full of children."))
 			return
 		if(user)
-			visible_message(SPAN_XENOWARNING("[user] slides a facehugger out of \the [egg] into \the [src]."),
+			visible_message(SPAN_XENOWARNING("[user]将一只抱脸虫从\the [egg]中滑出，放入\the [src]。"),
 				SPAN_XENONOTICE("You place the child from an egg into \the [src]."))
 			user.temp_drop_inv_item(egg)
 		stored_huggers = min(huggers_max_amount, stored_huggers + 1)
@@ -169,7 +169,7 @@
 		if(stored_huggers == huggers_to_grow_max)
 			COOLDOWN_START(src, spawn_cooldown, get_egg_cooldown())
 
-		to_chat(M, SPAN_XENONOTICE("You retrieve a child."))
+		to_chat(M, SPAN_XENONOTICE("你取回了一个幼体。"))
 		stored_huggers = max(0, stored_huggers - 1)
 		var/obj/item/clothing/mask/facehugger/hugger = new(loc, linked_hive.hivenumber)
 		SEND_SIGNAL(M, COMSIG_XENO_TAKE_HUGGER_FROM_MORPHER, hugger)
@@ -199,7 +199,7 @@
 	stored_huggers--
 
 /mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher(obj/effect/alien/resin/special/eggmorph/morpher in oview(1))
-	set name = "Set Hugger Reserve"
+	set name = "设置抱脸虫储备"
 	set desc = "Set Hugger Reserve."
 	set category = null
 
@@ -208,11 +208,11 @@
 
 	if(morpher.linked_hive)
 		if(hivenumber != morpher.linked_hive.hivenumber)
-			to_chat(usr, SPAN_WARNING("This belongs to another Hive! Yuck!"))
+			to_chat(usr, SPAN_WARNING("这属于另一个巢穴！真恶心！"))
 			return
 
-	morpher.huggers_reserved = tgui_input_number(usr, "How many facehuggers would you like to keep safe from Observers wanting to join as facehuggers?", "How many to reserve?", 0, morpher.huggers_max_amount, morpher.huggers_reserved)
+	morpher.huggers_reserved = tgui_input_number(usr, "你想为那些想以抱脸虫身份加入的观察者保留多少只抱脸虫？", "How many to reserve?", 0, morpher.huggers_max_amount, morpher.huggers_reserved)
 
-	to_chat(usr, SPAN_XENONOTICE("You reserved [morpher.huggers_reserved] facehuggers for your sisters."))
+	to_chat(usr, SPAN_XENONOTICE("你为你的姐妹们预留了[morpher.huggers_reserved]只抱脸虫。"))
 
 #undef EGGMORPG_RANGE

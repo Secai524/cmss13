@@ -4,8 +4,8 @@
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/rank/bartender
-	desc = "It looks like it could use some more flair."
-	name = "bartender's uniform"
+	desc = "看起来它还需要一些点缀。"
+	name = "酒保制服"
 	icon_state = "ba_suit"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/service.dmi'
 	item_icons = list(
@@ -16,8 +16,8 @@
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/cargo
-	name = "quartermaster's jumpsuit"
-	desc = "It's a jumpsuit worn by the quartermaster. It's specially designed to prevent back injuries caused by pushing paper."
+	name = "军需官连体服"
+	desc = "这是军需官穿着的连体服。其专门设计用于防止因处理文件导致的背部损伤。"
 	icon_state = "qm"
 	item_state = "lb_suit"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/cargo.dmi'
@@ -27,8 +27,8 @@
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/cargotech
-	name = "cargo technician's jumpsuit"
-	desc = "Shooooorts! They're comfy and easy to wear!"
+	name = "货舱技术员连体服"
+	desc = "短裤！它们舒适又易穿！"
 	icon_state = "cargotech"
 	item_state = "lb_suit"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/cargo.dmi'
@@ -38,8 +38,8 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 
 /obj/item/clothing/under/rank/chaplain
-	desc = "It's a black jumpsuit, often worn by religious folk."
-	name = "chaplain's jumpsuit"
+	desc = "这是一件黑色的连体服，通常为宗教人士所穿着。"
+	name = "牧师连体服"
 	icon_state = "chaplain"
 	item_state = "chaplain"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/service.dmi'
@@ -49,11 +49,11 @@
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/chaplain/cultist
-	name = "cultist jumpsuit"
+	name = "邪教徒连体服"
 
 /obj/item/clothing/suit/priest_robe
-	name = "priest robes"
-	desc = "A long dress with a purple scarf, often worn by religious folk."
+	name = "牧师袍"
+	desc = "一条配有紫色围巾的长裙，通常为宗教人士所穿着。"
 	icon_state = "priest_robe"
 	item_state = "priest_robe"
 	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
@@ -62,8 +62,8 @@
 	)
 
 /obj/item/clothing/under/rank/worker_overalls
-	name = "worker overalls"
-	desc = "An outfit fit for the hard-working man."
+	name = "工人工作服"
+	desc = "一套适合勤劳工作者的装束。"
 	icon_state = "worker_overalls"
 	item_state = "bl_suit"
 	icon = 'icons/obj/items/clothing/uniforms/workwear.dmi'
@@ -73,8 +73,8 @@
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/chef
-	desc = "It's an apron which is given only to the most <b>hardcore</b> chefs in space."
-	name = "chef's uniform"
+	desc = "这是一件只授予太空中最<b>硬核</b>厨师的围裙。"
+	name = "厨师制服"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/service.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/service.dmi',
@@ -84,7 +84,7 @@
 	icon_state = "chef"
 
 /obj/item/clothing/under/rank/clown
-	name = "clown suit"
+	name = "小丑服"
 	desc = "<i>'HONK!'</i>"
 	icon_state = "clown"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/service.dmi'
@@ -97,8 +97,8 @@
 	black_market_value = 25
 
 /obj/item/clothing/under/rank/hydroponics
-	desc = "It's a jumpsuit designed to protect against minor plant-related hazards."
-	name = "botanist's jumpsuit"
+	desc = "这是一件设计用于防护轻微植物相关危害的连体服。"
+	name = "植物学家连体服"
 	icon_state = "hydroponics"
 	item_state = "g_suit"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/service.dmi'
@@ -107,8 +107,8 @@
 	)
 
 /obj/item/clothing/under/rank/janitor
-	desc = "It's the official uniform of the station's janitor. It has minor protection from biohazards."
-	name = "janitor's jumpsuit"
+	desc = "这是空间站清洁工的正式制服。它对生物危害有轻微的防护作用。"
+	name = "清洁工连体服"
 	icon_state = "janitor"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/service.dmi'
 	item_icons = list(
@@ -126,8 +126,8 @@
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 
 /obj/item/clothing/under/lawyer
-	desc = "Slick threads."
-	name = "Lawyer suit"
+	desc = "时髦的装束。"
+	name = "律师西装"
 	icon = 'icons/obj/items/clothing/uniforms/formal_uniforms.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/formal_uniforms.dmi',
@@ -137,38 +137,38 @@
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/lawyer/black
-	name = "black Lawyer suit"
+	name = "黑色律师西装"
 	icon_state = "lawyer_black"
 
 /obj/item/clothing/under/lawyer/female
-	name = "black Lawyer suit"
+	name = "黑色律师西装"
 	icon_state = "black_suit_fem"
 
 /obj/item/clothing/under/lawyer/red
-	name = "red Lawyer suit"
+	name = "红色律师西装"
 	icon_state = "lawyer_red"
 
 /obj/item/clothing/under/lawyer/blue
-	name = "blue Lawyer suit"
+	name = "蓝色律师西装"
 	icon_state = "lawyer_blue"
 
 /obj/item/clothing/under/lawyer/bluesuit
-	name = "blue suit"
-	desc = "A classy suit and tie."
+	name = "蓝色西装"
+	desc = "一套经典的西装领带。"
 	icon_state = "bluesuit"
 
 /obj/item/clothing/under/lawyer/purpsuit
-	name = "purple suit"
+	name = "紫色西装"
 	icon_state = "lawyer_purp"
 
 /obj/item/clothing/under/lawyer/oldman
-	name = "old man's suit"
-	desc = "A classic suit for the older gentleman with built in back support."
+	name = "老式西装"
+	desc = "为年长绅士设计的经典西装，内置背部支撑。"
 	icon_state = "oldman"
 
 /obj/item/clothing/under/librarian
-	name = "sensible suit"
-	desc = "It's very... sensible."
+	name = "实用西装"
+	desc = "它非常……实用。"
 	icon_state = "red_suit"
 	icon = 'icons/obj/items/clothing/uniforms/formal_uniforms.dmi'
 	item_icons = list(
@@ -177,6 +177,6 @@
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/lawyer/comedian
-	name = "colorful suit"
-	desc = "A garish outfit that’s equal parts showmanship and menace. Strikingly colorful, it leaves an impression you might never forget."
+	name = "彩色西装"
+	desc = "一套花哨的服装，兼具表演性和威胁感。色彩极其鲜艳，给人留下难以磨灭的印象。"
 	icon_state = "comedian"

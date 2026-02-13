@@ -409,11 +409,11 @@
 		return
 
 	if(user.is_mob_incapacitated() || HAS_TRAIT(user, TRAIT_IMMOBILIZED) || HAS_TRAIT(user, TRAIT_FLOORED))
-		to_chat(user, SPAN_WARNING("You can't do this right now."))
+		to_chat(user, SPAN_WARNING("你现在无法这样做。"))
 		return
 
 	if(isxeno(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
-		to_chat(user, SPAN_WARNING("You don't have the dexterity to do that, try a nest."))
+		to_chat(user, SPAN_WARNING("你的手不够灵巧，无法做到这一点，试试巢穴。"))
 		return
 	if(iszombie(user))
 		return
@@ -432,7 +432,7 @@
 			. = buckle_mob(buckle_target)
 	if(buckle_target.mob_size > MOB_SIZE_HUMAN)
 		if(buckle_target.stat != DEAD)
-			to_chat(user, SPAN_WARNING("[buckle_target] resists your attempt to buckle!"))
+			to_chat(user, SPAN_WARNING("[buckle_target]抵抗了你的固定尝试！"))
 			return
 	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PREBUCKLE, buckle_target, user, ride_check_flags, force, check_loc, lying_buckle, hands_needed, target_hands_needed, silent) & COMPONENT_BLOCK_BUCKLE)
 		return

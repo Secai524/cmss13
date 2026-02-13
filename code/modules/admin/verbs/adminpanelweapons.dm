@@ -7,12 +7,12 @@
 		var/datum/space_weapon/weapon_to_set = GLOB.space_weapons[weapon_to_get]
 		LAZYSET(potential_weapons, weapon_to_set.name, weapon_to_set)
 
-	var/weapon_type = tgui_input_list(src, "What weapon?", "Choose wisely!", potential_weapons)
+	var/weapon_type = tgui_input_list(src, "什么武器？", "Choose wisely!", potential_weapons)
 	if(!weapon_type)
 		return
 
 	var/list/ammo_type = list()
-	var/answer = tgui_alert(src, "Use all ammo types?", "Ammo selector", list("Yes", "No", "Cancel"))
+	var/answer = tgui_alert(src, "使用所有弹药类型？", "Ammo selector", list("Yes", "No", "Cancel"))
 	if(answer == "Yes")
 		ammo_type = potential_weapons[weapon_type].possibly_ammunition
 	else if(answer == "No")
@@ -22,7 +22,7 @@
 			LAZYSET(potential_ammo, ammo_to_set.name, ammo_to_get)
 
 		while(length(potential_ammo))
-			var/additional_ammo = tgui_input_list(src, "Choose ammo", "Ammo selector", potential_ammo, 20 SECONDS)
+			var/additional_ammo = tgui_input_list(src, "选择弹药", "Ammo selector", potential_ammo, 20 SECONDS)
 			if(!additional_ammo)
 				break
 			ammo_type += potential_ammo[additional_ammo]
@@ -33,23 +33,23 @@
 	if(!length(ammo_type))
 		return
 
-	var/hit_eta = tgui_input_number(src, "Give an ETA for the weapon to hit.", "Don't make them wait too long!", 10, 120, 10, 20 SECONDS)
+	var/hit_eta = tgui_input_number(src, "设定武器命中的预计时间。", "Don't make them wait too long!", 10, 120, 10, 20 SECONDS)
 	if(!hit_eta)
 		return
 
-	var/intercept_chance = tgui_input_number(src, "Chance Point Defence of the ship to intercept, or for the weapon to miss?", "standard PD chance is 0%.", 0, 100, 0, 20 SECONDS)
+	var/intercept_chance = tgui_input_number(src, "设定舰船点防御系统拦截或武器脱靶的几率？", "standard PD chance is 0%.", 0, 100, 0, 20 SECONDS)
 
 	var/targets
 	var/quantity = 1
-	if(tgui_alert(src, "Shoot it at random places, or where you're at?", "Choose wisely!", list("Random", "Where I am"), 20 SECONDS) == "Where I am")
+	if(tgui_alert(src, "随机射击，还是瞄准你所在位置？", "Choose wisely!", list("Random", "Where I am"), 20 SECONDS) == "Where I am")
 		targets = list(get_turf(mob))
 	else
-		quantity = tgui_input_number(src, "How many?", "Don't go overboard. Please.", 1, 256, 1, 20 SECONDS)
+		quantity = tgui_input_number(src, "数量？", "Don't go overboard. Please.", 1, 256, 1, 20 SECONDS)
 		targets = shipside_random_turf_picker(quantity)
 
-	var/delay = tgui_input_number(src, "Give delay between hits in diceseconds (1/10 of second). (0 async hits, can cause emotional damage)", "Don't make them wait too long!", 0, 600, 0, 20 SECONDS)
+	var/delay = tgui_input_number(src, "设定命中间隔（单位：diceseconds，即1/10秒）。（0为异步命中，可能导致精神伤害）", "Don't make them wait too long!", 0, 600, 0, 20 SECONDS)
 
-	if(tgui_alert(src, "Are you sure you want to open fire at the [MAIN_SHIP_NAME] with those parameters?", "Choose wisely!", list("Yes", "No")) != "Yes")
+	if(tgui_alert(src, "确认要以这些参数向[MAIN_SHIP_NAME]开火吗？", "Choose wisely!", list("Yes", "No")) != "Yes")
 		return
 
 	potential_weapons[weapon_type].shot_message(length(targets), hit_eta)

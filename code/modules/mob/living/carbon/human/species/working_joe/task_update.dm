@@ -5,7 +5,7 @@
 	key = "couldrequireattention"
 	sound = 'sound/voice/joe/could_require_attention.ogg'
 	haz_sound = 'sound/voice/joe/could_require_attention_haz.ogg'
-	say_message = "This could require my attention."
+	say_message = "这可能需要我处理。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
@@ -13,7 +13,7 @@
 	key = "letmehelp"
 	sound = 'sound/voice/joe/let_me_help.ogg'
 	haz_sound = 'sound/voice/joe/let_me_help_haz.ogg'
-	say_message = "Let me help you."
+	say_message = "让我来帮你。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
@@ -21,7 +21,7 @@
 	key = "followme"
 	sound = 'sound/voice/joe/follow_me.ogg'
 	upp_joe_sound = 'sound/voice/joe/upp_joe/proydemte.ogg'
-	say_message = "Follow me."
+	say_message = "跟我来。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|UPP_JOE_EMOTE
 
@@ -29,7 +29,7 @@
 	key = "followmeplease"
 	sound = 'sound/voice/joe/follow_me_please.ogg'
 	haz_sound = 'sound/voice/joe/follow_me_please_haz.ogg'
-	say_message = "Follow me please."
+	say_message = "请跟我来。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
@@ -37,7 +37,7 @@
 	key = "comewithme"
 	sound = 'sound/voice/joe/come_with_me.ogg'
 	haz_sound = 'sound/voice/joe/come_with_me_haz.ogg'
-	say_message = "Come with me please."
+	say_message = "请跟我来。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
@@ -46,21 +46,21 @@
 	sound = 'sound/voice/joe/with_you_shortly.ogg'
 	haz_sound = 'sound/voice/joe/with_you_shortly_haz.ogg'
 	upp_joe_sound = 'sound/voice/joe/upp_joe/podoyducherez1.ogg'
-	say_message = "I will be with you shortly."
+	say_message = "我马上就来。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/task_update/take_a_seat
 	key = "takeaseat"
 	sound = 'sound/voice/joe/take_a_seat.ogg'
-	say_message = "Please take a seat, someone will be with you shortly."
+	say_message = "请坐，马上会有人来接待你。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/task_update/existing_tasks
 	key = "existingtasks"
 	sound = 'sound/voice/joe/existing_tasks.ogg'
 	upp_joe_sound = 'sound/voice/joe/upp_joe/zadachi.ogg'
-	say_message = "Existing tasks have a higher priority."
+	say_message = "现有任务优先级更高。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|UPP_JOE_EMOTE
 
@@ -68,14 +68,14 @@
 	key = "ticketremoved"
 	sound = 'sound/voice/joe/support_ticket_removed.ogg'
 	haz_sound = 'sound/voice/joe/support_ticket_removed_haz.ogg'
-	say_message = "Service support ticket removed from queue."
+	say_message = "服务支持工单已从队列中移除。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/task_update/ticket_remove_upp
 	key = "ticketremovedupp"
 	upp_joe_sound = 'sound/voice/joe/upp_joe/zapros.ogg'
-	say_message = "Request removed from queue."
+	say_message = "请求已从队列中移除。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = UPP_JOE_EMOTE
 
@@ -83,7 +83,7 @@
 	key = "bottomofthis"
 	sound = 'sound/voice/joe/bottom_of_this.ogg'
 	haz_sound = 'sound/voice/joe/bottom_of_this_haz.ogg'
-	say_message = "I'll get to the bottom of all this."
+	say_message = "我会查清这一切的。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
@@ -92,7 +92,7 @@
 	sound = 'sound/voice/joe/wont_do.ogg'
 	haz_sound = 'sound/voice/joe/wont_do_haz.ogg'
 	upp_joe_sound = 'sound/voice/joe/upp_joe/tak_nelza.ogg'
-	say_message = "No, no. This won't do."
+	say_message = "不，不。这可不行。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
@@ -100,7 +100,7 @@
 	key = "keepcalm"
 	sound = 'sound/voice/joe/keep_calm.ogg'
 	haz_sound = 'sound/voice/joe/keep_calm_haz.ogg'
-	say_message = "Keep calm, it's just an alarm."
+	say_message = "保持冷静，只是个警报。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
@@ -108,20 +108,20 @@
 	key = "myschedule"
 	sound = 'sound/voice/joe/my_schedule.ogg'
 	haz_sound = 'sound/voice/joe/my_schedule_haz.ogg'
-	say_message = "This is impinging on my schedule."
+	say_message = "这打乱了我的日程。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/task_update/just_want_to_help
 	key = "justwanttohelp"
 	sound = 'sound/voice/joe/want_to_help.ogg'
-	say_message = "I just want to help."
+	say_message = "我只是想帮忙。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/task_update/going_anywhere
 	key = "goinganywhere"
 	sound = 'sound/voice/joe/going_anywhere.ogg'
-	say_message = "I'm not going anywhere."
+	say_message = "我哪儿也不去。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/task_update/not_crawling
@@ -129,7 +129,7 @@
 	sound = 'sound/voice/joe/not_crawling.ogg'
 	haz_sound = 'sound/voice/joe/not_crawling_haz.ogg'
 	upp_joe_sound = 'sound/voice/joe/upp_joe/ne_polezu.ogg'
-	say_message = "I'm not crawling in there after you."
+	say_message = "我不会爬进去追你的。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
@@ -137,7 +137,7 @@
 	key = "beaproblem"
 	sound = 'sound/voice/joe/be_a_problem.ogg'
 	haz_sound = 'sound/voice/joe/be_a_problem_haz.ogg'
-	say_message = "This is going to be a problem."
+	say_message = "这会是个麻烦。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
@@ -145,13 +145,13 @@
 	key = "searchroutines"
 	sound = 'sound/voice/joe/search_routines.ogg'
 	haz_sound = 'sound/voice/joe/search_routines_haz.ogg'
-	say_message = "Abandoning search routines."
+	say_message = "放弃搜索程序。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/task_update/search_routines_upp
 	key = "searchroutinesupp"
 	upp_joe_sound = 'sound/voice/joe/upp_joe/poiski.ogg'
-	say_message = "Abandoning search."
+	say_message = "放弃搜索。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = UPP_JOE_EMOTE

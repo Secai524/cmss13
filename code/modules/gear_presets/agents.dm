@@ -1,5 +1,5 @@
 /datum/equipment_preset/uscm_ship/stowaway
-	name = "Stowaway"
+	name = "偷渡者"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/visa
@@ -46,7 +46,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/briefcase/stowaway(new_human), WEAR_L_HAND)
 
 /datum/equipment_preset/upp/representative
-	name = "UPP Representative"
+	name = "UPP代表"
 	faction_group = FACTION_LIST_MARINE_UPP
 	flags = EQUIPMENT_PRESET_EXTRA
 
@@ -81,7 +81,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/gimmick/jason(new_human), WEAR_JACKET)
 
 /datum/equipment_preset/twe/representative
-	name = "TWE Representative"
+	name = "TWE代表"
 	flags = EQUIPMENT_PRESET_EXTRA
 	faction = FACTION_TWE
 	faction_group = FACTION_LIST_MARINE_TWE
@@ -116,11 +116,11 @@
 	A.randomize_appearance(new_human)
 
 	var/random_name = "[capitalize(pick(GLOB.first_names_male_dutch))] [capitalize(pick(GLOB.last_names_clf))]"
-	new_human.f_style = "Shaved"
+	new_human.f_style = "剃光"
 
 	new_human.change_real_name(new_human, random_name)
 	new_human.age = rand(17,35)
-	new_human.h_style = "Crewcut"
+	new_human.h_style = "平头"
 	new_human.r_hair = 0
 	new_human.g_hair = 0
 	new_human.b_hair = 0

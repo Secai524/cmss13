@@ -1,5 +1,5 @@
 /datum/equipment_preset/dust_raider
-	name = "Dust Raider"
+	name = "沙尘掠夺者"
 	idtype = /obj/item/card/id/dogtag
 	languages = list(LANGUAGE_ENGLISH)
 	faction = FACTION_MARINE
@@ -17,7 +17,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/dust_raider/private
-	name = "Dust Raider Private"
+	name = "沙尘掠夺者列兵"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	access = list(ACCESS_MARINE_PREP)
@@ -39,7 +39,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/dust_raider/leader
-	name = "Dust Raider Squad Leader"
+	name = "沙尘掠夺者班长"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	access = list(ACCESS_MARINE_PREP)
@@ -68,7 +68,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/dust_raider/smartgunner
-	name = "Dust Raider Smartgunner"
+	name = "沙尘掠夺者智能枪手"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
@@ -93,7 +93,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/dust_raider/engineer
-	name = "Dust Raider Engineer"
+	name = "沙尘掠夺者工程师"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_ENGPREP, ACCESS_CIVILIAN_ENGINEERING)
@@ -122,7 +122,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/dust_raider/medic
-	name = "Dust Raider Hospital Corpsman"
+	name = "沙尘掠夺者医疗兵"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_MEDBAY)
@@ -157,7 +157,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/dust_raider/specialist
-	name = "Dust Raider Specialist"
+	name = "沙尘掠夺者专家"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SPECPREP)

@@ -28,8 +28,8 @@
 #define ESCHAR_INJURY "eschar"
 
 /datum/tutorial/marine/hospital_corpsman_sandbox
-	name = "Marine - Hospital Corpsman (Sandbox)"
-	desc = "Test your medical skills against an endless wave of wounded Marines!"
+	name = "陆战队员 - 医疗兵 (沙盒)"
+	desc = "在无穷无尽的受伤陆战队员浪潮中测试你的医疗技能！"
 	tutorial_id = "marine_hm_3"
 	required_tutorial = "marine_basic_1"
 	icon_state = "medic"
@@ -102,7 +102,7 @@
 	init_mob()
 	init_npcs()
 	message_to_player("Welcome to the Hospital Corpsman tutorial sandbox mode!")
-	message_to_player("Gear up in your preferred HM kit, then press the orange 'Ready Up' arrow at the top of your HUD to begin the first round!")
+	message_to_player("Gear up in your preferred HM kit, then press the orange '准备就绪' arrow at the top of your HUD to begin the first round!")
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/handle_round_progression()
 
@@ -162,7 +162,7 @@
 			survival_difficulty = next_in_list(current_difficulty, difficulties)
 			difficulty_upgrade_warning = " Difficulty has increased, watch out!!"
 
-	CMO_npc.say("Now entering round [survival_wave]![difficulty_upgrade_warning]")
+	CMO_npc.say("现在进入第[survival_wave]轮！[difficulty_upgrade_warning]")
 
 	addtimer(CALLBACK(src, PROC_REF(spawn_agents)), 2 SECONDS)
 	terminate_movement_timer = addtimer(CALLBACK(src, PROC_REF(terminate_agent_processing)), 15 SECONDS, TIMER_STOPPABLE)
@@ -192,7 +192,7 @@
 		message_to_player("Phew! We have entered a resupply phase of the tutorial!")
 		message_to_player("Use this rare opportunity to refill, restock, and resupply yourself for future rounds.")
 		message_to_player("Remember, on the field, immediate resupply will not always be possible! You won't know for certain when your next chance will arrive, so stock up while you can!")
-		message_to_player("When you are ready, leave the supply room, then click the 'Ready Up' action on the top left of your screen to begin your next round.")
+		message_to_player("When you are ready, leave the supply room, then click the '准备就绪' action on the top left of your screen to begin your next round.")
 	else
 		message_to_player("Now enterering a resupply phase. Stock up while you can!")
 
@@ -608,7 +608,7 @@
 	return ..()
 
 /datum/action/hm_tutorial/sandbox/ready_up
-	name = "Ready Up"
+	name = "准备就绪"
 	action_icon_state = "walkman_next"
 	var/datum/weakref/tutorial
 

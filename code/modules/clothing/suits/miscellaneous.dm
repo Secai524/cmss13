@@ -9,8 +9,8 @@
  * Lasertag
  */
 /obj/item/clothing/suit/bluetag
-	name = "blue laser tag armor"
-	desc = "Blue Pride, Station Wide."
+	name = "蓝色激光枪战护甲"
+	desc = "蓝色荣耀，遍布全站。"
 	icon_state = "bluetag"
 	item_state = "bluetag"
 	blood_overlay_type = "armor"
@@ -28,8 +28,8 @@
 	siemens_coefficient = 3
 
 /obj/item/clothing/suit/redtag
-	name = "red laser tag armor"
-	desc = "Reputed to go faster."
+	name = "红色激光枪战护甲"
+	desc = "据说能跑得更快。"
 	icon_state = "redtag"
 	item_state = "redtag"
 	blood_overlay_type = "armor"
@@ -50,16 +50,16 @@
  * Costume
  */
 /obj/item/clothing/suit/pirate
-	name = "pirate coat"
-	desc = "Yarr."
+	name = "海盗大衣"
+	desc = "哟嚯。"
 	icon_state = "pirate"
 	item_state = "pirate"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 
 
 /obj/item/clothing/suit/hgpirate
-	name = "pirate captain coat"
-	desc = "Yarr."
+	name = "海盗船长大衣"
+	desc = "哟嚯。"
 	icon_state = "hgpirate"
 	item_state = "hgpirate"
 	flags_inv_hide = HIDEJUMPSUIT
@@ -74,8 +74,8 @@
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 
 /obj/item/clothing/suit/judgerobe
-	name = "judge's robe"
-	desc = "This robe commands authority."
+	name = "法官长袍"
+	desc = "这件长袍象征着权威。"
 	icon_state = "judge"
 	item_state = "judge"
 	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
@@ -100,7 +100,7 @@
 
 /obj/item/clothing/suit/storage/wcoat
 	name = "waistcoat"
-	desc = "For some classy, murderous fun."
+	desc = "为了些优雅又致命的乐趣。"
 	icon_state = "vest"
 	item_state = "wcoat"
 	icon = 'icons/obj/items/clothing/suits/vests_aprons.dmi'
@@ -130,8 +130,8 @@
 	)
 
 /obj/item/clothing/suit/storage/apron/overalls
-	name = "blue coveralls"
-	desc = "A pair of denim overalls. With a large pocket in the front these overalls are popular with workers of all kinds."
+	name = "蓝色连体工作服"
+	desc = "一条牛仔背带裤。前面有一个大口袋，这种裤子深受各类工人的喜爱。"
 	icon_state = "overalls"
 	item_state = "overalls"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
@@ -154,20 +154,20 @@
 	)
 
 /obj/item/clothing/suit/storage/apron/overalls/tan
-	name = "tan coveralls"
-	desc = "A pair of tan overalls. With a large pocket in the front these overalls are popular with workers of all kinds."
+	name = "棕褐色连体工作服"
+	desc = "一条棕褐色背带裤。前面有一个大口袋，这种裤子深受各类工人的喜爱。"
 	icon_state = "overalls_tan"
 	item_state = "overalls_tan"
 
 /obj/item/clothing/suit/storage/apron/overalls/red
-	name = "red coveralls"
-	desc = "A pair of reddish-brown overalls. With a large pocket in the front these overalls are popular with workers of all kinds."
+	name = "红色连体工作服"
+	desc = "一条红棕色的背带裤。前面有一个大口袋，这种裤子深受各类工人的喜爱。"
 	icon_state = "overalls_red"
 	item_state = "overalls_red"
 
 /obj/item/clothing/suit/syndicatefake
-	name = "red space suit replica"
-	desc = "A plastic replica of the syndicate space suit, you'll look just like a real murderous syndicate agent in this! This is a toy, it is not made for use in space!"
+	name = "红色太空服复制品"
+	desc = "一件辛迪加太空服的塑料复制品，穿上它你会看起来像个真正的辛迪加杀手特工！这是个玩具，不能在太空中使用！"
 	icon_state = "syndicate"
 	item_state = "syndicate"
 	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
@@ -189,8 +189,8 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_HANDS|BODY_FLAG_LEGS|BODY_FLAG_FEET
 
 /obj/item/clothing/suit/imperium_monk
-	name = "Imperium monk"
-	desc = "Have YOU killed a xenos today?"
+	name = "帝国僧侣"
+	desc = "你今天杀异形了吗？"
 	icon_state = "imperium_monk"
 	item_state = "imperium_monk"
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS
@@ -198,8 +198,8 @@
 
 
 /obj/item/clothing/suit/chickensuit
-	name = "Chicken Suit"
-	desc = "A suit made long ago by the ancient empire KFC."
+	name = "小鸡套装"
+	desc = "一件由古老帝国KFC在很久以前制作的套装。"
 	icon_state = "chickensuit"
 	item_state = "chickensuit"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET
@@ -208,8 +208,8 @@
 
 
 /obj/item/clothing/suit/holidaypriest
-	name = "Holiday Priest"
-	desc = "This is a nice holiday my son."
+	name = "节日牧师"
+	desc = "这是个愉快的节日，我的孩子。"
 	icon_state = "holidaypriest"
 	item_state = "holidaypriest"
 	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
@@ -224,8 +224,8 @@
 
 
 /obj/item/clothing/suit/cardborg
-	name = "cardborg suit"
-	desc = "An ordinary cardboard box with holes cut in the sides."
+	name = "纸板箱套装"
+	desc = "一个普通的纸板箱，侧面挖了几个洞。"
 	icon_state = "cardborg"
 	item_state = "cardborg"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
@@ -236,8 +236,8 @@
  */
 
 /obj/item/clothing/suit/straight_jacket
-	name = "straight jacket"
-	desc = "A suit that completely restrains the wearer."
+	name = "约束衣"
+	desc = "一件能完全限制穿着者行动的服装。"
 	icon_state = "straight_jacket"
 	item_state = "straight_jacket"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
@@ -252,8 +252,8 @@
 	..()
 
 /obj/item/clothing/suit/storage/webbing
-	name = "external webbing"
-	desc = "Designed to be worn over a jumpsuit rather than clipped on."
+	name = "外部战术背心"
+	desc = "设计用于穿在连体服外，而非夹在衣服上。"
 	icon_state = "webbing"
 	item_state = "webbing"
 	allowed = list(
@@ -290,8 +290,8 @@
 	item_state = "webbing_brown"
 
 /obj/item/clothing/suit/storage/utility_vest
-	name = "utility vest"
-	desc = "A utility vest to hold tools in."
+	name = "工具背心"
+	desc = "一件用于存放工具的工具背心。"
 	icon_state = "synth_utility_vest"
 	item_state = "synth_utility_vest"
 	icon = 'icons/obj/items/clothing/suits/vests_aprons.dmi'
@@ -332,13 +332,13 @@
 	if(src.icon_state == "suitjacket_blue_open")
 		src.icon_state = "suitjacket_blue"
 		src.item_state = "suitjacket_blue"
-		to_chat(usr, "You button up the suit jacket.")
+		to_chat(usr, "你扣上了西装外套的扣子。")
 	else if(src.icon_state == "suitjacket_blue")
 		src.icon_state = "suitjacket_blue_open"
 		src.item_state = "suitjacket_blue_open"
-		to_chat(usr, "You unbutton the suit jacket.")
+		to_chat(usr, "你解开了西装外套的扣子。")
 	else
-		to_chat(usr, "You button-up some imaginary buttons on your [src].")
+		to_chat(usr, "你在你的[src]上扣上了一些想象中的扣子。")
 		return
 	update_clothing_icon()
 
@@ -346,22 +346,22 @@
 //originally intended to be pinstripes >.>
 
 /obj/item/clothing/under/bluepyjamas
-	name = "blue pyjamas"
-	desc = "Slightly old-fashioned sleepwear."
+	name = "蓝色睡衣"
+	desc = "略显老式的睡衣。"
 	icon_state = "blue_pyjamas"
 	item_state = "blue_pyjamas"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 
 /obj/item/clothing/under/redpyjamas
-	name = "red pyjamas"
-	desc = "Slightly old-fashioned sleepwear."
+	name = "红色睡衣"
+	desc = "略显老式的睡衣。"
 	icon_state = "red_pyjamas"
 	item_state = "red_pyjamas"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 
 /obj/item/clothing/suit/xenos
-	name = "alien costume suit"
-	desc = "A costume made out of a cheap fabric."
+	name = "异形戏服"
+	desc = "由廉价布料制成的戏服。"
 	icon_state = "xenos"
 	item_state = "xenos_suit"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
@@ -379,53 +379,53 @@
 	)
 
 /obj/item/clothing/under/swimsuit/black
-	name = "black swimsuit"
-	desc = "An old-fashioned black swimsuit."
+	name = "黑色泳衣"
+	desc = "一件老式的黑色泳衣。"
 	icon_state = "swim_black"
 	siemens_coefficient = 1
 
 /obj/item/clothing/under/swimsuit/blue
-	name = "blue swimsuit"
-	desc = "An old-fashioned blue swimsuit."
+	name = "蓝色泳衣"
+	desc = "一件老式的蓝色泳衣。"
 	icon_state = "swim_blue"
 	siemens_coefficient = 1
 
 /obj/item/clothing/under/swimsuit/purple
-	name = "purple swimsuit"
-	desc = "An old-fashioned purple swimsuit."
+	name = "紫色泳衣"
+	desc = "一件老式的紫色泳衣。"
 	icon_state = "swim_purp"
 	siemens_coefficient = 1
 
 /obj/item/clothing/under/swimsuit/green
-	name = "green swimsuit"
-	desc = "An old-fashioned green swimsuit."
+	name = "绿色泳衣"
+	desc = "一件老式的绿色泳衣。"
 	icon_state = "swim_green"
 	siemens_coefficient = 1
 
 /obj/item/clothing/under/swimsuit/red
-	name = "red swimsuit"
-	desc = "An old-fashioned red swimsuit."
+	name = "红色泳衣"
+	desc = "一件老式的红色泳衣。"
 	icon_state = "swim_red"
 	siemens_coefficient = 1
 
 /obj/item/clothing/suit/poncho
 	name = "poncho"
-	desc = "A simple, comfortable poncho."
+	desc = "一件简单舒适的斗篷。"
 	icon_state = "classicponcho"
 
 /obj/item/clothing/suit/poncho/green
-	name = "green poncho"
-	desc = "Your classic, non-racist poncho. This one is green."
+	name = "绿色斗篷"
+	desc = "你经典、非种族主义的斗篷。这件是绿色的。"
 	icon_state = "greenponcho"
 
 /obj/item/clothing/suit/poncho/red
-	name = "red poncho"
-	desc = "Your classic, non-racist poncho. This one is red."
+	name = "红色斗篷"
+	desc = "经典的、非种族主义的斗篷。这件是红色的。"
 	icon_state = "redponcho"
 
 /obj/item/clothing/suit/storage/bomber
-	name = "brown bomber jacket"
-	desc = "A well-worn leather bomber jacket."
+	name = "棕色轰炸机夹克"
+	desc = "一件磨损的皮制轰炸机夹克。"
 	icon_state = "bomber"
 	icon = 'icons/obj/items/clothing/suits/jackets.dmi'
 	item_icons = list(
@@ -462,12 +462,12 @@
 	siemens_coefficient = 0.7
 
 /obj/item/clothing/suit/storage/bomber/alt
-	name = "black bomber jacket"
+	name = "黑色轰炸机夹克"
 	icon_state = "bomber_2"
 
 /obj/item/clothing/suit/storage/manager
-	name = "manager's jacket"
-	desc = "A suit that belongs to someone important. It is made of insulating material and offers minor protection from all forms of damage."
+	name = "经理夹克"
+	desc = "属于某位重要人物的西装。由绝缘材料制成，能提供对所有形式伤害的轻微防护。"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/WY.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
@@ -497,8 +497,8 @@
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 
 /obj/item/clothing/suit/storage/director
-	name = "director's jacket"
-	desc = "A jacket that belongs to someone very important. It is made of insulating material and offers minor protection from all forms of damage."
+	name = "主管夹克"
+	desc = "属于某位非常重要人物的夹克。由绝缘材料制成，能提供对所有形式伤害的轻微防护。"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/WY.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'

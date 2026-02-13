@@ -58,7 +58,7 @@
 	if(M.melee_damage_upper == 0)
 		return
 	health -= M.melee_damage_upper
-	visible_message(SPAN_DANGER("<B>[M] has [M.attacktext] [src]!</B>"))
+	visible_message(SPAN_DANGER("<B>[M][M.attacktext]了[src]！</B>"))
 	M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name]</font>")
 	M.last_damage_data = create_cause_data(initial(name))
 	if(prob(10))
@@ -69,19 +69,19 @@
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		if(!locked)
 			open = !open
-			to_chat(user, SPAN_NOTICE("Maintenance panel is now [src.open ? "opened" : "closed"]."))
+			to_chat(user, SPAN_NOTICE("维护面板现已[src.open ? "opened" : "closed"]."))
 	else if(iswelder(W))
 		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
-			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			to_chat(user, SPAN_WARNING("你需要一把更强的喷枪！"))
 			return
 		if(health < maxhealth)
 			if(open)
 				health = min(maxhealth, health+10)
-				user.visible_message(SPAN_DANGER("[user] repairs [src]!"),SPAN_NOTICE("You repair [src]!"))
+				user.visible_message(SPAN_DANGER("[user]修理了[src]！"),SPAN_NOTICE("You repair [src]!"))
 			else
-				to_chat(user, SPAN_NOTICE("Unable to repair with the maintenance panel closed."))
+				to_chat(user, SPAN_NOTICE("维护面板关闭时无法修理。"))
 		else
-			to_chat(user, SPAN_NOTICE("[src] does not need a repair."))
+			to_chat(user, SPAN_NOTICE("[src]不需要修理。"))
 	else
 		if(hasvar(W,"force") && hasvar(W,"damtype"))
 			switch(W.damtype)
@@ -137,7 +137,7 @@
 
 	if(user.species.can_shred(user))
 		src.health -= rand(15,30)*brute_dam_coeff
-		src.visible_message(SPAN_DANGER("[user] has slashed [src]!"))
+		src.visible_message(SPAN_DANGER("[user]劈砍了[src]！"))
 		playsound(src.loc, 'sound/weapons/slice.ogg', 25, 1)
 		if(prob(10))
 			new /obj/effect/decal/cleanable/blood/oil(src.loc)

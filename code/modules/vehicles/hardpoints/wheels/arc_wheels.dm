@@ -1,6 +1,6 @@
 /obj/item/hardpoint/locomotion/arc_wheels
 	name = "\improper ARC Wheels"
-	desc = "Integral to the movement of the ARC."
+	desc = "ARC移动的核心部件。"
 	icon = 'icons/obj/vehicles/hardpoints/arc.dmi'
 
 	damage_multiplier = 0.15

@@ -1,6 +1,6 @@
 /obj/item/circuitboard
 	w_class = SIZE_SMALL
-	name = "Circuit board"
+	name = "电路板"
 	icon = 'icons/obj/items/circuitboards.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_lefthand.dmi',
@@ -33,28 +33,28 @@
 
 
 /obj/item/circuitboard/aicore
-	name = "Circuit board (AI Core)"
+	name = "电路板（AI核心）"
 
 
 /obj/item/circuitboard/airalarm
-	name = "air alarm electronics"
+	name = "空气警报电子元件"
 	gender = PLURAL
 	icon_state = "door_electronics"
-	desc = "Looks like a circuit. Probably is."
+	desc = "看起来像块电路板。很可能就是。"
 
 
 
 /obj/item/circuitboard/firealarm
-	name = "fire alarm electronics"
+	name = "火警电子元件"
 	gender = PLURAL
 	icon_state = "door_electronics"
-	desc = "A circuit. It has a label on it, it says \"Can handle heat levels up to 40 degrees celsius!\""
+	desc = "一块电路板。上面有个标签，写着\"Can handle heat levels up to 40 degrees celsius!\""
 
 
 /obj/item/circuitboard/apc
-	name = "power control module"
+	name = "电源控制模块"
 	icon_state = "power_mod"
-	desc = "Heavy-duty switching circuits for power control."
+	desc = "用于电力控制的重型开关电路。"
 
 /obj/item/circuitboard/apc/attackby(obj/item/W , mob/user)
 	if (HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
@@ -66,6 +66,6 @@
 
 // Tracker Electronic
 /obj/item/circuitboard/solar_tracker
-	name = "tracker electronics"
+	name = "追踪器电子元件"
 	gender = PLURAL
 	icon_state = "door_electronics"

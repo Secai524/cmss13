@@ -6,8 +6,8 @@
 
 //basic spider mob, these generally guard nests
 /mob/living/simple_animal/hostile/giant_spider
-	name = "giant spider"
-	desc = "Furry and black, it makes you shudder to look at it. This one has deep red eyes."
+	name = "巨型蜘蛛"
+	desc = "毛茸茸的黑色身躯，光是看着就让你不寒而栗。这一个有着深红色的眼睛。"
 	icon_state = "guard"
 	icon_living = "guard"
 	icon_dead = "guard_dead"
@@ -36,7 +36,7 @@
 
 //nursemaids - these create webs and eggs
 /mob/living/simple_animal/hostile/giant_spider/nurse
-	desc = "Furry and black, it makes you shudder to look at it. This one has brilliant green eyes."
+	desc = "毛茸茸的黑色身躯，光是看着就让你不寒而栗。这一个有着亮绿色的眼睛。"
 	icon_state = "nurse"
 	icon_living = "nurse"
 	icon_dead = "nurse_dead"
@@ -51,7 +51,7 @@
 
 //hunters have the most poison and move the fastest, so they can find prey
 /mob/living/simple_animal/hostile/giant_spider/hunter
-	desc = "Furry and black, it makes you shudder to look at it. This one has sparkling purple eyes."
+	desc = "毛茸茸的黑色身躯，光是看着就让你不寒而栗。这一个有着闪亮的紫色眼睛。"
 	icon_state = "hunter"
 	icon_living = "hunter"
 	icon_dead = "hunter_dead"
@@ -75,7 +75,7 @@
 		if(target_mob.reagents)
 			target_mob.reagents.add_reagent("toxin", poison_per_bite)
 			if(prob(poison_per_bite))
-				to_chat(target_mob, SPAN_DANGER("You feel a tiny prick."))
+				to_chat(target_mob, SPAN_DANGER("你感到一阵轻微的刺痛。"))
 				target_mob.reagents.add_reagent(poison_type, 5)
 
 /mob/living/simple_animal/hostile/giant_spider/Life(delta_time)

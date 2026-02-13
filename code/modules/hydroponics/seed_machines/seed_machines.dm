@@ -40,22 +40,22 @@
 	seed = null
 
 /obj/structure/machinery/botany/proc/fail_task()
-	visible_message("[icon2html(src, viewers(src))] [src] pings unhappily, flashing a red warning light.")
+	visible_message("[icon2html(src, viewers(src))] [src] 发出不快的提示音，闪烁着红色警告灯。")
 	playsound(src, 'sound/machines/buzz-two.ogg', 25, TRUE)
 
 /obj/structure/machinery/botany/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/seeds))
 		if(seed)
-			to_chat(user, SPAN_WARNING("There is already a seed loaded."))
+			to_chat(user, SPAN_WARNING("已装载种子。"))
 			return
 		var/obj/item/seeds/S = W
 		if(S.seed && S.seed.immutable > 0)
-			to_chat(user, SPAN_WARNING("That seed is not compatible with our genetics technology."))
+			to_chat(user, SPAN_WARNING("该种子与我们的基因技术不兼容。"))
 		else
 			user.drop_held_item()
 			W.forceMove(src)
 			seed = W
-			to_chat(user, "You load [W] into \the [src].")
+			to_chat(user, "你将[W]装入了\the [src]。")
 		return
 
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
@@ -70,24 +70,24 @@
 
 	if(istype(W,/obj/item/disk/botany))
 		if(loaded_disk)
-			to_chat(user, SPAN_WARNING("There is already a data disk loaded."))
+			to_chat(user, SPAN_WARNING("已加载数据磁盘。"))
 			return
 		else
 			var/obj/item/disk/botany/B = W
 
 			if(LAZYLEN(B.genes))
 				if(!disk_needs_genes)
-					to_chat(user, SPAN_WARNING("That disk already has gene data loaded."))
+					to_chat(user, SPAN_WARNING("该磁盘已加载基因数据。"))
 					return
 			else
 				if(disk_needs_genes)
-					to_chat(user, SPAN_WARNING("That disk does not have any gene data loaded."))
+					to_chat(user, SPAN_WARNING("该磁盘未加载任何基因数据。"))
 					return
 
 			user.drop_held_item()
 			W.forceMove(src)
 			loaded_disk = W
-			to_chat(user, SPAN_NOTICE("You load \the [W] into [src]."))
+			to_chat(user, SPAN_NOTICE("你将\the [W]加载到[src]中。"))
 
 		return
 	. = ..()

@@ -1,5 +1,5 @@
 /datum/equipment_preset/other/mutiny/mutineer
-	name = "Mutineer"
+	name = "叛变者"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/other/mutiny/mutineer/load_status(mob/living/carbon/human/new_human)
@@ -7,12 +7,12 @@
 	new_human.mob_flags |= MUTINY_MUTINEER
 	new_human.hud_set_squad()
 
-	to_chat(new_human, SPAN_HIGHDANGER("<hr>You are now a Mutineer!"))
-	to_chat(new_human, SPAN_DANGER("Please check the rules to see what you can and can't do as a mutineer.<hr>"))
+	to_chat(new_human, SPAN_HIGHDANGER("<hr>你现在是一名叛变者！"))
+	to_chat(new_human, SPAN_DANGER("请查看规则，了解作为叛变者能做和不能做的事。<hr>"))
 	log_game("MUTINY - [key_name(new_human)] became a [name]")
 
 /datum/equipment_preset/other/mutiny/mutineer/leader
-	name = "Mutineer Leader"
+	name = "叛变者领袖"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/other/mutiny/mutineer/leader/load_status(mob/living/carbon/human/new_human)
@@ -24,7 +24,7 @@
 		give_action(new_human, type)
 
 /datum/equipment_preset/other/mutiny/loyalist
-	name = "Loyalist"
+	name = "忠诚派"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/other/mutiny/loyalist/load_status(mob/living/carbon/human/new_human)
@@ -32,12 +32,12 @@
 	new_human.mob_flags |= MUTINY_LOYALIST
 	new_human.hud_set_squad()
 
-	to_chat(new_human, SPAN_HIGHDANGER("<hr>You are now a Loyalist!"))
-	to_chat(new_human, SPAN_DANGER("Please check the rules to see what you can and can't do as a loyalist.<hr>"))
+	to_chat(new_human, SPAN_HIGHDANGER("<hr>你现在是一名忠诚派！"))
+	to_chat(new_human, SPAN_DANGER("请查看规则，了解作为忠诚派能做和不能做的事。<hr>"))
 	log_game("MUTINY - [key_name(new_human)] became a [name]")
 
 /datum/equipment_preset/other/mutiny/noncombat
-	name = "Non-Combatant"
+	name = "非战斗人员"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/other/mutiny/noncombat/load_status(mob/living/carbon/human/new_human)
@@ -45,6 +45,6 @@
 	new_human.mob_flags |= MUTINY_NONCOMBAT
 	new_human.hud_set_squad()
 
-	to_chat(new_human, SPAN_HIGHDANGER("<hr>You are now a Non-Combatant!"))
-	to_chat(new_human, SPAN_DANGER("You are not to get involved in the mutiny. You can heal either side, but must not engage or be engaged in combat.<hr>"))
+	to_chat(new_human, SPAN_HIGHDANGER("<hr>你现在是一名非战斗人员！"))
+	to_chat(new_human, SPAN_DANGER("你不得介入兵变。你可以治疗任何一方，但不得参与或卷入战斗。<hr>"))
 	log_game("MUTINY - [key_name(new_human)] became a [name]")

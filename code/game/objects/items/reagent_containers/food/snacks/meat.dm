@@ -1,6 +1,6 @@
 /obj/item/reagent_container/food/snacks/meat
 	name = "meat"
-	desc = "A slab of meat."
+	desc = "一块肉排。"
 	icon_state = "meat"
 	icon = 'icons/obj/items/food/meat.dmi'
 	health = 180
@@ -19,20 +19,20 @@
 		var/cutlet_amt = roll(1,4)
 		for(var/i in 1 to cutlet_amt)
 			new cutlet_type(T)
-		to_chat(user, "You slice up the meat.")
+		to_chat(user, "你将肉切成片。")
 		playsound(loc, 'sound/effects/blobattack.ogg', 25, 1)
 		qdel(src)
 	else
 		..()
 
 /obj/item/reagent_container/food/snacks/meat/synthmeat
-	name = "synthetic meat"
-	desc = "A synthetic slab of flesh."
+	name = "合成肉"
+	desc = "一块合成的肉排。"
 
 /// Meat made from synthetics. Slightly toxic
 /obj/item/reagent_container/food/snacks/meat/synthmeat/synthflesh
-	name = "synthetic flesh"
-	desc = "A slab of artificial, inorganic 'flesh' that resembles human meat. Probably came from a synth."
+	name = "合成肉"
+	desc = "一块人造的、无机的‘肉’，类似人肉。可能来自合成人。"
 	icon_state = "synthmeat"
 	filling_color = "#ffffff"
 
@@ -41,19 +41,19 @@
 	reagents.add_reagent("pacid", 1.5)
 
 /obj/item/reagent_container/food/snacks/meat/human
-	name = "human meat"
-	desc = "A slab of flesh for cannibals."
+	name = "人肉"
+	desc = "一块给食人族准备的肉。"
 
 /obj/item/reagent_container/food/snacks/meat/monkey
 	//same as plain meat
 
 /obj/item/reagent_container/food/snacks/meat/corgi
-	name = "Corgi meat"
-	desc = "Tastes like... well you know..."
+	name = "柯基肉"
+	desc = "尝起来...嗯，你知道的..."
 
 /obj/item/reagent_container/food/snacks/meat/xenomeat
 	name = "meat"
-	desc = "A slab of acrid smelling meat."
+	desc = "一块气味刺鼻的肉。"
 	icon_state = "xenomeat"
 	filling_color = "#43DE18"
 
@@ -63,7 +63,7 @@
 	src.bitesize = 6
 
 /obj/item/reagent_container/food/snacks/meat/xenomeat/processed
-	desc = "A slab of acrid smelling meat. This one has been processed to remove acid."
+	desc = "一块气味刺鼻的肉。这块已经过处理，去除了酸液。"
 
 /obj/item/reagent_container/food/snacks/meat/xenomeat/processed/Initialize()
 	. = ..()
@@ -72,50 +72,50 @@
 //fishable atoms meat
 // todo: rewrite this into a procgen'ed item when gutting fish? May be incompatible with recipe code if done that way and not hardcoded.
 /obj/item/reagent_container/food/snacks/meat/fish
-	name = "fish meat"
-	desc = "Meat from a fish."
+	name = "鱼肉"
+	desc = "来自鱼的肉。"
 	icon_state = "fishfillet"
 	icon = 'icons/obj/items/food/fish.dmi'
 
 /obj/item/reagent_container/food/snacks/meat/fish/crab
-	name = "crab meat"
-	desc = "Delicious crab meat."
+	name = "蟹肉"
+	desc = "美味的蟹肉。"
 	icon_state = "crab_meat"
 
 /obj/item/reagent_container/food/snacks/meat/fish/crab/shelled
-	name = "crab meat"
-	desc = "Delicious crab meat still attached to bits of shell."
+	name = "蟹肉"
+	desc = "美味的蟹肉，还连着些许蟹壳。"
 	icon_state = "crab_meat_2"
 
 /obj/item/reagent_container/food/snacks/meat/fish/squid
-	name = "squid meat"
-	desc = "Mmm, calimari."
+	name = "鱿鱼肉"
+	desc = "嗯，炸鱿鱼圈。"
 	icon_state = "squid_meat"
 
 
 /obj/item/reagent_container/food/snacks/meat/fish/squid/alt
-	name = "sock squid meat"
-	desc = "Pink squishy meat from a squid or squid like creature. You're no marine biologist."
+	name = "袜状鱿鱼肉"
+	desc = "来自鱿鱼或类似生物的粉红色软肉。你又不是海洋生物学家。"
 	icon_state = "squid_meat_2"
 
 /obj/item/reagent_container/food/snacks/meat/fish/bass
-	name = "Bass meat"
-	desc = "Sizeable hunks of cooking fish!"
+	name = "鲈鱼肉"
+	desc = "大块的烹饪用鱼肉！"
 	icon_state = "bass_meat"
 
 /obj/item/reagent_container/food/snacks/meat/fish/bluegill
-	name = "bluegill meat"
-	desc = "Small strips of pan frying meat!"
+	name = "蓝鳃太阳鱼肉"
+	desc = "适合煎炸的小肉条！"
 	icon_state = "bluegill_meat"
 
 /obj/item/reagent_container/food/snacks/meat/fish/salmon
 
-	name = "salmon meat"
-	desc = "Considered a 'fancy' cut of fish!"
+	name = "三文鱼肉"
+	desc = "被认为是鱼肉的‘高级’部位！"
 	icon_state = "salmon_meat"
 
 /obj/item/reagent_container/food/snacks/meat/fish/white_perch
 
-	name = "white perch meat"
-	desc = "Meat of an invasive fish, its oily.."
+	name = "白鲈鱼肉"
+	desc = "入侵鱼类的肉，油腻腻的.."
 	icon_state = "white_perch_meat"

@@ -1,11 +1,11 @@
 /datum/supply_packs/upp // Abstract type (null name)
 	contains = null
 	containertype = null
-	containername = "large crate"
+	containername = "大型板条箱"
 	group = "UPP"
 
 /datum/supply_packs/upp/random_weapon
-	name = "UPP Old supplies (Weapon)"
+	name = "UPP旧式补给品 (武器)"
 	cost = 5
 	containertype = /obj/structure/closet/crate/weapon
 	containername = "Old supplies crate (Weapon)"

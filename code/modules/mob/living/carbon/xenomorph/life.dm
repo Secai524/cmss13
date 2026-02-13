@@ -46,7 +46,7 @@
 	if(should_block_game_interaction(src) && (!area || !(area.flags_area & AREA_ALLOW_XENO_JOIN)))
 		return //xenos on admin z level don't count
 
-	to_chat(client, SPAN_ALERTWARNING("You are inactive and will be available to ghosts in [XENO_AVAILABLE_TIMER] second\s!"))
+	to_chat(client, SPAN_ALERTWARNING("你处于非活跃状态，将在[XENO_AVAILABLE_TIMER]秒后可供鬼魂玩家选择！"))
 	playsound_client(client, sound('sound/effects/xeno_evolveready.ogg'))
 
 /mob/living/carbon/xenomorph/proc/update_progression()
@@ -77,7 +77,7 @@
 			evolution_stored += progress_amount
 
 /mob/living/carbon/xenomorph/proc/evolve_message()
-	to_chat(src, SPAN_XENODANGER("Our carapace crackles and our tendons strengthen. We are ready to <a href='byond://?src=\ref[src];evolve=1;'>evolve</a>!")) //Makes this bold so the Xeno doesn't miss it
+	to_chat(src, SPAN_XENODANGER("我们的甲壳噼啪作响，肌腱正在强化。我们准备好<a href='byond://?src=\ref[src];evolve=1;'>进化</a>了！")) //Makes this bold so the Xeno doesn't miss it
 	playsound_client(client, sound('sound/effects/xeno_evolveready.ogg'))
 
 	var/datum/action/xeno_action/onclick/evolve/evolve_action = new()
@@ -343,7 +343,7 @@ Make sure their actual health updates immediately.*/
 			apply_damage((env_temperature - (T0C + 66)) / 5, BURN) //Might be too high, check in testing.
 			updatehealth() //Make sure their actual health updates immediately
 			if(prob(20))
-				to_chat(src, SPAN_WARNING("You feel a searing heat!"))
+				to_chat(src, SPAN_WARNING("你感到一阵灼热！"))
 
 	if(caste)
 		if(caste.innate_healing || check_weeds_for_healing())
@@ -392,7 +392,7 @@ Make sure their actual health updates immediately.*/
 		plasma_stored = 0
 		if(current_aura)
 			current_aura = null
-			to_chat(src, SPAN_WARNING("We have run out of plasma and stopped emitting pheromones."))
+			to_chat(src, SPAN_WARNING("我们的等离子体已耗尽，停止释放信息素。"))
 
 	for(var/X in actions)
 		var/datum/action/A = X

@@ -9,8 +9,8 @@ Everything below isn't used or out of place.
 // ----- Prisoner Survivors
 // Used in Fiorina Science Annex.
 /datum/equipment_preset/survivor/prisoner
-	name = "Survivor - Prisoner"
-	assignment = "Prisoner"
+	name = "幸存者 - 囚犯"
+	assignment = "囚犯"
 	skills = /datum/skills/civilian/survivor/prisoner
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC)
@@ -32,7 +32,7 @@ Everything below isn't used or out of place.
 
 // Used in Fiorina Science Annex.
 /datum/equipment_preset/survivor/gangleader
-	name = "Survivor - Gang Leader"
+	name = "幸存者 - 帮派头目"
 	assignment = "Gang Leader"
 	skills = /datum/skills/civilian/survivor/gangleader
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -55,8 +55,8 @@ Everything below isn't used or out of place.
 
 // Used in LV-624, Solaris Ridge, Trijent Dam, Fiorina Science Annex and Kutjevo Refinery.
 /datum/equipment_preset/survivor/civilian
-	name = "Survivor - Civilian"
-	assignment = "Civilian"
+	name = "幸存者 - 平民"
+	assignment = "平民"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC)
@@ -216,8 +216,8 @@ Everything below isn't used or out of place.
 	..()
 
 /datum/equipment_preset/survivor/civilian_unique
-	name = "Survivor - Civilian Unique"
-	assignment = "Civilian"
+	name = "幸存者 - 独特平民"
+	assignment = "平民"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC)
@@ -419,7 +419,7 @@ Everything below isn't used or out of place.
 
 // after double check salesman isn't being used anywhere.
 /datum/equipment_preset/survivor/salesman
-	name = "Survivor - Salesman"
+	name = "幸存者 - 推销员"
 	assignment = "Salesman"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -442,7 +442,7 @@ Everything below isn't used or out of place.
 
 // Used in Trijent Dam.
 /datum/equipment_preset/survivor/roughneck
-	name = "Survivor - Roughneck"
+	name = "幸存者 - 粗野工人"
 	assignment = "Roughneck"
 	skills = /datum/skills/civilian/survivor/pmc
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -465,7 +465,7 @@ Everything below isn't used or out of place.
 
 // Used in New Varadero.
 /datum/equipment_preset/survivor/beachbum
-	name = "Survivor - Beach Bum"
+	name = "幸存者 - 海滩流浪汉"
 	assignment = "Beach Bum"
 	skills = /datum/skills/civilian/survivor/prisoner
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -489,7 +489,7 @@ Everything below isn't used or out of place.
 
 // Used in LV-624.
 /datum/equipment_preset/survivor/goon
-	name = "Survivor - Corporate Security Goon"
+	name = "幸存者 - 公司安保打手"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = JOB_WY_GOON
 	job_title = JOB_WY_GOON
@@ -535,10 +535,10 @@ Everything below isn't used or out of place.
 
 // after double check pmc/miner isn't being used anywhere.
 /datum/equipment_preset/survivor/pmc/miner
-	name = "Survivor - Mercenary"
+	name = "幸存者 - 雇佣兵"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
-	assignment = "Mercenary"
+	assignment = "雇佣兵"
 	skills = /datum/skills/civilian/survivor/pmc
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC)
@@ -560,8 +560,8 @@ Everything below isn't used or out of place.
 
 // after double check pmc/freelancer isn't being used anywhere.
 /datum/equipment_preset/survivor/pmc/freelancer
-	name = "Survivor - Freelancer"
-	assignment = "Freelancer"
+	name = "幸存者 - 自由职业者"
+	assignment = "自由佣兵"
 	skills = /datum/skills/civilian/survivor/pmc
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC)
@@ -583,7 +583,7 @@ Everything below isn't used or out of place.
 
 // New Varadero CO Survivor.
 /datum/equipment_preset/survivor/new_varadero/commander
-	name = "Survivor - LACN Commander"
+	name = "幸存者 - LACN指挥官"
 	assignment = "LACN Commander"
 	skills = /datum/skills/commander
 	paygrades = list(PAY_SHORT_NO5 = JOB_PLAYTIME_TIER_0)
@@ -631,7 +631,7 @@ Everything below isn't used or out of place.
 /// used in Shivas Snowball
 
 /datum/equipment_preset/survivor/clf/cold
-	name = "CLF Survivor (Cold)"
+	name = "CLF幸存者（寒冷）"
 
 //children of spawn rebel shoes proc
 /datum/equipment_preset/survivor/clf/cold/spawn_rebel_suit(mob/living/carbon/human/human)

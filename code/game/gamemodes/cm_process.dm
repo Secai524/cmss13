@@ -60,7 +60,7 @@ of predators), but can be added to include variant game modes (like humans vs. h
 		var/dat = "<br>"
 		dat += SPAN_ROUNDBODY("<br>The Predators were:")
 		for(var/entry in predators)
-			dat += "<br>[entry] was [predators[entry]["Name"]] [SPAN_BOLDNOTICE("([predators[entry]["Status"]])")]"
+			dat += "<br>[entry] was [predators[entry]["姓名"]] [SPAN_BOLDNOTICE("([predators[entry]["Status"]])")]"
 		to_world("[dat]")
 
 
@@ -115,7 +115,7 @@ of predators), but can be added to include variant game modes (like humans vs. h
 //Spawns a larva in an appropriate location
 /datum/game_mode/proc/spawn_latejoin_larva()
 	var/mob/living/carbon/xenomorph/larva/new_xeno = new /mob/living/carbon/xenomorph/larva(get_turf(pick(GLOB.xeno_spawns)))
-	new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly burrows out of the ground!"),
+	new_xeno.visible_message(SPAN_XENODANGER("一只幼虫突然从地面钻出！"),
 	SPAN_XENODANGER("You burrow out of the ground and awaken from your slumber. For the Hive!"))
 	new_xeno << sound('sound/effects/xeno_newlarva.ogg')
 
@@ -150,7 +150,7 @@ GLOBAL_VAR_INIT(next_admin_bioscan, 30 MINUTES)
 
 	if(lz1 && lz2 && user)
 		var/lz_choices = list("LZ 1", "LZ 2")
-		var/new_lz = tgui_input_list(user, "Select primary LZ", "LZ Select", lz_choices)
+		var/new_lz = tgui_input_list(user, "选择主要着陆区", "LZ Select", lz_choices)
 		if(!new_lz)
 			return
 		if(new_lz == "LZ 1")
@@ -212,7 +212,7 @@ GLOBAL_VAR_INIT(next_admin_bioscan, 30 MINUTES)
 		if(M.z && (M.z in z_levels) && M.stat != DEAD && !istype(M.loc, /turf/open/space) && !istype(M.loc, /area/adminlevel/ert_station/fax_response_station)) //If they have a z var, they are on a turf.
 			if(ishuman(M) && !isyautja(M) && !(M.status_flags & XENO_HOST) && !iszombie(M))
 				var/mob/living/carbon/human/H = M
-				if(((H.species && H.species.name == "Human") || (H.is_important)) && !H.hivenumber) //only real humans count, or those we have set to also be included
+				if(((H.species && H.species.name == "人类") || (H.is_important)) && !H.hivenumber) //only real humans count, or those we have set to also be included
 					num_humans++
 			else
 				var/area/A = get_area(M)

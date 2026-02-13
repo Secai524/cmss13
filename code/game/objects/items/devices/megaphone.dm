@@ -1,6 +1,6 @@
 /obj/item/device/megaphone
 	name = "megaphone"
-	desc = "A device used to project your voice. Loudly."
+	desc = "一种用来放大你声音的设备。非常响亮。"
 	icon_state = "megaphone"
 	item_state = "megaphone"
 	icon = 'icons/obj/items/tools.dmi'
@@ -18,10 +18,10 @@
 	. = ..()
 	if(user.client)
 		if(user.client?.prefs?.muted & MUTE_IC)
-			to_chat(src, SPAN_DANGER("You cannot speak in IC (muted)."))
+			to_chat(src, SPAN_DANGER("你无法在角色频道发言（已禁言）。"))
 			return
 	if(!ishumansynth_strict(user))
-		to_chat(user, SPAN_DANGER("You don't know how to use this!"))
+		to_chat(user, SPAN_DANGER("你不知道怎么用这个！"))
 		return
 	if(user.silent)
 		return
@@ -30,7 +30,7 @@
 		to_chat(user, SPAN_DANGER("\The [src] needs to recharge! Wait [COOLDOWN_SECONDSLEFT(src, spam_cooldown)] second(s)."))
 		return
 
-	var/message = tgui_input_text(user, "Shout a message?", "Megaphone", multiline = TRUE)
+	var/message = tgui_input_text(user, "喊话？", "Megaphone", multiline = TRUE)
 	if(!message)
 		return
 	// we know user is a human now, so adjust user for this check
@@ -47,9 +47,9 @@
 		var/list/mob/langchat_long_listeners = list()
 		for(var/mob/listener in listeners)
 			if(!ishumansynth_strict(listener) && !isobserver(listener))
-				listener.show_message("[user] says something on the microphone, but you can't understand it.")
+				listener.show_message("[user]对着麦克风说了些什么，但你听不清楚。")
 				continue
-			listener.show_message("<B>[user]</B> broadcasts, [FONT_SIZE_LARGE("\"[message]\"")]", SHOW_MESSAGE_AUDIBLE) // 2 stands for hearable message
+			listener.show_message("<B>[user]</B>广播道，[FONT_SIZE_LARGE("\"[message]\"")]", SHOW_MESSAGE_AUDIBLE) // 2 stands for hearable message
 			langchat_long_listeners += listener
 		playsound(loc, 'sound/items/megaphone.ogg', 100, FALSE, TRUE)
 		user.langchat_long_speech(message, langchat_long_listeners, user.get_default_language())

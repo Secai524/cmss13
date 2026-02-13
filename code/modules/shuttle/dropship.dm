@@ -578,7 +578,7 @@
 
 /obj/structure/shuttle/part/dropship_clf
 	name = "\improper UD-9M 'Dogbite'"
-	desc = "The UD-9M 'Dogbite' is a repurposed utility dropship, originally designed for short-haul cargo operations across colonial systems. Stolen and heavily modified by the Colonial Liberation Front, it's now a rugged smuggler and strike craft, capable of dropping a full fireteam through tight patrol nets. Its hull is scarred with gunfire, rust, and graffiti — a patchwork of rebellion held together by grit and stolen parts."
+	desc = "UD-9M '犬咬'是一架经过改造的通用运输机，最初设计用于殖民地系统间的短途货运作业。被殖民地解放阵线窃取并大幅改装后，它现在成了一架坚固的走私和打击飞行器，能够将一个完整的火力小组投送到严密的巡逻网中。其船体布满了弹孔、锈迹和涂鸦——这是一架由勇气和偷来的零件拼凑而成的反抗机器。"
 	icon = 'icons/turf/CLF_dropship.dmi'
 	icon_state = "1"
 

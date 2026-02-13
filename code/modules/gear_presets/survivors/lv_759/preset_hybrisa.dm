@@ -4,8 +4,8 @@
 // Civilian
 
 /datum/equipment_preset/survivor/hybrisa/civilian
-	name = "Survivor - Hybrisa - Civilian"
-	assignment = "Civilian"
+	name = "幸存者 - 海布里萨 - 平民"
+	assignment = "平民"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC)
@@ -77,7 +77,7 @@
 // Office Workers
 
 /datum/equipment_preset/survivor/hybrisa/civilian_office
-	name = "Survivor - Hybrisa - Civilian - Office Worker"
+	name = "幸存者 - 海布里萨 - 平民 - 办公室职员"
 	assignment = "Civilian - Office Worker"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -126,7 +126,7 @@
 // Weymart Employee
 
 /datum/equipment_preset/survivor/hybrisa/weymart
-	name = "Survivor - Hybrisa - Civilian - Weymart Employee"
+	name = "幸存者 - 海布里萨 - 平民 - 维玛特员工"
 	assignment = "Civilian - Weymart Employee"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -155,7 +155,7 @@
 // Sanitation
 
 /datum/equipment_preset/survivor/hybrisa/sanitation
-	name = "Survivor - Hybrisa - Civilian - Material Reprocessing Technician"
+	name = "幸存者 - 海布里萨 - 平民 - 材料再处理技术员"
 	assignment = "Civilian - Material Reprocessing Technician"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -202,7 +202,7 @@
 // Pizza Galaxy
 
 /datum/equipment_preset/survivor/hybrisa/pizza_galaxy
-	name = "Survivor - Hybrisa - Civilian - Pizza Galaxy Delivery Driver"
+	name = "幸存者 - 海布里萨 - 平民 - 银河披萨外送司机"
 	assignment = "Civilian - Pizza Galaxy Delivery Driver"
 	idtype = /obj/item/card/id/pizza
 	skills = /datum/skills/civilian/survivor/pizza_delivery_driver
@@ -253,7 +253,7 @@
 // Fire Protection Specialist
 
 /datum/equipment_preset/survivor/hybrisa/fire_fighter
-	name = "Survivor - Hybrisa - Civilian - Fire Protection Specialist"
+	name = "幸存者 - 海布里萨 - 平民 - 消防专家"
 	assignment = "Civilian - Fire Protection Specialist"
 	role_comm_title = "FPS"
 	skills = /datum/skills/civilian/survivor/fire_fighter
@@ -291,7 +291,7 @@
 // Cuppa Joe's Employee
 
 /datum/equipment_preset/survivor/hybrisa/cuppa_joes
-	name = "Survivor - Hybrisa - Civilian - Cuppa Joe's Barista"
+	name = "幸存者 - 海布里萨 - 平民 - 库帕乔咖啡师"
 	assignment = "Civilian - Cuppa Joe's Barista"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -327,8 +327,8 @@
 
 /datum/equipment_preset/survivor/hybrisa/nspa_constable
 
-	name = "Survivor - Hybrisa - NSPA Constable"
-	assignment = "NSPA Constable"
+	name = "幸存者 - 海布里萨 - NSPA警官"
+	assignment = "NSPA警官"
 	faction_group = FACTION_LIST_SURVIVOR_NSPA
 	paygrades = list(PAY_SHORT_CST = JOB_PLAYTIME_TIER_0, PAY_SHORT_SC = JOB_PLAYTIME_TIER_3, PAY_SHORT_SGT = JOB_PLAYTIME_TIER_4)
 	skills = /datum/skills/civilian/survivor/marshal
@@ -412,8 +412,8 @@
 // Doctors / Science
 
 /datum/equipment_preset/survivor/hybrisa/doctor
-	name = "Survivor - Hybrisa - Medical Doctor"
-	assignment = "Doctor"
+	name = "幸存者 - 海布里萨 - 医生"
+	assignment = "医生"
 	skills = /datum/skills/civilian/survivor/doctor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/clearance_badge
@@ -448,7 +448,7 @@
 // Nova Medica - Paramedic
 
 /datum/equipment_preset/survivor/hybrisa/paramedic
-	name = "Survivor - Hybrisa - Emergency Medical Technician - Paramedic"
+	name = "幸存者 - 海布里萨 - 急救医疗技术员 - 护理人员"
 	assignment = "Emergency Medical Technician - Paramedic"
 	paygrades = list(PAY_SHORT_CPARA = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -498,7 +498,7 @@
 // Science
 
 /datum/equipment_preset/survivor/hybrisa/scientist_xenoarchaeologist
-	name = "Survivor - Hybrisa - Xenoarchaeologist"
+	name = "幸存者 - 海布里萨 - 异星考古学家"
 	assignment = "Xenoarchaeologist"
 	skills = /datum/skills/civilian/survivor/scientist
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -554,7 +554,7 @@
 	..()
 
 /datum/equipment_preset/survivor/hybrisa/scientist_xenobiologist
-	name = "Survivor - Hybrisa - Xenobiologist"
+	name = "幸存者 - 海布里萨 - 异星生物学家"
 	assignment = "Xenobiologist"
 	skills = /datum/skills/civilian/survivor/scientist
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -599,7 +599,7 @@
 // Engineering & Maintenance
 
 /datum/equipment_preset/survivor/hybrisa/heavy_vehicle_operator
-	name = "Survivor - Hybrisa - Heavy Vehicle Operator"
+	name = "幸存者 - 海布里萨 - 重型车辆操作员"
 	assignment = "Heavy Vehicle Operator"
 	skills = /datum/skills/civilian/survivor/trucker
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -668,7 +668,7 @@
 	..()
 
 /datum/equipment_preset/survivor/hybrisa/electrical_engineer
-	name = "Survivor - Hybrisa - Electrical Engineer"
+	name = "幸存者 - 海布里萨 - 电气工程师"
 	assignment = "Electrical Engineer"
 	skills = /datum/skills/civilian/survivor/engineer
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -718,7 +718,7 @@
 // Construction Worker
 
 /datum/equipment_preset/survivor/hybrisa/construction_worker
-	name = "Survivor - Hybrisa - Construction Worker"
+	name = "幸存者 - 海布里萨 - 建筑工人"
 	assignment = "Construction Worker"
 	skills = /datum/skills/civilian/survivor/engineer
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -771,8 +771,8 @@
 // Weyland Yutani Corpo
 
 /datum/equipment_preset/survivor/corporate/hybrisa
-	name = "Survivor - Hybrisa - Corporate Liaison"
-	assignment = "Corporate Liaison"
+	name = "幸存者 - 海布里萨 - 公司联络官"
+	assignment = "公司联络官"
 	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	paygrades = list(PAY_SHORT_WYC2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_WYC3 = JOB_PLAYTIME_TIER_2, PAY_SHORT_WYC4 = JOB_PLAYTIME_TIER_3, PAY_SHORT_WYC5 = JOB_PLAYTIME_TIER_4)
@@ -848,7 +848,7 @@
 // WY Goons
 
 /datum/equipment_preset/survivor/hybrisa/corporate_goon
-	name = "Survivor - Hybrisa - Weyland-Yutani - Corporate Security Guard"
+	name = "幸存者 - 海布里萨 - 维兰德-汤谷 - 公司保安"
 	assignment = "Weyland-Yutani - Corporate Security Guard"
 	assignment = JOB_WY_GOON
 	job_title = JOB_WY_GOON
@@ -923,7 +923,7 @@
 // WY - Pilot
 
 /datum/equipment_preset/survivor/hybrisa/wey_po
-	name = "Survivor - Hybrisa - Weyland-Yutani - Commercial Pilot"
+	name = "幸存者 - 海布里萨 - 维兰德-汤谷 - 商业飞行员"
 	assignment = "Weyland-Yutani - Commercial Pilot"
 	skills = /datum/skills/civilian/survivor/wy_pilot
 	paygrades = list(PAY_SHORT_WYPO2 = JOB_PLAYTIME_TIER_0)
@@ -958,7 +958,7 @@
 ////////////////////////////////////////////////////
 
 /datum/equipment_preset/survivor/hybrisa/kelland_miner
-	name = "Survivor - Hybrisa - KMCC - Miner"
+	name = "幸存者 - 海布里萨 - KMCC - 矿工"
 	assignment = "KMCC - Miner"
 	skills = /datum/skills/civilian/survivor/miner
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -1037,7 +1037,7 @@
 // Civilian
 
 /datum/equipment_preset/synth/survivor/hybrisa/civilian
-	name = "Survivor - Hybrisa - Synthetic - Civilian"
+	name = "幸存者 - 海布里萨 - 合成人 - 平民"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	survivor_variant = CIVILIAN_SURVIVOR
@@ -1121,7 +1121,7 @@
 // Engineer
 
 /datum/equipment_preset/synth/survivor/hybrisa/engineer_survivor
-	name = "Survivor - Hybrisa - Synthetic - Engineer"
+	name = "幸存者 - 海布里萨 - 合成人 - 工程师"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	survivor_variant = ENGINEERING_SURVIVOR
@@ -1192,7 +1192,7 @@
 // Medical
 
 /datum/equipment_preset/synth/survivor/hybrisa/paramedic
-	name = "Survivor - Hybrisa - Synthetic - Emergency Medical Technician - Paramedic"
+	name = "幸存者 - 海布里萨 - 合成人 - 紧急医疗技术员 - 护理人员"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	survivor_variant = MEDICAL_SURVIVOR
@@ -1228,7 +1228,7 @@
 // Security
 
 /datum/equipment_preset/synth/survivor/hybrisa/detective
-	name = "Survivor - Hybrisa - Synthetic - Detective"
+	name = "幸存者 - 海布里萨 - 合成人 - 侦探"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	survivor_variant = SECURITY_SURVIVOR
@@ -1267,7 +1267,7 @@
 // Corporate
 
 /datum/equipment_preset/synth/survivor/hybrisa/exec_bodyguard
-	name = "Survivor - Hybrisa - Synthetic - Executive Bodyguard"
+	name = "幸存者 - 海布里萨 - 合成人 - 行政保镖"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	survivor_variant = CORPORATE_SURVIVOR
@@ -1326,7 +1326,7 @@
 // Science
 
 /datum/equipment_preset/synth/survivor/hybrisa/xenoarchaeologist
-	name = "Survivor - Hybrisa - Synthetic - Xenoarchaeologist"
+	name = "幸存者 - 海布里萨 - 合成人 - 异形考古学家"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	survivor_variant = SCIENTIST_SURVIVOR

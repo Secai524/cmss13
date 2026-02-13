@@ -327,7 +327,7 @@
 		return
 
 	if(anchored)
-		to_chat(user, "[src] is anchored to the ground.")
+		to_chat(user, "[src]已固定在地面上。")
 		return
 
 	if(!Adjacent(user)) // needed because of alt-click
@@ -375,11 +375,11 @@
 					success = 1
 					S.handle_item_insertion(I, TRUE, user) //The 1 stops the "You put the [src] into [S]" insertion message from being displayed.
 				if(success && !failure)
-					to_chat(user, SPAN_NOTICE("You put everything in [S]."))
+					to_chat(user, SPAN_NOTICE("你将所有东西放入[S]。"))
 				else if(success)
-					to_chat(user, SPAN_NOTICE("You put some things in [S]."))
+					to_chat(user, SPAN_NOTICE("你将一些东西放入[S]。"))
 				else
-					to_chat(user, SPAN_NOTICE("You fail to pick anything up with [S]."))
+					to_chat(user, SPAN_NOTICE("你未能用[S]拾取任何东西。"))
 
 			else if(S.can_be_inserted(src, user))
 				S.handle_item_insertion(src, FALSE, user)
@@ -419,8 +419,8 @@
 	SHOULD_CALL_PARENT(TRUE)
 	if((SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)) & COMSIG_ITEM_PICKUP_CANCELLED)
 		if(!silent)
-			to_chat(user, SPAN_WARNING("Can't pick [src] up!"))
-			balloon_alert(user, "can't pick up")
+			to_chat(user, SPAN_WARNING("无法拾取[src]！"))
+			balloon_alert(user, "无法拾取")
 		return FALSE
 	SEND_SIGNAL(user, COMSIG_MOB_PICKUP_ITEM, src)
 	setDir(SOUTH)//Always rotate it south. This resets it to default position, so you wouldn't be putting things on backwards
@@ -531,7 +531,7 @@
 			if(light_on)
 				turn_light(toggle_on = FALSE)
 			user.drop_inv_item_on_ground(src)
-			to_chat(user, SPAN_NOTICE("You drop \the [src] to the ground while unequipping \the [item]."))
+			to_chat(user, SPAN_NOTICE("你在卸下\the [item]时将\the [src]掉在地上。"))
 
 //sometimes we only want to grant the item's action if it's equipped in a specific slot.
 /obj/item/proc/item_action_slot_check(mob/user, slot)
@@ -582,7 +582,7 @@
 						break
 			if(!restriction_satisfied)
 				if(!disable_warning)
-					to_chat(human, SPAN_WARNING("You cannot wear this without wearing one of the following; [required_clothing.Join(", ")]."))
+					to_chat(human, SPAN_WARNING("你必须先穿戴以下物品之一才能穿戴此物；[required_clothing.Join(", ")]."))
 				return FALSE
 
 		switch(slot)
@@ -590,14 +590,14 @@
 				if(human.l_hand)
 					return FALSE
 				if(human.body_position == LYING_DOWN)
-					to_chat(human, SPAN_WARNING("You can't equip that while lying down."))
+					to_chat(human, SPAN_WARNING("躺下时无法装备。"))
 					return
 				return TRUE
 			if(WEAR_R_HAND)
 				if(human.r_hand)
 					return FALSE
 				if(human.body_position == LYING_DOWN)
-					to_chat(human, SPAN_WARNING("You can't equip that while lying down."))
+					to_chat(human, SPAN_WARNING("躺下时无法装备。"))
 					return
 				return TRUE
 			if(WEAR_FACE)
@@ -635,7 +635,7 @@
 					return FALSE
 				if(!human.w_uniform && (WEAR_BODY in mob_equip))
 					if(!disable_warning)
-						to_chat(human, SPAN_WARNING("You need a jumpsuit before you can attach this [name]."))
+						to_chat(human, SPAN_WARNING("你需要先穿上连体服才能安装这个[name]。"))
 					return FALSE
 				if(!(flags_equip_slot & SLOT_WAIST))
 					return
@@ -658,7 +658,7 @@
 				if(HAS_TRAIT(src, TRAIT_ITEM_EAR_EXCLUSIVE))
 					if(human.wear_r_ear && HAS_TRAIT(human.wear_r_ear, TRAIT_ITEM_EAR_EXCLUSIVE))
 						if(!disable_warning)
-							to_chat(human, SPAN_WARNING("You can't wear [src] while you have [human.wear_r_ear] in your right ear!"))
+							to_chat(human, SPAN_WARNING("你右耳戴着[human.wear_r_ear]，无法佩戴[src]！"))
 						return FALSE
 				if(!(flags_equip_slot & SLOT_EAR))
 					return FALSE
@@ -669,7 +669,7 @@
 				if(HAS_TRAIT(src, TRAIT_ITEM_EAR_EXCLUSIVE))
 					if(human.wear_l_ear && HAS_TRAIT(human.wear_l_ear, TRAIT_ITEM_EAR_EXCLUSIVE))
 						if(!disable_warning)
-							to_chat(human, SPAN_WARNING("You can't wear [src] while you have [human.wear_l_ear] in your left ear!"))
+							to_chat(human, SPAN_WARNING("你左耳戴着[human.wear_l_ear]，无法佩戴[src]！"))
 						return FALSE
 				if(!(flags_equip_slot & SLOT_EAR))
 					return FALSE
@@ -691,7 +691,7 @@
 					return FALSE
 				if(!human.w_uniform && (WEAR_BODY in mob_equip))
 					if(!disable_warning)
-						to_chat(human, SPAN_WARNING("You need a jumpsuit before you can attach this [name]."))
+						to_chat(human, SPAN_WARNING("你需要先穿上连体服才能安装这个[name]。"))
 					return FALSE
 				if(flags_equip_slot & SLOT_NO_STORE)
 					return FALSE
@@ -702,7 +702,7 @@
 					return FALSE
 				if(!human.w_uniform && (WEAR_BODY in mob_equip))
 					if(!disable_warning)
-						to_chat(human, SPAN_WARNING("You need a jumpsuit before you can attach this [name]."))
+						to_chat(human, SPAN_WARNING("你需要先穿上连体服才能安装这个[name]。"))
 					return FALSE
 				if(flags_equip_slot & SLOT_NO_STORE)
 					return FALSE
@@ -723,11 +723,11 @@
 					return FALSE
 				if(!human.wear_suit && (WEAR_JACKET in mob_equip))
 					if(!disable_warning)
-						to_chat(human, SPAN_WARNING("You need a suit before you can attach this [name]."))
+						to_chat(human, SPAN_WARNING("你需要先穿上防护服才能安装这个[name]。"))
 					return FALSE
 				if(human.wear_suit && !human.wear_suit.allowed)
 					if(!disable_warning)
-						to_chat(usr, "You somehow have a suit with no defined allowed items for suit storage, stop that.")
+						to_chat(usr, "你不知为何穿着一件没有定义储物功能的防护服，请停止这么做。")
 					return FALSE
 				if(human.wear_suit && is_type_in_list(src, human.wear_suit.allowed))
 					return TRUE
@@ -866,10 +866,10 @@
 	var/list/viewers = get_mobs_in_view(GLOB.world_view_size, user)
 	user.langchat_speech("holds up [src].", viewers, GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small", "emote"))
 	for (var/mob/M in viewers)
-		M.show_message("[user] holds up [src]. <a HREF=?src=\ref[M];lookitem=\ref[src]>Take a closer look.</a>", SHOW_MESSAGE_VISIBLE)
+		M.show_message("[user]举起[src]。<a HREF=?src=\ref[M];lookitem=\ref[src]>仔细观察。</a>", SHOW_MESSAGE_VISIBLE)
 
 /mob/living/carbon/verb/showoff()
-	set name = "Show Held Item"
+	set name = "展示手持物品"
 	set category = "Object"
 
 	var/obj/item/I = get_active_hand()
@@ -885,17 +885,17 @@
 
 	for(var/obj/item/I in user.contents)
 		if(I.zoom && I != src)
-			to_chat(user, SPAN_WARNING("You are already looking through \the [zoom_device]."))
+			to_chat(user, SPAN_WARNING("你已经在通过\the [zoom_device]观察了。"))
 			return //Return in the interest of not unzooming the other item. Check first in the interest of not fucking with the other clauses
 
 	if(user.eye_blind)
-		to_chat(user, SPAN_WARNING("You are too blind to see anything."))
+		to_chat(user, SPAN_WARNING("你失明严重，什么也看不见。"))
 	else if(user.stat || !ishuman(user))
-		to_chat(user, SPAN_WARNING("You are unable to focus through \the [zoom_device]."))
+		to_chat(user, SPAN_WARNING("你无法透过\the [zoom_device]聚焦。"))
 	else if(!zoom && user.client && user.update_tint())
-		to_chat(user, SPAN_WARNING("Your welding equipment gets in the way of you looking through \the [zoom_device]."))
+		to_chat(user, SPAN_WARNING("你的焊接设备妨碍了你透过\the [zoom_device]观察。"))
 	else if(!zoom && user.get_active_hand() != src && !istype(src, /obj/item/clothing/mask))
-		to_chat(user, SPAN_WARNING("You need to hold \the [zoom_device] to look through it."))
+		to_chat(user, SPAN_WARNING("你需要手持\the [zoom_device]才能用它观察。"))
 	else if(!zoom)
 		do_zoom(user, tileoffset, viewsize, keep_zoom)
 		return
@@ -972,7 +972,7 @@
 
 	SEND_SIGNAL(src, COMSIG_ITEM_ZOOM, user)
 	var/zoom_device = zoomdevicename ? "\improper [zoomdevicename] of [src]" : "\improper [src]"
-	user.visible_message(SPAN_NOTICE("[user] peers through [zoom_device]."),
+	user.visible_message(SPAN_NOTICE("[user]透过[zoom_device]观察。"),
 	SPAN_NOTICE("You peer through [zoom_device]."))
 	zoom = !zoom
 
@@ -1095,7 +1095,7 @@
 		table_setup = TRUE
 		usr.drop_inv_item_to_loc(src, target.loc)
 	else
-		to_chat(usr, SPAN_WARNING("You fail to setup the [name]"))
+		to_chat(usr, SPAN_WARNING("你未能架设好[name]。"))
 
 /**
  * Called to reset the state of the item to not be settled on the table.
@@ -1163,19 +1163,19 @@
 
 /obj/item/verb/use_unique_action()
 	set category = "Object"
-	set name = "Unique Action"
+	set name = "特殊动作"
 	set desc = "Use anything unique your item is capable of."
 	set src = usr.contents
 
 	if(usr.is_mob_incapacitated() || !isturf(usr.loc))
 		return
 	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
-		to_chat(usr, SPAN_WARNING("Not right now."))
+		to_chat(usr, SPAN_WARNING("现在不行。"))
 		return
 
 	var/obj/item/held_item = usr.get_active_hand()
 	if(!held_item)
-		to_chat(usr, SPAN_WARNING("You need to be holding something to do that!"))
+		to_chat(usr, SPAN_WARNING("你需要手持物品才能这么做！"))
 		return
 
 	src = held_item

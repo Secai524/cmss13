@@ -27,13 +27,13 @@
 
 		maprotatechoices[mapname] = VM
 
-	var/chosenmap = tgui_input_list(usr, "Choose a ground map to change to", "Change Ground Map", maprotatechoices)
+	var/chosenmap = tgui_input_list(usr, "选择要切换的地面地图", "Change Ground Map", maprotatechoices)
 	if(!chosenmap)
 		return
 
 	var/datum/map_config/VM = maprotatechoices[chosenmap]
 	if(!SSmapping.changemap(VM, GROUND_MAP))
-		to_chat(usr, SPAN_WARNING("Failed to change the ground map."))
+		to_chat(usr, SPAN_WARNING("更改地面地图失败。"))
 		return
 
 	log_admin("[key_name(usr)] changed the map to [VM.map_name].")
@@ -57,33 +57,33 @@
 	if(!check_rights(R_SERVER))
 		return
 
-	var/map_type = tgui_alert(usr, "Override Ship or Ground Map?", "Map selection", list(GROUND_MAP, SHIP_MAP, "Cancel"))
+	var/map_type = tgui_alert(usr, "覆盖舰船地图还是地面地图？", "Map selection", list(GROUND_MAP, SHIP_MAP, "Cancel"))
 	if(map_type == "Cancel")
 		return
 
-	var/map = input(usr, "Choose a custom map to run for next round","Upload Map") as null|file
+	var/map = input(usr, "选择下一回合要运行的自定义地图","Upload Map") as null|file
 	if(!map)
 		return
 	if(copytext("[map]", -4) != ".dmm")//4 == length(".dmm")
-		to_chat(usr,  SPAN_WARNING("Filename must end in '.dmm': [map]"), confidential = TRUE)
+		to_chat(usr,  SPAN_WARNING("文件名必须以'.dmm'结尾：[map]"), confidential = TRUE)
 		return
 
 	message_admins(SPAN_ADMINNOTICE("[key_name_admin(usr)] is overriding the next '[map_type]' map with a custom one."))
 	fcopy(map, "data/[OVERRIDE_MAPS_TO_FILENAME[map_type]]")
-	if(tgui_alert(usr, "Do you want to upload a custom map config or use defaults? Config controls things like survivors and monkey types, camouflages, lore messages, map items, nightmare, special environmental features...", "Map Config Flavor", list("Default", "Override")) == "Override")
-		tgui_alert(usr, "Choose the custom map configuration for next round. Make sure it's VALID. It MUST have \"override_map\":true !", "Warning", list("OK!"))
-		var/map_config = input(usr, "Choose custom map configuration to upload", "Upload Map Config") as null|file
+	if(tgui_alert(usr, "你想上传自定义地图配置还是使用默认配置？配置控制幸存者、猴子类型、伪装、背景信息、地图物品、噩梦模式、特殊环境特征等内容...", "Map Config Flavor", list("默认", "Override")) == "Override")
+		tgui_alert(usr, "为下一回合选择自定义地图配置。请确保其有效。它必须包含\"override_map\":true !", "Warning", list("OK!"))
+		var/map_config = input(usr, "选择要上传的自定义地图配置", "Upload Map Config") as null|file
 		if(map_config)
 			var/parse_check = json_decode(file2text(map_config))
 			if(parse_check && parse_check["override_map"])
 				fcopy(map_config, MAP_TO_FILENAME[map_type])
-				tgui_alert(usr, "Done, using uploaded map_config. ALWAYS check at start of round that the map loaded correctly when using this. Passing a map vote or changing it with verb vote will revert these changes. Good luck!", "One little thing...", list("OK"))
+				tgui_alert(usr, "完成，正在使用上传的地图配置。使用此功能时，务必在回合开始时检查地图是否正确加载。通过地图投票或使用指令投票更改地图将撤销这些更改。祝你好运！", "One little thing...", list("OK"))
 				message_admins(SPAN_ADMINNOTICE("[key_name_admin(usr)] overrode next '[map_type]' map with '[map]' and '[map_config]' for settings."))
 				return
-		to_chat(usr, SPAN_ADMINNOTICE("Couldn't retrieve map_config file or it was invalid, using default config."))
+		to_chat(usr, SPAN_ADMINNOTICE("无法检索地图配置文件或文件无效，正在使用默认配置。"))
 
 	fcopy(OVERRIDE_DEFAULT_MAP_CONFIG[map_type], MAP_TO_FILENAME[map_type])
-	tgui_alert(usr, "Done, using default map_config ('Unknown' map). ALWAYS check at start of round that the map loaded correctly when using this. Passing a map vote or changing it with verb vote will revert these changes. Good luck!", "One little thing...", list("OK"))
+	tgui_alert(usr, "完成，正在使用默认地图配置（'未知'地图）。使用此功能时，务必在回合开始时检查地图是否正确加载。通过地图投票或使用指令投票更改地图将撤销这些更改。祝你好运！", "One little thing...", list("OK"))
 	message_admins(SPAN_ADMINNOTICE("[key_name_admin(usr)] overrode next '[map_type]' map with '[map]' and default settings."))
 
 /datum/admins/proc/change_ship_map()
@@ -115,13 +115,13 @@
 
 		maprotatechoices[mapname] = VM
 
-	var/chosenmap = tgui_input_list(usr, "Choose a ship map to change to", "Change Ship Map", maprotatechoices)
+	var/chosenmap = tgui_input_list(usr, "选择要切换的舰船地图", "Change Ship Map", maprotatechoices)
 	if(!chosenmap)
 		return
 
 	var/datum/map_config/VM = maprotatechoices[chosenmap]
 	if(!SSmapping.changemap(VM, SHIP_MAP))
-		to_chat(usr, SPAN_WARNING("Failed to change the ship map."))
+		to_chat(usr, SPAN_WARNING("更改舰船地图失败。"))
 		return
 
 	log_admin("[key_name(usr)] changed the ship map to [VM.map_name].")
@@ -141,16 +141,16 @@
 
 	message_admins("[key_name_admin(usr)] has run the prep_events verb.")
 //
-	var/accept = tgui_alert(usr, "Are you sure you want to prepare events? This will restart the server!!!! additionally it will change the current master mode!!!!", "Prepare Events", list("Yes", "No"))
+	var/accept = tgui_alert(usr, "你确定要准备事件吗？这将重启服务器！！！！同时会改变当前的主模式！！！！", "Prepare Events", list("Yes", "No"))
 	if(accept != "Yes")
 		return
 //
 	mode_list = config.modes
 	mode_list += "Cancel"
-	var/modeset = tgui_input_list(usr, "current mode: [GLOB.master_mode]", "Mode Selection", mode_list)
+	var/modeset = tgui_input_list(usr, "当前模式：[GLOB.master_mode]", "Mode Selection", mode_list)
 
 // Override ground map
-	var/accept_mapchange = tgui_alert(usr, "Do you wish to change the next ground map?", "Prepare Events", list("Yes", "No"))
+	var/accept_mapchange = tgui_alert(usr, "你希望更改下一个地面地图吗？", "Prepare Events", list("Yes", "No"))
 	if(accept_mapchange == "Yes")
 		for(var/map in config.maplist[GROUND_MAP])
 			VM = config.maplist[GROUND_MAP][map]
@@ -173,10 +173,10 @@
 
 			maprotatechoices[mapname] = VM
 
-		chosenmap = tgui_input_list(usr, "Choose a ground map to change to", "Change Ground Map", maprotatechoices)
+		chosenmap = tgui_input_list(usr, "选择要切换的地面地图", "Change Ground Map", maprotatechoices)
 
 		if(!chosenmap)
-			to_chat(usr, SPAN_WARNING("Failed to select a ground map, aborting changes and restart."))
+			to_chat(usr, SPAN_WARNING("选择地面地图失败，中止更改并重启。"))
 			return
 
 // All changes should happen here incase of failure
@@ -194,7 +194,7 @@
 		message_admins("[key_name_admin(usr)] changed the map to [VM.map_name].")
 
 		if(!SSmapping.changemap(VM, GROUND_MAP))
-			to_chat(usr, SPAN_WARNING("Failed to change the ground map, aborting changes and restart."))
+			to_chat(usr, SPAN_WARNING("更改地面地图失败，中止更改并重启。"))
 			return
 
 //	Restarts the world provided no issues occur above.

@@ -16,7 +16,7 @@
 
 /proc/get_all_centcom_jobs() return list()
 
-/proc/get_all_job_icons() return GLOB.joblist + list("Prisoner")//For all existing HUD icons
+/proc/get_all_job_icons() return GLOB.joblist + list("囚犯")//For all existing HUD icons
 
 /proc/get_actual_job_name(mob/M)
 	if(!M)

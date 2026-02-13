@@ -1,7 +1,7 @@
 // STANDARD Sentry
 /obj/item/ammo_magazine/sentry
-	name = "M30 ammo drum (10x28mm Caseless)"
-	desc = "An ammo drum of 500 10x28mm caseless rounds for the UA 571-C Sentry Gun. Just feed it into the sentry gun's ammo port when its ammo is depleted."
+	name = "M30弹药鼓（10x28mm无壳弹）"
+	desc = "一个装有500发10x28mm无壳弹的弹药鼓，用于UA 571-C哨戒炮。当哨戒炮弹药耗尽时，将其装入其弹药口即可。"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/turrets.dmi'
 	icon_state = "ua571c"
 	w_class = SIZE_MEDIUM
@@ -30,31 +30,31 @@
 	default_ammo = /datum/ammo/bullet/turret/dumb
 
 /obj/item/ammo_magazine/sentry/shotgun
-	name = "12g buckshot drum"
-	desc = "An ammo drum of 50 12g buckshot drums for the UA 12-G Shotgun Sentry. Just feed it into the sentry gun's ammo port when its ammo is depleted."
+	name = "12号鹿弹弹药鼓"
+	desc = "一个装有50发12号鹿弹的弹药鼓，用于UA 12-G霰弹枪哨戒炮。当哨戒炮弹药耗尽时，将其装入其弹药口即可。"
 	caliber = "12g"
 	max_rounds = 50
 	default_ammo = /datum/ammo/bullet/shotgun/buckshot
 
 /obj/item/ammo_magazine/sentry/wy
-	name = "H20 ammo drum (10x42mm Caseless)"
-	desc = "An ammo drum of 200 10x42mm caseless rounds for the WY 202-GMA1 Smart Sentry. Just feed it into the sentry gun's ammo port when its ammo is depleted."
+	name = "H20弹药鼓（10x42mm无壳弹）"
+	desc = "一个装有200发10x42mm无壳弹的弹药鼓，用于WY 202-GMA1智能哨戒炮。当哨戒炮弹药耗尽时，将其装入其弹药口即可。"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/WY/turrets.dmi'
 	icon_state = "wy22e5"
 	caliber = "10x42mm"
 	max_rounds = 200
 
 /obj/item/ammo_magazine/sentry/wy/mini
-	name = "H16 ammo drum (10x12mm Caseless)"
-	desc = "An ammo drum of 1000 10x12mm caseless rounds for the WY 14-GRA2 Mini Sentry. Just feed it into the sentry gun's ammo port when its ammo is depleted."
+	name = "H16弹药鼓（10x12mm无壳弹）"
+	desc = "一个装有1000发10x12mm无壳弹的弹药鼓，用于WY 14-GRA2迷你哨戒炮。当哨戒炮弹药耗尽时，将其装入其弹药口即可。"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/WY/turrets.dmi'
 	icon_state = "wy22e5"
 	caliber = "10x12mm"
 	max_rounds = 1000
 
 /obj/item/ammo_magazine/sentry/upp
-	name = "SR32 ammo drum (10x32mm Caseless)"
-	desc = "An ammo drum of 200 10x32mm caseless rounds for the UPP SDS-R3 Sentry Gun. Just feed it into the sentry gun's ammo port when its ammo is depleted."
+	name = "SR32弹药鼓（10x32mm无壳弹）"
+	desc = "一个装有200发10x32mm无壳弹的弹药鼓，用于UPP SDS-R3哨戒炮。当哨戒炮弹药耗尽时，将其装入其弹药口即可。"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/turrets.dmi'
 	icon_state = "uppsds4"
 	caliber = "10x42mm"
@@ -62,30 +62,30 @@
 
 // FLAMER Sentry
 /obj/item/ammo_magazine/sentry_flamer
-	name = "sentry incinerator tank"
-	desc = "A fuel tank of usually Ultra Thick Napthal Fuel, a sticky combustible liquid chemical, used in the UA 42-F."
+	name = "哨戒炮焚烧器燃料罐"
+	desc = "一个通常装有超稠萘燃料的燃料罐，这是一种粘性可燃液体化学品，用于UA 42-F。"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/turrets.dmi'
 	icon_state = "ua571c"
 	w_class = SIZE_MEDIUM
 	flags_magazine = NO_FLAGS
-	caliber = "Napalm B"
+	caliber = "凝固汽油B型"
 	max_rounds = 100
 	default_ammo = /datum/ammo/flamethrower/sentry_flamer
 	gun_type = null
 
 /obj/item/ammo_magazine/sentry_flamer/glob
-	name = "plasma sentry incinerator tank"
-	desc = "A fuel tank of compressed Ultra Thick Napthal Fuel, used in the UA 60-FP."
+	name = "等离子哨戒炮焚烧器燃料罐"
+	desc = "一个装有压缩超稠萘燃料的燃料罐，用于UA 60-FP。"
 	default_ammo = /datum/ammo/flamethrower/sentry_flamer/glob
 
 /obj/item/ammo_magazine/sentry_flamer/mini
-	name = "mini sentry incinerator tank"
-	desc = "A fuel tank of Ultra Thick Napthal Fuel, used in the UA 45-FM."
+	name = "迷你哨戒炮焚烧器燃料罐"
+	desc = "一个装有超稠萘燃料的燃料罐，用于UA 45-FM。"
 	default_ammo = /datum/ammo/flamethrower/sentry_flamer/mini
 
 /obj/item/ammo_magazine/sentry_flamer/wy
-	name = "wy sentry incinerator tank"
-	desc = "A fuel tank of Ultra Thick Sticky Napthal Fuel, used in the WY 406-FE2."
+	name = "维兰德哨戒炮焚烧器燃料罐"
+	desc = "一个装有超稠粘性萘燃料的燃料罐，用于WY 406-FE2。"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/WY/turrets.dmi'
 	icon_state = "wy22e5"
 	caliber = "Sticky Napalm"
@@ -93,8 +93,8 @@
 	default_ammo = /datum/ammo/flamethrower/sentry_flamer/wy
 
 /obj/item/ammo_magazine/sentry_flamer/upp
-	name = "upp sentry incinerator tank"
-	desc = "A fuel tank of Ultra Thick Gel Napthal Fuel, used in the UPP SDS-R5 Sentry Flamer."
+	name = "UPP哨戒炮焚烧器燃料罐"
+	desc = "一个装有超稠凝胶萘燃料的燃料罐，用于UPP SDS-R5哨戒火焰喷射器。"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/turrets.dmi'
 	icon_state = "uppsds4"
 	caliber = "Sticky Napalm"

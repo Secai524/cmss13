@@ -1,8 +1,8 @@
 // It is a gizmo that flashes a small area
 
 /obj/structure/machinery/flasher
-	name = "Mounted flash"
-	desc = "A wall-mounted flashbulb device."
+	name = "壁挂式闪光灯"
+	desc = "一个壁挂式闪光灯泡装置。"
 	icon = 'icons/obj/structures/flasher.dmi'
 	icon_state = "mflash1"
 	var/id = null
@@ -14,8 +14,8 @@
 	anchored = TRUE
 
 /obj/structure/machinery/flasher/portable //Portable version of the flasher. Only flashes when anchored
-	name = "portable flasher"
-	desc = "A portable flashing device. Wrench to activate and deactivate. Cannot detect slow movements."
+	name = "便携式闪光器"
+	desc = "一个便携式闪光装置。用扳手激活和关闭。无法侦测缓慢移动。"
 	icon_state = "pflash1"
 	strength = 8
 	anchored = FALSE
@@ -37,9 +37,9 @@
 		add_fingerprint(user)
 		src.disable = !src.disable
 		if (src.disable)
-			user.visible_message(SPAN_DANGER("[user] has disconnected the [src]'s flashbulb!"), SPAN_DANGER("You disconnect the [src]'s flashbulb!"))
+			user.visible_message(SPAN_DANGER("[user]断开了[src]的闪光灯泡！"), SPAN_DANGER("You disconnect the [src]'s flashbulb!"))
 		if (!src.disable)
-			user.visible_message(SPAN_DANGER("[user] has connected the [src]'s flashbulb!"), SPAN_DANGER("You connect the [src]'s flashbulb!"))
+			user.visible_message(SPAN_DANGER("[user]连接了[src]的闪光灯泡！"), SPAN_DANGER("You connect the [src]'s flashbulb!"))
 
 //Let the AI trigger them directly.
 /obj/structure/machinery/flasher/attack_remote()
@@ -127,7 +127,7 @@
 		return
 
 	if(!allowed(user))
-		to_chat(user, SPAN_WARNING("Access Denied."))
+		to_chat(user, SPAN_WARNING("权限被拒绝。"))
 		return
 
 	use_power(5)

@@ -1,5 +1,5 @@
 /datum/supply_packs/upp/explosives_smoke
-	name = "UPP Smoke grenades crate (x10)"
+	name = "UPP烟雾弹箱 (x10)"
 	contains = list(
 		/obj/item/explosive/grenade/smokebomb,
 		/obj/item/explosive/grenade/smokebomb,
@@ -18,7 +18,7 @@
 	group = "UPP Explosives"
 
 /datum/supply_packs/upp/explosives_type_6
-	name = "UPP Type 6 Shrapnel Grenade crate (x25)"
+	name = "UPP6型破片手榴弹箱 (x25)"
 	contains = list(
 		/obj/item/explosive/grenade/high_explosive/upp,
 		/obj/item/explosive/grenade/high_explosive/upp,
@@ -52,7 +52,7 @@
 	group = "UPP Explosives"
 
 /datum/supply_packs/upp/explosives_type_8
-	name = "UPP Type 8 WP Grenade crate (x20)"
+	name = "UPP8型白磷手榴弹箱 (x20)"
 	contains = list(
 		/obj/item/explosive/grenade/phosphorus/upp,
 		/obj/item/explosive/grenade/phosphorus/upp,
@@ -81,7 +81,7 @@
 	group = "UPP Explosives"
 
 /datum/supply_packs/upp/explosives_plastic
-	name = "UPP plastic explosives crate (x3)"
+	name = "UPP塑胶炸药箱 (x3)"
 	contains = list(
 		/obj/item/explosive/plastic,
 		/obj/item/explosive/plastic,
@@ -93,7 +93,7 @@
 	group = "UPP Explosives"
 
 /datum/supply_packs/upp/explosives_breaching_charge
-	name = "UPP breaching charge crate (x4)"
+	name = "UPP破门炸药箱 (x4)"
 	contains = list(
 		/obj/item/explosive/plastic/breaching_charge,
 		/obj/item/explosive/plastic/breaching_charge,

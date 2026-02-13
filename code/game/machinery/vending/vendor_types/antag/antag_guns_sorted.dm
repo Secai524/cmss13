@@ -1,8 +1,8 @@
 //------------ADAPTIVE ANTAG SORTED GUNS VENDOR---------------
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/antag_guns
-	name = "\improper Suspicious Automated Guns Rack"
-	desc = "While similar in function to ColMarTech automated racks, this one is clearly not of USCM origin. Contains various weapons."
+	name = "\improper 可疑自动枪架"
+	desc = "虽然功能与ColMarTech自动化货架相似，但这台显然不是USCM的产物。装有各种武器。"
 	icon_state = "antag_guns"
 	req_one_access = list(ACCESS_ILLEGAL_PIRATE, ACCESS_UPP_GENERAL, ACCESS_CLF_GENERAL)
 	req_access = null

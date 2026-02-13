@@ -8,7 +8,7 @@
 	Click()
 
 /atom/movable/screen/ghost/follow_ghosts
-	name = "Follow"
+	name = "跟随"
 	icon_state = "follow_ghost"
 
 /atom/movable/screen/ghost/follow_ghosts/Click()
@@ -16,7 +16,7 @@
 	G.follow()
 
 /atom/movable/screen/ghost/reenter_corpse
-	name = "Reenter corpse"
+	name = "重返尸体"
 	icon_state = "reenter_corpse"
 
 /atom/movable/screen/ghost/reenter_corpse/Click()
@@ -24,7 +24,7 @@
 	G.reenter_corpse()
 
 /atom/movable/screen/ghost/toggle_huds
-	name = "Toggle HUDs"
+	name = "切换HUD"
 	icon_state = "ghost_hud_toggle"
 
 /atom/movable/screen/ghost/toggle_huds/Click()

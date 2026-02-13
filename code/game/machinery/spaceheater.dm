@@ -1,6 +1,6 @@
 /obj/structure/machinery/space_heater
-	name = "space heater"
-	desc = "It's an electric space heater. It heats the room through radiation with electricity."
+	name = "太空加热器"
+	desc = "这是一台电热空间加热器。它通过电力辐射为房间供暖。"
 	icon = 'icons/obj/structures/machinery/atmos.dmi'
 	icon_state = "sheater0"
 	anchored = FALSE
@@ -50,7 +50,7 @@
 	if(istype(I, /obj/item/cell))
 		if(open)
 			if(cell)
-				to_chat(user, "There is already a power cell inside.")
+				to_chat(user, "里面已经有一块电池了。")
 				return
 			else
 				// insert cell
@@ -60,13 +60,13 @@
 						cell = C
 						C.add_fingerprint(usr)
 
-						user.visible_message(SPAN_NOTICE("[user] inserts a power cell into [src]."), SPAN_NOTICE("You insert the power cell into [src]."))
+						user.visible_message(SPAN_NOTICE("[user]将一块电池插入[src]。"), SPAN_NOTICE("You insert the power cell into [src]."))
 		else
-			to_chat(user, "The hatch must be open to insert a power cell.")
+			to_chat(user, "舱口必须打开才能插入电池。")
 			return
 	else if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
 		open = !open
-		user.visible_message(SPAN_NOTICE("[user] [open ? "opens" : "closes"] the hatch on [src]."), SPAN_NOTICE("You [open ? "open" : "close"] the hatch on [src]."))
+		user.visible_message(SPAN_NOTICE("[user][open ? "打开" : "关闭"]了[src]的舱口。"), SPAN_NOTICE("你[open ? "打开" : "关闭"]了[src]的舱口。"))
 		update_icon()
 		if(!open && user.interactee == src)
 			close_browser(user, "spaceheater")
@@ -107,7 +107,7 @@
 			start_processing()
 		else
 			stop_processing()
-		user.visible_message(SPAN_NOTICE("[user] switches [on ? "on" : "off"] [src]."),SPAN_NOTICE("You switch [on ? "on" : "off"] [src]."))
+		user.visible_message(SPAN_NOTICE("[user][on ? "打开" : "关闭"]了[src]。"), SPAN_NOTICE("你[on ? "打开" : "关闭"]了[src]。"))
 		update_icon()
 	return
 
@@ -131,7 +131,7 @@
 
 			if("cellremove")
 				if(open && cell && !usr.get_active_hand())
-					usr.visible_message(SPAN_NOTICE("[usr] removes \the [cell] from \the [src]."), SPAN_NOTICE("You remove \the [cell] from \the [src]."))
+					usr.visible_message(SPAN_NOTICE("[usr]从\the [src]中取出\the [cell]。"), SPAN_NOTICE("You remove \the [cell] from \the [src]."))
 					cell.update_icon()
 					usr.put_in_hands(cell)
 					cell.add_fingerprint(usr)
@@ -147,7 +147,7 @@
 							C.forceMove(src)
 							C.add_fingerprint(usr)
 
-							usr.visible_message(SPAN_NOTICE("[usr] inserts \the [C] into \the [src]."), SPAN_NOTICE("You insert \the [C] into \the [src]."))
+							usr.visible_message(SPAN_NOTICE("[usr]将\the [C]插入\the [src]。"), SPAN_NOTICE("You insert \the [C] into \the [src]."))
 
 		updateDialog()
 	else
@@ -175,7 +175,7 @@
 
 /obj/structure/machinery/space_heater/radiator
 	name = "radiator"
-	desc = "It's a radiator. It heats the room through convection with hot water."
+	desc = "这是一台散热器。它通过热水对流为房间供暖。"
 	icon_state = "radiator"
 	anchored = TRUE
 
@@ -184,5 +184,5 @@
 
 /obj/structure/machinery/space_heater/radiator/red
 	name = "radiator"
-	desc = "It's a radiator. It heats the room through convection with hot water. This one has a red handle."
+	desc = "这是一台散热器。它通过热水对流为房间供暖。这台有一个红色把手。"
 	icon_state = "radiator-r"

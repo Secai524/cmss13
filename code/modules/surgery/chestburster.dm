@@ -5,7 +5,7 @@
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery/chestburster_removal
-	name = "Experimental Xenomorph Parasite Removal"
+	name = "实验性异形寄生虫移除术"
 	priority = SURGERY_PRIORITY_MAXIMUM
 	possible_locs = list("chest")
 	invasiveness = list(SURGERY_DEPTH_DEEP)
@@ -25,8 +25,8 @@
 //------------------------------------
 
 /datum/surgery_step/cut_larval_pseudoroots
-	name = "Cut Larval Pseudoroots"
-	desc = "sever the xenomorph larva's pseudoroots"
+	name = "切断幼虫假根"
+	desc = "切断异形幼虫的假根"
 	//Similar to INCISION, but including the PICT also. Using the PICT prevents acid spray.
 	tools = list(
 		/obj/item/tool/surgery/scalpel = SURGERY_TOOL_MULT_IDEAL,
@@ -50,7 +50,7 @@
 		if(victim.loc == patient.loc)
 			splash_chance += 30 //Same tile? BURN
 		splash_chance += distance * -15
-		if(victim.species && victim.species.name == "Yautja")
+		if(victim.species && victim.species.name == "铁血战士")
 			splash_chance -= 70 //Preds know to avoid the splashback.
 		if(splash_chance > 0 && prob(splash_chance)) //Success!
 			i++
@@ -73,14 +73,14 @@
 
 /datum/surgery_step/cut_larval_pseudoroots/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	if(tool_type == /obj/item/tool/surgery/scalpel/pict_system)
-		user.visible_message(SPAN_NOTICE("[user] severs the last of the pseudoroots with \the [tool], without spilling any of the larva's acid blood."),
+		user.visible_message(SPAN_NOTICE("[user]用\the [tool]切断了最后一根假根，没有让幼虫的酸血溅出分毫。"),
 			SPAN_NOTICE("You sever the last of the pseudoroots with \the [tool], without spilling any of the larva's acid blood."))
 	else
-		user.visible_message(SPAN_WARNING("Pressurised acid sprays everywhere as [user] severs the larva's tubes!"),
+		user.visible_message(SPAN_WARNING("当[user]切断幼虫的管道时，高压酸液四处喷溅！"),
 			SPAN_WARNING("As you sever the larva's pseudoroots, acid sprays through the air, pools in [target]'s [surgery.affected_limb.cavity], and spills sizzling across \his organs!"))
 
 		if(target.stat == CONSCIOUS)
-			to_chat(target, SPAN_HIGHDANGER("Your organs are melting!"))
+			to_chat(target, SPAN_HIGHDANGER("你的器官正在融化！"))
 			target.emote("scream")
 
 		larva_blood_spray(user, target)
@@ -110,8 +110,8 @@
 //------------------------------------
 
 /datum/surgery_step/remove_larva
-	name = "Remove Larva"
-	desc = "extract the xenomorph larva"
+	name = "移除幼虫"
+	desc = "取出异形幼虫"
 	accept_hand = TRUE
 	/*Using the hands to forcefully rip out the larva will be faster at the cost of damaging both the doctor and the patient, with the addition of organ damage.
 	Unlike before, the hemostat is now the best tool for removing removing the larva, as opposed to wirecutters and the fork.*/
@@ -172,7 +172,7 @@
 		if(L)
 			L.forceMove(target.loc)
 			qdel(A)
-			user.visible_message(SPAN_HIGHDANGER("The larva was removed just in time, but is fully grown and alive!"))
+			user.visible_message(SPAN_HIGHDANGER("幼虫被及时取出，但它已完全成熟并且还活着！"))
 		else
 			A.forceMove(target.loc)
 			target.status_flags &= ~XENO_HOST

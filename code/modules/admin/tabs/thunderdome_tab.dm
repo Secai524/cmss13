@@ -45,7 +45,7 @@ GLOBAL_LIST_EMPTY_TYPED(personal_thunderdomes, /datum/personal_thunderdome)
 /datum/admins/proc/clear_thunderdome()
 	QDEL_NULL(personal_thunderdome)
 
-	to_chat(owner, SPAN_NOTICE("Personal thunderdome destroyed."))
+	to_chat(owner, SPAN_NOTICE("个人雷霆穹顶已摧毁。"))
 
 	remove_verb(owner, /client/proc/dispel_my_thunderdome)
 	add_verb(owner, /client/proc/summon_thunderdome)
@@ -58,12 +58,12 @@ GLOBAL_LIST_EMPTY_TYPED(personal_thunderdomes, /datum/personal_thunderdome)
 		return
 
 	var/static/list/thunderdomes = subtypesof(/datum/lazy_template/thunderdome)
-	var/to_use = tgui_input_list(src, "Which thunderdome to use?", "Thunderdome Selection", thunderdomes)
+	var/to_use = tgui_input_list(src, "使用哪个雷霆穹顶？", "Thunderdome Selection", thunderdomes)
 
 	if(!to_use)
 		return
 
-	var/should_announce = tgui_alert(src, "Do you wish to announce the new thunderdome to dead chat?", "Announce Thunderdome", list("Yes", "No"))
+	var/should_announce = tgui_alert(src, "是否要向死亡频道广播新的雷霆穹顶？", "Announce Thunderdome", list("Yes", "No"))
 
 	if(isnull(should_announce))
 		return
@@ -71,13 +71,13 @@ GLOBAL_LIST_EMPTY_TYPED(personal_thunderdomes, /datum/personal_thunderdome)
 
 	var/datum/turf_reservation/dome = SSmapping.lazy_load_template(to_use, force = TRUE)
 	if(!dome)
-		to_chat(src, SPAN_WARNING("Thunderdome summoning failed."))
+		to_chat(src, SPAN_WARNING("雷霆穹顶召唤失败。"))
 		return
 
 	admin_holder.personal_thunderdome = new(to_use, dome, src)
 	GLOB.personal_thunderdomes[ckey] = admin_holder.personal_thunderdome
 
-	to_chat(src, SPAN_NOTICE("Thunderdome summoning complete."))
+	to_chat(src, SPAN_NOTICE("雷霆穹顶召唤完成。"))
 	var/turf/spawn_turf = admin_holder.personal_thunderdome.get_spawn_turf()
 	mob.forceMove(spawn_turf)
 
@@ -97,10 +97,10 @@ GLOBAL_LIST_EMPTY_TYPED(personal_thunderdomes, /datum/personal_thunderdome)
 		return
 
 	if(!admin_holder.personal_thunderdome)
-		to_chat(src, SPAN_WARNING("You do not have a currently summoned thunderdome."))
+		to_chat(src, SPAN_WARNING("你当前没有召唤中的雷霆穹顶。"))
 		return
 
-	var/confirm = tgui_alert(src, "Are you sure you want to dispel your thunderdome?", "Dispel Thunderdome", list("Yes", "No")) == "Yes"
+	var/confirm = tgui_alert(src, "你确定要驱散你的雷霆穹顶吗？", "Dispel Thunderdome", list("Yes", "No")) == "Yes"
 	if(!confirm)
 		return
 
@@ -115,10 +115,10 @@ GLOBAL_LIST_EMPTY_TYPED(personal_thunderdomes, /datum/personal_thunderdome)
 		return
 
 	if(!length(GLOB.personal_thunderdomes))
-		to_chat(src, SPAN_WARNING("No thunderdomes are currently summoned."))
+		to_chat(src, SPAN_WARNING("当前没有召唤中的雷霆穹顶。"))
 		return
 
-	var/to_dispel = tgui_input_list(src, "Which admin's thunderdome should be dispelled?", "Thunderdome Destruction", GLOB.personal_thunderdomes)
+	var/to_dispel = tgui_input_list(src, "应驱散哪位管理员的雷霆穹顶？", "Thunderdome Destruction", GLOB.personal_thunderdomes)
 	if(!to_dispel)
 		return
 
@@ -133,7 +133,7 @@ GLOBAL_LIST_EMPTY_TYPED(personal_thunderdomes, /datum/personal_thunderdome)
 		return
 
 	if(!length(GLOB.personal_thunderdomes))
-		to_chat(src, SPAN_WARNING("No thunderdomes are currently summoned."))
+		to_chat(src, SPAN_WARNING("当前没有召唤中的雷霆穹顶。"))
 		return
 
 	var/datum/personal_thunderdome/affected_thunderdome
@@ -142,7 +142,7 @@ GLOBAL_LIST_EMPTY_TYPED(personal_thunderdomes, /datum/personal_thunderdome)
 		affected_thunderdome = admin_holder.personal_thunderdome
 
 	if(!affected_thunderdome)
-		var/admin_to_use = tgui_input_list(src, "Which admin's thunderdome should be cleaned?", "Thunderdome Reset", GLOB.personal_thunderdomes)
+		var/admin_to_use = tgui_input_list(src, "应清理哪位管理员的雷霆穹顶？", "Thunderdome Reset", GLOB.personal_thunderdomes)
 		if(!admin_to_use)
 			return
 
@@ -151,7 +151,7 @@ GLOBAL_LIST_EMPTY_TYPED(personal_thunderdomes, /datum/personal_thunderdome)
 	if(!affected_thunderdome)
 		return
 
-	var/delete_mobs = tgui_alert(usr, "WARNING: Deleting large amounts of mobs causes lag. Clear all mobs?", "Thunderdome Reset", list("Yes", "No", "Cancel"))
+	var/delete_mobs = tgui_alert(usr, "警告：删除大量实体会导致延迟。清除所有实体？", "Thunderdome Reset", list("Yes", "No", "Cancel"))
 	if(!delete_mobs || delete_mobs == "Cancel")
 		return
 

@@ -1,6 +1,6 @@
 /datum/tutorial/marine/basic
-	name = "Marine - Basic"
-	desc = "A tutorial to get you acquainted with the very basics of how to play a groundside marine role."
+	name = "陆战队员 - 基础"
+	desc = "一个教程，让你熟悉如何扮演地面陆战队员的基本知识。"
 	tutorial_id = "marine_basic_1"
 	tutorial_template = /datum/map_template/tutorial/s8x9/no_baselight
 	/// How many items need to be vended from the clothing vendor for the script to continue, if something vends 2 items (for example), increase this number by 2.
@@ -25,8 +25,8 @@
 	add_to_tracking_atoms(flashlight)
 
 	init_mob()
-	message_to_player("This is the tutorial for marine rifleman. Leave the cryopod by pressing <b>[retrieve_bind("North")]</b> or <b>[retrieve_bind("East")]</b> to continue.")
-	update_objective("Exit the cryopod by pressing [retrieve_bind("North")] or [retrieve_bind("East")].")
+	message_to_player("This is the tutorial for marine rifleman. Leave the cryopod by pressing <b>[retrieve_bind("北")]</b> or <b>[retrieve_bind("东")]</b> to continue.")
+	update_objective("Exit the cryopod by pressing [retrieve_bind("北")] or [retrieve_bind("东")].")
 	RegisterSignal(tracking_atoms[/obj/structure/machinery/cryopod/tutorial], COMSIG_CRYOPOD_GO_OUT, PROC_REF(on_cryopod_exit))
 
 /datum/tutorial/marine/basic/proc/on_cryopod_exit()

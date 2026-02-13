@@ -1,6 +1,6 @@
 /obj/structure/machinery/computer/research
-	name = "research data terminal"
-	desc = "A terminal for accessing research data."
+	name = "研究数据终端"
+	desc = "用于访问研究数据的终端。"
 	icon_state = "research"
 	req_access = list(ACCESS_MARINE_RESEARCH)
 	var/base_purchase_cost = 5
@@ -10,7 +10,7 @@
 	var/datum/reagent/last_picked_contract
 
 /obj/structure/machinery/computer/research/main_terminal
-	name = "research main terminal"
+	name = "研究主终端"
 	main_terminal = TRUE
 	req_access = list(ACCESS_MARINE_CMO)
 
@@ -33,25 +33,25 @@
 			if(!N.grant)
 				return
 			GLOB.chemical_data.update_credits(N.grant)
-			visible_message(SPAN_NOTICE("[user] scans the [N.name] on [src], collecting the [N.grant] research credits."))
+			visible_message(SPAN_NOTICE("[user]扫描了[src]上的[N.name]，收集了[N.grant]研究点数。"))
 			N.grant = 0
 			qdel(N)
 			return
 	//Saving to database
 	if(istype(B, /obj/item/paper))
 		var/obj/item/paper/P = B
-		var/response = alert(usr,"Do you want to save [P.name] to the research database?","[src]","Yes","No")
+		var/response = alert(usr,"是否要将[P.name]保存到研究数据库？","[src]","Yes","No")
 		if(response != "Yes")
 			return
-		response = alert(usr,"Use existing or new category?","[src]","Existing","New")
+		response = alert(usr,"使用现有类别还是新建类别？","[src]","Existing","New")
 		if(response == "Existing")
 			var/list/pool = list()
 			for(var/category in GLOB.chemical_data.research_documents)
 				pool += category
 			pool = sortAssoc(pool)
-			response = tgui_input_list(usr,"Select a category:", "Categories", pool)
+			response = tgui_input_list(usr,"选择一个类别：", "Categories", pool)
 		else if(response == "New")
-			response = input(usr,"Please enter the category of the paper:")
+			response = input(usr,"请输入文件的类别：")
 		if(!response)
 			response = "Misc."
 		var/obj/item/paper/research_report/CR = P.convert_to_chem_report()
@@ -62,7 +62,7 @@
 	if(istype(B, /obj/item/research_upgrades/reroll))
 		var/obj/item/research_upgrades/reroll/reroll = B
 		GLOB.chemical_data.reroll_chemicals()
-		visible_message(SPAN_NOTICE("[user] inserts [reroll] in [src], Rerolling contract chemicals."))
+		visible_message(SPAN_NOTICE("[user]将[reroll]插入[src]，正在重新生成合同化学品。"))
 		qdel(reroll)
 
 /obj/structure/machinery/computer/research/ui_state(mob/user)
@@ -158,7 +158,7 @@
 				if(cost <= GLOB.chemical_data.rsc_credits)
 					GLOB.chemical_data.update_credits(cost * -1)
 					GLOB.chemical_data.clearance_level++
-					visible_message(SPAN_NOTICE("Clearance access increased to level [GLOB.chemical_data.clearance_level] for [cost] credits."))
+					visible_message(SPAN_NOTICE("权限等级提升至[GLOB.chemical_data.clearance_level]级，花费[cost]点数。"))
 					msg_admin_niche("[key_name(user)] traded research credits to upgrade the clearance to level [GLOB.chemical_data.clearance_level].")
 					if(max_clearance < GLOB.chemical_data.clearance_level)
 						switch(GLOB.chemical_data.clearance_level)
@@ -179,7 +179,7 @@
 			var/print_title = params["print_title"]
 			var/obj/item/paper/research_report/report = GLOB.chemical_data.get_report(print_type, print_title)
 			if(!report)
-				to_chat(usr, SPAN_WARNING("Report data corrupted. Unable to transmit."))
+				to_chat(usr, SPAN_WARNING("报告数据损坏。无法传输。"))
 				return
 			GLOB.chemical_data.publish_document(report, print_type, print_title)
 		if("unpublish_document")
@@ -192,7 +192,7 @@
 				GLOB.chemical_data.clearance_x_access = TRUE
 				GLOB.chemical_data.reached_x_access = TRUE
 				GLOB.chemical_data.update_credits(purchase_cost * -1)
-				visible_message(SPAN_NOTICE("Clearance Level X Acquired."))
+				visible_message(SPAN_NOTICE("已获得X级权限。"))
 		if("take_contract")
 			if(!GLOB.chemical_data.picked_chem)
 				var/chem_id = params["id"]
@@ -208,6 +208,6 @@
 			else
 				playsound(loc, 'sound/machines/buzz-two.ogg', 5, 1)
 				langchat_speech("There are no contracts to reprint available", get_mobs_in_view(7, src), GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("langchat_small"))
-				visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: There are no contracts to reprint available")
+				visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> 说道：没有可重新打印的合同")
 
 	playsound(loc, pick('sound/machines/computer_typing1.ogg','sound/machines/computer_typing2.ogg','sound/machines/computer_typing3.ogg'), 5, 1)

@@ -15,8 +15,8 @@ GLOBAL_LIST_INIT(shotgun_boxes_12g, list(
 	))
 
 /obj/item/ammo_magazine/shotgun
-	name = "box of shotgun slugs"
-	desc = "A box filled with heavy shotgun shells. A timeless classic. 12 Gauge."
+	name = "盒装独头弹"
+	desc = "一盒装满重型霰弹枪弹的弹药盒。永恒的经典。12号口径。"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/shotguns.dmi'
 	icon_state = "slugs"
 	item_state = "slugs"
@@ -44,48 +44,48 @@ GLOBAL_LIST_INIT(shotgun_boxes_12g, list(
 /obj/item/ammo_magazine/shotgun/slugs//for distinction on weapons that can't take child objects but still take slugs.
 
 /obj/item/ammo_magazine/shotgun/incendiary
-	name = "box of incendiary slugs"
-	desc = "A box filled with self-detonating incendiary shotgun rounds. 12 Gauge."
+	name = "盒装燃烧独头弹"
+	desc = "一盒装满自爆燃烧霰弹枪弹的弹药盒。12号口径。"
 	icon_state = "incendiary"
 	item_state = "incendiary"
 	default_ammo = /datum/ammo/bullet/shotgun/incendiary
 	handful_state = "incendiary_slug"
 
 /obj/item/ammo_magazine/shotgun/incendiarybuck
-	name = "box of incendiary buckshots"
-	desc = "A box filled with self-detonating buckshot incendiary shotgun rounds. 12 Gauge."
+	name = "盒装燃烧鹿弹"
+	desc = "一盒装满自爆鹿弹燃烧霰弹枪弹的弹药盒。12号口径。"
 	icon_state = "incendiarybuck"
 	item_state = "incendiarybuck"
 	default_ammo = /datum/ammo/bullet/shotgun/buckshot/incendiary
 	handful_state = "incen_buckshot"
 
 /obj/item/ammo_magazine/shotgun/buckshot
-	name = "box of buckshot shells"
-	desc = "A box filled with buckshot spread shotgun shells. 12 Gauge."
+	name = "盒装鹿弹"
+	desc = "一盒装满鹿弹散布霰弹枪弹的弹药盒。12号口径。"
 	icon_state = "buckshot"
 	item_state = "buckshot"
 	default_ammo = /datum/ammo/bullet/shotgun/buckshot
 	handful_state = "buckshot_shell"
 
 /obj/item/ammo_magazine/shotgun/flechette
-	name = "box of flechette shells"
-	desc = "A box filled with flechette shotgun shells. 12 Gauge."
+	name = "盒装箭弹"
+	desc = "一盒装满箭弹霰弹枪弹的弹药盒。12号口径。"
 	icon_state = "flechette"
 	item_state = "flechette"
 	default_ammo = /datum/ammo/bullet/shotgun/flechette
 	handful_state = "flechette_shell"
 
 /obj/item/ammo_magazine/shotgun/beanbag
-	name = "box of beanbag slugs"
-	desc = "A box filled with beanbag shotgun shells used for non-lethal crowd control. 12 Gauge."
+	name = "盒装豆袋弹"
+	desc = "一盒装满用于非致命人群控制的豆袋霰弹枪弹的弹药盒。12号口径。"
 	icon_state = "beanbag"
 	item_state = "beanbag"
 	default_ammo = /datum/ammo/bullet/shotgun/beanbag
 	handful_state = "beanbag_slug"
 
 /obj/item/ammo_magazine/shotgun/beanbag/riot
-	name = "box of RC beanbag slugs"
-	desc = "A box filled with beanbag shotgun shells used for non-lethal crowd control. Riot Control use only."
+	name = "盒装防暴豆袋弹"
+	desc = "一盒装满用于非致命人群控制的豆袋霰弹枪弹的弹药盒。仅供防暴控制使用。"
 	icon_state = "beanbag"
 	item_state = "beanbag"
 	default_ammo = /datum/ammo/bullet/shotgun/beanbag
@@ -93,8 +93,8 @@ GLOBAL_LIST_INIT(shotgun_boxes_12g, list(
 	caliber = "20g"
 
 /obj/item/ammo_magazine/shotgun/beanbag/es7
-	name = "box of X21 shock slugs"
-	desc = "A box filled with X21 shells used for non-lethal crowd control. Riot Control use only."
+	name = "盒装X21电击弹"
+	desc = "一盒装满用于非致命人群控制的X21弹药的弹药盒。仅供防暴控制使用。"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/WY/shotguns.dmi'
 	icon_state = "electric"
 	item_state = "incendiary"
@@ -103,15 +103,15 @@ GLOBAL_LIST_INIT(shotgun_boxes_12g, list(
 	caliber = "20g"
 
 /obj/item/ammo_magazine/shotgun/beanbag/es7/slug
-	name = "box of X21 lethal slugs"
-	desc = "A box filled with X21 combat electrostatic lethal shotgun shells designed for ES-7 Supernova."
+	name = "一盒X21致命独头弹"
+	desc = "一个装满X21战斗静电致命霰弹的盒子，专为ES-7超新星设计。"
 	icon_state = "slug"
 	default_ammo = /datum/ammo/bullet/shotgun/slug/es7
 	handful_state = "es7_slug"
 
 /obj/item/ammo_magazine/shotgun/light/breaching
-	name = "box of breaching shells"
-	desc = "A box filled with breaching shotgun shells. 16 Gauge."
+	name = "一盒破门弹"
+	desc = "一个装满破门霰弹的盒子。16号口径。"
 	icon_state = "breaching"
 	item_state = "breaching"
 	max_rounds = 30 //6 handfuls of 6 shells, 12 rounds in a XM51 mag
@@ -129,8 +129,8 @@ GLOBAL_LIST_INIT(shotgun_boxes_8g, list(
 	))
 
 /obj/item/ammo_magazine/shotgun/heavy
-	name = "box of shotgun heavy slugs"
-	desc = "A box filled with heavy shotgun shells. A timeless classic. 8 Gauge."
+	name = "一盒霰弹枪重型独头弹"
+	desc = "一个装满重型霰弹的盒子。永恒的经典。8号口径。"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/shotguns.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_lefthand.dmi',
@@ -146,32 +146,32 @@ GLOBAL_LIST_INIT(shotgun_boxes_8g, list(
 /obj/item/ammo_magazine/shotgun/heavy/slug
 
 /obj/item/ammo_magazine/shotgun/heavy/buckshot
-	name = "box of heavy buckshot shells"
-	desc = "A box filled with buckshot spread shotgun shells. 8 Gauge."
+	name = "一盒重型鹿弹"
+	desc = "一个装满鹿弹散布霰弹的盒子。8号口径。"
 	icon_state = "buckshot"
 	item_state = "buckshot"
 	default_ammo = /datum/ammo/bullet/shotgun/heavy/buckshot
 	handful_state = "buckshot_shell"
 
 /obj/item/ammo_magazine/shotgun/heavy/flechette
-	name = "box of heavy flechette shells"
-	desc = "A box filled with flechette shotgun shells. 8 Gauge."
+	name = "一盒重型箭形弹"
+	desc = "一个装满箭形霰弹的盒子。8号口径。"
 	icon_state = "flechette"
 	item_state = "flechette"
 	default_ammo = /datum/ammo/bullet/shotgun/heavy/flechette
 	handful_state = "flechette_shell"
 
 /obj/item/ammo_magazine/shotgun/heavy/incendiary
-	name = "box of heavy incendiary slugs"
-	desc = "A box filled with self-detonating incendiary shotgun rounds. 8 Gauge."
+	name = "一盒重型燃烧独头弹"
+	desc = "一个装满自爆燃烧霰弹的盒子。8号口径。"
 	icon_state = "incendiary"
 	item_state = "incendiary"
 	default_ammo = /datum/ammo/bullet/shotgun/heavy/buckshot/dragonsbreath
 	handful_state = "incendiary_slug"
 
 /obj/item/ammo_magazine/shotgun/heavy/beanbag
-	name = "box of heavy beanbag slugs"
-	desc = "A box filled with beanbag shotgun shells used for non-lethal crowd control. 8 Gauge."
+	name = "一盒重型豆袋弹"
+	desc = "一个装满豆袋霰弹的盒子，用于非致命人群控制。8号口径。"
 	icon_state = "beanbag"
 	item_state = "beanbag"
 	default_ammo = /datum/ammo/bullet/shotgun/heavy/beanbag
@@ -185,8 +185,8 @@ Since all shotguns share ammo types, the gun path is going to be the same for al
 also doesn't really matter. You can only reload them with handfuls.
 */
 /obj/item/ammo_magazine/internal/shotgun
-	name = "shotgun tube"
-	desc = "An internal magazine. It is not supposed to be seen or removed."
+	name = "霰弹枪管状弹仓"
+	desc = "一个内置弹仓。它本不应被看到或移除。"
 	default_ammo = /datum/ammo/bullet/shotgun/slug
 	caliber = "12g"
 	max_rounds = 9
@@ -273,7 +273,7 @@ GLOBAL_LIST_INIT(shotgun_handfuls_12g, list(
 	))
 
 /obj/item/ammo_magazine/handful/shotgun
-	name = "handful of shotgun slugs (12g)"
+	name = "一把霰弹枪独头弹（12号口径）"
 	icon_state = "slug_shell_5"
 	default_ammo = /datum/ammo/bullet/shotgun/slug
 	caliber = "12g"
@@ -286,32 +286,32 @@ GLOBAL_LIST_INIT(shotgun_handfuls_12g, list(
 /obj/item/ammo_magazine/handful/shotgun/slug
 
 /obj/item/ammo_magazine/handful/shotgun/incendiary
-	name = "handful of incendiary slugs (12g)"
+	name = "一把燃烧独头弹（12号口径）"
 	icon_state = "incendiary_slug_5"
 	default_ammo = /datum/ammo/bullet/shotgun/incendiary
 	handful_state = "incendiary_slug"
 
 /obj/item/ammo_magazine/handful/shotgun/slug/es7
-	name = "handful of X21 solid slugs (20g)"
+	name = "一把X21实心独头弹（20号口径）"
 	icon_state = "es7_slug_5"
 	default_ammo = /datum/ammo/bullet/shotgun/slug/es7
 	handful_state = "es7_slug"
 	caliber = "20g"
 
 /obj/item/ammo_magazine/handful/shotgun/buckshot
-	name = "handful of shotgun buckshot shells (12g)"
+	name = "一把霰弹枪鹿弹（12号口径）"
 	icon_state = "buckshot_shell_5"
 	default_ammo = /datum/ammo/bullet/shotgun/buckshot
 	handful_state = "buckshot_shell"
 
 /obj/item/ammo_magazine/handful/shotgun/buckshot/incendiary
-	name = "handful of incendiary buckshot shells (12g)"
+	name = "一把燃烧鹿弹（12号口径）"
 	icon_state = "incen_buckshot_5"
 	default_ammo = /datum/ammo/bullet/shotgun/buckshot/incendiary
 	handful_state = "incen_buckshot"
 
 /obj/item/ammo_magazine/handful/shotgun/custom_color
-	name = "abstract handful custom type"
+	name = "抽象自定义类型弹药"
 	icon_state = "shell_greyscale_5"
 	default_ammo = /datum/ammo/bullet/shotgun/buckshot
 	handful_state = "shell_greyscale" //unneeded
@@ -327,30 +327,30 @@ GLOBAL_LIST_INIT(shotgun_handfuls_12g, list(
 	overlays += I
 
 /obj/item/ammo_magazine/handful/shotgun/flechette
-	name = "handful of shotgun flechette shells (12g)"
+	name = "一把霰弹枪箭形弹（12号口径）"
 	icon_state = "flechette_shell_5"
 	default_ammo = /datum/ammo/bullet/shotgun/flechette
 	handful_state = "flechette_shell"
 
 /obj/item/ammo_magazine/handful/shotgun/beanbag
-	name = "handful of beanbag slugs (12g)"
+	name = "一把豆袋弹（12号口径）"
 	icon_state = "beanbag_slug_5"
 	default_ammo = /datum/ammo/bullet/shotgun/beanbag
 	handful_state = "beanbag_slug"
 
 /obj/item/ammo_magazine/handful/shotgun/beanbag/riot
-	name = "handful of beanbag slugs (20g)"
+	name = "一把豆袋弹（20号口径）"
 	caliber = "20g"
 
 /obj/item/ammo_magazine/handful/shotgun/beanbag/es7
-	name = "handful of X21 electrostatic slugs (20g)"
+	name = "一把X21静电独头弹（20号口径）"
 	icon_state = "shock_slug_5"
 	default_ammo = /datum/ammo/bullet/shotgun/beanbag/es7
 	handful_state = "shock_slug"
 	caliber = "20g"
 
 /obj/item/ammo_magazine/handful/shotgun/heavy
-	name = "handful of heavy shotgun slugs (8g)"
+	name = "一把重型独头弹 (8号口径)"
 	icon_state = "heavy_slug_4"
 	handful_state = "heavy_slug"
 	default_ammo = /datum/ammo/bullet/shotgun/heavy/slug
@@ -363,32 +363,32 @@ GLOBAL_LIST_INIT(shotgun_handfuls_12g, list(
 /obj/item/ammo_magazine/handful/shotgun/heavy/slug
 
 /obj/item/ammo_magazine/handful/shotgun/heavy/buckshot
-	name = "handful of heavy buckshot shells (8g)"
+	name = "一把重型鹿弹 (8号口径)"
 	icon_state = "heavy_buckshot_4"
 	handful_state = "heavy_buckshot"
 	default_ammo = /datum/ammo/bullet/shotgun/heavy/buckshot
 
 /obj/item/ammo_magazine/handful/shotgun/heavy/dragonsbreath
-	name = "handful of dragon's breath shells (8g)"
-	desc = "These shells fire magnesium (rather than the usual lead) pellets that ignite on contact with the air, setting anything it hits on fire. Its custom design also increases maximum range."
+	name = "一把龙息弹 (8号口径)"
+	desc = "这种弹壳发射的是镁（而非通常的铅）弹丸，与空气接触即会点燃，引燃任何被击中的目标。其定制设计也增加了最大射程。"
 	icon_state = "heavy_dragonsbreath_4"
 	handful_state = "heavy_dragonsbreath"
 	default_ammo = /datum/ammo/bullet/shotgun/heavy/buckshot/dragonsbreath
 
 /obj/item/ammo_magazine/handful/shotgun/heavy/flechette
-	name = "handful of heavy flechette shells (8g)"
+	name = "一把重型箭弹 (8号口径)"
 	icon_state = "heavy_flechette_4"
 	handful_state = "heavy_flechette"
 	default_ammo = /datum/ammo/bullet/shotgun/heavy/flechette
 
 /obj/item/ammo_magazine/handful/shotgun/heavy/beanbag
-	name = "handful of heavy beanbag shells (8g)"
+	name = "一把重型豆袋弹 (8号口径)"
 	icon_state = "heavy_beanbag_4"
 	handful_state = "heavy_beanbag"
 	default_ammo = /datum/ammo/bullet/shotgun/heavy/beanbag
 
 /obj/item/ammo_magazine/handful/shotgun/light/breaching
-	name = "handful of breaching shells (16g)"
+	name = "一把破门弹 (16号口径)"
 	icon_state = "breaching_shell_6"
 	handful_state = "breaching_shell"
 	max_rounds = 6 //XM51 magazines are 12 rounds total, two handfuls should be enough to reload a mag
@@ -399,13 +399,13 @@ GLOBAL_LIST_INIT(shotgun_handfuls_12g, list(
 	gun_type = /obj/item/weapon/gun/rifle/xm51
 
 /obj/item/ammo_magazine/handful/shotgun/light/breaching/rubber
-	name = "handful of rubber buckshot shells (16g)"
+	name = "一把橡胶鹿弹 (16号口径)"
 	icon_state = "rubbershot_shell_6"
 	handful_state = "rubbershot_shell"
 	default_ammo = /datum/ammo/bullet/shotgun/light/rubber
 
 /obj/item/ammo_magazine/handful/shotgun/twobore
-	name = "handful of shotgun slugs (2 bore)"
+	name = "一把霰弹枪独头弹 (2号口径)"
 	icon_state = "twobore_3"
 	default_ammo = /datum/ammo/bullet/shotgun/twobore
 	caliber = "2 bore"
@@ -418,7 +418,7 @@ GLOBAL_LIST_INIT(shotgun_handfuls_12g, list(
 // i fucking hate gun code
 
 /obj/item/ammo_magazine/handful/revolver
-	name = "handful of revolver bullets (.44)"
+	name = "一把左轮手枪子弹 (.44口径)"
 	default_ammo = /datum/ammo/bullet/revolver
 	caliber = ".44"
 	max_rounds = 8
@@ -426,12 +426,12 @@ GLOBAL_LIST_INIT(shotgun_handfuls_12g, list(
 	gun_type = /obj/item/weapon/gun/shotgun/double/cane
 
 /obj/item/ammo_magazine/handful/revolver/marksman
-	name = "handful of marksman revolver bullets (.44)"
+	name = "一把神射手左轮手枪子弹 (.44口径)"
 	default_ammo = /datum/ammo/bullet/revolver/marksman
 	gun_type = /obj/item/weapon/gun/shotgun/double/cane
 
 /obj/item/ammo_magazine/handful/revolver/marksman/six_rounds
-	name = "handful of marksman revolver bullets (.44)"
+	name = "一把神射手左轮手枪子弹 (.44口径)"
 	default_ammo = /datum/ammo/bullet/revolver/marksman
 	current_rounds = 6
 	gun_type = /obj/item/weapon/gun/shotgun/double/cane

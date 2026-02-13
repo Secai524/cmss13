@@ -19,8 +19,8 @@
 /obj/item/storage/fancy
 	icon = null // We don't have fancy sprites for the base type, so don't check
 	icon_state = "donutbox"
-	name = "donut box"
-	desc = "A box where round, heavenly, holey pastries reside."
+	name = "甜甜圈盒"
+	desc = "一个装着圆形、美味、带孔的糕点的盒子。"
 	var/icon_type = "donut"
 	var/no_item_state_override = FALSE
 	var/plural = "s"
@@ -51,8 +51,8 @@
 	icon = 'icons/obj/items/food/eggs.dmi'
 	icon_state = "eggbox"
 	icon_type = "egg"
-	name = "egg carton"
-	desc = "A storage container filled with neatly-lined, egg-shaped holes."
+	name = "鸡蛋盒"
+	desc = "一个装满排列整齐的蛋形凹槽的储存容器。"
 	storage_slots = 12
 	max_storage_space = 24
 	can_hold = list(/obj/item/reagent_container/food/snacks/egg)
@@ -65,8 +65,8 @@
 // CANDLE BOX
 
 /obj/item/storage/fancy/candle_box
-	name = "candle pack"
-	desc = "A pack of red candles."
+	name = "蜡烛包"
+	desc = "一包红色蜡烛。"
 	icon = 'icons/obj/items/storage/boxes.dmi'
 	icon_state = "candlebox5"
 	icon_type = "candle"
@@ -84,8 +84,8 @@
 // CRAYON BOX
 
 /obj/item/storage/fancy/crayons
-	name = "box of crayons"
-	desc = "A box of every flavor of crayon."
+	name = "一盒蜡笔"
+	desc = "一盒各种口味的蜡笔。"
 	icon = 'icons/obj/items/paint.dmi'
 	icon_state = "crayonbox"
 	w_class = SIZE_SMALL
@@ -112,10 +112,10 @@
 	if(istype(W,/obj/item/toy/crayon))
 		switch(W:colorName)
 			if("mime")
-				to_chat(usr, "This crayon is too sad to be contained in this box.")
+				to_chat(usr, "这支蜡笔太悲伤了，无法被装在这个盒子里。")
 				return
 			if("rainbow")
-				to_chat(usr, "This crayon is too powerful to be contained in this box.")
+				to_chat(usr, "这支蜡笔太强大了，无法被装在这个盒子里。")
 				return
 	..()
 
@@ -124,8 +124,8 @@
 /obj/item/storage/fancy/cigarettes
 	icon = 'icons/obj/items/smoking/packets/normal.dmi'
 	icon_state = "cigpacket"
-	name = "cigarette packet"
-	desc = "A packet of cigarettes with a built-in lighter compartment."
+	name = "香烟盒"
+	desc = "一包带有内置打火机隔层的香烟。"
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/smoking_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/smoking_righthand.dmi',
@@ -169,14 +169,14 @@
 		if(C)
 			remove_from_storage(C, get_turf(user))
 			user.equip_to_slot_if_possible(C, WEAR_FACE)
-			to_chat(user, SPAN_NOTICE("You take a cigarette out of the pack."))
+			to_chat(user, SPAN_NOTICE("你从烟盒里取出一支烟。"))
 			update_icon()
 	else
 		..()
 
 /obj/item/storage/fancy/cigarettes/emeraldgreen
 	name = "\improper Emerald Green Packet"
-	desc = "They remind you of a gross, tar-filled version of Ireland. These cheap cigarettes are Weyland-Yutani's entry into the general market."
+	desc = "它们让你想起一个充满焦油的恶心版爱尔兰。这些廉价香烟是维兰德-汤谷进军大众市场的产品。"
 	desc_lore = "Instantly recognizable by their price that undercuts even water, these cigarettes have become a fixture wherever budgets and morale run low. Nobody is quite sure what goes into the blend, but most agree you don't buy Emerald Greens for the flavor."
 	icon_state = "cigpacket"
 	item_state = "cigpacket"
@@ -184,7 +184,7 @@
 
 /obj/item/storage/fancy/cigarettes/wypacket
 	name = "\improper Weyland-Yutani Gold packet"
-	desc = "Building Better Worlds, and rolling better cigarettes. These fancy cigarettes are Weyland-Yutani's entry into the premium tobacco market. Comes backed by a fierce legal team."
+	desc = "建设更美好的世界，卷制更好的香烟。这些高档香烟是维兰德-汤谷进军优质烟草市场的产品。由一支强大的法律团队支持。"
 	icon_state = "wypacket"
 	icon = 'icons/obj/items/smoking/packets/wy_gold.dmi'
 	item_state = "wypacket"
@@ -196,7 +196,7 @@
 
 /obj/item/storage/fancy/cigarettes/wypacket_4
 	name = "\improper Weyland-Yutani Gold mini packet"
-	desc = "Building Better Worlds, and rolling better cigarettes. Compact and ready for your executive ventures, protecting corporate assets never felt cooler."
+	desc = "建设更美好的世界，卷制更好的香烟。小巧便携，随时准备为你的高管事业服务，保护公司资产从未如此酷炫。"
 	icon_state = "wy4packet"
 	icon = 'icons/obj/items/smoking/packets/wy_gold_mini.dmi'
 	item_state = "wypacket"
@@ -209,7 +209,7 @@
 
 /obj/item/storage/fancy/cigarettes/balaji
 	name = "\improper Balaji Imperial packet"
-	desc = "Smoke 'em if you gottem! Quite popular amongst people living in the Three World Empire."
+	desc = "有就抽吧！在三世界帝国居民中相当受欢迎。"
 	icon_state = "bpacket"
 	icon = 'icons/obj/items/smoking/packets/balaji_imperials.dmi'
 	item_state = "bpacket"
@@ -217,7 +217,7 @@
 
 /obj/item/storage/fancy/cigarettes/balaji_4
 	name = "\improper Balaji Imperial Mini packet"
-	desc = "Smoke 'em if you gottem! Now a field, in the new compact package!"
+	desc = "有就抽吧！现在采用全新紧凑包装！"
 	icon_state = "b4packet"
 	icon = 'icons/obj/items/smoking/packets/balaji_imperials_mini.dmi'
 	item_state = "bpacket"
@@ -226,7 +226,7 @@
 
 /obj/item/storage/fancy/cigarettes/lucky_strikes
 	name = "\improper Lucky Strikes Packet"
-	desc = "Lucky Strikes Means Fine Tobacco! 9/10 doctors agree on Lucky Strikes... as the leading cause of marine lung cancer."
+	desc = "好运牌意味着优质烟草！9/10的医生同意好运牌是……陆战队员肺癌的主要原因。"
 	icon_state = "lspacket"
 	icon = 'icons/obj/items/smoking/packets/lucky_strike.dmi'
 	item_state = "lspacket"
@@ -235,7 +235,7 @@
 
 /obj/item/storage/fancy/cigarettes/lucky_strikes_4
 	name = "\improper Lucky Strikes Mini Packet"
-	desc = "These four-packs of Luckies come in every MRE. They're not as good as the Habana Reals that come in the LACN MREs, but at least they're free."
+	desc = "这些四支装的好运牌香烟配发给每份单兵口粮。它们不如LACN口粮里的哈瓦那真品，但至少是免费的。"
 	icon_state = "ls4packet"
 	icon = 'icons/obj/items/smoking/packets/lucky_strike_mini.dmi'
 	item_state = "lspacket"
@@ -245,7 +245,7 @@
 
 /obj/item/storage/fancy/cigarettes/blackpack
 	name = "\improper Executive Select packet"
-	desc = "These cigarettes are the height of luxury. They're smooth, they're cool, and they smell like victory... and cigarette smoke."
+	desc = "这些香烟是奢侈的巅峰。口感顺滑，感觉酷爽，闻起来像胜利……和烟味。"
 	icon_state = "blackpacket"
 	icon = 'icons/obj/items/smoking/packets/executive_select.dmi'
 	item_state = "blackpacket"
@@ -254,7 +254,7 @@
 
 /obj/item/storage/fancy/cigarettes/blackpack_4
 	name = "\improper Executive Select mini packet"
-	desc = "Luxury right in your ration. You will have them just in time to use them while observing a nuclear blast and enjoying it."
+	desc = "就在你的口粮里的奢侈品。你正好可以在观赏核爆并享受它的时候用上。"
 	icon_state = "black4packet"
 	icon = 'icons/obj/items/smoking/packets/executive_select_mini.dmi'
 	item_state = "blackpacket"
@@ -264,7 +264,7 @@
 
 /obj/item/storage/fancy/cigarettes/kpack
 	name = "\improper Koorlander Gold packet"
-	desc = "Lovingly machine-rolled for YOUR pleasure. For when you want to look cool and the risk of a slow horrible death isn't really a factor."
+	desc = "由机器精心卷制，只为取悦你。适用于你想耍酷，而缓慢恐怖死亡的风险并非真正考虑因素之时。"
 	desc_lore = "Popularized by Seegson workers during the construction of Sevastopol Station, these cigarettes lit easily, burned evenly, and offered a straightforward, dependable smoke. The flat, dusty flavor and steady draw quickly made them a colonial staple. Koorlander later scaled production on frontier farming worlds and locked in exclusive trade deals with the USCM."
 	icon_state = "kpacket"
 	icon = 'icons/obj/items/smoking/packets/koorlander.dmi'
@@ -277,7 +277,7 @@
 
 /obj/item/storage/fancy/cigarettes/arcturian_ace
 	name = "\improper Arcturian Ace packet"
-	desc = "An entry level brand of cigarettes with a bright blue packaging. You're guessing these aren't really good for you, but it doesn't matter when it's Arcturian baby!"
+	desc = "一款入门级香烟品牌，采用亮蓝色包装。你猜这对你没什么好处，但如果是阿克图里安产的，那又有什么关系呢！"
 	icon_state = "aapacket"
 	icon = 'icons/obj/items/smoking/packets/arcturian_ace.dmi'
 	item_state = "aapacket"
@@ -285,7 +285,7 @@
 
 /obj/item/storage/fancy/cigarettes/lady_finger
 	name = "\improper Lady Fingers packet"
-	desc = "These intensely strong unfiltered menthol cigarettes don't seem very ladylike. They don't seem very fingerlike for that matter, either. Smoking may kill, but poor branding is almost as bad."
+	desc = "这些劲道十足的无过滤嘴薄荷烟似乎不太淑女。说真的，它们看起来也不太像手指。吸烟可能致命，但糟糕的品牌营销也差不多一样糟。"
 	desc_lore = "A bold experiment in marketing, these brutal, unfiltered menthol cigarettes come in dusty rose packaging aimed at the women of the USCM. The scent is so overpowering that they are sometimes used to keep bugs out of field tents. Despite the effort, they are rarely chosen and mostly sit untouched in vending machines, quietly daring someone to try. Whether anyone actually likes them is another question."
 	icon_state = "lfpacket"
 	icon = 'icons/obj/items/smoking/packets/lady_fingers.dmi'
@@ -295,7 +295,7 @@
 
 /obj/item/storage/fancy/cigarettes/spirit
 	name = "\improper Turquoise American Spirit Packet"
-	desc = "A pack of turquoise American Spirit cigarettes."
+	desc = "一包青绿色的美国精神牌香烟。"
 	icon_state = "naspacket"
 	icon = 'icons/obj/items/smoking/packets/spirits_cyan.dmi'
 	item_state = "naspacket"
@@ -304,7 +304,7 @@
 
 /obj/item/storage/fancy/cigarettes/spirit/yellow
 	name = "\improper Yellow American Spirit Packet"
-	desc = "A pack of yellow American Spirit cigarettes."
+	desc = "一包黄色的美国精神牌香烟。"
 	icon_state = "y_naspacket"
 	icon = 'icons/obj/items/smoking/packets/spirits_yellow.dmi'
 	item_state = "y_naspacket"
@@ -312,7 +312,7 @@
 
 /obj/item/storage/fancy/cigarettes/trading_card
 	name = "\improper WeyYu Gold Military Trading Card packet"
-	desc = "Gotta collect 'em all, and smoke 'em all! This fancy military trading card version of Weyland Yutani Gold cigarette packs has one card that is apart of the 3 available 5-card sets."
+	desc = "必须全部收集，全部抽掉！这款维兰德-汤谷金牌香烟的豪华军事集换卡版本，包含一张属于3套可用5张卡组之一的卡片。"
 	icon_state = "collectpacket"
 	icon = 'icons/obj/items/smoking/packets/trading_card.dmi'
 	item_state = "collectpacket"
@@ -338,7 +338,7 @@
 
 /obj/item/storage/fancy/cigarettes/trading_card/attack_hand(mob/user, mods)
 	if(trading_card?.loc == src && loc == user)
-		to_chat(user, SPAN_NOTICE("You pull a [trading_card.collection_color] trading card out of the cigarette pack."))
+		to_chat(user, SPAN_NOTICE("你从香烟盒里抽出一张[trading_card.collection_color]集换卡。"))
 		//have to take two disparate systems n' ram 'em together
 		remove_from_storage(trading_card, user.loc)
 		user.put_in_hands(trading_card)
@@ -358,8 +358,8 @@
 // CIGAR BOX
 
 /obj/item/storage/fancy/cigar
-	name = "cigar case"
-	desc = "A case for holding your cigars when you are not smoking them."
+	name = "雪茄盒"
+	desc = "一个在你不想抽雪茄时用来存放它们的盒子。"
 	icon_state = "cigarcase"
 	item_state = "cigarcase"
 	icon = 'icons/obj/items/smoking/cigars.dmi'
@@ -399,14 +399,14 @@
 		if(C)
 			remove_from_storage(C, get_turf(user))
 			user.equip_to_slot_if_possible(C, WEAR_FACE)
-			to_chat(user, SPAN_NOTICE("You remove a cigar."))
+			to_chat(user, SPAN_NOTICE("你取出一支雪茄。"))
 			update_icon()
 	else
 		..()
 
 /obj/item/storage/fancy/cigar/tarbacks
 	name = "\improper Tarbacks case"
-	desc = "Don't let the fancy box and piece of paper spouting nonsense about tradition and quality fool you. These stogies are bottom of the barrel. Rolled in Columbia."
+	desc = "别让这花哨的盒子和那张大谈传统与品质的废纸骗了你。这些雪茄是垫底货。哥伦比亚卷制。"
 	icon_state = "tarbackbox"
 	item_state = "tarbackbox"
 	storage_slots = 5
@@ -414,7 +414,7 @@
 
 /obj/item/storage/fancy/cigar/tarbacktube
 	name = "\improper Tarback tube"
-	desc = "A single Tarback cigar in a protective metal tube. About as low-end as you can get. Rolled in Columbia."
+	desc = "一支装在保护性金属管里的塔巴克雪茄。差不多是你能买到的最低端货。哥伦比亚卷制。"
 	icon_state = "tarbacktube"
 	item_state = "tarbacktube"
 	storage_slots = 1
@@ -424,7 +424,7 @@
 
 /obj/item/storage/fancy/cigar/matchbook
 	name = "\improper Lucky Strikes matchbook"
-	desc = "A small book of cheap paper matches. Good luck getting them to light. Made by Lucky Strikes, but you'll be anything but lucky when you burn your hand trying to light a match on this."
+	desc = "一小本廉价纸火柴。祝你好运能点着它们。由好运牌生产，但当你试图用它点火烧到手时，可一点好运都不会有。"
 	icon_state = "mpacket"
 	icon = 'icons/obj/items/smoking/matches.dmi'
 	icon_type = "match"
@@ -453,18 +453,18 @@
 				W.light_match(user)
 			else
 				W.light_match(user)
-				to_chat(user, SPAN_NOTICE("You light \the [W] on \the [src]."))
+				to_chat(user, SPAN_NOTICE("你用\the [W]点燃了\the [src]。"))
 	else
 		to_chat(user, SPAN_NOTICE("\The [W] fails to light."))
 
 /obj/item/storage/fancy/cigar/matchbook/brown
-	name = "brown matchbook"
-	desc = "A small book of cheap paper matches. Good luck getting them to light. Made with generic brown paper."
+	name = "棕色纸板火柴"
+	desc = "一本廉价的纸板火柴。祝你好运能把它点着。由普通的棕色纸张制成。"
 	icon_state = "mpacket_br"
 
 /obj/item/storage/fancy/cigar/matchbook/koorlander
 	name = "\improper Koorlander matchbook"
-	desc = "A small book of cheap paper matches. Good luck getting them to light."
+	desc = "一本廉价的纸板火柴。祝你好运能把它点着。"
 	icon_state = "mpacket_kl"
 
 /obj/item/storage/fancy/cigar/matchbook/koorlander/Initialize()
@@ -473,21 +473,21 @@
 
 /obj/item/storage/fancy/cigar/matchbook/exec_select
 	name = "\improper Executive Select matchbook"
-	desc = "A small book of expensive paper matches. These ones light almost every time!"
+	desc = "一本昂贵的纸板火柴。这些几乎每次都能点着！"
 	icon_state = "mpacket_es"
 	light_chance = 90
 	burn_chance = 0
 
 /obj/item/storage/fancy/cigar/matchbook/balaji_imperial
 	name = "\improper Balaji Imperial matchbook"
-	desc = "A small book of expensive royal paper matches designed for refined smokers. These ones light almost every time!"
+	desc = "一本为讲究的吸烟者设计的昂贵皇家纸板火柴。这些几乎每次都能点着！"
 	icon_state = "bpacket"
 	light_chance = 80
 	burn_chance = 10
 
 /obj/item/storage/fancy/cigar/matchbook/wy_gold
 	name = "\improper Weyland-Yutani Gold matchbook"
-	desc = "A small book of expensive paper matches. These ones light almost every time, or so the packaging claims."
+	desc = "一本昂贵的纸板火柴。这些几乎每次都能点着，至少包装上是这么说的。"
 	icon_state = "mpacket_wy"
 	light_chance = 60
 	burn_chance = 40
@@ -499,8 +499,8 @@
 // VIAL BOX
 
 /obj/item/storage/fancy/vials
-	name = "vial storage box"
-	desc = "A place to store your fragile vials when you are not using them."
+	name = "小瓶储存盒"
+	desc = "一个在你不用时存放易碎小瓶的地方。"
 	icon = 'icons/obj/items/vialbox.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
@@ -550,8 +550,8 @@
 		return ..()
 
 /obj/item/storage/lockbox/vials
-	name = "secure vial storage box"
-	desc = "A locked box for keeping things away from children."
+	name = "安全小瓶储存盒"
+	desc = "一个上锁的盒子，用来防止儿童接触。"
 	icon = 'icons/obj/items/vialbox.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
@@ -583,8 +583,8 @@
 // Trading Card Pack
 
 /obj/item/storage/fancy/trading_card
-	name = "pack of Red WeyYu Military Trading Cards"
-	desc = "A 5 pack of Red Weyland Yutani Military Trading Cards."
+	name = "红色维兰德-汤谷军事集换卡包"
+	desc = "一包5张的红色维兰德-汤谷军事集换卡。"
 	icon = 'icons/obj/items/playing_cards.dmi'
 	icon_state = "trading_red_pack_closed"
 	storage_slots = 5
@@ -600,8 +600,8 @@
 
 	. = ..()
 
-	name = "pack of [capitalize(collection_color)] WeyYu Military Trading Cards"
-	desc = "A 5 pack of [capitalize(collection_color)] Weyland Yutani Military Trading Cards."
+	name = "[capitalize(collection_color)]色维兰德-汤谷军事集换卡包"
+	desc = "一包5张的[capitalize(collection_color)]色维兰德-汤谷军事集换卡。"
 	icon_state = "trading_[collection_color]_pack_closed"
 	AddElement(/datum/element/corp_label/wy)
 
@@ -621,7 +621,7 @@
 
 /obj/item/storage/fancy/trading_card/attack_hand(mob/user, mods)
 	if(top_trading_card?.loc == src && loc == user)
-		to_chat(user, SPAN_NOTICE("You pull a [top_trading_card.collection_color] trading card out of the pack."))
+		to_chat(user, SPAN_NOTICE("你从卡包里抽出一张[top_trading_card.collection_color]色的集换卡。"))
 		//have to take two disparate systems n' ram 'em together
 		remove_from_storage(top_trading_card, user.loc)
 		user.put_in_hands(top_trading_card)

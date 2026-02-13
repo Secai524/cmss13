@@ -6,7 +6,7 @@
 	hotkey_keys = list("H", "Delete")
 	classic_keys = list("Delete")
 	name = "stop_pulling"
-	full_name = "Stop pulling"
+	full_name = "停止拖拽"
 	description = ""
 	keybind_signal = COMSIG_KB_MOB_STOPPULLING_DOWN
 
@@ -16,7 +16,7 @@
 		return
 	var/mob/M = user.mob
 	if(!M.pulling)
-		to_chat(user, SPAN_NOTICE("You are not pulling anything."))
+		to_chat(user, SPAN_NOTICE("你没有在拖拽任何东西。"))
 	else
 		M.stop_pulling()
 	return TRUE
@@ -25,7 +25,7 @@
 	hotkey_keys = list("X", "Northeast") // PAGEUP
 	classic_keys = list("X", "Northeast")
 	name = "swap_hands"
-	full_name = "Swap hands"
+	full_name = "切换主副手"
 	description = ""
 	keybind_signal = COMSIG_KB_MOB_SWAPHANDS_DOWN
 
@@ -41,7 +41,7 @@
 	hotkey_keys = list("Z", "Southeast") // Southeast = PAGEDOWN
 	classic_keys = list("Y", "Z", "Ctrl+Y", "Ctrl+Z")
 	name = "activate_inhand"
-	full_name = "Activate in-hand"
+	full_name = "激活手中物品"
 	description = "Uses whatever item you have inhand"
 	keybind_signal = COMSIG_KB_MOB_ACTIVATEINHAND_DOWN
 
@@ -57,7 +57,7 @@
 	hotkey_keys = list("Q")
 	classic_keys = list("Unbound")
 	name = "drop_item"
-	full_name = "Drop Item"
+	full_name = "丢弃物品"
 	description = ""
 	keybind_signal = COMSIG_KB_MOB_DROPITEM_DOWN
 
@@ -68,7 +68,7 @@
 	var/mob/M = user.mob
 	var/obj/item/I = M.get_held_item()
 	if(!I)
-		to_chat(user, SPAN_WARNING("You have nothing to drop in your hand!"))
+		to_chat(user, SPAN_WARNING("你手中没有物品可丢弃！"))
 	else
 		user.mob.drop_held_item(I)
 	return TRUE
@@ -92,7 +92,7 @@
 	hotkey_keys = list("Numpad8")
 	classic_keys = list("Numpad8")
 	name = "target_head_cycle"
-	full_name = "Target: Cycle Head"
+	full_name = "目标：循环选择头部"
 	description = "Pressing this key targets the head, and continued presses will cycle to the eyes and mouth. This will impact where you hit people, and can be used for surgery."
 	keybind_signal = COMSIG_KB_MOB_TARGETCYCLEHEAD_DOWN
 
@@ -109,7 +109,7 @@
 	hotkey_keys = list("Numpad4")
 	classic_keys = list("Numpad4")
 	name = "target_r_arm"
-	full_name = "Target: right arm"
+	full_name = "目标：右臂"
 	description = "Pressing this key targets the right arm. This will impact where you hit people, and can be used for surgery."
 	keybind_signal = COMSIG_KB_MOB_TARGETRIGHTARM_DOWN
 
@@ -122,7 +122,7 @@
 	hotkey_keys = list("Numpad5")
 	classic_keys = list("Numpad5")
 	name = "target_body_chest"
-	full_name = "Target: Body"
+	full_name = "目标：躯干"
 	description = "Pressing this key targets the body. This will impact where you hit people, and can be used for surgery."
 	keybind_signal = COMSIG_KB_MOB_TARGETBODYCHEST_DOWN
 
@@ -133,7 +133,7 @@
 	hotkey_keys = list("Numpad6")
 	classic_keys = list("Numpad6")
 	name = "target_left_arm"
-	full_name = "Target: left arm"
+	full_name = "目标：左臂"
 	description = "Pressing this key targets the body. This will impact where you hit people, and can be used for surgery."
 	keybind_signal = COMSIG_KB_MOB_TARGETLEFTARM_DOWN
 
@@ -146,7 +146,7 @@
 	hotkey_keys = list("Numpad1")
 	classic_keys = list("Numpad1")
 	name = "target_right_leg"
-	full_name = "Target: Right leg"
+	full_name = "目标：右腿"
 	description = "Pressing this key targets the right leg. This will impact where you hit people, and can be used for surgery."
 	keybind_signal = COMSIG_KB_MOB_TARGETRIGHTLEG_DOWN
 
@@ -159,7 +159,7 @@
 	hotkey_keys = list("Numpad2")
 	classic_keys = list("Numpad2")
 	name = "target_body_groin"
-	full_name = "Target: Groin"
+	full_name = "目标：腹股沟"
 	description = "Pressing this key targets the groin. This will impact where you hit people, and can be used for surgery."
 	keybind_signal = COMSIG_KB_MOB_TARGETBODYGROIN_DOWN
 
@@ -170,7 +170,7 @@
 	hotkey_keys = list("Numpad3")
 	classic_keys = list("Numpad3")
 	name = "target_left_leg"
-	full_name = "Target: left leg"
+	full_name = "目标：左腿"
 	description = "Pressing this key targets the left leg. This will impact where you hit people, and can be used for surgery."
 	keybind_signal = COMSIG_KB_MOB_TARGETLEFTLEG_DOWN
 
@@ -183,7 +183,7 @@
 	hotkey_keys = list("Numpad7")
 	classic_keys = list("Numpad7")
 	name = "target_next"
-	full_name = "Target: next"
+	full_name = "目标：下一个"
 	description = "Pressing this key targets the next body part, cycling forward through all of them. This will impact where you hit people, and can be used for surgery."
 	keybind_signal = COMSIG_KB_MOB_TARGETNEXT_DOWN
 
@@ -194,7 +194,7 @@
 	hotkey_keys = list("Numpad9")
 	classic_keys = list("Numpad9")
 	name = "target_prev"
-	full_name = "Target: previous"
+	full_name = "目标：上一个"
 	description = "Pressing this key targets the previous body part, cycling backward through all of them. This will impact where you hit people, and can be used for surgery."
 	keybind_signal = COMSIG_KB_MOB_TARGETPREV_DOWN
 
@@ -205,7 +205,7 @@
 	hotkey_keys = list("Ctrl", "Alt")
 	classic_keys = list("Ctrl", "Alt")
 	name = "block_movement"
-	full_name = "Face / Block movement"
+	full_name = "朝向/阻挡移动"
 	description = "Prevents you from moving"
 	keybind_signal = COMSIG_KB_MOB_BLOCKMOVEMENT_DOWN
 
@@ -225,7 +225,7 @@
 	hotkey_keys = list("5")
 	classic_keys = list("5")
 	name = "toggle_minimap"
-	full_name = "Toggle Minimap"
+	full_name = "切换小地图"
 	keybind_signal = COMSIG_KB_MOB_TOGGLE_MINIMAP
 
 /datum/keybinding/mob/minimap/down(client/user)

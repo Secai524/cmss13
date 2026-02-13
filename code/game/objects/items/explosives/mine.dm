@@ -3,7 +3,7 @@
 //Stepping directly on the mine will also blow it up
 /obj/item/explosive/mine
 	name = "\improper M20 Claymore anti-personnel mine"
-	desc = "The M20 Claymore is a directional proximity-triggered anti-personnel mine designed by Armat Systems for use by the United States Colonial Marines. The mine is triggered by movement both on the mine itself, and on the space immediately in front of it. Detonation sprays shrapnel forwards in a 120-degree cone. The words \"FRONT TOWARD ENEMY\" are embossed on the front."
+	desc = "M20“阔剑”地雷是由阿玛特系统公司为美国殖民地海军陆战队设计的定向近炸反步兵地雷。地雷可由其自身或正前方区域的移动触发。引爆后会向前方120度锥形区域喷射破片。上面刻着\"FRONT TOWARD ENEMY\" are embossed on the front."
 	icon = 'icons/obj/items/weapons/grenade.dmi'
 	icon_state = "m20"
 	force = 5
@@ -64,13 +64,13 @@
 //checks for things that would prevent us from placing the mine.
 /obj/item/explosive/mine/proc/check_for_obstacles(mob/living/user)
 	if(locate(/obj/item/explosive/mine) in get_turf(src))
-		to_chat(user, SPAN_WARNING("There already is a mine at this position!"))
+		to_chat(user, SPAN_WARNING("这个位置已经有一枚地雷了！"))
 		return TRUE
 	if(user.loc && (user.loc.density || locate(/obj/structure/fence) in user.loc))
-		to_chat(user, SPAN_WARNING("You can't plant a mine here."))
+		to_chat(user, SPAN_WARNING("你不能在这里布设地雷。"))
 		return TRUE
 	if(SSinterior.in_interior(user))
-		to_chat(user, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
+		to_chat(user, SPAN_WARNING("这里空间太局促，无法部署\a [src]。"))
 		return TRUE
 
 /obj/item/explosive/mine/get_examine_text(mob/user)
@@ -95,10 +95,10 @@
 		msg_admin_niche("[key_name(user)] attempted to plant \a [name] in [get_area(src)] [ADMIN_JMP(src.loc)]")
 		return
 
-	user.visible_message(SPAN_NOTICE("[user] starts deploying [src]."),
+	user.visible_message(SPAN_NOTICE("[user]开始部署[src]。"),
 		SPAN_NOTICE("You start deploying [src]."))
 	if(!do_after(user, 40, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-		user.visible_message(SPAN_NOTICE("[user] stops deploying [src]."),
+		user.visible_message(SPAN_NOTICE("[user]停止了布设[src]。"),
 			SPAN_NOTICE("You stop deploying \the [src]."))
 		return
 
@@ -108,7 +108,7 @@
 	if(check_for_obstacles(user))
 		return
 
-	user.visible_message(SPAN_NOTICE("[user] finishes deploying [src]."),
+	user.visible_message(SPAN_NOTICE("[user]完成了[src]的布设。"),
 		SPAN_NOTICE("You finish deploying [src]."))
 
 	deploy_mine(user)
@@ -133,13 +133,13 @@
 			if(user.action_busy)
 				return
 			if(user.faction == iff_signal)
-				user.visible_message(SPAN_NOTICE("[user] starts disarming [src]."),
+				user.visible_message(SPAN_NOTICE("[user]开始拆除[src]。"),
 				SPAN_NOTICE("You start disarming [src]."))
 			else
-				user.visible_message(SPAN_NOTICE("[user] starts fiddling with [src], trying to disarm it."),
+				user.visible_message(SPAN_NOTICE("[user]开始摆弄[src]，试图将其拆除。"),
 				SPAN_NOTICE("You start disarming [src], but you don't know its IFF data. This might end badly..."))
 			if(!do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-				user.visible_message(SPAN_WARNING("[user] stops disarming [src]."),
+				user.visible_message(SPAN_WARNING("[user]停止拆除[src]。"),
 					SPAN_WARNING("You stop disarming [src]."))
 				return
 			if(user.faction != iff_signal) //ow!
@@ -152,18 +152,18 @@
 					prime()
 			if(!active)//someone beat us to it
 				return
-			user.visible_message(SPAN_NOTICE("[user] finishes disarming [src]."),
+			user.visible_message(SPAN_NOTICE("[user]完成了对[src]的拆除。"),
 			SPAN_NOTICE("You finish disarming [src]."))
 			disarm()
 	else if(HAS_TRAIT(tool, TRAIT_TOOL_WIRECUTTERS))
 		if(customizable)
 			if(ignore_small_xeno)
-				to_chat(user, SPAN_NOTICE("You have reverted [src] to its original sensitivity."))
+				to_chat(user, SPAN_NOTICE("你已将[src]的灵敏度恢复至原始状态。"))
 			else
-				to_chat(user, SPAN_NOTICE("You have adjusted [src] to be less sensitive."))
+				to_chat(user, SPAN_NOTICE("你已调低[src]的灵敏度。"))
 			ignore_small_xeno = !ignore_small_xeno
 			return
-		to_chat(user, SPAN_NOTICE("[src] has no sensitivity dial to adjust."))
+		to_chat(user, SPAN_NOTICE("[src]没有灵敏度调节旋钮。"))
 		return
 
 	else
@@ -235,7 +235,7 @@
 	if(HAS_TRAIT(enemy, TRAIT_ABILITY_BURROWED))
 		return
 
-	enemy.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] The [name] clicks as [enemy] moves in front of it."),
+	enemy.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] 当[enemy]移动到其前方时，[name]发出了咔哒声。"),
 	SPAN_DANGER("[icon2html(src, enemy)] The [name] clicks as you move in front of it."),
 	SPAN_DANGER("You hear a click."))
 
@@ -266,16 +266,16 @@
 		return XENO_NO_DELAY_ACTION
 
 	if(xeno.a_intent == INTENT_HELP)
-		to_chat(xeno, SPAN_XENONOTICE("If you hit this hard enough, it would probably explode."))
+		to_chat(xeno, SPAN_XENONOTICE("如果你用力击打这东西，它很可能会爆炸。"))
 		return XENO_NO_DELAY_ACTION
 
 	if(tripwire)
 		if(xeno.mob_size <= MOB_SIZE_XENO_VERY_SMALL)
-			to_chat(xeno, SPAN_XENONOTICE("Slashing that would be suicide!"))
+			to_chat(xeno, SPAN_XENONOTICE("劈砍那东西等于自杀！"))
 			return XENO_NO_DELAY_ACTION
 
 	xeno.animation_attack_on(src)
-	xeno.visible_message(SPAN_DANGER("[xeno] has slashed [src]!"),
+	xeno.visible_message(SPAN_DANGER("[xeno]劈砍了[src]！"),
 		SPAN_DANGER("You slash [src]!"))
 	playsound(loc, 'sound/weapons/slice.ogg', 25, 1)
 
@@ -300,7 +300,7 @@
 	if(!triggered && istype(xeno_projectile.ammo, /datum/ammo/xeno)) //xeno projectile
 		spit_hit_count++
 		if(spit_hit_count >= 2) // Check if hit two times
-			visible_message(SPAN_DANGER("[src] is hit by [xeno_projectile] and violently detonates!")) // Acid is hot for claymore
+			visible_message(SPAN_DANGER("[src]被[xeno_projectile]击中并剧烈爆炸！")) // Acid is hot for claymore
 			triggered = TRUE
 			var/mob/blame = xeno_projectile.weapon_cause_data?.resolve_mob()
 			if(!cause_data)
@@ -312,7 +312,7 @@
 				disarm()
 
 /obj/effect/mine_tripwire
-	name = "claymore tripwire"
+	name = "阔剑地雷绊线"
 	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	invisibility = 101
@@ -355,7 +355,7 @@
 
 /obj/item/explosive/mine/pmc
 	name = "\improper M20P Claymore anti-personnel mine"
-	desc = "The M20P Claymore is a directional proximity triggered anti-personnel mine designed by Armat Systems for use by the United States Colonial Marines. It has been modified for use by the Wey-Yu PMC forces."
+	desc = "M20P阔剑是一种由阿玛特系统公司为美国殖民地海军陆战队设计的定向近炸反步兵地雷。它已被改装供维兰德-汤谷PMC部队使用。"
 	icon_state = "m20p"
 	iff_signal = FACTION_PMC
 	hard_iff_lock = TRUE
@@ -366,8 +366,8 @@
 	map_deployed = TRUE
 
 /obj/item/explosive/mine/custom
-	name = "custom mine"
-	desc = "A custom chemical mine built from an M20 casing."
+	name = "定制地雷"
+	desc = "一种用M20外壳制成的定制化学地雷。"
 	icon_state = "m20_custom"
 	customizable = TRUE
 	matter = list("metal" = 3750)
@@ -376,7 +376,7 @@
 /obj/item/explosive/mine/sebb
 	name = "\improper G2 Electroshock grenade"
 	icon_state = "grenade_sebb_planted"
-	desc = "A G2 electroshock grenade planted as a landmine."
+	desc = "一枚作为地雷布设的G2电击手榴弹。"
 	pixel_y = -5
 	anchored = TRUE // this is supposed to be planeted already when spawned
 
@@ -391,7 +391,7 @@
 
 /obj/item/explosive/mine/sharp
 	name = "\improper P9 SHARP explosive dart"
-	desc = "An experimental P9 SHARP proximity triggered explosive dart designed by Armat Systems for use by the United States Colonial Marines. This one has full 360 detection range."
+	desc = "一种由阿玛特系统公司为美国殖民地海军陆战队设计的实验性P9 SHARP近炸爆炸镖。此型号具备360度全向探测范围。"
 	icon_state = "sharp_explosive_mine"
 	layer = ABOVE_OBJ_LAYER
 	shrapnel_spread = 360
@@ -417,15 +417,15 @@
 	if(user.action_busy)
 		return
 	else if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
-		user.visible_message(SPAN_NOTICE("[user] starts disarming [src]."), \
+		user.visible_message(SPAN_NOTICE("[user]开始拆除[src]。"), \
 		SPAN_NOTICE("You start disarming [src]."))
 		if(!do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-			user.visible_message(SPAN_WARNING("[user] stops disarming [src]."), \
+			user.visible_message(SPAN_WARNING("[user]停止拆除[src]。"), \
 			SPAN_WARNING("You stop disarming [src]."))
 			return
 		if(!active)//someone beat us to it
 			return
-	user.visible_message(SPAN_NOTICE("[user] finishes disarming [src]."), \
+	user.visible_message(SPAN_NOTICE("[user]完成了对[src]的拆除。"), \
 	SPAN_NOTICE("You finish disarming [src]."))
 	disarm()
 	return
@@ -464,7 +464,7 @@
 	active = FALSE
 	triggered = FALSE
 	icon_state = "sharp_mine_disarmed"
-	desc = "A disarmed P9 SHARP rifle dart, useless now."
+	desc = "一枚已拆除的P9 SHARP步枪镖，现已无用。"
 	QDEL_NULL(tripwire)
 	disarmed = TRUE
 	deltimer(timer_id)
@@ -519,7 +519,7 @@
 
 /obj/item/explosive/mine/sharp/incendiary
 	name = "\improper P9 SHARP incendiary dart"
-	desc = "An experimental P9 SHARP proximity triggered explosive dart designed by Armat Systems for use by the United States Colonial Marines. This one has full 360 detection range."
+	desc = "一种由阿玛特系统公司为美国殖民地海军陆战队设计的实验性P9 SHARP近炸爆炸镖。此型号具备360度全向探测范围。"
 	icon_state = "sharp_incendiary_mine"
 
 /obj/item/explosive/mine/sharp/incendiary/prime(mob/user)

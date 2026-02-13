@@ -1,6 +1,6 @@
 //USCM Provost
 /datum/emergency_call/inspection_provost
-	name = "Inspection - USCM Provost - ML knowledge and MP playtime required."
+	name = "巡查 - USCM宪兵司令部 - 需具备陆战队军法知识及宪兵游玩时长。"
 	mob_max = 2
 	mob_min = 1
 	probability = 0
@@ -17,7 +17,7 @@
 			candidates_clean.Add(single_candidate)
 			continue
 		if(single_candidate.current)
-			to_chat(single_candidate.current, SPAN_WARNING("You didn't qualify for the ERT beacon because you don't have enough playtime (5 Hours) as military police!"))
+			to_chat(single_candidate.current, SPAN_WARNING("你未达到紧急响应小组信标资格，因为你的宪兵游玩时长（5小时）不足！"))
 	return candidates_clean
 
 /datum/emergency_call/inspection_provost/create_member(datum/mind/M, turf/override_spawn_loc)
@@ -32,17 +32,17 @@
 	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, list(JOB_WARDEN, JOB_CHIEF_POLICE), time_required_for_job))
 		leader = H
 		arm_equipment(H, /datum/equipment_preset/uscm_event/provost/inspector, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are an Inspector of the USCM Provost Office!"))
-		to_chat(H, SPAN_ROLE_BODY("You are being dispatched to the [MAIN_SHIP_NAME] to investigate an undisclosed issue with ML enforcement. The Provost Office may provide more details, but you should head for the Brig to assess the situation."))
-		to_chat(H, SPAN_ROLE_BODY("You have the final say on ML enforcement in your AO, but are still obligated to follow it. Use this authority to set things right and make sure that justice is served!"))
-		to_chat(H, SPAN_WARNING("This role requires familiarity with Marine Law and Standard Operating Procedure. Ahelp if you have any questions or wish to surrender the character to someone else."))
+		to_chat(H, SPAN_ROLE_HEADER("你是美国殖民地海军陆战队宪兵司令部的巡查官！"))
+		to_chat(H, SPAN_ROLE_BODY("你正被派往[MAIN_SHIP_NAME]，调查一起未公开的陆战队军法执行问题。宪兵司令部可能会提供更多细节，但你应该前往禁闭室评估情况。"))
+		to_chat(H, SPAN_ROLE_BODY("在你的责任区内，你对陆战队军法的执行拥有最终决定权，但仍需遵守军法。运用此权力拨乱反正，确保正义得到伸张！"))
+		to_chat(H, SPAN_WARNING("此角色要求熟悉陆战队军法和标准操作程序。如有任何疑问或希望将此角色转交他人，请使用管理员求助。"))
 	else
 		arm_equipment(H, /datum/equipment_preset/uscm_event/provost/enforcer, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are an Enforcer of the USCM Provost Office!"))
-		to_chat(H, SPAN_ROLE_BODY("You are being assigned as part escort, part assistant and part law enforcer to the Inspector that is being dispatched to the [MAIN_SHIP_NAME]"))
-		to_chat(H, SPAN_ROLE_BODY("You are not expected to enforce ML on the ship, however the Inspector may ask you to perform MP duties as part of their investigation in which case you are obligated to act like any other MP."))
-		to_chat(H, SPAN_WARNING("This role requires familiarity with Marine Law and Standard Operating Procedure. Ahelp if you have any questions or wish to surrender the character to someone else."))
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
+		to_chat(H, SPAN_ROLE_HEADER("你是美国殖民地海军陆战队宪兵司令部的执法官！"))
+		to_chat(H, SPAN_ROLE_BODY("你被指派为即将抵达[MAIN_SHIP_NAME]的视察官提供护卫、助理及部分执法支持。"))
+		to_chat(H, SPAN_ROLE_BODY("你无需在舰上执行陆战队军法，但视察官可能要求你履行宪兵职责以协助调查，届时你必须像其他宪兵一样行动。"))
+		to_chat(H, SPAN_WARNING("此角色要求熟悉陆战队军法和标准操作程序。如有任何疑问或希望将此角色转交他人，请使用管理员求助。"))
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("任务目标：[objectives]")), 1 SECONDS)
 
 
 /datum/emergency_call/inspection_provost/spawn_items()
@@ -54,7 +54,7 @@
 
 //USCM High Command
 /datum/emergency_call/inspection_hc
-	name = "Inspection - USCM High Command"
+	name = "视察 - USCM最高指挥部"
 	mob_max = 2
 	mob_min = 1
 	probability = 0
@@ -76,21 +76,21 @@
 	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, list(JOB_SO), time_required_for_job))
 		leader = H
 		arm_equipment(H, /datum/equipment_preset/uscm_ship/so, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are an Inspector sent by the USCM High Command!"))
-		to_chat(H, SPAN_ROLE_BODY("An inspection is scheduled for the [MAIN_SHIP_NAME] during their current assignment. High Command may have other directives for you that they will relay via radio."))
-		to_chat(H, SPAN_ROLE_BODY("Tour the ship, monitor the organization, effectiveness and SOP compliance of its respective departments, interview its crew and find any issues. Relay the results of your inspection to both the Officer in Command of the ship and USCM High Command."))
-		to_chat(H, SPAN_WARNING("Remember, your inspection may not interrupt regular operation of the ship and you do not have privileges to make Marine Law enforcement related calls. Ahelp if you have any questions of you wish to offer the role to someone else."))
+		to_chat(H, SPAN_ROLE_HEADER("你是USCM最高指挥部派出的视察官！"))
+		to_chat(H, SPAN_ROLE_BODY("在[MAIN_SHIP_NAME]当前任务期间，已安排对其进行视察。最高指挥部可能通过无线电向你传达其他指令。"))
+		to_chat(H, SPAN_ROLE_BODY("巡视舰船，监督各部门的组织、效率及标准作业程序合规性，约谈船员并发现问题。将视察结果同时汇报给舰船指挥官及USCM最高指挥部。"))
+		to_chat(H, SPAN_WARNING("记住，你的视察不得干扰舰船正常运作，且无权做出与陆战队军法执法相关的决定。如有疑问或希望将角色让给他人，请使用管理员求助。"))
 	else
 		arm_equipment(H, /datum/equipment_preset/uscm/engineer_equipped, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are part of an inspection team sent by the USCM High Command!"))
-		to_chat(H, SPAN_ROLE_BODY("An inspection is scheduled for the [MAIN_SHIP_NAME] during their current assignment. You serve both as security detail to the officer performing the inspection and their assistant should they need your expertise."))
-		to_chat(H, SPAN_ROLE_BODY("Follow the inspector as they perform their duties on the ship. Feel free to offer your insight if you feel like you have any and help then as they request it. Remember, while you do not answer directly to the officers on the ship, you still need to respect their position."))
-		to_chat(H, SPAN_WARNING("Remember, you may not interrupt regular operation and are expected to follow orders of the Inspector at all times. Ahelp if you have any questions of you wish to offer the role to someone else."))
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
+		to_chat(H, SPAN_ROLE_HEADER("你是USCM最高指挥部派出的视察小组的一员！"))
+		to_chat(H, SPAN_ROLE_BODY("在[MAIN_SHIP_NAME]当前任务期间，已安排对其进行视察。你既是执行视察的军官的安保人员，也是其需要专业协助时的助手。"))
+		to_chat(H, SPAN_ROLE_BODY("跟随视察官执行舰上职责。如有见解可随时提出，并根据其要求提供协助。记住，虽然你不直接听命于舰上军官，但仍需尊重他们的职位。"))
+		to_chat(H, SPAN_WARNING("记住，你不得干扰正常运作，且必须始终服从视察官的命令。如有疑问或希望将角色让给他人，请使用管理员求助。"))
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("任务目标：[objectives]")), 1 SECONDS)
 
 //Weyland-Yutani
 /datum/emergency_call/inspection_wy
-	name = "Inspection - Corporate"
+	name = "视察 - 企业"
 	mob_max = 2
 	mob_min = 1
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT2
@@ -117,24 +117,24 @@
 	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, list(JOB_SQUAD_LEADER), time_required_for_job))
 		leader = H
 		arm_equipment(H, /datum/equipment_preset/pmc/pmc_lead_investigator, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland Yutani PMC Inspector!"))
-		to_chat(H, SPAN_ROLE_BODY("While officially your outfit does mundane security work for Weyland-Yutani, in practice you serve as both official and unofficial investigators into conduct of Company personnel. You are being dispatched to the [MAIN_SHIP_NAME] to make sure that the local Liaison has not forgotten their priorities or worse, thought to bite the hand that feeds them."))
-		to_chat(H, SPAN_ROLE_BODY("Remember the USCM personnel on the ship may not appreciate your presence there. Should the Liaison be in jail, you are not to act as legal counsel in any way unless instructed to do so by Dispatch. Your basic duty is to make a detailed report of anything involving the Liaison and any other WY personnel on board the ship."))
-		to_chat(H, SPAN_WARNING("Unless ordered otherwise by Dispatch, you are to avoid open conflict with the Marines. Retreat and make a report if they are outright hostile. Ahelp if you have any more questions or wish to release this character for other players."))
+		to_chat(H, SPAN_ROLE_HEADER("你是维兰德-汤谷PMC视察员！"))
+		to_chat(H, SPAN_ROLE_BODY("虽然你的团队名义上为维兰德-汤谷执行常规安保工作，但实际上你负责对公司人员的行为进行正式与非正式调查。你被派往[MAIN_SHIP_NAME]，以确保当地联络官未忘记其首要任务，或更糟地试图反咬雇主。"))
+		to_chat(H, SPAN_ROLE_BODY("记住舰上的USCM人员可能不欢迎你的到来。若联络官被关押，除非接到调度指令，否则不得以任何形式充当法律顾问。你的基本职责是详细报告涉及联络官及舰上其他维兰德-汤谷人员的一切情况。"))
+		to_chat(H, SPAN_WARNING("除非调度另有指令，否则应避免与陆战队员公开冲突。若他们表现出明显敌意，则撤退并提交报告。如有更多疑问或希望将此角色让给其他玩家，请使用管理员求助。"))
 	else if(heavies < max_heavies && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_HEAVY) && check_timelock(H.client, JOB_SQUAD_SPECIALIST))
 		heavies++
 		arm_equipment(H, /datum/equipment_preset/pmc/pmc_riot_control, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Crowd Control Specialist!"))
-		to_chat(H, SPAN_ROLE_BODY("While officially your outfit does mundane security work for Weyland-Yutani, in practice you serve as both official and unofficial investigators into conduct of Company personnel. The Lead Investigator is in charge, your duty is to provide backup, counsel and any other form of assistance you can render to make sure their mission is a success."))
-		to_chat(H, SPAN_ROLE_BODY("Remember that the USCM, or at least some parts of it, may be hostile towards your presence on the ship. Unless ordered otherwise by Dispatch, you and your Team Leader are to avoid open conflict with the Marines. Your main priority is making sure that your Lead survives to write the report they are due."))
-		to_chat(H, SPAN_WARNING("Unless ordered otherwise by Dispatch, you are to avoid open conflict with the Marines. Your priority is the safety of your team, if the ship gets to hot, your best bet is evacuation. Ahelp if you have any more questions or wish to release this character for other players."))
+		to_chat(H, SPAN_ROLE_HEADER("你是维兰德-汤谷PMC人群控制专家！"))
+		to_chat(H, SPAN_ROLE_BODY("虽然你的团队名义上为维兰德-汤谷执行常规安保工作，但实际上你负责对公司人员的行为进行正式与非正式调查。领队调查员负责指挥，你的职责是提供支援、建议及任何其他形式的协助，以确保其任务成功。"))
+		to_chat(H, SPAN_ROLE_BODY("记住USCM，或至少其中部分人员，可能对你们在舰上的存在抱有敌意。除非调度另有指令，否则你与你的队长应避免与陆战队员公开冲突。你的首要任务是确保领队能活着完成报告。"))
+		to_chat(H, SPAN_WARNING("除非调度另有指令，否则应避免与陆战队员公开冲突。你的优先事项是团队安全，若舰上局势过热，最佳选择是撤离。如有更多疑问或希望将此角色让给其他玩家，请使用管理员求助。"))
 	else
 		arm_equipment(H, /datum/equipment_preset/pmc/pmc_security, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are part of a Weyland-Yutani PMC Investigation Team!"))
-		to_chat(H, SPAN_ROLE_BODY("While officially your outfit does mundane security work for Weyland-Yutani, in practice you serve as both official and unofficial investigators into conduct of Company personnel. The Lead Investigator is in charge, your duty is to provide backup, counsel and any other form of assistance you can render to make sure their mission is a success."))
-		to_chat(H, SPAN_ROLE_BODY("Remember that the USCM, or at least some parts of it, may be hostile towards your presence on the ship. Unless ordered otherwise by Dispatch, you and your Team Leader are to avoid open conflict with the Marines. Your main priority is making sure that your Lead survives to write the report they are due."))
-		to_chat(H, SPAN_WARNING("Unless ordered otherwise by Dispatch, you are to avoid open conflict with the Marines. Your priority is the safety of your team, if the ship gets to hot, your best bet is evacuation. Ahelp if you have any more questions or wish to release this character for other players."))
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
+		to_chat(H, SPAN_ROLE_HEADER("你是维兰德-汤谷PMC调查小组的一员！"))
+		to_chat(H, SPAN_ROLE_BODY("虽然你的团队名义上为维兰德-汤谷执行常规安保工作，但实际上你负责对公司人员的行为进行正式与非正式调查。领队调查员负责指挥，你的职责是提供支援、建议及任何其他形式的协助，以确保其任务成功。"))
+		to_chat(H, SPAN_ROLE_BODY("记住USCM，或至少其中部分人员，可能对你们在舰上的存在抱有敌意。除非调度另有指令，否则你与你的队长应避免与陆战队员公开冲突。你的首要任务是确保领队能活着完成报告。"))
+		to_chat(H, SPAN_WARNING("除非调度另有指令，否则应避免与陆战队员公开冲突。你的优先事项是团队安全，若舰上局势过热，最佳选择是撤离。如有更多疑问或希望将此角色让给其他玩家，请使用管理员求助。"))
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("任务目标：[objectives]")), 1 SECONDS)
 
 /datum/emergency_call/inspection_wy/spawn_items()
 	var/turf/drop_spawn
@@ -144,7 +144,7 @@
 	new /obj/item/storage/box/handcuffs(drop_spawn)
 
 /datum/emergency_call/inspection_wy/lawyer
-	name = "Lawyers - Corporate"
+	name = "律师 - 企业"
 	mob_max = 2
 	mob_min = 1
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pmc
@@ -168,22 +168,22 @@
 	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, list(JOB_SQUAD_LEADER), time_required_for_job))
 		leader = H
 		arm_equipment(H, /datum/equipment_preset/wy/exec_supervisor/lawyer, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani Lead Corporate Attorney!"))
-		to_chat(H, SPAN_ROLE_BODY("While officially the Corporate Affairs Division does mundane paperwork for Weyland-Yutani, in practice you serve as both official and unofficial investigators into conduct of Company and non-Company personnel. You are being dispatched to the [MAIN_SHIP_NAME] to make sure that the USCM abides by it's signed contracts provided by the local Liaison and that they have not forgotten the real hand that feeds them."))
-		to_chat(H, SPAN_ROLE_BODY("Remember the USCM personnel on the ship may not appreciate your presence there. Should the Liaison be in jail, you are to act as legal counsel in any way. Your basic duty is to make a detailed report of anything involving the Liaison, any other WY personnel and of course any contract violations on board the ship."))
-		to_chat(H, SPAN_WARNING("You are to avoid open conflict with the Marines. Retreat and make a report if they are outright hostile. Ahelp if you have any more questions or wish to release this character for other players."))
+		to_chat(H, SPAN_ROLE_HEADER("你是维兰德-汤谷首席企业律师！"))
+		to_chat(H, SPAN_ROLE_BODY("虽然企业事务部名义上为维兰德-汤谷处理常规文书工作，但实际上你负责对公司及非公司人员的行为进行正式与非正式调查。你被派往[MAIN_SHIP_NAME]，以确保USCM遵守当地联络官提供的已签署合同，且未忘记真正的雇主。"))
+		to_chat(H, SPAN_ROLE_BODY("记住舰上的USCM人员可能不欢迎你的到来。若联络官被关押，你必须以法律顾问身份采取行动。你的基本职责是详细报告涉及联络官、其他维兰德-汤谷人员以及舰上任何合同违约行为的一切情况。"))
+		to_chat(H, SPAN_WARNING("你应避免与陆战队员发生公开冲突。如果他们表现出明显敌意，立即撤退并报告。如有任何疑问或希望释放此角色供其他玩家使用，请使用管理员求助。"))
 	else
 		arm_equipment(H, /datum/equipment_preset/wy/exec_spec/lawyer, TRUE, TRUE)
-		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani Corporate Attorney!"))
-		to_chat(H, SPAN_ROLE_BODY("While officially the Corporate Affairs Division does mundane paperwork for Weyland-Yutani, in practice you serve as both official and unofficial investigators into conduct of Company and non-Company personnel. The Lead Attorney is in charge, your duty is to provide counsel and any other form of assistance you can render to make sure your mission is a success."))
-		to_chat(H, SPAN_ROLE_BODY("Remember that the USCM, or at least some parts of it, may be hostile towards your presence on the ship. You and the Lead Attorney are to avoid open conflict with the Marines. Your main priority is making sure that you both survive to write the report the Company is due."))
-		to_chat(H, SPAN_WARNING("You are to avoid open conflict with the Marines. Retreat and make a report if they are outright hostile. Ahelp if you have any more questions or wish to release this character for other players."))
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
+		to_chat(H, SPAN_ROLE_HEADER("你是一名维兰德-汤谷公司法务律师！"))
+		to_chat(H, SPAN_ROLE_BODY("虽然公司法务部名义上只为维兰德-汤谷处理日常文书工作，但实际上你既是官方也是非官方调查员，负责调查公司及非公司人员的行为。首席律师负责指挥，你的职责是提供法律建议及任何形式的协助，以确保任务成功。"))
+		to_chat(H, SPAN_ROLE_BODY("记住，USCM，至少其中一部分人，可能对你出现在舰上抱有敌意。你和首席律师应避免与陆战队员发生公开冲突。你们的首要任务是确保两人都能活下来，撰写公司要求的报告。"))
+		to_chat(H, SPAN_WARNING("你应避免与陆战队员发生公开冲突。如果他们表现出明显敌意，立即撤退并报告。如有任何疑问或希望释放此角色供其他玩家使用，请使用管理员求助。"))
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("任务目标：[objectives]")), 1 SECONDS)
 
 
 // Colonial Marshals - UA Law Enforcement / Investigative Federal Agents which usually watch over Colonies. Also a good option for prisoner transfers, investigating corporate corruption, survivor rescues, or illict trade practices(black market).
 /datum/emergency_call/inspection_cmb
-	name = "Inspection - Colonial Marshals Investigation Team"
+	name = "检查 - 殖民地执法官调查组"
 	mob_max = 4
 	mob_min = 1
 	probability = 0
@@ -218,22 +218,22 @@
 
 	if(!leader && HAS_FLAG(mob?.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = mob
-		to_chat(mob, SPAN_ROLE_HEADER("You are the Colonial Marshal!"))
+		to_chat(mob, SPAN_ROLE_HEADER("你是殖民地执法官！"))
 		arm_equipment(mob, /datum/equipment_preset/cmb/leader, TRUE, TRUE)
 	else if(synths < max_synths && HAS_FLAG(mob?.client.prefs.toggles_ert, PLAY_SYNTH) && mob.client.check_whitelist_status(WHITELIST_SYNTHETIC))
 		synths++
-		to_chat(mob, SPAN_ROLE_HEADER("You are a CMB Investigative Synthetic!"))
+		to_chat(mob, SPAN_ROLE_HEADER("你是一名CMB调查用合成人！"))
 		arm_equipment(mob, /datum/equipment_preset/cmb/synth, TRUE, TRUE)
 	else if(!icc_liaison && will_spawn_icc_liaison && check_timelock(mob.client, JOB_CORPORATE_LIAISON, time_required_for_job))
 		icc_liaison = mob
-		to_chat(mob, SPAN_ROLE_HEADER("You are a CMB-attached Interstellar Commerce Commission Liaison!"))
+		to_chat(mob, SPAN_ROLE_HEADER("你是隶属于CMB的星际商业委员会联络官！"))
 		arm_equipment(mob, /datum/equipment_preset/cmb/liaison, TRUE, TRUE)
 	else if(!cmb_observer && will_spawn_cmb_observer)
 		cmb_observer = mob
-		to_chat(mob, SPAN_ROLE_HEADER("You are an Interstellar Human Rights Observer!"))
+		to_chat(mob, SPAN_ROLE_HEADER("你是一名星际人权观察员！"))
 		arm_equipment(mob, /datum/equipment_preset/cmb/observer, TRUE, TRUE)
 	else
-		to_chat(mob, SPAN_ROLE_HEADER("You are a CMB Deputy!"))
+		to_chat(mob, SPAN_ROLE_HEADER("你是一名CMB副官！"))
 		arm_equipment(mob, /datum/equipment_preset/cmb/standard, TRUE, TRUE)
 
 	print_backstory(mob)
@@ -243,47 +243,47 @@
 
 /datum/emergency_call/inspection_cmb/print_backstory(mob/living/carbon/human/M)
 	if(M == leader)
-		to_chat(M, SPAN_BOLD("You are the Colonial Marshal, originally from [pick(70;"The United Americas", 20;"Sol", 10;"a colony on the frontier")]."))
-		to_chat(M, SPAN_BOLD("You started in the Marshals through [pick(50; "pursuing a career during college", 40;"working for law enforcement", 10;"being recruited for your skills")]."))
-		to_chat(M, SPAN_BOLD("Rising through positions across the galaxy, you have become renown for your steadfast commitment to justice, fighting against crime and corruption alike."))
-		to_chat(M, SPAN_BOLD("You have interstellar jurisdiction as a CMB Official to enforce Colonial and Earth law, but you cannot and should not override Marine Law on a Marine Ship."))
-		to_chat(M, SPAN_BOLD("The laws of Earth stretch beyond the Sol. Where others are tempted and fall to corruption, you stay steadfast in your morals."))
-		to_chat(M, SPAN_BOLD("Corporate Officers chase after paychecks and promotions, but you are motivated to do your sworn duty and care for the population, no matter how far or isolated a colony may be."))
-		to_chat(M, SPAN_BOLD("You've seen a lot during your time in the Neroid Sector, but you're here because you're the best, doing the right thing to make the frontier a better place."))
-		to_chat(M, SPAN_BOLD("Despite being stretched thin, the stalwart oath of the Marshals has continued to keep communities safe, with the CMB well respected by many. You are the representation of that oath, serve with distinction."))
+		to_chat(M, SPAN_BOLD("你是殖民地执法官，最初来自[pick(70;"美洲联盟", 20;"太阳系", 10;"边疆殖民地")]。"))
+		to_chat(M, SPAN_BOLD("你通过[pick(50;"大学期间追求职业发展", 40;"从事执法工作", 10;"因技能被招募")]的方式加入了执法官队伍。"))
+		to_chat(M, SPAN_BOLD("通过在银河系各地职位的晋升，你因坚定不移地致力于正义、打击犯罪和腐败而闻名。"))
+		to_chat(M, SPAN_BOLD("作为CMB官员，你拥有执行殖民地及地球法律的星际管辖权，但你不能也不应在一艘海军陆战队舰船上凌驾于《陆战队军法》之上。"))
+		to_chat(M, SPAN_BOLD("地球的法律延伸至太阳系之外。当他人受到诱惑而堕入腐败时，你依然坚守着自己的道德准则。"))
+		to_chat(M, SPAN_BOLD("公司官员追逐薪水和晋升，但你的动力是履行誓言职责并关心民众，无论殖民地多么偏远或孤立。"))
+		to_chat(M, SPAN_BOLD("在尼禄星区任职期间你见识颇多，但你在这里是因为你是最优秀的，正在做正确的事让边疆变得更美好。"))
+		to_chat(M, SPAN_BOLD("尽管力量分散，但执法官坚定的誓言仍在持续保障社区安全，CMB深受许多人尊敬。你是这一誓言的体现，请出色地履行职责。"))
 	else if(issynth(M))
-		to_chat(M, SPAN_BOLD("Despite being an older model, you are well regarded among your peers for your keen senses and alertness."))
-		to_chat(M, SPAN_BOLD("In addition to law enforcement procedures, you are programmed to be an absolute expert in locating evidence, analyzing chemicals and investigating crimes."))
-		to_chat(M, SPAN_BOLD("You do not enforce or comply with Marine Law, however you have an understanding of it."))
-		to_chat(M, SPAN_BOLD("After receiving a software and law update in Sol, you were stationed at Anchorpoint Station to assist with CMB units on the frontier."))
-		to_chat(M, SPAN_BOLD("Although combat is not expected, you are carrying light munition and equipment reserves of the team in your backpack, should they be needed."))
-		to_chat(M, SPAN_BOLD("Despite being stretched thin, the stalwart oath of the Marshals has continued to keep communities safe, with the CMB well respected by many. You are a representation of that oath, serve with distinction."))
+		to_chat(M, SPAN_BOLD("尽管是较旧的型号，但你因敏锐的感官和警觉性而在同僚中备受好评。"))
+		to_chat(M, SPAN_BOLD("除了执法程序，你被编程为定位证据、分析化学品和调查犯罪的绝对专家。"))
+		to_chat(M, SPAN_BOLD("你不强制执行也不遵守《陆战队军法》，但你对其有所了解。"))
+		to_chat(M, SPAN_BOLD("在太阳系接受软件和法律更新后，你被派驻到锚点空间站，以协助边疆的CMB单位。"))
+		to_chat(M, SPAN_BOLD("虽然预计不会发生战斗，但你的背包中携带着小组的轻武器弹药和装备储备，以备不时之需。"))
+		to_chat(M, SPAN_BOLD("尽管力量分散，但执法官坚定的誓言仍在持续保障社区安全，CMB深受许多人尊敬。你是这一誓言的体现，请出色地履行职责。"))
 	else if(M == icc_liaison)
-		to_chat(M, SPAN_BOLD("You are an Interstellar Commerce Liaison, originally from [pick(70;"The United Americas", 25;"Sol", 5;"a colony on the frontier")]."))
-		to_chat(M, SPAN_BOLD("You are [pick(30; "skeptical", 40;"ambicable", 30;"supportive")] of Weyland-Yutani."))
-		to_chat(M, SPAN_BOLD("Your headset is equipped with several frequencies, including a gifted key from The ICC's parent company, Weyland-Yutani, to try to incentivize your support. Use it for communication."))
-		to_chat(M, SPAN_BOLD("As the ICC Agent attached to the CMB Office at Anchorpoint Station, your job is to observe and ensure fair trade practices. Inspect and document cargo shipments for suspected illict activity as needed. You should coordinate with the Marshals, and command(preferably for a warrant) in order to make arrests if necessary."))
-		to_chat(M, SPAN_BOLD("Serving alongside such reputable men has made you a more virtuous person, especially compared to the Corporate Liaisons of other heavy-weight organizations."))
-		to_chat(M, SPAN_BOLD("Work with the Colonial Marshals in their investigations and report to command if you suspect smuggling or illicit trade is happening."))
+		to_chat(M, SPAN_BOLD("你是一名星际商务联络官，最初来自[pick(70;"The United Americas", 25;"Sol", 5;"a colony on the frontier")]."))
+		to_chat(M, SPAN_BOLD("你是[pick(30; "skeptical", 40;"ambicable", 30;"supportive")] of Weyland-Yutani."))
+		to_chat(M, SPAN_BOLD("你的耳机配备了多个频率，包括来自ICC母公司维兰德-汤谷赠送的密钥，旨在激励你的支持。请用它进行通讯。"))
+		to_chat(M, SPAN_BOLD("作为派驻锚点站CMB办公室的ICC特工，你的工作是观察并确保公平贸易。根据需要检查和记录货运货物是否存在可疑非法活动。你应与执法官协调，并在必要时向指挥部（最好申请逮捕令）申请以执行逮捕。"))
+		to_chat(M, SPAN_BOLD("与这些声誉卓著的人共事让你成为了一个更有德行的人，尤其是与其他重量级组织的公司联络官相比。"))
+		to_chat(M, SPAN_BOLD("与殖民地执法官合作进行调查，如果你怀疑存在走私或非法贸易，请向指挥部报告。"))
 	else if(M == cmb_observer)
-		to_chat(M, SPAN_BOLD("You are an Interstellar Human Rights Observer, originally from [pick(50;"The United Americas", 10;"Europe", 10;"Luna", 20;"Sol", 10;"a colony on the frontier")]."))
-		to_chat(M, SPAN_BOLD("You are [pick(60; "skeptical", 40;"ambicable", 10;"supportive")] of Weyland-Yutani and their practices."))
-		to_chat(M, SPAN_BOLD("You are [pick(40; "skeptical", 30;"ambicable", 30;"supportive")] with the USCM's actions on the frontier."))
-		to_chat(M, SPAN_BOLD("Through a lot of hard work, your organization managed to convince the Colonial Marshals to take you to the frontier for an article about the quality of life there."))
-		to_chat(M, SPAN_BOLD("Observe the Feds in their adventures and keep an eye out for any inhumane acts from others. The Neroid Sector is full of atrocities on every side."))
-		to_chat(M, SPAN_BOLD("Do not instigate or start any confrontations. You are an observer, and you do not wage wars. Only intervene in medical emergencies."))
+		to_chat(M, SPAN_BOLD("你是一名星际人权观察员，最初来自[pick(50;"The United Americas", 10;"Europe", 10;"Luna", 20;"Sol", 10;"a colony on the frontier")]."))
+		to_chat(M, SPAN_BOLD("你是[pick(60; "skeptical", 40;"ambicable", 10;"supportive")] of Weyland-Yutani and their practices."))
+		to_chat(M, SPAN_BOLD("你是[pick(40; "skeptical", 30;"ambicable", 30;"supportive")] with the USCM's actions on the frontier."))
+		to_chat(M, SPAN_BOLD("通过大量艰苦的工作，你的组织成功说服了殖民地执法官带你去前线，撰写一篇关于当地生活质量的报道。"))
+		to_chat(M, SPAN_BOLD("观察联邦探员的行动，并留意任何来自他人的不人道行为。尼罗伊德星区各方都充斥着暴行。"))
+		to_chat(M, SPAN_BOLD("不要煽动或挑起任何对抗。你是一名观察员，不参与战争。仅在医疗紧急情况下进行干预。"))
 	else
-		to_chat(M, SPAN_BOLD("You are a CMB Deputy, originally from [pick(70;"The United Americas", 20;"Sol", 10;"a colony on the frontier")]."))
-		to_chat(M, SPAN_BOLD("You joined the Marshals through [pick(50; "pursuing a career during college", 40;"working for law enforcement", 10;"being recruited for your skills")]."))
-		to_chat(M, SPAN_BOLD("Following the lead of your Marshal, you have become renown for your steadfast commitment to justice, fighting against crime and corruption alike."))
-		to_chat(M, SPAN_BOLD("You have interstellar jurisdiction as a CMB Official to enforce Colonial and Earth law, but you cannot and should not override Marine Law on a Marine Ship."))
-		to_chat(M, SPAN_BOLD("You have been stationed at Anchorpoint Station for [pick(80;"several months", 10;"only a week", 10;"years")] investigating henious crimes among the frontier."))
-		to_chat(M, SPAN_BOLD("The laws of arth stretch beyond the Sol. Where others fall to corruption, you stay steadfast in your morals."))
-		to_chat(M, SPAN_BOLD("Corporate Officers chase after paychecks and promotions, but you are motivated to do your sworn duty and care for the population, no matter how far or isolated a colony may be."))
-		to_chat(M, SPAN_BOLD("Despite being stretched thin, the stalwart oath of the Marshals has continued to keep communities safe, with the CMB well respected by many. You are a representation of that oath, serve with distinction."))
+		to_chat(M, SPAN_BOLD("你是一名CMB副手，最初来自[pick(70;"美洲联盟", 20;"太阳系", 10;"边疆殖民地")]。"))
+		to_chat(M, SPAN_BOLD("你通过[pick(50;"大学期间追求职业发展", 40;"从事执法工作", 10;"因技能被招募")]的方式加入了执法官队伍。"))
+		to_chat(M, SPAN_BOLD("在你的执法官长官带领下，你因坚定不移地致力于正义、打击犯罪和腐败而闻名。"))
+		to_chat(M, SPAN_BOLD("作为CMB官员，你拥有执行殖民地及地球法律的星际管辖权，但你不能也不应在一艘海军陆战队舰船上凌驾于《陆战队军法》之上。"))
+		to_chat(M, SPAN_BOLD("你已在锚点站驻扎了[pick(80;"several months", 10;"only a week", 10;"years")] investigating henious crimes among the frontier."))
+		to_chat(M, SPAN_BOLD("法律之光远播太阳系之外。当他人沉沦于腐败时，你仍坚守道德准则。"))
+		to_chat(M, SPAN_BOLD("公司官员追逐薪水和晋升，但你的动力是履行誓言职责并关心民众，无论殖民地多么偏远或孤立。"))
+		to_chat(M, SPAN_BOLD("尽管力量分散，但执法官坚定的誓言仍在持续保障社区安全，CMB深受许多人尊敬。你是这一誓言的体现，请出色地履行职责。"))
 
 /datum/emergency_call/inspection_cmb/black_market
-	name = "Inspection - Colonial Marshals Ledger Investigation Team"
+	name = "检查 - 殖民地执法官账目调查组"
 	mob_max = 3 //Marshal, Deputy, ICC CL
 	mob_min = 2
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT2
@@ -310,14 +310,14 @@
 
 	if(!leader && HAS_FLAG(mob?.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = mob
-		to_chat(mob, SPAN_ROLE_HEADER("You are the Colonial Marshal!"))
+		to_chat(mob, SPAN_ROLE_HEADER("你是殖民地执法官！"))
 		arm_equipment(mob, /datum/equipment_preset/cmb/leader, TRUE, TRUE)
 	else if(!icc_liaison && will_spawn_icc_liaison && check_timelock(mob.client, JOB_CORPORATE_LIAISON, time_required_for_job))
 		icc_liaison = mob
-		to_chat(mob, SPAN_ROLE_HEADER("You are a CMB-attached Interstellar Commerce Commission Liaison!"))
+		to_chat(mob, SPAN_ROLE_HEADER("你是隶属于CMB的星际商业委员会联络官！"))
 		arm_equipment(mob, /datum/equipment_preset/cmb/liaison/black_market, TRUE, TRUE) //ICC CL gets a custom item
 	else
-		to_chat(mob, SPAN_ROLE_HEADER("You are a CMB Deputy!"))
+		to_chat(mob, SPAN_ROLE_HEADER("你是一名CMB副官！"))
 		arm_equipment(mob, /datum/equipment_preset/cmb/standard, TRUE, TRUE)
 
 	print_backstory(mob)

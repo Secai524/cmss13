@@ -4,7 +4,7 @@
 //*****************************************************************************************************/
 
 /datum/reagent/toxin
-	name = "Generic Toxin"
+	name = "通用毒素"
 	id = "toxin"
 	description = "General identification for many similar toxins, sometimes created as a byproduct through chemical reactions."
 	reagent_state = LIQUID
@@ -13,25 +13,25 @@
 	properties = list(PROPERTY_TOXIC = 1)// Toxins are really weak, but without being treated, last very long.
 
 /datum/reagent/toxin/hptoxin
-	name = "Toxin"
+	name = "毒素"
 	id = "hptoxin"
 	description = "A toxic chemical."
 	custom_metabolism = AMOUNT_PER_TIME(1, 2 SECONDS)
 
 /datum/reagent/toxin/pttoxin
-	name = "Toxin"
+	name = "毒素"
 	id = "pttoxin"
 	description = "A toxic chemical."
 	custom_metabolism = AMOUNT_PER_TIME(1, 2 SECONDS)
 
 /datum/reagent/toxin/sdtoxin
-	name = "Toxin"
+	name = "毒素"
 	id = "sdtoxin"
 	description = "A toxic chemical."
 	properties = list(PROPERTY_HYPOXEMIC = 2)
 
 /datum/reagent/toxin/amatoxin
-	name = "Amatoxin"
+	name = "鹅膏毒素"
 	id = "amatoxin"
 	description = "A powerful poison derived from certain species of mushroom."
 	reagent_state = LIQUID
@@ -39,7 +39,7 @@
 	chemclass = CHEM_CLASS_HYDRO
 
 /datum/reagent/toxin/mutagen
-	name = "Unstable mutagen"
+	name = "不稳定诱变剂"
 	id = "mutagen"
 	description = "Mutagenic compound used for in experimental botany. Can cause unpredictable mutations in plants, but very lethal to humans. Keep away from children."
 	reagent_state = LIQUID
@@ -48,7 +48,7 @@
 	properties = list(PROPERTY_CARCINOGENIC = 1)
 
 /datum/reagent/toxin/phoron
-	name = "Phoron"
+	name = "福隆"
 	id = "phoron"
 	description = "A special form of metallic plasma that is not found on Earth. While phoron is highly flammable and extremely toxic, its high energy density makes it one of the best solid fuel alternatives. Liquid phoron is often used for research purposes and in the medical industry a catalyst to many advanced chemicals."
 	reagent_state = LIQUID
@@ -62,7 +62,7 @@
 	chemclass = CHEM_CLASS_RARE
 
 /datum/reagent/toxin/lexorin
-	name = "Lexorin"
+	name = "莱克索林"
 	id = "lexorin"
 	description = "Lexorin is an extremely dangerous compound that damages tissue and paralyzes the lungs, effectively stopping respiration. Can be deadly in even small doses. Lexorin is effectively countered by variants of dexalin."
 	reagent_state = LIQUID
@@ -73,7 +73,7 @@
 	properties = list(PROPERTY_HYPOXEMIC = 8, PROPERTY_BIOCIDIC = 1)
 
 /datum/reagent/toxin/cyanide //Fast and Lethal
-	name = "Cyanide"
+	name = "氰化物"
 	id = "cyanide"
 	description = "Cyanide is a naturally occurring toxic chemical, that has been used as a mean of killing for centuries because of its immediate effects. Symptoms include nausea, weakness, and difficulty breathing."
 	reagent_state = LIQUID
@@ -83,7 +83,7 @@
 	properties = list(PROPERTY_HYPOXEMIC = 4, PROPERTY_HYPNOTIC = 1)
 
 /datum/reagent/toxin/minttoxin
-	name = "Mint Toxin"
+	name = "薄荷毒素"
 	id = "minttoxin"
 	description = "Useful for dealing with undesirable customers."
 	reagent_state = LIQUID
@@ -91,7 +91,7 @@
 	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/toxin/carpotoxin
-	name = "Carpotoxin"
+	name = "鱼毒素"
 	id = "carpotoxin"
 	description = "A deadly neurotoxin produced by the dreaded space carp."
 	reagent_state = LIQUID
@@ -100,7 +100,7 @@
 	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/toxin/zombiepowder
-	name = "Zombie Powder"
+	name = "僵尸粉"
 	id = "zombiepowder"
 	description = "A strong neurotoxin that puts the subject into a death-like state."
 	reagent_state = SOLID
@@ -130,7 +130,7 @@
 	REMOVE_TRAIT(holder_mob, TRAIT_IMMOBILIZED, FAKEDEATH_TRAIT)
 
 /datum/reagent/toxin/mindbreaker
-	name = "Mindbreaker Toxin"
+	name = "心智崩坏毒素"
 	id = "mindbreaker"
 	description = "A powerful hallucinogenic compound that is illegal under space law. Causes extreme hallucinations and is very addictive. Formerly known as LSD."
 	reagent_state = LIQUID
@@ -149,7 +149,7 @@
 	color = "#664330" // rgb: 102, 67, 48
 
 /datum/reagent/toxin/fertilizer/eznutrient
-	name = "EZ Nutrient"
+	name = "EZ营养剂"
 	description = "A fertilizer that is proficient in every aspect by a mild amount."
 	id = "eznutrient"
 	properties = list(PROPERTY_TOXIC = 0.5)
@@ -163,7 +163,7 @@
 	processing_tray.nutrilevel += 1*volume
 
 /datum/reagent/toxin/fertilizer/left4zed
-	name = "Left-4-Zed"
+	name = "求生-4-尸"
 	description = "A fertilizer that sacrifices most of nutrients in its contents to boost health and to prolong the life expectancy"
 	id = "left4zed"
 
@@ -176,7 +176,7 @@
 	processing_tray.nutrilevel += 0.25*volume
 
 /datum/reagent/toxin/fertilizer/robustharvest
-	name = "Robust Harvest"
+	name = "丰收强化剂"
 	description = "A fertilizer that sacrifices most of nutrients in its contents to boost product yield the plant gives at the cost of plant health."
 	id = "robustharvest"
 
@@ -189,7 +189,7 @@
 	processing_tray.nutrilevel += 0.5*volume
 
 /datum/reagent/toxin/dinitroaniline
-	name = "Dinitroaniline"
+	name = "二硝基苯胺"
 	id = "dinitroaniline"
 	description = "Dinitroanilines are a class of chemical compounds used industrially in the production of pesticides and herbicides."
 	chemclass = CHEM_CLASS_UNCOMMON
@@ -203,7 +203,7 @@
 	processing_tray.nutrilevel += 2*volume
 
 /datum/reagent/toxin/plantbgone
-	name = "Plant-B-Gone"
+	name = "植物杀手"
 	id = "plantbgone"
 	description = "A harmful toxic mixture used to kill plantlife. Very toxic to animals."
 	reagent_state = LIQUID
@@ -217,7 +217,7 @@
 	processing_tray.plant_health -= 4*volume
 
 /datum/reagent/toxin/stoxin
-	name = "Soporific"
+	name = "催眠剂"
 	id = "stoxin"
 	description = "An effective hypnotic used to treat insomnia. Concentrated soporific is used as a surgical anesthetic."
 	reagent_state = LIQUID
@@ -230,7 +230,7 @@
 	flags = REAGENT_SCANNABLE
 
 /datum/reagent/toxin/chloralhydrate
-	name = "Chloral Hydrate"
+	name = "水合氯醛"
 	id = "chloralhydrate"
 	description = "Chloral hydrate was the first synthetically produced sedative-hypnotic drug. It is a powerful sedative which causes near instant sleepiness, but can be deadly in large quantities. Often used together with other anesthetics for surgical procedures."
 	reagent_state = SOLID
@@ -242,7 +242,7 @@
 	properties = list(PROPERTY_HYPNOTIC = 6, PROPERTY_TOXIC = 1)
 
 /datum/reagent/toxin/potassium_chloride
-	name = "Potassium Chloride"
+	name = "氯化钾"
 	id = "potassium_chloride"
 	description = "A bitter tasting salt that can be used as a spice, but can cause cardiac arrest in larger quantities. It has for this reason been used as a component in lethal injections for many years."
 	reagent_state = SOLID
@@ -256,7 +256,7 @@
 	properties = list(PROPERTY_HYPOXEMIC = 2, PROPERTY_ANTISPASMODIC = 4)
 
 /datum/reagent/toxin/potassium_chlorophoride
-	name = "Potassium Chlorophoride"
+	name = "氯氟化钾"
 	id = "potassium_chlorophoride"
 	description = "A specific chemical based on Potassium Chloride used to stop the heart for surgery. Causes instant cardiac arrest. Not safe to eat!"
 	reagent_state = SOLID
@@ -266,7 +266,7 @@
 	properties = list(PROPERTY_ANTISPASMODIC = 8, PROPERTY_HYPOXEMIC = 4, PROPERTY_TOXIC = 2)
 
 /datum/reagent/toxin/potassium_phorosulfate
-	name = "Potassium Phorosulfate"
+	name = "磷硫钾"
 	id = "potassium_phorosulfate"
 	description = "A chemical made from a violent reaction using sulphuric acid. Has specific industrial uses in sterelizing surfaces from biological contamination in non human accessible ares. Not used in other areas due to its long lasting corrosive effects unless treated."
 	reagent_state = SOLID
@@ -277,7 +277,7 @@
 
 
 /datum/reagent/toxin/beer2 //disguised as normal beer for use by emagged brobots
-	name = "Beer"
+	name = "啤酒"
 	id = "beer2"
 	description = "An alcoholic beverage made from malted grains, hops, yeast, and water. The fermentation appears to be incomplete." //If the players manage to analyze this, they deserve to know something is wrong.
 	reagent_state = LIQUID
@@ -288,7 +288,7 @@
 	properties = list(PROPERTY_ALCOHOLIC = 2, PROPERTY_TOXIC = 6)
 
 /datum/reagent/toxin/acid
-	name = "Sulphuric acid"
+	name = "硫酸"
 	id = "sulphuric acid"
 	description = "A common and very corrosive mineral acid used for many industrial purposes."
 	reagent_state = LIQUID
@@ -299,7 +299,7 @@
 	properties = list(PROPERTY_TOXIC = 1, PROPERTY_CORROSIVE = 3)
 
 /datum/reagent/toxin/iron_sulfate
-	name = "Iron Sulfate"
+	name = "硫酸亚铁"
 	id = "iron_sulfate"
 	description = "A reactive sulfide material often used as an intermediate or starting component in various chemical processes"
 	reagent_state = LIQUID
@@ -308,7 +308,7 @@
 	properties = list(PROPERTY_TOXIC = 1)
 
 /datum/reagent/toxin/iron_phoride_sulfate
-	name = "Iron Phoride Sulfate"
+	name = "硫酸铁"
 	id = "iron_phoride_sulfate"
 	description = "Iron Sulfate combined with Phoron to form a robust and durable substance, usually proposed as an additive to armor plates. Saw little actual use due to its flammability."
 	reagent_state = LIQUID
@@ -317,7 +317,7 @@
 	properties = list(PROPERTY_CORROSIVE = 5, PROPERTY_OXIDIZING = 3, )
 
 /datum/reagent/toxin/copper_sulfate
-	name = "Copper Sulfate"
+	name = "硫酸铜"
 	id = "copper_sulfate"
 	description = "A common fungicide that is widely used to treat wood and other organic materials to prevent rot, decay, and fungal growth."
 	reagent_state = LIQUID
@@ -327,7 +327,7 @@
 	properties = list(PROPERTY_CORROSIVE = 5)
 
 /datum/reagent/toxin/acid/polyacid
-	name = "Polytrinic acid"
+	name = "聚三硝基酸"
 	id = "pacid"
 	description = "An extremely corrosive acid that's capable of disolving a broad range of materials very quickly."
 	reagent_state = LIQUID
@@ -338,7 +338,7 @@
 	properties = list(PROPERTY_TOXIC = 2, PROPERTY_CORROSIVE = 3)
 
 /datum/reagent/toxin/formaldehyde
-	name = "Formaldehyde"
+	name = "甲醛"
 	id = "formaldehyde"
 	description = "Formaldehyde is a toxic organic gas that is mostly used in making resins, polymers and explosives. It is known to be a natural carcinogen."
 	color = COLOR_GRAY
@@ -348,7 +348,7 @@
 
 
 /datum/reagent/toxin/phenolformaldehyde_resin
-	name = "Phenol-Formaldehyde Resin"
+	name = "酚醛树脂"
 	id = "phenol_formaldehyde"
 	description = "Phenol-Formaldehyde Resin is a common molding polymer used in production of many small parts. It has great stress capacity and proven itself over many decades."
 	reagent_state = SOLID
@@ -357,7 +357,7 @@
 	properties = list(PROPERTY_TOXIC = 3)
 
 /datum/reagent/toxin/paraformaldehyde
-	name = "Paraformaldehyde"
+	name = "多聚甲醛"
 	id = "paraformaldehyde"
 	description = "A polymerized form of formaldehyde, that is slowly formed in a cold aqueous solution."
 	color = "#E0E0E0"
@@ -366,7 +366,7 @@
 	properties = list(PROPERTY_TOXIC = 1)
 
 /datum/reagent/toxin/molecular_acid
-	name = "Diluted Molecular Acid"
+	name = "稀释分子酸"
 	id = "molecularacid"
 	description = "An acid of unknown composition, this sample doesn't seem to be as dangerous those found within Xenomorph bloodstreams."
 	color = "#669900"

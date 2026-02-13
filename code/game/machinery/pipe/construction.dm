@@ -45,7 +45,7 @@ Buildable meters
 
 /obj/item/pipe
 	name = "pipe"
-	desc = "A pipe."
+	desc = "一根管道。"
 	var/pipe_type = 0
 	//var/pipe_dir = 0
 	var/pipename
@@ -184,9 +184,9 @@ Buildable meters
 		"bent insulated pipe", \
 		"gas filter", \
 		"gas mixer", \
-		"pressure regulator", \
+		"压力调节器", \
 		"high power pump", \
-		"heat exchanger", \
+		"热交换器", \
 		"t-valve", \
 		"4-way manifold", \
 		"pipe cap", \
@@ -417,7 +417,7 @@ Buildable meters
 
 	for(var/obj/structure/pipes/existing_pipe in loc)
 		if((existing_pipe.valid_directions & pipe_dir)) // matches at least one direction on either type of pipe & same connection type
-			to_chat(user, SPAN_WARNING("There is already a pipe of the same type at this location."))
+			to_chat(user, SPAN_WARNING("此位置已有一根同类型管道。"))
 			return TRUE
 	// no conflicts found
 
@@ -595,7 +595,7 @@ Buildable meters
 
 /obj/item/pipe_meter
 	name = "meter"
-	desc = "A meter that can be laid on pipes."
+	desc = "可安装在管道上的计量器。"
 	icon = 'icons/obj/pipes/pipe_item.dmi'
 	icon_state = "meter"
 	item_state = "buildpipe"
@@ -608,11 +608,11 @@ Buildable meters
 	if (!HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		return ..()
 	if(!locate(/obj/structure/pipes/standard/, src.loc))
-		to_chat(user, SPAN_WARNING("You need to fasten it to a pipe."))
+		to_chat(user, SPAN_WARNING("你需要将其固定在管道上。"))
 		return 1
 	new/obj/structure/machinery/meter( src.loc )
 	playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-	to_chat(user, SPAN_NOTICE("You have fastened the meter to the pipe."))
+	to_chat(user, SPAN_NOTICE("你已将计量器固定在管道上。"))
 	qdel(src)
 //not sure why these are necessary
 #undef PIPE_SIMPLE_STRAIGHT

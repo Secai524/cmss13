@@ -3,9 +3,9 @@
 	set name = "View Global Variables"
 
 	if(!usr.client || !usr.client.admin_holder || !(usr.client.admin_holder.rights & R_MOD))
-		to_chat(usr, SPAN_DANGER("You need to be a moderator or higher to access this."))
+		to_chat(usr, SPAN_DANGER("你需要拥有版主或更高权限才能访问此内容。"))
 		return
-	if(tgui_alert(usr, "Are you sure you want to view global variables? This will cause a large lag spike.", "Confirmation", list("Yes", "No"), 20 SECONDS) != "Yes")
+	if(tgui_alert(usr, "你确定要查看全局变量吗？这会导致严重的延迟卡顿。", "确认", list("Yes", "No"), 20 SECONDS) != "Yes")
 		return
 
 	var/body = {"<script type="text/javascript">
@@ -208,7 +208,7 @@
 
 	if(param_var_name)
 		if(!(param_var_name in global.vars))
-			to_chat(src, "A variable with this name ([param_var_name]) doesn't exist among global variables.")
+			to_chat(src, "全局变量中不存在名为 ([param_var_name]) 的变量。")
 			return
 
 		if((param_var_name in locked) && !check_rights(R_DEBUG))
@@ -220,44 +220,44 @@
 
 		if(autodetect_class)
 			if(isnull(var_value))
-				to_chat(usr, "Unable to determine variable type.")
+				to_chat(usr, "无法确定变量类型。")
 				class = null
 				autodetect_class = null
 			else if(isnum(var_value))
-				to_chat(usr, "Variable appears to be <b>NUM</b>.")
+				to_chat(usr, "变量类型似乎是 <b>数值</b>。")
 				class = "num"
 				dir = 1
 
 			else if(istext(var_value))
-				to_chat(usr, "Variable appears to be <b>TEXT</b>.")
+				to_chat(usr, "变量类型似乎是 <b>文本</b>。")
 				class = "text"
 
 			else if(isloc(var_value))
-				to_chat(usr, "Variable appears to be <b>REFERENCE</b>.")
+				to_chat(usr, "变量类型似乎是 <b>引用</b>。")
 				class = "reference"
 
 			else if(isicon(var_value))
-				to_chat(usr, "Variable appears to be <b>ICON</b>.")
+				to_chat(usr, "变量似乎是<b>图标</b>。")
 				var_value = "\icon[var_value]"
 				class = "icon"
 
 			else if(istype(var_value,/matrix))
-				to_chat(usr, "Variable appears to be <b>MATRIX</b>.")
+				to_chat(usr, "变量似乎是<b>矩阵</b>。")
 				class = "matrix"
 
 			else if(istype(var_value,/atom) || istype(var_value,/datum))
-				to_chat(usr, "Variable appears to be <b>TYPE</b>.")
+				to_chat(usr, "变量似乎是<b>类型</b>。")
 				class = "type"
 
 			else if(istype(var_value,/list))
-				to_chat(usr, "Variable appears to be <b>LIST</b>.")
+				to_chat(usr, "变量似乎是<b>列表</b>。")
 				class = "list"
 
 			else if(istype(var_value,/client))
-				to_chat(usr, "Variable appears to be <b>CLIENT</b>.")
+				to_chat(usr, "变量似乎是<b>客户端</b>。")
 				class = "cancel"
 			else
-				to_chat(usr, "Variable appears to be <b>FILE</b>.")
+				to_chat(usr, "变量似乎是<b>文件</b>。")
 				class = "file"
 	else
 		var/list/names = list()
@@ -266,7 +266,7 @@
 
 		names = sortList(names)
 
-		variable = tgui_input_list(usr, "Which var?","Var", names)
+		variable = tgui_input_list(usr, "哪个变量？","变量", names)
 		if(!variable)
 			return
 		var_value = global.vars[variable]
@@ -277,47 +277,47 @@
 	if(!autodetect_class)
 		var/dir
 		if(isnull(var_value))
-			to_chat(usr, "Unable to determine variable type.")
+			to_chat(usr, "无法确定变量类型。")
 
 		else if(isnum(var_value))
-			to_chat(usr, "Variable appears to be <b>NUM</b>.")
+			to_chat(usr, "变量类型似乎是 <b>数值</b>。")
 
 			dir = 1
 
 		else if(istext(var_value))
-			to_chat(usr, "Variable appears to be <b>TEXT</b>.")
+			to_chat(usr, "变量类型似乎是 <b>文本</b>。")
 
 
 		else if(isloc(var_value))
-			to_chat(usr, "Variable appears to be <b>REFERENCE</b>.")
+			to_chat(usr, "变量类型似乎是 <b>引用</b>。")
 
 
 		else if(isicon(var_value))
-			to_chat(usr, "Variable appears to be <b>ICON</b>.")
+			to_chat(usr, "变量似乎是<b>图标</b>。")
 			var_value = "\icon[var_value]"
 
 
 		else if(istype(var_value,/matrix))
-			to_chat(usr, "Variable appears to be <b>MATRIX</b>.")
+			to_chat(usr, "变量似乎是<b>矩阵</b>。")
 			class = "matrix"
 
 		else if(istype(var_value,/atom) || istype(var_value,/datum))
-			to_chat(usr, "Variable appears to be <b>TYPE</b>.")
+			to_chat(usr, "变量似乎是<b>类型</b>。")
 
 
 		else if(istype(var_value,/list))
-			to_chat(usr, "Variable appears to be <b>LIST</b>.")
+			to_chat(usr, "变量似乎是<b>列表</b>。")
 
 
 		else if(istype(var_value,/client))
-			to_chat(usr, "Variable appears to be <b>CLIENT</b>.")
+			to_chat(usr, "变量似乎是<b>客户端</b>。")
 
 
 		else
-			to_chat(usr, "Variable appears to be <b>FILE</b>.")
+			to_chat(usr, "变量似乎是<b>文件</b>。")
 
 
-		to_chat(usr, "Variable contains: [var_value]")
+		to_chat(usr, "变量包含：[var_value]")
 		if(dir)
 			switch(var_value)
 				if(1)
@@ -339,7 +339,7 @@
 				else
 					dir = null
 			if(dir)
-				to_chat(usr, "If a direction, direction is: [dir]")
+				to_chat(usr, "如果是方向，方向为：[dir]")
 
 
 		var/list/possible_classes = list("text","num","type","reference","mob reference","icon","file","list")
@@ -349,7 +349,7 @@
 			possible_classes += "marked datum"
 		possible_classes += "edit referenced object"
 
-		class = tgui_input_list(usr, "What kind of variable?","Variable Type", possible_classes)
+		class = tgui_input_list(usr, "什么类型的变量？","Variable Type", possible_classes)
 		if(!class)
 			return
 
@@ -363,7 +363,7 @@
 			return .(global.vars[variable])
 
 		if("text")
-			var/var_new = input("Enter new text:","Text",global.vars[variable]) as null|text
+			var/var_new = input("输入新文本：","文本",global.vars[variable]) as null|text
 			if(var_new==null)
 				return
 			global.vars[variable] = var_new
@@ -375,25 +375,25 @@
 			global.vars[variable] = var_new
 
 		if("type")
-			var/var_new = tgui_input_list(usr, "Enter type:","Type", typesof(/obj,/mob,/area,/turf))
+			var/var_new = tgui_input_list(usr, "输入类型：","类型", typesof(/obj,/mob,/area,/turf))
 			if(var_new==null)
 				return
 			global.vars[variable] = var_new
 
 		if("reference")
-			var/var_new = input("Select reference:","Reference",global.vars[variable]) as null|mob|obj|turf|area in world
+			var/var_new = input("选择参考：","引用",global.vars[variable]) as null|mob|obj|turf|area in world
 			if(var_new==null)
 				return
 			global.vars[variable] = var_new
 
 		if("mob reference")
-			var/var_new = input("Select reference:","Reference",global.vars[variable]) as null|mob in GLOB.mob_list
+			var/var_new = input("选择参考：","引用",global.vars[variable]) as null|mob in GLOB.mob_list
 			if(var_new==null)
 				return
 			global.vars[variable] = var_new
 
 		if("file")
-			var/var_new = input("Pick file:","File",global.vars[variable]) as null|file
+			var/var_new = input("Pick file:","文件",global.vars[variable]) as null|file
 			if(var_new==null)
 				return
 			global.vars[variable] = var_new
@@ -405,7 +405,7 @@
 			global.vars[variable] = var_new
 
 		if("matrix")
-			var/matrix_name = tgui_input_list(usr, "Choose a matrix", "Matrix", (stored_matrices + "Cancel"))
+			var/matrix_name = tgui_input_list(usr, "选择矩阵", "Matrix", (stored_matrices + "Cancel"))
 			if(!matrix_name || matrix_name == "Cancel")
 				return
 

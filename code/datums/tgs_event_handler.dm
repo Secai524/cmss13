@@ -20,7 +20,7 @@
 			message_admins("TGS: Deployment failed!")
 		if(TGS_EVENT_DEPLOYMENT_COMPLETE)
 			message_admins("TGS: Deployment complete!")
-			to_chat(world, SPAN_BOLDANNOUNCE("Server updated, changes will be applied on the next round..."))
+			to_chat(world, SPAN_BOLDANNOUNCE("服务器已更新，更改将在下一回合生效..."))
 		if(TGS_EVENT_WATCHDOG_DETACH)
 			message_admins("TGS restarting...")
 			reattach_timer = addtimer(CALLBACK(src, PROC_REF(LateOnReattach)), 1 MINUTES, TIMER_STOPPABLE)
@@ -28,7 +28,7 @@
 			var/datum/tgs_version/old_version = world.TgsVersion()
 			var/datum/tgs_version/new_version = args[2]
 			if(!old_version.Equals(new_version))
-				to_chat(world, SPAN_BOLDANNOUNCE("TGS updated to v[new_version.deprefixed_parameter]"))
+				to_chat(world, SPAN_BOLDANNOUNCE("TGS已更新至v[new_version.deprefixed_parameter]"))
 			else
 				message_admins("TGS: Back online")
 			if(reattach_timer)

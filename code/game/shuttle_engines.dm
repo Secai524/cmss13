@@ -3,7 +3,7 @@
 	icon = 'icons/turf/shuttle.dmi'
 
 /obj/structure/shuttle/window
-	name = "shuttle window"
+	name = "穿梭机窗口"
 	icon = 'icons/turf/podwindows.dmi'
 	icon_state = "1"
 	density = TRUE

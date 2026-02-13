@@ -395,7 +395,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	if(!istype(job) || job.total_positions == -1)
 		return
 	if(job.current_positions < 1) //this should be filtered earlier, but we still check just in case
-		to_chat(user, "There are no [job] job slots occupied.")
+		to_chat(user, "没有 [job] 职位被占用。")
 		return
 
 //here is the main reason this proc exists - to remove freed squad jobs from squad,
@@ -404,17 +404,17 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	if(GLOB.job_squad_roles.Find(job.title))
 		var/list/squad_list = list()
 		for(squad in GLOB.RoleAuthority.squads)
-			if(squad.roundstart && squad.usable && squad.name != "Root")
+			if(squad.roundstart && squad.usable && squad.name != "根")
 				squad_list += squad
 		squad = null
-		squad = tgui_input_list(user, "Select squad you want to free [job.title] slot from.", "Squad Selection", squad_list)
+		squad = tgui_input_list(user, "选择你想从中释放 [job.title] 职位的班。", "Squad Selection", squad_list)
 		if(!squad)
 			return
 
 		if(squad.roles_in[job.title] > 0)
 			squad.roles_in[job.title]--
 		else
-			to_chat(user, "There are no [job.title] slots occupied in [squad.name] Squad.")
+			to_chat(user, "[squad.name]班中没有 [job.title] 职位被占用。")
 			return
 
 	job.current_positions--
@@ -536,7 +536,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		return
 
 	if(!length(squads))
-		to_chat(human, "Something went wrong with your squad randomizer! Tell a coder!")
+		to_chat(human, "你的班组随机分配器出错了！通知程序员！")
 		return //Shit, where's our squad data
 
 	if(human.assigned_squad) //Wait, we already have a squad. Get outta here!
@@ -546,7 +546,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	if(human.job == JOB_INTEL)
 		var/datum/squad/intel_squad = get_squad_by_name(SQUAD_MARINE_INTEL)
 		if(!intel_squad || !istype(intel_squad)) //Something went horribly wrong!
-			to_chat(human, "Something went wrong with randomize_squad()! Tell a coder!")
+			to_chat(human, "randomize_squad() 函数出错了！通知程序员！")
 			return
 		intel_squad.put_marine_in_squad(human)
 		return
@@ -558,11 +558,11 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	//we make a list of squad that is randomized so alpha isn't always lowest squad.
 	var/list/mixed_squads = list()
 	for(var/datum/squad/squad in squads)
-		if(squad.roundstart && squad.usable && squad.faction == human.faction && squad.name != "Root")
+		if(squad.roundstart && squad.usable && squad.faction == human.faction && squad.name != "根")
 			mixed_squads += squad
 
 	var/preferred_squad = human.client?.prefs?.preferred_squad
-	if(preferred_squad == "None")
+	if(preferred_squad == "无")
 		preferred_squad = null
 
 	var/datum/squad/lowest
@@ -597,10 +597,10 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		var/datum/specialist_set/spec_set = GLOB.specialist_set_name_dict[option]
 		if(spec_set?.redeem_set(human, kit, silent=TRUE))
 			if(kit)
-				to_chat(human, SPAN_NOTICE("You have been assigned as a [spec_set.get_role()]."))
+				to_chat(human, SPAN_NOTICE("你已被指派为 [spec_set.get_role()]。"))
 				qdel(kit)
 			else
-				to_chat(human, SPAN_NOTICE("You have been assigned as a [spec_set.get_role()]. Redeem your essentials at your gear vendor."))
+				to_chat(human, SPAN_NOTICE("你已被指派为 [spec_set.get_role()]。请到你的装备供应商处领取必需品。"))
 			break
 
 /datum/authority/branch/role/proc/get_caste_by_text(name)

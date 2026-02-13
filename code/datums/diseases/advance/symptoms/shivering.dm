@@ -17,7 +17,7 @@ Bonus
 
 /datum/symptom/shivering
 
-	name = "Shivering"
+	name = "颤抖"
 	stealth = 0
 	resistance = 2
 	stage_speed = 2

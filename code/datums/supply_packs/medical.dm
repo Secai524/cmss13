@@ -1,5 +1,5 @@
 /datum/supply_packs/medical
-	name = "medical crate"
+	name = "医疗箱"
 	contains = list(
 		/obj/item/storage/box/syringes,
 		/obj/item/reagent_container/glass/bottle/inaprovaline,
@@ -19,31 +19,31 @@
 	)
 	cost = 15
 	containertype = /obj/structure/closet/crate/medical
-	containername = "medical crate"
-	group = "Medical"
+	containername = "医疗箱"
+	group = "医疗区"
 
 /datum/supply_packs/medical_restock_cart
-	name = "medical restock cart"
+	name = "医疗补给推车"
 	contains = list(
 		/obj/structure/restock_cart/medical,
 	)
 	cost = 20
 	containertype = null
-	containername = "medical restock cart"
-	group = "Medical"
+	containername = "医疗补给推车"
+	group = "医疗区"
 
 /datum/supply_packs/medical_reagent_cart
-	name = "medical reagent restock cart"
+	name = "医疗试剂补给推车"
 	contains = list(
 		/obj/structure/restock_cart/medical/reagent,
 	)
 	cost = 20
 	containertype = null
-	containername = "medical reagent restock cart"
-	group = "Medical"
+	containername = "医疗试剂补给推车"
+	group = "医疗区"
 
 /datum/supply_packs/pillbottle
-	name = "pill bottle crate (x2 each)"
+	name = "药瓶箱 (每种x2)"
 	contains = list(
 		/obj/item/storage/pill_bottle/inaprovaline,
 		/obj/item/storage/pill_bottle/antitox,
@@ -64,11 +64,11 @@
 	)
 	cost = 15
 	containertype = /obj/structure/closet/crate/medical
-	containername = "medical crate"
-	group = "Medical"
+	containername = "医疗箱"
+	group = "医疗区"
 
 /datum/supply_packs/firstaid
-	name = "first aid kit crate (x2 each)"
+	name = "急救包箱 (每种x2)"
 	contains = list(
 		/obj/item/storage/firstaid/regular,
 		/obj/item/storage/firstaid/regular,
@@ -83,11 +83,11 @@
 	)
 	cost = 11
 	containertype = /obj/structure/closet/crate/medical
-	containername = "medical crate"
-	group = "Medical"
+	containername = "医疗箱"
+	group = "医疗区"
 
 /datum/supply_packs/bodybag
-	name = "body bag crate (x28)"
+	name = "裹尸袋箱 (x28)"
 	contains = list(
 		/obj/item/storage/box/bodybags,
 		/obj/item/storage/box/bodybags,
@@ -97,10 +97,10 @@
 	cost = 7
 	containertype = /obj/structure/closet/crate/medical
 	containername = "body bag crate"
-	group = "Medical"
+	group = "医疗区"
 
 /datum/supply_packs/cryobag
-	name = "stasis bag crate (x3)"
+	name = "静滞袋箱 (x3)"
 	contains = list(
 		/obj/item/bodybag/cryobag,
 		/obj/item/bodybag/cryobag,
@@ -109,10 +109,10 @@
 	cost = 15
 	containertype = /obj/structure/closet/crate/medical
 	containername = "stasis bag crate"
-	group = "Medical"
+	group = "医疗区"
 
 /datum/supply_packs/surgery
-	name = "surgery crate (tray, anesthetic, surgeon gear)"
+	name = "手术箱 (托盘、麻醉剂、外科医生装备)"
 	contains = list(
 		/obj/item/storage/surgical_tray,
 		/obj/item/clothing/mask/breath/medical,
@@ -123,12 +123,12 @@
 	)
 	cost = 25
 	containertype = /obj/structure/closet/crate/secure/surgery
-	containername = "surgery crate"
+	containername = "手术箱"
 	access = ACCESS_MARINE_MEDBAY
-	group = "Medical"
+	group = "医疗区"
 
 /datum/supply_packs/surgery/beds
-	name = "surgery crate (surgical beds)"
+	name = "手术箱 (手术床)"
 	contains = list(
 		/obj/item/roller/surgical,
 		/obj/item/roller/surgical,
@@ -139,12 +139,12 @@
 	)
 	cost = 25
 	containertype = /obj/structure/closet/crate/secure/surgery
-	containername = "surgery crate"
+	containername = "手术箱"
 	access = ACCESS_MARINE_MEDBAY
-	group = "Medical"
+	group = "医疗区"
 
 /datum/supply_packs/field_doc
-	name = "field doctor crate (replacement field doctor gear)"
+	name = "战地医生箱 (替换用战地医生装备)"
 	contains = list(
 		/obj/item/folded_tent/med,
 		/obj/item/clothing/accessory/storage/surg_vest/equipped,
@@ -163,10 +163,10 @@
 	containertype = /obj/structure/closet/crate/secure/medical
 	containername = "field doctor's replacement personal crate"
 	access = ACCESS_MARINE_MEDBAY
-	group = "Medical"
+	group = "医疗区"
 
 /datum/supply_packs/upgraded_medical_kits
-	name = "upgraded medical equipment crate (x4)"
+	name = "升级医疗设备箱 (x4)"
 	contains = list(
 		/obj/item/storage/box/czsp/medic_upgraded_kits/full,
 		/obj/item/storage/box/czsp/medic_upgraded_kits/full,
@@ -177,4 +177,4 @@
 	buyable = FALSE
 	containertype = /obj/structure/closet/crate/medical
 	containername = "upgraded medical equipment crate"
-	group = "Medical"
+	group = "医疗区"

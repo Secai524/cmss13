@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(nano)
-	name  = "Nano UI"
+	name  = "纳米界面"
 	flags = SS_NO_INIT
 	wait  = 2 SECONDS
 	priority = SS_PRIORITY_NANOUI

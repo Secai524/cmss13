@@ -1,6 +1,6 @@
 /obj/vehicle/multitile/clf_van
-	name = "CLF Technical"
-	desc = "A repurposed civilian truck, plastered with CLF emblems and insignias. Armor plates have been attached on all sides, including the front windows. Bulletholes riddle the vehicle."
+	name = "CLF技术车"
+	desc = "一辆改装过的民用卡车，贴满了CLF的标志和徽章。所有侧面，包括前窗，都加装了装甲板。车身布满了弹孔。"
 	layer = ABOVE_XENO_LAYER
 
 	icon = 'icons/obj/vehicles/clf_van.dmi'
@@ -186,7 +186,7 @@
 
 	if(iswelder(O) && health >= initial(health))
 		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
-			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			to_chat(user, SPAN_WARNING("你需要一把更强的喷枪！"))
 			return
 		var/obj/item/hardpoint/H
 		for(var/obj/item/hardpoint/potential_hardpoint in hardpoints)
@@ -205,14 +205,14 @@
 /obj/vehicle/multitile/clf_van/handle_click(mob/living/user, atom/A, list/mods)
 	if(mods[SHIFT_CLICK] && !mods[ALT_CLICK])
 		if(overdrive_next > world.time)
-			to_chat(user, SPAN_WARNING("You can't activate overdrive yet! Wait [round((overdrive_next - world.time) / 10, 0.1)] seconds."))
+			to_chat(user, SPAN_WARNING("你还不能激活超载！请等待[round((overdrive_next - world.time) / 10, 0.1)]秒。"))
 			return
 
 		misc_multipliers["move"] -= overdrive_speed_mult
 		addtimer(CALLBACK(src, PROC_REF(reset_overdrive)), overdrive_duration)
 
 		overdrive_next = world.time + overdrive_cooldown
-		to_chat(user, SPAN_NOTICE("You activate overdrive."))
+		to_chat(user, SPAN_NOTICE("你激活了超载。"))
 		playsound(src, 'sound/vehicles/overdrive_activate.ogg', 75, FALSE)
 		return
 
@@ -250,7 +250,7 @@
 */
 
 /obj/effect/vehicle_spawner/clf_van
-	name = "CLF Van Spawner"
+	name = "CLF厢式货车生成器"
 	icon = 'icons/obj/vehicles/clf_van.dmi'
 	icon_state = "van_base"
 	pixel_x = -16

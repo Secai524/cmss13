@@ -10,27 +10,27 @@
 	icon_state = "catwalk"
 	name = "catwalk"
 	layer = CATWALK_LAYER
-	desc = "These things have no depth to them, are they just, painted on?"
+	desc = "这些东西没有深度，它们难道只是画上去的？"
 
 //////////////////OUTDOOR STUFF/////////////////
 
 /obj/effect/decal/strata_decals/rocks
 	icon_state = ""
-	name = "some rocks"
-	desc = "A collection of sad little rocks."
+	name = "一些石头"
+	desc = "一堆可怜的小石头。"
 
 /obj/effect/decal/strata_decals/rocks/ice
 	icon_state = ""
-	name = "some ice rocks"
-	desc = "A smattering of ice and rock littered about haphazardly."
+	name = "一些冰岩"
+	desc = "冰与岩石杂乱地散落各处。"
 
 /obj/effect/decal/strata_decals/rocks/ice/ice1
 	icon_state = "icerock"
 
 /obj/effect/decal/strata_decals/grasses
 	icon_state = "tufts"
-	name = "some foliage"
-	desc = "A few brave tufts of grass."
+	name = "一些植被"
+	desc = "几簇顽强的草。"
 
 /obj/effect/decal/strata_decals/mud_corner
 	icon_state = "soro_mud_innercorner"
@@ -43,8 +43,8 @@
 
 /obj/effect/decal/strata_decals/grime
 	icon_state = ""
-	name = "a stain"
-	desc = "A nasty looking brown stain, could be coffee, soot, water damage. Who knows."
+	name = "一块污渍"
+	desc = "一块难看的棕色污渍，可能是咖啡、烟灰或水渍。谁知道呢。"
 
 /obj/effect/decal/strata_decals/grime/grime1
 	icon_state = "grime1"

@@ -6,7 +6,7 @@
 
 
 /obj/effect/hunter/glowing_shape
-	name = "glowing shape"
+	name = "发光形体"
 	desc = null
 	icon = 'icons/effects/64x96-hunter_effects.dmi'
 	icon_state = "big_red"
@@ -183,10 +183,10 @@
 	density = TRUE
 
 /obj/structure/prop/hunter/misc/prop_armor
-	name = "ancient yautja armor"
+	name = "远古铁血战士护甲"
 	icon = 'icons/obj/structures/props/hunter/32x32_hunter_props.dmi'
 	icon_state = "hunter_armor_prop"
-	desc = "An ancient suit of armor. It looks incredibly old, yet most likely still functional, although it's fixed to the wall, and purely used as a ceremonial adornment."
+	desc = "一套古老的护甲。它看起来年代极其久远，但很可能仍能使用，尽管它被固定在墙上，纯粹用作仪式装饰。"
 	anchored = TRUE
 	layer = ABOVE_MOB_LAYER
 
@@ -227,8 +227,8 @@
 	icon_state = "stripes_arrow"
 
 /obj/structure/bed/chair/hunter/throne
-	name = "Throne of the Eternal Hunt"
-	desc = "A grotesquely magnificent seat, carved from the remains of the most formidable prey. Twisted spines, shattered skulls, and serrated bones form a testament to the ancient hunter’s unchallenged supremacy. The throne whispers of countless battles, its macabre elegance a reminder that only the strongest may sit upon it."
+	name = "永恒狩猎王座"
+	desc = "一个怪诞而宏伟的座位，由最强大猎物的残骸雕刻而成。扭曲的脊柱、破碎的头骨和锯齿状的骨头，共同证明了这位远古猎手无可争议的至高地位。王座低语着无数战斗，其阴森优雅提醒着，唯有最强者方能安坐其上。"
 	icon = 'icons/obj/structures/props/hunter/32x32_hunter_props.dmi'
 	icon_state = "bone_throne"
 
@@ -240,8 +240,8 @@
 /obj/structure/prop/hunter/fake_platform/hunter
 	icon = 'icons/obj/structures/props/platforms.dmi'
 	icon_state = "hunter_platform"
-	name = "raised metal edge"
-	desc =  "A raised level of metal, often used to elevate areas above others, or construct bridges. You could probably climb it."
+	name = "凸起的金属边缘"
+	desc =  "一层抬高的金属平台，常用于将区域抬高或建造桥梁。你或许可以爬上去。"
 	density = FALSE
 	anchored = TRUE
 	layer = WEED_LAYER
@@ -268,8 +268,8 @@
 /obj/effect/hunter/fake_platform/hunter
 	icon = 'icons/obj/structures/props/platforms.dmi'
 	icon_state = "hunter_platform"
-	name = "raised metal edge"
-	desc =  "A raised level of metal, often used to elevate areas above others, or construct bridges. You could probably climb it."
+	name = "凸起的金属边缘"
+	desc =  "一层抬高的金属平台，常用于将区域抬高或建造桥梁。你或许可以爬上去。"
 	density = FALSE
 	anchored = TRUE
 	layer = TURF_LAYER
@@ -287,7 +287,7 @@
 
 /obj/structure/prop/hunter/trophy_display
 	name = "\improper Yautja Trophy Display Rack"
-	desc = "A trophy rack for hunters displaying their prizes."
+	desc = "供猎手展示战利品的奖杯架。"
 	icon = 'icons/obj/structures/props/hunter/32x32_hunter_props.dmi'
 	icon_state = "pred_trophy_vendor_top_left"
 	layer = TABLE_LAYER
@@ -348,7 +348,7 @@
 
 /obj/structure/prop/hunter/hellhound //for summoning hellhounds
 	name = "\improper Sleeping Hellhound"
-	desc = "A sleeping Hellhound. Maybe you could wake it up..."
+	desc = "一只沉睡的地狱犬。也许你可以叫醒它……"
 	icon = 'icons/mob/humans/onmob/hunter/hellhound.dmi'
 	icon_state = "Normal Hellhound Sleeping"
 	density = FALSE
@@ -362,15 +362,15 @@
 /obj/structure/prop/hunter/hellhound/attack_hand(mob/user)
 	. = ..()
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		to_chat(user, SPAN_WARNING("You're not going anywhere near that thing!"))
+		to_chat(user, SPAN_WARNING("你绝不会靠近那东西！"))
 		return
 
-	var/summon_hellhound = tgui_alert(user, "Do you want to wake the Hellhound?", "Summon Hellhound", list("Yes", "No"))
+	var/summon_hellhound = tgui_alert(user, "你想要唤醒地狱犬吗？", "Summon Hellhound", list("Yes", "No"))
 
 	if(!(summon_hellhound == "Yes"))
-		to_chat(user, SPAN_NOTICE("You decide to leave it alone."))
+		to_chat(user, SPAN_NOTICE("你决定不去打扰它。"))
 		return
-	to_chat(user, SPAN_NOTICE("The Hellhound begins to stir..."))
+	to_chat(user, SPAN_NOTICE("地狱犬开始苏醒……"))
 	msg_admin_attack("[key_name(user)] summoned a Hellhound ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 	summon_hellhound(user)
 

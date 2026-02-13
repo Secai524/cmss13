@@ -13,12 +13,12 @@
 	category = AUTOLATHE_CATEGORY_GENERAL
 
 /datum/autolathe/recipe/mopbucket
-	name = "mop bucket"
+	name = "拖把桶"
 	path = /obj/item/reagent_container/glass/bucket/mopbucket
 	category = AUTOLATHE_CATEGORY_GENERAL
 
 /datum/autolathe/recipe/janibucket
-	name = "janitorial bucket"
+	name = "清洁桶"
 	path = /obj/item/reagent_container/glass/bucket/janibucket
 	category = AUTOLATHE_CATEGORY_GENERAL
 
@@ -43,7 +43,7 @@
 	category = AUTOLATHE_CATEGORY_TOOLS
 
 /datum/autolathe/recipe/t_scanner
-	name = "T-ray scanner"
+	name = "T射线扫描仪"
 	path = /obj/item/device/t_scanner
 	category = AUTOLATHE_CATEGORY_TOOLS
 
@@ -68,7 +68,7 @@
 	category = AUTOLATHE_CATEGORY_TOOLS
 
 /datum/autolathe/recipe/lightreplacer
-	name = "light replacer"
+	name = "灯泡更换器"
 	path = /obj/item/device/lightreplacer/empty
 	category = AUTOLATHE_CATEGORY_TOOLS
 
@@ -78,81 +78,81 @@
 	category = AUTOLATHE_CATEGORY_TOOLS
 
 /datum/autolathe/recipe/radio_headset
-	name = "radio headset"
+	name = "无线电耳机"
 	path = /obj/item/device/radio/headset
 	category = AUTOLATHE_CATEGORY_GENERAL
 
 /datum/autolathe/recipe/radio_bounced
-	name = "shortwave radio"
+	name = "短波无线电"
 	path = /obj/item/device/radio/off
 	category = AUTOLATHE_CATEGORY_GENERAL
 
 /datum/autolathe/recipe/weldermask
-	name = "welding mask"
+	name = "焊接面罩"
 	path = /obj/item/clothing/head/welding
 	category = AUTOLATHE_CATEGORY_GENERAL
 
 /datum/autolathe/recipe/metal
-	name = "steel sheets"
+	name = "钢板"
 	path = /obj/item/stack/sheet/metal
 	category = AUTOLATHE_CATEGORY_GENERAL
 	is_stack = 1
 
 /datum/autolathe/recipe/glass
-	name = "glass sheets"
+	name = "玻璃板"
 	path = /obj/item/stack/sheet/glass
 	category = AUTOLATHE_CATEGORY_GENERAL
 	is_stack = 1
 
 /datum/autolathe/recipe/rglass
-	name = "reinforced glass sheets"
+	name = "强化玻璃板"
 	path = /obj/item/stack/sheet/glass/reinforced
 	category = AUTOLATHE_CATEGORY_GENERAL
 	is_stack = 1
 
 /datum/autolathe/recipe/rods
-	name = "metal rods"
+	name = "金属棒"
 	path = /obj/item/stack/rods
 	category = AUTOLATHE_CATEGORY_GENERAL
 	is_stack = 1
 
 /datum/autolathe/recipe/knife
-	name = "kitchen knife"
+	name = "厨刀"
 	path = /obj/item/tool/kitchen/knife
 	category = AUTOLATHE_CATEGORY_GENERAL
 
 /datum/autolathe/recipe/taperecorder
-	name = "tape recorder"
+	name = "磁带录音机"
 	path = /obj/item/device/taperecorder
 	category = AUTOLATHE_CATEGORY_GENERAL
 
 /datum/autolathe/recipe/airlockmodule
-	name = "airlock electronics"
+	name = "气闸电子元件"
 	path = /obj/item/circuitboard/airlock
 	category = AUTOLATHE_CATEGORY_ENGINEERING
 
 /datum/autolathe/recipe/firealarm
-	name = "fire alarm electronics"
+	name = "火警电子元件"
 	path = /obj/item/circuitboard/firealarm
 	category = AUTOLATHE_CATEGORY_ENGINEERING
 
 /datum/autolathe/recipe/powermodule
-	name = "power control module"
+	name = "电源控制模块"
 	path = /obj/item/circuitboard/apc
 	category = AUTOLATHE_CATEGORY_ENGINEERING
 
 /datum/autolathe/recipe/table_parts
-	name = "table parts"
+	name = "桌子零件"
 	path = /obj/item/frame/table
 	category = AUTOLATHE_CATEGORY_ENGINEERING
 
 /datum/autolathe/recipe/table_parts_reinforced
-	name = "reinforced table parts"
+	name = "加固桌部件"
 	path = /obj/item/frame/table/reinforced
 	category = AUTOLATHE_CATEGORY_ENGINEERING
 
 /datum/autolathe/recipe/rack_parts
-	name = "rack parts"
+	name = "机架部件"
 	path = /obj/item/frame/rack
 	category = AUTOLATHE_CATEGORY_ENGINEERING
 
@@ -162,12 +162,12 @@
 	category = AUTOLATHE_CATEGORY_SURGERY
 
 /datum/autolathe/recipe/circularsaw
-	name = "circular saw"
+	name = "圆锯"
 	path = /obj/item/tool/surgery/circular_saw
 	category = AUTOLATHE_CATEGORY_SURGERY
 
 /datum/autolathe/recipe/surgicaldrill
-	name = "surgical drill"
+	name = "手术钻"
 	path = /obj/item/tool/surgery/surgicaldrill
 	category = AUTOLATHE_CATEGORY_SURGERY
 
@@ -187,22 +187,22 @@
 	category = AUTOLATHE_CATEGORY_SURGERY
 
 /datum/autolathe/recipe/beaker
-	name = "glass beaker"
+	name = "玻璃烧杯"
 	path = /obj/item/reagent_container/glass/beaker
 	category = AUTOLATHE_CATEGORY_GLASSWARE
 
 /datum/autolathe/recipe/beaker_large
-	name = "large glass beaker"
+	name = "大型玻璃烧杯"
 	path = /obj/item/reagent_container/glass/beaker/large
 	category = AUTOLATHE_CATEGORY_GLASSWARE
 
 /datum/autolathe/recipe/drinkingglass
-	name = "drinking glass"
+	name = "玻璃杯"
 	path = /obj/item/reagent_container/food/drinks/drinkingglass
 	category = AUTOLATHE_CATEGORY_GLASSWARE
 
 /datum/autolathe/recipe/consolescreen
-	name = "console screen"
+	name = "控制台屏幕"
 	path = /obj/item/stock_parts/console_screen
 	category = AUTOLATHE_CATEGORY_DEVICES_AND_COMPONENTS
 
@@ -217,7 +217,7 @@
 	category = AUTOLATHE_CATEGORY_DEVICES_AND_COMPONENTS
 
 /datum/autolathe/recipe/sensor_infra
-	name = "infrared sensor"
+	name = "红外传感器"
 	path = /obj/item/device/assembly/infra
 	category = AUTOLATHE_CATEGORY_DEVICES_AND_COMPONENTS
 
@@ -227,37 +227,37 @@
 	category = AUTOLATHE_CATEGORY_DEVICES_AND_COMPONENTS
 
 /datum/autolathe/recipe/sensor_prox
-	name = "proximity sensor"
+	name = "近程传感器"
 	path = /obj/item/device/assembly/prox_sensor
 	category = AUTOLATHE_CATEGORY_DEVICES_AND_COMPONENTS
 
 /datum/autolathe/recipe/tube
-	name = "light tube"
+	name = "灯管"
 	path = /obj/item/light_bulb/tube
 	category = AUTOLATHE_CATEGORY_GENERAL
 
 /datum/autolathe/recipe/bulb
-	name = "light bulb"
+	name = "灯泡"
 	path = /obj/item/light_bulb/bulb
 	category = AUTOLATHE_CATEGORY_GENERAL
 
 /datum/autolathe/recipe/ashtray_glass
-	name = "glass ashtray"
+	name = "玻璃烟灰缸"
 	path = /obj/item/ashtray/glass
 	category = AUTOLATHE_CATEGORY_GENERAL
 
 /datum/autolathe/recipe/hand_labeler
-	name = "hand labeler"
+	name = "手持标签机"
 	path = /obj/item/tool/hand_labeler
 	category = AUTOLATHE_CATEGORY_GENERAL
 
 /datum/autolathe/recipe/camera_assembly
-	name = "camera assembly"
+	name = "摄像头组件"
 	path = /obj/item/frame/camera
 	category = AUTOLATHE_CATEGORY_ENGINEERING
 
 /datum/autolathe/recipe/matrix_frame
-	name = "matrix assembly"
+	name = "矩阵组件"
 	path = /obj/item/frame/matrix_frame
 	category = AUTOLATHE_CATEGORY_ENGINEERING
 
@@ -277,62 +277,62 @@
 /datum/autolathe/recipe/armylathe
 
 /datum/autolathe/recipe/armylathe/m40
-	name = "M40 Grenade Casing"
+	name = "M40手榴弹弹壳"
 	path = /obj/item/explosive/grenade/custom
 	category = AUTOLATHE_CATEGORY_EXPLOSIVES
 
 /datum/autolathe/recipe/armylathe/m15
-	name = "M15 Grenade Casing"
+	name = "M15手榴弹弹壳"
 	path = /obj/item/explosive/grenade/custom/large
 	category = AUTOLATHE_CATEGORY_EXPLOSIVES
 
 /datum/autolathe/recipe/armylathe/m20
-	name = "M20 Mine Casing"
+	name = "M20地雷弹壳"
 	path = /obj/item/explosive/mine/custom
 	category = AUTOLATHE_CATEGORY_EXPLOSIVES
 
 /datum/autolathe/recipe/armylathe/c4
-	name = "C4 Plastic Casing"
+	name = "C4塑料弹壳"
 	path = /obj/item/explosive/plastic/custom
 	category = AUTOLATHE_CATEGORY_EXPLOSIVES
 
 /datum/autolathe/recipe/armylathe/rocket_tube
-	name = "88mm Rocket Tube"
+	name = "88毫米火箭发射管"
 	path = /obj/item/ammo_magazine/rocket/custom
 	category = AUTOLATHE_CATEGORY_EXPLOSIVES
 
 /datum/autolathe/recipe/armylathe/rocket_warhead
-	name = "88mm Rocket Warhead"
+	name = "88毫米火箭弹头"
 	path = /obj/item/explosive/warhead/rocket
 	category = AUTOLATHE_CATEGORY_EXPLOSIVES
 
 /datum/autolathe/recipe/armylathe/mortar_shell
-	name = "80mm Mortar Shell"
+	name = "80毫米迫击炮弹"
 	path = /obj/item/mortar_shell/custom
 	category = AUTOLATHE_CATEGORY_EXPLOSIVES
 
 /datum/autolathe/recipe/armylathe/mortar_warhead
-	name = "80mm Mortar Warhead"
+	name = "80毫米迫击炮弹头"
 	path = /obj/item/explosive/warhead/mortar
 	category = AUTOLATHE_CATEGORY_EXPLOSIVES
 
 /datum/autolathe/recipe/armylathe/mortar_camera_warhead
-	name = "80mm Mortar Camera Warhead"
+	name = "80毫米迫击炮摄像弹头"
 	path = /obj/item/explosive/warhead/mortar/camera
 	category = AUTOLATHE_CATEGORY_EXPLOSIVES
 
 /datum/autolathe/recipe/armylathe/flamer_tank
-	name = "Custom M240A1 Fuel Tank"
+	name = "定制M240A1燃料罐"
 	path = /obj/item/ammo_magazine/flamer_tank/custom
 	category = AUTOLATHE_CATEGORY_EXPLOSIVES
 
 /datum/autolathe/recipe/armylathe/large_flamer_tank
-	name = "Custom M240-T Fuel Tank"
+	name = "定制M240-T燃料罐"
 	path = /obj/item/ammo_magazine/flamer_tank/custom/large
 	category = AUTOLATHE_CATEGORY_EXPLOSIVES
 
 /datum/autolathe/recipe/armylathe/smoke_tank
-	name = "Custom M240A1 Smoke Tank"
+	name = "定制M240A1烟雾罐"
 	path = /obj/item/ammo_magazine/flamer_tank/smoke
 	category = AUTOLATHE_CATEGORY_EXPLOSIVES
 
@@ -349,60 +349,60 @@
 	path = /obj/item/reagent_container/dropper
 
 /datum/autolathe/recipe/medilathe/spray
-	name = "spray bottle"
+	name = "喷雾瓶"
 	path = /obj/item/reagent_container/spray
 
 /datum/autolathe/recipe/medilathe/autoinjector
-	name = "autoinjector (C-T) (5x3)"
+	name = "自动注射器 (C-T) (5x3)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty
 	category = AUTOLATHE_CATEGORY_INJECTORS
 
 /datum/autolathe/recipe/medilathe/autoinjector/s15x3
-	name = "autoinjector (C-S) (15x3)"
+	name = "自动注射器 (C-S) (15x3)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/small
 
 /datum/autolathe/recipe/medilathe/autoinjector/s30x3
-	name = "autoinjector (C-M) (30x3)"
+	name = "自动注射器 (C-M) (30x3)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/medium
 
 /datum/autolathe/recipe/medilathe/autoinjector/s60x3
-	name = "autoinjector (C-L) (60x3)"
+	name = "自动注射器 (C-L) (60x3)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/large
 
 /datum/autolathe/recipe/medilathe/autoinjector/s1x1
-	name = "EZ autoinjector (E-U) (1x1)"
+	name = "EZ自动注射器 (E-U) (1x1)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/unit
 
 /datum/autolathe/recipe/medilathe/autoinjector/s5x1
-	name = "EZ autoinjector (E-VS) (5x1)"
+	name = "EZ自动注射器 (E-VS) (5x1)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/verysmall
 
 /datum/autolathe/recipe/medilathe/autoinjector/s10x1
-	name = "EZ autoinjector (E-S) (10x1)"
+	name = "EZ自动注射器 (E-S) (10x1)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/small
 
 /datum/autolathe/recipe/medilathe/autoinjector/s15x1
-	name = "EZ autoinjector (E-T) (15x1)"
+	name = "EZ自动注射器 (E-T) (15x1)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless
 
 /datum/autolathe/recipe/medilathe/autoinjector/s30x1
-	name = "EZ autoinjector (E-M) (30x1)"
+	name = "EZ自动注射器 (E-M) (30x1)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/medium
 
 /datum/autolathe/recipe/medilathe/autoinjector/s45x1
-	name = "EZ autoinjector (E-L) (45x1)"
+	name = "EZ自动注射器 (E-L) (45x1)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/large
 
 /datum/autolathe/recipe/medilathe/autoinjector/s60x1
-	name = "EZ autoinjector (E-XL) (60x1)"
+	name = "EZ自动注射器 (E-XL) (60x1)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/extralarge
 
 /datum/autolathe/recipe/medilathe/autoinjector/s15x6
-	name = "Medic autoinjector (M-M) (15x6)"
+	name = "医疗兵自动注射器 (M-M) (15x6)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/medic
 
 /datum/autolathe/recipe/medilathe/autoinjector/s30x6
-	name = "Medic Autoinjector (M-L) (30x6)"
+	name = "医疗兵自动注射器 (M-L) (30x6)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/medic/large
 
 /datum/autolathe/recipe/medilathe/hypospray
@@ -414,7 +414,7 @@
 	path = /obj/item/reagent_container/blood
 
 /datum/autolathe/recipe/medilathe/bluespace
-	name = "high-capacity beaker"
+	name = "高容量烧杯"
 	path = /obj/item/reagent_container/glass/beaker/bluespace
 
 /datum/autolathe/recipe/medilathe/bonesetter
@@ -422,11 +422,11 @@
 	path = /obj/item/tool/surgery/bonesetter
 
 /datum/autolathe/recipe/medilathe/fixovein
-	name = "FixOVein"
+	name = "菲克索文"
 	path = /obj/item/tool/surgery/FixOVein
 
 /datum/autolathe/recipe/medilathe/cryobag
-	name = "stasis bag"
+	name = "静滞袋"
 	path = /obj/item/bodybag/cryobag
 
 /datum/autolathe/recipe/medilathe/rollerbed
@@ -434,70 +434,70 @@
 	path = /obj/item/roller
 
 /datum/autolathe/recipe/medilathe/pill_bottle
-	name = "pill bottle"
+	name = "药瓶"
 	path = /obj/item/storage/pill_bottle
 	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
 
 /datum/autolathe/recipe/medilathe/firstaid_regular
-	name = "first aid kit (reg)"
+	name = "急救包 (常规)"
 	path = /obj/item/storage/firstaid/regular/empty
 	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
 
 /datum/autolathe/recipe/medilathe/firstaid_fire
-	name = "first aid kit (fire)"
+	name = "急救包 (烧伤)"
 	path = /obj/item/storage/firstaid/fire/empty
 	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
 
 /datum/autolathe/recipe/medilathe/firstaid_toxin
-	name = "first aid kit (tox)"
+	name = "急救包 (毒素)"
 	path = /obj/item/storage/firstaid/toxin/empty
 	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
 
 /datum/autolathe/recipe/medilathe/firstaid_oxy
-	name = "first aid kit (oxy)"
+	name = "急救包 (缺氧)"
 	path = /obj/item/storage/firstaid/o2/empty
 	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
 
 /datum/autolathe/recipe/medilathe/firstaid_adv
-	name = "first aid kit (adv)"
+	name = "急救包 (高级)"
 	path = /obj/item/storage/firstaid/adv/empty
 	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
 
 /datum/autolathe/recipe/medilathe/firstaid_rad
-	name = "first aid kit (rad)"
+	name = "急救包 (辐射)"
 	path = /obj/item/storage/firstaid/rad/empty
 	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
 
 /datum/autolathe/recipe/medilathe/syringe_case
-	name = "syringe case"
+	name = "注射器盒"
 	path = /obj/item/storage/syringe_case
 	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
 
 /datum/autolathe/recipe/medilathe/surgical_case
-	name = "surgical case"
+	name = "手术箱"
 	path = /obj/item/storage/surgical_case
 	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
 
 /datum/autolathe/recipe/medilathe/vial_box
-	name = "vial box"
+	name = "药瓶盒"
 	path = /obj/item/storage/fancy/vials/empty
 	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
 
 /datum/autolathe/recipe/medilathe/surgical_tray
-	name = "surgical tray"
+	name = "手术托盘"
 	path = /obj/item/storage/surgical_tray/empty
 	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
 
 /datum/autolathe/recipe/medilathe/pressurized_reagent_container
-	name = "Pressurized Reagent Canister Pouch"
+	name = "加压试剂罐包"
 	path = /obj/item/storage/pouch/pressurized_reagent_canister
 	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
 
 /datum/autolathe/recipe/medilathe/pressurized_canister
-	name = "Pressurized Canister"
+	name = "加压罐"
 	path = /obj/item/reagent_container/glass/pressurized_canister
 	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
 
 /datum/autolathe/recipe/medilathe/research_glasses
-	name = "Reagent scanner HUD goggles"
+	name = "试剂扫描HUD护目镜"
 	path = /obj/item/clothing/glasses/science

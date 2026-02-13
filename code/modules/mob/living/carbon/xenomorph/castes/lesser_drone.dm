@@ -40,7 +40,7 @@
 /mob/living/carbon/xenomorph/lesser_drone
 	caste_type = XENO_CASTE_LESSER_DRONE
 	name = XENO_CASTE_LESSER_DRONE
-	desc = "An alien drone. Looks... smaller."
+	desc = "一只异形工蜂。看起来...更小。"
 	icon = 'icons/mob/xenos/castes/tier_1/drone.dmi'
 	icon_size = 48
 	icon_state = "Lesser Drone Walking"
@@ -122,7 +122,7 @@
 	return
 
 /datum/behavior_delegate/lesser_drone_base
-	name = "Base Lesser Drone Behavior Delegate"
+	name = "基础次级工蜂行为委托"
 
 /datum/behavior_delegate/lesser_drone_base/on_life()
 	if(bound_xeno.body_position == STANDING_UP && !(locate(/obj/effect/alien/weeds) in get_turf(bound_xeno)))

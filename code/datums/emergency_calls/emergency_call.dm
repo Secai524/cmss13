@@ -160,10 +160,10 @@
 /mob/dead/observer/proc/do_join_response_team()
 
 	if(jobban_isbanned(src, "Syndicate") || jobban_isbanned(src, "Emergency Response Team"))
-		to_chat(src, SPAN_DANGER("You are jobbanned from the emergency response team!"))
+		to_chat(src, SPAN_DANGER("你已被禁止加入应急响应小队！"))
 		return
 	if(!SSticker.mode || !length(SSticker.mode.picked_calls))
-		to_chat(src, SPAN_WARNING("No distress beacons are active. You will be notified if this changes."))
+		to_chat(src, SPAN_WARNING("当前无活跃求救信标。如有变化将通知你。"))
 		return
 
 	var/list/beacons = list()
@@ -177,25 +177,25 @@
 
 		beacons += list("[name]" = em_call) // I hate byond
 
-	var/choice = tgui_input_list(src, "Choose a distress beacon to join", "", beacons)
+	var/choice = tgui_input_list(src, "选择要加入的求救信标", "", beacons)
 
 	if(!choice)
 		return
 
 	if(!beacons[choice] || !(beacons[choice] in SSticker.mode.picked_calls))
-		to_chat(src, "That choice is no longer available!")
+		to_chat(src, "该选项已不可用！")
 		return
 
 	var/datum/emergency_call/distress = beacons[choice]
 
 	if(!istype(distress) || !distress.mob_max)
-		to_chat(src, SPAN_WARNING("The emergency response team is already full!"))
+		to_chat(src, SPAN_WARNING("应急响应小队已满员！"))
 		return
 	var/deathtime = world.time - usr.timeofdeath
 
 	if(deathtime < 30 SECONDS) //Nice try, ghosting right after the announcement
 		if(SSmapping.configs[GROUND_MAP].map_name != MAP_WHISKEY_OUTPOST) // people ghost so often on whiskey outpost.
-			to_chat(src, SPAN_WARNING("You ghosted too recently."))
+			to_chat(src, SPAN_WARNING("你最近刚脱离观察者状态。"))
 			return
 
 	if(!mind) //How? Give them a new one anyway.
@@ -209,13 +209,13 @@
 	if(!client || !mind)
 		return //Somehow
 	if(mind in distress.candidates)
-		to_chat(src, SPAN_WARNING("You are already a candidate for this emergency response team."))
+		to_chat(src, SPAN_WARNING("你已是该应急响应小队的候选成员。"))
 		return
 
 	if(distress.add_candidate(src))
-		to_chat(src, SPAN_BOLDNOTICE("You are now a candidate in the emergency response team! If there are enough candidates, you may be picked to be part of the team."))
+		to_chat(src, SPAN_BOLDNOTICE("你现已成为应急响应小队的候选成员！如果候选人数足够，你可能会被选入小队。"))
 	else
-		to_chat(src, SPAN_WARNING("You did not get enlisted in the response team. Better luck next time!"))
+		to_chat(src, SPAN_WARNING("你未能入选响应小队。下次好运！"))
 
 /datum/emergency_call/proc/activate(quiet_launch = FALSE, announce_incoming = TRUE, turf/override_spawn_loc)
 	set waitfor = 0
@@ -228,7 +228,7 @@
 	message_admins("Distress beacon: '[name]' activated [hostility? "[SPAN_WARNING("(THEY ARE HOSTILE)")]":"(they are friendly)"]. Looking for candidates.")
 
 	if(!quiet_launch)
-		marine_announcement("A distress beacon has been launched from the [MAIN_SHIP_NAME].", "Priority Alert", 'sound/AI/distressbeacon.ogg', logging = ARES_LOG_SECURITY)
+		marine_announcement("一个求救信标已从[MAIN_SHIP_NAME]发射。", "Priority Alert", 'sound/AI/distressbeacon.ogg', logging = ARES_LOG_SECURITY)
 
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/emergency_call, spawn_candidates), quiet_launch, announce_incoming, override_spawn_loc), 30 SECONDS)
 
@@ -248,7 +248,7 @@
 		candidates = list()
 
 		if(!quiet_launch)
-			marine_announcement("The distress signal has not received a response, the launch tubes are now recalibrating.", "Distress Beacon", logging = ARES_LOG_SECURITY)
+			marine_announcement("求救信号未收到回应，发射管正在重新校准。", "Distress Beacon", logging = ARES_LOG_SECURITY)
 		return
 
 	//We've got enough!
@@ -275,7 +275,7 @@
 		if(length(candidates))
 			for(var/datum/mind/I in candidates)
 				if(I.current)
-					to_chat(I.current, SPAN_WARNING("You didn't get selected to join the distress team. Better luck next time!"))
+					to_chat(I.current, SPAN_WARNING("你未被选中加入求救小队。下次好运！"))
 
 	if(announce_incoming)
 		marine_announcement(dispatch_message, "Distress Beacon", 'sound/AI/distressreceived.ogg', logging = ARES_LOG_SECURITY) //Announcement that the Distress Beacon has been answered, does not hint towards the chosen ERT
@@ -285,7 +285,7 @@
 	//Let the deadchat know what's up since they are usually curious
 	for(var/mob/dead/observer/M in GLOB.observer_list)
 		if(M.client)
-			to_chat(M, SPAN_NOTICE("Distress beacon: [src.name] finalized."))
+			to_chat(M, SPAN_NOTICE("求救信标：[src.name] 已最终确定。"))
 
 	if(shuttle_id && !override_spawn_loc)
 		if(!SSmapping.shuttle_templates[shuttle_id])

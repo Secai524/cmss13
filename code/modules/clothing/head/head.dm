@@ -28,7 +28,7 @@
 
 /obj/item/clothing/head/cmbandana
 	name = "bandana"
-	desc = "Typically worn by heavy-weapon operators, mercenaries and scouts, the bandana serves as a lightweight and comfortable hat. Comes in two stylish colors."
+	desc = "通常由重武器操作员、雇佣兵和侦察兵佩戴，头巾是一种轻便舒适的帽子。有两种时尚颜色可选。"
 	icon_state = "band"
 	flags_inv_hide = HIDETOPHAIR
 	item_icons = list(
@@ -71,7 +71,7 @@
 
 /obj/item/clothing/head/beanie
 	name = "beanie"
-	desc = "A standard military beanie, often worn by non-combat military personnel and support crews, though it is not uncommon to see combat personnel who no longer care about self-preservation wearing one of these as well. Popular due to being comfortable and snug."
+	desc = "标准军用毛线帽，通常由非战斗军事人员和支持人员佩戴，不过也常见于那些不再关心自我保护的战斗人员。因其舒适贴身而广受欢迎。"
 	icon = 'icons/obj/items/clothing/hats/hats.dmi'
 	icon_state = "beanie_cargo"
 	item_icons = list(
@@ -89,7 +89,7 @@
 
 /obj/item/clothing/head/beret/cm
 	name = "\improper USCM beret"
-	desc = "A hat typically worn by the field-officers of the USCM. Occasionally they find their way down the ranks into the hands of squad-leaders and decorated grunts."
+	desc = "通常由USCM的野战军官佩戴的帽子。偶尔也会流传到下级，被班长和受勋的普通士兵获得。"
 	icon = 'icons/obj/items/clothing/hats/berets.dmi'
 	icon_state = "beret"
 	item_icons = list(
@@ -152,8 +152,8 @@
 
 /obj/item/clothing/head/beret/cm/squadberet
 	icon_state = "beret_squad"
-	name = "USCM Squad Beret"
-	desc = "For those who want to show pride and have nothing to lose (in their head, at least)."
+	name = "USCM班用贝雷帽"
+	desc = "献给那些想要展示自豪感且（至少在脑袋上）没什么可失去的人。"
 	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/beret/cm/squadberet/equipped(mob/user, slot)
@@ -172,33 +172,33 @@
 			switch(H.assigned_squad.name)
 				if(SQUAD_MARINE_1)
 					icon_state = "beret_alpha"
-					desc = "Often found atop heads, slightly less found on those still attached."
+					desc = "常见于头顶，在那些还连着的脑袋上则稍少见一些。"
 				if(SQUAD_MARINE_2)
 					icon_state = "beret_bravo"
-					desc = "It has quite a lot of debris on it, the person wearing this probably moves less than a wall."
+					desc = "上面有不少碎屑，戴这帽子的人可能比墙动得还少。"
 				if(SQUAD_MARINE_3)
 					icon_state = "beret_charlie"
-					desc = "Still has some morning toast crumbs on it."
+					desc = "上面还沾着些早餐吐司的碎屑。"
 				if(SQUAD_MARINE_4)
 					icon_state = "beret_delta"
-					desc = "Hard to consider protection, but these types of people don't seek protection."
+					desc = "很难称之为防护，但这类人寻求的也不是防护。"
 				if(SQUAD_MARINE_5)
 					icon_state = "beret_echo"
-					desc = "Tightly Woven, as it should be."
+					desc = "紧密编织，理应如此。"
 				if(SQUAD_MARINE_CRYO)
 					icon_state = "beret_foxtrot"
-					desc = "Looks and feels starched, cold to the touch."
+					desc = "看起来和摸起来都像浆过一样，触感冰冷。"
 				if(SQUAD_MARINE_INTEL)
 					icon_state = "beret_intel"
-					desc = "Looks more intellegent than the person wearing it."
+					desc = "看起来比戴着它的人更聪明。"
 		else
 			icon_state = "beret"
 			desc = initial(desc)
 		H.update_inv_head()
 
 /obj/item/clothing/head/beret/civilian
-	name = "Tan Beret"
-	desc = "A nice fashionable beret, popular with executives."
+	name = "棕褐色贝雷帽"
+	desc = "一顶时尚漂亮的贝雷帽，深受高管喜爱。"
 	icon_state = "berettan"
 	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
 	item_icons = list(
@@ -206,7 +206,7 @@
 	)
 
 /obj/item/clothing/head/beret/civilian/brown
-	name = "Brown Beret"
+	name = "棕色贝雷帽"
 	icon_state = "berettan"
 	icon = 'icons/obj/items/clothing/hats/hats_by_map/urban.dmi'
 	item_icons = list(
@@ -214,7 +214,7 @@
 	)
 
 /obj/item/clothing/head/beret/civilian/black
-	name = "Black Beret"
+	name = "黑色贝雷帽"
 	icon_state = "beret_black"
 	icon = 'icons/obj/items/clothing/hats/berets.dmi'
 	item_icons = list(
@@ -222,7 +222,7 @@
 	)
 
 /obj/item/clothing/head/beret/civilian/white
-	name = "White Beret"
+	name = "白色贝雷帽"
 	icon_state = "beret"
 	icon = 'icons/obj/items/clothing/hats/hats_by_map/snow.dmi'
 	item_icons = list(
@@ -231,7 +231,7 @@
 
 /obj/item/clothing/head/headband
 	name = "headband"
-	desc = "A rag typically worn by the less-orthodox weapons operators. While it offers no protection, it is certainly comfortable to wear compared to the standard helmet. Comes in two stylish colors."
+	desc = "通常由非正统武器操作员佩戴的头巾。虽然不提供任何防护，但相比标准头盔佩戴起来确实更舒适。提供两种时尚颜色。"
 	icon_state = "headband"
 	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
 	flags_obj = OBJ_NO_HELMET_BAND|OBJ_IS_HELMET_GARB
@@ -303,7 +303,7 @@
 	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/headband/rebel
-	desc = "A headband made from a simple strip of cloth. The words \"DOWN WITH TYRANTS\" are emblazoned on the front."
+	desc = "由简单布条制成的头带。上面写着\"DOWN WITH TYRANTS\" are emblazoned on the front."
 	icon_state = "rebelband"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/CLF.dmi'
 	item_icons = list(
@@ -371,7 +371,7 @@
 	icon_state = replacetext(initial(dummy_icon_state), "%SQUAD%", squad_color)
 
 /obj/item/clothing/head/headband/rambo
-	desc = "It flutters in the face of the wind, defiant and unrestrained, like the man who wears it."
+	desc = "它在风中飘扬，桀骜不驯，就像佩戴它的那个人一样。"
 	icon = 'icons/obj/items/clothing/halloween_clothes.dmi'
 	icon_state = "headband_rambo"
 	item_icons = list(
@@ -381,7 +381,7 @@
 
 /obj/item/clothing/head/headset
 	name = "\improper USCM headset"
-	desc = "A headset typically found in use by radio-operators and officers. This one appears to be malfunctioning."
+	desc = "通常由无线电操作员和军官使用的耳机。这个看起来出了故障。"
 	icon_state = "headset"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	item_icons = list(
@@ -435,8 +435,8 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 ))
 
 /obj/item/clothing/head/cmcap
-	name = "patrol cap"
-	desc = "A casual cap issued as part of the non-combat uniform. While it only protects from the sun, it's much more comfortable than a helmet."
+	name = "巡逻帽"
+	desc = "作为非战斗制服一部分配发的便帽。虽然只能防晒，但比头盔舒适得多。"
 	icon_state = "cap"
 	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
 	item_icons = list(
@@ -540,7 +540,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	if(usr.is_mob_incapacitated())
 		return
 	if(!(flags_marine_hat & HAT_CAN_FLIP))
-		to_chat(usr, SPAN_WARNING("[src] can't be flipped!"))
+		to_chat(usr, SPAN_WARNING("[src]无法翻转！"))
 		return
 
 	flags_marine_hat ^= HAT_FLIPPED
@@ -556,7 +556,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 
 /obj/item/clothing/head/cmcap/boonie
 	name = "\improper USCM boonie hat"
-	desc = "A floppy bush hat. Protects only from the sun and rain, but very comfortable."
+	desc = "一顶软塌塌的丛林帽。仅能防晒防雨，但非常舒适。"
 	icon_state = "booniehat"
 	flipping_message = list(
 		"flipped" = "You tuck the hat's chinstrap away. Hopefully the wind doesn't nick it...",
@@ -569,7 +569,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 
 /obj/item/clothing/head/cmcap/boonie/fisherman
 	name = "\improper fisherman's boonie hat"
-	desc = "A floppy boonie hat with hooks, lines, and sinkers tucked around the band—clearly the choice of a seasoned angler. Offers shade from the sun and some rain protection."
+	desc = "一顶软塌塌的宽边帽，帽圈上塞着鱼钩、鱼线和铅坠——显然是经验丰富的垂钓者的选择。提供遮阳和一定的防雨功能。"
 	icon_state = "booniehat_fisher"
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN
 	icon = 'icons/obj/items/clothing/hats/hats.dmi'
@@ -580,11 +580,11 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 /obj/item/clothing/head/cmcap/co
 	name = "\improper USCM Commanding officer cap"
 	icon_state = "cocap"
-	desc = "A hat usually worn by senior officers in the USCM. While it provides no protection, some officers wear it in the field to make themselves more recognisable."
+	desc = "通常由USCM高级军官佩戴的帽子。虽然不提供防护，但一些军官在战场上佩戴它以使自己更易辨认。"
 
 /obj/item/clothing/head/cmcap/co/formal
 	name = "\improper USCM formal Commanding Officer's white cap"
-	desc = "A formal cover worn by senior officers of the USCM."
+	desc = "USCM高级军官佩戴的正式军帽。"
 	icon_state = "co_formalhat_white"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	item_icons = list(
@@ -599,7 +599,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 
 /obj/item/clothing/head/cmcap/req
 	name = "\improper USCM requisition cap"
-	desc = "It's a not-so-fancy hat for a not-so-fancy military supply clerk."
+	desc = "这是一顶不那么花哨的帽子，配给不那么花哨的军事补给文员。"
 	icon_state = "cargocap"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	item_icons = list(
@@ -609,23 +609,23 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 
 /obj/item/clothing/head/cmcap/req/ro
 	name = "\improper USCM quartermaster cap"
-	desc = "It's a fancy hat for a not-so-fancy military supply clerk."
+	desc = "这是一顶花哨的帽子，配给不那么花哨的军事补给文员。"
 	icon_state = "rocap"
 
 /obj/item/clothing/head/cmcap/bridge
 	name = "\improper USCM officer cap"
-	desc = "A hat usually worn by officers in the USCM. While it provides no protection, some officers wear it in the field to make themselves more recognisable."
+	desc = "通常由USCM军官佩戴的帽子。虽然不提供防护，但一些军官在战场上佩戴它以使自己更易辨认。"
 	icon_state = "cap_officer"
 
 /obj/item/clothing/head/cmcap/flap
 	name = "\improper USCM expedition cap"
-	desc = "It's a cap, with flaps. A patch stitched across the front reads \"<b>USS ALMAYER</b>\"."
+	desc = "这是一顶带护耳的帽子。前面缝着一块补丁，上面写着\"<b>USS ALMAYER</b>\"."
 	icon_state = "flapcap"
 	flags_marine_hat = HAT_GARB_OVERLAY
 
 /obj/item/clothing/head/cmcap/reporter
-	name = "combat correspondent cap"
-	desc = "A faithful cap for any terrain war correspondents may find themselves in."
+	name = "战地记者帽"
+	desc = "一顶可靠的帽子，适合战地记者可能遇到的任何地形。"
 	icon_state = "cc_flagcap"
 	item_state = "cc_flagcap"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
@@ -637,7 +637,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 
 /obj/item/clothing/head/cmo
 	name = "\improper Chief Medical Officer's Peaked Cap"
-	desc = "A peaked cap given to high-ranking civilian medical officers. Looks just a touch silly."
+	desc = "配发给高级文职医疗官的平顶帽。看起来有点傻气。"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	icon_state = "cmohat"
 	item_icons = list(
@@ -648,14 +648,14 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 //=======================================================================\\
 //Berets DO NOT have armor, so they have their own category. PMC caps are helmets, so they're in helmets.dm.
 /obj/item/clothing/head/beret/marine
-	name = "marine officer beret"
-	desc = "A beret with the USCM insignia emblazoned on it. It radiates respect and authority."
+	name = "陆战队军官贝雷帽"
+	desc = "一顶印有USCM徽章的贝雷帽。它散发着敬意与权威。"
 	icon_state = "beret_badge"
 
 /obj/item/clothing/head/beret/marine/mp
 	name = "\improper USCM MP beret"
 	icon_state = "beretred"
-	desc = "A beret with the USCM Military Police insignia emblazoned on it."
+	desc = "一顶印有USCM宪兵徽章的贝雷帽。"
 	icon = 'icons/obj/items/clothing/hats/berets.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
@@ -665,7 +665,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 /obj/item/clothing/head/beret/marine/mp/warden
 	name = "\improper USCM MP warden peaked cap"
 	icon_state = "warden"
-	desc = "A peaked cap with the USCM Military Police Lieutenant insignia emblazoned on it. It is typically used by Wardens on USCM ships."
+	desc = "一顶印有USCM宪兵中尉徽章的平顶帽。通常由USCM舰船上的典狱长佩戴。"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
@@ -673,7 +673,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 
 /obj/item/clothing/head/beret/marine/mp/cmp
 	name = "\improper USCM chief MP beret"
-	desc = "A beret with the USCM Military Police First Lieutenant insignia emblazoned on it. It shines with the glow of corrupt authority and a smudge of doughnut."
+	desc = "一顶印有USCM宪兵上尉徽章的贝雷帽。它闪烁着腐败权威的光芒，还沾着一点甜甜圈的污渍。"
 	icon_state = "beretwo"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	item_icons = list(
@@ -683,7 +683,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 
 /obj/item/clothing/head/beret/marine/mp/mppeaked
 	name = "\improper USCM MP peaked cap"
-	desc = "A peaked cap worn by the USCM's Military Police. Something about it reminds you of an event you once read about in a history book."
+	desc = "USCM宪兵佩戴的平顶帽。它让你想起了曾在历史书上读到过的某个事件。"
 	icon_state = "mppeaked"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	item_icons = list(
@@ -692,7 +692,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 
 /obj/item/clothing/head/beret/marine/mp/mpcap
 	name = "\improper USCM MP ball-cap"
-	desc = "A ball-cap, typically worn by the more casual of the USCM's Military Police."
+	desc = "一顶棒球帽，通常由USCM宪兵中较为随性的人员佩戴。"
 	icon_state = "mpcap"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	item_icons = list(
@@ -701,7 +701,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 
 /obj/item/clothing/head/beret/marine/mp/provost
 	name = "\improper USCM provost beret"
-	desc = "A beret with the USCM Military Police insignia emblazoned on it."
+	desc = "一顶印有USCM宪兵徽章的贝雷帽。"
 	icon_state = "beretwo"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	item_icons = list(
@@ -711,7 +711,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 
 /obj/item/clothing/head/beret/marine/mp/provost/senior
 	name = "\improper USCM senior provost beret"
-	desc = "A beret with the USCM Military Police insignia emblazoned on it."
+	desc = "一顶印有USCM宪兵徽章的贝雷帽。"
 	icon_state = "coblackberet"
 
 /obj/item/clothing/head/beret/marine/mp/provost/chief
@@ -719,8 +719,8 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	icon_state = "pvciberet"
 
 /obj/item/clothing/head/beret/marine/commander
-	name = "marine commanding officer beret"
-	desc = "A beret with the commanding officer's insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon their head and shoulders."
+	name = "陆战队员指挥官贝雷帽"
+	desc = "一顶绣有指挥官徽章的贝雷帽。佩戴者可能会感到责任的重担压在头上和肩上。"
 	icon_state = "coberet"
 	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
 	item_icons = list(
@@ -753,8 +753,8 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 			item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats_by_map/urban.dmi'
 
 /obj/item/clothing/head/beret/marine/commander/dress
-	name = "marine major white beret"
-	desc = "A white beret with the Major insignia emblazoned on it. Its dazzling white color commands power and exudes class."
+	name = "陆战队员少校白色贝雷帽"
+	desc = "一顶绣有少校徽章的白色贝雷帽。其耀眼的白色彰显权力与格调。"
 	icon_state = "codressberet"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	item_icons = list(
@@ -763,8 +763,8 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/beret/marine/commander/black
-	name = "marine major black beret"
-	desc = "A black beret with the Major insignia emblazoned on it. Its sleek black color commands power and exudes class."
+	name = "陆战队员少校黑色贝雷帽"
+	desc = "一顶绣有少校徽章的黑色贝雷帽。其光滑的黑色彰显权力与格调。"
 	icon_state = "coblackberet"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	item_icons = list(
@@ -773,8 +773,8 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/beret/marine/commander/council
-	name = "marine colonel beret"
-	desc = "A blue beret with the Lieutenant Colonel's insignia emblazoned on it. Its blue color symbolizes loyalty, confidence, and politics - the core components of a true Colonel."
+	name = "陆战队员上校贝雷帽"
+	desc = "一顶绣有中校徽章的蓝色贝雷帽。其蓝色象征着忠诚、自信与政治手腕——一名真正上校的核心特质。"
 	icon_state = "cdreberet"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	item_icons = list(
@@ -783,8 +783,8 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/beret/marine/commander/councilchief
-	name = "marine colonel beret"
-	desc = "A dark blue, custom-tailored beret signifying The Colonel. Definitely not an alias for a General."
+	name = "陆战队员上校贝雷帽"
+	desc = "一顶深蓝色、定制裁剪的贝雷帽，象征着上校。这绝对不是将军的化名。"
 	icon_state = "cdrechiefberet"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	item_icons = list(
@@ -793,8 +793,8 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/marine/peaked
-	name = "marine peaked cap"
-	desc = "A peaked cap. Wearer may suffer the heavy weight of responsibility upon their head and shoulders."
+	name = "陆战队员大檐帽"
+	desc = "一顶大檐帽。佩戴者可能会感到责任的重担压在头上和肩上。"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	icon_state = "marine_formal"
 	item_icons = list(
@@ -802,44 +802,44 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	)
 
 /obj/item/clothing/head/marine/peaked/service
-	name = "marine service peaked cap"
-	desc = "A peaked cap. Wearer may suffer the heavy weight of responsibility upon their head and shoulders."
+	name = "陆战队员常服大檐帽"
+	desc = "一顶大檐帽。佩戴者可能会感到责任的重担压在头上和肩上。"
 	icon_state = "marine_service"
 
 /obj/item/clothing/head/marine/peaked/captain
-	name = "marine commanding officer peaked cap"
-	desc = "A peaked cap with the commanding officer's insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon their head and shoulders."
+	name = "陆战队员指挥官大檐帽"
+	desc = "一顶绣有指挥官徽章的大檐帽。佩戴者可能会感到责任的重担压在头上和肩上。"
 	icon_state = "copeaked"
 	black_market_value = 30
 
 /obj/item/clothing/head/marine/peaked/captain/white
-	name = "commanding officer's dress white peaked cap"
-	desc = "A white, Navy-style peaked cap for the Commanding Officer. Wearer may suffer the heavy weight of responsibility upon their head."
+	name = "指挥官白色礼服大檐帽"
+	desc = "一顶为指挥官准备的白色海军风格大檐帽。佩戴者可能会感到责任的重担压在头上。"
 	icon_state = "co_peakedcap_white"
 
 /obj/item/clothing/head/marine/peaked/captain/black
-	name = "commanding officer's dress black peaked cap"
-	desc = "A black, Navy-style peaked cap for the Commanding Officer. Wearer may suffer the heavy weight of responsibility upon their head."
+	name = "指挥官黑色礼服大檐帽"
+	desc = "一顶为指挥官准备的黑色海军风格大檐帽。佩戴者可能会感到责任的重担压在头上。"
 	icon_state = "co_peakedcap_black"
 
 /obj/item/clothing/head/beret/marine/chiefofficer
-	name = "chief officer beret"
-	desc = "A beret with the lieutenant-commander insignia emblazoned on it. It emits a dark aura and may corrupt the soul."
+	name = "首席军官贝雷帽"
+	desc = "一顶绣有少校徽章的贝雷帽。它散发着黑暗的气息，可能会腐蚀灵魂。"
 	icon_state = "hosberet"
 
 /obj/item/clothing/head/beret/marine/techofficer
-	name = "technical officer beret"
-	desc = "A beret with the lieutenant insignia emblazoned on it. There's something inexplicably efficient about it..."
+	name = "技术军官贝雷帽"
+	desc = "一顶绣有中尉徽章的贝雷帽。它有种难以言喻的高效感……"
 	icon_state = "e_beret_badge"
 
 /obj/item/clothing/head/beret/marine/logisticsofficer
-	name = "logistics officer beret"
-	desc = "A beret with the lieutenant insignia emblazoned on it. It inspires a feeling of respect."
+	name = "后勤军官贝雷帽"
+	desc = "一顶绣有中尉徽章的贝雷帽。它能激发一种受尊敬的感觉。"
 	icon_state = "beret_badge"
 
 /obj/item/clothing/head/beret/marine/ro
 	name = "\improper USCM quartermaster beret"
-	desc = "A beret with the sergeant insignia emblazoned on it. It symbolizes hard work and shady business."
+	desc = "一顶绣有中士徽章的贝雷帽。它象征着辛勤工作和见不得光的勾当。"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
@@ -852,7 +852,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 
 /obj/item/clothing/head/ushanka
 	name = "ushanka"
-	desc = "Perfect for winter in Siberia, da?"
+	desc = "西伯利亚冬天的完美选择，对吧？"
 	icon_state = "ushankadown"
 	item_state = "ushankadown"
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
@@ -874,16 +874,16 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	if(src.icon_state == "ushankadown")
 		src.icon_state = "ushankaup"
 		src.item_state = "ushankaup"
-		to_chat(user, "You raise the ear flaps on the ushanka.")
+		to_chat(user, "你掀起了乌沙帽的护耳。")
 	else
 		src.icon_state = "ushankadown"
 		src.item_state = "ushankadown"
-		to_chat(user, "You lower the ear flaps on the ushanka.")
+		to_chat(user, "你放下了乌沙帽的护耳。")
 
 
 /obj/item/clothing/head/bearpelt
-	name = "bear pelt hat"
-	desc = "Fuzzy."
+	name = "熊皮帽"
+	desc = "毛茸茸的。"
 	icon_state = "bearpelt"
 	siemens_coefficient = 2
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_CHEST|BODY_FLAG_ARMS
@@ -902,7 +902,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 
 /obj/item/clothing/head/ivanberet
 	name = "\improper Black Beret"
-	desc = "Worn by officers of special units."
+	desc = "由特种部队军官佩戴。"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UPP.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UPP.dmi'
@@ -926,7 +926,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 
 /obj/item/clothing/head/beret/SOF_beret
 	name = "\improper SOF beret"
-	desc = "A finely crafted beret worn by members of the UPP Space Operations Forces. It signifies service in the void, from deep-space missions to planetary operations, and is a mark of discipline and camaraderie among its wearers."
+	desc = "一顶由UPP太空作战部队成员佩戴的精制贝雷帽。它象征着在深空任务和行星行动中的服役，是其佩戴者纪律与战友情谊的标志。"
 	icon_state = "SOF_beret"
 	item_state = "SOF_beret"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UPP.dmi'
@@ -936,7 +936,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 
 /obj/item/clothing/head/beret/army_beret
 	name = "\improper UPP reservist beret"
-	desc = "A well-made beret worn by reservists of the UPP armed forces. It signifies their continued commitment to the cause, even while not on active duty, and serves as a symbol of unity and service."
+	desc = "一顶由UPP武装力量预备役人员佩戴的精良贝雷帽。它象征着他们即使不在现役也持续对事业的奉献，是团结与服务的象征。"
 	icon_state = "army_beret"
 	item_state = "army_beret"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UPP.dmi'
@@ -946,7 +946,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 
 /obj/item/clothing/head/CMB
 	name = "\improper Colonial Marshal Bureau cap"
-	desc = "A dark cap enscribed with the powerful letters of 'MARSHAL' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
+	desc = "一项深色帽子，上面印有代表外缘星域正义、权威与保护的强大字母‘MARSHAL’。地球的法律延伸至太阳系之外。"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/CMB.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/CMB.dmi'
@@ -966,7 +966,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 
 /obj/item/clothing/head/CMB/beret
 	name = "\improper CMB Riot Control Unit beret"
-	desc = "A dark beret with a badge that has a word 'MARSHAL' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
+	desc = "一顶带有“MARSHAL”字样徽章的深色贝雷帽，代表着外缘地带的正义、权威与保护。地球的法律延伸至太阳系之外。"
 	icon_state = "cmb_beret"
 
 /obj/item/clothing/head/CMB/beret/marshal
@@ -975,7 +975,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 
 /obj/item/clothing/head/freelancer
 	name = "\improper armored Freelancer cap"
-	desc = "A sturdy freelancer's cap. More protective than it seems."
+	desc = "一顶结实的自由职业者帽。比看起来更具防护性。"
 	icon = 'icons/obj/items/clothing/hats/misc_ert_colony.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/misc_ert_colony.dmi'
@@ -1002,7 +1002,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 
 /obj/item/clothing/head/militia
 	name = "\improper armored militia cowl"
-	desc = "A large hood in service with some militias, meant for obscurity on the frontier. Offers some head protection due to the study fibers utilized in production."
+	desc = "一些民兵使用的大号兜帽，旨在边疆地区隐匿行踪。由于生产中使用的高强度纤维，提供了一定的头部防护。"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/CLF.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/CLF.dmi'
@@ -1025,17 +1025,17 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 
 /obj/item/clothing/head/militia/bucket
 	name = "bucket"
-	desc = "This metal bucket appears to have been modified with padding and chin-straps, plus an eye-slit carved into the \"front\". Presumably, it is intended to be worn on the head, possibly for protection."
+	desc = "这个金属桶似乎经过了改造，加装了衬垫和下巴绑带，还在\"front\". Presumably, it is intended to be worn on the head, possibly for protection."
 	icon_state = "bucket"
 
 /obj/item/clothing/head/militia/brown
 	name = "\improper armored militia hood"
-	desc = "A large hood in service with some militias, modified for full obscurity on the frontier. Offers some head protection due to the study fibers utilized in production."
+	desc = "一些民兵使用的大号兜帽，为在边疆地区完全隐匿而改装。由于生产中使用的高强度纤维，提供了一定的头部防护。"
 	icon_state = "coordinator_hood"
 
 /obj/item/clothing/head/beret/clf
 	name = "\improper Colonial Liberation Front beret"
-	desc = "A repurposed captured police beret, with a CLF insignia mounted on place where police cockade would usually sit."
+	desc = "一顶重新利用的缴获警用贝雷帽，原本佩戴警徽的位置换上了CLF的徽章。"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/CLF.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/CLF.dmi'
@@ -1055,7 +1055,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 
 /obj/item/clothing/head/general
 	name = "\improper USCM officer peaked service cap"
-	desc = "A standard issue officer service cap, worn by USCM commissioned officers on official visits."
+	desc = "标准配发的军官常服帽，由USCM委任军官在正式访问时佩戴。"
 	icon_state = "general_helmet"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	item_icons = list(
@@ -1068,7 +1068,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 
 /obj/item/clothing/head/durag
 	name = "durag"
-	desc = "An improvised head wrap made out of a standard issue neckerchief. Great for keeping the sweat out of your eyes and protecting your hair."
+	desc = "用标准配发的围巾临时制作的头巾。能有效防止汗水流入眼睛并保护头发。"
 	icon_state = "durag"
 	icon = 'icons/obj/items/clothing/hats/hats_by_map/jungle.dmi'
 	flags_inv_hide = HIDETOPHAIR
@@ -1104,12 +1104,12 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 
 /obj/item/clothing/head/durag/black
 	icon_state = "duragblack"
-	desc = "An improvised head wrap made out of a black neckerchief. Great for keeping the sweat out of your eyes and protecting your hair."
+	desc = "用黑色围巾临时制作的头巾。能有效防止汗水流入眼睛并保护头发。"
 	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/drillhat
 	name = "\improper USCM drill hat"
-	desc = "A formal hat worn by drill sergeants. Police that moustache."
+	desc = "训练教官佩戴的正式帽子。管好你的胡子。"
 	icon_state = "drillhat"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	item_icons = list(
@@ -1120,8 +1120,8 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 //=======================================================================\\
 
 /obj/item/clothing/head/marine/dress_cover
-	name = "marine dress blues cover"
-	desc = "The combination cover of the legendary Marine dress blues, virtually unchanged since the 19th century. The polished logo sits proudly on the white cloth."
+	name = "陆战队蓝色礼服帽"
+	desc = "传奇的陆战队蓝色礼服组合帽，自19世纪以来几乎未变。抛光的徽章骄傲地置于白色布料之上。"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
@@ -1130,14 +1130,14 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	item_state = "e_cap"
 
 /obj/item/clothing/head/marine/dress_cover/officer
-	name = "marine dress blues officer cover"
-	desc = "The combination cover of the legendary Marine dress blues, virtually unchanged since the 19th century. Features a gold stripe and silvered logo, emblematic of an officer."
+	name = "陆战队蓝色礼服军官帽"
+	desc = "传奇的陆战队蓝色礼服组合帽，自19世纪以来几乎未变。带有金色条纹和银色徽章，是军官的象征。"
 	icon_state = "o_cap"
 	item_state = "o_cap"
 
 /obj/item/clothing/head/owlf_hood
 	name = "\improper OWLF thermal hood"
-	desc = "This hood is attached to a high-tech suit with built-in thermal cloaking technology."
+	desc = "这个兜帽连接着一套内置热光学隐形技术的高科技套装。"
 	icon = 'icons/obj/items/clothing/hats/misc_ert_colony.dmi'
 	icon_state = "owlf_hood"
 	item_icons = list(
@@ -1149,8 +1149,8 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 //=ROYAL MARINES=\\
 
 /obj/item/clothing/head/beanie/royal_marine
-	name = "royal marine beanie"
-	desc = "A standard military beanie."
+	name = "皇家陆战队无檐帽"
+	desc = "一顶标准的军用无檐帽。"
 	icon_state = "rmc_beanie"
 	item_state = "rmc_beanie"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/TWE.dmi'
@@ -1159,14 +1159,14 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	)
 
 /obj/item/clothing/head/beanie/royal_marine/turban
-	name = "royal marine turban"
-	desc = "A standard military turban found in the royal marines. Considered a rare item, these kind of turbans are prized by collectors in the UA."
+	name = "皇家陆战队头巾"
+	desc = "皇家陆战队中的标准军用头巾。这类头巾被认为是稀有物品，在UA备受收藏家珍视。"
 	icon_state = "rmc_turban"
 	item_state = "rmc_turban"
 
 /obj/item/clothing/head/beret/royal_marine
-	name = "royal marine beret"
-	desc = "A green beret belonging to the royal marines commando. This beret symbolizes a royal marines ability to fight in any environment, desert, sea, artic or space a royal marine will always be ready."
+	name = "皇家陆战队贝雷帽"
+	desc = "属于皇家陆战队突击队的绿色贝雷帽。这顶贝雷帽象征着皇家陆战队在任何环境下作战的能力——沙漠、海洋、极地或太空，皇家陆战队员时刻准备着。"
 	icon_state = "rmc_beret"
 	item_state = "rmc_beret"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/TWE.dmi'
@@ -1180,8 +1180,8 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	item_state = "rmc_beret_tl"
 
 /obj/item/clothing/head/beret/iasf_commander_cap
-	name = "IASF officer's service cap"
-	desc = "A distinguished service cap worn by officers of the Imperial Armed Space Force. Featuring a crimson band, gold IASF emblem, and a black patent peak, it reflects the discipline and authority of the Empire’s airborne command."
+	name = "IASF军官常服帽"
+	desc = "帝国武装太空部队军官佩戴的杰出常服帽。配有深红色帽带、金色IASF徽章和黑色漆皮帽檐，体现了帝国空中指挥部的纪律与权威。"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/TWE.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/TWE.dmi'

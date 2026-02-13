@@ -3,7 +3,7 @@
 /////////////////////////////////////////
 
 /obj/structure/machinery/sleep_console
-	name = "sleeper console"
+	name = "医疗休眠舱控制台"
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "sleeperconsole"
 	var/obj/structure/machinery/medical_pod/sleeper/connected = null
@@ -66,7 +66,7 @@
 		return
 	if(!user.drop_inv_item_to_loc(with, src))
 		return
-	to_chat(user, SPAN_NOTICE("As you insert [with] into the console, you hear it whir to life as [src] reads it."))
+	to_chat(user, SPAN_NOTICE("当你将[with]插入控制台时，你听到它嗡鸣启动，[src]正在读取。"))
 	connected.upgraded = TRUE
 	connected.available_chemicals = connected.upgraded_chemicals
 	connected.emergency_chems = connected.upgraded_emergency_chems
@@ -216,7 +216,7 @@
 			if(!connected.occupant)
 				return
 			if(connected.occupant.stat == DEAD)
-				to_chat(usr, SPAN_DANGER("This person has no life to preserve anymore. Take them to a department capable of reanimating them."))
+				to_chat(usr, SPAN_DANGER("此人已无生命体征需要维持。将他们送往有能力进行复苏的部门。"))
 				return
 			var/chemical = params["chemid"]
 			var/amount = text2num(params["amount"])
@@ -233,7 +233,7 @@
 			if(connected.occupant.health > connected.min_health || (chemical in connected.emergency_chems))
 				connected.inject_chemical(usr, chemical, amount)
 			else
-				to_chat(usr, SPAN_DANGER("This person is not in good enough condition for sleepers to be effective! Use another means of treatment, such as cryogenics!"))
+				to_chat(usr, SPAN_DANGER("此人的状况不佳，医疗休眠舱无法有效治疗！请使用其他治疗手段，例如冷冻疗法！"))
 		if("togglefilter")
 			connected.toggle_filter()
 		if("ejectify")
@@ -253,7 +253,7 @@
 /obj/structure/machinery/medical_pod/sleeper
 	name = "sleeper"
 	icon_state = "sleeper"
-	desc = "A fancy bed with built-in injectors, a dialysis machine, and a limited health scanner."
+	desc = "一张带有内置注射器、透析机和有限健康扫描仪的先进医疗床。"
 
 	entry_timer = 2 SECONDS
 
@@ -393,34 +393,34 @@
 		if(occupant.reagents.get_reagent_amount(chemical) + amount <= max_chem)
 			occupant.reagents.add_reagent(chemical, amount, , , user)
 			var/datum/reagent/temp = GLOB.chemical_reagents_list[chemical]
-			to_chat(user, SPAN_NOTICE("[occupant] now has [occupant.reagents.get_reagent_amount(chemical)] units of [temp.name] in \his bloodstream."))
+			to_chat(user, SPAN_NOTICE("[occupant]的血液中现在含有[occupant.reagents.get_reagent_amount(chemical)]单位的[temp.name]。"))
 			return
-	to_chat(user, SPAN_WARNING("There's no occupant in the sleeper or the subject has too many chemicals!"))
+	to_chat(user, SPAN_WARNING("医疗休眠舱内没有乘员，或者目标体内化学物质过多！"))
 	return
 
 
 /obj/structure/machinery/medical_pod/sleeper/proc/check(mob/living/user)
 	if(occupant)
 		var/msg_occupant = "[occupant]"
-		to_chat(user, SPAN_NOTICE("<B>Occupant ([msg_occupant]) Statistics:</B>"))
+		to_chat(user, SPAN_NOTICE("<B>乘员 ([msg_occupant]) 状态：</B>"))
 		var/t1
 		switch(occupant.stat)
 			if(0)
 				t1 = "Conscious"
 			if(1)
-				t1 = "Unconscious"
+				t1 = "昏迷"
 			if(2)
 				t1 = "*dead*"
-		to_chat(user, "[]\t Health %: [] ([])", (occupant.health > 50 ? SPAN_NOTICE("") : SPAN_DANGER("")), occupant.health, t1)
-		to_chat(user, "[]\t -Core Temperature: []&deg;C ([]&deg;F)</FONT><BR>", (occupant.bodytemperature > 50 ? "<font color='blue'>" : "<font color='red'>"), occupant.bodytemperature-T0C, occupant.bodytemperature*1.8-459.67)
-		to_chat(user, "[]\t -Brute Damage %: []", (occupant.getBruteLoss() < 60 ? SPAN_NOTICE("") : SPAN_DANGER("")), occupant.getBruteLoss())
-		to_chat(user, "[]\t -Respiratory Damage %: []", (occupant.getOxyLoss() < 60 ? SPAN_NOTICE("") : SPAN_DANGER("")), occupant.getOxyLoss())
-		to_chat(user, "[]\t -Toxin Content %: []", (occupant.getToxLoss() < 60 ? SPAN_NOTICE("") : SPAN_DANGER("")), occupant.getToxLoss())
-		to_chat(user, "[]\t -Burn Severity %: []", (occupant.getFireLoss() < 60 ? SPAN_NOTICE("") : SPAN_DANGER("")), occupant.getFireLoss())
-		to_chat(user, SPAN_NOTICE("Expected time till occupant can safely awake: (note: These times are always inaccurate)"))
+		to_chat(user, "[]\t 生命值百分比：[] ([])", (occupant.health > 50 ? SPAN_NOTICE("") : SPAN_DANGER("")), occupant.health, t1)
+		to_chat(user, "[]\t -核心体温：[]&deg;C ([]&deg;F)</FONT><BR>", (occupant.bodytemperature > 50 ? "<font color='blue'>" : "<font color='red'>"), occupant.bodytemperature-T0C, occupant.bodytemperature*1.8-459.67)
+		to_chat(user, "[]\t -钝伤百分比：[]", (occupant.getBruteLoss() < 60 ? SPAN_NOTICE("") : SPAN_DANGER("")), occupant.getBruteLoss())
+		to_chat(user, "[]\t -呼吸系统损伤百分比：[]", (occupant.getOxyLoss() < 60 ? SPAN_NOTICE("") : SPAN_DANGER("")), occupant.getOxyLoss())
+		to_chat(user, "[]\t -毒素含量百分比：[]", (occupant.getToxLoss() < 60 ? SPAN_NOTICE("") : SPAN_DANGER("")), occupant.getToxLoss())
+		to_chat(user, "[]\t -烧伤严重程度百分比：[]", (occupant.getFireLoss() < 60 ? SPAN_NOTICE("") : SPAN_DANGER("")), occupant.getFireLoss())
+		to_chat(user, SPAN_NOTICE("乘员可安全苏醒的预计时间：（注意：此时间总是不准确的）"))
 		to_chat(user, SPAN_NOTICE("\t [occupant.GetKnockOutDuration() * GLOBAL_STATUS_MULTIPLIER / (1 SECONDS)] second\s (if around 1 or 2 the sleeper is keeping them asleep.)"))
 	else
-		to_chat(user, SPAN_NOTICE("There is no one inside!"))
+		to_chat(user, SPAN_NOTICE("里面没人！"))
 	return
 
 /obj/structure/machinery/sleep_console/yautja
@@ -434,8 +434,8 @@
 	upgraded = TRUE
 
 /obj/structure/machinery/medical_pod/sleeper/upgraded
-	name = "advanced sleeper"
-	desc = "A more expensive model of the sleeper bed, comes with additional chemicals and an advanced dialysis machine, capable of removing chemicals much faster and more of them at the same time."
+	name = "高级休眠舱"
+	desc = "一种更昂贵的休眠床型号，配有额外的化学品和一台高级透析机，能够更快、同时移除更多化学品。"
 	available_chemicals = list("inaprovaline", "tramadol", "anti_toxin", "dexalinp", "tricordrazine", "alkysine", "imidazoline")
 	emergency_chems = list("inaprovaline", "tramadol", "anti_toxin", "dexalinp", "tricordrazine", "oxycodone", "bicaridine", "kelotane", "meralyne", "dermaline", "alkysine", "imidazoline")
 	reagent_removed_per_second = AMOUNT_PER_TIME(8, 1 SECONDS)

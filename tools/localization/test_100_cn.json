@@ -1,0 +1,1101 @@
+{
+  "meta": {
+    "version": "2.0",
+    "total_count": 100,
+    "type_counts": {
+      "name": 10197,
+      "desc": 6289,
+      "visible_message": 1667,
+      "chat": 6229,
+      "alert": 384,
+      "label": 61,
+      "ui_text": 673,
+      "message": 124,
+      "emote": 37,
+      "tooltip": 1,
+      "broadcast": 92,
+      "say": 291,
+      "action": 2,
+      "attack_verb": 1,
+      "examine": 1
+    },
+    "instructions": {
+      "zh": "翻译 'translation' 字段，保留 'variables' 中列出的变量不翻译",
+      "en": "Translate the 'translation' field, keep variables listed in 'variables' unchanged"
+    },
+    "translated_count": 100
+  },
+  "texts": [
+    {
+      "id": "93a58baaf048",
+      "file_path": "code\\controllers\\topic.dm",
+      "line_number": 2,
+      "text_type": "name",
+      "original": "Topic",
+      "context": "1: SUBSYSTEM_DEF(topic)\n2: \tname = \"Topic\"\n3: \tinit_order = SS_INIT_TOPIC\n4: \tflags = SS_NO_FIRE",
+      "variables": [],
+      "translation": "主题"
+    },
+    {
+      "id": "34610200a404",
+      "file_path": "code\\datums\\action.dm",
+      "line_number": 191,
+      "text_type": "name",
+      "original": "Use item",
+      "context": "189: \n190: /datum/action/item_action\n191: \tname = \"Use item\"\n192: \tvar/obj/item/holder_item //the item that has this action in its list of actions. Is not necessarily the target\n193: \t\t\t\t\t\t\t\t//e.g. gun attachment action: target = attachment, holder = gun.",
+      "variables": [],
+      "translation": "使用物品"
+    },
+    {
+      "id": "e0da2dd65d60",
+      "file_path": "code\\datums\\action.dm",
+      "line_number": 202,
+      "text_type": "name",
+      "original": "Use [target]",
+      "context": "200: \tholder_item = holder\n201: \tLAZYADD(holder_item.actions, src)\n202: \tname = \"Use [target]\"\n203: \tbutton.name = name\n204: ",
+      "variables": [
+        "[target]"
+      ],
+      "translation": "使用[target]"
+    },
+    {
+      "id": "4a5d1c295031",
+      "file_path": "code\\datums\\action.dm",
+      "line_number": 229,
+      "text_type": "name",
+      "original": "Toggle [target]",
+      "context": "227: /datum/action/item_action/toggle/New(Target)\n228: \t..()\n229: \tname = \"Toggle [target]\"\n230: \tbutton.name = name\n231: ",
+      "variables": [
+        "[target]"
+      ],
+      "translation": "切换[target]"
+    },
+    {
+      "id": "2c006c6af3b0",
+      "file_path": "code\\datums\\beam.dm",
+      "line_number": 147,
+      "text_type": "name",
+      "original": "laser beam",
+      "context": "145: \n146: /obj/effect/ebeam/laser\n147: \tname = \"laser beam\"\n148: \tdesc = \"A laser beam!\"\n149: \talpha = 200",
+      "variables": [],
+      "translation": "激光束"
+    },
+    {
+      "id": "a2d4f1cf92d2",
+      "file_path": "code\\datums\\beam.dm",
+      "line_number": 148,
+      "text_type": "desc",
+      "original": "A laser beam!",
+      "context": "146: /obj/effect/ebeam/laser\n147: \tname = \"laser beam\"\n148: \tdesc = \"A laser beam!\"\n149: \talpha = 200\n150: \tvar/strength = EYE_PROTECTION_FLAVOR",
+      "variables": [],
+      "translation": "一道激光束！"
+    },
+    {
+      "id": "3b31563e17b6",
+      "file_path": "code\\datums\\beam.dm",
+      "line_number": 163,
+      "text_type": "visible_message",
+      "original": "[moving_human] screams out in pain as \\the [src] moves across their eyes!",
+      "context": "161: \t\t//ouch!\n162: \t\tINVOKE_ASYNC(moving_human, /mob/proc/emote, \"pain\")\n163: \t\tvisible_message(SPAN_DANGER(\"[moving_human] screams out in pain as \\the [src] moves across their eyes!\"), SPAN_NOTICE(\"Aurgh!!! \\The [src] moves across your unprotected eyes for a split-second!\"))\n164: \telse\n165: \t\tif(HAS_TRAIT(moving_human, TRAIT_BIMEX))",
+      "variables": [
+        "\\the [src]",
+        "[src]",
+        "\\th",
+        "[moving_human]"
+      ],
+      "translation": "当\\the [src]扫过[moving_human]的眼睛时，[moving_human]痛苦地尖叫起来！"
+    },
+    {
+      "id": "4de91b842364",
+      "file_path": "code\\datums\\beam.dm",
+      "line_number": 166,
+      "text_type": "visible_message",
+      "original": "[moving_human]'s BiMex© personal shades shine as \\the [src] passes over them.",
+      "context": "164: \telse\n165: \t\tif(HAS_TRAIT(moving_human, TRAIT_BIMEX))\n166: \t\t\tvisible_message(SPAN_NOTICE(\"[moving_human]'s BiMex© personal shades shine as \\the [src] passes over them.\"), SPAN_NOTICE(\"Your BiMex© personal shades as \\the [src] passes over them.\"))\n167: \t\telse\n168: \t\t\tvisible_message(SPAN_NOTICE(\"[moving_human]'s headgear protects them from \\the [src].\"), SPAN_NOTICE(\"Your headgear protects you from  \\the [src].\"))",
+      "variables": [
+        "\\the [src]",
+        "[src]",
+        "\\th",
+        "[moving_human]"
+      ],
+      "translation": "当\\the [src]扫过时，[moving_human]的BiMex©个人墨镜闪烁着光芒。"
+    },
+    {
+      "id": "ee2c8068d078",
+      "file_path": "code\\datums\\beam.dm",
+      "line_number": 168,
+      "text_type": "visible_message",
+      "original": "[moving_human]'s headgear protects them from \\the [src].",
+      "context": "166: \t\t\tvisible_message(SPAN_NOTICE(\"[moving_human]'s BiMex© personal shades shine as \\the [src] passes over them.\"), SPAN_NOTICE(\"Your BiMex© personal shades as \\the [src] passes over them.\"))\n167: \t\telse\n168: \t\t\tvisible_message(SPAN_NOTICE(\"[moving_human]'s headgear protects them from \\the [src].\"), SPAN_NOTICE(\"Your headgear protects you from  \\the [src].\"))\n169: \n170: /obj/effect/ebeam/laser/intense",
+      "variables": [
+        "\\the [src]",
+        "[src]",
+        "\\th",
+        "[moving_human]"
+      ],
+      "translation": "[moving_human]的头盔保护了他们免受\\the [src]的伤害。"
+    },
+    {
+      "id": "308330a3c7e3",
+      "file_path": "code\\datums\\beam.dm",
+      "line_number": 171,
+      "text_type": "name",
+      "original": "intense laser beam",
+      "context": "169: \n170: /obj/effect/ebeam/laser/intense\n171: \tname = \"intense laser beam\"\n172: \talpha = 255\n173: \tstrength = EYE_PROTECTION_FLASH",
+      "variables": [],
+      "translation": "强激光束"
+    },
+    {
+      "id": "ad99fe7ab13a",
+      "file_path": "code\\datums\\beam.dm",
+      "line_number": 177,
+      "text_type": "name",
+      "original": "weak laser beam",
+      "context": "175: \n176: /obj/effect/ebeam/laser/weak\n177: \tname = \"weak laser beam\"\n178: \talpha = 150\n179: \tstrength = EYE_PROTECTION_FLAVOR",
+      "variables": [],
+      "translation": "弱激光束"
+    },
+    {
+      "id": "f79b816afd57",
+      "file_path": "code\\datums\\browser.dm",
+      "line_number": 136,
+      "text_type": "chat",
+      "original": "The [title] browser you tried to open failed a sanity check! Please report this on github!",
+      "context": "134: /datum/browser/proc/open(use_onclose = TRUE)\n135: \tif(isnull(window_id)) //null check because this can potentially nuke goonchat\n136: \t\tto_chat(user, SPAN_USERDANGER(\"The [title] browser you tried to open failed a sanity check! Please report this on github!\"))\n137: \t\treturn\n138: \tvar/window_size = \"\"",
+      "variables": [
+        "[title]"
+      ],
+      "translation": "您尝试打开的[title]浏览器未能通过完整性检查！请在GitHub上报告此问题！"
+    },
+    {
+      "id": "2c8a6acf99a9",
+      "file_path": "code\\datums\\bug_report.dm",
+      "line_number": 27,
+      "text_type": "alert",
+      "original": "Unable to create a bug report at this time, please create the issue directly through our GitHub repository instead",
+      "context": "25: \n26: /datum/tgui_bug_report_form/proc/external_link_prompt(client/user)\n27: \ttgui_alert(user, \"Unable to create a bug report at this time, please create the issue directly through our GitHub repository instead\")\n28: \tvar/url = CONFIG_GET(string/githuburl)\n29: \tif(!url)",
+      "variables": [],
+      "translation": "目前无法创建错误报告，请直接通过我们的GitHub仓库创建问题"
+    },
+    {
+      "id": "32bb99673c48",
+      "file_path": "code\\datums\\bug_report.dm",
+      "line_number": 30,
+      "text_type": "chat",
+      "original": "The configuration is not properly set, unable to open external link.",
+      "context": "28: \tvar/url = CONFIG_GET(string/githuburl)\n29: \tif(!url)\n30: \t\tto_chat(user, SPAN_WARNING(\"The configuration is not properly set, unable to open external link.\"))\n31: \t\treturn\n32: ",
+      "variables": [],
+      "translation": "配置未正确设置，无法打开外部链接。"
+    },
+    {
+      "id": "f4066efa8a48",
+      "file_path": "code\\datums\\bug_report.dm",
+      "line_number": 33,
+      "text_type": "alert",
+      "original": "This will open the GitHub in your browser. Are you sure?",
+      "context": "31: \t\treturn\n32: \n33: \tif(tgui_alert(user, \"This will open the GitHub in your browser. Are you sure?\", \"Confirm\", list(\"Yes\", \"No\")) == \"Yes\")\n34: \t\tuser << link(url)\n35: ",
+      "variables": [],
+      "translation": "这将在您的浏览器中打开GitHub。确定吗？"
+    },
+    {
+      "id": "7a977fba12f2",
+      "file_path": "code\\datums\\bug_report.dm",
+      "line_number": 66,
+      "text_type": "chat",
+      "original": "Unable to identify the author of the bug report.",
+      "context": "64: /datum/tgui_bug_report_form/proc/assign_admin(mob/user)\n65: \tif(!initial_key)\n66: \t\tto_chat(user, SPAN_WARNING(\"Unable to identify the author of the bug report.\"))\n67: \t\treturn FALSE\n68: \tif(admin_user)",
+      "variables": [],
+      "translation": "无法识别错误报告的作者。"
+    },
+    {
+      "id": "68d1cf70c617",
+      "file_path": "code\\datums\\bug_report.dm",
+      "line_number": 70,
+      "text_type": "chat",
+      "original": "This bug report review is already opened and accessed by you.",
+      "context": "68: \tif(admin_user)\n69: \t\tif(user.client == admin_user)\n70: \t\t\tto_chat(user, SPAN_WARNING(\"This bug report review is already opened and accessed by you.\"))\n71: \t\telse\n72: \t\t\tto_chat(user, SPAN_WARNING(\"Another administrator is currently accessing this report, please wait for them to finish before making any changes.\"))",
+      "variables": [],
+      "translation": "此错误报告审核已由您打开并访问。"
+    },
+    {
+      "id": "4f3dcd29f825",
+      "file_path": "code\\datums\\bug_report.dm",
+      "line_number": 72,
+      "text_type": "chat",
+      "original": "Another administrator is currently accessing this report, please wait for them to finish before making any changes.",
+      "context": "70: \t\t\tto_chat(user, SPAN_WARNING(\"This bug report review is already opened and accessed by you.\"))\n71: \t\telse\n72: \t\t\tto_chat(user, SPAN_WARNING(\"Another administrator is currently accessing this report, please wait for them to finish before making any changes.\"))\n73: \t\treturn FALSE\n74: \tif(!CLIENT_IS_STAFF(user.client))",
+      "variables": [],
+      "translation": "另一位管理员当前正在访问此报告，请等待他们完成后再进行任何更改。"
+    },
+    {
+      "id": "7d38bd089865",
+      "file_path": "code\\datums\\bug_report.dm",
+      "line_number": 125,
+      "text_type": "alert",
+      "original": "The configuration is not set for the external API.",
+      "context": "123: \n124: \tif(!token || !org || !repo_name)\n125: \t\ttgui_alert(user, \"The configuration is not set for the external API.\", \"Issue not reported!\")\n126: \t\texternal_link_prompt(user)\n127: \t\tqdel(src)",
+      "variables": [],
+      "translation": "未为外部API设置配置。"
+    },
+    {
+      "id": "23cab9dc96a9",
+      "file_path": "code\\datums\\bug_report.dm",
+      "line_number": 153,
+      "text_type": "chat",
+      "original": "An admin has successfully submitted your report and it should now be visible on GitHub. Thanks again!",
+      "context": "151: \telse\n152: \t\tmessage_admins(\"[user.ckey] has approved a bug report from [initial_key] titled [bug_report_data[\"title\"]] at [time2text(world.timeofday, \"YYYY-MM-DD hh:mm:ss\")].\")\n153: \t\tto_chat(initial_user, SPAN_WARNING(\"An admin has successfully submitted your report and it should now be visible on GitHub. Thanks again!\"))\n154: \tqdel(src)// approved and submitted, we no longer need the datum.\n155: ",
+      "variables": [],
+      "translation": "管理员已成功提交您的报告，现在应该在GitHub上可见。再次感谢！"
+    },
+    {
+      "id": "03e570fdf9d2",
+      "file_path": "code\\datums\\bug_report.dm",
+      "line_number": 158,
+      "text_type": "chat",
+      "original": "Your bug report has been submitted, thank you!",
+      "context": "156: // proc that creates a ticket for an admin to approve or deny a bug report request\n157: /datum/tgui_bug_report_form/proc/bug_report_request()\n158: \tto_chat(initial_user, SPAN_WARNING(\"Your bug report has been submitted, thank you!\"))\n159: \tGLOB.bug_reports += src\n160: ",
+      "variables": [],
+      "translation": "你的错误报告已提交，谢谢！"
+    },
+    {
+      "id": "e02cafd4ae88",
+      "file_path": "code\\datums\\bug_report.dm",
+      "line_number": 175,
+      "text_type": "chat",
+      "original": "you have already confirmed the submission, please wait a moment for the API to process your submission.",
+      "context": "173: \t\tif(\"confirm\")\n174: \t\t\tif(selected_confirm) // prevent someone from spamming the approve button\n175: \t\t\t\tto_chat(user, SPAN_WARNING(\"you have already confirmed the submission, please wait a moment for the API to process your submission.\"))\n176: \t\t\t\treturn\n177: \t\t\tbug_report_data = sanitize_payload(params)",
+      "variables": [],
+      "translation": "你已确认提交，请稍等API处理你的提交。"
+    },
+    {
+      "id": "cc9e75e16e05",
+      "file_path": "code\\datums\\bug_report.dm",
+      "line_number": 200,
+      "text_type": "chat",
+      "original": "An admin has rejected your bug report, this can happen for several reasons. They will most likely get back to you shortly regarding your issue.",
+      "context": "198: /datum/tgui_bug_report_form/proc/reject(client/user)\n199: \tmessage_admins(\"[user.ckey] has rejected a bug report from [initial_key] titled [bug_report_data[\"title\"]] at [time2text(world.timeofday, \"YYYY-MM-DD hh:mm:ss\")].\")\n200: \tto_chat(initial_user, SPAN_WARNING(\"An admin has rejected your bug report, this can happen for several reasons. They will most likely get back to you shortly regarding your issue.\"))\n201: \n202: #undef STATUS_SUCCESS",
+      "variables": [],
+      "translation": "管理员已拒绝你的错误报告，原因可能有多方面。他们很可能很快就会就你的问题联系你。"
+    },
+    {
+      "id": "e32baafd3ecb",
+      "file_path": "code\\datums\\datumvars.dm",
+      "line_number": 62,
+      "text_type": "chat",
+      "original": "This can only be done to instances of type /obj, /mob and /turf.",
+      "context": "60: \t\tvar/atom/A = locate(href_list[VV_HK_EXPLODE])\n61: \t\tif(!isobj(A) && !ismob(A) && !isturf(A))\n62: \t\t\tto_chat(usr, \"This can only be done to instances of type /obj, /mob and /turf.\")\n63: \t\t\treturn\n64: ",
+      "variables": [],
+      "translation": "此操作仅适用于 /obj、/mob 和 /turf 类型的实例。"
+    },
+    {
+      "id": "9e4b454ffe90",
+      "file_path": "code\\datums\\emotes.dm",
+      "line_number": 102,
+      "text_type": "chat",
+      "original": "You just did an emote. Wait awhile.",
+      "context": "100: \tvar/tmp_sound = get_sound(user)\n101: \tif(TIMER_COOLDOWN_CHECK(user, type))\n102: \t\tto_chat(user, SPAN_NOTICE(\"You just did an emote. Wait awhile.\"))\n103: \t\treturn\n104: \telse if(tmp_sound && should_play_sound(user, intentional))",
+      "variables": [],
+      "translation": "你刚做过表情动作。请稍等片刻。"
+    },
+    {
+      "id": "21a52cef0613",
+      "file_path": "code\\datums\\emotes.dm",
+      "line_number": 194,
+      "text_type": "chat",
+      "original": "You must wait another [DisplayTimeText(user.emotes_used[src] - world.time + cooldown)] before using that emote.",
+      "context": "192: \t\tvar/datum/emote/default_emote = /datum/emote\n193: \t\tif(cooldown > initial(default_emote.cooldown)) // only worry about longer-than-normal emotes\n194: \t\t\tto_chat(user, SPAN_DANGER(\"You must wait another [DisplayTimeText(user.emotes_used[src] - world.time + cooldown)] before using that emote.\"))\n195: \t\treturn FALSE\n196: \tif(!user.emotes_used)",
+      "variables": [
+        "[src]"
+      ],
+      "translation": "你必须再等待 [DisplayTimeText(user.emotes_used[src] - world.time + cooldown)] 才能使用该表情动作。"
+    },
+    {
+      "id": "f582903adb1f",
+      "file_path": "code\\datums\\emotes.dm",
+      "line_number": 282,
+      "text_type": "chat",
+      "original": "You cannot [key] while unconscious!",
+      "context": "280: \t\t\tswitch(user.stat)\n281: \t\t\t\tif(UNCONSCIOUS)\n282: \t\t\t\t\tto_chat(user, SPAN_WARNING(\"You cannot [key] while unconscious!\"))\n283: \t\t\t\tif(DEAD)\n284: \t\t\t\t\tto_chat(user, SPAN_WARNING(\"You cannot [key] while dead!\"))",
+      "variables": [
+        "[key]"
+      ],
+      "translation": "你无法在昏迷时[key]！"
+    },
+    {
+      "id": "af0e5faddb9d",
+      "file_path": "code\\datums\\emotes.dm",
+      "line_number": 284,
+      "text_type": "chat",
+      "original": "You cannot [key] while dead!",
+      "context": "282: \t\t\t\t\tto_chat(user, SPAN_WARNING(\"You cannot [key] while unconscious!\"))\n283: \t\t\t\tif(DEAD)\n284: \t\t\t\t\tto_chat(user, SPAN_WARNING(\"You cannot [key] while dead!\"))\n285: \t\t\treturn FALSE\n286: \t\tif(hands_use_check && (user.r_hand && user.l_hand))",
+      "variables": [
+        "[key]"
+      ],
+      "translation": "你无法在死亡时[key]！"
+    },
+    {
+      "id": "271f6ed95a9e",
+      "file_path": "code\\datums\\emotes.dm",
+      "line_number": 289,
+      "text_type": "chat",
+      "original": "You cannot use your hands to [key] right now!",
+      "context": "287: \t\t\tif(!intentional)\n288: \t\t\t\treturn FALSE\n289: \t\t\tto_chat(user, SPAN_WARNING(\"You cannot use your hands to [key] right now!\"))\n290: \t\t\treturn FALSE\n291: ",
+      "variables": [
+        "[key]"
+      ],
+      "translation": "你现在无法用手[key]！"
+    },
+    {
+      "id": "9cac54fd7f0a",
+      "file_path": "code\\datums\\fluff_emails.dm",
+      "line_number": 12,
+      "text_type": "label",
+      "original": "RE: I want out.",
+      "context": "10: \n11: /datum/fluff_email/almayer/iwantout\n12: \ttitle = \"RE: I want out.\"\n13: \tentry_text = {\"<html>\n14: \t\t\t\t\tOkay, yep, I know what you're saying. Stilettos aren't safe, you want out of my sharp stick business,",
+      "variables": [],
+      "translation": "回复：我想出去。"
+    },
+    {
+      "id": "47ac95da2077",
+      "file_path": "code\\datums\\fluff_emails.dm",
+      "line_number": 42,
+      "text_type": "label",
+      "original": "M68 Thermal Cloak.",
+      "context": "40: \n41: /datum/fluff_email/almayer/thermalcloak\n42: \ttitle = \"M68 Thermal Cloak.\"\n43: \tentry_text = {\"<html>\n44: \t\t\t\t\tAre you sure these things are safe, man? I just tried one on during a training exercise back at Bernice 378, took a wrong turn,",
+      "variables": [],
+      "translation": "M68热光学迷彩披风。"
+    },
+    {
+      "id": "1b70ff12bc67",
+      "file_path": "code\\datums\\fluff_emails.dm",
+      "line_number": 62,
+      "text_type": "label",
+      "original": "Snow? Where the hell is all the snow?",
+      "context": "60: \n61: /datum/fluff_email/almayer/snow\n62: \ttitle = \"Snow? Where the hell is all the snow?\"\n63: \tentry_text = {\"<html>\n64: \t\t\t\t\tWhy were we issued these damn snow uniforms in the first place? We've been around the sector almost three dozen times and we've",
+      "variables": [],
+      "translation": "雪？雪他妈都去哪了？"
+    },
+    {
+      "id": "81252b6e0b18",
+      "file_path": "code\\datums\\fluff_emails.dm",
+      "line_number": 77,
+      "text_type": "label",
+      "original": "Hawaiian Pizza in the MREs?",
+      "context": "75: \n76: /datum/fluff_email/almayer/hawaianpizza\n77: \ttitle = \"Hawaiian Pizza in the MREs?\"\n78: \tentry_text = {\"<html>\n79: \t\t\t\t\tI swear this must have been a joke, but the other day I opened up my MRE packet to come face to face with a 'Hawaiian Pizza\" packet.",
+      "variables": [],
+      "translation": "单兵口粮里有夏威夷披萨？"
+    },
+    {
+      "id": "d6a4f38a8c38",
+      "file_path": "code\\datums\\fluff_emails.dm",
+      "line_number": 94,
+      "text_type": "label",
+      "original": "The Major?",
+      "context": "92: \n93: /datum/fluff_email/almayer/themajor\n94: \ttitle = \"The Major?\"\n95: \tentry_text = {\"<html>\n96: \t\t\t\t\tI keep forgetting what the new Major's name is. I got quizzed by one of the jackass staff officers last week about the Major's name,",
+      "variables": [],
+      "translation": "少校？"
+    },
+    {
+      "id": "f5ae6300c3b1",
+      "file_path": "code\\datums\\fluff_emails.dm",
+      "line_number": 106,
+      "text_type": "label",
+      "original": "RE: Tunes",
+      "context": "104: \n105: /datum/fluff_email/almayer/tunes\n106: \ttitle = \"RE: Tunes\"\n107: \tentry_text = {\"<html>\n108: \t\t\t\t\tCryosleep is killing me, man. Inside and outside. I mean really, they expect us to sit in that tube for god only knows how long, and when we wake up?",
+      "variables": [],
+      "translation": "回复：音乐"
+    },
+    {
+      "id": "178038becefe",
+      "file_path": "code\\datums\\fluff_emails.dm",
+      "line_number": 125,
+      "text_type": "label",
+      "original": "Prototype Weapon",
+      "context": "123: \n124: /datum/fluff_email/almayer/lasergun1\n125: \ttitle = \"Prototype Weapon\"\n126: \tentry_text = {\"<html>\n127: \t\t\t\t\tThis thing is an absolute blast to use.",
+      "variables": [],
+      "translation": "原型武器"
+    },
+    {
+      "id": "3d871b142d21",
+      "file_path": "code\\datums\\fluff_emails.dm",
+      "line_number": 147,
+      "text_type": "label",
+      "original": "New Prototype Design",
+      "context": "145: \n146: /datum/fluff_email/almayer/lasergun2\n147: \ttitle = \"New Prototype Design\"\n148: \tentry_text = {\"<html>\n149: \t\t\t\t\tThanks for sending the report in, we've been mulling over the data you sent over.",
+      "variables": [],
+      "translation": "新原型设计"
+    },
+    {
+      "id": "8e56a9b3c208",
+      "file_path": "code\\datums\\fluff_emails.dm",
+      "line_number": 158,
+      "text_type": "label",
+      "original": "Beat Up",
+      "context": "156: \n157: /datum/fluff_email/almayer/beatup\n158: \ttitle = \"Beat Up\"\n159: \tentry_text = {\"<html>\n160: \t\t\t\tMan last mission was an absolute shit show.",
+      "variables": [],
+      "translation": "饱经风霜"
+    },
+    {
+      "id": "45a53ea92478",
+      "file_path": "code\\datums\\fluff_emails.dm",
+      "line_number": 171,
+      "text_type": "label",
+      "original": "Rally Racing",
+      "context": "169: \n170: /datum/fluff_email/almayer/rallyrace\n171: \ttitle = \"Rally Racing\"\n172: \tentry_text = {\"<html>\n173: \t\t\t\tHey, remember last shore leave on LV-179? Man, that was one crazy night. The folks at the colony had setup a rally race with their tractors all stripped of non-essentials.",
+      "variables": [],
+      "translation": "拉力赛"
+    },
+    {
+      "id": "3d2c22602458",
+      "file_path": "code\\datums\\fluff_emails.dm",
+      "line_number": 186,
+      "text_type": "label",
+      "original": "Missing Personnel",
+      "context": "184: \n185: /datum/fluff_email/almayer/missing\n186: \ttitle = \"Missing Personnel\"\n187: \tentry_text = {\"<html>\n188: \t\t\t\tHas anyone seen Mendoza around? He owes me half of his paycheck from last month's poker game.",
+      "variables": [],
+      "translation": "失踪人员"
+    },
+    {
+      "id": "ce462a812c2e",
+      "file_path": "code\\datums\\fluff_emails.dm",
+      "line_number": 197,
+      "text_type": "label",
+      "original": "RE: New Gunny",
+      "context": "195: \n196: /datum/fluff_email/almayer/newgunny\n197: \ttitle = \"RE: New Gunny\"\n198: \tentry_text = {\"<html>\n199: \t\t\t\tHey man, you gotta be careful with those razors,",
+      "variables": [],
+      "translation": "回复：新任枪炮军士"
+    },
+    {
+      "id": "48318797ab64",
+      "file_path": "code\\datums\\fluff_emails.dm",
+      "line_number": 209,
+      "text_type": "label",
+      "original": "RE: Immunizations & Training",
+      "context": "207: \n208: /datum/fluff_email/almayer/immunization\n209: \ttitle = \"RE: Immunizations & Training\"\n210: \tentry_text = {\"<html>\n211: \t\t\t\tOne of the battalions just got mulched by a Beebop group and the AAR suggests their training was neglected, it's one hell of a shit show over here.",
+      "variables": [],
+      "translation": "回复：免疫接种与训练"
+    },
+    {
+      "id": "3f68b3e23a84",
+      "file_path": "code\\datums\\fluff_emails.dm",
+      "line_number": 224,
+      "text_type": "label",
+      "original": "RE: Any chance of replacement vehicles?",
+      "context": "222: \n223: /datum/fluff_email/almayer/morevehicles\n224: \ttitle = \"RE: Any chance of replacement vehicles?\"\n225: \tentry_text = {\"<htrml>\n226: \t\t\t\tNo, sorry. What we lost on Tychon was what we had. Maisie thinks there might be enough spare bits left to refurbish",
+      "variables": [],
+      "translation": "回复：有替换载具的可能吗？"
+    },
+    {
+      "id": "d152d2543c59",
+      "file_path": "code\\datums\\global_variables.dm",
+      "line_number": 6,
+      "text_type": "chat",
+      "original": "You need to be a moderator or higher to access this.",
+      "context": "4: \n5: \tif(!usr.client || !usr.client.admin_holder || !(usr.client.admin_holder.rights & R_MOD))\n6: \t\tto_chat(usr, SPAN_DANGER(\"You need to be a moderator or higher to access this.\"))\n7: \t\treturn\n8: \tif(tgui_alert(usr, \"Are you sure you want to view global variables? This will cause a large lag spike.\", \"Confirmation\", list(\"Yes\", \"No\"), 20 SECONDS) != \"Yes\")",
+      "variables": [],
+      "translation": "你需要是版主或更高权限才能访问此内容。"
+    },
+    {
+      "id": "051c3cc3332c",
+      "file_path": "code\\datums\\global_variables.dm",
+      "line_number": 8,
+      "text_type": "alert",
+      "original": "Are you sure you want to view global variables? This will cause a large lag spike.",
+      "context": "6: \t\tto_chat(usr, SPAN_DANGER(\"You need to be a moderator or higher to access this.\"))\n7: \t\treturn\n8: \tif(tgui_alert(usr, \"Are you sure you want to view global variables? This will cause a large lag spike.\", \"Confirmation\", list(\"Yes\", \"No\"), 20 SECONDS) != \"Yes\")\n9: \t\treturn\n10: ",
+      "variables": [],
+      "translation": "你确定要查看全局变量吗？这会导致严重的延迟卡顿。"
+    },
+    {
+      "id": "3b7bfb00b477",
+      "file_path": "code\\datums\\global_variables.dm",
+      "line_number": 211,
+      "text_type": "chat",
+      "original": "A variable with this name ([param_var_name]) doesn't exist among global variables.",
+      "context": "209: \tif(param_var_name)\n210: \t\tif(!(param_var_name in global.vars))\n211: \t\t\tto_chat(src, \"A variable with this name ([param_var_name]) doesn't exist among global variables.\")\n212: \t\t\treturn\n213: ",
+      "variables": [
+        "[param_var_name]"
+      ],
+      "translation": "全局变量中不存在名为 ([param_var_name]) 的变量。"
+    },
+    {
+      "id": "af766299ffee",
+      "file_path": "code\\datums\\global_variables.dm",
+      "line_number": 223,
+      "text_type": "chat",
+      "original": "Unable to determine variable type.",
+      "context": "221: \t\tif(autodetect_class)\n222: \t\t\tif(isnull(var_value))\n223: \t\t\t\tto_chat(usr, \"Unable to determine variable type.\")\n224: \t\t\t\tclass = null\n225: \t\t\t\tautodetect_class = null",
+      "variables": [],
+      "translation": "无法确定变量类型。"
+    },
+    {
+      "id": "9d586017cc10",
+      "file_path": "code\\datums\\global_variables.dm",
+      "line_number": 227,
+      "text_type": "chat",
+      "original": "Variable appears to be <b>NUM</b>.",
+      "context": "225: \t\t\t\tautodetect_class = null\n226: \t\t\telse if(isnum(var_value))\n227: \t\t\t\tto_chat(usr, \"Variable appears to be <b>NUM</b>.\")\n228: \t\t\t\tclass = \"num\"\n229: \t\t\t\tdir = 1",
+      "variables": [
+        "</b>",
+        "<b>"
+      ],
+      "translation": "变量类型似乎是<b>数值</b>。"
+    },
+    {
+      "id": "3117b2d3a1d7",
+      "file_path": "code\\datums\\global_variables.dm",
+      "line_number": 232,
+      "text_type": "chat",
+      "original": "Variable appears to be <b>TEXT</b>.",
+      "context": "230: \n231: \t\t\telse if(istext(var_value))\n232: \t\t\t\tto_chat(usr, \"Variable appears to be <b>TEXT</b>.\")\n233: \t\t\t\tclass = \"text\"\n234: ",
+      "variables": [
+        "</b>",
+        "<b>"
+      ],
+      "translation": "变量类型似乎是<b>文本</b>。"
+    },
+    {
+      "id": "0d83229e4979",
+      "file_path": "code\\datums\\global_variables.dm",
+      "line_number": 236,
+      "text_type": "chat",
+      "original": "Variable appears to be <b>REFERENCE</b>.",
+      "context": "234: \n235: \t\t\telse if(isloc(var_value))\n236: \t\t\t\tto_chat(usr, \"Variable appears to be <b>REFERENCE</b>.\")\n237: \t\t\t\tclass = \"reference\"\n238: ",
+      "variables": [
+        "</b>",
+        "<b>"
+      ],
+      "translation": "变量类型似乎是<b>引用</b>。"
+    },
+    {
+      "id": "d3e1f4e07f2e",
+      "file_path": "code\\datums\\global_variables.dm",
+      "line_number": 240,
+      "text_type": "chat",
+      "original": "Variable appears to be <b>ICON</b>.",
+      "context": "238: \n239: \t\t\telse if(isicon(var_value))\n240: \t\t\t\tto_chat(usr, \"Variable appears to be <b>ICON</b>.\")\n241: \t\t\t\tvar_value = \"\\icon[var_value]\"\n242: \t\t\t\tclass = \"icon\"",
+      "variables": [
+        "</b>",
+        "<b>"
+      ],
+      "translation": "变量类型似乎是<b>图标</b>。"
+    },
+    {
+      "id": "e60791aba3d9",
+      "file_path": "code\\datums\\global_variables.dm",
+      "line_number": 245,
+      "text_type": "chat",
+      "original": "Variable appears to be <b>MATRIX</b>.",
+      "context": "243: \n244: \t\t\telse if(istype(var_value,/matrix))\n245: \t\t\t\tto_chat(usr, \"Variable appears to be <b>MATRIX</b>.\")\n246: \t\t\t\tclass = \"matrix\"\n247: ",
+      "variables": [
+        "</b>",
+        "<b>"
+      ],
+      "translation": "变量类型似乎是<b>矩阵</b>。"
+    },
+    {
+      "id": "bdb2eb7135bc",
+      "file_path": "code\\datums\\global_variables.dm",
+      "line_number": 249,
+      "text_type": "chat",
+      "original": "Variable appears to be <b>TYPE</b>.",
+      "context": "247: \n248: \t\t\telse if(istype(var_value,/atom) || istype(var_value,/datum))\n249: \t\t\t\tto_chat(usr, \"Variable appears to be <b>TYPE</b>.\")\n250: \t\t\t\tclass = \"type\"\n251: ",
+      "variables": [
+        "</b>",
+        "<b>"
+      ],
+      "translation": "变量类型似乎是<b>类型</b>。"
+    },
+    {
+      "id": "d76e29e1dd3b",
+      "file_path": "code\\datums\\global_variables.dm",
+      "line_number": 253,
+      "text_type": "chat",
+      "original": "Variable appears to be <b>LIST</b>.",
+      "context": "251: \n252: \t\t\telse if(istype(var_value,/list))\n253: \t\t\t\tto_chat(usr, \"Variable appears to be <b>LIST</b>.\")\n254: \t\t\t\tclass = \"list\"\n255: ",
+      "variables": [
+        "</b>",
+        "<b>"
+      ],
+      "translation": "变量类型似乎是<b>列表</b>。"
+    },
+    {
+      "id": "802d10310063",
+      "file_path": "code\\datums\\global_variables.dm",
+      "line_number": 257,
+      "text_type": "chat",
+      "original": "Variable appears to be <b>CLIENT</b>.",
+      "context": "255: \n256: \t\t\telse if(istype(var_value,/client))\n257: \t\t\t\tto_chat(usr, \"Variable appears to be <b>CLIENT</b>.\")\n258: \t\t\t\tclass = \"cancel\"\n259: \t\t\telse",
+      "variables": [
+        "</b>",
+        "<b>"
+      ],
+      "translation": "变量类型似乎是<b>客户端</b>。"
+    },
+    {
+      "id": "61967d419879",
+      "file_path": "code\\datums\\global_variables.dm",
+      "line_number": 260,
+      "text_type": "chat",
+      "original": "Variable appears to be <b>FILE</b>.",
+      "context": "258: \t\t\t\tclass = \"cancel\"\n259: \t\t\telse\n260: \t\t\t\tto_chat(usr, \"Variable appears to be <b>FILE</b>.\")\n261: \t\t\t\tclass = \"file\"\n262: \telse",
+      "variables": [
+        "</b>",
+        "<b>"
+      ],
+      "translation": "变量类型似乎是<b>文件</b>。"
+    },
+    {
+      "id": "7e8cd9a73a13",
+      "file_path": "code\\datums\\global_variables.dm",
+      "line_number": 269,
+      "text_type": "ui_text",
+      "original": "Which var?",
+      "context": "267: \t\tnames = sortList(names)\n268: \n269: \t\tvariable = tgui_input_list(usr, \"Which var?\",\"Var\", names)\n270: \t\tif(!variable)\n271: \t\t\treturn",
+      "variables": [],
+      "translation": "哪个变量？"
+    },
+    {
+      "id": "f7ae410ea812",
+      "file_path": "code\\datums\\global_variables.dm",
+      "line_number": 320,
+      "text_type": "chat",
+      "original": "Variable contains: [var_value]",
+      "context": "318: \n319: \n320: \t\tto_chat(usr, \"Variable contains: [var_value]\")\n321: \t\tif(dir)\n322: \t\t\tswitch(var_value)",
+      "variables": [
+        "[var_value]"
+      ],
+      "translation": "变量内容：[var_value]"
+    },
+    {
+      "id": "8158052b916d",
+      "file_path": "code\\datums\\global_variables.dm",
+      "line_number": 342,
+      "text_type": "chat",
+      "original": "If a direction, direction is: [dir]",
+      "context": "340: \t\t\t\t\tdir = null\n341: \t\t\tif(dir)\n342: \t\t\t\tto_chat(usr, \"If a direction, direction is: [dir]\")\n343: \n344: ",
+      "variables": [
+        "[dir]"
+      ],
+      "translation": "若为方向，方向是：[dir]"
+    },
+    {
+      "id": "f217f06329a1",
+      "file_path": "code\\datums\\global_variables.dm",
+      "line_number": 352,
+      "text_type": "ui_text",
+      "original": "What kind of variable?",
+      "context": "350: \t\tpossible_classes += \"edit referenced object\"\n351: \n352: \t\tclass = tgui_input_list(usr, \"What kind of variable?\",\"Variable Type\", possible_classes)\n353: \t\tif(!class)\n354: \t\t\treturn",
+      "variables": [],
+      "translation": "何种变量？"
+    },
+    {
+      "id": "9e36a92a85ea",
+      "file_path": "code\\datums\\global_variables.dm",
+      "line_number": 366,
+      "text_type": "ui_text",
+      "original": "Text",
+      "context": "364: \n365: \t\tif(\"text\")\n366: \t\t\tvar/var_new = input(\"Enter new text:\",\"Text\",global.vars[variable]) as null|text\n367: \t\t\tif(var_new==null)\n368: \t\t\t\treturn",
+      "variables": [],
+      "translation": "文本"
+    },
+    {
+      "id": "31f5a48f57a8",
+      "file_path": "code\\datums\\global_variables.dm",
+      "line_number": 378,
+      "text_type": "ui_text",
+      "original": "Enter type:",
+      "context": "376: \n377: \t\tif(\"type\")\n378: \t\t\tvar/var_new = tgui_input_list(usr, \"Enter type:\",\"Type\", typesof(/obj,/mob,/area,/turf))\n379: \t\t\tif(var_new==null)\n380: \t\t\t\treturn",
+      "variables": [],
+      "translation": "输入类型："
+    },
+    {
+      "id": "6392deaa71bb",
+      "file_path": "code\\datums\\global_variables.dm",
+      "line_number": 384,
+      "text_type": "ui_text",
+      "original": "Reference",
+      "context": "382: \n383: \t\tif(\"reference\")\n384: \t\t\tvar/var_new = input(\"Select reference:\",\"Reference\",global.vars[variable]) as null|mob|obj|turf|area in world\n385: \t\t\tif(var_new==null)\n386: \t\t\t\treturn",
+      "variables": [],
+      "translation": "参考"
+    },
+    {
+      "id": "3a4c306e4c71",
+      "file_path": "code\\datums\\global_variables.dm",
+      "line_number": 396,
+      "text_type": "ui_text",
+      "original": "File",
+      "context": "394: \n395: \t\tif(\"file\")\n396: \t\t\tvar/var_new = input(\"Pick file:\",\"File\",global.vars[variable]) as null|file\n397: \t\t\tif(var_new==null)\n398: \t\t\t\treturn",
+      "variables": [],
+      "translation": "文件"
+    },
+    {
+      "id": "7b7ee3e05057",
+      "file_path": "code\\datums\\global_variables.dm",
+      "line_number": 408,
+      "text_type": "ui_text",
+      "original": "Choose a matrix",
+      "context": "406: \n407: \t\tif(\"matrix\")\n408: \t\t\tvar/matrix_name = tgui_input_list(usr, \"Choose a matrix\", \"Matrix\", (stored_matrices + \"Cancel\"))\n409: \t\t\tif(!matrix_name || matrix_name == \"Cancel\")\n410: \t\t\t\treturn",
+      "variables": [],
+      "translation": "选择矩阵"
+    },
+    {
+      "id": "aaa51204ee1e",
+      "file_path": "code\\datums\\matrix_editor.dm",
+      "line_number": 11,
+      "text_type": "chat",
+      "original": "develop man only >:(",
+      "context": "9: \n10: \tif(!usr.client || !usr.client.admin_holder || !(usr.client.admin_holder.rights & (R_DEBUG|R_ADMIN)))\n11: \t\tto_chat(usr, SPAN_DANGER(\"develop man only >:(\"))\n12: \t\treturn\n13: ",
+      "variables": [],
+      "translation": "仅限开发人员 >:("
+    },
+    {
+      "id": "43a973bc9f83",
+      "file_path": "code\\datums\\matrix_editor.dm",
+      "line_number": 68,
+      "text_type": "alert",
+      "original": "Matrix creation",
+      "context": "66: \t\t\tvar/matrix/M\n67: \n68: \t\t\tif(alert(\"Identity matrix?\", \"Matrix creation\", \"Yes\", \"No\") == \"Yes\")\n69: \t\t\t\tM = matrix()\n70: \t\t\telse",
+      "variables": [],
+      "translation": "矩阵创建"
+    },
+    {
+      "id": "13d4a68917c9",
+      "file_path": "code\\datums\\matrix_editor.dm",
+      "line_number": 76,
+      "text_type": "chat",
+      "original": "When creating a custom matrix, explicitly provide all 6 elements! Only [length(elements)] were provided.",
+      "context": "74: \t\t\t\tvar/list/elements = splittext(elements_str, \",\")\n75: \t\t\t\tif(length(elements) != 6)\n76: \t\t\t\t\tto_chat(usr, \"When creating a custom matrix, explicitly provide all 6 elements! Only [length(elements)] were provided.\")\n77: \t\t\t\t\treturn\n78: ",
+      "variables": [],
+      "translation": "创建自定义矩阵时，必须明确提供全部6个元素！当前仅提供了[length(elements)]个。"
+    },
+    {
+      "id": "7f3bf65a2063",
+      "file_path": "code\\datums\\matrix_editor.dm",
+      "line_number": 82,
+      "text_type": "chat",
+      "original": "Failed to convert element #[i] ([elements[i]]) to a number.",
+      "context": "80: \t\t\t\t\tvar/num_ver = text2num(elements[i])\n81: \t\t\t\t\tif(isnull(num_ver))\n82: \t\t\t\t\t\tto_chat(usr, \"Failed to convert element #[i] ([elements[i]]) to a number.\")\n83: \t\t\t\t\t\treturn\n84: \t\t\t\t\telements[i] = num_ver",
+      "variables": [
+        "[i]"
+      ],
+      "translation": "无法将第[i]个元素（[elements[i]]）转换为数字。"
+    },
+    {
+      "id": "b65081f43b98",
+      "file_path": "code\\datums\\matrix_editor.dm",
+      "line_number": 96,
+      "text_type": "ui_text",
+      "original": "Matrix name",
+      "context": "94: \t\t\t\tM = matrix(a,b,c,d,e,f)\n95: \n96: \t\t\tvar/matrix_name = input(\"Name your newborn matrix\", \"Matrix name\") as null|text\n97: \t\t\tif(!matrix_name || matrix_name == \"Cancel\")\n98: \t\t\t\treturn",
+      "variables": [],
+      "translation": "矩阵名称"
+    },
+    {
+      "id": "bb367cef655e",
+      "file_path": "code\\datums\\matrix_editor.dm",
+      "line_number": 101,
+      "text_type": "chat",
+      "original": "There's already a matrix with that name!",
+      "context": "99: \n100: \t\t\tif(LAZYACCESS(stored_matrices, matrix_name))\n101: \t\t\t\tto_chat(usr, \"There's already a matrix with that name!\")\n102: \t\t\t\treturn\n103: ",
+      "variables": [],
+      "translation": "已存在同名矩阵！"
+    },
+    {
+      "id": "8ab62241b0d7",
+      "file_path": "code\\datums\\matrix_editor.dm",
+      "line_number": 148,
+      "text_type": "alert",
+      "original": "Matrix deletion",
+      "context": "146: \t\t\t\treturn\n147: \n148: \t\t\tif(alert(\"Are you sure you want to delete [selected_matrix]?\", \"Matrix deletion\", \"Yes\", \"No\") != \"Yes\")\n149: \t\t\t\treturn\n150: ",
+      "variables": [],
+      "translation": "矩阵删除"
+    },
+    {
+      "id": "b677555b23a0",
+      "file_path": "code\\datums\\matrix_editor.dm",
+      "line_number": 163,
+      "text_type": "ui_text",
+      "original": "Matrix rotation",
+      "context": "161: \t\t\t\treturn\n162: \n163: \t\t\tvar/deg = input(\"Enter how much to rotate the matrix by. The angle is clockwise rotation in degrees.\", \"Matrix rotation\") as null|num\n164: \t\t\tif(isnull(deg))\n165: \t\t\t\treturn",
+      "variables": [],
+      "translation": "矩阵旋转"
+    },
+    {
+      "id": "eb520b1f6199",
+      "file_path": "code\\datums\\matrix_editor.dm",
+      "line_number": 177,
+      "text_type": "ui_text",
+      "original": "Matrix scaling",
+      "context": "175: \t\t\t\treturn\n176: \n177: \t\t\tvar/sx = input(\"Enter how much to scale the matrix by in the X direction.\", \"Matrix scaling\") as null|num\n178: \t\t\tif(isnull(sx))\n179: \t\t\t\treturn",
+      "variables": [],
+      "translation": "矩阵缩放"
+    },
+    {
+      "id": "680772dda8ad",
+      "file_path": "code\\datums\\matrix_editor.dm",
+      "line_number": 195,
+      "text_type": "ui_text",
+      "original": "Matrix translation",
+      "context": "193: \t\t\t\treturn\n194: \n195: \t\t\tvar/tx = input(\"Enter how much to translate the matrix by in the X direction.\", \"Matrix translation\") as null|num\n196: \t\t\tif(isnull(tx))\n197: \t\t\t\treturn",
+      "variables": [],
+      "translation": "矩阵平移"
+    },
+    {
+      "id": "0497cc05d9e8",
+      "file_path": "code\\datums\\matrix_editor.dm",
+      "line_number": 223,
+      "text_type": "ui_text",
+      "original": "Select the other matrix to multiply by:",
+      "context": "221: \t\t\t\treturn\n222: \n223: \t\t\tvar/other_m = tgui_input_list(usr, \"Select the other matrix to multiply by:\", \"Matrix multiplication\", (stored_matrices + \"Cancel\"))\n224: \t\t\tif(!other_m || other_m == \"Cancel\")\n225: \t\t\t\treturn",
+      "variables": [],
+      "translation": "选择要与之相乘的另一矩阵："
+    },
+    {
+      "id": "7f58dc88d280",
+      "file_path": "code\\datums\\matrix_editor.dm",
+      "line_number": 231,
+      "text_type": "alert",
+      "original": "Matrix multiplication",
+      "context": "229: \t\t\t\treturn\n230: \n231: \t\t\tvar/left_right = alert(\"Multiply with [other_m] from the left or the right?\", \"Matrix multiplication\", \"Left\", \"Right\")\n232: \t\t\tif(left_right == \"Left\")\n233: \t\t\t\t// Since matrix multiplication directly alters the datum, store the old B so we can set it back later",
+      "variables": [],
+      "translation": "矩阵乘法"
+    },
+    {
+      "id": "08546231ac73",
+      "file_path": "code\\datums\\matrix_editor.dm",
+      "line_number": 249,
+      "text_type": "ui_text",
+      "original": "Select the other matrix to subtract by:",
+      "context": "247: \t\t\t\treturn\n248: \n249: \t\t\tvar/other_m = tgui_input_list(usr, \"Select the other matrix to subtract by:\", \"Matrix subtraction\", (stored_matrices + \"Cancel\"))\n250: \t\t\tif(!other_m || other_m == \"Cancel\")\n251: \t\t\t\treturn",
+      "variables": [],
+      "translation": "选择要与之相减的另一矩阵："
+    },
+    {
+      "id": "fb04d4fac53f",
+      "file_path": "code\\datums\\matrix_editor.dm",
+      "line_number": 267,
+      "text_type": "ui_text",
+      "original": "Select the other matrix to add by:",
+      "context": "265: \t\t\t\treturn\n266: \n267: \t\t\tvar/other_m = tgui_input_list(usr, \"Select the other matrix to add by:\", \"Matrix addition\", (stored_matrices + \"Cancel\"))\n268: \t\t\tif(!other_m || other_m == \"Cancel\")\n269: \t\t\t\treturn",
+      "variables": [],
+      "translation": "选择要与之相加的另一矩阵："
+    },
+    {
+      "id": "731aa61aeb1e",
+      "file_path": "code\\datums\\medal_awards.dm",
+      "line_number": 104,
+      "text_type": "ui_text",
+      "original": "Who do you want to award a medal to?",
+      "context": "102: \t\trecipient_ranks[recipient_name] = record.fields[\"rank\"]\n103: \t\tpossible_recipients += recipient_name\n104: \tvar/chosen_recipient = tgui_input_list(usr, \"Who do you want to award a medal to?\", \"Medal Recipient\", possible_recipients)\n105: \tif(!chosen_recipient)\n106: \t\treturn FALSE",
+      "variables": [],
+      "translation": "你要向谁授予勋章？"
+    },
+    {
+      "id": "8f8ac71c25d6",
+      "file_path": "code\\datums\\medal_awards.dm",
+      "line_number": 110,
+      "text_type": "ui_text",
+      "original": "What faction do you wish to give a medal from?",
+      "context": "108: \tvar/list/medal_options = GLOB.medal_options[\"marine_medals_co\"]\n109: \tif(as_admin)\n110: \t\tvar/faction = tgui_input_list(usr, \"What faction do you wish to give a medal from?\", \"Medal Faction\", list(FACTION_MARINE, FACTION_WY))\n111: \t\tswitch(faction)\n112: \t\t\tif(FACTION_WY)",
+      "variables": [],
+      "translation": "你要授予哪个派系的勋章？"
+    },
+    {
+      "id": "df11f672c0e9",
+      "file_path": "code\\datums\\medal_awards.dm",
+      "line_number": 120,
+      "text_type": "ui_text",
+      "original": "What type of medal do you want to award?",
+      "context": "118: \n119: \t// Pick a medal\n120: \tvar/medal_type = tgui_input_list(usr, \"What type of medal do you want to award?\", \"Medal Type\", medal_options)\n121: \tif(!medal_type)\n122: \t\treturn FALSE",
+      "variables": [],
+      "translation": "你要授予何种勋章？"
+    },
+    {
+      "id": "ccd2a3eb6da8",
+      "file_path": "code\\datums\\medal_awards.dm",
+      "line_number": 125,
+      "text_type": "ui_text",
+      "original": "Medal Citation",
+      "context": "123: \n124: \t// Write a citation\n125: \tvar/citation = strip_html(input(\"What should the medal citation read?\", \"Medal Citation\", null, null) as message|null, MAX_PAPER_MESSAGE_LEN)\n126: \tif(!citation)\n127: \t\treturn FALSE",
+      "variables": [],
+      "translation": "勋章嘉奖词"
+    },
+    {
+      "id": "35af9fdb42bb",
+      "file_path": "code\\datums\\medal_awards.dm",
+      "line_number": 167,
+      "text_type": "ui_text",
+      "original": "Spawn a medal? Press cancel for no item.",
+      "context": "165: \t// Admin: Offer a medal_location if missing\n166: \tif(as_admin && !medal_location)\n167: \t\tvar/medal_override = tgui_input_list(usr, \"Spawn a medal? Press cancel for no item.\", \"Medal Location\", list(\"On Recipient\", \"On Me\"))\n168: \t\tif(medal_override == \"On Recipient\")\n169: \t\t\tmedal_location = get_turf(recipient_mob)",
+      "variables": [],
+      "translation": "生成一枚勋章？按取消则不生成物品。"
+    },
+    {
+      "id": "61ee507044b6",
+      "file_path": "code\\datums\\medal_awards.dm",
+      "line_number": 171,
+      "text_type": "visible_message",
+      "original": "[recipient_mob] has been hit in the head by the [medal_type].",
+      "context": "169: \t\t\tmedal_location = get_turf(recipient_mob)\n170: \t\t\tplaysound(recipient_mob, 'sound/items/trayhit1.ogg', 15, FALSE)\n171: \t\t\trecipient_mob.visible_message(SPAN_DANGER(\"[recipient_mob] has been hit in the head by the [medal_type].\"), null, null, 5)\n172: \t\telse if(medal_override == \"On Me\")\n173: \t\t\tmedal_location = get_turf(usr)",
+      "variables": [
+        "[medal_type]",
+        "[recipient_mob]"
+      ],
+      "translation": "[recipient_mob]的头部被[medal_type]击中。"
+    },
+    {
+      "id": "e0a766245afe",
+      "file_path": "code\\datums\\medal_awards.dm",
+      "line_number": 310,
+      "text_type": "chat",
+      "original": "You must have an authenticated ID Card to award medals.",
+      "context": "308: \tvar/obj/item/card/id/card = user?.get_idcard()\n309: \tif(!card)\n310: \t\tto_chat(user, SPAN_WARNING(\"You must have an authenticated ID Card to award medals.\"))\n311: \t\treturn\n312: ",
+      "variables": [],
+      "translation": "你必须持有已认证的身份卡才能授予勋章。"
+    },
+    {
+      "id": "e578bb2a9260",
+      "file_path": "code\\datums\\medal_awards.dm",
+      "line_number": 318,
+      "text_type": "chat",
+      "original": "Only a Senior Officer can award medals!",
+      "context": "316: \n317: \tif(!((card.paygrade in GLOB.co_paygrades) || (card.paygrade in GLOB.uscm_highcom_paygrades) || is_xo_medal))\n318: \t\tto_chat(user, SPAN_WARNING(\"Only a Senior Officer can award medals!\"))\n319: \t\treturn\n320: ",
+      "variables": [],
+      "translation": "只有高级军官才能授予勋章！"
+    },
+    {
+      "id": "a9173d7870ae",
+      "file_path": "code\\datums\\medal_awards.dm",
+      "line_number": 322,
+      "text_type": "visible_message",
+      "original": "ERROR: ID card not registered in USCM registry. Potential medal fraud detected.",
+      "context": "320: \n321: \tif(!card.registered_ref)\n322: \t\tuser.visible_message(\"ERROR: ID card not registered in USCM registry. Potential medal fraud detected.\")\n323: \t\treturn\n324: ",
+      "variables": [],
+      "translation": "错误：身份卡未在USCM注册表中登记。检测到潜在的勋章欺诈行为。"
+    },
+    {
+      "id": "6e0cc96c9d96",
+      "file_path": "code\\datums\\medal_awards.dm",
+      "line_number": 326,
+      "text_type": "visible_message",
+      "original": "ERROR: ID card not registered for [user.real_name] in USCM registry. Potential medal fraud detected.",
+      "context": "324: \n325: \tif(!card.check_biometrics(user))\n326: \t\tuser.visible_message(\"ERROR: ID card not registered for [user.real_name] in USCM registry. Potential medal fraud detected.\")\n327: \t\treturn\n328: ",
+      "variables": [
+        "[user.real_name]"
+      ],
+      "translation": "错误：身份卡未在USCM注册表中为[user.real_name]登记。检测到潜在的勋章欺诈行为。"
+    },
+    {
+      "id": "78dbdcb64a99",
+      "file_path": "code\\datums\\medal_awards.dm",
+      "line_number": 366,
+      "text_type": "ui_text",
+      "original": "Who do you want to award jelly to?",
+      "context": "364: \t\trecipient_mobs[recipient_name] = xeno\n365: \t\tpossible_recipients += recipient_name\n366: \tvar/chosen_recipient = tgui_input_list(usr, \"Who do you want to award jelly to?\", \"Jelly Recipient\", possible_recipients, theme=\"hive_status\")\n367: \tif(!chosen_recipient)\n368: \t\treturn FALSE",
+      "variables": [],
+      "translation": "你要向谁授予信息素？"
+    },
+    {
+      "id": "ecbfbbf0ab5b",
+      "file_path": "code\\datums\\medal_awards.dm",
+      "line_number": 371,
+      "text_type": "ui_text",
+      "original": "What type of jelly do you want to award?",
+      "context": "369: \n370: \t// Pick a jelly\n371: \tvar/medal_type = tgui_input_list(usr, \"What type of jelly do you want to award?\", \"Jelly Type\", GLOB.xeno_medals, theme=\"hive_status\")\n372: \tif(!medal_type)\n373: \t\treturn FALSE",
+      "variables": [],
+      "translation": "你要授予何种信息素？"
+    },
+    {
+      "id": "6905e76e86b5",
+      "file_path": "code\\datums\\medal_awards.dm",
+      "line_number": 376,
+      "text_type": "ui_text",
+      "original": "Jelly Pheromone",
+      "context": "374: \n375: \t// Write the pheromone\n376: \tvar/citation = strip_html(input(\"What should the pheromone read?\", \"Jelly Pheromone\", null, null) as message|null, MAX_PAPER_MESSAGE_LEN)\n377: \tif(!citation)\n378: \t\treturn FALSE",
+      "variables": [],
+      "translation": "信息素"
+    },
+    {
+      "id": "80b83c559d9f",
+      "file_path": "code\\datums\\medal_awards.dm",
+      "line_number": 383,
+      "text_type": "ui_text",
+      "original": "Jelly Attribution",
+      "context": "381: \tvar/admin_attribution = null\n382: \tif(as_admin)\n383: \t\tadmin_attribution = strip_html(input(\"Override the jelly attribution? Press cancel for no attribution.\", \"Jelly Attribution\", \"Queen Mother\", null) as text|null, MAX_NAME_LEN)\n384: \t\tif(!admin_attribution) // Its actually \"\" but this also seems to check that\n385: \t\t\tadmin_attribution = \"none\"",
+      "variables": [],
+      "translation": "信息素授予词"
+    },
+    {
+      "id": "430ec73daa38",
+      "file_path": "code\\datums\\medal_awards.dm",
+      "line_number": 455,
+      "text_type": "chat",
+      "original": "Error: Could not find the [is_marine_medal ? ",
+      "context": "453: \t\trecipient_award = GLOB.jelly_awards[recipient_name]\n454: \tif(!recipient_award)\n455: \t\tto_chat(usr, \"Error: Could not find the [is_marine_medal ? \"marine\" : \"xeno\"] awards for '[recipient_name]'!\")\n456: \t\treturn FALSE\n457: ",
+      "variables": [],
+      "translation": "错误：无法找到[is_marine_medal ? "
+    },
+    {
+      "id": "ed1c28d746fa",
+      "file_path": "code\\datums\\medal_awards.dm",
+      "line_number": 459,
+      "text_type": "chat",
+      "original": "Error: Index [index] is out of bounds!",
+      "context": "457: \n458: \tif(index < 1 || index > length(recipient_award.medal_names))\n459: \t\tto_chat(usr, \"Error: Index [index] is out of bounds!\")\n460: \t\treturn FALSE\n461: ",
+      "variables": [
+        "[index]"
+      ],
+      "translation": "错误：索引[index]越界！"
+    },
+    {
+      "id": "2c3c618cd54a",
+      "file_path": "code\\datums\\medal_awards.dm",
+      "line_number": 536,
+      "text_type": "chat",
+      "original": "It's not possible to give medals when the ship is empty. Tough luck, partner...",
+      "context": "534: \t\tpossible_recipients += recipient_name\n535: \tif(length(possible_recipients) == 0)\n536: \t\tto_chat(recommendation_giver, SPAN_WARNING(\"It's not possible to give medals when the ship is empty. Tough luck, partner...\"))\n537: \t\treturn FALSE\n538: ",
+      "variables": [],
+      "translation": "舰上空无一人时无法授予勋章。运气真差，伙计..."
+    },
+    {
+      "id": "a2ddbce3e692",
+      "file_path": "code\\datums\\medal_awards.dm",
+      "line_number": 539,
+      "text_type": "ui_text",
+      "original": "Who do you want to recommend a medal for?",
+      "context": "537: \t\treturn FALSE\n538: \n539: \tvar/chosen_recipient = tgui_input_list(recommendation_giver, \"Who do you want to recommend a medal for?\", \"Medal Recommendation\", possible_recipients)\n540: \tif(!chosen_recipient)\n541: \t\treturn FALSE",
+      "variables": [],
+      "translation": "你要为谁推荐勋章？"
+    },
+    {
+      "id": "c65a3a0fd1a8",
+      "file_path": "code\\datums\\medal_awards.dm",
+      "line_number": 544,
+      "text_type": "ui_text",
+      "original": "Why does this person deserve a medal?",
+      "context": "542: \n543: \t// Write a citation\n544: \tvar/reason = strip_html(tgui_input_text(recommendation_giver, \"Why does this person deserve a medal?\", \"Medal Recommendation\", null, MAX_PAPER_MESSAGE_LEN, TRUE), MAX_PAPER_MESSAGE_LEN)\n545: \tif(!reason)\n546: \t\treturn FALSE",
+      "variables": [],
+      "translation": "此人为何应得勋章？"
+    },
+    {
+      "id": "2b3c9f6ea9bc",
+      "file_path": "code\\datums\\medal_awards.dm",
+      "line_number": 689,
+      "text_type": "chat",
+      "original": "You cannot award this medal!",
+      "context": "687: \t\t\t\treturn\n688: \t\t\tif((is_xo_medal && !(medal_type in GLOB.medal_options[\"marine_medals_xo\"])) || (!is_xo_medal && !(medal_type in GLOB.medal_options[\"marine_medals_co\"])))\n689: \t\t\t\tto_chat(user, SPAN_WARNING(\"You cannot award this medal!\"))\n690: \t\t\t\treturn\n691: \t\t\tvar/datum/medal_recommendation/recommendation = locate(recommendation_ref) in GLOB.medal_recommendations",
+      "variables": [],
+      "translation": "你无权授予此勋章！"
+    },
+    {
+      "id": "324dff107ed7",
+      "file_path": "code\\datums\\medal_awards.dm",
+      "line_number": 695,
+      "text_type": "chat",
+      "original": "You cannot give medals to yourself!",
+      "context": "693: \t\t\t\treturn\n694: \t\t\tif(recommendation.recipient_name == user.real_name)\n695: \t\t\t\tto_chat(user, SPAN_WARNING(\"You cannot give medals to yourself!\"))\n696: \t\t\t\treturn\n697: ",
+      "variables": [],
+      "translation": "你不能给自己授予勋章！"
+    }
+  ]
+}

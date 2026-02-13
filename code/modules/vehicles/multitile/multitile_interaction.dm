@@ -26,24 +26,24 @@
 	// Are we trying to immobilize the vehicle?
 	if(istype(O, /obj/item/vehicle_clamp))
 		if(clamped)
-			to_chat(user, SPAN_WARNING("[src] already has a [O.name] attached."))
+			to_chat(user, SPAN_WARNING("[src]已经连接了一个[O.name]。"))
 			return
 
 		//only can clamp friendly vehicles
 		if(!get_target_lock(user.faction_group))
-			to_chat(user, SPAN_WARNING("You can attach clamp to vehicles of your faction only."))
+			to_chat(user, SPAN_WARNING("你只能将固定钳连接到己方阵营的载具上。"))
 			return
 
 		if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
-			to_chat(user, SPAN_WARNING("You don't know how to use \the [O.name]."))
+			to_chat(user, SPAN_WARNING("你不知道如何使用\the [O.name]。"))
 			return
 
 		for(var/obj/item/hardpoint/locomotion/Loco in hardpoints)
-			user.visible_message(SPAN_WARNING("[user] attaches the vehicle clamp to \the [src]."), SPAN_NOTICE("You attach the vehicle clamp to \the [src] and lock the mechanism."))
+			user.visible_message(SPAN_WARNING("[user]将载具固定钳连接到\the [src]上。"), SPAN_NOTICE("You attach the vehicle clamp to \the [src] and lock the mechanism."))
 			attach_clamp(O, user)
 			return
 
-		to_chat(user, SPAN_WARNING("There are no treads or wheels to attach \the [O.name] to."))
+		to_chat(user, SPAN_WARNING("没有可供连接\the [O.name]的履带或轮子。"))
 		return
 
 	// Are we trying to remove a vehicle clamp?
@@ -51,17 +51,17 @@
 		if(!clamped)
 			return
 
-		user.visible_message(SPAN_WARNING("[user] starts removing the vehicle clamp from [src]."), SPAN_NOTICE("You start removing the vehicle clamp from [src]."))
+		user.visible_message(SPAN_WARNING("[user]开始从[src]上拆除载具固定钳。"), SPAN_NOTICE("You start removing the vehicle clamp from [src]."))
 		if(skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
 			if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
-				user.visible_message(SPAN_WARNING("[user] stops removing the vehicle clamp from [src]."), SPAN_WARNING("You stop removing the vehicle clamp from [src]."))
+				user.visible_message(SPAN_WARNING("[user]停止从[src]上拆除载具固定钳。"), SPAN_WARNING("You stop removing the vehicle clamp from [src]."))
 				return
-			user.visible_message(SPAN_WARNING("[user] swiftly removes the vehicle clamp from [src]."), SPAN_NOTICE("You skillfully unlock the mechanism and swiftly remove the vehicle clamp from [src]."))
+			user.visible_message(SPAN_WARNING("[user]迅速地从[src]上拆除了载具固定钳。"), SPAN_NOTICE("You skillfully unlock the mechanism and swiftly remove the vehicle clamp from [src]."))
 		else
 			if(!do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
-				user.visible_message(SPAN_WARNING("[user] stops removing the vehicle clamp from [src]."), SPAN_WARNING("You stop removing the vehicle clamp from [src]."))
+				user.visible_message(SPAN_WARNING("[user]停止从[src]上拆除载具固定钳。"), SPAN_WARNING("You stop removing the vehicle clamp from [src]."))
 				return
-			user.visible_message(SPAN_WARNING("[user] clumsily removes the vehicle clamp from [src]."), SPAN_NOTICE("You manage to unlock vehicle clamp and take it off [src]."))
+			user.visible_message(SPAN_WARNING("[user]笨拙地从[src]上拆除了载具固定钳。"), SPAN_NOTICE("You manage to unlock vehicle clamp and take it off [src]."))
 		detach_clamp(user)
 		return
 
@@ -83,13 +83,13 @@
 					handle_fitting_pulled_atom(user, dragged_atom)
 					return
 		else
-			to_chat(user, SPAN_INFO("Use [SPAN_HELPFUL("HELP")] intent to put a pulled object or creature into the vehicle without getting inside yourself."))
+			to_chat(user, SPAN_INFO("使用[SPAN_HELPFUL("HELP")] intent to put a pulled object or creature into the vehicle without getting inside yourself."))
 			handle_player_entrance(user)
 			return
 
 	if(istype(O, /obj/item/device/motiondetector))
 		if(!interior)
-			to_chat(user, SPAN_WARNING("It appears that [O] cannot establish borders of space inside \the [src]. (PLEASE, TELL A DEV, SOMETHING BROKE)"))
+			to_chat(user, SPAN_WARNING("看起来[O]无法在\the [src]内部建立空间边界。（请告知开发人员，有东西出问题了）"))
 			return
 		var/obj/item/device/motiondetector/MD = O
 
@@ -97,15 +97,15 @@
 			to_chat(user, SPAN_WARNING("\The [MD] must be activated in order to scan \the [src]'s interior."))
 			return
 
-		user.visible_message(SPAN_WARNING("[user] fumbles with \the [MD] aimed at \the [src]."), SPAN_NOTICE("You start recalibrating \the [MD] to scan \the [src]'s interior for signatures."))
+		user.visible_message(SPAN_WARNING("[user]笨拙地摆弄着瞄准\the [src]的\the [MD]。"), SPAN_NOTICE("You start recalibrating \the [MD] to scan \the [src]'s interior for signatures."))
 		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-			user.visible_message(SPAN_WARNING("[user] stops fumbling with \the [MD]."), SPAN_WARNING("You stop trying to scan \the [src]'s interior."))
+			user.visible_message(SPAN_WARNING("[user]停止摆弄\the [MD]。"), SPAN_WARNING("You stop trying to scan \the [src]'s interior."))
 			return
 		if(get_dist(src, user) > 2)
-			to_chat(user, SPAN_WARNING("You are too far from \the [src]."))
+			to_chat(user, SPAN_WARNING("你离\the [src]太远了。"))
 			return
 
-		user.visible_message(SPAN_WARNING("[user] finishes fumbling with \the [MD]."), SPAN_NOTICE("You finish recalibrating \the [MD] and scanning \the [src]'s interior for signatures."))
+		user.visible_message(SPAN_WARNING("[user]完成了对\the [MD]的摆弄。"), SPAN_NOTICE("You finish recalibrating \the [MD] and scanning \the [src]'s interior for signatures."))
 
 		interior.update_passenger_count()
 
@@ -140,20 +140,20 @@
 	var/max_hp = initial(health)
 	if(health > max_hp)
 		health = max_hp
-		to_chat(user, SPAN_NOTICE("The hull is fully intact."))
+		to_chat(user, SPAN_NOTICE("船体完好无损。"))
 		for(var/obj/item/hardpoint/holder/H in hardpoints)
 			if(H.health > 0)
 				if(!iswelder(O))
-					to_chat(user, SPAN_WARNING("You need welding tool to repair \the [H.name]."))
+					to_chat(user, SPAN_WARNING("你需要焊枪来修复\the [H.name]。"))
 					return
 				if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
-					to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+					to_chat(user, SPAN_WARNING("你需要一把更强的喷枪！"))
 					return
 				H.handle_repair(O, user)
 				update_icon()
 				return
 			else
-				to_chat(user, SPAN_WARNING("[H] is beyond repairs!"))
+				to_chat(user, SPAN_WARNING("[H]已无法修复！"))
 				return
 
 	var/repair_message = "welding structural struts back in place"
@@ -163,11 +163,11 @@
 	// For health < 75%, the frame needs welderwork, otherwise wrench
 	if(health < max_hp * 0.75)
 		if(!iswelder(O))
-			to_chat(user, SPAN_NOTICE("The frame is way too busted! Try using a [SPAN_HELPFUL("welder")]."))
+			to_chat(user, SPAN_NOTICE("框架损坏得太严重了！试试用[SPAN_HELPFUL("welder")]."))
 			return
 
 		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
-			to_chat(user, SPAN_NOTICE("You need a more powerful blowtorch!"))
+			to_chat(user, SPAN_NOTICE("你需要功率更大的喷灯！"))
 			return
 
 		WT = O
@@ -177,14 +177,14 @@
 
 	else
 		if(!HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
-			to_chat(user, SPAN_NOTICE("The frame is structurally sound, but there are a lot of loose nuts and bolts. Try using a [SPAN_HELPFUL("wrench")]."))
+			to_chat(user, SPAN_NOTICE("框架结构完好，但有很多松动的螺母和螺栓。试试用[SPAN_HELPFUL("wrench")]."))
 			return
 
 		repair_message = "tightening various nuts and bolts on"
 		sound_file = 'sound/items/Ratchet.ogg'
 
 	var/amount_fixed_adjustment = user.get_skill_duration_multiplier(SKILL_ENGINEER)
-	user.visible_message(SPAN_WARNING("[user] [repair_message] on \the [src]."), SPAN_NOTICE("You begin [repair_message] on \the [src]."))
+	user.visible_message(SPAN_WARNING("[user]在\the [src]上[repair_message]。"), SPAN_NOTICE("You begin [repair_message] on \the [src]."))
 	playsound(get_turf(user), sound_file, 25)
 
 	while(health < max_hp)
@@ -192,7 +192,7 @@
 			playsound(get_turf(user), sound_file, 25)
 
 		if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
-			user.visible_message(SPAN_WARNING("[user] stops [repair_message] on \the [src]."), SPAN_NOTICE("You stop [repair_message] on \the [src]. Hull integrity is at [SPAN_HELPFUL(100.0*health/max_hp)]%."))
+			user.visible_message(SPAN_WARNING("[user]停止在\the [src]上[repair_message]。"), SPAN_NOTICE("You stop [repair_message] on \the [src]. Hull integrity is at [SPAN_HELPFUL(100.0*health/max_hp)]%."))
 			return
 
 		health = min(health + max_hp/100 * (5 / amount_fixed_adjustment), max_hp)
@@ -203,19 +203,19 @@
 		if(WT)
 			WT.remove_fuel(1, user)
 			if(WT.get_fuel() < 1)
-				user.visible_message(SPAN_WARNING("[user] stops [repair_message] on \the [src]."), SPAN_NOTICE("You stop [repair_message] on \the [src]. Hull integrity is at [SPAN_HELPFUL(100.0*health/max_hp)]%."))
+				user.visible_message(SPAN_WARNING("[user]停止在\the [src]上[repair_message]。"), SPAN_NOTICE("You stop [repair_message] on \the [src]. Hull integrity is at [SPAN_HELPFUL(100.0*health/max_hp)]%."))
 				return
 			if(health >= max_hp * 0.75)
-				user.visible_message(SPAN_WARNING("[user] finishes [repair_message] on \the [src]."), SPAN_NOTICE("You finish [repair_message] on \the [src]. The frame is structurally sound now, but there are a lot of loose nuts and bolts. Try using a [SPAN_HELPFUL("wrench")]."))
+				user.visible_message(SPAN_WARNING("[user]完成了在\the [src]上的[repair_message]。"), SPAN_NOTICE("You finish [repair_message] on \the [src]. The frame is structurally sound now, but there are a lot of loose nuts and bolts. Try using a [SPAN_HELPFUL("wrench")]."))
 				return
 
-		to_chat(user, SPAN_NOTICE("Hull integrity is at [SPAN_HELPFUL(100.0*health/max_hp)]%."))
+		to_chat(user, SPAN_NOTICE("船体完整度为[SPAN_HELPFUL(100.0*health/max_hp)]%。"))
 
 	health = initial(health)
 	lighting_holder.set_light_range(vehicle_light_range)
 	toggle_cameras_status(TRUE)
 	update_icon()
-	user.visible_message(SPAN_NOTICE("[user] finishes [repair_message] on \the [src]."), SPAN_NOTICE("You finish [repair_message] on \the [src]. Hull integrity is at [SPAN_HELPFUL(100.0*health/max_hp)]%."))
+	user.visible_message(SPAN_NOTICE("[user]完成了在\the [src]上的[repair_message]。"), SPAN_NOTICE("You finish [repair_message] on \the [src]. Hull integrity is at [SPAN_HELPFUL(100.0*health/max_hp)]%."))
 	return
 
 //Special case for entering the vehicle without using the verb
@@ -251,7 +251,7 @@
 		return XENO_NO_DELAY_ACTION
 
 	if(X.mob_size < mob_size_required_to_hit)
-		to_chat(X, SPAN_XENOWARNING("We're too small to do any significant damage to this vehicle!"))
+		to_chat(X, SPAN_XENOWARNING("我们火力太弱，对这载具造不成有效伤害！"))
 		return XENO_NO_DELAY_ACTION
 
 	var/damage = (X.melee_vehicle_damage + rand(-5,5)) * XENO_UNIVERSAL_VEHICLE_DAMAGEMULT
@@ -384,7 +384,7 @@
 
 	var/obj/item/hardpoint/hardpoint = get_mob_hp(source)
 	if(!hardpoint)
-		to_chat(source, SPAN_WARNING("Please select an active hardpoint first."))
+		to_chat(source, SPAN_WARNING("请先选择一个激活的武器挂点。"))
 		return
 
 	hardpoint.start_fire(source, object, location, control, params)
@@ -471,7 +471,7 @@
 	if(dragged_atom)
 		var/success = interior.enter(dragged_atom, entrance_used)
 		if(!success)
-			to_chat(M, SPAN_WARNING("You fail to fit [dragged_atom] inside \the [src] and leave [ismob(dragged_atom) ? "them" : "it"] outside."))
+			to_chat(M, SPAN_WARNING("你未能将[dragged_atom]塞进\the [src]，并让[ismob(dragged_atom) ? "them" : "it"] outside."))
 
 //try to fit something into the vehicle
 /obj/vehicle/multitile/proc/handle_fitting_pulled_atom(mob/living/carbon/human/user, atom/dragged_atom)
@@ -490,7 +490,7 @@
 			entrance_used = entrance
 			break
 
-	to_chat(user, SPAN_NOTICE("You start trying to fit [dragged_atom] into \the [src]..."))
+	to_chat(user, SPAN_NOTICE("你开始尝试将[dragged_atom]塞进\the [src]..."))
 	if(!do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		return
 	if(mob_x != user.x - x || mob_y != user.y - y)
@@ -506,14 +506,14 @@
 		currently_dragged = G.grabbed_thing
 
 	if(currently_dragged != dragged_atom)
-		to_chat(user, SPAN_WARNING("You stop fitting [dragged_atom] inside \the [src]!"))
+		to_chat(user, SPAN_WARNING("你停止将[dragged_atom]塞进\the [src]！"))
 		return
 
 	var/success = interior.enter(dragged_atom, entrance_used)
 	if(success)
-		to_chat(user, SPAN_NOTICE("You successfully fit [dragged_atom] inside \the [src]."))
+		to_chat(user, SPAN_NOTICE("你成功将[dragged_atom]塞进了\the [src]。"))
 	else
-		to_chat(user, SPAN_WARNING("You fail to fit [dragged_atom] inside \the [src]! It's either too big or vehicle is out of space!"))
+		to_chat(user, SPAN_WARNING("你未能将[dragged_atom]塞进\the [src]！要么它太大，要么载具没空间了！"))
 	return
 
 //CLAMP procs, unsafe proc, checks are done before calling it

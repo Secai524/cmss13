@@ -1,7 +1,7 @@
 /datum/weather_event/hybrisa_light_rain
-	name = "Hybrisa Light Rain"
+	name = "海布里萨小雨"
 
-	display_name = "Light Rain"
+	display_name = "小雨"
 
 	length = 15 MINUTES
 
@@ -18,9 +18,9 @@
 	ambience = 'sound/ambience/rainandthunderlong.ogg'
 
 /datum/weather_event/hybrisa_very_light_rain
-	name = "Hybrisa Very Light Rain"
+	name = "海布里萨微雨"
 
-	display_name = "Very Light Rain"
+	display_name = "微雨"
 
 	length = 15 MINUTES
 

@@ -1,7 +1,7 @@
 /mob/camera/imaginary_friend
-	name = "imaginary friend"
-	real_name = "imaginary friend"
-	desc = "A wonderful yet fake friend."
+	name = "幻想朋友"
+	real_name = "幻想朋友"
+	desc = "一位美妙但不真实的朋友。"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	lighting_alpha = LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
 	see_invisible = SEE_INVISIBLE_OBSERVER
@@ -57,13 +57,13 @@
 	name = client.prefs.real_name
 	real_name = name
 	gender = client.prefs.gender
-	var/available_appearances = outfit_choices + "Drone"
-	var/outfit_choice = tgui_input_list(usr, "Choose your appearance:", "[src]", available_appearances)
+	var/available_appearances = outfit_choices + "工蜂"
+	var/outfit_choice = tgui_input_list(usr, "选择你的外观：", "[src]", available_appearances)
 	if(!outfit_choice)
 		outfit_choice = outfit_choices[1]
-	if(outfit_choice == "Drone")
+	if(outfit_choice == "工蜂")
 		friend_image = get_xeno_appearance()
-		name = "Helpful Drone"
+		name = "辅助无人机"
 		return
 	friend_image = get_flat_human_icon(null, outfit_choice, client.prefs)
 
@@ -132,13 +132,13 @@
 	set category = "Imaginary Friend"
 	set name = "Change Appearance"
 
-	var/available_appearances = outfit_choices + "Drone"
-	var/outfit_choice = tgui_input_list(usr, "Choose your appearance:", "[src]", available_appearances)
+	var/available_appearances = outfit_choices + "工蜂"
+	var/outfit_choice = tgui_input_list(usr, "选择你的外观：", "[src]", available_appearances)
 	if(!outfit_choice)
 		outfit_choice = outfit_choices[1]
-	if(outfit_choice == "Drone")
+	if(outfit_choice == "工蜂")
 		friend_image = get_xeno_appearance()
-		name = "Helpful Drone"
+		name = "辅助无人机"
 		return
 	name = client.prefs.real_name
 	friend_image = get_flat_human_icon(null, outfit_choice, client.prefs)
@@ -161,7 +161,7 @@
 		"Faction Hyperdyne HUD" = MOB_HUD_FACTION_HC,
 	)
 
-	var/hud_choice = tgui_input_list(usr, "Choose a HUD to toggle", "Toggle HUD prefs", hud_options)
+	var/hud_choice = tgui_input_list(usr, "选择要切换的HUD", "Toggle HUD prefs", hud_options)
 	var/datum/mob_hud/hud = GLOB.huds[hud_options[hud_choice]]
 
 	if(hud_choice in current_huds)
@@ -177,7 +177,7 @@
 
 	if(client)
 		if(client.prefs.muted & MUTE_IC)
-			to_chat(src, SPAN_DANGER("You cannot send IC messages (muted)."))
+			to_chat(src, SPAN_DANGER("你无法发送IC消息（已被禁言）。"))
 			return
 
 		if(client.handle_spam_prevention(message, MUTE_IC))
@@ -274,7 +274,7 @@
 	return ghost
 
 /datum/action/innate/imaginary_orbit
-	name = "Orbit"
+	name = "轨道"
 	action_icon_state = "joinmob"
 
 /datum/action/innate/imaginary_orbit/action_activate()
@@ -283,7 +283,7 @@
 	friend.recall()
 
 /datum/action/innate/imaginary_hide
-	name = "Hide"
+	name = "隐藏"
 	action_icon_state = "hidemob"
 
 /datum/action/innate/imaginary_hide/action_activate()
@@ -292,13 +292,13 @@
 	if(friend.hidden)
 		friend.hidden = FALSE
 		friend.update_image()
-		name = "Hide"
+		name = "隐藏"
 		action_icon_state = "hidemob"
 		update_button_icon()
 	else
 		friend.hidden = TRUE
 		friend.update_image()
-		name = "Show"
+		name = "显示"
 		action_icon_state = "unhidemob"
 		update_button_icon()
 

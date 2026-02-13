@@ -1,7 +1,7 @@
 
 //Feral Xenomorphs, hostile to TRULY everyone.
 /datum/emergency_call/feral_xenos
-	name = "Xenomorphs (Feral)"
+	name = "异形（野性）"
 	mob_min = 1
 	mob_max = 8
 	max_medics = 2 //Support T2 castes
@@ -60,7 +60,7 @@
 
 
 /datum/emergency_call/feral_xenos/platoon
-	name = "Xenomorphs (Feral Platoon)"
+	name = "异形（野性排）"
 	mob_min = 1
 	mob_max = 30
 	probability = 0

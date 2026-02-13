@@ -7,8 +7,8 @@
 GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/computer/overwatch)
 
 /obj/structure/machinery/computer/overwatch
-	name = "Overwatch Console"
-	desc = "State of the art machinery for giving orders to a squad."
+	name = "监控控制台"
+	desc = "用于向小队下达命令的尖端设备。"
 	icon_state = "dummy"
 	unslashable = TRUE
 	unacidable = TRUE
@@ -64,8 +64,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	COOLDOWN_DECLARE(cooldown_shipside_message)
 
 /obj/structure/machinery/computer/overwatch/groundside_operations
-	name = "Groundside Operations Console"
-	desc = "This can be used for various important functions."
+	name = "地面作战控制台"
+	desc = "此控制台可用于执行多种重要功能。"
 	icon_state = "comm"
 	req_access = list(ACCESS_MARINE_SENIOR)
 	// should be usable even without OW training
@@ -137,11 +137,11 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		return
 
 	if(!skillcheck(user, SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED) && !no_skill_req)
-		to_chat(user, SPAN_WARNING("You don't have the training to use [src]."))
+		to_chat(user, SPAN_WARNING("你没有接受过使用[src]的训练。"))
 		return
 
 	if(!allowed(user))
-		to_chat(user, SPAN_WARNING("Console access denied."))
+		to_chat(user, SPAN_WARNING("控制台访问被拒绝。"))
 		return
 
 	if((user.contents.Find(src) || (in_range(src, user) && istype(loc, /turf))) || (isSilicon(user)))
@@ -158,7 +158,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	if(!ishuman(user))
 		return ..()
 	if(mods[ALT_CLICK]) //Changing UI theme
-		var/tgui_input_theme = tgui_input_list(user, "Choose a UI theme:", "UI Theme", chosen_theme)
+		var/tgui_input_theme = tgui_input_list(user, "选择界面主题：", "UI Theme", chosen_theme)
 		if(!possible_options)
 			return
 		if(!possible_options[tgui_input_theme])
@@ -182,9 +182,9 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		if(istype(src, /obj/structure/machinery/computer/overwatch/groundside_operations))
-			ui = new(user, src, "CentralOverwatchConsole", "Groundside Operations Console")
+			ui = new(user, src, "CentralOverwatchConsole", "地面作战控制台")
 		else
-			ui = new(user, src, "OverwatchConsole", "Overwatch Console")
+			ui = new(user, src, "OverwatchConsole", "监控控制台")
 		ui.open()
 
 /obj/structure/machinery/computer/overwatch/proc/count_marines(list/data, datum/squad/index_squad, variable_format)
@@ -208,7 +208,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 	var/SL_z //z level of the Squad Leader
 
-	if(index_squad && index_squad.name == "Root")
+	if(index_squad && index_squad.name == "根")
 		var/list/command_data = get_command_squad(data)
 		return command_data
 
@@ -279,7 +279,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 					mob_state = "Conscious"
 
 				if(UNCONSCIOUS)
-					mob_state = "Unconscious"
+					mob_state = "昏迷"
 
 				if(DEAD)
 					mob_state = "Dead"
@@ -437,7 +437,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				mob_state = "Conscious"
 
 			if(UNCONSCIOUS)
-				mob_state = "Unconscious"
+				mob_state = "昏迷"
 
 			if(DEAD)
 				mob_state = "Dead"
@@ -477,7 +477,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	if(!current_squad)
 		data["squad_list"] = list()
 		for(var/datum/squad/current_squad in GLOB.RoleAuthority.squads)
-			if(current_squad.active && !current_squad.overwatch_officer && current_squad.faction == faction && current_squad.name != "Root")
+			if(current_squad.active && !current_squad.overwatch_officer && current_squad.faction == faction && current_squad.name != "根")
 				data["squad_list"] += current_squad.name
 		return data
 
@@ -523,14 +523,14 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	if(!current_squad)
 		data["squad_list"] = list()
 		for(var/datum/squad/current_squad in GLOB.RoleAuthority.squads)
-			if(current_squad.active && !current_squad.overwatch_officer && current_squad.faction == faction && current_squad.name != "Root")
+			if(current_squad.active && !current_squad.overwatch_officer && current_squad.faction == faction && current_squad.name != "根")
 				data["squad_list"] += current_squad.name
 		return data
 
 	data["current_squad"] = current_squad.name
 
 	for(var/datum/squad/index_squad in GLOB.RoleAuthority.squads)
-		if(index_squad.active && index_squad.faction == faction && index_squad.name != "Root")
+		if(index_squad.active && index_squad.faction == faction && index_squad.name != "根")
 			var/list/squad_data = list(list("name" = index_squad.name, "primary_objective" = index_squad.primary_objective, "secondary_objective" = index_squad.secondary_objective, "overwatch_officer" = index_squad.overwatch_officer, "ref" = REF(index_squad)))
 			data["squad_data"] += squad_data
 
@@ -607,7 +607,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			if(selected_squad.assume_overwatch(user))
 				current_squad = selected_squad
 				operator = user
-				if(current_squad.name == "Root")
+				if(current_squad.name == "根")
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Welcome [operator.name], access credentials verified. All tactical functions initialized.")]")
 				else
 					current_squad.send_squad_message("Attention - Your squad has been selected for Overwatch. Check your Status pane for objectives.", displayed_icon = src)
@@ -618,7 +618,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		if("logout")
 			if(istype(src, /obj/structure/machinery/computer/overwatch/groundside_operations))
 				for(var/datum/squad/resolve_root in GLOB.RoleAuthority.squads)
-					if(resolve_root.name == "Root" && resolve_root.faction == faction)
+					if(resolve_root.name == "根" && resolve_root.faction == faction)
 						current_squad = resolve_root	// manually overrides the target squad to 'root', since goc's don't know how
 						break
 			if(current_squad?.release_overwatch())
@@ -648,7 +648,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 		if("message")
 			if(current_squad)
-				var/input = sanitize_control_chars(tgui_input_text(user, "Please write a message to announce to the squad:", "Squad Message"))
+				var/input = sanitize_control_chars(tgui_input_text(user, "请输入要通报给全班的讯息：", "Squad Message"))
 				if(input)
 					current_squad.transmit_alert("", input, "", "Squad Message:", user) //message, adds username
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Message '[input]' sent to all Marines of squad '[current_squad]'.")]")
@@ -656,7 +656,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 		if("sl_message")
 			if(current_squad)
-				var/input = sanitize_control_chars(tgui_input_text(user, "Please write a message to announce to the squad leader:", "SL Message"))
+				var/input = sanitize_control_chars(tgui_input_text(user, "请输入要通报给班长的讯息：", "SL Message"))
 				if(input)
 					current_squad.transmit_alert("", input, "", "Squad Leader Message:", user, only_leader=TRUE) //message, adds username, only to leader
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Message '[input]' sent to Squad Leader [current_squad.squad_leader] of squad '[current_squad]'.")]")
@@ -675,7 +675,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 					current_squad.remind_objective(primary=FALSE)
 
 		if("set_primary")
-			var/input = sanitize_control_chars(tgui_input_text(user, "What will be the squad's primary objective?", "Primary Objective"))
+			var/input = sanitize_control_chars(tgui_input_text(user, "请设定本班的主要目标：", "Primary Objective"))
 			var/datum/squad/target_squad = current_squad
 			if(params["target_squad_ref"])
 				target_squad = locate(params["target_squad_ref"])
@@ -686,7 +686,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				return TRUE
 
 		if("set_secondary")
-			var/input = sanitize_control_chars(tgui_input_text(user, "What will be the squad's secondary objective?", "Secondary Objective"))
+			var/input = sanitize_control_chars(tgui_input_text(user, "请设定本班的次要目标：", "Secondary Objective"))
 			var/datum/squad/target_squad = current_squad
 			if(params["target_squad_ref"])
 				target_squad = locate(params["target_squad_ref"])
@@ -805,7 +805,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 					disconnect_holder()
 					cam = null
 				else if(user.client.view != GLOB.world_view_size)
-					to_chat(user, SPAN_WARNING("You're too busy peering through binoculars."))
+					to_chat(user, SPAN_WARNING("你正忙于使用望远镜观察。"))
 				else
 					for(var/datum/weakref/user_ref in concurrent_users)
 						var/mob/concurrent = user_ref.resolve()
@@ -827,7 +827,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 					return
 				if(istype(src, /obj/structure/machinery/computer/overwatch/groundside_operations))
 					for(var/datum/squad/resolve_root in GLOB.RoleAuthority.squads)
-						if(resolve_root.name == "Root" && resolve_root.faction == faction)
+						if(resolve_root.name == "根" && resolve_root.faction == faction)
 							current_squad = resolve_root	// manually overrides the target squad to 'root', since goc's don't know how
 							break
 				if(!current_squad || current_squad.assume_overwatch(user))
@@ -857,7 +857,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				if(SEC_LEVEL_DELTA)
 					return
 
-			var/level_selected = tgui_input_list(user, "What alert would you like to set it as?", "Alert Level", alert_list)
+			var/level_selected = tgui_input_list(user, "请设定警报级别：", "Alert Level", alert_list)
 			if(!level_selected)
 				return
 
@@ -872,7 +872,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				return
 			if(squad == "root" && show_command_squad)
 				for(var/datum/squad/resolve_root in GLOB.RoleAuthority.squads)
-					if(resolve_root.name == "Root" && resolve_root.faction == faction)
+					if(resolve_root.name == "根" && resolve_root.faction == faction)
 						current_squad = resolve_root	// manually overrides the target squad to 'root', since goc's don't know how
 			else
 				current_squad = locate(params["squad"])
@@ -889,20 +889,20 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			else if(!idcard.check_biometrics(human_user))
 				bio_fail = TRUE
 			if(bio_fail)
-				to_chat(human_user, SPAN_WARNING("Biometrics failure! You require an authenticated ID card to perform this action!"))
+				to_chat(human_user, SPAN_WARNING("生物识别失败！需要经过认证的身份卡才能执行此操作！"))
 				return FALSE
 
 			if(user.client.prefs.muted & MUTE_IC)
-				to_chat(user, SPAN_DANGER("You cannot send Announcements (muted)."))
+				to_chat(user, SPAN_DANGER("你无法发送公告（已被禁言）。"))
 				return
 
 			if((!COOLDOWN_FINISHED(src, cooldown_message) && announcement_type == "groundside") || (!COOLDOWN_FINISHED(src, cooldown_shipside_message) && announcement_type == "shipside"))
-				to_chat(user, SPAN_WARNING("Please allow at least [COOLDOWN_COMM_MESSAGE*0.1] second\s to pass between announcements."))
+				to_chat(user, SPAN_WARNING("请至少等待[COOLDOWN_COMM_MESSAGE*0.1]秒后再发送公告。"))
 				return FALSE
 			if(announcement_faction != FACTION_MARINE && user.faction != announcement_faction)
-				to_chat(user, SPAN_WARNING("Access denied."))
+				to_chat(user, SPAN_WARNING("权限被拒绝。"))
 				return
-			var/input = stripped_multiline_input(user, "Please write a message to announce to the station crew.", "Priority Announcement", "")
+			var/input = stripped_multiline_input(user, "请输入要通报给全体舰员的讯息。", "Priority Announcement", "")
 			if(!input || !(user in dview(1, src)))
 				return FALSE
 
@@ -930,14 +930,14 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 		if("messageUSCM")
 			if(!COOLDOWN_FINISHED(src, cooldown_central))
-				to_chat(user, SPAN_WARNING("Arrays are re-cycling. Please stand by."))
+				to_chat(user, SPAN_WARNING("阵列正在重新循环。请稍候。"))
 				return FALSE
-			var/input = stripped_input(user, "Please choose a message to transmit to USCM. Please be aware that this process is very expensive, and abuse will lead to termination. Transmission does not guarantee a response. There is a small delay before you may send another message. Be clear and concise.", "To abort, send an empty message.", "")
+			var/input = stripped_input(user, "请选择要发送给USCM的讯息。请注意，此过程成本高昂，滥用将导致解职。发送讯息不保证会收到回复。再次发送前将有短暂延迟。请确保讯息清晰简洁。", "To abort, send an empty message.", "")
 			if(!input || !(user in dview(1, src)) || !COOLDOWN_FINISHED(src, cooldown_central))
 				return FALSE
 
 			high_command_announce(input, user)
-			to_chat(user, SPAN_NOTICE("Message transmitted."))
+			to_chat(user, SPAN_NOTICE("讯息已发送。"))
 			log_announcement("[key_name(user)] has made an USCM announcement: [input]")
 			COOLDOWN_START(src, cooldown_central, COOLDOWN_COMM_CENTRAL)
 
@@ -955,16 +955,16 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			else if(!idcard.check_biometrics(human_user))
 				bio_fail = TRUE
 			if(bio_fail)
-				to_chat(human_user, SPAN_WARNING("Biometrics failure! You require an authenticated ID card to perform this action!"))
+				to_chat(human_user, SPAN_WARNING("生物识别失败！需要经过认证的身份卡才能执行此操作！"))
 				return FALSE
 
-			var/reason = strip_html(input(user, "What is the purpose of Echo Squad?", "Activation Reason"))
+			var/reason = strip_html(input(user, "回声班的用途是什么？", "Activation Reason"))
 			if(!reason)
 				return
-			if(alert(user, "Confirm activation of Echo Squad for [reason]", "Confirm Activation", "Yes", "No") != "Yes") return
+			if(alert(user, "确认因[reason]激活回声班", "Confirm Activation", "Yes", "No") != "Yes") return
 			var/datum/squad/marine/echo/echo_squad = locate() in GLOB.RoleAuthority.squads
 			if(!echo_squad)
-				visible_message(SPAN_BOLDNOTICE("ERROR: Unable to locate Echo Squad database."))
+				visible_message(SPAN_BOLDNOTICE("错误：无法定位回声班数据库。"))
 				return
 			echo_squad.engage_squad(TRUE)
 			message_admins("[key_name(user)] activated Echo Squad for '[reason]'.")
@@ -974,28 +974,28 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				return FALSE //Not a game mode?
 
 			if(GLOB.security_level == SEC_LEVEL_DELTA)
-				to_chat(user, SPAN_WARNING("The ship is already undergoing self destruct procedures!"))
+				to_chat(user, SPAN_WARNING("舰船已启动自毁程序！"))
 				return FALSE
 
 			for(var/client/C in GLOB.admins)
 				if((R_ADMIN|R_MOD) & C.admin_holder.rights)
 					playsound_client(C,'sound/effects/sos-morse-code.ogg',10)
 			SSticker.mode.request_ert(user)
-			to_chat(user, SPAN_NOTICE("A distress beacon request has been sent to USCM Central Command."))
+			to_chat(user, SPAN_NOTICE("已向USCM中央司令部发送求救信标请求。"))
 			COOLDOWN_START(src, cooldown_request, COOLDOWN_COMM_REQUEST)
 			return TRUE
 
 		if("evacuation_start")
 			if(GLOB.security_level < SEC_LEVEL_RED)
-				to_chat(user, SPAN_WARNING("The ship must be under red alert in order to enact evacuation procedures."))
+				to_chat(user, SPAN_WARNING("舰船必须处于红色警报状态才能启动撤离程序。"))
 				return FALSE
 
 			if(SShijack.evac_admin_denied)
-				to_chat(user, SPAN_WARNING("The USCM has placed a lock on deploying the evacuation pods."))
+				to_chat(user, SPAN_WARNING("USCM已锁定逃生舱的部署。"))
 				return FALSE
 
 			if(!SShijack.initiate_evacuation())
-				to_chat(user, SPAN_WARNING("You are unable to initiate an evacuation procedure right now!"))
+				to_chat(user, SPAN_WARNING("你现在无法启动撤离程序！"))
 				return FALSE
 
 			log_game("[key_name(user)] has called for an emergency evacuation.")
@@ -1013,11 +1013,11 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			else if(!idcard.check_biometrics(human_user))
 				bio_fail = TRUE
 			if(bio_fail)
-				to_chat(human_user, SPAN_WARNING("Biometrics failure! You require an authenticated ID card to perform this action!"))
+				to_chat(human_user, SPAN_WARNING("生物识别失败！需要经过认证的身份卡才能执行此操作！"))
 				return FALSE
 
 			if(!SShijack.cancel_evacuation())
-				to_chat(user, SPAN_WARNING("You are unable to cancel the evacuation right now!"))
+				to_chat(user, SPAN_WARNING("你现在无法取消撤离！"))
 				return FALSE
 
 			log_game("[key_name(user)] has canceled the emergency evacuation.")
@@ -1032,11 +1032,11 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				log_ares_security("Manual Security Update", "Changed the security level to red.", user)
 				set_security_level(SEC_LEVEL_RED, no_sound = TRUE, announce = FALSE)
 			if(!COOLDOWN_FINISHED(datacore, ares_quarters_cooldown))
-				to_chat(user, SPAN_WARNING("It has not been long enough since the last General Quarters call!"))
+				to_chat(user, SPAN_WARNING("距离上次全员战斗警报呼叫时间太短！"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
 			COOLDOWN_START(datacore, ares_quarters_cooldown, 10 MINUTES)
-			shipwide_ai_announcement("ATTENTION! GENERAL QUARTERS. ALL HANDS, MAN YOUR BATTLESTATIONS.", MAIN_AI_SYSTEM, 'sound/effects/GQfullcall.ogg')
+			shipwide_ai_announcement("注意！全员战斗警报。所有人员，进入战斗岗位。", MAIN_AI_SYSTEM, 'sound/effects/GQfullcall.ogg')
 			log_game("[key_name(user)] has called for general quarters via the groundside operations console.")
 			message_admins("[key_name_admin(user)] has called for general quarters via the groundside operations console.")
 			log_ares_security("General Quarters", "Called for general quarters via the groundside operations console.", user)
@@ -1102,8 +1102,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		current_squad.send_message("Attention: A new Squad Leader has been set: [selected_sl.real_name].")
 		visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("[selected_sl.real_name] is the new Squad Leader of squad '[current_squad]'! Logging to enlistment file.")]")
 
-	to_chat(selected_sl, "[icon2html(src, selected_sl)] <font size='3' color='blue'><B>Overwatch: You've been promoted to \'[selected_sl.job == JOB_SQUAD_LEADER ? "SQUAD LEADER" : "ACTING SQUAD LEADER"]\' for [current_squad.name]. Your headset has access to the command channel ([command_channel_key]).</B></font>")
-	to_chat(user, "[icon2html(src, usr)] [selected_sl.real_name] is [current_squad]'s new leader!")
+	to_chat(selected_sl, "[icon2html(src, selected_sl)] <font size='3' color='blue'><B>监控：你已被晋升为\'[selected_sl.job == JOB_SQUAD_LEADER ? ""SQUAD LEADER" : "ACTING SQUAD LEADER"]\' for [current_squad.name]. Your headset has access to the command channel ([command_channel_key]).</B></font>")
+	to_chat(user, "[icon2html(src, usr)] [selected_sl.real_name]现在是[current_squad]的新任班长！")
 
 	if(selected_sl.assigned_fireteam)
 		if(selected_sl == current_squad.fireteam_leaders[selected_sl.assigned_fireteam])
@@ -1171,7 +1171,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		concurrent_users += WEAKREF(user)
 		if(cam)
 			if(user.client.view != GLOB.world_view_size)
-				to_chat(user, SPAN_WARNING("You're too busy peering through binoculars."))
+				to_chat(user, SPAN_WARNING("你正忙于使用望远镜观察。"))
 				return
 			user.reset_view(cam)
 			user.RegisterSignal(cam, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, reset_observer_view_on_deletion))
@@ -1247,8 +1247,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			if(M.stat != CONSCIOUS || !M.client)
 				continue
 			playsound_client(M.client, 'sound/effects/ob_alert.ogg', M)
-			to_chat(M, SPAN_HIGHDANGER("Orbital bombardment launch command detected!"))
-			to_chat(M, SPAN_DANGER("Launch command informs [ob_type] warhead. Estimated impact area: [ob_area.name]"))
+			to_chat(M, SPAN_HIGHDANGER("检测到轨道轰炸发射指令！"))
+			to_chat(M, SPAN_DANGER("发射指令确认[ob_type]弹头。预计命中区域：[ob_area.name]"))
 
 
 /obj/structure/machinery/computer/overwatch/proc/mark_insubordination()
@@ -1257,7 +1257,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	if(!current_squad)
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("No squad selected!")]")
 		return
-	var/mob/living/carbon/human/wanted_marine = tgui_input_list(usr, "Report a marine for insubordination", "Mark for Insubordination", current_squad.marines_list)
+	var/mob/living/carbon/human/wanted_marine = tgui_input_list(usr, "报告陆战队员抗命行为", "Mark for Insubordination", current_squad.marines_list)
 	if(!wanted_marine)
 		return
 	if(!istype(wanted_marine))//gibbed/deleted, all we have is a name.
@@ -1271,7 +1271,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				if(R.fields["id"] == E.fields["id"])
 					if(!findtext(R.fields["ma_crim"],"Insubordination."))
 						R.fields["criminal"] = "*Arrest*"
-						if(R.fields["ma_crim"] == "None")
+						if(R.fields["ma_crim"] == "无")
 							R.fields["ma_crim"] = "Insubordination."
 						else
 							R.fields["ma_crim"] += "Insubordination."
@@ -1281,7 +1281,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 							usr << insub
 						else
 							visible_message(insub)
-						to_chat(wanted_marine, "[icon2html(src, wanted_marine)] <font size='3' color='blue'><B>Overwatch:</b> You've been reported for insubordination by your overwatch officer.</font>")
+						to_chat(wanted_marine, "[icon2html(src, wanted_marine)] <font size='3' color='blue'><B>监控：</b>你因抗命行为已被你的监控军官报告。</font>")
 						wanted_marine.sec_hud_set_security_status()
 					return
 
@@ -1292,7 +1292,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("No squad selected!")]")
 		return
 	var/datum/squad/S = current_squad
-	var/mob/living/carbon/human/transfer_marine = tgui_input_list(usr, "Choose marine to transfer", "Transfer Marine", current_squad.marines_list)
+	var/mob/living/carbon/human/transfer_marine = tgui_input_list(usr, "选择要调动的陆战队员", "Transfer Marine", current_squad.marines_list)
 	if(!transfer_marine || S != current_squad) //don't change overwatched squad, idiot.
 		return
 
@@ -1307,10 +1307,10 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 	var/list/available_squads = list()
 	for(var/datum/squad/squad as anything in GLOB.RoleAuthority.squads)
-		if(squad.active && !squad.locked && squad.faction == faction && squad.name != "Root")
+		if(squad.active && !squad.locked && squad.faction == faction && squad.name != "根")
 			available_squads += squad
 
-	var/datum/squad/new_squad = tgui_input_list(usr, "Choose the marine's new squad", "Squad Selection", available_squads)
+	var/datum/squad/new_squad = tgui_input_list(usr, "选择陆战队员的新班组", "Squad Selection", available_squads)
 	if(!new_squad || S != current_squad)
 		return
 
@@ -1335,7 +1335,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	. = transfer_marine_to_squad(transfer_marine, new_squad, old_squad, card)
 	if(.)
 		visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("[transfer_marine] has been transfered from squad '[old_squad]' to squad '[new_squad]'. Logging to enlistment file.")]")
-		to_chat(transfer_marine, "[icon2html(src, transfer_marine)] <font size='3' color='blue'><B>\[Overwatch\]:</b> You've been transfered to [new_squad]!</font>")
+		to_chat(transfer_marine, "[icon2html(src, transfer_marine)] <font size='3' color='blue'><B>\[监控\]：</b>你已被调至[new_squad]！</font>")
 	else
 		visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("[transfer_marine] transfer from squad '[old_squad]' to squad '[new_squad]' unsuccessful.")]")
 
@@ -1395,7 +1395,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 /obj/structure/machinery/computer/overwatch/proc/begin_fire()
 	for(var/mob/living/carbon/human in GLOB.alive_mob_list)
 		if(is_mainship_level(human.z) && !human.stat) //USS Almayer decks.
-			to_chat(human, SPAN_WARNING("The deck of the [MAIN_SHIP_NAME] shudders as the orbital cannons open fire on the colony."))
+			to_chat(human, SPAN_WARNING("[MAIN_SHIP_NAME]的甲板在轨道炮向殖民地开火时剧烈震动。"))
 			if(human.client)
 				shake_camera(human, 10, 1)
 	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Orbital bombardment for squad '[current_squad]' has fired! Impact imminent!")]")
@@ -1470,7 +1470,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	playsound(crate.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehh
 	var/obj/structure/droppod/supply/pod = new(null, crate)
 	pod.launch(T)
-	log_ares_requisition("Supply Drop", "Launch [crate.name] to X[x_supply], Y[y_supply], Z[z_supply].", usr.real_name)
+	log_ares_requisition("补给投放", "Launch [crate.name] to X[x_supply], Y[y_supply], Z[z_supply].", usr.real_name)
 	log_game("[key_name(usr)] launched supply drop '[crate.name]' to X[x_coord], Y[y_coord].")
 	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[crate.name]' supply drop launched! Another launch will be available in five minutes.")]")
 	busy = FALSE
@@ -1481,7 +1481,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	icon_state = "overwatch"
 
 /obj/structure/machinery/computer/overwatch/almayer/broken
-	name = "Broken Overwatch Console"
+	name = "损坏的监控控制台"
 
 /obj/structure/machinery/computer/overwatch/almayer/small
 	icon = 'icons/obj/vehicles/interiors/arc.dmi'
@@ -1511,8 +1511,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	freq = DUT_FREQ
 
 /obj/structure/supply_drop
-	name = "Supply Drop Pad"
-	desc = "Place a crate on here to allow bridge Overwatch officers to drop them on people's heads."
+	name = "补给投放平台"
+	desc = "将板条箱放在此处，以便舰桥监控军官将其投放到人员头顶。"
 	icon = 'icons/effects/warning_stripes.dmi'
 	anchored = TRUE
 	density = FALSE

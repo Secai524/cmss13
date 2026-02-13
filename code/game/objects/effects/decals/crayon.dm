@@ -1,6 +1,6 @@
 /obj/effect/decal/cleanable/crayon
 	name = "rune"
-	desc = "A rune drawn in crayon."
+	desc = "一个用蜡笔画出的符文。"
 	icon = 'icons/obj/rune.dmi'
 	layer = ABOVE_TURF_LAYER
 	anchored = TRUE
@@ -10,7 +10,7 @@
 	forceMove(location)
 
 	name = type
-	desc = "A [type] drawn in crayon."
+	desc = "一个用蜡笔画出的[type]。"
 
 	switch(type)
 		if("rune")

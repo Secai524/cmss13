@@ -28,7 +28,7 @@
 				first_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male_clf) : pick(GLOB.first_names_female_clf))
 			else // MALE
 				first_name = capitalize(pick(GLOB.first_names_male_clf))
-				new_human.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
+				new_human.f_style = pick("三点钟胡茬", "三点钟小胡子", "五点钟胡茬", "五点钟小胡子")
 	if(prob(35))
 		last_name = "[capitalize(randomly_generate_japanese_word(rand(1, 4)))]"
 	else
@@ -52,7 +52,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/clf/soldier
-	name = "CLF Soldier"
+	name = "CLF士兵"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF
 	job_title = JOB_CLF
@@ -162,7 +162,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/clf/engineer
-	name = "CLF Engineer"
+	name = "CLF工程师"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF_ENGI
 	job_title = JOB_CLF_ENGI
@@ -290,7 +290,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/clf/medic
-	name = "CLF Medic"
+	name = "CLF医疗兵"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF_MEDIC
 	job_title = JOB_CLF_MEDIC
@@ -454,7 +454,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/clf/specialist
-	name = "CLF Specialist"
+	name = "CLF专家"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF_SPECIALIST
 	job_title = JOB_CLF_SPECIALIST
@@ -609,7 +609,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/clf/leader
-	name = "CLF Leader"
+	name = "CLF领袖"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF_LEADER
 	job_title = JOB_CLF_LEADER
@@ -763,7 +763,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/clf/synth
-	name = "CLF Multipurpose Synthetic"
+	name = "CLF多用途合成人"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	languages = ALL_SYNTH_LANGUAGES
@@ -797,7 +797,7 @@
 				random_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male_clf) : pick(GLOB.first_names_female_clf))
 			else // MALE
 				random_name = capitalize(pick(GLOB.first_names_male_clf))
-				new_human.f_style = "5 O'clock Shadow"
+				new_human.f_style = "五点钟胡茬"
 
 	new_human.change_real_name(new_human, random_name)
 	new_human.r_hair = 15
@@ -903,7 +903,7 @@
 		list("Tools Pouch (Full)", 0, /obj/item/storage/pouch/tools/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 
 		list("MASK", 0, null, null, null),
-		list("Sterile mask", 0, /obj/item/clothing/mask/surgical, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR)
+		list("无菌口罩", 0, /obj/item/clothing/mask/surgical, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR)
 	)
 
 /datum/equipment_preset/clf/synth/get_antag_gear_equipment()
@@ -972,7 +972,7 @@
 	)
 
 /datum/equipment_preset/clf/synth/combat
-	name = "CLF Combat Synthetic"
+	name = "CLF战斗合成人"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/clf/synth/combat/load_skills(mob/living/carbon/human/new_human)
@@ -1024,7 +1024,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/clf/commander
-	name = "CLF Cell Commander"
+	name = "CLF小组指挥官"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF_COMMANDER
 	job_title = JOB_CLF_COMMANDER
@@ -1168,7 +1168,7 @@
 	)
 
 /datum/equipment_preset/clf/coordinator
-	name = "CLF Coordinator"
+	name = "CLF协调员"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF_COORDINATOR
 	job_title = JOB_CLF_COORDINATOR
@@ -1210,7 +1210,7 @@
 ///Hunting Grounds CLF///
 
 /datum/equipment_preset/clf/soldier/hunted
-	name = "CLF Soldier (Hunted)"
+	name = "CLF士兵（被猎杀）"
 	faction = FACTION_HUNTED_CLF
 
 /datum/equipment_preset/clf/soldier/hunted/load_gear(mob/living/carbon/human/new_human)
@@ -1235,7 +1235,7 @@
 		spawn_rebel_rifle(new_human)
 
 /datum/equipment_preset/clf/leader/hunted
-	name = "CLF Leader (Hunted)"
+	name = "CLF领袖（被猎杀）"
 	faction = FACTION_HUNTED_CLF
 
 /datum/equipment_preset/clf/leader/hunted/load_gear(mob/living/carbon/human/new_human)
@@ -1264,7 +1264,7 @@
 	spawn_weapon(/obj/item/weapon/gun/rifle/mar40, /obj/item/ammo_magazine/rifle/mar40, new_human)
 
 /datum/equipment_preset/clf/engineer/hunted
-	name = "CLF Engineer (Hunted)"
+	name = "CLF工程师（被猎杀）"
 	faction = FACTION_HUNTED_CLF
 
 /datum/equipment_preset/clf/engineer/hunted/load_gear(mob/living/carbon/human/new_human)
@@ -1292,7 +1292,7 @@
 	spawn_rebel_weapon(new_human,1)
 
 /datum/equipment_preset/clf/specialist/hunted
-	name = "CLF Specialist (Hunted)"
+	name = "CLF专家（被猎杀）"
 	faction = FACTION_HUNTED_CLF
 
 /datum/equipment_preset/clf/specialist/hunted/load_gear(mob/living/carbon/human/new_human)

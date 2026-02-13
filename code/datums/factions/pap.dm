@@ -1,5 +1,5 @@
 /datum/faction/pap
-	name = "People's Armed Police"
+	name = "人民武装警察"
 	faction_tag = FACTION_PAP
 	base_icon_file = 'icons/mob/hud/factions/upp.dmi'
 

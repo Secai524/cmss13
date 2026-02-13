@@ -1,5 +1,5 @@
 /datum/equipment_preset/uscm_event
-	name = "USCM (Event Roles)"
+	name = "USCM (事件角色)"
 	faction = FACTION_MARINE
 	faction_group = FACTION_LIST_MARINE
 	minimum_age = 30
@@ -9,7 +9,7 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_event/colonel
-	name = "USCM O-6 - Colonel (High Command)"
+	name = "USCM O-6 - 上校 (高级指挥部)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/general
@@ -54,7 +54,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/flash, WEAR_IN_JACKET)
 
 /datum/equipment_preset/uscm_event/general
-	name = "USCM O-7 - Brigadier General (High Command)"
+	name = "USCM O-7 - 准将 (高级指挥部)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/general
@@ -112,26 +112,26 @@
 	new_human.equip_if_possible(new /obj/item/clothing/glasses/sunglasses(new_human), WEAR_EYES)
 
 /datum/equipment_preset/uscm_event/general/o8
-	name = "USCM O-8 - Major General (High Command)"
+	name = "USCM O-8 - 少将 (高级指挥部)"
 	paygrades = list(PAY_SHORT_MO8 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/uscm_event/general/o9
-	name = "USCM O-9 - Lieutenant General (High Command)"
+	name = "USCM O-9 - 中将 (高级指挥部)"
 	paygrades = list(PAY_SHORT_MO9 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/uscm_event/general/o10
-	name = "USCM O-10 - General (High Command)"
+	name = "USCM O-10 - 上将 (高级指挥部)"
 	paygrades = list(PAY_SHORT_MO10 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/uscm_event/general/o10c
-	name = "USCM O-10C - Assistant Commandant of the Marine Corps (High Command)"
+	name = "USCM O-10C - 海军陆战队助理司令 (高级指挥部)"
 	paygrades = list(PAY_SHORT_MO10C = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_ACMC
 	job_title = JOB_ACMC
 	role_comm_title = "ACMC"
 
 /datum/equipment_preset/uscm_event/general/o10s
-	name = "USCM O-10S - Commandant of the Marine Corps (High Command)"
+	name = "USCM O-10S - 海军陆战队司令 (高级指挥部)"
 	paygrades = list(PAY_SHORT_MO10S = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_CMC
 	job_title = JOB_CMC
@@ -140,7 +140,7 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_event/upp_spy
-	name = "UPP Spy"
+	name = "UPP 间谍"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN)
@@ -193,7 +193,7 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_event/provost
-	name = "USCM Provost"
+	name = "USCM 宪兵总监"
 
 	idtype = /obj/item/card/id/provost
 	skills = /datum/skills/provost
@@ -204,7 +204,7 @@
 	access = get_access(ACCESS_LIST_MARINE_ALL)
 
 /datum/equipment_preset/uscm_event/provost/enforcer
-	name = "Provost Enforcer"
+	name = "宪兵执法者"
 	assignment = JOB_PROVOST_ENFORCER
 	job_title = JOB_PROVOST_ENFORCER
 	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME6 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ME7 = JOB_PLAYTIME_TIER_3)
@@ -247,7 +247,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/armband/mp(new_human), WEAR_ACCESSORY)
 
 /datum/equipment_preset/uscm_event/provost/tml
-	name = "Provost Team Leader"
+	name = "宪兵队长"
 	skills = /datum/skills/CMP
 	assignment = JOB_PROVOST_TML
 	job_title = JOB_PROVOST_TML
@@ -292,7 +292,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/armband/mp(new_human), WEAR_ACCESSORY)
 
 /datum/equipment_preset/uscm_event/provost/inspector
-	name = "Provost Inspector"
+	name = "宪兵督察"
 	assignment = JOB_PROVOST_INSPECTOR
 	job_title = JOB_PROVOST_INSPECTOR
 	paygrades = list(PAY_SHORT_PVI = JOB_PLAYTIME_TIER_0)
@@ -331,7 +331,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs(new_human), WEAR_IN_JACKET)
 
 /datum/equipment_preset/uscm_event/provost/inspector/chief
-	name = "Provost Chief Inspector"
+	name = "宪兵总督察"
 	assignment = JOB_PROVOST_CINSPECTOR
 	job_title = JOB_PROVOST_CINSPECTOR
 	paygrades = list(PAY_SHORT_PVCI = JOB_PLAYTIME_TIER_0)
@@ -369,7 +369,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs(new_human), WEAR_IN_JACKET)
 
 /datum/equipment_preset/uscm_event/provost/inspector/advisor
-	name = "Provost Advisor"
+	name = "宪兵顾问"
 	assignment = JOB_PROVOST_ADVISOR
 	job_title = JOB_PROVOST_ADVISOR
 	paygrades = list(PAY_SHORT_ME8E = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME9E = JOB_PLAYTIME_TIER_3)
@@ -378,7 +378,7 @@
 	minimap_icon = "pve_advisor"
 
 /datum/equipment_preset/uscm_event/provost/marshal/deputy
-	name = "Provost Deputy Marshal (MO6)"
+	name = "宪兵副警长 (MO6)"
 	minimum_age = 45
 	skills = /datum/skills/general
 
@@ -390,7 +390,7 @@
 	minimap_icon = "deputy"
 
 /datum/equipment_preset/uscm_event/provost/marshal
-	name = "Provost Marshal (MO7)"
+	name = "宪兵警长 (MO7)"
 	minimum_age = 45
 	skills = /datum/skills/general
 
@@ -425,7 +425,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/handheld_distress_beacon/provost(new_human.back), WEAR_IN_BACK)
 
 /datum/equipment_preset/uscm_event/provost/marshal/sector
-	name = "Provost Sector Marshal (MO9)"
+	name = "宪兵区警长 (MO9)"
 	minimum_age = 50
 
 	assignment = JOB_PROVOST_SMARSHAL
@@ -434,7 +434,7 @@
 	role_comm_title = PAY_SHORT_PVSM
 
 /datum/equipment_preset/uscm_event/provost/marshal/chief
-	name = "Provost Chief Marshal (PvCM)"
+	name = "宪兵总警长 (PvCM)"
 	minimum_age = 60
 
 	assignment = JOB_PROVOST_CMARSHAL

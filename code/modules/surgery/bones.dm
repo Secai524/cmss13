@@ -5,7 +5,7 @@
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery/bone_repair
-	name = "Bone Repair Surgery"
+	name = "骨骼修复手术"
 	possible_locs = ALL_LIMBS
 	invasiveness = list(SURGERY_DEPTH_SHALLOW)
 	required_surgery_skill = SKILL_SURGERY_TRAINED
@@ -33,8 +33,8 @@
 //------------------------------------
 
 /datum/surgery_step/mend_bones
-	name = "Mend Broken Bones"
-	desc = "repair the fractured bones"
+	name = "修复骨折"
+	desc = "修复骨折"
 	tools = SURGERY_TOOLS_BONE_MEND
 	time = 3 SECONDS
 	preop_sound = 'sound/handling/clothingrustle1.ogg'
@@ -47,15 +47,15 @@
 	if(istype(tool, /obj/item/tool/surgery/bonegel)) //If bone gel, use some of the gel
 		var/obj/item/tool/surgery/bonegel/gel = tool
 		if(!gel.use_gel(gel.fracture_fix_cost))
-			to_chat(user, SPAN_BOLDWARNING("[gel] is empty!"))
+			to_chat(user, SPAN_BOLDWARNING("[gel]空了！"))
 			return FALSE
 	else //Otherwise, use metal rods
 		var/obj/item/stack/rods/rods = user.get_inactive_hand()
 		if(!istype(rods))
-			to_chat(user, SPAN_BOLDWARNING("You need metal rods in your offhand to repair [target]'s [surgery.affected_limb.display_name] with [tool]."))
+			to_chat(user, SPAN_BOLDWARNING("你需要副手持有金属棒才能用[tool]修复[target]的[surgery.affected_limb.display_name]。"))
 			return FALSE
 		if(!rods.use(2)) //Refunded on failure
-			to_chat(user, SPAN_BOLDWARNING("You need more metal rods to mend [target]'s [surgery.affected_limb.display_name] with [tool]."))
+			to_chat(user, SPAN_BOLDWARNING("你需要更多金属棒才能用[tool]修复[target]的[surgery.affected_limb.display_name]。"))
 			return FALSE
 
 /datum/surgery_step/mend_bones/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/bone_repair/surgery)
@@ -139,7 +139,7 @@
 	log_interact(user, target, "[key_name(user)] failed to begin repairing bones in [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool], aborting [surgery].")
 
 	if(tool_type != /obj/item/tool/surgery/bonegel)
-		to_chat(user, SPAN_NOTICE("The metal rods used on [target]'s [surgery.affected_limb.display_name] fall loose from their [surgery.affected_limb]."))
+		to_chat(user, SPAN_NOTICE("用于[target]的[surgery.affected_limb.display_name]的金属棒从其[surgery.affected_limb]上松脱。"))
 		var/obj/item/stack/rods/rods = new /obj/item/stack/rods(get_turf(target))
 		rods.amount = 2 //Refund 2 rods on failure
 		rods.update_icon()
@@ -149,8 +149,8 @@
 //------------------------------------
 
 /datum/surgery_step/set_bones
-	name = "Set Bones"
-	desc = "set the bones"
+	name = "骨骼复位"
+	desc = "进行骨骼复位"
 	tools = list(
 		/obj/item/tool/surgery/bonesetter = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/tool/wrench = SURGERY_TOOL_MULT_SUBSTITUTE,

@@ -1,7 +1,7 @@
 /obj/item/device/binoculars
 	name = "binoculars"
 	gender = PLURAL
-	desc = "A military-issued pair of binoculars."
+	desc = "一副军用望远镜。"
 	icon = 'icons/obj/items/binoculars.dmi'
 	icon_state = "binoculars"
 	item_state = "binoculars"
@@ -78,7 +78,7 @@
 	return COMPONENT_HUMAN_MOVEMENT_KEEP_USING
 
 /obj/item/device/binoculars/civ
-	desc = "A pair of binoculars."
+	desc = "一副望远镜。"
 	icon_state = "binoculars_civ"
 	flags_atom = FPRINT|CONDUCT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
@@ -86,7 +86,7 @@
 /obj/item/device/binoculars/range
 	name = "rangefinder"
 	gender = NEUTER
-	desc = "A pair of binoculars with a rangefinding function. Ctrl + Click turf to acquire it's coordinates. Ctrl + Click rangefinder to stop lasing."
+	desc = "一副带测距功能的望远镜。Ctrl+点击地面以获取其坐标。Ctrl+点击测距仪以停止激光指示。"
 	icon_state = "rangefinder"
 	item_state = "rangefinder"
 	var/laser_cooldown = 0
@@ -122,7 +122,7 @@
 	set desc = "Toggles display mode for rangefinder coordinates."
 	set src in usr
 	rangefinder_popup = !rangefinder_popup
-	to_chat(usr, "The rangefinder [rangefinder_popup ? "now" : "no longer"] shows coordinates on the display.")
+	to_chat(usr, "测距仪[rangefinder_popup ? "now" : "no longer"] shows coordinates on the display.")
 
 /obj/item/device/binoculars/range/on_unset_interaction(mob/user)
 	..()
@@ -142,23 +142,23 @@
 		return
 	if(mods[CTRL_CLICK])
 		if(user.stat != CONSCIOUS)
-			to_chat(user, SPAN_WARNING("You cannot use [src] while incapacitated."))
+			to_chat(user, SPAN_WARNING("你无法在失去行动能力时使用[src]。"))
 			return FALSE
 		if(SEND_SIGNAL(user, COMSIG_BINOCULAR_HANDLE_CLICK, src))
 			return FALSE
 		if(mods[CLICK_CATCHER])
 			return FALSE
 		if(user.z != targeted_atom.z && !coord)
-			to_chat(user, SPAN_WARNING("You cannot get a direct laser from where you are."))
+			to_chat(user, SPAN_WARNING("你无法从此处获得直接的激光指示。"))
 			return FALSE
 		if(!(is_ground_level(targeted_atom.z)))
-			to_chat(user, SPAN_WARNING("INVALID TARGET: target must be on the surface."))
+			to_chat(user, SPAN_WARNING("目标无效：目标必须在地表。"))
 			return FALSE
 		if(user.sight & SEE_TURFS)
 			var/list/turf/path = get_line(user, targeted_atom, include_start_atom = FALSE)
 			for(var/turf/T in path)
 				if(T.opacity)
-					to_chat(user, SPAN_WARNING("There is something in the way of the laser!"))
+					to_chat(user, SPAN_WARNING("有东西挡住了激光！"))
 					return FALSE
 		acquire_target(targeted_atom, user)
 		return TRUE
@@ -167,16 +167,16 @@
 /obj/item/device/binoculars/range/proc/stop_targeting(mob/living/carbon/human/user)
 	if(coord)
 		QDEL_NULL(coord)
-		to_chat(user, SPAN_WARNING("You stop lasing."))
+		to_chat(user, SPAN_WARNING("你停止了激光指示。"))
 
 /obj/item/device/binoculars/range/proc/acquire_target(atom/targeted_atom, mob/living/carbon/human/user)
 	set waitfor = 0
 
 	if(coord)
-		to_chat(user, SPAN_WARNING("You're already targeting something."))
+		to_chat(user, SPAN_WARNING("你已经锁定了一个目标。"))
 		return
 	if(world.time < laser_cooldown)
-		to_chat(user, SPAN_WARNING("[src]'s laser battery is recharging."))
+		to_chat(user, SPAN_WARNING("[src]的激光电池正在充电。"))
 		return
 
 	var/acquisition_time = target_acquisition_delay
@@ -197,7 +197,7 @@
 	if(!istype(TU) || user.action_busy)
 		return
 	playsound(src, 'sound/effects/nightvision.ogg', 35)
-	to_chat(user, SPAN_NOTICE("INITIATING LASER TARGETING. Stand still."))
+	to_chat(user, SPAN_NOTICE("正在启动激光目标指示。保持静止。"))
 	if(!do_after(user, acquisition_time, INTERRUPT_ALL, BUSY_ICON_GENERIC) || world.time < laser_cooldown)
 		return
 	var/obj/effect/overlay/temp/laser_coordinate/LT = new (TU, las_name, user)
@@ -238,8 +238,8 @@
 
 //LASER DESIGNATOR with ability to acquire coordinates and CAS lasing support
 /obj/item/device/binoculars/range/designator
-	name = "laser designator"
-	desc = "A laser designator with two modes: target marking for CAS with IR laser and rangefinding. Ctrl + Click turf to target something. Ctrl + Click designator to stop lasing. Alt + Click designator to switch modes."
+	name = "激光指示器"
+	desc = "一种具有两种模式的激光指示器：使用红外激光为近距离空中支援进行目标标记和测距。Ctrl+点击地面以锁定目标。Ctrl+点击指示器以停止激光指示。Alt+点击指示器以切换模式。"
 	var/obj/effect/overlay/temp/laser_target/laser
 	var/range_mode = 0 //Able to be switched between modes, 0 for cas laser, 1 for finding coordinates.
 	var/tracking_id //a set tracking id used for CAS
@@ -279,7 +279,7 @@
 	..()
 	if(laser)
 		QDEL_NULL(laser)
-		to_chat(user, SPAN_WARNING("You stop lasing."))
+		to_chat(user, SPAN_WARNING("你停止了激光指示。"))
 
 /obj/item/device/binoculars/range/designator/verb/toggle_mode()
 	set category = "Object"
@@ -295,7 +295,7 @@
 		return
 
 	range_mode = !range_mode
-	to_chat(user, SPAN_NOTICE("You switch [src] to [range_mode? "range finder" : "CAS marking"] mode."))
+	to_chat(user, SPAN_NOTICE("你将[src]切换到[range_mode? "range finder" : "CAS marking"] mode."))
 	update_icon()
 	playsound(usr, 'sound/machines/click.ogg', 15, 1)
 
@@ -312,11 +312,11 @@
 	set waitfor = 0
 
 	if(laser || coord)
-		to_chat(user, SPAN_WARNING("You're already targeting something."))
+		to_chat(user, SPAN_WARNING("你已经锁定了一个目标。"))
 		return
 
 	if(world.time < laser_cooldown)
-		to_chat(user, SPAN_WARNING("[src]'s laser battery is recharging."))
+		to_chat(user, SPAN_WARNING("[src]的激光电池正在充电。"))
 		return
 
 	var/acquisition_time = target_acquisition_delay
@@ -351,12 +351,12 @@
 		is_outside = FALSE
 
 	if(!is_outside && !range_mode) //rangefinding works regardless of ceiling
-		to_chat(user, SPAN_WARNING("INVALID TARGET: target must be visible from high altitude."))
+		to_chat(user, SPAN_WARNING("目标无效：目标必须能从高空观察到。"))
 		return
 	if(user.action_busy)
 		return
 	playsound(src, 'sound/effects/nightvision.ogg', 35)
-	to_chat(user, SPAN_NOTICE("INITIATING LASER TARGETING. Stand still."))
+	to_chat(user, SPAN_NOTICE("正在启动激光目标指示。保持静止。"))
 	if(!do_after(user, acquisition_time, INTERRUPT_ALL, BUSY_ICON_GENERIC) || world.time < laser_cooldown || laser)
 		return
 	if(range_mode)
@@ -372,7 +372,7 @@
 				QDEL_NULL(coord)
 				break
 	else
-		to_chat(user, SPAN_NOTICE("TARGET ACQUIRED. LASER TARGETING IS ONLINE. DON'T MOVE."))
+		to_chat(user, SPAN_NOTICE("目标已捕获。激光目标指示已上线。不要移动。"))
 		var/obj/effect/overlay/temp/laser_target/LT = new (TU, las_name, user, tracking_id)
 		laser = LT
 		SEND_SIGNAL(src, COMSIG_DESIGNATOR_LASE)
@@ -390,16 +390,16 @@
 
 //IMPROVED LASER DESIGNATER, faster cooldown, faster target acquisition, can be found only in scout spec kit
 /obj/item/device/binoculars/range/designator/scout
-	name = "scout laser designator"
-	desc = "An improved laser designator, issued to USCM scouts, with two modes: target marking for CAS with IR laser and rangefinding. Ctrl + Click turf to target something. Ctrl + Click designator to stop lasing. Alt + Click designator to switch modes."
+	name = "侦察兵激光指示器"
+	desc = "一种改进型激光指示器，配发给USCM侦察兵，具有两种模式：使用红外激光为近距离空中支援进行目标标记和测距。Ctrl+点击地面以锁定目标。Ctrl+点击指示器以停止激光指示。Alt+点击指示器以切换模式。"
 	unacidable = TRUE
 	explo_proof = TRUE
 	cooldown_duration = 80
 	target_acquisition_delay = 30
 
 /obj/item/device/binoculars/range/designator/spotter
-	name = "spotter's laser designator"
-	desc = "A specially-designed laser designator, issued to USCM spotters, with two modes: target marking for CAS with IR laser and rangefinding. Ctrl + Click turf to target something. Ctrl + Click designator to stop lasing. Alt + Click designator to switch modes. Additionally, a trained spotter can laze targets for a USCM marksman, increasing the speed of target acquisition. A targeting beam will connect the binoculars to the target, but it may inherit the user's cloak, if possible."
+	name = "观测员激光指示器"
+	desc = "一种专门设计的激光指示器，配发给USCM观测员，具有两种模式：使用红外激光为近距离空中支援进行目标标记和测距。Ctrl+点击地面以锁定目标。Ctrl+点击指示器以停止激光指示。Alt+点击指示器以切换模式。此外，训练有素的观测员可以为USCM狙击手指示目标，加快目标捕获速度。一道瞄准光束将连接望远镜与目标，但如果可能，它可能会继承使用者的隐形状态。"
 	unacidable = TRUE
 	explo_proof = TRUE
 	var/is_spotting = FALSE
@@ -432,7 +432,7 @@
 
 /datum/action/item_action/specialist/spotter_target/New(mob/living/user, obj/item/holder)
 	..()
-	name = "Spot Target"
+	name = "指示目标"
 	button.name = name
 	button.overlays.Cut()
 	var/image/IMG = image('icons/mob/hud/actions.dmi', button, "spotter_target")
@@ -446,11 +446,11 @@
 		return
 	var/mob/living/carbon/human/human = owner
 	if(human.selected_ability == src)
-		to_chat(human, "You will no longer use [name] with [human.get_ability_mouse_name()].")
+		to_chat(human, "你将不再使用[name]与[human.get_ability_mouse_name()]。")
 		button.icon_state = "template"
 		human.set_selected_ability(null)
 	else
-		to_chat(human, "You will now use [name] with [human.get_ability_mouse_name()].")
+		to_chat(human, "你现在将使用[name]配合[human.get_ability_mouse_name()]。")
 		if(human.selected_ability)
 			human.selected_ability.button.icon_state = "template"
 			human.set_selected_ability(null)
@@ -460,7 +460,7 @@
 /datum/action/item_action/specialist/spotter_target/can_use_action()
 	var/mob/living/carbon/human/human = owner
 	if(!(GLOB.character_traits[/datum/character_trait/skills/spotter] in human.traits))
-		to_chat(human, SPAN_WARNING("You have no idea how to use this!"))
+		to_chat(human, SPAN_WARNING("你根本不知道这玩意儿怎么用！"))
 		return FALSE
 	if(istype(human) && !human.is_mob_incapacitated() && (holder_item == human.r_hand || holder_item || human.l_hand))
 		return TRUE
@@ -531,7 +531,7 @@
 		return FALSE
 
 	if(designator != human.r_hand && designator != human.l_hand)
-		to_chat(human, SPAN_WARNING("How do you expect to do this without your laser designator?"))
+		to_chat(human, SPAN_WARNING("没有激光指示器，你指望怎么干这个？"))
 		return FALSE
 
 	if(get_dist(human, target) < minimum_laze_distance)
@@ -549,9 +549,9 @@
 			toggling_action.action_activate()
 //ADVANCED LASER DESIGNATER, was used for WO.
 /obj/item/device/binoculars/designator
-	name = "advanced laser designator" // Make sure they know this will kill people in the desc below.
+	name = "高级激光指示器" // Make sure they know this will kill people in the desc below.
 	gender = NEUTER
-	desc = "An advanced laser designator, used to mark targets for airstrikes and mortar fire. This one comes with two modes, one for IR laser which calls in a napalm airstrike upon the position, the other being a UV laser which calculates the distance for a mortar strike. On the side there is a label that reads:<span class='notice'> !!WARNING: Deaths from use of this tool will have the user held accountable!!</span>"
+	desc = "一种高级激光指示器，用于标记目标以引导空袭和迫击炮火。此型号有两种模式：一种是红外激光，可在指定位置呼叫凝固汽油弹空袭；另一种是紫外激光，用于计算迫击炮打击的距离。侧面贴有标签，写着：<span class='notice'> !!警告：使用此工具造成的死亡将由使用者负责!!</span>"
 	icon_state = "designator_e"
 
 	//laser_con is to add you to the list of laser users.
@@ -590,17 +590,17 @@
 	switch(las_mode)
 		if(0) //Actually adding descriptions so you can tell what the hell you've selected now.
 			las_mode = 1
-			to_chat(usr, SPAN_WARNING("IR Laser enabled! You will now designate airstrikes!"))
+			to_chat(usr, SPAN_WARNING("红外激光已启用！你现在可以标记空袭目标！"))
 			update_icon()
 			return
 		if(1)
 			las_mode = 2
-			to_chat(usr, SPAN_WARNING("UV Laser enabled! You will now designate mortars!"))
+			to_chat(usr, SPAN_WARNING("紫外激光已启用！你现在可以标记迫击炮目标！"))
 			update_icon()
 			return
 		if(2)
 			las_mode = 0
-			to_chat(usr, SPAN_WARNING("System offline, now this is just a pair of binoculars but heavier."))
+			to_chat(usr, SPAN_WARNING("系统离线，现在这玩意儿就是个更沉的望远镜。"))
 			update_icon()
 			return
 	return
@@ -616,11 +616,11 @@
 	switch(plane_toggle)
 		if(0)
 			plane_toggle = 1
-			to_chat(usr, SPAN_WARNING("Airstrike plane is now N-S! If using mortars its now HE rounds!"))
+			to_chat(usr, SPAN_WARNING("空袭飞机航向改为南北向！若使用迫击炮，现切换为高爆弹！"))
 			return
 		if(1)
 			plane_toggle = 0
-			to_chat(usr, SPAN_WARNING("Airstrike plane is now E-W! If using mortars its now concussion rounds!"))
+			to_chat(usr, SPAN_WARNING("空袭飞机航向改为东西向！若使用迫击炮，现切换为震荡弹！"))
 			return
 	return
 
@@ -640,7 +640,7 @@
 		return FALSE
 	var/area/targ_area = get_area(targeted_atom)
 	if(targ_area.ceiling >= CEILING_PROTECTION_TIER_1)
-		to_chat(user, SPAN_WARNING("INVALID TARGET: target must be visible from high altitude."))
+		to_chat(user, SPAN_WARNING("目标无效：目标必须能从高空观察到。"))
 		return
 
 	var/list/modifiers = params2list(params) //Only single clicks.
@@ -651,14 +651,14 @@
 	var/turf/T = get_turf(targeted_atom)
 
 	if(!las_mode)
-		to_chat(user, SPAN_WARNING("The Laser Designator is currently off!"))
+		to_chat(user, SPAN_WARNING("激光指示器当前已关闭！"))
 		return 0
 
 	if(las_r || las_b) //Make sure we don't spam strikes
-		to_chat(user, SPAN_WARNING("The laser is currently cooling down. Please wait roughly 5 minutes from lasing the target."))
+		to_chat(user, SPAN_WARNING("激光器正在冷却。请从标记目标后等待大约5分钟。"))
 		return 0
 
-	to_chat(user, SPAN_BOLDNOTICE("You start lasing the target area."))
+	to_chat(user, SPAN_BOLDNOTICE("你开始用激光标记目标区域。"))
 	message_admins("ALERT: [user] ([user.key]) IS CURRENTLY LASING A TARGET: CURRENT MODE [las_mode], at ([T.x],[T.y],[T.z]) [ADMIN_JMP(T)].") // Alert all the admins to this asshole. Added the jmp command from the explosion code.
 	var/obj/effect/las_target/lasertarget = new(T.loc)
 	if(las_mode == 1 && !las_r) // Heres our IR bomb code.

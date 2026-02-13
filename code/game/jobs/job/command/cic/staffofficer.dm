@@ -6,7 +6,7 @@
 	scaled = FALSE
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	gear_preset = /datum/equipment_preset/uscm_ship/so
-	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>Your job is to monitor the Marines, man the CIC, and listen to your superior officers.</a> You are in charge of logistics and the overwatch system. You are also in line to take command after other eligible superior commissioned officers."
+	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>你的工作是监视海军陆战队员、值守指挥信息中心并听从上级军官的命令。</a> 你负责后勤和监视系统。在其他符合条件的上级委任军官之后，你也有接替指挥的资格。"
 
 /datum/job/command/bridge/set_spawn_positions(count)
 	spawn_positions = so_slot_formula(count)

@@ -5,7 +5,7 @@
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery/open_incision
-	name = "Open Incision"
+	name = "切开"
 	priority = SURGERY_PRIORITY_MAXIMUM
 	possible_locs = ALL_LIMBS
 	invasiveness = list(SURGERY_DEPTH_SURFACE)
@@ -22,8 +22,8 @@
 //------------------------------------
 
 /datum/surgery_step/incision
-	name = "Make Incision"
-	desc = "make an incision"
+	name = "切口"
+	desc = "切口"
 	tools = SURGERY_TOOLS_INCISION
 	time = 2 SECONDS
 	preop_sound = 'sound/surgery/scalpel1.ogg'
@@ -120,7 +120,7 @@
 //------------------------------------
 
 /datum/surgery/clamp_bleeders
-	name = "Clamp Bleeders"
+	name = "钳夹出血点"
 	priority = SURGERY_PRIORITY_HIGH
 	possible_locs = ALL_LIMBS
 	invasiveness = list(SURGERY_DEPTH_SHALLOW, SURGERY_DEPTH_DEEP)
@@ -138,8 +138,8 @@
 //------------------------------------
 
 /datum/surgery_step/clamp_bleeders_step
-	name = "Clamp Bleeders"
-	desc = "clamp the bleeders"
+	name = "钳夹出血点"
+	desc = "钳夹出血点"
 	//Tools used to clamp bleeders by either clamping them shut or tying them shut. Fixovein is a substitute but also a real surgery tool.
 	tools = list(
 		/obj/item/tool/surgery/hemostat = SURGERY_TOOL_MULT_IDEAL,
@@ -199,7 +199,7 @@
 	var/bleeding_multiplier_bad_surface = surface_modifier - 1
 	for(var/datum/effects/bleeding/external/external_bleed in surgery.affected_limb.bleeding_effects_list)
 		external_bleed.blood_loss *= bleeding_multiplier_bad_surface
-		to_chat(user, SPAN_WARNING("Stopping blood loss is less effective in these conditions."))
+		to_chat(user, SPAN_WARNING("在此条件下止血效果不佳。"))
 
 
 /datum/surgery_step/clamp_bleeders_step/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -216,8 +216,8 @@
 //------------------------------------
 
 /datum/surgery_step/retract_skin
-	name = "Widen Incision"
-	desc = "widen the incision"
+	name = "扩大切口"
+	desc = "扩大切口"
 	time = 2 SECONDS
 	//Tools used to pry open specifically incisions. Contains INCISION tools at lengthy delays, mainly so surgeons can dramatically slash open incisions with them.
 	tools = list(\
@@ -328,7 +328,7 @@
 //------------------------------------
 
 /datum/surgery/close_incision
-	name = "Close Incision"
+	name = "闭合切口"
 	priority = SURGERY_PRIORITY_MINIMUM
 	possible_locs = ALL_LIMBS
 	required_surgery_skill = SKILL_SURGERY_NOVICE
@@ -340,8 +340,8 @@
 //------------------------------------
 
 /datum/surgery_step/cauterize
-	name = "Close Incision"
-	desc = "cauterize the incision"
+	name = "闭合切口"
+	desc = "灼合切口"
 	tools = SURGERY_TOOLS_CAUTERIZE
 	time = 2.5 SECONDS
 	var/tools_lit = list(
@@ -400,7 +400,7 @@
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery/open_encased
-	name = "Open Bone"
+	name = "打开骨骼"
 	priority = SURGERY_PRIORITY_LOW
 	possible_locs = list("chest","head")
 	required_surgery_skill = SKILL_SURGERY_TRAINED
@@ -414,8 +414,8 @@
 //------------------------------------
 
 /datum/surgery_step/saw_encased
-	name = "Saw Bone"
-	desc = "cut through the bone"
+	name = "锯开骨骼"
+	desc = "锯开骨骼"
 	/*Tools used to cut ribs/skull. Same tools as SEVER_BONE, but with sawing tools being better than chopping ones.
 	You're trying to cut through, but keep it and what's behind it intact.*/
 	tools = list(
@@ -445,7 +445,7 @@
 	target.custom_pain("Your [surgery.affected_limb.display_name] hurts horribly!", 1)
 
 	if(surgery.affected_limb.status & LIMB_BROKEN)
-		to_chat(user, SPAN_NOTICE("It's already broken, though, so you could just pry it open."))
+		to_chat(user, SPAN_NOTICE("不过它已经坏了，你可以直接撬开。"))
 	log_interact(user, target, "[key_name(user)] began cutting through [key_name(target)]'s [surgery.affected_limb.encased], attempting [surgery].")
 
 /datum/surgery_step/saw_encased/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -484,8 +484,8 @@
 //This step can be skipped, and ends the surgery when completed. In rib-opening surgery, it can be skipped to abort the operation.
 //In rib-closing surgery, it can be skipped to finish closing the ribcage, or completed to abort the operation.
 /datum/surgery_step/open_encased_step
-	name = "Open Bone"
-	desc = "prise the bones open"
+	name = "打开骨骼"
+	desc = "撬开骨头"
 	tools = SURGERY_TOOLS_PRY_ENCASED
 	time = 2 SECONDS
 	preop_sound = 'sound/surgery/retractor1.ogg'
@@ -544,7 +544,7 @@
 //------------------------------------
 
 /datum/surgery/close_encased
-	name = "Close Bone"
+	name = "闭合骨骼"
 	priority = SURGERY_PRIORITY_MINIMUM
 	possible_locs = list("chest","head")
 	invasiveness = list(SURGERY_DEPTH_DEEP)
@@ -559,8 +559,8 @@
 //------------------------------------
 
 /datum/surgery_step/close_encased_step
-	name = "Close Bone"
-	desc = "bend the bones back into place"
+	name = "闭合骨骼"
+	desc = "将骨头扳回原位"
 	tools = SURGERY_TOOLS_PRY_ENCASED
 	time = 2 SECONDS
 	preop_sound = 'sound/surgery/retractor1.ogg'
@@ -611,8 +611,8 @@
 //------------------------------------
 
 /datum/surgery_step/mend_encased
-	name = "Mend Bone"
-	desc = "repair the damaged bones"
+	name = "接合骨骼"
+	desc = "修复受损的骨骼"
 	tools = SURGERY_TOOLS_BONE_MEND
 	time = 3 SECONDS
 	preop_sound = 'sound/handling/clothingrustle1.ogg'
@@ -625,16 +625,16 @@
 	if(istype(tool, /obj/item/tool/surgery/bonegel)) //If bone gel, use some of the gel
 		var/obj/item/tool/surgery/bonegel/gel = tool
 		if(!gel.use_gel(gel.mend_bones_fix_cost))
-			to_chat(user, SPAN_BOLDWARNING("[gel] is empty!"))
+			to_chat(user, SPAN_BOLDWARNING("[gel]空了！"))
 			return FALSE
 
 	else //Otherwise, use metal rods
 		var/obj/item/stack/rods/rods = user.get_inactive_hand()
 		if(!istype(rods))
-			to_chat(user, SPAN_BOLDWARNING("You need metal rods in your offhand to mend [target]'s [surgery.affected_limb.display_name] with [tool]."))
+			to_chat(user, SPAN_BOLDWARNING("你需要用副手拿着金属杆，才能用[tool]接合[target]的[surgery.affected_limb.display_name]。"))
 			return FALSE
 		if(!rods.use(2)) //Refunded on failure
-			to_chat(user, SPAN_BOLDWARNING("You need more metal rods to mend [target]'s [surgery.affected_limb.display_name] with [tool]."))
+			to_chat(user, SPAN_BOLDWARNING("你需要更多金属棒才能用[tool]修复[target]的[surgery.affected_limb.display_name]。"))
 			return FALSE
 
 /datum/surgery_step/mend_encased/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -670,7 +670,7 @@
 			SPAN_NOTICE("[user] haphazardly repairs [target]'s [surgery.affected_limb.encased] like some kind of [improvised_desc]."))
 
 	if(surgery.affected_limb.status & LIMB_BROKEN)
-		to_chat(user, SPAN_NOTICE("You've repaired the damage done by prying it open, but it's still fractured."))
+		to_chat(user, SPAN_NOTICE("你已经修复了撬开造成的损伤，但骨折仍未愈合。"))
 	log_interact(user, target, "[key_name(user)] mended [key_name(target)]'s [surgery.affected_limb.encased], ending [surgery].")
 
 /datum/surgery_step/mend_encased/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -691,7 +691,7 @@
 	log_interact(user, target, "[key_name(user)] failed to mend [key_name(target)]'s [surgery.affected_limb.encased].")
 
 	if(tool_type != /obj/item/tool/surgery/bonegel)
-		to_chat(user, SPAN_NOTICE("The metal rods used on [target]'s [surgery.affected_limb.display_name] fall loose from their [surgery.affected_limb]."))
+		to_chat(user, SPAN_NOTICE("用于[target]的[surgery.affected_limb.display_name]的金属棒从其[surgery.affected_limb]上松脱。"))
 		var/obj/item/stack/rods/rods = new /obj/item/stack/rods(get_turf(target))
 		rods.amount = 2 //Refund 2 rods on failure
 		rods.update_icon()
@@ -703,7 +703,7 @@ If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointle
 //////////////////////////////////////////////////////////////////
 /*
 /datum/surgery/open_test_incision
-	name = "Open Test Incision"
+	name = "打开测试切口"
 	priority = SURGERY_PRIORITY_MAXIMUM
 	possible_locs = ALL_LIMBS
 	invasiveness = list(SURGERY_DEPTH_SURFACE)
@@ -715,8 +715,8 @@ If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointle
 	lying_required = FALSE
 
 /datum/surgery_step/test_incision
-	name = "Make Incision (Nonhuman)"
-	desc = "make an incision"
+	name = "切开（非人类）"
+	desc = "切口"
 	tools = SURGERY_TOOLS_INCISION
 	time = 2 SECONDS
 
@@ -751,7 +751,7 @@ If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointle
 //------------------------------------
 
 /datum/surgery/mend_test_organ
-	name = "Mend Organ (Nonhuman)"
+	name = "修复器官（非人类）"
 	priority = SURGERY_PRIORITY_HIGH
 	possible_locs = list("chest")
 	required_surgery_skill = SKILL_SURGERY_TRAINED
@@ -764,8 +764,8 @@ If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointle
 //------------------------------------
 
 /datum/surgery_step/mend_test_organ_step
-	name = "Repair Damaged Organs"
-	desc = "repair the organ damage"
+	name = "修复受损器官"
+	desc = "修复器官损伤"
 	tools = list(
 		/obj/item/stack/medical/advanced/bruise_pack = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/stack/medical/advanced/bruise_pack/predator = SURGERY_TOOL_MULT_SUBSTITUTE,
@@ -789,7 +789,7 @@ If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointle
 		SPAN_WARNING("[user] searches desperately, but can't find [target]'s heart!"))
 
 	target.universal_speak = TRUE
-	target.say("You can't find what never existed, you two-legged fool.")
+	target.say("你找不到从未存在过的东西，你这两条腿的蠢货。")
 	target.universal_speak = FALSE
 
 	log_interact(user, target, "[key_name(user)] \"treated organs\" in an incision in [key_name(target)]'s [parse_zone(target_zone)], ending [surgery].")
@@ -807,7 +807,7 @@ If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointle
 //------------------------------------
 
 /datum/surgery/close_test_incision
-	name = "Close Incision (Nonhuman)"
+	name = "闭合切口（非人类）"
 	priority = SURGERY_PRIORITY_MINIMUM
 	possible_locs = ALL_LIMBS
 	required_surgery_skill = SKILL_SURGERY_NOVICE

@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(clues)
-	name   = "Clues"
+	name   = "线索"
 	wait   = 10 SECONDS
 	flags  = SS_NO_INIT | SS_KEEP_TIMING
 	priority   = SS_PRIORITY_DISEASE

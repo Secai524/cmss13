@@ -1,8 +1,8 @@
 /obj/item/explosive/grenade/spawnergrenade/smartdisc
-	name = "smart-disc"
+	name = "智能飞盘"
 	spawner_type = /mob/living/simple_animal/hostile/smartdisc
 	deliveryamt = 1
-	desc = "A strange piece of alien technology. It has many jagged, whirring blades and bizarre writing."
+	desc = "一件奇怪的外星科技。它有许多锯齿状、嗡嗡作响的刀片和奇异的文字。"
 	flags_item = ITEM_PREDATOR
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	item_icons = list(
@@ -67,9 +67,9 @@
 
 	if(!isyautja(user))
 		if(prob(75))
-			to_chat(user, SPAN_WARNING("You fiddle with the disc, but nothing happens. Try again maybe?"))
+			to_chat(user, SPAN_WARNING("你摆弄着飞盘，但什么也没发生。也许再试一次？"))
 			return
-	to_chat(user, SPAN_WARNING("You activate the smart-disc and it whirrs to life!"))
+	to_chat(user, SPAN_WARNING("你激活了智能飞盘，它嗡嗡作响地启动了！"))
 	activate(user)
 	add_fingerprint(user)
 	var/mob/living/carbon/carbon_user = user
@@ -105,14 +105,14 @@
 	if(isyautja(hit_atom))
 		var/mob/living/carbon/human/hooman = hit_atom
 		if(hooman.put_in_hands(src))
-			hit_atom.visible_message("[hit_atom] expertly catches [src] out of the air.","You catch [src] easily.")
+			hit_atom.visible_message("[hit_atom] 熟练地接住了空中的 [src]。","You catch [src] easily.")
 			throwing = FALSE
 		return
 	..()
 
 /mob/living/simple_animal/hostile/smartdisc
-	name = "smart-disc"
-	desc = "A furious, whirling array of blades and alien technology."
+	name = "智能飞盘"
+	desc = "一个狂暴旋转的刀片阵列与外星科技。"
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "disc_active"
 	icon_living = "disc_active"
@@ -175,7 +175,7 @@
 	return 1
 
 /mob/living/simple_animal/hostile/smartdisc/death()
-	visible_message("[src] stops whirring and spins out onto the floor.")
+	visible_message("[src] 停止了嗡鸣，旋转着掉到地板上。")
 	new /obj/item/explosive/grenade/spawnergrenade/smartdisc(loc)
 	. = ..()
 	spawn(1)
@@ -183,7 +183,7 @@
 			qdel(src)
 
 /mob/living/simple_animal/hostile/smartdisc/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
-	visible_message("[src] explodes!")
+	visible_message("[src] 爆炸了！")
 	..(cause, icon_gib,1)
 	spawn(1)
 		if(src)
@@ -272,7 +272,7 @@
 		target_mob.attack_animal(src)
 		if(prob(5))
 			target_mob.apply_effect(3, WEAKEN)
-			target_mob.visible_message(SPAN_DANGER("[src] viciously slashes at [target_mob]!"))
+			target_mob.visible_message(SPAN_DANGER("[src] 凶猛地劈砍向 [target_mob]！"))
 			log_attack("[key_name(target_mob)] was knocked down by [src]")
 		log_attack("[key_name(target_mob)] was attacked by [src]")
 		return target_mob

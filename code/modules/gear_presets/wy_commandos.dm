@@ -1,6 +1,6 @@
 
 /datum/equipment_preset/pmc/commando
-	name = "WY-Commandos"
+	name = "维兰德-汤谷突击队"
 	faction = FACTION_PMC
 	job_title = FACTION_PMC
 	idtype = /obj/item/card/id/pmc/commando
@@ -11,7 +11,7 @@
 	minimap_background = "background_wy_com"
 
 /datum/equipment_preset/pmc/commando/standard
-	name = "Weyland-Yutani Commando (Standard) (!DEATHSQUAD!)"
+	name = "维兰德-汤谷突击队员（标准） (!DEATHSQUAD!)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_WY_COMMANDO_STANDARD
@@ -64,7 +64,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
 
 /datum/equipment_preset/pmc/commando/standard/low_threat
-	name = "Weyland-Yutani Commando (Standard)"
+	name = "维兰德-汤谷突击队员（标准）"
 
 /datum/equipment_preset/pmc/commando/standard/low_threat/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
@@ -111,7 +111,7 @@
 
 
 /datum/equipment_preset/pmc/commando/gunner
-	name = "Weyland-Yutani Commando (Gunner) (!DEATHSQUAD!)"
+	name = "维兰德-汤谷突击队员（机枪手） (!DEATHSQUAD!)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_WY_COMMANDO_GUNNER
@@ -160,7 +160,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
 
 /datum/equipment_preset/pmc/commando/gunner/low_threat
-	name = "Weyland-Yutani Commando (Gunner)"
+	name = "维兰德-汤谷突击队员（机枪手）"
 
 /datum/equipment_preset/pmc/commando/gunner/low_threat/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
@@ -203,7 +203,7 @@
 
 
 /datum/equipment_preset/pmc/commando/leader
-	name = "Weyland-Yutani Commando (Leader) (!DEATHSQUAD!)"
+	name = "维兰德-汤谷突击队员（队长） (!DEATHSQUAD!)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_WY_COMMANDO_LEADER
@@ -219,8 +219,8 @@
 	human.randomize_appearance(new_human)
 
 	var/random_name
-	new_human.h_style = "Cpl. Dietrich"
-	new_human.f_style = "Soulful Selleck"
+	new_human.h_style = "下士 Dietrich"
+	new_human.f_style = "深情塞莱克式"
 	random_name = random_name(new_human.gender)
 	new_human.change_real_name(new_human, random_name)
 
@@ -277,7 +277,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/whiteout/medical/commando, WEAR_IN_BACK)
 
 /datum/equipment_preset/pmc/commando/leader/low_threat
-	name = "Weyland-Yutani Commando (Leader)"
+	name = "维兰德-汤谷突击队员（队长）"
 
 /datum/equipment_preset/pmc/commando/leader/low_threat/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
@@ -318,7 +318,7 @@
 
 
 /datum/equipment_preset/pmc/commando/dogcatcher
-	name = "Weyland-Yutani Commando (Dog Catcher)"
+	name = "维兰德-汤谷突击队员（捕手）"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_WY_COMMANDO_DOGCATHER

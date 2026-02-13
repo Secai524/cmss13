@@ -26,28 +26,28 @@
 /datum/emote/living/carbon/human/blink
 	key = "blink"
 	key_third_person = "blinks"
-	message = "blinks."
+	message = "闪烁。"
 
 /datum/emote/living/carbon/human/blink_rapid
 	key = "rapidblink"
-	message = "blinks rapidly."
+	message = "快速眨眼。"
 
 /datum/emote/living/carbon/human/bow
 	key = "bow"
 	key_third_person = "bows"
-	message = "bows."
-	message_param = "bows to %t."
+	message = "鞠躬。"
+	message_param = "向%t鞠躬。"
 
 /datum/emote/living/carbon/human/chuckle
 	key = "chuckle"
 	key_third_person = "chuckles"
-	message = "chuckles."
+	message = "轻笑。"
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/clap
 	key = "clap"
 	key_third_person = "claps"
-	message = "claps."
+	message = "鼓掌。"
 	hands_use_check = TRUE
 	audio_cooldown = 5 SECONDS
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
@@ -56,7 +56,7 @@
 /datum/emote/living/carbon/human/collapse
 	key = "collapse"
 	key_third_person = "collapses"
-	message = "collapses!"
+	message = "瘫倒了！"
 
 /datum/emote/living/carbon/human/collapse/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
@@ -65,26 +65,26 @@
 /datum/emote/living/carbon/human/cough
 	key = "cough"
 	key_third_person = "coughs"
-	message = "coughs!"
+	message = "咳嗽！"
 
 /datum/emote/living/carbon/human/cry
 	key = "cry"
 	key_third_person = "cries"
-	message = "cries."
+	message = "哭泣。"
 
 /datum/emote/living/carbon/human/eyebrow
 	key = "eyebrow"
-	message = "raises an eyebrow."
+	message = "挑起眉毛。"
 
 /datum/emote/living/carbon/human/facepalm
 	key = "facepalm"
 	key_third_person = "facepalms"
-	message = "facepalms."
+	message = "捂脸。"
 
 /datum/emote/living/carbon/human/faint
 	key = "faint"
 	key_third_person = "faints"
-	message = "faints!"
+	message = "昏倒了！"
 
 /datum/emote/living/carbon/human/faint/run_emote(mob/living/carbon/human/user, params, type_override, intentional)
 	. = ..()
@@ -93,29 +93,29 @@
 /datum/emote/living/carbon/human/frown
 	key = "frown"
 	key_third_person = "frowns"
-	message = "frowns."
+	message = "皱眉。"
 
 /datum/emote/living/carbon/human/gasp
 	key = "gasp"
 	key_third_person = "gasps"
-	message = "gasps!"
+	message = "倒吸一口气！"
 
 /datum/emote/living/carbon/human/giggle
 	key = "giggle"
 	key_third_person = "giggles"
-	message = "giggles."
+	message = "咯咯笑。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/glare
 	key = "glare"
 	key_third_person = "glares"
-	message = "glares."
-	message_param = "glares at %t."
+	message = "怒视。"
+	message_param = "怒视着%t。"
 
 /datum/emote/living/carbon/human/golfclap
 	key = "golfclap"
 	key_third_person = "golfclaps"
-	message = "claps, clearly unimpressed."
+	message = "鼓掌，显然不为所动。"
 	alt_message = "claps"
 	sound = 'sound/misc/golfclap.ogg'
 	cooldown = 5 SECONDS
@@ -124,21 +124,21 @@
 /datum/emote/living/carbon/human/grin
 	key = "grin"
 	key_third_person = "grins"
-	message = "grins."
+	message = "咧嘴笑。"
 
 /datum/emote/living/carbon/human/grumble
 	key = "grumble"
 	key_third_person = "grumbles"
-	message = "grumbles."
+	message = "嘟囔。"
 
 /datum/emote/living/carbon/human/handshake
 	key = "handshake"
-	message_param = "shakes hands with %t."
+	message_param = "与%t握手。"
 
 /datum/emote/living/carbon/human/laugh
 	key = "laugh"
 	key_third_person = "laughs"
-	message = "laughs!"
+	message = "大笑！"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/laugh/get_sound(mob/living/user)
@@ -148,13 +148,13 @@
 /datum/emote/living/carbon/human/look
 	key = "look"
 	key_third_person = "looks"
-	message = "looks."
-	message_param = "looks at %t."
+	message = "张望。"
+	message_param = "看向%t。"
 
 /datum/emote/living/carbon/human/medic
 	key = "medic"
-	message = "calls for a Corpsman!"
-	alt_message = "shouts something"
+	message = "呼叫医疗兵！"
+	alt_message = "喊叫着什么"
 	cooldown = 10 SECONDS
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
@@ -180,22 +180,22 @@
 /datum/emote/living/carbon/human/moan
 	key = "moan"
 	key_third_person = "moans"
-	message = "moans."
+	message = "呻吟。"
 
 /datum/emote/living/carbon/human/mumble
 	key = "mumble"
 	key_third_person = "mumbles"
-	message = "mumbles."
+	message = "咕哝着。"
 
 /datum/emote/living/carbon/human/nod
 	key = "nod"
 	key_third_person = "nods"
-	message = "nods."
+	message = "点头。"
 
 /datum/emote/living/carbon/human/pain
 	key = "pain"
-	message = "cries out in pain!"
-	alt_message = "cries out"
+	message = "痛苦地喊叫！"
+	alt_message = "喊叫"
 	species_type_allowed_typecache = list(/datum/species/human, /datum/species/synthetic, /datum/species/yautja, /datum/species/synthetic/colonial/wy_droid)
 	species_type_blacklist_typecache = list(/datum/species/synthetic)
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
@@ -229,8 +229,8 @@
 /datum/emote/living/carbon/human/salute
 	key = "salute"
 	key_third_person = "salutes"
-	message = "salutes."
-	message_param = "salutes to %t."
+	message = "敬礼。"
+	message_param = "向%t敬礼。"
 	sound = 'sound/misc/salute.ogg'
 	audio_cooldown = 10 SECONDS
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
@@ -238,7 +238,7 @@
 /datum/emote/living/carbon/human/scream
 	key = "scream"
 	key_third_person = "screams"
-	message = "screams!"
+	message = "尖叫！"
 	audio_cooldown = 10 SECONDS
 	species_type_blacklist_typecache = list(/datum/species/synthetic)
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
@@ -267,51 +267,51 @@
 
 /datum/emote/living/carbon/human/shakehead
 	key = "shakehead"
-	message = "shakes their head."
+	message = "摇了摇头。"
 
 /datum/emote/living/carbon/human/shiver
 	key = "shiver"
 	key_third_person = "shivers"
-	message = "shivers."
+	message = "打了个寒颤。"
 
 /datum/emote/living/carbon/human/shrug
 	key = "shrug"
 	key_third_person = "shrugs"
-	message = "shrugs."
+	message = "耸肩。"
 
 /datum/emote/living/carbon/human/sigh
 	key = "sigh"
 	key_third_person = "sighs"
-	message = "sighs."
+	message = "叹气。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/smile
 	key = "smile"
 	key_third_person = "smiles"
-	message = "smiles."
+	message = "微笑。"
 
 /datum/emote/living/carbon/human/sneeze
 	key = "sneeze"
 	key_third_person = "sneezes"
-	message = "sneezes!"
+	message = "打喷嚏！"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/snore
 	key = "snore"
 	key_third_person = "snores"
-	message = "snores."
+	message = "打鼾。"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/stare
 	key = "stare"
 	key_third_person = "stares"
-	message = "stares."
-	message_param = "stares at %t."
+	message = "凝视。"
+	message_param = "凝视着%t。"
 
 /datum/emote/living/carbon/human/signal
 	key = "signal"
 	key_third_person = "signals"
-	message_param = "raises %t fingers."
+	message_param = "竖起%t根手指。"
 	hands_use_check = TRUE
 
 /datum/emote/living/carbon/human/signal/run_emote(mob/user, params, type_override, intentional)
@@ -323,38 +323,38 @@
 
 /datum/emote/living/carbon/human/stop
 	key = "stop"
-	message = "holds out an open palm, gesturing to stop."
+	message = "伸出手掌，示意停止。"
 	hands_use_check = TRUE
 
 /datum/emote/living/carbon/human/thumbsup
 	key = "thumbsup"
-	message = "gives a thumbs up."
+	message = "竖起大拇指。"
 	hands_use_check = TRUE
 
 /datum/emote/living/carbon/human/thumbsdown
 	key = "thumbsdown"
-	message = "gives a thumbs down."
+	message = "拇指向下。"
 	hands_use_check = TRUE
 
 /datum/emote/living/carbon/human/twitch
 	key = "twitch"
 	key_third_person = "twitches"
-	message = "twitches."
+	message = "抽搐。"
 
 /datum/emote/living/carbon/human/wave
 	key = "wave"
 	key_third_person = "waves"
-	message = "waves."
+	message = "挥手。"
 
 /datum/emote/living/carbon/human/yawn
 	key = "yawn"
 	key_third_person = "yawns"
-	message = "yawns."
+	message = "打了个哈欠。"
 
 /datum/emote/living/carbon/human/warcry
 	key = "warcry"
-	message = "shouts an inspiring cry!"
-	alt_message = "shouts something"
+	message = "发出鼓舞人心的呐喊！"
+	alt_message = "喊叫着什么"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/warcry/run_emote(mob/living/user, params, type_override, intentional)
@@ -377,7 +377,7 @@
 /datum/emote/living/carbon/human/whimper
 	key = "whimper"
 	key_third_person = "whimpers"
-	message = "whimpers."
+	message = "呜咽。"
 
 /datum/emote/living/carbon/human/whimper/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
@@ -390,7 +390,7 @@
 
 /datum/emote/living/carbon/human/burstscream
 	key = "burstscream"
-	message = "screams in agony!"
+	message = "痛苦地尖叫！"
 	emote_type = EMOTE_FORCED_AUDIO|EMOTE_AUDIBLE|EMOTE_VISIBLE
 	stat_allowed = UNCONSCIOUS
 

@@ -5,7 +5,7 @@
 
 	How does it work?
 	Atom has a var/list/effects_list which is used to hold all the active effects on that atom.
-	A subystem called "Effects" is used to process() every effect every second.
+	A subystem called "效果" is used to process() every effect every second.
 
 	How to create one?
 	Make a new /datum/effects/name in the folder effects

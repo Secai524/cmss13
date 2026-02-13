@@ -251,7 +251,7 @@
 	//heart beats slower
 	M.reagent_move_delay_modifier += POTENCY_MULTIPLIER_MEDIUM * potency
 	if(prob(10))
-		to_chat(M, SPAN_WARNING("You feel incredibly weak!"))
+		to_chat(M, SPAN_WARNING("你感到极度虚弱！"))
 
 /datum/chem_property/neutral/antispasmodic/process_critical(mob/living/M, potency = 1, delta_time)
 	//heart stops beating, lungs stop working
@@ -259,7 +259,7 @@
 		M.apply_effect(potency, PARALYZE)
 	M.apply_damage(0.5 * potency * delta_time, OXY)
 	if(prob(2.5 * delta_time))
-		to_chat(M, SPAN_WARNING("You can hardly breathe!"))
+		to_chat(M, SPAN_WARNING("你几乎无法呼吸！"))
 	M.apply_internal_damage(POTENCY_MULTIPLIER_LOW * potency, "heart")
 
 /datum/chem_property/neutral/hyperthermic
@@ -273,7 +273,7 @@
 /datum/chem_property/neutral/hyperthermic/process(mob/living/M, potency = 1, delta_time)
 	if(prob(5 * delta_time))
 		M.emote("gasp")
-		to_chat(M, SPAN_DANGER("<b>Your insides feel uncomfortably hot !</b>"))
+		to_chat(M, SPAN_DANGER("<b>你的内脏感到异常灼热！</b>"))
 	M.bodytemperature = min(T120C, M.bodytemperature + POTENCY_MULTIPLIER_MEDIUM * potency)
 	if(potency >= CREATE_MAX_TIER_1)
 		M.make_dizzy(potency * POTENCY_MULTIPLIER_MEDIUM)
@@ -347,10 +347,10 @@
 /datum/chem_property/neutral/atrichogenic/process(mob/living/M, potency = 1, delta_time)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if((H.h_style != "Bald" || H.f_style != "Shaved"))
-			to_chat(M, SPAN_WARNING("Your hair falls out!"))
-			H.h_style = "Bald"
-			H.f_style = "Shaved"
+		if((H.h_style != "光头" || H.f_style != "剃光"))
+			to_chat(M, SPAN_WARNING("你的头发脱落了！"))
+			H.h_style = "光头"
+			H.f_style = "剃光"
 			H.update_hair()
 
 /datum/chem_property/neutral/atrichogenic/process_overdose(mob/living/M, potency = 1)
@@ -370,21 +370,21 @@
 /datum/chem_property/neutral/trichogenic/process(mob/living/M, potency = 1, delta_time)
 	if(prob(2.5 * potency * delta_time) && ishuman(M))
 		var/mob/living/carbon/human/H = M
-		H.h_style = "Bald"
-		H.f_style = "Shaved"
+		H.h_style = "光头"
+		H.f_style = "剃光"
 		H.h_style = pick(GLOB.hair_styles_list)
 		if(H.gender == MALE)
 			H.f_style = pick(GLOB.facial_hair_styles_list)
 		H.update_hair()
-		to_chat(M, SPAN_NOTICE("Your head feels different..."))
+		to_chat(M, SPAN_NOTICE("你的头部感觉有些异样……"))
 
 /datum/chem_property/neutral/trichogenic/process_overdose(mob/living/M, potency = 1, delta_time)
 	if(prob(2.5 * potency * delta_time))
-		to_chat(M, SPAN_WARNING("You feel itchy all over!"))
+		to_chat(M, SPAN_WARNING("你感到全身发痒！"))
 		M.take_limb_damage(potency) //Hair growing inside your body
 
 /datum/chem_property/neutral/trichogenic/process_critical(mob/living/M, potency = 1, delta_time)
-	to_chat(M, SPAN_WARNING("You feel like something is penetrating your skull!"))
+	to_chat(M, SPAN_WARNING("你感觉有东西正在刺穿你的头骨！"))
 	M.apply_damage(0.5 * potency * delta_time, BRAIN) //Hair growing into brain
 
 /datum/chem_property/neutral/trichogenic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
@@ -437,7 +437,7 @@
 
 /datum/chem_property/neutral/euphoric/process_critical(mob/living/M, potency = 1)
 	M.apply_damage(POTENCY_MULTIPLIER_VHIGH * potency, OXY)
-	to_chat(M, SPAN_WARNING("You are laughing so much you can't breathe!"))
+	to_chat(M, SPAN_WARNING("你笑得喘不过气！"))
 
 /datum/chem_property/neutral/emetic
 	name = PROPERTY_EMETIC
@@ -470,27 +470,27 @@
 	if(holder.volume <= 0.1 && holder.data != -1)
 		holder.data = -1
 		if(potency == 1)
-			to_chat(M, SPAN_WARNING("Your mind feels a little less stable..."))
+			to_chat(M, SPAN_WARNING("你的心智感觉有些不稳……"))
 		else if(potency == 2)
-			to_chat(M, SPAN_WARNING("You lose focus..."))
+			to_chat(M, SPAN_WARNING("你失去了专注……"))
 		else if(potency == 3)
-			to_chat(M, SPAN_WARNING("Your mind feels much less stable..."))
+			to_chat(M, SPAN_WARNING("你的心智感觉远不如之前稳定了..."))
 		else
-			to_chat(M, SPAN_WARNING("You lose your perfect focus..."))
+			to_chat(M, SPAN_WARNING("你失去了完美的专注..."))
 	else
 		if(world.time > holder.data + ANTIDEPRESSANT_MESSAGE_DELAY)
 			holder.data = world.time
 			if(potency == 1)
-				to_chat(M, SPAN_NOTICE("Your mind feels stable... a little stable."))
+				to_chat(M, SPAN_NOTICE("你的心智感觉稳定了...稍微稳定了一点。"))
 				M.confused = max(M.confused-1,0)
 			else if(potency == 2)
-				to_chat(M, SPAN_NOTICE("Your mind feels focused and undivided."))
+				to_chat(M, SPAN_NOTICE("你的心智感觉专注且统一。"))
 				M.confused = max(M.confused-2,0)
 			else if(potency == 3)
-				to_chat(M, SPAN_NOTICE("Your mind feels much more stable."))
+				to_chat(M, SPAN_NOTICE("你的心智感觉稳定多了。"))
 				M.confused = max(M.confused-3,0)
 			else
-				to_chat(M, SPAN_NOTICE("Your mind feels perfectly focused."))
+				to_chat(M, SPAN_NOTICE("你的心智感觉无比专注。"))
 				M.confused = 0
 
 /datum/chem_property/neutral/psychostimulating/process_overdose(mob/living/M, potency = 1, delta_time)
@@ -582,7 +582,7 @@
 	if(H.chem_effect_flags & CHEM_EFFECT_HYPER_THROTTLE)
 		return
 	H.chem_effect_flags |= CHEM_EFFECT_HYPER_THROTTLE
-	to_chat(M, SPAN_NOTICE("You feel like you're in a dream. It is as if the world is standing still."))
+	to_chat(M, SPAN_NOTICE("你感觉自己身处梦境。仿佛世界静止了一般。"))
 	M.universal_understand = TRUE //Brain is working so fast it can understand the intension of everything it hears
 
 /datum/chem_property/neutral/hyperthrottling/process_overdose(mob/living/M, potency = 1, delta_time)
@@ -604,7 +604,7 @@
 
 	chem_host.pain.recalculate_pain()
 	remove_action(chem_host, /datum/action/human_action/psychic_whisper)
-	to_chat(chem_host, SPAN_NOTICE("The pain in your head subsides, and you are left feeling strangely alone."))
+	to_chat(chem_host, SPAN_NOTICE("你头部的疼痛消退，留下一种奇怪的孤独感。"))
 
 /datum/chem_property/neutral/encephalophrasive/reaction_mob(mob/chem_host, method=INGEST, volume, potency)
 	if(method == TOUCH)
@@ -613,7 +613,7 @@
 		return
 
 	give_action(chem_host, /datum/action/human_action/psychic_whisper)
-	to_chat(chem_host, SPAN_NOTICE("A terrible headache manifests, and suddenly it feels as though your mind is outside of your skull."))
+	to_chat(chem_host, SPAN_NOTICE("一阵剧烈的头痛袭来，突然间感觉你的意识仿佛脱离了颅骨。"))
 
 /datum/chem_property/neutral/encephalophrasive/process(mob/living/chem_host, potency = 1, delta_time)
 	chem_host.pain.apply_pain(1 * potency)

@@ -11,45 +11,45 @@
 	color = icon_to_use.GetPixel(icon_to_use.Width() / 2, icon_to_use.Height() / 2)
 
 /datum/skin_color/cmplayer
-	name = "Extra Pale"
+	name = "极度苍白"
 	icon_name = "pale0"
 
 /datum/skin_color/pale1
-	name = "Pale 1"
+	name = "苍白1号"
 	icon_name = "pale1"
 
 /datum/skin_color/pale2
-	name = "Pale 2"
+	name = "苍白2号"
 	icon_name = "pale2"
 
 /datum/skin_color/pale3
-	name = "Pale 3"
+	name = "苍白3号"
 	icon_name = "pale3"
 
 /datum/skin_color/tan1
-	name = "Tan 1"
+	name = "棕褐1号"
 	icon_name = "tan1"
 
 /datum/skin_color/tan2
-	name = "Tan 2"
+	name = "棕褐2号"
 	icon_name = "tan2"
 
 /datum/skin_color/tan3
-	name = "Tan 3"
+	name = "棕褐3号"
 	icon_name = "tan3"
 
 /datum/skin_color/dark1
-	name = "Dark 1"
+	name = "深色1号"
 	icon_name = "dark1"
 
 /datum/skin_color/dark2
-	name = "Dark 2"
+	name = "深色2号"
 	icon_name = "dark2"
 
 /datum/skin_color/dark3
-	name = "Dark 3"
+	name = "深色3号"
 	icon_name = "dark3"
 
 /datum/skin_color/melanated
-	name = "Melanated"
+	name = "黝黑"
 	icon_name = "dark4"

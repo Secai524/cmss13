@@ -45,7 +45,7 @@
 		return
 
 	xeno.queued_action = action
-	to_chat(xeno, SPAN_WARNING("Your next click will use [action.name]!"))
+	to_chat(xeno, SPAN_WARNING("你的下一次点击将使用[action.name]！"))
 
 	if(xeno.client?.prefs?.custom_cursors)
 		xeno.client.mouse_pointer_icon = 'icons/mob/hud/mecha_mouse.dmi'
@@ -133,7 +133,7 @@
 
 /mob/living/carbon/xenomorph/verb/m_corrosive_acid()
 	set category = "Alien"
-	set name = "Corrosive Acid"
+	set name = "腐蚀酸液"
 	set hidden = TRUE
 	var/mob/living/carbon/xenomorph/xeno = src
 	if(xeno.mob_size < MOB_SIZE_XENO_SMALL)
@@ -149,7 +149,7 @@
 
 /mob/living/carbon/xenomorph/verb/tech_secrete_resin()
 	set category = "Alien"
-	set name = "Secrete Resin (Tech)"
+	set name = "分泌树脂（科技）"
 	set hidden = TRUE
 	var/mob/living/carbon/xenomorph/xeno = src
 	if (!istype(xeno))
@@ -165,7 +165,7 @@
 
 /mob/living/carbon/xenomorph/verb/xeno_screech_action()
 	set category = "Alien"
-	set name = "Screech"
+	set name = "尖啸"
 	set hidden = TRUE
 	var/mob/living/carbon/xenomorph/xeno = src
 	if (!istype(xeno))

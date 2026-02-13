@@ -33,7 +33,7 @@ AddTimelock(/datum/job/command/auxiliary_officer, list(
 	job = /datum/job/command/auxiliary_officer
 
 /datum/timelock/auxiliary
-	name = "Auxiliary Roles"
+	name = "辅助角色"
 
 /datum/timelock/auxiliary/New(name, time_required, list/roles)
 	. = ..()

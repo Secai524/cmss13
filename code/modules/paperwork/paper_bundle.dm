@@ -1,5 +1,5 @@
 /obj/item/paper_bundle
-	name = "paper bundle"
+	name = "文件捆"
 	gender = PLURAL
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "paper"
@@ -22,7 +22,7 @@
 		if (istype(P, /obj/item/paper/carbon))
 			var/obj/item/paper/carbon/C = P
 			if (!C.iscopy && !C.copied)
-				to_chat(user, SPAN_NOTICE("Take off the carbon copy first."))
+				to_chat(user, SPAN_NOTICE("先把复写纸拿下来。"))
 				add_fingerprint(user)
 				return
 		if(loc == user)
@@ -39,7 +39,7 @@
 			user.drop_inv_item_on_ground(W)
 			for(var/obj/O in W)
 				attach_doc(O, user, TRUE)
-			to_chat(user, SPAN_NOTICE("You add \the [W.name] to [(src.name == "paper bundle") ? "the paper bundle" : src.name]."))
+			to_chat(user, SPAN_NOTICE("你将\the [W.name]添加到[(src.name == "文件捆") ? "the paper bundle" : src.name]."))
 			qdel(W)
 	else
 		if(HAS_TRAIT(W, TRAIT_TOOL_PEN) || istype(W, /obj/item/toy/crayon))
@@ -65,7 +65,7 @@
 
 		spawn(20)
 			if(get_dist(src, user) < 2 && user.get_active_hand() == P && P.heat_source)
-				user.visible_message("[class][user] burns right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.</span>",
+				user.visible_message("[class][user]将\the [src]彻底烧穿，化为灰烬。灰烬在空中飘散，最终落在地上堆成一堆。</span>",
 				"[class]You burn right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.</span>")
 
 				if(user.get_inactive_hand() == src)
@@ -75,7 +75,7 @@
 				qdel(src)
 
 			else
-				to_chat(user, SPAN_DANGER("You must hold \the [P] steady to burn \the [src]."))
+				to_chat(user, SPAN_DANGER("你必须拿稳\the [P]才能烧掉\the [src]。"))
 
 /obj/item/paper_bundle/get_examine_text(mob/user)
 	. = list(desc)
@@ -152,7 +152,7 @@
 				page = length(contents)
 			var/obj/item/W = contents[page]
 			usr.put_in_hands(W)
-			to_chat(usr, SPAN_NOTICE("You remove the [W.name] from the bundle."))
+			to_chat(usr, SPAN_NOTICE("你从文件捆中取出了[W.name]。"))
 			amount--
 			if(amount == 1)
 				var/obj/item/paper/P = contents[1]
@@ -171,9 +171,9 @@
 		src.attack_self(src.loc)
 		updateUsrDialog()
 	else if(isobserver(usr))
-		to_chat(usr, SPAN_NOTICE("Ghosts don't have hands, you can't flip the page!"))
+		to_chat(usr, SPAN_NOTICE("鬼魂没有手，你无法翻页！"))
 	else
-		to_chat(usr, SPAN_NOTICE("You need to hold it in your hands!"))
+		to_chat(usr, SPAN_NOTICE("你需要把它拿在手里！"))
 
 /obj/item/paper_bundle/proc/operator[](index_num)
 	return contents[index_num]
@@ -183,7 +183,7 @@
 	set category = "Object"
 	set src in usr
 
-	var/n_name = strip_html(input(usr, "What would you like to label the bundle?", "Bundle Labelling", null)  as text)
+	var/n_name = strip_html(input(usr, "你想给这捆文件标注什么名称？", "Bundle Labelling", null)  as text)
 	if((loc == usr && usr.stat == 0))
 		name = "[(n_name ? text("[n_name]") : "paper")]"
 	add_fingerprint(usr)
@@ -193,7 +193,7 @@
 	set category = "Object"
 	set src in usr
 
-	to_chat(usr, SPAN_NOTICE("You loosen the bundle."))
+	to_chat(usr, SPAN_NOTICE("你松开了这捆文件。"))
 	for(var/obj/O in src)
 		O.forceMove(usr.loc)
 		O.add_fingerprint(usr)
@@ -224,9 +224,9 @@
 			photo++
 			overlays += IMG
 	if(i>1)
-		desc =  "[i] papers clipped to each other."
+		desc =  "[i] 纸张用回形针别在一起。"
 	else
-		desc = "A single sheet of paper."
+		desc = "一张纸。"
 	if(photo)
 		if(photo > 1)
 			desc += "\nThere are also [photo] photos attached to it."
@@ -241,7 +241,7 @@
 	I.add_fingerprint(user)
 	amount++
 	if(!no_message)
-		to_chat(user, SPAN_NOTICE("You add [I] to [src]."))
+		to_chat(user, SPAN_NOTICE("你将[I]加入[src]。"))
 	if(screen == 2)
 		screen = 1
 	update_icon()

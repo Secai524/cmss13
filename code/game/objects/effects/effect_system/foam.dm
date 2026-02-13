@@ -101,7 +101,7 @@
 
 
 /obj/effect/particle_effect/foam/metal
-	name = "metal foam"
+	name = "金属泡沫"
 	metal = 1
 
 //datum effect system
@@ -168,21 +168,21 @@
 	density = TRUE
 	opacity = TRUE // changed in New()
 	anchored = TRUE
-	name = "foamed metal"
-	desc = "A lightweight foamed metal wall."
+	name = "泡沫金属"
+	desc = "一堵轻质的泡沫金属墙。"
 	health = 45
 
 /obj/structure/foamed_metal/iron
 	icon_state = "ironfoam"
 	health = 70
-	name = "foamed iron"
-	desc = "A slightly stronger lightweight foamed iron wall."
+	name = "泡沫铁"
+	desc = "一堵稍坚固的轻质泡沫铁墙。"
 
 /obj/structure/foamed_metal/proc/take_damage(damage)
 	health -= damage
 	playsound(src,'sound/weapons/Genhit.ogg', 25, 1)
 	if(health <= 0)
-		visible_message(SPAN_WARNING("[src] crumbles into pieces!"))
+		visible_message(SPAN_WARNING("[src]碎裂成片！"))
 		playsound(src, 'sound/effects/meteorimpact.ogg', 25, 1)
 		qdel(src)
 
@@ -229,7 +229,7 @@
 
 /obj/structure/foamed_metal/handle_tail_stab(mob/living/carbon/xenomorph/xeno, blunt_stab)
 	take_damage(xeno.melee_damage_upper * FOAMED_METAL_XENO_SLASH)
-	xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+	xeno.visible_message(SPAN_DANGER("[xeno] 用它的尾巴抽打 [src]！"),
 	SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL

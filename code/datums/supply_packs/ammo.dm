@@ -5,7 +5,7 @@
 //------------------------Ammunition Boxes crates----------------
 
 /datum/supply_packs/ammo_rounds_box_smg
-	name = "SMG ammo box crate (10x20mm) (x600 rounds)"
+	name = "冲锋枪弹药箱 (10x20mm) (x600发)"
 	contains = list(/obj/item/ammo_box/rounds/smg)
 	cost = 20
 	containertype = /obj/structure/closet/crate/ammo
@@ -13,7 +13,7 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_rounds_box_smg_ap
-	name = "SMG AP ammo box crate (10x20mm AP) (x600 rounds)"
+	name = "冲锋枪穿甲弹药箱 (10x20mm AP) (x600发)"
 	contains = list(/obj/item/ammo_box/rounds/smg/ap)
 	cost = 40
 	containertype = /obj/structure/closet/crate/ammo
@@ -21,7 +21,7 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_rounds_box_rifle
-	name = "Rifle ammo box crate (10x24mm) (x600 rounds)"
+	name = "步枪弹药箱 (10x24mm) (x600发)"
 	contains = list(/obj/item/ammo_box/rounds)
 	cost = 20
 	containertype = /obj/structure/closet/crate/ammo
@@ -29,7 +29,7 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_rounds_box_rifle_ap
-	name = "Rifle AP ammo box crate (10x24mm AP) (x600 rounds)"
+	name = "步枪穿甲弹药箱 (10x24mm AP) (x600发)"
 	contains = list(/obj/item/ammo_box/rounds/ap)
 	cost = 40
 	containertype = /obj/structure/closet/crate/ammo
@@ -37,7 +37,7 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_rounds_box_xm88
-	name = ".458 bullets box crate (x300 rounds)"
+	name = ".458子弹箱 (x300发)"
 	contains = list(/obj/item/ammo_box/magazine/lever_action/xm88)
 	cost = 40
 	containertype = /obj/structure/closet/crate/ammo
@@ -49,7 +49,7 @@
 //------------------------For M41A----------------
 
 /datum/supply_packs/ammo_mag_box
-	name = "Magazine box (M41A, 10x regular mags)"
+	name = "弹匣箱 (M41A, 10个标准弹匣)"
 	contains = list(
 		/obj/item/ammo_box/magazine,
 	)
@@ -59,7 +59,7 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_mag_box_ap
-	name = "Magazine box (M41A, 10x AP mags)"
+	name = "弹匣箱 (M41A, 10个穿甲弹匣)"
 	contains = list(
 		/obj/item/ammo_box/magazine/ap,
 	)
@@ -69,7 +69,7 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_mag_box_ext
-	name = "Magazine box (M41A, 8x extended mags)"
+	name = "弹匣箱 (M41A, 8个加长弹匣)"
 	contains = list(
 		/obj/item/ammo_box/magazine/ext,
 	)
@@ -81,7 +81,7 @@
 //------------------------For M4RA----------------
 
 /datum/supply_packs/ammo_dmr_mag_box
-	name = "Magazine box (M4RA, 16x regular mags)"
+	name = "弹匣箱 (M4RA, 16个标准弹匣)"
 	contains = list(
 		/obj/item/ammo_box/magazine/m4ra,
 	)
@@ -93,7 +93,7 @@
 //------------------------For M39----------------
 
 /datum/supply_packs/ammo_smg_mag_box
-	name = "Magazine box (M39, 12x regular mags)"
+	name = "弹匣箱 (M39, 12个标准弹匣)"
 	contains = list(
 		/obj/item/ammo_box/magazine/m39,
 	)
@@ -103,7 +103,7 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_smg_mag_box_ap
-	name = "Magazine box (M39, 12x AP mags)"
+	name = "弹匣箱 (M39, 12个穿甲弹匣)"
 	contains = list(
 		/obj/item/ammo_box/magazine/m39/ap,
 	)
@@ -115,7 +115,7 @@
 //------------------------For M4RA----------------
 
 /datum/supply_packs/ammo_m4ra_mag_box
-	name = "Magazine box (M4RA, 16x mags)"
+	name = "弹匣箱 (M4RA, 16个弹匣)"
 	contains = list(
 		/obj/item/ammo_box/magazine/m4ra,
 	)
@@ -125,7 +125,7 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_m4ra_mag_box_ap
-	name = "Magazine box (M4RA, 16x AP mags)"
+	name = "弹匣箱 (M4RA, 16个穿甲弹匣)"
 	contains = list(
 		/obj/item/ammo_box/magazine/m4ra/ap,
 	)
@@ -135,7 +135,7 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_m4ra_mag_box_ext
-	name = "Magazine box (M4RA, 12x extended mags)"
+	name = "弹匣箱 (M4RA, 12个加长弹匣)"
 	contains = list(
 		/obj/item/ammo_box/magazine/m4ra/ext,
 	)
@@ -147,7 +147,7 @@
 //------------------------For  M44----------------
 
 /datum/supply_packs/ammo_m44_mag_box
-	name = "Speed loaders box (M44, 16x)"
+	name = "快速装弹器箱 (M44, 16个)"
 	contains = list(
 		/obj/item/ammo_box/magazine/m44,
 	)
@@ -157,7 +157,7 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_m44_mag_box_ap
-	name = "Speed loaders box (Marksman M44, 16x)"
+	name = "快速装弹器箱 (神射手M44, 16个)"
 	contains = list(
 		/obj/item/ammo_box/magazine/m44/marksman,
 	)
@@ -167,7 +167,7 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_m44_mag_box_heavy
-	name = "Speed loaders box (Heavy M44, 16x)"
+	name = "快速装弹器箱 (重型M44, 16个)"
 	contains = list(
 		/obj/item/ammo_box/magazine/m44/heavy,
 	)
@@ -179,7 +179,7 @@
 //------------------------For  M4A3----------------
 
 /datum/supply_packs/ammo_m4a3_mag_box
-	name = "Magazine box (M4A3, 16x regular mags)"
+	name = "弹匣箱 (M4A3, 16个标准弹匣)"
 	contains = list(
 		/obj/item/ammo_box/magazine/m4a3,
 	)
@@ -189,7 +189,7 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_m4a3_mag_box_ap
-	name = "Magazine box (M4A3, 16x AP mags)"
+	name = "弹匣箱 (M4A3, 16个穿甲弹匣)"
 	contains = list(
 		/obj/item/ammo_box/magazine/m4a3/ap,
 	)
@@ -199,7 +199,7 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_m4a3_mag_box_hp
-	name = "Magazine box (M4A3, 16x HP mags)"
+	name = "弹匣箱 (M4A3, 16个空尖弹匣)"
 	contains = list(
 		/obj/item/ammo_box/magazine/m4a3/hp,
 	)
@@ -211,7 +211,7 @@
 //------------------------For  Shootgun ammo----------------
 
 /datum/supply_packs/ammo_shell_box
-	name = "Shell box (100x slug shells)"
+	name = "霰弹箱 (100发独头弹)"
 	contains = list(
 		/obj/item/ammo_box/magazine/shotgun,
 	)
@@ -221,7 +221,7 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_shell_box_buck
-	name = "Shell box (100x buckshot shells)"
+	name = "霰弹箱 (100发鹿弹)"
 	contains = list(
 		/obj/item/ammo_box/magazine/shotgun/buckshot,
 	)
@@ -231,7 +231,7 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_shell_box_flechette
-	name = "Shell box (100x flechette shells)"
+	name = "霰弹箱 (100发箭形弹)"
 	contains = list(
 		/obj/item/ammo_box/magazine/shotgun/flechette,
 	)
@@ -243,7 +243,7 @@
 //------------------------For 88M4 ----------------
 
 /datum/supply_packs/ammo_mod88_mag_box_ap
-	name = "Magazine box (88 Mod 4 AP, 16x mags)"
+	name = "弹匣箱 (88 Mod 4 穿甲弹, 16个弹匣)"
 	contains = list(
 		/obj/item/ammo_box/magazine/mod88,
 	)
@@ -255,7 +255,7 @@
 //------------------------Special or non common magazines----------------
 
 /datum/supply_packs/ammo_vp78_mag_box
-	name = "Magazine box (VP78, 16x mags)"
+	name = "弹匣箱 (VP78, 16个弹匣)"
 	contains = list(
 		/obj/item/ammo_box/magazine/vp78,
 	)
@@ -265,7 +265,7 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_su6_mag_box
-	name = "Magazine box (SU-6, 16x mags)"
+	name = "弹匣箱 (SU-6, 16个弹匣)"
 	contains = list(
 		/obj/item/ammo_box/magazine/su6,
 	)
@@ -279,7 +279,7 @@
 		/obj/item/ammo_magazine/rifle/lmg,
 		/obj/item/ammo_magazine/rifle/lmg,
 	)
-	name = "M41AE2 HPR Magazines crate (HPR ammo box x2)"
+	name = "M41AE2 HPR弹匣板条箱 (HPR弹药箱 x2)"
 	cost = 20
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper M41AE2 HPR magazines crate"
@@ -290,7 +290,7 @@
 		/obj/item/ammo_magazine/rifle/lmg/holo_target,
 		/obj/item/ammo_magazine/rifle/lmg/holo_target,
 	)
-	name = "M41AE2 HPR Holo-Target Magazines crate (HPR HT ammo box x2)"
+	name = "M41AE2 HPR全息瞄准弹匣板条箱 (HPR HT弹药箱 x2)"
 	cost = 20
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper M41AE2 HPR holo-target magazines crate"
@@ -300,7 +300,7 @@
 //------------------------For M10 Auto Pistol ----------------
 
 /datum/supply_packs/ammo_m10_pistol_mag_box
-	name = "Magazine box (M10, 22x regular mags)"
+	name = "弹匣箱 (M10, 22个标准弹匣)"
 	contains = list(
 		/obj/item/ammo_box/magazine/m10,
 	)
@@ -310,7 +310,7 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_m10_pistol_mag_box_extended
-	name = "Magazine box (M10, 14x extended mags)"
+	name = "弹匣箱 (M10, 14个加长弹匣)"
 	contains = list(
 		/obj/item/ammo_box/magazine/m10/extended,
 	)
@@ -320,7 +320,7 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_m10_ap_pistol_mag_box
-	name = "Magazine box (M10 AP, 22x regular mags)"
+	name = "弹匣箱 (M10 穿甲弹, 22个标准弹匣)"
 	contains = list(
 		/obj/item/ammo_box/magazine/m10/ap,
 	)
@@ -330,7 +330,7 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_m10_ap_pistol_mag_box_extended
-	name = "Magazine box (M10 AP, 14x extended mags)"
+	name = "弹匣箱 (M10穿甲弹，14个加长弹匣)"
 	contains = list(
 		/obj/item/ammo_box/magazine/m10/ap/extended,
 	)
@@ -342,7 +342,7 @@
 //------------------------Smartgunner stuff----------------
 
 /datum/supply_packs/ammo_smartgun_battery_pack
-	name = "M56 smartgun battery crate (x4)"
+	name = "M56智能枪电池箱 (x4)"
 	contains = list(
 		/obj/item/smartgun_battery,
 		/obj/item/smartgun_battery,
@@ -355,7 +355,7 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_smartgun
-	name = "M56 smartgun drum crate (x2)"
+	name = "M56智能枪弹鼓箱 (x2)"
 	contains = list(
 		/obj/item/ammo_magazine/smartgun,
 		/obj/item/ammo_magazine/smartgun,
@@ -368,7 +368,7 @@
 //------------------------Sentries Ammo----------------
 
 /datum/supply_packs/ammo_sentry_shotgun
-	name = "UA 12-G sentry shotgun ammunition (x2)"
+	name = "UA 12-G哨戒炮霰弹弹药 (x2)"
 	contains = list(
 		/obj/item/ammo_magazine/sentry/shotgun,
 		/obj/item/ammo_magazine/sentry/shotgun,
@@ -379,7 +379,7 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_sentry_flamer
-	name = "UA 42-F sentry flamer ammunition (x2)"
+	name = "UA 42-F哨戒炮火焰喷射器弹药 (x2)"
 	contains = list(
 		/obj/item/ammo_magazine/sentry_flamer,
 		/obj/item/ammo_magazine/sentry_flamer,
@@ -390,7 +390,7 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_mini_sentry_flamer
-	name = "UA 45-F mini sentry flamer ammunition (x2)"
+	name = "UA 45-F迷你哨戒炮火焰喷射器弹药 (x2)"
 	contains = list(
 		/obj/item/ammo_magazine/sentry_flamer/mini,
 		/obj/item/ammo_magazine/sentry_flamer/mini,
@@ -401,7 +401,7 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_glob_sentry_flamer
-	name = "UA 60-FP sentry plasma incinerator tank (x2)"
+	name = "UA 60-FP哨戒炮等离子焚烧器燃料罐 (x2)"
 	contains = list(
 		/obj/item/ammo_magazine/sentry_flamer/glob,
 		/obj/item/ammo_magazine/sentry_flamer/glob,
@@ -412,7 +412,7 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_sentry
-	name = "UA 571-C sentry ammunition (x2)"
+	name = "UA 571-C哨戒炮弹药 (x2)"
 	contains = list(
 		/obj/item/ammo_magazine/sentry,
 		/obj/item/ammo_magazine/sentry,
@@ -425,7 +425,7 @@
 //------------------------M240 flamer tanks----------------
 
 /datum/supply_packs/ammo_napalm
-	name = "M240 UT-Napthal Fuel (x4)"
+	name = "M240 UT-萘燃料 (x4)"
 	contains = list(
 		/obj/item/ammo_magazine/flamer_tank,
 		/obj/item/ammo_magazine/flamer_tank,
@@ -438,7 +438,7 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_napalm_gel
-	name = "M240 Napalm B-Gel (x4)"
+	name = "M240凝固汽油B凝胶 (x4)"
 	contains = list(
 		/obj/item/ammo_magazine/flamer_tank/gellied,
 		/obj/item/ammo_magazine/flamer_tank/gellied,
@@ -451,7 +451,7 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_flamer_mixed
-	name = "M240 Fuel Crate (x2 normal, x2 b-gel)"
+	name = "M240燃料箱 (x2普通，x2B凝胶)"
 	contains = list(
 		/obj/item/ammo_magazine/flamer_tank,
 		/obj/item/ammo_magazine/flamer_tank,
@@ -464,7 +464,7 @@
 
 //------------------------Mounted guns ammo----------------
 /datum/supply_packs/ammo_m2c
-	name = "M2C ammunition crate (x2)"
+	name = "M2C弹药箱 (x2)"
 	contains = list(
 		/obj/item/ammo_magazine/m2c,
 		/obj/item/ammo_magazine/m2c,
@@ -475,7 +475,7 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_m56d
-	name = "M56D drum magazine crate (x1)"
+	name = "M56D弹鼓箱 (x1)"
 	contains = list(
 		/obj/item/ammo_magazine/m56d,
 	)
@@ -486,7 +486,7 @@
 
 //This crate has a little bit of everything, mostly okay stuff, but it does have some really unique picks.
 /datum/supply_packs/ammo_surplus
-	name = "Surplus ammo crate (various USCM magazines x10)"
+	name = "剩余弹药箱 (多种USCM弹匣 x10)"
 	randomised_num_contained = 10
 	contains = list(
 		/obj/item/ammo_magazine/rifle,
@@ -536,7 +536,7 @@
 //------------------------For  L54----------------
 
 /datum/supply_packs/ammo_l54_mag_box
-	name = "Magazine box (L54, 16x regular mags)"
+	name = "弹匣箱 (L54，16个普通弹匣)"
 	contains = list(
 		/obj/item/ammo_box/magazine/l54,
 	)
@@ -546,7 +546,7 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_l54_mag_box_ap
-	name = "Magazine box (L54, 16x AP mags)"
+	name = "弹匣箱 (L54，16个穿甲弹匣)"
 	contains = list(
 		/obj/item/ammo_box/magazine/l54/ap,
 	)
@@ -556,7 +556,7 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_l54_mag_box_hp
-	name = "Magazine box (L54, 16x HP mags)"
+	name = "弹匣箱 (L54，16个空尖弹匣)"
 	contains = list(
 		/obj/item/ammo_box/magazine/l54/hp,
 	)

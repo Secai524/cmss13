@@ -1,22 +1,22 @@
 /datum/action_xeno_action/verb/verb_rend()
 	set category = "Alien"
-	set name = "Rend"
+	set name = "撕裂"
 	set hidden = TRUE
-	var/action_name = "Rend"
+	var/action_name = "撕裂"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_destroy()
 	set category = "Alien"
-	set name = "Destroy"
+	set name = "摧毁"
 	set hidden = TRUE
-	var/action_name = "Destroy"
+	var/action_name = "摧毁"
 	handle_xeno_macro(src, action_name)
 
 /datum/action_xeno_action/verb/verb_doom()
 	set category = "Alien"
-	set name = "Doom"
+	set name = "厄运"
 	set hidden = TRUE
-	var/action_name = "Doom"
+	var/action_name = "厄运"
 	handle_xeno_macro(src, action_name)
 
 /datum/action_xeno_action/verb/king_shield()

@@ -29,10 +29,10 @@
 GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 /obj/structure/machinery/telecomms/relay/preset/tower
-	name = "TC-4T telecommunications tower"
+	name = "TC-4T电信塔"
 	icon = 'icons/obj/structures/machinery/comm_tower2.dmi'
 	icon_state = "comm_tower"
-	desc = "A portable compact TC-4T telecommunications tower. Used to set up subspace communications lines between planetary and extra-planetary locations."
+	desc = "一个便携紧凑的TC-4T电信塔。用于在行星与星际位置之间建立子空间通信线路。"
 	id = "Station Relay"
 	listening_level = TELECOMM_GROUND_Z
 	autolinkers = list("s_relay")
@@ -124,25 +124,25 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 /obj/structure/machinery/telecomms/relay/preset/tower/attackby(obj/item/I, mob/user)
 	if(iswelder(I))
 		if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH))
-			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			to_chat(user, SPAN_WARNING("你需要一把更强的喷枪！"))
 			return
 		if(user.action_busy)
 			return
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
-			to_chat(user, SPAN_WARNING("You're not trained to repair [src]..."))
+			to_chat(user, SPAN_WARNING("你没受过维修[src]的训练..."))
 			return
 		var/obj/item/tool/weldingtool/WT = I
 
 		if(health >= initial(health))
-			to_chat(user, SPAN_WARNING("[src] doesn't need repairs."))
+			to_chat(user, SPAN_WARNING("[src]不需要修理。"))
 			return
 
 		if(WT.remove_fuel(0, user))
-			user.visible_message(SPAN_NOTICE("[user] begins repairing damage to [src]."),
+			user.visible_message(SPAN_NOTICE("[user]开始修理[src]的损伤。"),
 			SPAN_NOTICE("You begin repairing the damage to [src]."))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 			if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
-				user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."),
+				user.visible_message(SPAN_NOTICE("[user]修复了[src]上的一些损伤。"),
 				SPAN_NOTICE("You repair [src]."))
 				update_health(-150)
 				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
@@ -165,8 +165,8 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	freq_listening = list(UNIVERSAL_FREQ)
 
 /obj/structure/machinery/telecomms/relay/preset/tower/faction
-	name = "UPP telecommunications relay"
-	desc = "A mighty piece of hardware used to send massive amounts of data far away. This one is intercepting and rebroadcasting UPP frequencies."
+	name = "UPP电信中继站"
+	desc = "一个用于远距离发送大量数据的强大硬件。这个正在拦截并重新广播UPP频率。"
 	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	icon_state = "relay"
 	id = "UPP Relay"
@@ -194,8 +194,8 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	faction_shorthand = "colony"
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms
-	name = "TC-3T static telecommunications tower"
-	desc = "A static heavy-duty TC-3T telecommunications tower. Used to set up subspace communications lines between planetary and extra-planetary locations. Will need to have extra communication frequencies programmed into it by multitool."
+	name = "TC-3T固定式电信塔"
+	desc = "一个固定式重载TC-3T电信塔。用于在行星与星际位置之间建立子空间通信线路。需要使用万用工具为其编程额外的通信频率。"
 	use_power = USE_POWER_NONE
 	idle_power_usage = 10000
 	icon = 'icons/obj/structures/machinery/comm_tower3.dmi'
@@ -236,7 +236,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 		to_chat(user, SPAN_WARNING("\The [src]'s processors are still cooling! Wait before trying to flip the switch again."))
 		return
 	if(corrupted)
-		to_chat(user, SPAN_WARNING("[src] is entangled in resin. Impossible to interact with."))
+		to_chat(user, SPAN_WARNING("[src]被树脂缠住了。无法交互。"))
 		return
 	var/current_state = on
 	if(!do_after(user, 20, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
@@ -267,10 +267,10 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 		if(inoperable() || (health <= initial(health) * 0.5))
 			to_chat(user, SPAN_WARNING("\The [src.name] needs repairs to have frequencies added to its software!"))
 			return
-		var/choice = tgui_input_list(user, "What do you wish to do?", "TC-3T comms tower", list("Wipe communication frequencies", "Add your faction's frequencies"))
+		var/choice = tgui_input_list(user, "你想做什么？", "TC-3T comms tower", list("Wipe communication frequencies", "Add your faction's frequencies"))
 		if(choice == "Wipe communication frequencies")
 			freq_listening.Cut()
-			to_chat(user, SPAN_NOTICE("You wipe the preexisting frequencies from \the [src]."))
+			to_chat(user, SPAN_NOTICE("你清除了\the [src]上原有的频率。"))
 			SSradio.update_cache()
 			return
 		else if(choice == "Add your faction's frequencies")
@@ -290,11 +290,11 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 				if(FACTION_TWE)
 					freq_listening |= RMC_FREQ
 				if(FACTION_YAUTJA)
-					to_chat(user, SPAN_WARNING("You decide to leave the human machine alone."))
+					to_chat(user, SPAN_WARNING("你决定不去碰那个人类机器。"))
 					return
 				else
 					freq_listening |= DEPT_FREQS
-			to_chat(user, SPAN_NOTICE("You add your faction's communication frequencies to \the [src]'s comm list."))
+			to_chat(user, SPAN_NOTICE("你将你阵营的通信频率添加到了\the [src]的通信列表中。"))
 			SSradio.update_cache()
 			return
 	. = ..()
@@ -609,10 +609,10 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 */
 
 /obj/structure/machinery/telecomms/allinone
-	name = "Telecommunications Mainframe"
+	name = "电信主机"
 	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	icon_state = "comm_server"
-	desc = "A compact machine used for portable subspace telecommunications processing."
+	desc = "一台用于便携式子空间电信处理的紧凑型机器。"
 	density = TRUE
 	anchored = TRUE
 	use_power = USE_POWER_NONE
@@ -623,6 +623,6 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	var/intercept = 0 // if nonzero, broadcasts all messages to syndicate channel
 
 /obj/structure/machinery/telecomms/allinone/interceptor
-	name = "Message Intercept Mainframe"
+	name = "信息拦截主机"
 	intercept = 1
 	freq_listening = list(UPP_FREQ)

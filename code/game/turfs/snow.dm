@@ -4,7 +4,7 @@
 //FLOORS-----------------------------------//
 //Snow Floor
 /turf/open/snow
-	name = "snow layer"
+	name = "雪层"
 	icon = 'icons/turf/floors/snow2.dmi'
 	icon_state = "snow_0"
 	is_groundmap_turf = TRUE
@@ -17,10 +17,10 @@
 	if(istype(I, /obj/item/lightstick))
 		var/obj/item/lightstick/L = I
 		if(locate(/obj/item/lightstick) in get_turf(src))
-			to_chat(user, "There's already \a [L] at this position!")
+			to_chat(user, "这个位置已经有一个\a [L]了！")
 			return
 
-		to_chat(user, "Now planting \the [L].")
+		to_chat(user, "正在种植\the [L]。")
 		if(!do_after(user,20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return
 
@@ -54,9 +54,9 @@
 			var/new_slowdown = C.next_move_slowdown + (slow_amount * bleed_layer)
 			if(!HAS_TRAIT(C, TRAIT_HAULED))
 				if(prob(2))
-					to_chat(C, SPAN_WARNING("Moving through [src] slows you down.")) //Warning only
+					to_chat(C, SPAN_WARNING("穿过[src]会减慢你的速度。")) //Warning only
 				else if(can_stuck && bleed_layer == 3 && prob(2))
-					to_chat(C, SPAN_WARNING("You get stuck in [src] for a moment!"))
+					to_chat(C, SPAN_WARNING("你被[src]卡住了一会儿！"))
 					new_slowdown += 10
 				C.next_move_slowdown = new_slowdown
 	..()
@@ -68,13 +68,13 @@
 	setDir(pick(NORTH,SOUTH,EAST,WEST,NORTHEAST,NORTHWEST,SOUTHEAST,SOUTHWEST))
 	switch(bleed_layer)
 		if(0)
-			name = "dirt floor"
+			name = "泥土地面"
 		if(1)
-			name = "shallow [initial(name)]"
+			name = "浅[initial(name)]"
 		if(2)
-			name = "deep [initial(name)]"
+			name = "深[initial(name)]"
 		if(3)
-			name = "very deep [initial(name)]"
+			name = "极深的[initial(name)]"
 
 	//Update the side overlays
 	if(update_full)

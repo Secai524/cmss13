@@ -1,6 +1,6 @@
 /obj/structure/window
 	name = "window"
-	desc = "A glass window. It looks thin and flimsy. A few knocks with anything should shatter it."
+	desc = "一扇玻璃窗。它看起来又薄又脆弱。随便敲几下就能把它打碎。"
 	icon = 'icons/turf/walls/windows.dmi'
 	icon_state = "window"
 	density = TRUE
@@ -108,7 +108,7 @@
 		if(user && istype(user))
 			user.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_WINDOWS, 1)
 			SEND_SIGNAL(user, COMSIG_MOB_DESTROY_WINDOW, src)
-			visible_message(SPAN_WARNING("[user] smashes [src][causing_atom ? " with [causing_atom]!" : "!"]"),
+			visible_message(SPAN_WARNING("[user]砸碎了[src][causing_atom ? " with [causing_atom]!" : "!"]"),
 			SPAN_WARNING("[src] breaks!"), 7)
 			if(is_mainship_level(z))
 				SSclues.create_print(get_turf(user), user, "A small glass piece is found on the fingerprint.")
@@ -167,7 +167,7 @@
 
 /obj/structure/window/hitby(atom/movable/AM)
 	..()
-	visible_message(SPAN_DANGER("[src] was hit by [AM]."))
+	visible_message(SPAN_DANGER("[src]被[AM]击中了。"))
 	var/tforce = 0
 	if(ismob(AM))
 		tforce = 40
@@ -195,7 +195,7 @@
 			return
 
 		playsound(loc, 'sound/effects/glassbash.ogg', 25, 1)
-		user.visible_message(SPAN_WARNING("[user] bangs against [src]!"),
+		user.visible_message(SPAN_WARNING("[user]猛撞向[src]！"),
 		SPAN_WARNING("You bang against [src]!"),
 		SPAN_WARNING("You hear a banging sound."))
 		windowknock_cooldown = world.time + 100
@@ -203,7 +203,7 @@
 		if(windowknock_cooldown > world.time)
 			return
 		playsound(loc, 'sound/effects/glassknock.ogg', 15, 1)
-		user.visible_message(SPAN_NOTICE("[user] knocks on [src]."),
+		user.visible_message(SPAN_NOTICE("[user]敲了敲[src]。"),
 		SPAN_NOTICE("You knock on [src]."),
 		SPAN_NOTICE("You hear a knocking sound."))
 		windowknock_cooldown = world.time + 100
@@ -213,7 +213,7 @@
 	if(!not_damageable) //Impossible to destroy
 		health -= damage
 	user.animation_attack_on(src)
-	user.visible_message(SPAN_DANGER("[user] smashes into [src]!"))
+	user.visible_message(SPAN_DANGER("[user]撞上了[src]！"))
 	healthcheck(1, 1, 1, user)
 
 /obj/structure/window/attack_animal(mob/user as mob)
@@ -235,19 +235,19 @@
 			user.drop_held_item()
 			switch(state)
 				if(GRAB_PASSIVE)
-					M.visible_message(SPAN_WARNING("[user] slams [M] against \the [src]!"))
+					M.visible_message(SPAN_WARNING("[user]将[M]猛砸向\the [src]！"))
 					M.apply_damage(7)
 					if(!not_damageable) //Impossible to destroy
 						health -= 10
 				if(GRAB_AGGRESSIVE)
-					M.visible_message(SPAN_DANGER("[user] bashes [M] against \the [src]!"))
+					M.visible_message(SPAN_DANGER("[user]将[M]撞向\the [src]！"))
 					if(prob(50))
 						M.apply_effect(1, WEAKEN)
 					M.apply_damage(10)
 					if(!not_damageable) //Impossible to destroy
 						health -= 25
 				if(GRAB_CHOKE)
-					M.visible_message(SPAN_DANGER("[user] crushes [M] against \the [src]!"))
+					M.visible_message(SPAN_DANGER("[user]将[M]压碎在\the [src]上！"))
 					M.apply_effect(5, WEAKEN)
 					M.apply_damage(20)
 					if(!not_damageable) //Impossible to destroy
@@ -344,7 +344,7 @@
 		return 0
 
 	if(anchored)
-		to_chat(usr, SPAN_WARNING("It is fastened to the floor, you can't rotate it!"))
+		to_chat(usr, SPAN_WARNING("它被固定在地板上，你无法旋转！"))
 		return 0
 
 	setDir(turn(dir, 90))
@@ -359,7 +359,7 @@
 	if(static_frame || not_deconstructable || !(flags_atom & ON_BORDER))
 		return 0
 	if(anchored)
-		to_chat(usr, SPAN_WARNING("It is fastened to the floor, you can't rotate it!"))
+		to_chat(usr, SPAN_WARNING("它被固定在地板上，你无法旋转！"))
 		return 0
 
 	setDir(turn(dir, 270))
@@ -381,8 +381,8 @@
 	..()
 
 /obj/structure/window/phoronbasic
-	name = "phoron window"
-	desc = "A phoron-glass alloy window. It looks insanely tough to break. It appears it's also insanely tough to burn through."
+	name = "福罗窗"
+	desc = "一种福罗玻璃合金窗。看起来极其坚固，难以打破。似乎也极难烧穿。"
 	icon_state = "phoronwindow0"
 	shardtype = /obj/item/shard/phoron
 	health = 120
@@ -401,8 +401,8 @@
 
 
 /obj/structure/window/phoronreinforced
-	name = "reinforced phoron window"
-	desc = "A phoron-glass alloy window with a rod matrix. It looks hopelessly tough to break. It also looks completely fireproof, considering how basic phoron windows are insanely fireproof."
+	name = "强化福罗窗"
+	desc = "一种带有杆状矩阵的福罗玻璃合金窗。看起来坚不可摧，完全无法打破。考虑到基本福罗窗就已极难燃烧，这扇窗看起来是完全防火的。"
 	icon_state = "phoronrwindow0"
 	shardtype = /obj/item/shard/phoron
 	reinf = 1
@@ -419,16 +419,16 @@
 
 
 /obj/structure/window/reinforced
-	name = "reinforced window"
-	desc = "A glass window reinforced with bracing rods. It looks rather strong. Might take a few good hits to shatter it."
+	name = "强化窗"
+	desc = "一种用支撑杆加固的玻璃窗。看起来相当坚固。可能需要几次重击才能打碎它。"
 	icon_state = "rwindow"
 	basestate = "rwindow"
 	health = 40
 	reinf = 1
 
 /obj/structure/window/reinforced/toughened
-	name = "safety glass"
-	desc = "A very tough looking window reinforced with tempered glass and bracing rods, probably bullet proof."
+	name = "安全玻璃"
+	desc = "一扇看起来非常坚固的窗户，由钢化玻璃和支撑杆加固，可能防弹。"
 	icon_state = "rwindow"
 	basestate = "rwindow"
 	health = 300
@@ -437,22 +437,22 @@
 
 
 /obj/structure/window/reinforced/tinted
-	name = "tinted window"
-	desc = "A tinted glass window. It looks rather strong and opaque. Might take a few good hits to shatter it."
+	name = "有色窗"
+	desc = "一扇有色玻璃窗。看起来相当坚固且不透明。可能需要几次重击才能打碎它。"
 	icon_state = "twindow"
 	basestate = "twindow"
 	opacity = TRUE
 
 /obj/structure/window/reinforced/tinted/frosted
-	name = "privacy window"
-	desc = "A glass privacy window. Looks like it might take a few less hits than a normal reinforced window."
+	name = "隐私窗"
+	desc = "一扇玻璃隐私窗。看起来比普通的强化窗可能少承受几次打击。"
 	icon_state = "fwindow"
 	basestate = "fwindow"
 	health = 30
 
 /obj/structure/window/reinforced/ultra
-	name = "ultra-reinforced window"
-	desc = "An ultra-reinforced window designed to keep the briefing podium a secure area."
+	name = "超强化窗"
+	desc = "一扇超强化窗，旨在确保简报台区域的安全。"
 	icon_state = "fwindow"
 	basestate = "fwindow"
 	not_damageable = TRUE
@@ -481,8 +481,8 @@
 	legacy_full = TRUE
 
 /obj/structure/window/shuttle
-	name = "shuttle window"
-	desc = "A shuttle glass window with a rod matrix specialised for heat resistance. It looks rather strong. Might take a few good hits to shatter it."
+	name = "穿梭机窗口"
+	desc = "一扇带有专门耐热杆状矩阵的穿梭机玻璃窗。看起来相当坚固。可能需要几次重击才能打碎它。"
 	icon = 'icons/turf/podwindows.dmi'
 	icon_state = "window"
 	basestate = "window"
@@ -504,7 +504,7 @@
 //Framed windows
 
 /obj/structure/window/framed
-	name = "theoretical window"
+	name = "理论窗"
 	layer = TABLE_LAYER
 	static_frame = 1
 	flags_atom = FPRINT
@@ -577,8 +577,8 @@
 //Almayer windows
 
 /obj/structure/window/framed/almayer
-	name = "reinforced window"
-	desc = "A glass window with a special rod matrix inside a wall frame. It looks rather strong. Might take a few good hits to shatter it."
+	name = "强化窗"
+	desc = "一扇玻璃窗，在墙框内带有特殊的杆状矩阵。看起来相当坚固。可能需要几次重击才能打碎它。"
 	icon_state = "alm_rwindow0"
 	basestate = "alm_rwindow"
 	health = 100 //Was 600
@@ -588,8 +588,8 @@
 	plane = TURF_PLANE
 
 /obj/structure/window/framed/almayer/hull
-	name = "hull window"
-	desc = "A glass window with a special rod matrix inside a wall frame. This one was made out of exotic materials to prevent hull breaches. No way to get through here."
+	name = "船体窗"
+	desc = "一扇玻璃窗，在墙框内带有特殊的杆状矩阵。这扇窗由特殊材料制成，以防止船体破裂。无法从这里通过。"
 	//icon_state = "rwindow0_debug" //Uncomment to check hull in the map editor
 	not_damageable = TRUE
 	not_deconstructable = TRUE
@@ -610,8 +610,8 @@
 	window_frame = /obj/structure/window_frame/almayer/white
 
 /obj/structure/window/framed/almayer/white/hull
-	name = "hull window"
-	desc = "An ultra-reinforced window designed to keep research a secure area. This one was made out of exotic materials to prevent hull breaches. No way to get through here."
+	name = "船体窗"
+	desc = "为保障研究区域安全而设计的超强化窗户。采用特殊材料制成，以防船体破损。这里无路可通。"
 	not_damageable = TRUE
 	not_deconstructable = TRUE
 	unslashable = TRUE
@@ -624,8 +624,8 @@
 	window_frame = /obj/structure/window_frame/almayer/aicore
 
 /obj/structure/window/framed/almayer/aicore/hull
-	name = "hull window"
-	desc = "An ultra-reinforced window designed to protect the AI Core. Made out of exotic materials to prevent hull breaches, nothing will get through here."
+	name = "船体窗"
+	desc = "为保护AI核心而设计的超强化窗户。采用特殊材料制成以防船体破损，任何东西都无法穿透。"
 	not_damageable = TRUE
 	not_deconstructable = TRUE
 	unslashable = TRUE
@@ -660,8 +660,8 @@
 		RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_IMPACTED, PROC_REF(deconstruct))
 
 /obj/structure/window/framed/almayer/aicore/white/hull
-	name = "hull window"
-	desc = "An ultra-reinforced window designed to protect the AI Core. Made out of exotic materials to prevent hull breaches, nothing will get through here."
+	name = "船体窗"
+	desc = "为保护AI核心而设计的超强化窗户。采用特殊材料制成以防船体破损，任何东西都无法穿透。"
 	not_damageable = TRUE
 	not_deconstructable = TRUE
 	unslashable = TRUE
@@ -677,8 +677,8 @@
 	window_frame = /obj/structure/window_frame/colony
 
 /obj/structure/window/framed/colony/reinforced
-	name = "reinforced window"
-	desc = "A glass window with a special rod matrix inside a wall frame. It looks rather strong. Might take a few good hits to shatter it."
+	name = "强化窗"
+	desc = "一扇玻璃窗，在墙框内带有特殊的杆状矩阵。看起来相当坚固。可能需要几次重击才能打碎它。"
 	icon_state = "col_rwindow0"
 	basestate = "col_rwindow"
 	health = 100
@@ -686,13 +686,13 @@
 	window_frame = /obj/structure/window_frame/colony/reinforced
 
 /obj/structure/window/framed/colony/reinforced/tinted
-	name = "tinted reinforced window"
-	desc = "A glass window with a special rod matrix inside a wall frame. It looks rather strong. Might take a few good hits to shatter it. This one is opaque. You have an uneasy feeling someone might be watching from the other side."
+	name = "有色强化窗"
+	desc = "墙框内嵌有特殊杆状矩阵的玻璃窗。看起来相当坚固。可能需要几次重击才能打碎它。这扇窗是不透明的。你有一种不安的感觉，似乎有人在另一侧窥视。"
 	opacity = TRUE
 
 /obj/structure/window/framed/colony/reinforced/hull
-	name = "hull window"
-	desc = "A glass window with a special rod matrix inside a wall frame. This one was made out of exotic materials to prevent hull breaches. No way to get through here."
+	name = "船体窗"
+	desc = "一扇玻璃窗，在墙框内带有特殊的杆状矩阵。这扇窗由特殊材料制成，以防止船体破裂。无法从这里通过。"
 	//icon_state = "rwindow0_debug" //Uncomment to check hull in the map editor
 	not_damageable = TRUE
 	not_deconstructable = TRUE
@@ -703,20 +703,20 @@
 //Yautja windows
 
 /obj/structure/window/framed/colony/reinforced/yautja
-	name = "alien reinforced window"
+	name = "异形强化窗"
 	icon_state = "pred_window0"
 	basestate = "pred_window"
 
 /obj/structure/window/framed/colony/reinforced/hull/yautja
-	name = "alien hull window"
+	name = "异形船体窗"
 	icon_state = "pred_window0"
 	basestate = "pred_window"
 
 //Chigusa windows
 
 /obj/structure/window/framed/chigusa
-	name = "reinforced window"
-	desc = "A glass window with a special rod matrix inside a wall frame. It looks rather strong. Might take a few good hits to shatter it."
+	name = "强化窗"
+	desc = "一扇玻璃窗，在墙框内带有特殊的杆状矩阵。看起来相当坚固。可能需要几次重击才能打碎它。"
 	icon_state = "chig_rwindow0"
 	basestate = "chig_rwindow"
 	health = 100
@@ -727,15 +727,15 @@
 
 /obj/structure/window/framed/hangar
 	name = "window"
-	desc = "A glass window inside a wall frame."
+	desc = "墙框内的玻璃窗。"
 	icon_state = "hngr_window0"
 	basestate = "hngr_window"
 	health = 40
 	window_frame = /obj/structure/window_frame/hangar
 
 /obj/structure/window/framed/hangar/reinforced
-	name = "reinforced window"
-	desc = "A glass window with a special rod matrix inside a wall frame. It looks rather strong. Might take a few good hits to shatter it."
+	name = "强化窗"
+	desc = "一扇玻璃窗，在墙框内带有特殊的杆状矩阵。看起来相当坚固。可能需要几次重击才能打碎它。"
 	icon_state = "hngr_rwindow0"
 	basestate = "hngr_rwindow"
 	health = 100
@@ -744,15 +744,15 @@
 
 /obj/structure/window/framed/bunker
 	name = "window"
-	desc = "A glass window inside a wall frame."
+	desc = "墙框内的玻璃窗。"
 	icon_state = "bnkr_window0"
 	basestate = "bnkr_window"
 	health = 40
 	window_frame = /obj/structure/window_frame/bunker
 
 /obj/structure/window/framed/bunker/reinforced
-	name = "reinforced window"
-	desc = "A glass window with a special rod matrix inside a wall frame. It looks rather strong. Might take a few good hits to shatter it."
+	name = "强化窗"
+	desc = "一扇玻璃窗，在墙框内带有特殊的杆状矩阵。看起来相当坚固。可能需要几次重击才能打碎它。"
 	icon_state = "bnkr_rwindow0"
 	basestate = "bnkr_rwindow"
 	health = 100
@@ -766,8 +766,8 @@
 	window_frame = /obj/structure/window_frame/wood
 
 /obj/structure/window/framed/wood/reinforced
-	name = "reinforced window"
-	desc = "A glass window with a special rod matrix inside a wall frame. It looks rather strong. Might take a few good hits to shatter it."
+	name = "强化窗"
+	desc = "一扇玻璃窗，在墙框内带有特殊的杆状矩阵。看起来相当坚固。可能需要几次重击才能打碎它。"
 	health = 100
 	reinf = 1
 	icon_state = "wood_rwindow0"
@@ -778,7 +778,7 @@
 
 /obj/structure/window/framed/strata
 	name = "window"
-	desc = "A glass window inside a wall frame."
+	desc = "墙框内的玻璃窗。"
 	icon = 'icons/turf/walls/strata_windows.dmi'
 	icon_state = "strata_window0"
 	basestate = "strata_window"
@@ -786,8 +786,8 @@
 	window_frame = /obj/structure/window_frame/strata
 
 /obj/structure/window/framed/strata/reinforced
-	name = "reinforced window"
-	desc = "A glass window. Light refracts incorrectly when looking through. It looks rather strong. Might take a few good hits to shatter it."
+	name = "强化窗"
+	desc = "一扇玻璃窗。透过它看时光线折射异常。看起来相当坚固。可能需要几次重击才能打碎它。"
 	icon_state = "strata_window0"
 	basestate = "strata_window"
 	health = 100
@@ -795,8 +795,8 @@
 	window_frame = /obj/structure/window_frame/strata/reinforced
 
 /obj/structure/window/framed/strata/hull
-	name = "hull window"
-	desc = "A glass window. Something tells you this one is somehow indestructible."
+	name = "船体窗"
+	desc = "一扇玻璃窗。某种直觉告诉你这扇窗坚不可摧。"
 	icon_state = "strata_window0"
 	basestate = "strata_window"
 	not_damageable = TRUE
@@ -809,7 +809,7 @@
 
 /obj/structure/window/framed/kutjevo
 	name = "window"
-	desc = "A glass window inside a wall frame."
+	desc = "墙框内的玻璃窗。"
 	icon = 'icons/turf/walls/kutjevo/kutjevo_windows.dmi'
 	icon_state = "kutjevo_window0"
 	basestate = "kutjevo_window"
@@ -817,8 +817,8 @@
 	window_frame = /obj/structure/window_frame/kutjevo
 
 /obj/structure/window/framed/kutjevo/reinforced
-	name = "reinforced window"
-	desc = "A glass window. Cross bars are visible. Might take a few good hits to shatter it."
+	name = "强化窗"
+	desc = "一扇玻璃窗。可见横杆。可能需要几次重击才能打碎它。"
 	icon_state = "kutjevo_window_alt0"
 	basestate = "kutjevo_window_alt"
 	health = 100
@@ -826,8 +826,8 @@
 	window_frame = /obj/structure/window_frame/kutjevo/reinforced
 
 /obj/structure/window/framed/kutjevo/reinforced/hull
-	name = "hull window"
-	desc = "A glass window. Something tells you this one is somehow indestructible."
+	name = "船体窗"
+	desc = "一扇玻璃窗。某种直觉告诉你这扇窗坚不可摧。"
 	icon_state = "kutjevo_window_hull"
 	not_damageable = TRUE
 	not_deconstructable = TRUE
@@ -838,8 +838,8 @@
 //Shivas Snowball (Ice v3) windows
 
 /obj/structure/window/framed/shiva
-	name = "poly-kevlon framed window"
-	desc = "A semi-transparent pane of material set into a poly-kevlon frame. Very smashable."
+	name = "聚凯夫纶框架窗"
+	desc = "嵌在聚凯夫纶框架中的半透明材料板。非常易碎。"
 	icon = 'icons/turf/walls/ice_colony/shiva_windows.dmi'
 	icon_state = "shiva_window0"
 	basestate = "shiva_window"
@@ -847,8 +847,8 @@
 	window_frame = /obj/structure/window_frame/shiva
 
 /obj/structure/window/framed/shiva/reinforced
-	name = "reinforced poly-kevlon framed window"
-	desc = "A semi-transparent pane of material set into a poly-kevlon frame. Might take a few good hits to shatter it."
+	name = "强化聚凯夫纶框架窗"
+	desc = "嵌在聚凯夫纶框架中的半透明材料板。可能需要几次重击才能打碎它。"
 	icon_state = "shiva_window_r0"
 	basestate = "shiva_window_r"
 	health = 100
@@ -894,7 +894,7 @@
 
 /obj/structure/window/framed/solaris
 	name = "window"
-	desc = "A glass window inside a wall frame."
+	desc = "墙框内的玻璃窗。"
 	icon = 'icons/turf/walls/solaris/solaris_windows.dmi'
 	icon_state = "solaris_window0"
 	basestate = "solaris_window"
@@ -902,8 +902,8 @@
 	window_frame = /obj/structure/window_frame/solaris
 
 /obj/structure/window/framed/solaris/reinforced
-	name = "reinforced window"
-	desc = "A glass window. The inside is reinforced with a few tempered matrix rods along the base. It looks rather strong. Might take a few good hits to shatter it."
+	name = "强化窗"
+	desc = "一扇玻璃窗。内部沿基座用几根强化矩阵杆加固。看起来相当坚固。可能需要几次重击才能打碎它。"
 	icon_state = "solaris_rwindow0"
 	basestate = "solaris_rwindow"
 	health = 100
@@ -911,13 +911,13 @@
 	window_frame = /obj/structure/window_frame/solaris/reinforced
 
 /obj/structure/window/framed/solaris/reinforced/tinted
-	name = "tinted reinforced window"
-	desc = "A tinted glass window. It looks rather strong and opaque. Might take a few good hits to shatter it."
+	name = "有色强化窗"
+	desc = "一扇有色玻璃窗。看起来相当坚固且不透明。可能需要几次重击才能打碎它。"
 	opacity = TRUE
 
 /obj/structure/window/framed/solaris/reinforced/hull
-	name = "hull window"
-	desc = "A glass window. Something tells you this one is somehow indestructible."
+	name = "船体窗"
+	desc = "一扇玻璃窗。某种直觉告诉你这扇窗坚不可摧。"
 	not_damageable = TRUE
 	not_deconstructable = TRUE
 	unslashable = TRUE
@@ -927,8 +927,8 @@
 //Greybox development windows
 
 /obj/structure/window/framed/dev
-	name = "greybox window"
-	desc = "A glass window inside a wall frame. Just like in the orange box!"
+	name = "灰盒窗"
+	desc = "墙框内的玻璃窗。就像在橙色盒子里一样！"
 	icon = 'icons/turf/walls/dev/dev_windows.dmi'
 	icon_state = "dev_window0"
 	basestate = "dev_window"
@@ -936,8 +936,8 @@
 	window_frame = /obj/structure/window_frame/dev
 
 /obj/structure/window/framed/dev/reinforced
-	name = "greybox reinforced window"
-	desc = "A glass window inside a reinforced wall frame. Just like in the orange box!"
+	name = "灰盒强化窗"
+	desc = "强化墙框内的玻璃窗。就像在橙色盒子里一样！"
 	icon_state = "dev_rwindow0"
 	basestate = "dev_rwindow"
 	health = 100
@@ -945,8 +945,8 @@
 	window_frame = /obj/structure/window_frame/dev/reinforced
 
 /obj/structure/window/framed/dev/reinforced/hull
-	name = "greybox hull window"
-	desc = "A glass window. Something tells you this one is somehow indestructible."
+	name = "灰盒船体窗"
+	desc = "一扇玻璃窗。某种直觉告诉你这扇窗坚不可摧。"
 	not_damageable = TRUE
 	not_deconstructable = TRUE
 	unslashable = TRUE
@@ -962,8 +962,8 @@
 	window_frame = /obj/structure/window_frame/prison
 
 /obj/structure/window/framed/prison/reinforced
-	name = "reinforced window"
-	desc = "A glass window with a special rod matrix inside a wall frame. It looks rather strong. Might take a few good hits to shatter it."
+	name = "强化窗"
+	desc = "一扇玻璃窗，在墙框内带有特殊的杆状矩阵。看起来相当坚固。可能需要几次重击才能打碎它。"
 	health = 100
 	reinf = 1
 	icon_state = "prison_rwindow0"
@@ -971,8 +971,8 @@
 	window_frame = /obj/structure/window_frame/prison/reinforced
 
 /obj/structure/window/framed/prison/reinforced/hull
-	name = "hull window"
-	desc = "A glass window with a special rod matrix inside a wall frame. This one has an automatic shutter system to prevent any atmospheric breach."
+	name = "船体窗"
+	desc = "墙框内嵌有特殊杆状矩阵的玻璃窗。此窗配有自动百叶系统，以防任何大气泄漏。"
 	health = 200
 	//icon_state = "rwindow0_debug" //Uncomment to check hull in the map editor
 	var/triggered = FALSE //indicates if the shutters have already been triggered
@@ -1002,8 +1002,8 @@
 	pressure_door.close()
 
 /obj/structure/window/framed/prison/cell
-	name = "cell window"
-	desc = "A glass window with a special rod matrix inside a wall frame."
+	name = "牢房窗户"
+	desc = "墙框内嵌有特殊杆状矩阵的玻璃窗。"
 	icon_state = "prison_cellwindow0"
 	basestate = "prison_cellwindow"
 
@@ -1011,8 +1011,8 @@
 
 /obj/structure/window/framed/corsat
 	icon = 'icons/turf/walls/windows_corsat.dmi'
-	name = "reinforced window"
-	desc = "A glass window with a special rod matrix inside a wall frame. It looks rather strong. Might take a few good hits to shatter it."
+	name = "强化窗"
+	desc = "一扇玻璃窗，在墙框内带有特殊的杆状矩阵。看起来相当坚固。可能需要几次重击才能打碎它。"
 	health = 100
 	reinf = 1
 	icon_state = "padded_rwindow0"
@@ -1020,22 +1020,22 @@
 	window_frame = /obj/structure/window_frame/corsat
 
 /obj/structure/window/framed/corsat/research
-	desc = "A purple tinted glass window with a special rod matrix inside a wall frame. It looks quite strong. Might take some good hits to shatter it."
+	desc = "墙框内嵌有特殊杆状矩阵的紫色有色玻璃窗。看起来相当坚固。可能需要一些重击才能打碎它。"
 	health = 200
 	icon_state = "paddedresearch_rwindow0"
 	basestate = "paddedresearch_rwindow"
 	window_frame = /obj/structure/window_frame/corsat/research
 
 /obj/structure/window/framed/corsat/security
-	desc = "A red tinted glass window with a special rod matrix inside a wall frame. It looks very strong."
+	desc = "墙框内嵌有特殊杆状矩阵的红色有色玻璃窗。看起来非常坚固。"
 	health = 300
 	icon_state = "paddedsec_rwindow0"
 	basestate = "paddedsec_rwindow"
 	window_frame = /obj/structure/window_frame/corsat/security
 
 /obj/structure/window/framed/corsat/cell
-	name = "cell window"
-	desc = "A glass window with a special rod matrix inside a wall frame. This one was made out of exotic materials to prevent hull breaches. No way to get through here."
+	name = "牢房窗户"
+	desc = "一扇玻璃窗，在墙框内带有特殊的杆状矩阵。这扇窗由特殊材料制成，以防止船体破裂。无法从这里通过。"
 	icon_state = "padded_cellwindow0"
 	basestate = "padded_cellwindow"
 	not_damageable = TRUE
@@ -1053,8 +1053,8 @@
 	basestate = "paddedsec_cellwindow"
 
 /obj/structure/window/framed/corsat/hull
-	name = "hull window"
-	desc = "A glass window with a special rod matrix inside a wall frame. This one has an automatic shutter system to prevent any atmospheric breach."
+	name = "船体窗"
+	desc = "墙框内嵌有特殊杆状矩阵的玻璃窗。此窗配有自动百叶系统，以防任何大气泄漏。"
 	health = 200
 	var/triggered = FALSE //indicates if the shutters have already been triggered
 
@@ -1099,8 +1099,8 @@
 	INVOKE_ASYNC(pressure_door, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 
 /obj/structure/window/framed/corsat/indestructible/
-	name = "hull window"
-	desc = "A glass window with a special rod matrix inside a wall frame. This one has been reinforced to take almost anything the universe can throw at it."
+	name = "船体窗"
+	desc = "墙框内嵌有特殊杆状矩阵的玻璃窗。此窗经过强化，几乎能承受宇宙中任何冲击。"
 	not_damageable = TRUE
 	not_deconstructable = TRUE
 	unslashable = TRUE
@@ -1121,7 +1121,7 @@
 
 /obj/structure/window/framed/upp_ship
 	name = "window"
-	desc = "A glass window inside a wall frame."
+	desc = "墙框内的玻璃窗。"
 	icon = 'icons/turf/walls/upp_windows.dmi'
 	icon_state = "uppwall_window0"
 	basestate = "uppwall_window"
@@ -1129,15 +1129,15 @@
 	window_frame = /obj/structure/window_frame/upp_ship
 
 /obj/structure/window/framed/upp_ship/reinforced
-	name = "reinforced window"
-	desc = "A glass window. Light refracts incorrectly when looking through. It looks rather strong. Might take a few good hits to shatter it."
+	name = "强化窗"
+	desc = "一扇玻璃窗。透过它看时光线折射异常。看起来相当坚固。可能需要几次重击才能打碎它。"
 	health = 100
 	reinf = 1
 	window_frame = /obj/structure/window_frame/upp_ship/reinforced
 
 /obj/structure/window/framed/upp_ship/hull
-	name = "hull window"
-	desc = "A glass window with a special rod matrix inside a wall frame. This one was made out of exotic materials to prevent hull breaches. No way to get through here."
+	name = "船体窗"
+	desc = "一扇玻璃窗，在墙框内带有特殊的杆状矩阵。这扇窗由特殊材料制成，以防止船体破裂。无法从这里通过。"
 	//	icon_state = "upp_rwindow0"
 	not_damageable = TRUE
 	not_deconstructable = TRUE
@@ -1150,7 +1150,7 @@
 
 /obj/structure/window/framed/upp
 	name = "window"
-	desc = "A glass window inside a wall frame."
+	desc = "墙框内的玻璃窗。"
 	icon = 'icons/turf/walls/upp_almayer_windows.dmi'
 	icon_state = "upp_window0"
 	basestate = "upp_window"
@@ -1158,8 +1158,8 @@
 	window_frame = /obj/structure/window_frame/upp
 
 /obj/structure/window/framed/upp/reinforced
-	name = "reinforced window"
-	desc = "A glass window. Light refracts incorrectly when looking through. It looks rather strong. Might take a few good hits to shatter it."
+	name = "强化窗"
+	desc = "一扇玻璃窗。透过它看时光线折射异常。看起来相当坚固。可能需要几次重击才能打碎它。"
 	icon_state = "upp_rwindow0"
 	basestate = "upp_rwindow"
 	health = 100
@@ -1167,8 +1167,8 @@
 	window_frame = /obj/structure/window_frame/upp/reinforced
 
 /obj/structure/window/framed/upp/hull
-	name = "hull window"
-	desc = "A glass window. Something tells you this one is somehow indestructible."
+	name = "船体窗"
+	desc = "一扇玻璃窗。某种直觉告诉你这扇窗坚不可摧。"
 	//	icon_state = "upp_rwindow0"
 	not_damageable = TRUE
 	not_deconstructable = TRUE
@@ -1182,7 +1182,7 @@
 // Colony
 /obj/structure/window/framed/hybrisa/colony
 	name = "window"
-	desc = "A glass window inside a wall frame."
+	desc = "墙框内的玻璃窗。"
 	icon = 'icons/turf/walls/hybrisa_colony_window.dmi'
 	icon_state = "strata_window0"
 	basestate = "strata_window"
@@ -1190,8 +1190,8 @@
 	window_frame = /obj/structure/window_frame/hybrisa/colony
 
 /obj/structure/window/framed/hybrisa/colony/reinforced
-	name = "reinforced window"
-	desc = "A glass window. Light refracts incorrectly when looking through. It looks rather strong. Might take a few good hits to shatter it."
+	name = "强化窗"
+	desc = "一扇玻璃窗。透过它看时光线折射异常。看起来相当坚固。可能需要几次重击才能打碎它。"
 	icon_state = "strata_window0"
 	basestate = "strata_window"
 	health = 100
@@ -1199,8 +1199,8 @@
 	window_frame = /obj/structure/window_frame/hybrisa/colony/reinforced
 
 /obj/structure/window/framed/hybrisa/colony/hull
-	name = "hull window"
-	desc = "A glass window. Something tells you this one is somehow indestructible."
+	name = "船体窗"
+	desc = "一扇玻璃窗。某种直觉告诉你这扇窗坚不可摧。"
 	icon_state = "strata_window0"
 	basestate = "strata_window"
 	not_damageable = TRUE
@@ -1213,7 +1213,7 @@
 // Research
 /obj/structure/window/framed/hybrisa/research
 	name = "window"
-	desc = "A glass window inside a wall frame."
+	desc = "墙框内的玻璃窗。"
 	icon = 'icons/turf/walls/hybrisaresearchbrown_windows.dmi'
 	icon_state = "strata_window0"
 	basestate = "strata_window"
@@ -1221,8 +1221,8 @@
 	window_frame = /obj/structure/window_frame/hybrisa/research
 
 /obj/structure/window/framed/hybrisa/research/reinforced
-	name = "reinforced window"
-	desc = "A glass window. Light refracts incorrectly when looking through. It looks rather strong. Might take a few good hits to shatter it."
+	name = "强化窗"
+	desc = "一扇玻璃窗。透过它看时光线折射异常。看起来相当坚固。可能需要几次重击才能打碎它。"
 	icon_state = "strata_window0"
 	basestate = "strata_window"
 	health = 100
@@ -1230,8 +1230,8 @@
 	window_frame = /obj/structure/window_frame/hybrisa/research/reinforced
 
 /obj/structure/window/framed/hybrisa/research/hull
-	name = "hull window"
-	desc = "A glass window. Something tells you this one is somehow indestructible."
+	name = "船体窗"
+	desc = "一扇玻璃窗。某种直觉告诉你这扇窗坚不可摧。"
 	icon_state = "strata_window0"
 	basestate = "strata_window"
 	not_damageable = TRUE
@@ -1244,7 +1244,7 @@
 // Marshalls
 /obj/structure/window/framed/hybrisa/marshalls
 	name = "window"
-	desc = "A glass window inside a wall frame."
+	desc = "墙框内的玻璃窗。"
 	icon = 'icons/turf/walls/hybrisa_marshalls_windows.dmi'
 	icon_state = "prison_window0"
 	basestate = "prison_window"
@@ -1252,8 +1252,8 @@
 	window_frame = /obj/structure/window_frame/hybrisa/marshalls
 
 /obj/structure/window/framed/hybrisa/marshalls/reinforced
-	name = "reinforced window"
-	desc = "A glass window with a special rod matrix inside a wall frame. It looks rather strong. Might take a few good hits to shatter it."
+	name = "强化窗"
+	desc = "一扇玻璃窗，在墙框内带有特殊的杆状矩阵。看起来相当坚固。可能需要几次重击才能打碎它。"
 	icon_state = "prison_rwindow0"
 	basestate = "prison_rwindow"
 	health = 100
@@ -1261,8 +1261,8 @@
 	window_frame = /obj/structure/window_frame/hybrisa/marshalls/reinforced
 
 /obj/structure/window/framed/hybrisa/marshalls/cell
-	name = "cell window"
-	desc = "A glass window with a special rod matrix inside a wall frame."
+	name = "牢房窗户"
+	desc = "墙框内嵌有特殊杆状矩阵的玻璃窗。"
 	icon_state = "prison_cellwindow0"
 	basestate = "prison_cellwindow"
 	health = 100
@@ -1270,7 +1270,7 @@
 // Hospital
 /obj/structure/window/framed/hybrisa/colony/hospital
 	name = "window"
-	desc = "A glass window inside a wall frame."
+	desc = "墙框内的玻璃窗。"
 	icon = 'icons/turf/walls/hybrisa_hospital_colonywindows.dmi'
 	icon_state = "strata_window0"
 	basestate = "strata_window"
@@ -1278,8 +1278,8 @@
 	window_frame = /obj/structure/window_frame/hybrisa/colony/hospital
 
 /obj/structure/window/framed/hybrisa/colony/hospital/reinforced
-	name = "reinforced window"
-	desc = "A glass window. Light refracts incorrectly when looking through. It looks rather strong. Might take a few good hits to shatter it."
+	name = "强化窗"
+	desc = "一扇玻璃窗。透过它看时光线折射异常。看起来相当坚固。可能需要几次重击才能打碎它。"
 	icon_state = "strata_window0"
 	basestate = "strata_window"
 	health = 100
@@ -1287,8 +1287,8 @@
 	window_frame = /obj/structure/window_frame/hybrisa/colony/hospital/reinforced
 
 /obj/structure/window/framed/hybrisa/colony/hospital/hull
-	name = "hull window"
-	desc = "A glass window. Something tells you this one is somehow indestructible."
+	name = "船体窗"
+	desc = "一扇玻璃窗。某种直觉告诉你这扇窗坚不可摧。"
 	icon_state = "strata_window0"
 	basestate = "strata_window"
 	not_damageable = TRUE
@@ -1301,7 +1301,7 @@
 // Offices
 /obj/structure/window/framed/hybrisa/colony/office
 	name = "window"
-	desc = "A glass window inside a wall frame."
+	desc = "墙框内的玻璃窗。"
 	icon = 'icons/turf/walls/hybrisa_offices_windows.dmi'
 	icon_state = "strata_window0"
 	basestate = "strata_window"
@@ -1309,8 +1309,8 @@
 	window_frame = /obj/structure/window_frame/hybrisa/colony/office
 
 /obj/structure/window/framed/hybrisa/colony/office/reinforced
-	name = "reinforced window"
-	desc = "A glass window. Light refracts incorrectly when looking through. It looks rather strong. Might take a few good hits to shatter it."
+	name = "强化窗"
+	desc = "一扇玻璃窗。透过它看时光线折射异常。看起来相当坚固。可能需要几次重击才能打碎它。"
 	icon_state = "strata_window0"
 	basestate = "strata_window"
 	health = 100
@@ -1318,8 +1318,8 @@
 	window_frame = /obj/structure/window_frame/hybrisa/colony/office/reinforced
 
 /obj/structure/window/framed/hybrisa/colony/office/hull
-	name = "hull window"
-	desc = "A glass window. Something tells you this one is somehow indestructible."
+	name = "船体窗"
+	desc = "一扇玻璃窗。某种直觉告诉你这扇窗坚不可摧。"
 	icon_state = "strata_window0"
 	basestate = "strata_window"
 	not_damageable = TRUE
@@ -1332,7 +1332,7 @@
 // Engineering
 /obj/structure/window/framed/hybrisa/colony/engineering
 	name = "window"
-	desc = "A glass window inside a wall frame."
+	desc = "墙框内的玻璃窗。"
 	icon = 'icons/turf/walls/hybrisa_engineering_windows.dmi'
 	icon_state = "strata_window0"
 	basestate = "strata_window"
@@ -1340,8 +1340,8 @@
 	window_frame = /obj/structure/window_frame/hybrisa/colony/engineering
 
 /obj/structure/window/framed/hybrisa/colony/engineering/reinforced
-	name = "reinforced window"
-	desc = "A glass window. Light refracts incorrectly when looking through. It looks rather strong. Might take a few good hits to shatter it."
+	name = "强化窗"
+	desc = "一扇玻璃窗。透过它看时光线折射异常。看起来相当坚固。可能需要几次重击才能打碎它。"
 	icon_state = "strata_window0"
 	basestate = "strata_window"
 	health = 100
@@ -1349,8 +1349,8 @@
 	window_frame = /obj/structure/window_frame/hybrisa/colony/engineering/reinforced
 
 /obj/structure/window/framed/hybrisa/colony/engineering/hull
-	name = "hull window"
-	desc = "A glass window. Something tells you this one is somehow indestructible."
+	name = "船体窗"
+	desc = "一扇玻璃窗。某种直觉告诉你这扇窗坚不可摧。"
 	icon_state = "strata_window0"
 	basestate = "strata_window"
 	not_damageable = TRUE
@@ -1370,8 +1370,8 @@
 	health = 15
 
 /obj/structure/window/framed/hybrisa/spaceport/reinforced
-	name = "reinforced window"
-	desc = "A glass window with a special rod matrix inside a wall frame. It looks rather strong. Might take a few good hits to shatter it."
+	name = "强化窗"
+	desc = "一扇玻璃窗，在墙框内带有特殊的杆状矩阵。看起来相当坚固。可能需要几次重击才能打碎它。"
 	icon_state = "prison_rwindow0"
 	basestate = "prison_rwindow"
 	health = 100
@@ -1380,7 +1380,7 @@
 
 /obj/structure/window/framed/hybrisa/spaceport/cell
 	name = "window"
-	desc = "A glass window with a special rod matrix inside a wall frame."
+	desc = "墙框内嵌有特殊杆状矩阵的玻璃窗。"
 	icon_state = "prison_cellwindow0"
 	basestate = "prison_cellwindow"
 	health = 100

@@ -2,7 +2,7 @@
 
 /obj/item/storage/backpack/marine/smartpack
 	name = "\improper S-V42  backpack"
-	desc = "A joint project between the USCM and Weyland-Yutani. It is said to be top-class engineering and state of the art technology with a built in shoulder-lamp."
+	desc = "USCM与维兰德-汤谷的联合项目。据称采用了顶级工程设计和尖端技术，并内置肩灯。"
 	item_state = "smartpack"
 	icon_state = "smartpack"
 	icon = 'icons/obj/items/clothing/backpack/smartpack.dmi'
@@ -51,7 +51,7 @@
 	else
 		overlays += "+[icon_state]_full"
 
-/obj/item/storage/backpack/marine/smartpack/get_mob_overlay(mob/user_mob, slot, default_bodytype = "Default")
+/obj/item/storage/backpack/marine/smartpack/get_mob_overlay(mob/user_mob, slot, default_bodytype = "默认")
 	var/image/ret = ..()
 
 	var/light = "+lamp_on"
@@ -116,7 +116,7 @@
 
 /obj/item/storage/backpack/marine/smartpack/a1
 	name = "\improper S-V42A1  backpack"
-	desc = "A revised joint project between the USCM and Weyland-Yutani. It is said to be top-class engineering and state of the art technology with a built in shoulder-lamp."
+	desc = "USCM与维兰德-汤谷的修订版联合项目。据称采用了顶级工程设计和尖端技术，并内置肩灯。"
 	item_state = "smartpack_a1"
 	icon_state = "smartpack_a1"
 

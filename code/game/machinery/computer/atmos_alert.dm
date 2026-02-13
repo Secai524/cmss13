@@ -2,8 +2,8 @@
 
 
 /obj/structure/machinery/computer/atmos_alert
-	name = "Atmospheric Alert Computer"
-	desc = "Used to access the station's atmospheric sensors."
+	name = "大气警报计算机"
+	desc = "用于访问空间站的大气传感器。"
 	circuit = /obj/item/circuitboard/computer/atmos_alert
 	icon_state = "alert:0"
 	var/list/priority_alarms = list()

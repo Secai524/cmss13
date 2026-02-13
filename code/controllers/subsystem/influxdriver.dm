@@ -1,6 +1,6 @@
 /// Sends collected statistics to an influxdb v2 backend periodically
 SUBSYSTEM_DEF(influxdriver)
-	name       = "InfluxDB Driver"
+	name       = "InfluxDB驱动"
 	wait       = 10 SECONDS
 	init_order = SS_INIT_INFLUXDRIVER
 	priority   = SS_PRIORITY_INFLUXDRIVER

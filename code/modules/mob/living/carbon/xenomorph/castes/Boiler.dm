@@ -39,7 +39,7 @@
 /mob/living/carbon/xenomorph/boiler
 	caste_type = XENO_CASTE_BOILER
 	name = XENO_CASTE_BOILER
-	desc = "A huge, grotesque xenomorph covered in glowing, oozing acid slime."
+	desc = "一只巨大、怪异的异形，全身覆盖着发光、渗出的酸性粘液。"
 	icon = 'icons/mob/xenos/castes/tier_3/boiler.dmi'
 	icon_size = 64
 	icon_state = "Boiler Walking"
@@ -94,7 +94,7 @@
 
 // No special behavior for boilers
 /datum/behavior_delegate/boiler_base
-	name = "Base Boiler Behavior Delegate"
+	name = "基础沸腾者行为代理"
 
 
 /datum/action/xeno_action/activable/acid_lance/use_ability(atom/affected_atom)
@@ -116,7 +116,7 @@
 			return
 
 		xeno.create_empower()
-		xeno.visible_message(SPAN_XENODANGER("[xeno] starts to gather its acid for a massive blast!"), SPAN_XENODANGER("We start to gather our acid for a massive blast!"))
+		xeno.visible_message(SPAN_XENODANGER("[xeno]开始聚集酸液准备一次大规模喷射！"), SPAN_XENODANGER("We start to gather our acid for a massive blast!"))
 		activated_once = TRUE
 		stack()
 		addtimer(CALLBACK(src, PROC_REF(timeout)), max_stacks*stack_time + time_after_max_before_end)
@@ -153,7 +153,7 @@
 
 			new /obj/effect/xenomorph/acid_damage_delay(turf, damage, 7, FALSE, "You are blasted with a stream of high-velocity acid!", xeno)
 
-		xeno.visible_message(SPAN_XENODANGER("[xeno] fires a massive blast of acid at [affected_atom]!"), SPAN_XENODANGER("We fire a massive blast of acid at [affected_atom]!"))
+		xeno.visible_message(SPAN_XENODANGER("[xeno]向[affected_atom]喷射出一大股酸液！"), SPAN_XENODANGER("We fire a massive blast of acid at [affected_atom]!"))
 		remove_stack_effects("We feel our speed return to normal!")
 		return TRUE
 
@@ -173,7 +173,7 @@
 		addtimer(CALLBACK(src, PROC_REF(stack)), stack_time)
 		return
 	else
-		to_chat(xeno, SPAN_XENOHIGHDANGER("We have charged our acid lance to maximum!"))
+		to_chat(xeno, SPAN_XENOHIGHDANGER("我们的酸液长矛已充能至最大！"))
 		return
 
 /datum/action/xeno_action/activable/acid_lance/proc/remove_stack_effects(message = null)
@@ -232,7 +232,7 @@
 		addtimer(VARSET_CALLBACK(src, sound_play, TRUE), 2 SECONDS)
 
 	if (!do_after(xeno, xeno.ammo.spit_windup/6.5, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE, numticks = 2)) /// 0.7 seconds
-		to_chat(xeno, SPAN_XENODANGER("We decide to cancel our gas shroud."))
+		to_chat(xeno, SPAN_XENODANGER("我们决定取消气体护罩。"))
 		return
 
 	playsound(xeno,"acid_sizzle", 50, 1)
@@ -246,7 +246,7 @@
 	var/datum/cause_data/cause_data = create_cause_data("acid shroud gas", owner)
 	spicy_gas.set_up(1, 0, get_turf(xeno), null, 6, new_cause_data = cause_data)
 	spicy_gas.start()
-	to_chat(xeno, SPAN_XENOHIGHDANGER("We dump our acid through our pores, creating a shroud of gas!"))
+	to_chat(xeno, SPAN_XENOHIGHDANGER("我们通过毛孔排出酸液，制造出一片气体护罩！"))
 
 	for (var/action_type in action_types_to_cd)
 		var/datum/action/xeno_action/xeno_action = get_action(xeno, action_type)
@@ -275,7 +275,7 @@
 			if(!neuro_effect)
 				neuro_effect = new(carbon_target, owner)
 			neuro_effect.duration += 20
-			to_chat(carbon_target,SPAN_HIGHDANGER("You are injected with something from [stabbing_xeno]'s tailstab!"))
+			to_chat(carbon_target,SPAN_HIGHDANGER("你被[stabbing_xeno]的尾刺注射了某种东西！"))
 		else
 			CRASH("Globber has unknown ammo [stabbing_xeno.ammo]! Oh no!")
 		return TRUE
@@ -287,7 +287,7 @@
 		return FALSE
 
 	if(!acid_level)
-		to_chat(src, SPAN_XENONOTICE("You can't secrete any acid into [target]."))
+		to_chat(src, SPAN_XENONOTICE("你无法向[target]分泌任何酸液。"))
 		return FALSE
 
 	var/trap_acid_level = 0
@@ -295,14 +295,14 @@
 		trap_acid_level = 1 + target.trap_type - RESIN_TRAP_ACID1
 
 	if(trap_acid_level >= acid_level)
-		to_chat(src, SPAN_XENONOTICE("It already has good acid in."))
+		to_chat(src, SPAN_XENONOTICE("它里面已经有足够的酸液了。"))
 		return FALSE
 
 	if(!check_plasma(ACID_COST_BOILER))
-		to_chat(src, SPAN_XENOWARNING("You must produce more plasma before doing this."))
+		to_chat(src, SPAN_XENOWARNING("你必须先产生更多等离子才能进行此操作。"))
 		return FALSE
 
-	to_chat(src, SPAN_XENONOTICE("You begin charging the resin trap with acid gas."))
+	to_chat(src, SPAN_XENONOTICE("你开始用酸性气体为树脂陷阱充能。"))
 	xeno_attack_delay(src)
 	if(!do_after(src, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, src))
 		return FALSE
@@ -327,7 +327,7 @@
 	target.set_state(RESIN_TRAP_GAS)
 
 	playsound(target, 'sound/effects/refill.ogg', 25, 1)
-	visible_message(SPAN_XENOWARNING("[src] pressurises the resin trap with acid gas!"),
+	visible_message(SPAN_XENOWARNING("[src]用酸性气体为树脂陷阱加压！"),
 	SPAN_XENOWARNING("You pressurise the resin trap with acid gas!"), null, 5)
 	return TRUE
 

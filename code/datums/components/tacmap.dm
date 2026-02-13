@@ -100,7 +100,7 @@
 
 /datum/component/tacmap/proc/show_tacmap(mob/user)
 	if (user.client.using_tacmap())
-		to_chat(user.client, SPAN_WARNING("You're already using a tacmap. Close it to open another one."))
+		to_chat(user.client, SPAN_WARNING("你已经在使用战术地图。请关闭它以打开另一个。"))
 		return
 
 	if(!map)

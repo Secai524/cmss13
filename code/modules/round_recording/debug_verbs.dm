@@ -7,6 +7,6 @@
 
 	var/datum/round_recorder/recorder = SSround_recording.recorder
 	if(isnull(recorder))
-		to_chat(src, "The round recorder datum is either not initialized yet or it was deleted.")
+		to_chat(src, "回合记录数据要么尚未初始化，要么已被删除。")
 
 	debug_variables(recorder)

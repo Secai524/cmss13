@@ -27,7 +27,7 @@
 		return
 
 	message_admins("[key_name_admin(src)] accessed file: [path]")
-	to_chat(src, "Attempting to send file, this may take a fair few minutes if the file is very large.")
+	to_chat(src, "正在尝试发送文件，如果文件非常大，这可能需要相当几分钟。")
 	src << ftp(file(path))
 
 /// Shows this round's game log
@@ -41,14 +41,14 @@
 
 	var/path = GLOB.world_game_log
 	if(!fexists(path))
-		to_chat(src, "<font color='red'>Error: view_log(): File not found/Invalid path([path]).</font>")
+		to_chat(src, "<font color='red'>错误：view_log()：文件未找到/路径无效([path])。</font>")
 		return
 
 	if(usr.client.file_spam_check())
 		return
 
 	message_admins("[key_name_admin(src)] accessed file: [path]")
-	to_chat(src, "Attempting to send file, this may take a fair few minutes if the file is very large.")
+	to_chat(src, "正在尝试发送文件，如果文件非常大，这可能需要相当几分钟。")
 	src << ftp(file(path))
 
 /// Shows this round's attack log
@@ -62,14 +62,14 @@
 
 	var/path = GLOB.world_attack_log
 	if(!fexists(path))
-		to_chat(src, "<font color='red'>Error: view_log(): File not found/Invalid path([path]).</font>")
+		to_chat(src, "<font color='red'>错误：view_log()：文件未找到/路径无效([path])。</font>")
 		return
 
 	if(usr.client.file_spam_check())
 		return
 
 	message_admins("[key_name_admin(src)] accessed file: [path]")
-	to_chat(src, "Attempting to send file, this may take a fair few minutes if the file is very large.")
+	to_chat(src, "正在尝试发送文件，如果文件非常大，这可能需要相当几分钟。")
 	src << ftp(file(path))
 
 /// Shows this round's runtime log
@@ -83,14 +83,14 @@
 
 	var/path = GLOB.world_runtime_log
 	if(!fexists(path))
-		to_chat(src, "<font color='red'>Error: view_log(): File not found/Invalid path([path]).</font>")
+		to_chat(src, "<font color='red'>错误：view_log()：文件未找到/路径无效([path])。</font>")
 		return
 
 	if(usr.client.file_spam_check())
 		return
 
 	message_admins("[key_name_admin(src)] accessed file: [path]")
-	to_chat(src, "Attempting to send file, this may take a fair few minutes if the file is very large.")
+	to_chat(src, "正在尝试发送文件，如果文件非常大，这可能需要相当几分钟。")
 	src << ftp(file(path))
 
 /// Shows this round's href log
@@ -104,14 +104,14 @@
 
 	var/path = GLOB.world_href_log
 	if(!fexists(path))
-		to_chat(src, "<font color='red'>Error: view_log(): File not found/Invalid path([path]).</font>")
+		to_chat(src, "<font color='red'>错误：view_log()：文件未找到/路径无效([path])。</font>")
 		return
 
 	if(usr.client.file_spam_check())
 		return
 
 	message_admins("[key_name_admin(src)] accessed file: [path]")
-	to_chat(src, "Attempting to send file, this may take a fair few minutes if the file is very large.")
+	to_chat(src, "正在尝试发送文件，如果文件非常大，这可能需要相当几分钟。")
 	src << ftp(file(path))
 
 /// Shows this round's tgui log
@@ -125,12 +125,12 @@
 
 	var/path = GLOB.tgui_log
 	if(!fexists(path))
-		to_chat(src, "<font color='red'>Error: view_log(): File not found/Invalid path([path]).</font>")
+		to_chat(src, "<font color='red'>错误：view_log()：文件未找到/路径无效([path])。</font>")
 		return
 
 	if(usr.client.file_spam_check())
 		return
 
 	message_admins("[key_name_admin(src)] accessed file: [path]")
-	to_chat(src, "Attempting to send file, this may take a fair few minutes if the file is very large.")
+	to_chat(src, "正在尝试发送文件，如果文件非常大，这可能需要相当几分钟。")
 	src << ftp(file(path))

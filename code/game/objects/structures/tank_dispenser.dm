@@ -1,6 +1,6 @@
 /obj/structure/dispenser
-	name = "tank storage unit"
-	desc = "A simple yet bulky storage device for gas tanks. Has room for up to ten oxygen tanks, and ten phoron tanks."
+	name = "储罐存储单元"
+	desc = "一种简单但笨重的储罐存储设备。最多可容纳十个氧气罐和十个佛隆气罐。"
 	icon = 'icons/obj/structures/tank_dispenser.dmi'
 	icon_state = "dispenser"
 	density = TRUE
@@ -58,11 +58,11 @@
 			I.forceMove(src)
 			oxytanks.Add(I)
 			oxygentanks++
-			to_chat(user, SPAN_NOTICE("You put [I] in [src]."))
+			to_chat(user, SPAN_NOTICE("你将[I]放入[src]。"))
 			if(oxygentanks < 5)
 				update_icon()
 		else
-			to_chat(user, SPAN_NOTICE("[src] is full."))
+			to_chat(user, SPAN_NOTICE("[src]已满。"))
 		updateUsrDialog()
 		return
 	if(istype(I, /obj/item/tank/phoron))
@@ -71,20 +71,20 @@
 			I.forceMove(src)
 			platanks.Add(I)
 			phorontanks++
-			to_chat(user, SPAN_NOTICE("You put [I] in [src]."))
+			to_chat(user, SPAN_NOTICE("你将[I]放入[src]。"))
 			if(oxygentanks < 6)
 				update_icon()
 		else
-			to_chat(user, SPAN_NOTICE("[src] is full."))
+			to_chat(user, SPAN_NOTICE("[src]已满。"))
 		updateUsrDialog()
 		return
 /*
 	if(HAS_TRAIT(I, TRAIT_TOOL_WRENCH))
 		if(anchored)
-			to_chat(user, SPAN_NOTICE("You lean down and unwrench [src]."))
+			to_chat(user, SPAN_NOTICE("你俯身拧松了[src]。"))
 			anchored = FALSE
 		else
-			to_chat(user, SPAN_NOTICE("You wrench [src] into place."))
+			to_chat(user, SPAN_NOTICE("你将[src]拧紧到位。"))
 			anchored = TRUE
 		return
 */
@@ -105,7 +105,7 @@
 				else
 					O = new /obj/item/tank/oxygen(loc)
 				O.forceMove(loc)
-				to_chat(usr, SPAN_NOTICE("You take [O] out of [src]."))
+				to_chat(usr, SPAN_NOTICE("你从[src]中取出了[O]。"))
 				oxygentanks--
 				update_icon()
 		if(href_list["phoron"])
@@ -117,7 +117,7 @@
 				else
 					P = new /obj/item/tank/phoron(loc)
 				P.forceMove(loc)
-				to_chat(usr, SPAN_NOTICE("You take [P] out of [src]."))
+				to_chat(usr, SPAN_NOTICE("你从[src]中取出了[P]。"))
 				phorontanks--
 				update_icon()
 		add_fingerprint(usr)

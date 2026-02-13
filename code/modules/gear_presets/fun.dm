@@ -1,8 +1,8 @@
 
 /datum/equipment_preset/fun
-	name = "Fun"
+	name = "娱乐"
 	flags = EQUIPMENT_PRESET_STUB
-	assignment = "Fun"
+	assignment = "娱乐"
 
 	skills = /datum/skills/civilian
 	idtype = /obj/item/card/id
@@ -10,7 +10,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/fun/pirate
-	name = "Fun - Pirate"
+	name = "娱乐 - 海盗"
 	flags = EQUIPMENT_PRESET_EXTRA
 	faction = FACTION_PIRATE
 
@@ -32,7 +32,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/fun/pirate/captain
-	name = "Fun - Pirate Captain"
+	name = "娱乐 - 海盗船长"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/SL
@@ -55,7 +55,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/fun/clown
-	name = "Fun - Clown"
+	name = "娱乐 - 小丑"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/fun/clown/load_gear(mob/living/carbon/human/new_human)
@@ -71,7 +71,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/fun/hefa
-	name = "HEFA Knight"
+	name = "HEFA骑士"
 
 	flags = EQUIPMENT_PRESET_EXTRA
 	uses_special_name = TRUE
@@ -104,7 +104,7 @@
 
 	var/new_name = pick(names) + " of the HEFA Order"
 	new_human.change_real_name(new_human, new_name)
-	new_human.f_style = "5 O'clock Shadow"
+	new_human.f_style = "五点钟胡茬"
 
 /datum/equipment_preset/fun/hefa/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/marine/M = new(new_human)
@@ -176,7 +176,7 @@
 		new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/frag(new_human.back), WEAR_IN_ACCESSORY)
 
 /datum/equipment_preset/fun/hefa/melee
-	name = "HEFA Knight - Melee"
+	name = "HEFA骑士 - 近战"
 
 /datum/equipment_preset/fun/hefa/melee/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/marine/M = new(new_human)
@@ -241,7 +241,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/frag(new_human.head), WEAR_IN_HELMET)
 
 /datum/equipment_preset/fun/santa
-	name = "Fun - Santa"
+	name = "娱乐 - 圣诞老人"
 	paygrades = list(PAY_SHORT_CDNM = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_EXTRA
 	skills = /datum/skills/everything
@@ -285,11 +285,11 @@
 	//waist
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/general/santa(new_human), WEAR_WAIST)
 
-	new_human.set_species("Human Hero") //Santa is STRONG.
+	new_human.set_species("人类英雄") //Santa is STRONG.
 	ADD_TRAIT(new_human, TRAIT_SANTA, TRAIT_SOURCE_ADMIN)
 
 /datum/equipment_preset/upp/ivan
-	name = "Fun - Ivan"
+	name = "娱乐 - 伊万"
 	flags = EQUIPMENT_PRESET_EXTRA
 	paygrades = list(PAY_SHORT_UE6 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/everything
@@ -300,8 +300,8 @@
 /datum/equipment_preset/upp/ivan/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = MALE
 	new_human.change_real_name(new_human, "Ivan")
-	new_human.f_style = "Shaved"
-	new_human.h_style = "Shaved Head"
+	new_human.f_style = "剃光"
+	new_human.h_style = "光头"
 	new_human.skin_color = "pale3"
 	new_human.r_hair = 165
 	new_human.g_hair = 42
@@ -336,11 +336,11 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/ivan, WEAR_WAIST)
 	//belt filled with random magazines, it's cool
 
-	new_human.set_species("Human Hero") //Ivan is STRONG.
+	new_human.set_species("人类英雄") //Ivan is STRONG.
 
 
 /datum/equipment_preset/fun/van_bandolier
-	name = "Fun - Big Game Hunter"
+	name = "娱乐 - 大型猎物猎人"
 	paygrades = list(PAY_SHORT_CCMO = JOB_PLAYTIME_TIER_0)
 	uses_special_name = TRUE
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -363,8 +363,8 @@
 	new_human.r_facial = 153
 	new_human.g_facial = 102
 	new_human.b_facial = 51
-	new_human.h_style = "Mullet"
-	new_human.f_style = "Full English"
+	new_human.h_style = "鲻鱼头"
+	new_human.f_style = "英式全脸胡"
 	new_human.skin_color = "pale2"
 	new_human.r_eyes = 102 //Brown eyes.
 	new_human.g_eyes = 51
@@ -405,7 +405,7 @@
 	//waist
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/webley/full(new_human), WEAR_WAIST)
 
-	new_human.set_species("Human Hero") //Van Bandolier is not easily subdued.
+	new_human.set_species("人类英雄") //Van Bandolier is not easily subdued.
 	//But he isn't completely unstoppable, either. Reenables slow, knockout, daze, stun and permanent (organ dam, IB etc.) damage.
 	//Stuns and knockdowns are shorter but he's not completely immune.
 	new_human.status_flags &= ~NO_PERMANENT_DAMAGE
@@ -414,7 +414,7 @@
 
 
 /datum/equipment_preset/fun/monkey
-	name = "Fun - Monkey"
+	name = "娱乐 - 猴子"
 	flags = EQUIPMENT_PRESET_EXTRA
 	faction = FACTION_MONKEY
 
@@ -422,8 +422,8 @@
 
 	skills = /datum/skills/pfc/crafty // about equivalent to a marine
 
-	assignment = "Monkey"
-	job_title = "Monkey"
+	assignment = "猴子"
+	job_title = "猴子"
 	idtype = /obj/item/card/id/dogtag
 
 /datum/equipment_preset/fun/monkey/load_race(mob/living/carbon/human/new_human, client/mob_client)
@@ -439,7 +439,7 @@
 	return capitalize(pick(GLOB.monkey_names))
 
 /datum/equipment_preset/fun/monkey/marine
-	name = "Fun - Monkey Marine"
+	name = "娱乐 - 猴子陆战队员"
 
 	assignment = "Monkey Marine"
 	job_title = "Monkey Marine"
@@ -456,7 +456,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive(new_human), WEAR_IN_JACKET)
 
 /datum/equipment_preset/fun/monkey/soldier
-	name = "Fun - Monkey Soldier"
+	name = "娱乐 - 猴子士兵"
 
 	assignment = "Monkey Soldier"
 	job_title = "Monkey Soldier"

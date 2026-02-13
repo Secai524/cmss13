@@ -202,7 +202,7 @@
 		return
 	if(special_blood)
 		return special_blood
-	if(species.name == "Yautja")
+	if(species.name == "铁血战士")
 		return "greenblood"
 	if(species.flags & IS_SYNTHETIC)
 		return "whiteblood"

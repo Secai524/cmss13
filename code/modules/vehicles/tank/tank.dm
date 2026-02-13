@@ -1,6 +1,6 @@
 /obj/vehicle/multitile/tank
-	name = "M34A2 Longstreet Light Tank"
-	desc = "A giant piece of armor with a big gun, you know what to do. Entrance in the back."
+	name = "M34A2长街轻型坦克"
+	desc = "一块装着大炮的巨大装甲，你知道该怎么做。入口在后部。"
 
 	icon = 'icons/obj/vehicles/tank.dmi'
 	icon_state = "tank_base"
@@ -80,7 +80,7 @@
 	if(!camera)
 		camera = new /obj/structure/machinery/camera/vehicle(src)
 	if(change_tag)
-		camera.c_tag = "#[rand(1,100)] M34A2 \"[nickname]\" Tank" //this fluff allows it to be at the start of cams list
+		camera.c_tag = "#[rand(1,100)] M34A2 \"[nickname]\" 坦克" //this fluff allows it to be at the start of cams list
 		if(camera_int)
 			camera_int.c_tag = camera.c_tag + " interior" //this fluff allows it to be at the start of cams list
 	else
@@ -174,7 +174,7 @@
 		return
 
 	if(health > 0)
-		to_chat(user, SPAN_XENO("We can't jump over [src] until it is destroyed!"))
+		to_chat(user, SPAN_XENO("在[src]被摧毁前，我们无法越过它！"))
 		return
 
 	var/turf/current_turf = get_turf(user)
@@ -185,27 +185,27 @@
 			break
 
 		if(current_turf.density)
-			to_chat(user, SPAN_XENO("The path over [src] is obstructed!"))
+			to_chat(user, SPAN_XENO("越过[src]的路径受阻！"))
 			return
 
 	// Now we check to make sure the turf on the other side of the tank isn't dense too
 	current_turf = get_step(current_turf, dir_to_go)
 	if(current_turf.density)
-		to_chat(user, SPAN_XENO("The path over [src] is obstructed!"))
+		to_chat(user, SPAN_XENO("越过[src]的路径受阻！"))
 		return
 
-	to_chat(user, SPAN_XENO("We begin to jump over [src]..."))
+	to_chat(user, SPAN_XENO("我们开始翻越[src]..."))
 	if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-		to_chat(user, SPAN_XENO("We stop jumping over [src]."))
+		to_chat(user, SPAN_XENO("我们停止翻越[src]。"))
 		return
 
 	user.forceMove(current_turf)
-	to_chat(user, SPAN_XENO("We jump to the other side of [src]."))
+	to_chat(user, SPAN_XENO("我们跳到了[src]的另一侧。"))
 /*
 ** PRESETS SPAWNERS
 */
 /obj/effect/vehicle_spawner/tank
-	name = "Tank Spawner"
+	name = "坦克生成器"
 	icon = 'icons/obj/vehicles/tank.dmi'
 	icon_state = "tank_base"
 	pixel_x = -48

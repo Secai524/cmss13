@@ -5,7 +5,7 @@
 // Naming convention is to start by port or starboard then put eitheir (bow,fore,midship,aft,stern)
 
 /area/rostock
-	name = "SSV Rostock"
+	name = "SSV罗斯托克号"
 	icon = 'icons/turf/area_almayer.dmi'
 	// ambience = list('sound/ambience/shipambience.ogg')
 	icon_state = "almayer"
@@ -25,7 +25,7 @@
 	fake_zlevel = 1 // upperdeck
 
 /area/rostock/upper_deck/hallway
-	name = "SSV Rostock - Upper Deck Midship Hallway"
+	name = "SSV罗斯托克号 - 上层甲板中部走廊"
 	icon_state = "stern"
 
 // Hanger Deck
@@ -34,17 +34,17 @@
 	fake_zlevel = 1 // upperdeck
 
 /area/rostock/hangar/hangarbay
-	name = "SSV Rostock - Hangar"
+	name = "SSV罗斯托克号 - 机库"
 	icon_state = "hangar"
 	soundscape_playlist = SCAPE_PL_HANGAR
 	soundscape_interval = 50
 
 /area/rostock/hangar/pilotbunk
-	name = "SSV Rostock - Pilot Cryogenics"
+	name = "SSV罗斯托克号 - 飞行员冷冻舱"
 	icon_state = "livingspace"
 
 /area/rostock/hangar/repairbay
-	name = "SSV Rostock - Dropship Repair Bay"
+	name = "SSV罗斯托克号 - 运输机维修舱"
 	icon_state = "dropshiprepair"
 
 // Medical Deck (Upper/Lower)
@@ -52,49 +52,49 @@
 /area/rostock/medical
 
 /area/rostock/medical/lobby
-	name = "SSV Rostock - Medbay Lobby"
+	name = "SSV罗斯托克号 - 医疗舱大厅"
 	icon_state = "medical"
 	fake_zlevel = 1 // upperdeck
 	soundscape_playlist = SCAPE_PL_ELEVATOR_MUSIC
 	soundscape_interval = 120
 
 /area/rostock/medical/storage
-	name = "SSV Rostock - Deployment Storage"
+	name = "SSV罗斯托克号 - 部署物资仓库"
 	icon_state = "medical"
 	fake_zlevel = 1 // upperdeck
 	soundscape_playlist = SCAPE_PL_ELEVATOR_MUSIC
 	soundscape_interval = 120
 
 /area/rostock/medical/surgery
-	name = "SSV Rostock - Operating Theatre"
+	name = "SSV罗斯托克号 - 手术室"
 	icon_state = "operating"
 	fake_zlevel = 1 // upperdeck
 	soundscape_playlist = SCAPE_PL_ELEVATOR_MUSIC
 	soundscape_interval = 120
 
 /area/rostock/medical/chemistry
-	name = "SSV Rostock - Chemical Laboratory"
+	name = "SSV罗斯托克号 - 化学实验室"
 	icon_state = "chemistry"
 	fake_zlevel = 1 // upperdeck
 	soundscape_playlist = SCAPE_PL_ELEVATOR_MUSIC
 	soundscape_interval = 120
 
 /area/rostock/medical/accessway
-	name = "SSV Rostock - Rear Corridor"
+	name = "SSV罗斯托克号 - 后部走廊"
 	icon_state = "medical"
 	fake_zlevel = 1 // upperdeck
 	soundscape_playlist = SCAPE_PL_ELEVATOR_MUSIC
 	soundscape_interval = 120
 
 /area/rostock/medical/prep
-	name = "SSV Rostock - Medical Preperation Room"
+	name = "SSV罗斯托克号 - 医疗准备室"
 	icon_state = "medical"
 	fake_zlevel = 2 // lowerdeck
 	soundscape_playlist = SCAPE_PL_ELEVATOR_MUSIC
 	soundscape_interval = 120
 
 /area/rostock/medical/morgue
-	name = "SSV Rostock - Morgue"
+	name = "SSV罗斯托克号 - 停尸房"
 	icon_state = "medical"
 	fake_zlevel = 2 // lowerdeck
 
@@ -103,64 +103,64 @@
 /area/rostock/security
 
 /area/rostock/security/brig_accessway
-	name = "SSV Rostock - Brig Accessway"
+	name = "SSV罗斯托克号 - 禁闭室通道"
 	icon_state = "brig"
 	fake_zlevel = 1 //upperdeck
 
 /area/rostock/security/brig_entryway
-	name = "SSV Rostock - Brig Observation Area"
+	name = "SSV罗斯托克号 - 禁闭室观察区"
 	icon_state = "brig"
 	fake_zlevel = 1 //upperdeck
 
 /area/rostock/security/brig_holding_area
-	name = "SSV Rostock - Prisoner Holding Area"
+	name = "SSV罗斯托克号 - 囚犯关押区"
 	icon_state = "brigcells"
 	fake_zlevel = 1 //upperdeck
 
 /area/rostock/security/execution_room
-	name = "SSV Rostock - Execution Room"
+	name = "SSV罗斯托克号 - 处决室"
 	icon_state = "brigcells"
 	fake_zlevel = 1 //upperdeck
 
 /area/rostock/security/execution_storage
-	name = "SSV Rostock - Execution Storage Room"
+	name = "SSV罗斯托克号 - 处决物品储藏室"
 	icon_state = "brigcells"
 	fake_zlevel = 1 //upperdeck
 
 /area/rostock/security/brig_office
-	name = "SSV Rostock - Brig Office"
+	name = "SSV罗斯托克号 - 禁闭室办公室"
 	icon_state = "brig"
 	fake_zlevel = 1 //upperdeck
 
 /area/rostock/security/headquarters_lobby
-	name = "SSV Rostock - Politsiya HQ Lobby"
+	name = "SSV罗斯托克号 - 警察总局大厅"
 	icon_state = "brig"
 	fake_zlevel = 2 //upperdeck
 
 /area/rostock/security/headquarters_interrogation
-	name = "SSV Rostock - Interrogation Room"
+	name = "SSV 罗斯托克号 - 审讯室"
 	icon_state = "brig"
 	fake_zlevel = 2 //upperdeck
 
 /area/rostock/security/headquarters_bunk
-	name = "SSV Rostock - Politsiya Bunks"
+	name = "SSV 罗斯托克号 - 警察宿舍"
 	icon_state = "brig"
 	fake_zlevel = 2 //upperdeck
 
 /area/rostock/security/headquarters_storage
-	name = "SSV Rostock - Politsiya Equipment Storage"
+	name = "SSV 罗斯托克号 - 警察装备库"
 	icon_state = "brig"
 	fake_zlevel = 2 //upperdeck
 
 /area/rostock/security/headquarters_armory
-	name = "SSV Rostock - Politsiya Armory"
+	name = "SSV 罗斯托克号 - 警察军械库"
 	icon_state = "brig"
 	fake_zlevel = 2 //upperdeck
 
 // Vehicle Storage
 
 /area/rostock/vehiclehangar
-	name = "SSV Rostock - Vehicle Hangar"
+	name = "SSV 罗斯托克号 - 载具机库"
 	icon_state = "exoarmor"
 	fake_zlevel = 2 //upperdeck
 
@@ -169,27 +169,27 @@
 /area/rostock/engineering
 
 /area/rostock/engineering/main_area
-	name = "SSV Rostock - Engineering"
+	name = "SSV 罗斯托克号 - 工程部"
 	icon_state = "upperengineering"
 	fake_zlevel = 1 //upperdeck
 
 /area/rostock/engineering/reactor
-	name = "SSV Rostock - Reactor Core"
+	name = "SSV 罗斯托克号 - 反应堆核心"
 	icon_state = "upperengineering"
 	fake_zlevel = 1 //upperdeck
 
 /area/rostock/engineering/lower_aft_corridor
-	name = "SSV Rostock - Upper Aft Entrance Corridor"
+	name = "SSV 罗斯托克号 - 上层船尾入口走廊"
 	icon_state = "upperengineering"
 	fake_zlevel = 1 //upperdeck
 
 /area/rostock/engineering/port_aft_accessway
-	name = "SSV Rostock - Port Aft Accessway"
+	name = "SSV 罗斯托克号 - 左舷船尾通道"
 	icon_state = "upperengineering"
 	fake_zlevel = 1 //upperdeck
 
 /area/rostock/engineering/starboard_aft_accessway
-	name = "SSV Rostock - Starboard Aft Accessway"
+	name = "SSV 罗斯托克号 - 右舷船尾通道"
 	icon_state = "upperengineering"
 	fake_zlevel = 1 //upperdeck
 
@@ -199,27 +199,27 @@
 	fake_zlevel = 1 //upperdeck
 
 /area/rostock/upperdeck_maint/p_a
-	name = "SSV Rostock - Upper Port-Aft Maintenance"
+	name = "SSV 罗斯托克号 - 上层左舷-船尾维护区"
 	icon_state = "upperhull"
 
 /area/rostock/upperdeck_maint/p_m
-	name = "SSV Rostock - Upper Port-Midship Maintenance"
+	name = "SSV 罗斯托克号 - 上层左舷-船中维护区"
 	icon_state = "upperhull"
 
 /area/rostock/upperdeck_maint/p_f
-	name = "SSV Rostock - Upper Port-Fore Maintenance"
+	name = "SSV 罗斯托克号 - 上层左舷-船首维护区"
 	icon_state = "upperhull"
 
 /area/rostock/upperdeck_maint/s_a
-	name = "SSV Rostock - Upper Starboard-Aft Maintenance"
+	name = "SSV 罗斯托克号 - 上层右舷-船尾维护区"
 	icon_state = "upperhull"
 
 /area/rostock/upperdeck_maint/s_m
-	name = "SSV Rostock - Upper Starboard-Midship Maintenance"
+	name = "SSV 罗斯托克号 - 上层右舷-船中维护区"
 	icon_state = "upperhull"
 
 /area/rostock/upperdeck_maint/s_f
-	name = "SSV Rostock - Upper Starboard-Fore Maintenance"
+	name = "SSV 罗斯托克号 - 上层右舷-船首维护区"
 	icon_state = "upperhull"
 
 // ERT Docking Ports
@@ -227,25 +227,25 @@
 /area/rostock/ert_dock
 
 /area/rostock/ert_dock/port
-	name = "SSV Rostock - Port Emergency Docking"
+	name = "SSV 罗斯托克号 - 左舷紧急对接舱"
 	icon_state = "starboardpd"
 	fake_zlevel = 1 // upperdeck
 
 /area/rostock/ert_dock/starboard
-	name = "SSV Rostock - Starboard Emergency Docking"
+	name = "SSV 罗斯托克号 - 右舷紧急对接舱"
 	icon_state = "starboardpd"
 	fake_zlevel = 1 // upperdeck
 
 // Stairs
 /area/rostock/stair_clone
-	name = "SSV Rostock - Lower Deck Stairs"
+	name = "SSV 罗斯托克号 - 下层甲板楼梯"
 	icon_state = "stairs_lowerdeck"
 	fake_zlevel = 2 // lowerdeck
 	resin_construction_allowed = FALSE
 	requires_power = FALSE
 
 /area/rostock/stair_clone/upper
-	name = "SSV Rostock - Upper Deck Stairs"
+	name = "SSV 罗斯托克号 - 上层甲板楼梯"
 	icon_state = "stairs_upperdeck"
 	fake_zlevel = 1 // upperdeck
 
@@ -254,12 +254,12 @@
 /area/rostock/command
 
 /area/rostock/command/astronavigation
-	name = "SSV Rostock - Astronavigational Deck"
+	name = "SSV 罗斯托克号 - 天文导航甲板"
 	icon_state = "astronavigation"
 	fake_zlevel = 2 // lowerdeck
 
 /area/rostock/command/cic
-	name = "SSV Rostock - Combat Information Centre"
+	name = "SSV 罗斯托克号 - 作战信息中心"
 	icon_state = "cic"
 	fake_zlevel = 2 // lowerdeck
 	soundscape_playlist = SCAPE_PL_CIC
@@ -267,37 +267,37 @@
 	flags_area = AREA_NOBURROW
 
 /area/rostock/command/armory
-	name = "SSV Rostock - Command Armory"
+	name = "SSV 罗斯托克号 - 指挥军械库"
 	icon_state = "cic"
 	fake_zlevel = 2 // lowerdeck
 
 /area/rostock/command/hallway
-	name = "SSV Rostock - Command Hallway"
+	name = "SSV 罗斯托克号 - 指挥走廊"
 	icon_state = "cic"
 	fake_zlevel = 2 // lowerdeck
 
 /area/rostock/command/dining
-	name = "SSV Rostock - Command Dining Hall"
+	name = "SSV 罗斯托克号 - 指挥餐厅"
 	icon_state = "cic"
 	fake_zlevel = 2 // lowerdeck
 
 /area/rostock/command/co
-	name = "SSV Rostock - Commanding Officer's Quarters"
+	name = "SSV 罗斯托克号 - 指挥官舱室"
 	icon_state = "officerrnr"
 	fake_zlevel = 2 // lowerdeck
 
 /area/rostock/command/xo
-	name = "SSV Rostock - Kapitan's Quarter's"
+	name = "SSV 罗斯托克号 - 舰长舱室"
 	icon_state = "officerrnr"
 	fake_zlevel = 2 // lowerdeck
 
 /area/rostock/command/polcom
-	name = "SSV Rostock - Political Officer's Quarters"
+	name = "SSV 罗斯托克号 - 政委舱室"
 	icon_state = "officerrnr"
 	fake_zlevel = 2 // lowerdeck
 
 /area/rostock/command/so
-	name = "SSV Rostock - Staff Officer's Bunks"
+	name = "SSV 罗斯托克号 - 参谋军官铺位"
 	icon_state = "officerrnr"
 	fake_zlevel = 2 // lowerdeck
 
@@ -307,51 +307,51 @@
 	fake_zlevel = 2 // lowerdeck
 
 /area/rostock/lower_deck/m_hallway
-	name = "SSV Rostock - Lower Deck Midship Hallway"
+	name = "SSV 罗斯托克号 - 下层甲板中部走廊"
 	icon_state = "stern"
 
 /area/rostock/lower_deck/p_hallway
-	name = "SSV Rostock - Lower Deck Port Hallway"
+	name = "SSV 罗斯托克号 - 下层甲板左舷走廊"
 	icon_state = "port"
 
 /area/rostock/lower_deck/s_a_hallway
-	name = "SSV Rostock - Lower Deck Starboard-Aft Hallway"
+	name = "SSV 罗斯托克号 - 下层甲板右舷-后部走廊"
 	icon_state = "starboard"
 
 /area/rostock/lower_deck/p_a_hallway
-	name = "SSV Rostock - Lower Deck Port-Aft Hallway"
+	name = "SSV 罗斯托克号 - 下层甲板左舷-后部走廊"
 	icon_state = "port"
 
 /area/rostock/lower_deck/engineering_lower_access
-	name = "SSV Rostock - Lower Deck Engineering Starboard Aft Accessway"
+	name = "SSV 罗斯托克号 - 下层甲板工程部右舷后部通道"
 	icon_state = "port"
 
 /area/rostock/lower_deck/cryogenics
-	name = "SSV Rostock - Cryogenic Cells"
+	name = "SSV 罗斯托克号 - 低温休眠舱"
 	icon_state = "cryo"
 
 /area/rostock/lower_deck/prep
-	name = "SSV Rostock - Troop Preperation"
+	name = "SSV 罗斯托克号 - 部队准备区"
 	icon_state = "gruntrnr"
 
 /area/rostock/lower_deck/bunk
-	name = "SSV Rostock - Extended Mission Bunks"
+	name = "SSV 罗斯托克号 - 长期任务铺位"
 	icon_state = "gruntrnr"
 
 /area/rostock/lower_deck/kitchen
-	name = "SSV Rostock - Meal Hall"
+	name = "SSV 罗斯托克号 - 餐厅"
 	icon_state = "gruntrnr"
 
 /area/rostock/lower_deck/bathroom
-	name = "SSV Rostock - Unisex Bathroom"
+	name = "SSV 罗斯托克号 - 无性别卫生间"
 	icon_state = "missionplanner"
 
 /area/rostock/lower_deck/ammunition_storage
-	name = "SSV Rostock - Heavy Ordinance Storage"
+	name = "SSV 罗斯托克号 - 重型军械库"
 	icon_state = "missionplanner"
 
 /area/rostock/lower_deck/briefing
-	name = "SSV Rostock - Briefing Hall"
+	name = "SSV 罗斯托克号 - 简报厅"
 	icon_state = "briefing"
 
 /area/rostock/lower_deck/starboard_umbilical
@@ -364,43 +364,43 @@
 	fake_zlevel = 2 //lowerdeck
 
 /area/rostock/lowerdeck_maint/p_a
-	name = "SSV Rostock - Lower Port-Aft Maintenance"
+	name = "SSV 罗斯托克号 - 下层左舷-后部维护区"
 	icon_state = "lowerhull"
 
 /area/rostock/lowerdeck_maint/p_m
-	name = "SSV Rostock - Lower Port-Midship Maintenance"
+	name = "SSV 罗斯托克号 - 下层左舷-中部维护区"
 	icon_state = "lowerhull"
 
 /area/rostock/lowerdeck_maint/p_f
-	name = "SSV Rostock - Lower Port-Fore Maintenance"
+	name = "SSV 罗斯托克号 - 下层左舷-前部维护区"
 	icon_state = "lowerhull"
 
 /area/rostock/lowerdeck_maint/s_a
-	name = "SSV Rostock - Lower Starboard-Aft Maintenance"
+	name = "SSV 罗斯托克号 - 下层右舷-后部维护区"
 	icon_state = "lowerhull"
 
 /area/rostock/lowerdeck_maint/s_m
-	name = "SSV Rostock - Lower Starboard-Midship Maintenance"
+	name = "SSV 罗斯托克号 - 下层右舷-中部维护区"
 	icon_state = "lowerhull"
 
 /area/rostock/lowerdeck_maint/s_f
-	name = "SSV Rostock - Lower Starboard-Fore Maintenance"
+	name = "SSV 罗斯托克号 - 下层右舷-前部维护区"
 	icon_state = "lowerhull"
 
 // Railguns
 
 /area/rostock/railgun
-	name = "SSV Rostock - Port Railgun Control Room"
+	name = "SSV 罗斯托克号 - 左舷磁轨炮控制室"
 	icon_state = "weaponroom"
 
 /area/rostock/railgun/starboard
-	name = "SSV Rostock - Starboard Railgun Control Room"
+	name = "SSV 罗斯托克号 - 右舷磁轨炮控制室"
 	icon_state = "weaponroom"
 
 // AI Core - 1VAN/3
 
 /area/rostock/airoom
-	name = "SSV Rostock - AI Core"
+	name = "SSV 罗斯托克号 - AI核心"
 	icon_state = "airoom"
 	fake_zlevel = 2 // lowerdeck
 	soundscape_playlist = SCAPE_PL_ARES
@@ -413,14 +413,14 @@
 // Requisitions Bay
 
 /area/rostock/req
-	name = "SSV Rostock - Requisitions"
+	name = "SSV 罗斯托克号 - 补给处"
 	icon_state = "req"
 	fake_zlevel = 2 // lowerdeck
 
 // Lifeboat
 
 /area/rostock/lifeboat
-	name = "SSV Rostock - Lifeboat Docking Port"
+	name = "SSV 罗斯托克号 - 救生艇对接舱口"
 	icon_state = "selfdestruct"
 	fake_zlevel = 2 // lowerdeck
 

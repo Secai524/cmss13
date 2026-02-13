@@ -1,3 +1,3 @@
 TIMER_SUBSYSTEM_DEF(sound_loops)
-	name = "Sound Loops"
+	name = "音效循环"
 	priority = SS_PRIORITY_SOUNDLOOPS

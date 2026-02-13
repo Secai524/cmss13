@@ -1,10 +1,10 @@
 
 /obj/structure/machinery/computer/station_alert
-	name = "Station Alert Computer"
-	desc = "Used to access the station's automated alert system."
+	name = "空间站警报计算机"
+	desc = "用于访问空间站的自动化警报系统。"
 	icon_state = "atmos"
 	circuit = /obj/item/circuitboard/computer/stationalert
-	var/alarms = list("Fire"=list(), "Atmosphere"=list(), "Power"=list())
+	var/alarms = list("Fire"=list(), "Atmosphere"=list(), "功率"=list())
 	processing = TRUE
 
 /obj/structure/machinery/computer/station_alert/attack_remote(mob/user)

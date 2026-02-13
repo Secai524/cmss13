@@ -6,7 +6,7 @@
 
 /obj/structure/machinery/bot/cprbot
 	name = "\improper CPRbot"
-	desc = "Designed for urgent medical intervention, this CPRbot offers high-tech support in a compact form."
+	desc = "专为紧急医疗干预设计，这款CPR机器人以紧凑的形态提供高科技支持。"
 	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	icon_state = "cprbot0"
 	density = FALSE
@@ -176,7 +176,7 @@
 /obj/structure/machinery/bot/cprbot/proc/speak(message)
 	if (!message)
 		return
-	visible_message("[src] beeps, \"[message]\"")
+	visible_message("[src]哔哔作响，\"[message]\"")
 	playsound(loc, 'sound/CPRbot/CPRbot_beep.ogg', 25, 1)
 
 /obj/structure/machinery/bot/cprbot/proc/go_idle()
@@ -219,7 +219,7 @@
 		human = WEAKREF(patient)
 
 		if (patient && !(patient in has_said_to_patient))
-			visible_message("[patient] is injured! I'm coming!")
+			visible_message("[patient]受伤了！我来了！")
 			has_said_to_patient += patient
 
 		move_to_target()
@@ -385,7 +385,7 @@
 	update_icon()
 
 	target.revive_grace_period += 4 SECONDS
-	target.visible_message(SPAN_NOTICE("<b>[src]</b> automatically performs <b>CPR</b> on <b>[target]</b>."))
+	target.visible_message(SPAN_NOTICE("<b>[src]</b>自动对<b>[target]</b>进行<b>心肺复苏</b>。"))
 	target.balloon_alert_to_viewers("performing CPR, stay clear!")
 	currently_healing = TRUE
 	playsound(loc, 'sound/CPRbot/CPR.ogg', 25, 1)
@@ -428,12 +428,12 @@
 		return TRUE
 
 	if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-		to_chat(user, SPAN_WARNING("You have no idea how to undeploy [src]."))
+		to_chat(user, SPAN_WARNING("你不知道如何收起[src]。"))
 		return FALSE
 
 	SEND_SIGNAL(user, COMSIG_LIVING_ATTACKHAND_HUMAN, src)
 
-	to_chat(user, SPAN_WARNING("You undeploy [src]."))
+	to_chat(user, SPAN_WARNING("你收起了[src]。"))
 	self_destruct(user)
 	return TRUE
 
@@ -448,7 +448,7 @@
 
 /obj/structure/machinery/bot/cprbot/explode()
 	on = FALSE
-	visible_message(SPAN_DANGER("<B>[src] blows apart!</B>"), null, null, 1)
+	visible_message(SPAN_DANGER("<B>[src]炸得粉碎！</B>"), null, null, 1)
 	var/turf/Tsec = get_turf(src)
 
 	new /obj/item/cprbot_broken(Tsec)

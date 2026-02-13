@@ -45,16 +45,16 @@
 			if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
 				if(species.flags & IS_SYNTHETIC)
 					if(prob(1))
-						to_chat(src, SPAN_DANGER("Subdermal damage detected in critical region. Operational impact minimal. Diagnosis queued for maintenance cycle."))
+						to_chat(src, SPAN_DANGER("检测到关键区域皮下损伤。作战影响轻微。诊断已列入维护周期。"))
 				else
 					if(prob(1))
 						var/word = pick("dizzy","woozy","faint")
-						to_chat(src, SPAN_DANGER("You feel [word]."))
+						to_chat(src, SPAN_DANGER("你感到[word]。"))
 			if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
 				if(species.flags & IS_SYNTHETIC)
 					if(prob(3))
 						apply_effect(rand(1, 2), WEAKEN)
-						to_chat(src, SPAN_DANGER("Internal power cell fault detected.\nSeek nearest recharging station."))
+						to_chat(src, SPAN_DANGER("检测到内部电池故障。\n请寻找最近的充电站。"))
 				else
 					if(eye_blurry < 50)
 						AdjustEyeBlur(6)
@@ -62,12 +62,12 @@
 					if(prob(15))
 						apply_effect(rand(1,3), PARALYZE)
 						var/word = pick("dizzy","woozy","faint")
-						to_chat(src, SPAN_DANGER("You feel very [word]."))
+						to_chat(src, SPAN_DANGER("你感到非常[word]。"))
 			if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
 				if(species.flags & IS_SYNTHETIC)
 					if(prob(5))
 						apply_effect(rand(1, 2), PARALYZE)
-						to_chat(src, SPAN_DANGER("Critical power cell failure detected.\nSeek recharging station immediately."))
+						to_chat(src, SPAN_DANGER("检测到电池严重故障。\n请立即寻找充电站。"))
 				else
 					if(eye_blurry < 50)
 						AdjustEyeBlur(6)
@@ -76,13 +76,13 @@
 					if(prob(15))
 						apply_effect(rand(1, 3), PARALYZE)
 						var/word = pick("dizzy", "woozy", "faint")
-						to_chat(src, SPAN_DANGER("You feel extremely [word]."))
+						to_chat(src, SPAN_DANGER("你感到极度[word]。"))
 			if(0 to BLOOD_VOLUME_SURVIVE)
 				death(create_cause_data(species.flags & IS_SYNTHETIC ? "power failure" : "blood loss"))
 
 /datum/species/human
 	group = SPECIES_HUMAN
-	name = "Human"
+	name = "人类"
 	name_plural = "Humans"
 	primitive = /mob/living/carbon/human/monkey
 	unarmed_type = /datum/unarmed_attack/punch
@@ -100,7 +100,7 @@
 
 //Tougher humans, basically action movie protagonists.
 /datum/species/human/hero
-	name = "Human Hero"
+	name = "人类英雄"
 	name_plural = "Human Heroes"
 	brute_mod = 0.5
 	burn_mod = 0.5
@@ -125,7 +125,7 @@
 
 
 /datum/species/human/hero/thrall
-	name = "Thrall"
+	name = "奴仆"
 	name_plural = "Thralls"
 	weed_slowdown_mult = 0
 	acid_blood_dodge_chance = 70
@@ -141,7 +141,7 @@
 
 //Various horrors that spawn in and haunt the living.
 /datum/species/human/spook
-	name = "Horror"
+	name = "恐怖造物"
 	name_plural = "Horrors"
 	icobase = 'icons/mob/humans/species/r_spooker.dmi'
 	deform = 'icons/mob/humans/species/r_spooker.dmi'

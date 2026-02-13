@@ -3,7 +3,7 @@
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/enclosed/commando
 	name = "\improper W-Y Commando helmet"
-	desc = "A standard enclosed helmet utilized by Weyland-Yutani Commandos."
+	desc = "维兰德-汤谷突击队使用的标准封闭式头盔。"
 	icon_state = "commando_helmet"
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	armor_melee = CLOTHING_ARMOR_HIGH
@@ -17,8 +17,8 @@
 	anti_hug = 6
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/enclosed/commando/damaged
-	name = "damaged W-Y Commando helmet"
-	desc = "A standard enclosed helmet utilized by Weyland-Yutani Commandos. Has been through a lot of wear and tear."
+	name = "受损的维兰德-汤谷突击队头盔"
+	desc = "维兰德-汤谷突击队使用的标准封闭式头盔。已经历大量磨损。"
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
@@ -29,12 +29,12 @@
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/enclosed/commando/leader
 	name = "\improper W-Y Commando Leader helmet"
-	desc = "A standard enclosed helmet utilized by Weyland-Yutani Commandos. This one is worn by a high ranking corporate officer."
+	desc = "维兰德-汤谷突击队使用的标准封闭式头盔。这顶由一名高级公司军官佩戴。"
 	icon_state = "commando_helmet_leader"
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/apesuit
 	name = "\improper M5X Apesuit helmet"
-	desc = "A fully enclosed, armored helmet made to complete the M5X exoskeleton armor."
+	desc = "一个全封闭的装甲头盔，用于搭配M5X外骨骼护甲。"
 	icon_state = "apesuit_helmet"
 	item_state = "apesuit_helmet"
 	unacidable = TRUE

@@ -1,6 +1,6 @@
 /obj/item/reagent_container/food/snacks/fishable
 	name = "\improper fishable snack"
-	desc = "From the deep it has come. To the deep you shall return. Mother Ocean consumes all."
+	desc = "它来自深渊。你也将归于深渊。海洋之母吞噬一切。"
 	icon = 'icons/obj/items/fishing_atoms.dmi'
 	icon_state = null
 	bitesize = 4
@@ -47,13 +47,13 @@
 
 /obj/item/reagent_container/food/snacks/fishable/attackby(obj/item/W, mob/user)
 	if(gutted)
-		to_chat(user, SPAN_WARNING("[src] has already been gutted!"))
+		to_chat(user, SPAN_WARNING("[src]已经被开膛破肚了！"))
 		return
 	if(!guttable)
-		to_chat(user, SPAN_WARNING("[src] cannot be gutted."))
+		to_chat(user, SPAN_WARNING("[src]无法被开膛破肚。"))
 		return
 	if(W.sharp == IS_SHARP_ITEM_ACCURATE || W.sharp == IS_SHARP_ITEM_BIG)
-		user.visible_message("[user] cuts [src] open and cleans it.", "You gut [src].")
+		user.visible_message("[user]切开并清理了[src]。", "You gut [src].")
 		playsound(loc, 'sound/effects/blobattack.ogg', 25, 1)
 		var/gut_loot = roll(total_length / 2 - min_length)
 		if(gut_loot <= 0)
@@ -71,7 +71,7 @@
 
 /obj/item/reagent_container/food/snacks/fishable/crab
 	name = "\improper spindle crab"
-	desc = "Looks like a little crab."
+	desc = "看起来像只小螃蟹。"
 	icon_state = "crab"
 	gut_icon_state = "crab_gutted"
 	guttable = TRUE
@@ -90,14 +90,14 @@
 //----------------//
 //SQUIDS
 /obj/item/reagent_container/food/snacks/fishable/squid
-	name = "generic squid"
-	desc = "They have beaks."
+	name = "普通鱿鱼"
+	desc = "它们有喙。"
 	icon_state = "squid"
 	bitesize = 8
 
 /obj/item/reagent_container/food/snacks/fishable/squid/whorl
-	name = "whorl squid"
-	desc = "A squat little fella in a whorl shaped shell, hence the name."
+	name = "涡旋鱿鱼"
+	desc = "一个矮胖的小家伙，外壳呈涡旋状，因此得名。"
 	icon_state = "squid_whorl"
 	gut_icon_state = "squid_whorl_gutted"
 	guttable = TRUE
@@ -112,8 +112,8 @@
 	reagents.add_reagent("fish", 1)
 
 /obj/item/reagent_container/food/snacks/fishable/squid/sock
-	name = "sock squid"
-	desc = "Small shelled squids are a common occurance on New Varadero. While using the term 'squid' to describe this form of creature would make a biologist fuming mad, the name has stuck given their relative apperance. Sock squids are renowned for their robust taste."
+	name = "短袜鱿鱼"
+	desc = "带壳的小鱿鱼在新瓦拉德罗很常见。虽然用‘鱿鱼’这个词来描述这种生物会让生物学家暴跳如雷，但鉴于它们的外形相似，这个名字已经流传开来。短袜鱿鱼以其浓郁的口感而闻名。"
 	icon_state = "squid_sock"
 	gut_icon_state = "squid_sock_gutted"
 	guttable = TRUE
@@ -131,8 +131,8 @@
 //----------------//
 //WORMS
 /obj/item/reagent_container/food/snacks/fishable/worm
-	name = "sea worm"
-	desc = "Could be useful as bait?"
+	name = "海虫"
+	desc = "也许能当鱼饵用？"
 	icon_state = "worm_redring"
 	guttable = TRUE
 	gut_icon_state = "worm_redring_gutted"
@@ -146,14 +146,14 @@
 	//todo, attackby with a knife so you can make bait objects for fishing with
 /obj/item/reagent_container/food/snacks/fishable/quadtopus
 	name = "quadtopus"
-	desc = "Like an octopus, but a whole lot meaner, dumber, and smaller. So basically a marine Marine."
+	desc = "像章鱼，但更凶、更笨、更小。基本上就是个海军陆战队员。"
 	icon_state = "quadtopus"
 	bitesize = 2
 //--------------------//
 // SHELLED CRITTERS, you have to pry them open with a SHARP object to get the guts out. Maybe should be bool hasshell = TRUE and overrite gutting proc?
 /obj/item/reagent_container/food/snacks/fishable/shell/clam
 	name = "clam"
-	desc = "A sea critter contained inside of a shell."
+	desc = "一个藏在壳里的海洋生物。"
 	icon_state = "shell_clam"
 	guttable = TRUE
 	base_gut_meat = /obj/item/ore/pearl
@@ -168,7 +168,7 @@
 // Pan Fish, Regular fish you can gut and clean (additional fish past this point)
 /obj/item/reagent_container/food/snacks/fishable/fish/bluegill
 	name = "bluegill"
-	desc = "A small spiny fish, yeouch!"
+	desc = "一条带刺的小鱼，哎哟！"
 	gut_icon_state = "bluegill_gutted"
 	guttable = TRUE
 	min_length = 5
@@ -185,7 +185,7 @@
 
 /obj/item/reagent_container/food/snacks/fishable/fish/bass
 	name = "bass"
-	desc = "A staple classic in fish cuisine!"
+	desc = "鱼类菜肴中的经典主食！"
 	guttable = TRUE
 	base_gut_meat = /obj/item/reagent_container/food/snacks/meat/fish/bass
 	guttable_atoms = list(/obj/item/reagent_container/food/snacks/meat/fish/bass)
@@ -202,7 +202,7 @@
 
 /obj/item/reagent_container/food/snacks/fishable/fish/catfish
 	name = "catfish"
-	desc = "Quite large though not good for eating since it's a bottom feeder."
+	desc = "体型相当大，但由于是底栖食腐鱼，不适合食用。"
 	guttable = FALSE
 	icon_state = "catfish"
 	min_length = 10
@@ -217,7 +217,7 @@
 /obj/item/reagent_container/food/snacks/fishable/fish/salmon
 
 	name = "salmon"
-	desc = "A red and scaly river-dwelling fish!"
+	desc = "一种红色带鳞的河鱼！"
 	guttable = TRUE
 	icon_state = "salmon"
 	min_length = 12
@@ -233,8 +233,8 @@
 
 /obj/item/reagent_container/food/snacks/fishable/fish/white_perch
 
-	name = "white perch"
-	desc = "A small and spiny invasive fish, kill it!"
+	name = "白鲈"
+	desc = "一种带刺的小型入侵鱼类，干掉它！"
 	guttable = TRUE
 	icon_state = "white_perch"
 	min_length = 6
@@ -251,8 +251,8 @@
 //--------------------//
 //Urchins, spikey bottom-feeding creatures
 /obj/item/reagent_container/food/snacks/fishable/urchin/purple
-	name = "purple urchin"
-	desc = "Glad I didn't step on it!"
+	name = "紫海胆"
+	desc = "幸好我没踩到它！"
 	icon_state = "urchin_purple"
 	guttable = FALSE
 	min_length = 2
@@ -264,8 +264,8 @@
 	reagents.add_reagent("fish", 1)
 
 /obj/item/reagent_container/food/snacks/fishable/urchin/red
-	name = "red urchin"
-	desc = "Glad I didn't step on it, it looks angry!"
+	name = "红海胆"
+	desc = "幸好我没踩到它，它看起来怒气冲冲！"
 	guttable = FALSE
 	icon_state = "urchin_red"
 	min_length = 2

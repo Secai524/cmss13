@@ -1,6 +1,6 @@
 /obj/item/device/motiondetector/intel
-	name = "data detector"
-	desc = "A device that detects objects that may be useful for intel gathering. You can switch modes with Alt+Click."
+	name = "数据探测器"
+	desc = "一种能探测可能对情报收集有用的物体的设备。你可以用Alt+点击切换模式。"
 	icon_state = "datadetector"
 	item_state = "data_detector"
 	blip_type = "data"

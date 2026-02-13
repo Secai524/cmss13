@@ -1,7 +1,7 @@
 GLOBAL_LIST_EMPTY(item_pool_landmarks)
 
 SUBSYSTEM_DEF(landmark_init)
-	name    = "Landmark Init"
+	name    = "地标初始化"
 	init_order = SS_INIT_LANDMARK
 	flags   = SS_NO_FIRE
 

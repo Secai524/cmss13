@@ -1,7 +1,7 @@
 
 /obj/vehicle/multitile/apc/medical
-	name = "M577-MED Armored Personnel Carrier"
-	desc = "A medical modification of the M577 Armored Personnel Carrier. An armored transport with four big wheels. Designed as a reliable mobile triage that stores a significant amount of medical supplies for in-field resupplying of medics. Entrances on the sides."
+	name = "M577-MED装甲运兵车"
+	desc = "M577装甲运兵车的医疗改装型。一种四轮重型装甲运输车。设计为可靠的移动分类站，储存大量医疗物资，用于战地医疗兵补给。侧方有入口。"
 
 	icon_state = "apc_base_med"
 
@@ -97,7 +97,7 @@
 ** PRESETS SPAWNERS
 */
 /obj/effect/vehicle_spawner/apc_med
-	name = "APC MED Spawner"
+	name = "装甲运兵车医疗型生成器"
 	icon = 'icons/obj/vehicles/apc.dmi'
 	icon_state = "apc_base_med"
 	pixel_x = -48

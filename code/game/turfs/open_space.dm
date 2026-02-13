@@ -9,7 +9,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /turf/open_space
-	name = "open space"
+	name = "开阔地"
 	icon_state = "transparent"
 	baseturfs = /turf/open_space
 	plane = OPEN_SPACE_PLANE_START
@@ -65,13 +65,13 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 
 	if(user.action_busy)
 		return
-	user.visible_message(SPAN_WARNING("[user] starts climbing down."), SPAN_WARNING("You start climbing down."))
+	user.visible_message(SPAN_WARNING("[user]开始向下攀爬。"), SPAN_WARNING("You start climbing down."))
 
 	if(!do_after(user, climb_down_time, INTERRUPT_ALL, BUSY_ICON_CLIMBING))
-		to_chat(user, SPAN_WARNING("You were interrupted!"))
+		to_chat(user, SPAN_WARNING("你被打断了！"))
 		return
 
-	user.visible_message(SPAN_WARNING("[user] climbs down."), SPAN_WARNING("You climb down."))
+	user.visible_message(SPAN_WARNING("[user]爬了下来。"), SPAN_WARNING("You climb down."))
 
 	var/turf/below = SSmapping.get_turf_below(current_turf)
 	while(istype(below, /turf/open_space))
@@ -96,7 +96,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 
 
 /turf/solid_open_space
-	name = "open space"
+	name = "开阔地"
 	icon_state = "transparent_solid"
 	baseturfs = /turf/solid_open_space
 	plane = OPEN_SPACE_PLANE_START

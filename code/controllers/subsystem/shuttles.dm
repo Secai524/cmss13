@@ -8,7 +8,7 @@
 #define SHUTTLE_SPAWN_BUFFER SSshuttle.wait * 10
 
 SUBSYSTEM_DEF(shuttle)
-	name = "Shuttle"
+	name = "穿梭机"
 	wait = 1 SECONDS
 	init_order = SS_INIT_SHUTTLE
 	flags = SS_KEEP_TIMING
@@ -684,7 +684,7 @@ SUBSYSTEM_DEF(shuttle)
 		if("load")
 			if(template)
 				if(loading_shuttle)
-					to_chat(user, SPAN_WARNING("Busy! Please wait..."))
+					to_chat(user, SPAN_WARNING("繁忙！请稍候..."))
 					return
 				. = TRUE
 				loading_shuttle = TRUE
@@ -694,13 +694,13 @@ SUBSYSTEM_DEF(shuttle)
 					user.client?.jump_to_object(mdp)
 					message_admins("[key_name_admin(user)] loaded [mdp] with the shuttle manipulator.")
 				else
-					to_chat(user, SPAN_WARNING("Something went wrong. Check logs/STUI for more details."))
+					to_chat(user, SPAN_WARNING("出现错误。详情请查看 logs/STUI。"))
 				loading_shuttle = FALSE
 
 		if("preview")
 			if(template)
 				if(loading_shuttle)
-					to_chat(user, SPAN_WARNING("Busy! Please wait..."))
+					to_chat(user, SPAN_WARNING("繁忙！请稍候..."))
 					return
 				. = TRUE
 				loading_shuttle = TRUE
@@ -714,16 +714,16 @@ SUBSYSTEM_DEF(shuttle)
 		if("replace")
 			if(template)
 				if(loading_shuttle)
-					to_chat(user, SPAN_WARNING("Busy! Please wait..."))
+					to_chat(user, SPAN_WARNING("繁忙！请稍候..."))
 					return
 				. = TRUE
 				loading_shuttle = TRUE
 				var/to_replace = existing_shuttle
-				if(!existing_shuttle || tgui_alert(user, "Replace existing shuttle '[existing_shuttle.name]'?", "Replace shuttle?", list("Yes", "No")) != "Yes")
+				if(!existing_shuttle || tgui_alert(user, "替换现有运输机'[existing_shuttle.name]'？", "Replace shuttle?", list("Yes", "No")) != "Yes")
 					var/list/options = list()
 					for(var/obj/docking_port/mobile/option in mobile)
 						options["[option.name] ([option.id])"] = option
-					var/selection = tgui_input_list(user, "Replace some other shuttle instead?", "Replace shuttle?", options)
+					var/selection = tgui_input_list(user, "替换其他运输机？", "Replace shuttle?", options)
 					if(!selection)
 						loading_shuttle = FALSE
 						return
@@ -734,7 +734,7 @@ SUBSYSTEM_DEF(shuttle)
 					user.client?.jump_to_object(mdp)
 					message_admins("[key_name_admin(user)] replaced [to_replace] with [mdp] with the shuttle manipulator.")
 				else
-					to_chat(user, SPAN_WARNING("Something went wrong. Check logs/STUI for more details."))
+					to_chat(user, SPAN_WARNING("出现错误。详情请查看 logs/STUI。"))
 				loading_shuttle = FALSE
 
 #undef MAX_TRANSIT_REQUEST_RETRIES

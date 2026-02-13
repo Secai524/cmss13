@@ -1,5 +1,5 @@
 /datum/supply_packs/upp/binocs
-	name = "UPP Mixed Binoculars Crate (x2 per, x6 total)"
+	name = "UPP混合望远镜箱（每箱x2，共x6）"
 	cost = 20
 	containertype = /obj/structure/closet/crate/green
 	containername = "Mixed Binoculars Crate"
@@ -14,7 +14,7 @@
 	)
 
 /datum/supply_packs/upp/flares
-	name = "UPP flare packs crate (x20)"
+	name = "UPP照明弹包箱（x20）"
 	contains = list(
 		/obj/item/ammo_box/magazine/misc/flares,
 		/obj/item/ammo_box/magazine/misc/flares,
@@ -26,7 +26,7 @@
 
 
 /datum/supply_packs/upp/motiondetector
-	name = "UPP Motion Detector (x2)"
+	name = "UPP动态探测器（x2）"
 	contains = list(
 		/obj/item/device/motiondetector/hacked,
 		/obj/item/device/motiondetector/hacked,
@@ -37,7 +37,7 @@
 	group = "UPP Gear"
 
 /datum/supply_packs/upp/signal_flares
-	name = "UPP signal flare packs crate (x4)"
+	name = "UPP信号照明弹包箱（x4）"
 	contains = list(
 		/obj/item/storage/box/m94/signal,
 		/obj/item/storage/box/m94/signal,
@@ -50,7 +50,7 @@
 	group = "UPP Gear"
 
 /datum/supply_packs/upp/fulton
-	name = "UPP fulton recovery device crate (x4)"
+	name = "UPP富尔顿回收装置箱（x4）"
 	contains = list(
 		/obj/item/stack/fulton,
 		/obj/item/stack/fulton,
@@ -63,7 +63,7 @@
 	group = "UPP Gear"
 
 /datum/supply_packs/upp/parachute
-	name = "UPP parachute crate (x20)"
+	name = "UPP降落伞箱（x20）"
 	contains = list(
 		/obj/item/parachute,
 		/obj/item/parachute,

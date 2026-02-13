@@ -16,8 +16,8 @@
 #define WIRE_BEACON_TX 512 // beacon ping trans
 
 /obj/structure/machinery/bot/mulebot
-	name = "Mulebot"
-	desc = "A Multiple Utility Load Effector bot."
+	name = "骡子机器人"
+	desc = "一台多用途负载效应机器人。"
 	icon_state = "mulebot0"
 	density = TRUE
 	anchored = TRUE
@@ -88,7 +88,7 @@
 		count++
 	if(!suffix)
 		suffix = "#[count]"
-	name = "Mulebot ([suffix])"
+	name = "骡子机器人([suffix])"
 
 /obj/structure/machinery/bot/mulebot/Destroy()
 	QDEL_NULL(load)
@@ -102,7 +102,7 @@
 // and the random wire display order
 // needs 10 wire colours
 /obj/structure/machinery/bot/mulebot/proc/setup_wires()
-	var/list/colours = list("Red", "Green", "Blue", "Magenta", "Cyan", "Yellow", "Black", "White", "Orange", "Grey")
+	var/list/colours = list("Red", "Green", "Blue", "Magenta", "Cyan", "Yellow", "Black", "White", "橙子", "Grey")
 	var/list/orders = list("0","1","2","3","4","5","6","7","8","9")
 	wire_text = list()
 	wire_order = list()
@@ -129,16 +129,16 @@
 			updateDialog()
 	else if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
 		if(locked)
-			to_chat(user, SPAN_NOTICE("The maintenance hatch cannot be opened or closed while the controls are locked."))
+			to_chat(user, SPAN_NOTICE("控制锁定时，无法打开或关闭维护舱口。"))
 			return
 
 		open = !open
 		if(open)
-			src.visible_message("[user] opens the maintenance hatch of [src]", SPAN_NOTICE("You open [src]'s maintenance hatch."))
+			src.visible_message("[user]打开了[src]的维护舱口", SPAN_NOTICE("You open [src]'s maintenance hatch."))
 			on = 0
 			icon_state="mulebot-hatch"
 		else
-			src.visible_message("[user] closes the maintenance hatch of [src]", SPAN_NOTICE("You close [src]'s maintenance hatch."))
+			src.visible_message("[user]关闭了[src]的维护舱口", SPAN_NOTICE("You close [src]'s maintenance hatch."))
 			icon_state = "mulebot0"
 
 		updateDialog()
@@ -146,17 +146,17 @@
 		if (src.health < maxhealth)
 			src.health = min(maxhealth, src.health+25)
 			user.visible_message(
-				SPAN_DANGER("[user] repairs [src]!"),
+				SPAN_DANGER("[user]修理了[src]！"),
 				SPAN_NOTICE("You repair [src]!")
 			)
 		else
-			to_chat(user, SPAN_NOTICE("[src] does not need a repair!"))
+			to_chat(user, SPAN_NOTICE("[src]不需要修理！"))
 	else if(load && ismob(load))  // chance to knock off rider
 		if(prob(1+I.force * 2))
 			unload(0)
-			user.visible_message(SPAN_DANGER("[user] knocks [load] off [src] with \the [I]!"), SPAN_DANGER("You knock [load] off [src] with \the [I]!"))
+			user.visible_message(SPAN_DANGER("[user]用\the [I]将[load]从[src]上敲了下来！"), SPAN_DANGER("You knock [load] off [src] with \the [I]!"))
 		else
-			to_chat(user, "You hit [src] with \the [I] but to no effect.")
+			to_chat(user, "你用\the [I]击中了[src]，但毫无效果。")
 	else
 		. = ..()
 	return
@@ -178,7 +178,7 @@
 	if(prob(50) && !isnull(load))
 		unload(0)
 	if(prob(25))
-		src.visible_message(SPAN_DANGER("Something shorts out inside [src]!"))
+		src.visible_message(SPAN_DANGER("[src]内部有东西短路了！"))
 		var/index = 1<< (rand(0,9))
 		if(wires & index)
 			wires &= ~index
@@ -261,7 +261,7 @@
 		else
 			dat += "The bot is in maintenance mode and cannot be controlled.<BR>"
 
-	show_browser(user, dat, "Mulebot [suffix ? "([suffix])" : ""]", "mulebot", "size=350x500")
+	show_browser(user, dat, "骡子机器人[suffix ? "([suffix])" : ""]", "mulebot", "size=350x500")
 	return
 
 // returns the wire panel text
@@ -294,18 +294,18 @@
 					locked = !locked
 					updateDialog()
 				else
-					to_chat(usr, SPAN_DANGER("Access denied."))
+					to_chat(usr, SPAN_DANGER("权限被拒绝。"))
 					return
 			if("power")
 				if (src.on)
 					turn_off()
 				else if (cell && !open)
 					if (!turn_on())
-						to_chat(usr, SPAN_DANGER("You can't switch on [src]."))
+						to_chat(usr, SPAN_DANGER("你无法启动[src]。"))
 						return
 				else
 					return
-				visible_message("[usr] switches [on ? "on" : "off"] [src].")
+				visible_message("[usr]切换[on ? "on" : "off"] [src].")
 				updateDialog()
 
 
@@ -316,7 +316,7 @@
 					cell.add_fingerprint(usr)
 					cell = null
 
-					usr.visible_message(SPAN_NOTICE("[usr] removes the power cell from [src]."), SPAN_NOTICE("You remove the power cell from [src]."))
+					usr.visible_message(SPAN_NOTICE("[usr]从[src]中取出了电池。"), SPAN_NOTICE("You remove the power cell from [src]."))
 					updateDialog()
 
 			if("cellinsert")
@@ -328,7 +328,7 @@
 							C.forceMove(src)
 							C.add_fingerprint(usr)
 
-							usr.visible_message(SPAN_NOTICE("[usr] inserts a power cell into [src]."), SPAN_NOTICE("You insert the power cell into [src]."))
+							usr.visible_message(SPAN_NOTICE("[usr]将一块电池插入[src]。"), SPAN_NOTICE("You insert the power cell into [src]."))
 							updateDialog()
 
 
@@ -349,7 +349,7 @@
 
 			if("destination")
 				refresh=0
-				var/new_dest = input("Enter new destination tag", "Mulebot [suffix ? "([suffix])" : ""]", destination) as text|null
+				var/new_dest = input("Enter new destination tag", "骡子机器人[suffix ? "([suffix])" : ""]", destination) as text|null
 				refresh=1
 				if(new_dest)
 					set_destination(new_dest)
@@ -357,16 +357,16 @@
 
 			if("setid")
 				refresh=0
-				var/new_id = stripped_input(usr, "Enter new bot ID", "Mulebot [suffix ? "([suffix])" : ""]", suffix)
+				var/new_id = stripped_input(usr, "输入新的机器人ID", "骡子机器人[suffix ? "([suffix])" : ""]", suffix)
 				refresh=1
 				if(new_id)
 					suffix = new_id
-					name = "Mulebot ([suffix])"
+					name = "骡子机器人([suffix])"
 					updateDialog()
 
 			if("sethome")
 				refresh=0
-				var/new_home = stripped_input(usr, "Enter new home tag", "Mulebot [suffix ? "([suffix])" : ""]", home_destination)
+				var/new_home = stripped_input(usr, "输入新的归属标签", "骡子机器人[suffix ? "([suffix])" : ""]", home_destination)
 				refresh=1
 				if(new_home)
 					home_destination = new_home
@@ -396,31 +396,31 @@
 					var/wirebit = text2num(href_list["wire"])
 					wires &= ~wirebit
 				else
-					to_chat(usr, SPAN_NOTICE("You need wirecutters!"))
+					to_chat(usr, SPAN_NOTICE("你需要剪线钳！"))
 			if("wiremend")
 				var/obj/item/held_item = usr.get_held_item()
 				if (held_item && HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
 					var/wirebit = text2num(href_list["wire"])
 					wires |= wirebit
 				else
-					to_chat(usr, SPAN_NOTICE("You need wirecutters!"))
+					to_chat(usr, SPAN_NOTICE("你需要剪线钳！"))
 
 			if("wirepulse")
 				var/obj/item/held_item = usr.get_held_item()
 				if (held_item && HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
 					switch(href_list["wire"])
 						if("1","2")
-							to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] The charge light flickers."))
+							to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] 充电指示灯闪烁。"))
 						if("4")
-							to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] The external warning lights flash briefly."))
+							to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] 外部警告灯短暂闪烁。"))
 						if("8")
-							to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] The load platform clunks."))
+							to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] 载物平台发出咔哒声。"))
 						if("16", "32")
-							to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] The drive motor whines briefly."))
+							to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] 驱动电机短暂发出嗡鸣。"))
 						else
-							to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You hear a radio crackle."))
+							to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] 你听到无线电的噼啪声。"))
 				else
-					to_chat(usr, SPAN_NOTICE("You need a multitool!"))
+					to_chat(usr, SPAN_NOTICE("你需要万用工具！"))
 
 
 
@@ -452,7 +452,7 @@
 // called to load a crate
 /obj/structure/machinery/bot/mulebot/proc/load(atom/movable/C)
 	if((wires & WIRE_LOADCHECK) && !istype(C,/obj/structure/closet/crate))
-		src.visible_message("[src] makes a sighing buzz.", "You hear an electronic buzzing sound.")
+		src.visible_message("[src]发出一声叹息般的嗡嗡声。", "You hear an electronic buzzing sound.")
 		playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 25, 0)
 		return // if not emagged, only allow crates to be loaded
 
@@ -639,25 +639,25 @@
 						blockcount++
 						mode = 4
 						if(blockcount == 3)
-							src.visible_message("[src] makes an annoyed buzzing sound", "You hear an electronic buzzing sound.")
+							src.visible_message("[src]发出一阵恼人的嗡嗡声", "You hear an electronic buzzing sound.")
 							playsound(src.loc, 'sound/machines/buzz-two.ogg', 25, 0)
 
 						if(blockcount > 5) // attempt 5 times before recomputing
 							// find new path excluding blocked turf
-							src.visible_message("[src] makes a sighing buzz.", "You hear an electronic buzzing sound.")
+							src.visible_message("[src]发出一声叹息般的嗡嗡声。", "You hear an electronic buzzing sound.")
 							playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 25, 0)
 
 							spawn(2)
 								calc_path(next)
 								if(length(path) > 0)
-									src.visible_message("[src] makes a delighted ping!", "You hear a ping.")
+									src.visible_message("[src]发出一声欢快的提示音！", "You hear a ping.")
 									playsound(src.loc, 'sound/machines/ping.ogg', 25, 0)
 								mode = 4
 							mode =6
 							return
 						return
 				else
-					src.visible_message("[src] makes an annoyed buzzing sound", "You hear an electronic buzzing sound.")
+					src.visible_message("[src]发出一阵恼人的嗡嗡声", "You hear an electronic buzzing sound.")
 					playsound(src.loc, 'sound/machines/buzz-two.ogg', 25, 0)
 					mode = 5
 					return
@@ -674,11 +674,11 @@
 				if(length(path) > 0)
 					blockcount = 0
 					mode = 4
-					src.visible_message("[src] makes a delighted ping!", "You hear a ping.")
+					src.visible_message("[src]发出一声欢快的提示音！", "You hear a ping.")
 					playsound(src.loc, 'sound/machines/ping.ogg', 25, 0)
 
 				else
-					src.visible_message("[src] makes a sighing buzz.", "You hear an electronic buzzing sound.")
+					src.visible_message("[src]发出一声叹息般的嗡嗡声。", "You hear an electronic buzzing sound.")
 					playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 25, 0)
 
 					mode = 7
@@ -723,7 +723,7 @@
 // called when bot reaches current target
 /obj/structure/machinery/bot/mulebot/proc/at_target()
 	if(!reached_target)
-		src.visible_message("[src] makes a chiming sound!", "You hear a chime.")
+		src.visible_message("[src]发出一声钟鸣！", "You hear a chime.")
 		playsound(src.loc, 'sound/machines/chime.ogg', 25, 0)
 		reached_target = 1
 
@@ -760,7 +760,7 @@
 	if(!(wires & WIRE_MOBAVOID)) //usually just bumps, but if avoidance disabled knock over mobs
 		var/mob/M = A
 		if(ismob(M))
-			src.visible_message(SPAN_DANGER("[src] knocks over [M]!"))
+			src.visible_message(SPAN_DANGER("[src]撞倒了[M]！"))
 			M.stop_pulling()
 			M.apply_effect(8, STUN)
 			M.apply_effect(5, WEAKEN)
@@ -773,7 +773,7 @@
 // called from mob/living/carbon/human/Crossed()
 // when mulebot is in the same loc
 /obj/structure/machinery/bot/mulebot/proc/RunOver(mob/living/carbon/human/H)
-	src.visible_message(SPAN_DANGER("[src] drives over [H]!"))
+	src.visible_message(SPAN_DANGER("[src]碾过了[H]！"))
 	playsound(src.loc, 'sound/effects/splat.ogg', 25, 1)
 
 	var/damage = rand(5,15)
@@ -906,7 +906,7 @@
 	var/list/kv = list(
 		"type" = "mulebot",
 		"name" = suffix,
-		"loca" = (loc ? loc.loc : "Unknown"), // somehow loc can be null and cause a runtime - Quarxink
+		"loca" = (loc ? loc.loc : "未知"), // somehow loc can be null and cause a runtime - Quarxink
 		"mode" = mode,
 		"powr" = (cell ? cell.percent() : 0),
 		"dest" = destination,
@@ -926,7 +926,7 @@
 
 
 /obj/structure/machinery/bot/mulebot/explode()
-	src.visible_message(SPAN_DANGER("<B>[src] blows apart!</B>"), null, null, 1)
+	src.visible_message(SPAN_DANGER("<B>[src]炸得粉碎！</B>"), null, null, 1)
 	var/turf/Tsec = get_turf(src)
 
 	new /obj/item/device/assembly/prox_sensor(Tsec)

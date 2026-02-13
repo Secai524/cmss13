@@ -1,7 +1,7 @@
 
 /datum/tech/repeatable/cryomarine
-	name = "Wake Up Additional Troops"
-	desc = "Wakes up additional troops to fight against any threats."
+	name = "唤醒额外部队"
+	desc = "唤醒额外部队以对抗任何威胁。"
 	icon_state = "cryotroops"
 
 	announce_message = "Additional troops are being taken out of cryo."
@@ -17,9 +17,9 @@
 	if(!.)
 		return
 	if(!SSticker.mode)
-		to_chat(M, SPAN_WARNING("You can't do this right now!"))
+		to_chat(M, SPAN_WARNING("你现在无法执行此操作！"))
 		return
 
 /datum/tech/repeatable/cryomarine/on_unlock()
 	. = ..()
-	SSticker.mode.get_specific_call(/datum/emergency_call/cryo_squad/tech, TRUE, FALSE) // "Marine Cryo Reinforcements (Tech)"
+	SSticker.mode.get_specific_call(/datum/emergency_call/cryo_squad/tech, TRUE, FALSE) // "陆战队员冷冻增援（技术）"

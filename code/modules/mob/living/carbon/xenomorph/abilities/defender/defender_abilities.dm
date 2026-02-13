@@ -1,5 +1,5 @@
 /datum/action/xeno_action/onclick/toggle_crest
-	name = "Toggle Crest Defense"
+	name = "切换冠部防御"
 	action_icon_state = "crest_defense"
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_crest
 	action_type = XENO_ACTION_ACTIVATE
@@ -11,7 +11,7 @@
 	var/speed_debuff = 1
 
 /datum/action/xeno_action/activable/headbutt
-	name = "Headbutt"
+	name = "头槌"
 	action_icon_state = "headbutt"
 	macro_path = /datum/action/xeno_action/verb/verb_headbutt
 	action_type = XENO_ACTION_CLICK
@@ -26,7 +26,7 @@
 	usable_while_fortified = TRUE
 
 /datum/action/xeno_action/onclick/tail_sweep
-	name = "Tail Sweep"
+	name = "尾部横扫"
 	action_icon_state = "tail_sweep"
 	macro_path = /datum/action/xeno_action/verb/verb_tail_sweep
 	action_type = XENO_ACTION_ACTIVATE
@@ -35,7 +35,7 @@
 	xeno_cooldown = 11 SECONDS
 
 /datum/action/xeno_action/activable/fortify
-	name = "Fortify"
+	name = "加固"
 	action_icon_state = "fortify"
 	macro_path = /datum/action/xeno_action/verb/verb_fortify
 	action_type = XENO_ACTION_ACTIVATE
@@ -49,12 +49,12 @@
 	frontal_armor = 15
 
 /datum/action/xeno_action/activable/tail_stab/slam
-	name = "Tail Slam"
+	name = "尾部猛击"
 	action_icon_state = "tail_slam"
 	blunt_stab = TRUE
 
 /datum/action/xeno_action/onclick/soak
-	name = "Soak"
+	name = "吸收"
 	action_icon_state = "soak"
 	macro_path = /datum/action/xeno_action/verb/verb_soak
 	action_type = XENO_ACTION_ACTIVATE

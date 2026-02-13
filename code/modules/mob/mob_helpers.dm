@@ -507,17 +507,17 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 		return
 
 	if(!hand && r_hand)
-		to_chat(usr, SPAN_DANGER("Your right hand is full."))
+		to_chat(usr, SPAN_DANGER("你的右手满了。"))
 		return
 	if(hand && l_hand)
-		to_chat(usr, SPAN_DANGER("Your left hand is full."))
+		to_chat(usr, SPAN_DANGER("你的左手满了。"))
 		return
 
 	if(pickupify.anchored)
-		to_chat(usr, SPAN_DANGER("You can't pick that up!"))
+		to_chat(usr, SPAN_DANGER("你无法拾取那个！"))
 		return
 	if(!isturf(pickupify.loc))
-		to_chat(usr, SPAN_DANGER("You can't pick that up!"))
+		to_chat(usr, SPAN_DANGER("你无法拾取那个！"))
 		return
 
 	next_move += 6 // stop insane pickup speed

@@ -1,6 +1,6 @@
 
 /datum/equipment_preset/survivor/scientist/fiorina
-	name = "Survivor - Fiorina Researcher"
+	name = "幸存者 - 菲奥里纳研究员"
 	assignment = "Fiorina Researcher"
 
 /datum/equipment_preset/survivor/scientist/fiorina/load_gear(mob/living/carbon/human/new_human)
@@ -17,7 +17,7 @@
 
 
 /datum/equipment_preset/survivor/doctor/fiorina
-	name = "Survivor - Fiorina Doctor"
+	name = "幸存者 - 菲奥里纳医生"
 	assignment = "Fiorina Doctor"
 
 /datum/equipment_preset/survivor/doctor/fiorina/load_gear(mob/living/carbon/human/new_human)
@@ -27,7 +27,7 @@
 	..()
 
 /datum/equipment_preset/survivor/security/fiorina
-	name = "Survivor - Fiorina Prison Guard"
+	name = "幸存者 - 菲奥里纳狱警"
 	assignment = JOB_WY_SEC
 	job_title = JOB_WY_SEC
 	minimap_background = "background_goon"
@@ -49,7 +49,7 @@
 	..()
 
 /datum/equipment_preset/survivor/colonial_marshal/fiorina
-	name = "Survivor - United Americas Riot Officer"
+	name = "幸存者 - 联合美洲防暴官"
 	assignment = "United Americas Riot Officer"
 	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/silver
@@ -72,7 +72,7 @@
 	..()
 
 /datum/equipment_preset/survivor/engineer/fiorina
-	name = "Survivor - Fiorina Engineer"
+	name = "幸存者 - 菲奥里纳工程师"
 	assignment = "Fiorina Engineer"
 
 /datum/equipment_preset/survivor/engineer/fiorina/load_gear(mob/living/carbon/human/new_human)
@@ -84,7 +84,7 @@
 	..()
 
 /datum/equipment_preset/survivor/corporate/fiorina
-	name = "Survivor - Fiorina Corporate Liaison"
+	name = "幸存者 - 菲奥里纳公司联络官"
 	assignment = "Fiorina Corporate Liaison"
 
 /datum/equipment_preset/survivor/corporate/fiorina/load_gear(mob/living/carbon/human/new_human)

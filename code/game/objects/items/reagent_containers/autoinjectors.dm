@@ -1,9 +1,9 @@
 /obj/item/reagent_container/hypospray/autoinjector
-	name = "inaprovaline autoinjector"
+	name = "伊纳普罗瓦林自动注射器"
 	var/chemname = "inaprovaline"
 	var/autoinjector_type = "autoinjector" //referencing the icon state name in syringe.dmi
 	//desc = "A rapid and safe way to administer small amounts of drugs by untrained or trained personnel."
-	desc = "An autoinjector containing Inaprovaline. Useful for saving lives."
+	desc = "一支装有伊纳普罗瓦林的自动注射器。可用于挽救生命。"
 	icon_state = "empty"
 	item_state = "autoinjector"
 	item_state_slots = list(WEAR_AS_GARB = "injector")
@@ -70,7 +70,7 @@
 	if(uses_left)
 		. += SPAN_NOTICE("It is currently loaded with [uses_left].")
 	else
-		. += SPAN_NOTICE("It is empty.")
+		. += SPAN_NOTICE("它是空的。")
 
 /obj/item/reagent_container/hypospray/autoinjector/equipped()
 	..()
@@ -86,43 +86,43 @@
 
 
 /obj/item/reagent_container/hypospray/autoinjector/tricord
-	name = "tricordrazine autoinjector"
+	name = "三合剂自动注射器"
 	chemname = "tricordrazine"
-	desc = "An autoinjector loaded with 3 doses of 15u of Tricordrazine, a weak general use medicine for treating damage."
+	desc = "一支装有3剂15单位三合剂的自动注射器，这是一种用于治疗损伤的弱效通用药物。"
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 	display_maptext = TRUE
 	maptext_label = "Tc"
 
 /obj/item/reagent_container/hypospray/autoinjector/tricord/skillless
-	name = "tricordrazine EZ autoinjector"
-	desc = "An EZ autoinjector loaded with 3 doses of 15u of Tricordrazine, a weak general use medicine for treating damage. You can refill it at Wey-Med vending machines and it does not require any training to use."
+	name = "三合剂EZ自动注射器"
+	desc = "一支EZ自动注射器，装有3剂15单位三合剂，这是一种用于治疗损伤的弱效通用药物。可在维兰德医疗售货机补充，且无需任何训练即可使用。"
 	icon_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
 	maptext_label = "EzTc"
 
 /obj/item/reagent_container/hypospray/autoinjector/adrenaline
-	name = "epinephrine autoinjector"
+	name = "肾上腺素自动注射器"
 	chemname = "adrenaline"
-	desc = "An autoinjector loaded with 3 doses of 5.25u of Epinephrine, better known as Adrenaline, a nerve stimulant useful in restarting the heart. You can refill it at Wey-Med vending machines."
+	desc = "一支装有3剂5.25单位肾上腺素的自动注射器，肾上腺素是一种神经兴奋剂，可用于心脏复苏。可在维兰德医疗售货机补充。"
 	amount_per_transfer_from_this = LOWM_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (LOWM_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 	display_maptext = TRUE
 	maptext_label = "Ep"
 
 /obj/item/reagent_container/hypospray/autoinjector/dexalinp
-	name = "dexalin plus autoinjector"
+	name = "地克沙林+自动注射器"
 	chemname = "dexalinp"
-	desc = "An autoinjector loaded with 3 doses of 1u of Dexalin+, designed to immediately oxygenate the entire body. You can refill it at Wey-Med vending machines."
+	desc = "一支装有3剂1单位地克沙林+的自动注射器，设计用于立即为全身供氧。可在维兰德医疗售货机补充。"
 	amount_per_transfer_from_this = 1
 	volume = 3
 	display_maptext = TRUE
 	maptext_label = "D+"
 
 /obj/item/reagent_container/hypospray/autoinjector/chloralhydrate
-	name = "anesthetic autoinjector"
+	name = "麻醉剂自动注射器"
 	chemname = "anesthetic"
-	desc = "An autoinjector loaded with 3 doses of 1u of Chloral Hydrate and 9u of Sleeping Agent. Good to quickly pacify someone, for surgery of course."
+	desc = "一支装有3剂1单位水合氯醛和9单位催眠剂的自动注射器。可快速使人镇静，当然，也用于手术。"
 	amount_per_transfer_from_this = 10
 	volume = 30
 	mixed_chem = TRUE
@@ -136,24 +136,24 @@
 	update_icon()
 
 /obj/item/reagent_container/hypospray/autoinjector/tramadol
-	name = "tramadol autoinjector"
+	name = "曲马多自动注射器"
 	chemname = "tramadol"
-	desc = "An autoinjector loaded with 3 doses of 15u of Tramadol, a weak but effective painkiller for normal wounds. You can refill it at Wey-Med vending machines."
+	desc = "一支装有3剂15单位曲马多的自动注射器，这是一种针对普通伤口的弱效但有效的止痛药。可在维兰德医疗售货机补充。"
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 	display_maptext = TRUE
 	maptext_label = "Tr"
 
 /obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless
-	name = "tramadol EZ autoinjector"
-	desc = "An EZ autoinjector loaded with 3 doses of 15u of Tramadol, a weak but effective painkiller for normal wounds. You can refill it at Wey-Med vending machines and it doesn't require any training to use."
+	name = "曲马多EZ自动注射器"
+	desc = "一支EZ自动注射器，装有3剂15单位曲马多，这是一种针对普通伤口的弱效但有效的止痛药。可在维兰德医疗售货机补充，且无需任何训练即可使用。"
 	icon_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
 	maptext_label = "EzTr"
 
 /obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless/one_use
-	name = "single-use tramadol EZ autoinjector"
-	desc = "An EZ autoinjector loaded with a single dose of 15u of Tramadol, a weak but effective painkiller for normal wounds. You cannot refill it, but it doesn't require any training to use."
+	name = "一次性曲马多EZ自动注射器"
+	desc = "一支EZ自动注射器，装有单剂15单位曲马多，这是一种针对普通伤口的弱效但有效的止痛药。无法补充，但无需任何训练即可使用。"
 	icon_state = "empty_oneuse"
 	autoinjector_type = "autoinjector_oneuse"
 	volume = 15
@@ -163,34 +163,34 @@
 	maptext_label = "OuTr"
 
 /obj/item/reagent_container/hypospray/autoinjector/oxycodone
-	name = "oxycodone autoinjector (EXTREME PAINKILLER)"
+	name = "羟考酮自动注射器（强效止痛药）"
 	chemname = "oxycodone"
-	desc = "An autoinjector loaded with 3 doses of 10u of Oxycodone, a powerful painkiller intended for life-threatening situations. You can refill it at Wey-Med vending machines."
+	desc = "一支装有3剂10单位羟考酮的自动注射器，这是一种用于危及生命情况的强效止痛药。可在维兰德医疗售货机补充。"
 	amount_per_transfer_from_this = MED_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (MED_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 	display_maptext = TRUE
 	maptext_label = "Ox"
 
 /obj/item/reagent_container/hypospray/autoinjector/kelotane
-	name = "kelotane autoinjector"
+	name = "凯洛坦自动注射器"
 	chemname = "kelotane"
-	desc = "An autoinjector loaded with 3 doses of 15u of Kelotane, a common burn medicine. You can refill it at Wey-Med vending machines."
+	desc = "一支装有3剂15单位凯洛坦的自动注射器，这是一种常见的烧伤药物。可在维兰德医疗售货机补充。"
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 	display_maptext = TRUE
 	maptext_label = "Kl"
 
 /obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless
-	name = "kelotane EZ autoinjector"
-	desc = "An EZ autoinjector loaded with 3 doses of 15u of Kelotane, a common burn medicine. Doesn't require any training to use. You can refill it at Wey-Med vending machines."
+	name = "凯洛坦EZ自动注射器"
+	desc = "一支EZ自动注射器，装有3剂15单位凯洛坦，这是一种常见的烧伤药物。无需任何训练即可使用。可在维兰德医疗售货机补充。"
 	icon_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
 	display_maptext = TRUE
 	maptext_label = "EzKl"
 
 /obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless/one_use
-	name = "single-use kelotane EZ autoinjector"
-	desc = "An EZ autoinjector loaded with a single dose of 15u of Kelotane, a common burn medicine. You cannot refill it, but it doesn't require any training to use."
+	name = "一次性凯洛坦EZ自动注射器"
+	desc = "一支EZ自动注射器，预装单次剂量15单位的凯洛坦，一种常见的烧伤药物。无法重新装填，但无需任何训练即可使用。"
 	icon_state = "empty_oneuse"
 	autoinjector_type = "autoinjector_oneuse"
 	volume = 15
@@ -200,25 +200,25 @@
 	maptext_label = "OuKl"
 
 /obj/item/reagent_container/hypospray/autoinjector/bicaridine
-	name = "bicaridine autoinjector"
+	name = "碧卡利定自动注射器"
 	chemname = "bicaridine"
-	desc = "An autoinjector loaded with 3 doses of 15u of Bicaridine, a common brute and circulatory damage medicine. You can refill it at Wey-Med vending machines."
+	desc = "一支自动注射器，预装3次剂量，每次15单位的碧卡利定，一种常见的钝器伤及循环系统损伤药物。可在维兰德医疗售货机处重新装填。"
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 	display_maptext = TRUE
 	maptext_label = "Bi"
 
 /obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless
-	name = "bicaridine EZ autoinjector"
-	desc = "An EZ autoinjector loaded with 3 doses of 15u of Bicaridine, a common brute and circulatory damage medicine. Doesn't require any training to use."
+	name = "碧卡利定EZ自动注射器"
+	desc = "一支EZ自动注射器，预装3次剂量，每次15单位的碧卡利定，一种常见的钝器伤及循环系统损伤药物。无需任何训练即可使用。"
 	icon_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
 	display_maptext = TRUE
 	maptext_label = "EzBi"
 
 /obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless/one_use
-	name = "single-use bicaridine EZ autoinjector"
-	desc = "An EZ autoinjector loaded with a single dose of 15u of Bicaridine, a common brute and circulatory damage medicine. You cannot refill it, but it doesn't require any training to use."
+	name = "一次性碧卡利定EZ自动注射器"
+	desc = "一支EZ自动注射器，预装单次剂量15单位的碧卡利定，一种常见的钝器伤及循环系统损伤药物。无法重新装填，但无需任何训练即可使用。"
 	icon_state = "empty_oneuse"
 	autoinjector_type = "autoinjector_oneuse"
 	volume = 15
@@ -228,25 +228,25 @@
 	maptext_label = "OuBi"
 
 /obj/item/reagent_container/hypospray/autoinjector/antitoxin
-	name = "dylovene autoinjector"
+	name = "迪洛芬自动注射器"
 	chemname = "anti_toxin"
-	desc = "An autoinjector loaded with 3 doses of 15u of Dylovene, a common toxin damage medicine. You can refill it at Wey-Med vending machines."
+	desc = "一支自动注射器，预装3次剂量，每次15单位的迪洛芬，一种常见的毒素损伤药物。可在维兰德医疗售货机处重新装填。"
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 	display_maptext = TRUE
 	maptext_label = "Dy"
 
 /obj/item/reagent_container/hypospray/autoinjector/antitoxin/skillless
-	name = "dylovene EZ autoinjector"
-	desc = "An EZ autoinjector loaded with 3 doses of 15u of Dylovene, a common toxin damage medicine. Doesn't require any training to use. You can refill it at Wey-Med vending machines."
+	name = "迪洛芬EZ自动注射器"
+	desc = "一支EZ自动注射器，预装3次剂量，每次15单位的迪洛芬，一种常见的毒素损伤药物。无需任何训练即可使用。可在维兰德医疗售货机处重新装填。"
 	icon_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
 	display_maptext = TRUE
 	maptext_label = "EzDy"
 
 /obj/item/reagent_container/hypospray/autoinjector/antitoxin/skillless/one_use
-	name = "single-use dylovene EZ autoinjector"
-	desc = "An EZ autoinjector loaded with a single dose of 15u of Dylovene, a common toxin damage medicine. You cannot refill it, but it doesn't require any training to use."
+	name = "一次性迪洛芬EZ自动注射器"
+	desc = "一支EZ自动注射器，预装单次剂量15单位的迪洛芬，一种常见的毒素损伤药物。无法重新装填，但无需任何训练即可使用。"
 	icon_state = "empty_oneuse"
 	autoinjector_type = "autoinjector_oneuse"
 	volume = 15
@@ -256,8 +256,8 @@
 	maptext_label = "OuDy"
 
 /obj/item/reagent_container/hypospray/autoinjector/meralyne
-	name = "meralyne autoinjector"
-	desc = "An autoinjector loaded with 3 doses of 15u of Meralyne, an advanced brute and circulatory damage medicine."
+	name = "梅拉林自动注射器"
+	desc = "一支自动注射器，预装3次剂量，每次15单位的梅拉林，一种高级的钝器伤及循环系统损伤药物。"
 	chemname = "meralyne"
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
@@ -265,8 +265,8 @@
 	maptext_label = "Me"
 
 /obj/item/reagent_container/hypospray/autoinjector/dermaline
-	name = "dermaline autoinjector"
-	desc = "An autoinjector loaded with 3 doses of 15u of Dermaline, an advanced burn medicine."
+	name = "德马林自动注射器"
+	desc = "一支自动注射器，预装3次剂量，每次15单位的德马林，一种高级烧伤药物。"
 	chemname = "dermaline"
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
@@ -274,26 +274,26 @@
 	maptext_label = "De"
 
 /obj/item/reagent_container/hypospray/autoinjector/inaprovaline
-	name = "inaprovaline autoinjector"
+	name = "伊纳普罗瓦林自动注射器"
 	chemname = "inaprovaline"
-	desc = "An autoinjector loaded with 3 doses of 30u of Inaprovaline, an emergency stabilization medicine for patients in critical condition. You can refill it at Wey-Med vending machines."
+	desc = "一支自动注射器，预装3次剂量，每次30单位的伊纳普罗瓦林，一种用于危急状态病人的紧急稳定药物。可在维兰德医疗售货机处重新装填。"
 	amount_per_transfer_from_this = HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 	display_maptext = TRUE
 	maptext_label = "In"
 
 /obj/item/reagent_container/hypospray/autoinjector/peridaxon
-	name = "peridaxon autoinjector"
+	name = "培利达松自动注射器"
 	chemname = "peridaxon"
-	desc = "An autoinjector loaded with 3 doses of 7.5u of Peridaxon, an emergency medicine used to stop most symptoms of organ damage. Does not fix organ damage. You can refill it at Wey-Med vending machines."
+	desc = "一支自动注射器，预装3次剂量，每次7.5单位的培利达松，一种用于阻止大多数器官损伤症状的紧急药物。无法修复器官损伤。可在维兰德医疗售货机处重新装填。"
 	amount_per_transfer_from_this = LOWH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (LOWH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 	display_maptext = TRUE
 	maptext_label = "Pr"
 
 /obj/item/reagent_container/hypospray/autoinjector/emergency
-	name = "emergency autoinjector (CAUTION)"
-	desc = "An autoinjector loaded with a single dose of 77u of a special cocktail of chemicals, to be used in life-threatening situations. Doesn't require any training to use."
+	name = "紧急自动注射器（警告）"
+	desc = "一支自动注射器，预装单次剂量77单位的特殊化学混合物，用于危及生命的紧急情况。无需任何训练即可使用。"
 	icon_state = "empty_emergency"
 	chemname = "emergency"
 	autoinjector_type = "autoinjector_oneuse"
@@ -316,7 +316,7 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/black_goo_cure
 	name = "\"Pathogen\" cure autoinjector (SINGLE-USE)"
-	desc = "An autoinjector loaded with a single dose of a cure for Agent A0-3959X.91–15, also known as the 'black-goo'. Doesn't require any training to administrate."
+	desc = "一支自动注射器，预装单次剂量的A0-3959X.91–15号制剂（亦称‘黑水’）解药。无需任何训练即可使用。"
 	icon_state = "empty_research_oneuse"
 	chemname = "antiZed"
 	autoinjector_type = "autoinjector_oneuse"
@@ -334,9 +334,9 @@
 	update_icon()
 
 /obj/item/reagent_container/hypospray/autoinjector/ultrazine
-	name = "ultrazine autoinjector"
+	name = "超能素自动注射器"
 	chemname = "ultrazine"
-	desc = "An autoinjector loaded with 5 doses of 5u of Ultrazine, a special and illegal muscle stimulant. Do not administer more than twice at a time. Highly addictive."
+	desc = "一支自动注射器，预装5次剂量，每次5单位的超能素，一种特殊且非法的肌肉兴奋剂。切勿一次性注射超过两次。极易上瘾。"
 	amount_per_transfer_from_this = 5
 	volume = 25
 	uses_left = 5
@@ -356,19 +356,19 @@
 		maptext = ""
 
 /obj/item/reagent_container/hypospray/autoinjector/ultrazine/empty
-	name = "empty ultrazine autoinjector"
+	name = "空的超能剂自动注射器"
 	volume = 0
 	uses_left = 0
 
 /obj/item/reagent_container/hypospray/autoinjector/ultrazine/liaison
-	name = "white autoinjector"
-	desc = "You know what they say, don't jab yourself with suspicious syringes."
+	name = "白色自动注射器"
+	desc = "你知道他们怎么说，别用可疑的注射器扎自己。"
 	maptext_label = "??"
 
 /obj/item/reagent_container/hypospray/autoinjector/yautja
-	name = "unusual crystal"
+	name = "异常晶体"
 	chemname = "thwei"
-	desc = "A strange glowing crystal with a spike at one end."
+	desc = "一块一端带尖刺、发出诡异光芒的晶体。"
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "crystal"
 	injectSFX = 'sound/items/pred_crystal_inject.ogg'
@@ -383,13 +383,13 @@
 	if(HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		..()
 	else
-		to_chat(user, SPAN_DANGER("You have no idea where to inject [src]."))
+		to_chat(user, SPAN_DANGER("你不知道该往哪里注射[src]。"))
 
 	if(uses_left == 0)
 		addtimer(CALLBACK(src, PROC_REF(remove_crystal)), 120 SECONDS)
 
 /obj/item/reagent_container/hypospray/autoinjector/yautja/proc/remove_crystal()
-	visible_message(SPAN_DANGER("[src] collapses into nothing."))
+	visible_message(SPAN_DANGER("[src]坍缩消失，化为乌有。"))
 	qdel(src)
 
 /obj/item/reagent_container/hypospray/autoinjector/yautja/update_icon()
@@ -400,9 +400,9 @@
 		return
 
 /obj/item/reagent_container/hypospray/autoinjector/skillless
-	name = "first-aid autoinjector"
+	name = "急救自动注射器"
 	chemname = "tricordrazine"
-	desc = "An autoinjector loaded with a single dose of 15u of tricordrazine for marines to treat themselves with. You can refill it at Wey-Med vending machines."
+	desc = "一支装载了单次15单位三合剂的自动注射器，供陆战队员自行治疗。可在维兰德医疗贩卖机补充。"
 	icon_state = "tricord"
 	autoinjector_type = null
 	amount_per_transfer_from_this = 15
@@ -430,18 +430,18 @@
 	else if(!uses_left)
 		. += SPAN_NOTICE("It is spent.")
 	else
-		. += SPAN_NOTICE("It is empty.")
+		. += SPAN_NOTICE("它是空的。")
 
 /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol
-	name = "pain-stop autoinjector"
+	name = "止痛自动注射器"
 	chemname = "tramadol"
 	icon_state = "tramadol"
-	desc = "An autoinjector loaded with a single 15u dose of tramadol for marines to self-administer. You can refill it at Wey-Med vending machines."
+	desc = "一支装载了单次15单位曲马多的自动注射器，供陆战队员自行使用。可在维兰德医疗贩卖机补充。"
 	maptext_label = "OuPs"
 
 /obj/item/reagent_container/hypospray/autoinjector/empty
-	name = "5u custom autoinjector"
-	desc = "A custom-made autoinjector, likely from research. You can refill it with a pressurized reagent canister pouch."
+	name = "5单位定制自动注射器"
+	desc = "一支定制自动注射器，可能来自研究部。可使用加压试剂罐袋补充。"
 	icon_state = "empty_research"
 	mixed_chem = TRUE
 	amount_per_transfer_from_this = 5
@@ -454,23 +454,23 @@
 	. += SPAN_NOTICE("It transfers [amount_per_transfer_from_this]u per injection and has a maximum of [volume/amount_per_transfer_from_this] injections.")
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/small
-	name = "15u custom autoinjector"
+	name = "15单位定制自动注射器"
 	amount_per_transfer_from_this = 15
 	volume = 45
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/medium
-	name = "30u custom autoinjector"
+	name = "30单位定制自动注射器"
 	amount_per_transfer_from_this = 30
 	volume = 90
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/large
-	name = "60u custom autoinjector"
+	name = "60单位定制自动注射器"
 	amount_per_transfer_from_this = 60
 	volume = 180
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/skillless
-	name = "15u custom EZ autoinjector"
-	desc = "A custom-made EZ autoinjector, likely from research. You can refill it with a pressurized reagent canister pouch. It injects its entire payload immediately and doesn't require any training."
+	name = "15单位定制EZ自动注射器"
+	desc = "一支定制EZ自动注射器，可能来自研究部。可使用加压试剂罐袋补充。它会立即注射全部药剂，且无需任何训练。"
 	icon_state = "empty_research_oneuse"
 	autoinjector_type = "autoinjector_oneuse"
 	skilllock = SKILL_MEDICAL_DEFAULT
@@ -479,38 +479,38 @@
 	uses_left = 0
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/unit
-	name = "1u custom EZ autoinjector"
+	name = "1单位定制EZ自动注射器"
 	volume = 1
 	amount_per_transfer_from_this = 1
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/verysmall
-	name = "5u custom EZ autoinjector"
+	name = "5单位定制EZ自动注射器"
 	volume = 5
 	amount_per_transfer_from_this = 5
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/small
-	name = "10u custom EZ autoinjector"
+	name = "10单位定制EZ自动注射器"
 	volume = 10
 	amount_per_transfer_from_this = 10
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/medium
-	name = "30u custom EZ autoinjector"
+	name = "30单位定制EZ自动注射器"
 	volume = 30
 	amount_per_transfer_from_this = 30
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/large
-	name = "45u custom EZ autoinjector"
+	name = "45单位定制EZ自动注射器"
 	volume = 45
 	amount_per_transfer_from_this = 45
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/extralarge
-	name = "60u custom EZ autoinjector"
+	name = "60单位定制EZ自动注射器"
 	volume = 60
 	amount_per_transfer_from_this = 60
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/medic
-	name = "15u Reagent Pouch Autoinjector"
-	desc = "An autoinjector specifically designed to fit inside and refill from Pressurized Reagent Canister Pouches. Has a similar lock to pill bottles, and fits up to 6 injections."
+	name = "15单位试剂袋自动注射器"
+	desc = "一种专门设计用于装入加压试剂罐包并从中补充的自动注射器。具有类似药瓶的锁定装置，最多可容纳6次注射。"
 	skilllock = SKILL_MEDICAL_MEDIC
 	volume = 90
 	amount_per_transfer_from_this = 15
@@ -519,6 +519,6 @@
 	uses_left = 0
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/medic/large
-	name = "30u Reagent Pouch Autoinjector"
+	name = "30单位试剂包自动注射器"
 	volume = 180
 	amount_per_transfer_from_this = 30

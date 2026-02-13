@@ -3,7 +3,7 @@
 	name = "photocopier"
 	icon = 'icons/obj/structures/machinery/library.dmi'
 	icon_state = "bigscanner"
-	desc = "A photocopier used for copying... you know, photos! Also useful for copying documents on paper. This specific model has been manufactured by Seegson in a cheaper frame than most modern photocopiers. It uses more primitive copying technology resulting in more toner waste and less printing capabilities. Nonetheless, its cheap construction means cheaper costs, and for people that only need to print a paper or two most of the time, it becomes cost-effective."
+	desc = "一台用于复印的复印机……你知道的，复印照片！也适用于复印纸质文件。这款特定型号由西格森制造，框架比大多数现代复印机更廉价。它采用更原始的复印技术，导致碳粉浪费更多，打印能力更弱。尽管如此，其廉价结构意味着更低的成本，对于大多数时候只需要打印一两张纸的人来说，它变得经济实惠。"
 	anchored = TRUE
 	density = TRUE
 	use_power = USE_POWER_IDLE
@@ -80,7 +80,7 @@
 				var/j = 0
 				for(var/obj/item/W in bundle)
 					if(toner <= 0)
-						to_chat(usr, SPAN_NOTICE("The photocopier couldn't finish the printjob."))
+						to_chat(usr, SPAN_NOTICE("复印机无法完成打印作业。"))
 						break
 					else if(istype(W, /obj/item/paper))
 						W = copy(W)
@@ -99,19 +99,19 @@
 		if(copy)
 			copy.forceMove(usr.loc)
 			usr.put_in_hands(copy)
-			to_chat(usr, SPAN_NOTICE("You take the paper out of \the [src]."))
+			to_chat(usr, SPAN_NOTICE("你从\the [src]中取出纸张。"))
 			copy = null
 			updateUsrDialog()
 		else if(photocopy)
 			photocopy.forceMove(usr.loc)
 			usr.put_in_hands(photocopy)
-			to_chat(usr, SPAN_NOTICE("You take the photo out of \the [src]."))
+			to_chat(usr, SPAN_NOTICE("你从\the [src]中取出照片。"))
 			photocopy = null
 			updateUsrDialog()
 		else if(bundle)
 			bundle.forceMove(usr.loc)
 			usr.put_in_hands(bundle)
-			to_chat(usr, SPAN_NOTICE("You take the paper bundle out of \the [src]."))
+			to_chat(usr, SPAN_NOTICE("你从\the [src]中取出文件捆。"))
 			bundle = null
 			updateUsrDialog()
 	else if(href_list["min"])
@@ -128,25 +128,25 @@
 		if(!copy && !photocopy && !bundle)
 			if(user.drop_inv_item_to_loc(O, src))
 				copy = O
-				to_chat(user, SPAN_NOTICE("You insert the paper into \the [src]."))
+				to_chat(user, SPAN_NOTICE("你将纸张插入\the [src]。"))
 				flick(animate_state, src)
 				updateUsrDialog()
 		else
-			to_chat(user, SPAN_NOTICE("There is already something in \the [src]."))
+			to_chat(user, SPAN_NOTICE("\the [src]中已有物品。"))
 	else if(istype(O, /obj/item/photo))
 		if(!copy && !photocopy && !bundle)
 			if(user.drop_inv_item_to_loc(O, src))
 				photocopy = O
-				to_chat(user, SPAN_NOTICE("You insert the photo into \the [src]."))
+				to_chat(user, SPAN_NOTICE("你将照片插入\the [src]。"))
 				flick(animate_state, src)
 				updateUsrDialog()
 		else
-			to_chat(user, SPAN_NOTICE("There is already something in \the [src]."))
+			to_chat(user, SPAN_NOTICE("\the [src]中已有物品。"))
 	else if(istype(O, /obj/item/paper_bundle))
 		if(!copy && !photocopy && !bundle)
 			if(user.drop_inv_item_to_loc(O, src))
 				bundle = O
-				to_chat(user, SPAN_NOTICE("You insert the bundle into \the [src]."))
+				to_chat(user, SPAN_NOTICE("你将文件捆插入\the [src]。"))
 				flick(animate_state, src)
 				updateUsrDialog()
 	else if(istype(O, /obj/item/device/toner))
@@ -154,14 +154,14 @@
 			if(user.temp_drop_inv_item(O))
 				qdel(O)
 				toner = initial(toner)
-				to_chat(user, SPAN_NOTICE("You insert the toner cartridge into \the [src]."))
+				to_chat(user, SPAN_NOTICE("你将碳粉盒插入\the [src]。"))
 				updateUsrDialog()
 		else
-			to_chat(user, SPAN_NOTICE("This cartridge is not yet ready for replacement! Use up the rest of the toner."))
+			to_chat(user, SPAN_NOTICE("这个碳粉盒还没到更换的时候！把剩余的碳粉用完。"))
 	else if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 		anchored = !anchored
-		to_chat(user, SPAN_NOTICE("You [anchored ? "wrench" : "unwrench"] \the [src]."))
+		to_chat(user, SPAN_NOTICE("你[anchored ? "wrench" : "unwrench"] \the [src]."))
 	return
 
 /obj/structure/machinery/photocopier/ex_act(severity)
@@ -262,7 +262,7 @@
 	name = "photocopier"
 	icon = 'icons/obj/structures/machinery/library.dmi'
 	icon_state = "bigscannerpro"
-	desc = "A photocopier used for copying... you know, photos! Also useful for copying documents on paper. This specific model has been manufactured by Weyland-Yutani in a more modern and robust frame than the average photocopiers you see from smaller companies. It uses some of the most advanced technologies in the area of paper-printing such as bigger toner economy and much higher printing capabilities. All that makes it the favorite among consumers that need to print high amounts of paperwork for their daily duties."
+	desc = "一台用于复印的复印机……你知道的，复印照片！也适用于复印纸质文件。这款特定型号由维兰德-汤谷制造，框架比你在小公司看到的普通复印机更现代、更坚固。它采用了纸张打印领域的一些最先进技术，例如更高的碳粉经济性和更强的打印能力。所有这些使其成为需要大量打印日常文书工作的消费者的最爱。"
 	idle_power_usage = 50
 	active_power_usage = 300
 	copies = 1
@@ -272,5 +272,5 @@
 
 /// The actual toner cartridge used in photcopiers
 /obj/item/device/toner
-	name = "toner cartridge"
+	name = "碳粉盒"
 	icon_state = "tonercartridge"

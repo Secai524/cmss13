@@ -1,7 +1,7 @@
 ///Thrall Armor & Material Types
 /obj/item/clothing/suit/armor/yautja/thrall
-	name = "alien armor"
-	desc = "Armor made from a strange alloy. It feels cold with an alien weight. It has been adapted to carry both human and alien melee weaponry."
+	name = "外星护甲"
+	desc = "由奇异合金制成的护甲。触感冰冷，带着异样的重量。它经过改造，可同时携带人类和异形的近战武器。"
 
 	icon = 'icons/obj/items/hunter/thrall_gear.dmi'
 	icon_state = "thrallarmor_ebony"
@@ -48,8 +48,8 @@
 
 ///Thrall Greaves & Material Types
 /obj/item/clothing/shoes/yautja/thrall
-	name = "alien greaves"
-	desc = "Greaves made from scraps of cloth and a strange alloy. They feel cold with an alien weight. They have been adapted for compatibility with human equipment."
+	name = "异形胫甲"
+	desc = "由碎布和奇异合金制成的胫甲。触感冰冷，带着异样的重量。它们经过改造，以兼容人类装备。"
 
 	icon = 'icons/obj/items/hunter/thrall_gear.dmi'
 	icon_state = "thrallgreaves_ebony"
@@ -110,20 +110,20 @@
 
 ///Subtype for name & desc
 /obj/item/clothing/under/chainshirt/thrall
-	name = "alien mesh suit"
-	desc = "A strange alloy weave in the form of a vest. It feels cold with an alien weight. It has been adapted for human physiology."
+	name = "异形网眼护服"
+	desc = "一件由奇异合金编织而成的背心。触感冰冷，带着异样的重量。它已为人类生理结构进行了适应性改造。"
 
 ///Subtype of base bracers, not hunter ones. Different name, desc, & color.
 /obj/item/clothing/gloves/yautja/thrall
-	name = "thrall bracers"
-	desc = "A pair of strange alien bracers, adapted for human biology."
+	name = "仆从护腕"
+	desc = "一对奇异的异形护腕，已为人类生物学进行了适应性改造。"
 
 	color = "#b85440"
 	minimap_icon = "thrall"
 
 /obj/item/storage/box/bracer
-	name = "alien box"
-	desc = "A strange, runed box."
+	name = "异形盒子"
+	desc = "一个刻有符文的奇异盒子。"
 	color = "#68423b"
 	icon = 'icons/obj/structures/closet.dmi'
 	icon_state = "pred_coffin"
@@ -134,8 +134,8 @@
 
 ///Relay beacon for blooded thralls, only capable of teleporting back to the Yautja Ship
 /obj/item/device/thrall_teleporter
-	name = "simple relay beacon"
-	desc = "A device covered in sacred text. It whirrs and beeps every couple of seconds."
+	name = "简易中继信标"
+	desc = "一个覆盖着神圣文字的装置。每隔几秒就会发出嗡嗡声和哔哔声。"
 
 	icon = 'icons/obj/items/hunter/thrall_gear.dmi'
 	icon_state = "thrall_teleporter"
@@ -158,11 +158,11 @@
 	var/ship_to_tele = -1
 
 	if(!HAS_TRAIT(H, TRAIT_YAUTJA_TECH) || should_block_game_interaction(H))
-		to_chat(user, SPAN_WARNING("You fiddle with it, but nothing happens!"))
+		to_chat(user, SPAN_WARNING("你摆弄着它，但什么都没发生！"))
 		return
 
 	if(H.faction == FACTION_YAUTJA_YOUNG)
-		to_chat(user, SPAN_WARNING("You have not been shown how to use the relay beacon, best not fiddle with it."))
+		to_chat(user, SPAN_WARNING("你尚未学会如何使用中继信标，最好别乱动它。"))
 		return
 
 	if(isthrall(user))
@@ -177,7 +177,7 @@
 			ship_to_tele += list("Your clan" = "[clan_info.clan_id]")
 
 	var/clan = ship_to_tele
-	if(clan != "Human" && !SSpredships.is_clanship_loaded(clan))
+	if(clan != "人类" && !SSpredships.is_clanship_loaded(clan))
 		return // Checking ship is valid
 
 	// Getting an arrival point
@@ -189,20 +189,20 @@
 	// Let's go
 	playsound(src,'sound/ambience/signal.ogg', 25, 1, sound_range = 6)
 	teleporting = TRUE
-	user.visible_message(SPAN_INFO("[user] starts becoming shimmery and indistinct..."))
+	user.visible_message(SPAN_INFO("[user]开始变得闪烁模糊……"))
 
 	if(!do_after(user, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-		to_chat(user, "You were interrupted!")
+		to_chat(user, "你被打断了！")
 		teleporting = FALSE
 		return
 	// Display fancy animation for you and the person you might be pulling (Legacy)
 	SEND_SIGNAL(user, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
-	user.visible_message(SPAN_WARNING("[icon2html(user, viewers(src))][user] disappears!"))
+	user.visible_message(SPAN_WARNING("[icon2html(user, viewers(src))][user]消失了！"))
 	var/tele_time = animation_teleport_quick_out(user)
 	var/mob/living/passenger = user.pulling
 	if(istype(passenger)) // Pulled person
 		SEND_SIGNAL(passenger, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
-		passenger.visible_message(SPAN_WARNING("[icon2html(passenger, viewers(src))][passenger] disappears!"))
+		passenger.visible_message(SPAN_WARNING("[icon2html(passenger, viewers(src))][passenger]消失了！"))
 		animation_teleport_quick_out(passenger)
 
 		sleep(tele_time) // Animation delay

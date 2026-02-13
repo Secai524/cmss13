@@ -42,7 +42,7 @@
 /mob/living/carbon/xenomorph/praetorian
 	caste_type = XENO_CASTE_PRAETORIAN
 	name = XENO_CASTE_PRAETORIAN
-	desc = "A huge, looming beast of an alien."
+	desc = "一个巨大、若隐若现的异形巨兽。"
 	icon_size = 64
 	icon_state = "Praetorian Walking"
 	plasma_types = list(PLASMA_PHEROMONE,PLASMA_NEUROTOXIN)
@@ -78,7 +78,7 @@
 	pelt = /obj/item/pelt/praetorian
 
 /datum/behavior_delegate/praetorian_base
-	name = "Base Praetorian Behavior Delegate"
+	name = "基础禁卫军行为代理"
 	///reward for hitting shots instead of spamming acid ball
 	var/reward_shield = 15
 
@@ -104,5 +104,5 @@
 	if(!ismob(A))
 		return
 	bound_xeno.add_xeno_shield(reward_shield, XENO_SHIELD_SOURCE_BASE_PRAE, add_shield_on = TRUE, max_shield = 45)
-	to_chat(bound_xeno, SPAN_NOTICE("Your exoskeleton shimmers for a fraction of a second as the acid coats your target."))
+	to_chat(bound_xeno, SPAN_NOTICE("你的外骨骼闪烁了一瞬间，酸液覆盖了你的目标。"))
 	return

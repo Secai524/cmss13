@@ -1,5 +1,5 @@
 /obj/item/paper_bin
-	name = "paper bin"
+	name = "废纸篓"
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "paper_bin1"
 	item_state = "sheet-metal"
@@ -29,7 +29,7 @@
 /obj/item/paper_bin/attack_hand(mob/user)
 	var/response = ""
 	if(!length(papers) > 0)
-		response = alert(user, "What kind of paper?", "Paper type request", "Regular", sec_paper_type, "Cancel")
+		response = alert(user, "什么类型的文件？", "Paper type request", "Regular", sec_paper_type, "Cancel")
 		if (response != "Regular" && response != "Carbon-Copy" && response != "Company Document" && response != "USCM Document")
 			add_fingerprint(user)
 			return
@@ -54,13 +54,13 @@
 
 
 		if(get_dist(user, src) > 1)
-			to_chat(user, SPAN_WARNING("You are too far away."))
+			to_chat(user, SPAN_WARNING("你距离太远了。"))
 			return
 		P.forceMove(user.loc)
 		user.put_in_hands(P)
-		to_chat(user, SPAN_NOTICE("You take [P] out of [src]."))
+		to_chat(user, SPAN_NOTICE("你从[src]中取出了[P]。"))
 	else
-		to_chat(user, SPAN_NOTICE("[src] is empty!"))
+		to_chat(user, SPAN_NOTICE("[src]是空的！"))
 
 	add_fingerprint(user)
 	return
@@ -71,7 +71,7 @@
 		return
 
 	if(user.drop_inv_item_to_loc(i, src))
-		to_chat(user, SPAN_NOTICE("You put [i] in [src]."))
+		to_chat(user, SPAN_NOTICE("你将[i]放入[src]。"))
 		papers.Add(i)
 		amount++
 
@@ -94,7 +94,7 @@
 	set category = "Object"
 	set src in view(1)
 	var/response = ""
-	response = alert(usr, "What kind of paper?", "Paper type request", paper_types[1], paper_types[2], "Cancel")
+	response = alert(usr, "什么类型的文件？", "Paper type request", paper_types[1], paper_types[2], "Cancel")
 	if (response != "Carbon-Copy" && response != "Company Document" && response != "USCM Document")
 		return
 	sec_paper_type = response
@@ -102,7 +102,7 @@
 /// Relic from the days of cyborgs, kept for flavour, an handheld paper
 /// dispenser that was supposed to print pre-filled forms but never did.
 /obj/item/form_printer
-	name = "paper dispenser"
+	name = "文件分发器"
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "paper_bin1"
 	item_state = "sheet-metal"

@@ -13,7 +13,7 @@
 	. = ..()
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		ui = new(user, src, "Orbit")
+		ui = new(user, src, "轨道")
 		ui.open()
 
 /datum/orbit_menu/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -158,11 +158,11 @@
 				serialized["job"] = id_card?.assignment ? id_card.assignment : human.job
 				serialized["nickname"] = human.real_name
 				if(human.mob_flags & MUTINY_MUTINEER)
-					serialized["mutiny_status"] = "Mutineer"
+					serialized["mutiny_status"] = "叛变者"
 				else if(human.mob_flags & MUTINY_LOYALIST)
-					serialized["mutiny_status"] = "Loyalist"
+					serialized["mutiny_status"] = "忠诚派"
 				else if(human.mob_flags & MUTINY_NONCOMBAT)
-					serialized["mutiny_status"] = "Non-Combatant"
+					serialized["mutiny_status"] = "非战斗人员"
 
 				var/icon = human.assigned_equipment_preset?.minimap_icon
 				if(islist(icon))

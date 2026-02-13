@@ -1,6 +1,6 @@
 /obj/item/implant/neurostim
-	name = "neurostimulator implant"
-	desc = "An implant which regulates nociception and sensory function. Benefits include pain reduction, improved balance, and improved resistance to overstimulation and disorientation. To encourage compliance, negative stimulus is applied if the implant hears a (non-radio) spoken codephrase. Implant may be degraded by the body's immune system over time, and thus may occasionally malfunction."
+	name = "神经刺激器植入物"
+	desc = "一种调节痛觉和感觉功能的植入物。其益处包括减轻疼痛、改善平衡、提高对过度刺激和迷失方向的抵抗力。为确保服从，如果植入物听到（非无线电）口头暗语，则会施加负面刺激。植入物可能会被身体的免疫系统随时间降解，因此可能偶尔发生故障。"
 	var/phrase = "supercalifragilisticexpialidocious"
 	var/last_activated = 0
 	var/implant_age = 0 //number of ticks since being implanted
@@ -61,7 +61,7 @@
 		sleep(5)
 
 		var/mob_pain_msg = "Excruciating pain shoots through [part ? "your [part.display_name]" : "you"]!"
-		M.visible_message(SPAN_DANGER("[M] convulses in pain!"), SPAN_DANGER(mob_pain_msg))
+		M.visible_message(SPAN_DANGER("[M]痛苦地抽搐！"), SPAN_DANGER(mob_pain_msg))
 		M.flash_eyes(EYE_PROTECTION_FLAVOR, TRUE)
 		M.apply_effect(10, STUN)
 		M.apply_effect(10, WEAKEN)
@@ -73,12 +73,12 @@
 
 
 /obj/item/implant/neurostim/implanted(mob/source, mob/user)
-	var/p = strip_html(input(user, "Choose activation phrase:"))
+	var/p = strip_html(input(user, "选择激活短语："))
 	if(!p)
 		return 0
 	phrase = p
-	user.mind.store_memory("[src] in [source] can be made to deliver negative stimulus by saying something containing the phrase ''[src.phrase]'', <B>say [src.phrase]</B> to attempt to activate.", 0, 0)
-	to_chat(user, SPAN_NOTICE("[src] in [source] can be made to deliver negative stimulus by saying something containing the phrase ''[src.phrase]'', <B>say [src.phrase]</B> to attempt to activate."))
+	user.mind.store_memory("可以通过说出包含短语'[src.phrase]'的内容来使[source]中的[src]施加负面刺激，<B>说 [src.phrase]</B>来尝试激活。", 0, 0)
+	to_chat(user, SPAN_NOTICE("可以通过说出包含短语'[src.phrase]'的内容来使[source]中的[src]施加负面刺激，<B>说 [src.phrase]</B>来尝试激活。"))
 	START_PROCESSING(SSobj, src)
 	return 1
 

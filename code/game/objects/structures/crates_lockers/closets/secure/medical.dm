@@ -1,6 +1,6 @@
 /obj/structure/closet/secure_closet/medical1
-	name = "medicine closet"
-	desc = "Filled with medical items."
+	name = "药品柜"
+	desc = "装满医疗用品。"
 	icon_state = "secure_locked_medical_white"
 	icon_closed = "secure_unlocked_medical_white"
 	icon_locked = "secure_locked_medical_white"
@@ -23,8 +23,8 @@
 	return
 
 /obj/structure/closet/secure_closet/medical2
-	name = "anesthetic closet"
-	desc = "Used to knock people out."
+	name = "麻醉剂柜"
+	desc = "用于使人昏迷。"
 	icon_state = "secure_locked_medical_white"
 	icon_closed = "secure_unlocked_medical_white"
 	icon_locked = "secure_locked_medical_white"
@@ -44,7 +44,7 @@
 	return
 
 /obj/structure/closet/secure_closet/medical3
-	name = "medical doctor's locker"
+	name = "医生储物柜"
 	req_access = list(ACCESS_MARINE_MEDBAY)
 	icon_state = "secure_locked_medical_white"
 	icon_closed = "secure_unlocked_medical_white"
@@ -76,7 +76,7 @@
 	return
 
 /obj/structure/closet/secure_closet/CMO
-	name = "chief medical officer's locker"
+	name = "医疗长储物柜"
 	req_access = list(ACCESS_MARINE_CMO)
 	icon_state = "cmosecure1"
 	icon_closed = "cmosecure"
@@ -107,8 +107,8 @@
 		new /obj/item/device/radio/headset/almayer/mcom/cmo(src)
 	return
 /obj/structure/closet/secure_closet/chemical
-	name = "chemical closet"
-	desc = "Store dangerous chemicals in here."
+	name = "化学品柜"
+	desc = "将危险化学品存放在此。"
 	icon_state = "secure_locked_medical_white"
 	icon_closed = "secure_unlocked_medical_white"
 	icon_locked = "secure_locked_medical_white"
@@ -124,8 +124,8 @@
 	return
 
 /obj/structure/closet/secure_closet/medical_wall
-	name = "first aid closet"
-	desc = "It's a secure wall-mounted storage unit for first aid supplies."
+	name = "急救柜"
+	desc = "这是一个用于存放急救用品的壁挂式安全储存单元。"
 	icon_state = "medical_wall_locked"
 	icon_closed = "medical_wall_unlocked"
 	icon_locked = "medical_wall_locked"
@@ -150,8 +150,8 @@
 			icon_state = icon_opened
 
 /obj/structure/closet/secure_closet/surgical
-	name = "surgical equipment cabinet"
-	desc = "A self-sterilizing, wall-mounted cabinet containing all the surgical tools you need."
+	name = "手术设备柜"
+	desc = "一个自消毒的壁挂式柜子，包含所有你需要的手术工具。"
 	req_access = list(ACCESS_MARINE_MEDBAY)
 	icon_state = "surgical_wall_locked"
 	icon_closed = "surgical_wall_unlocked"
@@ -169,8 +169,8 @@
 	new /obj/item/roller/surgical(src)
 
 /obj/structure/closet/secure_closet/professor_dummy
-	name = "professor dummy cabinet"
-	desc = "An ultrasafe cabinet containing Professor DUMMY and its tablet. Only accessible by Chief Medical Officers and Senior Listed Advisors."
+	name = "教授假人柜"
+	desc = "一个超安全的柜子，存放着教授假人及其平板电脑。仅医疗长和高级顾问可访问。"
 	icon_state = "surgical_wall_locked"
 	icon_closed = "surgical_wall_unlocked"
 	icon_locked = "surgical_wall_locked"
@@ -190,17 +190,17 @@
 	if(user.job == JOB_CMO || user.job == JOB_SEA)
 		return ..()
 
-	to_chat(user, SPAN_WARNING("Only the [JOB_CMO] or the [JOB_SEA] can toggle this lock."))
+	to_chat(user, SPAN_WARNING("只有[JOB_CMO]或[JOB_SEA]可以切换此锁。"))
 
 /obj/structure/closet/secure_closet/professor_dummy/dump_contents()
 	if(locate(/mob/living/carbon/human/professor_dummy) in src)
-		visible_message(SPAN_HIGHDANGER("Professor DUMMY should only be used for teaching medical personnel, exclusively done by the [JOB_CMO] or the [JOB_SEA]. Do not abuse it."))
+		visible_message(SPAN_HIGHDANGER("教授DUMMY仅用于培训医疗人员，且只能由[JOB_CMO]或[JOB_SEA]操作。请勿滥用。"))
 	return ..()
 
 /obj/structure/closet/secure_closet/professor_dummy/close()
 	for(var/mob/mob in loc)
 		if(!istype(mob, /mob/living/carbon/human/professor_dummy))
-			visible_message(SPAN_WARNING("[src] won't budge!"))
+			visible_message(SPAN_WARNING("[src]纹丝不动！"))
 			return
 	..()
 
@@ -214,7 +214,7 @@
 /obj/structure/closet/secure_closet/professor_dummy/proc/check_and_destroy_dummy()
 	var/mob/dummy = locate(/mob/living/carbon/human/professor_dummy) in src
 	if(dummy)
-		visible_message(SPAN_DANGER("Something in [src] blows apart!"))
+		visible_message(SPAN_DANGER("[src]内部有东西炸开了！"))
 		playsound(src, 'sound/effects/metal_crash.ogg', 25, 1)
 		qdel(dummy)
 

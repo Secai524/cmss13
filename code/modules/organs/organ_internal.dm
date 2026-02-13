@@ -276,13 +276,13 @@
 		owner.drop_held_items()
 		if(!owner.buckled && owner.stat == CONSCIOUS)
 			owner.Move(get_step(get_turf(owner), dir_choice))
-		to_chat(owner, SPAN_DANGER("Your mind wanders and goes blank for a moment..."))
+		to_chat(owner, SPAN_DANGER("你的思绪飘忽，瞬间一片空白..."))
 
 	if(organ_status >= ORGAN_BROKEN && prob(5 * delta_time))
 		owner.apply_effect(1, PARALYZE)
 		if(owner.jitteriness < 100)
 			owner.make_jittery(50)
-		to_chat(owner, SPAN_DANGER("Your body seizes up!"))
+		to_chat(owner, SPAN_DANGER("你的身体僵住了！"))
 
 /datum/internal_organ/brain/prosthetic //used by synthetic species
 	robotic = ORGAN_ROBOT

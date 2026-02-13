@@ -1,5 +1,5 @@
 /obj/item/tool/mop
-	desc = "The world of janitalia wouldn't be complete without a mop."
+	desc = "没有拖把，清洁工的世界就不完整。"
 	name = "mop"
 	icon = 'icons/obj/janitor.dmi'
 	item_icons = list(
@@ -58,13 +58,13 @@
 		return
 	if(istype(A, /turf) || istype(A, /obj/effect/decal/cleanable) || istype(A, /obj/effect/overlay))
 		if(reagents.total_volume < 1)
-			to_chat(user, SPAN_NOTICE("Your mop is dry!"))
+			to_chat(user, SPAN_NOTICE("你的拖把是干的！"))
 			return
 
 		var/cleaning_duration = 1.5 SECONDS * user.get_skill_duration_multiplier(SKILL_DOMESTIC)
 
 		var/turf/cleaning_turf = get_turf(A)
-		user.visible_message(SPAN_WARNING("[user] begins to clean \the [cleaning_turf]."))
+		user.visible_message(SPAN_WARNING("[user]开始清洁\the [cleaning_turf]。"))
 		user.animation_attack_on(cleaning_turf)
 		user.flick_attack_overlay(cleaning_turf, "cleaning_sparkles", cleaning_duration)
 
@@ -72,7 +72,7 @@
 			if(cleaning_turf)
 				cleaning_turf.clean(src)
 				update_icon(TRUE)
-			to_chat(user, SPAN_NOTICE("You have finished mopping!"))
+			to_chat(user, SPAN_NOTICE("你拖完地了！"))
 
 
 /obj/effect/attackby(obj/item/I, mob/user)
@@ -88,8 +88,8 @@
 
 
 /obj/item/tool/wet_sign
-	name = "wet floor sign"
-	desc = "Caution! Wet Floor!"
+	name = "小心地滑标志"
+	desc = "小心！地滑！"
 	icon_state = "caution"
 	icon = 'icons/obj/janitor.dmi'
 	item_icons = list(
@@ -104,8 +104,8 @@
 	attack_verb = list("warned", "cautioned", "smashed")
 
 /obj/item/tool/warning_cone
-	name = "warning cone"
-	desc = "This cone is trying to warn you of something!"
+	name = "警示锥"
+	desc = "这个锥子正试图警告你什么！"
 	icon_state = "cone"
 	icon = 'icons/obj/janitor.dmi'
 	item_icons = list(
@@ -125,7 +125,7 @@
 
 /obj/item/tool/soap
 	name = "soap"
-	desc = "A cheap bar of soap. Doesn't smell."
+	desc = "一块廉价的肥皂。没有气味。"
 	gender = PLURAL
 	icon = 'icons/obj/janitor.dmi'
 	item_icons = list(
@@ -149,16 +149,16 @@
 	//I couldn't feasibly  fix the overlay bugs caused by cleaning items we are wearing.
 	//So this is a workaround. This also makes more sense from an IC standpoint. ~Carn
 	if(user.client && (target in user.client.screen))
-		to_chat(user, SPAN_NOTICE("You need to take that [target.name] off before cleaning it."))
+		to_chat(user, SPAN_NOTICE("你需要先把那个[target.name]脱下来才能清洁。"))
 	else if(istype(target,/obj/effect/decal/cleanable))
-		to_chat(user, SPAN_NOTICE("You scrub \the [target.name] out."))
+		to_chat(user, SPAN_NOTICE("你把\the [target.name]擦洗干净了。"))
 		qdel(target)
 	else if(isturf(target))
 		var/turf/T = target
 		T.clean_cleanables()
-		to_chat(user, SPAN_NOTICE("You scrub all dirt out of \the [target.name]."))
+		to_chat(user, SPAN_NOTICE("你把\the [target.name]里的所有污垢都擦掉了。"))
 	else
-		to_chat(user, SPAN_NOTICE("You clean \the [target.name]."))
+		to_chat(user, SPAN_NOTICE("你清洁了\the [target.name]。"))
 		target.clean_blood()
 
 
@@ -169,7 +169,7 @@
 	..()
 
 /obj/item/tool/soap/weyland_yutani
-	desc = "A Weyland-Yutani brand bar of soap. Smells of phoron."
+	desc = "一块维兰德-汤谷品牌的肥皂。闻起来有福罗恩的气味。"
 	icon_state = "soapnt"
 	item_state = "soapnt"
 
@@ -179,9 +179,9 @@
 
 /obj/item/tool/soap/deluxe/Initialize()
 	. = ..()
-	desc = "A deluxe Waffle Co. brand bar of soap. Smells of [pick("lavender", "vanilla", "strawberry", "chocolate" ,"space")]."
+	desc = "一块豪华华夫饼公司品牌的肥皂。闻起来有[pick("lavender", "vanilla", "strawberry", "chocolate" ,"space")]."
 
 /obj/item/tool/soap/syndie
-	desc = "An untrustworthy bar of soap. Smells of fear."
+	desc = "一块不可信的肥皂。闻起来有恐惧的气味。"
 	icon_state = "soapsyndie"
 	item_state = "soapsyndie"

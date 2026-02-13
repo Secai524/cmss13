@@ -1,6 +1,6 @@
 /obj/item/hardpoint/armor/snowplow
 	name = "\improper Snowplow"
-	desc = "Clears a path in the snow for friendlies. It doesn't seem to have much use beyond that."
+	desc = "为友军在雪地中清理出一条道路。除此之外似乎用处不大。"
 
 	icon_state = "snowplow"
 	disp_icon = "tank"

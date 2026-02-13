@@ -6,7 +6,7 @@ GLOBAL_LIST_EMPTY(powernets_by_name) //Holds all powernet datums in use or poole
 
 
 SUBSYSTEM_DEF(machinery)
-	name   = "Machinery"
+	name   = "机械"
 	wait   = 3.5 SECONDS
 	flags  = SS_KEEP_TIMING
 	init_order = SS_INIT_MACHINES

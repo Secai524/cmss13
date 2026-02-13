@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(polls)
-	name = "Polls"
+	name = "投票"
 	flags = SS_NO_FIRE
 
 	/// Stores the polls that have not expired, and set as active
@@ -122,7 +122,7 @@ SUBSYSTEM_DEF(polls)
 
 		var/datum/poll/active_poll = active_polls[id]
 
-		to_chat(new_client, SPAN_LARGE("You have not voted in the '[active_poll.question]' poll. Click <a href='byond://?src=\ref[new_client.mob];poll=1'>here</a> to vote."))
+		to_chat(new_client, SPAN_LARGE("你尚未在'[active_poll.question]'投票中投票。点击<a href='byond://?src=\ref[new_client.mob];poll=1'>此处</a>投票。"))
 
 /datum/controller/subsystem/polls/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -193,7 +193,7 @@ SUBSYSTEM_DEF(polls)
 			)
 
 			if(length(existing_votes))
-				if(tgui_alert(ui.user, "Change existing vote?", "Change Vote", list("Yes", "No")) != "Yes")
+				if(tgui_alert(ui.user, "更改现有投票？", "Change Vote", list("Yes", "No")) != "Yes")
 					return
 
 				for(var/datum/view_record/player_poll_vote/existing_vote as anything in existing_votes)
@@ -215,27 +215,27 @@ SUBSYSTEM_DEF(polls)
 			if(!CLIENT_HAS_RIGHTS(ui.user.client, R_PERMISSIONS))
 				return
 
-			var/poll_question = tgui_input_text(ui.user, "What's the question?", "Poll Question", encode = FALSE)
+			var/poll_question = tgui_input_text(ui.user, "问题是什么？", "Poll Question", encode = FALSE)
 			if(!poll_question)
 				return
 
 			var/list/answers = list()
 
-			var/answers_to_add = tgui_input_text(ui.user, "What answers should be added? Separate answers with ;", "Poll Answers", encode = FALSE, multiline = TRUE)
+			var/answers_to_add = tgui_input_text(ui.user, "应添加哪些答案？用 ; 分隔答案", "Poll Answers", encode = FALSE, multiline = TRUE)
 			if(!answers_to_add)
 				return
 
 			answers = splittext(answers_to_add, ";")
 
 			if(length(answers) <= 1)
-				to_chat(ui.user, SPAN_WARNING("Poll creation cancelled - not enough added."))
+				to_chat(ui.user, SPAN_WARNING("投票创建已取消 - 添加内容不足。"))
 				return
 
-			var/expiry = tgui_input_number(ui.user, "How many days should this poll run for?", "Poll Length", 14)
+			var/expiry = tgui_input_number(ui.user, "此投票应运行多少天？", "Poll Length", 14)
 			if(!expiry || expiry <= 0)
 				return
 
-			if(tgui_alert(ui.user, "Confirm creating poll with question: '[poll_question]', answers: [english_list(answers)] and duration: [expiry] days.", "BuildAPoll", list("Confirm", "Cancel")) != "Confirm")
+			if(tgui_alert(ui.user, "确认创建投票，问题：'[poll_question]'，答案：[english_list(answers)]，持续时间：[expiry]天。", "BuildAPoll", list("确认", "Cancel")) != "确认")
 				return
 
 			var/datum/entity/poll/poll = DB_ENTITY(/datum/entity/poll)
@@ -252,7 +252,7 @@ SUBSYSTEM_DEF(polls)
 				new_answer.save()
 				new_answer.sync()
 
-			to_chat(ui.user, SPAN_ALERT("Poll '[poll_question]' created successfully."))
+			to_chat(ui.user, SPAN_ALERT("投票'[poll_question]'创建成功。"))
 			setup_polls()
 
 		if("delete")
@@ -270,7 +270,7 @@ SUBSYSTEM_DEF(polls)
 			if(!delete_poll)
 				return
 
-			if(tgui_alert(ui.user, "Confirm deletion of \"[delete_poll.question]\"?", "Delete Poll", list("Confirm", "Cancel")) != "Confirm")
+			if(tgui_alert(ui.user, "确认删除 \"[delete_poll.question]\"?", "Delete Poll", list("确认", "Cancel")) != "确认")
 				return
 
 			var/datum/entity/poll/poll = DB_ENTITY(/datum/entity/poll, text2num(to_delete))
@@ -280,7 +280,7 @@ SUBSYSTEM_DEF(polls)
 			poll.save()
 			poll.sync()
 
-			to_chat(ui.user, SPAN_ALERT("Poll deleted."))
+			to_chat(ui.user, SPAN_ALERT("投票已删除。"))
 
 			setup_polls()
 
@@ -307,7 +307,7 @@ SUBSYSTEM_DEF(polls)
 			poll.save()
 			poll.sync()
 
-			to_chat(ui.user, SPAN_ALERT("Question updated to [new_question]."))
+			to_chat(ui.user, SPAN_ALERT("问题已更新为[new_question]。"))
 
 			edit_poll.question = new_question
 
@@ -323,7 +323,7 @@ SUBSYSTEM_DEF(polls)
 			if(!edit_poll)
 				return
 
-			var/answer = tgui_input_text(ui.user, "What's the new answer?", "New Answer")
+			var/answer = tgui_input_text(ui.user, "新答案是什么？", "New Answer")
 			if(!length(answer))
 				return
 
@@ -335,7 +335,7 @@ SUBSYSTEM_DEF(polls)
 
 			setup_polls()
 
-			to_chat(ui.user, SPAN_ALERT("New answer ([answer]) added to poll \"[edit_poll.question]\"."))
+			to_chat(ui.user, SPAN_ALERT("新答案([answer])已添加到投票 \"[edit_poll.question]\"."))
 
 		if("edit-time")
 			if(!CLIENT_HAS_RIGHTS(ui.user.client, R_PERMISSIONS))
@@ -350,14 +350,14 @@ SUBSYSTEM_DEF(polls)
 				return
 
 			var/time
-			var/alert = tgui_alert(ui.user, "Conclude now, or specify a time?", "Time Picker", list("Now", "Custom Time"))
+			var/alert = tgui_alert(ui.user, "立即结束，还是指定时间？", "Time Picker", list("Now", "Custom Time"))
 
 			switch(alert)
 				if("Now")
 					time = time2text(world.realtime - 1 SECONDS, "YYYY-MM-DD hh:mm:ss")
 
 				if("Custom Time")
-					var/hours = tgui_input_number(ui.user, "Conclude in how many hours?", "Time Picker", 24, 1000, 1)
+					var/hours = tgui_input_number(ui.user, "多少小时后结束？", "Time Picker", 24, 1000, 1)
 					time = time2text(world.realtime + (hours * 1 HOURS), "YYYY-MM-DD hh:mm:ss")
 
 			if(!time)
@@ -370,7 +370,7 @@ SUBSYSTEM_DEF(polls)
 			poll.save()
 			poll.sync()
 
-			to_chat(ui.user, SPAN_ALERT("Time updated to [time]."))
+			to_chat(ui.user, SPAN_ALERT("时间已更新为[time]。"))
 			setup_polls()
 
 	return TRUE

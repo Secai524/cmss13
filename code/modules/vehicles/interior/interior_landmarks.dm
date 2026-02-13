@@ -1,5 +1,5 @@
 /obj/effect/landmark/interior
-	name = "interior marker"
+	name = "内部标记器"
 	var/datum/interior/parent
 
 /obj/effect/landmark/interior/proc/on_load(datum/interior/I)
@@ -10,7 +10,7 @@
 */
 
 /obj/effect/landmark/interior/spawn
-	name = "interior interactable spawner"
+	name = "内部可交互对象生成器"
 
 // Interiors will call this when they're created
 /obj/effect/landmark/interior/spawn/on_load(datum/interior/I)
@@ -18,7 +18,7 @@
 
 // Entrance & exit spawner
 /obj/effect/landmark/interior/spawn/entrance
-	name = "entrance marker"
+	name = "入口标记器"
 	icon_state = "arrow"
 
 	var/exit_type = /obj/structure/interior_exit
@@ -58,7 +58,7 @@
 
 // Driver's seat spawner
 /obj/effect/landmark/interior/spawn/vehicle_driver_seat
-	name = "driver's seat spawner"
+	name = "驾驶员座位生成器"
 	icon = 'icons/obj/structures/props/furniture/chairs.dmi'
 	icon_state = "comfychair"
 	color = "red"
@@ -82,7 +82,7 @@
 
 // Gunner's seat spawner
 /obj/effect/landmark/interior/spawn/vehicle_gunner_seat
-	name = "gunner's seat spawner"
+	name = "炮手座位生成器"
 	icon = 'icons/obj/structures/props/furniture/chairs.dmi'
 	icon_state = "comfychair"
 	color = "blue"
@@ -104,7 +104,7 @@
 	qdel(src)
 
 /obj/effect/landmark/interior/spawn/vehicle_driver_seat/armor
-	name = "armor driver's seat spawner"
+	name = "装甲车驾驶员座位生成器"
 	icon = 'icons/obj/vehicles/interiors/general.dmi'
 	icon_state = "armor_chair"
 	color = "red"
@@ -130,7 +130,7 @@
 	icon_state = "armor_chair"
 
 /obj/effect/landmark/interior/spawn/vehicle_gunner_seat/armor
-	name = "armor gunner's seat spawner"
+	name = "装甲车炮手座位生成器"
 	icon = 'icons/obj/vehicles/interiors/general.dmi'
 	icon_state = "armor_chair"
 	color = "blue"
@@ -154,7 +154,7 @@
 	icon = 'icons/obj/vehicles/interiors/general_wy.dmi'
 
 /obj/effect/landmark/interior/spawn/vehicle_support_gunner_seat
-	name = "1st support gunner's seat spawner"
+	name = "第一支援炮手座位生成器"
 	icon = 'icons/obj/vehicles/interiors/general.dmi'
 	icon_state = "armor_chair"
 	color = "#00ad00"
@@ -178,7 +178,7 @@
 	icon = 'icons/obj/vehicles/interiors/general_wy.dmi'
 
 /obj/effect/landmark/interior/spawn/vehicle_support_gunner_seat/second
-	name = "2nd support gunner's seat spawner"
+	name = "第二支援炮手座位生成器"
 	color = "#b1b100"
 
 /obj/effect/landmark/interior/spawn/vehicle_support_gunner_seat/second/on_load(datum/interior/I)
@@ -200,7 +200,7 @@
 	icon = 'icons/obj/vehicles/interiors/general_wy.dmi'
 
 /obj/effect/landmark/interior/spawn/interior_camera
-	name = "interior camera spawner"
+	name = "内部摄像头生成器"
 	icon = 'icons/obj/vehicles/interiors/general.dmi'
 	icon_state = "vehicle_camera"
 	color = "#00c5cc"
@@ -223,7 +223,7 @@
 	qdel(src)
 
 /obj/effect/landmark/interior/spawn/telephone
-	name = "telephone spawner"
+	name = "电话生成器"
 	icon = 'icons/obj/vehicles/interiors/general.dmi'
 	icon_state = "wall_phone"
 	color = "yellow"
@@ -249,7 +249,7 @@
 
 // Landmark for spawning the reloader
 /obj/effect/landmark/interior/spawn/weapons_loader
-	name = "vehicle weapons reloader spawner"
+	name = "车载武器装填器生成器"
 	icon = 'icons/obj/vehicles/interiors/general.dmi'
 	icon_state = "weapons_loader"
 	color = "#00920c"
@@ -273,7 +273,7 @@
 
 //This one spawns armored vehicles version of viewport
 /obj/effect/landmark/interior/spawn/interior_viewport
-	name = "armored vehicle viewport spawner"
+	name = "装甲车辆观察口生成器"
 	icon = 'icons/obj/vehicles/interiors/general.dmi'
 	icon_state = "viewport"
 	layer = INTERIOR_DOOR_LAYER
@@ -297,7 +297,7 @@
 
 //Landmark for spawning windows
 /obj/effect/landmark/interior/spawn/interior_viewport/simple
-	name = "simple vehicle viewport spawner"
+	name = "简易车辆观察口生成器"
 	icon = 'icons/obj/vehicles/interiors/general.dmi'
 	icon_state = "viewport_simple"
 	layer = INTERIOR_DOOR_LAYER
@@ -316,7 +316,7 @@
 
 //Landmark for van's windshield
 /obj/effect/landmark/interior/spawn/interior_viewport/simple/windshield
-	name = "windshield viewport spawner"
+	name = "挡风玻璃观察口生成器"
 	icon = 'icons/obj/vehicles/interiors/van.dmi'
 	icon_state = "windshield_viewport_top"
 	layer = INTERIOR_DOOR_LAYER

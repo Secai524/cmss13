@@ -1,7 +1,7 @@
 /datum/tech/repeatable/req_points
-	name = "Requisition Budget Increase"
+	name = "补给预算增加"
 	icon_state = "budget_req"
-	desc = "Distributes resources to requisitions for spending."
+	desc = "为补给处分配资源以供使用。"
 
 	announce_name = "ALMAYER SPECIAL ASSETS AUTHORIZED"
 	announce_message = "Additional supply budget has been authorised for this operation."
@@ -27,9 +27,9 @@
 	GLOB.supply_controller.points += points_to_give * get_tech_scaling_value()
 
 /datum/tech/repeatable/dropship_points
-	name = "Dropship Budget Increase"
+	name = "运输机预算增加"
 	icon_state = "budget_ds"
-	desc = "Distributes resources to the dropship fabricator."
+	desc = "为运输机制造机分配资源。"
 
 	announce_message = "Additional dropship part fabricator points have been authorised for this operation."
 

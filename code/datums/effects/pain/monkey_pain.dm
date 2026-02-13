@@ -2,7 +2,7 @@
 	emote_message = list("chimpers pitifully.")
 
 /datum/effects/pain/human/discomforting/monkey
-	emote_message = list("cries.","whimpers.")
+	emote_message = list("哭泣。","呜咽。")
 
 /datum/effects/pain/human/moderate/monkey
 	emote_message = list("grimaces in pain.")

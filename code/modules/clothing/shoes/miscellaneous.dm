@@ -1,6 +1,6 @@
 /obj/item/clothing/shoes/syndigaloshes
-	desc = "A pair of brown shoes. They seem to have extra grip."
-	name = "brown shoes"
+	desc = "一双棕色鞋子。它们似乎有额外的抓地力。"
+	name = "棕色鞋子"
 	icon_state = "brown"
 	item_state = "brown"
 
@@ -10,12 +10,12 @@
 	siemens_coefficient = 0.8
 
 /obj/item/clothing/shoes/mime
-	name = "mime shoes"
+	name = "默剧鞋"
 	icon_state = "mime"
 
 /obj/item/clothing/shoes/swat
 	name = "\improper SWAT shoes"
-	desc = "When you want to turn up the heat."
+	desc = "当你想要点燃战火时。"
 	icon_state = "swat"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
@@ -29,8 +29,8 @@
 	siemens_coefficient = 0.6
 
 /obj/item/clothing/shoes/combat //Basically SWAT shoes combined with galoshes.
-	name = "combat boots"
-	desc = "When you REALLY want to turn up the heat."
+	name = "作战靴"
+	desc = "当你真的想要点燃战火时。"
 	icon_state = "swat"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
@@ -49,27 +49,27 @@
 	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
 
 /obj/item/clothing/shoes/sandal
-	desc = "A pair of rather plain, wooden sandals."
+	desc = "一双相当朴素的木制凉鞋。"
 	name = "sandals"
 	icon_state = "sandals"
 	flags_armor_protection = 0
 
 /obj/item/clothing/shoes/sandal/marisa
-	desc = "A pair of magic, black shoes."
-	name = "magic shoes"
+	desc = "一双神奇的黑色鞋子。"
+	name = "魔法鞋"
 	icon_state = "black"
 	flags_armor_protection = BODY_FLAG_FEET
 
 /obj/item/clothing/shoes/galoshes
-	desc = "Rubber boots."
+	desc = "橡胶靴。"
 	name = "galoshes"
 	icon_state = "galoshes"
 
 	flags_inventory = NOSLIPPING
 
 /obj/item/clothing/shoes/clown_shoes
-	desc = "The prankster's standard-issue clowning shoes. Damn they're huge!"
-	name = "clown shoes"
+	desc = "恶作剧者的标准制式小丑鞋。真他妈大！"
+	name = "小丑鞋"
 	icon_state = "clown"
 	item_state = "clown_shoes"
 	slowdown = SHOES_SLOWDOWN+1
@@ -78,14 +78,14 @@
 
 /obj/item/clothing/shoes/jackboots
 	name = "jackboots"
-	desc = "Security combat boots for combat scenarios or combat situations. All combat, all the time."
+	desc = "用于战斗场景或作战状况的安全战斗靴。全天候战斗。"
 	icon_state = "jackboots"
 	item_state = "jackboots"
 	siemens_coefficient = 0.7
 
 /obj/item/clothing/shoes/cult
 	name = "boots"
-	desc = "A pair of boots worn by the followers of Nar-Sie."
+	desc = "纳尔-赛信徒所穿的靴子。"
 	icon_state = "cult"
 	item_state = "cult"
 	siemens_coefficient = 0.7
@@ -96,44 +96,44 @@
 	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
 
 /obj/item/clothing/shoes/cyborg
-	name = "cyborg boots"
-	desc = "Shoes for a cyborg costume."
+	name = "赛博格靴子"
+	desc = "赛博格服装的鞋子。"
 	icon_state = "boots"
 
 /obj/item/clothing/shoes/slippers
-	name = "bunny slippers"
-	desc = "Fluffy!"
+	name = "兔子拖鞋"
+	desc = "毛茸茸的！"
 	icon_state = "slippers"
 	item_state = "slippers"
 	w_class = SIZE_SMALL
 
 /obj/item/clothing/shoes/slippers_worn
-	name = "worn bunny slippers"
-	desc = "Fluffy..."
+	name = "破旧的兔子拖鞋"
+	desc = "毛茸茸的……"
 	icon_state = "slippers_worn"
 	item_state = "slippers_worn"
 	w_class = SIZE_SMALL
 
 /obj/item/clothing/shoes/laceup
-	name = "laceup shoes"
-	desc = "The height of fashion, and they're pre-polished!"
+	name = "系带鞋"
+	desc = "时尚的巅峰，而且已经预先擦亮了！"
 	icon_state = "laceups"
 
 /obj/item/clothing/shoes/laceup/brown
-	name = "brown laceup shoes"
+	name = "棕色系带鞋"
 	icon_state = "laceups_brown"
 
 /obj/item/clothing/shoes/swimmingfins
-	desc = "Help you swim good."
-	name = "swimming fins"
+	desc = "助你游得更快。"
+	name = "游泳脚蹼"
 	icon_state = "flippers"
 	flags_inventory = NOSLIPPING
 	slowdown = SHOES_SLOWDOWN+1
 
 
 /obj/item/clothing/shoes/snow
-	name = "snow boots"
-	desc = "When your feet are as cold as your heart."
+	name = "雪地靴"
+	desc = "当你的脚和你的心一样冰冷时。"
 	icon_state = "swat"
 	siemens_coefficient = 0.6
 	flags_cold_protection = BODY_FLAG_FEET
@@ -142,7 +142,7 @@
 	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
 
 /obj/item/clothing/shoes/souto
-	name = "Souto Man boots"
+	name = "苏托人靴子"
 	desc = "\improper Souto Man's boots. Harder than the kick of Souto Red."
 	icon_state = "souto_man"
 	item_state = "souto_man"
@@ -159,8 +159,8 @@
 	unacidable = TRUE
 
 /obj/item/clothing/shoes/footwrap_sandals
-	name = "foot wrapped sandals"
-	desc = "typical soldier footwear worn during old ancient times."
+	name = "裹足凉鞋"
+	desc = "远古时代典型士兵所穿的鞋履。"
 	icon_state = "footwrap_sandals"
 	item_state = "footwrap_sandals"
 	item_icons = list(

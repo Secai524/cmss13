@@ -2,24 +2,24 @@
 #define CARDCON_DEPARTMENT_MARINE "Marines"
 #define CARDCON_DEPARTMENT_SECURITY "Security"
 #define CARDCON_DEPARTMENT_MEDICAL "Medical and Science"
-#define CARDCON_DEPARTMENT_MEDICALWO "Medical"
+#define CARDCON_DEPARTMENT_MEDICALWO "医疗区"
 #define CARDCON_DEPARTMENT_SUPPLY "Supply"
 #define CARDCON_DEPARTMENT_AUXCOM "Auxiliary Command"
-#define CARDCON_DEPARTMENT_ENGINEERING "Engineering"
+#define CARDCON_DEPARTMENT_ENGINEERING "工程部"
 #define CARDCON_DEPARTMENT_COMMAND "Command"
 
 // Weyland Yutani Categories
 #define CARDCON_DEPARTMENT_CORP_LEAD "Corporate Leadership"
 #define CARDCON_DEPARTMENT_COMMANDOS "Corporate Commandos"
-#define CARDCON_DEPARTMENT_CORP_SECURITY "Corporate Security"
+#define CARDCON_DEPARTMENT_CORP_SECURITY "公司安保"
 #define CARDCON_DEPARTMENT_CORPORATE "Corporate Employees"
 #define CARDCON_DEPARTMENT_PMC "PMC Combat Ops"
 #define CARDCON_DEPARTMENT_INSPECTION "PMC Investigations"
 #define CARDCON_DEPARTMENT_SPECIALTY "PMC Specialists"
 
 /obj/structure/machinery/computer/card
-	name = "Identification Computer"
-	desc = "Terminal for programming USCM employee ID card access."
+	name = "身份识别计算机"
+	desc = "用于编程USCM员工身份卡权限的终端。"
 	icon_state = "id"
 	req_access = list(ACCESS_MARINE_DATABASE)
 	circuit = /obj/item/circuitboard/computer/card
@@ -122,7 +122,7 @@
 					playsound(src.loc, 'sound/machines/fax.ogg', 15, 1)
 					sleep(40)
 					var/contents = {"<center><h4>Access Report</h4></center>
-								<u>Prepared By:</u> [user_id_card?.registered_name ? user_id_card.registered_name : "Unknown"]<br>
+								<u>Prepared By:</u> [user_id_card?.registered_name ? user_id_card.registered_name : "未知"]<br>
 								<u>For:</u> [target_id_card.registered_name ? target_id_card.registered_name : "Unregistered"]<br>
 								<hr>
 								<u>Faction:</u> [target_id_card.faction ? target_id_card.faction : "N/A"]<br>
@@ -196,7 +196,7 @@
 
 			var/new_name = strip_html(params["name"])
 			if(!new_name)
-				visible_message(SPAN_NOTICE("[src] buzzes rudely."))
+				visible_message(SPAN_NOTICE("[src]发出粗鲁的嗡嗡声。"))
 				return
 			target_id_card.registered_name = new_name
 			return TRUE
@@ -424,7 +424,7 @@
 /obj/structure/machinery/computer/card/attackby(obj/O, mob/user)
 	if(istype(O, /obj/item/card/id))
 		if(!operable())
-			to_chat(user, SPAN_NOTICE("You tried to inject \the [O] but \the [src] remains silent."))
+			to_chat(user, SPAN_NOTICE("你试图向\the [O]注入数据，但\the [src]毫无反应。"))
 			return
 		var/obj/item/card/id/idcard = O
 		if(check_access(idcard))
@@ -440,7 +440,7 @@
 					update_static_data(user)
 					visible_message("[SPAN_BOLD("[src]")] states, \"CARD FOUND: Preparing ID modification protocol.\"")
 			else
-				to_chat(user, "Both slots are full already. Remove a card first.")
+				to_chat(user, "两个插槽都已满。请先移除一张卡。")
 		else
 			if(!target_id_card)
 				if(user.drop_held_item())
@@ -449,7 +449,7 @@
 					update_static_data(user)
 					visible_message("[SPAN_BOLD("[src]")] states, \"CARD FOUND: Preparing ID modification protocol.\"")
 			else
-				to_chat(user, "Both slots are full already. Remove a card first.")
+				to_chat(user, "两个插槽都已满。请先移除一张卡。")
 	else
 		. = ..()
 
@@ -474,7 +474,7 @@
 		if(operable()) // Powered. Console can response.
 			visible_message("[SPAN_BOLD("[src]")] states, \"AUTH LOGOUT: Session end confirmed.\"")
 		else
-			to_chat(usr, "You remove \the [user_id_card] from \the [src].")
+			to_chat(usr, "你从\the [src]中移除了\the [user_id_card]。")
 		authenticated = FALSE // No card - no access
 		user_id_card = null
 
@@ -487,11 +487,11 @@
 			target_id_card.name = text("[target_id_card.registered_name]'s [target_id_card.id_type] ([target_id_card.assignment])")
 			visible_message("[SPAN_BOLD("[src]")] states, \"CARD EJECT: Data imprinted. Updating database... Success.\"")
 		else
-			to_chat(usr, "You remove \the [target_id_card] from \the [src].")
+			to_chat(usr, "你从\the [src]中移除了\the [target_id_card]。")
 		target_id_card = null
 
 	else
-		to_chat(usr, "There is nothing to remove from the console.")
+		to_chat(usr, "控制台内没有可移除的物品。")
 	return
 
 /obj/structure/machinery/computer/card/attack_hand(mob/user as mob)
@@ -525,8 +525,8 @@
 //But in the long run it's not really a big deal.
 
 /obj/structure/machinery/computer/squad_changer
-	name = "Squad Distribution Computer"
-	desc = "You can use this to change someone's squad."
+	name = "班分配计算机"
+	desc = "你可以用这个来更改某人的所属班。"
 	icon_state = "guest"
 	req_access = list(ACCESS_MARINE_DATABASE)
 	var/obj/item/card/id/ID_to_modify = null
@@ -542,14 +542,14 @@
 		return
 
 	if(ishuman(usr) && ID_to_modify)
-		to_chat(usr, "You remove \the [ID_to_modify] from \the [src].")
+		to_chat(usr, "你从\the [src]中移除了\the [ID_to_modify]。")
 		ID_to_modify.forceMove(get_turf(src))
 		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
 			usr.put_in_hands(ID_to_modify)
 		ID_to_modify = null
 		person_to_modify = null
 	else
-		to_chat(usr, "There is nothing to remove from \the [src].")
+		to_chat(usr, "\the [src]内没有可移除的物品。")
 	return
 
 /obj/structure/machinery/computer/squad_changer/tgui_interact(mob/user, datum/tgui/ui)
@@ -610,7 +610,7 @@
 				else
 					visible_message("[SPAN_BOLD("[src]")] states, \"DATABASE ERROR: There was an error assigning [person_to_modify] to [selected] Squad.\"")
 			else if(!istype(ID_to_modify))
-				to_chat(usr, SPAN_WARNING("You need to insert a card to modify."))
+				to_chat(usr, SPAN_WARNING("你需要插入一张卡来进行修改。"))
 			else if(!istype(person_to_modify) || !person_to_modify.Adjacent(src))
 				visible_message("[SPAN_BOLD("[src]")] states, \"SCANNER ERROR: You need to keep the hand of the person to be assigned to Squad!\"")
 			else if(!person_to_modify.skills.get_skill_level(SKILL_FIREARMS))
@@ -636,7 +636,7 @@
 	var/list/data = list()
 	var/list/squads = list()
 	for(var/datum/squad/current_squad in GLOB.RoleAuthority.squads)
-		if(current_squad.name != "Root" && !current_squad.locked && current_squad.active && current_squad.faction == faction)
+		if(current_squad.name != "根" && !current_squad.locked && current_squad.active && current_squad.faction == faction)
 			var/list/squad = list(list(
 				"name" = current_squad.name,
 				"color" = current_squad.equipment_color
@@ -652,7 +652,7 @@
 		var/mob/living/carbon/human/H = user
 		if(istype(O, /obj/item/card/id))
 			if(!operable())
-				to_chat(usr, SPAN_NOTICE("You tried to insert [O] but \the [src] remains silent."))
+				to_chat(usr, SPAN_NOTICE("你试图插入[O]，但\the [src]毫无反应。"))
 				return
 			var/obj/item/card/id/idcard = O
 			if(!ID_to_modify)
@@ -661,15 +661,15 @@
 				ID_to_modify = idcard
 				visible_message("[SPAN_BOLD("[src]")] states, \"CARD FOUND: Preparing ID modification protocol.\"")
 			else
-				to_chat(H, SPAN_NOTICE("Remove the inserted card first."))
+				to_chat(H, SPAN_NOTICE("请先移除已插入的卡。"))
 		else if(istype(O, /obj/item/grab))
 			var/obj/item/grab/G = O
 			if(ismob(G.grabbed_thing))
 				if(!operable())
-					to_chat(usr, SPAN_NOTICE("You place [G.grabbed_thing]'s hand on scanner but \the [src] remains silent."))
+					to_chat(usr, SPAN_NOTICE("你将[G.grabbed_thing]的手放在扫描仪上，但\the [src]毫无反应。"))
 					return
 				var/isxenos = isxeno(G.grabbed_thing)
-				H.visible_message(SPAN_NOTICE("You hear a beep as [G.grabbed_thing]'s [isxenos ? "limb" : "hand"] is scanned to \the [name]."))
+				H.visible_message(SPAN_NOTICE("你听到一声蜂鸣，[G.grabbed_thing]的[isxenos ? "limb" : "hand"] is scanned to \the [name]."))
 				visible_message("[SPAN_BOLD("[src]")] states, \"SCAN ENTRY: [isxenos ? "Unknown lifeform detected! Forbidden operation!" : "Scanned, please stay close until operation's end."]\"")
 				playsound(H.loc, 'sound/machines/screen_output1.ogg', 25, 1)
 				// No Xeno Squads, please!
@@ -698,7 +698,7 @@
 		tgui_interact(user)
 	else
 		var/isxenos = isxeno(user)
-		user.visible_message(SPAN_NOTICE("You hear a beep as [user]'s [isxenos ? "limb" : "hand"] is scanned to \the [name]."))
+		user.visible_message(SPAN_NOTICE("你听到一声蜂鸣，[user]的[isxenos ? "limb" : "hand"] is scanned to \the [name]."))
 		visible_message("[SPAN_BOLD("[src]")] states, \"SCAN ENTRY: [isxenos ? "Unknown lifeform detected! Forbidden operation!" : "Scanned, please stay close until operation's end."]\"")
 		playsound(user.loc, 'sound/machines/screen_output1.ogg', 25, 1)
 		// No Xeno Squads, please!
@@ -711,8 +711,8 @@
 #define UNKNOWN_JOB_ID 998
 
 /obj/structure/machinery/computer/crew
-	name = "crew monitoring computer"
-	desc = "Used to monitor active health sensors built into the wearer's uniform. You can see that the console highlights ship areas with BLUE and remote locations with RED."
+	name = "乘员监控计算机"
+	desc = "用于监控穿戴者制服内置的主动生命体征传感器。你可以看到控制台用蓝色高亮显示舰上区域，用红色高亮显示远程位置。"
 	icon_state = "crew"
 	circuit = /obj/item/circuitboard/computer/crew
 	density = TRUE
@@ -765,7 +765,7 @@
 
 /obj/structure/machinery/computer/crew/alt/yautja
 	name = "\improper Yautja health monitor"
-	desc = "Used to monitor active health sensors of all Yautja in the system. You can see that the console highlights the human's ship areas with BLUE and the hunting locations with RED."
+	desc = "用于监控系统中所有铁血战士的主动生命体征传感器。你可以看到控制台用蓝色高亮显示人类的舰船区域，用红色高亮显示狩猎地点。"
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	icon_state = "crew"
 	faction = FACTION_YAUTJA
@@ -883,7 +883,7 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 		// The entry for this human
 		var/list/entry = list(
 			"ref" = REF(tracked_mob),
-			"name" = "Unknown",
+			"name" = "未知",
 			"ijob" = UNKNOWN_JOB_ID
 		)
 

@@ -1,5 +1,5 @@
 /datum/job/special/wey_yu // Abstract type (null title)
-	supervisors = "Weyland-Yutani Corporate Office"
+	supervisors = "维兰德-汤谷公司 企业总部"
 	selection_class = "job_cl"
 	flags_startup_parameters = ROLE_CUSTOM_SPAWN
 	gear_preset = /datum/equipment_preset/wy/trainee
@@ -35,27 +35,27 @@
 /datum/job/special/wey_yu/corporate/div_man
 	title = JOB_DIVISION_MANAGER
 	gear_preset = /datum/equipment_preset/wy/manager/division_manager
-	supervisors = "Weyland-Yutani Directorate"
+	supervisors = "维兰德-汤谷公司董事会"
 
 /datum/job/special/wey_yu/corporate/chief_exec
 	title = JOB_CHIEF_EXECUTIVE
 	gear_preset = /datum/equipment_preset/wy/manager/chief_executive
-	supervisors = "Weyland-Yutani Directorate"
+	supervisors = "维兰德-汤谷公司董事会"
 
 /datum/job/special/wey_yu/corporate/deputy_director
 	title = JOB_DEPUTY_DIRECTOR
 	gear_preset = /datum/equipment_preset/wy/manager/director/deputy
-	supervisors = "Weyland-Yutani Directorate"
+	supervisors = "维兰德-汤谷公司董事会"
 
 /datum/job/special/wey_yu/corporate/director
 	title = JOB_DIRECTOR
 	gear_preset = /datum/equipment_preset/wy/manager/director
-	supervisors = "Weyland-Yutani Directorate"
+	supervisors = "维兰德-汤谷公司董事会"
 
 
 // PMCS //
 /datum/job/special/wey_yu/pmc // Abstract type (null title)
-	supervisors = "Weyland-Yutani PMC Dispatch"
+	supervisors = "维兰德-汤谷公司 私人军事承包商 派遣"
 
 /datum/job/special/wey_yu/pmc/standard
 	title = JOB_PMC_STANDARD

@@ -1,6 +1,6 @@
 /obj/item/stack/medical
-	name = "medical pack"
-	singular_name = "medical pack"
+	name = "医疗包"
+	singular_name = "医疗包"
 	icon = 'icons/obj/items/medical_stacks.dmi'
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/medical.dmi',
@@ -27,7 +27,7 @@
 		return 1
 
 	if(!ishuman(user))
-		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
+		to_chat(user, SPAN_WARNING("你的手不够灵巧，无法完成此操作！"))
 		return 1
 
 	var/mob/living/carbon/human/H = M
@@ -38,26 +38,26 @@
 		return TRUE
 
 	if(!affecting)
-		to_chat(user, SPAN_WARNING("[H] has no [parse_zone(user.zone_selected)]!"))
+		to_chat(user, SPAN_WARNING("[H]没有[parse_zone(user.zone_selected)]！"))
 		return 1
 
 	if(affecting.display_name == "head")
 		if(H.head && istype(H.head,/obj/item/clothing/head/helmet/space))
-			to_chat(user, SPAN_WARNING("You can't apply [src] through [H.head]!"))
+			to_chat(user, SPAN_WARNING("你无法透过[H.head]使用[src]！"))
 			return 1
 	else
 		if(H.wear_suit && istype(H.wear_suit,/obj/item/clothing/suit/space))
-			to_chat(user, SPAN_WARNING("You can't apply [src] through [H.wear_suit]!"))
+			to_chat(user, SPAN_WARNING("你无法透过[H.wear_suit]使用[src]！"))
 			return 1
 
 	if(affecting.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
-		to_chat(user, SPAN_WARNING("This isn't useful at all on a robotic limb."))
+		to_chat(user, SPAN_WARNING("这对机械肢体毫无用处。"))
 		return 1
 
 /obj/item/stack/medical/bruise_pack
-	name = "roll of gauze"
+	name = "纱布卷"
 	singular_name = "medical gauze"
-	desc = "Some sterile gauze to wrap around bloody stumps and lacerations."
+	desc = "用于包裹血淋淋的断肢和撕裂伤的无菌纱布。"
 	icon_state = "brutepack"
 	item_state_slots = list(WEAR_AS_GARB = "brutepack (bandages)")
 	stack_id = "bruise pack"
@@ -78,7 +78,7 @@
 
 
 		if(affecting.get_incision_depth())
-			to_chat(user, SPAN_NOTICE("[M]'s [affecting.display_name] is cut open, you'll need more than a bandage!"))
+			to_chat(user, SPAN_NOTICE("[M]的[affecting.display_name]已被切开，你需要的不止是绷带！"))
 			return TRUE
 
 		var/possessive = "[user == M ? "your" : "\the [M]'s"]"
@@ -92,10 +92,10 @@
 				use(1)
 				playsound(user, 'sound/handling/bandage.ogg', 25, 1, 2)
 			if(WOUNDS_ALREADY_TREATED)
-				to_chat(user, SPAN_WARNING("The wounds on [possessive] [affecting.display_name] have already been treated."))
+				to_chat(user, SPAN_WARNING("[possessive]的[affecting.display_name]上的伤口已经处理过了。"))
 				return TRUE
 			else
-				to_chat(user, SPAN_WARNING("There are no wounds on [possessive] [affecting.display_name]."))
+				to_chat(user, SPAN_WARNING("[possessive]的[affecting.display_name]上没有伤口。"))
 				return TRUE
 
 /obj/item/stack/medical/bruise_pack/two
@@ -103,7 +103,7 @@
 
 /obj/item/stack/medical/ointment
 	name = "ointment"
-	desc = "Used to treat burns, infected wounds, and relieve itching in unusual places."
+	desc = "用于治疗烧伤、感染伤口，并缓解特殊部位的瘙痒。"
 	gender = PLURAL
 	singular_name = "ointment"
 	icon_state = "ointment"
@@ -126,7 +126,7 @@
 					return 1
 
 		if(affecting.get_incision_depth())
-			to_chat(user, SPAN_NOTICE("[M]'s [affecting.display_name] is cut open, you'll need more than an ointment!"))
+			to_chat(user, SPAN_NOTICE("[M]的[affecting.display_name]已被切开，你需要的不止是药膏！"))
 			return TRUE
 
 		var/possessive = "[user == M ? "your" : "\the [M]'s"]"
@@ -143,16 +143,16 @@
 				use(1)
 				playsound(user, 'sound/handling/ointment_spreading.ogg', 25, 1, 2)
 			if(WOUNDS_ALREADY_TREATED)
-				to_chat(user, SPAN_WARNING("The burns on [possessive] [affecting.display_name] have already been treated."))
+				to_chat(user, SPAN_WARNING("[possessive]的[affecting.display_name]上的烧伤已经处理过了。"))
 				return TRUE
 			else
-				to_chat(user, SPAN_WARNING("There are no burns on [possessive] [affecting.display_name]."))
+				to_chat(user, SPAN_WARNING("[possessive]的[affecting.display_name]上没有烧伤。"))
 				return TRUE
 
 /obj/item/stack/medical/advanced/bruise_pack
-	name = "trauma kit"
-	singular_name = "trauma kit"
-	desc = "A trauma kit for severe injuries."
+	name = "创伤包"
+	singular_name = "创伤包"
+	desc = "用于处理严重伤势的创伤包。"
 	icon_state = "traumakit"
 	item_state = "brutekit"
 	heal_brute = 12
@@ -170,13 +170,13 @@
 		var/heal_amt = heal_brute
 		if(user.skills)
 			if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC)) //untrained marines have a hard time using it
-				to_chat(user, SPAN_WARNING("You start fumbling with [src]."))
+				to_chat(user, SPAN_WARNING("你开始笨拙地摆弄[src]。"))
 				if(!do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, M, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 					return
 				heal_amt = 3 //non optimal application means less healing
 
 		if(affecting.get_incision_depth())
-			to_chat(user, SPAN_NOTICE("[M]'s [affecting.display_name] is cut open, you'll need more than a trauma kit!"))
+			to_chat(user, SPAN_NOTICE("[M]的[affecting.display_name]已被切开，你需要的不止是创伤包！"))
 			return TRUE
 
 		var/possessive = "[user == M ? "your" : "\the [M]'s"]"
@@ -193,19 +193,19 @@
 				affecting.heal_damage(brute = heal_amt)
 				use(1)
 			if(WOUNDS_ALREADY_TREATED)
-				to_chat(user, SPAN_WARNING("The wounds on [possessive] [affecting.display_name] have already been treated."))
+				to_chat(user, SPAN_WARNING("[possessive]的[affecting.display_name]上的伤口已经处理过了。"))
 				return TRUE
 			else
-				to_chat(user, SPAN_WARNING("There are no wounds on [possessive] [affecting.display_name]."))
+				to_chat(user, SPAN_WARNING("[possessive]的[affecting.display_name]上没有伤口。"))
 				return TRUE
 
 /obj/item/stack/medical/advanced/bruise_pack/upgraded
-	name = "upgraded trauma kit"
-	singular_name = "upgraded trauma kit"
-	stack_id = "upgraded trauma kit"
+	name = "升级版创伤包"
+	singular_name = "升级版创伤包"
+	stack_id = "升级版创伤包"
 
 	icon_state = "traumakit_upgraded"
-	desc = "An upgraded trauma treatment kit. Three times as effective as standard-issue, and non-replenishable. Use sparingly on only the most critical wounds."
+	desc = "升级版创伤治疗包。效果是标准配发的三倍，且无法补充。请仅用于最危急的伤口，谨慎使用。"
 
 	max_amount = 10
 	amount = 10
@@ -215,25 +215,25 @@
 	heal_brute = initial(heal_brute) * 3 // 3x stronger
 
 /obj/item/stack/medical/advanced/bruise_pack/predator
-	name = "mending herbs"
+	name = "疗伤草药"
 	singular_name = "mending herb"
-	desc = "A poultice made of soft leaves that is rubbed on bruises."
+	desc = "一种由柔软叶片制成的膏药，用于涂抹瘀伤。"
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "brute_herbs"
 	item_state = "brute_herbs"
 	heal_brute = 15
-	stack_id = "mending herbs"
+	stack_id = "疗伤草药"
 	alien = TRUE
 
 /obj/item/stack/medical/advanced/ointment
-	name = "burn kit"
-	singular_name = "burn kit"
-	desc = "A treatment kit for severe burns."
+	name = "烧伤包"
+	singular_name = "烧伤包"
+	desc = "用于严重烧伤的治疗包。"
 	icon_state = "burnkit"
 	item_state = "burnkit"
 	heal_burn = 12
 
-	stack_id = "burn kit"
+	stack_id = "烧伤包"
 
 /obj/item/stack/medical/advanced/ointment/attack(mob/living/carbon/M as mob, mob/user as mob)
 	if(..())
@@ -246,13 +246,13 @@
 		var/obj/limb/affecting = H.get_limb(user.zone_selected)
 		if(user.skills)
 			if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC)) //untrained marines have a hard time using it
-				to_chat(user, SPAN_WARNING("You start fumbling with [src]."))
+				to_chat(user, SPAN_WARNING("你开始笨拙地摆弄[src]。"))
 				if(!do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, M, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 					return
 				heal_amt = 3 //non optimal application means less healing
 
 		if(affecting.get_incision_depth())
-			to_chat(user, SPAN_NOTICE("[M]'s [affecting.display_name] is cut open, you'll need more than a burn kit!"))
+			to_chat(user, SPAN_NOTICE("[M]的[affecting.display_name]被切开了，光用烧伤包可不够！"))
 			return TRUE
 
 		var/possessive = "[user == M ? "your" : "\the [M]'s"]"
@@ -271,19 +271,19 @@
 
 				use(1)
 			if(WOUNDS_ALREADY_TREATED)
-				to_chat(user, SPAN_WARNING("The burns on [possessive] [affecting.display_name] have already been treated."))
+				to_chat(user, SPAN_WARNING("[possessive]的[affecting.display_name]上的烧伤已经处理过了。"))
 				return TRUE
 			else
-				to_chat(user, SPAN_WARNING("There are no burns on [possessive] [affecting.display_name]."))
+				to_chat(user, SPAN_WARNING("[possessive]的[affecting.display_name]上没有烧伤。"))
 				return TRUE
 
 /obj/item/stack/medical/advanced/ointment/upgraded
-	name = "upgraded burn kit"
-	singular_name = "upgraded burn kit"
-	stack_id = "upgraded burn kit"
+	name = "升级版烧伤包"
+	singular_name = "升级版烧伤包"
+	stack_id = "升级版烧伤包"
 
 	icon_state = "burnkit_upgraded"
-	desc = "An upgraded burn treatment kit. Three times as effective as standard-issue, and non-replenishable. Use sparingly on only the most critical burns."
+	desc = "一个升级版烧伤治疗包。效果是标准配发的三倍，且无法补充。请仅在处理最危急的烧伤时谨慎使用。"
 
 	max_amount = 10
 	amount = 10
@@ -293,20 +293,20 @@
 	heal_burn = initial(heal_burn) * 3 // 3x stronger
 
 /obj/item/stack/medical/advanced/ointment/predator
-	name = "soothing herbs"
+	name = "舒缓草药"
 	singular_name = "soothing herb"
-	desc = "A poultice made of cold, blue petals that is rubbed on burns."
+	desc = "一种由冰冷的蓝色花瓣制成的药膏，用于涂抹在烧伤处。"
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "burn_herbs"
 	item_state = "burn_herbs"
 	heal_burn = 15
-	stack_id = "soothing herbs"
+	stack_id = "舒缓草药"
 	alien = TRUE
 
 /obj/item/stack/medical/splint
-	name = "medical splints"
+	name = "医用夹板"
 	singular_name = "medical splint"
-	desc = "A collection of different splints and securing gauze. What, did you think we only broke legs out here?"
+	desc = "一套包含不同夹板和固定纱布的套装。怎么，你以为我们在这只会摔断腿吗？"
 	icon_state = "splint"
 	item_state = "splint"
 	amount = 5
@@ -335,7 +335,7 @@
 		var/limb = affecting.display_name
 
 		if(!(affecting.name in list("l_arm", "r_arm", "l_leg", "r_leg", "r_hand", "l_hand", "r_foot", "l_foot", "chest", "groin", "head")))
-			to_chat(user, SPAN_WARNING("You can't apply a splint there!"))
+			to_chat(user, SPAN_WARNING("你无法在那里使用夹板！"))
 			return
 
 		if(affecting.status & LIMB_DESTROYED)
@@ -345,7 +345,7 @@
 
 		if(affecting.status & LIMB_SPLINTED)
 			var/message = "[user == M ? "Your" : "[M]'s"]"
-			to_chat(user, SPAN_WARNING("[message] [limb] is already splinted!"))
+			to_chat(user, SPAN_WARNING("[message][limb]已经上好夹板了！"))
 			return
 
 		if(M != user)
@@ -371,11 +371,11 @@
 			playsound(user, 'sound/handling/splint1.ogg', 25, 1, 2)
 
 /obj/item/stack/medical/splint/nano
-	name = "nano splints"
+	name = "纳米夹板"
 	singular_name = "nano splint"
 
 	icon_state = "nanosplint"
-	desc = "Advanced technology allows these splints to hold bones in place while being flexible and damage-resistant. These aren't plentiful, so use them sparingly on critical areas."
+	desc = "先进技术使这些夹板能在保持柔韧性和抗损伤性的同时固定骨骼。这些夹板数量不多，请谨慎用于关键部位。"
 
 	indestructible_splints = TRUE
 	amount = 5
@@ -384,4 +384,4 @@
 	stack_id = "nano splint"
 
 /obj/item/stack/medical/splint/nano/research
-	desc = "Advanced technology allows these splints to hold bones in place while being flexible and damage-resistant. Those are made from durable carbon fiber and don't look cheap, better use them sparingly."
+	desc = "先进技术使这些夹板能在保持柔韧性和抗损伤性的同时固定骨骼。它们由耐用的碳纤维制成，看起来价格不菲，最好谨慎使用。"

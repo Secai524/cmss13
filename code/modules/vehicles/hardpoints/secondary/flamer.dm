@@ -1,6 +1,6 @@
 /obj/item/hardpoint/secondary/small_flamer
 	name = "\improper LZR-N Flamer Unit"
-	desc = "A secondary weapon for tanks that spews hot fire."
+	desc = "坦克的副武器，可喷射高温火焰。"
 
 	icon_state = "flamer"
 	disp_icon = "tank"
@@ -29,7 +29,7 @@
 
 /obj/item/hardpoint/secondary/small_flamer/try_fire(atom/target, mob/living/user, params)
 	if(get_turf(target) in owner.locs)
-		to_chat(user, SPAN_WARNING("The target is too close."))
+		to_chat(user, SPAN_WARNING("目标距离太近。"))
 		return NONE
 
 	return ..()

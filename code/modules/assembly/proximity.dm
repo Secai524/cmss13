@@ -1,6 +1,6 @@
 /obj/item/device/assembly/prox_sensor
-	name = "proximity sensor"
-	desc = "Used for scanning and alerting when someone enters a certain proximity."
+	name = "近程传感器"
+	desc = "用于扫描并在有人进入特定范围时发出警报。"
 	icon_state = "prox"
 	matter = list("metal" = 800, "glass" = 200, "waste" = 50)
 	wires = WIRE_ASSEMBLY_PULSE
@@ -50,7 +50,7 @@
 
 /obj/item/device/assembly/prox_sensor/proc/sense()
 	var/turf/mainloc = get_turf(src)
-	mainloc.visible_message(SPAN_DANGER("You hear a proximity sensor beep!"), SPAN_DANGER("You hear a proximity sensor beep!"))
+	mainloc.visible_message(SPAN_DANGER("你听到近程传感器发出哔哔声！"), SPAN_DANGER("你听到近程传感器发出哔哔声！"))
 	playsound(mainloc, 'sound/machines/twobeep.ogg', 50, 1)
 
 	delaying = TRUE
@@ -106,7 +106,7 @@
 
 /obj/item/device/assembly/prox_sensor/interact(mob/user)
 	if(!secured)
-		to_chat(user, SPAN_WARNING("The [name] is unsecured!"))
+		to_chat(user, SPAN_WARNING("这个[name]未固定！"))
 		return FALSE
 
 	tgui_interact(user)
@@ -190,6 +190,6 @@
 	if(scanning)
 		playsound(loc, "alien_claw_metal", 25, 1)
 		xeno.animation_attack_on(src)
-		xeno.visible_message(SPAN_XENOWARNING("[xeno] slashes [src], turning it off!"), SPAN_XENONOTICE("You slash [src], turning it off!"))
+		xeno.visible_message(SPAN_XENOWARNING("[xeno]劈砍[src]，将其关闭！"), SPAN_XENONOTICE("You slash [src], turning it off!"))
 		toggle_scan()
 	return XENO_ATTACK_ACTION

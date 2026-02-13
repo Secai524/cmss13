@@ -1,6 +1,6 @@
 /obj/structure/machinery/fuelcell_recycler
 	name = "\improper fuel cell recycler"
-	desc = "A large machine with whirring fans and two cylindrical holes in the top. Used to regenerate fuel cells."
+	desc = "一台带有旋转风扇和顶部两个圆柱形孔洞的大型机器。用于再生燃料电池。"
 	icon = 'icons/obj/structures/machinery/fusion_eng.dmi'
 	icon_state = "recycler"
 	active_power_usage = 15000
@@ -38,20 +38,20 @@
 
 /obj/structure/machinery/fuelcell_recycler/attackby(obj/item/attacking_item, mob/user)
 	if(!istype(attacking_item, /obj/item/fuel_cell))
-		to_chat(user, SPAN_NOTICE("[src] rejects [attacking_item]. It can only regenerate fuel cells."))
+		to_chat(user, SPAN_NOTICE("[src]拒绝了[attacking_item]。它只能再生燃料电池。"))
 		return
 	var/obj/item/fuel_cell/cell = attacking_item
 
 	if(cell_left && cell_right)
-		to_chat(user, SPAN_NOTICE("[src] cannot regenerate any more fuel cells. Remove [cell_left] or [cell_right] first."))
+		to_chat(user, SPAN_NOTICE("[src]无法再生更多燃料电池。请先取出[cell_left]或[cell_right]。"))
 		return
 
 	if(cell.get_fuel_percent() == 100)
-		to_chat(user, SPAN_NOTICE("[cell] is already full and does not need to be regenerated."))
+		to_chat(user, SPAN_NOTICE("[cell]已充满，无需再生。"))
 		return
 
 	if(!user.drop_inv_item_to_loc(cell, src))
-		to_chat(user, SPAN_WARNING("You fail to insert [cell] into [src]."))
+		to_chat(user, SPAN_WARNING("你未能将[cell]插入[src]。"))
 		return
 
 	add_fingerprint(user)
@@ -62,16 +62,16 @@
 		inserted_to_left = FALSE
 		cell_right = cell
 
-	to_chat(user, SPAN_NOTICE("You insert [cell] into the [inserted_to_left ? "left" : "right"] fuel cell receptacle."))
+	to_chat(user, SPAN_NOTICE("你将[cell]插入[inserted_to_left ? "left" : "right"] fuel cell receptacle."))
 	update_icon()
 	if(!machine_processing)
-		visible_message(SPAN_NOTICE("[src] starts whirring as it turns on."))
+		visible_message(SPAN_NOTICE("[src]启动时开始嗡嗡作响。"))
 		update_use_power(USE_POWER_ACTIVE)
 		start_processing()
 
 /obj/structure/machinery/fuelcell_recycler/attack_hand(mob/user)
 	if(!cell_left && !cell_right)
-		to_chat(user, SPAN_NOTICE("[src] is empty."))
+		to_chat(user, SPAN_NOTICE("[src]是空的。"))
 		return
 
 	add_fingerprint(user)
@@ -152,7 +152,7 @@
 	icon_state = "recycler_on"
 
 /obj/structure/machinery/fuelcell_recycler/proc/turn_off()
-	visible_message(SPAN_NOTICE("[src] stops whirring as it turns off."))
+	visible_message(SPAN_NOTICE("[src]关闭时停止了嗡嗡声。"))
 	stop_processing()
 	update_icon()
 	update_use_power(USE_POWER_NONE)
@@ -173,7 +173,7 @@
 	name = "\improper WL-6 universal fuel cell"
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "cell-full"
-	desc = "A rechargeable fuel cell designed to work as a power source for the Cheyenne-Class transport or for Westingland S-52 Reactors."
+	desc = "一种可充电的燃料电池，设计用作夏延级运输机或威斯汀兰S-52反应堆的电源。"
 	///How much fuel is in the reactor
 	var/fuel_amount = 100
 	///Max amount that the cell can hold

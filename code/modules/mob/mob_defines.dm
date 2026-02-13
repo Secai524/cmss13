@@ -159,7 +159,7 @@
 
 	var/voice_name = "unidentifiable voice"
 
-	var/job = null // Internal job title used when mob is spawned. Preds are "Predator", Xenos are "Xenomorph", Marines have their actual job title
+	var/job = null // Internal job title used when mob is spawned. Preds are "Predator", Xenos are "异形", Marines have their actual job title
 	var/comm_title = ""
 	var/faction = FACTION_NEUTRAL
 	var/faction_group
@@ -276,12 +276,12 @@
 	VV_DROPDOWN_OPTION("", "-----MOB-----")
 	VV_DROPDOWN_OPTION(VV_HK_GIVE_DISEASE, "Give Disease")
 	VV_DROPDOWN_OPTION(VV_HK_BUILDMODE, "Give Build Mode")
-	VV_DROPDOWN_OPTION(VV_HK_GIB, "Gib")
+	VV_DROPDOWN_OPTION(VV_HK_GIB, "肢解")
 	VV_DROPDOWN_OPTION(VV_HK_DROP_ALL, "Drop All")
 	VV_DROPDOWN_OPTION(VV_HK_DIRECT_CONTROL, "Assume Direct Control")
 	VV_DROPDOWN_OPTION(VV_HK_ADD_VERB, "Add Verb")
 	VV_DROPDOWN_OPTION(VV_HK_REMOVE_VERB, "Remove Verb")
-	VV_DROPDOWN_OPTION(VV_HK_SELECT_EQUIPMENT, "Select Equipment")
+	VV_DROPDOWN_OPTION(VV_HK_SELECT_EQUIPMENT, "选择装备")
 	VV_DROPDOWN_OPTION(VV_HK_EDIT_SKILL, "Edit Skills")
 	VV_DROPDOWN_OPTION(VV_HK_ADD_LANGUAGE, "Add Language")
 	VV_DROPDOWN_OPTION(VV_HK_REMOVE_LANGUAGE, "Remove Language")
@@ -300,10 +300,10 @@
 			return
 
 		if(!LAZYLEN(usr.client.stored_matrices))
-			to_chat(usr, "You don't have any matrices stored!")
+			to_chat(usr, "你没有存储任何矩阵！")
 			return
 
-		var/matrix_name = tgui_input_list(usr, "Choose a matrix", "Matrix", (usr.client.stored_matrices + "Revert to Default" + "Cancel"))
+		var/matrix_name = tgui_input_list(usr, "选择矩阵", "Matrix", (usr.client.stored_matrices + "Revert to Default" + "Cancel"))
 		if(!matrix_name || matrix_name == "Cancel")
 			return
 		else if (matrix_name == "Revert to Default")
@@ -319,7 +319,7 @@
 		base_transform = MX
 		transform = MX
 
-		if (alert(usr, "Would you like to enable pixel scaling?", "Confirm", "Yes", "No") == "Yes")
+		if (alert(usr, "是否启用像素缩放？", "确认", "Yes", "No") == "Yes")
 			enable_pixel_scaling()
 
 	if(href_list[VV_HK_GIVE_DISEASE])
@@ -333,7 +333,7 @@
 			return
 
 		if(!client || !client.admin_holder || !(client.admin_holder.rights & R_MOD))
-			to_chat(usr, "This can only be used on people with +MOD permissions.")
+			to_chat(usr, "这只能用于拥有+MOD权限的人员。")
 			return
 
 		log_admin("[key_name(usr)] has toggled buildmode on [key_name(src)]")
@@ -374,7 +374,7 @@
 		possibleverbs -= verbs
 		possibleverbs += "Cancel" // ...And one for the bottom
 
-		var/verb = tgui_input_list(usr, "Select a verb!", "Verbs", possibleverbs)
+		var/verb = tgui_input_list(usr, "选择一个指令！", "Verbs", possibleverbs)
 		if(!verb || verb == "Cancel")
 			return
 		else
@@ -390,39 +390,39 @@
 		if(!check_rights(R_SPAWN))
 			return
 
-		var/new_language = tgui_input_list(usr, "Please choose a language to add.","Language", GLOB.all_languages)
+		var/new_language = tgui_input_list(usr, "请选择要添加的语言。","Language", GLOB.all_languages)
 
 		if(!new_language)
 			return
 
 		if(add_language(new_language))
-			to_chat(usr, "Added [new_language] to [src].")
+			to_chat(usr, "已将[new_language]添加到[src]。")
 		else
-			to_chat(usr, "Mob already knows that language.")
+			to_chat(usr, "该目标已掌握该语言。")
 
 	if(href_list[VV_HK_REMOVE_LANGUAGE])
 		if(!check_rights(R_SPAWN))
 			return
 
 		if(!length(languages))
-			to_chat(usr, "This mob knows no languages.")
+			to_chat(usr, "该目标未掌握任何语言。")
 			return
 
-		var/datum/language/rem_language = tgui_input_list(usr, "Please choose a language to remove.","Language", languages)
+		var/datum/language/rem_language = tgui_input_list(usr, "请选择要移除的语言。","Language", languages)
 
 		if(!rem_language)
 			return
 
 		if(remove_language(rem_language.name))
-			to_chat(usr, "Removed [rem_language] from [src].")
+			to_chat(usr, "已从[src]移除[rem_language]。")
 		else
-			to_chat(usr, "Mob doesn't know that language.")
+			to_chat(usr, "该目标不掌握该语言。")
 
 	if(href_list[VV_HK_REMOVE_VERB])
 		if(!check_rights(R_DEBUG))
 			return
 
-		var/verb = tgui_input_list(usr, "Please choose a verb to remove.","Verbs", verbs)
+		var/verb = tgui_input_list(usr, "请选择要移除的指令。","Verbs", verbs)
 
 		if(!verb)
 			return

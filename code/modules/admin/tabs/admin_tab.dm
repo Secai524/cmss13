@@ -5,13 +5,13 @@
 	if(!admin_holder)
 		return
 
-	if(alert("Confirm deadmin? This procedure can be reverted at any time and will not carry over to next round, but you will lose all your admin powers in the meantime.", , "Yes", "No") != "Yes")
+	if(alert("确认取消管理员权限？此操作可随时撤销且不会延续到下回合，但在此期间你将失去所有管理员权限。", , "Yes", "No") != "Yes")
 		return
 
 	message_admins("[src] de-admined themselves.")
 	add_verb(src, /client/proc/readmin_self)
 	deadmin()
-	to_chat(src, "<br><br><span class='centerbold'><big>You are now a normal player. You can ascend back to adminhood at any time using the 'Re-admin Self' verb in your Admin panel.</big></span><br>")
+	to_chat(src, "<br><br><span class='centerbold'><big>你现在是一名普通玩家。你可以随时通过管理员面板中的‘重新授权自己’指令恢复管理员权限。</big></span><br>")
 
 /client/proc/readmin_self()
 	set name = "Re-Admin"
@@ -19,7 +19,7 @@
 
 	remove_verb(src, /client/proc/readmin_self)
 	readmin()
-	to_chat(src, "<br><br><span class='centerbold'><big>You have ascended back to adminhood. All your verbs should be back where you left them.</big></span><br>")
+	to_chat(src, "<br><br><span class='centerbold'><big>你已恢复管理员权限。所有指令应已恢复原状。</big></span><br>")
 	message_admins("[src] re-admined themselves.")
 
 /client/proc/becomelarva()
@@ -30,11 +30,11 @@
 	if(!admin_holder)
 		return
 	if(!isobserver(mob))
-		to_chat(usr, SPAN_WARNING("You must be a ghost to use this."))
+		to_chat(usr, SPAN_WARNING("你必须处于幽灵状态才能使用此功能。"))
 
 	var/mob/dead/observer/ghost = mob
 	ghost.admin_larva_protection = !ghost.admin_larva_protection
-	to_chat(usr, SPAN_BOLDNOTICE("You have [ghost.admin_larva_protection ? "en" : "dis"]abled your larva protection."))
+	to_chat(usr, SPAN_BOLDNOTICE("你拥有[ghost.admin_larva_protection ? "en" : "dis"]abled your larva protection."))
 
 /client/proc/unban_panel()
 	set name = "Unban Panel"
@@ -59,7 +59,7 @@
 	return
 
 /client/proc/admin_ghost()
-	set name = "Aghost"
+	set name = "幽灵模式"
 	set category = "Admin.Game"
 
 	if(!check_rights(R_MOD))
@@ -83,7 +83,7 @@
 		return
 
 	if(istype(mob,/mob/new_player))
-		to_chat(src, "<font color='red'>Error: Aghost: Can't admin-ghost whilst in the lobby. Join or Observe first.</font>")
+		to_chat(src, "<font color='red'>错误：管理员幽灵化：在大厅时无法进行管理员幽灵化。请先加入游戏或选择观察者模式。</font>")
 		return
 
 	//ghostize
@@ -122,7 +122,7 @@
 
 	admin_holder.invisimined = !admin_holder.invisimined
 
-	to_chat(src, SPAN_NOTICE("You have turned invismin [admin_holder.fakekey ? "ON" : "OFF"]"))
+	to_chat(src, SPAN_NOTICE("你已开启隐身模式 [admin_holder.fakekey ? "ON" : "OFF"]"))
 	log_admin("[key_name_admin(usr)] has turned invismin [admin_holder.fakekey ? "ON" : "OFF"]")
 
 /datum/admins/proc/announce()
@@ -132,11 +132,11 @@
 
 	if(!check_rights(0))
 		return
-	var/message = input("Global message to send:", "Admin Announce", null, null)  as message
+	var/message = input("Global message to send:", "管理员公告", null, null)  as message
 	if(message)
 		if(!check_rights(R_SERVER,0))
 			message = adminscrub(message,500)
-		to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ANNOUNCEMENT_HEADER_ADMIN("<b>[usr.client.admin_holder.fakekey ? "Administrator" : usr.key] Announces:</b>\n \t [message]"))
+		to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ANNOUNCEMENT_HEADER_ADMIN("<b>[usr.client.admin_holder.fakekey ? "行政官" : usr.key] Announces:</b>\n \t [message]"))
 		log_admin("Announce: [key_name(usr)] : [message]")
 
 /datum/admins/proc/player_notes_show(key as text)
@@ -145,12 +145,12 @@
 	if (!istype(src,/datum/admins))
 		src = usr.client.admin_holder
 	if (!istype(src,/datum/admins) || !(src.rights & R_MOD))
-		to_chat(usr, "Error: you are not an admin!")
+		to_chat(usr, "错误：你不是管理员！")
 		return
 
 	var/datum/entity/player/P = get_player_from_key(key)
 	if(!P.migrated_notes)
-		to_chat(usr, "Error: notes not yet migrated for that key. Please try again in 5 minutes.")
+		to_chat(usr, "错误：该密钥的备注尚未迁移。请5分钟后再试。")
 		return
 
 	var/dat = {"
@@ -203,18 +203,18 @@
 	if (!istype(src, /datum/admins))
 		src = user.client.admin_holder
 	if (!istype(src, /datum/admins) || !(rights & R_MOD))
-		to_chat(user, "Error: you are not an admin!")
+		to_chat(user, "错误：你不是管理员！")
 		return
 	target_key = ckey(target_key)
 	if(!target_key)
-		to_chat(user, "Error: No key detected!")
+		to_chat(user, "错误：未检测到密钥！")
 		return
-	to_chat(user, SPAN_WARNING("Checking Ckey: [target_key]"))
+	to_chat(user, SPAN_WARNING("正在检查Ckey：[target_key]"))
 	var/list/keys = analyze_ckey(target_key)
 	if(!keys)
-		to_chat(user, SPAN_WARNING("No results for [target_key]."))
+		to_chat(user, SPAN_WARNING("未找到[target_key]的结果。"))
 		return
-	to_chat(user, SPAN_WARNING("Check CKey Results: [keys.Join(", ")]"))
+	to_chat(user, SPAN_WARNING("检查CKey结果：[keys.Join(", ")]"))
 
 	log_admin("[key_name(user)] analyzed ckey '[target_key]'")
 
@@ -307,10 +307,10 @@
 	if(!check_rights(R_MOD))
 		return
 
-	var/message = input(src, "Input your custom admin alert text:", "Message") as text|null
+	var/message = input(src, "输入您的自定义管理员警报文本：", "消息") as text|null
 	if(!message)
 		return
-	var/color = input(src, "Input your message color:", "Color Selector") as color|null
+	var/color = input(src, "输入您的消息颜色：", "Color Selector") as color|null
 	if(!color)
 		return
 
@@ -327,7 +327,7 @@
 	if(!check_rights(R_MOD))
 		return
 
-	var/message = input("Message:", text("Enter the text you wish to appear to your target:")) as text|null
+	var/message = input("信息：", text("Enter the text you wish to appear to your target:")) as text|null
 	if(!message)
 		return
 
@@ -350,7 +350,7 @@
 		return
 
 	var/list/subtle_message_options = list(SUBTLE_MESSAGE_IN_HEAD, SUBTLE_MESSAGE_WEYLAND, SUBTLE_MESSAGE_USCM, SUBTLE_MESSAGE_FACTION)
-	var/message_option = tgui_input_list(usr, "Choose the method of subtle messaging", "", subtle_message_options)
+	var/message_option = tgui_input_list(usr, "选择隐蔽消息发送方式", "", subtle_message_options)
 	if(!message_option)
 		return
 
@@ -367,7 +367,7 @@
 		if(SUBTLE_MESSAGE_IN_HEAD)
 			message = SPAN_ANNOUNCEMENT_HEADER_BLUE("You hear a voice in your head... [input]")
 		else
-			message = SPAN_ANNOUNCEMENT_HEADER_BLUE("Message received through headset. [message_option] Transmission <b>\"[input]\"</b>")
+			message = SPAN_ANNOUNCEMENT_HEADER_BLUE("通过耳机收到信息。[message_option] 传输 <b>\"[input]\"</b>")
 
 	for(var/mob/living/carbon/human/mob in view(usr.client))
 		if(message_option == SUBTLE_MESSAGE_IN_HEAD)
@@ -441,14 +441,14 @@
 	set hidden = TRUE
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return
 
-	if(tgui_alert(src, "This will strip ALL mobs within your view range. Are you sure?", "Confirmation", list("Yes", "Cancel")) != "Yes")
+	if(tgui_alert(src, "这将剥离您视野范围内的所有实体。确定吗？", "确认", list("Yes", "Cancel")) != "Yes")
 		return
 
 	var/strip_self = FALSE
-	if(tgui_alert(src, "Do you want to strip yourself as well?", "Confirmation", list("Yes", "No")) == "Yes")
+	if(tgui_alert(src, "您是否也要剥离自己？", "确认", list("Yes", "No")) == "Yes")
 		strip_self = TRUE
 
 	for(var/mob/living/current_mob in view(src))
@@ -468,7 +468,7 @@
 	set hidden = TRUE
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return
 
 	if(alert("This will rejuvenate ALL mobs within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")
@@ -486,7 +486,7 @@
 	set hidden = TRUE
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return
 
 	if(alert("This will rejuvenate ALL humans within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")
@@ -503,7 +503,7 @@
 	set hidden = TRUE
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return
 
 	if(alert("This will rejuvenate ALL revivable humans within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")
@@ -529,7 +529,7 @@
 	set hidden = TRUE
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return
 
 	if(alert("This will rejuvenate ALL xenos within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")
@@ -638,13 +638,13 @@
 		return
 
 	if(!isobserver(user))
-		to_chat(user, SPAN_WARNING("Can only become an imaginary friend while observing or aghosted."))
+		to_chat(user, SPAN_WARNING("只能在观察者模式或幽灵状态下成为幻想朋友。"))
 		return
 
 	var/mob/living/befriended_mob
-	switch(tgui_input_list(user, "Select by:", "Imaginary Friend", list("Key", "Mob")))
+	switch(tgui_input_list(user, "选择方式：", "Imaginary Friend", list("Key", "Mob")))
 		if("Key")
-			var/client/selected_client = tgui_input_list(user, "Select a key", "Imaginary Friend", GLOB.clients)
+			var/client/selected_client = tgui_input_list(user, "选择一个密钥", "Imaginary Friend", GLOB.clients)
 			if(!selected_client)
 				return
 			befriended_mob = selected_client.mob
@@ -654,7 +654,7 @@
 				if(checking_mob.client)
 					continue
 				cliented_mobs -= checking_mob
-			var/mob/selected_mob = tgui_input_list(user, "Select a mob", "Imaginary Friend", cliented_mobs)
+			var/mob/selected_mob = tgui_input_list(user, "选择一个实体", "Imaginary Friend", cliented_mobs)
 			if(!selected_mob)
 				return
 			befriended_mob = selected_mob
@@ -686,10 +686,10 @@
 		return
 
 	if(!SSticker || SSticker.current_state != GAME_STATE_PLAYING)
-		to_chat(usr, SPAN_WARNING("The game hasn't started yet!"))
+		to_chat(usr, SPAN_WARNING("游戏尚未开始！"))
 		return
 
-	var/mob/living/carbon/human/commander = tgui_input_list(usr, "Choose someone to be the operation commander", "Choose an acting commander", GLOB.alive_human_list)
+	var/mob/living/carbon/human/commander = tgui_input_list(usr, "选择作战指挥官", "Choose an acting commander", GLOB.alive_human_list)
 	if(!commander)
 		return
 

@@ -2,7 +2,7 @@
 	title = JOB_FAX_RESPONDER
 	gear_preset = /datum/equipment_preset/fax_responder
 	selection_class = "job_command"
-	supervisors = "CMSS13 Administration Staff"
+	supervisors = "CMSS13 管理团队"
 	total_positions = 1
 	spawn_positions = 1
 
@@ -12,7 +12,7 @@
 	flags_whitelist = WHITELIST_FAX_RESPONDER
 
 /datum/job/fax_responder/on_config_load()
-	entry_message_body = "<a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_FAX_RESPONDER]'>Your job</a> is to answer faxes sent to your fax machine. You are answering on behalf of the CMSS13 staff team and are therefore expected to behave appropriately. Failure to adhere to expectations may result in loss of the role or a server ban. Non-staff players of this role are not able to authorise ERTs through their faxes."
+	entry_message_body = "<a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_FAX_RESPONDER]'>您的职责</a>是回复发送至您传真机的传真。您代表CMSS13管理团队进行回复，因此需保持恰当行为。未能遵守规定可能导致角色权限被撤销或服务器封禁。非管理团队成员扮演此角色时，无法通过其传真授权紧急响应小组。"
 	return ..()
 
 /datum/job/fax_responder/uscm_hc

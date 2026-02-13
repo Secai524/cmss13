@@ -1,8 +1,8 @@
 //Contains: Engineering department jumpsuits
 
 /obj/item/clothing/under/rank/atmospheric_technician
-	desc = "It's a jumpsuit worn by atmospheric technicians."
-	name = "atmospheric technician's jumpsuit"
+	desc = "这是大气技术员穿的连体服。"
+	name = "大气技术员连体服"
 	icon_state = "atmos"
 	item_state = "atmos_suit"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/engineering.dmi'
@@ -12,8 +12,8 @@
 	flags_jumpsuit = null
 
 /obj/item/clothing/under/rank/engineer
-	desc = "It's an orange high visibility jumpsuit worn by engineers. It has minor radiation shielding."
-	name = "engineer's jumpsuit"
+	desc = "这是一套工程师穿的橙色高能见度连体服。具有轻微的辐射防护能力。"
+	name = "工程师连体服"
 	icon_state = "engine"
 	item_state = "engi_suit"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/engineering.dmi'
@@ -31,8 +31,8 @@
 	flags_jumpsuit = null
 
 /obj/item/clothing/under/rank/roboticist
-	desc = "It's a slimming black with reinforced seams; great for industrial work."
-	name = "roboticist's jumpsuit"
+	desc = "修身黑色设计，接缝处经过加固；非常适合工业作业。"
+	name = "机器人专家连体服"
 	icon_state = "robotics"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/research.dmi'
 	item_icons = list(

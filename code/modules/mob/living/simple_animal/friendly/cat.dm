@@ -2,14 +2,14 @@
 /mob/living/simple_animal/small/cat
 	name = "cat"
 	real_name = "cat"
-	desc = "A domesticated, feline pet. Has a tendency to adopt crewmembers."
+	desc = "一只家养宠物猫。有收养船员的倾向。"
 	icon_state = "cat2"
 	icon_living = "cat2"
 	icon_dead = "cat2_dead"
 	speak = list("Meow!","Esp!","Purr!","HSSSSS!")
 	speak_emote = list("purrs", "meows")
 	emote_hear = list("meows.","mews.", "mrrps.")
-	emote_see = list("shakes their head.", "shivers.", "licks their paw.")
+	emote_see = list("摇了摇头。", "打了个寒颤。", "舔了舔爪子。")
 	speak_chance = 1
 	turns_per_move = 5
 	meat_type = /obj/item/reagent_container/food/snacks/meat
@@ -145,25 +145,25 @@
 
 //RUNTIME IS ALIVE! SQUEEEEEEEE~
 /mob/living/simple_animal/small/cat/Runtime
-	name = "Runtime"
-	desc = "Her fur has the look and feel of velvet, and her tail quivers occasionally."
+	name = "运行时"
+	desc = "它的毛皮看起来和摸起来都像天鹅绒，尾巴偶尔会颤抖。"
 	icon_state = "cat"
 	icon_living = "cat"
 	icon_dead = "cat_dead"
 	holder_type = /obj/item/holder/cat/blackcat/Runtime
 
 /mob/living/simple_animal/small/cat/blackcat
-	name = "black cat"
-	desc = "It's a cat, now in black!"
+	name = "黑猫"
+	desc = "一只猫，现在是黑色的！"
 	icon_state = "cat"
 	icon_living = "cat"
 	icon_dead = "cat_dead"
 	holder_type = /obj/item/holder/cat/blackcat
 
 /mob/living/simple_animal/small/cat/Jones
-	name = "Jones"
-	real_name = "Jones"
-	desc = "A tough, old stray whose origin no one seems to know."
+	name = "琼斯"
+	real_name = "琼斯"
+	desc = "一只来历不明的、坚韧的老流浪猫。"
 	icon_state = "cat2"
 	icon_living = "cat2"
 	icon_dead = "cat2_dead"
@@ -173,7 +173,7 @@
 
 /mob/living/simple_animal/small/cat/kitten
 	name = "kitten"
-	desc = "D'aaawwww."
+	desc = "好可爱啊。"
 	icon_state = "kitten"
 	icon_living = "kitten"
 	icon_dead = "kitten_dead"

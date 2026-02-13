@@ -1,6 +1,6 @@
 /obj/effect/alien/resin/special/nest
 	name = XENO_STRUCTURE_NEST
-	desc = "A very thick nest, oozing with a thick sticky substance."
+	desc = "一个非常厚的巢穴，渗出粘稠的物质。"
 	pixel_x = -8
 	pixel_y = -8
 

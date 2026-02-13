@@ -32,7 +32,7 @@
 /mob/living/carbon/xenomorph/spitter
 	caste_type = XENO_CASTE_SPITTER
 	name = XENO_CASTE_SPITTER
-	desc = "A gross, oozing alien of some kind."
+	desc = "某种令人作呕、渗出粘液的异形。"
 	icon_size = 48
 	icon_state = "Spitter Walking"
 	plasma_types = list(PLASMA_NEUROTOXIN)
@@ -77,16 +77,16 @@
 		return
 
 	if (buffs_active)
-		to_chat(zenomorf, SPAN_XENOHIGHDANGER("We cannot stack this!"))
+		to_chat(zenomorf, SPAN_XENOHIGHDANGER("我们无法叠加这个效果！"))
 		return
 
 	if (!check_and_use_plasma_owner())
 		return
 
-	to_chat(zenomorf, SPAN_XENOHIGHDANGER("We accumulate acid in your glands. Our next spit will be stronger but shorter-ranged."))
-	to_chat(zenomorf, SPAN_XENOWARNING("Additionally, we are slightly faster and more armored for a small amount of time."))
+	to_chat(zenomorf, SPAN_XENOHIGHDANGER("我们在你的腺体中积聚酸液。我们的下一次喷吐将更强力但射程更短。"))
+	to_chat(zenomorf, SPAN_XENOWARNING("此外，我们在一小段时间内会略微更快且护甲更高。"))
 	zenomorf.create_custom_empower(icolor = "#93ec78", ialpha = 200, small_xeno = TRUE)
-	zenomorf.balloon_alert(zenomorf, "our next spit will be stronger", text_color = "#93ec78")
+	zenomorf.balloon_alert(zenomorf, "我们的下一次喷吐将更强力", text_color = "#93ec78")
 	buffs_active = TRUE
 	zenomorf.ammo = GLOB.ammo_list[/datum/ammo/xeno/acid/spatter] // shitcode is my city
 	zenomorf.speed_modifier -= speed_buff_amount
@@ -106,8 +106,8 @@
 	SIGNAL_HANDLER
 	var/mob/living/carbon/xenomorph/zenomorf = owner
 	if(zenomorf.ammo == GLOB.ammo_list[/datum/ammo/xeno/acid/spatter])
-		to_chat(zenomorf, SPAN_XENOWARNING("Our acid glands empty out and return back to normal. We will once more fire long-ranged weak spits."))
-		zenomorf.balloon_alert(zenomorf, "our spits are back to normal", text_color = "#93ec78")
+		to_chat(zenomorf, SPAN_XENOWARNING("我们的酸液腺体已清空并恢复正常。我们将再次发射远程的弱效喷吐。"))
+		zenomorf.balloon_alert(zenomorf, "我们的喷吐已恢复正常", text_color = "#93ec78")
 		zenomorf.ammo = GLOB.ammo_list[/datum/ammo/xeno/acid] // el codigo de mierda es mi ciudad
 	UnregisterSignal(zenomorf, COMSIG_XENO_POST_SPIT)
 
@@ -121,7 +121,7 @@
 	zenomorf.armor_modifier -= armor_buff_amount
 	zenomorf.recalculate_speed()
 	zenomorf.recalculate_armor()
-	to_chat(zenomorf, SPAN_XENOHIGHDANGER("We feel our movement speed slow down!"))
+	to_chat(zenomorf, SPAN_XENOHIGHDANGER("我们感到自己的移动速度变慢了！"))
 	disable_spatter()
 	buffs_active = FALSE
 

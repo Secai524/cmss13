@@ -3,8 +3,8 @@
 //please preference put stuff where it's easy to find - C
 
 /obj/item/device/autopsy_scanner
-	name = "autopsy scanner"
-	desc = "Extracts information on wounds."
+	name = "尸检扫描仪"
+	desc = "提取伤口信息。"
 	icon_state = "autopsy_scanner"
 	flags_atom = FPRINT|CONDUCT
 	w_class = SIZE_SMALL
@@ -85,7 +85,7 @@
 	set src in view(usr, 1)
 	set name = "Print Data"
 	if(usr.stat || !(istype(usr,/mob/living/carbon/human)))
-		to_chat(usr, "No.")
+		to_chat(usr, "不。")
 		return
 
 	var/scan_data = ""
@@ -124,7 +124,7 @@
 		// total score happens to be the total damage
 		switch(total_score)
 			if(0)
-				damage_desc = "Unknown"
+				damage_desc = "未知"
 			if(1 to 5)
 				damage_desc = "<font color='green'>negligible</font>"
 			if(5 to 15)
@@ -186,7 +186,7 @@
 			break
 
 	if(!table)
-		to_chat(usr, "<b>You can't work here, you need to put [M] on a proper surgical bed.</b>")
+		to_chat(usr, "<b>你无法在此操作，需要将[M]放在合适的手术床上。</b>")
 		return
 
 	if(target_name != M.name)
@@ -194,19 +194,19 @@
 		src.wdata = list()
 		src.chemtraces = list()
 		src.timeofdeath = null
-		to_chat(user, SPAN_DANGER("A new patient has been registered. Purging data for previous patient."))
+		to_chat(user, SPAN_DANGER("已登记新患者。正在清除前一位患者的数据。"))
 
 	src.timeofdeath = M.timeofdeath
 
 	var/obj/limb/S = M.get_limb(user.zone_selected)
 	if(!S)
-		to_chat(usr, "<b>You can't scan this body part.</b>")
+		to_chat(usr, "<b>你无法扫描这个身体部位。</b>")
 		return
 	if(M.incision_depths[S.name] == SURGERY_DEPTH_SURFACE)
-		to_chat(usr, "<b>You have to cut the limb open first!</b>")
+		to_chat(usr, "<b>你必须先切开肢体！</b>")
 		return
 	for(var/mob/O in viewers(M))
-		O.show_message(SPAN_DANGER("[user.name] scans the wounds on [M.name]'s [S.display_name] with \the [src.name]"), SHOW_MESSAGE_VISIBLE)
+		O.show_message(SPAN_DANGER("[user.name]用\the [src.name]扫描[M.name]的[S.display_name]上的伤口"), SHOW_MESSAGE_VISIBLE)
 
 	src.add_data(S)
 

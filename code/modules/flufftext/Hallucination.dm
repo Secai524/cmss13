@@ -211,7 +211,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 		var/possible_txt = list("Launch Escape Pods","Self-Destruct Sequence","\[Swipe ID\]","De-Monkify",\
 		"Reticulate Splines","Plasma","Open Valve","Lockdown","Nerf Airflow","Kill Traitor","Nihilism",\
 		"OBJECTION!","Arrest Stephen Bowman","Engage Anti-Trenna Defenses","Increase Captain IQ","Retrieve Arms",\
-		"Play Charades","Oxygen","Inject BeAcOs","Ninja Lizards","Limit Break","Build Sentry")
+		"Play Charades","氧气","Inject BeAcOs","Ninja Lizards","Limit Break","Build Sentry")
 
 		if(mid_txts)
 			while(length(mid_txts))
@@ -261,8 +261,8 @@ Gunshots/explosions/opening doors/less rare audio (done)
 /obj/effect/fake_attacker/attackby(obj/item/P as obj, mob/user as mob)
 	step_away(src,my_target,2)
 	for(var/mob/M in oviewers(GLOB.world_view_size,my_target))
-		to_chat(M, SPAN_WARNING("<B>[my_target] flails around wildly.</B>"))
-	my_target.show_message(SPAN_DANGER("<B>[src] has been attacked by [my_target] </B>"), SHOW_MESSAGE_VISIBLE) //Lazy.
+		to_chat(M, SPAN_WARNING("<B>[my_target]疯狂地挥舞着手臂。</B>"))
+	my_target.show_message(SPAN_DANGER("<B>[src]遭到了[my_target]的攻击</B>"), SHOW_MESSAGE_VISIBLE) //Lazy.
 
 	src.health -= P.force
 
@@ -274,7 +274,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 		step_away(src,my_target,2)
 		if(prob(30))
 			for(var/mob/O in oviewers(GLOB.world_view_size , my_target))
-				to_chat(O, SPAN_DANGER("<B>[my_target] stumbles around.</B>"))
+				to_chat(O, SPAN_DANGER("<B>[my_target]踉跄了几步。</B>"))
 
 /obj/effect/fake_attacker/New()
 	..()
@@ -323,7 +323,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 			if(prob(15))
 				if(weapon_name)
 					my_target << sound(pick('sound/weapons/genhit1.ogg', 'sound/weapons/genhit2.ogg', 'sound/weapons/genhit3.ogg'))
-					my_target.show_message(SPAN_DANGER("<B>[my_target] has been attacked with [weapon_name] by [src.name] </B>"), SHOW_MESSAGE_VISIBLE)
+					my_target.show_message(SPAN_DANGER("<B>[my_target]被[src.name]用[weapon_name]攻击了</B>"), SHOW_MESSAGE_VISIBLE)
 					my_target.halloss += 8
 					if(prob(20))
 						my_target.AdjustEyeBlur(3)
@@ -332,7 +332,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 							fake_blood(my_target)
 				else
 					my_target << sound(pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg'))
-					my_target.show_message(SPAN_DANGER("<B>[src.name] has punched [my_target]!</B>"), SHOW_MESSAGE_VISIBLE)
+					my_target.show_message(SPAN_DANGER("<B>[src.name]一拳打中了[my_target]！</B>"), SHOW_MESSAGE_VISIBLE)
 					my_target.halloss += 4
 					if(prob(33))
 						if(!locate(/obj/effect/overlay) in my_target.loc)

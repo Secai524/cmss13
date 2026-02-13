@@ -54,7 +54,7 @@
 		return XENO_NO_DELAY_ACTION
 	current_xenomorph.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] 挥爪攻击 [src]！"),
 	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
@@ -65,10 +65,10 @@
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	update_health(xeno.melee_damage_upper)
 	if(health <= 0)
-		xeno.visible_message(SPAN_DANGER("[xeno] smashes [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno] 用它的尾巴猛击 [src]！"),
 		SPAN_DANGER("We smash [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
-		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno] 用它的尾巴抽打 [src]！"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
@@ -139,7 +139,7 @@
 	target.ammo_count += transf_amt
 	ammo_count -= transf_amt
 	playsound(loc, 'sound/machines/hydraulics_1.ogg', 40, 1)
-	to_chat(user, SPAN_NOTICE("You transfer [transf_amt] [ammo_name] to \the [target]."))
+	to_chat(user, SPAN_NOTICE("你将 [transf_amt] 发 [ammo_name] 转移到了 \the [target]。"))
 	src?.update_icon()
 	target.update_icon()
 	if(ammo_count < 1)
@@ -162,7 +162,7 @@
 /obj/structure/ship_ammo/heavygun
 	name = "\improper PGU-100 Multi-Purpose 30mm ammo crate"
 	icon_state = "30mm_crate"
-	desc = "A crate full of PGU-100 30mm Multi-Purpose ammo designed to penetrate light (non reinforced) structures, as well as shred infantry, IAVs, LAVs, IMVs, and MRAPs. Works in large areas for use on Class 4 and superior alien insectoid infestations, as well as fitting within the armaments allowed for use against a tier 4 insurgency as well as higher tiers. However, it lacks armor penetrating capabilities, for which Anti-Tank 30mm ammo is needed. Can be loaded into the GAU-21 30mm cannon."
+	desc = "一个装满PGU-100型30毫米多用途弹药的板条箱，设计用于穿透轻型（非加固）结构，并撕裂步兵、IAV、LAV、IMV和MRAP。适用于大面积区域，用于对付4级及以上的异形虫类侵扰，也符合允许用于应对4级及以上叛乱的火力配置。然而，它缺乏穿甲能力，为此需要30毫米反坦克弹药。可装入GAU-21型30毫米机炮。"
 	equipment_type = /obj/structure/dropship_equipment/weapon/heavygun
 	ammo_count = 400
 	max_ammo_count = 400
@@ -220,7 +220,7 @@
 /obj/structure/ship_ammo/heavygun/antitank
 	name = "\improper PGU-105 30mm Anti-tank ammo crate"
 	icon_state = "30mm_crate_hv"
-	desc = "A crate full of PGU-105 Specialized 30mm APFSDS Titanium-Tungsten alloy penetrators, made for countering peer and near peer APCs, IFVs, and MBTs in CAS support. It is designed to penetrate up to the equivalent 1350mm of RHA when launched from a GAU-21. It is much less effective against soft targets however, in which case 30mm ball ammunition is recommended. WARNING: discarding petals from the ammunition can be harmful if the dropship does not pull out at the needed speeds. Please consult page 3574 of the manual, available for order at any Armat store. Can be loaded into the GAU-21 30mm cannon."
+	desc = "一个装满PGU-105型专用30毫米APFSDS钛钨合金穿甲弹的板条箱，用于在近距离空中支援中对抗同级及近同级装甲运兵车、步兵战车和主战坦克。设计为从GAU-21发射时，可穿透相当于1350毫米均质轧制钢装甲。但对软目标的效力则低得多，此种情况下建议使用30毫米普通弹。警告：若运输机未以所需速度拉起，弹药脱落的弹托花瓣可能造成伤害。请查阅手册第3574页，可在任何阿玛特商店订购。可装入GAU-21型30毫米机炮。"
 	travelling_time = 60
 	point_cost = 325
 	shrapnel_type = /datum/ammo/bullet/shrapnel/gau/at
@@ -232,7 +232,7 @@
 /obj/structure/ship_ammo/laser_battery
 	name = "\improper BTU-17/LW Hi-Cap Laser Battery"
 	icon_state = "laser_battery"
-	desc = "A high-capacity laser battery used to power laser beam weapons. Can be loaded into the LWU-6B Laser Cannon."
+	desc = "一种高容量激光电池，用于为激光束武器供能。可装入LWU-6B型激光炮。"
 	travelling_time = 10
 	ammo_count = 100
 	max_ammo_count = 100
@@ -275,7 +275,7 @@
 //Rockets
 
 /obj/structure/ship_ammo/rocket
-	name = "abstract rocket"
+	name = "抽象火箭"
 	icon_state = "single"
 	icon = 'icons/obj/structures/props/dropship/dropship_ammo64.dmi'
 	equipment_type = /obj/structure/dropship_equipment/weapon/rocket_pod
@@ -296,7 +296,7 @@
 //this one is air-to-air only
 /obj/structure/ship_ammo/rocket/widowmaker
 	name = "\improper AIM-224B 'Widowmaker'"
-	desc = "The AIM-224B missile is a retrofit of the latest in air-to-air missile technology. Earning the nickname of 'Widowmaker' from various dropship pilots after improvements to its guidance warhead prevents it from being jammed leading to its high kill rate. Not well suited for ground bombardment but its high velocity makes it reach its target quickly. This one has been modified to be a free-fall bomb as a result of dropship ammo shortages. Can be loaded into the LAU-444 Guided Missile Launcher."
+	desc = "AIM-224B导弹是对最新空对空导弹技术的改装。因其制导战斗部的改进使其无法被干扰，从而获得高击杀率，被众多运输机飞行员昵称为“寡妇制造者”。不适用于地面轰炸，但其高速度使其能快速抵达目标。这一枚因运输机弹药短缺而被改装为自由落体炸弹。可装入LAU-444型导弹发射器。"
 	icon_state = "single"
 	travelling_time = 30 //not powerful, but reaches target fast
 	ammo_id = ""
@@ -309,7 +309,7 @@
 
 /obj/structure/ship_ammo/rocket/banshee
 	name = "\improper AGM-227 'Banshee'"
-	desc = "The AGM-227 missile is a mainstay of the overhauled dropship fleet against any mobile or armored ground targets. It's earned the nickname of 'Banshee' from the sudden wail that it emits right before hitting a target. Useful to clear out large areas. Can be loaded into the LAU-444 Guided Missile Launcher."
+	desc = "AGM-227导弹是升级后的运输机舰队对抗任何机动或装甲地面目标的主力。因其在击中目标前突然发出的哀嚎而获得“报丧女妖”的绰号。适用于清除大面积区域。可装入LAU-444型导弹发射器。"
 	icon_state = "banshee"
 	ammo_id = "b"
 	point_cost = 300
@@ -322,7 +322,7 @@
 
 /obj/structure/ship_ammo/rocket/keeper
 	name = "\improper GBU-67 'Keeper II'"
-	desc = "The GBU-67 'Keeper II' is the latest in a generation of laser guided weaponry that spans all the way back to the 20th century. Earning its nickname from a shortening of 'Peacekeeper' which comes from the program that developed its guidance system and the various uses of it during peacekeeping conflicts. Its payload is designed to devastate armored targets. Can be loaded into the LAU-444 Guided Missile Launcher."
+	desc = "GBU-67“守护者II型”是最新一代激光制导武器，其技术可追溯至20世纪。其昵称“守护者”是“维和者”的简称，源于开发其制导系统的项目及其在维和冲突中的各种用途。其有效载荷旨在摧毁装甲目标。可装入LAU-444型导弹发射器。"
 	icon_state = "paveway"
 	travelling_time = 20 //A fast payload due to its very tight blast zone
 	ammo_id = "k"
@@ -335,7 +335,7 @@
 
 /obj/structure/ship_ammo/rocket/harpoon
 	name = "\improper AGM-184 'Harpoon II'"
-	desc = "The AGM-184 Harpoon II is an Anti-Ship Missile, designed and used to effectively take down enemy ships with a huge blast wave with low explosive power. This one is modified to use ground signals and can be seen as a cheaper alternative to conventional ordnance. Can be loaded into the LAU-444 Guided Missile Launcher."
+	desc = "AGM-184鱼叉II型是一种反舰导弹，设计用于以低爆炸威力的巨大冲击波有效击沉敌舰。这一枚经过改装，可使用地面信号，可视为常规弹药的廉价替代品。可装入LAU-444型导弹发射器。"
 	icon_state = "harpoon"
 	ammo_id = "s"
 	travelling_time = 50
@@ -348,8 +348,8 @@
 	QDEL_IN(src, 0.5 SECONDS)
 
 /obj/structure/ship_ammo/rocket/napalm
-	name = "\improper AGM-99 'Napalm'"
-	desc = "The AGM-99 'Napalm' is an incendiary missile used to turn specific targeted areas into giant balls of fire for a long time. Can be loaded into the LAU-444 Guided Missile Launcher."
+	name = "\improper AGM-99 '凝固汽油'"
+	desc = "AGM-99“凝固汽油弹”是一种燃烧导弹，用于将特定目标区域长时间变成巨大的火球。可装入LAU-444型导弹发射器。"
 	icon_state = "napalm"
 	ammo_id = "n"
 	point_cost = 500
@@ -363,7 +363,7 @@
 
 /obj/structure/ship_ammo/rocket/thermobaric
 	name = "\improper BLU-200 'Dragon's Breath'"
-	desc = "The BLU-200 'Dragon's Breath' is a thermobaric fuel-air bomb. The aerosolized fuel mixture creates a vacuum when ignited causing serious damage to those in its way. Can be loaded into the LAU-444 Guided Missile Launcher."
+	desc = "BLU-200'龙息'是一种温压燃料空气炸弹。雾化的燃料混合物在点燃时会产生真空，对路径上的目标造成严重伤害。可装入LAU-444制导导弹发射器。"
 	icon_state = "fatty"
 	ammo_id = "f"
 	travelling_time = 50
@@ -381,7 +381,7 @@
 
 /obj/structure/ship_ammo/minirocket
 	name = "\improper AGR-59 'Mini-Mike'"
-	desc = "The AGR-59 'Mini-Mike' minirocket is a cheap and efficient means of putting hate down range. Though rockets lack a guidance package, it makes up for it in ammunition count. Can be loaded into the LAU-229 Rocket Pod."
+	desc = "AGR-59'迷你迈克'微型火箭是一种廉价高效的远程倾泻怒火的手段。虽然火箭缺乏制导组件，但其弹药数量弥补了这一不足。可装入LAU-229火箭巢。"
 	icon_state = "minirocket"
 	equipment_type = /obj/structure/dropship_equipment/weapon/minirocket_pod
 	ammo_count = 6
@@ -417,7 +417,7 @@
 
 /obj/structure/ship_ammo/minirocket/incendiary
 	name = "\improper AGR-59-I 'Mini-Mike'"
-	desc = "The AGR-59-I 'Mini-Mike' incendiary minirocket is a cheap and efficient means of putting hate down range AND setting them on fire! Though rockets lack a guidance package, it makes up for it in ammunition count. Can be loaded into the LAU-229 Rocket Pod."
+	desc = "AGR-59-I'迷你迈克'燃烧微型火箭是一种廉价高效的远程倾泻怒火并点燃目标的手段！虽然火箭缺乏制导组件，但其弹药数量弥补了这一不足。可装入LAU-229火箭巢。"
 	icon_state = "minirocket_inc"
 	point_cost = 500
 	fire_mission_delay = 3 //high cooldown
@@ -429,7 +429,7 @@
 
 /obj/structure/ship_ammo/sentry
 	name = "\improper A/C-49-P Air Deployable Sentry"
-	desc = "An omni-directional sentry, capable of defending an area from lightly armored hostile incursion. Can be loaded into the LAG-14 Internal Sentry Launcher."
+	desc = "一种全向哨戒炮，能够防御一个区域免受轻装甲敌对目标的入侵。可装入LAG-14内置哨戒炮发射器。"
 	icon_state = "launchable_sentry"
 	equipment_type = /obj/structure/dropship_equipment/weapon/launch_bay
 	ammo_count = 1
@@ -452,9 +452,9 @@
 
 /obj/structure/ship_ammo/sentry/can_fire_at(turf/impact, mob/user)
 	for(var/obj/structure/machinery/defenses/def in range(4, impact))
-		to_chat(user, SPAN_WARNING("The selected drop site is too close to another deployed defense!"))
+		to_chat(user, SPAN_WARNING("选定的投放点距离另一个已部署的防御设施太近！"))
 		return FALSE
 	if(istype(impact, /turf/closed))
-		to_chat(user, SPAN_WARNING("The selected drop site is a sheer wall!"))
+		to_chat(user, SPAN_WARNING("选定的投放点是垂直墙壁！"))
 		return FALSE
 	return TRUE

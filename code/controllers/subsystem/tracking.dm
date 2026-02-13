@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(tracking)
-	name   = "Tracking"
+	name   = "追踪"
 	wait   = 2 SECONDS
 	priority   = SS_PRIORITY_TRACKING
 

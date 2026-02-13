@@ -31,18 +31,18 @@ GLOBAL_LIST_EMPTY(power_update_requests_by_area)
 	set category = "Debug.Profiling"
 	if(!check_rights(R_DEBUG))
 		return
-	if(!ishost(usr) || alert("Are you sure you want to do this?",, "Yes", "No") != "Yes")
+	if(!ishost(usr) || alert("你确定要执行此操作吗？",, "Yes", "No") != "Yes")
 		return
 	if(GLOB.enable_power_update_profiling)
 		GLOB.enable_power_update_profiling = 0
 
-		to_chat(usr, "Area power update profiling disabled.")
+		to_chat(usr, "区域电力更新分析已禁用。")
 		message_admins("[key_name(src)] toggled area power update profiling off.")
 	else
 		GLOB.enable_power_update_profiling = 1
 		GLOB.power_last_profile_time = world.time
 
-		to_chat(usr, "Area power update profiling enabled.")
+		to_chat(usr, "区域电力更新分析已启用。")
 		message_admins("[key_name(src)] toggled area power update profiling on.")
 
 
@@ -55,7 +55,7 @@ GLOBAL_LIST_EMPTY(power_update_requests_by_area)
 	if(!check_rights(R_DEBUG))
 		return
 
-	to_chat(usr, "Total profiling time: [GLOB.power_profiled_time] ticks.")
+	to_chat(usr, "总分析时间：[GLOB.power_profiled_time] tick。")
 	for (var/M in GLOB.power_update_requests_by_machine)
 		to_chat(usr, "[M] = [GLOB.power_update_requests_by_machine[M]]")
 
@@ -67,7 +67,7 @@ GLOBAL_LIST_EMPTY(power_update_requests_by_area)
 	if(!check_rights(R_DEBUG))
 		return
 
-	to_chat(usr, "Total profiling time: [GLOB.power_profiled_time] ticks.")
-	to_chat(usr, "Total profiling time: [GLOB.power_profiled_time] ticks.")
+	to_chat(usr, "总分析时间：[GLOB.power_profiled_time] tick。")
+	to_chat(usr, "总分析时间：[GLOB.power_profiled_time] tick。")
 	for (var/A in GLOB.power_update_requests_by_area)
 		to_chat(usr, "[A] = [GLOB.power_update_requests_by_area[A]]")

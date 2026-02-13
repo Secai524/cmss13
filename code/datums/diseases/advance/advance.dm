@@ -27,13 +27,13 @@ GLOBAL_LIST_INIT(advance_cures, list(
 
 /datum/disease/advance
 
-	name = "Unknown" // We will always let our Virologist name our disease.
-	desc = "An engineered disease which can contain a multitude of symptoms."
+	name = "未知" // We will always let our Virologist name our disease.
+	desc = "一种工程疾病，可包含多种症状。"
 	form = "Advance Disease" // Will let med-scanners know that this disease was engineered.
 	agent = "advance microbes"
 	max_stages = 5
-	spread = "Unknown"
-	affected_species = list("Human","Monkey")
+	spread = "未知"
+	affected_species = list("人类","猴子")
 
 	// NEW VARS
 
@@ -219,15 +219,15 @@ GLOBAL_LIST_INIT(advance_cures, list(
 	switch(spread_id)
 
 		if(NON_CONTAGIOUS)
-			spread = "None"
+			spread = "无"
 		if(SPECIAL)
-			spread = "None"
+			spread = "无"
 		if(CONTACT_GENERAL, CONTACT_HANDS, CONTACT_FEET)
 			spread = "On contact"
 		if(AIRBORNE)
 			spread = "Airborne"
 		if(BLOOD)
-			spread = "Blood"
+			spread = "血液"
 
 	spread_type = spread_id
 
@@ -248,7 +248,7 @@ GLOBAL_LIST_INIT(advance_cures, list(
 		if(5 to INFINITY)
 			severity = "BIOHAZARD THREAT!"
 		else
-			severity = "Unknown"
+			severity = "未知"
 
 
 // Will generate a random cure, the less resistance the symptoms have, the harder the cure.
@@ -282,7 +282,7 @@ GLOBAL_LIST_INIT(advance_cures, list(
 	return
 
 // Name the disease.
-/datum/disease/advance/proc/AssignName(name = "Unknown")
+/datum/disease/advance/proc/AssignName(name = "未知")
 	src.name = name
 	return
 
@@ -375,7 +375,7 @@ GLOBAL_LIST_INIT(advance_cures, list(
 	symptoms += "Done"
 	symptoms += GLOB.list_symptoms.Copy()
 	do
-		var/symptom = tgui_input_list(user, "Choose a symptom to add ([i] remaining)", "Choose a Symptom", symptoms)
+		var/symptom = tgui_input_list(user, "选择要添加的症状（剩余 [i] 个）", "Choose a Symptom", symptoms)
 		if(istext(symptom))
 			i = 0
 		else if(ispath(symptom))
@@ -387,7 +387,7 @@ GLOBAL_LIST_INIT(advance_cures, list(
 
 	if(length(D.symptoms) > 0)
 
-		var/new_name = input(user, "Name your new disease.", "New Name")
+		var/new_name = input(user, "为你的新疾病命名。", "New Name")
 		D.AssignName(new_name)
 		D.Refresh()
 

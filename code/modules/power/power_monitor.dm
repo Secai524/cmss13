@@ -1,8 +1,8 @@
 // the power monitoring computer
 // for the moment, just report the status of all APCs in the same powernet
 /obj/structure/machinery/power/monitor
-	name = "power monitoring computer"
-	desc = "It monitors power levels across the station."
+	name = "电力监控计算机"
+	desc = "它监控整个空间站的电力水平。"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "power"
 
@@ -121,12 +121,12 @@
 			for(var/obj/current in src)
 				current.forceMove(loc)
 			if(stat & BROKEN)
-				to_chat(user, SPAN_NOTICE("The broken glass falls out."))
+				to_chat(user, SPAN_NOTICE("碎玻璃掉了出来。"))
 				new /obj/item/shard(loc)
 				frame.build_state = COMPUTERFRAME_STATE_NO_GLASS
 				frame.icon_state = "3"
 			else
-				to_chat(user, SPAN_NOTICE("You disconnect the monitor."))
+				to_chat(user, SPAN_NOTICE("你断开了监控器的连接。"))
 				frame.build_state = COMPUTERFRAME_STATE_COMPLETE
 				frame.icon_state = "4"
 			board.deconstruct(src)

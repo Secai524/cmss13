@@ -1,7 +1,7 @@
 /obj/item/explosive/grenade/custom
-	name = "custom grenade"
+	name = "定制手榴弹"
 	icon_state = "grenade_custom"
-	desc = "A custom chemical grenade with an M40 casing. This one is made to fit into underslung grenade launchers, but can also be thrown by hand."
+	desc = "一枚采用M40外壳的定制化学手榴弹。这款设计用于适配下挂式榴弹发射器，但也可手投。"
 	w_class = SIZE_SMALL
 	force = 2
 	dangerous = TRUE
@@ -17,8 +17,8 @@
 	..()
 
 /obj/item/explosive/grenade/custom/large
-	name = "large custom grenade"
-	desc = "A custom chemical grenade with an M15 casing. This casing has a higher explosive capacity than the M40 variant."
+	name = "大型定制手榴弹"
+	desc = "一枚采用M15外壳的定制化学手榴弹。该外壳比M40型号具有更高的爆炸容量。"
 	icon_state = "large_grenade_custom"
 	allowed_containers = list(/obj/item/reagent_container/glass)
 	max_container_volume = 180
@@ -33,8 +33,8 @@
 
 
 /obj/item/explosive/grenade/custom/metal_foam
-	name = "metal-foam grenade"
-	desc = "Used for emergency sealing of air breaches."
+	name = "金属泡沫手榴弹"
+	desc = "用于紧急封堵空气泄漏。"
 	assembly_stage = ASSEMBLY_LOCKED
 	harmful = FALSE
 	has_blast_wave_dampener = FALSE
@@ -56,8 +56,8 @@
 	update_icon()
 
 /obj/item/explosive/grenade/custom/incendiary
-	name = "incendiary grenade"
-	desc = "Used for clearing rooms of living things."
+	name = "燃烧手榴弹"
+	desc = "用于清除房间内的生物。"
 	assembly_stage = ASSEMBLY_LOCKED
 	has_blast_wave_dampener = FALSE
 
@@ -80,7 +80,7 @@
 
 /obj/item/explosive/grenade/custom/flare
 	name = "\improper M40-F flare grenade"
-	desc = "Chemical flare in a grenade form, designed for compatibility with most standard issue launchers."
+	desc = "手榴弹形式的化学照明弹，设计用于兼容大多数标准配发发射器。"
 	assembly_stage = ASSEMBLY_LOCKED
 	has_blast_wave_dampener = FALSE
 	antigrief_protection = FALSE
@@ -104,7 +104,7 @@
 
 /obj/item/explosive/grenade/custom/large/flare
 	name = "\improper M15-F flare grenade"
-	desc = "Chemical flare in a grenade form, expanded variant. The casing is too large to fit most launchers."
+	desc = "手榴弹形式的化学照明弹，扩展型号。外壳过大，无法适配大多数发射器。"
 	assembly_stage = ASSEMBLY_LOCKED
 	has_blast_wave_dampener = FALSE
 	antigrief_protection = FALSE
@@ -128,8 +128,8 @@
 
 
 /obj/item/explosive/grenade/custom/cleaner
-	name = "cleaner grenade"
-	desc = "BLAM!-brand foaming space cleaner. In a special applicator for rapid cleaning of wide areas."
+	name = "清洁手榴弹"
+	desc = "BLAM!牌泡沫太空清洁剂。采用特殊施放器，用于快速清洁大面积区域。"
 	assembly_stage = ASSEMBLY_LOCKED
 	harmful = FALSE
 	has_blast_wave_dampener = FALSE
@@ -155,7 +155,7 @@
 
 /obj/item/explosive/grenade/custom/teargas
 	name = "\improper M66 teargas grenade"
-	desc = "Tear gas grenade used for nonlethal riot control. Please wear adequate gas protection."
+	desc = "用于非致命性防暴的催泪瓦斯手榴弹。请穿戴足够的防毒装备。"
 	assembly_stage = ASSEMBLY_LOCKED
 	harmful = FALSE
 	has_blast_wave_dampener = FALSE
@@ -193,14 +193,14 @@
 
 /obj/item/explosive/grenade/custom/teargas/attack_self(mob/user)
 	if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
-		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
+		to_chat(user, SPAN_WARNING("你似乎不知道如何使用 [src]..."))
 		return
 	..()
 
 
 /obj/item/explosive/grenade/custom/ied
-	name = "improvised explosive device"
-	desc = "An improvised chemical explosive grenade. Designed to kill through fragmentation."
+	name = "简易爆炸装置"
+	desc = "一种简易化学爆炸手榴弹。设计通过破片杀伤。"
 	assembly_stage = ASSEMBLY_LOCKED
 	has_blast_wave_dampener = FALSE
 
@@ -223,8 +223,8 @@
 
 
 /obj/item/explosive/grenade/custom/ied_incendiary
-	name = "improvised explosive device (incendiary)"
-	desc = "An improvised chemical explosive grenade. Designed to spray incendiary shrapnel across a wide area."
+	name = "简易爆炸装置（燃烧型）"
+	desc = "一种简易化学爆炸手榴弹。设计用于在大片区域喷洒燃烧破片。"
 	assembly_stage = ASSEMBLY_LOCKED
 	has_blast_wave_dampener = FALSE
 

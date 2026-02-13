@@ -12,8 +12,8 @@
 	var/obj/item/device/mmi/mmi = null
 	var/list/req_access = list(ACCESS_MARINE_RESEARCH) //Access needed to pop out the brain.
 
-	name = "Spider-bot"
-	desc = "A skittering robotic friend!"
+	name = "蜘蛛机器人"
+	desc = "一个疾行的机械朋友！"
 	icon = 'icons/mob/robots.dmi'
 	icon_state = "spiderbot-chassis"
 	icon_living = "spiderbot-chassis"
@@ -44,10 +44,10 @@
 	if(istype(O, /obj/item/device/mmi))
 		var/obj/item/device/mmi/B = O
 		if(src.mmi) //There's already a brain in it.
-			to_chat(user, SPAN_DANGER("There's already a brain in [src]!"))
+			to_chat(user, SPAN_DANGER("[src]里已经有一个大脑了！"))
 			return
 		if(!B.brainmob)
-			to_chat(user, SPAN_DANGER("Sticking an empty MMI into the frame would sort of defeat the purpose."))
+			to_chat(user, SPAN_DANGER("把一个空的MMI塞进框架里没什么意义。"))
 			return
 		if(!B.brainmob.key)
 			var/ghost_can_reenter = 0
@@ -57,21 +57,21 @@
 						ghost_can_reenter = 1
 						break
 			if(!ghost_can_reenter)
-				to_chat(user, SPAN_NOTICE("[O] is completely unresponsive; there's no point."))
+				to_chat(user, SPAN_NOTICE("[O]完全没有反应；这么做没有意义。"))
 				return
 
 		if(B.brainmob.stat == DEAD)
-			to_chat(user, SPAN_DANGER("[O] is dead. Sticking it into the frame would sort of defeat the purpose."))
+			to_chat(user, SPAN_DANGER("[O]已经死了。把它塞进框架里没什么意义。"))
 			return
 
 		if(jobban_isbanned(B.brainmob, "Cyborg"))
-			to_chat(user, SPAN_DANGER("[O] does not seem to fit."))
+			to_chat(user, SPAN_DANGER("[O]似乎不合适。"))
 			return
 
 
 
 		user.drop_inv_item_to_loc(O, src)
-		to_chat(user, SPAN_NOTICE("You install [O] in [src]!"))
+		to_chat(user, SPAN_NOTICE("你将[O]安装进了[src]！"))
 		mmi = O
 		transfer_personality(O)
 		update_icon()
@@ -79,7 +79,7 @@
 
 	if (iswelder(O))
 		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
-			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			to_chat(user, SPAN_WARNING("你需要一把更强的喷枪！"))
 			return
 		var/obj/item/tool/weldingtool/WT = O
 		if (WT.remove_fuel(0))
@@ -91,13 +91,13 @@
 				for(var/mob/W in viewers(user, null))
 					W.show_message(text(SPAN_DANGER("[user] has spot-welded some of the damage to [src]!")), SHOW_MESSAGE_VISIBLE)
 			else
-				to_chat(user, SPAN_NOTICE("[src] is undamaged!"))
+				to_chat(user, SPAN_NOTICE("[src]完好无损！"))
 		else
-			to_chat(user, "Need more welding fuel!")
+			to_chat(user, "需要更多焊枪燃料！")
 			return
 	else if(istype(O, /obj/item/card/id))
 		if (!mmi)
-			to_chat(user, SPAN_DANGER("There's no reason to swipe your ID - the spiderbot has no brain to remove."))
+			to_chat(user, SPAN_DANGER("没有理由刷卡——蜘蛛机器人没有大脑可以取出。"))
 			return 0
 
 		var/obj/item/card/id/id_card
@@ -106,7 +106,7 @@
 			id_card = O
 
 		if(ACCESS_MARINE_RESEARCH in id_card.access)
-			to_chat(user, SPAN_NOTICE("You swipe your access card and pop the brain out of [src]."))
+			to_chat(user, SPAN_NOTICE("你刷了一下你的权限卡，将大脑从[src]中弹出。"))
 			eject_brain()
 
 			if(held_item)
@@ -115,7 +115,7 @@
 
 			return 1
 		else
-			to_chat(user, SPAN_DANGER("You swipe your card, with no effect."))
+			to_chat(user, SPAN_DANGER("你刷了卡，但没有任何效果。"))
 			return 0
 	else
 		if(O.force)
@@ -125,12 +125,12 @@
 			apply_damage(damage, BRUTE)
 			for(var/mob/M as anything in viewers(src, null))
 				if ((M.client && !( M.blinded )))
-					M.show_message(SPAN_DANGER("[src] has been attacked with \the [O] by [user]."), SHOW_MESSAGE_VISIBLE)
+					M.show_message(SPAN_DANGER("[src]被[user]用\the [O]攻击了。"), SHOW_MESSAGE_VISIBLE)
 		else
-			to_chat(usr, SPAN_DANGER("This weapon is ineffective, it does no damage."))
+			to_chat(usr, SPAN_DANGER("这件武器无效，无法造成伤害。"))
 			for(var/mob/M as anything in viewers(src, null))
 				if ((M.client && !( M.blinded )))
-					M.show_message(SPAN_DANGER("[user] gently taps [src] with \the [O]."), SHOW_MESSAGE_VISIBLE)
+					M.show_message(SPAN_DANGER("[user]用\the [O]轻轻拍了拍[src]。"), SHOW_MESSAGE_VISIBLE)
 
 /mob/living/simple_animal/small/spiderbot/proc/transfer_personality(obj/item/device/mmi/M as obj)
 	src.mind = M.brainmob.mind
@@ -143,7 +143,7 @@
 /mob/living/simple_animal/small/spiderbot/proc/explode(cause = "exploding") //When emagged.
 	for(var/mob/M as anything in viewers(src, null))
 		if ((M.client && !( M.blinded )))
-			M.show_message(SPAN_DANGER("[src] makes an odd warbling noise, fizzles, and explodes."), SHOW_MESSAGE_VISIBLE)
+			M.show_message(SPAN_DANGER("[src]发出奇怪的颤音，嘶嘶作响，然后爆炸了。"), SHOW_MESSAGE_VISIBLE)
 	explosion(get_turf(loc), -1, -1, 3, 5)
 	eject_brain()
 	death(cause)
@@ -165,7 +165,7 @@
 		if(mind)
 			mind.transfer_to(mmi.brainmob)
 		mmi = null
-		src.name = "Spider-bot"
+		src.name = "蜘蛛机器人"
 		update_icon()
 
 /mob/living/simple_animal/small/spiderbot/Destroy()
@@ -204,18 +204,18 @@
 		return
 
 	if(!held_item)
-		to_chat(usr, SPAN_DANGER("You have nothing to drop!"))
+		to_chat(usr, SPAN_DANGER("你没有任何东西可丢弃！"))
 		return 0
 
 	if(istype(held_item, /obj/item/explosive/grenade))
-		visible_message(SPAN_DANGER("[src] launches \the [held_item]!"), SPAN_DANGER("You launch \the [held_item]!"), "You hear a skittering noise and a thump!")
+		visible_message(SPAN_DANGER("[src]发射了\the [held_item]！"), SPAN_DANGER("You launch \the [held_item]!"), "You hear a skittering noise and a thump!")
 		var/obj/item/explosive/grenade/G = held_item
 		G.forceMove(loc)
 		G.prime()
 		held_item = null
 		return 1
 
-	visible_message(SPAN_NOTICE("[src] drops \the [held_item]!"), SPAN_NOTICE("You drop \the [held_item]!"), "You hear a skittering noise and a soft thump.")
+	visible_message(SPAN_NOTICE("[src]丢下了\the [held_item]！"), SPAN_NOTICE("You drop \the [held_item]!"), "You hear a skittering noise and a soft thump.")
 
 	held_item.forceMove(loc)
 	held_item = null
@@ -231,7 +231,7 @@
 		return -1
 
 	if(held_item)
-		to_chat(src, SPAN_DANGER("You are already holding \the [held_item]"))
+		to_chat(src, SPAN_DANGER("你已经拿着\the [held_item]了"))
 		return 1
 
 	var/list/items = list()
@@ -239,19 +239,19 @@
 		if(I.loc != src && I.w_class <= SIZE_SMALL && I.Adjacent(src) )
 			items.Add(I)
 
-	var/obj/selection = tgui_input_list(usr, "Select an item.", "Pickup", items)
+	var/obj/selection = tgui_input_list(usr, "选择物品。", "Pickup", items)
 
 	if(selection)
 		for(var/obj/item/I in view(1, src))
 			if(selection == I)
 				held_item = selection
 				selection.forceMove(src)
-				visible_message(SPAN_NOTICE("[src] scoops up \the [held_item]!"), SPAN_NOTICE("You grab \the [held_item]!"), "You hear a skittering noise and a clink.")
+				visible_message(SPAN_NOTICE("[src]捡起了\the [held_item]！"), SPAN_NOTICE("You grab \the [held_item]!"), "You hear a skittering noise and a clink.")
 				return held_item
 		to_chat(src, SPAN_DANGER("\The [selection] is too far away."))
 		return 0
 
-	to_chat(src, SPAN_DANGER("There is nothing of interest to take."))
+	to_chat(src, SPAN_DANGER("没有值得拿取的东西。"))
 	return 0
 
 /mob/living/simple_animal/small/spiderbot/get_examine_text(mob/user)

@@ -1,11 +1,11 @@
 //Analyzer, pestkillers, weedkillers, nutrients, hatchets, cutters.
 
 /obj/item/tool/wirecutters/clippers
-	name = "plant clippers"
-	desc = "A tool used to take samples from plants."
+	name = "植物剪"
+	desc = "一种用于从植物上采集样本的工具。"
 
 /obj/item/device/analyzer/plant_analyzer
-	name = "plant analyzer"
+	name = "植物分析仪"
 	icon_state = "hydro"
 	item_state = "analyzer"
 
@@ -34,7 +34,7 @@
 		grown_reagents = H.reagents
 
 	if(!grown_seed)
-		to_chat(user, SPAN_DANGER("[src] can tell you nothing about [target]."))
+		to_chat(user, SPAN_DANGER("[src]无法告诉你关于[target]的任何信息。"))
 		return
 
 	var/dat = "<h3>Plant data for [target]</h3>"
@@ -157,8 +157,8 @@
 // *************************************
 
 /obj/item/reagent_container/glass/fertilizer
-	name = "fertilizer bottle"
-	desc = "A small glass bottle. Can hold up to 10 units."
+	name = "肥料瓶"
+	desc = "一个小玻璃瓶。最多可容纳10单位。"
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "fertilizer"
 	flags_atom = FPRINT| OPENCONTAINER
@@ -181,13 +181,13 @@
 		reagents.add_reagent(fertilizer,10)
 
 /obj/item/reagent_container/glass/fertilizer/ez
-	name = "bottle of E-Z-Nutrient"
+	name = "E-Z营养剂瓶"
 	fertilizer = "eznutrient"
 
 /obj/item/reagent_container/glass/fertilizer/l4z
-	name = "bottle of Left 4 Zed"
+	name = "Left 4 Zed瓶"
 	fertilizer = "left4zed"
 
 /obj/item/reagent_container/glass/fertilizer/rh
-	name = "bottle of Robust Harvest"
+	name = "丰收强效剂瓶"
 	fertilizer = "robustharvest"

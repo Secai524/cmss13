@@ -5,7 +5,7 @@ MISCELLANEOUS
 */
 
 /datum/skills/tank_crew
-	name = "Vehicle Crewman"
+	name = "载具乘员"
 	skills = list(
 		SKILL_VEHICLE = SKILL_VEHICLE_CREWMAN,
 		SKILL_LEADERSHIP = SKILL_LEAD_EXPERT,
@@ -17,7 +17,7 @@ MISCELLANEOUS
 	)
 
 /datum/skills/yautja/warrior
-	name = "Yautja Warrior"
+	name = "铁血战士战士"
 	skills = list(
 		SKILL_CQC = SKILL_CQC_MASTER,
 		SKILL_MELEE_WEAPONS = SKILL_MELEE_SUPER,
@@ -32,7 +32,7 @@ MISCELLANEOUS
 	)
 
 /datum/skills/cultist_leader
-	name = "Cultist Leader"
+	name = "邪教头目"
 	skills = list(
 		SKILL_FIREARMS = SKILL_FIREARMS_CIVILIAN,
 		SKILL_CQC = SKILL_CQC_MASTER,
@@ -48,7 +48,7 @@ MISCELLANEOUS
 	)
 
 /datum/skills/souto
-	name = "Souto Man"
+	name = "索托人"
 	skills = list(
 		SKILL_CQC = SKILL_CQC_MASTER,
 		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED,
@@ -61,7 +61,7 @@ MISCELLANEOUS
 	)
 
 /datum/skills/everything //max it out
-	name = "Ultra"
+	name = "精英"
 	skills = list(
 		SKILL_CQC = SKILL_CQC_MAX,
 		SKILL_MELEE_WEAPONS = SKILL_MELEE_MAX,

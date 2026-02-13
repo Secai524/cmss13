@@ -2,7 +2,7 @@
 // panic_room_insert_shivas.dmm
 
 /datum/equipment_preset/survivor/corporate/asstmanager
-	name = "Survivor - Corporate Assistant Manager"
+	name = "幸存者 - 公司助理经理"
 	flags = EQUIPMENT_PRESET_EXTRA
 	paygrades = list(PAY_SHORT_WYC7 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian/survivor/manager
@@ -45,7 +45,7 @@
 	..()
 
 /datum/equipment_preset/survivor/pmc/commando_shivas //Aliens: Dark Descent reference
-	name = "Survivor - Weyland-Yutani Commando (Shivas)"
+	name = "幸存者 - 维兰德-汤谷突击队员 (湿婆)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = JOB_WY_COMMANDO_STANDARD
 	job_title = JOB_WY_COMMANDO_STANDARD

@@ -1,6 +1,6 @@
 /obj/item/hardpoint/secondary/m56cupola
 	name = "\improper M56 Cupola"
-	desc = "A secondary weapon for tanks. It's a M56D that was adjusted to be permanently fixed to its mount. You swear you can still see some weld tacks."
+	desc = "坦克的副武器。这是一挺经过改装、永久固定在底座上的M56D。你发誓还能看到一些焊接痕迹。"
 
 	icon_state = "m56_cupola"
 	disp_icon = "tank"

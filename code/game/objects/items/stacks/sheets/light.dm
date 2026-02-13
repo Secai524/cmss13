@@ -1,7 +1,7 @@
 /obj/item/stack/light_w
-	name = "wired glass tile"
+	name = "带线玻璃砖"
 	singular_name = "wired glass floor tile"
-	desc = "A glass tile, which is wired, somehow."
+	desc = "一块不知为何接上了线的玻璃砖。"
 	icon_state = "glass_wire"
 	icon = 'icons/obj/items/floor_tiles.dmi'
 	w_class = SIZE_MEDIUM
@@ -10,7 +10,7 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 	max_amount = 60
-	stack_id = "wired glass tile"
+	stack_id = "带线玻璃砖"
 
 /obj/item/stack/light_w/attackby(obj/item/O as obj, mob/user as mob)
 	..()
@@ -28,7 +28,7 @@
 		if (M.use(1))
 			new/obj/item/stack/tile/light(user.loc, 1)
 			use(1)
-			to_chat(user, SPAN_NOTICE("You make a light tile."))
+			to_chat(user, SPAN_NOTICE("你制作了一个发光砖块。"))
 		else
-			to_chat(user, SPAN_WARNING("You need one metal sheet to finish the light tile."))
+			to_chat(user, SPAN_WARNING("你需要一块金属板来完成发光砖块。"))
 		return

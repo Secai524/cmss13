@@ -686,42 +686,42 @@ world
 	if(!user)
 		user = usr
 
-	var/icon_from_file = tgui_alert(user, "Do you wish to pick an icon from file?", "File picker icon", list("Yes", "No"))
+	var/icon_from_file = tgui_alert(user, "你希望从文件中选择图标吗？", "File picker icon", list("Yes", "No"))
 	if(isnull(icon_from_file))
 		return null
 	if(icon_from_file == "Yes")
-		icon_result = input(user, "Pick icon:", "Icon") as null|icon
+		icon_result = input(user, "选择图标：", "Icon") as null|icon
 		if(!icon_result)
 			return null
 	else if(icon_from_file == "No")
-		var/new_icon = tgui_input_text(user, "Pick icon path", "icon path")
+		var/new_icon = tgui_input_text(user, "选择图标路径", "icon path")
 		if(isnull(new_icon))
 			return null
 		var/regex/regex = regex(@"^.+icons/")
 		new_icon = regex.Replace(replacetext(new_icon, @"\", "/"), "icons/")
 		icon_result = fcopy_rsc(new_icon)
 		if(!icon_result)
-			to_chat(user, SPAN_WARNING("'[new_icon]' is an invalid icon path!"))
+			to_chat(user, SPAN_WARNING("'[new_icon]'是无效的图标路径！"))
 			return null
 
 	var/dmi_path = get_icon_dmi_path(icon_result)
 	if(!dmi_path || pick_only)
 		return icon_result
 
-	var/custom = tgui_alert(user, "Do you wish to specify any arguments for the icon?", "Customize Icon", list("Yes", "No"))
+	var/custom = tgui_alert(user, "你希望为图标指定任何参数吗？", "Customize Icon", list("Yes", "No"))
 	if(isnull(custom))
 		return null
 	if(custom == "Yes")
-		var/new_icon_state = tgui_input_text(user, "Pick icon_state", "icon_state")
+		var/new_icon_state = tgui_input_text(user, "选择图标状态", "icon_state")
 		if(isnull(new_icon_state))
 			return null
-		var/new_icon_dir = tgui_input_list(user, "Pick icon dir", "dir", list("North", "East", "South", "West"), default="South")
+		var/new_icon_dir = tgui_input_list(user, "选择图标方向", "dir", list("北", "东", "南", "西"), default="南")
 		if(isnull(new_icon_dir))
 			return null
-		var/new_icon_frame = tgui_input_number(user, "Pick icon frame", "frame", min_value=0, integer_only=TRUE)
+		var/new_icon_frame = tgui_input_number(user, "选择图标帧", "frame", min_value=0, integer_only=TRUE)
 		if(isnull(new_icon_frame))
 			return null
-		var/new_icon_moving = tgui_input_list(user, "Pick icon moving", "moving", list("Both", "Movement only", "Non-Movement Only"), default="Both")
+		var/new_icon_moving = tgui_input_list(user, "选择图标移动状态", "moving", list("Both", "Movement only", "Non-Movement Only"), default="Both")
 		switch(new_icon_moving)
 			if("Both")
 				new_icon_moving = null

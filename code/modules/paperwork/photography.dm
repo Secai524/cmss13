@@ -10,9 +10,9 @@
 * film *
 *******/
 /obj/item/device/camera_film
-	name = "film cartridge"
+	name = "胶卷盒"
 	icon = 'icons/obj/items/paper.dmi'
-	desc = "A camera film cartridge. Insert it into a camera to reload it."
+	desc = "一个相机胶卷盒。将其插入相机以重新装填。"
 	icon_state = "film"
 	item_state = "electropack"
 	w_class = SIZE_TINY
@@ -42,7 +42,7 @@
 
 /obj/item/photo/attackby(obj/item/P as obj, mob/user as mob)
 	if(HAS_TRAIT(P, TRAIT_TOOL_PEN) || istype(P, /obj/item/toy/crayon))
-		var/txt = strip_html(input(user, "What would you like to write on the back?", "Photo Writing", null)  as text)
+		var/txt = strip_html(input(user, "你想在背面写什么？", "Photo Writing", null)  as text)
 		txt = copytext(txt, 1, 128)
 		if(loc == user && user.stat == 0)
 			scribble = txt
@@ -74,7 +74,7 @@
 	set category = "Object"
 	set src in usr
 
-	var/n_name = strip_html(input(usr, "What would you like to label the photo?", "Photo Labelling", null)  as text)
+	var/n_name = strip_html(input(usr, "你想给这张照片标注什么名称？", "Photo Labelling", null)  as text)
 	//loc.loc check is for making possible renaming photos in clipboards
 	if(( (loc == usr || (loc.loc && loc.loc == usr)) && usr.stat == 0))
 		name = "[(n_name ? text("[n_name]") : "photo")]"
@@ -86,7 +86,7 @@
 * photo album *
 **************/
 /obj/item/storage/photo_album
-	name = "Photo album"
+	name = "相册"
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "album"
 	item_state = "briefcase"
@@ -123,7 +123,7 @@
 /obj/item/device/camera
 	name = "camera"
 	icon = 'icons/obj/items/paper.dmi'
-	desc = "A polaroid camera."
+	desc = "一台宝丽来相机。"
 	icon_state = "camera"
 	item_state = "camera"
 	item_icons = list(
@@ -171,7 +171,7 @@
 		var/next_focus = (current_focus % possible_focus.len) + 1
 		size = possible_focus[next_focus]
 
-	to_chat(user, SPAN_NOTICE("[src] will now take [size]x[size] photos."))
+	to_chat(user, SPAN_NOTICE("[src]现在将拍摄[size]x[size]尺寸的照片。"))
 	playsound(loc, 'sound/weapons/handling/safety_toggle.ogg', 25, 1, 6)
 
 /obj/item/device/camera/attack(mob/living/carbon/human/M, mob/user)
@@ -180,9 +180,9 @@
 /obj/item/device/camera/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/device/camera_film))
 		if(pictures_left > (pictures_max - 10))
-			to_chat(user, SPAN_NOTICE("[src] cannot fit more film in it!"))
+			to_chat(user, SPAN_NOTICE("[src]装不下更多胶卷了！"))
 			return
-		to_chat(user, SPAN_NOTICE("You insert [I] into [src]."))
+		to_chat(user, SPAN_NOTICE("你将[I]插入[src]。"))
 		if(user.temp_drop_inv_item(I))
 			qdel(I)
 			pictures_left += 10
@@ -290,17 +290,17 @@
 
 /obj/item/device/camera/afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)
 	if(world.time < cooldown)
-		to_chat(user, SPAN_WARNING("[src] is still processing the last photo, hold your horses!"))
+		to_chat(user, SPAN_WARNING("[src]还在处理上一张照片，稍安勿躁！"))
 		return
 	if(pictures_left <= 0)
-		to_chat(user, SPAN_WARNING("There isn't enough film in the [src] to take a photo."))
+		to_chat(user, SPAN_WARNING("[src]里的胶卷不够拍照了。"))
 		return
 	if(ismob(target.loc) || isstorage(target.loc) || user.contains(target) || istype(target, /atom/movable/screen))
 		return
 
 	playsound(loc, pick('sound/items/polaroid1.ogg', 'sound/items/polaroid2.ogg'), 15, 1)
 	pictures_left--
-	to_chat(user, SPAN_NOTICE("[pictures_left] photos left."))
+	to_chat(user, SPAN_NOTICE("还剩[pictures_left]张照片。"))
 	cooldown = world.time + 3 SECONDS // an addtimer for a cooldown is kinda overkill dont you think
 
 	addtimer(CALLBACK(src, PROC_REF(captureimage), target, user, flag), 1 SECONDS)
@@ -356,8 +356,8 @@
 
 
 /obj/item/device/camera/oldcamera
-	name = "Old Camera"
-	desc = "An old, slightly beat-up retro-esque polaroid camera, it's antiquated enough to be marked as a collectors item, probably. It's a nice shade of blue."
+	name = "老式相机"
+	desc = "一台老旧、略有磨损的复古宝丽来相机，其古老程度足以被列为收藏品。它的蓝色调很漂亮。"
 	icon_state = "oldcamera"
 	w_class = SIZE_TINY
 	pictures_max = 0 // think disposable camera
@@ -365,12 +365,12 @@
 
 /obj/item/device/camera/oldcamera/attackby(obj/item/film, mob/user)
 	if(istype(film, /obj/item/device/camera_film))
-		to_chat(user, SPAN_NOTICE("Try as you might, but you can't seem to open up the [src] to insert some film, oh well."))
+		to_chat(user, SPAN_NOTICE("无论你怎么尝试，似乎都无法打开[src]装入胶卷，好吧。"))
 		return
 
 /obj/item/device/broadcasting
-	name = "Broadcasting Camera"
-	desc = "Actively document everything you see, from the mundanity of shipside to the brutal battlefields below."
+	name = "广播摄像机"
+	desc = "积极记录你所看到的一切，从舰上的平凡琐事到地面残酷的战场。"
 	icon = 'icons/obj/items/tools.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
@@ -415,7 +415,7 @@
 		SScmtv.change_observed_mob(user, set_showtime = INFINITY)
 
 	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(handle_move))
-	to_chat(user, SPAN_NOTICE("[src] begins to buzz softly as you go live."))
+	to_chat(user, SPAN_NOTICE("当你开始直播时，[src]开始发出轻微的嗡嗡声。"))
 	update_icon()
 
 /obj/item/device/broadcasting/proc/turn_off(mob/user)
@@ -427,7 +427,7 @@
 		SScmtv.reset_perspective("Broadcasting ended as turned off.")
 
 	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
-	to_chat(user, SPAN_NOTICE("[src] goes silent as the broadcast stops."))
+	to_chat(user, SPAN_NOTICE("广播停止，[src]归于寂静。"))
 	update_icon()
 
 /obj/item/device/broadcasting/proc/handle_move()

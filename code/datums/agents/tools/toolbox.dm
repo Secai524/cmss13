@@ -1,6 +1,6 @@
 /obj/item/storage/toolbox/antag
-	name = "suspicious toolbox"
-	desc = "A compact and suspicious looking toolbox. This one is small enough to fit into a bag."
+	name = "可疑的工具箱"
+	desc = "一个紧凑且看起来可疑的工具箱。这个工具箱小到可以放进背包。"
 	icon_state = "syndicate"
 	item_state = "toolbox_syndi"
 
@@ -21,8 +21,8 @@
 	new /obj/item/pamphlet/engineer/antag(src)
 
 /obj/item/pamphlet/skill/engineer/antag
-	name = "suspicious looking pamphlet"
-	desc = "A pamphlet used to quickly impart vital knowledge. This one has an engineering insignia. This one is written in code-speak."
+	name = "可疑的小册子"
+	desc = "用于快速传授关键知识的小册子。这本上面有工程部徽章。这本是用暗语写的。"
 	trait = /datum/character_trait/skills/miniengie/antag
 	bypass_pamphlet_limit = TRUE
 
@@ -31,7 +31,7 @@
 		return
 
 	if(!skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
-		to_chat(user, SPAN_WARNING("This pamphlet is written in code-speak! You don't quite understand it."))
+		to_chat(user, SPAN_WARNING("这本小册子是用暗语写的！你不太看得懂。"))
 		return
 
 	. = ..()

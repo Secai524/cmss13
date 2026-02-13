@@ -3,7 +3,7 @@
 //*******************************************************************************/
 
 /datum/supply_packs/internals
-	name = "oxygen internals crate (x3 masks, x3 tanks)"
+	name = "氧气呼吸器箱 (x3面罩，x3气罐)"
 	contains = list(
 		/obj/item/clothing/mask/gas,
 		/obj/item/clothing/mask/gas,
@@ -14,11 +14,11 @@
 	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/internals
-	containername = "internals crate"
+	containername = "维生设备箱"
 	group = "Supplies"
 
 /datum/supply_packs/evacuation
-	name = "emergency equipment (x2 toolbox, x2 hazard vest, x5 oxygen tank, x5 masks)"
+	name = "应急装备 (x2工具箱，x2危险背心，x5氧气罐，x5面罩)"
 	contains = list(
 		/obj/item/storage/toolbox/emergency,
 		/obj/item/storage/toolbox/emergency,
@@ -41,7 +41,7 @@
 	group = "Supplies"
 
 /datum/supply_packs/boxes
-	name = "empty boxes (x10)"
+	name = "空箱子（x10）"
 	contains = list(
 		/obj/item/storage/box,
 		/obj/item/storage/box,
@@ -60,7 +60,7 @@
 	group = "Supplies"
 
 /datum/supply_packs/janitor
-	name = "assorted janitorial supplies"
+	name = "杂项清洁用品"
 	contains = list(
 		/obj/item/reagent_container/glass/bucket,
 		/obj/item/reagent_container/glass/bucket,
@@ -98,7 +98,7 @@
 	group = "Supplies"
 
 /datum/supply_packs/crayons
-	name = "boxes of crayons"
+	name = "蜡笔盒"
 	contains = list(
 		/obj/item/storage/fancy/crayons,
 		/obj/item/storage/fancy/crayons,
@@ -112,7 +112,7 @@
 	group = "Supplies"
 
 /datum/supply_packs/presents
-	name = "assorted presents"
+	name = "杂项礼物"
 	contains = list(
 		/obj/item/a_gift,
 		/obj/item/a_gift,
@@ -126,7 +126,7 @@
 	group = "Supplies"
 
 /datum/supply_packs/wrapping_supplies
-	name = "wrapping supplies"
+	name = "包装用品"
 	contains = list(
 		/obj/item/wrapping_paper,
 		/obj/item/wrapping_paper,

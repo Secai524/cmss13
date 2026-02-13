@@ -6,7 +6,7 @@
 //Used to swap which module a position is using
 //e.g. swapping primary gunner from the minigun to the smoke launcher
 /obj/vehicle/multitile/proc/switch_hardpoint()
-	set name = "Change Active Hardpoint"
+	set name = "切换活动硬点"
 	set category = "Vehicle"
 
 	var/mob/M = usr
@@ -23,10 +23,10 @@
 
 	var/list/usable_hps = V.get_activatable_hardpoints(seat)
 	if(!LAZYLEN(usable_hps))
-		to_chat(M, SPAN_WARNING("None of the hardpoints can be activated or they are all broken."))
+		to_chat(M, SPAN_WARNING("没有武器挂点可以激活，或者它们全坏了。"))
 		return
 
-	var/obj/item/hardpoint/HP = tgui_input_list(usr, "Select a hardpoint.", "Switch Hardpoint", usable_hps)
+	var/obj/item/hardpoint/HP = tgui_input_list(usr, "选择一个武器挂点。", "Switch Hardpoint", usable_hps)
 	if(!HP)
 		return
 
@@ -59,7 +59,7 @@
 
 	var/list/usable_hps = V.get_activatable_hardpoints(seat)
 	if(!LAZYLEN(usable_hps))
-		to_chat(M, SPAN_WARNING("None of the hardpoints can be activated or they are all broken."))
+		to_chat(M, SPAN_WARNING("没有武器挂点可以激活，或者它们全坏了。"))
 		return
 	var/new_hp = usable_hps.Find(V.active_hp[seat])
 	if(!new_hp)
@@ -82,7 +82,7 @@
 
 // Used to lock/unlock the vehicle doors to anyone without proper access
 /obj/vehicle/multitile/proc/toggle_door_lock()
-	set name = "Toggle Door Locks"
+	set name = "切换门锁"
 	set category = "Vehicle"
 
 	var/mob/M = usr
@@ -100,7 +100,7 @@
 		return
 
 	V.door_locked = !V.door_locked
-	to_chat(M, SPAN_NOTICE("You [V.door_locked ? "lock" : "unlock"] the vehicle doors."))
+	to_chat(M, SPAN_NOTICE("你[V.door_locked ? "lock" : "unlock"] the vehicle doors."))
 
 //opens vehicle status window with HP and ammo of hardpoints
 /obj/vehicle/multitile/proc/get_status_info()
@@ -265,30 +265,30 @@
 		return
 
 	if(V.nickname)
-		to_chat(user, SPAN_WARNING("Vehicle already has a \"[V.nickname]\" nickname."))
+		to_chat(user, SPAN_WARNING("载具已有一个\"[V.nickname]\" nickname."))
 		return
 
-	var/new_nickname = stripped_input(user, "Enter a unique IC name or a callsign to add to your vehicle's name. [MAX_NAME_LEN] characters maximum. \n\nIMPORTANT! This is an IC nickname/callsign for your vehicle and you will be punished for putting in meme names.\nSINGLE USE ONLY.", "Name your vehicle", null, MAX_NAME_LEN)
+	var/new_nickname = stripped_input(user, "输入一个独特的IC名称或呼号，添加到你的载具名称中。最多[MAX_NAME_LEN]个字符。\n\n重要！这是你载具的IC昵称/呼号，输入恶搞名称将受到惩罚。\n仅限单次使用。", "Name your vehicle", null, MAX_NAME_LEN)
 	if(!new_nickname)
 		return
 	if(length(new_nickname) > MAX_NAME_LEN)
-		alert(user, "Name [new_nickname] is over [MAX_NAME_LEN] characters limit. Try again.", "Naming vehicle failed", "Ok")
+		alert(user, "名称[new_nickname]超过了[MAX_NAME_LEN]个字符的限制。请重试。", "Naming vehicle failed", "Ok")
 		return
-	if(alert(user, "Vehicle's name will be [V.name + "\"[new_nickname]\""]. Confirm?", "Confirmation?", "Yes", "No") != "Yes")
+	if(alert(user, "载具名称将为[V.name + "\"[new_nickname]\""]. Confirm?", "Confirmation?", "Yes", "No") != "Yes")
 		return
 
 	//post-checks
 	if(V.seats[seat] != user) //check that we are still in seat
-		to_chat(user, SPAN_WARNING("You need to be buckled to vehicle seat to do this."))
+		to_chat(user, SPAN_WARNING("你需要系好载具座椅的安全带才能这么做。"))
 		return
 
 	if(V.nickname) //check again if second VC was faster.
-		to_chat(user, SPAN_WARNING("The other crewman beat you to it!"))
+		to_chat(user, SPAN_WARNING("其他乘员抢先一步！"))
 		return
 
 	V.nickname = new_nickname
 	V.name = initial(V.name) + " \"[V.nickname]\""
-	to_chat(user, SPAN_NOTICE("You've added \"[V.nickname]\" nickname to your vehicle."))
+	to_chat(user, SPAN_NOTICE("你已添加\"[V.nickname]\" nickname to your vehicle."))
 
 	message_admins(WRAP_STAFF_LOG(user, "added \"[V.nickname]\" nickname to their [initial(V.name)]. ([V.x],[V.y],[V.z])"), V.x, V.y, V.z)
 
@@ -296,7 +296,7 @@
 
 //Activates vehicle horn. Yes, it is annoying.
 /obj/vehicle/multitile/proc/activate_horn()
-	set name = "Activate Horn"
+	set name = "鸣笛"
 	set desc = "Activates vehicle signal. Beep-beep."
 	set category = "Vehicle"
 
@@ -317,11 +317,11 @@
 		return
 
 	if(world.time < V.next_honk)
-		to_chat(user, SPAN_WARNING("You need to wait [(V.next_honk - world.time) / 10] seconds."))
+		to_chat(user, SPAN_WARNING("你需要等待[(V.next_honk - world.time) / 10]秒。"))
 		return
 
 	V.next_honk = world.time + 10 SECONDS
-	to_chat(user, SPAN_NOTICE("You activate vehicle's horn."))
+	to_chat(user, SPAN_NOTICE("你按响了载具的喇叭。"))
 	V.perform_honk()
 
 /obj/vehicle/multitile/proc/perform_honk()
@@ -357,8 +357,8 @@
 
 	for(var/obj/item/hardpoint/special/firing_port_weapon/FPW in V.hardpoints)
 		if(FPW.allowed_seat == seat)
-			if(alert(user, "Initiate M56 FPW reload process? It will take [FPW.reload_time / 10] seconds.", "Initiate reload", "Yes", "No") == "Yes")
+			if(alert(user, "启动M56 FPW装填程序？这将需要[FPW.reload_time / 10]秒。", "Initiate reload", "Yes", "No") == "Yes")
 				FPW.start_auto_reload(user)
 			return
 
-	to_chat(user, SPAN_WARNING("Warning. No FPW for [seat] found, tell a dev!"))
+	to_chat(user, SPAN_WARNING("警告。未找到[seat]的FPW，请告知开发人员！"))

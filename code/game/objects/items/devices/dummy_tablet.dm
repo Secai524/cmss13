@@ -1,7 +1,7 @@
 /obj/item/device/professor_dummy_tablet
 	icon = 'icons/obj/items/devices.dmi'
 	name = "\improper Professor DUMMY tablet"
-	desc = "A Professor DUMMY Control Tablet."
+	desc = "一个教授DUMMY控制平板。"
 	suffix = "\[3\]"
 	icon_state = "dummytablet"
 	item_state = "dummytablet"
@@ -25,7 +25,7 @@
 		return
 	if(!linked_dummy)
 		return
-	linked_dummy.visible_message(SPAN_WARNING("The [linked_dummy] suddenly disintegrates!"))
+	linked_dummy.visible_message(SPAN_WARNING("\The [linked_dummy] 突然解体了！"))
 	linked_dummy.dust(create_cause_data("hijack autodelete"))
 
 /obj/item/device/professor_dummy_tablet/Destroy()
@@ -42,7 +42,7 @@
  */
 /obj/item/device/professor_dummy_tablet/proc/is_adjacent_to_dummy(mob/user)
 	if (get_dist(linked_dummy, user) > 1)
-		to_chat(user, SPAN_WARNING("You are too far away from the dummy to use its tablet."))
+		to_chat(user, SPAN_WARNING("你距离假人太远，无法使用其平板。"))
 		return FALSE
 	return TRUE
 
@@ -106,7 +106,7 @@
 		"Left Leg" = "l_leg",
 	)
 	var/selection = ""
-	selection = tgui_input_list(usr, "Select Organ", "Organ selection", procedureChoices)
+	selection = tgui_input_list(usr, "选择器官", "Organ selection", procedureChoices)
 	return LAZYACCESS(procedureChoices, selection)
 
 
@@ -120,7 +120,7 @@
 		"Eyes" = "eyes",
 	)
 	var/selection = ""
-	selection = tgui_input_list(usr, "Select Organ", "Organ selection", procedureChoices)
+	selection = tgui_input_list(usr, "选择器官", "Organ selection", procedureChoices)
 	return LAZYACCESS(procedureChoices, selection)
 
 /obj/item/device/professor_dummy_tablet/proc/select_body_part()
@@ -138,7 +138,7 @@
 		"Left Leg" = "l_leg",
 	)
 	var/selection = ""
-	selection = tgui_input_list(usr, "Select Organ", "Organ selection", procedureChoices)
+	selection = tgui_input_list(usr, "选择器官", "Organ selection", procedureChoices)
 	return LAZYACCESS(procedureChoices, selection)
 
 

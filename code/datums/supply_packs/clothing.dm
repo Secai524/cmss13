@@ -1,5 +1,5 @@
 /datum/supply_packs/pouches_ammo
-	name = "Large Pouch 2x(pistol,magazine,general)"
+	name = "大型弹匣包 2x(手枪,弹匣,通用)"
 	contains = list(
 		/obj/item/storage/pouch/magazine/large,
 		/obj/item/storage/pouch/magazine/large,
@@ -14,7 +14,7 @@
 	group = "Clothing"
 
 /datum/supply_packs/pouches_medical
-	name = "medical pouches crate (1x firstaid, medical, syringe, medkit, autoinjector)"
+	name = "医疗包箱 (1x 急救包, 医疗包, 注射器, 医疗包, 自动注射器)"
 	contains = list(
 		/obj/item/storage/pouch/firstaid,
 		/obj/item/storage/pouch/medical,
@@ -32,7 +32,7 @@
 //---------------------------------------------
 
 /datum/supply_packs/webbing_brown_black
-	name = "Brown And Black Webbing Crate (x2 each)"
+	name = "棕色与黑色战术背心箱 (各x2)"
 	contains = list(
 		/obj/item/clothing/accessory/storage/black_vest/brown_vest,
 		/obj/item/clothing/accessory/storage/black_vest/brown_vest,
@@ -45,7 +45,7 @@
 	group = "Clothing"
 
 /datum/supply_packs/webbing_large
-	name = "Webbing Crate (x4)"
+	name = "战术背心箱 (x4)"
 	contains = list(
 		/obj/item/clothing/accessory/storage/webbing,
 		/obj/item/clothing/accessory/storage/webbing,
@@ -58,7 +58,7 @@
 	group = "Clothing"
 
 /datum/supply_packs/webbing_large_black
-	name = "Black Webbing Crate (x4)"
+	name = "黑色战术背心箱 (x4)"
 	contains = list(
 		/obj/item/clothing/accessory/storage/webbing/black,
 		/obj/item/clothing/accessory/storage/webbing/black,
@@ -71,7 +71,7 @@
 	group = "Clothing"
 
 /datum/supply_packs/drop_pouches
-	name = "Drop Pouch Crate (x4)"
+	name = "降落伞包箱 (x4)"
 	contains = list(
 		/obj/item/clothing/accessory/storage/droppouch,
 		/obj/item/clothing/accessory/storage/droppouch,
@@ -85,7 +85,7 @@
 
 
 /datum/supply_packs/webbing_knives//for the lulz
-	name = "Knife Vest Crate (x3)"
+	name = "刀套背心箱 (x3)"
 	contains = list(
 		/obj/item/clothing/accessory/storage/knifeharness,//old unathi knife harness updated for our needs
 		/obj/item/clothing/accessory/storage/knifeharness,
@@ -97,7 +97,7 @@
 	group = "Clothing"
 
 /datum/supply_packs/webbing_holster
-	name = "Shoulder Holster Crate (x4)"
+	name = "肩挂式枪套箱 (x4)"
 	contains = list(
 		/obj/item/clothing/accessory/storage/holster,
 		/obj/item/clothing/accessory/storage/holster,
@@ -117,7 +117,7 @@
 		/obj/item/clothing/under/marine/dress,
 		/obj/item/clothing/under/marine/officer/ce,
 	)
-	name = "officer outfit crate"
+	name = "军官制服箱"
 	cost = 30
 	containertype = /obj/structure/closet/crate
 	containername = "officer dress crate"

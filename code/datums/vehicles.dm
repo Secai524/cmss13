@@ -1,5 +1,5 @@
 /datum/map_template/interior
-	name = "Base Interior Template"
+	name = "基地内部模板"
 	var/prefix = "maps/interiors/"
 	var/interior_id = "SHOULD NEVER EXIST"
 
@@ -15,39 +15,39 @@
 	interior_id = "apc"
 
 /datum/map_template/interior/apc_pmc
-	name = "W-Y APC"
+	name = "维兰德装甲运兵车"
 	interior_id = "apc_pmc"
 
 /datum/map_template/interior/apc_command
-	name = "Command APC"
+	name = "指挥装甲运兵车"
 	interior_id = "apc_command"
 
 /datum/map_template/interior/apc_med
-	name = "Med APC"
+	name = "医疗装甲运兵车"
 	interior_id = "apc_med"
 
 /datum/map_template/interior/apc_no_fpw
-	name = "APC - No FPW"
+	name = "装甲运兵车 - 无FPW"
 	interior_id = "apc_no_fpw"
 
 /datum/map_template/interior/tank
-	name = "Tank"
+	name = "坦克"
 	interior_id = "tank"
 
 /datum/map_template/interior/van
-	name = "Van"
+	name = "厢式货车"
 	interior_id = "van"
 
 /datum/map_template/interior/clf_van
-	name = "CLF Technical"
+	name = "CLF技术车"
 	interior_id = "clf_van"
 
 /datum/map_template/interior/box_van
-	name = "Box Van"
+	name = "箱式货车"
 	interior_id = "box_van"
 
 /datum/map_template/interior/pizza_van
-	name = "Pizza-Galaxy Van"
+	name = "披萨银河货车"
 	interior_id = "pizza_van"
 
 /datum/map_template/interior/arc

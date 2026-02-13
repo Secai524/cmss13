@@ -2,8 +2,8 @@
 #define BLOOD_BAG_TAKING 0
 
 /obj/item/reagent_container/blood
-	name = "blood pack"
-	desc = "A blood pack. Contains fluids, typically used for transfusions."
+	name = "血袋"
+	desc = "一个血袋。内含液体，通常用于输血。"
 	icon = 'icons/obj/items/bloodpack.dmi'
 	icon_state = "bloodpack"
 	volume = 300
@@ -20,7 +20,7 @@
 /obj/item/reagent_container/blood/Initialize()
 	. = ..()
 	if(blood_type != null)
-		name = "[blood_type] blood pack"
+		name = "[blood_type]血袋"
 		reagents.add_reagent("blood", initial(volume), list("viruses" = null, "blood_type" = blood_type, "resistances" = null))
 		update_icon()
 
@@ -67,12 +67,12 @@
 	. = ..()
 
 	if(attacked_mob == user)
-		to_chat(user, SPAN_WARNING("You cannot connect this to yourself!"))
+		to_chat(user, SPAN_WARNING("你无法将其连接到自身！"))
 		return
 
 	if(connected_to == attacked_mob)
 		STOP_PROCESSING(SSobj, src)
-		user.visible_message("[user] detaches [src] from [connected_to].",
+		user.visible_message("[user]将[src]从[connected_to]上拆下。",
 			"You detach [src] from [connected_to].")
 		connected_to.active_transfusions -= src
 		connected_to.base_pixel_x = 0
@@ -82,14 +82,14 @@
 		return
 
 	if(!skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_NOVICE))
-		to_chat(user, SPAN_WARNING("You don't know how to connect this!"))
+		to_chat(user, SPAN_WARNING("你不知道如何连接这个！"))
 		return
 
 	if(user.action_busy)
 		return
 
 	if(!do_after(user, (1 SECONDS) * user.get_skill_duration_multiplier(SKILL_SURGERY), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, attacked_mob, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
-		to_chat(user, SPAN_WARNING("You were interrupted before you could finish!"))
+		to_chat(user, SPAN_WARNING("你在完成前被打断了！"))
 		return
 
 	if(istype(attacked_mob, /mob/living/carbon/human))
@@ -98,7 +98,7 @@
 		connected_to.active_transfusions += src
 		connected_to.base_pixel_x = 5
 		START_PROCESSING(SSobj, src)
-		user.visible_message("[user] attaches \the [src] to [connected_to].",
+		user.visible_message("[user]将\the [src]连接到[connected_to]上。",
 			"You attach \the [src] to [connected_to].")
 		update_beam()
 
@@ -152,7 +152,7 @@
 	if(!connected_to)
 		return
 
-	connected_to.visible_message("[src] breaks free of [connected_to]!", "[src] is pulled out of you!")
+	connected_to.visible_message("[src]挣脱了[connected_to]！", "[src] is pulled out of you!")
 	connected_to.apply_damage(3, BRUTE, pick("r_arm", "l_arm"))
 	if(connected_to.pain.feels_pain)
 		connected_to.emote("pain")
@@ -164,7 +164,7 @@
 
 /obj/item/reagent_container/blood/verb/toggle_mode()
 	set category = "Object"
-	set name = "Toggle Mode"
+	set name = "切换模式"
 	set src in view(1)
 
 	if(!istype(usr, /mob/living))
@@ -174,7 +174,7 @@
 		return
 
 	mode = !mode
-	to_chat(usr, "The blood bag is now [mode ? "giving blood" : "taking blood"].")
+	to_chat(usr, "血袋现在是[mode ? "giving blood" : "taking blood"].")
 
 
 /obj/item/reagent_container/blood/APlus
@@ -196,8 +196,8 @@
 	blood_type = "O-"
 
 /obj/item/reagent_container/blood/empty
-	name = "empty blood pack"
-	desc = "An empty blood pack. Sorry, vampires, no luck here."
+	name = "空血袋"
+	desc = "一个空血袋。抱歉，吸血鬼们，这里没你们要的东西。"
 
 #undef BLOOD_BAG_INJECTING
 #undef BLOOD_BAG_TAKING

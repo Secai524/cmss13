@@ -1,7 +1,7 @@
 /obj/structure/machinery/defenses/sentry/flamer
 	name = "\improper UA 42-F Sentry Flamer"
 	icon = 'icons/obj/structures/machinery/defenses/flamer.dmi'
-	desc = "A deployable, semi-automated turret with AI targeting capabilities. Armed with a special flamer and a 100 liters fuel tank."
+	desc = "一种可部署、半自动、具备AI瞄准能力的哨戒炮。配备特殊火焰喷射器和一个100升燃料箱。"
 	fire_delay = 30
 	ammo = new /obj/item/ammo_magazine/sentry_flamer
 	sentry_type = "uac_flamer"
@@ -55,7 +55,7 @@
 
 
 /obj/structure/machinery/defenses/sentry/flamer/mini
-	name = "UA 45-FM Mini Sentry"
+	name = "UA 45-FM 迷你哨戒炮"
 	defense_type = "Mini"
 	health = 150
 	health_max = 150
@@ -77,7 +77,7 @@
 
 #define FLAMER_SENTRY_SNIPER_RANGE 10
 /obj/structure/machinery/defenses/sentry/flamer/plasma
-	name = "UA 60-FP Plasma Sentry"
+	name = "UA 60-FP 等离子哨戒炮"
 	defense_type = "Plasma"
 	ammo = new /obj/item/ammo_magazine/sentry_flamer/glob
 	health = 150
@@ -102,9 +102,9 @@
 
 
 /obj/structure/machinery/defenses/sentry/flamer/wy
-	name = "WY 406-FE2 Smart Sentry"
+	name = "维兰德 406-FE2 智能哨戒炮"
 	icon = 'icons/obj/structures/machinery/defenses/wy_defenses.dmi'
-	desc = "A deployable, fully-automated turret with AI targeting capabilities used by the PMC."
+	desc = "PMC使用的一种可部署、全自动、具备AI瞄准能力的哨戒炮。"
 	health = 300
 	health_max = 300
 	fire_delay = 2 SECONDS
@@ -136,9 +136,9 @@
 
 
 /obj/structure/machinery/defenses/sentry/flamer/upp
-	name = "UPP SDS-R5 Sentry Flamer"
+	name = "UPP SDS-R5 火焰喷射哨戒炮"
 	icon = 'icons/obj/structures/machinery/defenses/upp_defenses.dmi'
-	desc = "A deployable, fully-automated turret with AI targeting capabilities used by the UPP."
+	desc = "UPP使用的一种可部署、全自动、具备AI瞄准能力的哨戒炮。"
 	health = 300
 	health_max = 300
 	fire_delay = 1 SECONDS

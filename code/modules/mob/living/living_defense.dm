@@ -30,8 +30,8 @@
 /mob/living/carbon/human/emp_act(severity, datum/cause_data/cause_data)
 	. = ..()
 	if(isspeciessynth(src))
-		to_chat(src, SPAN_DANGER("<B>*BZZZT*</B>"))
-		to_chat(src, SPAN_DANGER("Warning: Electromagnetic pulse detected."))
+		to_chat(src, SPAN_DANGER("<B>*哔兹特*</B>"))
+		to_chat(src, SPAN_DANGER("警告：检测到电磁脉冲。"))
 		log_emp(src, cause_data)
 
 //this proc handles being hit by a thrown atom
@@ -58,7 +58,7 @@
 		visible_message(SPAN_NOTICE("\The [O] misses [src] narrowly!"), null, null, 5)
 		return
 
-	src.visible_message(SPAN_DANGER("[src] has been hit by [O]."), null, null, 5)
+	src.visible_message(SPAN_DANGER("[src]被[O]击中了。"), null, null, 5)
 	var/damage_done = apply_armoured_damage(impact_damage, ARMOR_MELEE, dtype, null, , is_sharp(O), has_edge(O), null)
 
 	var/last_damage_source
@@ -144,7 +144,7 @@
 		if(on_fire)
 			return IGNITE_ON_FIRE
 		on_fire = TRUE
-		to_chat(src, SPAN_DANGER("You are on fire! Use Resist to put yourself out!"))
+		to_chat(src, SPAN_DANGER("你着火了！使用“抵抗”来扑灭火焰！"))
 		update_fire()
 		SEND_SIGNAL(src, COMSIG_LIVING_IGNITION)
 		return IGNITE_IGNITED

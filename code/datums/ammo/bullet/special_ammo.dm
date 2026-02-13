@@ -5,7 +5,7 @@
 */
 
 /datum/ammo/bullet/smartgun
-	name = "smartgun tracer bullet"
+	name = "智能枪曳光弹"
 	icon_state = "bullet_iff"
 	flags_ammo_behavior = AMMO_BALLISTIC
 
@@ -17,7 +17,7 @@
 	effective_range_max = 1
 
 /datum/ammo/bullet/smartgun/alt
-	name = "smartgun bullet"
+	name = "智能枪子弹"
 	icon_state = "redbullet"
 
 	damage_falloff = DAMAGE_FALLOFF_TIER_6
@@ -48,7 +48,7 @@
 	effective_range_max = 7
 
 /datum/ammo/bullet/smartgun/dirty
-	name = "irradiated smartgun tracer bullet"
+	name = "辐射智能枪曳光弹"
 	icon_state = "bullet_iff"
 	debilitate = list(0,0,0,3,0,0,0,1)
 
@@ -60,14 +60,14 @@
 	penetration = 0
 
 /datum/ammo/bullet/smartgun/dirty/alt
-	name = "irradiated smartgun bullet"
+	name = "辐射智能枪子弹"
 	icon_state = "redbullet"
 
 	damage_falloff = DAMAGE_FALLOFF_TIER_6
 	effective_range_max = 7
 
 /datum/ammo/bullet/smartgun/dirty/armor_piercing
-	name = "irradiated AP smartgun tracer bullet"
+	name = "辐射穿甲智能枪曳光弹"
 	icon_state = "bullet_ap_iff"
 	debilitate = list(0,0,0,3,0,0,0,1)
 
@@ -79,14 +79,14 @@
 	damage_armor_punch = 3
 
 /datum/ammo/bullet/smartgun/dirty/armor_piercing/alt
-	name = "irradiated AP smartgun bullet"
+	name = "辐射穿甲智能枪子弹"
 	icon_state = "bullet"
 
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
 	effective_range_max = 7
 
 /datum/ammo/bullet/smartgun/holo_target //Royal marines smartgun bullet has only diff between regular ammo is this one does holostacks
-	name = "holo-targeting smartgun tracer bullet"
+	name = "全息瞄准智能枪曳光弹"
 	icon_state = "bullet_iff"
 
 	damage = 30
@@ -98,7 +98,7 @@
 	var/stack_loss_multiplier = 1
 
 /datum/ammo/bullet/smartgun/holo_target/alt
-	name = "holo-targeting smartgun bullet"
+	name = "全息瞄准智能枪子弹"
 	icon_state = "redbullet"
 
 	damage_falloff = DAMAGE_FALLOFF_TIER_6
@@ -109,7 +109,7 @@
 	hit_mob.AddComponent(/datum/component/bonus_damage_stack, holo_stacks, world.time, bonus_damage_cap_increase, stack_loss_multiplier)
 
 /datum/ammo/bullet/smartgun/holo_target/ap
-	name = "holo-targeting AP smartgun tracer bullet"
+	name = "全息瞄准穿甲智能枪曳光弹"
 	icon_state = "bullet_ap_iff"
 
 	// Same as /datum/ammo/bullet/smartgun/armor_piercing
@@ -121,7 +121,7 @@
 	damage_armor_punch = 1
 
 /datum/ammo/bullet/smartgun/holo_target/ap/alt
-	name = "holo-targeting AP smartgun bullet"
+	name = "全息瞄准穿甲智能枪子弹"
 	icon_state = "bullet"
 
 	// Same as /datum/ammo/bullet/smartgun/armor_piercing/alt
@@ -129,7 +129,7 @@
 	effective_range_max = 7
 
 /datum/ammo/bullet/smartgun/heap
-	name = "high-explosive armor-piercing smartgun bullet"
+	name = "高爆穿甲智能枪子弹"
 	icon_state = "bullet"
 
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
@@ -149,7 +149,7 @@
 	penetration = ARMOR_PENETRATION_TIER_1
 
 /datum/ammo/bullet/turret
-	name = "autocannon bullet"
+	name = "机炮子弹"
 	icon_state = "redbullet" //Red bullets to indicate friendly fire restriction
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_COVER
 
@@ -170,7 +170,7 @@
 	flags_ammo_behavior = AMMO_BALLISTIC
 
 /datum/ammo/bullet/machinegun //Adding this for the MG Nests (~Art)
-	name = "machinegun bullet"
+	name = "机枪子弹"
 	icon_state = "bullet" // Keeping it bog standard with the turret but allows it to be changed
 
 	accurate_range = 12
@@ -196,7 +196,7 @@
 	penetration = ARMOR_PENETRATION_TIER_5
 
 /datum/ammo/bullet/machinegun/auto // for M2C, automatic variant for M56D, stats for bullet should always be moderately overtuned to fulfill its ultra-offense + flank-push purpose
-	name = "heavy machinegun bullet"
+	name = "重机枪子弹"
 
 	accurate_range = 10
 	damage =  50
@@ -218,7 +218,7 @@
 	return
 
 /datum/ammo/bullet/machinegun/medium // for T37, UPP MMG
-	name = "medium machinegun bullet"
+	name = "中机枪子弹"
 
 	accurate_range = 10
 	damage =  50
@@ -233,7 +233,7 @@
 	return
 
 /datum/ammo/bullet/minigun
-	name = "minigun bullet"
+	name = "加特林子弹"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 
 	accuracy = -HIT_ACCURACY_TIER_3
@@ -256,7 +256,7 @@
 		damage = 15
 
 /datum/ammo/bullet/m60
-	name = "M60 bullet"
+	name = "M60子弹"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 
 	accuracy = HIT_ACCURACY_TIER_2
@@ -268,7 +268,7 @@
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
 /datum/ammo/bullet/pkp
-	name = "machinegun bullet"
+	name = "机枪子弹"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 
 	accuracy = HIT_ACCURACY_TIER_1

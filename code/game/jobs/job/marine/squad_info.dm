@@ -109,7 +109,7 @@
 			var/target_team = params["target_ft"]
 
 			if (islead != "sl")
-				to_chat(usr, SPAN_WARNING("You don't have the permissions to promote a fireteam leader!"))
+				to_chat(usr, SPAN_WARNING("你没有权限晋升火力小组组长！"))
 				return
 
 			var/mob/living/carbon/human/target = get_marine_from_name(target_marine)
@@ -138,7 +138,7 @@
 	var/obj/item/card/id/ID = null
 	if(squad_leader)
 		ID = squad_leader.get_idcard()
-	squad_info_data["sl"]["name"] = squad_leader ? squad_leader.real_name : "None"
+	squad_info_data["sl"]["name"] = squad_leader ? squad_leader.real_name : "无"
 	squad_info_data["sl"]["refer"] = squad_leader ? "\ref[squad_leader]" : null
 	squad_info_data["sl"]["paygrade"] = ID ? get_paygrades(ID.paygrade, 1) : ""
 

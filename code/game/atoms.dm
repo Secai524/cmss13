@@ -706,7 +706,7 @@ Parameters are passed from New.
 			. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[curturf.x];Y=[curturf.y];Z=[curturf.z]'>Jump To</option>"
 	VV_DROPDOWN_OPTION(VV_HK_MODIFY_TRANSFORM, "Modify Transform")
 	VV_DROPDOWN_OPTION(VV_HK_ADD_REAGENT, "Add Reagent")
-	VV_DROPDOWN_OPTION(VV_HK_TRIGGER_EMP, "EMP Pulse")
+	VV_DROPDOWN_OPTION(VV_HK_TRIGGER_EMP, "EMP脉冲")
 	VV_DROPDOWN_OPTION(VV_HK_TRIGGER_EXPLOSION, "Explosion")
 	VV_DROPDOWN_OPTION(VV_HK_EDIT_FILTERS, "Edit Filters")
 	VV_DROPDOWN_OPTION(VV_HK_EDIT_COLOR_MATRIX, "Edit Color as Matrix")
@@ -716,17 +716,17 @@ Parameters are passed from New.
 	. = ..()
 	if(href_list[VV_HK_ADD_REAGENT] && check_rights(R_VAREDIT))
 		if(!reagents)
-			var/amount = input(usr, "Specify the reagent size of [src]", "Set Reagent Size", 50) as num|null
+			var/amount = input(usr, "指定[src]的试剂容量", "Set Reagent Size", 50) as num|null
 			if(amount)
 				create_reagents(amount)
 
 		if(reagents)
 			var/chosen_id
-			switch(tgui_alert(usr, "Choose a method.", "Add Reagents", list("Search", "Choose from a list", "I'm feeling lucky")))
+			switch(tgui_alert(usr, "选择一种方法。", "Add Reagents", list("Search", "Choose from a list", "I'm feeling lucky")))
 				if("Search")
 					var/valid_id
 					while(!valid_id)
-						chosen_id = input(usr, "Enter the ID of the reagent you want to add.", "Search reagents") as null|text
+						chosen_id = input(usr, "输入你想要添加的试剂ID。", "Search reagents") as null|text
 						if(isnull(chosen_id)) //Get me out of here!
 							break
 						if (!ispath(text2path(chosen_id)))
@@ -736,13 +736,13 @@ Parameters are passed from New.
 						else
 							valid_id = TRUE
 						if(!valid_id)
-							to_chat(usr, SPAN_WARNING("A reagent with that ID doesn't exist!"))
+							to_chat(usr, SPAN_WARNING("不存在该ID的试剂！"))
 				if("Choose from a list")
-					chosen_id = input(usr, "Choose a reagent to add.", "Choose a reagent.") as null|anything in sort_list(subtypesof(/datum/reagent), GLOBAL_PROC_REF(cmp_typepaths_asc))
+					chosen_id = input(usr, "选择要添加的试剂。", "Choose a reagent.") as null|anything in sort_list(subtypesof(/datum/reagent), GLOBAL_PROC_REF(cmp_typepaths_asc))
 				if("I'm feeling lucky")
 					chosen_id = pick(subtypesof(/datum/reagent))
 			if(chosen_id)
-				var/amount = input(usr, "Choose the amount to add.", "Choose the amount.", reagents.maximum_volume) as num|null
+				var/amount = input(usr, "选择添加的数量。", "Choose the amount.", reagents.maximum_volume) as num|null
 				if(amount)
 					reagents.add_reagent(chosen_id, amount)
 					log_admin("[key_name(usr)] has added [amount] units of [chosen_id] to [src]")
@@ -755,7 +755,7 @@ Parameters are passed from New.
 		usr.client.cmd_admin_emp(src)
 
 	if(href_list[VV_HK_MODIFY_TRANSFORM] && check_rights(R_VAREDIT))
-		var/result = tgui_input_list(usr, "Choose the transformation to apply","Transform Mod", list("Scale","Translate","Rotate", "Reflect X Axis", "Reflect Y Axis"))
+		var/result = tgui_input_list(usr, "选择要应用的转换","Transform Mod", list("Scale","Translate","Rotate", "Reflect X Axis", "Reflect Y Axis"))
 		if(!result)
 			return
 		if(!result)
@@ -800,7 +800,7 @@ Parameters are passed from New.
 		SEND_SIGNAL(src, COMSIG_ATOM_VV_MODIFY_TRANSFORM)
 
 	if(href_list[VV_HK_AUTO_RENAME] && check_rights(R_VAREDIT))
-		var/newname = tgui_input_text(usr, "What do you want to rename this to?", "Automatic Rename", name, encode = FALSE)
+		var/newname = tgui_input_text(usr, "你想将其重命名为什么？", "Automatic Rename", name, encode = FALSE)
 		if(newname)
 			name = newname
 

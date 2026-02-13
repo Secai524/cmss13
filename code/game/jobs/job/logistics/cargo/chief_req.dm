@@ -3,7 +3,7 @@
 	selection_class = "job_qm"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	gear_preset = /datum/equipment_preset/uscm_ship/qm
-	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>Your job</a> is to dispense supplies to the marines, including weapon attachments. Your cargo techs can help you out, but you have final say in your department. Make sure they're not goofing off. While you may request paperwork for supplies, do not go out of your way to screw with marines, unless you want to get deposed. A happy ship is a well-functioning ship."
+	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>你的工作</a>是向海军陆战队员分发物资，包括武器配件。你的货运技术员可以帮助你，但你在部门内有最终决定权。确保他们不偷懒。虽然你可以要求物资的文书工作，但不要故意刁难陆战队员，除非你想被罢免。一艘快乐的船是一艘运转良好的船。"
 	var/mob/living/carbon/human/active_chief_requisition
 
 /datum/job/logistics/requisition/generate_entry_conditions(mob/living/chief_requisition, whitelist_status)

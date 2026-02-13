@@ -11,7 +11,7 @@
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc
 	name = "\improper PMC tactical cap"
-	desc = "A protective cap made from flexible kevlar. Standard issue for most security firms in the place of a helmet."
+	desc = "由柔性凯夫拉制成的防护帽。作为头盔的替代品，是大多数安保公司的标准配置。"
 	icon_state = "pmc_hat"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/WY.dmi'
 	item_icons = list(
@@ -38,12 +38,12 @@
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/leader
 	name = "\improper PMC beret"
-	desc = "The pinnacle of fashion for any aspiring mercenary leader. Designed to protect the head from light impacts."
+	desc = "任何有抱负的雇佣兵领导者的时尚巅峰。旨在保护头部免受轻度冲击。"
 	icon_state = "officer_hat"
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/fieldleader
 	name = "\improper PMC field officer beret"
-	desc = "The pinnacle of fashion for any aspiring mercenary leader. Designed to protect the head from light impacts."
+	desc = "任何有抱负的雇佣兵领导者的时尚巅峰。旨在保护头部免受轻度冲击。"
 	icon_state = "field_officer_hat"
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bio = CLOTHING_ARMOR_MEDIUMLOW

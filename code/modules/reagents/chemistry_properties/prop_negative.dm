@@ -92,27 +92,27 @@
 			var/mob/living/carbon/human/H = M
 			if(H.head)
 				if(prob(meltprob) && !H.head.unacidable)
-					to_chat(H, SPAN_DANGER("Your headgear melts away but protects you from the acid!"))
+					to_chat(H, SPAN_DANGER("你的头饰熔化了，但保护你免受酸液伤害！"))
 					qdel(H.head)
 					H.update_inv_head(0)
 					H.update_hair(0)
 				else
-					to_chat(H, SPAN_WARNING("Your headgear protects you from the acid."))
+					to_chat(H, SPAN_WARNING("你的头饰保护你免受酸液伤害。"))
 				return
 
 			if(H.wear_mask)
 				if(prob(meltprob) && !H.wear_mask.unacidable)
-					to_chat(H, SPAN_DANGER("Your mask melts away but protects you from the acid!"))
+					to_chat(H, SPAN_DANGER("你的面罩熔化了，但保护你免受酸液伤害！"))
 					qdel(H.wear_mask)
 					H.update_inv_wear_mask(0)
 					H.update_hair(0)
 				else
-					to_chat(H, SPAN_WARNING("Your mask protects you from the acid."))
+					to_chat(H, SPAN_WARNING("你的面罩保护你免受酸液伤害。"))
 				return
 
 			if(H.glasses)
 				if(prob(meltprob) && !H.glasses.unacidable)
-					to_chat(H, SPAN_DANGER("Your glasses melts away!"))
+					to_chat(H, SPAN_DANGER("你的眼镜熔化了！"))
 					qdel(H.glasses)
 					H.update_inv_glasses(0)
 				return
@@ -518,7 +518,7 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/human = M
 		human.Daze(potency * volume * POTENCY_MULTIPLIER_VLOW)
-		to_chat(human, SPAN_WARNING("You start to go numb."))
+		to_chat(human, SPAN_WARNING("你开始感到麻木。"))
 	if(isxeno(M))
 		var/mob/living/carbon/xenomorph/xeno = M
 		xeno.AddComponent(/datum/component/status_effect/daze, volume * potency * POTENCY_MULTIPLIER_LOW, 30)
@@ -628,4 +628,4 @@
 
 	reacting_mob.adjust_fire_stacks(max(reacting_mob.fire_stacks, potency * 30))
 	if(reacting_mob.IgniteMob() == IGNITE_IGNITED)
-		to_chat(reacting_mob, SPAN_DANGER("It burns! It burns worse than you could ever have imagined!"))
+		to_chat(reacting_mob, SPAN_DANGER("烧起来了！比你能想象的任何疼痛都要剧烈！"))

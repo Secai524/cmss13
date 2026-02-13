@@ -131,7 +131,7 @@
 					return
 	if(message_flags == CHAT_TYPE_OTHER || client.prefs && (message_flags & client.prefs.chat_display_preferences) > 0) // or logic between types
 		if(stat == UNCONSCIOUS)
-			to_chat(src, "<I>... You can almost hear someone talking ...</I>")
+			to_chat(src, "<I>……你几乎能听到有人在说话……</I>")
 		else if(message_flags & CHAT_TYPE_ALL_COMBAT) // Pre-tag combat messages for tgchat
 			to_chat(src, html = msg, type = MESSAGE_TYPE_COMBAT)
 		else
@@ -282,7 +282,7 @@
 		if(del_on_fail)
 			qdel(W)
 		else if(!disable_warning)
-			to_chat(src, SPAN_WARNING("You are unable to equip that.")) //Only print if del_on_fail is false
+			to_chat(src, SPAN_WARNING("你无法装备那个。")) //Only print if del_on_fail is false
 		return FALSE
 
 	var/start_loc = W.loc
@@ -306,13 +306,13 @@
 //This is an UNSAFE proc. It handles situations of timed equips.
 /mob/proc/equip_to_slot_timed(obj/item/W, slot, redraw_mob = 1, permanent = 0, start_loc, del_on_fail = 0, disable_warning = 0)
 	if(!do_after(src, W.time_to_equip, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-		to_chat(src, SPAN_WARNING("You stop putting on \the [W]!"))
+		to_chat(src, SPAN_WARNING("你停止穿戴\the [W]！"))
 		return
 	if(!W.mob_can_equip(src, slot, disable_warning)) // we have to do these checks again as circumstances may have changed during the do_after
 		if(del_on_fail)
 			qdel(W)
 		else if(!disable_warning)
-			to_chat(src, SPAN_WARNING("You are unable to equip that.")) //Only print if del_on_fail is false
+			to_chat(src, SPAN_WARNING("你无法装备那个。")) //Only print if del_on_fail is false
 		return
 	equip_to_slot(W, slot) //This proc should not ever fail.
 	if(permanent)
@@ -395,7 +395,7 @@
 			new /obj/effect/overlay/temp/point/big(T, src, A)
 		else
 			new /obj/effect/overlay/temp/point/big/squad(T, src, A, squad.equipment_color)
-	visible_message("<b>[src]</b> points to [A]", null, null, 5)
+	visible_message("<b>[src]</b>指向[A]", null, null, 5)
 	return TRUE
 
 ///Is this mob important enough to point with big arrows?
@@ -408,8 +408,8 @@
 /mob/proc/update_flavor_text()
 	set src in usr
 	if(usr != src)
-		to_chat(usr, "No.")
-	var/msg = input(usr,"Set the flavor text in your 'examine' verb. Can also be used for OOC notes about your character.","Flavor Text",html_decode(flavor_text)) as message|null
+		to_chat(usr, "不。")
+	var/msg = input(usr,"在你的‘检查’动词中设置描述文本。也可用于记录关于你角色的OOC备注。","Flavor Text",html_decode(flavor_text)) as message|null
 
 	if(msg != null)
 		msg = copytext(msg, 1, MAX_MESSAGE_LEN)
@@ -419,8 +419,8 @@
 
 /mob/proc/warn_flavor_changed()
 	if(flavor_text && flavor_text != "") // don't spam people that don't use it!
-		to_chat(src, "<h2 class='alert'>OOC Warning:</h2>")
-		to_chat(src, SPAN_ALERT("Your flavor text is likely out of date! <a href='byond://?src=\ref[src];flavor_change=1'>Change</a>"))
+		to_chat(src, "<h2 class='alert'>OOC警告：</h2>")
+		to_chat(src, SPAN_ALERT("你的描述文本可能已过时！<a href='byond://?src=\ref[src];flavor_change=1'>更改</a>"))
 
 /mob/proc/print_flavor_text()
 	if (flavor_text && flavor_text != "")
@@ -512,7 +512,7 @@
 		flick_attack_overlay(AM, "grab")
 
 	if(!QDELETED(AM.pulledby) && !QDELETED(M))
-		visible_message(SPAN_WARNING("[src] has broken [AM.pulledby]'s grip on [M]!"), null, null, 5)
+		visible_message(SPAN_WARNING("[src]挣脱了[AM.pulledby]对[M]的控制！"), null, null, 5)
 		AM.pulledby.stop_pulling()
 
 	var/pull_response = AM.pull_response(src)
@@ -574,7 +574,7 @@
 
 		if(!no_msg)
 			animation_attack_on(M)
-			visible_message(SPAN_WARNING("[src] has grabbed [M] passively!"), null, null, 5)
+			visible_message(SPAN_WARNING("[src]被动地抓住了[M]！"), null, null, 5)
 
 		if(M.mob_size > MOB_SIZE_HUMAN || !(M.status_flags & CANPUSH))
 			G.icon_state = "!reinforce"
@@ -628,14 +628,14 @@ note dizziness decrements automatically in the mob's Life() proc.
 				client.set_pixel_x(amplitude * sin(0.008 * dizziness * world.time))
 				client.set_pixel_y(amplitude * cos(0.008 * dizziness * world.time))
 				if(prob(1))
-					to_chat(src, "The dizziness is becoming unbearable! It should pass faster if you lie down.")
+					to_chat(src, "眩晕感变得难以忍受！躺下应该会好得快些。")
 		sleep(1)
 	//endwhile - reset the pixel offsets to zero
 	is_dizzy = 0
 	if(client)
 		client.set_pixel_x(0)
 		client.set_pixel_y(0)
-		to_chat(src, "The dizziness has passed, you're starting to feel better.")
+		to_chat(src, "眩晕感已经过去，你开始感觉好些了。")
 
 // jitteriness - copy+paste of dizziness
 
@@ -776,11 +776,11 @@ note dizziness decrements automatically in the mob's Life() proc.
 	recalculate_move_delay = TRUE
 
 	if(usr.stat)
-		to_chat(usr, "You are unconscious and cannot do that!")
+		to_chat(usr, "你已昏迷，无法执行此操作！")
 		return
 
 	if(usr.is_mob_restrained())
-		to_chat(usr, "You are restrained and cannot do that!")
+		to_chat(usr, "你被束缚了，无法执行此操作！")
 		return
 
 	var/self
@@ -790,23 +790,23 @@ note dizziness decrements automatically in the mob's Life() proc.
 	var/list/valid_objects = get_visible_implants()
 	if(!valid_objects)
 		if(self)
-			to_chat(src, "You have nothing stuck in your body that is large enough to remove.")
+			to_chat(src, "你体内没有足够大的异物需要移除。")
 		else
-			to_chat(usr, "[src] has nothing stuck in their wounds that is large enough to remove.")
+			to_chat(usr, "[src]的伤口里没有足够大的异物需要移除。")
 		remove_verb(src, /mob/proc/yank_out_object)
 		return
 
-	var/obj/item/selection = tgui_input_list(usr, "What do you want to yank out?", "Embedded objects", valid_objects)
+	var/obj/item/selection = tgui_input_list(usr, "你想拔出什么？", "Embedded objects", valid_objects)
 	if(self)
 		if(get_active_hand())
-			to_chat(src, SPAN_WARNING("You need an empty hand for this!"))
+			to_chat(src, SPAN_WARNING("你需要空出一只手！"))
 			return FALSE
-		to_chat(src, SPAN_WARNING("You attempt to get a good grip on [selection] in your body."))
+		to_chat(src, SPAN_WARNING("你试图紧紧抓住体内的[selection]。"))
 	else
 		if(usr.get_active_hand())
-			to_chat(usr, SPAN_WARNING("You need an empty hand for this!"))
+			to_chat(usr, SPAN_WARNING("你需要空出一只手！"))
 			return FALSE
-		to_chat(usr, SPAN_WARNING("You attempt to get a good grip on [selection] in [src]'s body."))
+		to_chat(usr, SPAN_WARNING("你试图紧紧抓住[src]体内的[selection]。"))
 
 	if(!do_after(usr, 2 SECONDS * selection.w_class * usr.get_skill_duration_multiplier(SKILL_SURGERY), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		return
@@ -814,9 +814,9 @@ note dizziness decrements automatically in the mob's Life() proc.
 		return
 
 	if(self)
-		visible_message(SPAN_WARNING("<b>[src] rips [selection] out of their body.</b>"),SPAN_WARNING("<b>You rip [selection] out of your body.</b>"), null, 5)
+		visible_message(SPAN_WARNING("<b>[src]将[selection]从体内撕扯出来。</b>"),SPAN_WARNING("<b>You rip [selection] out of your body.</b>"), null, 5)
 	else
-		visible_message(SPAN_WARNING("<b>[usr] rips [selection] out of [src]'s body.</b>"),SPAN_WARNING("<b>[usr] rips [selection] out of your body.</b>"), null, 5)
+		visible_message(SPAN_WARNING("<b>[usr]将[selection]从[src]体内撕扯出来。</b>"),SPAN_WARNING("<b>[usr] rips [selection] out of your body.</b>"), null, 5)
 
 	if(length(valid_objects) == 1) //Yanking out last object - removing verb.
 		remove_verb(src, /mob/proc/yank_out_object)

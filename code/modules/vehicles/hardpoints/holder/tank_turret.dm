@@ -1,6 +1,6 @@
 /obj/item/hardpoint/holder/tank_turret
 	name = "\improper M34A2-A Multipurpose Turret"
-	desc = "The centerpiece of the tank. Designed to support quick installation and deinstallation of various tank weapon modules. Has inbuilt smoke screen deployment system."
+	desc = "坦克的核心部件。设计用于支持各种坦克武器模块的快速安装与拆卸。内置烟雾释放系统。"
 
 	icon = 'icons/obj/vehicles/tank.dmi'
 	icon_state = "tank_turret_0"
@@ -139,7 +139,7 @@
 		return
 
 	gyro = !gyro
-	to_chat(user, SPAN_NOTICE("You toggle \the [src]'s gyroscopic stabilizer [gyro ? "ON" :"OFF"]."))
+	to_chat(user, SPAN_NOTICE("你切换了\the [src]的陀螺稳定器[gyro ? "ON" :"OFF"]."))
 
 /obj/item/hardpoint/holder/tank_turret/proc/user_rotation(mob/user, deg)
 	// no rotating a broken turret
@@ -150,7 +150,7 @@
 		return
 
 	rotating = TRUE
-	to_chat(user, SPAN_NOTICE("You begin rotating the turret towards the [dir2text(turn(dir,deg))]."))
+	to_chat(user, SPAN_NOTICE("你开始将炮塔转向[dir2text(turn(dir,deg))]方向。"))
 
 	if(!do_after(user, rotation_windup, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		rotating = FALSE

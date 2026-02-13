@@ -3,8 +3,8 @@
 // ----- Cipher Computer / Parent -----
 
 /obj/structure/machinery/computer/almayer_encryption
-	name = "encryption cipher computer"
-	desc = "The IBM series 10 computer retrofitted to work as a encryption cipher computer for the ship. While somewhat dated it still serves its purpose."
+	name = "加密密码计算机"
+	desc = "经过改装，作为舰船加密密码计算机使用的IBM系列10计算机。虽然有些过时，但仍能胜任其工作。"
 	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi'
 	icon_state = "sensor_comp2"
 	density = TRUE
@@ -62,7 +62,7 @@
 		return TRUE
 
 	if(req_skill && !skillcheck(user, req_skill, req_skill_level))
-		to_chat(user, SPAN_WARNING("You don't have the training to use this."))
+		to_chat(user, SPAN_WARNING("你没有使用此设备的训练资格。"))
 		return TRUE
 
 	tgui_interact(user)
@@ -109,11 +109,11 @@
 		CRASH("Invalid print by [user]!")
 
 	if(length(contents) <= 0)
-		to_chat(user, SPAN_WARNING("It looks like [src] is out of blank punch cards."))
+		to_chat(user, SPAN_WARNING("看起来[src]的空白打孔卡用完了。"))
 		return
 
 	if(!COOLDOWN_FINISHED(src, print_cooldown))
-		to_chat(user, SPAN_WARNING("Slow down! You wouldn't want to break it."))
+		to_chat(user, SPAN_WARNING("慢点！你不想把它弄坏吧。"))
 		return
 
 	COOLDOWN_START(src, print_cooldown, 15 SECONDS)
@@ -190,7 +190,7 @@
 /// Called by insert_punch_card for unused punch_cards to restock if possible.
 /obj/structure/machinery/computer/almayer_encryption/proc/try_restock_punch_card(obj/item/paper/punch_card/card, mob/living/user)
 	if(length(contents) >= 20)
-		to_chat(user, SPAN_NOTICE("It looks like the card holder for [src] is already full."))
+		to_chat(user, SPAN_NOTICE("看起来[src]的卡片槽已经满了。"))
 		return FALSE
 	if(card.data)
 		return FALSE
@@ -198,15 +198,15 @@
 	for(var/i in 1 to 4) // Give 4 extra blank
 		new card.base_type(src)
 	user.drop_inv_item_to_loc(card, src)
-	to_chat(user, SPAN_NOTICE("You load several punch cards for [src]."))
+	to_chat(user, SPAN_NOTICE("你为[src]装入了数张打孔卡。"))
 	return TRUE
 
 
 // ----- Encoder Computer -----
 
 /obj/structure/machinery/computer/almayer_encryption/encoder
-	name = "encryption encoder computer"
-	desc = "The IBM series 10 computer retrofitted to work as a encryption encoder computer for the ship. While somewhat dated it still serves its purpose."
+	name = "加密编码计算机"
+	desc = "经过改装，作为舰船加密编码计算机使用的IBM系列10计算机。虽然有些过时，但仍能胜任其工作。"
 	icon_state = "sensor_comp1"
 	tgui_mode = "encoder"
 	preload_punchcards = 0 // Nothing to print
@@ -270,8 +270,8 @@
 // ----- Decoder Computer -----
 
 /obj/structure/machinery/computer/almayer_encryption/decoder
-	name = "encryption decoder computer"
-	desc = "The IBM series 10 computer retrofitted to work as an encryption decoder computer for the ship. While somewhat dated it still serves its purpose."
+	name = "加密解码计算机"
+	desc = "经过改装，作为舰船加密解码计算机使用的IBM系列10计算机。虽然有些过时，但仍能胜任其工作。"
 	icon_state = "sensor_comp3"
 	tgui_mode = "decoder"
 

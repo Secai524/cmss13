@@ -17,9 +17,9 @@
 */
 
 /obj/structure/machinery/vending/coffee
-	name = "\improper Hot Drinks machine"
-	desc = "A vending machine which dispenses hot drinks."
-	//product_ads = "Have a drink!;Drink up!;It's good for you!;Would you like a hot joe?;I'd kill for some coffee!;The best beans in the galaxy.;Only the finest brew for you.;Mmmm. Nothing like a coffee.;I like coffee, don't you?;Coffee helps you work!;Try some tea.;We hope you like the best!;Try our new chocolate!;Admin conspiracies"
+	name = "\improper 热饮机"
+	desc = "一台供应热饮的自动售货机。"
+	//product_ads = "喝一杯吧！;干杯！;这对你有好处！;想来杯热咖啡吗？;我超想喝咖啡！;银河系里最好的咖啡豆。;只为你准备最上等的冲泡。;嗯，没有什么比得上咖啡。;我喜欢咖啡，你呢？;咖啡助你工作！;尝尝茶吧。;希望你喜欢最好的！;试试我们的新巧克力！;管理层的阴谋"
 	icon_state = "coffee"
 	icon_vend = "coffee-vend"
 	vend_delay = 3.4 SECONDS
@@ -39,16 +39,16 @@
 	product_type = VENDOR_PRODUCT_TYPE_BEVERAGES
 
 /obj/structure/machinery/vending/coffee/simple
-	name = "\improper Hot Coffee Machine"
+	name = "\improper 热咖啡机"
 	product_ads = ""
 	products = list(/obj/item/reagent_container/food/drinks/coffee = 40)
 	contraband = list(/obj/item/reagent_container/food/drinks/h_chocolate = 25)
 
 /obj/structure/machinery/vending/snack
-	name = "\improper Hot Foods Machine"
-	desc = "A vending machine full of ready to cook meals, mhmmmm taste the nutritional goodness!"
-	product_slogans = "Kepler Crisps! Try a snack that's out of this world!;Eat an EAT!;Eat a Weyland-Yutani brand packaged hamburger.;Eat a Weyland-Yutani brand packaged hot dog.;Eat a Weyland-Yutani brand packaged burrito.;"
-	product_ads = "Kepler Crisps! Try a snack that's out of this world!;Eat an EAT!"
+	name = "\improper 热食机"
+	desc = "一台装满即烹餐食的自动售货机，嗯——尝尝这营养美味！"
+	product_slogans = "开普勒脆片！品尝一款超凡脱俗的零食！;享用一份EAT！;食用一份维兰德-汤谷公司品牌包装汉堡。;食用一份维兰德-汤谷公司品牌包装热狗。;食用一份维兰德-汤谷公司品牌包装墨西哥卷饼。"
+	product_ads = "开普勒脆片！品尝一款超凡脱俗的零食！;来一份EAT！"
 	icon_state = "snack"
 	products = list(
 		/obj/item/reagent_container/food/snacks/packaged_burger = 12,
@@ -91,11 +91,11 @@
 	)
 
 /obj/structure/machinery/vending/cola
-	name = "\improper Souto Softdrinks"
-	desc = "A softdrink vendor provided by Souto Soda Company, Havana."
+	name = "\improper 索托汽水 软饮料"
+	desc = "一台由哈瓦那索托汽水公司提供的软饮料售货机。"
 	icon_state = "Cola_Machine"
-	product_slogans = "Souto Soda: Have a Souto and be taken away to a tropical paradise!;Souto Classic. You can't beat that tangerine goodness!;Souto Cherry. The sweet flavor of a cool winter morning!;Souto Lime. For that sweet and sour flavor that you know and love!;Souto Grape. There's nothing better than a grape soda.;Weyland-Yutani Fruit Beer. Nothing came from that lawsuit!"
-	product_ads = "Souto Classic. You can't beat that tangerine goodness!;Souto Cherry. The sweet flavor of a cool winter morning!;Souto Lime. For that sweet and sour flavor that you know and love!;Souto Grape. There's nothing better than a grape soda.;Weyland-Yutani Fruit Beer. Nothing came from that lawsuit!"
+	product_slogans = "索托汽水：畅饮索托汽水，即刻置身热带天堂！;索托汽水经典款。无可匹敌的柑橘美味！;索托汽水樱桃味。宛如清凉冬日清晨的甜蜜滋味！;索托汽水青柠味。带来您熟悉且钟爱的酸甜口感！;索托汽水葡萄味。没有什么比葡萄汽水更令人愉悦了。;维兰德-汤谷公司果味啤酒。那场诉讼最终不了了之！"
+	product_ads = "索托汽水 经典款。你无法抗拒那橘子般的美味！;索托汽水 樱桃味。宛如清凉冬日清晨的甜蜜滋味！;索托汽水 青柠味。带来你熟悉并喜爱的酸甜口感！;索托汽水 葡萄味。没有什么比葡萄汽水更棒的了。;维兰德-汤谷公司 果味啤酒。那场诉讼毫无结果！"
 	products = list(
 		/obj/item/reagent_container/food/drinks/cans/souto/classic = 10,
 		/obj/item/reagent_container/food/drinks/cans/souto/cherry = 10,
@@ -147,7 +147,7 @@
 	AddElement(/datum/element/corp_label/souta)
 
 /obj/structure/machinery/vending/cola/research
-	desc = "A softdrink vendor provided by Souto Soda Company, Havana. This one is bound to the Research Budget card and doesn't require swiping."
+	desc = "一台由哈瓦那索托汽水公司提供的软饮料售货机。此机器绑定研究预算卡，无需刷卡。"
 	products = list(
 		/obj/item/reagent_container/food/drinks/cans/souto/classic = 10,
 		/obj/item/reagent_container/food/drinks/cans/souto/cherry = 10,
@@ -163,8 +163,8 @@
 	prices = list()
 
 /obj/structure/machinery/vending/cigarette
-	name = "cigarette machine" //old, should be replaced with WY or Koorlander machines. Just the template for vars
-	desc = "If you want to get cancer, might as well do it in style!"
+	name = "香烟贩卖机" //old, should be replaced with WY or Koorlander machines. Just the template for vars
+	desc = "如果你想得癌症，至少也得有型有款！"
 	product_slogans = ""
 	product_ads = ""
 	vend_delay = 1.4 SECONDS
@@ -208,11 +208,11 @@
 	prices = list()
 
 /obj/structure/machinery/vending/cigarette/koorlander //koorlander machine, contains luckies since they either bought Lucky Strikes as a company, or are working together to survive.
-	name = "Koorlander brand cigarette machine"
-	desc = "A Koorlander brand cigarette vending machine. Comes with Lucky Strikes, Lady Fingers, Koorlander Golds of course, and a few smaller brands you've barely heard of."
+	name = "库兰德牌香烟贩卖机"
+	desc = "一台库兰德牌香烟自动售货机。提供幸运星、淑女指、当然还有库兰德金牌，以及一些你几乎没听说过的小品牌。"
 	icon_state = "koorcigs"
 	product_slogans = list(
-		"Koorlander Gold, for the refined palate.",
+		"库兰德黄金，献给品味非凡的你。",
 		"Lady Fingers, for the dainty smoker.",
 		"Lady Fingers, treat your palete with pink!",
 		"The big blue K means a cool fresh day!",
@@ -241,7 +241,7 @@
 	)
 
 	product_ads = list(
-		"For the taste that cools your mood, look for the big blue K!",
+		"想要心情瞬间清凉，就找那个大大的蓝色K！",
 		"Refined smokers go for Gold!",
 		"Lady Fingers are preferred by women who appreciate a cool smoke.",
 		"Lady Fingers are the number one cigarette this side of Gateway!",
@@ -313,11 +313,11 @@
 	)
 
 /obj/structure/machinery/vending/cigarette/wy //WY machine
-	name = "Weyland Yutani brand cigarette machine"
-	desc = "A Weyland Yutani Brand cigarette vending machine, looks like a Wey-Yu Gold pack. Comes with Emerald Greens, Wey-Yu Golds of course, Arcturian Aces, and some Three World Empire brand you've barely heard of. Executive Selects are still out of stock due to shipping issues..."
+	name = "维兰德-汤谷牌香烟贩卖机"
+	desc = "一台维兰德-汤谷牌香烟自动售货机，看起来像个维-汤金牌包装。提供翡翠绿、当然还有维-汤金牌、阿图里安王牌，以及一些你几乎没听说过的三世界帝国品牌。行政精选款因运输问题仍然缺货……"
 	icon_state = "wycigs"
 	product_slogans = list(
-		"Weyland Yutani Gold, for those high up the chain.",
+		"韦兰德-汤谷金卡，专为高层人士打造。",
 		"Arcturian Ace, for those who can't stand bad taste!",
 		"Arcturian Ace, good for the lungs! On account of exotic Arctura flora.", //it's cocaine
 		"Tastes how a cigarette should, smoke Wey-Yu Golds!",
@@ -344,7 +344,7 @@
 	)
 
 	product_ads = list(
-		"Weyland Yutani Gold, for those high up the chain.",
+		"韦兰德-汤谷金卡，专为高层人士打造。",
 		"Arcturian Ace, for those who don't like bad taste.",
 		"Arcturian Ace, good for the lungs! On account of local Arctura flora.",
 		"Tastes how a cigarette should, Weyland Yutani Gold!",
@@ -423,10 +423,10 @@
 
 
 /obj/structure/machinery/vending/security
-	name = "\improper SecTech"
-	desc = "A security equipment vendor."
-	product_ads = "Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
-	product_slogans = "Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
+	name = "\improper 安全科技"
+	desc = "一台安保设备售货机。"
+	product_ads = "打爆他们的头！;别忘了——伤害就是好事！;你的武器就在这里。;手铐！;别动，混蛋！;别电我，兄弟！;电他们，兄弟。;何不来个甜甜圈？"
+	product_slogans = "打爆他们的头！;别忘了——伤害就是好事！;你的武器就在这里。;手铐！;别动，混蛋！;别电我，兄弟！;电他们，兄弟。;何不来个甜甜圈？"
 	icon_state = "sec"
 	icon_deny = "sec-deny"
 	req_access = list(ACCESS_MARINE_BRIG)
@@ -460,8 +460,8 @@
 	contraband = list(/obj/item/clothing/glasses/sunglasses = 2,/obj/item/storage/donut_box = 2)
 
 /obj/structure/machinery/vending/security/riot
-	name = "\improper RiotTech"
-	desc = "A security riot equipment vendor."
+	name = "\improper 暴动科技"
+	desc = "一台安保防暴设备售货机。"
 	hacking_safety = TRUE
 	wrenchable = FALSE
 	products = list(
@@ -480,8 +480,8 @@
 
 /obj/structure/machinery/vending/sea
 	name = "\improper SEATech"
-	desc = "An equipment vendor designed to save lives."
-	product_ads = "Semper Fi!;First to Fight!;Ooh Rah.;Leathernecks!;The Few. The Proud.;Esprit de Corps;Jarhead.;Devil Dogs."
+	desc = "一台旨在拯救生命的装备贩卖机。"
+	product_ads = "永远忠诚！;首战用我！;嗷呜！;皮领子！;精英中的精英。;团队精神;罐子头;地狱犬。"
 	icon_state = "sec"
 	icon_deny = "sec-deny"
 	hacking_safety = TRUE
@@ -504,10 +504,10 @@
 	contraband = list(/obj/item/storage/fancy/cigar = 2,/obj/item/tool/lighter/zippo = 2)
 
 /obj/structure/machinery/vending/hydronutrients
-	name = "\improper NutriMax"
-	desc = "A plant nutrients vendor."
-	//product_slogans = "Aren't you glad you don't have to fertilize the natural way?;Now with 50% less stink!;Plants are people too!"
-	//product_ads = "We like plants!;Don't you want some?;The greenest thumbs ever.;We like big plants.;Soft soil..."
+	name = "\improper 营养麦克斯"
+	desc = "一台植物营养剂贩卖机。"
+	//product_slogans = "不必亲自施肥，是不是很庆幸？;现在臭味减少50%！;植物也是生命！"
+	//product_ads = "我们喜欢植物！;你不想来点吗？;史上最绿的拇指。;我们喜欢大植物。;松软的土壤..."
 	icon_state = "nutri"
 	icon_deny = "nutri-deny"
 	products = list(/obj/item/reagent_container/glass/fertilizer/ez = 35,/obj/item/reagent_container/glass/fertilizer/l4z = 25,/obj/item/reagent_container/glass/fertilizer/rh = 15,/obj/item/tool/plantspray/pests = 20,
@@ -523,10 +523,10 @@
 	return FALSE
 
 /obj/structure/machinery/vending/hydroseeds
-	name = "\improper MegaSeed Servitor"
-	desc = "When you need seeds fast!"
-	//product_slogans = "THIS'S WHERE TH' SEEDS LIVE! GIT YOU SOME!;Hands down the best seed selection on the station!;Also certain mushroom varieties available, more for experts! Get certified today!"
-	//product_ads = "We like plants!;Grow some crops!;Grow, baby, growww!;Aw h'yeah son!"
+	name = "\improper 巨型种子伺服器"
+	desc = "当你急需种子时！"
+	//product_slogans = "这里是种子之家！快来挑选一些吧！;本站点最棒的种子选择，毋庸置疑！;还有特定蘑菇品种供应，更适合行家！今天就获取认证吧！"
+	//product_ads = "我们喜欢植物！;种点庄稼吧！;快快长大吧，宝贝！;哦耶，小子！"
 	icon_state = "seeds"
 	delay_product_spawn = 1
 
@@ -552,16 +552,16 @@
 	return FALSE
 
 /obj/structure/machinery/vending/dinnerware
-	name = "\improper Dinnerware"
-	desc = "A kitchen and restaurant equipment vendor."
-	product_ads = "Mm, food stuffs!;Food and food accessories.;Get your plates!;You like forks?;I like forks.;Woo, utensils.;You don't really need these..."
+	name = "\improper 餐具"
+	desc = "一台厨房和餐厅设备贩卖机。"
+	product_ads = "嗯，食物原料！；食物与食物配件。；准备好你们的盘子！；你喜欢叉子吗？；我喜欢叉子。；哇，餐具。；你其实并不需要这些..."
 	icon_state = "dinnerware"
 	products = list(/obj/item/tool/kitchen/tray = 8,/obj/item/tool/kitchen/utensil/fork = 6,/obj/item/tool/kitchen/knife = 3,/obj/item/reagent_container/food/drinks/drinkingglass = 8,/obj/item/clothing/suit/chef/classic = 2,/obj/item/reagent_container/food/condiment/saltshaker = 4,/obj/item/reagent_container/food/condiment/peppermill = 4,/obj/item/reagent_container/food/condiment/enzyme = 1,/obj/item/reagent_container/food/condiment = 8)
 	contraband = list(/obj/item/tool/kitchen/utensil/spoon = 2,/obj/item/tool/kitchen/utensil/knife = 2,/obj/item/tool/kitchen/rollingpin = 2, /obj/item/tool/kitchen/knife/butcher = 2)
 
 /obj/structure/machinery/vending/dinnerware/yautja
-	name = "dinnerplate dispenser"
-	desc = "A kitchen and restaurant equipment vendor."
+	name = "餐盘分发器"
+	desc = "一台厨房和餐厅设备贩卖机。"
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	hacking_safety = TRUE
 
@@ -569,10 +569,10 @@
 	return FALSE
 
 /obj/structure/machinery/vending/sovietsoda
-	name = "\improper BODA"
-	desc = "An old sweet water vending machine, how did this end up here?"
+	name = "\improper 博达"
+	desc = "一台老旧的甜水贩卖机，它怎么会在这里？"
 	icon_state = "sovietsoda"
-	product_ads = "For Tsar and Country.;Have you fulfilled your nutrition quota today?;Very nice!;We are simple people, for this is all we eat.;If there is a person, there is a problem. If there is no person, then there is no problem."
+	product_ads = "为了沙皇和国家。;你今天完成营养配额了吗？;非常好！;我们是简单的人，因为这就是我们吃的全部。;有人就有问题。没有人，就没有问题。"
 	products = list(/obj/item/reagent_container/food/drinks/cans/boda = 30)
 	contraband = list(/obj/item/reagent_container/food/drinks/cans/bodaplus = 20)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
@@ -637,10 +637,10 @@
 	return
 
 /obj/structure/machinery/vending/walkman
-	name = "\improper Rec-Vend"
-	desc = "Contains Weyland-Yutani approved recreational items, like Walkmans and Cards."
+	name = "\improper 回收-贩卖"
+	desc = "内含维兰德-汤谷批准的娱乐物品，例如随身听和纸牌。"
 	icon_state = "walkman"
-	product_ads = "The only place to have fun in the entire Marine Corps!;You'll find no better music from here to Arcturus!;Instructions not included with decks of cards!;No volume controls - you don't need them!;All products responsibly made by people having just as much fun as you will be!;Say goodbye to the lucky strike military tobacco monopoly, with the new Weyland Yutani Military Trading Card Gold cigarette pack!"
+	product_ads = "整个海军陆战队员军团里唯一的娱乐圣地！;从这里到阿克图鲁斯都找不到更好的音乐！;纸牌包装内不含使用说明！;无需音量调节——你根本用不着！;所有产品均由与您同乐的员工精心制作！;告别幸运星军用烟草专卖，迎接全新的维兰德-汤谷军用集换卡牌黄金烟盒！"
 	vend_delay = 0.5 SECONDS
 	idle_power_usage = 200
 
@@ -713,9 +713,9 @@
 
 //vendor of ingredients for kitchen
 /obj/structure/machinery/vending/ingredients
-	name = "\improper Galley Auxiliary Storage Requisition System"
-	desc = "A vending machine meant to be use for cooks."
-	product_ads = "If your out of ingredients i am here for you;all my organic produce are fresh;don't let my potatoes go stale time for you to cook some fries"
+	name = "\improper 厨房辅助存储申请系统"
+	desc = "一台供厨师使用的贩卖机。"
+	product_ads = "如果你食材用完了，我随时为你服务；我所有的有机农产品都是新鲜的；别让我的土豆放久了，是时候炸些薯条了。"
 	icon_state = "snack" //TODO: placeholder, make a proper unique sprite
 	hacking_safety = TRUE
 	products = list(
@@ -778,8 +778,8 @@
 	product_type = VENDOR_PRODUCT_TYPE_FOOD
 
 /obj/structure/machinery/vending/upp_co
-	name = "\improper UnionAraratCorp Automated Commander Uniform Closet"
-	desc = "An automated closet hooked up to a colossal storage of standard-issue dress uniform variants."
+	name = "\improper 联合亚拉腊公司自动化指挥官制服柜"
+	desc = "一个连接着海量标准制式礼服变体存储库的自动衣柜。"
 	icon_state = "dress"
 	icon_deny = "dress"
 	wrenchable = FALSE

@@ -43,7 +43,7 @@
 		return
 
 	if(!skillcheck(user, SKILL_POLICE, skill_requirement))
-		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
+		to_chat(user, SPAN_WARNING("你似乎不知道如何使用 [src]..."))
 		return
 
 	..()
@@ -72,7 +72,7 @@
 	if(isxeno(M))
 		return
 
-	to_chat(M, SPAN_WARNING("<B>BANG</B>"))
+	to_chat(M, SPAN_WARNING("<B>砰</B>"))
 
 	for(var/obj/item/device/chameleon/S in M)
 		S.disrupt(M)
@@ -91,7 +91,7 @@
 				total_eye_protection += C.armor_energy
 
 		if(total_eye_protection >= strength)
-			to_chat(M, SPAN_HELPFUL("Your gear protects you from \the [src]."))
+			to_chat(M, SPAN_HELPFUL("你的装备保护你免受\the [src]的伤害。"))
 			return
 
 	var/weaken_amount
@@ -133,7 +133,7 @@
 		weaken_amount *= 0.85
 		paralyze_amount *= 0.85
 		deafen_amount = 0
-		to_chat(M, SPAN_HELPFUL("Your gear protects you from the worst of the 'bang'."))
+		to_chat(M, SPAN_HELPFUL("你的装备保护你免受大部分'爆炸'冲击。"))
 
 	M.Stun(weaken_amount)
 	M.KnockDown(weaken_amount)
@@ -146,24 +146,24 @@
 		var/mob/living/carbon/human/H = M
 		var/datum/internal_organ/eyes/E = H.internal_organs_by_name["eyes"]
 		if (E && E.damage >= E.min_bruised_damage)
-			to_chat(M, SPAN_WARNING("Your eyes start to burn badly!"))
+			to_chat(M, SPAN_WARNING("你的眼睛开始剧烈灼痛！"))
 			if(!no_damage)
 				if (E.damage >= E.min_broken_damage)
-					to_chat(M, SPAN_WARNING("You can't see anything!"))
+					to_chat(M, SPAN_WARNING("你什么都看不见了！"))
 	if (M.ear_damage >= 15)
-		to_chat(M, SPAN_WARNING("Your ears start to ring badly!"))
+		to_chat(M, SPAN_WARNING("你的耳朵开始剧烈耳鸣！"))
 		if(!no_damage)
 			if (prob(M.ear_damage - 10 + 5))
-				to_chat(M, SPAN_WARNING("You can't hear anything!"))
+				to_chat(M, SPAN_WARNING("你什么都听不见了！"))
 				M.sdisabilities |= DISABILITY_DEAF
 	else
 		if (M.ear_damage >= 5)
-			to_chat(M, SPAN_WARNING("Your ears start to ring!"))
+			to_chat(M, SPAN_WARNING("你的耳朵开始耳鸣！"))
 
 //Created by Polymorph, fixed by Sieve
 /obj/item/explosive/grenade/flashbang/cluster
-	name = "cluster flashbang"
-	desc = "Use of this weapon may be considered a war crime in your area, consult your local commanding officer."
+	name = "集束闪光弹"
+	desc = "使用此武器在您所在区域可能被视为战争罪，请咨询您的当地指挥官。"
 	icon_state = "cluster"
 	no_damage = TRUE
 
@@ -182,8 +182,8 @@
 	qdel(src)
 
 /obj/item/explosive/grenade/flashbang/cluster/segment
-	name = "cluster flashbang segment"
-	desc = "A smaller segment of a clusterbang. Better run."
+	name = "集束闪光弹破片"
+	desc = "集束炸弹的一个较小破片。最好快跑。"
 	icon_state = "cluster_segment"
 
 //Segments should never exist except part of the clusterbang, since these immediately 'do their thing' and explode
@@ -218,8 +218,8 @@
 //Knockdowns only within 3x3 area, causes temporary blindness, deafness and daze, depending on range and type of mob. Effects reduced when lying.
 //Makes it perfect support tool, but not an insta win.
 /obj/item/explosive/grenade/flashbang/noskill
-	name = "M40 stun grenade"
-	desc = "A less-lethal explosive device used to temporarily disorient an enemy by producing a flash of light and an intensely loud \"bang\", which cause temporary blindness and deafness. More commonly referred to as a \"flashbang\". Still dangerous if it explodes nearby."
+	name = "M40眩晕手榴弹"
+	desc = "一种非致命性爆炸装置，通过产生一道闪光和一声巨响来暂时迷惑敌人。\"bang\", which cause temporary blindness and deafness. More commonly referred to as a \"flashbang\". Still dangerous if it explodes nearby."
 
 	icon_state = "flashbang_noskill"
 	item_state = "grenade_flashbang_noskill"
@@ -237,7 +237,7 @@
 	if(M.stat == DEAD)
 		return
 
-	to_chat(M, SPAN_WARNING("<B>BANG</B>"))
+	to_chat(M, SPAN_WARNING("<B>砰</B>"))
 
 	//some effects for non-humans
 	if(!ishuman(M))
@@ -262,7 +262,7 @@
 	//flashbang effect depends on eye protection only, so we will process this case first
 	//A bit dumb, but headsets don't have ear protection and even earmuffs are a fluff now
 	if(H.get_eye_protection() > 0)
-		to_chat(H, SPAN_HELPFUL("Your gear protects you from \the [src]."))
+		to_chat(H, SPAN_HELPFUL("你的装备保护你免受\the [src]的伤害。"))
 		if((get_dist(H, T) <= 1 || src.loc == H.loc || src.loc == H))
 			H.apply_damage(5, BRUTE)
 			H.apply_damage(5, BURN)
@@ -325,7 +325,7 @@
 		daze_amount *= 0.85
 		paralyze_amount *= 0.85
 		deafen_amount = 0
-		to_chat(M, SPAN_HELPFUL("Your gear protects you from the worst of the 'bang'."))
+		to_chat(M, SPAN_HELPFUL("你的装备保护你免受大部分'爆炸'冲击。"))
 
 	M.apply_effect(daze_amount, DAZE)
 	M.apply_effect(paralyze_amount, PARALYZE)
@@ -337,15 +337,15 @@
 
 	var/datum/internal_organ/eyes/E = H.internal_organs_by_name["eyes"]
 	if(E && E.damage >= E.min_bruised_damage)
-		to_chat(H, SPAN_WARNING("Your eyes start to burn badly!"))
+		to_chat(H, SPAN_WARNING("你的眼睛开始剧烈灼痛！"))
 		if (E.damage >= E.min_broken_damage)
-			to_chat(H, SPAN_WARNING("You can't see anything!"))
+			to_chat(H, SPAN_WARNING("你什么都看不见了！"))
 	if(H.ear_damage >= 15)
-		to_chat(H, SPAN_WARNING("Your ears start to ring badly!"))
+		to_chat(H, SPAN_WARNING("你的耳朵开始剧烈耳鸣！"))
 		if(prob(H.ear_damage - 10 + 5))
-			to_chat(H, SPAN_WARNING("You can't hear anything!"))
+			to_chat(H, SPAN_WARNING("你什么都听不见了！"))
 			H.sdisabilities |= DISABILITY_DEAF
 	else
 		if(H.ear_damage >= 5)
-			to_chat(H, SPAN_WARNING("Your ears start to ring!"))
+			to_chat(H, SPAN_WARNING("你的耳朵开始耳鸣！"))
 

@@ -8,7 +8,7 @@
 GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 /mob/living/carbon/xenomorph/verb/Evolve()
-	set name = "Evolve"
+	set name = "进化"
 	set desc = "Evolve into a higher form."
 	set category = "Alien"
 
@@ -19,7 +19,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		return
 	var/mob/living/carbon/human/user = hauled_mob?.resolve()
 	if(user)
-		to_chat(src, "Release [user] before evolving!")
+		to_chat(src, "进化前先释放[user]！")
 		return
 
 	var/list/castes_available = caste.evolves_to.Copy()
@@ -39,12 +39,12 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 			castes_available -= caste
 
 	if(!length(castes_available))
-		to_chat(src, SPAN_WARNING("The Hive is not capable of supporting any castes we can evolve to yet."))
+		to_chat(src, SPAN_WARNING("巢穴目前无法支持我们能进化到的任何阶级。"))
 		return
 
 	var/castepick
 	if((client.prefs && client.prefs.no_radials_preference) || !hive.evolution_menu_images)
-		castepick = tgui_input_list(src, "You are growing into a beautiful alien! It is time to choose a caste.", "Evolve", castes_available, theme="hive_status")
+		castepick = tgui_input_list(src, "你正在成长为一个美丽的异形！是时候选择一个阶级了。", "进化", castes_available, theme="hive_status")
 	else
 		var/list/fancy_caste_list = list()
 		for(var/caste in castes_available)
@@ -58,12 +58,12 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		return // Message will be handled by component
 
 	if(castepick in hive.blacklisted_castes)
-		to_chat(src, SPAN_WARNING("The Hive cannot support this caste!"))
+		to_chat(src, SPAN_WARNING("巢穴无法支持这个阶级！"))
 		return
 
 	var/datum/caste_datum/caste_datum = GLOB.xeno_datum_list[castepick]
 	if(caste_datum && caste_datum.minimum_evolve_time > ROUND_TIME)
-		to_chat(src, SPAN_WARNING("The Hive cannot support this caste yet! ([floor((caste_datum.minimum_evolve_time - ROUND_TIME) / 10)] seconds remaining)"))
+		to_chat(src, SPAN_WARNING("巢穴目前还无法支持这个阶级！（剩余[floor((caste_datum.minimum_evolve_time - ROUND_TIME) / 10)]秒）"))
 		return
 
 	if(!evolve_checks())
@@ -71,45 +71,45 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	if(!hive.living_xeno_queen && castepick != XENO_CASTE_QUEEN && !islarva(src) && !hive.allow_no_queen_evo)
 		if(hive.xeno_queen_timer > world.time)
-			to_chat(src, SPAN_WARNING("The Hive is shaken by the death of the last Queen. We can't find the strength to evolve."))
+			to_chat(src, SPAN_WARNING("巢穴因最后一位女王的死亡而动摇。我们找不到进化的力量。"))
 		else
-			to_chat(src, SPAN_XENONOTICE("The hive currently has no Queen! We can't find the strength to evolve."))
+			to_chat(src, SPAN_XENONOTICE("巢穴目前没有女王！我们找不到进化的力量。"))
 		return
 
 	if(castepick == XENO_CASTE_QUEEN) //Special case for dealing with queenae
 		if(SSticker.mode && hive.xeno_queen_timer > world.time)
-			to_chat(src, SPAN_WARNING("We must wait about [DisplayTimeText(hive.xeno_queen_timer - world.time, 1)] for the hive to recover from the previous Queen's death."))
+			to_chat(src, SPAN_WARNING("我们必须等待约[DisplayTimeText(hive.xeno_queen_timer - world.time, 1)]让巢穴从上一位女王的死亡中恢复。"))
 			return
 
 		var/required_plasma = min(500, plasma_max)
 		if(plasma_stored >= required_plasma)
 			if(hive.living_xeno_queen)
-				to_chat(src, SPAN_WARNING("There already is a living Queen."))
+				to_chat(src, SPAN_WARNING("已经有一位活着的女王了。"))
 				return
 		else
-			to_chat(src, SPAN_WARNING("We require more plasma! Currently at: [plasma_stored] / [required_plasma]."))
+			to_chat(src, SPAN_WARNING("我们需要更多等离子体！当前：[plasma_stored] / [required_plasma]。"))
 			return
 
 	if(Check_WO())
 		if(castepick != XENO_CASTE_QUEEN) //Prevent evolutions into T2s and T3s in WO
-			to_chat(src, SPAN_WARNING ("The Hive can only support evolving into Queens!"))
+			to_chat(src, SPAN_WARNING ("巢穴目前仅支持进化为女王！"))
 			return
 		on_mob_jump()
 		forceMove(get_turf(pick(GLOB.queen_spawns)))
 	else if(hardcore)
-		to_chat(src, SPAN_WARNING("Nuh-uhh."))
+		to_chat(src, SPAN_WARNING("不行。"))
 		return
 
 	if(evolution_threshold && castepick != XENO_CASTE_QUEEN) //Does the caste have an evolution timer? Then check it
 		if(evolution_stored < evolution_threshold)
-			to_chat(src, SPAN_WARNING("We must wait before evolving. Currently at: [evolution_stored] / [evolution_threshold]."))
+			to_chat(src, SPAN_WARNING("我们必须等待进化时机。当前：[evolution_stored] / [evolution_threshold]。"))
 			return
 
 	var/mob/living/carbon/xenomorph/xeno_type = null
 	xeno_type = GLOB.RoleAuthority.get_caste_by_text(castepick)
 
 	if(isnull(xeno_type))
-		to_chat(src, SPAN_WARNING("[castepick] is not a valid caste! If you're seeing this message, tell a coder!"))
+		to_chat(src, SPAN_WARNING("[castepick]不是有效的阶级！如果你看到这条信息，请通知程序员！"))
 		return
 
 	// Used for restricting benos to evolve to drone/queen when they're the only potential queen
@@ -117,16 +117,16 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	if(!can_evolve(castepick, potential_queens))
 		return
-	to_chat(src, SPAN_XENONOTICE("It looks like the hive can support our evolution to [SPAN_BOLD(castepick)]!"))
+	to_chat(src, SPAN_XENONOTICE("看起来巢穴支持我们进化为<SPAN_BOLD(castepick)>！"))
 
-	visible_message(SPAN_XENONOTICE("[src] begins to twist and contort."),
+	visible_message(SPAN_XENONOTICE("[src]开始扭曲变形。"),
 	SPAN_XENONOTICE("We begin to twist and contort."))
 	xeno_jitter(25)
 	evolving = TRUE
 	var/level_to_switch_to = get_vision_level()
 
 	if(!do_after(src, 2.5 SECONDS, INTERRUPT_INCAPACITATED|INTERRUPT_CHANGED_LYING, BUSY_ICON_HOSTILE)) // Can evolve while moving, resist or rest to cancel it.
-		to_chat(src, SPAN_WARNING("We quiver, but nothing happens. Our evolution has ceased for now..."))
+		to_chat(src, SPAN_WARNING("我们颤抖着，但无事发生。我们的进化暂时中止了..."))
 		evolving = FALSE
 		return
 
@@ -136,13 +136,13 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		return
 	if(castepick == XENO_CASTE_QUEEN) //Do another check after the tick.
 		if(jobban_isbanned(src, XENO_CASTE_QUEEN))
-			to_chat(src, SPAN_WARNING("You are jobbanned from the Queen role."))
+			to_chat(src, SPAN_WARNING("你已被禁止担任女王角色。"))
 			return
 		if(hive.living_xeno_queen)
-			to_chat(src, SPAN_WARNING("There already is a Queen."))
+			to_chat(src, SPAN_WARNING("已经存在一位女王了。"))
 			return
 		if(!hive.allow_queen_evolve)
-			to_chat(src, SPAN_WARNING("We can't find the strength to evolve into a Queen."))
+			to_chat(src, SPAN_WARNING("我们找不到进化为女王的力量。"))
 			return
 	else if(!can_evolve(castepick, potential_queens))
 		return
@@ -161,7 +161,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	if(!istype(new_xeno))
 		//Something went horribly wrong!
-		to_chat(src, SPAN_WARNING("Something went terribly wrong here. Your new xeno is null! Tell a coder immediately!"))
+		to_chat(src, SPAN_WARNING("这里出了严重问题。你的新异形为空！请立即通知程序员！"))
 		stack_trace("Xeno evolution failed: [src] attempted to evolve into \'[castepick]\'")
 		if(new_xeno)
 			qdel(new_xeno)
@@ -201,7 +201,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	built_structures = null
 
-	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of [src]."),
+	new_xeno.visible_message(SPAN_XENODANGER("一只[new_xeno.caste.caste_type]从[src]的残骸中钻出。"),
 	SPAN_XENODANGER("We emerge in a greater form from the husk of our old body. For the hive!"))
 
 	if(hive.living_xeno_queen && hive.living_xeno_queen.observed_xeno == src)
@@ -241,83 +241,83 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		return FALSE
 
 	if(is_ventcrawling)
-		to_chat(src, SPAN_WARNING("This place is too constraining to evolve."))
+		to_chat(src, SPAN_WARNING("此地过于狭窄，无法进化。"))
 		return FALSE
 
 	if(!isturf(loc))
-		to_chat(src, SPAN_WARNING("We can't evolve here."))
+		to_chat(src, SPAN_WARNING("我们不能在这里进化。"))
 		return FALSE
 
 	if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
-		to_chat(src, SPAN_WARNING("Our link to the hive is being suppressed...we should wait a bit."))
+		to_chat(src, SPAN_WARNING("我们与巢穴的连接正受到压制...最好稍等片刻。"))
 		return FALSE
 
 	if(lock_evolve)
 		if(banished)
-			to_chat(src, SPAN_WARNING("We are banished and cannot reach the hivemind."))
+			to_chat(src, SPAN_WARNING("我们被放逐了，无法连接蜂巢思维。"))
 		else
-			to_chat(src, SPAN_WARNING("We can't evolve."))
+			to_chat(src, SPAN_WARNING("我们无法进化。"))
 		return FALSE
 
 	if(jobban_isbanned(src, JOB_XENOMORPH))//~who so genius to do this is?
-		to_chat(src, SPAN_WARNING("You are jobbanned from aliens and cannot evolve. How did you even become an alien?"))
+		to_chat(src, SPAN_WARNING("你已被禁止扮演异形，无法进化。你到底是怎么变成异形的？"))
 		return FALSE
 
 	if(handcuffed || legcuffed)
-		to_chat(src, SPAN_WARNING("The restraints are too restricting to allow us to evolve."))
+		to_chat(src, SPAN_WARNING("束缚太紧，我们无法进化。"))
 		return FALSE
 
 	if(isnull(caste.evolves_to) || !length(caste.evolves_to))
-		to_chat(src, SPAN_WARNING("We are already the apex of form and function. Go forth and spread the hive!"))
+		to_chat(src, SPAN_WARNING("我们已是形态与功能的顶点。前进吧，去传播巢穴！"))
 		return FALSE
 
 	if(health < maxHealth)
-		to_chat(src, SPAN_WARNING("We must be at full health to evolve."))
+		to_chat(src, SPAN_WARNING("我们必须处于完全健康状态才能进化。"))
 		return FALSE
 
 	if(agility || fortify || crest_defense || stealth)
-		to_chat(src, SPAN_WARNING("We cannot evolve while in this stance."))
+		to_chat(src, SPAN_WARNING("我们无法在此姿态下进化。"))
 		return FALSE
 
 	if(ROUND_TIME < XENO_ROUNDSTART_BOOSTED_EVO_TIME)
 		if(caste_type == XENO_CASTE_LARVA || caste_type == XENO_CASTE_PREDALIEN_LARVA)
 			var/turf/evoturf = get_turf(src)
 			if(!locate(/obj/effect/alien/weeds) in evoturf)
-				to_chat(src, SPAN_WARNING("The hive hasn't developed enough yet for you to evolve off weeds!"))
+				to_chat(src, SPAN_WARNING("巢穴尚未发展到足以让你脱离菌毯进化！"))
 				return FALSE
 
 	return TRUE
 
 /mob/living/carbon/xenomorph/proc/transmute_verb()
-	set name = "Transmute"
+	set name = "嬗变"
 	set desc = "Transmute into a different caste of the same tier."
 	set category = "Alien"
 
 	if(!check_state())
 		return
 	if(is_ventcrawling)
-		to_chat(src, SPAN_XENOWARNING("We can't transmute here."))
+		to_chat(src, SPAN_XENOWARNING("我们不能在这里转化。"))
 		return
 	if(!isturf(loc))
-		to_chat(src, SPAN_XENOWARNING("We can't transmute here."))
+		to_chat(src, SPAN_XENOWARNING("我们不能在这里转化。"))
 		return
 	if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
-		to_chat(src, SPAN_WARNING("Our link to the hive is being suppressed...we should wait a bit."))
+		to_chat(src, SPAN_WARNING("我们与巢穴的连接正受到压制...最好稍等片刻。"))
 		return FALSE
 	if(health < maxHealth)
-		to_chat(src, SPAN_XENOWARNING("We are too weak to transmute, we must regain our health first."))
+		to_chat(src, SPAN_XENOWARNING("我们太虚弱了，无法转化，必须先恢复健康。"))
 		return
 	if(tier == 0 || tier == 4)
-		to_chat(src, SPAN_XENOWARNING("We can't transmute."))
+		to_chat(src, SPAN_XENOWARNING("我们无法转化。"))
 		return
 	if(agility || fortify || crest_defense || stealth)
-		to_chat(src, SPAN_XENOWARNING("We can't transmute while in this stance."))
+		to_chat(src, SPAN_XENOWARNING("在此姿态下我们无法转化。"))
 		return
 	if(lock_evolve)
 		if(banished)
-			to_chat(src, SPAN_WARNING("We are banished and cannot reach the hivemind."))
+			to_chat(src, SPAN_WARNING("我们被放逐了，无法连接蜂巢思维。"))
 		else
-			to_chat(src, SPAN_WARNING("We can't transmute."))
+			to_chat(src, SPAN_WARNING("我们无法转化。"))
 		return FALSE
 
 	var/newcaste
@@ -337,7 +337,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(!client.prefs.no_radial_labels_preference)
 		newcaste = show_radial_menu(src, src, option_images["[tier]"])
 	else
-		newcaste = tgui_input_list(src, "Choose a caste you want to transmute to.", "Transmute", options, theme="hive_status")
+		newcaste = tgui_input_list(src, "选择你想要转化成的阶级。", "嬗变", options, theme="hive_status")
 
 	if(!newcaste)
 		return
@@ -353,46 +353,46 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(!check_state())
 		return
 	if(is_ventcrawling)
-		to_chat(src, SPAN_XENOWARNING("You can't deevolve here."))
+		to_chat(src, SPAN_XENOWARNING("你无法在此处退化。"))
 		return
 	if(!isturf(loc))
-		to_chat(src, SPAN_XENOWARNING("You can't deevolve here."))
+		to_chat(src, SPAN_XENOWARNING("你无法在此处退化。"))
 		return
 	if(health < maxHealth)
-		to_chat(src, SPAN_XENOWARNING("We are too weak to deevolve, we must regain our health first."))
+		to_chat(src, SPAN_XENOWARNING("我们太虚弱了，无法退化，必须先恢复健康。"))
 		return
 	if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
-		to_chat(src, SPAN_WARNING("Our link to the hive is being suppressed...we should wait a bit."))
+		to_chat(src, SPAN_WARNING("我们与巢穴的连接正受到压制...最好稍等片刻。"))
 		return FALSE
 	if(length(caste.deevolves_to) < 1)
-		to_chat(src, SPAN_XENOWARNING("We can't deevolve any further."))
+		to_chat(src, SPAN_XENOWARNING("我们无法进一步退化。"))
 		return
 	if(lock_evolve)
 		if(banished)
-			to_chat(src, SPAN_WARNING("We are banished and cannot reach the hivemind."))
+			to_chat(src, SPAN_WARNING("我们被放逐了，无法连接蜂巢思维。"))
 		else
-			to_chat(src, SPAN_WARNING("We can't deevolve."))
+			to_chat(src, SPAN_WARNING("我们无法退化。"))
 		return FALSE
 
 	if(hardcore)
-		to_chat(src, SPAN_WARNING("We can't deevolve."))
+		to_chat(src, SPAN_WARNING("我们无法退化。"))
 		return FALSE
 
 	var/alleged_queens = hive.get_potential_queen_count()
 	if(hive.allow_queen_evolve && !hive.living_xeno_queen && alleged_queens < 2 && isdrone(src))
-		to_chat(src, SPAN_XENONOTICE("The hive currently has no sister able to become Queen! The survival of the hive requires you to be a Drone!"))
+		to_chat(src, SPAN_XENONOTICE("巢穴目前没有能成为女王的姐妹！巢穴的存续需要你保持工蜂形态！"))
 		return FALSE
 
 	var/newcaste
 	if(length(caste.deevolves_to) == 1)
 		newcaste = caste.deevolves_to[1]
 	else if(length(caste.deevolves_to) > 1)
-		newcaste = tgui_input_list(src, "Choose a caste you want to de-evolve to.", "De-evolve", caste.deevolves_to, theme="hive_status")
+		newcaste = tgui_input_list(src, "选择你想要退化成的阶级。", "De-evolve", caste.deevolves_to, theme="hive_status")
 
 	if(!newcaste)
 		return
 
-	var/confirm = tgui_alert(src, "Are you sure you want to de-evolve from [caste.caste_type] to [newcaste]? You won't be able to return to it for a time.", "Deevolution", list("Yes", "No"))
+	var/confirm = tgui_alert(src, "你确定要从[caste.caste_type]退化到[newcaste]吗？你将暂时无法返回原阶级。", "Deevolution", list("Yes", "No"))
 	if(confirm != "Yes")
 		return
 
@@ -405,7 +405,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(health <= 0)
 		return
 	if(lock_evolve)
-		to_chat(src, SPAN_WARNING("You are banished and cannot reach the hivemind."))
+		to_chat(src, SPAN_WARNING("你已被放逐，无法连接蜂巢思维。"))
 		return
 
 
@@ -431,7 +431,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	if(!istype(new_xeno))
 		//Something went horribly wrong
-		to_chat(src, SPAN_WARNING("Something went terribly wrong here. Your new xeno is null! Tell a coder immediately!"))
+		to_chat(src, SPAN_WARNING("这里出了严重问题。你的新异形为空！请立即通知程序员！"))
 		if(new_xeno)
 			qdel(new_xeno)
 
@@ -468,7 +468,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(!(/mob/living/carbon/xenomorph/verb/Deevolve in verbs))
 		remove_verb(new_xeno, /mob/living/carbon/xenomorph/verb/Deevolve)
 
-	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [src]."),
+	new_xeno.visible_message(SPAN_XENODANGER("一只[new_xeno.caste.caste_type]从\the [src]的残骸中诞生。"),
 	SPAN_XENODANGER(message))
 
 	transfer_observers_to(new_xeno)
@@ -511,13 +511,13 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 			totalXenos++
 
 	if(tier == 1 && (((used_tier_2_slots + used_tier_3_slots) / totalXenos) * hive.tier_slot_multiplier) >= 0.5 && castepick != XENO_CASTE_QUEEN)
-		to_chat(src, SPAN_WARNING("The hive cannot support another Tier 2, wait for either more aliens to be born or someone to die."))
+		to_chat(src, SPAN_WARNING("巢穴无法支撑另一只二级异形，等待更多异形诞生或有异形死亡。"))
 		return FALSE
 	else if(tier == 2 && ((used_tier_3_slots / totalXenos) * hive.tier_slot_multiplier) >= 0.20 && castepick != XENO_CASTE_QUEEN)
-		to_chat(src, SPAN_WARNING("The hive cannot support another Tier 3, wait for either more aliens to be born or someone to die."))
+		to_chat(src, SPAN_WARNING("巢穴无法支撑另一只三级异形，等待更多异形诞生或有异形死亡。"))
 		return FALSE
 	else if(hive.allow_queen_evolve && !hive.living_xeno_queen && potential_queens == 1 && islarva(src) && castepick != XENO_CASTE_DRONE)
-		to_chat(src, SPAN_XENONOTICE("The hive currently has no sister able to become Queen! The survival of the hive requires you to be a Drone!"))
+		to_chat(src, SPAN_XENONOTICE("巢穴目前没有能成为女王的姐妹！巢穴的存续需要你保持工蜂形态！"))
 		return FALSE
 
 	return TRUE

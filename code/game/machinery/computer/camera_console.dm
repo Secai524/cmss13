@@ -1,8 +1,8 @@
 #define DEFAULT_MAP_SIZE 15
 
 /obj/structure/machinery/computer/cameras
-	name = "security cameras console"
-	desc = "Used to access the various cameras on the station."
+	name = "安保摄像头控制台"
+	desc = "用于访问空间站上的各个摄像头。"
 	icon_state = "cameras"
 	var/obj/structure/machinery/camera/current
 	var/list/network = list(CAMERA_NET_MILITARY)
@@ -50,7 +50,7 @@
 
 /obj/structure/machinery/computer/cameras/attack_hand(mob/user)
 	if(!admin_console && should_block_game_interaction(src))
-		to_chat(user, SPAN_DANGER("<b>Unable to establish a connection</b>: \black You're too far away from the ship!"))
+		to_chat(user, SPAN_DANGER("<b>无法建立连接</b>: \black 你离飞船太远了！"))
 		return
 	if(inoperable())
 		return
@@ -174,8 +174,8 @@
 	return D
 
 /obj/structure/machinery/computer/cameras/telescreen
-	name = "Telescreen"
-	desc = "Used for watching an empty arena."
+	name = "远程屏幕"
+	desc = "用于观看一个空荡荡的竞技场。"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "telescreen"
 	network = list("thunder")
@@ -189,25 +189,25 @@
 	return
 
 /obj/structure/machinery/computer/cameras/telescreen/entertainment
-	name = "entertainment monitor"
-	desc = "Damn, why do they never have anything interesting on these things?"
+	name = "娱乐显示器"
+	desc = "该死，为什么这些东西上从来没有什么有趣的内容？"
 	icon = 'icons/obj/structures/machinery/status_display.dmi'
 	icon_state = "entertainment"
 	circuit = null
 
 /obj/structure/machinery/computer/cameras/wooden_tv
-	name = "Security Cameras"
-	desc = "An old TV hooked into the station's camera network."
+	name = "安保摄像头"
+	desc = "一台连接到空间站摄像头网络的老式电视。"
 	icon_state = "security_det"
 	circuit = null
 
 /obj/structure/machinery/computer/cameras/wooden_tv/almayer
-	name = "Ship Security Cameras"
+	name = "飞船安保摄像头"
 	network = list(CAMERA_NET_ALMAYER)
 
 /obj/structure/machinery/computer/cameras/wooden_tv/broadcast
-	name = "Television Set"
-	desc = "An old TV hooked up to a video cassette recorder, you can even use it to time shift WOW."
+	name = "电视机"
+	desc = "一台连接到录像机的老式电视，你甚至可以用它来录制WOW节目。"
 	network = list(CAMERA_NET_CORRESPONDENT)
 	stay_connected = TRUE
 	wrenchable = TRUE
@@ -322,30 +322,30 @@
 	current.c_tag = broadcastingcamera.get_broadcast_name()
 
 /obj/structure/machinery/computer/cameras/wooden_tv/ot
-	name = "Mortar Monitoring Set"
-	desc = "A Console linked to Mortar launched cameras."
+	name = "迫击炮监控台"
+	desc = "一个连接到迫击炮发射摄像头的控制台。"
 	network = list(CAMERA_NET_MORTAR)
 
 /obj/structure/machinery/computer/cameras/mining
-	name = "Outpost Cameras"
+	name = "前哨摄像头"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
-	desc = "Used to access the various cameras on the outpost."
+	desc = "用于访问前哨站的各种摄像头。"
 	icon_state = "cameras"
 	network = list("MINE")
 	circuit = /obj/item/circuitboard/computer/cameras/mining
 
 /obj/structure/machinery/computer/cameras/engineering
-	name = "Engineering Cameras"
+	name = "工程部摄像头"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
-	desc = "Used to monitor fires and breaches."
+	desc = "用于监控火灾和破口。"
 	icon_state = "cameras"
-	network = list("Engineering","Power Alarms","Atmosphere Alarms","Fire Alarms")
+	network = list("工程部","Power Alarms","Atmosphere Alarms","Fire Alarms")
 	circuit = /obj/item/circuitboard/computer/cameras/engineering
 
 /obj/structure/machinery/computer/cameras/nuclear
-	name = "Mission Monitor"
+	name = "任务监控器"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
-	desc = "Used to access the built-in cameras in helmets."
+	desc = "用于访问头盔内置摄像头。"
 	icon_state = "syndicam"
 	network = list("NUKE")
 	circuit = null
@@ -357,25 +357,25 @@
 	network = list(CAMERA_NET_ALMAYER)
 
 /obj/structure/machinery/computer/cameras/almayer/containment
-	name = "Containment Cameras"
+	name = "收容区摄像头"
 	network = list(CAMERA_NET_CONTAINMENT)
 
 /obj/structure/machinery/computer/cameras/almayer/ares
-	name = "ARES Core Cameras"
+	name = "ARES核心摄像头"
 	network = list(CAMERA_NET_ARES)
 
 /obj/structure/machinery/computer/cameras/almayer/vehicle
-	name = "Ship Security Cameras"
+	name = "飞船安保摄像头"
 	network = list(CAMERA_NET_ALMAYER, CAMERA_NET_VEHICLE)
 
 /obj/structure/machinery/computer/cameras/hangar
-	name = "Dropship Security Cameras Console"
+	name = "运输机安全摄像头控制台"
 	icon_state = "security_cam"
 	density = FALSE
 	network = list(CAMERA_NET_ALAMO, CAMERA_NET_NORMANDY)
 
 /obj/structure/machinery/computer/cameras/containment
-	name = "Containment Cameras"
+	name = "收容区摄像头"
 	network = list(CAMERA_NET_CONTAINMENT, CAMERA_NET_RESEARCH)
 
 /obj/structure/machinery/computer/cameras/containment/hidden
@@ -388,11 +388,11 @@
 	network = list(CAMERA_NET_ALMAYER, CAMERA_NET_VEHICLE)
 
 /obj/structure/machinery/computer/cameras/almayer_brig
-	name = "Brig Cameras Console"
+	name = "禁闭室摄像头控制台"
 	network = list(CAMERA_NET_BRIG)
 
 /obj/structure/machinery/computer/cameras/mortar
-	name = "Mortar Camera Interface"
+	name = "迫击炮摄像头界面"
 	alpha = 0
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	density = FALSE
@@ -408,8 +408,8 @@
 	return
 
 /obj/structure/machinery/computer/cameras/dropship
-	name = "abstract dropship camera computer"
-	desc = "A computer to monitor cameras linked to the dropship."
+	name = "运输机摄像头计算机"
+	desc = "一台用于监控与运输机连接的摄像头的计算机。"
 	density = TRUE
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "consoleleft"
@@ -420,20 +420,20 @@
 
 
 /obj/structure/machinery/computer/cameras/dropship/one
-	name = "\improper 'Alamo' camera controls"
+	name = "\improper '阿拉莫' camera controls"
 	network = list(CAMERA_NET_ALAMO, CAMERA_NET_LASER_TARGETS)
 
 /obj/structure/machinery/computer/cameras/dropship/two
-	name = "\improper 'Normandy' camera controls"
+	name = "\improper '诺曼底' camera controls"
 	network = list(CAMERA_NET_NORMANDY, CAMERA_NET_LASER_TARGETS)
 
 /obj/structure/machinery/computer/cameras/dropship/three
-	name = "\improper 'Saipan' camera controls"
+	name = "\improper '塞班' camera controls"
 	network = list(CAMERA_NET_RESEARCH, CAMERA_NET_LASER_TARGETS)
 
 /obj/structure/machinery/computer/cameras/internal
-	name = "Internal Camera Link"
-	desc = "If you can see this, someone messed up."
+	name = "内部摄像头链接"
+	desc = "如果你能看到这个，说明有人搞砸了。"
 	alpha = 0
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	density = FALSE
@@ -445,7 +445,7 @@
 	explo_proof = TRUE
 
 /obj/structure/machinery/computer/cameras/internal/yautja
-	name = "Hellhound Observation Interface"
+	name = "地狱犬观察界面"
 	network = list(CAMERA_NET_YAUTJA)
 
 /obj/structure/machinery/computer/cameras/internal/yautja/Initialize()

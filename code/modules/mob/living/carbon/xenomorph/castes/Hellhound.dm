@@ -35,7 +35,7 @@
 
 	caste_type = XENO_CASTE_HELLHOUND
 	name = XENO_CASTE_HELLHOUND
-	desc = "A disgusting beast from hell, it's covered in menacing spikes.. and dear god that face.. only its houndmaster could love."
+	desc = "一只来自地狱的恶心野兽，浑身覆盖着威胁性的尖刺……天哪，那张脸……只有它的猎犬主人才会喜欢。"
 	icon = 'icons/mob/humans/onmob/hunter/hellhound.dmi'
 	icon_state = "Hellhound Walking"
 	icon_size = 32
@@ -99,7 +99,7 @@
 /mob/living/carbon/xenomorph/hellhound/Login()
 	. = ..()
 	if(SSticker.mode) SSticker.mode.xenomorphs -= mind
-	to_chat(src, SPAN_RED("Attention!! You are playing as a hellhound. This is a roleplay role which means you must maintain a high degree of roleplay or you risk getting job banned. LISTEN TO THE YAUTJA THAT CALLED YOU. Their order takes priority. If you dont, you will be ghosted and replaced and potentially punished if you are breaking the rules. If the yautja who called you dies, try to listen to other yautja or otherwise ask for one to give you a fight that will surely end in your demise. You are loyal to yautja above all else, do not act without their permission and do not disturb the round too much!"))
+	to_chat(src, SPAN_RED("注意！！你正在扮演一只地狱猎犬。这是一个角色扮演职位，意味着你必须保持高度的角色扮演，否则有被禁止该职位的风险。听从召唤你的铁血战士的命令。他们的命令优先。如果你不听从，你将被强制脱离角色并替换，如果违反规则还可能受到惩罚。如果召唤你的铁血战士死亡，尝试听从其他铁血战士的命令，或者请求他们给你一场注定会终结你生命的战斗。你对铁血战士绝对忠诚，未经他们许可不得行动，也不要过多干扰战局！"))
 
 /mob/living/carbon/xenomorph/hellhound/death(cause, gibbed)
 	. = ..(cause, gibbed, "lets out a horrible roar as it collapses and stops moving...")
@@ -136,7 +136,7 @@
 	new /obj/effect/bloodsplatter/hellhound(loc, splatter_dir)
 
 /datum/behavior_delegate/hellhound_base
-	name = "Base Hellhound Behavior Delegate"
+	name = "基础地狱猎犬行为委托"
 	var/mob/pred_owner = ""
 
 /datum/behavior_delegate/hellhound_base/melee_attack_additional_effects_self()
@@ -167,7 +167,7 @@
 	var/mob/living/carbon = target_living
 	var/mob/living/carbon/xenomorph/hellhound/hellhound_gorger = owner
 
-	hellhound_gorger.visible_message(SPAN_XENODANGER("[hellhound_gorger] gorges at [carbon] with it's spikes."))
+	hellhound_gorger.visible_message(SPAN_XENODANGER("[hellhound_gorger]用它的尖刺刺向[carbon]。"))
 	carbon.apply_armoured_damage(gorge_damage, BRUTE)
 	playsound(hellhound_gorger, "giant_lizard_growl", 30)
 	playsound(carbon, "alien_bite", 30)
@@ -181,17 +181,17 @@
 	direction = Get_Compass_Dir(xeno, hound_owner.pred_owner)
 
 	if(!hound_owner.pred_owner)
-		to_chat(xeno, SPAN_XENOWARNING("You do not have an owner."))
+		to_chat(xeno, SPAN_XENOWARNING("你没有主人。"))
 		return
 
 	if(hound_owner.pred_owner.z != xeno.z)
-		to_chat(xeno, SPAN_XENOWARNING("You do not sense your owner in this place."))
+		to_chat(xeno, SPAN_XENOWARNING("你在此地感知不到你的主人。"))
 		return
 
 	for(var/mob/living/carbon/viewer in orange(xeno, 5))
-		to_chat(viewer, SPAN_WARNING("[xeno] sniffs the ground in a hurry."))
-		to_chat(xeno, SPAN_XENOWARNING("You sniff the ground in a hurry to find where your master is."))
-		to_chat(xeno, SPAN_XENOWARNING("Your owner is [dist] meters to the [dir2text(direction)]"))
+		to_chat(viewer, SPAN_WARNING("[xeno]匆忙地嗅探地面。"))
+		to_chat(xeno, SPAN_XENOWARNING("你匆忙地嗅探地面，寻找主人的位置。"))
+		to_chat(xeno, SPAN_XENOWARNING("你的主人在[dist]米外的[direction]方向"))
 
 	apply_cooldown()
 	..()

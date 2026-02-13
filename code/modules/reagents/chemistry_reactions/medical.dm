@@ -1,6 +1,6 @@
 
 /datum/chemical_reaction/tricordrazine
-	name = "Tricordrazine"
+	name = "三合剂"
 	id = "tricordrazine"
 	result = "tricordrazine"
 	required_reagents = list("inaprovaline" = 1, "anti_toxin" = 1)
@@ -8,21 +8,21 @@
 	mob_react = FALSE
 
 /datum/chemical_reaction/adrenaline
-	name = "Epinephrine"
+	name = "肾上腺素"
 	id = "adrenaline"
 	result = "adrenaline"
 	required_reagents = list("carbon" = 1, "nitrogen" = 1, "oxygen" = 1)
 	result_amount = 2
 
 /datum/chemical_reaction/alkysine
-	name = "Alkysine"
+	name = "阿尔基辛"
 	id = "alkysine"
 	result = "alkysine"
 	required_reagents = list("chlorine" = 1, "nitrogen" = 1, "anti_toxin" = 1)
 	result_amount = 2
 
 /datum/chemical_reaction/dexalin
-	name = "Dexalin"
+	name = "地塞林"
 	id = "dexalin"
 	result = "dexalin"
 	required_reagents = list("oxygen" = 2, "phoron" = 0.1)
@@ -30,49 +30,49 @@
 	result_amount = 1
 
 /datum/chemical_reaction/dermaline
-	name = "Dermaline"
+	name = "德玛林"
 	id = "dermaline"
 	result = "dermaline"
 	required_reagents = list("oxygen" = 1, "phosphorus" = 1, "kelotane" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/meralyne
-	name = "Meralyne"
+	name = "梅拉林"
 	id = "meralyne"
 	result = "meralyne"
 	required_reagents = list("carbon" = 1, "water" = 1, "bicaridine" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/dexalinp
-	name = "Dexalin Plus"
+	name = "地塞林增效剂"
 	id = "dexalinp"
 	result = "dexalinp"
 	required_reagents = list("dexalin" = 1, "carbon" = 1, "iron" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/bicaridine
-	name = "Bicaridine"
+	name = "碧卡利定"
 	id = "bicaridine"
 	result = "bicaridine"
 	required_reagents = list("inaprovaline" = 1, "carbon" = 1)
 	result_amount = 2
 
 /datum/chemical_reaction/ryetalyn
-	name = "Ryetalyn"
+	name = "莱特林"
 	id = "ryetalyn"
 	result = "ryetalyn"
 	required_reagents = list("arithrazine" = 1, "carbon" = 1)
 	result_amount = 2
 
 /datum/chemical_reaction/cryoxadone
-	name = "Cryoxadone"
+	name = "低温克赛酮"
 	id = "cryoxadone"
 	result = "cryoxadone"
 	required_reagents = list("dexalin" = 1, "water" = 1, "oxygen" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/clonexadone
-	name = "Clonexadone"
+	name = "克隆克赛酮"
 	id = "clonexadone"
 	result = "clonexadone"
 	required_reagents = list("cryoxadone" = 1, "sodium" = 1, "phoron" = 0.1)
@@ -80,7 +80,7 @@
 	result_amount = 2
 
 /datum/chemical_reaction/spaceacillin
-	name = "Spaceacillin"
+	name = "太空青霉素"
 	id = "spaceacillin"
 	result = "spaceacillin"
 	required_reagents = list("cryptobiolin" = 1, "inaprovaline" = 1)
@@ -94,7 +94,7 @@
 	result_amount = 2
 
 /datum/chemical_reaction/ethylredoxrazine
-	name = "Ethylredoxrazine"
+	name = "乙基红氧嗪"
 	id = "ethylredoxrazine"
 	result = "ethylredoxrazine"
 	required_reagents = list("oxygen" = 1, "anti_toxin" = 1, "carbon" = 1)
@@ -108,21 +108,21 @@
 	result_amount = 2
 
 /datum/chemical_reaction/sterilizine
-	name = "Sterilizine"
+	name = "灭菌灵"
 	id = "sterilizine"
 	result = "sterilizine"
 	required_reagents = list("ethanol" = 1, "anti_toxin" = 1, "chlorine" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/inaprovaline
-	name = "Inaprovaline"
+	name = "伊纳普罗瓦林"
 	id = "inaprovaline"
 	result = "inaprovaline"
 	required_reagents = list("oxygen" = 1, "carbon" = 1, "sugar" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/anti_toxin
-	name = "Dylovene"
+	name = "迪洛芬"
 	id = "anti_toxin"
 	result = "anti_toxin"
 	required_reagents = list("silicon" = 1, "potassium" = 1, "nitrogen" = 1)
@@ -130,21 +130,21 @@
 
 
 /datum/chemical_reaction/tramadol
-	name = "Tramadol"
+	name = "曲马多"
 	id = "tramadol"
 	result = "tramadol"
 	required_reagents = list("inaprovaline" = 1, "ethanol" = 1, "oxygen" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/paracetamol
-	name = "Paracetamol"
+	name = "扑热息痛"
 	id = "paracetamol"
 	result = "paracetamol"
 	required_reagents = list("tramadol" = 1, "nitrogen" = 1, "water" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/oxycodone
-	name = "Oxycodone"
+	name = "羟考酮"
 	id = "oxycodone"
 	result = "oxycodone"
 	required_reagents = list("ethanol" = 1, "tramadol" = 1)
@@ -152,7 +152,7 @@
 	result_amount = 1
 
 /datum/chemical_reaction/leporazine
-	name = "Leporazine"
+	name = "莱波拉嗪"
 	id = "leporazine"
 	result = "leporazine"
 	required_reagents = list("silicon" = 1, "copper" = 1)
@@ -160,21 +160,21 @@
 	result_amount = 2
 
 /datum/chemical_reaction/arithrazine
-	name = "Arithrazine"
+	name = "阿瑞斯嗪"
 	id = "arithrazine"
 	result = "arithrazine"
 	required_reagents = list("anti_toxin" = 1, "phosphorus" = 1)
 	result_amount = 2
 
 /datum/chemical_reaction/kelotane
-	name = "Kelotane"
+	name = "凯洛坦"
 	id = "kelotane"
 	result = "kelotane"
 	required_reagents = list("silicon" = 1, "carbon" = 1)
 	result_amount = 2
 
 /datum/chemical_reaction/peridaxon
-	name = "Peridaxon"
+	name = "培利达松"
 	id = "peridaxon"
 	result = "peridaxon"
 	required_reagents = list("bicaridine" = 2, "clonexadone" = 2)
@@ -182,21 +182,21 @@
 	result_amount = 2
 
 /datum/chemical_reaction/methylphenidate
-	name = "Methylphenidate"
+	name = "哌甲酯"
 	id = "methylphenidate"
 	result = "methylphenidate"
 	required_reagents = list("mindbreaker" = 1, "hydrogen" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/citalopram
-	name = "Citalopram"
+	name = "西酞普兰"
 	id = "citalopram"
 	result = "citalopram"
 	required_reagents = list("mindbreaker" = 1, "carbon" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/paroxetine
-	name = "Paroxetine"
+	name = "帕罗西汀"
 	id = "paroxetine"
 	result = "paroxetine"
 	required_reagents = list("mindbreaker" = 1, "oxygen" = 1, "inaprovaline" = 1)

@@ -1,6 +1,6 @@
 /obj/structure/machinery/door/poddoor
 	name = "\improper Podlock"
-	desc = "That looks like it doesn't open easily."
+	desc = "看起来不容易打开。"
 	icon = 'icons/obj/structures/doors/rapid_pdoor.dmi'
 	icon_state = "pdoor1"
 	var/base_icon_state = "pdoor"
@@ -55,16 +55,16 @@
 	return TAILSTAB_COOLDOWN_NONE
 
 /obj/structure/machinery/door/poddoor/proc/pry_open(mob/living/carbon/xenomorph/X, time = 4 SECONDS)
-	X.visible_message(SPAN_DANGER("[X] begins prying [src] open."),
+	X.visible_message(SPAN_DANGER("[X]开始撬开[src]。"),
 	SPAN_XENONOTICE("You start prying [src] open."), max_distance = 3)
 
 	playsound(loc, 'sound/effects/metal_creaking.ogg', 25, TRUE)
 
 	if(!do_after(X, time, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL))
-		to_chat(X, "You stop prying [src] open.")
+		to_chat(X, "你停止撬开[src]。")
 		return
 
-	X.visible_message(SPAN_DANGER("[X] pries open [src]."),
+	X.visible_message(SPAN_DANGER("[X]撬开了[src]。"),
 	SPAN_XENONOTICE("You pry open [src]."), max_distance = 3)
 
 	open()
@@ -155,7 +155,7 @@
 
 /obj/structure/machinery/door/poddoor/hybrisa/open_shutters
 	name = "\improper shutters"
-	desc = "Thin metal shutters, more for show than security. They redirect light and add a bit of structure to the space."
+	desc = "薄金属百叶窗，装饰作用大于安全防护。它们能引导光线，并为空间增添些许结构感。"
 	icon_state = "almayer_pdoor1"
 	base_icon_state = "almayer_pdoor"
 	opacity = FALSE
@@ -171,7 +171,7 @@
 	return TRUE
 
 /obj/structure/machinery/door/poddoor/hybrisa/open_shutters/proc/explode()
-	visible_message(SPAN_DANGER("[src] breaks apart!"), max_distance = 1)
+	visible_message(SPAN_DANGER("[src]碎裂了！"), max_distance = 1)
 	deconstruct(FALSE)
 
 /obj/structure/machinery/door/poddoor/hybrisa/open_shutters/proc/healthcheck()
@@ -191,7 +191,7 @@
 		return XENO_NO_DELAY_ACTION
 	current_xenomorph.animation_attack_on(src)
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] 挥爪攻击 [src]！"),
 	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
@@ -202,10 +202,10 @@
 	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 	update_health(xeno.melee_damage_upper)
 	if(health <= 0)
-		xeno.visible_message(SPAN_DANGER("[xeno] destroys [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno]用它的尾巴摧毁了[src]！"),
 		SPAN_DANGER("We destroy [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
-		xeno.visible_message(SPAN_DANGER("[xeno] strikes [src] with its tail!"),
+		xeno.visible_message(SPAN_DANGER("[xeno] 用它的尾巴抽打 [src]！"),
 		SPAN_DANGER("We strike [src] with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	xeno.tail_stab_animation(src, blunt_stab)
 	return TAILSTAB_COOLDOWN_NORMAL
@@ -220,13 +220,13 @@
 
 /obj/structure/machinery/door/poddoor/hybrisa/white
 	name = null
-	desc = "That looks like it doesn't open easily."
+	desc = "看起来不容易打开。"
 	icon_state = "w_almayer_pdoor1"
 	base_icon_state = "w_almayer_pdoor"
 	unslashable = TRUE
 
 /obj/structure/machinery/door/poddoor/hybrisa/secure_red_door
-	desc = "That looks like it doesn't open easily."
+	desc = "看起来不容易打开。"
 	icon_state = "pdoor1"
 	base_icon_state = "pdoor"
 	unslashable = TRUE
@@ -237,7 +237,7 @@
 	return TRUE
 
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door
-	desc = "A heavily reinforced metal-alloy door, designed to be virtually indestructible—nothing can penetrate its defenses."
+	desc = "一扇经过强化的金属合金门，设计得几乎坚不可摧——没有什么能穿透它的防御。"
 	icon_state = "udoor1"
 	base_icon_state = "udoor"
 	unslashable = TRUE

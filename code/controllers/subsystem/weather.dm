@@ -1,7 +1,7 @@
 GLOBAL_LIST_EMPTY(weather_notify_objects)
 
 SUBSYSTEM_DEF(weather)
-	name = "Weather"
+	name = "天气"
 	wait = 5 SECONDS
 	priority = SS_PRIORITY_LIGHTING
 
@@ -226,7 +226,7 @@ SUBSYSTEM_DEF(weather)
 			mob.clear_fullscreen("weather")
 
 /obj/effect/weather_vfx_holder
-	name = "weather vfx holder"
+	name = "天气视觉效果容器"
 	icon = 'icons/effects/weather.dmi'
 	invisibility = 0
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

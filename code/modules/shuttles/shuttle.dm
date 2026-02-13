@@ -4,7 +4,7 @@
 //shuttle moving state defines are in setup.dm
 
 /datum/shuttle
-	var/name = "Shuttle" //Name of the shuttle, for messages
+	var/name = "穿梭机" //Name of the shuttle, for messages
 	var/warmup_time = 0
 	var/moving_status = SHUTTLE_IDLE
 	var/move_scheduled = 0
@@ -207,10 +207,10 @@
 		if(M.client)
 			spawn(0)
 				if(M.buckled && !iselevator)
-					to_chat(M, SPAN_WARNING("Sudden acceleration presses you into [M.buckled]!"))
+					to_chat(M, SPAN_WARNING("突然的加速将你压向[M.buckled]！"))
 					shake_camera(M, 3, 1)
 				else if (!M.buckled)
-					to_chat(M, SPAN_WARNING("The floor lurches beneath you!"))
+					to_chat(M, SPAN_WARNING("你脚下的地板猛然倾斜！"))
 					shake_camera(M, iselevator? 2 : 10, 1)
 		if(istype(M, /mob/living/carbon) && !iselevator)
 			if(!M.buckled)

@@ -1,7 +1,7 @@
 //Dutch's Dozen!... well, Dutch's Half Dozen
 
 /datum/emergency_call/dutch
-	name = "Dutch's Dozen"
+	name = "荷兰佬的十二人队"
 	mob_max = 6
 	mob_min = 4
 
@@ -36,10 +36,10 @@
 		arm_equipment(H, /datum/equipment_preset/dutch/medic, TRUE, TRUE)
 	else
 		arm_equipment(H, /datum/equipment_preset/dutch, TRUE, TRUE)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("任务目标：[objectives]")), 1 SECONDS)
 
 /datum/emergency_call/dutch/full_dozen //AWWW YEAH DA FULL DOZEN FO TODAY
-	name = "Dutch's Dozen - Full Strength"
+	name = "荷兰佬的十二人队 - 满编状态"
 	mob_max = 12
 	mob_min = 8
 	max_heavies = 2

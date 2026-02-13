@@ -4,7 +4,7 @@
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery/brain_repair
-	name = "Brain Repair Surgery"
+	name = "脑部修复手术"
 	possible_locs = list("head")
 	invasiveness = list(SURGERY_DEPTH_DEEP)
 	required_surgery_skill = SKILL_SURGERY_TRAINED
@@ -32,8 +32,8 @@
 //------------------------------------
 
 /datum/surgery_step/remove_bone_chips
-	name = "Remove Embedded Bone Chips"
-	desc = "remove the shards of bone"
+	name = "移除嵌入骨碎片"
+	desc = "移除骨碎片"
 	tools = SURGERY_TOOLS_PINCH
 	time = 5 SECONDS
 
@@ -81,8 +81,8 @@
 //------------------------------------
 
 /datum/surgery_step/treat_hematoma
-	name = "Treat Hematoma"
-	desc = "repair the hematoma"
+	name = "处理血肿"
+	desc = "修复血肿"
 	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
 	time = 5 SECONDS
 

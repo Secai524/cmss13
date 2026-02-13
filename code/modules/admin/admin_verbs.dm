@@ -402,7 +402,7 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 	set name = "OOC Text Color - Self"
 	if(!admin_holder && !donator)
 		return
-	var/new_ooccolor = input(src, "Please select your OOC color.", "OOC color") as color|null
+	var/new_ooccolor = input(src, "请选择你的OOC颜色。", "OOC color") as color|null
 	if(new_ooccolor)
 		prefs.ooccolor = new_ooccolor
 		prefs.save_preferences()
@@ -419,13 +419,13 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 	if(!warned_ckey || !istext(warned_ckey))
 		return
 	if(warned_ckey in GLOB.admin_datums)
-		to_chat(usr, "<font color='red'>Error: warn(): You can't warn admins.</font>")
+		to_chat(usr, "<font color='red'>错误：警告（warn）：你无法警告管理员。</font>")
 		return
 
 	var/datum/entity/player/P = get_player_from_key(warned_ckey) // you may not be logged in, but I will find you and I will ban you
 
 	if(!P)
-		to_chat(src, "<font color='red'>Error: warn(): No such ckey found.</font>")
+		to_chat(src, "<font color='red'>错误：警告（warn）：未找到该ckey。</font>")
 		return
 
 	if(++P.warning_count >= MAX_WARNS) //uh ohhhh...you'reee iiiiin trouuuubble O:)
@@ -439,7 +439,7 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 		P.add_timed_ban("Autobanning due to too many formal warnings", AUTOBANTIME)
 	else
 		if(P.owning_client)
-			to_chat(P.owning_client, "<font color='red'><BIG><B>You have been formally warned by an administrator.</B></BIG><br>Further warnings will result in an autoban.</font>")
+			to_chat(P.owning_client, "<font color='red'><BIG><B>你已被管理员正式警告。</B></BIG><br>进一步的警告将导致自动封禁。</font>")
 			message_admins("[key_name_admin(src)] has warned [key_name_admin(P.owning_client)]. They have [MAX_WARNS-P.warning_count] strikes remaining.")
 		else
 			message_admins("[key_name_admin(src)] has warned [warned_ckey] (DC). They have [MAX_WARNS-P.warning_count] strikes remaining.")
@@ -451,7 +451,7 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 	var/list/disease_names = list()
 	for(var/v in GLOB.diseases)
 		disease_names.Add(copytext("[v]", 16, 0))
-	var/datum/disease/D = tgui_input_list(usr, "Choose the disease to give to that guy", "ACHOO", disease_names)
+	var/datum/disease/D = tgui_input_list(usr, "选择要施加给目标的疾病", "ACHOO", disease_names)
 	if(!D)
 		return
 	var/path = text2path("/datum/disease/[D]")
@@ -468,7 +468,7 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 		if(!msg)
 			return
 		for (var/mob/V in hearers(mob.control_object))
-			V.show_message("<b>[mob.control_object.name]</b> says: \"" + msg + "\"", SHOW_MESSAGE_AUDIBLE)
+			V.show_message("<b>[mob.control_object.name]</b> 说道：\"" + msg + "\"", SHOW_MESSAGE_AUDIBLE)
 
 
 /client/proc/toggle_log_hrefs()
@@ -479,10 +479,10 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 	if(config)
 		if(CONFIG_GET(flag/log_hrefs))
 			CONFIG_SET(flag/log_hrefs, FALSE)
-			to_chat(src, "<b>Stopped logging hrefs</b>")
+			to_chat(src, "<b>已停止记录href</b>")
 		else
 			CONFIG_SET(flag/log_hrefs, TRUE)
-			to_chat(src, "<b>Started logging hrefs</b>")
+			to_chat(src, "<b>已开始记录href</b>")
 
 
 /client/proc/editappear(mob/living/carbon/human/M as mob in GLOB.human_mob_list)
@@ -493,24 +493,24 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 		return
 
 	if(!istype(M, /mob/living/carbon/human))
-		to_chat(usr, SPAN_DANGER("You can only do this to humans!"))
+		to_chat(usr, SPAN_DANGER("你只能对人类执行此操作！"))
 		return
 	switch(alert("Are you sure you wish to edit this mob's appearance?",,"Yes","No"))
 		if("No")
 			return
-	var/new_facial = input("Please select facial hair color.", "Character Generation") as color
+	var/new_facial = input("Please select facial hair color.", "角色生成") as color
 	if(new_facial)
 		M.r_facial = hex2num(copytext(new_facial, 2, 4))
 		M.g_facial = hex2num(copytext(new_facial, 4, 6))
 		M.b_facial = hex2num(copytext(new_facial, 6, 8))
 
-	var/new_hair = input("Please select hair color.", "Character Generation") as color
+	var/new_hair = input("Please select hair color.", "角色生成") as color
 	if(new_facial)
 		M.r_hair = hex2num(copytext(new_hair, 2, 4))
 		M.g_hair = hex2num(copytext(new_hair, 4, 6))
 		M.b_hair = hex2num(copytext(new_hair, 6, 8))
 
-	var/new_eyes = input("Please select eye color.", "Character Generation") as color
+	var/new_eyes = input("Please select eye color.", "角色生成") as color
 	if(new_eyes)
 		M.r_eyes = hex2num(copytext(new_eyes, 2, 4))
 		M.g_eyes = hex2num(copytext(new_eyes, 4, 6))
@@ -518,16 +518,16 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 
 
 	// hair
-	var/new_hstyle = input(usr, "Select a hair style", "Grooming")  as null|anything in GLOB.hair_styles_list
+	var/new_hstyle = input(usr, "选择发型", "Grooming")  as null|anything in GLOB.hair_styles_list
 	if(new_hstyle)
 		M.h_style = new_hstyle
 
 	// facial hair
-	var/new_fstyle = input(usr, "Select a facial hair style", "Grooming")  as null|anything in GLOB.facial_hair_styles_list
+	var/new_fstyle = input(usr, "选择胡须样式", "Grooming")  as null|anything in GLOB.facial_hair_styles_list
 	if(new_fstyle)
 		M.f_style = new_fstyle
 
-	var/new_gender = alert(usr, "Please select gender.", "Character Generation", "Male", "Female", "Non-Binary")
+	var/new_gender = alert(usr, "请选择性别。", "角色生成", "Male", "Female", "Non-Binary")
 	if(new_gender)
 		if(new_gender == "Female")
 			M.gender = FEMALE
@@ -545,9 +545,9 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 
 	prefs.toggles_chat ^= CHAT_ATTACKLOGS
 	if (prefs.toggles_chat & CHAT_ATTACKLOGS)
-		to_chat(usr, SPAN_BOLDNOTICE("You will now get attack log messages."))
+		to_chat(usr, SPAN_BOLDNOTICE("你现在将收到攻击日志消息。"))
 	else
-		to_chat(usr, SPAN_BOLDNOTICE("You will no longer get attack log messages."))
+		to_chat(usr, SPAN_BOLDNOTICE("你将不再收到攻击日志消息。"))
 
 	prefs.save_preferences()
 
@@ -558,9 +558,9 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 
 	prefs.toggles_chat ^= CHAT_FFATTACKLOGS
 	if (prefs.toggles_chat & CHAT_FFATTACKLOGS)
-		to_chat(usr, SPAN_BOLDNOTICE("You will now get friendly fire attack log messages."))
+		to_chat(usr, SPAN_BOLDNOTICE("你现在将收到友军火力攻击日志消息。"))
 	else
-		to_chat(usr, SPAN_BOLDNOTICE("You will no longer get friendly fire attack log messages."))
+		to_chat(usr, SPAN_BOLDNOTICE("你将不再收到友军火力攻击日志消息。"))
 
 	prefs.save_preferences()
 
@@ -570,9 +570,9 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 
 	prefs.toggles_chat ^= CHAT_DEBUGLOGS
 	if(prefs.toggles_chat & CHAT_DEBUGLOGS)
-		to_chat(usr, SPAN_BOLDNOTICE("You will now get debug log messages."))
+		to_chat(usr, SPAN_BOLDNOTICE("你现在将收到调试日志消息。"))
 	else
-		to_chat(usr, SPAN_BOLDNOTICE("You will no longer get debug log messages."))
+		to_chat(usr, SPAN_BOLDNOTICE("你将不再收到调试日志消息。"))
 
 	prefs.save_preferences()
 
@@ -582,9 +582,9 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 	set category = "Preferences"
 	prefs.toggles_admin ^= SPLIT_ADMIN_TABS
 	if(prefs.toggles_chat & SPLIT_ADMIN_TABS)
-		to_chat(usr, SPAN_BOLDNOTICE("You enabled split admin tabs in Statpanel."))
+		to_chat(usr, SPAN_BOLDNOTICE("你已在状态面板中启用分离管理员标签页。"))
 	else
-		to_chat(usr, SPAN_BOLDNOTICE("You disabled split admin tabs in Statpanel."))
+		to_chat(usr, SPAN_BOLDNOTICE("你已禁用状态面板中的分离管理员标签。"))
 
 	prefs.save_preferences()
 
@@ -594,9 +594,9 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 
 	prefs.toggles_chat ^= CHAT_NICHELOGS
 	if(prefs.toggles_chat & CHAT_NICHELOGS)
-		to_chat(usr, SPAN_BOLDNOTICE("You will now get niche log messages."))
+		to_chat(usr, SPAN_BOLDNOTICE("你现在将收到特定日志消息。"))
 	else
-		to_chat(usr, SPAN_BOLDNOTICE("You will no longer get niche log messages."))
+		to_chat(usr, SPAN_BOLDNOTICE("你将不再收到特定日志消息。"))
 
 	prefs.save_preferences()
 
@@ -605,7 +605,7 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 	set desc = "Tells everyone about a random statistic in the round."
 	set category = "OOC"
 
-	var/prompt = tgui_alert(usr, "Are you sure you want to do this?", "Announce Random Fact", list("Yes", "No"))
+	var/prompt = tgui_alert(usr, "你确定要执行此操作吗？", "Announce Random Fact", list("Yes", "No"))
 	if(prompt != "Yes")
 		return
 
@@ -618,9 +618,9 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 
 	prefs.toggles_sound ^= SOUND_ARES_MESSAGE
 	if (prefs.toggles_sound & SOUND_ARES_MESSAGE)
-		to_chat(usr, SPAN_BOLDNOTICE("You will now hear an audio cue for ARES and Prayer messages."))
+		to_chat(usr, SPAN_BOLDNOTICE("你现在将听到ARES和祈祷消息的音频提示。"))
 	else
-		to_chat(usr, SPAN_BOLDNOTICE("You will no longer hear an audio cue for ARES and Prayer messages."))
+		to_chat(usr, SPAN_BOLDNOTICE("你将不再听到ARES和祈祷消息的音频提示。"))
 
 	prefs.save_preferences()
 
@@ -629,9 +629,9 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 	set category = "Preferences.Admin"
 	prefs.toggles_admin ^= ADMIN_STEALTHMODE
 	if(prefs.toggles_admin & ADMIN_STEALTHMODE)
-		to_chat(usr, SPAN_BOLDNOTICE("You enabled admin stealth mode."))
+		to_chat(usr, SPAN_BOLDNOTICE("你已启用管理员隐身模式。"))
 	else
-		to_chat(usr, SPAN_BOLDNOTICE("You disabled admin stealth mode."))
+		to_chat(usr, SPAN_BOLDNOTICE("你已禁用管理员隐身模式。"))
 
 	prefs.save_preferences()
 
@@ -640,9 +640,9 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 	set category = "Preferences.Admin"
 	prefs.toggles_admin ^= ADMIN_AFK_SAFE
 	if(prefs.toggles_admin & ADMIN_AFK_SAFE)
-		to_chat(usr, SPAN_BOLDNOTICE("You enabled afk safety. You will no longer be kicked by afk timer."))
+		to_chat(usr, SPAN_BOLDNOTICE("你已启用挂机保护。你将不再因挂机计时器被踢出。"))
 	else
-		to_chat(usr, SPAN_BOLDNOTICE("You disabled afk safety. You will now be auto kicked by the afk timer."))
+		to_chat(usr, SPAN_BOLDNOTICE("你已禁用挂机保护。你现在将被挂机计时器自动踢出。"))
 
 	prefs.save_preferences()
 

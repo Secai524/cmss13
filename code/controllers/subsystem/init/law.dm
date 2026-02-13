@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(law_init)
-	name    = "Law Init"
+	name    = "法律初始化"
 	init_order = SS_INIT_LAW
 	flags   = SS_NO_FIRE
 

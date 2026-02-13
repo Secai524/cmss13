@@ -1,14 +1,14 @@
 /mob/living/simple_animal/small/mouse
 	name = "mouse"
 	real_name = "mouse"
-	desc = "It's a small, disease-ridden rodent."
+	desc = "这是一只携带疾病的小型啮齿动物。"
 	icon_state = "mouse_gray"
 	icon_living = "mouse_gray"
 	icon_dead = "mouse_gray_dead"
 	speak = list("Squeek!","SQUEEK!","Squeek?")
 	speak_emote = list("squeeks.","squeeks.","squiks.")
 	emote_hear = list("squeeks.","squeaks.","squiks.")
-	emote_see = list("runs in a circle.", "shakes.", "scritches at something.")
+	emote_see = list("绕圈跑。", "抖了抖。", "在抓挠什么东西。")
 	mob_size = MOB_SIZE_SMALL
 	speak_chance = 1
 	turns_per_move = 5
@@ -67,7 +67,7 @@
 	icon_living = "[icon_base]_[body_color]"
 	icon_dead = "[icon_base]_[body_color]_dead"
 	if(!desc)
-		desc = "It's a small [body_color] rodent, often seen hiding in maintenance areas and making a nuisance of itself."
+		desc = "这是一只[body_color]色的小型啮齿动物，常见于维护区域，总是惹麻烦。"
 
 /mob/living/simple_animal/small/mouse/splat(mob/killer)
 	health = 0
@@ -80,7 +80,7 @@
 		client.time_died_as_mouse = world.time
 
 /mob/living/simple_animal/small/mouse/start_pulling(atom/movable/AM)//Prevents mouse from pulling things
-	to_chat(src, SPAN_WARNING("You are too small to pull anything."))
+	to_chat(src, SPAN_WARNING("你太小了，拉不动任何东西。"))
 	return
 
 /mob/living/simple_animal/small/mouse/Crossed(AM as mob|obj)
@@ -91,7 +91,7 @@
 			wander = TRUE
 		else if(!stat && prob(5))
 			var/mob/M = AM
-			to_chat(M, SPAN_NOTICE("[icon2html(src, M)] Squeek!"))
+			to_chat(M, SPAN_NOTICE("[icon2html(src, M)] 吱吱！"))
 			M << 'sound/effects/mousesqueek.ogg'
 	..()
 
@@ -126,7 +126,7 @@
 /mob/living/simple_animal/small/mouse/white
 	body_color = "white"
 	icon_state = "mouse_white"
-	desc = "It's a small laboratory mouse."
+	desc = "这是一只实验室小鼠。"
 	holder_type = /obj/item/holder/mouse/white
 
 /mob/living/simple_animal/small/mouse/gray
@@ -140,8 +140,8 @@
 	holder_type = /obj/item/holder/mouse/brown
 
 /mob/living/simple_animal/small/mouse/white/Doc
-	name = "Doc"
-	desc = "Senior mouse researcher of the Almayer. Likes: cheese, experiments, explosions."
+	name = "博士"
+	desc = "阿尔迈耶号的高级老鼠研究员。喜欢：奶酪、实验、爆炸。"
 	gender = MALE
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"
@@ -150,8 +150,8 @@
 
 //TOM IS ALIVE! SQUEEEEEEEE~K :)
 /mob/living/simple_animal/small/mouse/brown/Tom
-	name = "Tom"
-	desc = "Jerry the cat is not amused."
+	name = "汤姆"
+	desc = "猫杰瑞对此并不觉得有趣。"
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"
 	response_harm   = "splats"

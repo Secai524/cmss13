@@ -1,6 +1,6 @@
 //Job options for doctors based on their specialty. They can all manufacture chemicals, administer medication, and operate on patients, but the variants have specialities that they prioritize in.
 
-#define DOCTOR_VARIANT "Doctor" // "I do not have a specialty; I go where I am needed most."
+#define DOCTOR_VARIANT "医生" // "I do not have a specialty; I go where I am needed most."
 #define PHARMACIST_VARIANT "Pharmaceutical Physician" // "I specialize in chemistry and medicine."
 #define SURGEON_VARIANT "Surgeon" // "I specialize in surgery and triage."
 
@@ -11,13 +11,13 @@
 	spawn_positions = 5
 	allow_additional = 1
 	scaled = 1
-	supervisors = "the chief medical officer"
+	supervisors = "首席医疗官"
 	selection_class = "job_doctor"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	gear_preset = /datum/equipment_preset/uscm_ship/uscm_medical/doctor
 
 	// job option
-	job_options = list(DOCTOR_VARIANT = "Doc", PHARMACIST_VARIANT = "Phm", SURGEON_VARIANT = "Sur")
+	job_options = list(DOCTOR_VARIANT = "博士", PHARMACIST_VARIANT = "Phm", SURGEON_VARIANT = "Sur")
 	/// The doctor variant of the doctor role that was selected in handle_job_options
 	var/doctor_variant
 

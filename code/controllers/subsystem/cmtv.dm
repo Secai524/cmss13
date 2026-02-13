@@ -625,13 +625,13 @@ SUBSYSTEM_DEF(cmtv)
 	set category = "Admin.CMTV"
 
 	if(!SScmtv.online())
-		return to_chat(src, SPAN_WARNING("CMTV is currently offline!"))
+		return to_chat(src, SPAN_WARNING("CMTV目前离线！"))
 
-	var/mob/selected_mob = tgui_input_list(src, "Who should be selected for observation?", "CMTV Target", GLOB.player_list)
+	var/mob/selected_mob = tgui_input_list(src, "应选择谁进行观察？", "CMTV Target", GLOB.player_list)
 	if(!selected_mob)
 		return
 
-	var/how_long = tgui_input_number(src, "How long should we stay on this perspective (in seconds)? Set 0 to not force a length.", "CMTV Length", default = 60)
+	var/how_long = tgui_input_number(src, "此视角应保持多久（秒）？设为0则不强制时长。", "CMTV Length", default = 60)
 
 	message_admins("CMTV: [key_name(src)] swapped the perspective to [key_name_admin(selected_mob)].")
 	SScmtv.change_observed_mob(selected_mob, set_showtime = how_long)
@@ -661,7 +661,7 @@ SUBSYSTEM_DEF(cmtv)
 	maptext_width = 400
 
 /datum/action/stop_cmtv
-	name = "Stop CMTV"
+	name = "停止CMTV"
 	action_icon_state = "twitch_observe"
 
 /datum/action/stop_cmtv/action_activate()

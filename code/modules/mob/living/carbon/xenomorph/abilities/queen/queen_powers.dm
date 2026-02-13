@@ -5,7 +5,7 @@
 	if(!user_xeno.check_state())
 		return
 	if(!user_xeno.observed_xeno)
-		to_chat(user_xeno, SPAN_WARNING("You must overwatch the xeno you want to de-evolve."))
+		to_chat(user_xeno, SPAN_WARNING("你必须监控你想要退化的异形。"))
 		return
 
 	var/mob/living/carbon/xenomorph/target_xeno = user_xeno.observed_xeno
@@ -13,22 +13,22 @@
 		return
 
 	if(target_xeno.hivenumber != user_xeno.hivenumber)
-		to_chat(user_xeno, SPAN_XENOWARNING("[target_xeno] doesn't belong to your hive!"))
+		to_chat(user_xeno, SPAN_XENOWARNING("[target_xeno]不属于你的巢穴！"))
 		return
 	if(target_xeno.is_ventcrawling)
-		to_chat(user_xeno, SPAN_XENOWARNING("[target_xeno] can't be deevolved here."))
+		to_chat(user_xeno, SPAN_XENOWARNING("[target_xeno]不能在此处退化。"))
 		return
 	if(!isturf(target_xeno.loc))
-		to_chat(user_xeno, SPAN_XENOWARNING("[target_xeno] can't be deevolved here."))
+		to_chat(user_xeno, SPAN_XENOWARNING("[target_xeno]不能在此处退化。"))
 		return
 	if(target_xeno.health <= 0)
-		to_chat(user_xeno, SPAN_XENOWARNING("[target_xeno] is too weak to be deevolved."))
+		to_chat(user_xeno, SPAN_XENOWARNING("[target_xeno]太虚弱，无法退化。"))
 		return
 	if(length(target_xeno.caste.deevolves_to) < 1)
-		to_chat(user_xeno, SPAN_XENOWARNING("[target_xeno] can't be deevolved."))
+		to_chat(user_xeno, SPAN_XENOWARNING("[target_xeno]无法退化。"))
 		return
 	if(target_xeno.banished)
-		to_chat(user_xeno, SPAN_XENOWARNING("[target_xeno] is banished and can't be deevolved."))
+		to_chat(user_xeno, SPAN_XENOWARNING("[target_xeno]已被放逐，无法退化。"))
 		return
 
 
@@ -36,30 +36,30 @@
 	if(length(target_xeno.caste.deevolves_to) == 1)
 		newcaste = target_xeno.caste.deevolves_to[1]
 	else if(length(target_xeno.caste.deevolves_to) > 1)
-		newcaste = tgui_input_list(user_xeno, "Choose a caste you want to de-evolve [target_xeno] to.", "De-evolve", target_xeno.caste.deevolves_to, theme="hive_status")
+		newcaste = tgui_input_list(user_xeno, "选择你想要将[target_xeno]退化成的阶级。", "De-evolve", target_xeno.caste.deevolves_to, theme="hive_status")
 
 	if(!newcaste)
 		return
 	if(newcaste == XENO_CASTE_LARVA)
-		to_chat(user_xeno, SPAN_XENOWARNING("You cannot deevolve xenomorphs to larva."))
+		to_chat(user_xeno, SPAN_XENOWARNING("你不能将异形退化为幼虫。"))
 		return
 	if(user_xeno.observed_xeno != target_xeno)
 		return
 
-	var/confirm = tgui_alert(user_xeno, "Are you sure you want to deevolve [target_xeno] from [target_xeno.caste.caste_type] to [newcaste]?", "Deevolution", list("Yes", "No"))
+	var/confirm = tgui_alert(user_xeno, "你确定要将[target_xeno]从[target_xeno.caste.caste_type]退化为[newcaste]吗？", "Deevolution", list("Yes", "No"))
 	if(confirm != "Yes")
 		return
 
-	var/reason = stripped_input(user_xeno, "Provide a reason for deevolving this xenomorph, [target_xeno]")
+	var/reason = stripped_input(user_xeno, "提供退化此异形[target_xeno]的理由")
 	if(!reason)
-		to_chat(user_xeno, SPAN_XENOWARNING("You must provide a reason for deevolving [target_xeno]."))
+		to_chat(user_xeno, SPAN_XENOWARNING("你必须提供退化[target_xeno]的理由。"))
 		return
 
 	if(!check_and_use_plasma_owner(plasma_cost))
 		return
 
 
-	to_chat(target_xeno, SPAN_XENOWARNING("The queen is deevolving you for the following reason: [reason]"))
+	to_chat(target_xeno, SPAN_XENOWARNING("女王因以下理由将你退化：[reason]"))
 
 	SEND_SIGNAL(target_xeno, COMSIG_XENO_DEEVOLVE)
 
@@ -82,7 +82,7 @@
 
 	if(X.action_busy)
 		return
-	var/answer = alert(X, "Are you sure you want to remove your ovipositor? (5min cooldown to grow a new one)", , "Yes", "No")
+	var/answer = alert(X, "你确定要移除你的产卵器吗？（重新生长需要5分钟冷却）", , "Yes", "No")
 	if(answer != "Yes")
 		return
 	if(!X.check_state())
@@ -110,26 +110,26 @@
 		return
 
 	if(!action_cooldown_check())
-		to_chat(xeno, SPAN_XENOWARNING("You're still recovering from detaching your old ovipositor. Wait [DisplayTimeText(timeleft(cooldown_timer_id))]."))
+		to_chat(xeno, SPAN_XENOWARNING("你仍在从上次移除产卵器中恢复。请等待[DisplayTimeText(timeleft(cooldown_timer_id))]。"))
 		return
 
 	var/obj/effect/alien/weeds/alien_weeds = locate() in current_turf
 
 	if(!alien_weeds)
-		to_chat(xeno, SPAN_XENOWARNING("You need to be on resin to grow an ovipositor."))
+		to_chat(xeno, SPAN_XENOWARNING("你需要在树脂上才能生长产卵器。"))
 		return
 
 	if(SSinterior.in_interior(xeno))
-		to_chat(xeno, SPAN_XENOWARNING("It's too tight in here to grow an ovipositor."))
+		to_chat(xeno, SPAN_XENOWARNING("这里空间太狭窄，无法生长产卵器。"))
 		return
 
 	if(alien_weeds.linked_hive.hivenumber != xeno.hivenumber)
-		to_chat(xeno, SPAN_XENOWARNING("These weeds don't belong to your hive! You can't grow an ovipositor here."))
+		to_chat(xeno, SPAN_XENOWARNING("这些菌毯不属于你的巢穴！你无法在此生长产卵器。"))
 		return
 
 	var/area/current_area = get_area(xeno)
 	if(current_area.unoviable_timer)
-		to_chat(xeno, SPAN_XENOWARNING("This area is not right for you to grow an ovipositor in."))
+		to_chat(xeno, SPAN_XENOWARNING("此区域不适合你生长产卵器。"))
 		return
 
 	if(!xeno.check_alien_construction(current_turf))
@@ -165,40 +165,40 @@
 	var/datum/hive_status/hive = xeno.hive
 	if(xeno.observed_xeno)
 		if(!length(hive.open_xeno_leader_positions) && IS_NORMAL_XENO(xeno.observed_xeno))
-			to_chat(xeno, SPAN_XENOWARNING("You currently have [length(hive.xeno_leader_list)] promoted leaders. You may not maintain additional leaders until your power grows."))
+			to_chat(xeno, SPAN_XENOWARNING("你目前有[length(hive.xeno_leader_list)]名晋升的领导者。在你的力量增长之前，你无法维持更多领导者。"))
 			return
 		var/mob/living/carbon/xenomorph/targeted_xeno = xeno.observed_xeno
 		if(targeted_xeno == xeno)
-			to_chat(xeno, SPAN_XENOWARNING("You cannot add yourself as a leader!"))
+			to_chat(xeno, SPAN_XENOWARNING("你不能将自己设为领袖！"))
 			return
 		apply_cooldown()
 		if(IS_NORMAL_XENO(targeted_xeno))
 			if(!hive.add_hive_leader(targeted_xeno))
-				to_chat(xeno, SPAN_XENOWARNING("Unable to add the leader."))
+				to_chat(xeno, SPAN_XENOWARNING("无法添加领袖。"))
 				return
 			if(targeted_xeno.stat == DEAD)
-				to_chat(xeno, SPAN_XENOWARNING("You cannot leader the dead."))
+				to_chat(xeno, SPAN_XENOWARNING("你不能领导死者。"))
 				return
-			to_chat(xeno, SPAN_XENONOTICE("You've selected [targeted_xeno] as a Hive Leader."))
-			to_chat(targeted_xeno, SPAN_XENOANNOUNCE("[xeno] has selected you as a Hive Leader. The other Xenomorphs must listen to you. You will also act as a beacon for the Queen's pheromones."))
+			to_chat(xeno, SPAN_XENONOTICE("你已选定[targeted_xeno]为巢穴领袖。"))
+			to_chat(targeted_xeno, SPAN_XENOANNOUNCE("[xeno]已选定你为巢穴领袖。其他异形必须听从你的命令。你将成为女王信息素的信标。"))
 		else
 			hive.remove_hive_leader(targeted_xeno)
-			to_chat(xeno, SPAN_XENONOTICE("You've demoted [targeted_xeno] from Hive Leader."))
-			to_chat(targeted_xeno, SPAN_XENOANNOUNCE("[xeno] has demoted you from Hive Leader. Your leadership rights and abilities have waned."))
+			to_chat(xeno, SPAN_XENONOTICE("你已将[targeted_xeno]从巢穴领袖降职。"))
+			to_chat(targeted_xeno, SPAN_XENOANNOUNCE("[xeno]已将你从巢穴领袖降职。你的领导权与能力已减弱。"))
 	else
 		var/list/possible_xenos = list()
 		for(var/mob/living/carbon/xenomorph/targeted_xeno in hive.xeno_leader_list)
 			possible_xenos += targeted_xeno
 
 		if(length(possible_xenos) > 1)
-			var/mob/living/carbon/xenomorph/selected_xeno = tgui_input_list(xeno, "Target", "Watch which leader?", possible_xenos, theme="hive_status")
+			var/mob/living/carbon/xenomorph/selected_xeno = tgui_input_list(xeno, "目标", "Watch which leader?", possible_xenos, theme="hive_status")
 			if(!selected_xeno || IS_NORMAL_XENO(selected_xeno) || selected_xeno == xeno.observed_xeno || selected_xeno.stat == DEAD || !xeno.check_state())
 				return
 			xeno.overwatch(selected_xeno)
 		else if(length(possible_xenos))
 			xeno.overwatch(possible_xenos[1])
 		else
-			to_chat(xeno, SPAN_XENOWARNING("There are no Xenomorph leaders. Overwatch a Xenomorph to make it a leader."))
+			to_chat(xeno, SPAN_XENOWARNING("当前没有异形领袖。监控一个异形以使其成为领袖。"))
 	return ..()
 
 /datum/action/xeno_action/activable/queen_heal/use_ability(atom/target, verbose)
@@ -211,11 +211,11 @@
 
 	var/turf/target_turf = get_turf(target)
 	if(!target_turf)
-		to_chat(queen, SPAN_WARNING("You must select a valid turf to heal around."))
+		to_chat(queen, SPAN_WARNING("你必须选择一个有效的菌毯区域进行治疗。"))
 		return
 
 	if(!SSmapping.same_z_map(queen.loc.z, target_turf.loc.z))
-		to_chat(queen, SPAN_XENOWARNING("You are too far away to do this here."))
+		to_chat(queen, SPAN_XENOWARNING("你距离太远，无法在此处执行此操作。"))
 		return
 
 	if(!check_and_use_plasma_owner())
@@ -227,7 +227,7 @@
 
 		if(SEND_SIGNAL(current_xeno, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
 			if(verbose)
-				to_chat(queen, SPAN_XENOMINORWARNING("You cannot heal [current_xeno]!"))
+				to_chat(queen, SPAN_XENOMINORWARNING("你无法治疗[current_xeno]！"))
 			continue
 
 		if(current_xeno == queen)
@@ -243,7 +243,7 @@
 		current_xeno.flick_heal_overlay(3 SECONDS, "#D9F500") //it's already hard enough to gauge health without hp overlays!
 
 	apply_cooldown()
-	to_chat(queen, SPAN_XENONOTICE("You channel your plasma to heal your sisters' wounds around this area."))
+	to_chat(queen, SPAN_XENONOTICE("你引导等离子能量，治疗该区域内姐妹们的伤口。"))
 	return ..()
 
 /datum/action/xeno_action/onclick/manage_hive/proc/give_evo_points()
@@ -258,10 +258,10 @@
 		return
 
 	if(world.time < SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK)
-		to_chat(usr, SPAN_XENOWARNING("You must give some time for larva to spawn before sacrificing them. Please wait another [floor((SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK - world.time) / 600)] minutes."))
+		to_chat(usr, SPAN_XENOWARNING("在献祭幼虫前，必须给予其一些时间孵化。请再等待[floor((SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK - world.time) / 600)]分钟。"))
 		return
 
-	var/choice = tgui_input_list(user_xeno, "Choose a xenomorph to give evolution points for a burrowed larva:", "Give Evolution Points", user_xeno.hive.totalXenos, theme="hive_status")
+	var/choice = tgui_input_list(user_xeno, "选择一个异形，为其提供来自潜藏幼虫的进化点数：", "Give Evolution Points", user_xeno.hive.totalXenos, theme="hive_status")
 
 	if(!choice)
 		return
@@ -275,26 +275,26 @@
 			break
 
 	if(target_xeno == user_xeno)
-		to_chat(user_xeno, SPAN_XENOWARNING("You cannot give evolution points to yourself."))
+		to_chat(user_xeno, SPAN_XENOWARNING("你不能将进化点数给予自己。"))
 		return
 
 	if(target_xeno.evolution_stored == target_xeno.evolution_threshold)
-		to_chat(user_xeno, SPAN_XENOWARNING("This xenomorph is already ready to evolve!"))
+		to_chat(user_xeno, SPAN_XENOWARNING("该异形已准备好进化！"))
 		return
 
 	if(target_xeno.hivenumber != user_xeno.hivenumber)
-		to_chat(user_xeno, SPAN_XENOWARNING("This xenomorph doesn't belong to your hive!"))
+		to_chat(user_xeno, SPAN_XENOWARNING("该异形不属于你的巢穴！"))
 		return
 
 	if(target_xeno.health < 0)
-		to_chat(user_xeno, SPAN_XENOWARNING("What's the point? They're about to die."))
+		to_chat(user_xeno, SPAN_XENOWARNING("这有什么意义？他们快死了。"))
 		return
 
 	if(user_xeno.hive.stored_larva < required_larva)
-		to_chat(user_xeno, SPAN_XENOWARNING("You need at least [required_larva] burrowed larva to sacrifice one for evolution points."))
+		to_chat(user_xeno, SPAN_XENOWARNING("你需要至少[required_larva]只潜藏幼虫才能献祭一只以获取进化点数。"))
 		return
 
-	if(tgui_alert(user_xeno, "Are you sure you want to sacrifice a larva to give [target_xeno] [evo_points_per_larva] evolution points?", "Give Evolution Points", list("Yes", "No")) != "Yes")
+	if(tgui_alert(user_xeno, "你确定要献祭一只幼虫，给予[target_xeno][evo_points_per_larva]点进化点数吗？", "Give Evolution Points", list("Yes", "No")) != "Yes")
 		return
 
 	if(!user_xeno.check_state() || !check_and_use_plasma_owner(plasma_cost) || target_xeno.health < 0 || user_xeno.hive.stored_larva < required_larva)
@@ -334,7 +334,7 @@
 
 	var/choice
 	if(thought_sender.client?.prefs.no_radials_preference)
-		choice = tgui_input_list(thought_sender, "Communicate", "Send Thoughts", options, theme="hive_status")
+		choice = tgui_input_list(thought_sender, "沟通", "Send Thoughts", options, theme="hive_status")
 	else
 		choice = show_radial_menu(thought_sender, thought_sender?.client.get_eye(), options)
 
@@ -365,7 +365,7 @@
 	if(queen_manager.hive.hivenumber == XENO_HIVE_NORMAL)
 		options += "Edit Tacmap"
 
-	var/choice = tgui_input_list(queen_manager, "Manage The Hive", "Hive Management", options, theme="hive_status")
+	var/choice = tgui_input_list(queen_manager, "管理巢穴", "Hive Management", options, theme="hive_status")
 	switch(choice)
 		if("Banish (500)")
 			banish()
@@ -403,7 +403,7 @@
 
 /datum/action/xeno_action/onclick/manage_hive/proc/permissions()
 	var/mob/living/carbon/xenomorph/queen/xeno = owner
-	var/choice = tgui_input_list(xeno, "Choose what hive permissions to change.", "Hive Permissions", list("Harming", "Construction", "Deconstruction", "Unnesting"), theme="hive_status")
+	var/choice = tgui_input_list(xeno, "选择要更改的巢穴权限。", "Hive Permissions", list("Harming", "Construction", "Deconstruction", "Unnesting"), theme="hive_status")
 	switch(choice)
 		if("Harming")
 			xeno.claw_toggle()
@@ -430,14 +430,14 @@
 				major_available = TRUE
 
 	if(!length(buffs))
-		to_chat(xeno, SPAN_XENONOTICE("No boons are available to us!"))
+		to_chat(xeno, SPAN_XENONOTICE("没有可用的恩赐！"))
 		return
 
 	var/selection
 	var/list/radial_images_tiers = list(HIVEBUFF_TIER_MINOR = image('icons/ui_icons/hivebuff_radial.dmi', "minor"), HIVEBUFF_TIER_MAJOR = image('icons/ui_icons/hivebuff_radial.dmi', "major"))
 
 	if(xeno.client?.prefs?.no_radials_preference)
-		selection = tgui_input_list(xeno, "Pick a buff.", "Select Buff", names)
+		selection = tgui_input_list(xeno, "选择一个增益效果。", "Select Buff", names)
 	else
 		var/tier = HIVEBUFF_TIER_MINOR
 		if(major_available)
@@ -460,7 +460,7 @@
 		return FALSE
 
 	if(!buffs[selection])
-		to_chat(xeno, "This selection is impossible!")
+		to_chat(xeno, "此选择无法实现！")
 		return FALSE
 
 	if(buffs[selection].must_select_pylon)
@@ -468,10 +468,10 @@
 		for(var/obj/effect/alien/resin/special/pylon/endgame/pylon as anything in xeno.hive.active_endgame_pylons)
 			pylon_to_area_dictionary[get_area_name(pylon.loc)] = pylon
 
-		var/choice = tgui_input_list(xeno, "Select a pylon for the buff:", "Choice", pylon_to_area_dictionary, 1 MINUTES)
+		var/choice = tgui_input_list(xeno, "选择一个神经塔来施加增益：", "Choice", pylon_to_area_dictionary, 1 MINUTES)
 
 		if(!choice)
-			to_chat(xeno, "You must choose a pylon.")
+			to_chat(xeno, "你必须选择一个神经塔。")
 			return FALSE
 
 		xeno.hive.attempt_apply_hivebuff(buffs[selection], xeno, pylon_to_area_dictionary[choice])
@@ -502,9 +502,9 @@
 		target_list += possible_target
 
 	if(!length(target_list))
-		to_chat(user_xeno, SPAN_WARNING("No talls in view."))
+		to_chat(user_xeno, SPAN_WARNING("视野内没有高个目标。"))
 		return
-	var/mob/living/target_mob = tgui_input_list(usr, "Target", "Set Up a Personal Alliance With...", target_list, theme="hive_status")
+	var/mob/living/target_mob = tgui_input_list(usr, "目标", "Set Up a Personal Alliance With...", target_list, theme="hive_status")
 
 	if(!user_xeno.check_state(TRUE))
 		return
@@ -513,7 +513,7 @@
 		return
 
 	if(target_mob.hivenumber)
-		to_chat(user_xeno, SPAN_WARNING("We cannot set up a personal alliance with a hive cultist."))
+		to_chat(user_xeno, SPAN_WARNING("我们无法与巢穴异教徒建立个人同盟。"))
 		return
 
 	hive.add_personal_ally(target_mob)
@@ -529,7 +529,7 @@
 	var/datum/hive_status/corrupted/hive = user_xeno.hive
 
 	if(!length(hive.personal_allies))
-		to_chat(user_xeno, SPAN_WARNING("We don't have personal allies."))
+		to_chat(user_xeno, SPAN_WARNING("我们没有个人盟友。"))
 		return
 
 	var/list/mob/living/allies = list()
@@ -544,10 +544,10 @@
 	hive.personal_allies -= dead_refs
 
 	if(!length(allies))
-		to_chat(user_xeno, SPAN_WARNING("We don't have personal allies."))
+		to_chat(user_xeno, SPAN_WARNING("我们没有个人盟友。"))
 		return
 
-	var/mob/living/target_mob = tgui_input_list(usr, "Target", "Break the Personal Alliance With...", allies, theme="hive_status")
+	var/mob/living/target_mob = tgui_input_list(usr, "目标", "Break the Personal Alliance With...", allies, theme="hive_status")
 
 	if(!target_mob)
 		return
@@ -572,10 +572,10 @@
 
 	var/datum/hive_status/corrupted/hive = user_xeno.hive
 	if(!length(hive.personal_allies))
-		to_chat(user_xeno, SPAN_WARNING("We don't have personal allies."))
+		to_chat(user_xeno, SPAN_WARNING("我们没有个人盟友。"))
 		return
 
-	if(tgui_alert(user_xeno, "Are you sure you want to clear personal allies?", "Clear Personal Allies", list("Yes", "No"), 10 SECONDS) != "Yes")
+	if(tgui_alert(user_xeno, "你确定要清除个人盟友吗？", "Clear Personal Allies", list("Yes", "No"), 10 SECONDS) != "Yes")
 		return
 
 	if(!length(hive.personal_allies))
@@ -593,7 +593,7 @@
 	if(!user_xeno.check_plasma(plasma_cost_banish))
 		return
 
-	var/choice = tgui_input_list(user_xeno, "Choose a xenomorph to banish:", "Banish", user_xeno.hive.totalXenos, theme="hive_status")
+	var/choice = tgui_input_list(user_xeno, "选择一个异形来放逐：", "Banish", user_xeno.hive.totalXenos, theme="hive_status")
 
 	if(!choice)
 		return
@@ -606,36 +606,36 @@
 			break
 
 	if(target_xeno == user_xeno)
-		to_chat(user_xeno, SPAN_XENOWARNING("You cannot banish yourself."))
+		to_chat(user_xeno, SPAN_XENOWARNING("你不能放逐自己。"))
 		return
 
 	if(target_xeno.banished)
-		to_chat(user_xeno, SPAN_XENOWARNING("This xenomorph is already banished!"))
+		to_chat(user_xeno, SPAN_XENOWARNING("这个异形已经被放逐了！"))
 		return
 
 	if(target_xeno.hivenumber != user_xeno.hivenumber)
-		to_chat(user_xeno, SPAN_XENOWARNING("This xenomorph doesn't belong to your hive!"))
+		to_chat(user_xeno, SPAN_XENOWARNING("该异形不属于你的巢穴！"))
 		return
 
 	// No banishing critted xenos
 	if(target_xeno.health < 0)
-		to_chat(user_xeno, SPAN_XENOWARNING("What's the point? They're already about to die."))
+		to_chat(user_xeno, SPAN_XENOWARNING("有什么意义？他们反正都快死了。"))
 		return
 
-	var/confirm = tgui_alert(user_xeno, "Are you sure you want to banish [target_xeno] from the hive? This should only be done with good reason. (Note this prevents them from rejoining the hive after dying for 30 minutes as well unless readmitted)", "Banishment", list("Yes", "No"))
+	var/confirm = tgui_alert(user_xeno, "你确定要将[target_xeno]从巢穴中放逐吗？这必须有充分的理由。（注意：这也将阻止他们在死亡后30分钟内重新加入巢穴，除非被重新接纳）", "Banishment", list("Yes", "No"))
 	if(confirm != "Yes")
 		return
 
-	var/reason = stripped_input(user_xeno, "Provide a reason for banishing [target_xeno]. This will be announced to the entire hive!")
+	var/reason = stripped_input(user_xeno, "请提供放逐[target_xeno]的理由。这将向整个巢穴宣布！")
 	if(!reason)
-		to_chat(user_xeno, SPAN_XENOWARNING("You must provide a reason for banishing [target_xeno]."))
+		to_chat(user_xeno, SPAN_XENOWARNING("你必须提供放逐[target_xeno]的理由。"))
 		return
 
 	if(!user_xeno.check_state() || !check_and_use_plasma_owner(plasma_cost_banish) || target_xeno.health < 0)
 		return
 
 	// Let everyone know they were banished
-	xeno_announcement("By [user_xeno]'s will, [target_xeno] has been banished from the hive!\n\n[reason]", user_xeno.hivenumber, title=SPAN_ANNOUNCEMENT_HEADER_BLUE("Banishment"))
+	xeno_announcement("根据[user_xeno]的意志，[target_xeno]已被从巢穴中放逐！\n\n[reason]", user_xeno.hivenumber, title=SPAN_ANNOUNCEMENT_HEADER_BLUE("Banishment"))
 	to_chat(target_xeno, FONT_SIZE_LARGE(SPAN_XENOWARNING("The [user_xeno] has banished you from the hive! Other xenomorphs may now attack you freely, but your link to the hivemind remains, preventing you from harming other sisters.")))
 
 	target_xeno.banished = TRUE
@@ -662,7 +662,7 @@
 	if(!user_xeno.check_plasma(plasma_cost_readmit))
 		return
 
-	var/choice = tgui_input_list(user_xeno, "Choose a xenomorph to readmit:", "Re-admit", user_xeno.hive.banished_ckeys, theme="hive_status")
+	var/choice = tgui_input_list(user_xeno, "选择一个异形来重新接纳：", "Re-admit", user_xeno.hive.banished_ckeys, theme="hive_status")
 
 	if(!choice)
 		return
@@ -687,10 +687,10 @@
 
 	if(banished_living)
 		if(!target_xeno.banished)
-			to_chat(user_xeno, SPAN_XENOWARNING("This xenomorph isn't banished!"))
+			to_chat(user_xeno, SPAN_XENOWARNING("这个异形没有被放逐！"))
 			return
 
-		var/confirm = tgui_alert(user_xeno, "Are you sure you want to readmit [target_xeno] into the hive?", "Readmittance", list("Yes", "No"))
+		var/confirm = tgui_alert(user_xeno, "你确定要将[target_xeno]重新接纳回巢穴吗？", "Readmittance", list("Yes", "No"))
 		if(confirm != "Yes")
 			return
 
@@ -706,7 +706,7 @@
 	return
 
 /datum/action/xeno_action/onclick/eye
-	name = "Enter Eye Form"
+	name = "进入眼形态"
 	action_icon_state = "queen_eye"
 	plasma_cost = 0
 
@@ -741,29 +741,29 @@
 	var/turf/turf_to_get = get_turf(target)
 
 	if(!turf_to_get || turf_to_get.is_weedable < FULLY_WEEDABLE || turf_to_get.density || !SSmapping.same_z_map(turf_to_get.z, xeno.z))
-		to_chat(xeno, SPAN_XENOWARNING("You can't do that here."))
+		to_chat(xeno, SPAN_XENOWARNING("你不能在这里这么做。"))
 		return
 
 	var/area/area_to_get = get_area(turf_to_get)
 	if(isnull(area_to_get) || !area_to_get.is_resin_allowed)
 		if(!area_to_get || area_to_get.flags_area & AREA_UNWEEDABLE)
-			to_chat(xeno, SPAN_XENOWARNING("This area is unsuited to host the hive."))
+			to_chat(xeno, SPAN_XENOWARNING("此区域不适合建立巢穴。"))
 			return
-		to_chat(xeno, SPAN_XENOWARNING("It's too early to spread the hive this far."))
+		to_chat(xeno, SPAN_XENOWARNING("现在将巢穴扩张至此还为时过早。"))
 		return
 
 	var/obj/effect/alien/weeds/located_weeds = locate() in turf_to_get
 	if(located_weeds)
 		if(istype(located_weeds, /obj/effect/alien/weeds/node))
-			to_chat(xeno, SPAN_XENOWARNING("There's already a node here."))
+			to_chat(xeno, SPAN_XENOWARNING("这里已经有一个节点了。"))
 			return
 		if(located_weeds.weed_strength > xeno.weed_level)
-			to_chat(xeno, SPAN_XENOWARNING("There's already stronger weeds here."))
+			to_chat(xeno, SPAN_XENOWARNING("这里已经有更强的菌毯了。"))
 			return
 		if(!check_and_use_plasma_owner(node_plant_plasma_cost))
 			return
 
-		to_chat(xeno, SPAN_XENOWARNING("You plant a node at [turf_to_get]"))
+		to_chat(xeno, SPAN_XENOWARNING("你在[turf_to_get]种植了一个节点"))
 		new /obj/effect/alien/weeds/node(turf_to_get, null, owner)
 		playsound(turf_to_get, "alien_resin_build", 35)
 		apply_cooldown_override(node_plant_cooldown)
@@ -778,10 +778,10 @@
 			break
 
 	if(!node)
-		to_chat(xeno, SPAN_XENOWARNING("You can only plant weeds if there is a nearby node."))
+		to_chat(xeno, SPAN_XENOWARNING("你只能在有附近节点的地方种植菌毯。"))
 		return
 	if(turf_to_get in recently_built_turfs)
-		to_chat(xeno, SPAN_XENOWARNING("You've recently built here already."))
+		to_chat(xeno, SPAN_XENOWARNING("你最近已经在这里建造过了。"))
 		return
 
 	if(!check_and_use_plasma_owner())
@@ -792,7 +792,7 @@
 	recently_built_turfs += turf_to_get
 	addtimer(CALLBACK(src, PROC_REF(reset_turf_cooldown), turf_to_get), turf_build_cooldown)
 
-	to_chat(xeno, SPAN_XENOWARNING("You plant weeds at [turf_to_get]"))
+	to_chat(xeno, SPAN_XENOWARNING("你在[turf_to_get]处播撒了菌毯。"))
 	apply_cooldown()
 	return ..()
 
@@ -828,7 +828,7 @@
 			hugger.die()
 
 	playsound(xeno.loc, pick(xeno.screech_sound_effect_list), 75, 0, status = 0)
-	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits an ear-splitting guttural roar!"))
+	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno]发出一声震耳欲聋的嘶吼！"))
 	xeno.create_shriekwave(14) //Adds the visual effect. Wom wom wom, 14 shriekwaves
 
 	SScmtv.spectate_event("Queen Screech", xeno, 10 SECONDS)
@@ -865,7 +865,7 @@
 /datum/action/xeno_action/onclick/send_thoughts/proc/psychic_whisper()
 	var/mob/living/carbon/xenomorph/xeno_player = owner
 	if(xeno_player.client.prefs.muted & MUTE_IC)
-		to_chat(xeno_player, SPAN_DANGER("You cannot whisper (muted)."))
+		to_chat(xeno_player, SPAN_DANGER("你无法低语（被禁言）。"))
 		return
 	if(!xeno_player.check_state(TRUE))
 		return
@@ -875,21 +875,21 @@
 			continue
 		target_list += possible_target
 
-	var/mob/living/carbon/target_mob = tgui_input_list(usr, "Target", "Send a Psychic Whisper to whom?", target_list, theme="hive_status")
+	var/mob/living/carbon/target_mob = tgui_input_list(usr, "目标", "Send a Psychic Whisper to whom?", target_list, theme="hive_status")
 	if(!target_mob)
 		return
 
 	if(!xeno_player.check_state(TRUE))
 		return
 
-	var/whisper = tgui_input_text(xeno_player, "What do you wish to say?", "Psychic Whisper")
+	var/whisper = tgui_input_text(xeno_player, "你想说什么？", "心灵低语")
 	if(whisper)
 		log_say("PsychicWhisper: [key_name(xeno_player)]->[target_mob.key] : [whisper] (AREA: [get_area_name(target_mob)])")
 		if(!istype(target_mob, /mob/living/carbon/xenomorph))
-			to_chat(target_mob, SPAN_XENOQUEEN("You hear a strange, alien voice in your head. \"[SPAN_PSYTALK(whisper)]\""))
+			to_chat(target_mob, SPAN_XENOQUEEN("你脑海中响起一个奇怪的外星声音。\"[SPAN_PSYTALK(whisper)]\""))
 		else
-			to_chat(target_mob, SPAN_XENOQUEEN("You hear the voice of [xeno_player] resonate in your head. \"[SPAN_PSYTALK(whisper)]\""))
-		to_chat(xeno_player, SPAN_XENONOTICE("You said: \"[whisper]\" to [target_mob]"))
+			to_chat(target_mob, SPAN_XENOQUEEN("你脑海中回响着[xeno_player]的声音。\"[SPAN_PSYTALK(whisper)]\""))
+		to_chat(xeno_player, SPAN_XENONOTICE("你说：\"[whisper]\" to [target_mob]"))
 
 		for(var/mob/dead/observer/ghost as anything in GLOB.observer_list)
 			if(!ghost.client || isnewplayer(ghost))
@@ -910,12 +910,12 @@
 	if(!xeno_player.check_plasma(radiance_plasma_cost))
 		return
 	if(xeno_player.client.prefs.muted & MUTE_IC)
-		to_chat(xeno_player, SPAN_DANGER("You cannot whisper (muted)."))
+		to_chat(xeno_player, SPAN_DANGER("你无法低语（被禁言）。"))
 		return
 	if(!xeno_player.check_state(TRUE))
 		return
 	var/list/target_list = list()
-	var/whisper = tgui_input_text(xeno_player, "What do you wish to say?", "Psychic Radiance")
+	var/whisper = tgui_input_text(xeno_player, "你想说什么？", "心灵辐射")
 	if(!whisper || !xeno_player.check_state(TRUE))
 		return
 	FOR_DVIEW(var/mob/living/possible_target, 12, xeno_player, HIDE_INVISIBLE_OBSERVER)
@@ -923,14 +923,14 @@
 			continue
 		target_list += possible_target
 		if(!istype(possible_target, /mob/living/carbon/xenomorph))
-			to_chat(possible_target, SPAN_XENOQUEEN("You hear a strange, alien voice in your head. \"[SPAN_PSYTALK(whisper)]\""))
+			to_chat(possible_target, SPAN_XENOQUEEN("你脑海中响起一个奇怪的外星声音。\"[SPAN_PSYTALK(whisper)]\""))
 		else
-			to_chat(possible_target, SPAN_XENOQUEEN("You hear the voice of [xeno_player] resonate in your head. \"[SPAN_PSYTALK(whisper)]\""))
+			to_chat(possible_target, SPAN_XENOQUEEN("你脑海中回响着[xeno_player]的声音。\"[SPAN_PSYTALK(whisper)]\""))
 	FOR_DVIEW_END
 	if(!length(target_list))
 		return
 	var/targetstring = english_list(target_list)
-	to_chat(xeno_player, SPAN_XENONOTICE("You said: \"[whisper]\" to [targetstring]"))
+	to_chat(xeno_player, SPAN_XENONOTICE("你说：\"[whisper]\" to [targetstring]"))
 	xeno_player.use_plasma(radiance_plasma_cost)
 	log_say("PsychicRadiance: [key_name(xeno_player)]->[targetstring] : [whisper] (AREA: [get_area_name(xeno_player)])")
 	for (var/mob/dead/observer/ghost as anything in GLOB.observer_list)
@@ -953,23 +953,23 @@
 
 	var/mob/living/carbon/xenomorph/target_xeno = target
 	if(!istype(target_xeno) || target_xeno.stat == DEAD)
-		to_chat(queen, SPAN_WARNING("You must target_xeno the xeno you want to give plasma to."))
+		to_chat(queen, SPAN_WARNING("你必须指定要给予灵能的异形。"))
 		return
 
 	if(target_xeno == queen)
-		to_chat(queen, SPAN_XENOWARNING("We cannot give plasma to yourself!"))
+		to_chat(queen, SPAN_XENOWARNING("不能给自己灵能！"))
 		return
 
 	if(!queen.can_not_harm(target_xeno))
-		to_chat(queen, SPAN_WARNING("You can only target_xeno xenos part of your hive!"))
+		to_chat(queen, SPAN_WARNING("你只能指定同巢穴的异形！"))
 		return
 
 	if(!target_xeno.caste.can_be_queen_healed)
-		to_chat(queen, SPAN_XENOWARNING("This caste cannot be given plasma!"))
+		to_chat(queen, SPAN_XENOWARNING("该阶级无法接收灵能！"))
 		return
 
 	if(SEND_SIGNAL(target_xeno, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
-		to_chat(queen, SPAN_XENOWARNING("This xeno cannot be given plasma!"))
+		to_chat(queen, SPAN_XENOWARNING("该异形无法接收灵能！"))
 		return
 
 	if(!check_and_use_plasma_owner())
@@ -978,7 +978,7 @@
 	target_xeno.gain_plasma(target_xeno.plasma_max * 0.75)
 	target_xeno.flick_heal_overlay(3 SECONDS, COLOR_CYAN)
 	apply_cooldown()
-	to_chat(queen, SPAN_XENONOTICE("You transfer some plasma to [target_xeno]."))
+	to_chat(queen, SPAN_XENONOTICE("你向[target_xeno]传输了一些灵能。"))
 	return ..()
 
 /datum/action/xeno_action/onclick/send_thoughts/proc/queen_order()
@@ -993,7 +993,7 @@
 		var/mob/living/carbon/xenomorph/target = xenomorph.observed_xeno
 		if(target.stat != DEAD && target.client)
 			if(xenomorph.check_plasma(plasma_cost))
-				var/input = stripped_input(xenomorph, "This message will be sent to the overwatched xeno.", "Queen Order", "")
+				var/input = stripped_input(xenomorph, "此信息将发送给被监控的异形。", "Queen Order", "")
 				if(!input)
 					return
 				var/queen_order = SPAN_XENOANNOUNCE("<b>[xenomorph]</b> reaches you:\"[input]\"")
@@ -1007,7 +1007,7 @@
 					xenomorph.use_plasma(give_order_plasma_cost)
 
 	else
-		to_chat(xenomorph, SPAN_WARNING("You must overwatch the Xenomorph you want to give orders to."))
+		to_chat(xenomorph, SPAN_WARNING("你必须监控你想要下达命令的异形。"))
 		return
 	return
 

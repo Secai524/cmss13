@@ -1,6 +1,6 @@
 /obj/structure/barricade/metal
-	name = "metal barricade"
-	desc = "A sturdy and easily assembled barricade made of metal plates, often used for quick fortifications. Use a blowtorch to repair."
+	name = "金属路障"
+	desc = "一种由金属板制成的坚固且易于组装的路障，常用于快速构筑防御工事。使用喷灯修复。"
 	icon_state = "metal_0"
 	health = 450
 	maxhealth = 450
@@ -51,7 +51,7 @@
 
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
 		if(!silent)
-			to_chat(user, SPAN_WARNING("You're not trained to repair [src]..."))
+			to_chat(user, SPAN_WARNING("你没受过维修[src]的训练..."))
 		return FALSE
 
 	return TRUE
@@ -66,48 +66,48 @@
 
 	for(var/obj/effect/xenomorph/acid/A in src.loc)
 		if(A.acid_t == src)
-			to_chat(user, "You can't get near that, it's melting!")
+			to_chat(user, "你无法靠近，它正在融化！")
 			return
 
 	switch(build_state)
 		if(BARRICADE_BSTATE_SECURED) //Fully constructed step. Use screwdriver to remove the protection panels to reveal the bolts
 			if(HAS_TRAIT(item, TRAIT_TOOL_SCREWDRIVER))
 				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
-					to_chat(user, SPAN_WARNING("You are not trained to touch [src]..."))
+					to_chat(user, SPAN_WARNING("你没有受过操作[src]的训练..."))
 					return
 				if(user.action_busy)
 					return
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 					return
-				user.visible_message(SPAN_NOTICE("[user] removes [src]'s protection panel."),
+				user.visible_message(SPAN_NOTICE("[user]移除了[src]的保护面板。"),
 				SPAN_NOTICE("You remove [src]'s protection panels, exposing the anchor bolts."))
 				build_state = BARRICADE_BSTATE_UNSECURED
 				return
 
 			if(istype(item, /obj/item/stack/sheet/metal))
 				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
-					to_chat(user, SPAN_WARNING("You are not trained to touch [src]..."))
+					to_chat(user, SPAN_WARNING("你没有受过操作[src]的训练..."))
 					return
 				if(upgraded)
-					to_chat(user, SPAN_NOTICE("This barricade is already upgraded."))
+					to_chat(user, SPAN_NOTICE("这个路障已经升级过了。"))
 					return
 				var/obj/item/stack/sheet/metal/metal = item
 				if(user.client?.prefs?.no_radials_preference)
-					var/choice = tgui_input_list(user, "Choose an upgrade to apply to the barricade", "Apply Upgrade", list(BARRICADE_UPGRADE_BURN, BARRICADE_UPGRADE_BRUTE, BARRICADE_UPGRADE_ANTIFF))
+					var/choice = tgui_input_list(user, "选择要应用到路障的升级", "Apply Upgrade", list(BARRICADE_UPGRADE_BURN, BARRICADE_UPGRADE_BRUTE, BARRICADE_UPGRADE_ANTIFF))
 					if(!choice)
 						return
 					if(!user.Adjacent(src))
-						to_chat(user, SPAN_NOTICE("You are too far away!"))
+						to_chat(user, SPAN_NOTICE("你离得太远了！"))
 						return
 					if(upgraded)
-						to_chat(user, SPAN_NOTICE("This barricade is already upgraded."))
+						to_chat(user, SPAN_NOTICE("这个路障已经升级过了。"))
 						return
 					if(metal.get_amount() < 2)
-						to_chat(user, SPAN_NOTICE("You lack the required metal."))
+						to_chat(user, SPAN_NOTICE("金属材料不足。"))
 						return
 					if((usr.get_active_hand()) != metal)
-						to_chat(user, SPAN_WARNING("You must be holding [metal] to upgrade [src]!"))
+						to_chat(user, SPAN_WARNING("你必须手持[metal]才能升级[src]！"))
 						return
 
 					switch(choice)
@@ -115,18 +115,18 @@
 							burn_multiplier = 0.75
 							burn_flame_multiplier = 0.75
 							upgraded = BARRICADE_UPGRADE_BURN
-							to_chat(user, SPAN_NOTICE("You applied a biohazardous upgrade."))
+							to_chat(user, SPAN_NOTICE("你应用了生化危害升级。"))
 						if(BARRICADE_UPGRADE_BRUTE)
 							brute_multiplier = 0.75
 							brute_projectile_multiplier = 0.75
 							upgraded = BARRICADE_UPGRADE_BRUTE
-							to_chat(user, SPAN_NOTICE("You applied a reinforced upgrade."))
+							to_chat(user, SPAN_NOTICE("你应用了强化升级。"))
 						if(BARRICADE_UPGRADE_ANTIFF)
 							explosive_multiplier = 0.5
 							brute_projectile_multiplier = 0.5
 							burn_flame_multiplier = 0.5
 							upgraded = BARRICADE_UPGRADE_ANTIFF
-							to_chat(user, SPAN_NOTICE("You applied a composite upgrade."))
+							to_chat(user, SPAN_NOTICE("你应用了复合升级。"))
 
 					metal.use(2)
 					user.count_niche_stat(STATISTICS_NICHE_UPGRADE_CADES)
@@ -138,16 +138,16 @@
 					if(!choice)
 						return
 					if(!user.Adjacent(src))
-						to_chat(user, SPAN_NOTICE("You are too far away!"))
+						to_chat(user, SPAN_NOTICE("你离得太远了！"))
 						return
 					if(upgraded)
-						to_chat(user, SPAN_NOTICE("This barricade is already upgraded."))
+						to_chat(user, SPAN_NOTICE("这个路障已经升级过了。"))
 						return
 					if(metal.get_amount() < 2)
-						to_chat(user, SPAN_NOTICE("You lack the required metal."))
+						to_chat(user, SPAN_NOTICE("金属材料不足。"))
 						return
 					if((usr.get_active_hand()) != metal)
-						to_chat(user, SPAN_WARNING("You must be holding [metal] to upgrade [src]!"))
+						to_chat(user, SPAN_WARNING("你必须手持[metal]才能升级[src]！"))
 						return
 
 					switch(choice)
@@ -155,18 +155,18 @@
 							burn_multiplier = 0.75
 							burn_flame_multiplier = 0.75
 							upgraded = BARRICADE_UPGRADE_BURN
-							to_chat(user, SPAN_NOTICE("You applied a biohazardous upgrade."))
+							to_chat(user, SPAN_NOTICE("你应用了生化危害升级。"))
 						if(BARRICADE_UPGRADE_BRUTE)
 							brute_multiplier = 0.75
 							brute_projectile_multiplier = 0.75
 							upgraded = BARRICADE_UPGRADE_BRUTE
-							to_chat(user, SPAN_NOTICE("You applied a reinforced upgrade."))
+							to_chat(user, SPAN_NOTICE("你应用了强化升级。"))
 						if(BARRICADE_UPGRADE_ANTIFF)
 							explosive_multiplier = 0.5
 							brute_projectile_multiplier = 0.5
 							burn_flame_multiplier = 0.5
 							upgraded = BARRICADE_UPGRADE_ANTIFF
-							to_chat(user, SPAN_NOTICE("You applied a composite upgrade."))
+							to_chat(user, SPAN_NOTICE("你应用了复合升级。"))
 
 					metal.use(2)
 					user.count_niche_stat(STATISTICS_NICHE_UPGRADE_CADES)
@@ -175,13 +175,13 @@
 
 			if(HAS_TRAIT(item, TRAIT_TOOL_MULTITOOL))
 				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
-					to_chat(user, SPAN_WARNING("You are not trained to touch [src]..."))
+					to_chat(user, SPAN_WARNING("你没有受过操作[src]的训练..."))
 					return
 				if(user.action_busy || !upgraded)
 					return
 				if(!do_after(user, 5, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 					return
-				user.visible_message(SPAN_NOTICE("[user] strips off [src]'s upgrade."),
+				user.visible_message(SPAN_NOTICE("[user]拆除了[src]的升级。"),
 					SPAN_NOTICE("You strip off [src]'s upgrade, making it a normal cade."))
 				upgraded = null
 				explosive_multiplier = initial(explosive_multiplier)
@@ -198,12 +198,12 @@
 				if(user.action_busy)
 					return
 				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
-					to_chat(user, SPAN_WARNING("You are not trained to assemble [src]..."))
+					to_chat(user, SPAN_WARNING("你没受过组装[src]的训练..."))
 					return
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 					return
-				user.visible_message(SPAN_NOTICE("[user] set [src]'s protection panel back."),
+				user.visible_message(SPAN_NOTICE("[user]将[src]的保护面板装回原位。"),
 				SPAN_NOTICE("You set [src]'s protection panel back."))
 				build_state = BARRICADE_BSTATE_SECURED
 				return
@@ -212,12 +212,12 @@
 				if(user.action_busy)
 					return
 				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
-					to_chat(user, SPAN_WARNING("You are not trained to disassemble [src]..."))
+					to_chat(user, SPAN_WARNING("你没有受过拆卸[src]的训练..."))
 					return
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 					return
-				user.visible_message(SPAN_NOTICE("[user] loosens [src]'s anchor bolts."),
+				user.visible_message(SPAN_NOTICE("[user]拧松了[src]的锚定螺栓。"),
 				SPAN_NOTICE("You loosen [src]'s anchor bolts."))
 				anchored = FALSE
 				build_state = BARRICADE_BSTATE_MOVABLE
@@ -229,27 +229,27 @@
 				if(user.action_busy)
 					return
 				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
-					to_chat(user, SPAN_WARNING("You are not trained to assemble [src]..."))
+					to_chat(user, SPAN_WARNING("你没受过组装[src]的训练..."))
 					return
 				for(var/obj/structure/barricade/B in loc)
 					if(B != src && B.dir == dir)
-						to_chat(user, SPAN_WARNING("There's already a barricade here."))
+						to_chat(user, SPAN_WARNING("这里已经有一个路障了。"))
 						return
 				var/area/area = get_area(src)
 				if(!area.allow_construction)
-					to_chat(user, SPAN_WARNING("[src] must be secured on a proper surface!"))
+					to_chat(user, SPAN_WARNING("[src]必须被固定在合适的表面上！"))
 					return
 				var/turf/open/turf = loc
 				if(!(istype(turf) && turf.allow_construction))
-					to_chat(user, SPAN_WARNING("[src] must be secured on a proper surface!"))
+					to_chat(user, SPAN_WARNING("[src]必须被固定在合适的表面上！"))
 					return
 				if(area.flags_area & AREA_NOSECURECADES)
-					to_chat(user, SPAN_WARNING("[src] must be secured on a proper surface!"))
+					to_chat(user, SPAN_WARNING("[src]必须被固定在合适的表面上！"))
 					return
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 					return
-				user.visible_message(SPAN_NOTICE("[user] secures [src]'s anchor bolts."),
+				user.visible_message(SPAN_NOTICE("[user]拧紧了[src]的锚定螺栓。"),
 				SPAN_NOTICE("You secure [src]'s anchor bolts."))
 				build_state = BARRICADE_BSTATE_UNSECURED
 				anchored = TRUE
@@ -260,13 +260,13 @@
 				if(user.action_busy)
 					return
 				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
-					to_chat(user, SPAN_WARNING("You are not trained to disassemble [src]..."))
+					to_chat(user, SPAN_WARNING("你没有受过拆卸[src]的训练..."))
 					return
-				user.visible_message(SPAN_NOTICE("[user] starts unseating [src]'s panels."),
+				user.visible_message(SPAN_NOTICE("[user]开始拆卸[src]的面板。"),
 				SPAN_NOTICE("You start unseating [src]'s panels."))
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
-					user.visible_message(SPAN_NOTICE("[user] takes [src]'s panels apart."),
+					user.visible_message(SPAN_NOTICE("[user]拆开了[src]的面板。"),
 					SPAN_NOTICE("You take [src]'s panels apart."))
 					playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 					deconstruct(TRUE)
@@ -289,8 +289,8 @@
 	flags_can_pass_behind_temp &= ~PASS_OVER_THROW_MOB
 
 /obj/structure/barricade/metal/plasteel
-	name = "plasteel barricade"
-	desc = "A sturdy and easily assembled barricade made of reinforced plasteel plates, the pinnacle of strongpoints. Use a blowtorch to repair."
+	name = "塑钢路障"
+	desc = "一种由强化塑钢板制成的坚固且易于组装的防御工事，是坚固据点的典范。使用喷灯进行维修。"
 	icon_state = "new_plasteel_0"
 	health = 900
 	maxhealth = 900

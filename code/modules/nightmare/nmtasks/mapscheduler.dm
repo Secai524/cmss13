@@ -1,6 +1,6 @@
 /// Handles map insertions sequentially and updating the game to match map insertions
 /datum/nmtask/scheduler/mapload
-	name = "mapload scheduler"
+	name = "地图加载调度器"
 	/// Map boundaries tainted by children nightmare tasks to be handled
 	var/list/tainted_bounds = list()
 

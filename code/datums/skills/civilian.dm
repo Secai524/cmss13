@@ -5,7 +5,7 @@ CIVILIAN
 */
 
 /datum/skills/civilian
-	name = "Civilian"
+	name = "平民"
 	skills = list(
 		SKILL_CQC = SKILL_CQC_DEFAULT,
 		SKILL_FIREARMS = SKILL_FIREARMS_CIVILIAN,
@@ -14,7 +14,7 @@ CIVILIAN
 	)
 
 /datum/skills/civilian/manager
-	name = "Weyland-Yutani Manager" // Semi-competent leader with basic knowledge in most things.
+	name = "维兰德-汤谷经理" // Semi-competent leader with basic knowledge in most things.
 	skills = list(
 		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED,
 		SKILL_LEADERSHIP = SKILL_LEAD_SKILLED, // this used to be master skill for whatever reason
@@ -26,7 +26,7 @@ CIVILIAN
 	)
 
 /datum/skills/civilian/icc_investigation
-	name = "ICC CL - Black Market ERT"
+	name = "ICC公司联络官 - 黑市应急响应小组"
 	skills = list(
 		SKILL_CQC = SKILL_CQC_DEFAULT,
 		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
@@ -37,7 +37,7 @@ CIVILIAN
 	)
 
 /datum/skills/civilian/manager/director
-	name = "Weyland-Yutani Director"
+	name = "维兰德-汤谷主管"
 	skills = list(
 		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED,
 		SKILL_LEADERSHIP = SKILL_LEAD_MASTER,
@@ -54,7 +54,7 @@ CIVILIAN
 //civilian that are survivor could be in is own file maybe
 
 /datum/skills/civilian/survivor
-	name = "Survivor"
+	name = "幸存者"
 	skills = list(
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
 		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
@@ -62,7 +62,7 @@ CIVILIAN
 	)
 
 /datum/skills/civilian/survivor/manager
-	name = "Weyland-Yutani Manager"
+	name = "维兰德-汤谷经理"
 	skills = list(
 		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
 		SKILL_LEADERSHIP = SKILL_LEAD_SKILLED,
@@ -72,7 +72,7 @@ CIVILIAN
 	)
 
 /datum/skills/civilian/survivor/goon
-	name = "Survivor Goon"
+	name = "幸存者打手"
 	additional_skills = list(
 		SKILL_CQC = SKILL_CQC_TRAINED,
 		SKILL_POLICE = SKILL_POLICE_SKILLED,
@@ -84,7 +84,7 @@ CIVILIAN
 	)
 
 /datum/skills/civilian/survivor/goon/medic
-	name = "Survivor Goon Medic"
+	name = "幸存者打手医疗兵"
 	additional_skills = list(
 		SKILL_CQC = SKILL_CQC_TRAINED,
 		SKILL_POLICE = SKILL_POLICE_SKILLED,
@@ -97,7 +97,7 @@ CIVILIAN
 	)
 
 /datum/skills/civilian/survivor/goon/tech
-	name = "Survivor Goon Technician"
+	name = "幸存者打手技术员"
 	additional_skills = list(
 		SKILL_CQC = SKILL_CQC_TRAINED,
 		SKILL_POLICE = SKILL_POLICE_SKILLED,
@@ -112,7 +112,7 @@ CIVILIAN
 	)
 
 /datum/skills/civilian/survivor/goon/lead
-	name = "Survivor Goon Lead"
+	name = "幸存者打手头目"
 	additional_skills = list(
 		SKILL_CQC = SKILL_CQC_TRAINED,
 		SKILL_POLICE = SKILL_POLICE_SKILLED,
@@ -127,7 +127,7 @@ CIVILIAN
 	)
 
 /datum/skills/civilian/survivor/pmc
-	name = "Survivor PMC"
+	name = "幸存者PMC"
 	additional_skills = list(
 		SKILL_CQC = SKILL_CQC_TRAINED,
 		SKILL_POLICE = SKILL_POLICE_SKILLED,
@@ -138,7 +138,7 @@ CIVILIAN
 	)
 
 /datum/skills/civilian/survivor/pmc/medic
-	name = "Survivor PMC Medic"
+	name = "幸存者PMC医疗兵"
 	additional_skills = list(
 		SKILL_CQC = SKILL_CQC_TRAINED,
 		SKILL_POLICE = SKILL_POLICE_SKILLED,
@@ -151,7 +151,7 @@ CIVILIAN
 	)
 
 /datum/skills/civilian/survivor/pmc/engineer
-	name = "Survivor PMC Engineer"
+	name = "幸存者PMC工程师"
 	additional_skills = list(
 		SKILL_CQC = SKILL_CQC_TRAINED,
 		SKILL_POLICE = SKILL_POLICE_SKILLED,
@@ -166,7 +166,7 @@ CIVILIAN
 	)
 
 /datum/skills/civilian/survivor/pmc/lead
-	name = "Survivor PMC Team Leader"
+	name = "幸存者PMC队长"
 	additional_skills = list(
 		SKILL_CQC = SKILL_CQC_TRAINED,
 		SKILL_POLICE = SKILL_POLICE_SKILLED,
@@ -183,7 +183,7 @@ CIVILIAN
 	)
 
 /datum/skills/civilian/survivor/pmc/co_survivor // PMC Nightmare Variant of CMB CO Survivor for Solaris Ridge
-	name = "Survivor PMC Field Operations Leader"
+	name = "幸存者PMC野战行动队长"
 	additional_skills = list(
 		SKILL_CQC = SKILL_CQC_EXPERT,
 		SKILL_POLICE = SKILL_POLICE_SKILLED,
@@ -202,7 +202,7 @@ CIVILIAN
 	)
 
 /datum/skills/civilian/survivor/pmc/commando
-	name = "Survivor W-Y Commando"
+	name = "幸存者维兰德突击队员"
 	additional_skills = list(
 		SKILL_CQC = SKILL_CQC_SKILLED,
 		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
@@ -218,7 +218,7 @@ CIVILIAN
 	)
 
 /datum/skills/civilian/survivor/doctor
-	name = "Survivor Doctor"
+	name = "幸存者医生"
 	additional_skills = list(
 		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
 		SKILL_MEDICAL = SKILL_MEDICAL_DOCTOR,
@@ -226,7 +226,7 @@ CIVILIAN
 	)
 
 /datum/skills/civilian/survivor/clf
-	name = "Survivor CLF"
+	name = "幸存者CLF成员"
 	additional_skills = list(
 		SKILL_ENGINEER = SKILL_ENGINEER_NOVICE,
 		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
@@ -235,7 +235,7 @@ CIVILIAN
 	)
 
 /datum/skills/civilian/survivor/clf/combat_engineer
-	name = "Survivor CLF Engineer"
+	name = "幸存者CLF工程师"
 	additional_skills = list(
 		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI,
@@ -248,7 +248,7 @@ CIVILIAN
 	)
 
 /datum/skills/civilian/survivor/clf/combat_medic
-	name = "Survivor CLF Medic"
+	name = "幸存者CLF医疗兵"
 	additional_skills = list(
 		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
 		SKILL_MEDICAL = SKILL_MEDICAL_MEDIC,
@@ -258,7 +258,7 @@ CIVILIAN
 	)
 
 /datum/skills/civilian/survivor/clf/leader
-	name = "Survivor CLF Leader"
+	name = "幸存者CLF领袖"
 	additional_skills = list(
 		SKILL_CQC = SKILL_CQC_TRAINED,
 		SKILL_FIREARMS = SKILL_FIREARMS_TRAINED,
@@ -277,7 +277,7 @@ CIVILIAN
 	)
 
 /datum/skills/civilian/survivor/clf/coordinator
-	name = "Survivor CLF Coordinator"
+	name = "幸存者CLF协调员"
 	additional_skills = list(
 		SKILL_CQC = SKILL_CQC_SKILLED,
 		SKILL_FIREARMS = SKILL_FIREARMS_TRAINED,
@@ -295,7 +295,7 @@ CIVILIAN
 	)
 
 /datum/skills/civilian/survivor/scientist
-	name = "Survivor Scientist"
+	name = "幸存者科学家"
 	additional_skills = list(
 		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
 		SKILL_MEDICAL = SKILL_MEDICAL_DOCTOR,
@@ -304,7 +304,7 @@ CIVILIAN
 	)
 
 /datum/skills/civilian/survivor/chef
-	name = "Survivor Chef"
+	name = "幸存者厨师"
 	additional_skills = list(
 		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
 		SKILL_MELEE_WEAPONS = SKILL_MELEE_SUPER,
@@ -312,7 +312,7 @@ CIVILIAN
 	)
 
 /datum/skills/civilian/survivor/miner
-	name = "Survivor Miner"
+	name = "幸存者矿工"
 	additional_skills = list(
 		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
 		SKILL_ENGINEER = SKILL_ENGINEER_NOVICE,
@@ -321,7 +321,7 @@ CIVILIAN
 	)
 
 /datum/skills/civilian/survivor/trucker
-	name = "Survivor Trucker"
+	name = "幸存者卡车司机"
 	additional_skills = list(
 		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
 		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED,
@@ -330,7 +330,7 @@ CIVILIAN
 	)
 
 /datum/skills/civilian/survivor/engineer
-	name = "Survivor Engineer"
+	name = "幸存者工程师"
 	additional_skills = list(
 		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
 		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED,
@@ -340,14 +340,14 @@ CIVILIAN
 	)
 
 /datum/skills/civilian/survivor/chaplain
-	name = "Survivor Chaplain"
+	name = "幸存者牧师"
 	additional_skills = list(
 		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
 		SKILL_LEADERSHIP = SKILL_LEAD_SKILLED,
 	)
 
 /datum/skills/civilian/survivor/marshal
-	name = "Survivor Marshal"
+	name = "幸存者警长"
 	skills = list(
 		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED,
 		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
@@ -363,7 +363,7 @@ CIVILIAN
 	)
 
 /datum/skills/civilian/survivor/prisoner
-	name = "Survivor Prisoner"
+	name = "幸存者囚犯"
 	additional_skills = list(
 		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
 		SKILL_CQC = SKILL_CQC_SKILLED,
@@ -373,14 +373,14 @@ CIVILIAN
 	)
 
 /datum/skills/civilian/survivor/wy_pilot
-	name = "Survivor - Weyland Yutani - Pilot"
+	name = "幸存者 - 维兰德-汤谷 - 飞行员"
 	additional_skills = list(
 		SKILL_PILOT = SKILL_PILOT_EXPERT,
 		SKILL_LEADERSHIP = SKILL_LEAD_TRAINED,
 	)
 
 /datum/skills/civilian/survivor/paramedic
-	name = "Survivor - Paramedic"
+	name = "幸存者 - 急救员"
 	additional_skills = list(
 		SKILL_FIREMAN = SKILL_FIREMAN_SKILLED,
 		SKILL_MEDICAL = SKILL_MEDICAL_DOCTOR,
@@ -389,7 +389,7 @@ CIVILIAN
 	)
 
 /datum/skills/civilian/survivor/fire_fighter
-	name = "Survivor - Fire Protection Specialist"
+	name = "幸存者 - 消防专家"
 	additional_skills = list(
 		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED,
 		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
@@ -398,7 +398,7 @@ CIVILIAN
 	)
 
 /datum/skills/civilian/survivor/pizza_delivery_driver
-	name = "Survivor - Pizza Galaxy Delivery Driver"
+	name = "幸存者 - 披萨银河送货司机"
 	additional_skills = list(
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
 		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
@@ -407,7 +407,7 @@ CIVILIAN
 	)
 
 /datum/skills/civilian/survivor/gangleader
-	name = "Survivor Gang Leader"
+	name = "幸存者帮派领袖"
 	additional_skills = list(
 		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
 		SKILL_CQC = SKILL_CQC_SKILLED,
@@ -416,7 +416,7 @@ CIVILIAN
 	)
 
 /datum/skills/civilian/survivor/uscm_recruiter
-	name = "Survivor USCM Recruiter"
+	name = "幸存者USCM征兵官"
 	additional_skills = list(
 		SKILL_FIREMAN = SKILL_FIREMAN_SKILLED,
 		SKILL_FIREARMS = SKILL_FIREARMS_TRAINED,
@@ -425,7 +425,7 @@ CIVILIAN
 	)
 
 /datum/skills/civilian/fax_responder
-	name = "Comms Relay Worker" //Used for fax responder presets, allowing use of appropriate HUDs and basics.
+	name = "通讯中继站工人" //Used for fax responder presets, allowing use of appropriate HUDs and basics.
 	skills = list(
 		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED,
 		SKILL_LEADERSHIP = SKILL_LEAD_TRAINED,

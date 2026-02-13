@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(vote)
-	name = "Vote"
+	name = "投票"
 	wait = 10
 
 	init_order = SS_INIT_VOTE
@@ -160,7 +160,7 @@ SUBSYSTEM_DEF(vote)
 			if("gamemode")
 				SSticker.save_mode(.)
 				GLOB.master_mode = .
-				to_chat(world, SPAN_BOLDNOTICE("Notice: The Gamemode for next round has been set to [.]"))
+				to_chat(world, SPAN_BOLDNOTICE("通知：下一回合的游戏模式已设置为[.]"))
 			if("restart")
 				if(. == "Restart Round")
 					restart = TRUE
@@ -185,7 +185,7 @@ SUBSYSTEM_DEF(vote)
 		if(!active_admins)
 			world.Reboot()
 		else
-			to_chat(world, "<span style='boltnotice'>Notice:Restart vote will not restart the server automatically because there are active admins on.</span>")
+			to_chat(world, "<span style='boltnotice'>通知：重启投票不会自动重启服务器，因为有管理员在线。</span>")
 			message_admins("A restart vote has passed, but there are active admins on with +SERVER, so it has been canceled. If you wish, you may restart the server.")
 
 	return .
@@ -251,17 +251,17 @@ SUBSYSTEM_DEF(vote)
 		if(!admin && vote_type == "restart")
 			for(var/client/C as anything in GLOB.admins)
 				if(!C.is_afk() && check_client_rights(C, R_SERVER, FALSE))
-					to_chat(usr, SPAN_WARNING("You cannot make a restart vote while there are active admins online."))
+					to_chat(usr, SPAN_WARNING("有管理员在线时，您不能发起重启投票。"))
 					return FALSE
 
 		if(started_time)
 			var/next_allowed_time = (started_time + CONFIG_GET(number/vote_delay))
 			if(mode)
-				to_chat(usr, SPAN_WARNING("There is already a vote in progress! Please wait for it to finish."))
+				to_chat(usr, SPAN_WARNING("已有投票正在进行！请等待其结束。"))
 				return FALSE
 
 			if(next_allowed_time > world.time && !admin)
-				to_chat(usr, SPAN_WARNING("A vote was initiated recently, you must wait [DisplayTimeText(next_allowed_time-world.time)] before a new vote can be started!"))
+				to_chat(usr, SPAN_WARNING("最近已发起过投票，您必须等待[DisplayTimeText(next_allowed_time-world.time)]才能发起新投票！"))
 				return FALSE
 
 		reset()
@@ -331,16 +331,16 @@ SUBSYSTEM_DEF(vote)
 				if(length(choices) < 2)
 					return FALSE
 			if("custom")
-				question = input(usr, "What is the vote for?")
+				question = input(usr, "投票内容是什么？")
 				if(!question)
 					return FALSE
 				for(var/i = 1 to 10)
-					var/option = capitalize(input(usr, "Please enter an option or hit cancel to finish"))
+					var/option = capitalize(input(usr, "请输入选项或点击取消以完成"))
 					if(!option || mode || !usr.client)
 						break
 					choices.Add(option)
 
-				if(tgui_input_list(usr, "Do you want to randomize the vote option order?", "Randomize", list("Yes", "No")) == "Yes")
+				if(tgui_input_list(usr, "是否要随机化投票选项顺序？", "Randomize", list("Yes", "No")) == "Yes")
 					randomize_entries = TRUE
 
 			else
@@ -362,7 +362,7 @@ SUBSYSTEM_DEF(vote)
 		log_vote(text)
 		var/vp = CONFIG_GET(number/vote_period)
 		SEND_SOUND(world, sound(vote_sound, channel = SOUND_CHANNEL_VOX, volume = vote_sound_vol))
-		to_chat(world, SPAN_CENTERBOLD("<br><br><font color='purple'><b>[text]</b><br>Type <b>vote</b> or click <a href='byond://?src=[REF(src)]'>here</a> to place your votes.<br>You have [DisplayTimeText(vp)] to vote.</font><br><br>"))
+		to_chat(world, SPAN_CENTERBOLD("<br><br><font color='purple'><b>[text]</b><br>输入<b>vote</b>或点击<a href='byond://?src=[REF(src)]'>此处</a>进行投票。<br>你有[DisplayTimeText(vp)]时间投票。</font><br><br>"))
 		time_remaining = floor(vp/10)
 		for(var/c in GLOB.clients)
 			var/client/C = c
@@ -387,7 +387,7 @@ SUBSYSTEM_DEF(vote)
 
 CLIENT_VERB(vote)
 	set category = "OOC"
-	set name = "Vote"
+	set name = "投票"
 
 	SSvote.tgui_interact(mob)
 
@@ -399,7 +399,7 @@ CLIENT_VERB(vote)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_REMOVE_VOTE_BUTTON)
 
 /datum/action/innate/vote
-	name = "Vote!"
+	name = "投票！"
 	action_icon_state = "vote"
 
 /datum/action/innate/vote/give_to(mob/M)
@@ -512,7 +512,7 @@ GLOBAL_LIST_INIT(possible_vote_types, list(
 		switch(action)
 			if("cancel")
 				reset()
-				to_chat(world, "<b><font color='purple'>The vote has been cancelled.</font></b>")
+				to_chat(world, "<b><font color='purple'>投票已取消。</font></b>")
 			if("toggle_restart")
 				CONFIG_SET(flag/allow_vote_restart, !CONFIG_GET(flag/allow_vote_restart))
 			if("toggle_gamemode")

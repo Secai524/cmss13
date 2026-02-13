@@ -5,8 +5,8 @@
 
 
 /obj/item/weapon/gun/energy //whoever delegated all behavior to the taser instead of a parent object needs to dig themselves a hole to die in. Fuck you old dev.
-	name = "energy pistol"
-	desc = "It shoots lasers by drawing power from an internal cell battery. Can be recharged at most convection stations."
+	name = "能量手枪"
+	desc = "通过内部电池供电发射激光。可在大多数对流充电站进行充能。"
 
 	icon_state = "stunrevolver"
 	item_state = "stunrevolver"
@@ -89,7 +89,7 @@
 		var/to_firer = "You fire the [name]!"
 		if(has_charge_meter)
 			to_firer = "[round((cell.charge / charge_cost), 1)] / [max_shots] SHOTS REMAINING"
-		user.visible_message(SPAN_DANGER("[user] fires \the [src]!"),
+		user.visible_message(SPAN_DANGER("[user] 开火了 \the [src]！"),
 		SPAN_DANGER("[to_firer]"), message_flags = CHAT_TYPE_WEAPON_USE)
 		return AUTOFIRE_CONTINUE
 
@@ -113,8 +113,8 @@
 		. += SPAN_NOTICE("It has no power cell inside.")
 
 /obj/item/weapon/gun/energy/rxfm5_eva
-	name = "RXF-M5 EVA pistol"
-	desc = "A high power focusing laser pistol designed for Extra-Vehicular Activity, though it works just about anywhere really. Derived from the same technology as laser welders. Issued by the Weyland-Yutani Corporation, but also available on the civilian market."
+	name = "RXF-M5 EVA手枪"
+	desc = "一款专为舱外活动设计的高功率聚焦激光手枪，不过在任何地方都能使用。技术源自激光焊枪。由维兰德-汤谷公司配发，但民用市场也有流通。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/energy_weapons.dmi'
 	icon_state = "rxfm5_eva"
 	item_state = "eva"
@@ -176,11 +176,11 @@
 
 /obj/item/weapon/gun/energy/laser_top
 	name = "'LAZ-TOP'"
-	desc = "The 'LAZ-TOP', aka the Laser Anode something something."//finish this later
+	desc = "'LAZ-TOP'，又名激光阳极什么的。"//finish this later
 
 /obj/item/weapon/gun/energy/laz_uzi
-	name = "laser UZI"
-	desc = "A refit of the classic Israeli SMG. Fires laser bolts."
+	name = "激光乌兹冲锋枪"
+	desc = "经典以色列冲锋枪的改装型号。发射激光束。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/energy_weapons.dmi'
 	icon_state = "laz_uzi"
 	item_state = "laz_uzi"
@@ -218,8 +218,8 @@
 //############################ Taser ##################
 // Lots of bits for it so splitting off an area
 /obj/item/weapon/gun/energy/taser
-	name = "disabler gun"
-	desc = "An advanced stun device capable of firing balls of ionized electricity. Used for nonlethal takedowns."
+	name = "眩晕枪"
+	desc = "一种先进的眩晕装置，能够发射电离电球。用于非致命性制服。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/energy_weapons.dmi'
 	icon_state = "taser"
 	item_state = "taser"
@@ -251,7 +251,7 @@
 	. = ..()
 	if (. && istype(user)) //Let's check all that other stuff first.
 		if(skilllock && !skillcheck(user, SKILL_POLICE, skilllock))
-			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
+			to_chat(user, SPAN_WARNING("你似乎不知道如何使用 [src]..."))
 			return FALSE
 
 /obj/item/weapon/gun/energy/taser/unique_action(mob/user)
@@ -274,11 +274,11 @@
 	switch(mode)
 		if(TASER_MODE_P)
 			mode = TASER_MODE_F
-			to_chat(user, SPAN_NOTICE("[src] is now set to Free mode."))
+			to_chat(user, SPAN_NOTICE("[src] 现已设置为自由模式。"))
 			ammo = GLOB.ammo_list[/datum/ammo/energy/taser]
 		if(TASER_MODE_F)
 			mode = TASER_MODE_P
-			to_chat(user, SPAN_NOTICE("[src] is now set to Precision mode."))
+			to_chat(user, SPAN_NOTICE("[src] 现已设置为精准模式。"))
 			ammo = GLOB.ammo_list[/datum/ammo/energy/taser/precise]
 	var/datum/action/item_action/taser/change_mode/action = locate(/datum/action/item_action/taser/change_mode) in actions
 	action.update_icon()
@@ -297,7 +297,7 @@
 
 /datum/action/item_action/taser/change_mode/New(target, obj/item/holder)
 	. = ..()
-	name = "Change Target Mode"
+	name = "切换目标模式"
 	action_icon_state = "id_lock_locked"// As the taser mode is based on the wanted database, it can share this icon as it makes sense.
 	button.name = name
 	button.overlays.Cut()

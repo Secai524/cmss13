@@ -2,7 +2,7 @@
 
 /obj/structure/machinery/computer/sentencing
 	name = "\improper Jurisdictional Automated System"
-	desc = "A powerful machine produced by Weyland-Yutani to streamline all punishment of prisoners. The best grade policing gear seen on this side of the galaxy."
+	desc = "维兰德-汤谷公司生产的强大机器，用于简化所有囚犯的惩罚流程。这是银河系这一侧能见到的最好的警用装备。"
 	icon_state = "jas"
 	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_MARINE_COMMAND)
 	var/datum/crime_incident/incident
@@ -148,10 +148,10 @@
 					incident.criminal_gid = add_zero(num2hex(id.registered_gid), 6)
 					ping("\The [src] pings, \"Criminal [id.registered_name] verified.\"")
 			else
-				to_chat(usr, SPAN_INFO("You need the suspect ID in your hand, or grab them and use the terminal."))
+				to_chat(usr, SPAN_INFO("你需要将嫌疑人身份卡拿在手中，或者抓住他们并使用终端。"))
 
 		if ("edit_summary")
-			var/notes = tgui_input_text(usr, "Describe the incident", "Incident Report", html_decode(incident.notes), multiline = TRUE)
+			var/notes = tgui_input_text(usr, "描述事件", "Incident Report", html_decode(incident.notes), multiline = TRUE)
 			if(!isnull(notes) && incident)
 				incident.notes = notes
 
@@ -162,12 +162,12 @@
 					incident.witnesses += list(id.registered_name)
 					ping("\The [src] pings, \"Witness [id.registered_name] added.\"")
 			else
-				to_chat(usr, SPAN_INFO("You need the witness ID in your hand."))
+				to_chat(usr, SPAN_INFO("你需要将目击者身份卡拿在手中。"))
 
 		if ("edit_witness_notes")
 			var/witness = locate(params["witness"])
 
-			var/notes = tgui_input_text(usr, "Summarize what the witness said", "Witness Report", html_decode(incident.witnesses[witness]), multiline = TRUE)
+			var/notes = tgui_input_text(usr, "总结目击者陈述", "Witness Report", html_decode(incident.witnesses[witness]), multiline = TRUE)
 			if(!isnull(notes) && incident)
 				incident.witnesses[witness] = notes
 
@@ -180,12 +180,12 @@
 				incident.evidence += O
 				ping("\The [src] pings, \"Evidence [O.name] catalogued.\"")
 			else
-				to_chat(usr, SPAN_INFO("You need the evidence in your hand."))
+				to_chat(usr, SPAN_INFO("你需要将证据拿在手中。"))
 
 		if ("edit_evidence_notes")
 			var/evidence = locate(params["evidence"])
 
-			var/notes = tgui_input_text(usr, "Describe the relevance of this evidence", "Evidence Report", html_decode(incident.evidence[evidence]), multiline = TRUE)
+			var/notes = tgui_input_text(usr, "描述此证据的相关性", "Evidence Report", html_decode(incident.evidence[evidence]), multiline = TRUE)
 			if (!isnull(notes) && incident)
 				incident.evidence[evidence] = notes
 
@@ -197,7 +197,7 @@
 				incident = null
 				current_menu = "main"
 			else
-				to_chat(usr, SPAN_ALERT("Report is lacking information."))
+				to_chat(usr, SPAN_ALERT("报告信息不足。"))
 
 	return TRUE
 
@@ -235,10 +235,10 @@
 			qdel(paper)
 			tgui_interact(user)
 		else
-			to_chat(user, SPAN_ALERT("A report is already in progress."))
+			to_chat(user, SPAN_ALERT("报告已在处理中。"))
 
 	else if (istype(O, /obj/item/paper/) && current_menu == "main")
-		to_chat(user, SPAN_ALERT("This console only accepts authentic incident reports. Copies are invalid."))
+		to_chat(user, SPAN_ALERT("此控制台仅接受真实事件报告。副本无效。"))
 
 	else if (istype(O, /obj/item/grab))
 		var/obj/item/grab/grab = O

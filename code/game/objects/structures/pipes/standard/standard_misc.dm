@@ -1,6 +1,6 @@
 /obj/structure/pipes/standard/simple/visible/universal
-	name = "Universal pipe adapter"
-	desc = "An adapter for regular, supply and scrubbers pipes."
+	name = "通用管道适配器"
+	desc = "用于常规、供应和洗涤塔管道的适配器。"
 	icon_state = "map_universal"
 
 /obj/structure/pipes/standard/simple/visible/universal/update_icon(safety = 0)
@@ -16,8 +16,8 @@
 	universal_underlays(turn(dir, 180))
 
 /obj/structure/pipes/standard/simple/hidden/universal
-	name="Universal pipe adapter"
-	desc = "An adapter for regular, supply and scrubbers pipes."
+	name="通用管道适配器"
+	desc = "用于常规、供应和洗涤塔管道的适配器。"
 	icon_state = "map_universal"
 
 /obj/structure/pipes/standard/simple/hidden/universal/update_icon(safety = 0)
@@ -46,8 +46,8 @@
 
 
 /obj/structure/pipes/standard/cap
-	name = "pipe endcap"
-	desc = "An endcap for pipes."
+	name = "管道端盖"
+	desc = "用于管道的端盖。"
 	icon = 'icons/obj/pipes/pipes3.dmi'
 	icon_state = ""
 	level = 2
@@ -71,15 +71,15 @@
 	icon_state = "cap"
 
 /obj/structure/pipes/standard/cap/visible/scrubbers
-	name = "scrubbers pipe endcap"
-	desc = "An endcap for scrubbers pipes."
+	name = "洗涤塔管道端盖"
+	desc = "用于洗涤塔管道的端盖。"
 	icon_state = "cap-scrubbers"
 	layer = ATMOS_PIPE_SCRUBBER_LAYER
 	color = PIPE_COLOR_RED
 
 /obj/structure/pipes/standard/cap/visible/supply
-	name = "supply pipe endcap"
-	desc = "An endcap for supply pipes."
+	name = "供应管道端盖"
+	desc = "用于供应管道的端盖。"
 	icon_state = "cap-supply"
 	layer = ATMOS_PIPE_SUPPLY_LAYER
 	color = PIPE_COLOR_BLUE
@@ -94,21 +94,21 @@
 	. = ..()
 
 /obj/structure/pipes/standard/cap/hidden/scrubbers
-	name = "scrubbers pipe endcap"
-	desc = "An endcap for scrubbers pipes."
+	name = "洗涤塔管道端盖"
+	desc = "用于洗涤塔管道的端盖。"
 	icon_state = "cap-f-scrubbers"
 	layer = ATMOS_PIPE_SCRUBBER_LAYER
 	color = PIPE_COLOR_RED
 
 /obj/structure/pipes/standard/cap/hidden/supply
-	name = "supply pipe endcap"
-	desc = "An endcap for supply pipes."
+	name = "供应管道端盖"
+	desc = "用于供应管道的端盖。"
 	icon_state = "cap-f-supply"
 	layer = ATMOS_PIPE_SUPPLY_LAYER
 	color = PIPE_COLOR_BLUE
 
 /obj/structure/pipes/standard/cap/hidden/supply/no_boom
-	name = "reinforced supply pipe endcap"
+	name = "强化供应管道端盖"
 	explodey = FALSE
 	color = PIPE_COLOR_PURPLE
 
@@ -116,8 +116,8 @@
 /obj/structure/pipes/standard/tank
 	icon = 'icons/obj/pipes/tank.dmi'
 	icon_state = "air_map"
-	name = "Pressure Tank"
-	desc = "A large vessel containing pressurized gas."
+	name = "压力罐"
+	desc = "一个装有加压气体的大型容器。"
 	dir = SOUTH
 	valid_directions = list(SOUTH)
 	density = TRUE
@@ -141,31 +141,31 @@
 	update_underlays()
 
 /obj/structure/pipes/standard/tank/air
-	name = "Pressure Tank (Air)"
+	name = "压力罐（空气）"
 	icon_state = "air_map"
 	actual_icon_state = "air"
 
 /obj/structure/pipes/standard/tank/oxygen
-	name = "Pressure Tank (Oxygen)"
+	name = "压力罐（氧气）"
 	icon_state = "o2_map"
 	actual_icon_state = "o2"
 
 /obj/structure/pipes/standard/tank/nitrogen
-	name = "Pressure Tank (Nitrogen)"
+	name = "压力罐（氮气）"
 	icon_state = "n2_map"
 	actual_icon_state = "n2_map"
 
 /obj/structure/pipes/standard/tank/carbon_dioxide
-	name = "Pressure Tank (Carbon Dioxide)"
+	name = "压力罐（二氧化碳）"
 	icon_state = "co2_map"
 	actual_icon_state = "co2"
 
 /obj/structure/pipes/standard/tank/phoron
-	name = "Pressure Tank (Phoron)"
+	name = "压力罐（福隆气）"
 	icon_state = "phoron_map"
 	actual_icon_state = "phoron"
 
 /obj/structure/pipes/standard/tank/nitrous_oxide
-	name = "Pressure Tank (Nitrous Oxide)"
+	name = "压力罐（一氧化二氮）"
 	icon_state = "n2o_map"
 	actual_icon_state = "n2o"

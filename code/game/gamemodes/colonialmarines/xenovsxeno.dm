@@ -194,7 +194,7 @@
 
 			if(!sudden_death && world.time > round_time_sd)
 				sudden_death = TRUE
-				xeno_announcement("The hives have entered sudden death mode. No more respawns, no more Queens", "everything", HIGHER_FORCE_ANNOUNCE)
+				xeno_announcement("异形巢穴已进入殊死模式。不再重生，不再有女王。", "everything", HIGHER_FORCE_ANNOUNCE)
 				for(var/obj/effect/alien/resin/special/pylon/core/C in hive_cores)
 					qdel(C)
 				hive_cores = list()

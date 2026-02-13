@@ -91,13 +91,13 @@
 
 	var/obj/item/clothing/glasses/offhand = user.get_inactive_hand()
 	if(istype(offhand) && !offhand.prescription)
-		if(tgui_alert(user, "Do you wish to take out the prescription lenses and put them in [offhand]?", "Insert Prescription Lenses", list("Yes", "No")) == "Yes")
+		if(tgui_alert(user, "你希望取出处方镜片并放入[offhand]吗？", "Insert Prescription Lenses", list("Yes", "No")) == "Yes")
 			if(QDELETED(src) || offhand != user.get_inactive_hand())
 				return FALSE
 			offhand.prescription = TRUE
 			offhand.AddElement(/datum/element/poor_eyesight_correction)
 			offhand.desc += " Fitted with prescription lenses."
-			user.visible_message(SPAN_DANGER("[user] takes the lenses out of [src] and puts them in [offhand]."), SPAN_NOTICE("You take the lenses out of [src] and put them in [offhand]."))
+			user.visible_message(SPAN_DANGER("[user]从[src]中取出镜片并放入[offhand]。"), SPAN_NOTICE("You take the lenses out of [src] and put them in [offhand]."))
 			qdel(src)
 			return TRUE
 
@@ -119,7 +119,7 @@
 	if(active && slot == WEAR_EYES)
 		if(!can_use_active_effect(user))
 			toggle_glasses_effect()
-			to_chat(user, SPAN_WARNING("You have no idea what any of the data means and power it off before it makes you nauseated."))
+			to_chat(user, SPAN_WARNING("你完全不明白这些数据的含义，在它让你感到恶心之前将其关闭。"))
 
 		else if(hud_type)
 			var/datum/mob_hud/MH = GLOB.huds[hud_type]
@@ -144,21 +144,21 @@
 	if(!toggleable)
 		return
 	if(!can_use_active_effect(user))
-		to_chat(user, SPAN_WARNING("You have no idea how to use [src]."))
+		to_chat(user, SPAN_WARNING("你不知道如何使用[src]。"))
 		return
 
 	if(active)
-		to_chat(user, SPAN_NOTICE("You deactivate the optical matrix on [src]."))
+		to_chat(user, SPAN_NOTICE("你关闭了[src]上的光学矩阵。"))
 		playsound_client(user.client, toggle_off_sound, null, 75)
 	else
-		to_chat(user, SPAN_NOTICE("You activate the optical matrix on [src]."))
+		to_chat(user, SPAN_NOTICE("你激活了[src]的光学矩阵。"))
 		playsound_client(user.client, toggle_on_sound, null, 75)
 
 	toggle_glasses_effect()
 
 /obj/item/clothing/glasses/science
-	name = "reagent scanner HUD goggles" //science goggles
-	desc = "These goggles are probably of use to someone who isn't holding a rifle and actively seeking to lower their combat life expectancy."
+	name = "试剂扫描器HUD护目镜" //science goggles
+	desc = "这护目镜可能对某个没拿着步枪、也不想主动降低自己战斗寿命的人有用。"
 	icon = 'icons/obj/items/clothing/glasses/huds.dmi'
 	item_icons = list(
 		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/huds.dmi',
@@ -177,8 +177,8 @@
 	matter = list("glass" = 500,"plastic" = 500)
 
 /obj/item/clothing/glasses/science/prescription
-	name = "prescription reagent scanner HUD goggles"
-	desc = "These goggles are probably of use to someone who isn't holding a rifle and actively seeking to lower their combat life expectancy. Contains prescription lenses."
+	name = "处方试剂扫描器HUD护目镜"
+	desc = "这护目镜可能对某个没拿着步枪、也不想主动降低自己战斗寿命的人有用。内含处方镜片。"
 	prescription = TRUE
 
 /obj/item/clothing/glasses/science/get_examine_text(mob/user)
@@ -186,8 +186,8 @@
 	. += SPAN_INFO("While wearing them, you can examine items to see their reagent contents.")
 
 /obj/item/clothing/glasses/kutjevo
-	name = "kutjevo goggles"
-	desc = "Goggles used to shield the eyes of workers on Kutjevo. N95Z Rated Goggles."
+	name = "库特耶沃护目镜"
+	desc = "用于保护库特耶沃工人眼睛的护目镜。N95Z级防护。"
 	icon = 'icons/obj/items/clothing/glasses/goggles.dmi'
 	item_icons = list(
 		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/goggles.dmi',
@@ -196,13 +196,13 @@
 	item_state = "kutjevo_goggles"
 
 /obj/item/clothing/glasses/kutjevo/safety
-	name = "safety goggles"
-	desc = "Goggles used to shield the eyes of workers. N95Z Rated."
+	name = "安全护目镜"
+	desc = "用于保护工人眼睛的护目镜。N95Z级防护。"
 
 /obj/item/clothing/glasses/eyepatch
 	name = "eyepatch"
 	gender = NEUTER
-	desc = "Once worn by swashbucklers of old, now more commonly associated with a figure of legend. They say he was big AND a boss. Impressive no? Don't let the MPs see you wearing this non-regulation attire."
+	desc = "曾由旧时的冒险家佩戴，如今更常与一位传奇人物联系在一起。据说他块头大，还是个老大。厉害吧？别让宪兵看到你穿这身不合规的装束。"
 	icon = 'icons/obj/items/clothing/glasses/misc.dmi'
 	item_icons = list(
 		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/misc.dmi',
@@ -233,11 +233,11 @@
 	if(toggled)
 		icon_state = toggled_state
 		item_state = toggled_state
-		to_chat(usr, SPAN_NOTICE("You flip the eyepatch to the left side."))
+		to_chat(usr, SPAN_NOTICE("你将眼罩翻到左侧。"))
 	else
 		icon_state = original_state
 		item_state = original_state
-		to_chat(usr, SPAN_NOTICE("You flip the eyepatch to the right side."))
+		to_chat(usr, SPAN_NOTICE("你将眼罩翻到右侧。"))
 
 	update_clothing_icon(src) // Updates the on-mob appearance
 
@@ -273,7 +273,7 @@
 /obj/item/clothing/glasses/monocle
 	name = "monocle"
 	gender = NEUTER
-	desc = "Such a dapper eyepiece!"
+	desc = "多么时髦的眼罩！"
 	icon = 'icons/obj/items/clothing/glasses/misc.dmi'
 	icon_state = "monocle"
 	item_state = "headset" // lol
@@ -287,8 +287,8 @@
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/material
-	name = "Optical Material Scanners"
-	desc = "With these you can see objects... just like you can with your un-aided eyes. Say why were these ever made again?"
+	name = "光学材料扫描器"
+	desc = "戴上这个你就能看见物体……就像你用肉眼看到的一样。话说这玩意儿当初为啥要做出来？"
 	icon = 'icons/obj/items/clothing/glasses/goggles.dmi'
 	icon_state = "material"
 	item_icons = list(
@@ -299,8 +299,8 @@
 	toggleable = TRUE
 
 /obj/item/clothing/glasses/regular
-	name = "Marine RPG glasses"
-	desc = "The Corps may call them Regulation Prescription Glasses but you know them as Rut Prevention Glasses."
+	name = "陆战队员RPG眼镜"
+	desc = "陆战队可能称它们为制式处方眼镜，但你知道它们是防无聊眼镜。"
 	item_icons = list(
 		WEAR_FACE = 'icons/mob/humans/onmob/clothing/glasses/glasses.dmi',
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/glasses.dmi',
@@ -315,38 +315,38 @@
 	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/glasses/regular/hipster
-	name = "Prescription Glasses"
-	desc = "Boring glasses, makes you look smart and potentially reputable."
+	name = "处方眼镜"
+	desc = "无聊的眼镜，让你看起来聪明且可能值得信赖。"
 	icon_state = "hipster_glasses"
 	item_state = "hipster_glasses"
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/regular/hippie
-	name = "Rounded Prescription Glasses"
-	desc = "Rounded glasses, makes you look smart and potentially reputable."
+	name = "圆形处方眼镜"
+	desc = "圆框眼镜，让你看起来聪明且可能值得信赖。"
 	icon_state = "hippie_glasses"
 	item_state = "hippie_glasses"
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/threedglasses
-	desc = "A long time ago, people used these glasses to makes images from screens three-dimensional."
-	name = "3D glasses"
+	desc = "很久以前，人们用这种眼镜让屏幕图像呈现三维效果。"
+	name = "3D眼镜"
 	icon_state = "3d"
 	item_state = "3d"
 	flags_armor_protection = 0
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/gglasses
-	name = "Green Glasses"
-	desc = "Forest green glasses, like the kind you'd wear when hatching a nasty scheme."
+	name = "绿色眼镜"
+	desc = "森林绿色的眼镜，就像你在策划一个邪恶计划时会戴的那种。"
 	icon_state = "gglasses"
 	item_state = "gglasses"
 	flags_armor_protection = 0
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/jensen
-	name = "Augmented sunglasses"
-	desc = "Augmented sunglasses with the HUD removed."
+	name = "增强型太阳镜"
+	desc = "移除了HUD的增强型太阳镜。"
 	icon = 'icons/obj/items/clothing/glasses/misc.dmi'
 	item_icons = list(
 		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/misc.dmi',
@@ -356,8 +356,8 @@
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/mbcg
-	name = "Prescription Marine RPG glasses"
-	desc = "The Corps may call them Regulation Prescription Glasses but you know them as Rut Prevention Glasses. These ones actually have a proper prescribed lens."
+	name = "陆战队员处方RPG眼镜"
+	desc = "陆战队可能称其为制式处方眼镜，但你更愿意叫它们防呆眼镜。这副眼镜确实配备了合适的处方镜片。"
 	item_icons = list(
 		WEAR_FACE = 'icons/mob/humans/onmob/clothing/glasses/glasses.dmi',
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/glasses.dmi',
@@ -370,7 +370,7 @@
 
 /obj/item/clothing/glasses/m42_goggles
 	name = "\improper M42 scout sight"
-	desc = "A headset and goggles system for the M42 Scout Rifle. Allows highlighted imaging of surroundings. Click it to toggle."
+	desc = "M42侦察步枪的耳机与护目镜系统。可高亮显示周围环境影像。点击切换。"
 	icon = 'icons/obj/items/clothing/glasses/night_vision.dmi'
 	item_icons = list(
 		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/night_vision.dmi',
@@ -383,8 +383,8 @@
 	actions_types = list(/datum/action/item_action/toggle)
 
 /obj/item/clothing/glasses/disco_fever
-	name = "malfunctioning AR visor"
-	desc = "Someone tried to watch a black-market Arcturian blue movie on this augmented-reality headset and now it's useless. Unlike you, Disco will never die.\nThere's some kind of epilepsy warning sticker on the side."
+	name = "故障的增强现实护目镜"
+	desc = "有人试图在这副增强现实头戴设备上观看黑市的阿克图里安成人影片，现在它已经没用了。和你不同，迪斯科永不死。\n侧面贴着某种癫痫警告标签。"
 	icon_state = "discovision"
 	icon = 'icons/obj/items/clothing/glasses/misc.dmi'
 	item_icons = list(
@@ -480,7 +480,7 @@
 		return
 
 	if(!user.client.prefs?.allow_flashing_lights_pref)
-		to_chat(user, SPAN_NOTICE("Your preferences don't allow the effect from [src]."))
+		to_chat(user, SPAN_NOTICE("您的偏好设置不允许[src]的效果。"))
 		return
 
 	var/base_colors
@@ -529,8 +529,8 @@
 	user_head?.vis_contents -= mob_glass_overlay
 
 /obj/item/clothing/glasses/mgoggles
-	name = "marine ballistic goggles"
-	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes."
+	name = "陆战队员防弹护目镜"
+	desc = "USCM标准配发护目镜。通常安装在M10型头盔顶部，也能防止昆虫、灰尘等异物进入眼睛。"
 	icon = 'icons/obj/items/clothing/glasses/goggles.dmi'
 	icon_state = "mgoggles"
 	item_icons = list(
@@ -554,156 +554,156 @@
 	garbage = FALSE
 
 /obj/item/clothing/glasses/mgoggles/prescription
-	name = "prescription marine ballistic goggles"
-	desc = "Standard issue USCM goggles. Mostly used to decorate one's helmet. Contains prescription lenses in case you weren't sure if they were lame or not."
+	name = "陆战队员处方防弹护目镜"
+	desc = "USCM标准配发护目镜。主要用于装饰头盔。内含处方镜片，以防你还不确定它们有多逊。"
 	icon_state = "mgoggles"
 	prescription = TRUE
 
 /obj/item/clothing/glasses/mgoggles/black
-	name = "black marine ballistic goggles"
-	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has black tinted lenses."
+	name = "黑色陆战队员防弹护目镜"
+	desc = "USCM标准配发护目镜。通常安装在M10型头盔顶部，也能防止昆虫、灰尘等异物进入眼睛。此款配有黑色镜片。"
 	icon_state = "mgogglesblk"
 	active_icon_state = "mgogglesblk_down"
 	inactive_icon_state = "mgogglesblk"
 
 /obj/item/clothing/glasses/mgoggles/black/prescription
-	name = "prescription black marine ballistic goggles"
-	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has black tinted lenses. ntop of that, these ones contain prescription lenses."
+	name = "黑色陆战队员处方防弹护目镜"
+	desc = "USCM标准配发护目镜。通常安装在M10型头盔顶部，也能防止昆虫、灰尘等异物进入眼睛。此款配有黑色镜片。此外，还包含处方镜片。"
 	icon_state = "mgogglesblk"
 	active_icon_state = "mgogglesblk_down"
 	inactive_icon_state = "mgogglesblk"
 	prescription = TRUE
 
 /obj/item/clothing/glasses/mgoggles/orange
-	name = "orange marine ballistic goggles"
-	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has amber colored day lenses."
+	name = "橙色陆战队员防弹护目镜"
+	desc = "USCM标准配发护目镜。通常安装在M10型头盔顶部，也能防止昆虫、灰尘等异物进入眼睛。此款配有琥珀色日间镜片。"
 	icon_state = "mgogglesorg"
 	active_icon_state = "mgogglesorg_down"
 	inactive_icon_state = "mgogglesorg"
 
 /obj/item/clothing/glasses/mgoggles/orange/prescription
-	name = "prescription orange marine ballistic goggles"
-	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has amber colored day lenses."
+	name = "橙色陆战队员处方防弹护目镜"
+	desc = "USCM标准配发护目镜。通常安装在M10型头盔顶部，也能防止昆虫、灰尘等异物进入眼睛。此款配有琥珀色日间镜片。"
 	icon_state = "mgogglesorg"
 	active_icon_state = "mgogglesorg_down"
 	inactive_icon_state = "mgogglesorg"
 	prescription = TRUE
 
 /obj/item/clothing/glasses/mgoggles/v2
-	name = "M1A1 marine ballistic goggles"
-	desc = "Newer issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This version has larger lenses."
+	name = "M1A1陆战队员防弹护目镜"
+	desc = "USCM新式配发护目镜。通常安装在M10型头盔顶部，也能防止昆虫、灰尘等异物进入眼睛。此版本镜片更大。"
 	icon_state = "mgoggles2"
 	active_icon_state = "mgoggles2_down"
 	inactive_icon_state = "mgoggles2"
 
 /obj/item/clothing/glasses/mgoggles/v2/prescription
-	name = "prescription M1A1 marine ballistic goggles"
-	desc = "Newer issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This version has larger lenses."
+	name = "M1A1陆战队员处方防弹护目镜"
+	desc = "USCM新式配发护目镜。通常安装在M10型头盔顶部，也能防止昆虫、灰尘等异物进入眼睛。此版本镜片更大。"
 	icon_state = "mgoggles2"
 	active_icon_state = "mgoggles2_down"
 	inactive_icon_state = "mgoggles2"
 	prescription = TRUE
 
 /obj/item/clothing/glasses/mgoggles/red
-	name = "red marine ballistic goggles"
-	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has scarlet colored day lenses."
+	name = "红色陆战队员防弹护目镜"
+	desc = "USCM标准配发护目镜。通常安装在M10型头盔顶部，也能防止昆虫、灰尘等异物进入眼睛。此款配有猩红色日间镜片。"
 	icon_state = "mgogglesred"
 	active_icon_state = "mgogglesred_down"
 	inactive_icon_state = "mgogglesred"
 
 /obj/item/clothing/glasses/mgoggles/red/prescription
-	name = "prescription red marine ballistic goggles"
-	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has scarlet colored day lenses."
+	name = "红色陆战队员处方防弹护目镜"
+	desc = "USCM标准配发护目镜。通常安装在M10型头盔顶部，也能防止昆虫、灰尘等异物进入眼睛。此款配有猩红色日间镜片。"
 	icon_state = "mgogglesred"
 	active_icon_state = "mgogglesred_down"
 	inactive_icon_state = "mgogglesred"
 	prescription = TRUE
 
 /obj/item/clothing/glasses/mgoggles/blue
-	name = "blue marine ballistic goggles"
-	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has blue colored day lenses."
+	name = "蓝色陆战队员防弹护目镜"
+	desc = "USCM标准配发护目镜。通常安装在M10型头盔顶部，也能防止昆虫、灰尘等异物进入眼睛。此款配有蓝色日间镜片。"
 	icon_state = "mgogglesblue"
 	active_icon_state = "mgogglesblue_down"
 	inactive_icon_state = "mgogglesblue"
 
 /obj/item/clothing/glasses/mgoggles/blue/prescription
-	name = "prescription blue marine ballistic goggles"
-	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has blue colored day lenses."
+	name = "处方蓝色陆战队防弹护目镜"
+	desc = "USCM标准配发护目镜。通常安装在M10型头盔顶部，也能防止昆虫、灰尘等异物进入眼睛。此款配有蓝色日间镜片。"
 	icon_state = "mgogglesblue"
 	active_icon_state = "mgogglesblue_down"
 	inactive_icon_state = "mgogglesblue"
 	prescription = TRUE
 
 /obj/item/clothing/glasses/mgoggles/purple
-	name = "purple marine ballistic goggles"
-	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has purple colored day lenses."
+	name = "紫色陆战队防弹护目镜"
+	desc = "USCM标准配发护目镜。通常安装在M10型头盔顶部，也能防止昆虫、灰尘等异物进入眼睛。这款配有紫色日间镜片。"
 	icon_state = "mgogglespurple"
 	active_icon_state = "mgogglespurple_down"
 	inactive_icon_state = "mgogglespurple"
 
 /obj/item/clothing/glasses/mgoggles/purple/prescription
-	name = "prescription purple marine ballistic goggles"
-	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has purple colored day lenses."
+	name = "处方紫色陆战队防弹护目镜"
+	desc = "USCM标准配发护目镜。通常安装在M10型头盔顶部，也能防止昆虫、灰尘等异物进入眼睛。这款配有紫色日间镜片。"
 	icon_state = "mgogglespurple"
 	active_icon_state = "mgogglespurple_down"
 	inactive_icon_state = "mgogglespurple"
 	prescription = TRUE
 
 /obj/item/clothing/glasses/mgoggles/yellow
-	name = "yellow marine ballistic goggles"
-	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has yellow colored day lenses."
+	name = "黄色陆战队防弹护目镜"
+	desc = "USCM标准配发护目镜。通常安装在M10型头盔顶部，也能防止昆虫、灰尘等异物进入眼睛。这款配有黄色日间镜片。"
 	icon_state = "mgogglesyellow"
 	active_icon_state = "mgogglesyellow_down"
 	inactive_icon_state = "mgogglesyellow"
 
 /obj/item/clothing/glasses/mgoggles/yellow/prescription
-	name = "prescription yellow marine ballistic goggles"
-	desc = "Standard issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This one has yellow colored day lenses."
+	name = "处方黄色陆战队防弹护目镜"
+	desc = "USCM标准配发护目镜。通常安装在M10型头盔顶部，也能防止昆虫、灰尘等异物进入眼睛。这款配有黄色日间镜片。"
 	icon_state = "mgogglesyellow"
 	active_icon_state = "mgogglesyellow_down"
 	inactive_icon_state = "mgogglesyellow"
 	prescription = TRUE
 
 /obj/item/clothing/glasses/mgoggles/v2/blue
-	name = "M1A1 marine ballistic goggles"
-	desc = "Newer issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This version has larger lenses."
+	name = "M1A1陆战队员防弹护目镜"
+	desc = "USCM新式配发护目镜。通常安装在M10型头盔顶部，也能防止昆虫、灰尘等异物进入眼睛。此版本镜片更大。"
 	icon_state = "m2gogglesblue"
 	active_icon_state = "m2gogglesblue_down"
 	inactive_icon_state = "m2gogglesblue"
 
 /obj/item/clothing/glasses/mgoggles/v2/blue/prescription
-	name = "prescription M1A1 marine ballistic goggles"
-	desc = "Newer issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This version has larger lenses."
+	name = "M1A1陆战队员处方防弹护目镜"
+	desc = "USCM新式配发护目镜。通常安装在M10型头盔顶部，也能防止昆虫、灰尘等异物进入眼睛。此版本镜片更大。"
 	icon_state = "m2gogglesblue"
 	active_icon_state = "m2gogglesblue_down"
 	inactive_icon_state = "m2gogglesblue"
 	prescription = TRUE
 
 /obj/item/clothing/glasses/mgoggles/v2/polarized_blue
-	name = "M1A1 marine polarized ballistic goggles"
-	desc = "Newer issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This version has larger polarized lenses."
+	name = "M1A1陆战队偏光防弹护目镜"
+	desc = "USCM较新型号护目镜。通常安装在M10型头盔顶部，也能防止昆虫、灰尘等异物进入眼睛。此版本配有更大的偏光镜片。"
 	icon_state = "polarizedblue"
 	active_icon_state = "polarizedblue_down"
 	inactive_icon_state = "polarizedblue"
 
 /obj/item/clothing/glasses/mgoggles/v2/polarized_blue/prescription
-	name = "prescription M1A1 marine polarized ballistic goggles"
-	desc = "Newer issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This version has larger polarized lenses."
+	name = "处方M1A1陆战队偏光防弹护目镜"
+	desc = "USCM较新型号护目镜。通常安装在M10型头盔顶部，也能防止昆虫、灰尘等异物进入眼睛。此版本配有更大的偏光镜片。"
 	icon_state = "polarizedblue"
 	active_icon_state = "polarizedblue_down"
 	inactive_icon_state = "polarizedblue"
 	prescription = TRUE
 
 /obj/item/clothing/glasses/mgoggles/v2/polarized_orange
-	name = "M1A1 marine polarized ballistic goggles"
-	desc = "Newer issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This version has larger polarized lenses."
+	name = "M1A1陆战队偏光防弹护目镜"
+	desc = "USCM较新型号护目镜。通常安装在M10型头盔顶部，也能防止昆虫、灰尘等异物进入眼睛。此版本配有更大的偏光镜片。"
 	icon_state = "polarizedorange"
 	active_icon_state = "polarizedorange_down"
 	inactive_icon_state = "polarizedorange"
 
 /obj/item/clothing/glasses/mgoggles/v2/polarized_orange/prescription
-	name = "prescription M1A1 marine polarized ballistic goggles"
-	desc = "Newer issue USCM goggles. While commonly found mounted atop M10 pattern helmets, they are also capable of preventing insects, dust, and other things from getting into one's eyes. This version has larger polarized lenses."
+	name = "处方M1A1陆战队偏光防弹护目镜"
+	desc = "USCM较新型号护目镜。通常安装在M10型头盔顶部，也能防止昆虫、灰尘等异物进入眼睛。此版本配有更大的偏光镜片。"
 	icon_state = "polarizedorange"
 	active_icon_state = "polarizedorange_down"
 	inactive_icon_state = "polarizedorange"
@@ -774,7 +774,7 @@
 
 /obj/item/clothing/glasses/mgoggles/cmb_riot_shield
 	name = "\improper TC2 CMB riot shield"
-	desc = "Yellowish protective glass piece, can be lifted up when needed, makes you see everything in yellow."
+	desc = "淡黄色防护镜片，需要时可向上掀起，使视野呈黄色。"
 	icon_state = "swat_shield"
 	icon = 'icons/obj/items/clothing/helmet_garb.dmi'
 	item_icons = list(
@@ -789,7 +789,7 @@
 
 /obj/item/clothing/glasses/mgoggles/mp_riot_shield
 	name = "\improper Z9 integrated riotplate"
-	desc = "An improved variant of the M7 integrated faceplate,"
+	desc = "M7集成面罩的改进型号，"
 	desc_lore = "These were originally produced by a group of marines stationed on LV-920, a snow planet. Conditions were terrible, so to raise morale, the marines hatched a prank. They would spray-paint a faceplate black and meticulously repaint the logos and warning text around the inner seams, not that anyone reads those anyway. Any MP brave or foolish enough to don the brand new faceplate would have the entirety of their cheeks and chin painted black because of residual paint, much to the delight of the bored marines. Unfortunately, due to the prank's roaring success and its spread across the Marine Corps, production of genuine models began, diluting the pool of fake plates with real ones. You're pretty sure this is a real one. Pretty sure."
 	icon_state = "mp_shield"
 	icon = 'icons/obj/items/clothing/helmet_garb.dmi'
@@ -806,8 +806,8 @@
 //welding goggles
 
 /obj/item/clothing/glasses/welding
-	name = "welding goggles"
-	desc = "Protects the eyes from welders, approved by the mad scientist association."
+	name = "焊接护目镜"
+	desc = "保护眼睛免受焊接伤害，经疯狂科学家协会认证。"
 	icon = 'icons/obj/items/clothing/glasses/goggles.dmi'
 	icon_state = "welding-g"
 	item_state = "welding-g"
@@ -848,7 +848,7 @@
 		flags_armor_protection &= ~BODY_FLAG_EYES
 		update_icon()
 		eye_protection = EYE_PROTECTION_NONE
-		to_chat(usr, "You push [src] up out of your face.")
+		to_chat(usr, "你将[src]推离面部。")
 	else
 		active = 1
 		vision_impair = vision_impair_on
@@ -857,7 +857,7 @@
 		flags_armor_protection |= BODY_FLAG_EYES
 		update_icon()
 		eye_protection = initial(eye_protection)
-		to_chat(usr, "You flip [src] down to protect your eyes.")
+		to_chat(usr, "你拉下[src]以保护眼睛。")
 
 
 	if(ishuman(loc))
@@ -873,8 +873,8 @@
 			A.update_button_icon()
 
 /obj/item/clothing/glasses/welding/superior
-	name = "superior welding goggles"
-	desc = "Welding goggles made from more expensive materials, strangely smells like potatoes."
+	name = "高级焊接护目镜"
+	desc = "由更昂贵材料制成的焊接护目镜，奇怪地散发着土豆味。"
 	icon_state = "rwelding-g"
 	item_state = "rwelding-g"
 	vision_impair = VISION_IMPAIR_WEAK
@@ -882,13 +882,13 @@
 	vision_impair_off = VISION_IMPAIR_NONE
 
 /obj/item/clothing/glasses/welding/superior/prescription
-	desc = "Welding goggles made from more expensive materials. There are barely visible prescription lenses connected to the frame, allowing vision even when the goggles are raised."
+	desc = "由更昂贵材料制成的焊接护目镜。镜架上连接着几乎看不见的处方镜片，即使护目镜掀起时也能提供视力。"
 	prescription = TRUE
 
 //sunglasses
 
 /obj/item/clothing/glasses/sunglasses
-	desc = "Generic off-brand eyewear, used to help provide rudimentary eye cover. Enhanced shielding blocks many flashes."
+	desc = "通用杂牌护目镜，用于提供基础眼部防护。增强屏蔽层可阻挡多种闪光。"
 	name = "sunglasses"
 	icon_state = "sun"
 	item_state = "sun"
@@ -907,7 +907,7 @@
 /obj/item/clothing/glasses/sunglasses/blindfold
 	name = "blindfold"
 	gender = NEUTER
-	desc = "Covers the eyes, preventing sight."
+	desc = "遮盖眼睛，阻挡视线。"
 	icon = 'icons/obj/items/clothing/glasses/misc.dmi'
 	item_icons = list(
 		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/misc.dmi',
@@ -921,15 +921,15 @@
 	vision_impair = VISION_IMPAIR_MAX
 
 /obj/item/clothing/glasses/sunglasses/prescription
-	desc = "A mixture of coolness and the inherent nerdiness of a prescription. Somehow manages to conceal both."
-	name = "prescription sunglasses"
+	desc = "兼具酷炫感与处方镜固有的书呆子气。竟能同时隐藏两者。"
+	name = "处方太阳镜"
 	prescription = TRUE
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/glasses/sunglasses/big
 	name = "\improper BiMex personal shades"
-	desc = "These are an expensive pair of BiMex sunglasses. This brand is popular with USCM foot sloggers because its patented mirror refraction has been said to offer protection from atomic flash, solar radiation, and targeting lasers. To top it all off, everyone seems to know a guy who knows a guy who knows a guy that had a laser pistol reflect off of his shades. BiMex came into popularity with the Marines after its 'Save the Colonies and Look Cool Doing It' ad campaign."
+	desc = "这是一副昂贵的BiMex太阳镜。该品牌在USCM步兵中颇受欢迎，因其专利镜面折射技术据称能防护原子闪光、太阳辐射和瞄准激光。最重要的是，似乎人人都认识某个家伙的某个朋友的朋友，曾用这副眼镜反射过激光手枪。BiMex在陆战队员中流行起来，源于其‘拯救殖民地，酷炫行动’广告宣传活动。"
 	icon_state = "bigsunglasses"
 	item_state = "sunglasses"
 	eye_protection = EYE_PROTECTION_FLASH
@@ -939,7 +939,7 @@
 
 /obj/item/clothing/glasses/sunglasses/big/fake
 	name = "\improper BiMax personal shades"
-	desc = "These are a bargain-bin pair of BiMex-style sunglasses—emphasis on the style."
+	desc = "这是一副廉价仿BiMex风格的太阳镜——重点在于‘风格’。"
 	desc_lore = "Marketed as 'BiMax,' with an 'A' to sidestep copyright, these knockoffs are popular with penny-pinching spacers and wannabe badasses. While the real deal boasts patented mirror refraction for atomic flash, solar radiation, and targeting laser protection, these cut-rate imitations barely keep UV rays at bay. As for that famous story of a laser pistol reflecting off the originals? Good luck finding anyone who believes these could pull it off. But hey, they’re cheap, and their 'Save the Budget and Look Cool Doing It' slogan really sells it."
 	icon_state = "bigsunglasses"
 	item_state = "bigsunglasses"
@@ -970,7 +970,7 @@
 
 /obj/item/clothing/glasses/sunglasses/hippie
 	name = "\improper Suntex-Sightware rounded shades"
-	desc = "Colorful, rounded shades from Suntex-Sightware, embraced by free spirits and those who march to the beat of their own drum. These vibrant, retro-inspired shades offer adequate protection against flashes while adding a touch of laid-back, bohemian style to any look."
+	desc = "来自Suntex-Sightware的彩色圆形墨镜，深受自由灵魂和特立独行者喜爱。这些充满活力的复古风格墨镜能提供足够的闪光防护，同时为任何造型增添一抹随性的波西米亚风格。"
 	icon_state = "hippie_glasses_pink"
 	item_state = "hippie_glasses_pink"
 
@@ -1000,7 +1000,7 @@
 
 /obj/item/clothing/glasses/sunglasses/big/new_bimex
 	name = "\improper BiMex Polarized Shades"
-	desc = "Sleek, angular shades designed for the modern operator."
+	desc = "专为现代作战人员设计的流线型棱角墨镜。"
 	desc_lore = "BiMex's latest 'TactOptix' line comes with advanced polarization and lightweight ballistic lenses capable of shrugging off small shrapnel impacts. A favorite among frontline operators and deep-space scouts, these shades are marketed as 'combat-tested and action-approved.' Rumors abound of lucky users surviving close-range laser shots thanks to the multi-reflective lens coating, though BiMex's official stance is to 'Stop standing in front of lasers.'"
 	icon_state = "bimex_polarized_yellow"
 	item_state = "bimex_polarized_yellow"
@@ -1019,45 +1019,45 @@
 	item_state = "bimex_polarized_bronze"
 
 /obj/item/clothing/glasses/sunglasses/aviator
-	name = "aviator shades"
-	desc = "A pair of tan tinted sunglasses. You can faintly hear 80's music playing while wearing these."
+	name = "飞行员墨镜"
+	desc = "一副棕褐色调的太阳镜。戴上它，你能隐约听到80年代的音乐在耳边回响。"
 	icon_state = "aviator"
 	item_state = "aviator"
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/glasses/sunglasses/aviator/silver
-	name = "aviator shades"
-	desc = "A pair of silver tinted sunglasses. You can faintly hear 80's music playing while wearing these."
+	name = "飞行员墨镜"
+	desc = "一副银色调的太阳镜。戴上它，你能隐约听到80年代的音乐在耳边回响。"
 	icon_state = "aviator_silver"
 	item_state = "aviator_silver"
 
 /obj/item/clothing/glasses/sunglasses/sechud
-	name = "Security HUD-Glasses"
-	desc = "Sunglasses wired up with the best nano-tech the USCM can muster out on the frontier. Displays information about any person you decree worthy of your gaze."
+	name = "安保平视显示眼镜"
+	desc = "这副太阳镜集成了USCM在边疆所能调集的最顶尖纳米技术。它能显示任何你认为值得关注之人的信息。"
 	icon_state = "sunhud"
 	eye_protection = EYE_PROTECTION_FLASH
 	hud_type = MOB_HUD_SECURITY_ADVANCED
 	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/clothing/glasses/sunglasses/sechud/blue
-	name = "Security HUD-Glasses"
-	desc = "Sunglasses wired up with the best nano-tech the USCM can muster out on the frontier. Displays information about any person you decree worthy of your gaze."
+	name = "安保平视显示眼镜"
+	desc = "这副太阳镜集成了USCM在边疆所能调集的最顶尖纳米技术。它能显示任何你认为值得关注之人的信息。"
 	icon_state = "sunhud_blue"
 
 /obj/item/clothing/glasses/sunglasses/sechud/blue/prescription
-	name = "Prescription Security HUD-Glasses"
-	desc = "Sunglasses wired up with the best nano-tech the USCM can muster out on the frontier. Displays information about any person you decree worthy of your gaze. Contains prescription lenses."
+	name = "处方安保平视显示眼镜"
+	desc = "这副太阳镜集成了USCM在边疆所能调集的最顶尖纳米技术。它能显示任何你认为值得关注之人的信息。包含处方镜片。"
 	prescription = TRUE
 
 /obj/item/clothing/glasses/sunglasses/sechud/prescription
-	name = "Prescription Security HUD-Glasses"
-	desc = "Sunglasses wired up with the best nano-tech the USCM can muster out on the frontier. Displays information about any person you decree worthy of your gaze. Contains prescription lenses."
+	name = "处方安保平视显示眼镜"
+	desc = "这副太阳镜集成了USCM在边疆所能调集的最顶尖纳米技术。它能显示任何你认为值得关注之人的信息。包含处方镜片。"
 	prescription = TRUE
 
 /obj/item/clothing/glasses/sunglasses/sechud/tactical
-	name = "tactical SWAT HUD"
-	desc = "Flash-resistant goggles with inbuilt combat and security information."
+	name = "战术特警平视显示器"
+	desc = "具备防闪光功能并内置战斗与安保信息的护目镜。"
 	icon = 'icons/obj/items/clothing/glasses/goggles.dmi'
 	icon_state = "swatgoggles"
 	gender = NEUTER

@@ -7,7 +7,7 @@
 	spawn_positions = 6
 	allow_additional = TRUE
 	scaled = TRUE
-	supervisors = "ARES and APOLLO"
+	supervisors = "阿瑞斯与阿波罗"
 	selection_class = "job_working_joe"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_WHITELISTED|ROLE_CUSTOM_SPAWN
 	flags_whitelist = WHITELIST_JOE
@@ -73,7 +73,7 @@
 	spawn_positions = 3
 	allow_additional = TRUE
 	scaled = FALSE
-	supervisors = "1VAN/3 and UPP command staff"
+	supervisors = "1VAN/3与联合人民阵线指挥人员"
 	gear_preset = /datum/equipment_preset/synth/working_joe/upp
 	flags_startup_parameters = ROLE_WHITELISTED
 

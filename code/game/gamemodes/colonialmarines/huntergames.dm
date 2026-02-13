@@ -303,8 +303,8 @@
 
 	//Give them some information
 	spawn(4)
-		to_chat(H, "<h2>There can be only one!!</h2>")
-		to_chat(H, "Use the flare in your pocket to light the way!")
+		to_chat(H, "<h2>只能有一个胜者！！</h2>")
+		to_chat(H, "用你口袋里的照明弹照亮前路！")
 	return 1
 
 /datum/game_mode/huntergames/proc/loop_package()
@@ -313,7 +313,7 @@
 			to_world(SPAN_ROUNDBODY("Your Predator capturers have decided it is time to bestow a gift upon the scurrying humans."))
 			to_world(SPAN_ROUNDBODY("One lucky contestant should prepare for a supply drop in 60 seconds."))
 			for(var/mob/dead/D in GLOB.dead_mob_list)
-				to_chat(D, SPAN_ROUNDBODY("Now is your chance to vote for a supply drop beneficiary! Go to Ghost tab, Spectator Vote!"))
+				to_chat(D, SPAN_ROUNDBODY("现在是你投票选择补给投放受益人的机会！前往幽灵选项卡，旁观者投票！"))
 			world << sound('sound/effects/alert.ogg')
 			last_drop = world.time
 			waiting_for_drop_votes = 1
@@ -379,7 +379,7 @@
 
 	for(var/mob/living/carbon/human/H in GLOB.alive_mob_list)
 		if(istype(H) && H.stat == 0 && !istype(get_area(H.loc),/area/centcom) && !istype(get_area(H.loc),/area/tdome))
-			if(H.species != "Yautja") // Preds don't count in round end.
+			if(H.species != "铁血战士") // Preds don't count in round end.
 				human_count += 1 //Add them to the amount of people who're alive.
 
 	return human_count

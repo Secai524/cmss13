@@ -2,7 +2,7 @@
 // *** Basic retrieve item and get it to an area ***
 // --------------------------------------------
 /datum/cm_objective/retrieve_item
-	name = "Retrieve an Item"
+	name = "取回物品"
 	var/obj/target_item
 	var/list/area/target_areas
 	var/area/initial_area
@@ -60,7 +60,7 @@
 // --------------------------------------------
 
 /datum/cm_objective/retrieve_item/fulton
-	name = "Recover a lost fulton"
+	name = "回收丢失的富尔顿装置"
 	state = OBJECTIVE_ACTIVE
 	objective_flags = OBJECTIVE_DO_NOT_TREE
 	target_areas = list(
@@ -98,7 +98,7 @@
 // -----------------------------------------------------------
 
 /datum/cm_objective/retrieve_item/document
-	name = "Store document in ship lab"
+	name = "将文件存入舰上实验室"
 	value = OBJECTIVE_LOW_VALUE
 	objective_flags = OBJECTIVE_DO_NOT_TREE | OBJECTIVE_START_PROCESSING_ON_DISCOVERY
 

@@ -69,7 +69,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player_time)
 /datum/entity/player/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		ui = new(user, src, "Playtime", "Playtimes")
+		ui = new(user, src, "游戏时长", "Playtimes")
 		ui.open()
 
 /datum/entity/player/ui_assets(mob/user)
@@ -100,14 +100,14 @@ BSQL_PROTECT_DATUM(/datum/entity/player_time)
 
 	if(owning_client)
 		var/list/xeno_playtime = list(
-			"job" = "Xenomorph",
+			"job" = "异形",
 			"playtime" = round(owning_client.get_total_xeno_playtime() DECISECONDS_TO_HOURS, 0.1),
 			"bgcolor" = "#3a3a3a",
 			"textcolor" = "#FFFFFF"
 		)
 
 		var/list/marine_playtime = list(
-			"job" = "Human",
+			"job" = "人类",
 			"playtime" = round(owning_client.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1),
 			"bgcolor" = "#3a3a3a",
 			"textcolor" = "#FFFFFF"

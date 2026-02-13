@@ -1,7 +1,7 @@
 // as far as i understand this is only done for one insert
 //crashlanding-upp-bar.dmm map.
 /datum/equipment_preset/survivor/upp
-	name = "Survivor - UPP"
+	name = "幸存者 - UPP"
 	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0)
 	origin_override = ORIGIN_UPP
 	job_title = JOB_SURVIVOR
@@ -40,7 +40,7 @@
 // /obj/effect/landmark/survivor_spawner/upp/soldier
 //crashlanding-upp-bar.dmm
 /datum/equipment_preset/survivor/upp/soldier
-	name = "Survivor - UPP Soldier"
+	name = "幸存者 - UPP士兵"
 	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_UE2 = JOB_PLAYTIME_TIER_1)
 	assignment = JOB_UPP
 	job_title = JOB_UPP
@@ -66,7 +66,7 @@
 // /obj/effect/landmark/survivor_spawner/upp_sapper
 //crashlanding-upp-bar.dmm
 /datum/equipment_preset/survivor/upp/sapper
-	name = "Survivor - UPP Sapper"
+	name = "幸存者 - UPP工兵"
 	paygrades = list(PAY_SHORT_UE3 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_UPP_ENGI
 	job_title = JOB_UPP_ENGI
@@ -97,7 +97,7 @@
 // /obj/effect/landmark/survivor_spawner/upp_medic
 //crashlanding-upp-bar.dmm
 /datum/equipment_preset/survivor/upp/medic
-	name = "Survivor - UPP Medic"
+	name = "幸存者 - UPP医疗兵"
 	paygrades = list(PAY_SHORT_UE3 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_UPP_MEDIC
 	job_title = JOB_UPP_MEDIC
@@ -130,7 +130,7 @@
 // /obj/effect/landmark/survivor_spawner/upp_specialist
 //crashlanding-upp-bar.dmm
 /datum/equipment_preset/survivor/upp/specialist
-	name = "Survivor - UPP Specialist"
+	name = "幸存者 - UPP专家"
 	assignment = JOB_UPP_SPECIALIST
 	job_title = JOB_UPP_SPECIALIST
 	minimap_icon = "upp_spec"
@@ -152,7 +152,7 @@
 //crashlanding-upp-bar.dmm
 // /obj/effect/landmark/survivor_spawner/squad_leader
 /datum/equipment_preset/survivor/upp/squad_leader
-	name = "Survivor - UPP Squad Leader"
+	name = "幸存者 - UPP班长"
 	paygrades = list(PAY_SHORT_UE5 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_UPP_LEADER
 	job_title = JOB_UPP_LEADER
@@ -176,7 +176,7 @@
 
 //it's used on all of the above in their spawner.
 /datum/equipment_preset/synth/survivor/upp
-	name = "Survivor - Synthetic - UPP Synth"
+	name = "幸存者 - 合成人 - UPP合成人"
 	flags = EQUIPMENT_PRESET_EXTRA
 	languages = ALL_SYNTH_LANGUAGES_UPP
 	assignment = JOB_UPP_SUPPORT_SYNTH

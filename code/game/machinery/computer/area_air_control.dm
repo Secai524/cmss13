@@ -1,6 +1,6 @@
 /obj/structure/machinery/computer/area_atmos
-	name = "Area Air Control"
-	desc = "A computer used to control the stationary scrubbers and pumps in the area."
+	name = "区域空气控制台"
+	desc = "用于控制区域内固定式洗涤器和泵的计算机。"
 	icon_state = "atmos"
 	circuit = /obj/item/circuitboard/computer/area_atmos
 

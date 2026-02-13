@@ -3,7 +3,7 @@
  */
 /obj/item/device/sentry_computer
 	name = "\improper Sentry Gun Network Laptop"
-	desc = "A laptop loaded with sentry control software."
+	desc = "一台装载了哨戒炮控制软件的笔记本电脑。"
 	icon = 'icons/obj/structures/props/sentrycomp.dmi'
 	icon_state = "sentrycomp_cl"
 	w_class = SIZE_SMALL
@@ -192,7 +192,7 @@
 /obj/item/device/sentry_computer/attackby(obj/item/object, mob/user)
 	if(istype(object, /obj/item/cell))
 		var/obj/item/cell/new_cell = object
-		to_chat(user, SPAN_NOTICE("The new cell contains: [new_cell.charge] power."))
+		to_chat(user, SPAN_NOTICE("新电池包含：[new_cell.charge] 电力。"))
 		cell.forceMove(get_turf(user))
 		cell = new_cell
 		user.drop_inv_item_to_loc(new_cell, src)
@@ -203,23 +203,23 @@
 		playsound(src, 'sound/machines/keyboard2.ogg', 25, FALSE)
 
 		if(tool.remove_encryption_key(serial_number))
-			to_chat(user, SPAN_NOTICE("You begin unloading the encryption key from \the [tool]."))
+			to_chat(user, SPAN_NOTICE("你开始从\the [tool]卸载加密密钥。"))
 			if (do_after(usr, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
-				to_chat(user, SPAN_NOTICE("You unload the encryption key from \the [tool]."))
+				to_chat(user, SPAN_NOTICE("你从\the [tool]卸载了加密密钥。"))
 				registered_tools -= list(id)
 		else
 			if(length(tool.encryption_keys))
-				to_chat(user, SPAN_NOTICE("Removing existing encryption keys."))
+				to_chat(user, SPAN_NOTICE("正在移除现有加密密钥。"))
 				if (do_after(usr, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 					for(var/key_id in tool.encryption_keys)
 						var/datum/weakref/ref = tool.encryption_keys[key_id]
 						var/obj/item/device/sentry_computer/key_object = ref.resolve()
 						key_object?.registered_tools -= id
 					tool.encryption_keys = list()
-				to_chat(user, SPAN_NOTICE("Existing encryption keys cleared."))
-			to_chat(usr, SPAN_NOTICE("You begin encryption key to \the [tool]."))
+				to_chat(user, SPAN_NOTICE("现有加密密钥已清除。"))
+			to_chat(usr, SPAN_NOTICE("你开始向\the [tool]加载加密密钥。"))
 			if (do_after(usr, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
-				to_chat(user, SPAN_NOTICE("You load an encryption key to \the [tool]."))
+				to_chat(user, SPAN_NOTICE("你向\the [tool]加载了一个加密密钥。"))
 				registered_tools += list(id)
 				tool.load_encryption_key(serial_number, src)
 	else
@@ -237,7 +237,7 @@
 
 	var/obj/structure/machinery/defenses/defense = defensive_structure
 	pair_sentry(defense)
-	to_chat(user, SPAN_NOTICE("[defense] has been encrypted."))
+	to_chat(user, SPAN_NOTICE("[defense] 已被加密。"))
 	var/message = "[defense] added to [src]"
 	INVOKE_ASYNC(src, PROC_REF(send_message), message)
 
@@ -250,12 +250,12 @@
 /obj/item/device/sentry_computer/proc/unregister(tool, mob/user, sentry_gun)
 	var/obj/structure/machinery/defenses/sentry/sentry = sentry_gun
 	if(sentry.linked_laptop != src)
-		to_chat(user, SPAN_WARNING("[sentry] is already encrypted by laptop [sentry.linked_laptop.serial_number]."))
+		to_chat(user, SPAN_WARNING("[sentry] 已被笔记本电脑 [sentry.linked_laptop.serial_number] 加密。"))
 		return
 
 	if (do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		unpair_sentry(sentry)
-		to_chat(user, SPAN_NOTICE("[sentry] has been decrypted."))
+		to_chat(user, SPAN_NOTICE("[sentry] 已被解密。"))
 		var/message = "[sentry] removed from from [src]"
 		INVOKE_ASYNC(src, PROC_REF(send_message), message)
 
@@ -385,7 +385,7 @@
 	if(.)
 		return
 	if(!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-		to_chat(usr, SPAN_WARNING("You are not authorised to configure the sentry."))
+		to_chat(usr, SPAN_WARNING("你无权配置此哨戒炮。"))
 		return
 	if(params["index"])
 		// the action represents a sentry

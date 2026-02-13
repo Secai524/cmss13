@@ -78,7 +78,7 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 	bay = locate(/area/admin/droppod/loading) in GLOB.sorted_areas
 	if(!bay)
 		if(holder)
-			to_chat(holder, SPAN_WARNING("There's no /area/admin/droppod/loading. You can make one yourself, but yell at the mappers to fix this."))
+			to_chat(holder, SPAN_WARNING("没有 /area/admin/droppod/loading 区域。你可以自己创建一个，但记得催地图制作者修复这个问题。"))
 		CRASH("No /area/admin/droppod/loading has been mapped into the admin z-level!")
 	ordered_area = list()
 	for(var/turf/T in bay)
@@ -244,7 +244,7 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 	custom_dropoff = TRUE
 	temp_pod.dropoff_point = get_turf(target)
 	if(holder)
-		to_chat(holder, SPAN_NOTICE("You have selected [temp_pod.dropoff_point] as your dropoff location."))
+		to_chat(holder, SPAN_NOTICE("你已选择[temp_pod.dropoff_point]作为你的投放地点。"))
 	SStgui.update_uis(src)
 	return COMPONENT_INTERRUPT_CLICK
 
@@ -361,7 +361,7 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 		if("goto_prev_turf")
 			var/mob/M = holder.mob
 			if(!old_location)
-				to_chat(M, SPAN_WARNING("Error! You don't have an old location to teleport back to!"))
+				to_chat(M, SPAN_WARNING("错误！你没有可以传送回去的旧位置！"))
 				return
 			M.forceMove(old_location)
 			message_admins("[key_name_admin(usr)] jumped to [get_area(old_location)]")
@@ -422,8 +422,8 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 			refresh_bay()
 			. = TRUE
 		if("clear_bay")
-			if(tgui_alert(usr, "This will delete all objs and mobs in [bay]. Are you sure?",\
-				"Confirmation", list("Yes", "No")) == "Yes")
+			if(tgui_alert(usr, "这将删除[bay]中的所有物体和生物。确定吗？",\
+				"确认", list("Yes", "No")) == "Yes")
 				clear_bay()
 				refresh_bay()
 			. = TRUE

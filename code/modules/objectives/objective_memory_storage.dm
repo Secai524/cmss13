@@ -112,9 +112,9 @@ GLOBAL_DATUM_INIT(intel_system, /datum/intel_system, new())
 // *** Upload clues with the computer ***
 // --------------------------------------------
 /obj/structure/machinery/computer/intel
-	name = "Intel Computer"
+	name = "情报计算机"
 	var/label = ""
-	desc = "An USCM Intel Computer for data cataloguing and distribution."
+	desc = "一台用于数据编目和分发的USCM情报计算机。"
 	icon_state = "terminal1_old"
 	unslashable = TRUE
 	unacidable = TRUE
@@ -125,15 +125,15 @@ GLOBAL_DATUM_INIT(intel_system, /datum/intel_system, new())
 	if(!user || !istype(user) || !user.mind || !user.mind.objective_memory)
 		return FALSE
 	if(!powered())
-		to_chat(user, SPAN_WARNING("This computer has no power!"))
+		to_chat(user, SPAN_WARNING("这台计算机没有通电！"))
 		return FALSE
 	if(!GLOB.intel_system)
-		to_chat(user, SPAN_WARNING("The computer doesn't seem to be connected to anything..."))
+		to_chat(user, SPAN_WARNING("这台计算机似乎没有连接到任何东西..."))
 		return FALSE
 	if(user.action_busy)
 		return FALSE
 
-	to_chat(user, SPAN_NOTICE("You start typing in intel into the computer..."))
+	to_chat(user, SPAN_NOTICE("你开始向计算机输入情报..."))
 
 	var/total_transferred = 0
 	var/outcome = 0 //outcome of an individual upload - if something interrupts us, we cancel the rest
@@ -190,9 +190,9 @@ GLOBAL_DATUM_INIT(intel_system, /datum/intel_system, new())
 			total_transferred++
 
 	if(total_transferred > 0)
-		to_chat(user, SPAN_NOTICE("...and done! You uploaded [total_transferred] entries!"))
+		to_chat(user, SPAN_NOTICE("...完成！你上传了[total_transferred]条条目！"))
 	else
-		to_chat(user, SPAN_NOTICE("...and you have nothing new to add..."))
+		to_chat(user, SPAN_NOTICE("...你没有新的内容可添加..."))
 
 	return TRUE
 
@@ -211,16 +211,16 @@ GLOBAL_DATUM_INIT(intel_system, /datum/intel_system, new())
 	playsound(user, pick('sound/machines/computer_typing4.ogg', 'sound/machines/computer_typing5.ogg', 'sound/machines/computer_typing6.ogg'), 5, 1)
 
 	if(!do_after(user, typing_time * user.get_skill_duration_multiplier(SKILL_INTEL), INTERRUPT_ALL, BUSY_ICON_GENERIC)) // Can't move from the spot
-		to_chat(user, SPAN_WARNING("You get distracted and lose your train of thought, you'll have to start the typing over..."))
+		to_chat(user, SPAN_WARNING("你分心了，思路被打断，你得重新开始输入..."))
 		return -1
 
-	to_chat(user, SPAN_NOTICE("...something about \"[clue]\"..."))
+	to_chat(user, SPAN_NOTICE("...关于\"[clue]\"..."))
 	GLOB.intel_system.store_single_objective(O)
 	return 1
 
 /obj/structure/machinery/computer/intel/disk_reader // ARC computer to save on tile space
 	name = "\improper SIGINT terminal"
-	desc = "An USCM computer capable of uploading data to the intelligence database. It has a disk reader slot built into the bottom, as well."
+	desc = "一台能够将数据上传至情报数据库的USCM计算机。其底部还内置了一个磁盘读取器插槽。"
 	icon = 'icons/obj/vehicles/interiors/arc.dmi'
 	icon_state = "sigint_computer"
 
@@ -233,8 +233,8 @@ GLOBAL_DATUM_INIT(intel_system, /datum/intel_system, new())
 // --------------------------------------------
 
 /obj/structure/machinery/computer/view_objectives
-	name = "Intel Database Computer"
-	desc = "An USCM Intel Database Computer used for consulting the current intel database."
+	name = "情报数据库计算机"
+	desc = "一台用于查询当前情报数据库的USCM情报数据库计算机。"
 	icon_state = "terminal1_old"
 	unslashable = TRUE
 	unacidable = TRUE
@@ -244,10 +244,10 @@ GLOBAL_DATUM_INIT(intel_system, /datum/intel_system, new())
 	if(!user || !istype(user) || !user.mind || !user.mind.objective_memory)
 		return FALSE
 	if(!powered())
-		to_chat(user, SPAN_WARNING("This computer has no power!"))
+		to_chat(user, SPAN_WARNING("这台计算机没有通电！"))
 		return FALSE
 	if(!GLOB.intel_system)
-		to_chat(user, SPAN_WARNING("The computer doesn't seem to be connected to anything..."))
+		to_chat(user, SPAN_WARNING("这台计算机似乎没有连接到任何东西..."))
 		return FALSE
 	if(user.action_busy)
 		return FALSE

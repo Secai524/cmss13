@@ -1,5 +1,5 @@
 /datum/map_template/shuttle
-	name = "Base Shuttle Template"
+	name = "基础穿梭机模板"
 	var/prefix = "maps/shuttles/"
 	var/suffix
 	var/port_id
@@ -85,10 +85,10 @@
 
 /datum/map_template/shuttle/vehicle
 	shuttle_id = MOBILE_SHUTTLE_VEHICLE_ELEVATOR
-	name = "Vehicle Elevator"
+	name = "载具升降机"
 
 /datum/map_template/shuttle/trijent_elevator
-	name = "Trijent Elevator"
+	name = "特里金特电梯"
 	shuttle_id = MOBILE_TRIJENT_ELEVATOR
 	var/elevator_network
 

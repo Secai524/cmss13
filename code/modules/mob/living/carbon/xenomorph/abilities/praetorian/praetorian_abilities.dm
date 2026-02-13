@@ -4,7 +4,7 @@
 ////////// VANGUARD ABILITIES
 
 /datum/action/xeno_action/activable/pierce
-	name = "Pierce"
+	name = "穿刺"
 	action_icon_state = "prae_pierce"
 	macro_path = /datum/action/xeno_action/verb/verb_pierce
 	action_type = XENO_ACTION_CLICK
@@ -18,7 +18,7 @@
 	var/should_spin_instead = FALSE
 
 /datum/action/xeno_action/activable/pounce/prae_dash
-	name = "Dash"
+	name = "猛冲"
 	action_icon_state = "prae_dash"
 	action_text = "dash"
 	macro_path = /datum/action/xeno_action/verb/verb_dash
@@ -44,7 +44,7 @@
 	pounce_pass_flags = PASS_MOB_THRU|PASS_OVER_THROW_MOB
 
 /datum/action/xeno_action/activable/cleave
-	name = "Cleave"
+	name = "劈砍"
 	action_icon_state = "prae_cleave_action"
 	macro_path = /datum/action/xeno_action/verb/verb_cleave
 	ability_primacy = XENO_PRIMARY_ACTION_3
@@ -64,7 +64,7 @@
 	var/buffed = FALSE // Are we buffed
 
 /datum/action/xeno_action/onclick/toggle_cleave
-	name = "Toggle Cleave Type"
+	name = "切换劈砍类型"
 	action_icon_state = "prae_cleave_root"
 	plasma_cost = 0
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_cleave
@@ -95,10 +95,10 @@
 	var/action_icon_result
 	if (cAction.root_toggle)
 		action_icon_result = "prae_cleave_root"
-		to_chat(X, SPAN_WARNING("We will now root marines with our cleave."))
+		to_chat(X, SPAN_WARNING("我们现在将用劈砍来定住陆战队员。"))
 	else
 		action_icon_result = "prae_cleave_fling" // TODO: update
-		to_chat(X, SPAN_WARNING("We will now throw marines with our cleave."))
+		to_chat(X, SPAN_WARNING("我们现在将用劈砍来投掷陆战队员。"))
 
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)
@@ -107,7 +107,7 @@
 ////////// Oppressor powers
 
 /datum/action/xeno_action/activable/tail_stab/tail_seize //no verbmacrohotkey, its just tail stab.
-	name = "Tail Seize"
+	name = "尾擒"
 	action_icon_state = "tail_seize"
 	action_type = XENO_ACTION_CLICK
 	charge_time = 0.5 SECONDS
@@ -115,7 +115,7 @@
 	ability_primacy = XENO_TAIL_STAB
 
 /datum/action/xeno_action/activable/prae_abduct
-	name = "Abduct"
+	name = "绑架"
 	action_icon_state = "abduct"
 	macro_path = /datum/action/xeno_action/verb/verb_prae_abduct
 	ability_primacy = XENO_PRIMARY_ACTION_1
@@ -128,7 +128,7 @@
 	var/windup = 8 DECISECONDS
 
 /datum/action/xeno_action/activable/oppressor_punch
-	name = "Dislocate"
+	name = "脱臼"
 	action_icon_state = "punch"
 	macro_path = /datum/action/xeno_action/verb/verb_oppressor_punch
 	action_type = XENO_ACTION_CLICK
@@ -143,7 +143,7 @@
 // This one is more tightly coupled than I'd like, but oh well
 // unused
 /*datum/action/xeno_action/onclick/crush
-	name = "Crush"
+	name = "碾压"
 	action_icon_state = "prae_crush"
 	action_text = "crush"
 	macro_path = /datum/action/xeno_action/verb/verb_crush
@@ -153,7 +153,7 @@
 
 // Tail lash
 /datum/action/xeno_action/activable/tail_lash
-	name = "Tail Lash"
+	name = "尾鞭"
 	action_icon_state = "prae_tail_lash"
 	macro_path = /datum/action/xeno_action/verb/verb_crush
 	ability_primacy = XENO_PRIMARY_ACTION_3
@@ -168,7 +168,7 @@
 ////////// Dancer Abilities
 
 /datum/action/xeno_action/activable/prae_impale
-	name = "Impale"
+	name = "刺穿"
 	action_icon_state = "prae_impale"
 	macro_path = /datum/action/xeno_action/verb/verb_prae_impale
 	ability_primacy = XENO_PRIMARY_ACTION_1
@@ -179,7 +179,7 @@
 	var/impale_click_miss_cooldown = 1.5 SECONDS
 
 /datum/action/xeno_action/onclick/prae_dodge
-	name = "Dodge"
+	name = "闪避"
 	action_icon_state = "prae_dodge"
 	macro_path = /datum/action/xeno_action/verb/verb_prae_dodge
 	ability_primacy = XENO_PRIMARY_ACTION_2
@@ -192,7 +192,7 @@
 	var/speed_buff_amount = 0.5
 
 /datum/action/xeno_action/activable/prae_tail_trip
-	name = "Tail Trip"
+	name = "尾绊"
 	action_icon_state = "prae_tail_trip"
 	macro_path = /datum/action/xeno_action/verb/verb_prae_tail_trip
 	ability_primacy = XENO_PRIMARY_ACTION_3
@@ -213,12 +213,12 @@
 ////////// BASE PRAE
 
 /datum/action/xeno_action/activable/xeno_spit/praetorian
-	name = "Spit Acid"
+	name = "喷吐酸液"
 	xeno_cooldown = 2 SECONDS
 
 
 /datum/action/xeno_action/activable/pounce/base_prae_dash
-	name = "Dash"
+	name = "猛冲"
 	action_icon_state = "prae_dash"
 	action_text = "dash"
 	macro_path = /datum/action/xeno_action/verb/verb_dash
@@ -234,7 +234,7 @@
 	freeze_self = FALSE
 
 /datum/action/xeno_action/activable/prae_acid_ball
-	name = "Acid Ball"
+	name = "酸液球"
 	action_icon_state = "prae_acid_ball"
 	macro_path = /datum/action/xeno_action/verb/verb_acid_ball
 	action_type = XENO_ACTION_CLICK
@@ -261,7 +261,7 @@
 		return
 
 	if (!do_after(acidball_user, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
-		to_chat(acidball_user, SPAN_XENODANGER("We cancel our acid ball."))
+		to_chat(acidball_user, SPAN_XENODANGER("我们取消了酸液球。"))
 		return
 
 	if (!check_and_use_plasma_owner())
@@ -269,7 +269,7 @@
 
 	apply_cooldown()
 
-	to_chat(acidball_user, SPAN_XENOWARNING("We lob a compressed ball of acid into the air!"))
+	to_chat(acidball_user, SPAN_XENOWARNING("我们向空中投掷了一团压缩酸液球！"))
 
 	var/obj/item/explosive/grenade/xeno_acid_grenade/grenade = new /obj/item/explosive/grenade/xeno_acid_grenade
 	grenade.cause_data = create_cause_data(initial(acidball_user.caste_type), acidball_user)
@@ -281,7 +281,7 @@
 
 
 /datum/action/xeno_action/activable/spray_acid/base_prae_spray_acid
-	name = "Spray Acid"
+	name = "喷洒酸液"
 	action_icon_state = "spray_acid"
 	macro_path = /datum/action/xeno_action/verb/verb_spray_acid
 	action_type = XENO_ACTION_CLICK
@@ -298,7 +298,7 @@
 ///////////////////////// VALKYRIE PRAE
 
 /datum/action/xeno_action/activable/tail_stab/tail_fountain //no verbmacrohotkey, its just tail stab.
-	name = "Tail Fountain"
+	name = "尾泉"
 	action_icon_state = "tail_seize"
 	action_type = XENO_ACTION_CLICK
 	charge_time = 0.5 SECONDS
@@ -306,7 +306,7 @@
 	ability_primacy = XENO_TAIL_STAB
 
 /datum/action/xeno_action/activable/valkyrie_rage
-	name = "Tantrum"
+	name = "暴怒"
 	action_icon_state = "warden_heal"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
@@ -332,7 +332,7 @@
 
 
 /datum/action/xeno_action/activable/high_gallop
-	name = "High Gallop"
+	name = "高速疾驰"
 	action_icon_state = "prae_tail_trip"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
@@ -344,7 +344,7 @@
 
 
 /datum/action/xeno_action/onclick/fight_or_flight
-	name = "Fight or Flight"
+	name = "战或逃"
 	action_icon_state = "screech"
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_3
@@ -359,7 +359,7 @@
 
 /datum/action/xeno_action/activable/prae_retrieve
 
-	name = "Retrieve"
+	name = "回收"
 	action_icon_state = "retrieve"
 	macro_path = /datum/action/xeno_action/verb/verb_prae_retrieve
 	ability_primacy = XENO_PRIMARY_ACTION_4

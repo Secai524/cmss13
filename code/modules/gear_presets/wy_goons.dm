@@ -1,5 +1,5 @@
 /datum/equipment_preset/goon
-	name = "WY Goons"
+	name = "维兰德-汤谷打手"
 	faction = FACTION_WY
 	job_title = FACTION_WY
 	idtype = /obj/item/card/id/silver/cl
@@ -32,13 +32,13 @@
 			first_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male_pmc) : pick(GLOB.first_names_female_pmc))
 		else // MALE
 			first_name = capitalize(pick(GLOB.first_names_male_pmc))
-			new_human.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
+			new_human.f_style = pick("三点钟胡茬", "三点钟小胡子", "五点钟胡茬", "五点钟小胡子")
 	last_name = capitalize(pick(GLOB.last_names_pmc))
 	new_human.change_real_name(new_human, "[first_name] [last_name]")
 
 	new_human.age = rand(17,35)
 
-	new_human.h_style = pick("Crewcut", "Shaved Head", "Buzzcut", "Undercut", "Side Undercut")
+	new_human.h_style = pick("平头", "光头", "板寸", "底层剃光", "侧边削短")
 	var/static/list/colors = list("BLACK" = list(15, 15, 25), "BROWN" = list(102, 51, 0), "AUBURN" = list(139, 62, 19))
 	var/static/list/hair_colors = colors.Copy() + list("BLONDE" = list(197, 164, 30), "CARROT" = list(174, 69, 42))
 	var/hair_color = pick(hair_colors)
@@ -61,7 +61,7 @@
 
 
 /datum/equipment_preset/goon/standard
-	name = "Weyland-Yutani Corporate Security Goon"
+	name = "维兰德-汤谷企业安保打手"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_WY_GOON
@@ -71,12 +71,12 @@
 	minimap_icon = "goon_standard"
 
 /datum/equipment_preset/goon/standard/kutjevo
-	name = "Weyland-Yutani Corporate Security Goon (Kutjevo Camo)"
+	name = "维兰德-汤谷企业安保打手（库特耶沃迷彩）"
 	uniform_type = /obj/item/clothing/under/marine/veteran/pmc/corporate/kutjevo
 	helmet_type = /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/kutjevo
 
 /datum/equipment_preset/goon/standard/hybrisa
-	name = "Weyland-Yutani Corporate Security Goon (Hybrisa Camo)"
+	name = "维兰德-汤谷企业安保打手（海布里萨迷彩）"
 	uniform_type = /obj/item/clothing/under/marine/veteran/pmc/corporate/hybrisa
 	helmet_type = /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa
 
@@ -107,7 +107,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/ap, WEAR_IN_BACK)
 
 /datum/equipment_preset/goon/standard/bodyguard
-	name = "Weyland-Yutani Corporate Security Goon (CL Bodyguard)"
+	name = "维兰德-汤谷企业安保打手（公司联络官保镖）"
 
 /datum/equipment_preset/goon/standard/bodyguard/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY/security, WEAR_L_EAR)
@@ -143,7 +143,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/ap, WEAR_IN_BACK)
 
 /datum/equipment_preset/goon/engineer
-	name = "Weyland-Yutani Corporate Security Technician"
+	name = "维兰德-汤谷企业安保技术员"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_WY_GOON_TECH
@@ -155,12 +155,12 @@
 	helmet_type = /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/engi
 
 /datum/equipment_preset/goon/engineer/kutjevo
-	name = "Weyland-Yutani Corporate Security Technician (Kutjevo Camo)"
+	name = "维兰德-汤谷企业安保技术员（库特耶沃迷彩）"
 	uniform_type = /obj/item/clothing/under/marine/veteran/pmc/corporate/kutjevo
 	helmet_type = /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/kutjevo
 
 /datum/equipment_preset/goon/engineer/hybrisa
-	name = "Weyland-Yutani Corporate Security Technician (Hybrisa Camo)"
+	name = "维兰德-汤谷企业安保技术员（海布里萨迷彩）"
 	uniform_type = /obj/item/clothing/under/marine/veteran/pmc/corporate/hybrisa
 	helmet_type = /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa
 
@@ -190,7 +190,7 @@
 
 
 /datum/equipment_preset/goon/medic
-	name = "Weyland-Yutani Corporate Security Medic"
+	name = "维兰德-汤谷企业安保医疗兵"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_WY_GOON_MEDIC
@@ -202,12 +202,12 @@
 	helmet_type = /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/medic
 
 /datum/equipment_preset/goon/medic/kutjevo
-	name = "Weyland-Yutani Corporate Security Medic (Kutjevo Camo)"
+	name = "维兰德-汤谷企业安保医疗兵（库特耶沃迷彩）"
 	uniform_type = /obj/item/clothing/under/marine/veteran/pmc/corporate/kutjevo
 	helmet_type = /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/kutjevo/medic
 
 /datum/equipment_preset/goon/medic/hybrisa
-	name = "Weyland-Yutani Corporate Security Medic (Hybrisa Camo)"
+	name = "维兰德-汤谷企业安保医疗兵（海布里萨迷彩）"
 	uniform_type = /obj/item/clothing/under/marine/veteran/pmc/corporate/hybrisa
 	helmet_type = /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa/medic
 
@@ -248,7 +248,7 @@
 
 
 /datum/equipment_preset/goon/lead
-	name = "Weyland-Yutani Corporate Security Lead"
+	name = "维兰德-汤谷企业安保领队"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_WY_GOON_LEAD
@@ -260,12 +260,12 @@
 	helmet_type = /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/lead
 
 /datum/equipment_preset/goon/lead/kutjevo
-	name = "Weyland-Yutani Corporate Security Lead (Kutjevo Camo)"
+	name = "维兰德-汤谷企业安保领队（库特耶沃迷彩）"
 	uniform_type = /obj/item/clothing/under/marine/veteran/pmc/corporate/kutjevo/lead
 	helmet_type = /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/kutjevo
 
 /datum/equipment_preset/goon/lead/hybrisa
-	name = "Weyland-Yutani Corporate Security Lead (Hybrisa Camo)"
+	name = "维兰德-汤谷公司安保队长（海伯利萨迷彩）"
 	uniform_type = /obj/item/clothing/under/marine/veteran/pmc/corporate/hybrisa/lead
 	helmet_type = /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa/lead
 
@@ -297,7 +297,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/nsg23/ap, WEAR_IN_BACK)
 
 /datum/equipment_preset/goon/lead/bodyguard
-	name = "Weyland-Yutani Corporate Security Lead (CL Bodyguard)"
+	name = "维兰德-汤谷公司安保队长（公司联络官保镖）"
 
 /datum/equipment_preset/goon/lead/bodyguard/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY/security, WEAR_L_EAR)
@@ -331,7 +331,7 @@
 
 
 /datum/equipment_preset/goon/researcher
-	name = "Weyland-Yutani Corporate Research Consultant"
+	name = "维兰德-汤谷公司研究顾问"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_WY_RESEARCHER
@@ -377,7 +377,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/wy/full_advanced, WEAR_L_STORE)
 
 /datum/equipment_preset/goon/researcher/lead
-	name = "Weyland-Yutani Corporate Research Consultant (Lead)"
+	name = "维兰德-汤谷公司研究顾问（首席）"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_WY_RESEARCH_LEAD
@@ -389,7 +389,7 @@
 ///Hunting Grounds Goons (Part of PMCs)///
 
 /datum/equipment_preset/goon/standard/hunted
-	name = "Weyland-Yutani Corporate Security Goon (Hunted)"
+	name = "维兰德-汤谷公司安保打手（被猎杀）"
 	faction = FACTION_HUNTED_PMC
 
 /datum/equipment_preset/goon/standard/hunted/load_gear(mob/living/carbon/human/new_human)
@@ -415,7 +415,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle, WEAR_IN_BACK)
 
 /datum/equipment_preset/goon/lead/hunted
-	name = "Weyland-Yutani Corporate Security Lead (Hunted)"
+	name = "维兰德-汤谷公司安保队长（被猎杀）"
 	faction = FACTION_HUNTED_PMC
 
 /datum/equipment_preset/goon/lead/hunted/load_gear(mob/living/carbon/human/new_human)

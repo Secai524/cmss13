@@ -1,6 +1,6 @@
 /obj/structure/machinery/cm_vending/clothing/dress
-	name = "ColMarTech Automated Personal Uniform Closet"
-	desc = "An automated closet hooked up to a colossal storage of standard-issue dress uniform variants."
+	name = "殖民地海军陆战队科技自动个人制服衣柜"
+	desc = "一个连接着海量标准制式礼服变体存储库的自动衣柜。"
 	icon_state = "dress"
 	vendor_theme = VENDOR_THEME_USCM
 
@@ -123,15 +123,15 @@
 			var/obj/item/card/id/id_card = H.get_idcard()
 
 			if(!id_card) //not wearing an ID
-				to_chat(H, SPAN_WARNING("Access denied. No ID card detected."))
+				to_chat(H, SPAN_WARNING("权限被拒绝。未检测到身份卡。"))
 				return
 
 			if(id_card.registered_name != H.real_name)
-				to_chat(H, SPAN_WARNING("Wrong ID card owner detected."))
+				to_chat(H, SPAN_WARNING("检测到错误的身份卡所有者。"))
 				return
 
 			if(LAZYLEN(vendor_role) && !vendor_role.Find(id_card.rank))
-				to_chat(H, SPAN_WARNING("This machine isn't for you."))
+				to_chat(H, SPAN_WARNING("这台机器不是给你用的。"))
 				return
 
 			for(var/category in GLOB.uniform_categories) // Very Hacky fix
@@ -158,8 +158,8 @@
 
 //A clothing vendor for admins and devs to test all the items in the game
 /obj/structure/machinery/cm_vending/clothing/super_snowflake
-	name = "\improper Super Snowflake Vendor"
-	desc = "WARNING: The quantity of items contained within can slow down reality."
+	name = "\improper 超级雪花供应商"
+	desc = "警告：内部物品数量可能导致现实延迟。"
 	icon_state = "snowflake"
 	use_points = TRUE //"use points", but everything is free
 	show_points = FALSE
@@ -186,7 +186,7 @@
 	return items
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/proc/get_item_category_from_user()
-	var/item = tgui_input_text(usr,"What item to stock?", "Stock Vendor","")
+	var/item = tgui_input_text(usr,"补充何种物品？", "Stock Vendor","")
 	if(!item)
 		return
 	var/list/types = typesof(/obj/item)
@@ -205,7 +205,7 @@
 		chosen = matches[1]
 	else
 		//If we have multiple options, let them select which one they meant
-		chosen = tgui_input_list(usr, "Select an object type", "Select Object", matches)
+		chosen = tgui_input_list(usr, "选择对象类型", "Select Object", matches)
 
 	return chosen
 
@@ -228,7 +228,7 @@
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/proc/add_items_to_vendor()
 	if(!check_rights(R_MOD))
-		to_chat(usr, SPAN_WARNING("This option isn't for you."))
+		to_chat(usr, SPAN_WARNING("此选项不适合你。"))
 		return
 
 	var/obj/item/chosen = get_item_category_from_user()
@@ -242,53 +242,53 @@
 //Vendor types
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/accessory
-	name = "\improper Super Snowflake Vendor, Accessories"
+	name = "\improper 超级雪花供应商，配件"
 	item_types = list(/obj/item/clothing/accessory)
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/ammo
-	name = "\improper Super Snowflake Vendor, Ammunition"
+	name = "\improper 超级雪花供应商，弹药"
 	item_types = list(/obj/item/ammo_magazine)
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/backpack
-	name = "\improper Super Snowflake Vendor, Backpacks"
+	name = "\improper 超级雪花供应商，背包"
 	item_types = list(/obj/item/storage/backpack)
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/belt
-	name = "\improper Super Snowflake Vendor, Belts"
+	name = "\improper 超级雪花供应商，腰带"
 	item_types = list(/obj/item/storage/belt)
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/glasses
-	name = "\improper Super Snowflake Vendor, Glasses"
+	name = "\improper 超级雪花供应商，眼镜"
 	item_types = list(/obj/item/clothing/glasses)
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/gloves
-	name = "\improper Super Snowflake Vendor, Gloves"
+	name = "\improper 超级雪花供应商，手套"
 	item_types = list(/obj/item/clothing/gloves)
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/helmet
-	name = "\improper Super Snowflake Vendor, Helmets"
+	name = "\improper 超级雪花供应商，头盔"
 	item_types = list(/obj/item/clothing/head)
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/mask
-	name = "\improper Super Snowflake Vendor, Masks"
+	name = "\improper 超级雪花供应商，面具"
 	item_types = list(/obj/item/clothing/mask)
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/pouch
-	name = "\improper Super Snowflake Vendor, Pouches"
+	name = "\improper 超级雪花供应商，小袋"
 	item_types = list(/obj/item/storage/pouch)
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/shoes
-	name = "\improper Super Snowflake Vendor, Shoes"
+	name = "\improper 超级雪花供应商，鞋子"
 	item_types = list(/obj/item/clothing/shoes)
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/suit
-	name = "\improper Super Snowflake Vendor, Suits"
+	name = "\improper 超级雪花供应商，套装"
 	item_types = list(/obj/item/clothing/suit)
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/uniform
-	name = "\improper Super Snowflake Vendor, Uniforms"
+	name = "\improper 超级雪花供应商，制服"
 	item_types = list(/obj/item/clothing/under)
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/weapon
-	name = "\improper Super Snowflake Vendor, Weapons"
+	name = "\improper 超级雪花供应商，武器"
 	item_types = list(/obj/item/weapon)

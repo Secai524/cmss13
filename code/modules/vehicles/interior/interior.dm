@@ -243,7 +243,7 @@
 				passengers_taken_slots++
 			else
 				if(M.stat == CONSCIOUS)
-					to_chat(M, SPAN_WARNING("There's no more space inside!"))
+					to_chat(M, SPAN_WARNING("里面没地方了！"))
 				return FALSE
 
 	else if(isxeno(M))
@@ -252,7 +252,7 @@
 				xenos_taken_slots++
 			else
 				if(M.stat == CONSCIOUS)
-					to_chat(M, SPAN_WARNING("There's no more space inside!"))
+					to_chat(M, SPAN_WARNING("里面没地方了！"))
 				return FALSE
 
 	// If no entrance is specified drop them in the middle of the interior
@@ -297,7 +297,7 @@
 
 		if(O.BlockedPassDirs(A, exit_dir))
 			if(ismob(A))
-				to_chat(A, SPAN_WARNING("Something is blocking the exit!"))
+				to_chat(A, SPAN_WARNING("有东西堵住了出口！"))
 			return FALSE
 
 	var/mob/living/mob
@@ -355,5 +355,5 @@
 			count += 1
 
 	if(count > 0)
-		exterior.visible_message(SPAN_NOTICE("The sudden jolt throws \the [count == 1 ? "body" : "bodies"] out of \the [exterior]"))
+		exterior.visible_message(SPAN_NOTICE("突如其来的颠簸把\the [count == 1 ? "body" : "bodies"] out of \the [exterior]"))
 		update_passenger_count()

@@ -7,7 +7,7 @@
 		return
 	prefs.toggles_chat ^= CHAT_RADIO
 	prefs.save_preferences()
-	to_chat(usr, SPAN_BOLDNOTICE("You will [(prefs.toggles_chat & CHAT_RADIO) ? "now" : "no longer"] see radio chatter from radios or speakers."))
+	to_chat(usr, SPAN_BOLDNOTICE("您将[(prefs.toggles_chat & CHAT_RADIO) ? "now" : "no longer"] see radio chatter from radios or speakers."))
 
 /client/proc/toggleadminhelpsound()
 	set name = "Hear/Silence Adminhelps"
@@ -17,7 +17,7 @@
 		return
 	prefs.toggles_sound ^= SOUND_ADMINHELP
 	prefs.save_preferences()
-	to_chat(usr, SPAN_BOLDNOTICE("You will [(prefs.toggles_sound & SOUND_ADMINHELP) ? "now" : "no longer"] hear a sound when adminhelps arrive."))
+	to_chat(usr, SPAN_BOLDNOTICE("你将[(prefs.toggles_sound & SOUND_ADMINHELP) ? "now" : "no longer"] hear a sound when adminhelps arrive."))
 
 /client/proc/toggleprayers()
 	set name = "Show/Hide Prayers"
@@ -25,7 +25,7 @@
 	set desc = "Toggles seeing prayers."
 	prefs.toggles_chat ^= CHAT_PRAYER
 	prefs.save_preferences()
-	to_chat(src, SPAN_BOLDNOTICE("You will [(prefs.toggles_chat & CHAT_PRAYER) ? "now" : "no longer"] see prayerchat."))
+	to_chat(src, SPAN_BOLDNOTICE("你将[(prefs.toggles_chat & CHAT_PRAYER) ? "now" : "no longer"] see prayerchat."))
 
 CLIENT_VERB(toggle_observer_announcement_sounds)
 	set name = "Hear/Silence Ghost Announcements"
@@ -33,7 +33,7 @@ CLIENT_VERB(toggle_observer_announcement_sounds)
 	set desc = "Toggle hearing a notification of announcements while being an observer."
 	prefs.toggles_sound ^= SOUND_OBSERVER_ANNOUNCEMENTS
 	prefs.save_preferences()
-	to_chat(usr, SPAN_BOLDNOTICE("You will [(prefs.toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS) ? "now" : "no longer"] hear announcement sounds as an observer."))
+	to_chat(usr, SPAN_BOLDNOTICE("你将[(prefs.toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS) ? "now" : "no longer"] hear announcement sounds as an observer."))
 
 CLIENT_VERB(toggle_fax_machine_sounds)
 	set name = "Hear/Silence Ghost Fax Machines"
@@ -41,7 +41,7 @@ CLIENT_VERB(toggle_fax_machine_sounds)
 	set desc = "Toggle hearing a notification of faxes while being an observer."
 	prefs.toggles_sound ^= SOUND_FAX_MACHINE
 	prefs.save_preferences()
-	to_chat(usr, SPAN_BOLDNOTICE("You will [(prefs.toggles_sound & SOUND_FAX_MACHINE) ? "now" : "no longer"] hear a fax sounds as an observer."))
+	to_chat(usr, SPAN_BOLDNOTICE("你将[(prefs.toggles_sound & SOUND_FAX_MACHINE) ? "now" : "no longer"] hear a fax sounds as an observer."))
 
 CLIENT_VERB(toggletitlemusic)
 	set name = "Hear/Silence LobbyMusic"
@@ -50,11 +50,11 @@ CLIENT_VERB(toggletitlemusic)
 	prefs.toggles_sound ^= SOUND_LOBBY
 	prefs.save_preferences()
 	if(prefs.toggles_sound & SOUND_LOBBY)
-		to_chat(src, SPAN_BOLDNOTICE("You will now hear music in the game lobby."))
+		to_chat(src, SPAN_BOLDNOTICE("你现在将在游戏大厅听到音乐。"))
 		if(istype(mob, /mob/new_player))
 			playtitlemusic()
 	else
-		to_chat(src, SPAN_BOLDNOTICE("You will no longer hear music in the game lobby."))
+		to_chat(src, SPAN_BOLDNOTICE("你将不再在游戏大厅听到音乐。"))
 		src << sound(null, repeat = 0, wait = 0, volume = 85, channel = SOUND_CHANNEL_LOBBY) // stop the jamsz
 
 CLIENT_VERB(togglerebootsound)
@@ -63,7 +63,7 @@ CLIENT_VERB(togglerebootsound)
 	set desc = "Toggles hearing the server reboot sound effect."
 	prefs.toggles_sound ^= SOUND_REBOOT
 	prefs.save_preferences()
-	to_chat(src, "You will [(prefs.toggles_sound & SOUND_REBOOT) ? "now" : "no longer"] hear server reboot sounds.")
+	to_chat(src, "你将[(prefs.toggles_sound & SOUND_REBOOT) ? "now" : "no longer"] hear server reboot sounds.")
 
 CLIENT_VERB(togglemidis)
 	set name = "Silence Current Admin Sound"
@@ -78,7 +78,7 @@ CLIENT_VERB(togglechat)
 
 	prefs.lang_chat_disabled = ~prefs.lang_chat_disabled
 	prefs.save_preferences()
-	to_chat(src,SPAN_BOLDNOTICE( "You will [(!prefs.lang_chat_disabled) ? "now" : "no longer"] see messages above head."))
+	to_chat(src,SPAN_BOLDNOTICE( "你将[(!prefs.lang_chat_disabled) ? "now" : "no longer"] see messages above head."))
 
 CLIENT_VERB(togglechatemotes)
 	set name = "Toggle Abovehead Chat Emotes"
@@ -87,7 +87,7 @@ CLIENT_VERB(togglechatemotes)
 
 	prefs.toggles_langchat ^= LANGCHAT_SEE_EMOTES
 	prefs.save_preferences()
-	to_chat(src,SPAN_BOLDNOTICE( "You will [(prefs.toggles_langchat & LANGCHAT_SEE_EMOTES) ? "now" : "no longer"] see emotes in abovehead chat."))
+	to_chat(src,SPAN_BOLDNOTICE( "你将[(prefs.toggles_langchat & LANGCHAT_SEE_EMOTES) ? "now" : "no longer"] see emotes in abovehead chat."))
 
 CLIENT_VERB(toggle_permission_errors)
 	set name = "Toggle Permission Errors"
@@ -96,7 +96,7 @@ CLIENT_VERB(toggle_permission_errors)
 
 	prefs.show_permission_errors = !prefs.show_permission_errors
 	prefs.save_preferences()
-	to_chat(src, SPAN_BOLDNOTICE("You will [(prefs.show_permission_errors) ? "now" : "no longer"] see permission error messages."))
+	to_chat(src, SPAN_BOLDNOTICE("你将[(prefs.show_permission_errors) ? "now" : "no longer"] see permission error messages."))
 
 CLIENT_VERB(listen_ooc)
 	set name = "Show/Hide OOC"
@@ -104,7 +104,7 @@ CLIENT_VERB(listen_ooc)
 	set desc = "Toggles seeing OutOfCharacter chat."
 	prefs.toggles_chat ^= CHAT_OOC
 	prefs.save_preferences()
-	to_chat(src, SPAN_BOLDNOTICE("You will [(prefs.toggles_chat & CHAT_OOC) ? "now" : "no longer"] see messages on the OOC channel."))
+	to_chat(src, SPAN_BOLDNOTICE("你将[(prefs.toggles_chat & CHAT_OOC) ? "now" : "no longer"] see messages on the OOC channel."))
 
 CLIENT_VERB(listen_looc)
 	set name = "Show/Hide LOOC"
@@ -113,7 +113,7 @@ CLIENT_VERB(listen_looc)
 	prefs.toggles_chat ^= CHAT_LOOC
 	prefs.save_preferences()
 
-	to_chat(src, SPAN_BOLDNOTICE("You will [(prefs.toggles_chat & CHAT_LOOC) ? "now" : "no longer"] see messages on the LOOC channel."))
+	to_chat(src, SPAN_BOLDNOTICE("你将[(prefs.toggles_chat & CHAT_LOOC) ? "now" : "no longer"] see messages on the LOOC channel."))
 
 CLIENT_VERB(Toggle_Soundscape) //All new ambience should be added here so it works with this verb until someone better at things comes up with a fix that isn't awful
 	set name = "Hear/Silence Ambience"
@@ -122,11 +122,11 @@ CLIENT_VERB(Toggle_Soundscape) //All new ambience should be added here so it wor
 	prefs.toggles_sound ^= SOUND_AMBIENCE
 	prefs.save_preferences()
 	if(prefs.toggles_sound & SOUND_AMBIENCE)
-		to_chat(src,SPAN_BOLDNOTICE( "You will now hear ambient sounds."))
+		to_chat(src,SPAN_BOLDNOTICE( "你现在将听到环境音效。"))
 		if(soundOutput)
 			soundOutput.update_ambience(null, null, TRUE)
 	else
-		to_chat(src,SPAN_BOLDNOTICE( "You will no longer hear ambient sounds."))
+		to_chat(src,SPAN_BOLDNOTICE( "你将不再听到环境音效。"))
 		src << sound(null, repeat = 0, wait = 0, volume = 0, channel = SOUND_CHANNEL_AMBIENCE)
 		src << sound(null, repeat = 0, wait = 0, volume = 0, channel = SOUND_CHANNEL_SOUNDSCAPE)
 
@@ -138,9 +138,9 @@ CLIENT_VERB(toggle_roundstart_flash)
 	prefs.toggles_flashing ^= FLASH_ROUNDSTART
 	prefs.save_preferences()
 	if(prefs.toggles_flashing & FLASH_ROUNDSTART)
-		to_chat(src,  SPAN_BOLDNOTICE("The icon on your taskbar will now flash when the Tip of the Round is played right before the start of the round."))
+		to_chat(src,  SPAN_BOLDNOTICE("当回合开始前的回合提示播放时，你任务栏上的图标现在将会闪烁。"))
 	else
-		to_chat(src,  SPAN_BOLDNOTICE("The icon on your taskbar will no longer flash when the Tip of the Round is played right before the start of the round."))
+		to_chat(src,  SPAN_BOLDNOTICE("当回合开始前的回合提示播放时，你任务栏上的图标将不再闪烁。"))
 
 CLIENT_VERB(toggle_roundend_flash)
 	set name = "Toggle Roundend Flash"
@@ -150,9 +150,9 @@ CLIENT_VERB(toggle_roundend_flash)
 	prefs.toggles_flashing ^= FLASH_ROUNDEND
 	prefs.save_preferences()
 	if(prefs.toggles_flashing & FLASH_ROUNDEND)
-		to_chat(src,  SPAN_BOLDNOTICE("The icon on your taskbar will now flash when the round ends."))
+		to_chat(src,  SPAN_BOLDNOTICE("当回合结束时，你任务栏上的图标现在将会闪烁。"))
 	else
-		to_chat(src, SPAN_BOLDNOTICE( "The icon on your taskbar will no longer flash when the round ends."))
+		to_chat(src, SPAN_BOLDNOTICE( "当回合结束时，你任务栏上的图标将不再闪烁。"))
 
 CLIENT_VERB(toggle_corpserevive_flash)
 	set name = "Toggle Revival Flash"
@@ -162,9 +162,9 @@ CLIENT_VERB(toggle_corpserevive_flash)
 	prefs.toggles_flashing ^= FLASH_CORPSEREVIVE
 	prefs.save_preferences()
 	if(prefs.toggles_flashing & FLASH_CORPSEREVIVE)
-		to_chat(src,  SPAN_BOLDNOTICE("The icon on your taskbar will now flash when your corpse gets revived."))
+		to_chat(src,  SPAN_BOLDNOTICE("当你的尸体被复活时，你任务栏上的图标现在将会闪烁。"))
 	else
-		to_chat(src, SPAN_BOLDNOTICE( "The icon on your taskbar will no longer flash when your corpse gets revived."))
+		to_chat(src, SPAN_BOLDNOTICE( "当你的尸体被复活时，你任务栏上的图标将不再闪烁。"))
 
 CLIENT_VERB(toggle_unnest_flash)
 	set name = "Toggle Unnest Flash"
@@ -174,9 +174,9 @@ CLIENT_VERB(toggle_unnest_flash)
 	prefs.toggles_flashing ^= FLASH_UNNEST
 	prefs.save_preferences()
 	if(prefs.toggles_flashing & FLASH_UNNEST)
-		to_chat(src,  SPAN_BOLDNOTICE("The icon on your taskbar will now flash when you get unnested and can reenter your body."))
+		to_chat(src,  SPAN_BOLDNOTICE("当你被解除筑巢状态并可以重新进入身体时，你任务栏上的图标现在将会闪烁。"))
 	else
-		to_chat(src, SPAN_BOLDNOTICE( "The icon on your taskbar will no longer flash when you get unnested and can reenter your body."))
+		to_chat(src, SPAN_BOLDNOTICE( "当你被解除筑巢状态并可以重新进入身体时，你任务栏上的图标将不再闪烁。"))
 
 CLIENT_VERB(toggle_newlarva_flash)
 	set name = "Toggle Larva Unpool Flash"
@@ -186,9 +186,9 @@ CLIENT_VERB(toggle_newlarva_flash)
 	prefs.toggles_flashing ^= FLASH_POOLSPAWN
 	prefs.save_preferences()
 	if(prefs.toggles_flashing & FLASH_POOLSPAWN)
-		to_chat(src,  SPAN_BOLDNOTICE("The icon on your taskbar will now flash when you get spawned as a burrowed larva."))
+		to_chat(src,  SPAN_BOLDNOTICE("当你以潜藏幼虫形态生成时，你任务栏上的图标现在将会闪烁。"))
 	else
-		to_chat(src, SPAN_BOLDNOTICE( "The icon on your taskbar will no longer flash when you get spawned as a burrowed larva."))
+		to_chat(src, SPAN_BOLDNOTICE( "当你以潜藏幼虫形态生成时，你任务栏上的图标将不再闪烁。"))
 
 
 CLIENT_VERB(toggle_adminpm_flash)
@@ -199,7 +199,7 @@ CLIENT_VERB(toggle_adminpm_flash)
 	prefs.toggles_flashing ^= FLASH_ADMINPM
 	prefs.save_preferences()
 	if(prefs.toggles_flashing & FLASH_ADMINPM)
-		to_chat(src, SPAN_BOLDNOTICE("The icon on your taskbar will now flash when an admin messages you."))
+		to_chat(src, SPAN_BOLDNOTICE("当管理员向你发送消息时，你任务栏上的图标现在将会闪烁。"))
 	else
 		to_chat(src, SPAN_BOLDNOTICE("The icon on your taskbar will no longer flash when an admin messages you. Warning, use at own risk."))
 
@@ -253,7 +253,7 @@ CLIENT_VERB(toggle_ooc_country_flag)
 	set desc = "Toggles if your country flag (based on what country your IP is connecting from) is displayed in OOC chat."
 
 	if(!(CONFIG_GET(flag/ooc_country_flags)))
-		to_chat(src, SPAN_WARNING("Country Flags in OOC are disabled in the current server configuration!"))
+		to_chat(src, SPAN_WARNING("当前服务器配置已禁用OOC中的国家旗帜！"))
 		return
 
 	prefs.toggle_prefs ^= TOGGLE_OOC_FLAG
@@ -271,7 +271,7 @@ CLIENT_VERB(toggle_prefs) // Toggle whether anything will happen when you click 
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_eject'>Toggle Guns Auto-Ejecting Magazines</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_eject_to_hand'>Toggle Guns Auto-Ejecting Magazines to Your Hands</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_ammo_display_type'>Toggle Semi-Auto Ammo Counter</a><br>",
-		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_eject_to_hand'>Toggle 'Unload Weapon' Ejecting Magazines to Your Hands</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_eject_to_hand'>Toggle '卸下武器弹药' Ejecting Magazines to Your Hands</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_automatic_punctuation'>Toggle Automatic Punctuation</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_ability_deactivation'>Toggle Ability Deactivation</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_clickdrag_override'>Toggle Combat Click-Drag Override</a><br>",
@@ -343,12 +343,12 @@ CLIENT_VERB(toggle_prefs) // Toggle whether anything will happen when you click 
 		to_chat(src, SPAN_BOLDNOTICE("Guns with auto-ejectors will no longer eject their magazines to your offhand."))
 	prefs.save_preferences()
 
-/client/proc/toggle_eject_to_hand() // Toggle whether unloading a magazine with the 'Unload Weapon' verb will put the magazine in your offhand
+/client/proc/toggle_eject_to_hand() // Toggle whether unloading a magazine with the '卸下武器弹药' verb will put the magazine in your offhand
 	prefs.toggle_prefs ^= TOGGLE_EJECT_MAGAZINE_TO_HAND
 	if(prefs.toggle_prefs & TOGGLE_EJECT_MAGAZINE_TO_HAND)
-		to_chat(src, SPAN_BOLDNOTICE("The 'Unload Weapon' verb will put magazines in your offhand."))
+		to_chat(src, SPAN_BOLDNOTICE("The '卸下武器弹药' verb will put magazines in your offhand."))
 	else
-		to_chat(src, SPAN_BOLDNOTICE("The 'Unload Weapon' verb will no longer put magazines in your offhand."))
+		to_chat(src, SPAN_BOLDNOTICE("The '卸下武器弹药' verb will no longer put magazines in your offhand."))
 	prefs.save_preferences()
 
 /client/proc/toggle_automatic_punctuation() // Toggle whether your sentences are automatically punctuated
@@ -398,7 +398,7 @@ CLIENT_VERB(toggle_prefs) // Toggle whether anything will happen when you click 
 	if(prefs.toggle_prefs & TOGGLE_COCKING_TO_HAND)
 		to_chat(src, SPAN_BOLDNOTICE("You will attempt to catch the ejected bullet when cocking a gun."))
 	else
-		to_chat(src, SPAN_BOLDNOTICE("You will now drop the ejected bullet when cocking a gun."))
+		to_chat(src, SPAN_BOLDNOTICE("现在，当你为枪械上膛时，退出的弹壳会掉落在地。"))
 	prefs.save_preferences()
 
 ///Toggle whether dual-wielding fires both guns at once or swaps between them.
@@ -410,44 +410,44 @@ CLIENT_VERB(toggle_prefs) // Toggle whether anything will happen when you click 
 
 	switch(prefs.dual_wield_pref)
 		if(DUAL_WIELD_FIRE)
-			to_chat(src, SPAN_BOLDNOTICE("Dual-wielding now fires both guns simultaneously."))
+			to_chat(src, SPAN_BOLDNOTICE("双持现在会同时开火两把枪。"))
 		if(DUAL_WIELD_SWAP)
-			to_chat(src, SPAN_BOLDNOTICE("Dual-wielding now switches between guns, as long as the other gun is loaded."))
+			to_chat(src, SPAN_BOLDNOTICE("双持现在会在两把枪之间切换射击，前提是另一把枪已装弹。"))
 		if(DUAL_WIELD_NONE)
-			to_chat(src, SPAN_BOLDNOTICE("Dual-wielding now has no effect on how you fire."))
+			to_chat(src, SPAN_BOLDNOTICE("双持现在对你的开火方式没有影响。"))
 
 	prefs.save_preferences()
 
 /client/proc/toggle_middle_mouse_swap_hands() //Toggle whether middle click swaps your hands
 	prefs.toggle_prefs ^= TOGGLE_MIDDLE_MOUSE_SWAP_HANDS
-	to_chat(src, SPAN_BOLDNOTICE("Middle Click [(prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_SWAP_HANDS) ? "will" : "will no longer"] swap your hands."))
+	to_chat(src, SPAN_BOLDNOTICE("中键点击 [(prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_SWAP_HANDS) ? "will" : "will no longer"] swap your hands."))
 	prefs.save_preferences()
 
 /client/proc/toggle_vend_item_to_hand() //Toggle whether vendors automatically vend to your hands
 	prefs.toggle_prefs ^= TOGGLE_VEND_ITEM_TO_HAND
 	if(prefs.toggle_prefs & TOGGLE_VEND_ITEM_TO_HAND)
-		to_chat(src, SPAN_BOLDNOTICE("Most vendors will now automatically vend directly into your hands."))
+		to_chat(src, SPAN_BOLDNOTICE("大多数自动售货机现在会直接将物品售出到你手中。"))
 	else
-		to_chat(src, SPAN_BOLDNOTICE("Vendors will no longer vend into your hands."))
+		to_chat(src, SPAN_BOLDNOTICE("自动售货机将不再将物品售出到你手中。"))
 	prefs.save_preferences()
 
 /client/proc/switch_item_animations() //Switches tg-style item animations on, not-on-same-tile, and off
 	switch(prefs.item_animation_pref_level)
 		if(SHOW_ITEM_ANIMATIONS_NONE)
 			prefs.item_animation_pref_level = SHOW_ITEM_ANIMATIONS_HALF
-			to_chat(src, SPAN_BOLDNOTICE("You will now see all item animations, except for those that occur on their own tile."))
+			to_chat(src, SPAN_BOLDNOTICE("你现在将看到所有物品动画，除了那些发生在自身格子内的动画。"))
 			prefs.save_preferences()
 			return "On"
 
 		if(SHOW_ITEM_ANIMATIONS_HALF)
 			prefs.item_animation_pref_level = SHOW_ITEM_ANIMATIONS_ALL
-			to_chat(src, SPAN_BOLDNOTICE("You will now see all item animations."))
+			to_chat(src, SPAN_BOLDNOTICE("你现在将看到所有物品动画。"))
 			prefs.save_preferences()
 			return "Not Same Tile"
 
 		if(SHOW_ITEM_ANIMATIONS_ALL)
 			prefs.item_animation_pref_level = SHOW_ITEM_ANIMATIONS_NONE
-			to_chat(src, SPAN_BOLDNOTICE("You will no longer see item animations."))
+			to_chat(src, SPAN_BOLDNOTICE("你将不再看到物品动画。"))
 			prefs.save_preferences()
 			return "Off"
 
@@ -455,24 +455,24 @@ CLIENT_VERB(toggle_prefs) // Toggle whether anything will happen when you click 
 	//Entirely for code readability.
 	var/meme_toggle = prefs.toggles_sound & SOUND_ADMIN_MEME ? TRUE : FALSE
 	var/atmospheric_toggle = prefs.toggles_sound & SOUND_ADMIN_ATMOSPHERIC ? TRUE : FALSE
-	var/result = tgui_alert(src, "Which sound type do you want to toggle? Meme sounds are currently [meme_toggle ? "enabled" : "disabled"], Atmospheric sounds are currently [atmospheric_toggle ? "enabled" : "disabled"].", "Toggle MIDI/Internet sound type to play", list("Meme", "Atmospheric"))
+	var/result = tgui_alert(src, "你想切换哪种声音类型？梗音效当前为 [meme_toggle ? "enabled" : "disabled"], Atmospheric sounds are currently [atmospheric_toggle ? "enabled" : "disabled"].", "Toggle MIDI/Internet sound type to play", list("Meme", "Atmospheric"))
 	if(result == "Meme")
 		prefs.toggles_sound ^= SOUND_ADMIN_MEME
 		//Update the variables so it doesn't output the outdated toggle.
 		meme_toggle = prefs.toggles_sound & SOUND_ADMIN_MEME ? TRUE : FALSE
-		to_chat(src, SPAN_NOTICE("You will [meme_toggle ? "now" : "no longer"] hear meme admin sounds."))
+		to_chat(src, SPAN_NOTICE("你将 [meme_toggle ? "now" : "no longer"] hear meme admin sounds."))
 	if(result == "Atmospheric")
 		prefs.toggles_sound ^= SOUND_ADMIN_ATMOSPHERIC
 		//Ditto.
 		atmospheric_toggle = prefs.toggles_sound & SOUND_ADMIN_ATMOSPHERIC ? TRUE : FALSE
-		to_chat(src, SPAN_NOTICE("You will [atmospheric_toggle ? "now" : "no longer"] hear atmospheric admin sounds."))
+		to_chat(src, SPAN_NOTICE("你将 [atmospheric_toggle ? "now" : "no longer"] hear atmospheric admin sounds."))
 
 /client/proc/receive_random_tip()
-	var/picked_type = tgui_alert(src, "What kind of tip?", "Tip Type", list("Marine", "Xenomorph", "Meta")) //no memetips for them joker imp
+	var/picked_type = tgui_alert(src, "哪种提示？", "Tip Type", list("陆战队员", "异形", "Meta")) //no memetips for them joker imp
 	var/message
 	var/static/list/types_to_pick = list(
-		"Marine" = "strings/marinetips.txt",
-		"Xenomorph" = "strings/xenotips.txt",
+		"陆战队员" = "strings/marinetips.txt",
+		"异形" = "strings/xenotips.txt",
 		"Meta" = "strings/metatips.txt"
 	)
 	var/list/tip_list = file2list(types_to_pick[picked_type])
@@ -482,54 +482,54 @@ CLIENT_VERB(toggle_prefs) // Toggle whether anything will happen when you click 
 		CRASH("receive_random_tip() failed: empty list")
 
 	if(message)
-		to_chat(src, SPAN_PURPLE("<b>Random Tip: </b>[html_encode(message)]"))
+		to_chat(src, SPAN_PURPLE("<b>随机提示：</b>[html_encode(message)]"))
 		return TRUE
 	else
 		CRASH("receive_random_tip() failed: null message")
 
 /// Toggle in character preferences and toggle preferences to configure what kind of blur overlay is used in game; Either blurry, impaired, or legacy.
 /client/proc/set_eye_blur_type()
-	var/result = tgui_alert(src, "What type of eye blur do you want?", "What type of eye blur do you want?", list("Blurry", "Impair", "Legacy"))
+	var/result = tgui_alert(src, "你想要哪种视觉模糊效果？", "你想要哪种视觉模糊效果？", list("Blurry", "Impair", "Legacy"))
 	if(result == "Blurry")
 		prefs.pain_overlay_pref_level = PAIN_OVERLAY_BLURRY
-		to_chat(src, SPAN_NOTICE("Your vision will now be directly blurred."))
+		to_chat(src, SPAN_NOTICE("你的视觉现在将直接变得模糊。"))
 	if(result == "Impair")
 		prefs.pain_overlay_pref_level = PAIN_OVERLAY_IMPAIR
-		to_chat(src, SPAN_NOTICE("Your vision will now be impaired on blur."))
+		to_chat(src, SPAN_NOTICE("你的视觉现在将在模糊时受损。"))
 	if(result == "Legacy")
 		prefs.pain_overlay_pref_level = PAIN_OVERLAY_LEGACY
-		to_chat(src, SPAN_NOTICE("Your vision will now have a legacy blurring effect. This is not recommended!"))
+		to_chat(src, SPAN_NOTICE("你的视觉现在将采用旧版模糊效果。不推荐！"))
 	prefs.save_preferences()
 
 /// Toggle in character preferences and toggle preferences to configure what kind of flash overlay is used in game; Either white or black.
 /client/proc/set_flash_type()
-	var/result = tgui_alert(src, "What type of flash overlay do you want?", "What type of flash overlay do you want?", list("White", "Dark"))
+	var/result = tgui_alert(src, "你想要哪种闪光覆盖效果？", "你想要哪种闪光覆盖效果？", list("White", "Dark"))
 	if(result == "White")
 		prefs.flash_overlay_pref = FLASH_OVERLAY_WHITE
-		to_chat(src, SPAN_NOTICE("If flashed your vision will now be white."))
+		to_chat(src, SPAN_NOTICE("如果被闪，你的视觉现在将变成白色。"))
 	else if(result == "Dark")
 		prefs.flash_overlay_pref = FLASH_OVERLAY_DARK
-		to_chat(src, SPAN_NOTICE("If flashed your vision will now be dark."))
+		to_chat(src, SPAN_NOTICE("如果被闪，你的视觉现在将变成黑色。"))
 	prefs.save_preferences()
 
 /// Toggle in character preferences and toggle preferences to configure what kind of crit overlay is used in game; Either white or grey.
 /client/proc/set_crit_type()
-	var/result = tgui_alert(src, "What type of crit overlay do you want?", "What type of crit overlay do you want?", list("White", "Dark"))
+	var/result = tgui_alert(src, "你想要哪种濒危状态覆盖效果？", "你想要哪种濒危状态覆盖效果？", list("White", "Dark"))
 	if(result == "White")
 		prefs.crit_overlay_pref = CRIT_OVERLAY_WHITE
-		to_chat(src, SPAN_NOTICE("If in critical condition your vision will now be white."))
+		to_chat(src, SPAN_NOTICE("如果处于危急状态，你的视觉现在将变成白色。"))
 	else if(result == "Dark")
 		prefs.crit_overlay_pref = CRIT_OVERLAY_DARK
-		to_chat(src, SPAN_NOTICE("If in critical condition your vision will now be dark."))
+		to_chat(src, SPAN_NOTICE("如果处于危急状态，你的视觉现在将变成黑色。"))
 	prefs.save_preferences()
 
 /// Toggle in character preferences and toggle preferences to allow or disable flashing lights e.g. /obj/item/clothing/glasses/disco_fever and druggy status
 /client/proc/set_flashing_lights_pref()
-	var/result = tgui_alert(src, "Allow effects that could trigger epilepsy?", "Allow flashing lights?", list("Allow", "Disable"))
+	var/result = tgui_alert(src, "是否允许可能引发癫痫的效果？", "Allow flashing lights?", list("Allow", "Disable"))
 	if(!result)
 		return
 	prefs.allow_flashing_lights_pref = result == "Allow"
-	to_chat(src, SPAN_NOTICE("Flashing lights (e.g. AR Goggles and Happy pills) are now [prefs.allow_flashing_lights_pref ? "allowed" : "disabled"]."))
+	to_chat(src, SPAN_NOTICE("闪烁灯光（例如AR护目镜和快乐丸）现在[prefs.allow_flashing_lights_pref ? "allowed" : "disabled"]."))
 	if(!prefs.allow_flashing_lights_pref)
 		mob?.update_client_color_matrices() // Update immediately
 	prefs.save_preferences()
@@ -539,16 +539,16 @@ CLIENT_VERB(toggle_tgui_say)
 	set category = "Preferences.UI"
 	set desc = "Toggle your Input Style."
 
-	var/result = tgui_alert(src, "Which input style do you want?", "Input Style", list("Modern", "Legacy"))
+	var/result = tgui_alert(src, "你想要哪种输入风格？", "Input Style", list("Modern", "Legacy"))
 	if(!result)
 		return
 
 	if(result == "Legacy")
 		prefs.tgui_say = FALSE
-		to_chat(src, SPAN_NOTICE("You're now using the old interface."))
+		to_chat(src, SPAN_NOTICE("你正在使用旧版界面。"))
 	else
 		prefs.tgui_say = TRUE
-		to_chat(src, SPAN_NOTICE("You're now using the new interface."))
+		to_chat(src, SPAN_NOTICE("你正在使用新版界面。"))
 	prefs.save_preferences()
 	update_special_keybinds()
 
@@ -557,15 +557,15 @@ CLIENT_VERB(toggle_tgui_say_light_mode)
 	set category = "Preferences.UI"
 	set desc = "Toggle your Input Color."
 
-	var/result = tgui_alert(src, "Which input color do you want?", "Input Style", list("Darkmode", "Lightmode"))
+	var/result = tgui_alert(src, "你想要哪种输入颜色？", "Input Style", list("Darkmode", "Lightmode"))
 	if(!result)
 		return
 	if(result == "Lightmode")
 		prefs.tgui_say_light_mode = TRUE
-		to_chat(src, SPAN_NOTICE("You're now using the say interface whitemode."))
+		to_chat(src, SPAN_NOTICE("你正在使用白色模式发言界面。"))
 	else
 		prefs.tgui_say_light_mode = FALSE
-		to_chat(src, SPAN_NOTICE("You're now using the say interface whitemode."))
+		to_chat(src, SPAN_NOTICE("你正在使用白色模式发言界面。"))
 	tgui_say?.load()
 	prefs.save_preferences()
 
@@ -577,21 +577,21 @@ CLIENT_VERB(toggle_custom_cursors)
 	do_toggle_custom_cursors()
 
 /client/proc/do_toggle_custom_cursors(mob/user)
-	var/result = tgui_alert(user, "Do you want custom cursors enabled?", "Custom Cursors", list("Yes", "No", "Enable Main Cursor", "Disable Main Cursor"))
+	var/result = tgui_alert(user, "是否启用自定义光标？", "Custom Cursors", list("Yes", "No", "Enable Main Cursor", "Disable Main Cursor"))
 	if(!result)
 		return
 	switch(result)
 		if("Yes")
 			prefs.custom_cursors = TRUE
-			to_chat(src, SPAN_NOTICE("You're now using custom cursors."))
+			to_chat(src, SPAN_NOTICE("你正在使用自定义光标。"))
 			if(result == "Yes")
-				var/chosen_cursor = tgui_alert(user, "Which type of custom cursor?", "Custom Cursors", list("USCM", "Xenomorph", "UPP", "PMC", "TWE"))
+				var/chosen_cursor = tgui_alert(user, "选择哪种自定义光标类型？", "Custom Cursors", list("USCM", "异形", "UPP", "PMC", "TWE"))
 				if(!chosen_cursor)
 					return
 				switch(chosen_cursor)
 					if("USCM")// For anyone in the future who might add anything, all of the cursors need to be their own file. and the only icon inside it needs to be renamed to "all" for byond to work with it
 						prefs.chosen_pointer = 'icons/effects/mouse_pointer/uscm.dmi'
-					if("Xenomorph")
+					if("异形")
 						prefs.chosen_pointer = 'icons/effects/mouse_pointer/xeno.dmi'
 					if("UPP")
 						prefs.chosen_pointer = 'icons/effects/mouse_pointer/upp.dmi'
@@ -603,15 +603,15 @@ CLIENT_VERB(toggle_custom_cursors)
 				user.update_cursor()
 		if("No")
 			prefs.custom_cursors = FALSE
-			to_chat(src, SPAN_NOTICE("You're no longer using custom cursors."))
+			to_chat(src, SPAN_NOTICE("你不再使用自定义光标。"))
 			mouse_pointer_icon = initial(mouse_pointer_icon)
 			prefs.save_preferences()
 		if("Enable Main Cursor")
 			prefs.main_cursor = TRUE
-			to_chat(src, SPAN_NOTICE("Your main cursor will now be customized."))
+			to_chat(src, SPAN_NOTICE("你的主光标现在将被自定义。"))
 			prefs.save_preferences()
 		if("Disable Main Cursor")
-			to_chat(src, SPAN_NOTICE("Your main cursor will no longer be customized."))
+			to_chat(src, SPAN_NOTICE("你的主光标将不再被自定义。"))
 			prefs.main_cursor = FALSE
 			prefs.save_preferences()
 
@@ -624,10 +624,10 @@ CLIENT_VERB(toggle_auto_viewport_fit)
 
 	prefs.auto_fit_viewport = !prefs.auto_fit_viewport
 	if(prefs.auto_fit_viewport)
-		to_chat(src, SPAN_NOTICE("Now auto fitting viewport."))
+		to_chat(src, SPAN_NOTICE("现在自动适配视口。"))
 		fit_viewport()
 	else
-		to_chat(src, SPAN_NOTICE("No longer auto fitting viewport."))
+		to_chat(src, SPAN_NOTICE("不再自动适配视口。"))
 	prefs.save_preferences()
 
 CLIENT_VERB(toggle_adaptive_zooming)
@@ -637,15 +637,15 @@ CLIENT_VERB(toggle_adaptive_zooming)
 	switch(prefs.adaptive_zoom)
 		if(0)
 			prefs.adaptive_zoom = 1
-			to_chat(src, SPAN_BOLDNOTICE("Adaptive Zooming is now enabled, switching between x1 and x2 zoom. This is recommended for 1080p monitors."))
+			to_chat(src, SPAN_BOLDNOTICE("自适应缩放现已启用，将在x1和x2缩放之间切换。建议1080p显示器使用。"))
 			adaptive_zoom()
 		if(1)
 			prefs.adaptive_zoom = 2
-			to_chat(src, SPAN_BOLDNOTICE("Adaptive Zooming is now enabled, switching between x2 and x4 zoom."))
+			to_chat(src, SPAN_BOLDNOTICE("自适应缩放现已启用，将在x2和x4缩放之间切换。"))
 			adaptive_zoom()
 		if(2)
 			prefs.adaptive_zoom = 0
-			to_chat(src, SPAN_BOLDNOTICE("Adaptive Zooming is now disabled."))
+			to_chat(src, SPAN_BOLDNOTICE("自适应缩放现已禁用。"))
 			adaptive_zoom()
 	prefs.save_preferences()
 
@@ -672,7 +672,7 @@ CLIENT_VERB(toggle_adaptive_zooming)
 	set category = "Preferences.Ghost"
 	set desc = "Toggle seeing all chatter from the Xenomorph Hivemind."
 	prefs.toggles_chat ^= CHAT_GHOSTHIVEMIND
-	to_chat(src,SPAN_BOLDNOTICE( "As a ghost, you will [(prefs.toggles_chat & CHAT_GHOSTHIVEMIND) ? "now see chatter from the Xenomorph Hivemind" : "no longer see chatter from the Xenomorph Hivemind"]."))
+	to_chat(src,SPAN_BOLDNOTICE( "作为幽灵，你将[(prefs.toggles_chat & CHAT_GHOSTHIVEMIND) ? "now see chatter from the Xenomorph Hivemind" : "no longer see chatter from the Xenomorph Hivemind"]."))
 	prefs.save_preferences()
 
 /client/proc/deadchat() // Deadchat toggle is usable by anyone.
@@ -683,16 +683,16 @@ CLIENT_VERB(toggle_adaptive_zooming)
 	prefs.save_preferences()
 
 	if(src.admin_holder && (admin_holder.rights & R_MOD))
-		to_chat(src,SPAN_DANGER( "You will [(prefs.toggles_chat & CHAT_DEAD) ? "now" : "no longer"] see deadchat."))
+		to_chat(src,SPAN_DANGER( "你将[(prefs.toggles_chat & CHAT_DEAD) ? "now" : "no longer"] see deadchat."))
 	else
-		to_chat(src,SPAN_BOLDNOTICE( "As a ghost, you will [(prefs.toggles_chat & CHAT_DEAD) ? "now" : "no longer"] see deadchat."))
+		to_chat(src,SPAN_BOLDNOTICE( "作为幽灵，你将[(prefs.toggles_chat & CHAT_DEAD) ? "now" : "no longer"] see deadchat."))
 
 /client/proc/toggle_ghost_ears()
 	set name = "Toggle GhostEars"
 	set category = "Preferences.Ghost"
 	set desc = "Toggle between seeing all mob speech, and only speech of nearby mobs."
 	prefs.toggles_chat ^= CHAT_GHOSTEARS
-	to_chat(src, SPAN_BOLDNOTICE("As a ghost, you will now [(prefs.toggles_chat & CHAT_GHOSTEARS) ? "see all speech in the world" : "only see speech from nearby mobs"]."))
+	to_chat(src, SPAN_BOLDNOTICE("作为幽灵，你现在将[(prefs.toggles_chat & CHAT_GHOSTEARS) ? "see all speech in the world" : "only see speech from nearby mobs"]."))
 	prefs.save_preferences()
 
 /client/proc/toggle_ghost_sight()
@@ -700,7 +700,7 @@ CLIENT_VERB(toggle_adaptive_zooming)
 	set category = "Preferences.Ghost"
 	set desc = "Toggle between seeing all mob emotes, and only emotes of nearby mobs."
 	prefs.toggles_chat ^= CHAT_GHOSTSIGHT
-	to_chat(src, SPAN_BOLDNOTICE("As a ghost, you will now [(prefs.toggles_chat & CHAT_GHOSTSIGHT) ? "see all emotes in the world" : "only see emotes from nearby mobs"]."))
+	to_chat(src, SPAN_BOLDNOTICE("作为幽灵，你现在将[(prefs.toggles_chat & CHAT_GHOSTSIGHT) ? "see all emotes in the world" : "only see emotes from nearby mobs"]."))
 	prefs.save_preferences()
 
 /client/proc/toggle_ghost_radio()
@@ -708,7 +708,7 @@ CLIENT_VERB(toggle_adaptive_zooming)
 	set category = "Preferences.Ghost"
 	set desc = "Toggle between hearing all radio chatter, or only from nearby speakers."
 	prefs.toggles_chat ^= CHAT_GHOSTRADIO
-	to_chat(src,SPAN_BOLDNOTICE( "As a ghost, you will now [(prefs.toggles_chat & CHAT_GHOSTRADIO) ? "hear all radio chat in the world" : "only hear from nearby speakers"]."))
+	to_chat(src,SPAN_BOLDNOTICE( "作为幽灵，你现在将[(prefs.toggles_chat & CHAT_GHOSTRADIO) ? "hear all radio chat in the world" : "only hear from nearby speakers"]."))
 	prefs.save_preferences()
 
 /client/proc/toggle_ghost_spyradio()
@@ -716,7 +716,7 @@ CLIENT_VERB(toggle_adaptive_zooming)
 	set category = "Preferences.Ghost"
 	set desc = "Toggle between hearing listening devices or not."
 	prefs.toggles_chat ^= CHAT_LISTENINGBUG
-	to_chat(src,SPAN_BOLDNOTICE( "As a ghost, you will [(prefs.toggles_chat & CHAT_LISTENINGBUG) ? "now" : "no longer"] hear listening devices as a ghost."))
+	to_chat(src,SPAN_BOLDNOTICE( "作为幽灵，你将[(prefs.toggles_chat & CHAT_LISTENINGBUG) ? "now" : "no longer"] hear listening devices as a ghost."))
 	prefs.save_preferences()
 
 /client/proc/toggle_ghost_announce_clarity()
@@ -724,7 +724,7 @@ CLIENT_VERB(toggle_adaptive_zooming)
 	set category = "Preferences.Ghost"
 	set desc = "Toggle between seeing announcements always in full clarity, or with the current clarity for the observed z-level."
 	prefs.toggles_chat ^= CHAT_GHOSTANNOUNCECLARITY
-	to_chat(src, SPAN_BOLDNOTICE("As a ghost, you will now see announcements in [(prefs.toggles_chat & CHAT_GHOSTANNOUNCECLARITY) ? "full clarity always" : "partial clarity if applicable"]."))
+	to_chat(src, SPAN_BOLDNOTICE("作为幽灵，你现在将在[(prefs.toggles_chat & CHAT_GHOSTANNOUNCECLARITY) ? "full clarity always" : "partial clarity if applicable"]."))
 	prefs.save_preferences()
 
 /client/proc/toggle_ghost_hud()
@@ -745,13 +745,13 @@ CLIENT_VERB(toggle_adaptive_zooming)
 		"Faction Hyperdyne HUD" = MOB_HUD_FACTION_HC,
 	)
 
-	var/hud_choice = tgui_input_list(usr, "Choose a HUD to toggle", "Toggle HUD prefs", hud_options)
+	var/hud_choice = tgui_input_list(usr, "选择要切换的HUD", "Toggle HUD prefs", hud_options)
 	if(!hud_choice)
 		return
 	prefs.observer_huds[hud_choice] = !prefs.observer_huds[hud_choice]
 	prefs.save_preferences()
 
-	to_chat(src, SPAN_BOLDNOTICE("You toggled [hud_choice] to be [prefs.observer_huds[hud_choice] ? "ON" : "OFF"] by default when you are observer."))
+	to_chat(src, SPAN_BOLDNOTICE("你将[hud_choice]切换为[prefs.observer_huds[hud_choice] ? "ON" : "OFF"] by default when you are observer."))
 
 	if(!isobserver(usr))
 		return
@@ -770,7 +770,7 @@ CLIENT_VERB(toggle_adaptive_zooming)
 
 	prefs.toggles_ghost ^= GHOST_HEALTH_SCAN
 	prefs.save_preferences()
-	to_chat(usr, "As a ghost, you will [prefs.toggles_ghost & GHOST_HEALTH_SCAN ? "now" : "no longer"] be able to scan health of living mobs via right click menu.")
+	to_chat(usr, "作为幽灵，你将[prefs.toggles_ghost & GHOST_HEALTH_SCAN ? "now" : "no longer"] be able to scan health of living mobs via right click menu.")
 	if(isobserver(usr))
 		if(prefs.toggles_ghost & GHOST_HEALTH_SCAN)
 			add_verb(usr, /mob/dead/observer/proc/scan_health)
@@ -783,14 +783,14 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE, GHOST_ORBIT_TRIANGLE, GH
 	set name = "Pick Ghost Orbit Shape"
 	set category = "Preferences.Ghost"
 	set desc = "Toggle in what manner you orbit mobs while a ghost."
-	var/new_orbit = tgui_input_list(src, "Choose your ghostly orbit:", "Ghost Customization", GLOB.ghost_orbits)
+	var/new_orbit = tgui_input_list(src, "选择你的幽灵环绕模式：", "Ghost Customization", GLOB.ghost_orbits)
 	if(!new_orbit)
 		return
 
 	prefs.ghost_orbit = new_orbit
 	prefs.save_preferences()
 
-	to_chat(src, SPAN_NOTICE("You will now orbit in a [new_orbit] shape as a ghost."))
+	to_chat(src, SPAN_NOTICE("你的鬼魂现在将以[new_orbit]形状轨道运行。"))
 
 	if(!isobserver(mob))
 		return
@@ -822,7 +822,7 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE, GHOST_ORBIT_TRIANGLE, GH
 	set category = "Preferences.Combat"
 	set desc = ".Enable or Disable messages informing about weapon fire."
 	prefs.chat_display_preferences ^= CHAT_TYPE_WEAPON_USE
-	to_chat(src,SPAN_BOLDNOTICE( "As a player, you will now [(prefs.chat_display_preferences & CHAT_TYPE_WEAPON_USE) ? "see all weapon fire messages" : "never see weapon fire messages"]."))
+	to_chat(src,SPAN_BOLDNOTICE( "作为玩家，你现在将[(prefs.chat_display_preferences & CHAT_TYPE_WEAPON_USE) ? "see all weapon fire messages" : "never see weapon fire messages"]."))
 	prefs.save_preferences()
 
 /client/proc/toggle_chat_xeno_attack()
@@ -830,7 +830,7 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE, GHOST_ORBIT_TRIANGLE, GH
 	set category = "Preferences.Combat"
 	set desc = ".Enable or Disable messages informing about xeno attacks."
 	prefs.chat_display_preferences ^= CHAT_TYPE_XENO_COMBAT
-	to_chat(src, SPAN_BOLDNOTICE("As a player, you will now [(prefs.chat_display_preferences & CHAT_TYPE_XENO_COMBAT) ? "see all xeno attack messages" : "never see xeno attack messages"]."))
+	to_chat(src, SPAN_BOLDNOTICE("作为玩家，你现在将[(prefs.chat_display_preferences & CHAT_TYPE_XENO_COMBAT) ? "see all xeno attack messages" : "never see xeno attack messages"]."))
 	prefs.save_preferences()
 
 /client/proc/toggle_chat_xeno_armor()
@@ -838,7 +838,7 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE, GHOST_ORBIT_TRIANGLE, GH
 	set category = "Preferences.Combat"
 	set desc = ".Enable or Disable messages informing about xeno armor."
 	prefs.chat_display_preferences ^= CHAT_TYPE_ARMOR_DAMAGE
-	to_chat(src, SPAN_BOLDNOTICE("As a player, you will now [(prefs.chat_display_preferences & CHAT_TYPE_ARMOR_DAMAGE) ? "see all xeno armor messages" : "never see xeno armor messages"]."))
+	to_chat(src, SPAN_BOLDNOTICE("作为玩家，你现在将[(prefs.chat_display_preferences & CHAT_TYPE_ARMOR_DAMAGE) ? "see all xeno armor messages" : "never see xeno armor messages"]."))
 	prefs.save_preferences()
 
 /client/proc/toggle_chat_someone_hit()
@@ -846,7 +846,7 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE, GHOST_ORBIT_TRIANGLE, GH
 	set category = "Preferences.Combat"
 	set desc = ".Enable or Disable messages informing about someone being hit."
 	prefs.chat_display_preferences ^= CHAT_TYPE_TAKING_HIT
-	to_chat(src,SPAN_BOLDNOTICE( "As a player, you will now [(prefs.chat_display_preferences & CHAT_TYPE_TAKING_HIT) ? "see all player hit messages" : "never see player hit messages"]."))
+	to_chat(src,SPAN_BOLDNOTICE( "作为玩家，你现在将[(prefs.chat_display_preferences & CHAT_TYPE_TAKING_HIT) ? "see all player hit messages" : "never see player hit messages"]."))
 	prefs.save_preferences()
 
 /client/proc/toggle_chat_you_hit()
@@ -854,7 +854,7 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE, GHOST_ORBIT_TRIANGLE, GH
 	set category = "Preferences.Combat"
 	set desc = ".Enable or Disable messages informing about you being hit."
 	prefs.chat_display_preferences ^= CHAT_TYPE_BEING_HIT
-	to_chat(src,SPAN_BOLDNOTICE( "As a player, you will now [(prefs.chat_display_preferences & CHAT_TYPE_BEING_HIT) ? "see you being hit messages" : "never see you being hit messages"]."))
+	to_chat(src,SPAN_BOLDNOTICE( "作为玩家，你现在将[(prefs.chat_display_preferences & CHAT_TYPE_BEING_HIT) ? "see you being hit messages" : "never see you being hit messages"]."))
 	prefs.save_preferences()
 
 /client/proc/toggle_chat_you_pain()
@@ -862,7 +862,7 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE, GHOST_ORBIT_TRIANGLE, GH
 	set category = "Preferences.Combat"
 	set desc = ".Enable or Disable messages informing about you being in pain."
 	prefs.chat_display_preferences ^= CHAT_TYPE_PAIN
-	to_chat(src, SPAN_BOLDNOTICE("As a player, you will now [(prefs.chat_display_preferences & CHAT_TYPE_PAIN) ? "see you being in pain messages" : "never see you being in pain messages"]."))
+	to_chat(src, SPAN_BOLDNOTICE("作为玩家，你现在将[(prefs.chat_display_preferences & CHAT_TYPE_PAIN) ? "see you being in pain messages" : "never see you being in pain messages"]."))
 	prefs.save_preferences()
 
 GLOBAL_LIST_INIT(combat_chat_prefs_verbs, list(

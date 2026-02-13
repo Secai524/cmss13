@@ -2,8 +2,8 @@
  * USCM weapons
  */
 /obj/effect/spawner/random/gun/uscm_primary
-	name = "USCM primary weapon spawner"
-	desc = "Spawns USCM primary weapons."
+	name = "USCM主武器生成器"
+	desc = "生成USCM主武器。"
 	mags_max = 2
 	mags_min = 1
 	guns = list(
@@ -27,8 +27,8 @@
 	icon_state = "loot_rifle_80"
 
 /obj/effect/spawner/random/gun/uscm_secondary
-	name = "USCM secondary weapon spawner"
-	desc = "Spawns USCM secondary weapons."
+	name = "USCM副武器生成器"
+	desc = "生成USCM副武器。"
 	spawn_nothing_percentage = 0
 	mags_max = 2
 	mags_min = 1
@@ -54,8 +54,8 @@
  * UPP weapons
  */
 /obj/effect/spawner/random/gun/upp_primary
-	name = "UPP primary weapon spawner"
-	desc = "Spawns UPP primary weapons."
+	name = "UPP主武器生成器"
+	desc = "生成UPP主武器。"
 	mags_max = 2
 	mags_min = 1
 	guns = list(
@@ -77,8 +77,8 @@
 	icon_state = "loot_rifle_80"
 
 /obj/effect/spawner/random/gun/upp_secondary
-	name = "UPP secondary weapon spawner"
-	desc = "Spawns UPP secondary weapons."
+	name = "UPP副武器生成器"
+	desc = "生成UPP副武器。"
 	mags_max = 2
 	mags_min = 1
 	guns = list(
@@ -102,8 +102,8 @@
  * PMC weapons
  */
 /obj/effect/spawner/random/gun/pmc_primary
-	name = "PMC primary weapon spawner"
-	desc = "Spawns PMC primary weapons."
+	name = "PMC主武器生成器"
+	desc = "生成PMC主武器。"
 	mags_max = 2
 	mags_min = 1
 	guns = list(
@@ -128,8 +128,8 @@
 	icon_state = "loot_rifle_80"
 
 /obj/effect/spawner/random/gun/pmc_secondary
-	name = "PMC secondary weapon spawner"
-	desc = "Spawns PMC secondary weapons."
+	name = "PMC副武器生成器"
+	desc = "生成PMC副武器。"
 	mags_max = 2
 	mags_min = 1
 	guns = list(
@@ -153,8 +153,8 @@
  * CLF weapons
  */
 /obj/effect/spawner/random/gun/clf_primary
-	name = "CLF primary weapon spawner"
-	desc = "Spawns CLF primary weapons."
+	name = "CLF主武器生成器"
+	desc = "生成CLF主武器。"
 	mags_max = 2
 	mags_min = 1
 	guns = list(
@@ -175,8 +175,8 @@
 	icon_state = "loot_rifle_80"
 
 /obj/effect/spawner/random/gun/clf_secondary
-	name = "CLF secondary weapon spawner"
-	desc = "Spawns CLF secondary weapons."
+	name = "CLF副武器生成器"
+	desc = "生成CLF副武器。"
 	mags_max = 2
 	mags_min = 1
 	guns = list(

@@ -1,14 +1,14 @@
 //goat
 /mob/living/simple_animal/hostile/retaliate/goat
 	name = "goat"
-	desc = "Not known for their pleasant disposition."
+	desc = "不以好脾气著称。"
 	icon_state = "goat"
 	icon_living = "goat"
 	icon_dead = "goat_dead"
 	speak = list("MEHEHEHEHEH!","Mehh?","Maa!","MAAAA!","Mehh!","AAAAAAAAAA!")
 	speak_emote = list("bleats")
 	emote_hear = list("bleats.")
-	emote_see = list("shakes its head.", "wiggles its tail.", "stamps a foot.", "glares around.")
+	emote_see = list("摇了摇头。", "摇了摇尾巴。", "跺了跺脚。", "怒视四周。")
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6
@@ -45,7 +45,7 @@
 		if(length(enemies) && prob(10))
 			enemies = list()
 			LoseTarget()
-			src.visible_message(SPAN_NOTICE("[src] calms down."))
+			src.visible_message(SPAN_NOTICE("[src]平静了下来。"))
 
 		if(stat == CONSCIOUS)
 			if(udder && prob(5))
@@ -53,24 +53,24 @@
 
 /mob/living/simple_animal/hostile/retaliate/goat/Retaliate()
 	..()
-	src.visible_message(SPAN_DANGER("[src] gets an evil-looking gleam in their eye."))
+	src.visible_message(SPAN_DANGER("[src]眼中闪过一丝邪恶的光芒。"))
 
 
 /mob/living/simple_animal/hostile/retaliate/goat/attackby(obj/item/O as obj, mob/user as mob)
 	var/obj/item/reagent_container/glass/G = O
 	if(stat == CONSCIOUS && istype(G) && G.is_open_container())
-		user.visible_message(SPAN_NOTICE("[user] milks [src] using \the [O]."))
+		user.visible_message(SPAN_NOTICE("[user]用\the [O]给[src]挤奶。"))
 		var/transfered = udder.trans_id_to(G, "milk", rand(5,10))
 		if(G.reagents.total_volume >= G.volume)
-			to_chat(user, SPAN_DANGER("[O] is full."))
+			to_chat(user, SPAN_DANGER("[O]已经满了。"))
 		if(!transfered)
-			to_chat(user, SPAN_DANGER("The udder is dry. Wait a bit longer..."))
+			to_chat(user, SPAN_DANGER("乳房已经干了。再等一会儿..."))
 	else
 		..()
 //cow
 /mob/living/simple_animal/big/cow
 	name = "cow"
-	desc = "Known for their milk, just don't tip them over."
+	desc = "以产奶闻名，只是别把它们弄翻了。"
 	icon_state = "cow"
 	icon_living = "cow"
 	icon_dead = "cow_dead"
@@ -78,7 +78,7 @@
 	speak = list("Moo?","Moo.", "Mooooo!","Mmmmmm.","MrrrrrOOOOOO!","MOOOOOO!")
 	speak_emote = list("moos","moos hauntingly")
 	emote_hear = list("moos.")
-	emote_see = list("shakes its head.", "flicks its ear", "swishes its tail.", "licks at its side.")
+	emote_see = list("摇了摇头。", "甩了甩耳朵", "甩了甩尾巴。", "舔舐着自己的身侧。")
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6
@@ -105,12 +105,12 @@
 /mob/living/simple_animal/big/cow/attackby(obj/item/O as obj, mob/user as mob)
 	var/obj/item/reagent_container/glass/G = O
 	if(stat == CONSCIOUS && istype(G) && G.is_open_container())
-		user.visible_message(SPAN_NOTICE("[user] milks [src] using \the [O]."))
+		user.visible_message(SPAN_NOTICE("[user]用\the [O]给[src]挤奶。"))
 		var/transfered = udder.trans_id_to(G, "milk", rand(5,10))
 		if(G.reagents.total_volume >= G.volume)
-			to_chat(user, SPAN_DANGER("The [O] is full."))
+			to_chat(user, SPAN_DANGER("这个[O]已经满了。"))
 		if(!transfered)
-			to_chat(user, SPAN_DANGER("The udder is dry. Wait a bit longer..."))
+			to_chat(user, SPAN_DANGER("乳房已经干了。再等一会儿..."))
 	else
 		..()
 
@@ -131,7 +131,7 @@
 
 /mob/living/simple_animal/big/cow/attack_hand(mob/living/carbon/M as mob)
 	if(!stat && M.a_intent == INTENT_DISARM && icon_state != icon_dead)
-		M.visible_message(SPAN_WARNING("[M] tips over [src]."),
+		M.visible_message(SPAN_WARNING("[M]把[src]弄翻了。"),
 			SPAN_NOTICE("You tip over [src]."))
 		apply_effect(30, WEAKEN)
 		icon_state = icon_dead
@@ -148,7 +148,7 @@
 
 /mob/living/simple_animal/small/chick
 	name = "\improper chick"
-	desc = "Adorable! They make such a racket though."
+	desc = "真可爱！不过它们也太吵了。"
 	icon_state = "chick"
 	icon_living = "chick"
 	icon_dead = "chick_dead"
@@ -156,7 +156,7 @@
 	speak = list("Chirp.","Chirp?","Chirrup.","Cheep!","Peep!")
 	speak_emote = list("cheeps")
 	emote_hear = list("cheeps.")
-	emote_see = list("pecks at the ground.","flaps its tiny wings.", "scratches around with its foot, looking for scraps.")
+	emote_see = list("啄了啄地面。","拍打着它的小翅膀。", "用脚刨着地，寻找残渣。")
 	speak_chance = 2
 	turns_per_move = 2
 	meat_type = /obj/item/reagent_container/food/snacks/meat
@@ -189,14 +189,14 @@ GLOBAL_VAR_INIT(chicken_count, 0)
 
 /mob/living/simple_animal/small/chicken
 	name = "\improper chicken"
-	desc = "Hopefully the eggs are good this season."
+	desc = "希望这个季节的蛋是好的。"
 	icon_state = "chicken"
 	icon_living = "chicken"
 	icon_dead = "chicken_dead"
 	speak = list("Cluck!", "Bawk bwak.", "Bwarrrrk...", "Bawk!", "Bawk bawk bwak.", "BWAAAAARK BWAK BWAK BWAK!","Bwaak bwak.")
 	speak_emote = list("clucks","croons")
 	emote_hear = list("clucks.")
-	emote_see = list("pecks at the ground.","flaps its wings viciously.", "scratches around with its foot, looking for scraps.")
+	emote_see = list("啄了啄地面。","凶狠地拍打着翅膀。", "用脚刨着地，寻找残渣。")
 	speak_chance = 2
 	turns_per_move = 3
 	meat_type = /obj/item/reagent_container/food/snacks/meat
@@ -232,13 +232,13 @@ GLOBAL_VAR_INIT(chicken_count, 0)
 /mob/living/simple_animal/small/chicken/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/reagent_container/food/snacks/grown/wheat)) //feedin' dem chickens
 		if(!stat && eggsleft < 8)
-			user.visible_message(SPAN_NOTICE("[user] feeds [O] to [name]! It clucks happily."),SPAN_NOTICE("You feed [O] to [name]! It clucks happily."))
+			user.visible_message(SPAN_NOTICE("[user]把[O]喂给了[name]！它高兴地咯咯叫。"),SPAN_NOTICE("You feed [O] to [name]! It clucks happily."))
 			user.drop_held_item()
 			qdel(O)
 			eggsleft += rand(1, 4)
 			//world << eggsleft
 		else
-			to_chat(user, SPAN_NOTICE("[name] doesn't seem hungry!"))
+			to_chat(user, SPAN_NOTICE("[name]看起来不饿！"))
 	else
 		..()
 
@@ -260,7 +260,7 @@ GLOBAL_VAR_INIT(chicken_count, 0)
 	if(isturf(loc))
 		amount_grown += rand(1,2)
 		if(amount_grown >= 100)
-			visible_message("[src] hatches with a quiet cracking sound.")
+			visible_message("[src]伴随着轻微的碎裂声孵化了。")
 			new /mob/living/simple_animal/small/chick(get_turf(src))
 			STOP_PROCESSING(SSobj, src)
 			qdel(src)

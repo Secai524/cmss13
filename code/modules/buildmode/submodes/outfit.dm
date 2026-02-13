@@ -14,7 +14,7 @@
 	dresscode = null
 
 /datum/buildmode_mode/outfit/change_settings(client/c)
-	dresscode = tgui_input_list(c?.mob, "Pick a Preset", "Equipment", GLOB.equipment_presets.categories["All"])
+	dresscode = tgui_input_list(c?.mob, "选择预设", "Equipment", GLOB.equipment_presets.categories["All"])
 
 /datum/buildmode_mode/outfit/when_clicked(client/c, params, object)
 	var/list/modifiers = params2list(params)
@@ -25,7 +25,7 @@
 
 	if(LAZYACCESS(modifiers, LEFT_CLICK))
 		if(isnull(dresscode))
-			to_chat(c, SPAN_WARNING("Pick an outfit first."))
+			to_chat(c, SPAN_WARNING("请先选择一套装备。"))
 			return
 
 		for(var/obj/item/I in selected)
@@ -34,7 +34,7 @@
 			qdel(I)
 
 		if(!ishuman(selected))
-			selected = selected.change_mob_type(/mob/living/carbon/human, null, null, TRUE, "Human")
+			selected = selected.change_mob_type(/mob/living/carbon/human, null, null, TRUE, "人类")
 			if(!ishuman(selected))
 				return
 

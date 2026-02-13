@@ -22,7 +22,7 @@
 	max_range = 12
 
 /datum/ammo/xeno/toxin
-	name = "neurotoxic spit"
+	name = "神经毒素唾液"
 	damage_falloff = 0
 	flags_ammo_behavior = AMMO_XENO|AMMO_IGNORE_RESIST
 	spit_cost = 25
@@ -40,7 +40,7 @@
 
 /proc/apply_neuro(mob/living/M, power, drain, insta_neuro = FALSE, drain_stims = FALSE, drain_medchems = FALSE, apply_effect = TRUE)
 	if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX) && !insta_neuro)
-		M.visible_message(SPAN_DANGER("[M] withstands the neurotoxin!"))
+		M.visible_message(SPAN_DANGER("[M]抵抗住了神经毒素！"))
 		return //endurance 5 makes you immune to weak neurotoxin
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
@@ -48,7 +48,7 @@
 			for(var/datum/reagent/generated/stim in H.reagents.reagent_list)
 				H.reagents.remove_reagent(stim.id, drain, TRUE)
 		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || H.species.flags & NO_NEURO)
-			H.visible_message(SPAN_DANGER("[M] shrugs off the neurotoxin!"))
+			H.visible_message(SPAN_DANGER("[M]摆脱了神经毒素的影响！"))
 			return //species like zombies or synths are immune to neurotoxin
 		if(drain_medchems)
 			for(var/datum/reagent/medical/med in H.reagents.reagent_list)
@@ -66,7 +66,7 @@
 
 		if(ishuman(M))
 			M.apply_effect(4, SUPERSLOW)
-			M.visible_message(SPAN_DANGER("[M]'s movements are slowed."))
+			M.visible_message(SPAN_DANGER("[M]的动作变慢了。"))
 
 		var/no_clothes_neuro = FALSE
 
@@ -79,21 +79,21 @@
 			if(M.GetKnockDownDuration() < 5) // Nobody actually knows what this means. Supposedly it means less than 10 seconds. Frankly if you get locked into 10s of knockdown to begin with there are bigger issues.
 				M.KnockDown(power)
 				M.Stun(power)
-				M.visible_message(SPAN_DANGER("[M] falls prone."))
+				M.visible_message(SPAN_DANGER("[M]倒下了。"))
 
 /proc/apply_scatter_neuro(mob/living/M)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX))
-			M.visible_message(SPAN_DANGER("[M] withstands the neurotoxin!"))
+			M.visible_message(SPAN_DANGER("[M]抵抗住了神经毒素！"))
 			return //endurance 5 makes you immune to weak neuro
 		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || H.species.flags & NO_NEURO)
-			H.visible_message(SPAN_DANGER("[M] shrugs off the neurotoxin!"))
+			H.visible_message(SPAN_DANGER("[M]摆脱了神经毒素的影响！"))
 			return
 
 		M.KnockDown(0.7) // Completely arbitrary values from another time where stun timers incorrectly stacked. Kill as needed.
 		M.Stun(0.7)
-		M.visible_message(SPAN_DANGER("[M] falls prone."))
+		M.visible_message(SPAN_DANGER("[M]倒下了。"))
 
 /datum/ammo/xeno/toxin/on_hit_mob(mob/M,obj/projectile/P)
 	if(ishuman(M))
@@ -105,14 +105,14 @@
 	neuro_callback.Invoke(M, effect_power, drain_power, FALSE, TRUE, TRUE)
 
 /datum/ammo/xeno/toxin/medium //Spitter
-	name = "neurotoxic spatter"
+	name = "神经毒素飞溅物"
 	spit_cost = 50
 	effect_power = 1
 
 	shell_speed = AMMO_SPEED_TIER_3
 
 /datum/ammo/xeno/toxin/queen
-	name = "neurotoxic spit"
+	name = "神经毒素唾液"
 	spit_cost = 50
 	effect_power = 2
 	drain_power = 4
@@ -124,7 +124,7 @@
 	neuro_callback.Invoke(M, effect_power, drain_power, TRUE, TRUE, FALSE)
 
 /datum/ammo/xeno/toxin/shotgun
-	name = "neurotoxic droplet"
+	name = "神经毒素液滴"
 	flags_ammo_behavior = AMMO_XENO|AMMO_IGNORE_RESIST
 	bonus_projectiles_type = /datum/ammo/xeno/toxin/shotgun/additional
 
@@ -140,13 +140,13 @@
 	neuro_callback = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(apply_scatter_neuro))
 
 /datum/ammo/xeno/toxin/shotgun/additional
-	name = "additional neurotoxic droplets"
+	name = "额外的神经毒素液滴"
 
 	scatter = SCATTER_AMOUNT_NEURO
 	bonus_projectiles_amount = 0
 
 /datum/ammo/xeno/acid
-	name = "acid spit"
+	name = "酸液唾液"
 	icon_state = "xeno_acid_weak"
 	sound_hit  = "acid_hit"
 	sound_bounce = "acid_bounce"
@@ -170,7 +170,7 @@
 	..()
 
 /datum/ammo/xeno/acid/spatter
-	name = "acid spatter"
+	name = "酸液飞溅物"
 	icon_state = "xeno_acid_strong"
 	damage = 30
 	max_range = 6
@@ -186,7 +186,7 @@
 	new /datum/effects/acid(target_mob, P.firer)
 
 /datum/ammo/xeno/acid/praetorian
-	name = "acid splash"
+	name = "酸液溅射"
 	icon_state = "xeno_acid_strong"
 	accuracy = HIT_ACCURACY_TIER_10 + HIT_ACCURACY_TIER_5
 	max_range = 8
@@ -194,10 +194,10 @@
 	shell_speed = AMMO_SPEED_TIER_2
 
 /datum/ammo/xeno/acid/dot
-	name = "acid spit"
+	name = "酸液唾液"
 
 /datum/ammo/xeno/acid/prae_nade // Used by base prae's acid nade
-	name = "acid scatter"
+	name = "酸液散射"
 	icon_state = "xeno_acid_normal"
 	flags_ammo_behavior = AMMO_ACIDIC|AMMO_XENO|AMMO_STOPPED_BY_COVER
 	accuracy = HIT_ACCURACY_TIER_5
@@ -226,7 +226,7 @@
 		PAS.increment_stack_count()
 
 /datum/ammo/xeno/acid/despoiler
-	name = "corrosive spit"
+	name = "腐蚀性唾液"
 	icon_state = "xeno_acid_strong"
 	flags_ammo_behavior = AMMO_ACIDIC|AMMO_XENO|AMMO_STOPPED_BY_COVER
 	accuracy = HIT_ACCURACY_TIER_MAX
@@ -264,7 +264,7 @@
 
 
 /datum/ammo/xeno/boiler_gas
-	name = "glob of neuro gas"
+	name = "神经毒气团"
 	icon_state = "neuro_glob"
 	ping = "ping_x"
 	debilitate = list(2,2,0,1,11,12,1,10) // Stun,knockdown,knockout,irradiate,stutter,eyeblur,drowsy,agony
@@ -302,7 +302,7 @@
 		neuro_effect = new /datum/effects/neurotoxin(moob, proj.firer)
 	neuro_effect.duration += 5
 	moob.apply_effect(3, DAZE)
-	to_chat(moob, SPAN_HIGHDANGER("Neurotoxic liquid spreads all over you and immediately soaks into your pores and orifices! Oh fuck!")) // Fucked up but have a chance to escape rather than being game-ended
+	to_chat(moob, SPAN_HIGHDANGER("神经毒液遍布你全身，并立即渗入你的毛孔和孔窍！妈的！")) // Fucked up but have a chance to escape rather than being game-ended
 	drop_nade(get_turf(proj), proj,TRUE)
 
 /datum/ammo/xeno/boiler_gas/on_hit_obj(obj/outbacksteakhouse, obj/projectile/proj)
@@ -328,11 +328,11 @@
 	smoke_system.set_up(smokerange, 0, turf, new_cause_data = cause_data)
 	smoke_system.lifetime = 12 * lifetime_mult
 	smoke_system.start()
-	turf.visible_message(SPAN_DANGER("A glob of acid lands with a splat and explodes into noxious fumes!"))
+	turf.visible_message(SPAN_DANGER("一团酸液啪地落下并爆发出有毒烟雾！"))
 
 
 /datum/ammo/xeno/boiler_gas/acid
-	name = "glob of acid gas"
+	name = "酸气团"
 	icon_state = "acid_glob"
 	ping = "ping_x"
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_4
@@ -347,7 +347,7 @@
 		var/mob/living/carbon/carbon = moob
 		if(carbon.status_flags & XENO_HOST && HAS_TRAIT(carbon, TRAIT_NESTED) || carbon.stat == DEAD || HAS_TRAIT(carbon, TRAIT_HAULED))
 			return
-	to_chat(moob,SPAN_HIGHDANGER("Acid covers your body! Oh fuck!"))
+	to_chat(moob,SPAN_HIGHDANGER("酸液覆盖了你的身体！妈的！"))
 	playsound(moob,"acid_strike",75,1)
 	INVOKE_ASYNC(moob, TYPE_PROC_REF(/mob, emote), "pain") // why do I need this bullshit
 	drop_nade(get_turf(proj), proj,TRUE)
@@ -358,7 +358,7 @@
 	new /datum/effects/acid(moob, proj.firer)
 
 /datum/ammo/xeno/bone_chips
-	name = "bone chips"
+	name = "骨片"
 	icon_state = "shrapnel_light"
 	ping = null
 	flags_ammo_behavior = AMMO_XENO|AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER|AMMO_IGNORE_ARMOR
@@ -385,19 +385,19 @@
 			M.apply_effect(3, SLOW)
 
 /datum/ammo/xeno/bone_chips/spread
-	name = "small bone chips"
+	name = "小骨片"
 
 	scatter = 30 // We want a wild scatter angle
 	max_range = 5
 	bonus_projectiles_amount = 0
 
 /datum/ammo/xeno/bone_chips/spread/short_range
-	name = "small bone chips"
+	name = "小骨片"
 
 	max_range = 3 // Very short range
 
 /datum/ammo/xeno/bone_chips/spread/runner_skillshot
-	name = "bone chips"
+	name = "骨片"
 
 	scatter = 0
 	max_range = 5
@@ -415,7 +415,7 @@
 			M.apply_effect(6, SLOW)
 
 /datum/ammo/xeno/oppressor_tail
-	name = "tail hook"
+	name = "尾钩"
 	icon_state = "none"
 	ping = null
 	flags_ammo_behavior = AMMO_XENO|AMMO_SKIPS_ALIENS|AMMO_STOPPED_BY_COVER
@@ -454,7 +454,7 @@
 
 
 /datum/ammo/yautja/gauntlet_hook
-	name = "chain hook"
+	name = "链钩"
 	icon_state = "none"
 	ping = null
 	flags_ammo_behavior = AMMO_STOPPED_BY_COVER

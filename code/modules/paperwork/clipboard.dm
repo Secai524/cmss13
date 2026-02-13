@@ -54,7 +54,7 @@
 		W.forceMove(src)
 		if(istype(W, /obj/item/paper))
 			toppaper = W
-		to_chat(user, SPAN_NOTICE("You clip [W] onto [src]."))
+		to_chat(user, SPAN_NOTICE("你将[W]夹到[src]上。"))
 		update_icon()
 
 	else if(istype(toppaper) && HAS_TRAIT(W, TRAIT_TOOL_PEN))
@@ -84,7 +84,7 @@
 	for(var/obj/item/photo/Ph in src)
 		dat += "<A href='byond://?src=\ref[src];remove=\ref[Ph]'>Remove</A> - <A href='byond://?src=\ref[src];look=\ref[Ph]'>[Ph.name]</A><BR>"
 
-	show_browser(user, dat, "Clipboard", "clipboard")
+	show_browser(user, dat, "写字板", "clipboard")
 	onclose(user, "clipboard")
 	add_fingerprint(usr)
 	return
@@ -109,7 +109,7 @@
 					if(usr.drop_held_item())
 						W.forceMove(src)
 						haspen = W
-						to_chat(usr, SPAN_NOTICE("You slot the pen into \the [src]."))
+						to_chat(usr, SPAN_NOTICE("你将笔插入\the [src]。"))
 
 		else if(href_list["write"])
 			var/obj/item/P = locate(href_list["write"])
@@ -158,7 +158,7 @@
 			var/obj/item/P = locate(href_list["top"])
 			if(P && (P.loc == src) && istype(P, /obj/item/paper) )
 				toppaper = P
-				to_chat(usr, SPAN_NOTICE("You move [P.name] to the top."))
+				to_chat(usr, SPAN_NOTICE("你将[P.name]移到顶部。"))
 
 		//Update everything
 		attack_self(usr)

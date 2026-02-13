@@ -1,6 +1,6 @@
 /obj/item/hardpoint/locomotion/apc_wheels
 	name = "\improper APC Wheels"
-	desc = "Integral to the movement of the APC."
+	desc = "装甲运兵车移动的核心部件。"
 	icon = 'icons/obj/vehicles/hardpoints/apc.dmi'
 
 	damage_multiplier = 0.15

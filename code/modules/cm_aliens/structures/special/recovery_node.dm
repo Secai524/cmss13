@@ -1,6 +1,6 @@
 /obj/effect/alien/resin/special/plasma_tree
 	name = XENO_STRUCTURE_PLASMA_TREE
-	desc = "A tree shaped node that has liquid plasma dripping around it."
+	desc = "一个树状的节点，有液态等离子体在其周围滴落。"
 	health = 400
 	icon_state =  "recovery_plasma"
 	var/replenish_amount = 75
@@ -52,7 +52,7 @@
 		return
 
 	var/mob/living/carbon/xenomorph/picked_candidate = pick(plasma_candidates)
-	picked_candidate.visible_message(SPAN_HELPFUL("[picked_candidate] glows as a warm aura envelops them."),
+	picked_candidate.visible_message(SPAN_HELPFUL("[picked_candidate]发出光芒，一股温暖的灵光笼罩了他们。"),
 			SPAN_HELPFUL("We feel a warm aura envelop us."))
 	picked_candidate.flick_heal_overlay(2 SECONDS, "#0e6faf")
 	picked_candidate.gain_plasma(replenish_amount)
@@ -61,7 +61,7 @@
 
 /obj/effect/alien/resin/special/recovery
 	name = XENO_STRUCTURE_RECOVERY
-	desc = "A warm, soothing light source that pulsates with a faint hum."
+	desc = "一个温暖、舒缓的光源，伴随着微弱的嗡嗡声脉动。"
 	icon_state = "recovery"
 	health = 400
 	var/heal_amount = 20

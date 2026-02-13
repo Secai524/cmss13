@@ -4,8 +4,8 @@
 
 //Floorbot
 /obj/structure/machinery/bot/floorbot
-	name = "Floorbot"
-	desc = "A little floor repairing robot, he looks so excited!"
+	name = "地板机器人"
+	desc = "一个小小的地板修理机器人，它看起来兴奋极了！"
 	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	icon_state = "floorbot0"
 	density = FALSE
@@ -82,17 +82,17 @@
 		var/loaded = min(50-src.amount, T.get_amount())
 		T.use(loaded)
 		src.amount += loaded
-		to_chat(user, SPAN_NOTICE("You load [loaded] tiles into the floorbot. He now contains [src.amount] tiles."))
+		to_chat(user, SPAN_NOTICE("你将[loaded]块地板砖装入了地板机器人。它现在装有[src.amount]块地板砖。"))
 		src.updateicon()
 	else if(istype(W, /obj/item/card/id))
 		if(src.allowed(usr) && !open)
 			src.locked = !src.locked
-			to_chat(user, SPAN_NOTICE("You [src.locked ? "lock" : "unlock"] the [src] behaviour controls."))
+			to_chat(user, SPAN_NOTICE("你[src.locked ? "lock" : "unlock"] the [src] behaviour controls."))
 		else
 			if(open)
-				to_chat(user, SPAN_WARNING("Please close the access panel before locking it."))
+				to_chat(user, SPAN_WARNING("请先关闭检修面板再上锁。"))
 			else
-				to_chat(user, SPAN_WARNING("Access denied."))
+				to_chat(user, SPAN_WARNING("权限被拒绝。"))
 		src.updateUsrDialog()
 	else
 		. = ..()
@@ -159,7 +159,7 @@
 		else
 			return
 	if(prob(5))
-		visible_message("[src] makes an excited booping beeping sound!")
+		visible_message("[src]发出兴奋的哔哔声！")
 
 	if(!src.target || src.target == null)
 		if(targetdirection != null)
@@ -241,7 +241,7 @@
 	src.anchored = TRUE
 	src.icon_state = "floorbot-c"
 	if(istype(target, /turf/open/space/))
-		visible_message(SPAN_DANGER("[src] begins to repair the hole."))
+		visible_message(SPAN_DANGER("[src]开始修复破洞。"))
 		var/obj/item/stack/tile/plasteel/T = new /obj/item/stack/tile/plasteel
 		src.repairing = 1
 		spawn(50)
@@ -252,7 +252,7 @@
 			src.anchored = FALSE
 			src.target = null
 	else
-		visible_message(SPAN_DANGER("[src] begins to improve the floor."))
+		visible_message(SPAN_DANGER("[src]开始加固地板。"))
 		src.repairing = 1
 		spawn(50)
 			src.loc.icon_state = "floor"
@@ -265,7 +265,7 @@
 /obj/structure/machinery/bot/floorbot/proc/eattile(obj/item/stack/tile/plasteel/T)
 	if(!istype(T, /obj/item/stack/tile/plasteel))
 		return
-	visible_message(SPAN_DANGER("[src] begins to collect tiles."))
+	visible_message(SPAN_DANGER("[src]开始收集地砖。"))
 	src.repairing = 1
 	spawn(20)
 		if(isnull(T))
@@ -288,7 +288,7 @@
 		return
 	if(M.get_amount() > 1)
 		return
-	visible_message(SPAN_DANGER("[src] begins to create tiles."))
+	visible_message(SPAN_DANGER("[src]开始制造地砖。"))
 	src.repairing = 1
 	spawn(20)
 		if(QDELETED(M))
@@ -310,7 +310,7 @@
 
 /obj/structure/machinery/bot/floorbot/explode()
 	src.on = 0
-	src.visible_message(SPAN_DANGER("<B>[src] blows apart!</B>"), null, null, 1)
+	src.visible_message(SPAN_DANGER("<B>[src]炸得粉碎！</B>"), null, null, 1)
 	var/turf/Tsec = get_turf(src)
 
 	var/obj/item/storage/toolbox/mechanical/N = new /obj/item/storage/toolbox/mechanical(Tsec)
@@ -343,16 +343,16 @@
 		..()
 		return
 	if(length(src.contents) >= 1)
-		to_chat(user, SPAN_NOTICE("That won't fit, there's already stuff inside."))
+		to_chat(user, SPAN_NOTICE("放不进去，里面已经有东西了。"))
 		return
 	for(var/mob/M in content_watchers)
 		storage_close(M)
 	if (T.use(10))
 		var/obj/item/frame/toolbox_tiles/B = new /obj/item/frame/toolbox_tiles
 		user.put_in_hands(B)
-		to_chat(user, SPAN_NOTICE("You add the tiles into the empty toolbox. They protrude from the top."))
+		to_chat(user, SPAN_NOTICE("你将地砖放入空的工具箱。它们从顶部突出来。"))
 		user.temp_drop_inv_item(src)
 		qdel(src)
 	else
-		to_chat(user, SPAN_WARNING("You need 10 floortiles for a floorbot."))
+		to_chat(user, SPAN_WARNING("制造地板机器人需要10块地砖。"))
 	return

@@ -1,5 +1,5 @@
 /datum/faction/upp
-	name = "Union of Progressive Peoples"
+	name = "进步人民联盟"
 	faction_tag = FACTION_UPP
 	base_icon_file = 'icons/mob/hud/factions/upp.dmi'
 
@@ -89,7 +89,7 @@
 		list("Handful of Heavy Buckshot Shells (8g)", 5, /obj/item/ammo_magazine/handful/shotgun/heavy/buckshot, null, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARMS", 0, null, null, null),
-		list("Type 73 Pistol", 15, /obj/item/weapon/gun/pistol/t73, null, VENDOR_ITEM_REGULAR),
+		list("73式手枪", 15, /obj/item/weapon/gun/pistol/t73, null, VENDOR_ITEM_REGULAR),
 		list("NP92 Pistol", 15, /obj/item/weapon/gun/pistol/np92, null, VENDOR_ITEM_REGULAR),
 		list("ZHNK-72 Revolver", 15, /obj/item/weapon/gun/revolver/upp, null, VENDOR_ITEM_REGULAR),
 
@@ -113,7 +113,7 @@
 		list("UTILITIES", 0, null, null, null),
 		list("M94 Marking Flare Pack", 3, /obj/item/storage/box/m94, null, VENDOR_ITEM_RECOMMENDED),
 		list("Smoke Grenade", 7, /obj/item/explosive/grenade/smokebomb, null, VENDOR_ITEM_REGULAR),
-		list("Type 80 Bayonet", 3, /obj/item/attachable/bayonet/upp, null, VENDOR_ITEM_REGULAR),
+		list("80式刺刀", 3, /obj/item/attachable/bayonet/upp, null, VENDOR_ITEM_REGULAR),
 	)
 
 /datum/faction/upp/get_antag_guns_sorted_equipment()
@@ -131,7 +131,7 @@
 		list("Handful of Heavy Buckshot Shells (8g)", 60, /obj/item/ammo_magazine/handful/shotgun/heavy/buckshot, null, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARMS", -1, null, null),
-		list("Type 73 Pistol", 20, /obj/item/weapon/gun/pistol/t73, null, VENDOR_ITEM_REGULAR),
+		list("73式手枪", 20, /obj/item/weapon/gun/pistol/t73, null, VENDOR_ITEM_REGULAR),
 		list("NP02 Pistol", 20, /obj/item/weapon/gun/pistol/np92, null, VENDOR_ITEM_REGULAR),
 		list("ZHNK-72 Revolver", 20, /obj/item/weapon/gun/revolver/upp, null, VENDOR_ITEM_REGULAR),
 
@@ -143,5 +143,5 @@
 		list("UTILITIES", -1, null, null),
 		list("M94 Marking Flare Pack", 20, /obj/item/storage/box/m94, null, VENDOR_ITEM_REGULAR),
 		list("Smoke Grenade", 5, /obj/item/explosive/grenade/smokebomb, null, VENDOR_ITEM_REGULAR),
-		list("Type 80 Bayonet", 40, /obj/item/attachable/bayonet/upp, null, VENDOR_ITEM_REGULAR),
+		list("80式刺刀", 40, /obj/item/attachable/bayonet/upp, null, VENDOR_ITEM_REGULAR),
 	)

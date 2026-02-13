@@ -38,7 +38,7 @@
 			break // Don't need to keep looking
 
 /datum/action/xeno_action/onclick/plant_resin_fruit
-	name = "Plant Resin Fruit (50)"
+	name = "种植树脂果实（50）"
 	action_icon_state = "gardener_plant"
 	plasma_cost = 50
 	macro_path = /datum/action/xeno_action/verb/plant_resin_fruit
@@ -48,7 +48,7 @@
 	var/health_cost = 50
 
 /datum/action/xeno_action/onclick/plant_resin_fruit/greater
-	name = "Plant Resin Fruit (100)"
+	name = "种植树脂果实（100）"
 	plasma_cost = 100
 	ability_primacy = XENO_PRIMARY_ACTION_4
 
@@ -72,29 +72,29 @@
 	var/turf/target_turf = xeno.loc
 
 	if(!istype(target_turf))
-		to_chat(xeno, SPAN_WARNING("We cannot plant a fruit without a weed garden."))
+		to_chat(xeno, SPAN_WARNING("没有菌毯花园我们无法种植果实。"))
 		return
 
 	var/obj/effect/alien/weeds/target_weeds = locate(/obj/effect/alien/weeds) in target_turf
 	if(!target_weeds)
-		to_chat(xeno, SPAN_WARNING("The are no weeds to plant a fruit within!"))
+		to_chat(xeno, SPAN_WARNING("没有菌毯可供种植果实！"))
 		return
 
 	if(target_weeds.hivenumber != xeno.hivenumber)
-		to_chat(xeno, SPAN_WARNING("These weeds do not belong to our hive; they reject our fruit."))
+		to_chat(xeno, SPAN_WARNING("这些菌毯不属于我们的巢穴；它们排斥我们的果实。"))
 		return
 
 	if(locate(/obj/effect/alien/resin/trap) in range(0, target_turf))
-		to_chat(xeno, SPAN_XENOWARNING("We cannot plant our fruit over a resin hole!"))
+		to_chat(xeno, SPAN_XENOWARNING("我们无法在树脂孔上种植果实！"))
 		return
 
 	if(locate(/obj/effect/alien/resin/fruit) in target_turf)
-		to_chat(xeno, SPAN_XENOWARNING("Our fruit has already taken root in this space!"))
+		to_chat(xeno, SPAN_XENOWARNING("我们的果实已在此处扎根！"))
 		return
 
 	if(check_and_use_plasma_owner())
 		if(length(xeno.current_fruits) >= xeno.max_placeable)
-			to_chat(xeno, SPAN_XENOWARNING("We cannot sustain another fruit, one will wither away to allow this one to live!"))
+			to_chat(xeno, SPAN_XENOWARNING("我们无法维持另一颗果实，必须有一棵枯萎才能让这颗存活！"))
 			var/obj/effect/alien/resin/fruit/old_fruit = xeno.current_fruits[1]
 			xeno.current_fruits.Remove(old_fruit)
 			qdel(old_fruit)
@@ -104,7 +104,7 @@
 
 		var/obj/effect/alien/resin/fruit/fruit = new xeno.selected_fruit(target_weeds.loc, target_weeds, xeno)
 		if(!fruit)
-			to_chat(xeno, SPAN_XENOHIGHDANGER("Couldn't find the fruit to place! Contact a coder!"))
+			to_chat(xeno, SPAN_XENOHIGHDANGER("找不到可放置的果实！请联系程序员！"))
 			return
 		xeno.adjustBruteLoss(health_cost)
 		xeno.updatehealth()
@@ -116,7 +116,7 @@
 	return ..()
 
 /datum/action/xeno_action/onclick/change_fruit
-	name = "Change Fruit"
+	name = "更换果实"
 	action_icon_state = "blank"
 	plasma_cost = 0
 	xeno_cooldown = 0
@@ -200,7 +200,7 @@
 				return
 
 			var/obj/effect/alien/resin/fruit/fruit = selected_type
-			to_chat(xeno, SPAN_NOTICE("We will now build <b>[initial(fruit.name)]\s</b> when secreting resin."))
+			to_chat(xeno, SPAN_NOTICE("分泌树脂时，我们现在将建造<b>[initial(fruit.name)]\s</b>。"))
 			//update the button's overlay with new choice
 			xeno.update_icons()
 			button.overlays.Cut()
@@ -216,7 +216,7 @@
 */
 
 /datum/action/xeno_action/activable/resin_surge
-	name = "Resin Surge (75)"
+	name = "树脂涌动（75）"
 	action_icon_state = "gardener_resin_surge"
 	plasma_cost = 75
 	xeno_cooldown = 10 SECONDS
@@ -242,11 +242,11 @@
 
 	if(ismob(target_atom)) // to prevent using thermal vision to bypass clickcatcher
 		if(!can_see(xeno, target_atom, max_range))
-			to_chat(xeno, SPAN_XENODANGER("We cannot see that location!"))
+			to_chat(xeno, SPAN_XENODANGER("我们无法看见那个位置！"))
 			return
 	else
 		if(get_dist(xeno, target_atom) > max_range)
-			to_chat(xeno, SPAN_WARNING("That's too far away!"))
+			to_chat(xeno, SPAN_WARNING("距离太远了！"))
 			return
 
 	if(!check_and_use_plasma_owner())
@@ -279,15 +279,15 @@
 			xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin around [structure_to_buff], making it temporarily nigh unbreakable!"),
 			SPAN_XENONOTICE("We surge the resin around [structure_to_buff], making it temporarily nigh unbreakable!"), null, 5)
 		else
-			to_chat(xeno, SPAN_XENONOTICE("We haplessly try to surge resin around [structure_to_buff], but it's already reinforced. It'll take a moment for us to recover."))
+			to_chat(xeno, SPAN_XENONOTICE("我们徒劳地试图在[structure_to_buff]周围涌动树脂，但它已被加固。我们需要一点时间来恢复。"))
 			xeno_cooldown *= 0.5
 
 	else if(F && F.hivenumber == xeno.hivenumber)
 		if(F.mature)
-			to_chat(xeno, SPAN_XENONOTICE("The [F] is already mature. The [src.name] does nothing."))
+			to_chat(xeno, SPAN_XENONOTICE("该[F]已经成熟。[src.name]没有效果。"))
 			xeno_cooldown *= 0.5
 		else
-			to_chat(xeno, SPAN_XENONOTICE("We pour all our energy equal to [F] growth, bringing it to swift maturity!"))
+			to_chat(xeno, SPAN_XENONOTICE("我们倾注所有能量，相当于[F]的生长量，使其迅速成熟！"))
 			F.reduce_timer(60 SECONDS) //We want surge to mature any fruit instantly, but you receive dynamic cooldown depending on fruit growth time.
 			xeno_cooldown *= dynamic_fruit_surge_cooldown(F)
 
@@ -341,7 +341,7 @@
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/onclick/plant_weeds/gardener
-	name = "Plant Hardy Weeds (125)"
+	name = "种植坚韧菌毯（125）"
 	action_icon_state = "plant_gardener_weeds"
 	plasma_cost = 125
 	macro_path = /datum/action/xeno_action/verb/verb_plant_gardening_weeds
@@ -364,11 +364,11 @@
 	set category = "Alien"
 	set name = "Plant Hardy Weeds"
 	set hidden = TRUE
-	var/action_name = "Plant Hardy Weeds (125)"
+	var/action_name = "种植坚韧菌毯（125）"
 	handle_xeno_macro(src, action_name)
 
 /datum/behavior_delegate/drone_gardener
-	name = "Gardener Drone Behavior Delegate"
+	name = "园丁工蜂行为委托"
 
 	var/mutable_appearance/fruit_sac_overlay_icon
 

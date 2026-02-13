@@ -178,7 +178,7 @@
 			return // We clicked the same ability in a very short time
 		if(xeno.client && xeno.client.prefs && xeno.client.prefs.toggle_prefs & TOGGLE_ABILITY_DEACTIVATION_OFF)
 			return
-		to_chat(xeno, "You will no longer use [name] with [xeno.get_ability_mouse_name()].")
+		to_chat(xeno, "你将不再使用[name]进行[xeno.get_ability_mouse_name()]。")
 		button.icon_state = "template_xeno"
 		xeno.set_selected_ability(null)
 		if(charge_time)
@@ -186,7 +186,7 @@
 		if(ability_uses_acid_overlay)
 			xeno.overlays -= xeno.acid_overlay
 	else
-		to_chat(xeno, "You will now use [name] with [xeno.get_ability_mouse_name()].")
+		to_chat(xeno, "你现在将使用[name]进行[xeno.get_ability_mouse_name()]。")
 		if(xeno.selected_ability)
 			xeno.selected_ability.action_deselect()
 			if(xeno.selected_ability.charge_time)
@@ -195,7 +195,7 @@
 		xeno.set_selected_ability(src)
 		xeno.deselect_timer = world.time + 5 // Half a second
 		if(charges != NO_ACTION_CHARGES)
-			to_chat(xeno, SPAN_INFO("It has [charges] uses left."))
+			to_chat(xeno, SPAN_INFO("它还剩[charges]次使用次数。"))
 		if(charge_time)
 			start_charging_ability()
 		if(ability_uses_acid_overlay && !xeno.resting && xeno.stat != DEAD)
@@ -370,11 +370,11 @@
 		if(cooldown_message)
 			to_chat(owner, SPAN_XENODANGER("[cooldown_message]"))
 		else
-			to_chat(owner, SPAN_XENODANGER("We feel our strength return! We can use [name] again!"))
+			to_chat(owner, SPAN_XENODANGER("我们感到力量恢复了！我们可以再次使用[name]了！"))
 
 /datum/action/xeno_action/proc/start_charging_ability()
 	charge_timer_id = addtimer(CALLBACK(src, PROC_REF(finish_charging_ability)), charge_time, TIMER_UNIQUE|TIMER_STOPPABLE)
-	to_chat(owner, SPAN_XENOWARNING("We start charging up our <b>[name]</b>!"))
+	to_chat(owner, SPAN_XENOWARNING("我们开始为<b>[name]</b>充能！"))
 
 /datum/action/xeno_action/proc/finish_charging_ability()
 	charge_timer_id = TIMER_ID_NULL

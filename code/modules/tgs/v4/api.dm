@@ -140,7 +140,7 @@
 			var/list/event_notification = json_decode(params[TGS4_PARAMETER_DATA])
 			var/list/event_parameters = event_notification["Parameters"]
 
-			var/list/event_call = list(event_notification["Type"])
+			var/list/event_call = list(event_notification["类型"])
 			if(event_parameters)
 				event_call += event_parameters
 

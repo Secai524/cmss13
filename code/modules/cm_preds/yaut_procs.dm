@@ -3,7 +3,7 @@
 	for(var/mob/living/carbon/human/Y in GLOB.yautja_mob_list)
 		// Send message to the bracer; appear multiple times if we have more bracers
 		for(var/obj/item/clothing/gloves/yautja/hunter/G in Y.contents)
-			to_chat(Y, SPAN_YAUTJABOLD("[icon2html(G)] \The <b>[G]</b> beeps: [msg]"))
+			to_chat(Y, SPAN_YAUTJABOLD("[icon2html(G)] <b>[G]</b> 发出哔哔声：[msg]"))
 			if(G.notification_sound)
 				playsound(Y.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 
@@ -27,7 +27,7 @@
 	set category = "OOC.Whitelist"
 
 	if(!check_whitelist_status(WHITELIST_YAUTJA_COUNCIL))
-		to_chat(src, SPAN_WARNING("Only the Yautja Council may use this command."))
+		to_chat(src, SPAN_WARNING("只有铁血战士长老会才能使用此命令。"))
 		return
 
 	var/is_living_yautja = FALSE
@@ -35,7 +35,7 @@
 		is_living_yautja = TRUE
 
 	if(!(is_living_yautja || (isHellhound(mob) && !mob.stat) || isobserver(mob)))
-		to_chat(src, SPAN_WARNING("You must be a Yautja related mob (and conscious) or a ghost to use this command."))
+		to_chat(src, SPAN_WARNING("你必须是一个铁血战士相关的实体（且意识清醒）或是幽灵才能使用此命令。"))
 		return
 
 	var/message_personal = "Send a message to all living hunters."
@@ -59,7 +59,7 @@
 	var/mob/living/carbon/T = hunter_data.thrall
 
 	for(var/obj/item/clothing/gloves/yautja/hunter/G in T.contents)
-		to_chat(T, SPAN_YAUTJABOLD("[icon2html(G)] \The <b>[G]</b> beeps: [msg]"))
+		to_chat(T, SPAN_YAUTJABOLD("[icon2html(G)] <b>[G]</b> 发出哔哔声：[msg]"))
 		if(G.notification_sound)
 			playsound(T.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 
@@ -92,7 +92,7 @@
 
 /mob/living/carbon/human/proc/butcher()
 	set category = "Yautja.Misc"
-	set name = "Butcher"
+	set name = "屠宰"
 	set desc = "Butcher a corpse you're standing on for its tasty meats."
 
 	if(is_mob_incapacitated() || body_position != STANDING_UP || buckled)
@@ -107,28 +107,28 @@
 					continue
 			choices += M
 
-	var/mob/living/carbon/T = tgui_input_list(src, "What do you wish to butcher?", "Butcher", choices)
+	var/mob/living/carbon/T = tgui_input_list(src, "你想肢解什么？", "屠宰", choices)
 
 	var/mob/living/carbon/xenomorph/xeno_victim
 	var/mob/living/carbon/human/victim
 
 	if(!T || !src || !T.stat)
-		to_chat(src, SPAN_WARNING("Nope."))
+		to_chat(src, SPAN_WARNING("不行。"))
 		return
 
 	if(!Adjacent(T))
-		to_chat(src, SPAN_WARNING("You have to be next to your target."))
+		to_chat(src, SPAN_WARNING("你必须靠近你的目标。"))
 		return
 
 	if(islarva(T) || isfacehugger(T))
-		to_chat(src, SPAN_WARNING("This tiny worm is not even worth using your tools on."))
+		to_chat(src, SPAN_WARNING("这只小虫子甚至不值得你动用工具。"))
 		return
 
 	if(is_mob_incapacitated() || body_position != STANDING_UP || buckled)
 		return
 
 	if(issynth(T))
-		to_chat(src, SPAN_WARNING("You would break your tools if you did this!"))
+		to_chat(src, SPAN_WARNING("这么做会弄坏你的工具！"))
 		return
 
 	if(isxeno(T))
@@ -152,30 +152,30 @@
 		victim = T
 
 	if(victim)
-		procedure = tgui_input_list(src, "Which slice would you like to take?", "Take Slice", procedure_choices)
+		procedure = tgui_input_list(src, "你想取下哪一块？", "Take Slice", procedure_choices)
 		if(!procedure)
 			return
 
 	if(isxeno(T) || procedure == "Skin")
 		if(T.butchery_progress)
 			playsound(loc, 'sound/weapons/pierce.ogg', 25)
-			visible_message(SPAN_DANGER("[src] goes back to butchering \the [T]."), SPAN_NOTICE("You get back to butchering \the [T]."))
+			visible_message(SPAN_DANGER("[src] 继续肢解 \the [T]。"), SPAN_NOTICE("You get back to butchering \the [T]."))
 		else
 			playsound(loc, 'sound/weapons/pierce.ogg', 25)
-			visible_message(SPAN_DANGER("[src] begins chopping and mutilating \the [T]."), SPAN_NOTICE("You take out your tools and begin your gruesome work on \the [T]. Hold still."))
+			visible_message(SPAN_DANGER("[src] 开始劈砍并肢解 \the [T]。"), SPAN_NOTICE("You take out your tools and begin your gruesome work on \the [T]. Hold still."))
 			T.butchery_progress = 1
 
 		if(T.butchery_progress == 1)
 			if(do_after(src, 7 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-				visible_message(SPAN_DANGER("[src] makes careful slices and tears out the viscera in \the [T]'s abdominal cavity."), SPAN_NOTICE("You carefully vivisect \the [T], ripping out the guts and useless organs. What a stench!"))
+				visible_message(SPAN_DANGER("[src] 仔细切割并扯出 \the [T] 腹腔内的内脏。"), SPAN_NOTICE("You carefully vivisect \the [T], ripping out the guts and useless organs. What a stench!"))
 				T.butchery_progress = 2
 				playsound(loc, 'sound/weapons/slash.ogg', 25)
 			else
-				to_chat(src, SPAN_NOTICE("You pause your butchering for later."))
+				to_chat(src, SPAN_NOTICE("你暂停了肢解，留待稍后。"))
 
 		if(T.butchery_progress == 2)
 			if(do_after(src, 6.5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-				visible_message(SPAN_DANGER("[src] hacks away at \the [T]'s limbs and slices off strips of dripping meat."), SPAN_NOTICE("You slice off a few of \the [T]'s limbs, making sure to get the finest cuts."))
+				visible_message(SPAN_DANGER("[src] 猛砍 \the [T] 的肢体，切下一条条滴着血的肉。"), SPAN_NOTICE("You slice off a few of \the [T]'s limbs, making sure to get the finest cuts."))
 				if(xeno_victim && isturf(xeno_victim.loc))
 					var/obj/item/reagent_container/food/snacks/meat/xenomeat = new /obj/item/reagent_container/food/snacks/meat/xenomeat(T.loc)
 					xenomeat.name = "raw [xeno_victim.age_prefix][xeno_victim.caste_type] steak"
@@ -186,11 +186,11 @@
 				T.butchery_progress = 3
 				playsound(loc, 'sound/weapons/bladeslice.ogg', 25)
 			else
-				to_chat(src, SPAN_NOTICE("You pause your butchering for later."))
+				to_chat(src, SPAN_NOTICE("你暂停了肢解，留待稍后。"))
 
 		if(T.butchery_progress == 3)
 			if(do_after(src, 7 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-				visible_message(SPAN_DANGER("[src] tears apart \the [T]'s ribcage and begins chopping off bit and pieces."), SPAN_NOTICE("You rip open \the [T]'s ribcage and start tearing the tastiest bits out."))
+				visible_message(SPAN_DANGER("[src] 撕开 \the [T] 的胸腔，开始砍下零碎的肉块。"), SPAN_NOTICE("You rip open \the [T]'s ribcage and start tearing the tastiest bits out."))
 				if(xeno_victim && isturf(xeno_victim.loc))
 					var/obj/item/reagent_container/food/snacks/meat/xenomeat = new /obj/item/reagent_container/food/snacks/meat/xenomeat(T.loc)
 					xenomeat.name = "raw [xeno_victim.age_prefix][xeno_victim.caste_type] tenderloin"
@@ -201,19 +201,19 @@
 				T.butchery_progress = 4
 				playsound(loc, 'sound/weapons/wristblades_hit.ogg', 25)
 			else
-				to_chat(src, SPAN_NOTICE("You pause your butchering for later."))
+				to_chat(src, SPAN_NOTICE("你暂停了肢解，留待稍后。"))
 
 		if(T.butchery_progress == 4)
 			if(do_after(src, 9 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 				if(xeno_victim && isturf(T.loc))
-					visible_message(SPAN_DANGER("[src] flenses the last of [victim]'s exoskeleton, revealing only bones!."), SPAN_NOTICE("You flense the last of [victim]'s exoskeleton clean off!"))
+					visible_message(SPAN_DANGER("[src] 剥下 [victim] 最后的外骨骼，只剩下骨头！"), SPAN_NOTICE("You flense the last of [victim]'s exoskeleton clean off!"))
 					new /obj/effect/decal/remains/xeno(xeno_victim.loc)
 					var/obj/item/skull/skull = new xeno_victim.skull(xeno_victim.loc)
 					var/obj/item/pelt/pelt = new xeno_victim.pelt(xeno_victim.loc)
 					pelt.name = "[xeno_victim.real_name] pelt"
 					skull.name = "[xeno_victim.real_name] skull"
 				else if(victim && isturf(T.loc))
-					visible_message(SPAN_DANGER("[src] reaches down and rips out \the [T]'s spinal cord and skull!."), SPAN_NOTICE("You firmly grip the revealed spinal column and rip [T]'s head off!"))
+					visible_message(SPAN_DANGER("[src] 伸手下去，扯出 \the [T] 的脊髓和头骨！"), SPAN_NOTICE("You firmly grip the revealed spinal column and rip [T]'s head off!"))
 					if(!(victim.get_limb("head").status & LIMB_DESTROYED))
 						victim.apply_damage(150, BRUTE, "head", FALSE, TRUE)
 						var/obj/item/clothing/accessory/limb/skeleton/head/spine/new_spine = new /obj/item/clothing/accessory/limb/skeleton/head/spine(victim.loc)
@@ -232,38 +232,38 @@
 				T.butchery_progress = 5 //Won't really matter.
 				playsound(loc, 'sound/weapons/slice.ogg', 25)
 				if(hunter_data.prey == T)
-					to_chat(src, SPAN_YAUTJABOLD("You have claimed [T] as your trophy."))
+					to_chat(src, SPAN_YAUTJABOLD("你已将 [T] 作为你的战利品。"))
 					emote("roar2")
 					message_all_yautja("[src.real_name] has claimed [T] as their trophy.")
 					hunter_data.prey = null
 				else
-					to_chat(src, SPAN_NOTICE("You finish butchering!"))
+					to_chat(src, SPAN_NOTICE("你完成了肢解！"))
 				qdel(T)
 			else
-				to_chat(src, SPAN_NOTICE("You pause your butchering for later."))
+				to_chat(src, SPAN_NOTICE("你暂停了肢解，留待稍后。"))
 	else
 		var/limb = procedure_choices[procedure]
 		var/limbName = parse_zone(limb)
 		if(victim.get_limb(limb).status & LIMB_DESTROYED)
-			to_chat(src, SPAN_WARNING("The victim lacks a [limbName]."))
+			to_chat(src, SPAN_WARNING("受害者没有 [limbName]。"))
 			return
 		if(limb == "head")
-			visible_message("<b>[src] reaches down and starts beheading [T].</b>","<b>You reach down and start beheading [T].</b>")
+			visible_message("<b>[src] 伸手下去，开始斩首 [T]。</b>","<b>You reach down and start beheading [T].</b>")
 		else
-			visible_message("<b>[src] reaches down and starts removing [T]'s [limbName].</b>","<b>You reach down and start removing [T]'s [limbName].</b>")
+			visible_message("<b>[src] 伸手下去，开始移除 [T] 的 [limbName]。</b>","<b>You reach down and start removing [T]'s [limbName].</b>")
 		if(do_after(src, 9 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			if(victim.get_limb(limb).status & LIMB_DESTROYED)
-				to_chat(src, SPAN_WARNING("The victim lacks a [limbName]."))
+				to_chat(src, SPAN_WARNING("受害者没有 [limbName]。"))
 				return
 			victim.get_limb(limb).droplimb(TRUE, FALSE, "butchering")
 			playsound(loc, 'sound/weapons/slice.ogg', 25)
 			if(hunter_data.prey == T)
-				to_chat(src, SPAN_YAUTJABOLD("You have claimed [T] as your trophy."))
+				to_chat(src, SPAN_YAUTJABOLD("你已将 [T] 作为你的战利品。"))
 				emote("roar2")
 				message_all_yautja("[src.real_name] has claimed [T] as their trophy.")
 				hunter_data.prey = null
 			else
-				to_chat(src, SPAN_NOTICE("You finish butchering!"))
+				to_chat(src, SPAN_NOTICE("你完成了肢解！"))
 
 /area/yautja
 	name = "\improper Yautja Ship"

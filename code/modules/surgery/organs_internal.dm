@@ -5,7 +5,7 @@ and organ transplant code which may come in handy in future but haven't been edi
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery/organ_repair
-	name = "Organ Rejuvenation Surgery"
+	name = "器官再生手术"
 	priority = SURGERY_PRIORITY_HIGH
 	possible_locs = list("chest")
 	invasiveness = list(SURGERY_DEPTH_DEEP)
@@ -26,8 +26,8 @@ and organ transplant code which may come in handy in future but haven't been edi
 //------------------------------------
 
 /datum/surgery_step/repair_organs
-	name = "Repair Damaged Organs"
-	desc = "repair the organ damage"
+	name = "修复受损器官"
+	desc = "修复器官损伤"
 	//Tools used to fix damaged organs. Predator herbs may be herbal and organic, but are not as good for surgery.
 	tools = list(
 		/obj/item/stack/medical/advanced/bruise_pack = SURGERY_TOOL_MULT_IDEAL,

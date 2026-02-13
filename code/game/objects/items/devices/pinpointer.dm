@@ -18,11 +18,11 @@
 	if(!active)
 		active = 1
 		workdisk()
-		to_chat(usr, SPAN_NOTICE("You activate the pinpointer."))
+		to_chat(usr, SPAN_NOTICE("你启动了定位器。"))
 	else
 		active = 0
 		icon_state = "pinoff"
-		to_chat(usr, SPAN_NOTICE("You deactivate the pinpointer."))
+		to_chat(usr, SPAN_NOTICE("你关闭了定位器。"))
 
 /obj/item/device/pinpointer/proc/workdisk()
 	if(!active)
@@ -52,8 +52,8 @@
 
 
 /obj/item/device/pinpointer/advpinpointer
-	name = "Advanced Pinpointer"
-	desc = "A larger version of the normal pinpointer, this unit features a helpful quantum entanglement detection system to locate various objects that do not broadcast a locator signal."
+	name = "高级定位器"
+	desc = "这是普通定位器的放大版本，配备了一个有用的量子纠缠探测系统，用于定位不发射定位信号的各种物体。"
 	var/mode = 0  // Mode 0 locates disk, mode 1 locates coordinates.
 	var/turf/location = null
 	var/obj/target = null
@@ -68,11 +68,11 @@
 			worklocation()
 		if(mode == 2)
 			workobj()
-		to_chat(usr, SPAN_NOTICE("You activate the pinpointer."))
+		to_chat(usr, SPAN_NOTICE("你启动了定位器。"))
 	else
 		active = 0
 		icon_state = "pinoff"
-		to_chat(usr, SPAN_NOTICE("You deactivate the pinpointer."))
+		to_chat(usr, SPAN_NOTICE("你关闭了定位器。"))
 
 
 /obj/item/device/pinpointer/advpinpointer/proc/worklocation()
@@ -122,7 +122,7 @@
 	target=null
 	location = null
 
-	switch(alert("Please select the mode you want to put the pinpointer in.", "Pinpointer Mode Select", "Location", "Disk Recovery", "Other Signature"))
+	switch(alert("Please select the mode you want to put the pinpointer in.", "定位器模式选择", "Location", "Disk Recovery", "Other Signature"))
 		if("Location")
 			mode = 1
 
@@ -137,7 +137,7 @@
 
 			location = locate(locationx,locationy,Z.z)
 
-			to_chat(usr, "You set the pinpointer to locate [locationx],[locationy]")
+			to_chat(usr, "你将定位器设置为定位[locationx],[locationy]")
 
 
 			return attack_self()

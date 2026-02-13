@@ -3,7 +3,7 @@
 
 //standard
 /datum/equipment_preset/survivor/clf
-	name = "CLF Survivor"
+	name = "CLF幸存者"
 	flags = EQUIPMENT_PRESET_EXTRA
 	skills = /datum/skills/civilian/survivor/clf
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
@@ -45,7 +45,7 @@
 
 //lead
 /datum/equipment_preset/survivor/clf/leader
-	name = "CLF Survivor Leader"
+	name = "CLF幸存者领袖"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF_LEADER
 	job_title = JOB_CLF_LEADER
@@ -88,7 +88,7 @@
 
 //medic
 /datum/equipment_preset/survivor/clf/medic
-	name = "CLF Survivor Medic"
+	name = "CLF幸存者医疗兵"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF_MEDIC
 	job_title = JOB_CLF_MEDIC
@@ -136,7 +136,7 @@
 // engineer
 
 /datum/equipment_preset/survivor/clf/engineer
-	name = "CLF Survivor Engineer"
+	name = "CLF幸存者工程师"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF_ENGI
 	job_title = JOB_CLF_ENGI
@@ -182,7 +182,7 @@
 //synth
 
 /datum/equipment_preset/synth/survivor/clf
-	name = "CLF Survivor Multipurpose Synthetic"
+	name = "CLF幸存者多用途合成人"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	languages = ALL_SYNTH_LANGUAGES
@@ -242,7 +242,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/synth/full(new_human), WEAR_R_STORE)
 
 /datum/equipment_preset/survivor/clf/coordinator
-	name = "CLF Survivor Coordinator"
+	name = "CLF幸存者协调员"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF_COORDINATOR
 	job_title = JOB_CLF_COORDINATOR

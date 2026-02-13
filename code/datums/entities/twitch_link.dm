@@ -39,11 +39,11 @@ CLIENT_VERB(link_twitch)
 
 	var/url = CONFIG_GET(string/twitch_link_url)
 	if(!url)
-		to_chat(src, SPAN_WARNING("Twitch linking is not enabled on this server."))
+		to_chat(src, SPAN_WARNING("此服务器未启用Twitch关联功能。"))
 		return
 
 	if(IsGuestKey(key, TRUE))
-		to_chat(src, SPAN_WARNING("You must be connected as a BYOND key to connect to Twitch."))
+		to_chat(src, SPAN_WARNING("你必须以BYOND密钥连接才能关联Twitch。"))
 		return
 
 	if(length(DB_VIEW(/datum/view_record/twitch_link,
@@ -52,7 +52,7 @@ CLIENT_VERB(link_twitch)
 			DB_COMP("twitch_id", DB_IS)
 		))
 	))
-		to_chat(src, SPAN_WARNING("You have already linked this CKEY to Twitch. Contact support to remove this."))
+		to_chat(src, SPAN_WARNING("你已将此CKEY关联至Twitch。请联系支持人员解除关联。"))
 		return
 
 	var/datum/view_record/twitch_link/existing_link = locate() in DB_VIEW(

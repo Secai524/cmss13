@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(human)
-	name   = "Human Life"
+	name   = "人类生命"
 	wait   = 2 SECONDS
 	flags  = SS_NO_INIT | SS_KEEP_TIMING
 	priority   = SS_PRIORITY_HUMAN

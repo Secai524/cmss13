@@ -24,7 +24,7 @@
 	inv_overlay.color = color
 	return inv_overlay
 
-/obj/item/clothing/accessory/get_mob_overlay(mob/user_mob, slot, default_bodytype = "Default")
+/obj/item/clothing/accessory/get_mob_overlay(mob/user_mob, slot, default_bodytype = "默认")
 	if(!istype(loc,/obj/item/clothing)) //don't need special handling if it's worn as normal item.
 		return ..()
 	var/bodytype = default_bodytype
@@ -55,11 +55,11 @@
 	if(istype(I, /obj/item/clothing/accessory))
 
 		if(!LAZYLEN(valid_accessory_slots))
-			to_chat(user, SPAN_WARNING("You cannot attach accessories of any kind to [src]."))
+			to_chat(user, SPAN_WARNING("你无法将任何类型的配件附加到[src]上。"))
 			return
 
 		if(isstorage(loc))
-			to_chat(user, SPAN_WARNING("You cannot attach accessories to [src] while it is in a storage item."))
+			to_chat(user, SPAN_WARNING("当[src]处于存储物品中时，你无法为其附加配件。"))
 			return
 
 		var/obj/item/clothing/accessory/A = I
@@ -69,7 +69,7 @@
 			attach_accessory(user, A)
 			return TRUE //For some suit/storage items which both allow attaching accessories and also have their own internal storage.
 		else
-			to_chat(user, SPAN_WARNING("You cannot attach more accessories of this type to [src]."))
+			to_chat(user, SPAN_WARNING("你无法为此[src]附加更多此类配件。"))
 		return
 
 	if(LAZYLEN(accessories))
@@ -143,12 +143,12 @@
 
 	if(LAZYLEN(removables) > 1)
 		var/use_radials = user.client.prefs?.no_radials_preference ? FALSE : TRUE
-		var/choice = use_radials ? show_radial_menu(user, targetmob, removables, require_near = FALSE) : tgui_input_list(user, "Select an accessory to remove from [src]", "Remove accessory", removables)
+		var/choice = use_radials ? show_radial_menu(user, targetmob, removables, require_near = FALSE) : tgui_input_list(user, "选择要从[src]移除的配件", "Remove accessory", removables)
 		accessory = choice_to_accessory[choice]
 	else
 		accessory = choice_to_accessory[removables[1]]
 	if(!user.Adjacent(src))
-		to_chat(user, SPAN_WARNING("You're too far away!"))
+		to_chat(user, SPAN_WARNING("距离太远！"))
 		return
 
 	return accessory

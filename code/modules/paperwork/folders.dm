@@ -1,6 +1,6 @@
 /obj/item/folder
 	name = "folder"
-	desc = "A folder."
+	desc = "一个文件夹。"
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "folder"
 	item_icons = list(
@@ -11,27 +11,27 @@
 	var/updateicon = 0//If they spawn with premade papers, update icon
 
 /obj/item/folder/blue
-	desc = "A blue folder."
+	desc = "一个蓝色文件夹。"
 	icon_state = "folder_blue"
 
 /obj/item/folder/red
-	desc = "A red folder."
+	desc = "一个红色文件夹。"
 	icon_state = "folder_red"
 
 /obj/item/folder/yellow
-	desc = "A yellow folder."
+	desc = "一个黄色文件夹。"
 	icon_state = "folder_yellow"
 
 /obj/item/folder/white
-	desc = "A white folder."
+	desc = "一个白色文件夹。"
 	icon_state = "folder_white"
 
 /obj/item/folder/black
-	desc = "A black folder."
+	desc = "一个黑色文件夹。"
 	icon_state = "folder_black"
 
 /obj/item/folder/black_random
-	desc = "A black folder. It is decorated with stripes."
+	desc = "一个黑色文件夹。上面装饰着条纹。"
 	icon_state = "folder_black_green"
 
 /obj/item/folder/black_random/Initialize()
@@ -52,12 +52,12 @@
 /obj/item/folder/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/paper) || istype(W, /obj/item/photo) || istype(W, /obj/item/paper_bundle))
 		if(user.drop_inv_item_to_loc(W, src))
-			to_chat(user, SPAN_NOTICE("You put [W] into [src]."))
+			to_chat(user, SPAN_NOTICE("你把[W]放进了[src]。"))
 			update_icon()
 	else if(HAS_TRAIT(W, TRAIT_TOOL_PEN))
-		var/n_name = strip_html(input(usr, "What would you like to label the folder?", "Folder Labelling", null)  as text)
+		var/n_name = strip_html(input(usr, "你想给文件夹标注什么名称？", "Folder Labelling", null)  as text)
 		if((loc == usr && usr.stat == 0))
-			name = "folder[(n_name ? text("- '[n_name]'") : null)]"
+			name = "文件夹[(n_name ? text("- '[n_name]'") : null)]"
 
 /obj/item/folder/attack_self(mob/user)
 	..()

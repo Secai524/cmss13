@@ -1,6 +1,6 @@
 /obj/structure/machinery/cell_charger
 	name = "\improper heavy-duty cell charger"
-	desc = "A much more powerful version of the standard recharger that is specially designed for charging power cells."
+	desc = "这是标准充电器的强化版本，专为电池充电设计。"
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "ccharger0"
 	anchored = TRUE
@@ -39,29 +39,29 @@
 
 	if(istype(W, /obj/item/cell) && anchored)
 		if(charging)
-			to_chat(user, SPAN_DANGER("There is already a cell in the charger."))
+			to_chat(user, SPAN_DANGER("充电器里已经有电池了。"))
 			return
 		else
 			var/area/a = loc.loc // Gets our locations location, like a dream within a dream
 			if(!isarea(a))
 				return
 			if(a.power_equip == 0) // There's no APC in this area, don't try to cheat power!
-				to_chat(user, SPAN_DANGER("The [name] blinks red as you try to insert the cell!"))
+				to_chat(user, SPAN_DANGER("当你试图插入电池时，[name]闪烁起红光！"))
 				return
 
 			if(user.drop_inv_item_to_loc(W, src))
 				charging = W
-				user.visible_message("[user] inserts a cell into the charger.", "You insert a cell into the charger.")
+				user.visible_message("[user]将一块电池插入充电器。", "You insert a cell into the charger.")
 				chargelevel = -1
 				start_processing()
 		updateicon()
 	else if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		if(charging)
-			to_chat(user, SPAN_DANGER("Remove the cell first!"))
+			to_chat(user, SPAN_DANGER("先把电池取出来！"))
 			return
 
 		anchored = !anchored
-		to_chat(user, "You [anchored ? "attach" : "detach"] the cell charger [anchored ? "to" : "from"] the ground.")
+		to_chat(user, "你[anchored ? "attach" : "detach"] the cell charger [anchored ? "to" : "from"] the ground.")
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 
 /obj/structure/machinery/cell_charger/attack_hand(mob/user)
@@ -71,7 +71,7 @@
 		charging.update_icon()
 
 		src.charging = null
-		user.visible_message("[user] removes the cell from the charger.", "You remove the cell from the charger.")
+		user.visible_message("[user]从充电器中取出电池。", "You remove the cell from the charger.")
 		chargelevel = -1
 		updateicon()
 		stop_processing()

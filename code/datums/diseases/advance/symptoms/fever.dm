@@ -17,7 +17,7 @@ Bonus
 
 /datum/symptom/fever
 
-	name = "Fever"
+	name = "发烧"
 	stealth = 0
 	resistance = 3
 	stage_speed = 3

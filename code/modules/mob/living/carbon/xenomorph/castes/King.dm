@@ -30,7 +30,7 @@
 /mob/living/carbon/xenomorph/king
 	caste_type = XENO_CASTE_KING
 	name = XENO_CASTE_KING
-	desc = "A massive alien covered in spines and armoured plates."
+	desc = "一只巨大的异形，覆盖着尖刺和装甲板。"
 	icon = 'icons/mob/xenos/castes/tier_4/king.dmi'
 	icon_size = 64
 	icon_state = "King Walking"
@@ -122,7 +122,7 @@
 	death(cause, 1)
 
 /datum/behavior_delegate/king_base
-	name = "Base King Behavior Delegate"
+	name = "基础国王行为委托"
 
 /mob/living/carbon/xenomorph/king/rogue
 	icon_xeno = 'icons/mob/xenos/castes/tier_4/rogueking.dmi'
@@ -153,11 +153,11 @@
 		carbon.apply_armoured_damage(damage)
 		carbon.last_damage_data = create_cause_data(initial(xeno.name), xeno)
 		xeno.flick_attack_overlay(carbon, "slash")
-		to_chat(carbon, SPAN_DANGER("[xeno] slices into you with its razor sharp talons."))
+		to_chat(carbon, SPAN_DANGER("[xeno]用它锋利的爪子切入了你。"))
 		log_attack("[key_name(xeno)] hit [key_name(carbon)] with [name]")
 		playsound(carbon, pick(slash_sounds), 30, TRUE)
 
-	xeno.visible_message(SPAN_DANGER("[xeno] slices around itself!"), SPAN_NOTICE("We slice around ourself!"))
+	xeno.visible_message(SPAN_DANGER("[xeno]向周围挥砍！"), SPAN_NOTICE("We slice around ourself!"))
 	apply_cooldown()
 	..()
 
@@ -174,7 +174,7 @@
 	XENO_ACTION_CHECK_USE_PLASMA(xeno)
 
 	playsound(xeno, 'sound/voice/deep_alien_screech2.ogg', 75, 0, status = 0)
-	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits a raspy guttural roar!"))
+	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno]发出一声刺耳的喉音咆哮！"))
 	xeno.create_shriekwave()
 
 	var/datum/effect_system/smoke_spread/king_doom/smoke_gas = new()
@@ -211,7 +211,7 @@
 			addtimer(CALLBACK(carbon, TYPE_PROC_REF(/mob, remove_client_color_matrix), "doom", 1 SECONDS), 5 SECONDS)
 			addtimer(CALLBACK(carbon, TYPE_PROC_REF(/mob, clear_fullscreen), "doom", 0.5 SECONDS), 5 SECONDS)
 
-			to_chat(carbon, SPAN_HIGHDANGER("[xeno]'s roar overwhelms your entire being!"))
+			to_chat(carbon, SPAN_HIGHDANGER("[xeno]的咆哮震慑了你的整个身心！"))
 			shake_camera(carbon, 6, 1)
 
 			if(ishuman(current_atom))
@@ -288,56 +288,56 @@
 	XENO_ACTION_CHECK(xeno)
 
 	if(get_dist(owner, target) > range)
-		to_chat(xeno, SPAN_XENONOTICE("We cannot leap that far!"))
+		to_chat(xeno, SPAN_XENONOTICE("我们无法跳跃那么远！"))
 		return
 
 	var/turf/target_turf = get_turf(target)
 
 	if(!target_turf || target_turf.density)
-		to_chat(xeno, SPAN_XENONOTICE("We cannot leap to that!"))
+		to_chat(xeno, SPAN_XENONOTICE("我们无法跳跃到那里！"))
 		return
 
 	if(istype(target_turf, /turf/open/space))
-		to_chat(xeno, SPAN_XENONOTICE("It would not be wise to try to leap there..."))
+		to_chat(xeno, SPAN_XENONOTICE("试图跳跃到那里并不明智..."))
 		return
 
 	if(istype(target, /obj/vehicle/multitile))
-		to_chat(xeno, SPAN_XENONOTICE("It would not be wise to try to leap there..."))
+		to_chat(xeno, SPAN_XENONOTICE("试图跳跃到那里并不明智..."))
 		return
 
 	var/area/target_area = get_area(target_turf)
 	if(target_area.flags_area & AREA_NOBURROW)
-		to_chat(xeno, SPAN_XENONOTICE("We cannot leap to that area!"))
+		to_chat(xeno, SPAN_XENONOTICE("我们无法跳跃到那个区域！"))
 
 	var/list/leap_line = get_line(xeno, target)
 	for(var/turf/jump_turf in leap_line)
 		if(jump_turf.density)
-			to_chat(xeno, SPAN_XENONOTICE("We don't have a clear path to leap to that location!"))
+			to_chat(xeno, SPAN_XENONOTICE("我们没有清晰的路径可以跳跃到那个位置！"))
 			return
 
 		for(var/obj/structure/possible_blocker in jump_turf)
 			if(possible_blocker.density && !possible_blocker.throwpass)
-				to_chat(xeno, SPAN_XENONOTICE("There's something blocking us from leaping."))
+				to_chat(xeno, SPAN_XENONOTICE("有什么东西阻挡了我们跳跃。"))
 				return
 
 	if(!check_and_use_plasma_owner())
-		to_chat(xeno, SPAN_XENONOTICE("We don't have enough plasma to use [name]."))
+		to_chat(xeno, SPAN_XENONOTICE("我们没有足够的等离子体来使用[name]。"))
 		return
 
 	var/turf/template_turf = get_step(target_turf, SOUTHWEST)
 
-	to_chat(xeno, SPAN_XENONOTICE("Our muscles tense as we prepare ourself for a giant leap."))
+	to_chat(xeno, SPAN_XENONOTICE("我们的肌肉紧绷，准备进行一次巨大的跳跃。"))
 	xeno.make_jittery(2 SECONDS)
 	if(!do_after(xeno, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-		to_chat(xeno, SPAN_XENONOTICE("We relax our muslces and end our leap."))
+		to_chat(xeno, SPAN_XENONOTICE("我们放松肌肉，结束了跳跃。"))
 		return
 	if(leaping || !target)
 		return
 	// stop target movement
 	leaping = TRUE
-	ADD_TRAIT(owner, TRAIT_UNDENSE, "Destroy")
-	ADD_TRAIT(owner, TRAIT_IMMOBILIZED, "Destroy")
-	owner.visible_message(SPAN_WARNING("[owner] takes a giant leap into the air!"))
+	ADD_TRAIT(owner, TRAIT_UNDENSE, "摧毁")
+	ADD_TRAIT(owner, TRAIT_IMMOBILIZED, "摧毁")
+	owner.visible_message(SPAN_WARNING("[owner]腾空而起，进行了一次巨大的跳跃！"))
 
 	var/negative
 	var/initial_x = owner.x
@@ -425,8 +425,8 @@
 	for(var/mob/living in range(7, owner))
 		shake_camera(living, 15, 1)
 
-	REMOVE_TRAIT(owner, TRAIT_UNDENSE, "Destroy")
-	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, "Destroy")
+	REMOVE_TRAIT(owner, TRAIT_UNDENSE, "摧毁")
+	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, "摧毁")
 
 	SLEEP_CHECK_DEATH(1, owner)
 	leaping = FALSE

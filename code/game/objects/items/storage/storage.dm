@@ -166,7 +166,7 @@
 
 	if(istype(loc, /obj/item/storage) && required_skill_for_nest_opening)
 		if(!user || user.skills?.get_skill_level(required_skill_for_nest_opening) < required_skill_level_for_nest_opening)
-			to_chat(user, SPAN_NOTICE("You can't seem to open [src] while it is in [loc]."))
+			to_chat(user, SPAN_NOTICE("当[src]位于[loc]时，你似乎无法打开它。"))
 			return
 
 	if(!opened)
@@ -476,12 +476,12 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 		return
 
 	if(W.heat_source && !(W.flags_item & IGNITING_ITEM))
-		to_chat(usr, SPAN_ALERT("[W] is ignited, you can't store it!"))
+		to_chat(usr, SPAN_ALERT("[W]已点燃，无法存放！"))
 		return
 
 	if(!can_hold_type(W.type, user))
 		if(!stop_messages)
-			to_chat(usr, SPAN_NOTICE("[src] cannot hold [W]."))
+			to_chat(usr, SPAN_NOTICE("[src]无法容纳[W]。"))
 		return
 
 	var/w_limit_bypassed = 0
@@ -493,19 +493,19 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 
 	if (!w_limit_bypassed && W.w_class > max_w_class)
 		if(!stop_messages)
-			to_chat(usr, SPAN_NOTICE("[W] is too long for this [src]."))
+			to_chat(usr, SPAN_NOTICE("[W]对于这个[src]来说太长了。"))
 		return 0
 
 	//Checks if there is room for the item.
 	if(!has_room(W))
 		if(!stop_messages)
-			to_chat(usr, SPAN_NOTICE("[src] is full, make some space."))
+			to_chat(usr, SPAN_NOTICE("[src]已满，腾出些空间。"))
 		return 0
 
 	if(W.w_class >= src.w_class && (isstorage(W)))
 		if(!istype(src, /obj/item/storage/backpack/holding)) //bohs should be able to hold backpacks again. The override for putting a boh in a boh is in backpack.dm.
 			if(!stop_messages)
-				to_chat(usr, SPAN_NOTICE("[src] cannot hold [W] as it's a storage item of the same size."))
+				to_chat(usr, SPAN_NOTICE("[src]无法容纳[W]，因为它是相同尺寸的存储物品。"))
 			return 0 //To prevent the stacking of same sized storage items.
 
 	return 1
@@ -574,7 +574,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 		add_fingerprint(user)
 		if(!prevent_warning)
 			var/visidist = W.w_class >= 3 ? 3 : 1
-			user.visible_message(SPAN_NOTICE("[user] puts [W] into [src]."),
+			user.visible_message(SPAN_NOTICE("[user]将[W]放入[src]。"),
 								SPAN_NOTICE("You put \the [W] into [src]."),
 								null, visidist)
 	orient2hud()
@@ -686,9 +686,9 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	set src in usr
 	storage_flags ^= STORAGE_GATHER_SIMULTANEOUSLY
 	if (storage_flags & STORAGE_GATHER_SIMULTANEOUSLY)
-		to_chat(usr, "[src] now picks up all items in a tile at once.")
+		to_chat(usr, "[src]现在可以一次性拾取一个格子内的所有物品。")
 	else
-		to_chat(usr, "[src] now picks up one item at a time.")
+		to_chat(usr, "[src]现在一次只拾取一个物品。")
 
 /obj/item/storage/verb/toggle_draw_mode()
 	set name = "Switch Storage Drawing Method"
@@ -704,9 +704,9 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	set src in usr
 	storage_flags ^= STORAGE_CLICK_EMPTY
 	if (storage_flags & STORAGE_CLICK_EMPTY)
-		to_chat(usr, "Clicking on a tile with [src] in your hand now empties its contents on that tile.")
+		to_chat(usr, "手持[src]点击一个格子，现在会将其内容物全部倾倒在那个格子上。")
 	else
-		to_chat(usr, "Clicking on a tile with [src] in your hand will no longer do anything.")
+		to_chat(usr, "手持[src]点击一个格子将不再有任何效果。")
 
 /obj/item/storage/verb/empty_verb()
 	set name = "Empty"
@@ -723,15 +723,15 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 		T = get_turf(src)
 
 	if(!can_storage_interact(user))
-		to_chat(user, SPAN_WARNING("Access denied."))
+		to_chat(user, SPAN_WARNING("权限被拒绝。"))
 		return
 
 	if(!length(contents))
-		to_chat(user, SPAN_WARNING("[src] is already empty."))
+		to_chat(user, SPAN_WARNING("[src]已经是空的。"))
 		return
 
 	if (!(storage_flags & STORAGE_QUICK_EMPTY))
-		user.visible_message(SPAN_NOTICE("[user] starts to empty \the [src]..."),
+		user.visible_message(SPAN_NOTICE("[user]开始清空\the [src]……"),
 			SPAN_NOTICE("You start to empty \the [src]..."))
 		if (!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			return
@@ -739,7 +739,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	storage_close(user)
 	for (var/obj/item/I in contents)
 		remove_from_storage(I, T, user)
-	user.visible_message(SPAN_NOTICE("[user] empties \the [src]."),
+	user.visible_message(SPAN_NOTICE("[user]清空了\the [src]。"),
 		SPAN_NOTICE("You empty \the [src]."))
 	if (use_sound)
 		playsound(loc, use_sound, 25, TRUE, 3)
@@ -770,20 +770,20 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	if(!length(contents))
 		if(prob(25) && isxeno(user))
 			user.drop_inv_item_to_loc(src, tile)
-			user.visible_message(SPAN_NOTICE("[user] shakes \the [src] off."),
+			user.visible_message(SPAN_NOTICE("[user]抖落了\the [src]。"),
 				SPAN_NOTICE("You shake \the [src] off."))
 		else
-			user.visible_message(SPAN_NOTICE("[user] shakes \the [src] but nothing falls out."),
+			user.visible_message(SPAN_NOTICE("[user]抖了抖\the [src]，但什么都没掉出来。"),
 				SPAN_NOTICE("You shake \the [src] but nothing falls out. It feels empty."))
 		return
 
 	if(!can_storage_interact(user))
-		user.visible_message(SPAN_NOTICE("[user] shakes \the [src] but nothing falls out."),
+		user.visible_message(SPAN_NOTICE("[user]抖了抖\the [src]，但什么都没掉出来。"),
 			SPAN_NOTICE("You shake \the [src] but nothing falls out. Access denied."))
 		return
 
 	if(!prob(75))
-		user.visible_message(SPAN_NOTICE("[user] shakes \the [src] but nothing falls out."),
+		user.visible_message(SPAN_NOTICE("[user]抖了抖\the [src]，但什么都没掉出来。"),
 			SPAN_NOTICE("You shake \the [src] but nothing falls out."))
 		return
 
@@ -796,7 +796,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	if(!istype(item_obj))
 		return
 	remove_from_storage(item_obj, tile, user)
-	user.visible_message(SPAN_NOTICE("[user] shakes \the [src] and \a [item_obj] falls out."),
+	user.visible_message(SPAN_NOTICE("[user]抖了抖\the [src]，\a [item_obj]掉了出来。"),
 		SPAN_NOTICE("You shake \the [src] and \a [item_obj] falls out."))
 
 /obj/item/storage/proc/dump_ammo_to(obj/item/ammo_magazine/ammo_dumping, mob/user, amount_to_dump = 5) //amount_to_dump should never actually need to be used as default value
@@ -804,14 +804,14 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 		return
 
 	if(ammo_dumping.flags_magazine & AMMUNITION_CANNOT_REMOVE_BULLETS)
-		to_chat(user, SPAN_WARNING("You can't remove ammo from \the [ammo_dumping]!"))
+		to_chat(user, SPAN_WARNING("你无法从\the [ammo_dumping]中取出弹药！"))
 		return
 
 	if(ammo_dumping.flags_magazine & AMMUNITION_HANDFUL_BOX)
 		var/handfuls = round(ammo_dumping.current_rounds / amount_to_dump, 1) //The number of handfuls, we round up because we still want the last one that isn't full
 		if(ammo_dumping.current_rounds != 0)
 			if(length(contents) < storage_slots)
-				to_chat(user, SPAN_NOTICE("You start refilling [src] with [ammo_dumping]."))
+				to_chat(user, SPAN_NOTICE("你开始用[ammo_dumping]重新装填[src]。"))
 				if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 					return
 				for(var/i = 1 to handfuls)
@@ -830,9 +830,9 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 				playsound(user.loc, "rustle", 15, TRUE, 6)
 				ammo_dumping.update_icon()
 			else
-				to_chat(user, SPAN_WARNING("[src] is full."))
+				to_chat(user, SPAN_WARNING("[src]已满。"))
 		else
-			to_chat(user, SPAN_WARNING("[ammo_dumping] is empty."))
+			to_chat(user, SPAN_WARNING("[ammo_dumping]是空的。"))
 	return TRUE
 
 /obj/item/storage/proc/dump_into(obj/item/storage/origin_storage, mob/user)
@@ -841,13 +841,13 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 		return
 
 	if(!length(origin_storage.contents))
-		to_chat(user, SPAN_WARNING("[origin_storage] is empty."))
+		to_chat(user, SPAN_WARNING("[origin_storage]是空的。"))
 		return
 	if(!has_room(origin_storage.contents[1])) //Does it have room for the first item to be inserted?
-		to_chat(user, SPAN_WARNING("[src] is full."))
+		to_chat(user, SPAN_WARNING("[src]已满。"))
 		return
 
-	to_chat(user, SPAN_NOTICE("You start refilling [src] with [origin_storage]."))
+	to_chat(user, SPAN_NOTICE("你开始用[origin_storage]重新装填[src]。"))
 	if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		return
 	for(var/obj/item/new_item in origin_storage)
@@ -956,7 +956,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 
 	if(ispath(foldable))
 		new foldable(get_turf(src))
-	to_chat(user, SPAN_NOTICE("You fold [src] flat."))
+	to_chat(user, SPAN_NOTICE("你将[src]折叠平整。"))
 	qdel(src)
 
 /obj/item/storage/afterattack(atom/target, mob/user, proximity)
@@ -1027,4 +1027,4 @@ Returns FALSE if no top level turf (a loc was null somewhere, or a non-turf atom
 	set src in usr
 	if(src && ishuman(usr))
 		instant_pill_grab_mode = !instant_pill_grab_mode
-		to_chat(usr, SPAN_NOTICE("You will now [instant_pill_grab_mode ? "take pills directly from bottles": "no longer take pills directly from bottles"]."))
+		to_chat(usr, SPAN_NOTICE("你现在将[instant_pill_grab_mode ? "take pills directly from bottles": "no longer take pills directly from bottles"]."))

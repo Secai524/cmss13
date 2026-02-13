@@ -3,7 +3,7 @@
 GLOBAL_VAR_INIT(med_lockdown_state, LOCKDOWN_READY)
 
 /obj/structure/machinery/biohazard_lockdown
-	name = "Emergency Containment Breach"
+	name = "紧急收容失效"
 	icon_state = "big_red_button_tablev"
 	unslashable = TRUE
 	unacidable = TRUE
@@ -28,12 +28,12 @@ GLOBAL_VAR_INIT(med_lockdown_state, LOCKDOWN_READY)
 	if(isxeno(user))
 		return FALSE
 	if(!allowed(user))
-		to_chat(user, SPAN_DANGER("Access Denied."))
+		to_chat(user, SPAN_DANGER("权限被拒绝。"))
 		flick(initial(icon_state) + "-denied", src)
 		return FALSE
 
 	if(!COOLDOWN_FINISHED(src, containment_lockdown))
-		to_chat(user, SPAN_BOLDWARNING("Biohazard Lockdown procedures are on cooldown! They will be ready in [COOLDOWN_SECONDSLEFT(src, containment_lockdown)] seconds!"))
+		to_chat(user, SPAN_BOLDWARNING("生化危害封锁程序正在冷却中！将在[COOLDOWN_SECONDSLEFT(src, containment_lockdown)]秒后准备就绪！"))
 		return FALSE
 
 	add_fingerprint(user)
@@ -41,7 +41,7 @@ GLOBAL_VAR_INIT(med_lockdown_state, LOCKDOWN_READY)
 	COOLDOWN_START(src, containment_lockdown, 5 MINUTES)
 
 /obj/structure/machinery/door/poddoor/almayer/biohazard
-	name = "Biohazard Containment Airlock"
+	name = "生化危害收容气闸"
 	density = FALSE
 
 /obj/structure/machinery/door/poddoor/almayer/biohazard/Initialize()
@@ -60,13 +60,13 @@ GLOBAL_VAR_INIT(med_lockdown_state, LOCKDOWN_READY)
 	if(!admin_holder ||!check_rights(R_EVENT))
 		return FALSE
 
-	var/prompt = tgui_alert(src, "Are you sure you want to trigger a containment breach alert? This will force red alert, and lockdown research.", "Choose.", list("Yes", "No"), 20 SECONDS)
+	var/prompt = tgui_alert(src, "你确定要触发收容失效警报吗？这将强制启动红色警报，并封锁研究部。", "Choose.", list("Yes", "No"), 20 SECONDS)
 	if(prompt != "Yes")
 		return FALSE
 
-	prompt = tgui_alert(src, "Do you want to use a custom announcement?", "Choose.", list("Yes", "No"), 20 SECONDS)
+	prompt = tgui_alert(src, "要使用自定义广播吗？", "Choose.", list("Yes", "No"), 20 SECONDS)
 	if(prompt == "Yes")
-		var/message = tgui_input_text(src, "Please enter announcement text.", "what?")
+		var/message = tgui_input_text(src, "请输入广播文本。", "what?")
 		biohazard_lockdown(usr, message, admin = TRUE)
 	else
 		biohazard_lockdown(usr, admin = TRUE)
@@ -80,7 +80,7 @@ GLOBAL_VAR_INIT(med_lockdown_state, LOCKDOWN_READY)
 	var/ares_log = "Triggered Medical Research Biohazard Containment Lockdown."
 	var/person = user.name
 	if(!message)
-		message = "ATTENTION! \n\nBIOHAZARD CONTAINMENT BREACH. \n\nRESEARCH DEPARTMENT UNDER LOCKDOWN."
+		message = "注意！\n\n生化危害收容失效。\n\n研究部已进入封锁状态。"
 	else
 		log = "[key_name(user)] triggered research bio lockdown! (Using a custom announcement)."
 	if(admin)
@@ -95,7 +95,7 @@ GLOBAL_VAR_INIT(med_lockdown_state, LOCKDOWN_READY)
 			SEND_GLOBAL_SIGNAL(COMSIG_GLOB_RESEARCH_LOCKDOWN)
 		if(LOCKDOWN_ACTIVE)
 			GLOB.med_lockdown_state = LOCKDOWN_READY
-			message = "ATTENTION! \n\nBIOHAZARD CONTAINMENT LOCKDOWN LIFTED."
+			message = "注意！\n\n生化危害收容封锁已解除。"
 			log = "[key_name(user)] lifted research bio lockdown!"
 			ares_log = "Lifted Medical Research Biohazard Containment Lockdown."
 			if(admin)

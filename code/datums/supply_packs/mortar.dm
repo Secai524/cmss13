@@ -5,7 +5,7 @@
 //---------------------------------------------
 
 /datum/supply_packs/backpack/mortar_pack
-	name = "Mortar Shell Backpack Crate (x4)"
+	name = "迫击炮弹背包箱（x4）"
 	contains = list(
 		/obj/item/storage/backpack/marine/mortarpack,
 		/obj/item/storage/backpack/marine/mortarpack,
@@ -16,7 +16,7 @@
 	containername = "Mortar Shell Backpack Crate"
 
 /datum/supply_packs/mortar
-	name = "M402 mortar crate (Mortar x1, Mortar shell backpack x1)"
+	name = "M402迫击炮箱（迫击炮x1，迫击炮弹背包x1）"
 	contains = list(
 		/obj/item/storage/backpack/marine/mortarpack,
 		/obj/item/mortar_kit,
@@ -29,7 +29,7 @@
 //------------------------Mortar ammunition crates----------------
 
 /datum/supply_packs/ammo_mortar_he
-	name = "M402 mortar shells crate (x6 HE)"
+	name = "M402迫击炮弹箱（x6高爆弹）"
 	cost = 15
 	contains = list(
 		/obj/item/mortar_shell/he,
@@ -44,7 +44,7 @@
 	group = "Mortar"
 
 /datum/supply_packs/ammo_mortar_incend
-	name = "M402 mortar shells crate (x6 Incend)"
+	name = "M402迫击炮弹箱（x6燃烧弹）"
 	cost = 15
 	contains = list(
 		/obj/item/mortar_shell/incendiary,
@@ -59,7 +59,7 @@
 	group = "Mortar"
 
 /datum/supply_packs/ammo_mortar_flare
-	name = "M402 mortar shells crate (x6 Flare/Camera)"
+	name = "M402迫击炮弹箱（x6照明/摄像弹）"
 	cost = 10
 	contains = list(
 		/obj/item/mortar_shell/flare,
@@ -74,7 +74,7 @@
 	group = "Mortar"
 
 /datum/supply_packs/ammo_mortar_frag
-	name = "M402 mortar shells crate (x6 Frag)"
+	name = "M402迫击炮弹箱（x6破片弹）"
 	cost = 10
 	contains = list(
 		/obj/item/mortar_shell/frag,

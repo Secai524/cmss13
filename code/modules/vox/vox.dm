@@ -20,7 +20,7 @@ GLOBAL_LIST_EMPTY(vox_types)
 
 	if(user && length(bad_words))
 		var/missed_words = jointext(bad_words, ", ")
-		to_chat(user, SPAN_WARNING("Couldn't find the sound files for: [missed_words]"))
+		to_chat(user, SPAN_WARNING("找不到以下声音文件：[missed_words]"))
 
 	for(var/s in sounds)
 		var/sound/S = sound(s, wait=TRUE, channel=SOUND_CHANNEL_VOX, volume=volume)
@@ -35,7 +35,7 @@ GLOBAL_LIST_EMPTY(vox_types)
 	set category = "Admin.Panels"
 
 	if(!admin_holder || !(admin_holder.rights & R_SOUNDS))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return
 
 	GLOB.vox_panel.tgui_interact(mob)

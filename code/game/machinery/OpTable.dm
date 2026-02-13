@@ -4,8 +4,8 @@
 #define PATIENT_LOW_NUTRITION 4
 
 /obj/structure/machinery/optable
-	name = "Operating Table"
-	desc = "Used for advanced medical procedures."
+	name = "手术台"
+	desc = "用于高级医疗程序。"
 	icon = 'icons/obj/structures/machinery/surgery.dmi'
 	icon_state = "table2-idle"
 	density = TRUE
@@ -73,13 +73,13 @@
 		return
 	if(anes_tank)
 		user.put_in_active_hand(anes_tank)
-		to_chat(user, SPAN_NOTICE("You remove \the [anes_tank] from \the [src]."))
+		to_chat(user, SPAN_NOTICE("你将\the [anes_tank]从\the [src]上取下。"))
 		anes_tank = null
 
 // Removing marines connected to anesthetic
 /obj/structure/machinery/optable/attack_alien(mob/living/carbon/xenomorph/alien, mob/living/user)
 	if(buckled_mob)
-		to_chat(alien, SPAN_XENONOTICE("You rip the tubes away from the host, releasing it!"))
+		to_chat(alien, SPAN_XENONOTICE("你扯断宿主身上的管子，将其释放！"))
 		playsound(alien, "alien_claw_flesh", 25, 1)
 		unbuckle(user)
 	else
@@ -90,40 +90,40 @@
 		return
 
 	if(H.loc != loc)
-		to_chat(user, SPAN_WARNING("The patient needs to be on the table first."))
+		to_chat(user, SPAN_WARNING("病人需要先躺在手术台上。"))
 		return
 
 	if(!H.has_limb("head"))
-		to_chat(user, SPAN_WARNING("The patient has no head."))
+		to_chat(user, SPAN_WARNING("病人没有头部。"))
 		return
 
 	if(!anes_tank)
-		to_chat(user, SPAN_WARNING("There is no anesthetic tank connected to the table, load one first."))
+		to_chat(user, SPAN_WARNING("手术台没有连接麻醉剂罐，请先装载一个。"))
 		return
-	H.visible_message(SPAN_NOTICE("[user] begins to connect [H] to the anesthetic system."))
+	H.visible_message(SPAN_NOTICE("[user]开始将[H]连接到麻醉系统。"))
 	if(!do_after(user, 25, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-		to_chat(user, SPAN_NOTICE("You stop placing the mask on [H]'s face."))
+		to_chat(user, SPAN_NOTICE("你停止将面罩戴在[H]脸上。"))
 		return
 
 	if(H.buckled || buckled_mob || H.loc != loc)
 		return
 
 	if(!anes_tank)
-		to_chat(user, SPAN_WARNING("There is no anesthetic tank connected to the table, load one first."))
+		to_chat(user, SPAN_WARNING("手术台没有连接麻醉剂罐，请先装载一个。"))
 		return
 	if(!H.has_limb("head"))
-		to_chat(user, SPAN_WARNING("The patient has no head."))
+		to_chat(user, SPAN_WARNING("病人没有头部。"))
 		return
 
 	if(H.wear_mask)
 		var/obj/item/mask = H.wear_mask
 		if(mask.flags_inventory & CANTSTRIP)
-			to_chat(user, SPAN_DANGER("You can't remove their mask!"))
+			to_chat(user, SPAN_DANGER("你无法移除他们的面罩！"))
 			return
 		H.drop_inv_item_on_ground(mask)
 	var/obj/item/clothing/mask/breath/medical/B = new()
 	if(!H.equip_if_possible(B, WEAR_FACE, TRUE))
-		to_chat(user, SPAN_DANGER("You can't fit the gas mask over their face!"))
+		to_chat(user, SPAN_DANGER("你无法将防毒面具戴在他们脸上！"))
 		return
 	H.update_inv_wear_mask()
 
@@ -135,8 +135,8 @@
 		return
 	var/mob/living/carbon/human/H = target
 	H.internal = anes_tank
-	H.visible_message(SPAN_NOTICE("[user] fits the mask over [H]'s face and turns on the anesthetic."))
-	to_chat(H, SPAN_INFO("You begin to feel sleepy."))
+	H.visible_message(SPAN_NOTICE("[user]将面罩戴在[H]脸上并打开了麻醉剂。"))
+	to_chat(H, SPAN_INFO("你开始感到困倦。"))
 	H.setDir(SOUTH)
 	start_processing()
 	update_icon()
@@ -151,9 +151,9 @@
 		H.drop_inv_item_on_ground(M)
 		qdel(M)
 		if(ishuman(user)) //Checks for whether a xeno is unbuckling from the operating table
-			H.visible_message(SPAN_NOTICE("[user] turns off the anesthetic and removes the mask from [H]."))
+			H.visible_message(SPAN_NOTICE("[user]关闭麻醉剂并从[H]脸上取下面罩。"))
 		else
-			H.visible_message(SPAN_WARNING("The anesthesia mask is ripped away from [H]'s face!"))
+			H.visible_message(SPAN_WARNING("麻醉面罩从[H]脸上被扯下！"))
 		stop_processing()
 		patient_exam = 0
 		..()
@@ -200,7 +200,7 @@
 	// Check for blood
 	if(H.blood_volume < BLOOD_VOLUME_SAFE)
 		if(!(patient_exam & PATIENT_LOW_BLOOD))
-			visible_message("[icon2html(src, viewers(src))] <b>The [src] beeps,</b> Warning: Patient has a dangerously low blood level: [floor(H.blood_volume / BLOOD_VOLUME_NORMAL * 100)]%. Type: [H.blood_type].")
+			visible_message("[icon2html(src, viewers(src))] <b>[src]发出哔哔声，</b>警告：病人血液水平危险偏低：[floor(H.blood_volume / BLOOD_VOLUME_NORMAL * 100)]%。血型：[H.blood_type]。")
 			patient_exam |= PATIENT_LOW_BLOOD
 	else
 		patient_exam &= ~PATIENT_LOW_BLOOD
@@ -208,7 +208,7 @@
 	// Check for nutrition
 	if(H.nutrition < NUTRITION_LOW)
 		if(!(patient_exam & PATIENT_LOW_NUTRITION))
-			visible_message("[icon2html(src, viewers(src))] <b>The [src] beeps,</b> Warning: Patient has a dangerously low nutrition level: [floor(H.nutrition / NUTRITION_MAX * 100)]%.")
+			visible_message("[icon2html(src, viewers(src))] <b>[src]发出哔哔声，</b>警告：患者营养水平极低：[floor(H.nutrition / NUTRITION_MAX * 100)]%。")
 			patient_exam |= PATIENT_LOW_NUTRITION
 	else
 		patient_exam &= ~PATIENT_LOW_NUTRITION
@@ -219,19 +219,19 @@
 			patient_exam &= ~PATIENT_NOT_AWAKE
 		if(1)
 			if(!(patient_exam & PATIENT_NOT_AWAKE))
-				visible_message("[icon2html(src, viewers(src))] <b>The [src] beeps,</b> Warning: Patient is unconscious.")
+				visible_message("[icon2html(src, viewers(src))] <b>[src]发出哔哔声，</b>警告：患者已昏迷。")
 				patient_exam |= PATIENT_NOT_AWAKE
 		if(2)
 			if(!(patient_exam & PATIENT_NOT_AWAKE))
-				visible_message("[icon2html(src, viewers(src))] <b>The [src] beeps,</b> Warning: Patient is deceased.")
+				visible_message("[icon2html(src, viewers(src))] <b>[src]发出哔哔声，</b>警告：患者已死亡。")
 				patient_exam |= PATIENT_NOT_AWAKE
 
 /obj/structure/machinery/optable/proc/take_victim(mob/living/carbon/C, mob/living/carbon/user)
 	if (C == user)
-		user.visible_message(SPAN_NOTICE("[user] climbs on the operating table."),
+		user.visible_message(SPAN_NOTICE("[user]爬上了手术台。"),
 			SPAN_NOTICE("You climb on the operating table."), null, null, 4)
 	else
-		visible_message(SPAN_NOTICE("[C] has been laid on the operating table by [user]."), null, 4)
+		visible_message(SPAN_NOTICE("[user]已将[C]平放在手术台上。"), null, 4)
 	C.resting = 1
 	C.forceMove(loc)
 
@@ -253,18 +253,18 @@
 		if(!anes_tank)
 			user.drop_inv_item_to_loc(W, src)
 			anes_tank = W
-			to_chat(user, SPAN_NOTICE("You connect \the [anes_tank] to \the [src]."))
+			to_chat(user, SPAN_NOTICE("你将\the [anes_tank]连接到\the [src]。"))
 			return
 	if (istype(W, /obj/item/grab) && ishuman(user))
 		var/obj/item/grab/G = W
 		if(buckled_mob)
-			to_chat(user, SPAN_WARNING("The table is already occupied!"))
+			to_chat(user, SPAN_WARNING("手术台已被占用！"))
 			return
 		var/mob/living/carbon/human/M
 		if(ishuman(G.grabbed_thing))
 			M = G.grabbed_thing
 			if(M.buckled)
-				to_chat(user, SPAN_WARNING("Unbuckle first!"))
+				to_chat(user, SPAN_WARNING("先解开安全带！"))
 				return
 		else if(istype(G.grabbed_thing,/obj/structure/closet/bodybag/cryobag))
 			var/obj/structure/closet/bodybag/cryobag/C = G.grabbed_thing
@@ -281,11 +281,11 @@
 
 /obj/structure/machinery/optable/proc/check_table(mob/living/carbon/patient)
 	if(buckled_mob)
-		to_chat(patient, SPAN_NOTICE("<B>The table is already occupied!</B>"))
+		to_chat(patient, SPAN_NOTICE("<B>手术台已被占用！</B>"))
 		return FALSE
 
 	if(patient.buckled)
-		to_chat(patient, SPAN_NOTICE("<B>Unbuckle first!</B>"))
+		to_chat(patient, SPAN_NOTICE("<B>先解开固定带！</B>"))
 		return FALSE
 
 	return TRUE

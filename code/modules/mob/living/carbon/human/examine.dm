@@ -248,9 +248,9 @@
 			if(user && src && distance <= 1)
 				get_pulse(GETPULSE_HAND) // to update it
 				if(pulse == PULSE_NONE || status_flags & FAKEDEATH)
-					to_chat(user, SPAN_DEADSAY("[t_He] [t_has] no pulse[client ? "" : " and [t_his] soul has departed"]..."))
+					to_chat(user, SPAN_DEADSAY("[t_He][t_has]没有脉搏[client ? "" : " and [t_his] soul has departed"]..."))
 				else
-					to_chat(user, SPAN_DEADSAY("[t_He] [t_has] a pulse!"))
+					to_chat(user, SPAN_DEADSAY("[t_He][t_has]有脉搏！"))
 
 	if((species && !species.has_organ["brain"] || has_brain()) && stat != DEAD && stat != CONSCIOUS)
 		if(!key)
@@ -385,41 +385,41 @@
 		msg += wound_flavor_text["chest"]
 	if(is_bleeding["chest"])
 		display_chest = 1
-	if(wound_flavor_text["left arm"] && (is_destroyed["left arm"] || (!w_uniform && !skipjumpsuit)))
-		msg += wound_flavor_text["left arm"]
-	if(is_bleeding["left arm"])
+	if(wound_flavor_text["左臂"] && (is_destroyed["左臂"] || (!w_uniform && !skipjumpsuit)))
+		msg += wound_flavor_text["左臂"]
+	if(is_bleeding["左臂"])
 		display_arm_left = 1
-	if(wound_flavor_text["left hand"] && (is_destroyed["left hand"] || (!gloves && !skipgloves)))
-		msg += wound_flavor_text["left hand"]
-	if(is_bleeding["left hand"])
+	if(wound_flavor_text["左手"] && (is_destroyed["左手"] || (!gloves && !skipgloves)))
+		msg += wound_flavor_text["左手"]
+	if(is_bleeding["左手"])
 		display_hand_left = 1
-	if(wound_flavor_text["right arm"] && (is_destroyed["right arm"] || (!w_uniform && !skipjumpsuit)))
-		msg += wound_flavor_text["right arm"]
-	if(is_bleeding["right arm"])
+	if(wound_flavor_text["右臂"] && (is_destroyed["右臂"] || (!w_uniform && !skipjumpsuit)))
+		msg += wound_flavor_text["右臂"]
+	if(is_bleeding["右臂"])
 		display_arm_right = 1
-	if(wound_flavor_text["right hand"] && (is_destroyed["right hand"] || (!gloves && !skipgloves)))
-		msg += wound_flavor_text["right hand"]
-	if(is_bleeding["right hand"])
+	if(wound_flavor_text["右手"] && (is_destroyed["右手"] || (!gloves && !skipgloves)))
+		msg += wound_flavor_text["右手"]
+	if(is_bleeding["右手"])
 		display_hand_right = 1
 	if(wound_flavor_text["groin"] && (is_destroyed["groin"] || (!w_uniform && !skipjumpsuit)))
 		msg += wound_flavor_text["groin"]
 	if(is_bleeding["groin"])
 		display_groin = 1
-	if(wound_flavor_text["left leg"] && (is_destroyed["left leg"] || (!w_uniform && !skipjumpsuit)))
-		msg += wound_flavor_text["left leg"]
-	if(is_bleeding["left leg"])
+	if(wound_flavor_text["左腿"] && (is_destroyed["左腿"] || (!w_uniform && !skipjumpsuit)))
+		msg += wound_flavor_text["左腿"]
+	if(is_bleeding["左腿"])
 		display_leg_left = 1
-	if(wound_flavor_text["left foot"]&& (is_destroyed["left foot"] || (!shoes && !skipshoes)))
-		msg += wound_flavor_text["left foot"]
-	if(is_bleeding["left foot"])
+	if(wound_flavor_text["左脚"]&& (is_destroyed["左脚"] || (!shoes && !skipshoes)))
+		msg += wound_flavor_text["左脚"]
+	if(is_bleeding["左脚"])
 		display_foot_left = 1
-	if(wound_flavor_text["right leg"] && (is_destroyed["right leg"] || (!w_uniform && !skipjumpsuit)))
-		msg += wound_flavor_text["right leg"]
-	if(is_bleeding["right leg"])
+	if(wound_flavor_text["右腿"] && (is_destroyed["右腿"] || (!w_uniform && !skipjumpsuit)))
+		msg += wound_flavor_text["右腿"]
+	if(is_bleeding["右腿"])
 		display_leg_right = 1
-	if(wound_flavor_text["right foot"]&& (is_destroyed["right foot"] || (!shoes  && !skipshoes)))
-		msg += wound_flavor_text["right foot"]
-	if(is_bleeding["right foot"])
+	if(wound_flavor_text["右脚"]&& (is_destroyed["右脚"] || (!shoes  && !skipshoes)))
+		msg += wound_flavor_text["右脚"]
+	if(is_bleeding["右脚"])
 		display_foot_right = 1
 
 	if (display_head)
@@ -488,7 +488,7 @@
 			perpref = I.registered_ref
 
 		if(perpref)
-			var/criminal = "None"
+			var/criminal = "无"
 			for(var/datum/data/record/E in GLOB.data_core.general)
 				if(E.fields["ref"] == perpref)
 					for (var/datum/data/record/R in GLOB.data_core.security)

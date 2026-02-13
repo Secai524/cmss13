@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(assets)
-	name = "Assets"
+	name = "资产"
 	init_order = SS_INIT_ASSETS
 	flags = SS_NO_FIRE
 

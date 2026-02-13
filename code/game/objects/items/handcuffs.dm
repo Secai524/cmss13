@@ -21,7 +21,7 @@
 	if(!istype(attacked_carbon) || !manual)
 		return ..()
 	if (!ishuman(user))
-		to_chat(user, SPAN_DANGER("You don't have the dexterity to do this!"))
+		to_chat(user, SPAN_DANGER("你的手不够灵巧，无法完成此操作！"))
 		return
 	switch(target_zone)
 		if(SLOT_HANDS)
@@ -49,12 +49,12 @@
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to handcuff [key_name(human_mob)]</font>")
 		msg_admin_attack("[key_name(user)] attempted to handcuff [key_name(human_mob)] in [get_area(src)] ([loc.x],[loc.y],[loc.z]).", loc.x, loc.y, loc.z)
 
-		user.visible_message(SPAN_NOTICE("[user] tries to put [src] on [human_mob]."))
+		user.visible_message(SPAN_NOTICE("[user]试图将[src]戴在[human_mob]身上。"))
 		if(do_after(user, cuff_delay, INTERRUPT_MOVED, BUSY_ICON_HOSTILE, human_mob, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 			if(src == user.get_active_hand() && !human_mob.handcuffed && Adjacent(user))
 				if(iscarbon(human_mob))
 					if(istype(human_mob.buckled, /obj/structure/bed/roller))
-						to_chat(user, SPAN_DANGER("You cannot handcuff someone who is buckled onto a roller bed."))
+						to_chat(user, SPAN_DANGER("你无法给被固定在担架床上的人戴上手铐。"))
 						return
 				if(human_mob.has_limb_for_slot(WEAR_HANDCUFFS))
 					user.drop_inv_item_on_ground(src)
@@ -62,7 +62,7 @@
 					user.count_niche_stat(STATISTICS_NICHE_HANDCUFF)
 
 	else if(ismonkey(target))
-		user.visible_message(SPAN_NOTICE("[user] tries to put [src] on [target]."))
+		user.visible_message(SPAN_NOTICE("[user]试图将[src]戴在[target]身上。"))
 		if(do_after(user, 30, INTERRUPT_MOVED, BUSY_ICON_HOSTILE, target, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 			if(src == user.get_active_hand() && !target.handcuffed && Adjacent(user))
 				user.drop_inv_item_on_ground(src)
@@ -70,7 +70,7 @@
 
 /obj/item/restraint/handcuffs
 	name = "handcuffs"
-	desc = "Use this to keep prisoners in line."
+	desc = "用于管束囚犯。"
 	gender = PLURAL
 	icon_state = "handcuff"
 	flags_atom = FPRINT|CONDUCT
@@ -81,7 +81,7 @@
 	throw_range = 5
 	matter = list("metal" = 500)
 
-/obj/item/restraint/handcuffs/get_mob_overlay(mob/user_mob, slot, default_bodytype = "Default")
+/obj/item/restraint/handcuffs/get_mob_overlay(mob/user_mob, slot, default_bodytype = "默认")
 	var/image/ret = ..()
 
 	if(slot == WEAR_HANDCUFFS)
@@ -91,8 +91,8 @@
 	return ret
 
 /obj/item/restraint/handcuffs/zip
-	name = "zip cuffs"
-	desc = "Single-use plastic zip tie handcuffs."
+	name = "塑料束线带"
+	desc = "一次性塑料束线带手铐。"
 	w_class = SIZE_TINY
 	icon_state = "cuff_zip"
 	breakouttime = 60 SECONDS
@@ -113,16 +113,16 @@
 		return FALSE
 
 	if(usr.is_mob_incapacitated())
-		to_chat(usr, "Not right now.")
+		to_chat(usr, "现在不行。")
 		return FALSE
 
 	switch(target_zone)
 		if(SLOT_HANDS)
 			target_zone = SLOT_LEGS
-			to_chat(usr, SPAN_NOTICE("[src] has been adjusted to tie around a subject's ankles."))
+			to_chat(usr, SPAN_NOTICE("[src]已被调整为束缚目标脚踝。"))
 		if(SLOT_LEGS)
 			target_zone = SLOT_HANDS
-			to_chat(usr, SPAN_NOTICE("[src] has been adjusted to tie around a subject's wrists."))
+			to_chat(usr, SPAN_NOTICE("[src]已被调整为束缚目标手腕。"))
 
 /obj/item/restraint/adjustable/get_examine_text(mob/user)
 	. = ..()
@@ -133,8 +133,8 @@
 			. += SPAN_RED("Sized for human ankles.")
 
 /obj/item/restraint/adjustable/cable
-	name = "cable restraints"
-	desc = "Looks like some cables tied together. Could be used to tie something up."
+	name = "电缆约束带"
+	desc = "看起来像是几根电缆绑在一起。可以用来捆东西。"
 	icon_state = "cuff_white"
 	breakouttime = 30 SECONDS
 	cuff_sound = 'sound/weapons/cablecuff.ogg'
@@ -171,7 +171,7 @@
 			var/obj/item/weapon/wirerod/W = new /obj/item/weapon/wirerod
 
 			user.put_in_hands(W)
-			to_chat(user, SPAN_NOTICE("You wrap the cable restraint around the top of the rod."))
+			to_chat(user, SPAN_NOTICE("你将电缆约束带缠绕在杆子顶部。"))
 			qdel(src)
 			update_icon(user)
 
@@ -180,7 +180,7 @@
 		var/turf/p_loc = user.loc
 		var/turf/p_loc_m = carbon_mob.loc
 		playsound(loc, cuff_sound, 25, 1, 4)
-		user.visible_message(SPAN_DANGER("<B>[user] is trying to put handcuffs on [carbon_mob]!</B>"))
+		user.visible_message(SPAN_DANGER("<B>[user]正试图给[carbon_mob]戴上手铐！</B>"))
 
 		if(ishuman(carbon_mob))
 			var/mob/living/carbon/human/human_mob = carbon_mob

@@ -1,6 +1,6 @@
 /obj/structure/barricade/handrail
 	name = "handrail"
-	desc = "A railing, for your hands. Woooow."
+	desc = "一个扶手，给你的手用的。哇哦。"
 	icon = 'icons/obj/structures/handrail.dmi'
 	icon_state = "handrail_a_0"
 	barricade_type = "handrail"
@@ -60,7 +60,7 @@
 	if(istype(movable, /mob/living/carbon/xenomorph/ravager) || istype(movable, /mob/living/carbon/xenomorph/crusher))
 		var/mob/living/carbon/xenomorph/xenomorph = movable
 		if(!xenomorph.stat)
-			visible_message(SPAN_DANGER("[xenomorph] plows straight through [src]!"))
+			visible_message(SPAN_DANGER("[xenomorph]径直冲破了[src]！"))
 			deconstruct(FALSE)
 			return
 	else
@@ -85,7 +85,7 @@
 					human.apply_damage(5, BRUTE, no_limb_loss = TRUE)
 				else
 					climber.apply_damage(5, BRUTE)
-				climber.visible_message(SPAN_WARNING("[climber] injures themselves vaulting over [src]."), SPAN_WARNING("You hit yourself as you vault over [src]."))
+				climber.visible_message(SPAN_WARNING("[climber]在翻越[src]时受伤了。"), SPAN_WARNING("You hit yourself as you vault over [src]."))
 	..()
 
 /obj/structure/barricade/handrail/get_examine_text(mob/user)
@@ -118,7 +118,7 @@
 /obj/structure/barricade/handrail/attackby(obj/item/item, mob/user)
 	for(var/obj/effect/xenomorph/acid/A in src.loc)
 		if(A.acid_t == src)
-			to_chat(user, "You can't get near that, it's melting!")
+			to_chat(user, "你无法靠近，它正在融化！")
 			return
 
 	switch(build_state)
@@ -127,12 +127,12 @@
 				if(user.action_busy)
 					return
 				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
-					to_chat(user, SPAN_WARNING("You are not trained to unsecure [src]..."))
+					to_chat(user, SPAN_WARNING("你没受过解除固定[src]的训练..."))
 					return
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 					return
-				user.visible_message(SPAN_NOTICE("[user] loosens [src]'s anchor bolts."),
+				user.visible_message(SPAN_NOTICE("[user]拧松了[src]的锚定螺栓。"),
 				SPAN_NOTICE("You loosen [src]'s anchor bolts."))
 				anchored = FALSE
 				build_state = BARRICADE_BSTATE_UNSECURED
@@ -144,7 +144,7 @@
 				if(user.action_busy)
 					return
 				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
-					to_chat(user, SPAN_WARNING("You are not trained to reinforce [src]..."))
+					to_chat(user, SPAN_WARNING("你没受过加固[src]的训练..."))
 					return
 				var/obj/item/stack/sheet/metal/M = item
 				playsound(src.loc, 'sound/items/Screwdriver2.ogg', 25, 1)
@@ -154,7 +154,7 @@
 					build_state = BARRICADE_BSTATE_FORTIFIED
 					update_icon()
 				else
-					to_chat(user, SPAN_WARNING("You need at least one metal sheet to do this."))
+					to_chat(user, SPAN_WARNING("你至少需要一块金属板才能这么做。"))
 				return
 
 		if(BARRICADE_BSTATE_UNSECURED)
@@ -162,12 +162,12 @@
 				if(user.action_busy)
 					return
 				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
-					to_chat(user, SPAN_WARNING("You are not trained to secure [src]..."))
+					to_chat(user, SPAN_WARNING("你没受过固定[src]的训练..."))
 					return
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 					return
-				user.visible_message(SPAN_NOTICE("[user] tightens [src]'s anchor bolts."),
+				user.visible_message(SPAN_NOTICE("[user]拧紧了[src]的锚固螺栓。"),
 				SPAN_NOTICE("You tighten [src]'s anchor bolts."))
 				anchored = TRUE
 				build_state = BARRICADE_BSTATE_SECURED
@@ -177,14 +177,14 @@
 				if(user.action_busy)
 					return
 				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
-					to_chat(user, SPAN_WARNING("You are not trained to disassemble [src]..."))
+					to_chat(user, SPAN_WARNING("你没有受过拆卸[src]的训练..."))
 					return
-				user.visible_message(SPAN_NOTICE("[user] starts unscrewing [src]'s panels."),
+				user.visible_message(SPAN_NOTICE("[user]开始拧下[src]的面板。"),
 				SPAN_NOTICE("You remove [src]'s panels and start taking it apart."))
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 					return
-				user.visible_message(SPAN_NOTICE("[user] takes apart [src]."),
+				user.visible_message(SPAN_NOTICE("[user]拆解了[src]。"),
 				SPAN_NOTICE("You take apart [src]."))
 				playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 				deconstruct(TRUE)
@@ -196,12 +196,12 @@
 					if(user.action_busy)
 						return
 					if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
-						to_chat(user, SPAN_WARNING("You are not trained to unreinforce [src]..."))
+						to_chat(user, SPAN_WARNING("你没有受过拆除[src]加固的训练..."))
 						return
 					playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 					if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 						return
-					user.visible_message(SPAN_NOTICE("[user] pries off [src]'s extra metal panel."),
+					user.visible_message(SPAN_NOTICE("[user]撬下了[src]的额外金属板。"),
 					SPAN_NOTICE("You pry off [src]'s extra metal panel."))
 					build_state = BARRICADE_BSTATE_SECURED
 					reinforce()
@@ -209,17 +209,17 @@
 			else
 				if(iswelder(item)) // Finish reinforcing
 					if(!HAS_TRAIT(item, TRAIT_TOOL_BLOWTORCH))
-						to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+						to_chat(user, SPAN_WARNING("你需要一把更强的喷枪！"))
 						return
 					if(user.action_busy)
 						return
 					if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
-						to_chat(user, SPAN_WARNING("You are not trained to reinforce [src]..."))
+						to_chat(user, SPAN_WARNING("你没受过加固[src]的训练..."))
 						return
 					playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)
 					if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 						return
-					user.visible_message(SPAN_NOTICE("[user] secures [src]'s metal panel."),
+					user.visible_message(SPAN_NOTICE("[user]固定了[src]的金属板。"),
 					SPAN_NOTICE("You secure [src]'s metal panel."))
 					reinforce()
 					return
@@ -245,7 +245,7 @@
 	climb_delay = CLIMB_DELAY_SHORT
 
 /obj/structure/barricade/handrail/sandstone
-	name = "sandstone handrail"
+	name = "砂岩扶手"
 	icon_state = "hr_sandstone"
 	can_be_reinforced = FALSE
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
@@ -287,57 +287,57 @@
 
 // Plastic
 /obj/structure/barricade/handrail/hybrisa/road/plastic
-	name = "plastic road barrier"
+	name = "塑料路障"
 	icon_state = "plasticroadbarrierred"
 	barricade_hitsound = 'sound/effects/thud.ogg'
 	health = 10
 	maxhealth = 10
 
 /obj/structure/barricade/handrail/hybrisa/road/plastic/red
-	name = "plastic road barrier"
+	name = "塑料路障"
 	icon_state = "plasticroadbarrierred"
 
 /obj/structure/barricade/handrail/hybrisa/road/plastic/blue
-	name = "plastic road barrier"
+	name = "塑料路障"
 	icon_state = "plasticroadbarrierblue"
 
 /obj/structure/barricade/handrail/hybrisa/road/plastic/black
-	name = "plastic road barrier"
+	name = "塑料路障"
 	icon_state = "plasticroadbarrierblack"
 
 //Wood
 
 /obj/structure/barricade/handrail/hybrisa/road/wood
-	name = "wood road barrier"
+	name = "木质路障"
 	icon_state = "roadbarrierwood"
 	barricade_hitsound = 'sound/effects/woodhit.ogg'
 	health = 10
 	maxhealth = 10
 
 /obj/structure/barricade/handrail/hybrisa/road/wood/orange
-	name = "wood road barrier"
+	name = "木质路障"
 	icon_state = "roadbarrierwood"
 
 /obj/structure/barricade/handrail/hybrisa/road/wood/blue
-	name = "wood road barrier"
+	name = "木质路障"
 	icon_state = "roadbarrierpolice"
 
 // Metal Road Barrier
 
 /obj/structure/barricade/handrail/hybrisa/road/metal
-	name = "metal road barrier"
+	name = "金属路障"
 	icon_state = "centerroadbarrier"
 
 /obj/structure/barricade/handrail/hybrisa/road/metal/metaltan
-	name = "metal road barrier"
+	name = "金属路障"
 	icon_state = "centerroadbarrier"
 
 /obj/structure/barricade/handrail/hybrisa/road/metal/metaltan/middle
-	name = "metal road barrier"
+	name = "金属路障"
 	icon_state = "centerroadbarrier_middle"
 
 /obj/structure/barricade/handrail/hybrisa/road/metal/metaldark
-	name = "metal road barrier"
+	name = "金属路障"
 	icon_state = "centerroadbarrier2"
 
 /obj/structure/barricade/handrail/hybrisa/road/metal/metaldark/offset
@@ -345,19 +345,19 @@
 	layer = BETWEEN_OBJECT_ITEM_LAYER
 
 /obj/structure/barricade/handrail/hybrisa/road/metal/metaldark/middle
-	name = "metal road barrier"
+	name = "金属路障"
 	icon_state = "centerroadbarrier2_middle"
 
 /obj/structure/barricade/handrail/hybrisa/road/metal/metaldark2
-	name = "metal road barrier"
+	name = "金属路障"
 	icon_state = "centerroadbarrier3"
 
 /obj/structure/barricade/handrail/hybrisa/road/metal/metaldark2/middle
-	name = "metal road barrier"
+	name = "金属路障"
 	icon_state = "centerroadbarrier3_middle"
 
 /obj/structure/barricade/handrail/hybrisa/road/metal/double
-	name = "metal road barrier"
+	name = "金属路障"
 	icon_state = "centerroadbarrierdouble"
 	layer = BETWEEN_OBJECT_ITEM_LAYER
 

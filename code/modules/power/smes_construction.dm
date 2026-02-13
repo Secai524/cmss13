@@ -83,9 +83,9 @@
 			s.set_up(2, 1, src)
 			s.start()
 			if (user_protected && prob(80))
-				to_chat(h_user, "Small electrical arc almost burns your hand. Luckily you had your gloves on!")
+				to_chat(h_user, "小型电弧差点灼伤你的手。幸好你戴着手套！")
 			else
-				to_chat(h_user, "Small electrical arc sparks and burns your hand as you touch [src]!")
+				to_chat(h_user, "当你触碰[src]时，小型电弧迸发并灼伤了你的手！")
 				h_user.apply_damage(rand(5,10), BURN)
 				h_user.apply_effect(2, PARALYZE)
 			charge = 0
@@ -96,9 +96,9 @@
 			s.set_up(4,1,src)
 			s.start()
 			if (user_protected && prob(25))
-				to_chat(h_user, "Medium electrical arc sparks and almost burns your hand. Luckily you had your gloves on!")
+				to_chat(h_user, "中型电弧迸发，差点灼伤你的手。幸好你戴着手套！")
 			else
-				to_chat(h_user, "Medium electrical sparks as you touch [src], severely burning your hand!")
+				to_chat(h_user, "当你触碰[src]时，中型电弧迸发，严重灼伤了你的手！")
 				h_user.apply_damage(rand(10,25), BURN)
 				h_user.apply_effect(5, PARALYZE)
 			spawn(0)
@@ -111,11 +111,11 @@
 			s.set_up(7,1,src)
 			s.start()
 			if (user_protected)
-				to_chat(h_user, "Strong electrical arc sparks between you and [src], ignoring your gloves and burning your hand!")
+				to_chat(h_user, "强电弧在你和[src]之间迸发，无视了你的手套并灼伤了你的手！")
 				h_user.apply_damage(rand(25,60), BURN)
 				h_user.apply_effect(8, PARALYZE)
 			else
-				to_chat(user, "Strong electrical arc sparks between you and [src], knocking you out for a while!")
+				to_chat(user, "强电弧在你和[src]之间迸发，将你击晕了片刻！")
 				h_user.apply_damage(rand(35,75), BURN)
 				h_user.apply_effect(12, PARALYZE)
 			spawn(0)
@@ -129,7 +129,7 @@
 			// Sparks, Near - instantkill shock, Strong EMP, 25% light overload, 5% APC failure. 50% of SMES explosion. This is bad.
 			s.set_up(10,1,src)
 			s.start()
-			to_chat(h_user, "Massive electrical arc sparks between you and [src]. Last thing you can think about is \"Oh shit...\"")
+			to_chat(h_user, "巨大的电弧在你和[src]之间迸发。你最后能想到的是\"Oh shit...\"")
 			// Remember, we have few gigajoules of electricity here... Turn them into crispy toast.
 			h_user.apply_damage(rand(150,195), BURN)
 			h_user.apply_effect(25, PARALYZE)
@@ -180,7 +180,7 @@
 /obj/structure/machinery/power/smes/buildable/attackby(obj/item/W as obj, mob/user as mob)
 	// No more disassembling of overloaded SMESs. You broke it, now enjoy the consequences.
 	if (failing)
-		to_chat(user, SPAN_WARNING("[src]'s screen is flashing with alerts. It seems to be overloaded! Touching it now is probably not a good idea."))
+		to_chat(user, SPAN_WARNING("[src]的屏幕正闪烁着警报。它似乎过载了！现在触碰它可能不是个好主意。"))
 		return
 	// If parent returned 1:
 	// - Hatch is open, so we can modify the SMES
@@ -190,11 +190,11 @@
 
 		// Charged above 1% and safeties are enabled.
 		if((charge > (capacity/100)) && safeties_enabled && !HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
-			to_chat(user, SPAN_WARNING("Safety circuit of [src] is preventing modifications while it's charged!"))
+			to_chat(user, SPAN_WARNING("[src]的安全电路在其充电时阻止修改！"))
 			return
 
 		if (outputting || input_attempt)
-			to_chat(user, SPAN_WARNING("Turn off [src] first!"))
+			to_chat(user, SPAN_WARNING("先关闭[src]！"))
 			return
 
 		// Probability of failure if safety circuit is disabled (in %)
@@ -207,18 +207,18 @@
 		// Crowbar - Disassemble the SMES.
 		if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 			if (terminal)
-				to_chat(user, SPAN_WARNING("You have to disassemble the terminal first!"))
+				to_chat(user, SPAN_WARNING("你必须先拆解终端！"))
 				return
 
 			playsound(get_turf(src), 'sound/items/Crowbar.ogg', 25, 1)
-			to_chat(user, SPAN_WARNING("You begin to disassemble [src]!"))
+			to_chat(user, SPAN_WARNING("你开始拆解[src]！"))
 			if (do_after(usr, 100 * cur_coils * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) // More coils = takes longer to disassemble. It's complex so largest one with 5 coils will take 50s
 
 				if (failure_probability && prob(failure_probability))
 					total_system_failure(failure_probability, user)
 					return
 
-				to_chat(usr, SPAN_DANGER("You have disassembled the SMES cell!"))
+				to_chat(usr, SPAN_DANGER("你已拆解SMES电池单元！"))
 				var/obj/structure/machinery/constructable_frame/M = new /obj/structure/machinery/constructable_frame(src.loc)
 				M.state = CONSTRUCTION_STATE_PROGRESS
 				M.update_icon()
@@ -237,13 +237,13 @@
 					total_system_failure(failure_probability, user)
 					return
 
-				to_chat(usr, "You install the coil into the SMES unit!")
+				to_chat(usr, "你将线圈安装到SMES单元中！")
 				if(user.drop_inv_item_to_loc(W, src))
 					cur_coils ++
 					LAZYADD(component_parts, W)
 					recalc_coils()
 			else
-				to_chat(usr, SPAN_DANGER("You can't insert more coils to this SMES unit!"))
+				to_chat(usr, SPAN_DANGER("你无法向此SMES单元插入更多线圈！"))
 
 		// Multitool - Toggle the safeties.
 		else if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))

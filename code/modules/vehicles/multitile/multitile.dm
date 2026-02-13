@@ -6,8 +6,8 @@
 */
 
 /obj/vehicle/multitile
-	name = "multitile vehicle"
-	desc = "Get inside to operate the vehicle."
+	name = "多格载具"
+	desc = "进入载具内部以进行操作。"
 
 	health = 1000
 
@@ -402,7 +402,7 @@
 //as well as allowing customizations, like properly turning on mapped in direction and so on.
 
 /obj/effect/vehicle_spawner
-	name = "Vehicle Spawner"
+	name = "载具生成器"
 
 //Main proc which handles spawning and adding hardpoints/damaging the vehicle
 /obj/effect/vehicle_spawner/proc/spawn_vehicle()

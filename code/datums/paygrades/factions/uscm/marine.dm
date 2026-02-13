@@ -1,5 +1,5 @@
 /datum/paygrade/marine
-	name = "Marine Paygrade"
+	name = "陆战队员军衔"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine
 	pay_multiplier = 1.6
 	default_faction = FACTION_MARINE
@@ -8,7 +8,7 @@
 
 /datum/paygrade/marine/e1
 	paygrade = PAY_SHORT_ME1
-	name = "Private"
+	name = "列兵"
 	prefix = "PVT"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/e1
 	ranking = 0
@@ -16,7 +16,7 @@
 
 /datum/paygrade/marine/e2
 	paygrade = PAY_SHORT_ME2
-	name = "Private First Class"
+	name = "一等兵"
 	prefix = "PFC"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/e2
 	ranking = 1
@@ -24,7 +24,7 @@
 
 /datum/paygrade/marine/e3
 	paygrade = PAY_SHORT_ME3
-	name = "Lance Corporal"
+	name = "下士"
 	prefix = "LCpl"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/e3
 	ranking = 2
@@ -32,7 +32,7 @@
 
 /datum/paygrade/marine/e4
 	paygrade = PAY_SHORT_ME4
-	name = "Corporal"
+	name = "下士"
 	prefix = "Cpl"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/e4
 	ranking = 3
@@ -40,7 +40,7 @@
 
 /datum/paygrade/marine/e5
 	paygrade = PAY_SHORT_ME5
-	name = "Sergeant"
+	name = "警长"
 	prefix = "Sgt"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/e5
 	ranking = 4
@@ -48,7 +48,7 @@
 
 /datum/paygrade/marine/e6
 	paygrade = PAY_SHORT_ME6
-	name = "Staff Sergeant"
+	name = "上士"
 	prefix = "SSgt"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/e6
 	ranking = 5
@@ -56,7 +56,7 @@
 
 /datum/paygrade/marine/e7
 	paygrade = PAY_SHORT_ME7
-	name = "Gunnery Sergeant"
+	name = "枪炮军士"
 	prefix = "GySgt"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/e7
 	ranking = 6
@@ -64,7 +64,7 @@
 
 /datum/paygrade/marine/e8
 	paygrade = PAY_SHORT_ME8
-	name = "Master Sergeant"
+	name = "军士长"
 	prefix = "MSgt"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/e8
 	ranking = 7
@@ -72,7 +72,7 @@
 
 /datum/paygrade/marine/e8e
 	paygrade = PAY_SHORT_ME8E
-	name = "First Sergeant"
+	name = "上士"
 	prefix = "1Sgt"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/e8e
 	ranking = 8
@@ -80,7 +80,7 @@
 
 /datum/paygrade/marine/e9
 	paygrade = PAY_SHORT_ME9
-	name = "Master Gunnery Sergeant"
+	name = "枪炮总军士长"
 	prefix = "MGySgt"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/e9
 	ranking = 9
@@ -88,7 +88,7 @@
 
 /datum/paygrade/marine/e9e
 	paygrade = PAY_SHORT_ME9E
-	name = "Sergeant Major"
+	name = "总军士长"
 	prefix = "SgtMaj"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/e9e
 	ranking = 10
@@ -96,7 +96,7 @@
 
 /datum/paygrade/marine/e9c
 	paygrade = PAY_SHORT_ME9C
-	name = "Sergeant Major of the Colonial Marine Corps"
+	name = "殖民地海军陆战队总军士长"
 	prefix = "SMCMC"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/e9c
 	ranking = 11
@@ -104,7 +104,7 @@
 
 /datum/paygrade/marine/wo
 	paygrade = PAY_SHORT_MWO
-	name = "Warrant Officer"
+	name = "准尉"
 	prefix = "WO"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/wo
 	ranking = 12
@@ -113,7 +113,7 @@
 
 /datum/paygrade/marine/cwo
 	paygrade = PAY_SHORT_MCWO
-	name = "Chief Warrant Officer"
+	name = "一级准尉"
 	prefix = "CWO"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/cwo
 	ranking = 13
@@ -124,7 +124,7 @@
 
 /datum/paygrade/marine/o1
 	paygrade = PAY_SHORT_MO1
-	name = "Second Lieutenant"
+	name = "少尉"
 	prefix = "2ndLt"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o1
 	ranking = 14
@@ -133,7 +133,7 @@
 
 /datum/paygrade/marine/o2
 	paygrade = PAY_SHORT_MO2
-	name = "First Lieutenant"
+	name = "中尉"
 	prefix = "1stLt"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o2
 	ranking = 15
@@ -142,7 +142,7 @@
 
 /datum/paygrade/marine/o3
 	paygrade = PAY_SHORT_MO3
-	name = "Captain"
+	name = "上尉"
 	prefix = "Capt"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o3
 	ranking = 16
@@ -151,7 +151,7 @@
 
 /datum/paygrade/marine/o4
 	paygrade = PAY_SHORT_MO4
-	name = "Major"
+	name = "少校"
 	prefix = "Maj"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o4
 	ranking = 17
@@ -160,7 +160,7 @@
 
 /datum/paygrade/marine/o5
 	paygrade = PAY_SHORT_MO5
-	name = "Lieutenant Colonel"
+	name = "中校"
 	prefix = "LtCol"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o5
 	ranking = 18
@@ -170,7 +170,7 @@
 //Platoon Commander
 /datum/paygrade/marine/o6
 	paygrade = PAY_SHORT_MO6
-	name = "Colonel"
+	name = "上校"
 	prefix = "Col"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o6
 	ranking = 19
@@ -179,7 +179,7 @@
 
 /datum/paygrade/marine/o6e
 	paygrade = PAY_SHORT_MO6E
-	name = "Senior Colonel"
+	name = "上校"
 	prefix = "Snr Col."
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o6e
 	ranking = 20
@@ -188,7 +188,7 @@
 
 /datum/paygrade/marine/o6c
 	paygrade = PAY_SHORT_MO6C
-	name = "Division Colonel"
+	name = "师级上校"
 	prefix = "Div Col."
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o6c
 	ranking = 21
@@ -198,7 +198,7 @@
 //High Command
 /datum/paygrade/marine/o7
 	paygrade = PAY_SHORT_MO7
-	name = "Brigadier General"
+	name = "准将"
 	prefix = "BGen"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o7
 	ranking = 22
@@ -207,7 +207,7 @@
 
 /datum/paygrade/marine/o8
 	paygrade = PAY_SHORT_MO8
-	name = "Major General"
+	name = "少将"
 	prefix = "MajGen"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o8
 	ranking = 23
@@ -216,7 +216,7 @@
 
 /datum/paygrade/marine/o9
 	paygrade = PAY_SHORT_MO9
-	name = "Lieutenant General"
+	name = "中将"
 	prefix = "LtGen"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o9
 	ranking = 24
@@ -225,7 +225,7 @@
 
 /datum/paygrade/marine/o10
 	paygrade = PAY_SHORT_MO10
-	name = "General"
+	name = "将军"
 	prefix = "Gen"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o10
 	ranking = 25
@@ -234,7 +234,7 @@
 
 /datum/paygrade/marine/o10c
 	paygrade = PAY_SHORT_MO10C
-	name = "Assistant Commandant of the Marine Corps"
+	name = "海军陆战队副司令"
 	prefix = "ACMC"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o10c
 	ranking = 26
@@ -243,7 +243,7 @@
 
 /datum/paygrade/marine/o10s
 	paygrade = PAY_SHORT_MO10S
-	name = "Commandant of the Marine Corps"
+	name = "海军陆战队司令"
 	prefix = "CMC"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o10c
 	ranking = 27
@@ -253,7 +253,7 @@
 //Historical Background: Combat Dogs were given the lowest officer rank possible, they have no notional command but if someone were to abuse the animal, the offender could be charged with assaulting an officer.
 /datum/paygrade/marine/k9
 	paygrade = PAY_SHORT_SYN_K9
-	name = "Second Lieutenant Combat Lifesaver"
+	name = "少尉战斗救生员"
 	prefix = "2ndLt Combat Lifesaver"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o1
 	ranking = 14

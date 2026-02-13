@@ -1,7 +1,7 @@
 // here they will be all the Equipment that are restricted to a role/job.
 
 /datum/supply_packs/armor_leader
-	name = "B12 pattern marine armor crate (x1 helmet, x1 armor)"
+	name = "B12型陆战队员护甲箱（x1头盔，x1护甲）"
 	contains = list(
 		/obj/item/clothing/head/helmet/marine/leader,
 		/obj/item/clothing/suit/storage/marine/medium/leader,
@@ -12,7 +12,7 @@
 	group = "Restricted Equipment"
 
 /datum/supply_packs/armor_tl
-	name = "M4 pattern marine armor crate (x1 helmet, x1 armor)"
+	name = "M4型陆战队员护甲箱（x1头盔，x1护甲）"
 	contains = list(
 		/obj/item/clothing/head/helmet/marine/rto,
 		/obj/item/clothing/suit/storage/marine/medium/rto,
@@ -23,7 +23,7 @@
 	group = "Restricted Equipment"
 
 /datum/supply_packs/intel_kit
-	name = "Field Intelligence Support Kit crate (x1 fulton pack, x1 data detector, x1 intel pamphlet, x1 large document pouch, 1x intel radio key)"
+	name = "野战情报支援装备箱（x1富尔顿回收包，x1数据探测器，x1情报手册，x1大型文件袋，1x情报无线电密钥）"
 	contains = list(
 		/obj/item/storage/box/kit/mini_intel,
 	)
@@ -33,7 +33,7 @@
 	group = "Restricted Equipment"
 
 /datum/supply_packs/jtac_kit
-	name = "JTAC Radio Kit crate (x1 full flare gun belt, x2 M89-S signal flare packs, 1x laser designator, 1x jtac radio key, 1x radiopack)"
+	name = "JTAC无线电装备箱（x1满装信号枪腰带，x2 M89-S信号弹包，1x激光指示器，1x JTAC无线电密钥，1x无线电背包）"
 	contains = list(
 		/obj/item/storage/box/kit/mini_jtac,
 	)

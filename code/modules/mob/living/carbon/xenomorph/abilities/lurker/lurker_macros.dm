@@ -1,42 +1,42 @@
 
 /datum/action/xeno_action/verb/verb_lurker_invisibility()
 	set category = "Alien"
-	set name = "Turn Invisible"
+	set name = "隐形"
 	set hidden = TRUE
-	var/action_name = "Turn Invisible"
+	var/action_name = "隐形"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_crippling_strike()
 	set category = "Alien"
-	set name = "Crippling Strike"
+	set name = "致残打击"
 	set hidden = TRUE
-	var/action_name = "Crippling Strike"
+	var/action_name = "致残打击"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_rush()
 	set category = "Alien"
-	set name = "Rush"
+	set name = "突进"
 	set hidden = TRUE
-	var/action_name = "Rush"
+	var/action_name = "突进"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_flurry()
 	set category = "Alien"
-	set name = "Flurry"
+	set name = "连击"
 	set hidden = TRUE
-	var/action_name = "Flurry"
+	var/action_name = "连击"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_tail_jab()
 	set category = "Alien"
-	set name = "Tail Jab"
+	set name = "尾刺"
 	set hidden = TRUE
-	var/action_name = "Tail Jab"
+	var/action_name = "尾刺"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_headbite()
 	set category = "Alien"
-	set name = "Headbite"
+	set name = "噬首"
 	set hidden = TRUE
-	var/action_name = "Headbite"
+	var/action_name = "噬首"
 	handle_xeno_macro(src, action_name)

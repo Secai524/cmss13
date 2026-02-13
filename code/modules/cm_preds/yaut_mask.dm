@@ -3,8 +3,8 @@
 
 ///parent type
 /obj/item/clothing/mask/gas/yautja
-	name = "alien mask"
-	desc = "A beautifully designed metallic face mask, both ornate and functional."
+	name = "异形面具"
+	desc = "一个设计精美的金属面罩，既华丽又实用。"
 
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	item_icons = list(
@@ -47,13 +47,13 @@
 	///A list of all intrinsic mask actions
 	var/list/mask_actions = list(/datum/action/predator_action/mask/zoom, /datum/action/predator_action/mask/visor)
 
-/obj/item/clothing/mask/gas/yautja/New(location, mask_number = rand(1,17), armor_material = "ebony", legacy = "None")
+/obj/item/clothing/mask/gas/yautja/New(location, mask_number = rand(1,17), armor_material = "ebony", legacy = "无")
 	..()
 	forceMove(location)
 	if(thrall)
 		return
 
-	if(legacy != "None")
+	if(legacy != "无")
 		switch(legacy)
 			if("Dragon")
 				icon_state = "pred_mask_elder_tr"
@@ -63,7 +63,7 @@
 				icon_state = "pred_mask_elder_joshuu"
 				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_joshuu")
 				return
-			if("Enforcer")
+			if("执法者")
 				icon_state = "pred_mask_elder_feweh"
 				LAZYSET(item_state_slots, WEAR_FACE, "pred_mask_elder_feweh")
 				return
@@ -93,7 +93,7 @@
 	var/mob/living/carbon/human/human_holder = loc
 
 	if(current_goggles && !drain_power(human_holder, 3))
-		to_chat(human_holder, SPAN_WARNING("Your bracers lack sufficient power to operate the visor."))
+		to_chat(human_holder, SPAN_WARNING("你的臂铠电力不足，无法启动面罩视镜。"))
 		current_goggles = VISION_MODE_OFF
 		var/obj/item/visor = human_holder.glasses
 		if(istype(visor, /obj/item/clothing/glasses/night/yautja))//To change if any new vision modes are made
@@ -111,7 +111,7 @@
 	return TRUE
 
 /obj/item/clothing/mask/gas/yautja/verb/toggle_zoom()
-	set name = "Toggle Mask Zoom"
+	set name = "切换面具缩放"
 	set desc = "Toggle your mask's zoom function."
 	set src in usr
 	if(!usr || usr.stat)
@@ -144,19 +144,19 @@
 	if(!istype(user))
 		return
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH) && !user.hunter_data.thralled)
-		to_chat(user, SPAN_WARNING("You have no idea how to work this thing!"))
+		to_chat(user, SPAN_WARNING("你完全不知道这东西怎么用！"))
 		return
 	if(src != user.wear_mask) //sanity
-		to_chat(user, SPAN_WARNING("You must wear \the [src]!"))
+		to_chat(user, SPAN_WARNING("你必须佩戴\the [src]！"))
 		return
 	var/obj/item/clothing/gloves/yautja/bracer = user.gloves
 	if(!bracer || !istype(bracer))
-		to_chat(user, SPAN_WARNING("You must be wearing your bracers, as they have the power source."))
+		to_chat(user, SPAN_WARNING("你必须佩戴你的臂铠，因为它们是电源。"))
 		return
 	var/obj/item/visor = user.glasses
 	if(visor)
 		if(!istype(visor, /obj/item/clothing/glasses/night/yautja))
-			to_chat(user, SPAN_WARNING("You need to remove your glasses first. Why are you even wearing these?"))
+			to_chat(user, SPAN_WARNING("你需要先摘掉你的眼镜。你为什么要戴着这玩意儿？"))
 			return
 		user.temp_drop_inv_item(visor) //Get rid of ye existing maicerinho goggles
 		qdel(visor)
@@ -176,9 +176,9 @@
 	switch(current_goggles)
 		if(VISION_MODE_NVG)
 			user.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/yautja(user), WEAR_EYES)
-			to_chat(user, SPAN_NOTICE("Low-light vision module: activated."))
+			to_chat(user, SPAN_NOTICE("微光视觉模块：已激活。"))
 		if(VISION_MODE_OFF)
-			to_chat(user, SPAN_NOTICE("You deactivate your visor."))
+			to_chat(user, SPAN_NOTICE("你关闭了面罩视镜。"))
 
 	playsound(src, 'sound/effects/pred_vision.ogg', 15, 1)
 	user.update_inv_glasses()
@@ -227,8 +227,8 @@
 	..()
 
 /obj/item/clothing/mask/gas/yautja/thrall
-	name = "alien mask"
-	desc = "A simplistic metallic face mask with advanced capabilities."
+	name = "异形面具"
+	desc = "一个功能先进但造型简约的金属面罩。"
 	icon_state = "thrallmask_ebony"
 	item_state = "thrallmask_ebony"
 	icon = 'icons/obj/items/hunter/thrall_gear.dmi'
@@ -246,8 +246,8 @@
 	..()
 
 /obj/item/clothing/mask/gas/yautja/hunter
-	name = "clan mask"
-	desc = "A beautifully designed metallic face mask, both ornate and functional."
+	name = "氏族面具"
+	desc = "一个设计精美的金属面罩，既华丽又实用。"
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
@@ -265,18 +265,18 @@
 /obj/item/clothing/mask/gas/yautja/hunter/togglesight()
 	set category = "Yautja.Utility"
 	if(!isyautja(usr))
-		to_chat(usr, SPAN_WARNING("You have no idea how to work this thing!"))
+		to_chat(usr, SPAN_WARNING("你完全不知道这东西怎么用！"))
 		return
 	..()
 
 /obj/item/clothing/mask/gas/yautja/damaged
-	name = "ancient alien mask"
-	desc = "A beautifully designed metallic face mask, both ornate and functional. This one seems to be old and degraded."
+	name = "远古异形面具"
+	desc = "一个设计精美的金属面罩，既华丽又实用。这一个看起来已经老旧且磨损。"
 
 //flavor, not a subtype
 /obj/item/clothing/mask/yautja_flavor
-	name = "alien stone mask"
-	desc = "A beautifully designed face mask, ornate but non-functional and made entirely of stone."
+	name = "异形石面具"
+	desc = "一个设计精美的面罩，华丽但无实际功能，完全由石头制成。"
 
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	item_icons = list(
@@ -314,8 +314,8 @@
 	map_random = TRUE
 
 /obj/item/clothing/accessory/mask
-	name = "Mask Ornament"
-	desc = "An ornate addition to your mask."
+	name = "面具装饰物"
+	desc = "为你面具增添的华丽装饰。"
 	icon = 'icons/obj/items/hunter/pred_mask_accessories.dmi'
 	accessory_icons = list(WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_mask_accessories.dmi')
 	icon_state = null

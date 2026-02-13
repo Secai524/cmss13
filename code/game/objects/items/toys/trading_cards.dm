@@ -1,11 +1,11 @@
 /obj/item/toy/trading_card
-	name = "WeyYu Military Trading Card"
+	name = "维兰德-汤谷军事集换卡"
 	icon = 'icons/obj/items/playing_cards.dmi'
 	icon_state = "trading_red"
 	w_class = SIZE_TINY
 
 	var/trading_card_number = "1"
-	var/picture_description = "barrel charger"
+	var/picture_description = "枪管增压器"
 	var/collection_color
 	var/is_front = FALSE
 	var/back_name = "Red WeyYu Military Trading Card"
@@ -33,12 +33,12 @@
 	trading_card_number = pick_weight(list("5" = 25, "4" = 20, "3" = 15, "2" = 10, "1" = 5))
 	picture_description = picture_descriptions[trading_card_number][collection_color]
 
-	name = "[capitalize(collection_color)] WeyYu Military Trading Card"
-	back_name = "[capitalize(collection_color)] WeyYu Military Trading Card"
+	name = "[capitalize(collection_color)] 维兰德-汤谷军事集换卡"
+	back_name = "[capitalize(collection_color)] 维兰德-汤谷军事集换卡"
 	front_name = "[capitalize(collection_color)] WeyYu Military Trading Card #[trading_card_number]"
 
-	desc = "The back of a [collection_color] trading card with the text: WeyYu Military Trading Cards! GOTTA COLLECT EM ALL!"
-	back_description = "The back of a [collection_color] trading card with the text: WeyYu Military Trading Cards! GOTTA COLLECT EM ALL!"
+	desc = "一张[collection_color]集换卡的背面，印有文字：维兰德-汤谷军事集换卡！全部集齐！"
+	back_description = "一张[collection_color]集换卡的背面，印有文字：维兰德-汤谷军事集换卡！全部集齐！"
 	front_description = "A [collection_color] trading card with a picture of [picture_description] emblazoned on it. It is #[trading_card_number] out of the five [collection_color] cards."
 
 	icon_state = "trading_[collection_color]"
@@ -53,7 +53,7 @@
 			icon_state = back_icon_state
 			is_front = FALSE
 		else
-			to_chat(user, SPAN_NOTICE("You reveal the card. It has a picture of [picture_description] on it!"))
+			to_chat(user, SPAN_NOTICE("你翻开了卡牌。上面有一张[picture_description]的图片！"))
 			name = front_name
 			desc = front_description
 			icon_state = front_icon_state

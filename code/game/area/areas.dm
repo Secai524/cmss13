@@ -10,7 +10,7 @@
 	var/poweralm = 1
 
 	level = null
-	name = "Unknown"
+	name = "未知"
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "unknown"
 	layer = AREAS_LAYER
@@ -168,9 +168,9 @@
 			for(var/obj/structure/machinery/computer/station_alert/a in GLOB.machines)
 				if(a.z == source.z)
 					if(state == 1)
-						a.cancelAlarm("Power", src, source)
+						a.cancelAlarm("功率", src, source)
 					else
-						a.triggerAlarm("Power", src, cameras, source)
+						a.triggerAlarm("功率", src, cameras, source)
 	return
 
 /area/proc/atmosalert(danger_level)
@@ -470,13 +470,13 @@
 	addtimer(VARSET_CALLBACK(src, unoviable_timer, FALSE), unoviable_timer)
 
 /area/sky
-	name = "Lower Sky"
+	name = "下层天空"
 	icon_state = "lv-626"
 	flags_area = AREA_UNWEEDABLE
 	is_resin_allowed = FALSE
 
 /area/sky/level4
-	name = "Sky"
+	name = "天空"
 
 /area/sky/level5
-	name = "Upper Sky"
+	name = "上层天空"

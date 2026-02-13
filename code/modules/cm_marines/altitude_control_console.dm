@@ -4,7 +4,7 @@
 #define SHIP_ALT_HIGH 1.5
 
 //List of available heights
-GLOBAL_VAR_INIT(ship_alt_list, list("Low Altitude" = SHIP_ALT_LOW, "Optimal Altitude" = SHIP_ALT_MED, "High Altitude" = SHIP_ALT_HIGH))
+GLOBAL_VAR_INIT(ship_alt_list, list("Low Altitude" = SHIP_ALT_LOW, "Optimal Altitude" = SHIP_ALT_MED, "高空" = SHIP_ALT_HIGH))
 
 //Handles whether or not hijack has disabled the system
 GLOBAL_VAR_INIT(alt_ctrl_disabled, FALSE)
@@ -21,16 +21,16 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 
 /obj/structure/machinery/computer/altitude_control_console
 	icon_state = "overwatch"
-	name = "Altitude Control Console"
-	desc = "The A.C.C console monitors, regulates, and updates the ships attitude and altitude in relation to the AO. It's not rocket science."
+	name = "高度控制台"
+	desc = "A.C.C控制台监测、调节并更新飞船相对于任务区域（AO）的姿态和高度。这又不是火箭科学。"
 
 /obj/structure/machinery/computer/altitude_control_console/attack_hand()
 	. = ..()
 	if(!skillcheck(usr, SKILL_NAVIGATIONS, SKILL_NAVIGATIONS_TRAINED))
-		to_chat(usr, SPAN_WARNING("A window of complex orbital math opens up. You have no idea what you are doing and quickly close it."))
+		to_chat(usr, SPAN_WARNING("一个复杂的轨道数学窗口打开了。你完全不知道自己在做什么，赶紧把它关上了。"))
 		return
 	if(GLOB.alt_ctrl_disabled)
-		to_chat(usr, SPAN_WARNING("The Altitude Control Console has been locked by ARES due to Delta Alert."))
+		to_chat(usr, SPAN_WARNING("由于德尔塔警报，高度控制台已被ARES锁定。"))
 		return
 	tgui_interact(usr)
 
@@ -117,7 +117,7 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 
 /obj/structure/machinery/computer/altitude_control_console/proc/change_altitude(mob/user, new_altitude)
 	if(TIMER_COOLDOWN_CHECK(src, COOLDOWN_ALTITUDE_CHANGE))
-		to_chat(user, SPAN_WARNING("The engines are not ready to burn yet."))
+		to_chat(user, SPAN_WARNING("引擎尚未准备就绪。"))
 		return
 	if(GLOB.ship_alt == new_altitude)
 		return

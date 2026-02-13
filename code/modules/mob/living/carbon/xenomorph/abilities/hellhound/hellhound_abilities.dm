@@ -1,5 +1,5 @@
 /datum/action/xeno_action/activable/pounce/gorge // charge them with your spikes
-	name = "Gorge"
+	name = "吞噬"
 	action_icon_state = "headbite"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy =  XENO_PRIMARY_ACTION_1
@@ -11,7 +11,7 @@
 	var/gorge_damage = 30
 
 /datum/action/xeno_action/onclick/sense_owner // tells them where the pred is
-	name = "Find Owner"
+	name = "寻找主人"
 	action_icon_state = "mark_hosts"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2

@@ -1,8 +1,8 @@
 //ranks
 /obj/item/clothing/accessory/ranks
-	name = "rank pins"
+	name = "军衔徽章"
 	gender = PLURAL
-	desc = "A set of rank pins, used to denote the paygrade of someone within the military."
+	desc = "一套军衔徽章，用于表示军队中某人的薪级。"
 	icon_state = "ranks_enlisted"
 	icon = 'icons/obj/items/clothing/accessory/ranks.dmi'
 	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/ranks.dmi'
@@ -10,7 +10,7 @@
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/ranks.dmi',
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/ranks.dmi'
 	)
-	var/rank = "Private"
+	var/rank = "列兵"
 	var/rank_short = PAY_SHORT_ME1
 	worn_accessory_slot = ACCESSORY_SLOT_RANK
 	high_visibility = TRUE
@@ -20,7 +20,7 @@
 /obj/item/clothing/accessory/ranks/New()
 	..()
 	name = "[initial(name)] ([rank_short])"
-	desc = "[initial(desc)] This one is for the rank <b>[get_paygrades(rank_short)]</b>."
+	desc = "[initial(desc)] 这个是<b>[get_paygrades(rank_short)]</b>军衔的。"
 
 /*################################################
 ################ MARINE  ###################
@@ -76,83 +76,83 @@
 	icon_state = "ranks_me9"
 
 /obj/item/clothing/accessory/ranks/marine/wo
-	name = "rank boards"
+	name = "军衔肩章"
 	rank_short = PAY_SHORT_MWO
 	icon_state = "ranks_warrant"
 
 /obj/item/clothing/accessory/ranks/marine/cwo
-	name = "rank boards"
+	name = "军衔肩章"
 	rank_short = PAY_SHORT_MCWO
 	icon_state = "ranks_chiefwarrant"
 
 //OFFICERS
 /obj/item/clothing/accessory/ranks/marine/o1
-	name = "officer rank pins"
+	name = "军官军衔徽章"
 	rank_short = PAY_SHORT_MO1
 	icon_state = "ranks_o1"
 
 /obj/item/clothing/accessory/ranks/marine/o2
-	name = "officer rank pins"
+	name = "军官军衔徽章"
 	rank_short = PAY_SHORT_MO2
 	icon_state = "ranks_o2"
 
 /obj/item/clothing/accessory/ranks/marine/o3
-	name = "officer rank pins"
+	name = "军官军衔徽章"
 	rank_short = PAY_SHORT_MO3
 	icon_state = "ranks_o3"
 
 /obj/item/clothing/accessory/ranks/marine/o4
-	name = "officer rank pins"
+	name = "军官军衔徽章"
 	rank_short = PAY_SHORT_MO4
 	icon_state = "ranks_o4"
 
 /obj/item/clothing/accessory/ranks/marine/o5
-	name = "officer rank pins"
+	name = "军官军衔徽章"
 	rank_short = PAY_SHORT_MO5
 	icon_state = "ranks_o5"
 
 /obj/item/clothing/accessory/ranks/marine/o6
-	name = "officer rank pins"
+	name = "军官军衔徽章"
 	rank_short = PAY_SHORT_MO6
 	icon_state = "ranks_o6"
 
 /obj/item/clothing/accessory/ranks/marine/o6e
-	name = "officer rank pins"
+	name = "军官军衔徽章"
 	rank_short = PAY_SHORT_MO6E
 	icon_state = "ranks_o6"
 
 /obj/item/clothing/accessory/ranks/marine/o6c
-	name = "officer rank pins"
+	name = "军官军衔徽章"
 	rank_short = PAY_SHORT_MO6C
 	icon_state = "ranks_o6"
 
 /obj/item/clothing/accessory/ranks/marine/o7
-	name = "officer rank pins"
+	name = "军官军衔徽章"
 	rank_short = PAY_SHORT_MO7
 	icon_state = "ranks_o7"
 
 /obj/item/clothing/accessory/ranks/marine/o8
-	name = "officer rank pins"
+	name = "军官军衔徽章"
 	rank_short = PAY_SHORT_MO8
 	icon_state = "ranks_o8"
 
 /obj/item/clothing/accessory/ranks/marine/o9
-	name = "officer rank pins"
+	name = "军官军衔徽章"
 	rank_short = PAY_SHORT_MO9
 	icon_state = "ranks_o9"
 
 /obj/item/clothing/accessory/ranks/marine/o10
-	name = "officer rank pins"
+	name = "军官军衔徽章"
 	rank_short = PAY_SHORT_MO10
 	icon_state = "ranks_o10"
 
 /obj/item/clothing/accessory/ranks/marine/o10c
-	name = "officer rank pins"
+	name = "军官军衔徽章"
 	rank_short = PAY_SHORT_MO10C
 	icon_state = "ranks_o10"
 
 /obj/item/clothing/accessory/ranks/marine/o10s
-	name = "officer rank pins"
+	name = "军官军衔徽章"
 	rank_short = PAY_SHORT_MO10S
 	icon_state = "ranks_o10"
 
@@ -219,83 +219,83 @@
 	icon_state = "ranks_ae7"
 
 /obj/item/clothing/accessory/ranks/army/wo
-	name = "rank boards"
+	name = "军衔肩章"
 	rank_short = PAY_SHORT_AWO
 	icon_state = "ranks_warrant"
 
 /obj/item/clothing/accessory/ranks/army/cwo
-	name = "rank boards"
+	name = "军衔肩章"
 	rank_short = PAY_SHORT_ACWO
 	icon_state = "ranks_chiefwarrant"
 
 //OFFICERS
 /obj/item/clothing/accessory/army/o1
-	name = "officer rank pins"
+	name = "军官军衔徽章"
 	rank_short = PAY_SHORT_AO1
 	icon_state = "ranks_o1"
 
 /obj/item/clothing/accessory/ranks/army/o2
-	name = "officer rank pins"
+	name = "军官军衔徽章"
 	rank_short = PAY_SHORT_AO2
 	icon_state = "ranks_o2"
 
 /obj/item/clothing/accessory/ranks/army/o3
-	name = "officer rank pins"
+	name = "军官军衔徽章"
 	rank_short = PAY_SHORT_AO3
 	icon_state = "ranks_o3"
 
 /obj/item/clothing/accessory/ranks/army/o4
-	name = "officer rank pins"
+	name = "军官军衔徽章"
 	rank_short = PAY_SHORT_AO4
 	icon_state = "ranks_o4"
 
 /obj/item/clothing/accessory/ranks/army/o5
-	name = "officer rank pins"
+	name = "军官军衔徽章"
 	rank_short = PAY_SHORT_AO5
 	icon_state = "ranks_o5"
 
 /obj/item/clothing/accessory/ranks/army/o6
-	name = "officer rank pins"
+	name = "军官军衔徽章"
 	rank_short = PAY_SHORT_AO6
 	icon_state = "ranks_o6"
 
 /obj/item/clothing/accessory/ranks/army/o6e
-	name = "officer rank pins"
+	name = "军官军衔徽章"
 	rank_short = PAY_SHORT_AO6E
 	icon_state = "ranks_o6"
 
 /obj/item/clothing/accessory/ranks/army/o6c
-	name = "officer rank pins"
+	name = "军官军衔徽章"
 	rank_short = PAY_SHORT_AO6C
 	icon_state = "ranks_o6"
 
 /obj/item/clothing/accessory/ranks/army/o7
-	name = "officer rank pins"
+	name = "军官军衔徽章"
 	rank_short = PAY_SHORT_AO7
 	icon_state = "ranks_o7"
 
 /obj/item/clothing/accessory/ranks/army/o8
-	name = "officer rank pins"
+	name = "军官军衔徽章"
 	rank_short = PAY_SHORT_AO8
 	icon_state = "ranks_o8"
 
 /obj/item/clothing/accessory/ranks/army/o9
-	name = "officer rank pins"
+	name = "军官军衔徽章"
 	rank_short = PAY_SHORT_AO9
 	icon_state = "ranks_o9"
 
 /obj/item/clothing/accessory/ranks/army/o10
-	name = "officer rank pins"
+	name = "军官军衔徽章"
 	rank_short = PAY_SHORT_AO10
 	icon_state = "ranks_o10"
 
 /obj/item/clothing/accessory/ranks/army/o10c
-	name = "officer rank pins"
+	name = "军官军衔徽章"
 	rank_short = PAY_SHORT_AO10C
 	icon_state = "ranks_o10"
 
 /obj/item/clothing/accessory/ranks/army/o10s
-	name = "officer rank pins"
+	name = "军官军衔徽章"
 	rank_short = PAY_SHORT_AO10S
 	icon_state = "ranks_o11"
 
@@ -348,73 +348,73 @@
 
 //OFFICERS
 /obj/item/clothing/accessory/ranks/navy/o1
-	name = "rank boards"
+	name = "军衔肩章"
 	rank_short = PAY_SHORT_NO1
 	icon_state = "ranks_officer"
 
 /obj/item/clothing/accessory/ranks/navy/o2
-	name = "rank boards"
+	name = "军衔肩章"
 	rank_short = PAY_SHORT_NO2
 	icon_state = "ranks_officer"
 
 /obj/item/clothing/accessory/ranks/navy/o3
-	name = "rank boards"
+	name = "军衔肩章"
 	rank_short = PAY_SHORT_NO3
 	icon_state = "ranks_officer"
 
 /obj/item/clothing/accessory/ranks/navy/o4
-	name = "rank boards"
+	name = "军衔肩章"
 	rank_short = PAY_SHORT_NO4
 	icon_state = "ranks_seniorofficer"
 
 /obj/item/clothing/accessory/ranks/navy/o5
-	name = "rank boards"
+	name = "军衔肩章"
 	rank_short = PAY_SHORT_NO5
 	icon_state = "ranks_seniorofficer"
 
 /obj/item/clothing/accessory/ranks/navy/o6
-	name = "rank boards"
+	name = "军衔肩章"
 	rank_short = PAY_SHORT_NO6
 	icon_state = "ranks_seniorofficer"
 
 /obj/item/clothing/accessory/ranks/navy/o6e
-	name = "rank boards"
+	name = "军衔肩章"
 	rank_short = PAY_SHORT_NO6E
 	icon_state = "ranks_seniorofficer"
 
 /obj/item/clothing/accessory/ranks/navy/o6c
-	name = "rank boards"
+	name = "军衔肩章"
 	rank_short = PAY_SHORT_NO6C
 	icon_state = "ranks_seniorofficer"
 
 /obj/item/clothing/accessory/ranks/navy/o7
-	name = "rank boards"
+	name = "军衔肩章"
 	rank_short = PAY_SHORT_NO7
 	icon_state = "ranks_flagofficer"
 
 /obj/item/clothing/accessory/ranks/navy/o8
-	name = "rank boards"
+	name = "军衔肩章"
 	rank_short = PAY_SHORT_NO8
 	icon_state = "ranks_flagofficer"
 
 /obj/item/clothing/accessory/ranks/navy/o9
-	name = "rank boards"
+	name = "军衔肩章"
 	rank_short = PAY_SHORT_NO9
 	icon_state = "ranks_flagofficer"
 
 /obj/item/clothing/accessory/ranks/navy/o10
-	name = "rank boards"
+	name = "军衔肩章"
 	rank_short = PAY_SHORT_NO10
 	icon_state = "ranks_flagofficer"
 
 /obj/item/clothing/accessory/ranks/navy/o10c
-	name = "rank boards"
+	name = "军衔肩章"
 	rank_short = PAY_SHORT_NO10C
 	icon_state = "ranks_flagofficer"
 /*################################################
 ################# SPECIAL  #################
 ################################################*/
 /obj/item/clothing/accessory/ranks/special/insp
-	name = "rank boards"
+	name = "军衔肩章"
 	rank_short = "PvI"
 	icon_state = "ranks_pvstofficer"

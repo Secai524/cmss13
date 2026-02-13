@@ -292,7 +292,7 @@
 	return default_backpack
 
 /datum/equipment_preset/strip //For removing all equipment
-	name = "*strip*"
+	name = "*脱衣*"
 	flags = EQUIPMENT_PRESET_EXTRA
 	idtype = null
 

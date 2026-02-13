@@ -32,7 +32,7 @@
 	icon_state = "desert_dug"
 
 /turf/open/gm/road
-	name = "dirt road"
+	name = "土路"
 	icon = 'icons/turf/floors/ground_map_dirt.dmi'
 	icon_state = "browndirt_road"
 	baseturfs = /turf/open/gm/road
@@ -129,18 +129,18 @@
 	baseturfs = /turf/open/asphalt
 
 /turf/closed/wall/strata_ice/rock
-	name = "rock wall"
+	name = "岩壁"
 	icon = 'icons/turf/walls/jungle_soro_rock_walls.dmi'
 	icon_state = "strata_ice"
-	desc = "A rough wall of hardened rock."
+	desc = "一面由硬化岩石构成的粗糙墙壁。"
 	walltype = WALL_STRATA_ICE //Not a metal wall
 	turf_flags = TURF_HULL //Can't break this ice.
 
 /turf/closed/wall/strata_ice/dirty/rock
-	name = "rock wall"
+	name = "岩壁"
 	icon = 'icons/turf/walls/jungle_soro_rock_walls.dmi'
 	icon_state = "strata_ice"
-	desc = "A rough wall of hardened rock."
+	desc = "一面由硬化岩石构成的粗糙墙壁。"
 	icon_state = "strata_ice_dirty"
 	walltype = WALL_STRATA_ICE_DIRTY
 

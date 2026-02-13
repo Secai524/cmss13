@@ -1,5 +1,5 @@
 /obj/effect/landmark/objective_landmark
-	name = "Objective Landmark"
+	name = "目标地标"
 	icon_state = "intel"
 	var/document_holder_present = FALSE
 
@@ -15,7 +15,7 @@
 		break
 
 /obj/effect/landmark/objective_landmark/close
-	name = "Objective Landmark Close"
+	name = "目标地标 - 近"
 	icon_state = "intel_close"
 /obj/effect/landmark/objective_landmark/close/Initialize(mapload, ...)
 	. = ..()
@@ -25,7 +25,7 @@
 	return ..()
 
 /obj/effect/landmark/objective_landmark/medium
-	name = "Objective Landmark Medium"
+	name = "目标地标 - 中"
 	icon_state = "intel_medium"
 /obj/effect/landmark/objective_landmark/medium/Initialize(mapload, ...)
 	. = ..()
@@ -35,7 +35,7 @@
 	return ..()
 
 /obj/effect/landmark/objective_landmark/far
-	name = "Objective Landmark Far"
+	name = "目标地标 - 远"
 	icon_state = "intel_far"
 /obj/effect/landmark/objective_landmark/far/Initialize(mapload, ...)
 	. = ..()
@@ -45,7 +45,7 @@
 	return ..()
 
 /obj/effect/landmark/objective_landmark/science
-	name = "Objective Landmark Science"
+	name = "目标地标 - 科研"
 	icon_state = "intel_sci"
 /obj/effect/landmark/objective_landmark/science/Initialize(mapload, ...)
 	. = ..()

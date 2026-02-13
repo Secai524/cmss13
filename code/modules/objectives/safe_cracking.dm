@@ -1,6 +1,6 @@
 //An objective to open a safe
 /datum/cm_objective/crack_safe
-	name = "Crack Safe"
+	name = "破解保险箱"
 	var/obj/structure/safe/target
 	var/area/initial_area
 	value = OBJECTIVE_HIGH_VALUE

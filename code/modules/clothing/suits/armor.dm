@@ -26,14 +26,14 @@
 	. = ..()
 	if (.)
 		if(issynth(M) && M.allow_gun_usage == FALSE)
-			M.visible_message(SPAN_DANGER("Your programming prevents you from wearing this!"))
+			M.visible_message(SPAN_DANGER("你的程序设定阻止你穿戴这个！"))
 			return 0
 
 //armored vest
 
 /obj/item/clothing/suit/armor/vest
-	name = "armored vest"
-	desc = "An armored vest that protects against some damage."
+	name = "防弹背心"
+	desc = "一件能抵御部分伤害的装甲背心。"
 	icon_state = "armor"
 	item_state = "armor"
 	blood_overlay_type = "armor"
@@ -60,8 +60,8 @@
 	)
 
 /obj/item/clothing/suit/armor/vest/dutch
-	name = "armored jacket"
-	desc = "It's hot in the jungle. Sometimes it's hot and heavy, and sometimes it's hell on earth."
+	name = "装甲夹克"
+	desc = "丛林里很热。有时是闷热沉重，有时则是人间地狱。"
 	icon = 'icons/obj/items/clothing/suits/misc_ert.dmi'
 	icon_state = "dutch_armor"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
@@ -76,8 +76,8 @@
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/dutch)
 
 /obj/item/clothing/suit/armor/vest/security
-	name = "Wey-Yu security armor"
-	desc = "An armored vest that protects against some damage. This one has a Weyland-Yutani corporate badge."
+	name = "维兰德-汤谷安保护甲"
+	desc = "一件能抵御部分伤害的装甲背心。这件上面有维兰德-汤谷公司的徽章。"
 	icon_state = "armorsec"
 	item_state = "armor"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
@@ -94,8 +94,8 @@
 	AddElement(/datum/element/corp_label/wy)
 
 /obj/item/clothing/suit/armor/vest/warden
-	name = "Warden's jacket"
-	desc = "An armored jacket with silver rank pips and livery."
+	name = "典狱长夹克"
+	desc = "一件带有银色军衔徽章和制服的装甲夹克。"
 	icon_state = "warden_jacket"
 	item_state = "armor"
 	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
@@ -108,8 +108,8 @@
 	)
 
 /obj/item/clothing/suit/armor/laserproof
-	name = "Ablative Armor Vest"
-	desc = "A vest that excels in protecting the wearer against energy projectiles."
+	name = "烧蚀护甲背心"
+	desc = "一件在保护穿戴者免受能量弹丸伤害方面表现出色的背心。"
 	icon_state = "armor_reflec"
 	item_state = "armor_reflec"
 	blood_overlay_type = "armor"
@@ -124,8 +124,8 @@
 	siemens_coefficient = 0
 
 /obj/item/clothing/suit/armor/bulletproof
-	name = "bulletproof vest"
-	desc = "A vest that excels in protecting the wearer against high-velocity solid projectiles."
+	name = "防弹背心"
+	desc = "一件在保护穿戴者免受高速实体弹丸伤害方面表现出色的背心。"
 	icon_state = "bulletproof"
 	item_state = "armor"
 	blood_overlay_type = "armor"
@@ -144,8 +144,8 @@
 	icon_state = "bulletproofbadge"
 
 /obj/item/clothing/suit/armor/riot
-	name = "riot suit"
-	desc = "A suit of armor with heavy padding to protect against melee attacks. Looks like it might impair movement."
+	name = "防暴服"
+	desc = "一套带有厚重衬垫以抵御近战攻击的护甲。看起来可能会妨碍行动。"
 	icon_state = "riot"
 	item_state = "swat_suit"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
@@ -165,8 +165,8 @@
 	time_to_equip = 20
 
 /obj/item/clothing/suit/armor/gladiator
-	name = "gladiator armor"
-	desc = "Are you not entertained? Is that not why you are here?"
+	name = "角斗士护甲"
+	desc = "你们还不满意吗？这不就是你们来此的目的吗？"
 	icon_state = "gladiator"
 	item_state = "gladiator"
 	icon = 'icons/obj/items/clothing/suits/misc_ert.dmi'
@@ -194,7 +194,7 @@
 
 /obj/item/clothing/suit/armor/riot/marine
 	name = "\improper M5 riot control armor"
-	desc = "A heavily modified suit of M2 MP Armor used to suppress riots from buckethead marines. Slows you down a lot."
+	desc = "一套经过大量改装的M2宪兵护甲，用于镇压大头兵陆战队员的骚乱。会严重拖慢你的速度。"
 	icon_state = "riot"
 	item_state = "swat_suit"
 	slowdown = SLOWDOWN_ARMOR_LOWHEAVY
@@ -210,12 +210,12 @@
 	time_to_equip = 20
 
 /obj/item/clothing/suit/armor/riot/marine/vintage_riot
-	desc = "Barring the slightly off-color plates, it's preserved quite well."
+	desc = "除了颜色略有不均的甲片外，它保存得相当完好。"
 	icon_state = "old_riot"
 
 /obj/item/clothing/suit/armor/swat
-	name = "swat suit"
-	desc = "A heavily armored suit that protects against moderate damage. Used in special operations."
+	name = "特警服"
+	desc = "一套能抵御中等伤害的重型装甲服。用于特种作战。"
 	icon_state = "deathsquad"
 	item_state = "swat_suit"
 	icon = 'icons/obj/items/clothing/suits/donator.dmi'
@@ -244,8 +244,8 @@
 	)
 
 /obj/item/clothing/suit/armor/swat/officer
-	name = "officer jacket"
-	desc = "An armored jacket used in special operations."
+	name = "军官夹克"
+	desc = "一件用于特种作战的装甲夹克。"
 	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
 	icon_state = "detective"
 	item_state = "det_suit"
@@ -261,7 +261,7 @@
 
 /obj/item/clothing/suit/armor/det_suit
 	name = "armor"
-	desc = "An armored vest with a detective's badge on it."
+	desc = "一件带有侦探徽章的装甲背心。"
 	icon_state = "detective-armor"
 	item_state = "armor"
 	blood_overlay_type = "armor"
@@ -276,8 +276,8 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 
 /obj/item/clothing/suit/armor/hos
-	name = "armored coat"
-	desc = "A greatcoat enhanced with a special alloy for some protection and style."
+	name = "装甲大衣"
+	desc = "一件用特殊合金增强以提供一定防护和风格的长大衣。"
 	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
 	icon_state = "hos"
 	item_state = "hos"
@@ -300,8 +300,8 @@
 	)
 
 /obj/item/clothing/suit/armor/roman
-	name = "imperial legionary armor"
-	desc = "A metal body armor also known as a Lorica segmentata that is used by the Roman heavy infantry called the Legionares."
+	name = "帝国军团兵护甲"
+	desc = "一种金属护甲，也称为板条甲，由被称为军团士兵的罗马重装步兵使用。"
 	icon = 'icons/obj/items/clothing/suits/misc_ert.dmi'
 	icon_state = "legionary_armor"
 	item_state = "legionary_armor"
@@ -327,8 +327,8 @@
 	slowdown = SLOWDOWN_ARMOR_SUPER_LIGHT
 
 /obj/item/clothing/suit/armor/roman/centurion
-	name = "imperial centurion armor"
-	desc = "A metal body armor also known as a Lorica segmentata that is used by the Roman heavy infantry, this one has been outfitted with additional protection to the legs and arms with a stylish cloak."
+	name = "帝国百夫长护甲"
+	desc = "一种金属护甲，也称为板条甲，由罗马重装步兵使用。这一件为腿部和手臂配备了额外的防护，并配有风格独特的斗篷。"
 	icon_state = "centurion_armor"
 	item_state = "centurion_armor"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS

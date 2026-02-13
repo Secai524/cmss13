@@ -11,7 +11,7 @@
  */
 /obj/structure/surface/table
 	name = "table"
-	desc = "A square metal surface resting on four legs. Useful to put stuff on. Can be flipped in emergencies to act as cover."
+	desc = "一个方形金属台面，由四条腿支撑。适合放置物品。紧急情况下可以掀翻用作掩体。"
 	icon = 'icons/obj/structures/tables.dmi'
 	icon_state = "table"
 	density = TRUE
@@ -79,7 +79,7 @@
 	if(istype(O,/mob/living/carbon/xenomorph/ravager) || istype(O,/mob/living/carbon/xenomorph/crusher))
 		var/mob/living/carbon/xenomorph/M = O
 		if(!M.stat) //No dead xenos jumpin on the bed~
-			visible_message(SPAN_DANGER("[O] plows straight through [src]!"))
+			visible_message(SPAN_DANGER("[O] 径直撞穿了 [src]！"))
 			deconstruct(FALSE)
 
 /obj/structure/surface/table/Destroy()
@@ -278,29 +278,29 @@
 						M.KnockDown(5)
 						M.Stun(5)
 					M.apply_damage(8, def_zone = "head")
-					user.visible_message(SPAN_DANGER("<B>[user] slams [M]'s face against [src]!</B>"),
+					user.visible_message(SPAN_DANGER("<B>[user] 将 [M] 的脸猛撞在 [src] 上！</B>"),
 					SPAN_DANGER("<B>You slam [M]'s face against [src]!</B>"))
 					playsound(src.loc, 'sound/weapons/tablehit1.ogg', 25, 1)
 					return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 				else
-					to_chat(user, SPAN_WARNING("You need a better grip to do that!"))
+					to_chat(user, SPAN_WARNING("你需要抓得更稳才能做到！"))
 					return
 			else if(user.grab_level >= GRAB_AGGRESSIVE)
 				M.forceMove(loc)
 				M.KnockDown(5)
 				M.Stun(5)
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
-				user.visible_message(SPAN_DANGER("<B>[user] throws [M] on [src], stunning them!</B>"),
+				user.visible_message(SPAN_DANGER("<B>[user] 将 [M] 摔在 [src] 上，使其眩晕！</B>"),
 				SPAN_DANGER("<B>You throw [M] on [src], stunning them!</B>"))
 				return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 		return
 
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && !(user.a_intent == INTENT_HELP))
-		user.visible_message(SPAN_NOTICE("[user] starts disassembling [src]."),
+		user.visible_message(SPAN_NOTICE("[user] 开始拆卸 [src]。"),
 		SPAN_NOTICE("You start disassembling [src]."))
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 		if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
-			user.visible_message(SPAN_NOTICE("[user] disassembles [src]."),
+			user.visible_message(SPAN_NOTICE("[user]拆解了[src]。"),
 			SPAN_NOTICE("You disassemble [src]."))
 			deconstruct(TRUE)
 		return
@@ -311,17 +311,17 @@
 	if(istype(W, /obj/item/weapon/bracer_attachment))
 		if(rand(0, 2) == 0)
 			playsound(src.loc, 'sound/weapons/wristblades_hit.ogg', 25, 1)
-			user.visible_message(SPAN_DANGER("[user] slices [src] apart!"),
+			user.visible_message(SPAN_DANGER("[user]将[src]切成了碎片！"),
 				SPAN_DANGER("You slice [src] apart!"))
 			deconstruct(FALSE)
 		else
-			to_chat(user, SPAN_WARNING("You slice at the table, but only claw it up a little."))
+			to_chat(user, SPAN_WARNING("你挥爪划向桌子，但只留下几道浅浅的抓痕。"))
 		return
 
 	if(istype(W, /obj/item/explosive/grenade))
 		var/obj/item/explosive/grenade/detonating_grenade = W
 		if(detonating_grenade.active)
-			to_chat(user, SPAN_WARNING("It's too late for that!"))
+			to_chat(user, SPAN_WARNING("已经太迟了！"))
 			return
 
 	//clicking the table
@@ -365,17 +365,17 @@
 		return
 
 	if(usr.a_intent != INTENT_HARM)
-		to_chat(usr, SPAN_WARNING("You're not angry enough to flip [src]."))
+		to_chat(usr, SPAN_WARNING("你的愤怒还不足以掀翻[src]。"))
 		return
 
 	if(get_turf(usr) == get_turf(src))
-		to_chat(usr, SPAN_WARNING("You need to get off [src] in order to flip it."))
+		to_chat(usr, SPAN_WARNING("你需要先离开[src]才能将其掀翻。"))
 		return
 
 	if(!flip(get_cardinal_dir(usr, src)))
 		return
 
-	usr.visible_message(SPAN_WARNING("[usr] flips [src]!"),
+	usr.visible_message(SPAN_WARNING("[usr]掀翻了[src]！"),
 	SPAN_WARNING("You flip [src]!"))
 	playsound(loc, "metalbang", 25)
 
@@ -386,11 +386,11 @@
 
 /obj/structure/surface/table/proc/unflipping_check(direction)
 	if(world.time < flip_cooldown)
-		to_chat(usr, SPAN_WARNING("You have moved a table too recently."))
+		to_chat(usr, SPAN_WARNING("你最近刚移动过一张桌子。"))
 		return FALSE
 
 	FOR_DOVIEW(var/mob/living/mob_behind_table, 0, src, HIDE_INVISIBLE_OBSERVER)
-		to_chat(usr, SPAN_WARNING("[mob_behind_table] is in the way of [src]."))
+		to_chat(usr, SPAN_WARNING("[mob_behind_table]挡住了[src]的去路。"))
 		FOR_DVIEW_END
 		return FALSE
 	FOR_DVIEW_END
@@ -409,7 +409,7 @@
 			return FALSE
 	for(var/obj/structure/structure_behind_table in get_turf(src))
 		if((structure_behind_table.flags_atom & ON_BORDER) && structure_behind_table.density && structure_behind_table != src) //We would put back on a structure that wouldn't allow it
-			to_chat(usr, SPAN_WARNING("[structure_behind_table] is in the way of [src]."))
+			to_chat(usr, SPAN_WARNING("[structure_behind_table]挡住了[src]的去路。"))
 			return FALSE
 	return TRUE
 
@@ -434,11 +434,11 @@
  */
 /obj/structure/surface/table/proc/flip(direction, skip_straight_check=FALSE)
 	if(world.time < flip_cooldown)
-		to_chat(usr, SPAN_WARNING("You have moved a table too recently."))
+		to_chat(usr, SPAN_WARNING("你最近刚移动过一张桌子。"))
 		return FALSE
 
 	if(!skip_straight_check && !(straight_table_check(turn(direction, 90)) && straight_table_check(turn(direction, -90))))
-		to_chat(usr, SPAN_WARNING("[src] is too wide to be flipped."))
+		to_chat(usr, SPAN_WARNING("[src]太宽了，无法掀翻。"))
 		return FALSE
 
 	ADD_TRAIT(src, TRAIT_TABLE_FLIPPING, TRAIT_SOURCE_FLIP_TABLE)
@@ -500,8 +500,8 @@
  * Wooden tables
  */
 /obj/structure/surface/table/woodentable
-	name = "wooden table"
-	desc = "A square wood surface resting on four legs. Useful to put stuff on. Can be flipped in emergencies to act as cover."
+	name = "木桌"
+	desc = "一个由四条腿支撑的方形木质台面。适合放置物品。紧急情况下可以掀翻用作掩体。"
 	icon_state = "woodtable"
 	sheet_type = /obj/item/stack/sheet/wood
 	parts = /obj/item/frame/table/wood
@@ -509,15 +509,15 @@
 	health = 50
 
 /obj/structure/surface/table/woodentable/poor
-	name = "poor wooden table"
-	desc = "A semi-poorly constructed wood surface resting on four legs. Useful to put stuff on. Can be flipped in emergencies to act as cover."
+	name = "劣质木桌"
+	desc = "一个由四条腿支撑、做工粗糙的木质台面。适合放置物品。紧急情况下可以掀翻用作掩体。"
 	icon_state = "pwoodtable"
 	parts = /obj/item/frame/table/wood/poor
 	table_prefix = "pwood"
 
 /obj/structure/surface/table/woodentable/fancy
-	name = "fancy wooden table"
-	desc = "A nicely crafted mahogany wood surface resting on four legs. Useful to put stuff on. It's too heavy to flip over."
+	name = "精致木桌"
+	desc = "一个由四条腿支撑、工艺精良的红木台面。适合放置物品。它太重了，无法掀翻。"
 	icon_state = "fwoodtable"
 	parts = /obj/item/frame/table/wood/fancy
 	table_prefix = "fwood"
@@ -528,8 +528,8 @@
  * Gambling tables
  */
 /obj/structure/surface/table/gamblingtable
-	name = "gambling table"
-	desc = "A curved wood and carpet surface resting on four legs. Used for gambling games. Can be flipped in emergencies to act as cover."
+	name = "赌桌"
+	desc = "一个由四条腿支撑、带有弧度的木质和地毯台面。用于赌博游戏。紧急情况下可以掀翻用作掩体。"
 	icon_state = "gambletable"
 	sheet_type = /obj/item/stack/sheet/wood
 	parts = /obj/item/frame/table/gambling
@@ -539,8 +539,8 @@
  * Reinforced tables
  */
 /obj/structure/surface/table/reinforced
-	name = "reinforced table"
-	desc = "A square metal surface resting on four legs. This one has side panels, making it useful as a desk, but impossible to flip."
+	name = "加固桌"
+	desc = "一个由四条腿支撑的方形金属台面。这张桌子有侧板，适合用作办公桌，但无法掀翻。"
 	icon_state = "reinftable"
 	health = 140
 	var/status = RTABLE_NORMAL
@@ -554,28 +554,28 @@
 /obj/structure/surface/table/reinforced/attackby(obj/item/W as obj, mob/user as mob)
 	if (iswelder(W))
 		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
-			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			to_chat(user, SPAN_WARNING("你需要一把更强的喷枪！"))
 			return
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.remove_fuel(0, user))
 			if(status == RTABLE_NORMAL)
-				user.visible_message(SPAN_NOTICE("[user] starts weakening [src]."),
+				user.visible_message(SPAN_NOTICE("[user]开始削弱[src]的结构。"),
 				SPAN_NOTICE("You start weakening [src]"))
 				playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)
 				if (do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!src || !WT.isOn())
 						return
-					user.visible_message(SPAN_NOTICE("[user] weakens [src]."),
+					user.visible_message(SPAN_NOTICE("[user]削弱了[src]的结构。"),
 					SPAN_NOTICE("You weaken [src]"))
 					src.status = RTABLE_WEAKENED
 			else
-				user.visible_message(SPAN_NOTICE("[user] starts welding [src] back together."),
+				user.visible_message(SPAN_NOTICE("[user]开始将[src]焊接复原。"),
 				SPAN_NOTICE("You start welding [src] back together."))
 				playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)
 				if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(!src || !WT.isOn())
 						return
-					user.visible_message(SPAN_NOTICE("[user] welds [src] back together."),
+					user.visible_message(SPAN_NOTICE("[user]将[src]焊接复原。"),
 					SPAN_NOTICE("You weld [src] back together."))
 					status = RTABLE_NORMAL
 			return
@@ -587,12 +587,12 @@
 	. = ..()
 
 /obj/structure/surface/table/reinforced/prison
-	desc = "A square metal surface resting on four legs. This one has side panels, making it useful as a desk, but impossible to flip."
+	desc = "一个由四条腿支撑的方形金属台面。这张桌子有侧板，适合用作办公桌，但无法掀翻。"
 	icon_state = "prisontable"
 	table_prefix = "prison"
 
 /obj/structure/surface/table/reinforced/rostock_blend
-	desc = "A square metal surface resting on its fat metal bottom. You can't flip something that doesn't have legs."
+	desc = "一个依靠其厚重的金属底座支撑的方形金属台面。没有腿的东西是无法掀翻的。"
 	icon_state = "rostockStable" //instance, this is a static table for req.
 	table_prefix = "rostockS"
 	tiles_with = list(
@@ -617,7 +617,7 @@
 	return FALSE
 
 /obj/structure/surface/table/reinforced/rostock_table
-	desc = "A square metal surface resting on its fat metal bottom. You can't flip something that doesn't have legs."
+	desc = "一个依靠其厚重的金属底座支撑的方形金属台面。没有腿的东西是无法掀翻的。"
 	icon_state = "rostock_table" //this one actually auto-tiles, but has no flipped state!
 	table_prefix = "rostock_"
 
@@ -625,7 +625,7 @@
 	return FALSE
 
 /obj/structure/surface/table/reinforced/almayer_blend
-	desc = "A square metal surface resting on its fat metal bottom. You can't flip something that doesn't have legs."
+	desc = "一个依靠其厚重的金属底座支撑的方形金属台面。没有腿的东西是无法掀翻的。"
 	icon_state = "reqStable" //instance, this is a static table for req.
 	table_prefix = "reqS"
 	tiles_with = list(
@@ -642,7 +642,7 @@
 	return 0
 
 /obj/structure/surface/table/reinforced/almayer_B
-	desc = "A square metal surface resting on its fat metal bottom. You can't flip something that doesn't have legs."
+	desc = "一个依靠其厚重的金属底座支撑的方形金属台面。没有腿的东西是无法掀翻的。"
 	icon_state = "req_table" //this one actually auto-tiles, but has no flipped state!
 	table_prefix = "req_"
 
@@ -650,8 +650,8 @@
 	return 0
 
 /obj/structure/surface/table/reinforced/black
-	name = "black table"
-	desc = "A sleek black metal table. Its legs are securely bolted to the floor."
+	name = "黑色桌子"
+	desc = "一张光滑的黑色金属桌子。它的桌腿被牢固地固定在地板上。"
 	icon_state = "blacktable" //this one actually auto-tiles, but has no flipped state!
 	table_prefix = "black"
 
@@ -664,8 +664,8 @@
 	parts = /obj/item/frame/table/almayer
 
 /obj/structure/surface/table/reinforced/cloth
-	name = "cloth table"
-	desc = "A fancy cloth-topped wooden table, bolted to the floor. Fit for formal occasions."
+	name = "布面桌"
+	desc = "一张固定在甲板上的精美木桌，配有布质桌面。适合正式场合。"
 	icon_state = "clothtable"
 	table_prefix = "cloth"
 
@@ -674,7 +674,7 @@
  */
 /obj/structure/surface/rack
 	name = "rack"
-	desc = "A bunch of metal shelves stacked on top of eachother. Excellent for storage purposes, less so as cover."
+	desc = "一堆叠放在一起的金属架子。非常适合储物，但作为掩体效果不佳。"
 	icon = 'icons/obj/structures/tables.dmi'
 	icon_state = "rack"
 	density = TRUE
@@ -720,7 +720,7 @@
 	if(istype(O,/mob/living/carbon/xenomorph/ravager) || istype(O,/mob/living/carbon/xenomorph/crusher))
 		var/mob/living/carbon/xenomorph/M = O
 		if(!M.stat) //No dead xenos jumpin on the bed~
-			visible_message(SPAN_DANGER("[O] plows straight through [src]!"))
+			visible_message(SPAN_DANGER("[O] 径直撞穿了 [src]！"))
 			deconstruct(FALSE)
 
 /obj/structure/surface/rack/deconstruct(disassembled = TRUE)

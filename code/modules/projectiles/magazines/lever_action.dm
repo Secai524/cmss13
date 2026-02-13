@@ -4,8 +4,8 @@ Similar to shotguns.dm but not exactly.
 */
 
 /obj/item/ammo_magazine/lever_action
-	name = "box of 45-70 rounds"
-	desc = "A box filled with handfuls of 45-70 Govt. rounds, for the old-timers."
+	name = "一盒.45-70子弹"
+	desc = "一个装满多把.45-70 Govt.子弹的盒子，专为老式步枪准备。"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/marksman_rifles.dmi'
 	icon_state = "45-70-box"
 	item_state = "45-70-box"
@@ -20,8 +20,8 @@ Similar to shotguns.dm but not exactly.
 
 
 /obj/item/ammo_magazine/lever_action/training
-	name = "box of 45-70 blanks"
-	desc = "A box filled with handfuls of 45-70 Govt. blank rounds. These won't do much damage unless you fire them point blank, or something."
+	name = "一盒.45-70空包弹"
+	desc = "一个装满多把.45-70 Govt.空包弹的盒子。除非你抵近射击，否则它们造成不了什么伤害。"
 	icon_state = "45-70-training-box"
 	item_state = "45-70-training-box"
 	default_ammo = /datum/ammo/bullet/lever_action/training
@@ -29,8 +29,8 @@ Similar to shotguns.dm but not exactly.
 
 //unused
 /obj/item/ammo_magazine/lever_action/marksman
-	name = "box of marksman 45-70 rounds"
-	desc = "A box filled with handfuls of marksman 45-70 Govt. rounds, which have a lower-density, more precise bullet package."
+	name = "一盒.45-70神射手子弹"
+	desc = "一个装满多把.45-70 Govt.神射手子弹的盒子，其弹头密度更低，精度更高。"
 	icon_state = "45-70-marksman-box"
 	item_state = "45-70-marksman-box"
 	default_ammo = /datum/ammo/bullet/lever_action/marksman
@@ -38,16 +38,16 @@ Similar to shotguns.dm but not exactly.
 
 //unused
 /obj/item/ammo_magazine/lever_action/tracker
-	name = "box of tracker 45-70 rounds"
-	desc = "A box filled with handfuls of tracker 45-70 Govt. rounds, which replace some of the bullet package with an electronic tracking chip."
+	name = "一盒.45-70追踪弹"
+	desc = "一个装满多把.45-70 Govt.追踪弹的盒子，部分弹头被替换为电子追踪芯片。"
 	icon_state = "45-70-tracker-box"
 	item_state = "45-70-tracker-box"
 	default_ammo = /datum/ammo/bullet/lever_action/tracker
 	handful_state = "tracking_lever_action_bullet"
 
 /obj/item/ammo_magazine/lever_action/xm88
-	name = "box of .458 SOCOM rounds"
-	desc = "A box filled with handfuls of .458 SOCOM rounds, designed for use with the XM88 heavy rifle."
+	name = "一盒.458 SOCOM子弹"
+	desc = "一个装满多把.458 SOCOM子弹的盒子，专为XM88重型步枪设计。"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/marksman_rifles.dmi'
 	icon_state = "458-box"
 	item_state = "458-box"
@@ -60,8 +60,8 @@ Similar to shotguns.dm but not exactly.
 //-------------------------------------------------------
 
 /obj/item/ammo_magazine/internal/lever_action
-	name = "lever action tube"
-	desc = "An internal magazine. It is not supposed to be seen or removed."
+	name = "杠杆式枪机管状弹仓"
+	desc = "一个内置弹仓。它本不应被看到或移除。"
 	default_ammo = /datum/ammo/bullet/lever_action
 	caliber = "45-70"
 	max_rounds = 9
@@ -69,7 +69,7 @@ Similar to shotguns.dm but not exactly.
 
 /obj/item/ammo_magazine/internal/lever_action/xm88
 	name = "\improper XM88 heavy rifle tube"
-	desc = "An internal magazine. It is not supposed to be seen or removed."
+	desc = "一个内置弹仓。它本不应被看到或移除。"
 	default_ammo = /datum/ammo/bullet/lever_action/xm88
 	caliber = ".458"
 	max_rounds = 9
@@ -82,8 +82,8 @@ Handfuls of lever_action rounds. For spawning directly on mobs in roundstart, ER
 */
 
 /obj/item/ammo_magazine/handful/lever_action
-	name = "handful of rounds (45-70)"
-	desc = "A handful of standard 45-70 Govt. rounds."
+	name = "一把.45-70子弹"
+	desc = "一把标准的.45-70 Govt.子弹。"
 	icon_state = "lever_action_bullet_9"
 	default_ammo = /datum/ammo/bullet/lever_action
 	caliber = "45-70"
@@ -94,31 +94,31 @@ Handfuls of lever_action rounds. For spawning directly on mobs in roundstart, ER
 	transfer_handful_amount = 9
 
 /obj/item/ammo_magazine/handful/lever_action/training
-	name = "handful of blanks (45-70)"
-	desc = "A handful of blank 45-70 Govt. rounds. These rounds are blanks, which are mostly harmless... Just don't shoot them at point-blank range."
+	name = "一把.45-70空包弹"
+	desc = "一把.45-70 Govt.空包弹。这些是空包弹，基本无害……只是别在近距离射击。"
 	icon_state = "training_lever_action_bullet_9"
 	default_ammo = /datum/ammo/bullet/lever_action/training
 	handful_state = "training_lever_action_bullet"
 
 //unused
 /obj/item/ammo_magazine/handful/lever_action/tracker
-	name = "handful of tracker 45-70 rounds (45-70)"
-	desc = "A handful of tracker 45-70 Govt. rounds. Some of their bullet package has been replaced with a chip that, when fired, can be picked up by Motion Detectors."
+	name = "一把.45-70追踪弹"
+	desc = "一把.45-70 Govt.追踪弹。部分弹头被替换为芯片，发射后可被动态探测器捕捉到信号。"
 	icon_state = "tracking_lever_action_bullet_9"
 	default_ammo = /datum/ammo/bullet/lever_action/tracker
 	handful_state = "tracking_lever_action_bullet"
 
 //unused
 /obj/item/ammo_magazine/handful/lever_action/marksman
-	name = "handful of marksman 45-70 rounds (45-70)"
-	desc = "A handful of marksman 45-70 Govt. rounds. Their smaller bullet package reduces damage, but increases penetration and bullet velocity."
+	name = "一把.45-70神射手子弹"
+	desc = "一把.45-70 Govt.神射手子弹。其较小的弹头降低了伤害，但提高了穿透力和子弹速度。"
 	icon_state = "marksman_lever_action_bullet_9"
 	default_ammo = /datum/ammo/bullet/lever_action/marksman
 	handful_state = "marksman_lever_action_bullet"
 
 /obj/item/ammo_magazine/handful/lever_action/xm88
-	name = "handful of .458 SOCOM rounds (.458)"
-	desc = "A handful of .458 SOCOM rounds, designed for the XM88 heavy rifle."
+	name = "一把.458 SOCOM子弹"
+	desc = "一把.458 SOCOM子弹，专为XM88重型步枪设计。"
 	caliber = ".458"
 	icon_state = "marksman_lever_action_bullet_9"
 	default_ammo = /datum/ammo/bullet/lever_action/xm88

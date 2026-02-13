@@ -1,2 +1,2 @@
 /obj/effect/spawner
-	name = "object spawner"
+	name = "物体生成器"

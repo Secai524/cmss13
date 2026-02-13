@@ -1,6 +1,6 @@
 /obj/item/bananapeel
-	name = "banana peel"
-	desc = "A peel from a banana."
+	name = "香蕉皮"
+	desc = "一块香蕉皮。"
 	icon = 'icons/obj/items/harvest.dmi'
 	icon_state = "banana_peel"
 	item_state = "banana_peel"
@@ -17,7 +17,7 @@
 
 /obj/item/gift
 	name = "gift"
-	desc = "A wrapped item."
+	desc = "一个包裹着的物品。"
 	icon = 'icons/obj/items/gifts.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_lefthand.dmi',
@@ -30,8 +30,8 @@
 	w_class = SIZE_LARGE
 
 /obj/item/weapon/pole
-	name = "wooden pole"
-	desc = "A rough, cracked pole seemingly constructed on the field. You could probably whack someone with this."
+	name = "木杆"
+	desc = "一根粗糙、开裂的杆子，看起来是在战场上制作的。你或许可以用这个敲打某人。"
 	icon = 'icons/obj/items/weapons/melee/canes.dmi'
 	icon_state = "wooden_pole"
 	item_state = "wooden_pole"
@@ -50,7 +50,7 @@
 /obj/item/weapon/pole/attack_self(mob/living/user)
 	..()
 	if(!gripped)
-		user.visible_message(SPAN_NOTICE("[user] grips [src] tightly."), SPAN_NOTICE("You grip [src] tightly."))
+		user.visible_message(SPAN_NOTICE("[user]紧紧握住[src]。"), SPAN_NOTICE("You grip [src] tightly."))
 		flags_item |= NODROP|FORCEDROP_CONDITIONAL
 		ADD_TRAIT(user, TRAIT_HOLDS_CANE, TRAIT_SOURCE_ITEM)
 		user.AddComponent(/datum/component/footstep, 6, 35, 4, 1, "cane_step")
@@ -80,22 +80,22 @@
 	qdel(component)
 
 /obj/item/weapon/pole/wooden_cane
-	name = "wooden cane"
-	desc = "A bog standard wooden cane with a dark tip."
+	name = "木手杖"
+	desc = "一根普通的木手杖，带有深色的杖尖。"
 	icon_state = "wooden_cane"
 	item_state = "wooden_cane"
 	force = 15
 
 /obj/item/weapon/pole/fancy_cane
-	name = "fancy cane"
-	desc = "An ebony cane with a fancy, seemingly-golden tip."
+	name = "花式手杖"
+	desc = "一根乌木手杖，带有看似金色的华丽杖尖。"
 	icon_state = "fancy_cane"
 	item_state = "fancy_cane"
 	force = 30
 
 /obj/item/weapon/pole/fancy_cane/this_is_a_knife
-	name = "fancy cane"
-	desc = "An ebony cane with a fancy, seemingly-golden tip. Feels hollow to the touch."
+	name = "花式手杖"
+	desc = "一根乌木手杖，杖头装饰华丽，看似黄金。触摸感觉中空。"
 	force = 15 // hollow
 	var/obj/item/stored_item
 	var/list/allowed_items = list(/obj/item/weapon, /obj/item/attachable/bayonet)
@@ -108,7 +108,7 @@
 /obj/item/weapon/pole/fancy_cane/this_is_a_knife/attack_hand(mob/living/mobber)
 	if(stored_item && src.loc == mobber && !mobber.is_mob_incapacitated()) //Only allow someone to take out the stored_item if it's being worn or held. So you can pick them up off the floor
 		if(mobber.put_in_active_hand(stored_item))
-			mobber.visible_message(SPAN_DANGER("[mobber] slides [stored_item] out of [src]!"), SPAN_NOTICE("You slide [stored_item] out of [src]."))
+			mobber.visible_message(SPAN_DANGER("[mobber]从[src]中滑出了[stored_item]！"), SPAN_NOTICE("你将[stored_item]从[src]中滑出。"))
 			playsound(mobber, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 			stored_item = null
 			update_icon()
@@ -129,7 +129,7 @@
 					return
 				stored_item = object
 				mobber.drop_inv_item_to_loc(object, src)
-				to_chat(mobber, SPAN_NOTICE("You slide [object] into [src]."))
+				to_chat(mobber, SPAN_NOTICE("你将[object]滑入[src]。"))
 				playsound(mobber, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 				update_icon()
 				break
@@ -148,19 +148,19 @@
 	name = "research"
 	icon = 'icons/obj/items/stock_parts.dmi'
 	icon_state = "capacitor"
-	desc = "A debug item for research."
+	desc = "一个用于研究的调试物品。"
 
 /obj/item/moneybag
 	icon = 'icons/obj/items/storage/bags.dmi'
-	name = "Money bag"
+	name = "钱袋"
 	icon_state = "moneybag"
 	force = 10
 	throwforce = 2
 	w_class = SIZE_LARGE
 
 /obj/item/evidencebag
-	name = "evidence bag"
-	desc = "An empty evidence bag."
+	name = "证物袋"
+	desc = "一个空的证物袋。"
 	icon = 'icons/obj/items/storage/bags.dmi'
 	icon_state = "evidenceobj"
 	item_state = ""
@@ -200,18 +200,18 @@
 		return
 
 	if(istype(I, /obj/item/evidencebag))
-		to_chat(user, SPAN_NOTICE("You find putting an evidence bag in another evidence bag to be slightly absurd."))
+		to_chat(user, SPAN_NOTICE("你觉得把一个证物袋放进另一个证物袋里有点荒谬。"))
 		return
 
 	if(I.w_class > SIZE_MEDIUM)
-		to_chat(user, SPAN_NOTICE("[I] won't fit in [src]."))
+		to_chat(user, SPAN_NOTICE("[I]无法放入[src]。"))
 		return
 
 	if(length(contents))
-		to_chat(user, SPAN_NOTICE("[src] already has something inside it."))
+		to_chat(user, SPAN_NOTICE("[src]里面已经有东西了。"))
 		return
 
-	user.visible_message("[user] puts [I] into [src]", "You put [I] inside [src].",
+	user.visible_message("[user]将[I]放入[src]", "You put [I] inside [src].",
 	"You hear a rustle as someone puts something into a plastic bag.")
 
 	icon_state = "evidence"
@@ -230,7 +230,7 @@
 	/// should look nicer for transparent stuff. not really that important, but hey.
 	overlays += "evidence"
 
-	desc = "An evidence bag containing [I]."
+	desc = "一个装有[I]的证物袋。"
 	I.forceMove(src)
 	stored_item = I
 	w_class = I.w_class
@@ -242,7 +242,7 @@
 
 	if(length(contents))
 		var/obj/item/I = contents[1]
-		user.visible_message("[user] takes [I] out of [src]", "You take [I] out of [src].",
+		user.visible_message("[user]从[src]中取出[I]", "You take [I] out of [src].",
 		"You hear someone rustle around in a plastic bag, and remove something.")
 		overlays.Cut() //remove the overlays
 
@@ -251,9 +251,9 @@
 
 		w_class = initial(w_class)
 		icon_state = "evidenceobj"
-		desc = "An empty evidence bag."
+		desc = "一个空的证物袋。"
 	else
-		to_chat(user, "[src] is empty.")
+		to_chat(user, "[src]是空的。")
 		icon_state = "evidenceobj"
 	return
 
@@ -263,8 +263,8 @@
 		. += stored_item.get_examine_text(user)
 
 /obj/item/storage/box/evidence
-	name = "evidence bag box"
-	desc = "A box claiming to contain evidence bags."
+	name = "证物袋盒"
+	desc = "一个声称装有证物袋的盒子。"
 
 /obj/item/storage/box/evidence/New()
 	..()
@@ -277,7 +277,7 @@
 
 /obj/item/parachute
 	name = "parachute"
-	desc = "A surprisingly small yet bulky pack with just enough safety straps to make RnD pass health and safety. The label says the pack comes with two parachutes - main and reserve, but you doubt the pack can fit even one."
+	desc = "一个出奇小但笨重的背包，只有刚好足够的安全带能让研发部通过健康和安全检查。标签上说这个背包配有两个降落伞——主伞和备用伞，但你怀疑这包连一个都装不下。"
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/backpacks_lefthand.dmi',
@@ -291,8 +291,8 @@
 	flags_item = SMARTGUNNER_BACKPACK_OVERRIDE
 
 /obj/item/clock
-	name = "digital clock"
-	desc = "A battery powered clock, able to keep time within about 5 seconds... it was never that accurate."
+	name = "数字时钟"
+	desc = "一个电池供电的时钟，能将时间误差保持在5秒左右……它从来就没那么准过。"
 	icon = 'icons/obj/items/devices.dmi'
 	icon_state = "digital_clock"
 	force = 3

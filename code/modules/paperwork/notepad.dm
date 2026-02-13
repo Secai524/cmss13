@@ -101,7 +101,7 @@
 				page = length(contents)
 			var/obj/item/ripped_out_page = contents[page]
 			usr.put_in_hands(ripped_out_page)
-			to_chat(usr, SPAN_NOTICE("You rip out [ripped_out_page] from [src]."))
+			to_chat(usr, SPAN_NOTICE("你从[src]中撕下了[ripped_out_page]。"))
 			paper_left--
 			if(paper_left == 1)
 				var/obj/item/paper/P = contents[1]
@@ -118,9 +118,9 @@
 		attack_self(loc)
 		updateUsrDialog()
 	else if(isobserver(usr))
-		to_chat(usr, SPAN_NOTICE("Ghosts don't have hands, you can't flip the page!"))
+		to_chat(usr, SPAN_NOTICE("鬼魂没有手，你无法翻页！"))
 	else
-		to_chat(usr, SPAN_NOTICE("You need to hold it in your hands!"))
+		to_chat(usr, SPAN_NOTICE("你需要把它拿在手里！"))
 
 /obj/item/notepad/proc/operator[](index_num)
 	return contents[index_num]
@@ -130,7 +130,7 @@
 	set category = "Object"
 	set src in usr
 
-	var/n_name = strip_html(tgui_input_text(usr, "What would you like to label the notepad?", "notepad Labelling", null, 16))
+	var/n_name = strip_html(tgui_input_text(usr, "你想给记事本标注什么名称？", "notepad Labelling", null, 16))
 	if((loc == usr && usr.stat == CONSCIOUS))
 		name = "[(n_name ? text("[n_name]") : "notepad")]"
 	add_fingerprint(usr)

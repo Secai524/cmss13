@@ -75,7 +75,7 @@
 /obj/structure/tent_curtain
 	icon = 'icons/obj/structures/tents_equipment.dmi'
 	icon_state = "curtains-classic-o"
-	desc = "USCM Curtains for USCM Tents used by USCM Personnel. Close this with right-click to ensure USCM Contents are contained."
+	desc = "USCM人员使用的USCM帐篷USCM帘幕。右键点击关闭以确保USCM内部物品不外泄。"
 	flags_atom = ON_BORDER
 	layer = INTERIOR_DOOR_INSIDE_LAYER
 	dir = SOUTH
@@ -109,7 +109,7 @@
 /obj/structure/tent_curtain/attack_alien(mob/living/carbon/xenomorph/M)
 	if(unslashable)
 		return
-	visible_message(SPAN_BOLDWARNING("[src] gets torn to shreds!"))
+	visible_message(SPAN_BOLDWARNING("[src]被撕成了碎片！"))
 	qdel(src)
 
 /// Microwave

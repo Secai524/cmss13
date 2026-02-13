@@ -1,6 +1,6 @@
 /obj/item/hardpoint/support/artillery_module
 	name = "\improper Artillery Module"
-	desc = "Allows the user to look far into the distance."
+	desc = "允许使用者观察远处。"
 
 	icon_state = "artillery"
 	disp_icon = "tank"

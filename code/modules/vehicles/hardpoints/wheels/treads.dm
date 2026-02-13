@@ -1,6 +1,6 @@
 /obj/item/hardpoint/locomotion/treads
 	name = "\improper Treads"
-	desc = "Integral to the movement of the vehicle. Steel reinforced rubber tracks, they allow the tank to move faster but in turn need repairs more often."
+	desc = "载具移动的核心部件。钢制加固橡胶履带，能让坦克移动更快，但相应地需要更频繁的维修。"
 
 	icon_state = "treads"
 	disp_icon = "tank"
@@ -18,7 +18,7 @@
 
 /obj/item/hardpoint/locomotion/treads/robust
 	name = "\improper Reinforced Treads"
-	desc = "These treads are made of solid steel plates and are more durable. However, the extra weight slows the tank down."
+	desc = "这些履带由实心钢板制成，更加耐用。然而，额外的重量会降低坦克的速度。"
 
 	health = 500
 	acid_resistant = TRUE

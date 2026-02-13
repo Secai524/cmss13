@@ -22,7 +22,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 ))
 
 GLOBAL_LIST_INIT(be_special_flags, list(
-	"Xenomorph" = BE_ALIEN,
+	"异形" = BE_ALIEN,
 	"King" = BE_KING,
 ))
 
@@ -109,9 +109,9 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/predator_name = "Undefined"
 	var/predator_gender = MALE
 	var/predator_age = 100
-	var/predator_h_style = "Standard"
+	var/predator_h_style = "标准型"
 	var/predator_skin_color = "tan"
-	var/predator_use_legacy = "None"
+	var/predator_use_legacy = "无"
 	var/predator_translator_type = PRED_TECH_MODERN
 	var/predator_invisibility_sound = PRED_TECH_MODERN
 	var/predator_mask_type = 1
@@ -168,17 +168,17 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/backbag = 2 //backpack type
 	var/preferred_armor = "Random" //preferred armor type (from their primary prep vendor)
 
-	var/h_style = "Crewcut" //Hair type
+	var/h_style = "平头" //Hair type
 	var/r_hair = 0 //Hair color
 	var/g_hair = 0 //Hair color
 	var/b_hair = 0 //Hair color
 
-	var/grad_style = "None" //Hair Gradient type
+	var/grad_style = "无" //Hair Gradient type
 	var/r_gradient = 0 //Hair Gradient color
 	var/g_gradient = 0 //Hair Gradient color
 	var/b_gradient = 0 //Hair Gradient color
 
-	var/f_style = "Shaved" //Face hair type
+	var/f_style = "剃光" //Face hair type
 	var/r_facial = 0 //Face hair color
 	var/g_facial = 0 //Face hair color
 	var/b_facial = 0 //Face hair color
@@ -189,26 +189,26 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/r_eyes = 0 //Eye color
 	var/g_eyes = 0 //Eye color
 	var/b_eyes = 0 //Eye color
-	var/species = "Human"    //Species datum to use.
+	var/species = "人类"    //Species datum to use.
 	var/ethnicity = "Western" //Legacy, kept to update save files
-	var/skin_color = "Pale 2" // Skin color
-	var/body_size = "Average" // Body Size
-	var/body_type = "Lean" // Body Type
-	var/language = "None" //Secondary language
-	var/preferred_squad = "None"
+	var/skin_color = "苍白2号" // Skin color
+	var/body_size = "普通" // Body Size
+	var/body_type = "精瘦" // Body Type
+	var/language = "无" //Secondary language
+	var/preferred_squad = "无"
 	var/preferred_spec = list()
 	var/night_vision_preference = "Green"
 	var/list/nv_color_list = list(
 						"Green" = NV_COLOR_GREEN,
 						"White" = NV_COLOR_WHITE,
 						"Yellow" = NV_COLOR_YELLOW,
-						"Orange" = NV_COLOR_ORANGE,
+						"橙子" = NV_COLOR_ORANGE,
 						"Red" = NV_COLOR_RED,
 						"Blue" = NV_COLOR_BLUE
 					)
 		//Some faction information.
 	var/origin = ORIGIN_USCM
-	var/faction = "None" //Antag faction/general associated faction.
+	var/faction = "无" //Antag faction/general associated faction.
 	var/religion = RELIGION_AGNOSTICISM  //Religious association.
 
 		//Mob preview
@@ -495,7 +495,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 				dat += "<b>Used:</b> [total_cost] points"
 			else
-				dat += "None"
+				dat += "无"
 
 			dat += "<br><a href='byond://?src=\ref[user];preference=loadout'><b>Open Loadout</b></a>"
 
@@ -607,8 +607,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<b>Ghost Spy Radio:</b> <a href='byond://?_src_=prefs;preference=ghost_spyradio'><b>[(toggles_chat & CHAT_LISTENINGBUG) ? "Hear" : "Silence"] listening devices</b></a><br>"
 			dat += "<b>Ghost Announcement Clarity:</b> <a href='byond://?_src_=prefs;preference=ghost_announceclarity'><b>[(toggles_chat & CHAT_GHOSTANNOUNCECLARITY) ? "Full Clarity" : "Potentially Garbled"] announcements</b></a><br>"
 			dat += "<b>Ghost Hivemind:</b> <a href='byond://?_src_=prefs;preference=ghost_hivemind'><b>[(toggles_chat & CHAT_GHOSTHIVEMIND) ? "Show Hivemind" : "Hide Hivemind"]</b></a><br>"
-			dat += "<b>Abovehead Chat:</b> <a href='byond://?_src_=prefs;preference=lang_chat_disabled'><b>[lang_chat_disabled ? "Hide" : "Show"]</b></a><br>"
-			dat += "<b>Abovehead Emotes:</b> <a href='byond://?_src_=prefs;preference=langchat_emotes'><b>[(toggles_langchat & LANGCHAT_SEE_EMOTES) ? "Show" : "Hide"]</b></a><br>"
+			dat += "<b>Abovehead Chat:</b> <a href='byond://?_src_=prefs;preference=lang_chat_disabled'><b>[lang_chat_disabled ? "隐藏" : "显示"]</b></a><br>"
+			dat += "<b>Abovehead Emotes:</b> <a href='byond://?_src_=prefs;preference=langchat_emotes'><b>[(toggles_langchat & LANGCHAT_SEE_EMOTES) ? "显示" : "隐藏"]</b></a><br>"
 			dat += "</div>"
 
 			dat += "<div id='column2'>"
@@ -632,7 +632,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<b>Play VOX Announcements:</b> <a href='byond://?_src_=prefs;preference=sound_vox'><b>[(hear_vox) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Default Ghost Night Vision Level:</b> <a href='byond://?_src_=prefs;preference=ghost_vision_pref;task=input'><b>[ghost_vision_pref]</b></a><br>"
 			dat += "<b>Button To Activate Xenomorph Abilities:</b> <a href='byond://?_src_=prefs;preference=mouse_button_activation;task=input'><b>[xeno_ability_mouse_pref_to_string(xeno_ability_click_mode)]</b></a><br>"
-			dat += "<b>Xeno Cooldown Messages:</b> <a href='byond://?_src_=prefs;preference=show_cooldown_messages'><b>[(show_cooldown_messages) ? "Show" : "Hide"]</b></a><br>"
+			dat += "<b>Xeno Cooldown Messages:</b> <a href='byond://?_src_=prefs;preference=show_cooldown_messages'><b>[(show_cooldown_messages) ? "显示" : "隐藏"]</b></a><br>"
 			dat += "<b>Toggle CMTV Opt-Out:</b> <a href='byond://?_src_=prefs;preference=CMTV_toggle_optout'><b>[CMTV_toggle_optout? "Enabled" : "Disabled"]</b></a><br>"
 			dat += "<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/receive_random_tip'>Read Random Tip of the Round</a><br>"
 			if(CONFIG_GET(flag/allow_Metadata))
@@ -1036,7 +1036,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 		S["real_name"] >> slot_name
 		if(slot_name)
 			slot_options["[slot_name] (slot #[slot])"] = slot
-	var/chosen_slot = tgui_input_list(user, "Assign character for [target_job] job", "Slot assignment", slot_options)
+	var/chosen_slot = tgui_input_list(user, "为[target_job]职位分配角色", "Slot assignment", slot_options)
 	if(chosen_slot)
 		pref_job_slots[target_job] = slot_options[chosen_slot]
 	set_job_slots(user)
@@ -1125,7 +1125,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 			switch(href_list["task"])
 				if("med_record")
-					var/medmsg = input(usr,"Set your medical notes here.","Medical Records",html_decode(med_record)) as message
+					var/medmsg = input(usr,"在此处设置你的医疗记录。","Medical Records",html_decode(med_record)) as message
 
 					if(medmsg != null)
 						medmsg = copytext(medmsg, 1, MAX_PAPER_MESSAGE_LEN)
@@ -1135,7 +1135,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 						SetRecords(user)
 
 				if("sec_record")
-					var/secmsg = input(usr,"Set your security notes here.","Security Records",html_decode(sec_record)) as message
+					var/secmsg = input(usr,"在此处设置你的安全记录。","安全记录",html_decode(sec_record)) as message
 
 					if(secmsg != null)
 						secmsg = copytext(secmsg, 1, MAX_PAPER_MESSAGE_LEN)
@@ -1144,7 +1144,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 						sec_record = secmsg
 						SetRecords(user)
 				if("gen_record")
-					var/genmsg = input(usr,"Set your employment notes here.","Employment Records",html_decode(gen_record)) as message
+					var/genmsg = input(usr,"在此处设置你的雇佣记录。","雇员档案",html_decode(gen_record)) as message
 
 					if(genmsg != null)
 						genmsg = copytext(genmsg, 1, MAX_PAPER_MESSAGE_LEN)
@@ -1226,25 +1226,25 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			switch(href_list["preference"])
 				if("name")
 					if(human_name_ban)
-						to_chat(user, SPAN_NOTICE("You are banned from custom human names."))
+						to_chat(user, SPAN_NOTICE("你被禁止使用自定义人类名称。"))
 						return
-					var/raw_name = input(user, "Choose your character's name:", "Character Preference")  as text|null
+					var/raw_name = input(user, "选择你的角色名称：", "Character Preference")  as text|null
 					if (!isnull(raw_name)) // Check to ensure that the user entered text (rather than cancel.)
 						var/new_name = reject_bad_name(raw_name)
 						if(new_name)
 							real_name = new_name
 						else
-							to_chat(user, "<font color='red'>Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and .</font>")
+							to_chat(user, "<font color='red'>无效名称。你的名称长度应至少为2个字符，最多为[MAX_NAME_LEN]个字符。只能包含A-Z、a-z、-、'和.字符。</font>")
 
 				if("xeno_vision_level_pref")
 					var/static/list/vision_level_choices = list(XENO_VISION_LEVEL_NO_NVG, XENO_VISION_LEVEL_MID_NVG, XENO_VISION_LEVEL_HIGH_NVG,  XENO_VISION_LEVEL_FULL_NVG)
-					var/choice = tgui_input_list(user, "Choose your default xeno vision level", "Vision level", vision_level_choices, theme="hive_status")
+					var/choice = tgui_input_list(user, "选择你的默认异形视野等级", "Vision level", vision_level_choices, theme="hive_status")
 					if(!choice)
 						return
 					xeno_vision_level_pref = choice
 				if("ghost_vision_pref")
 					var/static/list/vision_level_choices = list(GHOST_VISION_LEVEL_NO_NVG, GHOST_VISION_LEVEL_MID_NVG, GHOST_VISION_LEVEL_HIGH_NVG, GHOST_VISION_LEVEL_FULL_NVG)
-					var/choice = tgui_input_list(user, "Choose your default ghost vision level", "Vision level", vision_level_choices)
+					var/choice = tgui_input_list(user, "选择你的默认幽灵视野等级", "Vision level", vision_level_choices)
 					if(!choice)
 						return
 					ghost_vision_pref = choice
@@ -1254,7 +1254,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 						xeno_ability_mouse_pref_to_string(XENO_ABILITY_CLICK_SHIFT) = XENO_ABILITY_CLICK_SHIFT,
 						xeno_ability_mouse_pref_to_string(XENO_ABILITY_CLICK_RIGHT) = XENO_ABILITY_CLICK_RIGHT
 					)
-					var/choice = tgui_input_list(user, "Choose how you will activate your xenomorph and human abilities.", "Mouse Activation Button", mouse_button_list)
+					var/choice = tgui_input_list(user, "选择你激活异形和人类能力的方式。", "Mouse Activation Button", mouse_button_list)
 					if(!choice)
 						return
 					xeno_ability_click_mode = mouse_button_list[choice]
@@ -1275,21 +1275,21 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 							human.set_selected_ability(ability)
 
 				if("synth_name")
-					var/raw_name = input(user, "Choose your Synthetic's name:", "Character Preference")  as text|null
+					var/raw_name = input(user, "选择你的合成人名称：", "Character Preference")  as text|null
 					if(raw_name) // Check to ensure that the user entered text (rather than cancel.)
 						var/new_name = reject_bad_name(raw_name)
 						if(new_name)
 							synthetic_name = new_name
 						else
-							to_chat(user, "<font color='red'>Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and .</font>")
+							to_chat(user, "<font color='red'>无效名称。你的名称长度应至少为2个字符，最多为[MAX_NAME_LEN]个字符。只能包含A-Z、a-z、-、'和.字符。</font>")
 				if("synth_type")
-					var/new_synth_type = tgui_input_list(user, "Choose your model of synthetic:", "Make and Model", PLAYER_SYNTHS)
+					var/new_synth_type = tgui_input_list(user, "选择你的合成人型号：", "Make and Model", PLAYER_SYNTHS)
 					if(new_synth_type)
 						synthetic_type = new_synth_type
 				if("synth_specialisation")
-					var/list/options = list("Generalised", "Engineering", "Medical", "Intel", "Military Police", "Command")
+					var/list/options = list("Generalised", "工程部", "医疗区", "Intel", "宪兵", "Command")
 
-					var/new_specialisation = tgui_input_list(user, "Choose your new Specialisation.", "Specialisation", options)
+					var/new_specialisation = tgui_input_list(user, "选择你的新专长。", "Specialisation", options)
 
 					if(!new_specialisation)
 						return
@@ -1297,92 +1297,92 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					synth_specialisation = new_specialisation
 
 				if("pred_name")
-					var/raw_name = input(user, "Choose your Predator's name:", "Character Preference")  as text|null
+					var/raw_name = input(user, "选择你的铁血战士名称：", "Character Preference")  as text|null
 					if(raw_name) // Check to ensure that the user entered text (rather than cancel.)
 						var/new_name = reject_bad_name(raw_name)
 						if(new_name)
 							predator_name = new_name
 						else
-							to_chat(user, "<font color='red'>Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and .</font>")
+							to_chat(user, "<font color='red'>无效名称。你的名称长度应至少为2个字符，最多为[MAX_NAME_LEN]个字符。只能包含A-Z、a-z、-、'和.字符。</font>")
 				if("pred_gender")
 					predator_gender = predator_gender == MALE ? FEMALE : MALE
 				if("pred_age")
-					var/new_predator_age = tgui_input_number(user, "Choose your Predator's age(175 to 3000):", "Character Preference", 1234, 3000, 175)
+					var/new_predator_age = tgui_input_number(user, "选择你的铁血战士年龄（175至3000）：", "Character Preference", 1234, 3000, 175)
 					if(new_predator_age)
 						predator_age = max(min( floor(text2num(new_predator_age)), 3000),175)
 				if("pred_use_legacy")
-					var/legacy_choice = tgui_input_list(user, "What legacy set do you wish to use?", "Legacy Set", PRED_LEGACIES)
+					var/legacy_choice = tgui_input_list(user, "你希望使用哪套传承装备？", "Legacy Set", PRED_LEGACIES)
 					if(!legacy_choice)
 						return
 					predator_use_legacy = legacy_choice
 				if("pred_trans_type")
-					var/new_translator_type = tgui_input_list(user, "Choose your translator type.", "Translator Type", PRED_TRANSLATORS)
+					var/new_translator_type = tgui_input_list(user, "选择你的翻译器类型。", "Translator Type", PRED_TRANSLATORS)
 					if(!new_translator_type)
 						return
 					predator_translator_type = new_translator_type
 				if("pred_invis_sound")
-					var/new_invis_sound = tgui_input_list(user, "Choose your invisibility sound.", "Invisibility Sound", PRED_INVIS_SOUNDS)
+					var/new_invis_sound = tgui_input_list(user, "选择你的隐身音效。", "Invisibility Sound", PRED_INVIS_SOUNDS)
 					if(!new_invis_sound)
 						return
 					predator_translator_type = new_invis_sound
 				if("pred_mask_type")
-					var/new_predator_mask_type = tgui_input_number(user, "Choose your mask type:\n(1-19)", "Mask Selection", 1, PRED_MASK_TYPE_MAX, 1)
+					var/new_predator_mask_type = tgui_input_number(user, "选择你的面具类型：\n(1-19)", "Mask Selection", 1, PRED_MASK_TYPE_MAX, 1)
 					if(new_predator_mask_type)
 						predator_mask_type = floor(text2num(new_predator_mask_type))
 				if("pred_accessory_type")
-					var/new_predator_accessory_type = tgui_input_number(user, "Choose your mask accessory type:\n(0-1)", "Accessory Selection", 0, PRED_MASK_ACCESSORY_TYPE_MAX, 0)
+					var/new_predator_accessory_type = tgui_input_number(user, "选择你的面具配件类型：\n(0-1)", "Accessory Selection", 0, PRED_MASK_ACCESSORY_TYPE_MAX, 0)
 					if(new_predator_accessory_type)
 						predator_accessory_type = floor(text2num(new_predator_accessory_type))
 				if("pred_armor_type")
-					var/new_predator_armor_type = tgui_input_number(user, "Choose your armor type:\n(1-8)", "Armor Selection", 1, PRED_ARMOR_TYPE_MAX, 1)
+					var/new_predator_armor_type = tgui_input_number(user, "选择你的护甲类型：\n(1-8)", "Armor Selection", 1, PRED_ARMOR_TYPE_MAX, 1)
 					if(new_predator_armor_type)
 						predator_armor_type = floor(text2num(new_predator_armor_type))
 				if("pred_boot_type")
-					var/new_predator_boot_type = tgui_input_number(user, "Choose your greaves type:\n(1-4)", "Greave Selection", 1, PRED_GREAVE_TYPE_MAX, 1)
+					var/new_predator_boot_type = tgui_input_number(user, "选择你的护胫类型：\n(1-4)", "Greave Selection", 1, PRED_GREAVE_TYPE_MAX, 1)
 					if(new_predator_boot_type)
 						predator_boot_type = floor(text2num(new_predator_boot_type))
 				if("pred_mask_mat")
-					var/new_pred_mask_mat = tgui_input_list(user, "Choose your mask material:", "Mask Material", PRED_MATERIALS)
+					var/new_pred_mask_mat = tgui_input_list(user, "选择你的面具材质：", "Mask Material", PRED_MATERIALS)
 					if(!new_pred_mask_mat)
 						return
 					predator_mask_material = new_pred_mask_mat
 				if("pred_armor_mat")
-					var/new_pred_armor_mat = tgui_input_list(user, "Choose your armor material:", "Armor Material", PRED_MATERIALS)
+					var/new_pred_armor_mat = tgui_input_list(user, "选择你的护甲材质：", "Armor Material", PRED_MATERIALS)
 					if(!new_pred_armor_mat)
 						return
 					predator_armor_material = new_pred_armor_mat
 				if("pred_greave_mat")
-					var/new_pred_greave_mat = tgui_input_list(user, "Choose your greave material:", "Greave Material", PRED_MATERIALS)
+					var/new_pred_greave_mat = tgui_input_list(user, "选择你的护胫材质：", "Greave Material", PRED_MATERIALS)
 					if(!new_pred_greave_mat)
 						return
 					predator_greave_material = new_pred_greave_mat
 				if("pred_caster_mat")
-					var/new_pred_caster_mat = tgui_input_list(user, "Choose your caster material:", "Caster Material", PRED_RETRO_MATERIALS)
+					var/new_pred_caster_mat = tgui_input_list(user, "选择你的脚轮材质：", "Caster Material", PRED_RETRO_MATERIALS)
 					if(!new_pred_caster_mat)
 						return
 					predator_caster_material = new_pred_caster_mat
 				if("pred_bracer_mat")
-					var/new_pred_bracer_mat = tgui_input_list(user, "Choose your bracer material:", "Bracer Material", PRED_RETRO_MATERIALS)
+					var/new_pred_bracer_mat = tgui_input_list(user, "选择你的护腕材质：", "Bracer Material", PRED_RETRO_MATERIALS)
 					if(!new_pred_bracer_mat)
 						return
 					predator_bracer_material = new_pred_bracer_mat
 				if("pred_cape_color")
-					var/new_cape_color = input(user, "Choose your cape color:", "Cape Color", predator_cape_color) as color|null
+					var/new_cape_color = input(user, "选择你的披风颜色：", "Cape Color", predator_cape_color) as color|null
 					if(!new_cape_color)
 						return
 					predator_cape_color = new_cape_color
 				if("pred_hair")
-					var/new_h_style = input(user, "Choose your quill style:", "Quill Style") as null|anything in GLOB.yautja_hair_styles_list
+					var/new_h_style = input(user, "选择你的翎羽样式：", "Quill Style") as null|anything in GLOB.yautja_hair_styles_list
 					if(!new_h_style)
 						return
 					predator_h_style = new_h_style
 				if("pred_skin")
-					var/new_skin_color = tgui_input_list(user, "Choose your skin color:", "Skin Color", PRED_SKIN_COLOR)
+					var/new_skin_color = tgui_input_list(user, "选择你的肤色：", "Skin Color", PRED_SKIN_COLOR)
 					if(!new_skin_color)
 						return
 					predator_skin_color = new_skin_color
 				if("pred_flavor_text")
-					var/pred_flv_raw = input(user, "Choose your Predator's flavor text:", "Flavor Text", predator_flavor_text) as message
+					var/pred_flv_raw = input(user, "选择你的铁血战士背景描述：", "Flavor Text", predator_flavor_text) as message
 					if(!pred_flv_raw)
 						predator_flavor_text = ""
 						return
@@ -1396,7 +1396,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					if(whitelist_flags & (WHITELIST_COMMANDER_LEADER|WHITELIST_COMMANDER_COLONEL))
 						options += list("Leader" = WHITELIST_LEADER)
 
-					var/new_commander_status = tgui_input_list(user, "Choose your new Commander Whitelist Status.", "Commander Status", options)
+					var/new_commander_status = tgui_input_list(user, "选择你的新指挥官白名单状态。", "Commander Status", options)
 
 					if(!new_commander_status)
 						return
@@ -1411,21 +1411,21 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					else
 						options -= COUNCIL_CO_GUNS
 
-					var/new_co_sidearm = tgui_input_list(user, "Choose your preferred sidearm.", "Commanding Officer's Sidearm", options)
+					var/new_co_sidearm = tgui_input_list(user, "选择你偏好的副武器。", "指挥官's Sidearm", options)
 					if(!new_co_sidearm)
 						return
 					commander_sidearm = new_co_sidearm
 
 				if("co_affiliation")
-					var/new_co_affiliation = tgui_input_list(user, "Choose your faction affiliation.", "Commanding Officer's Affiliation", FACTION_ALLEGIANCE_USCM_COMMANDER)
+					var/new_co_affiliation = tgui_input_list(user, "选择你的阵营归属。", "指挥官's Affiliation", FACTION_ALLEGIANCE_USCM_COMMANDER)
 					if(!new_co_affiliation)
 						return
 					affiliation = new_co_affiliation
 
 				if("co_career_path")
-					var/list/options = list("Infantry", "Engineering", "Medical", "Intel", "Logistics", "Aviation", "Tanker")
+					var/list/options = list("Infantry", "工程部", "医疗区", "Intel", "Logistics", "Aviation", "Tanker")
 
-					var/new_career_path = tgui_input_list(user, "Choose your new Career Path.", "Career Path", options)
+					var/new_career_path = tgui_input_list(user, "选择你的新职业路径。", "Career Path", options)
 
 					if(!new_career_path)
 						return
@@ -1441,7 +1441,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					if(whitelist_flags & WHITELIST_YAUTJA_LEADER)
 						options += list("Leader" = WHITELIST_LEADER)
 
-					var/new_yautja_status = tgui_input_list(user, "Choose your new Yautja Whitelist Status.", "Yautja Status", options)
+					var/new_yautja_status = tgui_input_list(user, "选择你的新铁血战士白名单状态。", "Yautja Status", options)
 
 					if(!new_yautja_status)
 						return
@@ -1456,7 +1456,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					if(whitelist_flags & WHITELIST_SYNTHETIC_LEADER)
 						options += list("Leader" = WHITELIST_LEADER)
 
-					var/new_synth_status = tgui_input_list(user, "Choose your new Synthetic Whitelist Status.", "Synthetic Status", options)
+					var/new_synth_status = tgui_input_list(user, "选择你的新合成人白名单状态。", "Synthetic Status", options)
 
 					if(!new_synth_status)
 						return
@@ -1465,11 +1465,11 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 				if("fax_name")
 					var/faction = href_list["fax_faction"]
-					var/raw_name = tgui_input_text(user, "Choose your Fax Responder's name:", "Responder Name")
+					var/raw_name = tgui_input_text(user, "选择你的传真回复者名称：", "Responder Name")
 					if(raw_name) // Check to ensure that the user entered text (rather than cancel.)
 						var/new_name = reject_bad_name(raw_name)
 						if(!new_name)
-							to_chat(user, SPAN_RED("Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and ."))
+							to_chat(user, SPAN_RED("名称无效。名称长度应至少为2个字符，最多为[MAX_NAME_LEN]个字符。只能包含字母A-Z、a-z以及字符-、'和."))
 							return
 
 						switch(faction)
@@ -1496,7 +1496,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 						xeno_prefix = ""
 						return
 
-					var/new_xeno_prefix = input(user, "Choose your xenomorph prefix. One or two letters capitalized. Put empty text if you want to default it to 'XX'", "Xenomorph Prefix") as text|null
+					var/new_xeno_prefix = input(user, "选择你的异形前缀。一或两个大写字母。若想默认为'XX'，请留空。", "Xenomorph Prefix") as text|null
 					new_xeno_prefix = uppertext(new_xeno_prefix)
 
 					var/prefix_length = length(new_xeno_prefix)
@@ -1527,7 +1527,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 							xeno_prefix = new_xeno_prefix
 							owner.load_xeno_name()
 						else
-							to_chat(user, "<font color='red'>Invalid Xeno Prefix. Your Prefix can contain either single letter or two letters.</font>")
+							to_chat(user, "<font color='red'>异形前缀无效。前缀只能包含一个或两个字母。</font>")
 
 				if("xeno_postfix")
 					if(xeno_name_ban)
@@ -1543,7 +1543,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 						to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("You can't use three letter prefix with any postfix.")))
 						return
 
-					var/new_xeno_postfix = input(user, "Choose your xenomorph postfix. One capital letter with or without a digit at the end. Put empty text if you want to remove postfix", "Xenomorph Postfix") as text|null
+					var/new_xeno_postfix = input(user, "选择你的异形后缀。一个大写字母，末尾可带一个数字。若想移除后缀，请留空。", "Xenomorph Postfix") as text|null
 					new_xeno_postfix = uppertext(new_xeno_postfix)
 					if(length(new_xeno_postfix)>2)
 						to_chat(user, SPAN_WARNING(FONT_SIZE_BIG("Invalid Xeno Postfix. Your Postfix can only be up to 2 letters long.")))
@@ -1578,15 +1578,15 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 							xeno_postfix = new_xeno_postfix
 							owner.load_xeno_name()
 						else
-							to_chat(user, "<font color='red'>Invalid Xeno Postfix. Your Postfix can contain single letter and an optional digit after it.</font>")
+							to_chat(user, "<font color='red'>异形后缀无效。后缀只能包含一个字母，其后可跟一个可选数字。</font>")
 
 				if("age")
-					var/new_age = tgui_input_number(user, "Choose your character's age:\n([AGE_MIN]-[AGE_MAX])", "Character Preference", 19, AGE_MAX, AGE_MIN)
+					var/new_age = tgui_input_number(user, "选择你的角色年龄：\n([AGE_MIN]-[AGE_MAX])", "Character Preference", 19, AGE_MAX, AGE_MIN)
 					if(new_age)
 						age = max(min( floor(text2num(new_age)), AGE_MAX),AGE_MIN)
 
 				if("metadata")
-					var/new_metadata = input(user, "Enter any information you'd like others to see, such as Roleplay-preferences:", "Game Preference" , metadata)  as message|null
+					var/new_metadata = input(user, "输入任何你希望他人看到的信息，例如角色扮演偏好：", "Game Preference" , metadata)  as message|null
 					if(new_metadata)
 						metadata = strip_html(new_metadata)
 
@@ -1601,7 +1601,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 				if("underwear")
 					var/list/underwear_options = gender == MALE ? GLOB.underwear_m : GLOB.underwear_f
 					var/old_gender = gender
-					var/new_underwear = tgui_input_list(user, "Choose your character's underwear:", "Character Preference", underwear_options)
+					var/new_underwear = tgui_input_list(user, "选择角色的内衣：", "Character Preference", underwear_options)
 					if(old_gender != gender)
 						return
 					if(new_underwear)
@@ -1611,7 +1611,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 				if("undershirt")
 					var/list/undershirt_options = gender == MALE ? GLOB.undershirt_m : GLOB.undershirt_f
 					var/old_gender = gender
-					var/new_undershirt = tgui_input_list(user, "Choose your character's undershirt:", "Character Preference", undershirt_options)
+					var/new_undershirt = tgui_input_list(user, "选择角色的汗衫：", "Character Preference", undershirt_options)
 					if(old_gender != gender)
 						return
 					if(new_undershirt)
@@ -1628,22 +1628,22 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 
 				if("ooccolor")
-					var/new_ooccolor = input(user, "Choose your OOC color:", "Game Preference", ooccolor) as color|null
+					var/new_ooccolor = input(user, "选择你的OOC颜色：", "Game Preference", ooccolor) as color|null
 					if(new_ooccolor)
 						ooccolor = new_ooccolor
 
 				if("bag")
-					var/new_backbag = input(user, "Choose your character's style of bag:", "Character Preference")  as null|anything in GLOB.backbaglist
+					var/new_backbag = input(user, "选择角色的背包款式：", "Character Preference")  as null|anything in GLOB.backbaglist
 					if(new_backbag)
 						backbag = GLOB.backbaglist.Find(new_backbag)
 
 				if("wy_relation")
-					var/new_relation = input(user, "Choose your relation to the Weyland-Yutani company. Note that this represents what others can find out about your character by researching your background, not what your character actually thinks.", "Character Preference")  as null|anything in list("Loyal", "Supportive", "Neutral", "Skeptical", "Opposed")
+					var/new_relation = input(user, "选择你与维兰德-汤谷公司的关系。注意，这代表他人通过调查你的背景所能了解到的信息，而非你角色的真实想法。", "Character Preference")  as null|anything in list("Loyal", "Supportive", "Neutral", "Skeptical", "Opposed")
 					if(new_relation)
 						weyland_yutani_relation = new_relation
 
 				if("prefsquad")
-					var/new_pref_squad = input(user, "Choose your preferred squad.", "Character Preference")  as null|anything in list("Alpha", "Bravo", "Charlie", "Delta", "None")
+					var/new_pref_squad = input(user, "选择你偏好的小队。", "Character Preference")  as null|anything in list("Alpha", "Bravo", "Charlie", "Delta", "无")
 					if(new_pref_squad)
 						preferred_squad = new_pref_squad
 
@@ -1654,20 +1654,20 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					preferred_spec = new_pref_spec
 
 				if("prefnvg")
-					var/new_nvg_color = tgui_input_list(user, "Choose the color of your night-vision", "Character Preferences", GLOB.nvg_color_list)
+					var/new_nvg_color = tgui_input_list(user, "选择你的夜视仪颜色", "Character Preferences", GLOB.nvg_color_list)
 					if(!new_nvg_color)
 						return
 					night_vision_preference = new_nvg_color
 
 				if("prefarmor")
-					var/new_pref_armor = tgui_input_list(user, "Choose your character's default style of armor:", "Character Preferences", GLOB.armor_style_list)
+					var/new_pref_armor = tgui_input_list(user, "选择角色的默认护甲款式：", "Character Preferences", GLOB.armor_style_list)
 					if(new_pref_armor)
 						preferred_armor = new_pref_armor
 						// Update the dummy with the new armor style.
 						update_preview_icon()
 
 				if("limbs")
-					var/limb_name = tgui_input_list(user, "Which limb do you want to change?", list("Left Leg","Right Leg","Left Arm","Right Arm","Left Foot","Right Foot","Left Hand","Right Hand"))
+					var/limb_name = tgui_input_list(user, "你想改变哪个肢体？", list("Left Leg","Right Leg","Left Arm","Right Arm","Left Foot","Right Foot","Left Hand","Right Hand"))
 					if(!limb_name)
 						return
 
@@ -1700,7 +1700,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 							limb = "r_hand"
 							third_limb = "r_arm"
 
-					var/new_state = tgui_input_list(user, "What state do you wish the limb to be in?", list("Normal","Prothesis")) //"Amputated")
+					var/new_state = tgui_input_list(user, "你希望该肢体处于什么状态？", list("Normal","Prothesis")) //"Amputated")
 					if(!new_state)
 						return
 
@@ -1716,7 +1716,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 							if(third_limb && organ_data[third_limb] == "amputated")
 								organ_data[third_limb] = null
 				if("organs")
-					var/organ_name = tgui_input_list(user, "Which internal function do you want to change?", list("Heart", "Eyes"))
+					var/organ_name = tgui_input_list(user, "你想改变哪个内部功能？", list("Heart", "Eyes"))
 					if(!organ_name)
 						return
 
@@ -1727,7 +1727,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 						if("Eyes")
 							organ = "eyes"
 
-					var/new_state = tgui_input_list(user, "What state do you wish the organ to be in?", "Organ state", list("Normal","Assisted","Mechanical"))
+					var/new_state = tgui_input_list(user, "你希望该器官处于什么状态？", "Organ state", list("Normal","Assisted","Mechanical"))
 					if(!new_state)
 						return
 
@@ -1740,26 +1740,26 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 							organ_data[organ] = "mechanical"
 
 				if("skin_style")
-					var/skin_style_name = tgui_input_list(user, "Select a new skin style", "Skin style", list("default1", "default2", "default3"))
+					var/skin_style_name = tgui_input_list(user, "选择新的皮肤样式", "Skin style", list("default1", "default2", "default3"))
 					if(!skin_style_name)
 						return
 
 				if("origin")
-					var/choice = tgui_input_list(user, "Please choose your character's origin.", "Origin Selection", GLOB.player_origins)
+					var/choice = tgui_input_list(user, "请选择角色的出身。", "Origin Selection", GLOB.player_origins)
 					var/datum/origin/picked_choice = GLOB.origins[choice]
 					if(!picked_choice)
 						return
-					if(tgui_alert(user, "You've selected [picked_choice.name]. [picked_choice.desc]", "Selected Origin", list("Confirm", "Cancel")) == "Cancel")
+					if(tgui_alert(user, "你已选择[picked_choice.name]。[picked_choice.desc]", "Selected Origin", list("确认", "Cancel")) == "Cancel")
 						return
 					if(choice)
 						origin = choice
 
 				if("religion")
-					var/choice = tgui_input_list(user, "Please choose a religion.", "Religion choice", GLOB.religion_choices + "Other")
+					var/choice = tgui_input_list(user, "请选择一种宗教信仰。", "Religion choice", GLOB.religion_choices + "其他")
 					if(!choice)
 						return
-					if(choice == "Other")
-						var/raw_choice = input(user, "Please enter a religon.")  as text|null
+					if(choice == "其他")
+						var/raw_choice = input(user, "请输入宗教信仰。")  as text|null
 						if(raw_choice)
 							religion = strip_html(raw_choice) // This only updates itself in the UI when another change is made, eg. save slot or changing other char settings.
 						return
@@ -1774,7 +1774,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 					var/list/filtered_options = job.filter_job_option(user)
 
-					var/new_special_job_variant = tgui_input_list(user, "Choose your preferred job variant:", "Preferred Job Variant", filtered_options)
+					var/new_special_job_variant = tgui_input_list(user, "选择你偏好的职业变体：", "Preferred Job Variant", filtered_options)
 					if(!new_special_job_variant)
 						return
 					pref_special_job_options[job.title] = new_special_job_variant
@@ -1791,7 +1791,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					if(CONFIG_GET(flag/ooc_country_flags))
 						toggle_prefs ^= TOGGLE_OOC_FLAG
 					else
-						to_chat(user, SPAN_WARNING("Country Flags in OOC are disabled in the current server configuration!"))
+						to_chat(user, SPAN_WARNING("当前服务器配置已禁用OOC中的国家旗帜！"))
 
 				if("gender")
 					if(gender == MALE)
@@ -1812,23 +1812,23 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					toggles_sound ^= SOUND_ADMINHELP
 
 				if("ui")
-					var/ui_style_choice = tgui_input_list(user, "Choose your UI style", "UI style", GLOB.custom_human_huds)
+					var/ui_style_choice = tgui_input_list(user, "选择你的UI风格", "UI style", GLOB.custom_human_huds)
 					if(ui_style_choice)
 						UI_style = ui_style_choice
 
 				if("UIcolor")
-					var/UI_style_color_new = input(user, "Choose your UI color, dark colors are not recommended!", UI_style_color) as color|null
+					var/UI_style_color_new = input(user, "选择你的UI颜色，不建议使用深色！", UI_style_color) as color|null
 					if(UI_style_color_new)
 						UI_style_color = UI_style_color_new
 
 				if("UIalpha")
-					var/UI_style_alpha_new = tgui_input_number(user, "Select a new alpha (transparency) parameter for your UI, between 50 and 255", "Select alpha", 255, 255, 50)
+					var/UI_style_alpha_new = tgui_input_number(user, "为你的UI选择新的透明度参数，范围在50到255之间", "Select alpha", 255, 255, 50)
 					if(!UI_style_alpha_new || !(UI_style_alpha_new <= 255 && UI_style_alpha_new >= 50))
 						return
 					UI_style_alpha = UI_style_alpha_new
 
 				if("stylesheet")
-					var/stylesheet_new = tgui_input_list(user, "Select a stylesheet to use (affects non-NanoUI interfaces)", "Select a stylesheet", GLOB.stylesheets)
+					var/stylesheet_new = tgui_input_list(user, "选择要使用的样式表（影响非NanoUI界面）", "Select a stylesheet", GLOB.stylesheets)
 					stylesheet = stylesheet_new
 
 				if("hide_statusbar")
@@ -1929,7 +1929,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 				if("switch_prefs") //wart
 					var/list/pref_list = list(text2num(href_list["flag1"]), text2num(href_list["flag2"]), text2num(href_list["flag3"]))
-					var/pref_new = tgui_input_list(user, "Select the preference tier you need", "Select preference tier", pref_list)
+					var/pref_new = tgui_input_list(user, "选择你需要的偏好设置层级", "Select preference tier", pref_list)
 					for(var/flag in pref_list)
 						//remove all flags in list
 						if(CHECK_BITFIELD(toggle_prefs, flag))
@@ -1988,28 +1988,28 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 						owner.tooltips = new(owner)
 
 				if("inputstyle")
-					var/result = tgui_alert(user, "Which input style do you want?", "Input Style", list("Modern", "Legacy"))
+					var/result = tgui_alert(user, "你想要哪种输入风格？", "Input Style", list("Modern", "Legacy"))
 					if(!result)
 						return
 					if(result == "Legacy")
 						tgui_say = FALSE
-						to_chat(user, SPAN_NOTICE("You're now using the old interface."))
+						to_chat(user, SPAN_NOTICE("你正在使用旧版界面。"))
 					else
 						tgui_say = TRUE
-						to_chat(user, SPAN_NOTICE("You're now using the new interface."))
+						to_chat(user, SPAN_NOTICE("你正在使用新版界面。"))
 					user?.client.update_special_keybinds()
 					save_preferences()
 
 				if("inputcolor")
-					var/result = tgui_alert(user, "Which input color do you want?", "Input Style", list("Darkmode", "Lightmode"))
+					var/result = tgui_alert(user, "你想要哪种输入颜色？", "Input Style", list("Darkmode", "Lightmode"))
 					if(!result)
 						return
 					if(result == "Lightmode")
 						tgui_say_light_mode = TRUE
-						to_chat(user, SPAN_NOTICE("You're now using the say interface whitemode."))
+						to_chat(user, SPAN_NOTICE("你正在使用白色模式发言界面。"))
 					else
 						tgui_say_light_mode = FALSE
-						to_chat(user, SPAN_NOTICE("You're now using the say interface darkmode."))
+						to_chat(user, SPAN_NOTICE("你正在使用深色模式发言界面。"))
 					user?.client.tgui_say?.load()
 					save_preferences()
 
@@ -2018,7 +2018,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 				if("save")
 					if(save_cooldown > world.time)
-						to_chat(user, SPAN_WARNING("You need to wait [floor((save_cooldown-world.time)/10)] seconds before you can do that again."))
+						to_chat(user, SPAN_WARNING("你需要等待 [floor((save_cooldown-world.time)/10)] 秒才能再次执行此操作。"))
 						return
 					var/datum/origin/character_origin = GLOB.origins[origin]
 					var/name_error = character_origin.validate_name(real_name)
@@ -2032,7 +2032,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 				if("reload")
 					if(reload_cooldown > world.time)
-						to_chat(user, SPAN_WARNING("You need to wait [floor((reload_cooldown-world.time)/10)] seconds before you can do that again."))
+						to_chat(user, SPAN_WARNING("你需要等待 [floor((reload_cooldown-world.time)/10)] 秒才能再次执行此操作。"))
 						return
 					load_preferences()
 					load_character()
@@ -2298,7 +2298,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			S.cd = "/character[i]"
 			S["real_name"] >> name
 			if(!name)
-				name = "Character[i]"
+				name = "角色[i]"
 			if(i==default_slot)
 				name = "<b>[name]</b>"
 			dat += "<a href='byond://?_src_=prefs;preference=changeslot;num=[i];'>[name]</a><br>"
@@ -2346,7 +2346,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	// Store the old macro set being used (gonna load back after key_buf is set)
 	var/old = params2list(winget(owner, "mainwindow", "macro"))[1]
 
-	alert("Press OK below, and then input the key sequence!")
+	alert("点击下方确认，然后输入按键序列！")
 
 	RegisterSignal(owner, COMSIG_CLIENT_KEY_DOWN, PROC_REF(parse_key_down))
 	RegisterSignal(owner, COMSIG_CLIENT_KEY_UP, PROC_REF(set_key_buf))
@@ -2358,7 +2358,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 		COMSIG_CLIENT_KEY_UP,
 	))
 
-	alert("The key sequence is [key_buf].")
+	alert("按键序列是 [key_buf]。")
 	return key_buf
 
 /// Converts a client's list of completed tutorials into a string for saving
@@ -2422,7 +2422,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/female = prob(50)
 	var/name = "John Doe"
 	if(female)
-		name = "Jane Doe"
+		name = "无名氏"
 
 	switch(faction)
 		if(FACTION_MARINE)
@@ -2460,7 +2460,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/loadout_for_role = has_loadout_for_role(picked_job)
 	if(!loadout_for_role)
 		if(!timeout)
-			if(tgui_alert(owner, "You have not selected any loadout for this role. Do you want to select this now?", "Loadout", list("Yes", "No")) == "Yes")
+			if(tgui_alert(owner, "你尚未为此角色选择任何装备配置。现在要选择吗？", "Loadout", list("Yes", "No")) == "Yes")
 				loadout_picker.tgui_interact(owner)
 				return FALSE
 		return TRUE
@@ -2475,7 +2475,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 	owner.mob.sight = BLIND
 	/// This is causing Synthetics to not be on manifest at round start if they have a loadout due to delay in spawning. No idea how to fix it.
-	var/selected = tgui_input_list(owner, "You have loadout available - which slot would you like to use?", "Slot Selection", options, theme = "crtgreen", timeout = timeout)
+	var/selected = tgui_input_list(owner, "你有可用的装备配置 - 想要使用哪个槽位？", "Slot Selection", options, theme = "crtgreen", timeout = timeout)
 	owner.mob.sight = owner.mob::sight
 
 	if(!selected)

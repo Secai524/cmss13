@@ -57,7 +57,7 @@
 			continue
 
 /datum/behavior_delegate/hivelord_designer
-	name = "Hivelord Designer Behavior Delegate"
+	name = "巢穴领主建造者行为代理"
 
 /datum/behavior_delegate/hivelord_designer/append_to_stat()
 	. = list()
@@ -100,13 +100,13 @@
 	var/desc = "Xenos make psychic markers with this meaning as positional lasting communication to eachother."
 
 /datum/design_mark/resin_wall
-	name = "Resin Wall"
-	desc = "Place resin wall here!"
+	name = "树脂墙"
+	desc = "在此处放置树脂墙！"
 	icon_state = "mark_wall"
 
 /datum/design_mark/resin_door
-	name = "Resin Door"
-	desc = "Place resin door here!"
+	name = "树脂门"
+	desc = "在此处放置树脂门！"
 	icon_state = "mark_door"
 
 // Far-sight
@@ -121,8 +121,8 @@
 //////////////////////////
 
 /obj/effect/alien/resin/design
-	name = "Design Node"
-	desc = "A weird node, it looks mutated."
+	name = "设计节点"
+	desc = "一个奇怪的节点，看起来发生了变异。"
 	icon = 'icons/mob/xenos/effects.dmi'
 	icon_state = "static_speednode"
 	density = FALSE
@@ -213,10 +213,10 @@
 
 /obj/effect/alien/resin/design/proc/check_hivenumber_match()
 	if(!bound_weed || !bound_xeno)
-		visible_message(SPAN_XENOWARNING("The node shudders and decays back into the weeds."))
+		visible_message(SPAN_XENOWARNING("节点颤动并衰变回菌毯。"))
 		qdel(src)
 	else if(bound_weed.hivenumber != bound_xeno.hivenumber)
-		visible_message(SPAN_XENOWARNING("The node withers away."))
+		visible_message(SPAN_XENOWARNING("节点枯萎消失了。"))
 		qdel(src)
 
 /obj/effect/alien/resin/design/proc/unregister_weed_expiration_signal_design()
@@ -232,7 +232,7 @@
 	return
 
 /obj/effect/alien/resin/design/speed_node
-	name = "Design Optimized Node (50)"
+	name = "设计优化节点 (50)"
 	icon_state = "static_speednode"
 	plasma_cost = 50
 
@@ -258,7 +258,7 @@
 		. += SPAN_NOTICE("You sense that building on top of this node will speed up your construction speed by [SPAN_BOLDNOTICE("50%")].")
 
 /obj/effect/alien/resin/design/cost_node
-	name = "Design Flexible Node (60)"
+	name = "设计柔性节点 (60)"
 	icon_state = "static_costnode"
 	plasma_cost = 60
 
@@ -284,7 +284,7 @@
 		. += SPAN_NOTICE("You sense that building on top of this node will decrease plasma cost of basic resin structures by [SPAN_BOLDNOTICE("50%")].")
 
 /obj/effect/alien/resin/design/construct_node
-	name = "Design Construct Node (70)"
+	name = "设计建造节点 (70)"
 	icon_state = "static_constructnode"
 	plasma_cost = 70
 	var/plasma_donation = 70
@@ -323,10 +323,10 @@
 				Res.hivenumber = src.hivenumber
 				set_hive_data(Res, Res.hivenumber)
 
-			to_chat(xeno, SPAN_NOTICE("We create a weedbound wall."))
+			to_chat(xeno, SPAN_NOTICE("我们建造了一堵菌毯树脂墙。"))
 			playsound(placed, "alien_resin_build", 25)
 		else
-			to_chat(xeno, SPAN_WARNING("A wall already exists here."))
+			to_chat(xeno, SPAN_WARNING("此处已有一堵墙。"))
 
 	else if(istype(design_mark, /datum/design_mark/resin_door))
 		if(!istype(Turf, /obj/structure/mineral_door))
@@ -341,10 +341,10 @@
 				Res.hivenumber = src.hivenumber
 				set_hive_data(Res, Res.hivenumber)
 
-			to_chat(xeno, SPAN_NOTICE("We create a weedbound door."))
+			to_chat(xeno, SPAN_NOTICE("我们建造了一扇菌毯树脂门。"))
 			playsound(new_structure, "alien_resin_build", 25)
 		else
-			to_chat(xeno, SPAN_WARNING("A door already exists here."))
+			to_chat(xeno, SPAN_WARNING("此处已有一扇门。"))
 
 	qdel(src)
 
@@ -359,7 +359,7 @@
 
 /obj/effect/alien/resin/design/construct_node/attack_hand(mob/user)
 	if(!isxeno(user))
-		to_chat(user, SPAN_WARNING("You don't understand how to interact with this strange node."))
+		to_chat(user, SPAN_WARNING("你不明白如何与这个奇怪的节点互动。"))
 		return
 
 	var/mob/living/carbon/xenomorph/xeno = user
@@ -369,18 +369,18 @@
 
 	var/total_plasma_cost = get_total_plasma_cost(xeno)
 	if(xeno.plasma_stored < total_plasma_cost)
-		to_chat(xeno, SPAN_WARNING("You lack the plasma to feed this node. [xeno.plasma_stored]/[total_plasma_cost]"))
+		to_chat(xeno, SPAN_WARNING("你没有足够的等离子体来供养这个节点。[xeno.plasma_stored]/[total_plasma_cost]"))
 		return
 
 	xeno.plasma_stored -= total_plasma_cost
-	to_chat(xeno, SPAN_NOTICE("You activate the node, it latches onto us and it forcefully consumes [total_plasma_cost] of our plasma."))
+	to_chat(xeno, SPAN_NOTICE("你激活了节点，它附着在我们身上并强行消耗了我们[total_plasma_cost]点等离子体。"))
 
 	begin_construction(xeno)
 
 /obj/effect/alien/resin/design/construct_node/attackby(obj/item/item, mob/user)
 	if(isxeno(user) && user.a_intent != INTENT_HARM)
 		if(istype(item, /obj/item/reagent_container/food/snacks/resin_fruit/plasma))
-			to_chat(user, SPAN_NOTICE("We squeeze plasma fruit juices on node, activating its growth."))
+			to_chat(user, SPAN_NOTICE("我们将等离子果实汁液挤在节点上，激活其生长。"))
 			qdel(item)
 			thick_build = TRUE
 
@@ -389,7 +389,7 @@
 			return
 
 		//Do NOT call attack_hand here — that bypasses destruction
-		to_chat(user, SPAN_NOTICE("You examine the node curiously, but nothing happens."))
+		to_chat(user, SPAN_NOTICE("你好奇地检查节点，但什么都没发生。"))
 		return
 
 	. = ..()
@@ -415,20 +415,20 @@
 
 /obj/effect/alien/resin/design/construct_node/proc/can_begin_construction(mob/living/carbon/xenomorph/xeno)
 	if(building)
-		to_chat(xeno, SPAN_WARNING("This node is already being infused with plasma."))
+		to_chat(xeno, SPAN_WARNING("这个节点已经在被注入等离子体。"))
 		return FALSE
 
 	if(xeno.hivenumber != src.hivenumber)
-		to_chat(xeno, SPAN_WARNING("This construct node does not belong to your hive."))
+		to_chat(xeno, SPAN_WARNING("这个建造节点不属于你的巢穴。"))
 		return FALSE
 
 	if(!mark_meaning)
-		to_chat(xeno, SPAN_WARNING("This node has no valid design selected."))
+		to_chat(xeno, SPAN_WARNING("此节点未选择有效的设计。"))
 		return FALSE
 
 	var/turf/Turf = get_turf(src)
 	if(!istype(Turf))
-		to_chat(xeno, SPAN_WARNING("This is not a valid location."))
+		to_chat(xeno, SPAN_WARNING("这不是一个有效的位置。"))
 		return FALSE
 
 	return TRUE
@@ -468,8 +468,8 @@
 
 //Should not be upgradable because its not "stable" but special actions should create thick variant
 /turf/closed/wall/resin/weedbound //NEVER use this variant, use subtypes
-	name = "weedbound resin wall"
-	desc = "An oddly solidified resin wall with a layered pattern that reminds you of flower buds."
+	name = "菌毯树脂墙"
+	desc = "一堵奇怪地凝固的树脂墙，其分层图案让你联想到花蕾。"
 	icon_state = "weedboundresin"
 	walltype = WALL_WEEDBOUND_RESIN
 
@@ -493,7 +493,7 @@
 
 	var/turf/Turf = get_turf(src)
 	if(Turf)
-		visible_message(SPAN_ALERT("The weedbound wall collapses into a puddle of sticky slime."))
+		visible_message(SPAN_ALERT("菌毯墙坍塌成一滩粘稠的黏液。"))
 		spawn_nutriplasm(Turf)
 
 	return ..()
@@ -536,8 +536,8 @@
 		. += SPAN_NOTICE("You sense that this resin wall will collapse if the weeds it is merged with disappear.")
 
 /turf/closed/wall/resin/weedbound/thick
-	name = "thick weedbound resin wall"
-	desc = "An oddly solidified thick resin wall with a layered pattern that reminds you of flower buds."
+	name = "厚菌毯树脂墙"
+	desc = "一堵奇怪地凝固的厚树脂墙，其分层图案让你联想到花蕾。"
 	icon_state = "thickweedboundresin"
 	damage_cap = HEALTH_WALL_XENO_THICK
 	walltype = WALL_THICK_WEEDBOUND_RESIN
@@ -553,8 +553,8 @@
 		. += SPAN_NOTICE("You sense that this thick resin wall will collapse if the weeds it is merged with disappear.")
 
 /obj/structure/mineral_door/resin/weedbound //NEVER use this variant, use subtypes
-	name = "weedbound resin door"
-	desc = "A weird resin door that solidified strangely, forming a petal-like pattern."
+	name = "菌毯缠绕树脂门"
+	desc = "一扇怪异的树脂门，以奇特的方式凝固，形成了花瓣状的图案。"
 	icon_state = "weedbound resin"
 	mineralType = "weedbound resin"
 	hardness = 1.4
@@ -579,7 +579,7 @@
 
 	var/turf/Turf = get_turf(src)
 	if(Turf)
-		visible_message(SPAN_ALERT("The weedbound wall collapses into a puddle of sticky slime."))
+		visible_message(SPAN_ALERT("菌毯墙坍塌成一滩粘稠的黏液。"))
 		spawn_nutriplasm(Turf)
 
 	return ..()
@@ -622,8 +622,8 @@
 		. += SPAN_NOTICE("You sense that this resin door will collapse if the weeds it is merged with disappear.")
 
 /obj/structure/mineral_door/resin/weedbound/thick
-	name = "thick weedbound resin door"
-	desc = "A weird thick resin door that solidified strangely, forming a petal-like pattern."
+	name = "厚实菌毯缠绕树脂门"
+	desc = "一扇怪异的厚实树脂门，以奇特的方式凝固，形成了花瓣状的图案。"
 	icon_state = "thick weedbound resin"
 	mineralType = "thick weedbound resin"
 	health = HEALTH_DOOR_XENO_THICK
@@ -640,8 +640,8 @@
 		. += SPAN_NOTICE("You sense that this thick resin door will collapse if the weeds it is merged with disappear.")
 
 /obj/effect/alien/resin/sticky/weak_nutriplasm
-	name = "thin sticky nutriplasm"
-	desc = "A thin layer of disgusting sticky slime."
+	name = "稀薄粘稠营养质"
+	desc = "一层稀薄的、令人作呕的粘稠粘液。"
 	icon_state = "weak_nutriplasm"
 	slow_amt = 5
 
@@ -653,8 +653,8 @@
 		. += SPAN_NOTICE("We stare at the remains of weedbound walls - nutriplasm. As edible as it sounds, it's just another kind of sticky resin.")
 
 /obj/effect/alien/resin/sticky/strong_nutriplasm
-	name = "sticky nutriplasm"
-	desc = "A thick layer of disgusting sticky slime."
+	name = "粘稠营养质"
+	desc = "一层厚厚的、令人作呕的粘稠粘液。"
 	icon_state = "strong_nutriplasm"
 	slow_amt = 10
 
@@ -666,15 +666,15 @@
 		. += SPAN_NOTICE("We stare at thick nutriplasm, the remains from weedbound resin, it sound delicious but you remember, its just different sticky resin.")
 
 /obj/effect/alien/resin/design/upgrade
-	name = "Thicken Resin (60)"
-	desc = "Channel our plasma and nutrients to thicken structures."
+	name = "增厚树脂 (60)"
+	desc = "引导我们的血浆和养分来增厚结构。"
 	icon = 'icons/mob/hud/actions_xeno.dmi'
 	icon_state = "upgrade_resin"
 	plasma_cost = 60
 
 /obj/effect/alien/resin/design/remove
-	name = "Remove Design Node (25)"
-	desc = "Channel our plasma to revert design node back to weeds."
+	name = "移除设计节点 (25)"
+	desc = "引导我们的血浆将设计节点还原为菌毯。"
 	icon = 'icons/mob/hud/actions_xeno.dmi'
 	icon_state = "remove_node"
 	plasma_cost = 25
@@ -691,7 +691,7 @@
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/activable/greater_resin_surge
-	name = "Greater Resin Surge (250)"
+	name = "强力树脂涌动 (250)"
 	action_icon_state = "greater_resin_surge"
 	plasma_cost = 250
 	xeno_cooldown = 30 SECONDS
@@ -767,7 +767,7 @@
 /////////////////////////////
 
 /datum/action/xeno_action/activable/place_design
-	name = "Influence"
+	name = "影响力"
 	action_icon_state = "secrete_resin"
 	plasma_cost = 0
 	macro_path = /datum/action/xeno_action/verb/place_design
@@ -787,7 +787,7 @@
 /datum/action/xeno_action/activable/place_design/use_ability(atom/target_atom, mods, use_plasma = TRUE, message = TRUE)
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!can_remote_build())
-		to_chat(owner, SPAN_XENONOTICE("We must be standing on weeds to channel our nutrients and influence."))
+		to_chat(owner, SPAN_XENONOTICE("我们必须站在菌毯上才能引导养分和影响力。"))
 		return
 
 	if(!action_cooldown_check())
@@ -801,25 +801,25 @@
 
 	if(ismob(target_atom))
 		if(!can_see(xeno, target_atom, max_reach))
-			to_chat(xeno, SPAN_XENODANGER("We cannot see that location!"))
+			to_chat(xeno, SPAN_XENODANGER("我们无法看见那个位置！"))
 			return
 	else
 		if(get_dist(xeno, target_atom) > max_reach)
-			to_chat(xeno, SPAN_WARNING("That's too far away!"))
+			to_chat(xeno, SPAN_WARNING("距离太远了！"))
 			return
 
 	var/turf/target_turf = get_turf(target_atom)
 	if(!istype(target_turf))
-		to_chat(xeno, SPAN_WARNING("We cannot design without weeds."))
+		to_chat(xeno, SPAN_WARNING("没有菌毯我们无法进行设计。"))
 		return
 
 	var/obj/effect/alien/weeds/target_weeds = locate(/obj/effect/alien/weeds) in target_turf
 	if(!target_weeds)
-		to_chat(xeno, SPAN_WARNING("The are no weeds to create a connection!"))
+		to_chat(xeno, SPAN_WARNING("没有菌毯来建立连接！"))
 		return
 
 	if(target_weeds.hivenumber != xeno.hivenumber)
-		to_chat(xeno, SPAN_WARNING("These weeds do not belong to our hive; they reject our influence."))
+		to_chat(xeno, SPAN_WARNING("这些菌毯不属于我们的巢穴；它们排斥我们的影响力。"))
 		return
 
 	var/plasma_cost
@@ -828,18 +828,18 @@
 
 	if(ispath(xeno.selected_design, /obj/effect/alien/resin/design/upgrade))
 		if(!(istype(target_atom, /turf/closed/wall/resin) || istype(target_atom, /turf/closed/wall/resin/membrane) || istype(target_atom, /obj/structure/mineral_door/resin)))
-			to_chat(xeno, SPAN_XENOWARNING("We can only upgrade resin walls, membrane and doors!"))
+			to_chat(xeno, SPAN_XENOWARNING("我们只能升级树脂墙、膜和门！"))
 			return
 
 		if(istype(target_atom, /turf/closed/wall/resin) || istype(target_atom, /turf/closed/wall/resin/membrane))
 			var/turf/closed/wall/resin/wall = target_atom
 
 			if(wall.hivenumber != xeno.hivenumber)
-				to_chat(xeno, SPAN_XENOWARNING("[wall] does not belong to our hive!"))
+				to_chat(xeno, SPAN_XENOWARNING("[wall]不属于我们的巢穴！"))
 				return
 
 			if(wall.upgrading_now) //<--- Prevent spam and waste of plasma
-				to_chat(xeno, SPAN_WARNING("This wall is already being reinforced!"))
+				to_chat(xeno, SPAN_WARNING("这面墙已经在被加固了！"))
 				return
 
 			wall.upgrading_now = TRUE
@@ -862,7 +862,7 @@
 				qdel(thick_membrane)
 				wall.ChangeTurf(/turf/closed/wall/resin/membrane/thick)
 			else
-				to_chat(xeno, SPAN_XENOWARNING("[wall] can't be made thicker."))
+				to_chat(xeno, SPAN_XENOWARNING("[wall]无法被加厚。"))
 				return
 
 			wall.upgrading_now = FALSE
@@ -871,11 +871,11 @@
 			var/obj/structure/mineral_door/resin/door = target_atom
 
 			if(door.hivenumber != xeno.hivenumber)
-				to_chat(xeno, SPAN_XENOWARNING("[door] does not belong to your hive!"))
+				to_chat(xeno, SPAN_XENOWARNING("[door]不属于你的巢穴！"))
 				return
 
 			if(door.upgrading_now)
-				to_chat(xeno, SPAN_WARNING("This door is already being reinforced!"))
+				to_chat(xeno, SPAN_WARNING("这扇门已经在被加固了！"))
 				return
 
 			if(door.hardness == 1.5)
@@ -897,13 +897,13 @@
 				return
 
 		else
-			to_chat(xeno, SPAN_XENOWARNING("We can only upgrade resin structures!"))
+			to_chat(xeno, SPAN_XENOWARNING("我们只能升级树脂结构！"))
 			return
 
 		if(!check_and_use_plasma_owner(plasma_cost))
 			return
 
-		xeno.visible_message(SPAN_XENONOTICE("Weeds around [target_atom] start to twitch and pump substance towards it, thickening it in process!"),
+		xeno.visible_message(SPAN_XENONOTICE("[target_atom]周围的菌毯开始抽动，并向其泵送物质，使其在过程中增厚！"),
 			SPAN_XENONOTICE("We start to channel nutrients towards [target_atom], using [plasma_cost] plasma."), null, 5)
 		playsound(target_atom, "alien_resin_build", 25)
 
@@ -918,24 +918,24 @@
 	if(ispath(xeno.selected_design, /obj/effect/alien/resin/design/remove))
 		var/obj/effect/alien/resin/design/target_node = locate(/obj/effect/alien/resin/design) in target_turf
 		if(!target_node)
-			to_chat(xeno, SPAN_XENOWARNING("There is no resin node here to remove!"))
+			to_chat(xeno, SPAN_XENOWARNING("这里没有树脂节点可以移除！"))
 			return
 
 		if(target_node.hivenumber != xeno.hivenumber)
-			to_chat(xeno, SPAN_XENOWARNING("This node does not belong to your hive!"))
+			to_chat(xeno, SPAN_XENOWARNING("这个节点不属于你的巢穴！"))
 			return
 
 		if(target_node.bound_xeno != xeno)
-			to_chat(xeno, SPAN_XENOWARNING("You cannot remove a node placed by another sister!"))
+			to_chat(xeno, SPAN_XENOWARNING("你不能移除另一位姐妹放置的节点！"))
 			return
 
 		qdel(target_node)
-		to_chat(xeno, SPAN_XENONOTICE("We sever the bond to the node, causing it to dissolve into the ground."))
+		to_chat(xeno, SPAN_XENONOTICE("我们切断了与节点的连接，使其溶解入地面。"))
 		playsound(xeno.loc, "alien_resin_move2", 25)
 		return
 
 	if(length(xeno.current_design) >= xeno.max_design_nodes) //Check if there are more nodes than lenght that was defined
-		to_chat(xeno, SPAN_XENOWARNING("We cannot sustain another node, one will wither away to allow this one to live!"))
+		to_chat(xeno, SPAN_XENOWARNING("我们无法维持另一个节点，必须有一个枯萎才能让这个存活！"))
 		var/obj/effect/alien/resin/design/old_design = xeno.current_design[1] //Check with node is first for deletion on list
 		xeno.current_design.Remove(old_design) //Removes first node stored inside list
 		qdel(old_design) //Delete node.
@@ -944,7 +944,7 @@
 
 	if(ispath(xeno.selected_design, /obj/effect/alien/resin/design/speed_node)) //Check path you selected from list
 		if(!is_turf_clean(target_turf, check_resin_doors = TRUE))
-			to_chat(src, SPAN_WARNING("There's something built here already."))
+			to_chat(src, SPAN_WARNING("这里已经有建筑了。"))
 			return
 		var/obj/speed_warn = new /obj/effect/resin_construct/speed_node(target_turf, src, xeno) //Create "Animation" overlay
 		if(!do_after(xeno, 0.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD) || selected_design != xeno.selected_design)
@@ -952,21 +952,21 @@
 			return
 		qdel(speed_warn) //Delete again just in case overlay don't get deleted
 		if(!is_turf_clean(target_turf)) //Recheck the turf again just in case
-			to_chat(xeno, SPAN_XENOWARNING("Something else has taken root here before us."))
+			to_chat(xeno, SPAN_XENOWARNING("有别的东西在我们之前在此扎根了。"))
 			return
 		if(!check_and_use_plasma_owner(plasma_cost))
 			return
 		xeno.visible_message(SPAN_XENONOTICE("\The [xeno] channel nutrients and shape it into a node!"))
 		var/obj/effect/alien/resin/design/design = new xeno.selected_design(target_weeds.loc, target_weeds, xeno) //Create node you selected from list
 		if(!design)
-			to_chat(xeno, SPAN_XENOHIGHDANGER("Couldn't find node to place! Contact a coder!"))
+			to_chat(xeno, SPAN_XENOHIGHDANGER("找不到放置节点的位置！请联系程序员！"))
 			return
 		playsound(xeno.loc, "alien_resin_build", 25)
 		xeno.current_design.Add(design) //Add Node to list.
 
 	if(ispath(xeno.selected_design, /obj/effect/alien/resin/design/cost_node))
 		if(!is_turf_clean(target_turf, check_resin_doors = TRUE))
-			to_chat(src, SPAN_WARNING("There's something built here already."))
+			to_chat(src, SPAN_WARNING("这里已经有建筑了。"))
 			return
 		var/obj/cost_warn = new /obj/effect/resin_construct/cost_node(target_turf, src, xeno)
 		if(!do_after(xeno, 0.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD) || selected_design != xeno.selected_design)
@@ -974,21 +974,21 @@
 			return
 		qdel(cost_warn)
 		if(!is_turf_clean(target_turf))
-			to_chat(xeno, SPAN_XENOWARNING("Something else has taken root here before us."))
+			to_chat(xeno, SPAN_XENOWARNING("有别的东西在我们之前在此扎根了。"))
 			return
 		if(!check_and_use_plasma_owner(plasma_cost))
 			return
-		xeno.visible_message(SPAN_XENONOTICE("The [xeno] channel nutrients and shape it into a node!"))
+		xeno.visible_message(SPAN_XENONOTICE("[xeno]引导养分并将其塑造成一个节点！"))
 		var/obj/effect/alien/resin/design/design = new xeno.selected_design(target_weeds.loc, target_weeds, xeno)
 		if(!design)
-			to_chat(xeno, SPAN_XENOHIGHDANGER("Couldn't find node to place! Contact a coder!"))
+			to_chat(xeno, SPAN_XENOHIGHDANGER("找不到放置节点的位置！请联系程序员！"))
 			return
 		playsound(xeno.loc, "alien_resin_build", 25)
 		xeno.current_design.Add(design)
 
 	if(ispath(xeno.selected_design, /obj/effect/alien/resin/design/construct_node))
 		if(!is_turf_clean(target_turf, check_resin_doors = TRUE))
-			to_chat(src, SPAN_WARNING("There's something built here already."))
+			to_chat(src, SPAN_WARNING("这里已经有建筑了。"))
 			return
 		if(!xeno.check_alien_construction(target_turf, check_doors = FALSE))
 			return FALSE
@@ -998,14 +998,14 @@
 			return
 		qdel(const_warn)
 		if(!is_turf_clean(target_turf))
-			to_chat(xeno, SPAN_XENOWARNING("Something else has taken root here before us."))
+			to_chat(xeno, SPAN_XENOWARNING("有别的东西在我们之前在此扎根了。"))
 			return
 		if(!check_and_use_plasma_owner(plasma_cost))
 			return
-		xeno.visible_message(SPAN_XENONOTICE("The [xeno] channel nutrients and shape it into a node!"))
+		xeno.visible_message(SPAN_XENONOTICE("[xeno]引导养分并将其塑造成一个节点！"))
 		var/obj/effect/alien/resin/design/design = new xeno.selected_design(target_weeds.loc, target_weeds, xeno)
 		if(!design)
-			to_chat(xeno, SPAN_XENOHIGHDANGER("Couldn't find node to place! Contact a coder!"))
+			to_chat(xeno, SPAN_XENOHIGHDANGER("找不到放置节点的位置！请联系程序员！"))
 			return
 		playsound(xeno.loc, "alien_resin_build", 25)
 		xeno.current_design.Add(design)
@@ -1024,14 +1024,14 @@
 	var/obj/structure/mineral_door/resin/resin_door = target_atom
 
 	if(resin_door.hivenumber != hivenumber)
-		to_chat(src, SPAN_XENOWARNING("This door does not belong to our hive!"))
+		to_chat(src, SPAN_XENOWARNING("这扇门不属于我们的巢穴！"))
 		return TRUE
 
 	if(resin_door.TryToSwitchState(src))
 		if(resin_door.open)
-			to_chat(src, SPAN_XENONOTICE("We focus our connection to the resin and remotely close the resin door."))
+			to_chat(src, SPAN_XENONOTICE("我们集中与树脂的连接，远程关闭了树脂门。"))
 		else
-			to_chat(src, SPAN_XENONOTICE("We focus our connection to the resin and remotely open the resin door."))
+			to_chat(src, SPAN_XENONOTICE("我们集中与树脂的连接，远程打开了树脂门。"))
 
 	return TRUE
 
@@ -1040,16 +1040,16 @@
 	for(var/obj/target in current_turf)
 		if(check_doors)
 			if(istype(target, /obj/structure/machinery/door))
-				to_chat(src, SPAN_WARNING("[target] is blocking the resin! There's not enough space to build that here."))
+				to_chat(src, SPAN_WARNING("[target]挡住了树脂！这里没有足够的空间建造。"))
 				return FALSE
 		if(check_resin_additions)
 			if(istype(target, /obj/effect/alien/resin/sticky) || istype(target, /obj/effect/alien/resin/spike) || istype(target, /obj/effect/alien/resin/sticky/fast))
 				has_obstacle = TRUE
-				to_chat(src, SPAN_WARNING("[target] is blocking the resin!"))
+				to_chat(src, SPAN_WARNING("[target]挡住了树脂！"))
 				return FALSE
 		if(check_resin_doors)
 			if(istype(target, /obj/structure/mineral_door/resin))
-				to_chat(src, SPAN_WARNING("[target] is blocking the resin node! There's not enough space to build that here."))
+				to_chat(src, SPAN_WARNING("[target]挡住了树脂节点！这里没有足够的空间建造。"))
 				return FALSE
 	if(current_turf.density || has_obstacle || locate(/obj/effect/alien/resin/design) in current_turf)
 		return FALSE
@@ -1061,13 +1061,13 @@
 
 /datum/action/xeno_action/verb/verb_toggle_design_icons()
 	set category = "Alien"
-	set name = "Change Design Mark"
+	set name = "更改设计标记"
 	set hidden = TRUE
-	var/action_name = "Change Design Mark"
+	var/action_name = "更改设计标记"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/onclick/toggle_design_icons
-	name = "Change Design Mark"
+	name = "更改设计标记"
 	action_icon_state = "design_mark_1"
 	plasma_cost = 0
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_design_icons
@@ -1098,11 +1098,11 @@
 	var/action_icon_result
 	if(cAction.design_toggle)
 		action_icon_result = "design_mark_1"
-		to_chat(xeno, SPAN_INFO("We will now place wall markers."))
+		to_chat(xeno, SPAN_INFO("我们现在将放置墙壁标记。"))
 		xeno.selected_design_mark = /datum/design_mark/resin_wall
 	else
 		action_icon_result = "design_mark_2"
-		to_chat(xeno, SPAN_INFO("We will now place door markers."))
+		to_chat(xeno, SPAN_INFO("我们现在将放置门标记。"))
 		xeno.selected_design_mark = /datum/design_mark/resin_door
 
 	button.overlays.Cut()
@@ -1115,13 +1115,13 @@
 
 /datum/action/xeno_action/verb/verb_change_design()
 	set category = "Alien"
-	set name = "Change Design Mark"
+	set name = "更改设计标记"
 	set hidden = TRUE
-	var/action_name = "Change Design Mark"
+	var/action_name = "更改设计标记"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/onclick/change_design
-	name = "Choose Action"
+	name = "选择行动"
 	action_icon_state = "static_speednode"
 	plasma_cost = 0
 	xeno_cooldown = 0
@@ -1137,7 +1137,7 @@
 	var/static/list/options = list(
 		"Optimized Node (50)" = icon(/datum/action/xeno_action::icon_file, "static_speednode"),
 		"Construct Node (70)" = icon(/datum/action/xeno_action::icon_file, "static_constructnode"),
-		"Thicken Resin (60)" = icon(/datum/action/xeno_action::icon_file, "upgrade_resin"),
+		"增厚树脂 (60)" = icon(/datum/action/xeno_action::icon_file, "upgrade_resin"),
 		"Open Old UI" = icon(/datum/action/xeno_action::icon_file, "open_ui"),
 		"Remove Node (25)" = icon(/datum/action/xeno_action::icon_file, "remove_node"),
 		"Flexible Node (60)" = icon(/datum/action/xeno_action::icon_file, "static_costnode")
@@ -1145,7 +1145,7 @@
 
 	var/choice
 	if(owner.client.prefs.no_radials_preference)
-		choice = tgui_input_list(owner, "Choose Desing Option", "Pick", options, theme="hive_status")
+		choice = tgui_input_list(owner, "选择设计选项", "Pick", options, theme="hive_status")
 	else
 		choice = show_radial_menu(owner, owner?.client.get_eye(), options, radius = 50)
 
@@ -1162,7 +1162,7 @@
 		if("Construct Node (70)")
 			xeno.selected_design = /obj/effect/alien/resin/design/construct_node
 			des = TRUE
-		if("Thicken Resin (60)")
+		if("增厚树脂 (60)")
 			xeno.selected_design = /obj/effect/alien/resin/design/upgrade
 			rem = TRUE
 		if("Remove Node (25)")
@@ -1172,9 +1172,9 @@
 			tgui_interact(xeno)
 
 	if(des)
-		to_chat(xeno, SPAN_NOTICE("We will now build <b>[xeno.selected_design.name]</b>."))
+		to_chat(xeno, SPAN_NOTICE("我们现在将建造<b>[xeno.selected_design.name]</b>。"))
 	if(rem)
-		to_chat(xeno, SPAN_NOTICE("We will now remotely <b>[xeno.selected_design.name]</b>."))
+		to_chat(xeno, SPAN_NOTICE("我们现在将远程<b>[xeno.selected_design.name]</b>。"))
 
 	xeno.update_icons()
 	button.overlays.Cut()
@@ -1251,7 +1251,7 @@
 				return
 
 			var/obj/effect/alien/resin/design/design = selected_type
-			to_chat(xeno, SPAN_NOTICE("We will now build <b>[initial(design.name)]</b> when designing."))
+			to_chat(xeno, SPAN_NOTICE("设计时，我们现在将建造<b>[initial(design.name)]</b>。"))
 			//update the button's overlay with new choice
 			xeno.update_icons()
 			button.overlays.Cut()

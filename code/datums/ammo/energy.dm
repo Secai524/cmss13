@@ -16,7 +16,7 @@
 	accuracy = HIT_ACCURACY_TIER_4
 
 /datum/ammo/energy/emitter //Damage is determined in emitter.dm
-	name = "emitter bolt"
+	name = "发射器光束"
 	icon_state = "emitter"
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_ARMOR
 
@@ -24,7 +24,7 @@
 	max_range = 6
 
 /datum/ammo/energy/taser
-	name = "taser bolt"
+	name = "泰瑟光束"
 	icon_state = "stun"
 	damage_type = OXY
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST|AMMO_ALWAYS_FF //Not that ignoring will do much right now.
@@ -40,11 +40,11 @@
 		humanus.make_jittery(40)
 
 /datum/ammo/energy/taser/precise
-	name = "precise taser bolt"
+	name = "精准泰瑟光束"
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST|AMMO_MP
 
 /datum/ammo/energy/rxfm_eva
-	name = "laser blast"
+	name = "激光冲击"
 	icon_state = "laser_new"
 	flags_ammo_behavior = AMMO_LASER
 	accurate_range = 14
@@ -59,7 +59,7 @@
 		M.fire_act()
 
 /datum/ammo/energy/laz_uzi
-	name = "laser bolt"
+	name = "激光束"
 	icon_state = "laser_new"
 	flags_ammo_behavior = AMMO_ENERGY
 	damage = 40
@@ -79,7 +79,7 @@
 	flags_ammo_behavior = AMMO_IGNORE_RESIST
 
 /datum/ammo/energy/yautja/pistol
-	name = "plasma pistol bolt"
+	name = "等离子手枪光束"
 	icon_state = "ion"
 
 	damage = 40
@@ -95,7 +95,7 @@
 	))
 
 /datum/ammo/bullet/shrapnel/plasma
-	name = "plasma wave"
+	name = "等离子波"
 	shrapnel_chance = 0
 	penetration = ARMOR_PENETRATION_TIER_10
 	accuracy = HIT_ACCURACY_TIER_MAX
@@ -107,11 +107,11 @@
 	hit_mob.Stun(2)
 
 /datum/ammo/energy/yautja/caster
-	name = "root caster bolt"
+	name = "根须投射光束"
 	icon_state = "ion"
 
 /datum/ammo/energy/yautja/caster/bolt/single_stun
-	name = "stun bolt"
+	name = "眩晕光束"
 	var/stun_time = 3
 
 	damage = 0
@@ -124,7 +124,7 @@
 		return
 
 	if(istype(any_target))
-		to_chat(any_target, SPAN_DANGER("An electric shock ripples through your body, freezing you in place!"))
+		to_chat(any_target, SPAN_DANGER("一股电流穿过你的身体，将你定在原地！"))
 		log_attack("[key_name(any_target)] was stunned by a high power stun bolt from [key_name(stun_bolt.firer)] at [get_area(stun_bolt)]")
 
 		if(ishuman(any_target))
@@ -134,7 +134,7 @@
 	..()
 
 /datum/ammo/energy/yautja/caster/sphere/aoe_stun
-	name = "plasma immobilizer"
+	name = "等离子定身器"
 	damage = 0
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST
 	accurate_range = 20
@@ -167,7 +167,7 @@
 
 		if(ispredalien(any_target))
 			continue
-		to_chat(any_target, SPAN_DANGER("A powerful electric shock ripples through your body, freezing you in place!"))
+		to_chat(any_target, SPAN_DANGER("一股强烈的电流穿过你的身体，将你定在原地！"))
 		any_target.apply_effect(stun_time, STUN)
 		any_target.apply_effect(stun_time, WEAKEN)
 
@@ -175,7 +175,7 @@
 // --- LETHAL AMMO --- \\
 
 /datum/ammo/energy/yautja/caster/bolt/single_lethal
-	name = "plasma bolt"
+	name = "等离子束"
 	icon_state = "pulse1"
 	flags_ammo_behavior = AMMO_IGNORE_RESIST
 	shell_speed = AMMO_SPEED_TIER_6
@@ -185,7 +185,7 @@
 	cell_explosion(lethal_projectile, 50, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, lethal_projectile.weapon_cause_data)
 
 /datum/ammo/energy/yautja/caster/aoe_lethal
-	name = "plasma eradicator"
+	name = "等离子歼灭者"
 	icon_state = "bluespace"
 	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_HITS_TARGET_TURF
 	shell_speed = AMMO_SPEED_TIER_4
@@ -218,7 +218,7 @@
 	cell_explosion(get_turf(lethal_projectile), 170, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, lethal_projectile.weapon_cause_data)
 
 /datum/ammo/energy/yautja/rifle/bolt
-	name = "plasma rifle bolt"
+	name = "等离子步枪弹"
 	icon_state = "ion"
 	damage_type = BURN
 	debilitate = list(0,2,0,0,0,0,0,0)

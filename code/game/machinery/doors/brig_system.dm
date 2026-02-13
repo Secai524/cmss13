@@ -8,7 +8,7 @@
 	name = "\improper Cell Controller"
 	icon = 'icons/obj/structures/machinery/status_display.dmi'
 	icon_state = "security"
-	desc = "A remote control for a door."
+	desc = "一扇门的遥控器。"
 	req_access = list(ACCESS_MARINE_BRIG)
 	anchored = TRUE // can't pick it up
 	density = FALSE // can walk through it.
@@ -342,7 +342,7 @@
 	W.moveToNullspace()
 	incident_reports += W
 
-	to_chat(user, SPAN_NOTICE("You insert \the [W] into \the [name]."))
+	to_chat(user, SPAN_NOTICE("你将\the [W]插入\the [name]。"))
 
 /obj/structure/machinery/brig_cell/proc/set_picture(state)
 	picture_state = state
@@ -370,33 +370,33 @@
 
 
 /obj/structure/machinery/brig_cell/cell_1
-	name = "Cell 1"
-	id = "Cell 1"
+	name = "1号牢房"
+	id = "1号牢房"
 
 /obj/structure/machinery/brig_cell/cell_2
-	name = "Cell 2"
-	id = "Cell 2"
+	name = "2号牢房"
+	id = "2号牢房"
 
 /obj/structure/machinery/brig_cell/cell_3
-	name = "Cell 3"
-	id = "Cell 3"
+	name = "3号牢房"
+	id = "3号牢房"
 
 /obj/structure/machinery/brig_cell/cell_4
-	name = "Cell 4"
-	id = "Cell 4"
+	name = "4号牢房"
+	id = "4号牢房"
 
 /obj/structure/machinery/brig_cell/cell_5
-	name = "Cell 5"
-	id = "Cell 5"
+	name = "5号牢房"
+	id = "5号牢房"
 
 /obj/structure/machinery/brig_cell/cell_6
-	name = "Cell 6"
-	id = "Cell 6"
+	name = "6号牢房"
+	id = "6号牢房"
 
 /obj/structure/machinery/brig_cell/perma_1
-	name = "Perma 1"
-	id = "Perma 1"
+	name = "永久1号"
+	id = "永久1号"
 
 /obj/structure/machinery/brig_cell/perma_2
-	name = "Perma 2"
-	id = "Perma 2"
+	name = "永久2号"
+	id = "永久2号"

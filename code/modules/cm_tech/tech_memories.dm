@@ -62,7 +62,7 @@
 
 	// Retrieve items (devices + documents)
 	clue_category = list()
-	clue_category["name"] = "Retrieve"
+	clue_category["name"] = "回收"
 	clue_category["icon"] = "box"
 	clue_category["compact"] = TRUE
 	clue_category["clues"] = list()
@@ -74,7 +74,7 @@
 
 	// Other (safes)
 	clue_category = list()
-	clue_category["name"] = "Other"
+	clue_category["name"] = "其他"
 	clue_category["icon"] = "ellipsis-h"
 	clue_category["clues"] = list()
 	for (var/datum/cm_objective/objective in memories.other)
@@ -168,7 +168,7 @@
 
 	// Corpses (human + xeno)
 	objectives += list(get_objective(
-		"Recover corpses",
+		"回收尸体",
 		SSobjectives.statistics["corpses_recovered"],
 		FALSE,
 		SSobjectives.statistics["corpses_total_points_earned"],
@@ -182,23 +182,23 @@
 		FALSE,
 		(SSobjectives.comms.state == OBJECTIVE_COMPLETE ? SSobjectives.comms.value : FALSE),
 		(SSobjectives.comms.state == OBJECTIVE_COMPLETE ? "green" : "red"),
-		(SSobjectives.comms.state == OBJECTIVE_COMPLETE ? "Online" : "Offline"),
+		(SSobjectives.comms.state == OBJECTIVE_COMPLETE ? "在线" : "离线"),
 	))
 
 	// Power (smes)
 	var/message
 	var/color
 	if (!SSobjectives.first_drop_complete)
-		message = "Unable to remotely interface with powernet"
+		message = "无法远程连接至电网"
 		color = "white"
 	else if (SSobjectives.power.state == OBJECTIVE_COMPLETE)
-		message = "Online"
+		message = "在线"
 		color = "green"
 	else if (SSobjectives.power.last_power_output)
-		message = "[SSobjectives.power.last_power_output]W, [SSobjectives.power.minimum_power_required]W required"
+		message = "[SSobjectives.power.last_power_output]W，需要[SSobjectives.power.minimum_power_required]W"
 		color = "orange"
 	else
-		message = "Offline"
+		message = "离线"
 		color = "red"
 
 	objectives += list(get_objective(

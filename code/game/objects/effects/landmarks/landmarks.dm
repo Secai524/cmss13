@@ -22,7 +22,7 @@
 	return ..()
 
 /obj/effect/landmark/newplayer_start
-	name = "New player start"
+	name = "新玩家起始点"
 	icon_state = "new_player"
 
 /obj/effect/landmark/newplayer_start/New() // this must be New()
@@ -58,7 +58,7 @@
 	return ..()
 
 /obj/effect/landmark/observer_start
-	name = "Observer Landmark"
+	name = "观察者地标"
 	icon = 'icons/mob/mob.dmi'
 	icon_state = "ghost1"
 
@@ -81,7 +81,7 @@
 
 // Nightmare insert locations
 /obj/effect/landmark/nightmare
-	name = "Nightmare Insert"
+	name = "噩梦插入点"
 	icon_state = "nightmare_insert"
 	var/insert_tag // Identifier for global mapping
 	var/replace = FALSE    // Replace another existing landmark mapping of same name
@@ -102,11 +102,11 @@
 	return ..()
 
 /obj/effect/landmark/ert_spawns/distress
-	name = "Distress"
+	name = "求救信号"
 	icon_state = "spawn_distress_wo"
 
 /obj/effect/landmark/ert_spawns/distress/item
-	name = "DistressItem"
+	name = "求救信号物品"
 	icon_state = "distress_item"
 
 /obj/effect/landmark/ert_spawns/distress_wo
@@ -124,14 +124,14 @@
 ///hunting grounds
 
 /obj/effect/landmark/ert_spawns/distress/hunt_spawner
-	name = "hunt spawner"
+	name = "猎杀生成器"
 
 /obj/effect/landmark/ert_spawns/distress/hunt_spawner/xeno
-	name = "hunt spawner xeno"
+	name = "异形猎杀生成器"
 	icon_state = "spawn_distress_xeno"
 
 /obj/effect/landmark/ert_spawns/distress/hunt_spawner/pred
-	name = "bloding spawner"
+	name = "出血生成器"
 	icon_state = "spawn_distress_pred"
 
 /obj/effect/landmark/monkey_spawn/Initialize(mapload, ...)
@@ -145,7 +145,7 @@
 #define MAXIMUM_LIZARD_AMOUNT 4
 
 /obj/effect/landmark/lizard_spawn
-	name = "lizard spawn"
+	name = "蜥蜴生成点"
 	icon_state = "lizard_spawn"
 
 /obj/effect/landmark/lizard_spawn/Initialize(mapload, ...)
@@ -170,7 +170,7 @@
 #undef MAXIMUM_LIZARD_AMOUNT
 
 /obj/effect/landmark/latewhiskey
-	name = "Whiskey Outpost Late join"
+	name = "威士忌前哨延迟加入点"
 
 /obj/effect/landmark/latewhiskey/Initialize(mapload, ...)
 	. = ..()
@@ -181,7 +181,7 @@
 	return ..()
 
 /obj/effect/landmark/thunderdome/one
-	name = "Thunderdome Team 1"
+	name = "雷霆穹顶队伍1"
 	icon_state = "thunderdome_t1"
 
 /obj/effect/landmark/thunderdome/one/Initialize(mapload, ...)
@@ -193,7 +193,7 @@
 	return ..()
 
 /obj/effect/landmark/thunderdome/two
-	name = "Thunderdome Team 2"
+	name = "雷霆穹顶队伍2"
 	icon_state = "thunderdome_t2"
 
 /obj/effect/landmark/thunderdome/two/Initialize(mapload, ...)
@@ -205,7 +205,7 @@
 	return ..()
 
 /obj/effect/landmark/thunderdome/admin
-	name = "Thunderdome Admin"
+	name = "雷霆穹顶管理员"
 	icon_state = "thunderdome_admin"
 
 /obj/effect/landmark/thunderdome/admin/Initialize(mapload, ...)
@@ -217,7 +217,7 @@
 	return ..()
 
 /obj/effect/landmark/thunderdome/observer
-	name = "Thunderdome Observer"
+	name = "雷霆穹顶观察者"
 	icon_state = "thunderdome_observer"
 
 /obj/effect/landmark/thunderdome/observer/Initialize(mapload, ...)
@@ -229,7 +229,7 @@
 	return ..()
 
 /obj/effect/landmark/queen_spawn
-	name = "queen spawn"
+	name = "女王生成点"
 	icon_state = "queen_spawn"
 
 /obj/effect/landmark/queen_spawn/Initialize(mapload, ...)
@@ -245,7 +245,7 @@
 	return ..()
 
 /obj/effect/landmark/xeno_spawn
-	name = "xeno spawn"
+	name = "异形生成点"
 	icon_state = "xeno_spawn"
 
 /obj/effect/landmark/xeno_spawn/Initialize(mapload, ...)
@@ -257,7 +257,7 @@
 	return ..()
 
 /obj/effect/landmark/xeno_hive_spawn
-	name = "xeno vs xeno hive spawn"
+	name = "异形对异形巢穴生成点"
 	icon_state = "hive_spawn"
 
 /obj/effect/landmark/xeno_hive_spawn/Initialize(mapload, ...)
@@ -486,7 +486,7 @@
 //****************************************** LATE JOIN ************************************************/
 
 /obj/effect/landmark/late_join
-	name = "late join"
+	name = "延迟加入点"
 	icon_state = "late_join"
 	var/squad
 	/// What job should latejoin on this landmark
@@ -494,77 +494,77 @@
 	var/job_list
 
 /obj/effect/landmark/late_join/alpha
-	name = "alpha late join"
+	name = "阿尔法班-延迟加入"
 	icon_state = "late_join_alpha"
 	squad = SQUAD_MARINE_1
 
 /obj/effect/landmark/late_join/bravo
-	name = "bravo late join"
+	name = "布拉沃班-延迟加入"
 	icon_state = "late_join_bravo"
 	squad = SQUAD_MARINE_2
 
 /obj/effect/landmark/late_join/charlie
-	name = "charlie late join"
+	name = "查理班-延迟加入"
 	icon_state = "late_join_charlie"
 	squad = SQUAD_MARINE_3
 
 /obj/effect/landmark/late_join/delta
-	name = "delta late join"
+	name = "德尔塔班-延迟加入"
 	icon_state = "late_join_delta"
 	squad = SQUAD_MARINE_4
 
 /obj/effect/landmark/late_join/working_joe
-	name = "working joe late join"
+	name = "工作乔-延迟加入"
 	icon_state = "late_join_misc"
 	job = JOB_WORKING_JOE
 
 /obj/effect/landmark/late_join/dzho_automaton
-	name = "dzho automaton late join"
+	name = "Dzho自动机-延迟加入"
 	icon_state = "late_join_upp"
 	job = JOB_UPP_JOE
 
 /obj/effect/landmark/late_join/cmo
-	name = "Chief Medical Officer late join"
+	name = "医疗长-延迟加入"
 	icon_state = "late_join_medical"
 	job = JOB_CMO
 
 /obj/effect/landmark/late_join/researcher
-	name = "Researcher late join"
+	name = "研究员-延迟加入"
 	icon_state = "late_join_medical"
 	job = JOB_RESEARCHER
 
 /obj/effect/landmark/late_join/doctor
-	name = "Doctor late join"
+	name = "医生-延迟加入"
 	icon_state = "late_join_medical"
 	job = JOB_DOCTOR
 
 /obj/effect/landmark/late_join/field_doctor
-	name = "Field Doctor late join"
+	name = "野战医生-延迟加入"
 	icon_state = "late_join_medical"
 	job = JOB_FIELD_DOCTOR
 
 /obj/effect/landmark/late_join/nurse
-	name = "Nurse late join"
+	name = "护士-延迟加入"
 	icon_state = "late_join_medical"
 	job = JOB_NURSE
 
 /obj/effect/landmark/late_join/intel
-	name = "Intelligence Officer late join"
+	name = "情报官-延迟加入"
 	icon_state = "late_join_command"
 	job = JOB_INTEL
 
 /obj/effect/landmark/late_join/police
-	name = "Military Police late join"
+	name = "宪兵-延迟加入"
 	icon_state = "late_join_police"
 	job = JOB_POLICE
 
 /obj/effect/landmark/late_join/warden
-	name = "Military Warden late join"
+	name = "军事典狱长-延迟加入"
 	icon_state = "late_join_police"
 	job = JOB_WARDEN
 
 /obj/effect/landmark/late_join/chief_police
-	name = "Chief Military Police late join"
+	name = "宪兵长-延迟加入"
 	icon_state = "late_join_police"
 	job = JOB_CHIEF_POLICE
 
@@ -596,40 +596,40 @@
 
 
 /obj/effect/landmark/late_join/responder/uscm
-	name = "USCM HC Fax Responder late join"
+	name = "USCM指挥部传真回复员-延迟加入"
 	job = JOB_FAX_RESPONDER_USCM_HC
 
 /obj/effect/landmark/late_join/responder/uscm/provost
-	name = "USCM Provost Fax Responder late join"
+	name = "USCM宪兵总监传真回复员-延迟加入"
 	job = JOB_FAX_RESPONDER_USCM_PVST
 
 /obj/effect/landmark/late_join/responder/wey_yu
-	name = "W-Y Fax Responder late join"
+	name = "维兰德-汤谷传真回复员-延迟加入"
 	job = JOB_FAX_RESPONDER_WY
 
 /obj/effect/landmark/late_join/responder/upp
-	name = "UPP Fax Responder late join"
+	name = "UPP传真回复员-延迟加入"
 	job = JOB_FAX_RESPONDER_UPP
 
 /obj/effect/landmark/late_join/responder/twe
-	name = "TWE Fax Responder late join"
+	name = "TWE传真回复员-延迟加入"
 	job = JOB_FAX_RESPONDER_TWE
 
 /obj/effect/landmark/late_join/responder/clf
-	name = "CLF Fax Responder late join"
+	name = "CLF传真回复员-延迟加入"
 	job = JOB_FAX_RESPONDER_CLF
 
 /obj/effect/landmark/late_join/responder/cmb
-	name = "CMB Fax Responder late join"
+	name = "CMB传真回复员-延迟加入"
 	job = JOB_FAX_RESPONDER_CMB
 
 /obj/effect/landmark/late_join/responder/press
-	name = "Press Fax Responder late join"
+	name = "新闻界传真回复员-延迟加入"
 	job = JOB_FAX_RESPONDER_PRESS
 
 //****************************************** STATIC COMMS ************************************************//
 /obj/effect/landmark/static_comms
-	name = "static comms"
+	name = "静态通讯"
 	icon = 'icons/obj/structures/machinery/comm_tower3.dmi'
 	icon_state = "comms_landmark"
 	var/broken_on_spawn = FALSE
@@ -665,8 +665,8 @@
 
 // zombie spawn
 /obj/effect/landmark/zombie
-	name = "zombie spawnpoint"
-	desc = "The spot a zombie spawns in. Players in-game can't see this."
+	name = "僵尸生成点"
+	desc = "僵尸生成点。游戏内玩家不可见。"
 	icon_state = "corpse_spawner"
 	invisibility_value = INVISIBILITY_OBSERVER
 	var/spawns_left = 1
@@ -709,14 +709,14 @@
 /// Marks the bottom left of the testing zone.
 /// In landmarks.dm and not unit_test.dm so it is always active in the mapping tools.
 /obj/effect/landmark/unit_test_bottom_left
-	name = "unit test zone bottom left"
+	name = "单元测试区左下角"
 
 /// Marks the top right of the testing zone.
 /// In landmarks.dm and not unit_test.dm so it is always active in the mapping tools.
 /obj/effect/landmark/unit_test_top_right
-	name = "unit test zone top right"
+	name = "单元测试区右上角"
 
 /// Marks the bottom left of the tutorial zone.
 /obj/effect/landmark/tutorial_bottom_left
-	name = "tutorial bottom left"
+	name = "教程左下角"
 	icon_state = "new_player"

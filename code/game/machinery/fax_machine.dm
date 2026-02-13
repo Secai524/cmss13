@@ -9,13 +9,13 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 #define FAX_DEPARTMENT_CMB "CMB Incident Command Center, Local Operations"
 #define FAX_DEPARTMENT_PROVOST "USCM Provost Office"
 #define FAX_DEPARTMENT_PRESS "Various Press Organizations"
-#define FAX_DEPARTMENT_TWE "Three World Empire"
+#define FAX_DEPARTMENT_TWE "三世界帝国"
 #define FAX_DEPARTMENT_UPP "Union of Progress Peoples"
-#define FAX_DEPARTMENT_CLF "Colonial Liberation Front"
+#define FAX_DEPARTMENT_CLF "殖民地解放阵线"
 #define FAX_DEPARTMENT_SPECIFIC_CODE "Specific Machine Code"//Used to send to a single specific machine.
 #define FAX_HIGHCOM_DEPARTMENTS list(FAX_DEPARTMENT_WY_HC, FAX_DEPARTMENT_HC, FAX_DEPARTMENT_CMB, FAX_DEPARTMENT_PROVOST, FAX_DEPARTMENT_PRESS, FAX_DEPARTMENT_TWE, FAX_DEPARTMENT_UPP, FAX_DEPARTMENT_CLF)
 
-#define FAX_DEPARTMENT_ALMAYER "USS Almayer"
+#define FAX_DEPARTMENT_ALMAYER "USS 阿尔迈耶号"
 #define FAX_DEPARTMENT_ALMAYER_COMMAND "USS Almayer Command"
 #define FAX_DEPARTMENT_ALMAYER_BRIG "USS Almayer Brig"
 #define FAX_DEPARTMENT_ALMAYER_AICORE "USS Almayer AI Core"
@@ -181,7 +181,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 
 	if(istype(O, /obj/item/paper) || istype(O, /obj/item/paper_bundle) || istype(O, /obj/item/photo))
 		if(original_fax)
-			to_chat(user, SPAN_NOTICE("There is already something in \the [src]."))
+			to_chat(user, SPAN_NOTICE("\the [src]中已有物品。"))
 			return
 
 		var/jammed = FALSE
@@ -193,7 +193,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 		user.drop_inv_item_to_loc(O, src)
 		original_fax = O
 		if(!jammed)
-			to_chat(user, SPAN_NOTICE("You insert the [O.name] into \the [src]."))
+			to_chat(user, SPAN_NOTICE("你将[O.name]插入\the [src]。"))
 		else
 			to_chat(user, SPAN_NOTICE("\The [src] jammed! It can only accept up to five papers at once."))
 			playsound(src, "sound/machines/terminal_insert_disc.ogg", 50, TRUE)
@@ -205,19 +205,19 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 
 		var/obj/item/card/id/idcard = O
 		if(scan)
-			to_chat(user, SPAN_NOTICE("There is already an id in \the [src]."))
+			to_chat(user, SPAN_NOTICE("\the [src]中已有一张身份卡。"))
 			return
 
 		user.drop_inv_item_to_loc(idcard, src)
 		scan = idcard
-		to_chat(usr, SPAN_NOTICE("You put \the [scan] into \the [src]."))
+		to_chat(usr, SPAN_NOTICE("你将\the [scan]放入\the [src]。"))
 		playsound(src, 'sound/machines/pda_button1.ogg', 15, TRUE)
 		return
 
 	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 		anchored = !anchored
-		to_chat(user, SPAN_NOTICE("You [anchored ? "wrench" : "unwrench"] \the [src]."))
+		to_chat(user, SPAN_NOTICE("你[anchored ? "wrench" : "unwrench"] \the [src]."))
 
 /obj/structure/machinery/faxmachine/verb/eject_id()
 	set category = "Object"
@@ -227,7 +227,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 		return
 
 	if(ishuman(usr) && scan)
-		to_chat(usr, "You remove \the [scan] from \the [src].")
+		to_chat(usr, "你从\the [src]中取出\the [scan]。")
 		playsound(src, 'sound/machines/terminal_eject.ogg', 15, TRUE)
 		scan.forceMove(get_turf(src))
 		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
@@ -235,7 +235,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 		scan = null
 		authenticated = FALSE
 	else
-		to_chat(usr, "There is nothing to remove from \the [src].")
+		to_chat(usr, "\the [src]内没有可移除的物品。")
 	return
 
 /obj/structure/machinery/faxmachine/proc/update_departments()
@@ -332,7 +332,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 			if(!can_send_priority)
 				return
 			is_priority_fax = !is_priority_fax
-			to_chat(user, SPAN_NOTICE("Priority Alert is now [is_priority_fax ? "Enabled" : "Disabled"]."))
+			to_chat(user, SPAN_NOTICE("优先警报现已[is_priority_fax ? "启用" : "禁用"]。"))
 			. = TRUE
 
 		if("toggle_single_send")
@@ -351,17 +351,17 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 				return
 
 			if(!original_fax)
-				to_chat(user, SPAN_NOTICE("No paper loaded."))
+				to_chat(user, SPAN_NOTICE("未装载纸张。"))
 				return
 
 			if(single_sending && (target_machine == "Undefined") && !(target_department == FAX_DEPARTMENT_SPECIFIC_CODE))
-				to_chat(user, SPAN_WARNING("No target machine selected!"))
+				to_chat(user, SPAN_WARNING("未选择目标机器！"))
 				return
 
 			if(single_sending)
 				var/the_target_machine = GLOB.fax_network.all_departments[target_department][target_machine]
 				if(the_target_machine == src)
-					to_chat(user, SPAN_WARNING("You cannot send a fax to your own machine!"))
+					to_chat(user, SPAN_WARNING("无法向自己的机器发送传真！"))
 					return
 
 			if(istype(original_fax, /obj/item/paper_bundle))
@@ -376,21 +376,21 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 			is_priority_fax = FALSE
 
 			COOLDOWN_START(src, send_cooldown, fax_cooldown)
-			to_chat(user, "Message transmitted successfully.")
+			to_chat(user, "信息传输成功。")
 			. = TRUE
 
 		if("ejectpaper")
 			if(!original_fax)
-				to_chat(user, SPAN_NOTICE("No paper loaded."))
+				to_chat(user, SPAN_NOTICE("未装载纸张。"))
 				return
 
 			if(!ishuman(user))
-				to_chat(user, SPAN_NOTICE("You can't do that."))
+				to_chat(user, SPAN_NOTICE("你无法这么做。"))
 				return
 
 			original_fax.forceMove(user.loc)
 			user.put_in_hands(original_fax)
-			to_chat(user, SPAN_NOTICE("You take the [original_fax.name] out of [src]."))
+			to_chat(user, SPAN_NOTICE("你从[src]中取出[original_fax.name]。"))
 			original_fax = null
 			fax_paper_copy = null
 			photo_list = null
@@ -408,18 +408,18 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 				user.drop_inv_item_to_loc(I, src)
 				original_fax = I
 				if(!jammed)
-					to_chat(user, SPAN_NOTICE("You put the [original_fax.name] into [src]."))
+					to_chat(user, SPAN_NOTICE("你将[original_fax.name]放入[src]。"))
 				else
-					to_chat(user, SPAN_NOTICE("[src] jammed! It can only accept up to five papers at once."))
+					to_chat(user, SPAN_NOTICE("[src]卡住了！它一次最多只能接收五张纸。"))
 					playsound(src, "sound/machines/terminal_insert_disc.ogg", 50, TRUE)
 				flick("[initial(icon_state)]send", src)
 			. = TRUE
 
 		if("ejectid")
 			if(!scan || !ishuman(user))
-				to_chat(user, SPAN_WARNING("You can't do that."))
+				to_chat(user, SPAN_WARNING("你无法这么做。"))
 				return
-			to_chat(user, SPAN_NOTICE("You take [scan] out of [src]."))
+			to_chat(user, SPAN_NOTICE("你从[src]中取出[scan]。"))
 			scan.forceMove(user.loc)
 			if(!user.get_active_hand())
 				user.put_in_hands(scan)
@@ -433,7 +433,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 
 		if("select_dept")
 			var/last_target_department = target_department
-			target_department = tgui_input_list(user, "Which department?", "Choose a department", GLOB.fax_network.all_departments)
+			target_department = tgui_input_list(user, "哪个部门？", "Choose a department", GLOB.fax_network.all_departments)
 			if(!target_department)
 				target_department = last_target_department
 			if(target_department != last_target_department)
@@ -441,11 +441,11 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 			if(target_department in FAX_HIGHCOM_DEPARTMENTS)
 				single_sending = FALSE
 			if(target_department == FAX_DEPARTMENT_SPECIFIC_CODE)
-				var/new_target_machine_id = tgui_input_list(user, "Which machine?", "Choose a machine code", GLOB.fax_network.all_faxcodes)
+				var/new_target_machine_id = tgui_input_list(user, "哪台机器？", "Choose a machine code", GLOB.fax_network.all_faxcodes)
 				if(!new_target_machine_id)
 					target_department = last_target_department
 				else if(new_target_machine_id == machine_id_tag)
-					to_chat(user, SPAN_WARNING("You cannot send a fax to your own machine!"))
+					to_chat(user, SPAN_WARNING("无法向自己的机器发送传真！"))
 					target_department = last_target_department
 				else
 					target_machine_id = new_target_machine_id
@@ -454,7 +454,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 
 		if("select_machine")
 			var/last_target_machine = target_machine
-			target_machine = tgui_input_list(user, "Which machine?", "Choose a machine", GLOB.fax_network.all_departments[target_department])
+			target_machine = tgui_input_list(user, "哪台机器？", "Choose a machine", GLOB.fax_network.all_departments[target_department])
 			if(!target_machine)
 				target_machine = last_target_machine
 
@@ -681,7 +681,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 				if(sending_priority)
 					playsound(receiver.loc, "sound/machines/twobeep.ogg", 45)
 					receiver.langchat_speech("beeps with a priority message", get_mobs_in_view(GLOB.world_view_size, receiver), GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small", "emote"))
-					receiver.visible_message("[SPAN_BOLD(receiver)] beeps with a priority message.")
+					receiver.visible_message("[SPAN_BOLD(receiver)]发出哔声，收到一条优先信息。")
 					if((receiver.radio_alert_tag != null) && !sent_radio_alert)
 						ai_silent_announcement("COMMUNICATIONS REPORT: [single_sending ? "Fax Machine [receiver.machine_id_tag], [receiver.sub_name ? "[receiver.sub_name]" : ""]," : "[receiver.department]"] now receiving priority fax.", "[receiver.radio_alert_tag]")
 						sent_radio_alert = TRUE
@@ -729,7 +729,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	department = FAX_DEPARTMENT_ALMAYER_COMMAND
 
 /obj/structure/machinery/faxmachine/uscm/almayer/command/capt
-	sub_name = "Commanding Officer"
+	sub_name = "指挥官"
 	can_send_priority = TRUE
 
 /obj/structure/machinery/faxmachine/uscm/highcom
@@ -745,7 +745,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	radio_alert_tag = ":p"
 
 /obj/structure/machinery/faxmachine/uscm/almayer/brig/chief
-	sub_name = "Chief MP"
+	sub_name = "宪兵长"
 
 /obj/structure/machinery/faxmachine/uscm/provost
 	name = "\improper USCM Provost Fax Machine"
@@ -799,7 +799,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 ///The deployed fax machine backpack
 /obj/structure/machinery/faxmachine/backpack
 	name = "\improper Portable Press Fax Machine"
-	desc = "A standard issue portable fax machine for civilian reporters. Functions off of an internal battery. Cannot receive faxes while being worn. It is currently deployed. Click-drag the device towards you to pick it up."
+	desc = "一款民用记者使用的标准便携式传真机。依靠内置电池运行。穿戴时无法接收传真。当前已部署。点击并拖动该设备至你身上以拾取。"
 	icon_state = "fax_backpack"
 	needs_power = FALSE
 	use_power = USE_POWER_NONE
@@ -820,7 +820,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 ///The wearable and deployable part of the fax machine backpack
 /obj/item/device/fax_backpack
 	name = "\improper Portable Press Fax Machine"
-	desc = "A standard issue portable fax machine for civilian reporters. Functions off of an internal battery. Cannot receive faxes while being worn. It is currently undeployed. Activate the device inhand to deploy it."
+	desc = "一款民用记者使用的标准便携式传真机。依靠内置电池运行。穿戴时无法接收传真。当前未部署。手持时激活设备以部署。"
 	icon = 'icons/obj/structures/machinery/library.dmi'
 	icon_state = "fax_backpack"
 	item_state = "fax_backpack"
@@ -837,7 +837,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 		var/turf/open/floor = deployturf
 		var/area/area = get_area(user)
 		if(!floor.allow_construction || !area.allow_construction)
-			to_chat(user, SPAN_WARNING("You cannot deploy [src] here, find a more secure surface!"))
+			to_chat(user, SPAN_WARNING("你无法在此处部署[src]，找一个更稳固的表面！"))
 			return FALSE
 	var/fail = FALSE
 	if(deployturf.density)
@@ -857,11 +857,11 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 				fail = TRUE
 				break
 	if(fail)
-		to_chat(user, SPAN_WARNING("You can't deploy [src] here, something is in the way."))
+		to_chat(user, SPAN_WARNING("你无法在此处部署[src]，有东西挡着。"))
 		return
-	to_chat(user,  SPAN_NOTICE("You begin to deploy [src]..."))
+	to_chat(user,  SPAN_NOTICE("你开始部署[src]..."))
 	if(do_after(user, 4.5 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-		to_chat(user, SPAN_NOTICE("You deploy [src]."))
+		to_chat(user, SPAN_NOTICE("你部署了[src]。"))
 		var/obj/structure/machinery/faxmachine/backpack/deployedfax = new(deployturf, machine_id_tag)
 		deployedfax.faxbag = src
 		transfer_label_component(deployedfax)
@@ -877,12 +877,12 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	var/mob/living/carbon/human/user = usr
 	if(over_object == user && in_range(src, user))
 		if(original_fax || scan)
-			to_chat(user, SPAN_NOTICE("There is still something in [src]. Remove it before you pick it up."))
+			to_chat(user, SPAN_NOTICE("[src]里还有东西。拾取前请先取出。"))
 			return
-		to_chat(user, SPAN_NOTICE("You begin to pick up [src]..."))
+		to_chat(user, SPAN_NOTICE("你开始拾取[src]..."))
 		if(do_after(user, 4.5 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-			to_chat(user, SPAN_NOTICE("You pick up [src]."))
+			to_chat(user, SPAN_NOTICE("你拾取了[src]。"))
 			transfer_label_component(faxbag)
 			user.put_in_hands(faxbag)
 			if(faxbag.machine_id_tag != machine_id_tag)

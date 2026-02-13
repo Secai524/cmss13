@@ -94,17 +94,17 @@
 
 /obj/item/grab/proc/progress_passive(mob/living/carbon/human/user, mob/living/victim)
 	if(SEND_SIGNAL(victim, COMSIG_MOB_AGGRESSIVELY_GRABBED, user) & COMSIG_MOB_AGGRESIVE_GRAB_CANCEL)
-		to_chat(user, SPAN_WARNING("You can't grab [victim] aggressively!"))
+		to_chat(user, SPAN_WARNING("你无法强行抓住[victim]！"))
 		return
 
 	user.grab_level = GRAB_AGGRESSIVE
 	playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
-	user.visible_message(SPAN_WARNING("[user] has grabbed [victim] aggressively!"), null, null, 5)
+	user.visible_message(SPAN_WARNING("[user]猛地抓住了[victim]！"), null, null, 5)
 
 /obj/item/grab/proc/progress_aggressive(mob/living/carbon/human/user, mob/living/victim)
 	user.grab_level = GRAB_CHOKE
 	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
-	user.visible_message(SPAN_WARNING("[user] holds [victim] by the neck and starts choking them!"), null, null, 5)
+	user.visible_message(SPAN_WARNING("[user]掐住[victim]的脖子，开始使其窒息！"), null, null, 5)
 	msg_admin_attack("[key_name(user)] started to choke [key_name(victim)] at [get_area_name(victim)]", victim.loc.x, victim.loc.y, victim.loc.z)
 	victim.Move(user.loc, get_dir(victim.loc, user.loc))
 	victim.update_transform(TRUE)
@@ -118,38 +118,38 @@
 		if(!istype(pulled))
 			return
 		if(isxeno(pulled) || issynth(pulled))
-			to_chat(xeno, SPAN_WARNING("That wouldn't serve a purpose."))
+			to_chat(xeno, SPAN_WARNING("这毫无意义。"))
 			return 0
 		if(pulled.buckled)
-			to_chat(xeno, SPAN_WARNING("[pulled] is buckled to something."))
+			to_chat(xeno, SPAN_WARNING("[pulled]被固定在某物上。"))
 			return 0
 		if(pulled.stat == DEAD && !pulled.chestburst)
-			to_chat(xeno, SPAN_WARNING("Ew, [pulled] is already starting to rot."))
+			to_chat(xeno, SPAN_WARNING("呃，[pulled]已经开始腐烂了。"))
 			return 0
 		if(xeno.hauled_mob?.resolve()) // We can't carry more than one mob
-			to_chat(xeno, SPAN_WARNING("You already are carrying something, there's no way that will work."))
+			to_chat(xeno, SPAN_WARNING("你手上已经有东西了，这行不通。"))
 			return 0
 		if(HAS_TRAIT(pulled, TRAIT_HAULED))
-			to_chat(xeno, SPAN_WARNING("They are already being hauled by someone else."))
+			to_chat(xeno, SPAN_WARNING("他们已经被别人拖走了。"))
 			return 0
 			/* Saving this in case we want to allow hauling of dead bodies UNLESS their client is still online somewhere
 			if(pulled.client) //The client is still inside the body
 			else // The client is observing
 				for(var/mob/dead/observer/G in player_list)
 					if(ckey(G.mind.original.ckey) == pulled.ckey)
-						to_chat(src, "You start to haul [pulled] but realize \he is already dead.")
+						to_chat(src, "你开始拖拽[pulled]，但意识到\he已经死了。")
 						return */
 		if(user.action_busy)
-			to_chat(xeno, SPAN_WARNING("We are already busy with something."))
+			to_chat(xeno, SPAN_WARNING("我们正忙于其他事情。"))
 			return
 		SEND_SIGNAL(xeno, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
-		xeno.visible_message(SPAN_DANGER("[xeno] starts to restrain [pulled]!"),
+		xeno.visible_message(SPAN_DANGER("[xeno]开始束缚[pulled]！"),
 		SPAN_DANGER("We start restraining [pulled]!"), null, 5)
 		if(HAS_TRAIT(xeno, TRAIT_CLOAKED)) //cloaked don't show the visible message, so we gotta work around
 			to_chat(pulled, FONT_SIZE_HUGE(SPAN_DANGER("[xeno] is trying to restrain you!")))
 		if(do_after(xeno, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			if((isxeno(pulled.loc) && !xeno.hauled_mob) || HAS_TRAIT(pulled, TRAIT_HAULED))
-				to_chat(xeno, SPAN_WARNING("Someone already took \the [pulled]."))
+				to_chat(xeno, SPAN_WARNING("有人已经拿走了\the [pulled]。"))
 				return 0
 			if(xeno.pulling == pulled && !pulled.buckled && (pulled.stat != DEAD || pulled.chestburst) && !xeno.hauled_mob?.resolve()) //make sure you've still got them in your claws, and alive
 				if(SEND_SIGNAL(pulled, COMSIG_MOB_HAULED, xeno) & COMPONENT_CANCEL_HAUL)

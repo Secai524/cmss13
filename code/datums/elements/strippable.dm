@@ -123,15 +123,15 @@
 		return FALSE
 
 	if (user.action_busy && !skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
-		to_chat(user, SPAN_WARNING("You can't do this right now."))
+		to_chat(user, SPAN_WARNING("你现在无法这样做。"))
 		return FALSE
 
 	if (user.is_mob_incapacitated())
-		to_chat(user, SPAN_WARNING("You can't do this right now."))
+		to_chat(user, SPAN_WARNING("你现在无法这样做。"))
 		return FALSE
 
 	if (HAS_TRAIT(user, TRAIT_IMMOBILIZED) || HAS_TRAIT(user, TRAIT_FLOORED))
-		to_chat(user, SPAN_WARNING("You can't do this right now."))
+		to_chat(user, SPAN_WARNING("你现在无法这样做。"))
 		return FALSE
 
 	if ((item.flags_inventory & CANTSTRIP) || ((item.flags_item & NODROP) && !(item.flags_item & FORCEDROP_CONDITIONAL)) || (item.flags_item & ITEM_ABSTRACT))
@@ -222,7 +222,7 @@
 		return FALSE
 
 	if(user.action_busy)
-		to_chat(user, SPAN_WARNING("You can't do this right now."))
+		to_chat(user, SPAN_WARNING("你现在无法这样做。"))
 		return FALSE
 
 	if(equipping.flags_item & WIELDED)

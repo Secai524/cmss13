@@ -1,5 +1,5 @@
 /datum/faction/nspa
-	name = "Neroid Sector Policing Authority"
+	name = "尼罗伊德星区警务局"
 	faction_tag = FACTION_NSPA
 	base_icon_file = 'icons/mob/hud/factions/twe.dmi'
 

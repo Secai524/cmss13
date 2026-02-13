@@ -31,7 +31,7 @@
 
 /obj/item/clothing/proc/convert_to_accessory(mob/user)
 	if(!can_become_accessory)
-		to_chat(user, SPAN_NOTICE("[src] cannot be turned into an accessory."))
+		to_chat(user, SPAN_NOTICE("[src]无法被转换为配件。"))
 		return
 
 	// copies the properties of the clothing item to the accessory, in the future, take literally almost every var from ties.dm parent object and place it in clothing parent
@@ -59,26 +59,26 @@
 	if(ismob(loc) && loc == user)
 		user.put_in_hands(new_accessory)
 
-	to_chat(user, SPAN_NOTICE("You will start wearing [src] as an accessory."))
+	to_chat(user, SPAN_NOTICE("你将开始将[src]作为配件佩戴。"))
 	// we don't want duplicates man
 	qdel(src)
 
 /obj/item/clothing/proc/revert_from_accessory(mob/user)
 	var/obj/item/clothing/accessory/access = src
 	if(!access.original_item_path)
-		to_chat(user, SPAN_NOTICE("[src] cannot be reverted because the original item path is missing."))
+		to_chat(user, SPAN_NOTICE("[src]无法还原，因为原始物品路径缺失。"))
 		return
 
 	var/obj/item/clothing/original_item = new access.original_item_path(loc)
 	if(!original_item)
-		to_chat(user, SPAN_NOTICE("Failed to revert [src] to its original item."))
+		to_chat(user, SPAN_NOTICE("将[src]还原为其原始物品失败。"))
 		return
 
 	if(ismob(loc) && loc == user)
 		original_item.color = access.color
 		user.put_in_hands(original_item)
 
-	to_chat(user, SPAN_NOTICE("You will start wearing [src] as normal."))
+	to_chat(user, SPAN_NOTICE("你将开始正常穿戴[src]。"))
 	// ditto
 	qdel(src)
 
@@ -107,7 +107,7 @@
 			var/list/ties = list()
 			for(var/accessory in accessories)
 				ties += "[icon2html(accessory)] \a [accessory]"
-			to_chat(usr, "Attached to \the [src] are [english_list(ties)].")
+			to_chat(usr, "连接到\the [src]的是[english_list(ties)]。")
 		return
 
 /obj/item/clothing/attack_hand(mob/user as mob)
@@ -168,7 +168,7 @@
 /obj/item/clothing/proc/update_clothing_icon()
 	return
 
-/obj/item/clothing/get_mob_overlay(mob/user_mob, slot, default_bodytype = "Default")
+/obj/item/clothing/get_mob_overlay(mob/user_mob, slot, default_bodytype = "默认")
 	var/image/ret = ..()
 
 	if(slot == WEAR_L_HAND || slot == WEAR_R_HAND)
@@ -202,7 +202,7 @@
 
 /obj/item/clothing/ears/earmuffs
 	name = "earmuffs"
-	desc = "Protects your hearing from loud noises, and quiet ones as well."
+	desc = "保护你的听力免受巨大噪音以及细微声响的干扰。"
 	icon_state = "earmuffs"
 	item_state = "earmuffs"
 	icon = 'icons/obj/items/radio.dmi'
@@ -277,7 +277,7 @@
 		var/obj/item/clothing/under/U = H.w_uniform
 		//some uniforms prevent you from wearing any suits but certain types
 		if(U && U.suit_restricted && !is_type_in_list(src, U.suit_restricted))
-			to_chat(H, SPAN_WARNING("[src] can't be worn with [U]."))
+			to_chat(H, SPAN_WARNING("[src]无法与[U]同时穿戴。"))
 			return 0
 	return 1
 
@@ -350,7 +350,7 @@
 	set src in usr
 
 	if(!(flags_inventory & ALLOWINTERNALS))
-		to_chat(usr, SPAN_NOTICE("This mask doesnt support internals."))
+		to_chat(usr, SPAN_NOTICE("此面罩不支持内置呼吸系统。"))
 		return
 
 	if(!iscarbon(usr))
@@ -362,7 +362,7 @@
 
 	if(C.internal)
 		C.internal = null
-		to_chat(C, SPAN_NOTICE("No longer running on internals."))
+		to_chat(C, SPAN_NOTICE("不再使用内置呼吸系统。"))
 	else
 		var/list/nicename = null
 		var/list/tankcheck = null
@@ -370,7 +370,7 @@
 		if(ishuman(C))
 			var/mob/living/carbon/human/H = C
 			breathes = H.species.breath_type
-			nicename = list ("suit", "back", "belt", "right hand", "left hand", "left pocket", "right pocket")
+			nicename = list ("suit", "back", "belt", "右手", "左手", "left pocket", "right pocket")
 			tankcheck = list (H.s_store, C.back, H.belt, C.r_hand, C.l_hand, H.l_store, H.r_store)
 		else
 			nicename = list("Right Hand", "Left Hand", "Back")
@@ -400,10 +400,10 @@
 						bestpressure = t.pressure
 		//We've determined the best container now we set it as our internals
 		if(best)
-			to_chat(C, SPAN_NOTICE("You are now running on internals from [tankcheck[best]] on your [nicename[best]]."))
+			to_chat(C, SPAN_NOTICE("你现在正使用位于你[nicename[best]]上的[tankcheck[best]]的内置呼吸系统。"))
 			C.internal = tankcheck[best]
 		if(!C.internal)
-			to_chat(C, SPAN_NOTICE("You don't have a[breathes=="oxygen" ? "n oxygen" : addtext(" ",breathes)] tank."))
+			to_chat(C, SPAN_NOTICE("你没有一[breathes=="oxygen" ? "n oxygen" : addtext(" ",breathes)] tank."))
 	return TRUE
 
 
@@ -421,7 +421,7 @@
 /obj/item/clothing/shoes
 	name = "shoes"
 	icon = 'icons/obj/items/clothing/shoes.dmi'
-	desc = "Comfortable-looking shoes."
+	desc = "看起来舒适的鞋子。"
 	gender = PLURAL //Carn: for grammarically correct text-parsing
 	siemens_coefficient = 0.9
 	flags_armor_protection = BODY_FLAG_FEET
@@ -476,7 +476,7 @@
 		return FALSE
 	_insert_item(item_to_insert)
 	item_to_insert.last_equipped_slot = WEAR_IN_SHOES
-	to_chat(user, SPAN_NOTICE("You slide [item_to_insert] into [src]."))
+	to_chat(user, SPAN_NOTICE("你将[item_to_insert]滑入[src]。"))
 	playsound(user, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 	return TRUE
 
@@ -491,7 +491,7 @@
 /obj/item/clothing/shoes/proc/remove_item(mob/user)
 	if(!stored_item || !user.put_in_active_hand(stored_item))
 		return
-	to_chat(user, SPAN_NOTICE("You slide [stored_item] out of [src]."))
+	to_chat(user, SPAN_NOTICE("你将[stored_item]从[src]中滑出。"))
 	playsound(user, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 	stored_item = null
 	update_icon()

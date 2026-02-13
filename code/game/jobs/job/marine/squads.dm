@@ -9,15 +9,15 @@
 	var/sub_leader
 
 /datum/squad_type/marine_squad
-	name = "Squad"
-	lead_name = "Squad Leader"
+	name = "班组"
+	lead_name = "班长"
 	lead_icon = "leader"
 	sub_squad = "Fireteam"
-	sub_leader = "Fireteam Leader"
+	sub_leader = "火力组长"
 
 /datum/squad_type/marsoc_team
-	name = "Team"
-	lead_name = "Team Leader"
+	name = "小队"
+	lead_name = "队长"
 	lead_icon = "soctl"
 	sub_squad = "Strike Team"
 	sub_leader = "Strike Leader"
@@ -69,7 +69,7 @@
 	var/faction = FACTION_MARINE
 
 	/// What will the assistant squad leader be called
-	var/squad_type = "Squad" //Referenced for aSL details. Squad/Team/Cell etc.
+	var/squad_type = "班组" //Referenced for aSL details. Squad/Team/Cell etc.
 	/// Squad leaders icon
 	var/lead_icon //Referenced for SL's 'L' icon. If nulled, won't override icon for aSLs.
 
@@ -117,7 +117,7 @@
 
 
 /datum/squad/marine
-	name = "Root"
+	name = "根"
 	usable = TRUE
 	active = TRUE
 	faction = FACTION_MARINE
@@ -214,7 +214,7 @@
 	equipment_color = "#400000"
 	chat_color = "#400000"
 	radio_freq = SOF_FREQ
-	squad_type = "Team"
+	squad_type = "小队"
 	lead_icon = "soctl"
 	minimap_color = MINIMAP_SQUAD_SOF
 	background_icon = "background_sof"
@@ -262,7 +262,7 @@
 
 //############################### UPP Squads
 /datum/squad/upp
-	name = "Root"
+	name = "根"
 	usable = TRUE
 	omni_squad_vendor = TRUE
 	faction = FACTION_UPP
@@ -306,51 +306,51 @@
 	name = SQUAD_UPP_5
 	equipment_color = "#c47a50"
 	chat_color = "#c47a50"
-	squad_type = "Team"
+	squad_type = "小队"
 	locked = TRUE
 	usable = FALSE
 
 //###############################
 /datum/squad/pmc
-	name = "Root"
-	squad_type = "Team"
+	name = "根"
+	squad_type = "小队"
 	faction = FACTION_PMC
 	usable = TRUE
 	omni_squad_vendor = TRUE
 
 /datum/squad/pmc/one
-	name = "Team Upsilon"
+	name = "宇普西隆小队"
 	equipment_color = "#c864c8"
 	chat_color = "#ff96ff"
 
 /datum/squad/pmc/two
-	name = "Team Gamma"
+	name = "伽马小队"
 	equipment_color = "#c47a50"
 	chat_color = "#c47a50"
 
 /datum/squad/pmc/wo
-	name = "Taskforce White"
+	name = "白队特遣队"
 	locked = TRUE
 	faction = FACTION_WY_DEATHSQUAD
 //###############################
 /datum/squad/clf
-	name = "Root"
+	name = "根"
 	squad_type = "Cell"
 	faction = FACTION_CLF
 	usable = TRUE
 	omni_squad_vendor = TRUE
 
 /datum/squad/clf/one
-	name = "Python"
+	name = "蟒蛇"
 
 /datum/squad/clf/two
-	name = "Viper"
+	name = "蝰蛇"
 
 /datum/squad/clf/three
-	name = "Cobra"
+	name = "眼镜蛇"
 
 /datum/squad/clf/four
-	name = "Boa"
+	name = "巨蟒"
 //###############################
 /datum/squad/New()
 	. = ..()
@@ -434,7 +434,7 @@
 	var/datum/sound_template/sfx
 
 	if(user)
-		message = "[user.name] transmits: [FONT_SIZE_LARGE("<b>[message]<b>")]"
+		message = "[user.name] 传输：[FONT_SIZE_LARGE("<b>[message]<b>")]"
 		sfx = new()
 		sfx.file = 'sound/effects/radiostatic.ogg'
 		sfx.channel = get_free_channel()
@@ -518,10 +518,10 @@
 /datum/squad/proc/transmit_objective(text="", transmitter=null, primary=TRUE)
 	var/prefix = "Your primary objective has been changed to '"
 	var/postfix = "'. See Status pane for details."
-	var/maptext_title = "Primary Objective Updated:"
+	var/maptext_title = "主要目标已更新："
 	if(!primary)
 		prefix = "Your secondary objective has been changed to '"
-		maptext_title = "Secondary Objective Updated:"
+		maptext_title = "次要目标已更新："
 
 	var/garbled_text = get_garbled_announcement(text, faction)
 	var/list/targets_to_garble = get_garbled_targets(only_leader=FALSE)
@@ -547,12 +547,12 @@
 /datum/squad/proc/remind_objective(transmitter=null, primary=TRUE)
 	var/prefix = "Your primary objective is '"
 	var/postfix = "'. See Status pane for details."
-	var/maptext_title = "Primary Objective:"
+	var/maptext_title = "主要目标："
 	var/text = primary_objective
 	var/garbled_text = primary_objective_garbled
 	if(!primary)
 		prefix = "Your secondary objective is '"
-		maptext_title = "Secondary Objective:"
+		maptext_title = "次要目标："
 		text = secondary_objective
 		garbled_text = secondary_objective_garbled
 
@@ -673,7 +673,7 @@
 		if(JOB_MARINE_RAIDER_CMD)
 			assignment = JOB_MARINE_RAIDER_CMD
 			if(name == JOB_MARINE_RAIDER || name == JOB_MARINE_RAIDER_SG)
-				assignment = "Officer"
+				assignment = "警官"
 
 	if(mob_role in roles_cap)
 		roles_in[mob_role]++
@@ -761,11 +761,11 @@
 		if (FACTION_UPP)
 			switch(GET_DEFAULT_ROLE(old_lead.job))
 				if(JOB_UPP_SPECIALIST)
-					old_lead.comm_title = "Spec"
+					old_lead.comm_title = "规格"
 				if(JOB_UPP_ENGI)
-					old_lead.comm_title = "Sapper"
+					old_lead.comm_title = "工兵"
 				if(JOB_UPP_MEDIC)
-					old_lead.comm_title = "Med"
+					old_lead.comm_title = "医疗"
 				if(JOB_UPP_LEADER)
 					if(!leader_killed)
 						old_lead.comm_title = "MSzh"
@@ -781,26 +781,26 @@
 		if (FACTION_MARINE)
 			switch(GET_DEFAULT_ROLE(old_lead.job))
 				if(JOB_SQUAD_SPECIALIST)
-					old_lead.comm_title = "Spc"
+					old_lead.comm_title = "特种部队"
 				if(JOB_SQUAD_ENGI)
-					old_lead.comm_title = "ComTech"
+					old_lead.comm_title = "康泰科技"
 				if(JOB_SQUAD_MEDIC)
 					old_lead.comm_title = "HM"
 				if(JOB_SQUAD_TEAM_LEADER)
-					old_lead.comm_title = "FTL"
+					old_lead.comm_title = "超光速"
 				if(JOB_SQUAD_SMARTGUN)
 					old_lead.comm_title = "SG"
 				if(JOB_SQUAD_LEADER)
 					if(!leader_killed)
-						old_lead.comm_title = "Sgt"
+						old_lead.comm_title = "中士"
 				if(JOB_MARINE_RAIDER)
-					old_lead.comm_title = "Op."
+					old_lead.comm_title = "作品编号"
 				if(JOB_MARINE_RAIDER_SG)
-					old_lead.comm_title = "SG."
+					old_lead.comm_title = "SG。"
 				if(JOB_MARINE_RAIDER_SL)
-					old_lead.comm_title = "TL."
+					old_lead.comm_title = "翻译完成。"
 				if(JOB_MARINE_RAIDER_CMD)
-					old_lead.comm_title = "CMD."
+					old_lead.comm_title = "命令。"
 				else
 					var/datum/job/job = GLOB.RoleAuthority.roles_for_mode[GET_DEFAULT_ROLE(old_lead.job)]
 					old_lead.comm_title = job.gear_preset.role_comm_title
@@ -960,7 +960,7 @@
 	if(!ID || ((!(ID.rank in GLOB.ROLES_MARINES) && faction == FACTION_MARINE) || (!(ID.rank in GLOB.ROLES_MARINES_ANTAG) && faction == FACTION_UPP)))
 		return
 	if(ID.rank == JOB_SQUAD_LEADER || squad_leader == target_mob) //if SL/aSL are chosen
-		var/choice = tgui_input_list(squad_leader, "Manage Fireteams and Team leaders.", "Fireteams Management", list("Cancel", "Unassign Fireteam 1 Leader", "Unassign Fireteam 2 Leader", "Unassign Fireteam 3 Leader", "Unassign all Team Leaders"))
+		var/choice = tgui_input_list(squad_leader, "管理火力小组及组长。", "Fireteams Management", list("Cancel", "Unassign Fireteam 1 Leader", "Unassign Fireteam 2 Leader", "Unassign Fireteam 3 Leader", "Unassign all Team Leaders"))
 		if(target_mob.assigned_squad != src)
 			return //in case they somehow change squad while SL is choosing
 		if(squad_leader.is_mob_incapacitated() || !hasHUD(squad_leader,"squadleader"))
@@ -980,7 +980,7 @@
 		return
 	if(target_mob.assigned_fireteam)
 		if(fireteam_leaders[target_mob.assigned_fireteam] == target_mob) //Check if person already is FT leader
-			var/choice = tgui_input_list(squad_leader, "Manage Fireteams and Team leaders.", "Fireteams Management", list("Cancel", "Unassign from Team Leader position"))
+			var/choice = tgui_input_list(squad_leader, "管理火力小组及组长。", "Fireteams Management", list("Cancel", "Unassign from Team Leader position"))
 			if(target_mob.assigned_squad != src)
 				return
 			if(squad_leader.is_mob_incapacitated() || !hasHUD(squad_leader,"squadleader"))
@@ -990,7 +990,7 @@
 			target_mob.hud_set_squad()
 			return
 
-		var/choice = tgui_input_list(squad_leader, "Manage Fireteams and Team leaders.", "Fireteams Management", list("Remove from Fireteam", "Assign to Fireteam 1", "Assign to Fireteam 2", "Assign to Fireteam 3", "Assign as Team Leader"))
+		var/choice = tgui_input_list(squad_leader, "管理火力小组及组长。", "Fireteams Management", list("Remove from Fireteam", "Assign to Fireteam 1", "Assign to Fireteam 2", "Assign to Fireteam 3", "Assign as Team Leader"))
 		if(target_mob.assigned_squad != src)
 			return
 		if(squad_leader.is_mob_incapacitated() || !hasHUD(squad_leader,"squadleader"))
@@ -1011,7 +1011,7 @@
 		target_mob.hud_set_squad()
 		return
 
-	var/choice = tgui_input_list(squad_leader, "Manage Fireteams and Team leaders.", "Fireteams Management", list("Cancel", "Assign to Fireteam 1", "Assign to Fireteam 2", "Assign to Fireteam 3"))
+	var/choice = tgui_input_list(squad_leader, "管理火力小组及组长。", "Fireteams Management", list("Cancel", "Assign to Fireteam 1", "Assign to Fireteam 2", "Assign to Fireteam 3"))
 	if(target_mob.assigned_squad != src)
 		return
 	if(squad_leader.is_mob_incapacitated() || !hasHUD(squad_leader,"squadleader"))
@@ -1033,7 +1033,7 @@
 /datum/squad/proc/change_squad_status(mob/living/carbon/human/target_mob)
 	if(target_mob == squad_leader)
 		return //you can't mark yourself KIA
-	var/choice = tgui_input_list(squad_leader, "Marine status management: M.I.A. for missing marines, K.I.A. for confirmed unrevivable dead.", "Squad Management", list("Cancel", "Remove status", "M.I.A.", "K.I.A."))
+	var/choice = tgui_input_list(squad_leader, "陆战队员状态管理：M.I.A. 代表失踪，K.I.A. 代表确认阵亡无法复活。", "Squad Management", list("Cancel", "Remove status", "M.I.A.", "K.I.A."))
 	if(target_mob.assigned_squad != src)
 		return //in case they somehow change squad while SL is choosing
 	if(squad_leader.is_mob_incapacitated() || !hasHUD(squad_leader,"squadleader"))

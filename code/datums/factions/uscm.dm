@@ -1,5 +1,5 @@
 /datum/faction/uscm
-	name = "United States Colonial Marines"
+	name = "美国殖民地海军陆战队"
 	faction_tag = FACTION_MARINE
 	base_icon_file = 'icons/mob/hud/factions/marine.dmi'
 
@@ -57,9 +57,9 @@
 				marine_rk = "tech"
 		if(squad.squad_leader == current_human)
 			switch(squad.squad_type)
-				if("Squad")
+				if("班组")
 					marine_rk = "leader_a"
-				if("Team")
+				if("小队")
 					marine_rk = "soctl_a"
 
 		current_human.langchat_color = current_human.assigned_squad.chat_color

@@ -9,8 +9,8 @@
 #define EXPLOSIVE_PROPERTIES list(PROPERTY_FUELING, PROPERTY_FLOWING, PROPERTY_VISCOUS, PROPERTY_EXPLOSIVE)
 
 /obj/item/hoverpack
-	name = "experimental hoverpack"
-	desc = "This prototype hoverpack allows marines to quickly jump over to strategic locations on the battlefield, at the cost of their backpack. You think you could change the settings with a screwdriver."
+	name = "实验型悬浮背包"
+	desc = "这个原型悬浮背包允许陆战队员快速跳跃到战场上的战略位置，代价是失去背包。你觉得可以用螺丝刀改变设置。"
 	icon = 'icons/obj/items/devices.dmi'
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/misc.dmi'
@@ -39,7 +39,7 @@
 	. = ..()
 	reservoir = new()
 	reservoir.reagents.add_reagent("oxidizing_agent", 90) //Start with a custom agent. Enterprising marines and researchers/doctors can theoretically boost the formula, or you could refuel it with beer or basic oxygen.
-	reservoir.name = "internal propellant tank"
+	reservoir.name = "内置推进剂罐"
 	update_icon()
 
 /obj/item/hoverpack/update_icon()
@@ -52,10 +52,10 @@
 
 /obj/item/hoverpack/attack_self(mob/user)
 	..()
-	to_chat(user, SPAN_NOTICE("You start dumping the contents of [src]'s reservoir..."))
+	to_chat(user, SPAN_NOTICE("你开始清空[src]的储气罐..."))
 	if(!do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		return
-	to_chat(user, SPAN_NOTICE("You dump the contents of [src]'s reservoir."))
+	to_chat(user, SPAN_NOTICE("你清空了[src]的储气罐。"))
 	reservoir.reagents.clear_reagents()
 	update_icon()
 
@@ -65,7 +65,7 @@
 
 /obj/item/hoverpack/attackby(obj/item/W, mob/user)
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
-		var/input = tgui_input_list(user, "Change the air canister's pressure?", "Select an intensity level", list("Strong (Dash)", "Normal (Jump)", "Weak (Leap)"))
+		var/input = tgui_input_list(user, "更改气罐压力？", "Select an intensity level", list("Strong (Dash)", "Normal (Jump)", "Weak (Leap)"))
 		if(!input)
 			return
 		playsound(loc, 'sound/items/Screwdriver.ogg', 25, TRUE)
@@ -86,7 +86,7 @@
 				fuel_multiplier = 0.75
 				hover_cooldown = 10 SECONDS
 
-		to_chat(user, SPAN_NOTICE("You set the hoverpack's pressure output to [input]."))
+		to_chat(user, SPAN_NOTICE("你将悬浮背包的压力输出设置为[input]。"))
 
 	else if(W.is_open_container())
 		W.afterattack(reservoir, user, TRUE)
@@ -115,7 +115,7 @@
 					OP = P
 
 	if(prob(boom_chance))
-		to_chat(user, SPAN_DANGER("Something feels wrong..."))
+		to_chat(user, SPAN_DANGER("感觉有点不对劲..."))
 		return KABOOM
 
 	if(!OP)
@@ -140,10 +140,10 @@
 	can_hover = FALSE
 
 	if(result == KABOOM) //oh boy
-		user.visible_message(SPAN_HIGHDANGER("A weird groaning sound emerges from [user]'s [src.name]..."))
+		user.visible_message(SPAN_HIGHDANGER("一阵诡异的呻吟声从[user]的[src.name]中传出..."))
 		color = COLOR_RED
 		do_after(user, 3 SECONDS, INTERRUPT_NONE, BUSY_ICON_HOSTILE, src, INTERRUPT_NONE, BUSY_ICON_HOSTILE)
-		src.visible_message(SPAN_HIGHDANGER("[src] explodes!"))
+		src.visible_message(SPAN_HIGHDANGER("[src] 爆炸了！"))
 		var/datum/cause_data/cause_data = create_cause_data("hoverpack explosion", user)
 		INVOKE_ASYNC(GLOBAL_PROC, TYPE_PROC_REF(/atom, cell_explosion), get_turf(src), 90, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, user.dir, cause_data)
 		color = initial(color)
@@ -154,7 +154,7 @@
 	if(last_fuel)
 		fuel_used = last_fuel
 
-	to_chat(user, SPAN_BOLDNOTICE("PROPELLANT EXPENDED: [round(fuel_used/reservoir.reagents.maximum_volume * 100, 0.1)]% <br> PROPELLANT REMAINING: [round(reservoir.reagents.total_volume/reservoir.reagents.maximum_volume * 100, 0.1)]%"))
+	to_chat(user, SPAN_BOLDNOTICE("推进剂消耗：[round(fuel_used/reservoir.reagents.maximum_volume * 100, 0.1)]% <br> 推进剂剩余：[round(reservoir.reagents.total_volume/reservoir.reagents.maximum_volume * 100, 0.1)]%"))
 	update_icon()
 	playsound(user, 'sound/items/jetpack_sound.ogg', 45, TRUE)
 
@@ -188,18 +188,18 @@
 
 /obj/item/hoverpack/proc/can_use_hoverpack(mob/living/carbon/human/user)
 	if(user.is_mob_incapacitated())
-		to_chat(user, SPAN_WARNING("You're a bit too incapacitated for that."))
+		to_chat(user, SPAN_WARNING("你目前的状态无法完成这个动作。"))
 		return FALSE
 
 	if(!can_hover)
-		to_chat(user, SPAN_WARNING("You cannot use the hoverpack yet!"))
+		to_chat(user, SPAN_WARNING("你还不能使用悬浮背包！"))
 		return FALSE
 
 	return expend_fuel(user)
 
 /datum/action/item_action/hover/New(mob/living/user, obj/item/holder)
 	..()
-	name = "Use Hoverpack"
+	name = "使用悬浮背包"
 	button.name = name
 	button.overlays.Cut()
 	var/image/IMG = image('icons/mob/hud/actions.dmi', button, "hoverpack_charged")
@@ -214,11 +214,11 @@
 	. = ..()
 	var/mob/living/carbon/human/H = owner
 	if(H.selected_ability == src)
-		to_chat(H, "You will no longer use [name] with [H.get_ability_mouse_name()].")
+		to_chat(H, "你将不再使用[H.get_ability_mouse_name()]来使用[name]。")
 		button.icon_state = "template"
 		H.set_selected_ability(null)
 	else
-		to_chat(H, "You will now use [name] with [H.get_ability_mouse_name()].")
+		to_chat(H, "你现在将使用[H.get_ability_mouse_name()]来使用[name]。")
 		if(H.selected_ability)
 			H.selected_ability.button.icon_state = "template"
 			H.set_selected_ability(null)
@@ -252,8 +252,8 @@
 		button.icon_state = "template"
 
 /obj/item/reagent_container/glass/beaker/reservoir
-	name = "internal propellant tank"
-	desc = "You shouldn't be able to see this."
+	name = "内置推进剂罐"
+	desc = "你不应该看到这个。"
 	volume = 90
 	amount_per_transfer_from_this = 10
 

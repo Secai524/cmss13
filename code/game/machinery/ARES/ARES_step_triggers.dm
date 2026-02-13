@@ -1,5 +1,5 @@
 /obj/effect/step_trigger/ares_alert
-	name = "ARES Apollo Sensor"
+	name = "ARES阿波罗传感器"
 	layer = 5
 	/// Link alerts to ARES Link
 	var/datum/ares_link/link
@@ -73,7 +73,7 @@
 	if(!ares_can_apollo())
 		return FALSE
 
-	to_chat(passer, SPAN_BOLDWARNING("You hear a soft beeping sound as you cross the threshold."))
+	to_chat(passer, SPAN_BOLDWARNING("当你跨过门槛时，你听到一声轻柔的哔哔声。"))
 	ares_apollo_talk(broadcast_message)
 	COOLDOWN_START(src, sensor_cooldown, cooldown_duration)
 	if(alert_id && link)
@@ -105,7 +105,7 @@
 
 /// Trigger will remove ACCESS_MARINE_AI_TEMP unless ACCESS_MARINE_AI is also present.
 /obj/effect/step_trigger/ares_alert/access_control
-	name = "ARES Access Control Sensor"
+	name = "ARES权限控制传感器"
 	alert_message = "HARDCODED"
 	alert_id = "ARES Access"
 	cooldown_duration = COOLDOWN_ARES_ACCESS_CONTROL
@@ -157,7 +157,7 @@
 	if(!ares_can_apollo())
 		return FALSE
 
-	to_chat(passer, SPAN_BOLDWARNING("You hear a harsh buzzing sound as you cross the threshold!"))
+	to_chat(passer, SPAN_BOLDWARNING("当你跨过门槛时，你听到一阵刺耳的嗡嗡声！"))
 	if(COOLDOWN_FINISHED(src, sensor_cooldown))//Don't want alerts spammed.
 		ares_apollo_talk(broadcast_message)
 	if(idcard)

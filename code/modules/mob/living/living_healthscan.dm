@@ -26,13 +26,13 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 /datum/health_scan/proc/look_at(mob/user, detail = DETAIL_LEVEL_FULL, bypass_checks = FALSE, ignore_delay = TRUE, alien = FALSE, datum/tgui/ui = null)
 	if(!bypass_checks)
 		if(HAS_TRAIT(target_mob, TRAIT_FOREIGN_BIO) && !alien)
-			to_chat(user, SPAN_WARNING("ERROR: Unknown biology detected."))
+			to_chat(user, SPAN_WARNING("错误：检测到未知生物特征。"))
 			return
 		if(!(ishuman(user) || SSticker?.mode.name == "monkey"))
-			to_chat(usr, SPAN_WARNING("You don't have the dexterity to do this!"))
+			to_chat(usr, SPAN_WARNING("你的手不够灵巧，无法完成此操作！"))
 			return
 		if(!ignore_delay && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-			to_chat(user, SPAN_WARNING("You start fumbling around with the scanner..."))
+			to_chat(user, SPAN_WARNING("你开始笨拙地摆弄扫描仪..."))
 			var/fduration = 60
 			if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_DEFAULT))
 				fduration = 30
@@ -513,22 +513,22 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 /mob/living/proc/health_scan(mob/living/carbon/human/user, ignore_delay = FALSE, show_limb_damage = TRUE, show_browser = TRUE, alien = FALSE, do_checks = TRUE) // ahem. FUCK WHOEVER CODED THIS SHIT AS NUMBERS AND NOT DEFINES.
 	if(do_checks)
 		if((user.getBrainLoss() >= 60) && prob(50))
-			to_chat(user, SPAN_WARNING("You try to analyze the floor's vitals!"))
+			to_chat(user, SPAN_WARNING("你试图分析地板的生命体征！"))
 			for(var/mob/O in viewers(src, null))
-				O.show_message(SPAN_WARNING("[user] has analyzed the floor's vitals!"), 1)
-			user.show_message(SPAN_NOTICE("Health Analyzer results for The floor:\n\t Overall Status: Healthy"), 1)
+				O.show_message(SPAN_WARNING("[user]分析了地板的生命体征！"), 1)
+			user.show_message(SPAN_NOTICE("地板健康分析仪结果：\n总体状态：健康"), 1)
 			user.show_message(SPAN_NOTICE("\t Damage Specifics: [0]-[0]-[0]-[0]"), 1)
-			user.show_message(SPAN_NOTICE("Key: Suffocation/Toxin/Burns/Brute"), 1)
-			user.show_message(SPAN_NOTICE("Body Temperature: ???"), 1)
+			user.show_message(SPAN_NOTICE("图例：窒息/毒素/烧伤/钝伤"), 1)
+			user.show_message(SPAN_NOTICE("体温：？？？"), 1)
 			return
 		if(HAS_TRAIT(src, TRAIT_FOREIGN_BIO) && !alien)
-			to_chat(user, SPAN_WARNING("ERROR: Unknown biology detected."))
+			to_chat(user, SPAN_WARNING("错误：检测到未知生物特征。"))
 			return
 		if(!(ishuman(user) || SSticker?.mode.name == "monkey"))
-			to_chat(usr, SPAN_WARNING("You don't have the dexterity to do this!"))
+			to_chat(usr, SPAN_WARNING("你的手不够灵巧，无法完成此操作！"))
 			return
 		if(!ignore_delay && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-			to_chat(user, SPAN_WARNING("You start fumbling around with [src]..."))
+			to_chat(user, SPAN_WARNING("你开始笨拙地摆弄[src]..."))
 			var/fduration = 60
 			if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_DEFAULT))
 				fduration = 30
@@ -537,11 +537,11 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		// Doesn't work on non-humans
 		if(!istype(src, /mob/living/carbon))
 			user.show_message("\nHealth Analyzer results for ERROR:\n\t Overall Status: ERROR")
-			user.show_message("\tType: [SET_CLASS("Oxygen", INTERFACE_BLUE)]-[SET_CLASS("Toxin", INTERFACE_GREEN)]-[SET_CLASS("Burns", INTERFACE_ORANGE)]-[SET_CLASS("Brute", INTERFACE_RED)]", 1)
+			user.show_message("\tType: [SET_CLASS("氧气", INTERFACE_BLUE)]-[SET_CLASS("毒素", INTERFACE_GREEN)]-[SET_CLASS("Burns", INTERFACE_ORANGE)]-[SET_CLASS("Brute", INTERFACE_RED)]", 1)
 			user.show_message("\tDamage: [SET_CLASS("?", INTERFACE_BLUE)] - [SET_CLASS("?", INTERFACE_GREEN)] - [SET_CLASS("?", INTERFACE_ORANGE)] - [SET_CLASS("?", INTERFACE_RED)]")
-			user.show_message(SPAN_NOTICE("Body Temperature: [src.bodytemperature-T0C]&deg;C ([src.bodytemperature*1.8-459.67]&deg;F)"), 1)
-			user.show_message(SPAN_DANGER("<b>Warning: Blood Level ERROR: --% --cl.Type: ERROR"))
-			user.show_message(SPAN_NOTICE("Subject's pulse: [SET_CLASS("-- bpm", INTERFACE_RED)]"))
+			user.show_message(SPAN_NOTICE("体温：[src.bodytemperature-T0C]°C ([src.bodytemperature*1.8-459.67]°F)"), 1)
+			user.show_message(SPAN_DANGER("<b>警告：血液水平错误：--% --cl.类型：错误"))
+			user.show_message(SPAN_NOTICE("目标脉搏：[SET_CLASS("-- bpm", INTERFACE_RED)]"))
 			return
 
 	var/dat = ""
@@ -558,7 +558,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		dat += "\nHealth Analyzer for [src]:\n\tOverall Status: <b>DEAD</b>\n"
 	else
 		dat += "\nHealth Analyzer results for [src]:\n\tOverall Status: [src.stat > 1 ? "<b>DEAD</b>" : "<b>[src.health - src.halloss]% healthy"]</b>\n"
-	dat += "\tType: [SET_CLASS("Oxygen", INTERFACE_BLUE)]-[SET_CLASS("Toxin", INTERFACE_GREEN)]-[SET_CLASS("Burns", INTERFACE_ORANGE)]-[SET_CLASS("Brute", INTERFACE_RED)]\n"
+	dat += "\tType: [SET_CLASS("氧气", INTERFACE_BLUE)]-[SET_CLASS("毒素", INTERFACE_GREEN)]-[SET_CLASS("Burns", INTERFACE_ORANGE)]-[SET_CLASS("Brute", INTERFACE_RED)]\n"
 	dat += "\tDamage: \t[SET_CLASS(OX, INTERFACE_BLUE)] - [SET_CLASS(TX, INTERFACE_GREEN)] - [SET_CLASS(BU, INTERFACE_ORANGE)] - [SET_CLASS(BR, INTERFACE_RED)]\n"
 	dat += "\tUntreated: {B}=Burns,{T}=Trauma,{F}=Fracture\n"
 

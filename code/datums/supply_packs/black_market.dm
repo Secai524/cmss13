@@ -19,7 +19,7 @@ black market prices are NOT based on real or in-universe costs. they are based o
 /datum/supply_packs/contraband // Abstract type (null name)
 	contains = null
 	containertype = null
-	containername = "large crate"
+	containername = "大型板条箱"
 	group = "Black Market"
 	contraband = TRUE
 	cost = 0
@@ -64,7 +64,7 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 	group = "Seized Items"
 
 /datum/supply_packs/contraband/seized/black_market_scanner
-	name = "black market scanner crate"
+	name = "黑市扫描仪箱"
 	contains = list(/obj/item/device/black_market_scanner)
 	containername = "interesting wooden crate"
 	dollar_cost = 5
@@ -72,7 +72,7 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 	containertype = /obj/structure/closet/coffin/woodencrate
 
 /datum/supply_packs/contraband/seized/confiscated_equipment
-	name = "seized foreign equipment crate"
+	name = "缴获的外军装备箱"
 	dollar_cost = 70
 	crate_heat = 10
 	containertype = /obj/structure/largecrate/black_market/confiscated_equipment
@@ -114,7 +114,7 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 			new /obj/item/clothing/under/tshirt/gray_blu(src)
 
 /datum/supply_packs/contraband/seized/confiscated_weaponry
-	name = "seized foreign weaponry crate"
+	name = "缴获的外军武器箱"
 	contains = list()
 	dollar_cost = 45
 	crate_heat = 15
@@ -181,7 +181,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 // Rifles
 
 /datum/supply_packs/contraband/seized/ak4047
-	name = "AK-4047 pulse assault rifle crate (x5 magazines included)"
+	name = "AK-4047脉冲突击步枪箱 (含x5弹匣)"
 	contains = list(
 		/obj/item/weapon/gun/rifle/ak4047,
 		/obj/item/ammo_magazine/rifle/ak4047,
@@ -194,7 +194,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/m16
-	name = "M16 rifle crate (x4 magazines included)"
+	name = "M16步枪箱 (含x4弹匣)"
 	contains = list(
 		/obj/item/weapon/gun/rifle/m16,
 		/obj/item/ammo_magazine/rifle/m16,
@@ -206,7 +206,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/ar10
-	name = "AR10 rifle crate (x5 magazines included)"
+	name = "AR10步枪箱 (含x5弹匣)"
 	contains = list(
 		/obj/item/weapon/gun/rifle/ar10,
 		/obj/item/ammo_magazine/rifle/ar10,
@@ -218,7 +218,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/mar30
-	name = "MAR-30 battle carbine crate (x5 magazines included)"
+	name = "MAR-30战斗卡宾枪箱 (含x5弹匣)"
 	contains = list(
 		/obj/item/weapon/gun/rifle/mar40/carbine,
 		/obj/item/ammo_magazine/rifle/mar40,
@@ -231,7 +231,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/hunting
-	name = "Basira-Armstrong bolt-action hunting rifle crate (x5 magazines included)"
+	name = "巴希拉-阿姆斯特朗栓动猎枪箱 (含x5弹匣)"
 	contains = list(
 		/obj/item/weapon/gun/boltaction,
 		/obj/item/ammo_magazine/rifle/boltaction,
@@ -245,7 +245,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 
 // Shotguns
 /datum/supply_packs/contraband/seized/custom
-	name = "custom-built shotgun crate (x1 ammo box included)"
+	name = "定制霰弹枪箱 (含x1弹药盒)"
 	contains = list(
 		/obj/item/weapon/gun/shotgun/merc/damaged,
 		/obj/item/ammo_magazine/shotgun,
@@ -256,7 +256,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 // SMGs
 
 /datum/supply_packs/contraband/seized/fp9000
-	name = "FN FP9000 submachinegun crate (x5 magazines included)"
+	name = "FN FP9000冲锋枪箱 (含x5弹匣)"
 	contains = list(
 		/obj/item/weapon/gun/smg/fp9000,
 		/obj/item/ammo_magazine/smg/fp9000,
@@ -269,7 +269,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/p90
-	name = "FN P90 submachinegun crate (x5 magazines included)"
+	name = "FN P90冲锋枪箱 (含x5弹匣)"
 	contains = list(
 		/obj/item/weapon/gun/smg/p90,
 		/obj/item/ammo_magazine/smg/p90,
@@ -282,7 +282,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/mp27
-	name = "MP-27 submachinegun crate (x5 magazines included)"
+	name = "MP-27冲锋枪箱 (含x5弹匣)"
 	contains = list(
 		/obj/item/weapon/gun/smg/mp27,
 		/obj/item/ammo_magazine/smg/mp27,
@@ -295,7 +295,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/mp5
-	name = "MP5 submachinegun crate (x5 magazines included)"
+	name = "MP5冲锋枪箱 (含x5弹匣)"
 	contains = list(
 		/obj/item/weapon/gun/smg/mp5,
 		/obj/item/ammo_magazine/smg/mp5,
@@ -308,7 +308,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/uzi
-	name = "UZI submachinegun crate (x5 magazines included)"
+	name = "乌兹冲锋枪箱（含5个弹匣）"
 	contains = list(
 		/obj/item/weapon/gun/smg/uzi,
 		/obj/item/ammo_magazine/smg/uzi,
@@ -321,7 +321,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/mac15
-	name = "MAC-15 submachinegun crate (x5 magazines included)"
+	name = "MAC-15冲锋枪箱（含5个弹匣）"
 	contains = list(
 		/obj/item/weapon/gun/smg/mac15,
 		/obj/item/ammo_magazine/smg/mac15,
@@ -334,7 +334,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/pps43
-	name = "Type-19 submachinegun crate (x5 magazines included)"
+	name = "19型冲锋枪箱（含5个弹匣）"
 	contains = list(
 		/obj/item/weapon/gun/smg/pps43,
 		/obj/item/ammo_magazine/smg/pps43/extended,
@@ -349,7 +349,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 //Pistols
 
 /datum/supply_packs/contraband/seized/b92fs
-	name = "Beretta pistol crate (x6 magazines included)"
+	name = "伯莱塔手枪箱（含6个弹匣）"
 	contains = list(
 		/obj/item/weapon/gun/pistol/b92fs,
 		/obj/item/ammo_magazine/pistol/b92fs,
@@ -363,7 +363,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/heavy
-	name = "Desert Eagle crate (x4 magazines included)"
+	name = "沙漠之鹰箱（含4个弹匣）"
 	contains = list(
 		/obj/item/weapon/gun/pistol/heavy,
 		/obj/item/ammo_magazine/pistol/heavy,
@@ -375,7 +375,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/t73
-	name = "Type 73 pistol crate (x6 magazines included)"
+	name = "73型手枪箱（含6个弹匣）"
 	contains = list(
 		/obj/item/weapon/gun/pistol/t73,
 		/obj/item/ammo_magazine/pistol/t73,
@@ -389,7 +389,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/kt42
-	name = "KT-42 Automag pistol (x5 magazines included)"
+	name = "KT-42自动马格南手枪（含5个弹匣）"
 	contains = list(
 		/obj/item/weapon/gun/pistol/kt42,
 		/obj/item/ammo_magazine/pistol/kt42,
@@ -402,7 +402,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/holdout
-	name = "holdout pistol (x7 magazines included)"
+	name = "隐藏手枪（含7个弹匣）"
 	contains = list(
 		/obj/item/weapon/gun/pistol/holdout,
 		/obj/item/ammo_magazine/pistol/holdout,
@@ -418,7 +418,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/bizon
-	name = "Type 64 Submachinegun (x4 magazines included)"
+	name = "64型冲锋枪（含4个弹匣）"
 	contains = list(
 		/obj/item/weapon/gun/smg/bizon,
 		/obj/item/ammo_magazine/smg/bizon,
@@ -432,7 +432,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 //Revolvers
 
 /datum/supply_packs/contraband/seized/cmb
-	name = "CMB Spearhead revolver (x5 magazines included)"
+	name = "CMB矛头左轮手枪（含5个弹匣）"
 	contains = list(
 		/obj/item/weapon/gun/revolver/cmb,
 		/obj/item/ammo_magazine/revolver/cmb,
@@ -445,7 +445,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/small
-	name = "Smith and Wesson revolver (x6 magazines included)"
+	name = "史密斯威森左轮手枪（含6个弹匣）"
 	contains = list(
 		/obj/item/weapon/gun/revolver/small,
 		/obj/item/ammo_magazine/revolver/small,
@@ -459,7 +459,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/upprevolver
-	name = "ZHNK-72 revolver (x6 magazines included)"
+	name = "ZHNK-72左轮手枪（含6个弹匣）"
 	contains = list(
 		/obj/item/weapon/gun/revolver/upp,
 		/obj/item/ammo_magazine/revolver/upp,
@@ -473,7 +473,7 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/r4t
-	name = "R4T hunting rifle case (x3 ammo boxes included)"
+	name = "R4T猎枪箱（含3个弹药盒）"
 	contains = list(
 		/obj/item/weapon/gun/lever_action/r4t,
 		/obj/item/attachable/stock/r4t,
@@ -496,7 +496,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 	group = "Shipside Contraband"
 
 /datum/supply_packs/contraband/shipside/confiscated_alcohol
-	name = "confiscated alcohol crate"
+	name = "没收酒精箱"
 	randomised_num_contained = 5
 	contains = list(
 		/obj/item/reagent_container/food/drinks/bottle/gin,
@@ -533,7 +533,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/shipside/confiscated_medicine
-	name = "confiscated medicinal supplies crate"
+	name = "没收医疗物资箱"
 	randomised_num_contained = 5
 	contains = list(
 		/obj/item/storage/pill_bottle/happy,
@@ -548,7 +548,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/shipside/confiscated_cuisine
-	name = "confiscated cuisine supplies crate"
+	name = "没收食品物资箱"
 	randomised_num_contained = 7
 	contains = list(
 		/obj/item/reagent_container/food/drinks/bottle/absinthe,
@@ -587,7 +587,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 
 
 /datum/supply_packs/contraband/shipside/confiscated_nicotine
-	name = "confiscated nicotine items crate"
+	name = "没收尼古丁物品箱"
 	randomised_num_contained = 2
 	contains = list(
 		/obj/item/storage/fancy/cigarettes/blackpack,
@@ -603,7 +603,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/shipside/confiscated_miscellaneous
-	name = "confiscated miscellaneous items crate"
+	name = "没收杂项物品箱"
 	randomised_num_contained = 6
 	contains = list(
 		/obj/item/toy/bikehorn,
@@ -657,7 +657,7 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 /* - Misc. USCM equipment - */
 
 /datum/supply_packs/contraband/surplus/uscm_poncho
-	name = "surplus USCM poncho crate (x2)"
+	name = "剩余USCM雨披箱（x2）"
 	dollar_cost = 15
 	containertype = /obj/structure/largecrate/black_market/poncho
 	crate_heat = -2
@@ -671,7 +671,7 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 	nope.update_icon()
 
 /datum/supply_packs/contraband/surplus/uscm_heap
-	name = "surplus high-explosive armor-piercing M41A magazine crate (x3)"
+	name = "剩余高爆穿甲M41A弹匣箱（x3）"
 	dollar_cost = 40
 	crate_heat = -2
 	containertype = /obj/structure/largecrate/black_market/uscm_heap
@@ -685,7 +685,7 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 	nope.update_icon()
 
 /datum/supply_packs/contraband/surplus/surplus_police_equipment
-	name = "surplus riot control equipment"
+	name = "剩余防暴控制装备"
 	randomised_num_contained = 3
 	contains = list(
 		/obj/item/weapon/baton/damaged,
@@ -701,7 +701,7 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/surplus/surplus_non_lethal_ammunition
-	name = "surplus non-lethal ammunition"
+	name = "剩余非致命弹药"
 	randomised_num_contained = 2
 	contains = list(
 		/obj/item/ammo_magazine/smg/m39/rubber,
@@ -717,31 +717,31 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 /* - Misc. USCM weaponry - */
 
 /datum/supply_packs/contraband/surplus/mk45_automag
-	name = "surplus MK-45 Automagnum case"
+	name = "剩余MK-45自动马格南箱"
 	dollar_cost = 35
 	contains = list(/obj/item/storage/box/guncase/mk45_automag)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/surplus/nsg23_marine
-	name = "surplus NSG-23 assault rifle case"
+	name = "剩余NSG-23突击步枪箱"
 	dollar_cost = 45
 	contains = list(/obj/item/storage/box/guncase/nsg23_marine)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/surplus/m3717
-	name = "surplus M37-17 pump shotgun case"
+	name = "剩余M37-17泵动式霰弹枪箱"
 	dollar_cost = 80
 	contains = list(/obj/item/storage/box/guncase/m3717)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/surplus/m1911
-	name = "surplus M1911 service pistol case"
+	name = "剩余M1911制式手枪箱"
 	dollar_cost = 10
 	contains = list(/obj/item/storage/box/guncase/m1911)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/surplus/m1911/socom
-	name = "surplus SOCOM M1911 service pistol case"
+	name = "剩余SOCOM M1911制式手枪箱"
 	dollar_cost = 25
 	contains = list(/obj/item/storage/box/guncase/m1911/socom)
 	containertype = /obj/structure/largecrate/black_market
@@ -752,168 +752,168 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 	group = "Contraband Ammo"
 
 /datum/supply_packs/contraband/ammo/r4t
-	name = "45-70 bullet box crate (x300 rounds)"
+	name = ".45-70子弹箱（x300发）"
 	dollar_cost = 135
 	contains = list(/obj/item/ammo_box/magazine/lever_action)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/ammo/r4t/training
-	name = "45-70 bullet box crate (x300 training rounds)"
+	name = ".45-70子弹箱（x300发训练弹）"
 	dollar_cost = 35
 	contains = list(/obj/item/ammo_box/magazine/lever_action/training)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/ammo/uppshot
-	name = "shotgun shell box crate (Type 23, x100 8g slug shells)"
+	name = "霰弹枪弹箱（23型，x100发8号独头弹）"
 	dollar_cost = 115
 	contains = list(/obj/item/ammo_box/magazine/shotgun/upp)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/ammo/uppshot/buck
-	name = "shotgun shell box crate (Type 23, x100 8g buckshot shells)"
+	name = "霰弹枪弹箱（23型，x100发8号鹿弹）"
 	dollar_cost = 115
 	contains = list(/obj/item/ammo_box/magazine/shotgun/upp/buckshot)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/ammo/uppshot/flech
-	name = "shotgun shell box crate (Type 23, x100 8g flechette shells)"
+	name = "霰弹枪弹箱（23型，x100发8号箭弹）"
 	dollar_cost = 115
 	contains = list(/obj/item/ammo_box/magazine/shotgun/upp/flechette)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/ammo/ak4047
-	name = "Magazine box (AK-4047, 12x regular mags)"
+	name = "弹匣箱（AK-4047，12个标准弹匣）"
 	dollar_cost = 40
 	contains = list(/obj/item/ammo_box/magazine/ak4047)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/ammo/ak4047/ap
-	name = "Magazine box (AK-4047, 12x AP mags)"
+	name = "弹匣箱（AK-4047，12个穿甲弹匣）"
 	dollar_cost = 80
 	contains = list(/obj/item/ammo_box/magazine/ak4047/ap)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/ammo/m16
-	name = "Magazine box (M16, 12x regular mags)"
+	name = "弹匣箱（M16，12个标准弹匣）"
 	dollar_cost = 100
 	contains = list(/obj/item/ammo_box/magazine/M16)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/ammo/ar10
-	name = "Magazine box (AR10, 12x regular mags)"
+	name = "弹匣箱（AR10，12个标准弹匣）"
 	dollar_cost = 115
 	contains = list(/obj/item/ammo_box/magazine/ar10)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/ammo/deagle
-	name = "Magazine box (Desert Eagle, 16x regular mags)"
+	name = "弹匣箱（沙漠之鹰，16个标准弹匣）"
 	dollar_cost = 180
 	contains = list(/obj/item/ammo_box/magazine/deagle)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/ammo/deagle/hiap
-	name = "Magazine box (Desert Eagle, 16x HIAP mags)"
+	name = "弹匣箱（沙漠之鹰，16个高爆穿甲弹匣）"
 	dollar_cost = 260
 	contains = list(/obj/item/ammo_box/magazine/deagle/super/highimpact/ap/empty)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/ammo/type73
-	name = "Magazine box (Type 73, 16x regular mags)"
+	name = "弹匣箱（73型，16个标准弹匣）"
 	dollar_cost = 60
 	contains = list(/obj/item/ammo_box/magazine/type73)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/ammo/nsg
-	name = "Magazine box (NSG-23, 16x regular mags)"
+	name = "弹匣箱（NSG-23，16个标准弹匣）"
 	dollar_cost = 140
 	contains = list(/obj/item/ammo_box/magazine/nsg23)
 	containertype = /obj/structure/largecrate/black_market
 /datum/supply_packs/contraband/ammo/mar30
-	name = "Magazines box (MAR30, 10x regular mags)"
+	name = "弹匣箱（MAR30，10个标准弹匣）"
 	dollar_cost = 60
 	contains = list(/obj/item/ammo_box/magazine/mar30)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/ammo/fp9000
-	name = "Magazines box (FN FP9000, 10x mags)"
+	name = "弹匣箱（FN FP9000，10个弹匣）"
 	dollar_cost = 35
 	contains = list(/obj/item/ammo_box/magazine/fp9000)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/ammo/p90
-	name = "Magazines box (FN P90, 10x mags)"
+	name = "弹匣箱（FN P90，10个弹匣）"
 	dollar_cost = 30
 	contains = list(/obj/item/ammo_box/magazine/p90)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/ammo/mp27
-	name = "Magazines box (MP-27, 12x mags)"
+	name = "弹匣箱（MP-27，12个弹匣）"
 	dollar_cost = 45
 	contains = list(/obj/item/ammo_box/magazine/mp27)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/ammo/uzi
-	name = "Magazines box (UZI, 12x mags)"
+	name = "弹匣箱（UZI，12个弹匣）"
 	dollar_cost = 25
 	contains = list(/obj/item/ammo_box/magazine/uzi)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/ammo/mac15
-	name = "Magazines box (MAC-15, 12x mags)"
+	name = "弹匣箱（MAC-15，12个弹匣）"
 	dollar_cost = 15
 	contains = list(/obj/item/ammo_box/magazine/mac15)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/ammo/pps43
-	name = "Magazines box (Type-19, 10x regular mags)"
+	name = "弹匣箱（19型，10个标准弹匣）"
 	dollar_cost = 40
 	contains = list(/obj/item/ammo_box/magazine/type19)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/ammo/b92fs
-	name = "Magazines box (Beretta 92FS, 16x mags)"
+	name = "弹匣箱（伯莱塔92FS，16个弹匣）"
 	dollar_cost = 30
 	contains = list(/obj/item/ammo_box/magazine/b92fs)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/ammo/kt42
-	name = "Magazines box (KT-42, 16x mags)"
+	name = "弹匣箱（KT-42，16个弹匣）"
 	dollar_cost = 45
 	contains = list(/obj/item/ammo_box/magazine/kt42)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/ammo/bizon
-	name = "Magazines box (Type 64, 10x mags)"
+	name = "弹匣箱（64型，10个弹匣）"
 	dollar_cost = 40
 	contains = list(/obj/item/ammo_box/magazine/type64)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/ammo/m1911
-	name = "Magazines box (M1911, 16x mags)"
+	name = "弹匣箱 (M1911，16个弹匣)"
 	dollar_cost = 40
 	contains = list(/obj/item/ammo_box/magazine/m1911)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/ammo/mk45
-	name = "Magazines box (MK-45 Automagnum, 16x mags)"
+	name = "弹匣箱 (MK-45自动马格南，16个弹匣)"
 	dollar_cost = 80
 	contains = list(/obj/item/ammo_box/magazine/mk45)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/ammo/cmb
-	name = "Speed loaders box (CMB Spearhead, 16x HP loaders)"
+	name = "快速装弹器箱 (CMB矛头，16个HP装弹器)"
 	dollar_cost = 70
 	contains = list(/obj/item/ammo_box/magazine/spearhead)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/ammo/smw
-	name = "Speed loaders box (Smith and Wesson revolver, 12x loaders)"
+	name = "快速装弹器箱 (史密斯威森左轮，12个装弹器)"
 	dollar_cost = 30
 	contains = list(/obj/item/ammo_box/magazine/snw)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/ammo/zhnk
-	name = "Speed loaders box (ZHNK-72, 12x loaders)"
+	name = "快速装弹器箱 (ZHNK-72，12个装弹器)"
 	dollar_cost = 30
 	contains = list(/obj/item/ammo_box/magazine/zhnk)
 	containertype = /obj/structure/largecrate/black_market
@@ -934,32 +934,32 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 	crate_heat = -5
 
 /datum/supply_packs/contraband/deep_storage/spacejam
-	name = "Tickets to Space Jam"
+	name = "《太空大灌篮》门票"
 	contains = list(/obj/item/prop/helmetgarb/spacejam_tickets)
 	dollar_cost = 5
 	crate_heat = -2
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/broken_nvgs
-	name = "Broken Night Vision Goggles"
+	name = "损坏的夜视镜"
 	contains = list(/obj/item/prop/helmetgarb/helmet_nvg/cosmetic)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/xm43e1_pipe
-	name = "10x99mm XM43E1 casing"
+	name = "10x99mm XM43E1弹壳"
 	contains = list(/obj/item/prop/helmetgarb/bullet_pipe)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/trimmed_wire
-	name = "Trimmed Barbed Wire"
+	name = "修剪过的铁丝网"
 	contains = list(/obj/item/prop/helmetgarb/trimmed_wire)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/lucky_feather_random
-	name = "Lucky Feather"
+	name = "幸运羽毛"
 	randomised_num_contained = 1
 	contains = list(
 		/obj/item/prop/helmetgarb/lucky_feather,
@@ -971,13 +971,13 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/rosary
-	name = "Rosary"
+	name = "念珠"
 	contains = list(/obj/item/prop/helmetgarb/rosary)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/rabbitsfoot
-	name = "Rabbit's Foot"
+	name = "兔脚"
 	contains = list(/obj/item/prop/helmetgarb/rabbitsfoot)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
@@ -985,7 +985,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 // Masks
 
 /datum/supply_packs/contraband/deep_storage/tacticalmask_random
-	name = "Tactical Mask"
+	name = "战术面罩"
 	randomised_num_contained = 1
 	contains = list(
 		/obj/item/clothing/mask/rebreather/scarf/tacticalmask,
@@ -997,7 +997,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/skull_balaclava_random
-	name = "Skull Balaclava"
+	name = "骷髅头套"
 	randomised_num_contained = 1
 	contains = list(
 		/obj/item/clothing/mask/rebreather/skull/black,
@@ -1008,7 +1008,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 
 
 /datum/supply_packs/contraband/deep_storage/skull_facepaint
-	name = "Skull Facepaint"
+	name = "骷髅脸绘"
 	contains = list(/obj/item/facepaint/skull)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
@@ -1016,13 +1016,13 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 //Glasses
 
 /datum/supply_packs/contraband/deep_storage/aviator_shades
-	name = "Aviator Shades"
+	name = "飞行员墨镜"
 	contains = list(/obj/item/clothing/glasses/sunglasses/aviator)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/ballistic_goggles_random
-	name = "Ballistic Goggles"
+	name = "防弹护目镜"
 	randomised_num_contained = 1
 	contains = list(
 		/obj/item/clothing/glasses/mgoggles,
@@ -1033,7 +1033,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/bimex_shades
-	name = "BiMex Personal Shades"
+	name = "BiMex个人墨镜"
 	contains = list(/obj/item/clothing/glasses/sunglasses/big)
 	dollar_cost = 15
 	containertype = /obj/structure/largecrate/black_market
@@ -1041,7 +1041,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 // Headgear
 
 /datum/supply_packs/contraband/deep_storage/bandana_random
-	name = "USCM Bandana"
+	name = "USCM头巾"
 	randomised_num_contained = 1
 	contains = list(
 		/obj/item/clothing/head/cmbandana,
@@ -1051,14 +1051,14 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/uscm_earpiece
-	name = "USCM Earpiece"
+	name = "USCM耳麦"
 	randomised_num_contained = 1
 	contains = list(/obj/item/clothing/head/headset)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/uscm_headband
-	name = "USCM Headband"
+	name = "USCM头带"
 	randomised_num_contained = 1
 	contains = list(
 		/obj/item/clothing/head/headband,
@@ -1071,7 +1071,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/uscm_boonie_hat
-	name = "USCM Boonie Hat"
+	name = "USMC丛林帽"
 	randomised_num_contained = 1
 	contains = list(
 		/obj/item/clothing/head/cmcap/boonie/tan,
@@ -1083,20 +1083,20 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 //Misc
 
 /datum/supply_packs/contraband/deep_storage/pdtl_kit
-	name = "PDT/L Kit"
+	name = "PDT/L工具包"
 	contains = list(/obj/item/storage/box/pdt_kit)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/lucky_lime
-	name = "Frozen Lime"
+	name = "冷冻青柠"
 	contains = list(/obj/item/reagent_container/food/snacks/grown/lime)
 	dollar_cost = 5
 	crate_heat = -2
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/uno_reverse_random
-	name = "Uno Reverse Card"
+	name = "UNO反转卡"
 	randomised_num_contained = 1
 	contains = list(
 		/obj/item/toy/handcard/uno_reverse_red,
@@ -1108,7 +1108,7 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/jungle_boots
-	name = "Jungle Pattern Combat Boots"
+	name = "丛林迷彩作战靴"
 	contains = list(/obj/item/clothing/shoes/marine/jungle)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
@@ -1116,40 +1116,40 @@ This is where the RO can reclaim their lost honor and purchase the M44 custom, t
 //Weapons
 
 /datum/supply_packs/contraband/deep_storage/type_replica
-	name = "Type 80 Bayonet Replica"
+	name = "80式刺刀复制品"
 	contains = list(/obj/item/attachable/bayonet/upp_replica)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/cartridge_bayonet
-	name = "M8 Cartridge Bayonet Kit"
+	name = "M8弹匣刺刀套件"
 	contains = list(/obj/item/storage/box/co2_knife)
 	dollar_cost = 10
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/clf_holdout
-	name = "D18 Holdout Pistol"
+	name = "D18隐匿手枪"
 	contains = list(/obj/item/storage/box/clf)
 	dollar_cost = 10
 	crate_heat = 2
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/m4a3_c
-	name = "M4A3 Custom Pistol"
+	name = "M4A3定制手枪"
 	contains = list(/obj/item/weapon/gun/pistol/m4a3/custom)
 	dollar_cost = 35
 	crate_heat = 4
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/m44_c
-	name = "M44 Custom Revolver"
+	name = "M44定制左轮手枪"
 	contains = list(/obj/item/weapon/gun/revolver/m44/custom)
 	dollar_cost = 70
 	crate_heat = 4
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/deep_storage/gunslinger_holster
-	name = "Red Ranger Cowboy Gunbelt Crate (x2)"
+	name = "红色游骑兵牛仔枪套箱 (x2)"
 	contains = list(
 		/obj/item/storage/belt/gun/m44/gunslinger,
 		/obj/item/storage/belt/gun/m44/gunslinger,
@@ -1170,13 +1170,13 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 	group = "Miscellaneous"
 
 /datum/supply_packs/contraband/miscellaneous/secured_wildlife
-	name = "secured wildlife container"
+	name = "安保野生动物容器"
 	dollar_cost = 45
 	crate_heat = 7
 	containertype = /obj/structure/largecrate/black_market/secured_wildlife
 
 /obj/structure/largecrate/black_market/secured_wildlife
-	name = "secured wildlife container"
+	name = "安保野生动物容器"
 	icon_state = "lisacrate"
 
 /obj/structure/largecrate/black_market/secured_wildlife/unpack()
@@ -1189,28 +1189,28 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 	. = ..()
 
 /datum/supply_packs/contraband/miscellaneous/potted_plant
-	name = "potted plant crate"
+	name = "盆栽植物箱"
 	dollar_cost = 50
 	crate_heat = -10
 	contains = list(/obj/structure/flora/pottedplant/random/unanchored)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/miscellaneous/cargo_tug
-	name = "cargo tug crate"
+	name = "货物拖曳车箱"
 	dollar_cost = 50
 	contains = list(/obj/vehicle/train/cargo/engine)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/miscellaneous/clf_supplies
-	name = "unmarked CLF supply crate"
+	name = "未标记的CLF补给箱"
 	dollar_cost = 40
 	crate_heat = 25
 	contains = list()
 	containertype = /obj/structure/largecrate/black_market/clf_supplies
 
 /obj/structure/largecrate/black_market/clf_supplies
-	name = "unmarked CLF supply crate"
-	desc = "What's in the box? Only one way to find out!"
+	name = "未标记的CLF补给箱"
+	desc = "箱子里是什么？只有一个办法能知道！"
 	icon_state = "chest"
 	/// If you want to use this in mapping, you can force-set the contents via this.
 	var/forced_rng

@@ -1,7 +1,7 @@
 //Empty sandbags
 /obj/item/stack/sandbags_empty
-	name = "empty sandbags"
-	desc = "Some empty sandbags, best to fill them up if you want to use them."
+	name = "空沙袋"
+	desc = "一些空沙袋，最好装满再用。"
 	singular_name = "sandbag"
 	icon = 'icons/obj/items/marine-items.dmi'
 	item_icons = list(
@@ -17,7 +17,7 @@
 	throw_range = 20
 	max_amount = 50
 	attack_verb = list("hit", "slapped", "whacked")
-	stack_id = "empty sandbags"
+	stack_id = "空沙袋"
 
 /obj/item/stack/sandbags_empty/attackby(obj/item/W, mob/user)
 	if (istype(W, /obj/item/tool/shovel))
@@ -59,7 +59,7 @@
 //Full sandbags
 /obj/item/stack/sandbags
 	name = "sandbags"
-	desc = "Some bags filled with sand. For now, just cumbersome, but soon to be used for fortifications."
+	desc = "一些装满沙子的袋子。目前只是累赘，但很快就能用于构筑防御工事。"
 	singular_name = "sandbag"
 	icon = 'icons/obj/items/marine-items.dmi'
 	item_icons = list(
@@ -90,13 +90,13 @@
 	if(!isturf(user.loc))
 		return
 	if(istype(user.loc, /turf/open/shuttle))
-		to_chat(user, SPAN_WARNING("No. This area is needed for the dropships and personnel."))
+		to_chat(user, SPAN_WARNING("不行。这片区域是运输机和人员必需的。"))
 		return
 	if(istype(user.loc, /turf/open))
 		var/turf/open/OT = user.loc
 		var/area/area = get_area(user)
 		if(!OT.allow_construction || !area.allow_construction)
-			to_chat(user, SPAN_WARNING("The sandbag barricade must be constructed on a proper surface!"))
+			to_chat(user, SPAN_WARNING("沙袋路障必须建在合适的地面上！"))
 			return
 
 	//Using same safeties as other constructions
@@ -105,19 +105,19 @@
 		if(O.density)
 			if(O.flags_atom & ON_BORDER)
 				if(O.dir == user.dir)
-					to_chat(user, SPAN_WARNING("There is already \a [O.name] in this direction!"))
+					to_chat(user, SPAN_WARNING("这个方向已经有一个\a [O.name]了！"))
 					return
 			else
-				to_chat(user, SPAN_WARNING("You need a clear, open area to build the sandbag barricade!"))
+				to_chat(user, SPAN_WARNING("你需要一个开阔、空旷的区域来建造沙袋路障！"))
 				return
 		if(AC)
-			to_chat(usr, SPAN_WARNING("The [O.name] cannot be built here!"))
+			to_chat(usr, SPAN_WARNING("无法在此处建造[O.name]！"))
 			return
 
 	if(user.action_busy)
 		return
 
-	user.visible_message(SPAN_NOTICE("[user] starts assembling a sandbag barricade."),
+	user.visible_message(SPAN_NOTICE("[user]开始组装沙袋路障。"),
 	SPAN_NOTICE("You start assembling a sandbag barricade."))
 
 	if(!do_after(user, 10, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -133,7 +133,7 @@
 		build_stack = 5
 
 	var/obj/structure/barricade/sandbags/SB = new(user.loc, user, user.dir, build_stack)
-	user.visible_message(SPAN_NOTICE("[user] assembles a sandbag barricade."),
+	user.visible_message(SPAN_NOTICE("[user]组装了一个沙袋路障。"),
 	SPAN_NOTICE("You assemble a sandbag barricade."))
 	SB.setDir(user.dir)
 	SB.add_fingerprint(user)

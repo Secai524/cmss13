@@ -21,7 +21,7 @@ Bonus
 
 /datum/symptom/vomit
 
-	name = "Vomiting"
+	name = "呕吐"
 	stealth = -2
 	resistance = -1
 	stage_speed = 0
@@ -68,7 +68,7 @@ Bonus
 
 /datum/symptom/vomit/blood
 
-	name = "Blood Vomiting"
+	name = "吐血"
 	stealth = -2
 	resistance = -1
 	stage_speed = -1
@@ -78,7 +78,7 @@ Bonus
 /datum/symptom/vomit/blood/Vomit(mob/living/M)
 
 	M.apply_effect(1, STUN)
-	M.visible_message("<B>[M]</B> vomits on the floor!")
+	M.visible_message("<B>[M]</B>吐在了地板上！")
 
 	// They lose blood and health.
 	var/brute_dam = M.getBruteLoss()

@@ -1,5 +1,5 @@
 /datum/supply_packs/upp/ammo_rounds_box_5_45x39mm
-	name = "UPP ammo box crate (5.45x39mm) (x600 rounds)"
+	name = "UPP弹药箱（5.45x39mm）（x600发）"
 	contains = list(
 		/obj/item/ammo_box/rounds/type71,
 	)
@@ -9,7 +9,7 @@
 	group = "UPP Ammo"
 
 /datum/supply_packs/upp/ammo_rounds_box_5_45x39mm_ap
-	name = "UPP ammo box crate (5.45x39mm AP) (x600 rounds)"
+	name = "UPP弹药箱（5.45x39mm穿甲弹）（x600发）"
 	contains = list(
 		/obj/item/ammo_box/rounds/type71/ap,
 	)
@@ -20,7 +20,7 @@
 
 
 /datum/supply_packs/upp/ammo_8g_slug
-	name = "UPP Magazine box (Type 23, 20x slug)"
+	name = "UPP弹匣箱（23型，20发独头弹）"
 	contains = list(
 		/obj/item/ammo_magazine/handful/shotgun/heavy/slug,
 		/obj/item/ammo_magazine/handful/shotgun/heavy/slug,
@@ -49,7 +49,7 @@
 	group = "UPP Ammo"
 
 /datum/supply_packs/ammo_8g_flechette
-	name = "Magazine box (Type 23, 10x flechette)"
+	name = "弹匣箱（23型，10发箭形弹）"
 	contains = list(
 		/obj/item/ammo_magazine/handful/shotgun/heavy/flechette,
 		/obj/item/ammo_magazine/handful/shotgun/heavy/flechette,
@@ -69,7 +69,7 @@
 
 
 /datum/supply_packs/upp/ammo_Type64_x10
-	name = "UPP Magazine box (Type 64, 10x regular mags)"
+	name = "UPP弹匣箱（64型，10个标准弹匣）"
 	contains = list(
 		/obj/item/ammo_box/magazine/type64,
 	)
@@ -79,7 +79,7 @@
 	group = "UPP Ammo"
 
 /datum/supply_packs/upp/ammo_Type71_box
-	name = "UPP Magazine box (Type 71, 10x regular mags)"
+	name = "UPP弹匣箱（71型，10个标准弹匣）"
 	contains = list(
 		/obj/item/ammo_box/magazine/type71,
 	)
@@ -89,7 +89,7 @@
 	group = "UPP Ammo"
 
 /datum/supply_packs/upp/ammo_Type71_box_ap
-	name = "UPP Magazine box (Type 71, 10x AP mags)"
+	name = "UPP弹匣箱（71型，10个穿甲弹匣）"
 	contains = list(
 		/obj/item/ammo_box/magazine/type71/ap,
 	)
@@ -99,7 +99,7 @@
 	group = "UPP Ammo"
 
 /datum/supply_packs/upp/ammo_m2c_upp
-	name = "UPP M2C ammunition crate (x2)"
+	name = "UPP M2C弹药箱（x2）"
 	contains = list(
 		/obj/item/ammo_magazine/m2c,
 		/obj/item/ammo_magazine/m2c,
@@ -110,7 +110,7 @@
 	group = "UPP Ammo"
 
 /datum/supply_packs/upp/ammo_pkp_mags
-	name = "UPP Magazines (QYJ-72, 4x mags)"
+	name = "UPP弹匣（QYJ-72，4个弹匣）"
 	contains = list(
 		/obj/item/ammo_magazine/pkp,
 		/obj/item/ammo_magazine/pkp,
@@ -123,7 +123,7 @@
 	group = "UPP Ammo"
 
 /datum/supply_packs/upp/ammo_minigun_mags
-	name = "UPP Magazines (GSh-7.62, 4x mags)"
+	name = "UPP弹匣（GSh-7.62，4个弹匣）"
 	contains = list(
 		/obj/item/ammo_magazine/minigun,
 		/obj/item/ammo_magazine/minigun,
@@ -136,7 +136,7 @@
 	group = "UPP Special Ammo"
 
 /datum/supply_packs/upp/ammo_rpg_he
-	name = "UPP HJRA-12 HE Rocket Crate (x3)"
+	name = "UPP HJRA-12高爆火箭弹箱（x3）"
 	contains = list(
 		/obj/item/ammo_magazine/rocket/upp,
 		/obj/item/ammo_magazine/rocket/upp,
@@ -148,7 +148,7 @@
 	group = "UPP Special Ammo"
 
 /datum/supply_packs/upp/ammo_rpg_ap
-	name = "UPP HJRA-12 AP Rocket Crate (x3)"
+	name = "UPP HJRA-12穿甲火箭弹箱（x3）"
 	contains = list(
 		/obj/item/ammo_magazine/rocket/upp/at,
 		/obj/item/ammo_magazine/rocket/upp/at,
@@ -160,7 +160,7 @@
 	group = "UPP Special Ammo"
 
 /datum/supply_packs/upp/ammo_rpg_wp
-	name = "UPP HJRA-12 Extreme-Intensity Incendiary Rocket Crate (x3)"
+	name = "UPP HJRA-12超强燃烧火箭弹箱（x3）"
 	contains = list(
 		/obj/item/ammo_magazine/rocket/upp/incen,
 		/obj/item/ammo_magazine/rocket/upp/incen,

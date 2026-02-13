@@ -2,10 +2,10 @@
 
 
 /datum/action/xeno_action/activable/xeno_spit/spitter
-	name = "Spit Acid"
+	name = "喷吐酸液"
 
 /datum/action/xeno_action/onclick/charge_spit
-	name = "Charge Spit"
+	name = "蓄力唾液"
 	action_icon_state = "charge_spit"
 	macro_path = /datum/action/xeno_action/verb/verb_charge_spit
 	ability_primacy = XENO_PRIMARY_ACTION_2
@@ -35,4 +35,4 @@
 	activation_delay = FALSE // Is there an activation delay?
 
 /datum/action/xeno_action/activable/tail_stab/spitter
-	name = "Corrosive Tail Stab"
+	name = "腐蚀性尾刺"

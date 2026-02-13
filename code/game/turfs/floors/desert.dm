@@ -2,7 +2,7 @@
 //Desert Map
 
 /turf/open/desert //Basic groundmap turf parent
-	name = "desert dirt"
+	name = "荒漠泥土"
 	icon = 'icons/turf/floors/desert.dmi'
 	icon_state = "desert1"
 	is_groundmap_turf = TRUE
@@ -283,7 +283,7 @@
 
 //inner cave shore
 /turf/open/desert/cave/cave_shore
-	name = "cave shore"
+	name = "洞穴岸边"
 	icon = 'icons/turf/floors/desert_water.dmi'
 	icon_state = "shore_caves"
 	var/toxic = 0

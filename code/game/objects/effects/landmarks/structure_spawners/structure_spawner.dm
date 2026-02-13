@@ -1,6 +1,6 @@
 /// Structure spawner, representing something that can be spawned by gameplay logic during round or at setup
 /obj/effect/landmark/structure_spawner
-	name = "structure spawner"
+	name = "结构生成器"
 	icon_state = "x2"
 	/// Typepath to effectively instanciate
 	var/path_to_spawn
@@ -47,7 +47,7 @@
 
 /// Setup spawners will all be evaluated by game mode on start, and deleted after
 /obj/effect/landmark/structure_spawner/setup
-	name = "abstract gamemode structure spawner"
+	name = "抽象游戏模式结构生成器"
 /obj/effect/landmark/structure_spawner/setup/post_setup()
 	qdel(src)
 	return FALSE

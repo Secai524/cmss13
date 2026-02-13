@@ -68,7 +68,7 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 							qdel(new_xeno)
 							break
 
-						new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly burrows out of the ground!"),
+						new_xeno.visible_message(SPAN_XENODANGER("一只幼虫突然从地面钻出！"),
 						SPAN_XENODANGER("You burrow out of the ground after feeling an immense tremor through the hive, which quickly fades into complete silence..."))
 
 						GLOB.hive_datum[hivenumber].stored_larva--
@@ -108,7 +108,7 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 	if(hive && IS_XENO_LEADER(src)) //Strip them from the Xeno leader list, if they are indexed in here
 		hive.remove_hive_leader(src)
 		if(hive.living_xeno_queen)
-			to_chat(hive.living_xeno_queen, SPAN_XENONOTICE("A leader has fallen!")) //alert queens so they can choose another leader
+			to_chat(hive.living_xeno_queen, SPAN_XENONOTICE("一位领袖倒下了！")) //alert queens so they can choose another leader
 
 	hud_update() //updates the overwatch hud to remove the upgrade chevrons, gold star, etc
 	SSminimaps.remove_marker(src)
@@ -143,7 +143,7 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 				marine_announcement(input, name, 'sound/AI/bioscan.ogg', logging = ARES_LOG_NONE)
 				// Tell the xeno she is the last one, heal her and make her fight to the death
 				if(xeno.client)
-					to_chat(xeno, SPAN_XENOANNOUNCE("Your carapace rattles with RAGE. You are all that remains of the hive! Go out fighting, kill them all!"))
+					to_chat(xeno, SPAN_XENOANNOUNCE("你的甲壳因愤怒而震颤。你是巢穴仅存的希望！战斗至死，杀光他们！"))
 					if(!TIMER_COOLDOWN_CHECK(xeno, LAST_XENO_HEAL_COOLDOWN))
 						xeno.rejuvenate()
 						TIMER_COOLDOWN_START(xeno, LAST_XENO_HEAL_COOLDOWN, 10 MINUTES)
@@ -162,7 +162,7 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 	switch(caste.caste_type)
 		if(XENO_CASTE_BOILER)
 			var/mob/living/carbon/xenomorph/boiler/src_boiler = src
-			visible_message(SPAN_DANGER("[src] begins to bulge grotesquely, and explodes in a cloud of corrosive gas!"))
+			visible_message(SPAN_DANGER("[src]开始怪异地膨胀，并在腐蚀性气体云中爆炸！"))
 			src_boiler.smoke.set_up(2, 0, get_turf(src), new_cause_data = src_boiler.smoke.cause_data)
 			src_boiler.smoke.start()
 		if(XENO_CASTE_FACEHUGGER)

@@ -10,7 +10,7 @@
 		return
 
 	if(is_mob_incapacitated() || buckled)
-		to_chat(src, "You cannot tackle someone in your current state.")
+		to_chat(src, "你当前状态无法冲撞他人。")
 		return
 
 	var/list/choices = list()
@@ -19,7 +19,7 @@
 			choices += M
 	choices -= src
 
-	var/mob/living/T = tgui_input_list(src,"Who do you wish to tackle?", "Tackle", choices)
+	var/mob/living/T = tgui_input_list(src,"你想冲撞谁？", "Tackle", choices)
 
 	if(!T || !src || stat || !Adjacent(T))
 		return
@@ -28,7 +28,7 @@
 		return
 
 	if(is_mob_incapacitated() || buckled)
-		to_chat(src, "You cannot tackle in your current state.")
+		to_chat(src, "你当前状态无法冲撞。")
 		return
 
 	last_special = world.time + 50
@@ -50,14 +50,14 @@
 
 /mob/living/carbon/human/proc/leap()
 	set category = "Abilities"
-	set name = "Leap"
+	set name = "飞跃"
 	set desc = "Leap at a target and grab them aggressively."
 
 	if(last_special > world.time)
 		return
 
 	if(is_mob_incapacitated() || body_position != STANDING_UP || buckled)
-		to_chat(src, "You cannot leap in your current state.")
+		to_chat(src, "你当前状态无法飞扑。")
 		return
 
 	var/list/choices = list()
@@ -66,7 +66,7 @@
 			choices += M
 	choices -= src
 
-	var/mob/living/T = tgui_input_list(src,"Who do you wish to leap at?", "Leap", choices)
+	var/mob/living/T = tgui_input_list(src,"你想飞扑向谁？", "飞跃", choices)
 
 	if(!T || !src || stat || get_dist(get_turf(T), get_turf(src)) > 6)
 		return
@@ -75,13 +75,13 @@
 		return
 
 	if(is_mob_incapacitated() || body_position != STANDING_UP || buckled)
-		to_chat(src, "You cannot leap in your current state.")
+		to_chat(src, "你当前状态无法飞扑。")
 		return
 
 	last_special = world.time + 75
 	status_flags |= LEAPING
 
-	visible_message(SPAN_WARNING("<b>[src]</b> leaps at [T]!"))
+	visible_message(SPAN_WARNING("<b>[src]</b> 飞扑向 [T]！"))
 	var/target = get_step(get_turf(T), get_dir(src, T))
 	throw_atom(target, 5, SPEED_VERY_FAST, src)
 	playsound(loc, 'sound/voice/shriek1.ogg', 25, 1)
@@ -93,7 +93,7 @@
 		status_flags &= ~LEAPING
 
 	if(!Adjacent(T))
-		to_chat(src, SPAN_DANGER("You miss!"))
+		to_chat(src, SPAN_DANGER("你扑空了！"))
 		return
 
 	T.apply_effect(5, WEAKEN)
@@ -112,21 +112,21 @@
 		return
 
 	if(is_mob_incapacitated() || body_position != STANDING_UP)
-		to_chat(src, SPAN_DANGER("You cannot do that in your current state."))
+		to_chat(src, SPAN_DANGER("你当前状态无法执行此操作。"))
 		return
 
 	var/obj/item/grab/G = locate() in src
 	if(!G || !istype(G))
-		to_chat(src, SPAN_DANGER("You are not grabbing anyone."))
+		to_chat(src, SPAN_DANGER("你并未抓住任何人。"))
 		return
 
 	if(usr.grab_level < GRAB_AGGRESSIVE)
-		to_chat(src, SPAN_DANGER("You must have an aggressive grab to gut your prey!"))
+		to_chat(src, SPAN_DANGER("你必须以攻击性抓取才能开膛破肚！"))
 		return
 
 	last_special = world.time + 50
 
-	visible_message(SPAN_WARNING("<b>[src]</b> rips viciously at [G.grabbed_thing]'s body with its claws!"))
+	visible_message(SPAN_WARNING("<b>[src]</b> 用利爪凶残地撕扯着 [G.grabbed_thing] 的身体！"))
 
 	if(istype(G.grabbed_thing,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = G.grabbed_thing
@@ -151,12 +151,12 @@
 	var/text = null
 
 	targets += getmobs() //Fill list, prompt user with list
-	target = tgui_input_list(usr, "Select a creature!", "Speak to creature", targets)
+	target = tgui_input_list(usr, "选择一个生物！", "与生物交谈", targets)
 
 	if(!target)
 		return
 
-	text = input("What would you like to say?", "Speak to creature", null, null)
+	text = input("What would you like to say?", "与生物交谈", null, null)
 
 	text = trim(strip_html(text))
 
@@ -166,36 +166,36 @@
 	var/mob/M = targets[target]
 
 	if(istype(M, /mob/dead/observer) || M.stat == DEAD)
-		to_chat(src, "Not even a [species.name] can speak to the dead.")
+		to_chat(src, "即使是 [species.name] 也无法与死者交谈。")
 		return
 
 	log_say("[key_name(src)] communed to [key_name(M)]: [text] (AREA: [get_area_name(loc)])")
 
-	to_chat(M, SPAN_NOTICE("Like lead slabs crashing into the ocean, alien thoughts drop into your mind: [text]"))
+	to_chat(M, SPAN_NOTICE("如同铅板坠入海洋，异形的思绪砸入你的脑海：[text]"))
 	if(istype(M,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
 		if(H.species.name == species.name)
 			return
-		to_chat(H, SPAN_DANGER("Your nose begins to bleed..."))
+		to_chat(H, SPAN_DANGER("你的鼻子开始流血..."))
 		H.drip(1)
 
 /mob/living/carbon/human/proc/psychic_whisper(mob/target_mob as mob in oview())
-	set name = "Psychic Whisper"
+	set name = "心灵低语"
 	set desc = "Whisper silently to someone over a distance."
 	set category = "Abilities.Psychic"
 
 	if(stat == DEAD)
-		to_chat(src, SPAN_WARNING("You cannot talk while dead."))
+		to_chat(src, SPAN_WARNING("死亡状态下无法说话。"))
 		return FALSE
 
-	var/whisper = tgui_input_text(src, "What do you wish to say?", "Psychic Whisper")
+	var/whisper = tgui_input_text(src, "你想说什么？", "心灵低语")
 	if(whisper)
 		log_say("PsychicWhisper: [key_name(src)]->[target_mob.key] : [whisper] (AREA: [get_area_name(loc)])")
 		if(!istype(target_mob, /mob/living/carbon/xenomorph))
-			to_chat(target_mob, SPAN_XENOQUEEN("You hear a strange, alien voice in your head... \"[SPAN_PSYTALK(whisper)]\""))
+			to_chat(target_mob, SPAN_XENOQUEEN("你脑海中响起一个陌生而异样的声音... \"[SPAN_PSYTALK(whisper)]\""))
 		else
-			to_chat(target_mob, SPAN_XENOQUEEN("You hear the voice of [src] resonate in your head... \"[SPAN_PSYTALK(whisper)]\""))
-		to_chat(src, SPAN_XENOWARNING("You said: \"[whisper]\" to [target_mob]"))
+			to_chat(target_mob, SPAN_XENOQUEEN("你听到 [src] 的声音在你脑海中回响... \"[SPAN_PSYTALK(whisper)]\""))
+		to_chat(src, SPAN_XENOWARNING("你说：\"[whisper]\" to [target_mob]"))
 		FOR_DVIEW(var/mob/dead/observer/ghost, 12, src, SEE_INVISIBLE_OBSERVER)
 			if(!isobserver(ghost) || !ghost.client)
 				continue
@@ -208,15 +208,15 @@
 	return FALSE
 
 /mob/living/carbon/human/proc/psychic_radiance()
-	set name = "Psychic Radiance"
+	set name = "心灵辐射"
 	set desc = "Whisper silently to multiple people over a distance."
 	set category = "Abilities.Psychic"
 
 	if(stat == DEAD)
-		to_chat(src, SPAN_WARNING("You cannot talk while dead."))
+		to_chat(src, SPAN_WARNING("死亡状态下无法说话。"))
 		return FALSE
 
-	var/whisper = tgui_input_text(src, "What do you wish to say?", "Psychic Radiance")
+	var/whisper = tgui_input_text(src, "你想说什么？", "心灵辐射")
 	var/list/target_list = list()
 	if(!whisper)
 		return FALSE
@@ -225,15 +225,15 @@
 			continue
 		target_list += possible_target
 		if(!istype(possible_target, /mob/living/carbon/xenomorph))
-			to_chat(possible_target, SPAN_XENOQUEEN("You hear a strange, alien voice in your head... \"[SPAN_PSYTALK(whisper)]\""))
+			to_chat(possible_target, SPAN_XENOQUEEN("你脑海中响起一个陌生而异样的声音... \"[SPAN_PSYTALK(whisper)]\""))
 		else
-			to_chat(possible_target, SPAN_XENOQUEEN("You hear the voice of [src] resonate in your head... \"[SPAN_PSYTALK(whisper)]\""))
+			to_chat(possible_target, SPAN_XENOQUEEN("你听到 [src] 的声音在你脑海中回响... \"[SPAN_PSYTALK(whisper)]\""))
 	FOR_DVIEW_END
 	if(!length(target_list))
-		to_chat(src, SPAN_XENOWARNING("There is no one around to hear you..."))
+		to_chat(src, SPAN_XENOWARNING("周围没人能听见你说话..."))
 		return FALSE
 	var/targetstring = english_list(target_list)
-	to_chat(src, SPAN_XENONOTICE("You said: \"[whisper]\" to [targetstring]"))
+	to_chat(src, SPAN_XENONOTICE("你说：\"[whisper]\" to [targetstring]"))
 	log_say("PsychicRadiance: [key_name(src)]->[targetstring] : [whisper] (AREA: [get_area_name(src)])")
 	FOR_DVIEW(var/mob/dead/observer/ghost, 12, src, SEE_INVISIBLE_OBSERVER)
 		if(!isobserver(ghost) || !ghost.client)
@@ -246,7 +246,7 @@
 	return TRUE
 
 /mob/living/verb/lay_down()
-	set name = "Rest"
+	set name = "休息"
 	set category = "IC"
 	set_resting(!resting, FALSE, TRUE)
 
@@ -290,7 +290,7 @@
 //	update_resting() // HUD icons
 
 /mob/living/carbon/human/proc/toggle_inherent_nightvision()
-	set category = "Synthetic"
+	set category = "合成人"
 	set name = "Toggle Nightvision"
 	set desc = "Toggles inherent nightvision."
 
@@ -300,18 +300,18 @@
 	default_lighting_alpha = default_lighting_alpha == LIGHTING_PLANE_ALPHA_VISIBLE ? LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE : LIGHTING_PLANE_ALPHA_VISIBLE
 	update_sight()
 
-	to_chat(src, SPAN_NOTICE("Your vision is now set to <b>[default_lighting_alpha == LIGHTING_PLANE_ALPHA_VISIBLE ? "Normal Vision" : "Nightvision"]</b>."))
+	to_chat(src, SPAN_NOTICE("你的视野亮度现已设为<b>[default_lighting_alpha == LIGHTING_PLANE_ALPHA_VISIBLE ? "Normal Vision" : "Nightvision"]</b>."))
 
 // Used for synthetics
 /mob/living/carbon/human/synthetic/proc/toggle_HUD()
-	set category = "Synthetic"
-	set name = "Toggle HUDs"
+	set category = "合成人"
+	set name = "切换HUD"
 	set desc = "Toggles various HUDs."
 
 	if(!issynth(usr) || usr.is_mob_incapacitated())
 		return
 
-	var/hud_choice = tgui_input_list(usr, "Choose a HUD to toggle", "Toggle HUD", list("Medical HUD", "Security HUD"))
+	var/hud_choice = tgui_input_list(usr, "选择要切换的HUD", "Toggle HUD", list("Medical HUD", "Security HUD"))
 	if(usr.is_mob_incapacitated())
 		return
 
@@ -329,14 +329,14 @@
 	if(inherent_huds_toggled[chosen_HUD])
 		inherent_huds_toggled[chosen_HUD] = FALSE
 		the_hud.remove_hud_from(src, src)
-		to_chat(src, SPAN_INFO("<B>[hud_choice] Disabled</B>"))
+		to_chat(src, SPAN_INFO("<B>[hud_choice] 已禁用</B>"))
 	else
 		inherent_huds_toggled[chosen_HUD] = TRUE
 		the_hud.add_hud_to(src, src)
-		to_chat(src, SPAN_INFO("<B>[hud_choice] Enabled</B>"))
+		to_chat(src, SPAN_INFO("<B>[hud_choice] 已启用</B>"))
 
 /mob/living/carbon/human/synthetic/synth_k9/proc/toggle_scent_tracking()
-	set category = "Synthetic"
+	set category = "合成人"
 	set name = "Track Scent"
 	set desc = "Activates the K9's keen sense of smell."
 
@@ -351,7 +351,7 @@
 	speciesk9.radar.tgui_interact(src)
 
 /mob/living/carbon/human/synthetic/synth_k9/proc/toggle_binocular_vision()
-	set category = "Synthetic"
+	set category = "合成人"
 	set name = "Binocular Vision"
 	set desc = "Activates the K9's keen sense of sight."
 
@@ -360,7 +360,7 @@
 
 	if(!is_zoomed)
 		enable_zoom()
-		visible_message(SPAN_NOTICE("[src] starts looking off into the distance."),
+		visible_message(SPAN_NOTICE("[src]开始眺望远方。"),
 			SPAN_NOTICE("You start focusing your sight to look off into the distance."), null, 5)
 		return
 

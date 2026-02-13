@@ -12,7 +12,7 @@
 		/obj/structure/ob_ammo/warhead/incendiary,
 	)
 
-	name = "OB Incendiary Crate"
+	name = "轨道轰炸燃烧弹箱"
 	cost = 0
 	containertype = /obj/structure/closet/crate/secure/ob
 	containername = "OB Ammo Crate (Incendiary)"
@@ -29,7 +29,7 @@
 		/obj/structure/ob_ammo/warhead/explosive,
 	)
 
-	name = "OB HE Crate"
+	name = "轨道轰炸高爆弹箱"
 	cost = 0
 	containertype = /obj/structure/closet/crate/secure/ob
 	containername = "OB Ammo Crate (HE)"
@@ -46,7 +46,7 @@
 		/obj/structure/ob_ammo/warhead/cluster,
 	)
 
-	name = "OB Cluster Crate"
+	name = "轨道轰炸集束弹箱"
 	cost = 0
 	containertype = /obj/structure/closet/crate/secure/ob
 	containername = "OB Ammo Crate (Cluster)"
@@ -54,7 +54,7 @@
 	group = "Operations"
 
 /datum/supply_packs/telecommsparts
-	name = "Replacement Telecommunications Parts"
+	name = "替换用电信部件"
 	contains = list(
 		/obj/item/circuitboard/machine/telecomms/relay/tower,
 		/obj/item/stock_parts/manipulator,
@@ -73,7 +73,7 @@
 	group = "Operations"
 
 /datum/supply_packs/nuclearbomb
-	name = "Decrypted Operational Blockbuster"
+	name = "已解密的行动大片"
 	contains = list(
 		/obj/item/book/manual/nuclear,
 	)
@@ -83,7 +83,7 @@
 	group = "Operations"
 
 /datum/supply_packs/technuclearbomb
-	name = "Encrypted Operational Blockbuster"
+	name = "加密的行动大片"
 	contains = list(
 		/obj/item/book/manual/nuclear,
 	)
@@ -93,7 +93,7 @@
 	group = "Operations"
 
 /datum/supply_packs/spec_kits
-	name = "Weapons Specialist Kits"
+	name = "武器专家套件"
 	contains = list(
 		/obj/item/spec_kit/rifleman,
 		/obj/item/spec_kit/rifleman,

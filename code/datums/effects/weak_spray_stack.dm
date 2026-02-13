@@ -19,6 +19,6 @@
 
 	if(ishuman(affected_atom))
 		var/mob/living/carbon/human/hooman = affected_atom
-		to_chat(hooman, SPAN_WARNING("You feel the last of the weak acid coating on your legs dissipate."))
+		to_chat(hooman, SPAN_WARNING("你感觉到腿上最后一点弱酸涂层消散了。"))
 
 	return ..()

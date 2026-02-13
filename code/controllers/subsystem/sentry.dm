@@ -2,7 +2,7 @@
 #define ENDPOINT_CONFIG CONFIG_GET(string/sentry_endpoint)
 
 SUBSYSTEM_DEF(sentry)
-	name = "Sentry"
+	name = "哨戒炮"
 	wait = 2 SECONDS
 	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
 

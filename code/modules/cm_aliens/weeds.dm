@@ -4,7 +4,7 @@
 
 /obj/effect/alien/weeds
 	name = "weeds"
-	desc = "Weird black weeds..."
+	desc = "奇怪的黑色菌毯……"
 	icon = 'icons/mob/xenos/weeds.dmi'
 	icon_state = "base"
 
@@ -41,13 +41,13 @@
 			weed_strength = node.weed_strength
 		node_range = node.node_range
 		if(weed_strength >= WEED_LEVEL_HIVE)
-			name = "hive [name]"
+			name = "巢穴[name]"
 			health = WEED_HEALTH_HIVE
 		node.add_child(src)
 		hivenumber = linked_hive.hivenumber
 		spread_on_semiweedable = node.spread_on_semiweedable
 		if(weed_strength == WEED_LEVEL_HARDY && spread_on_semiweedable)
-			name = "hardy [name]"
+			name = "坚韧[name]"
 			health = WEED_HEALTH_HARDY
 		block_structures = node.block_structures
 		fruit_growth_multiplier = node.fruit_growth_multiplier
@@ -116,7 +116,7 @@
 		SEND_SIGNAL(parent, COMSIG_WEEDNODE_CANNOT_EXPAND_FURTHER)
 
 /obj/effect/alien/weeds/weak
-	name = "weak weeds"
+	name = "脆弱的菌毯"
 	alpha = 127
 
 /obj/effect/alien/weeds/weak/Initialize(mapload, obj/effect/alien/weeds/node/node)
@@ -127,7 +127,7 @@
 	update_icon()
 
 /obj/effect/alien/weeds/node/weak
-	name = "weak weed node"
+	name = "脆弱的菌毯节点"
 	health = WEED_HEALTH_STANDARD
 	alpha = 127
 
@@ -182,7 +182,7 @@
 	var/weed_slow = weed_strength
 	if(crossing_mob.ally_of_hivenumber(linked_hive.hivenumber))
 		if( (crossing_mob.hivenumber != linked_hive.hivenumber) && prob(7)) // small chance for allied mobs to get a message indicating this
-			to_chat(crossing_mob, SPAN_NOTICE("The weeds seem to reshape themselves around your feet as you walk on them."))
+			to_chat(crossing_mob, SPAN_NOTICE("当你走在菌毯上时，它们似乎会随着你的脚步重塑形态。"))
 		return
 
 	var/list/slowdata = list("movement_slowdown" = weed_slow)
@@ -385,9 +385,9 @@
 		return 0
 
 	if(istype(src, /obj/effect/alien/weeds/node)) //The pain is real
-		to_chat(user, SPAN_WARNING("You hit \the [src] with \the [attacking_item]."))
+		to_chat(user, SPAN_WARNING("你用\the [attacking_item]击中了\the [src]。"))
 	else
-		to_chat(user, SPAN_WARNING("You cut \the [src] away with \the [attacking_item]."))
+		to_chat(user, SPAN_WARNING("你用\the [attacking_item]切开了\the [src]。"))
 
 	var/damage = (attacking_item.force * attacking_item.demolition_mod) / 3
 	playsound(loc, "alien_resin_break", 25)
@@ -481,8 +481,8 @@
 
 
 /obj/effect/alien/weeds/node
-	name = "weed node"
-	desc = "A weird, pulsating node."
+	name = "菌毯节点"
+	desc = "一个奇怪的、脉动的节点。"
 	icon_state = "weednode"
 	// Weed nodes start out with normal weed health and become stronger once they've stopped spreading
 	health = NODE_HEALTH_GROWING
@@ -559,7 +559,7 @@
 
 		node_range = node_range + weed_strength - 1//stronger weeds expand further!
 		if(weed_strength >= WEED_LEVEL_HIVE)
-			name = "hive node sac"
+			name = "巢穴节点囊"
 
 	create_reagents(30)
 	reagents.add_reagent(PLASMA_PURPLE, 30)

@@ -16,8 +16,8 @@
 /obj/structure/machinery/status_display
 	icon = 'icons/obj/structures/machinery/status_display.dmi'
 	icon_state = "frame"
-	name = "status display"
-	desc = "A monitor depicting the ship's current status. It flickers every so often."
+	name = "状态显示屏"
+	desc = "显示飞船当前状态的监视器。它时不时会闪烁。"
 	anchored = TRUE
 	density = FALSE
 	use_power = USE_POWER_NONE
@@ -176,7 +176,7 @@
 /obj/structure/machinery/ai_status_display
 	icon = 'icons/obj/structures/machinery/status_display.dmi'
 	icon_state = "frame"
-	name = "AI display"
+	name = "AI显示屏"
 	anchored = TRUE
 	density = FALSE
 
@@ -221,7 +221,7 @@
 				set_picture("ai_angry")
 			if("BSOD")
 				set_picture("ai_bsod")
-			if("Blank")
+			if("空白")
 				set_picture("ai_off")
 			if("Problems?")
 				set_picture("ai_trollface")

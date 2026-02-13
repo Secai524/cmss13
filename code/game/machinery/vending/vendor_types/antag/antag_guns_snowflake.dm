@@ -1,8 +1,8 @@
 //------------ADAPTIVE ANTAG GUNS VENDOR THAT USES SNOWFLAKE POINTS---------------
 
 /obj/structure/machinery/cm_vending/gear/antag_guns
-	name = "\improper Suspicious Automated Guns Rack"
-	desc = "While similar in function to ColMarTech automated racks, this one is clearly not of USCM origin. Contains various weapons, ammunition and explosives."
+	name = "\improper 可疑自动枪架"
+	desc = "虽然功能与ColMarTech自动化货架相似，但这台显然不是USCM的产物。装有各种武器、弹药和爆炸物。"
 	icon_state = "antag_guns"
 	req_one_access = list(ACCESS_ILLEGAL_PIRATE, ACCESS_UPP_GENERAL, ACCESS_CLF_GENERAL)
 	req_access = null

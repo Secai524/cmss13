@@ -1,8 +1,8 @@
 #define COMMAND_SQUAD "Command"
 
 /obj/structure/machinery/computer/groundside_operations
-	name = "groundside operations console"
-	desc = "This can be used for various important functions."
+	name = "地面行动控制台"
+	desc = "此控制台可用于执行多种重要功能。"
 	icon_state = "comm"
 	req_access = list(ACCESS_MARINE_SENIOR)
 	unslashable = TRUE
@@ -242,20 +242,20 @@
 			else if(!idcard.check_biometrics(human_user))
 				bio_fail = TRUE
 			if(bio_fail)
-				to_chat(human_user, SPAN_WARNING("Biometrics failure! You require an authenticated ID card to perform this action!"))
+				to_chat(human_user, SPAN_WARNING("生物识别失败！需要经过认证的身份卡才能执行此操作！"))
 				return FALSE
 
 			if(usr.client.prefs.muted & MUTE_IC)
-				to_chat(usr, SPAN_DANGER("You cannot send Announcements (muted)."))
+				to_chat(usr, SPAN_DANGER("你无法发送公告（已被禁言）。"))
 				return
 
 			if(!is_announcement_active)
-				to_chat(usr, SPAN_WARNING("Please allow at least [COOLDOWN_COMM_MESSAGE*0.1] second\s to pass between announcements."))
+				to_chat(usr, SPAN_WARNING("请至少等待[COOLDOWN_COMM_MESSAGE*0.1]秒后再发送公告。"))
 				return FALSE
 			if(announcement_faction != FACTION_MARINE && usr.faction != announcement_faction)
-				to_chat(usr, SPAN_WARNING("Access denied."))
+				to_chat(usr, SPAN_WARNING("权限被拒绝。"))
 				return
-			var/input = stripped_multiline_input(usr, "Please write a message to announce to the station crew.", "Priority Announcement", "")
+			var/input = stripped_multiline_input(usr, "请输入要通报给全体舰员的讯息。", "Priority Announcement", "")
 			if(!input || !is_announcement_active || !(usr in dview(1, src)))
 				return FALSE
 
@@ -287,7 +287,7 @@
 					squad_list += S.name
 			squad_list += COMMAND_SQUAD
 
-			var/name_sel = tgui_input_list(usr, "Which squad would you like to look at?", "Pick Squad", squad_list)
+			var/name_sel = tgui_input_list(usr, "你想查看哪个班？", "Pick Squad", squad_list)
 			if(!name_sel)
 				return
 
@@ -324,7 +324,7 @@
 					cam = null
 					usr.reset_view(null)
 				else if(usr.client.view != GLOB.world_view_size)
-					to_chat(usr, SPAN_WARNING("You're too busy peering through binoculars."))
+					to_chat(usr, SPAN_WARNING("你正忙于使用望远镜观察。"))
 				else
 					if(cam)
 						usr.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
@@ -347,17 +347,17 @@
 			else if(!idcard.check_biometrics(human_user))
 				bio_fail = TRUE
 			if(bio_fail)
-				to_chat(human_user, SPAN_WARNING("Biometrics failure! You require an authenticated ID card to perform this action!"))
+				to_chat(human_user, SPAN_WARNING("生物识别失败！需要经过认证的身份卡才能执行此操作！"))
 				return FALSE
 
-			var/reason = strip_html(input(usr, "What is the purpose of Echo Squad?", "Activation Reason"))
+			var/reason = strip_html(input(usr, "回声班的用途是什么？", "Activation Reason"))
 			if(!reason)
 				return
-			if(alert(usr, "Confirm activation of Echo Squad for [reason]", "Confirm Activation", "Yes", "No") != "Yes")
+			if(alert(usr, "确认因[reason]激活回声班", "Confirm Activation", "Yes", "No") != "Yes")
 				return
 			var/datum/squad/marine/echo/echo_squad = locate() in GLOB.RoleAuthority.squads
 			if(!echo_squad)
-				visible_message(SPAN_BOLDNOTICE("ERROR: Unable to locate Echo Squad database."))
+				visible_message(SPAN_BOLDNOTICE("错误：无法定位回声班数据库。"))
 				return
 			echo_squad.engage_squad(TRUE)
 			message_admins("[key_name(usr)] activated Echo Squad for '[reason]'.")

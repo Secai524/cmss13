@@ -3,8 +3,8 @@
 //Flame thrower.
 
 /obj/item/ammo_magazine/flamer_tank
-	name = "M240 incinerator tank"
-	desc = "A fuel tank for use in the M240 incinerator unit. Handle with care."
+	name = "M240焚烧器燃料罐"
+	desc = "用于M240焚烧器单元的燃料罐。小心处理。"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/flamers.dmi'
 	icon_state = "flametank_custom"
 	item_state = "flametank"
@@ -16,7 +16,7 @@
 	default_ammo = /datum/ammo/flamethrower //doesn't actually need bullets. But we'll get null ammo error messages if we don't
 	w_class = SIZE_MEDIUM //making sure you can't sneak this onto your belt.
 	gun_type = /obj/item/weapon/gun/flamer/m240
-	caliber = "UT-Napthal Fuel" //Ultra Thick Napthal Fuel, from the lore book.
+	caliber = "UT-萘燃料" //Ultra Thick Napthal Fuel, from the lore book.
 	var/custom = FALSE //accepts custom fuels if true
 	var/specialist = FALSE //for specialist fuels
 
@@ -61,13 +61,13 @@
 	if(usr.get_active_hand() != src)
 		return
 
-	if(alert(usr, "Do you really want to empty out [src]?", "Empty canister", "Yes", "No") != "Yes")
+	if(alert(usr, "你确定要清空[src]吗？", "Empty canister", "Yes", "No") != "Yes")
 		return
 
 	reagents.clear_reagents()
 
 	playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
-	to_chat(usr, SPAN_NOTICE("You empty out [src]"))
+	to_chat(usr, SPAN_NOTICE("你清空了[src]"))
 	update_icon()
 
 /obj/item/ammo_magazine/flamer_tank/on_reagent_change()
@@ -86,7 +86,7 @@
 		return ..()
 
 	if(!target.reagents || length(target.reagents.reagent_list) < 1)
-		to_chat(user, SPAN_WARNING("[target] is empty!"))
+		to_chat(user, SPAN_WARNING("[target]是空的！"))
 		return
 
 	if(!reagents)
@@ -95,25 +95,25 @@
 	var/datum/reagent/to_add = target.reagents.reagent_list[1]
 
 	if(!istype(to_add) || (length(reagents.reagent_list) && flamer_chem != to_add.id) || length(target.reagents.reagent_list) > 1)
-		to_chat(user, SPAN_WARNING("You can't mix fuel mixtures!"))
+		to_chat(user, SPAN_WARNING("你不能混合燃料！"))
 		return
 
 	if(istype(to_add, /datum/reagent/generated) && !custom)
-		to_chat(user, SPAN_WARNING("[src] cannot accept custom fuels!"))
+		to_chat(user, SPAN_WARNING("[src]无法接受自定义燃料！"))
 		return
 
 	if(to_add.flags & REAGENT_TYPE_SPECIALIST && !specialist)
-		to_chat(user, SPAN_WARNING("[src] cannot accept specialist fuels!"))
+		to_chat(user, SPAN_WARNING("[src]无法接受特种燃料！"))
 		return
 
 	if(!to_add.intensityfire && to_add.id != "stablefoam" && !istype(src, /obj/item/ammo_magazine/flamer_tank/smoke))
-		to_chat(user, SPAN_WARNING("This chemical is not potent enough to be used in a flamethrower!"))
+		to_chat(user, SPAN_WARNING("这种化学物质效力不足，无法用于火焰喷射器！"))
 		return
 
 	var/fuel_amt_to_remove = clamp(to_add.volume, 0, max_rounds - reagents.get_reagent_amount(to_add.id))
 	if(!fuel_amt_to_remove)
 		if(!max_rounds)
-			to_chat(user, SPAN_WARNING("[target] is empty!"))
+			to_chat(user, SPAN_WARNING("[target]是空的！"))
 		return
 
 	target.reagents.remove_reagent(to_add.id, fuel_amt_to_remove)
@@ -122,7 +122,7 @@
 	caliber = to_add.name
 	flamer_chem = to_add.id
 
-	to_chat(user, SPAN_NOTICE("You refill [src] with [caliber]."))
+	to_chat(user, SPAN_NOTICE("你用[caliber]重新装填了[src]。"))
 	update_icon()
 
 /obj/item/ammo_magazine/flamer_tank/update_icon()
@@ -155,8 +155,8 @@
 
 // This is gellie fuel. Green Flames.
 /obj/item/ammo_magazine/flamer_tank/gellied
-	name = "M240 incinerator tank (B-Gel)"
-	desc = "A fuel tank full of specialized Ultra Thick Napthal Fuel type B-Gel, a gelled variant of napalm that is easily extinguished, but shoots further and lingers for longer. Handle with exceptional care."
+	name = "M240焚烧器燃料罐 (B凝胶)"
+	desc = "一个装满特种超稠萘燃料B型凝胶的燃料罐，这是一种易于扑灭的凝固汽油凝胶变体，但射程更远，持续时间更长。请格外小心处理。"
 	desc_lore = "Unlike its liquid contemporaries, this gelled variant of napalm is easily extinguished, but shoots far and lingers on the ground in a viscous mess. The gel reacts violently with inorganic materials to break them down, forming an extremely sticky crystallized goo."
 	caliber = "Napalm Gel"
 	flamer_chem = "napalmgel"
@@ -166,8 +166,8 @@
 	max_duration = 50
 
 /obj/item/ammo_magazine/flamer_tank/custom
-	name = "M240 custom incinerator tank"
-	desc = "A fuel tank for use in the M240 incinerator unit. This one has been modified with a pressure regulator and an internal propellant tank."
+	name = "M240定制焚烧器燃料罐"
+	desc = "用于M240焚烧器单元的燃料罐。此罐经过改装，配备了压力调节器和内部推进剂罐。"
 	matter = list("metal" = 3750)
 	flamer_chem = null
 	max_rounds = 100
@@ -184,11 +184,11 @@
 	if(usr.get_active_hand() != src)
 		return
 
-	var/set_pressure = clamp(tgui_input_number(usr, "Change fuel pressure to: (max: [max_pressure])", "Fuel pressure", fuel_pressure, 10, 1), 1 ,max_pressure)
+	var/set_pressure = clamp(tgui_input_number(usr, "将燃料压力更改为：（最大：[max_pressure]）", "Fuel pressure", fuel_pressure, 10, 1), 1 ,max_pressure)
 	if(!set_pressure)
-		to_chat(usr, SPAN_WARNING("You can't find that setting on the regulator!"))
+		to_chat(usr, SPAN_WARNING("你在调节器上找不到那个设置！"))
 	else
-		to_chat(usr, SPAN_NOTICE("You set the pressure regulator to [set_pressure] U/t."))
+		to_chat(usr, SPAN_NOTICE("你将压力调节器设置为[set_pressure] U/t。"))
 		fuel_pressure = set_pressure
 
 /obj/item/ammo_magazine/flamer_tank/custom/get_examine_text(mob/user)
@@ -197,8 +197,8 @@
 
 // Pyro regular flamer tank just bigger than the base flamer tank.
 /obj/item/ammo_magazine/flamer_tank/large
-	name = "M240 large incinerator tank"
-	desc = "A large fuel tank for use in the M240-T incinerator unit. Handle with extreme caution."
+	name = "M240大型焚烧器燃料罐"
+	desc = "用于M240-T焚烧器单元的大型燃料罐。请极其谨慎处理。"
 	icon_state = "flametank_large_custom"
 	item_state = "flametank_large"
 	max_rounds = 250
@@ -216,35 +216,35 @@
 
 // This is the green flamer fuel for the pyro.
 /obj/item/ammo_magazine/flamer_tank/large/B
-	name = "M240 large incinerator tank (B)"
-	desc = "A large fuel tank of Ultra Thick Napthal Fuel type B, a special variant of napalm that is easily extinguished, but disperses over a wide area while burning slowly."
+	name = "M240大型焚烧器燃料罐（B型）"
+	desc = "一个装满超稠萘燃料B型的大型燃料罐，这是一种特殊的凝固汽油变体，易于扑灭，但能在大范围扩散并缓慢燃烧。"
 	desc_lore = "Unlike its thinner contemporaries, this special ultra-thick variant of napalm is easily extinguished, but disperses over a wide area and lingers on the ground in a viscous mess. The composition reacts violently with inorganic materials to break them down, causing severe structural damage. Handle with extreme caution."
-	caliber = "Napalm B"
+	caliber = "凝固汽油B型"
 	flamer_chem = "napalmb"
 
 	max_range = 6
 
 // This is the blue flamer fuel for the pyro.
 /obj/item/ammo_magazine/flamer_tank/large/X
-	name = "M240 large incinerator tank (X)"
-	desc = "A large fuel tank of Ultra Thick Napthal Fuel type X, a sticky combustible liquid chemical that burns extremely hot, for use in the M240-T incinerator unit. Handle with extreme caution."
-	caliber = "Napalm X"
+	name = "M240大型焚烧器燃料罐（X型）"
+	desc = "一个装满超稠萘燃料X型的大型燃料罐，这是一种粘性可燃液体化学品，燃烧温度极高，用于M240-T焚烧器单元。请极其谨慎处理。"
+	caliber = "凝固汽油X型"
 	flamer_chem = "napalmx"
 
 	max_range = 6
 
 /obj/item/ammo_magazine/flamer_tank/large/EX
-	name = "M240 large incinerator tank (EX)"
-	desc = "A large fuel tank of Ultra Thick Napthal Fuel type EX, a sticky combustible liquid chemical that burns so hot it melts straight through most flame-resistant materials, for use in the M240-T incinerator unit. Handle with extreme caution."
-	caliber = "Napalm EX"
+	name = "M240大型焚烧器燃料罐（EX型）"
+	desc = "一个装满超稠萘燃料EX型的大型燃料罐，这是一种粘性可燃液体化学品，燃烧温度极高，能直接熔穿大多数阻燃材料，用于M240-T焚烧器单元。请极其谨慎处理。"
+	caliber = "凝固汽油EX型"
 	flamer_chem = "napalmex"
 
 	max_range = 7
 
 //Custom pyro tanks
 /obj/item/ammo_magazine/flamer_tank/custom/large
-	name = "M240 large custom incinerator tank"
-	desc = "A large fuel tank for use in the M240-T incinerator unit. This one has been modified with a pressure regulator and a large internal propellant tank. Must be manually attached."
+	name = "M240大型定制焚烧器燃料罐"
+	desc = "用于M240-T焚烧器单元的大型燃料罐。此罐经过改装，配备了压力调节器和大型内部推进剂罐。必须手动安装。"
 	gun_type = /obj/item/weapon/gun/flamer/m240/spec
 	max_rounds = 250
 
@@ -253,16 +253,16 @@
 	max_duration = 50
 
 /obj/item/ammo_magazine/flamer_tank/smoke
-	name = "M240 custom incinerator smoke tank"
-	desc = "A tank holding powdered smoke that expands when exposed to an open flame and carries any chemicals along with it."
+	name = "M240定制焚烧器烟雾罐"
+	desc = "一个装有粉末状烟雾的罐体，暴露于明火时会膨胀，并携带任何化学物质一同扩散。"
 	matter = list("metal" = 3750)
 	flamer_chem = null
 	custom = TRUE
 
 //tanks printable by the research biomass machine
 /obj/item/ammo_magazine/flamer_tank/custom/upgraded
-	name = "M240 upgraded custom incinerator tank"
-	desc = "A fuel tank for use in the M240 incinerator unit. This one has been modified with a larger and more sophisticated internal propellant tank, allowing for larger capacity and stronger fuels."
+	name = "M240升级版定制焚烧器燃料罐"
+	desc = "用于M240焚烧器单元的燃料罐。此罐经过改装，配备了更大、更精密的内部推进剂罐，允许更大的容量和更强的燃料。"
 	matter = list("metal" = 50) // no free metal
 	flamer_chem = null
 	max_rounds = 200
@@ -273,16 +273,16 @@
 	custom = TRUE
 
 /obj/item/ammo_magazine/flamer_tank/smoke/upgraded
-	name = "M240 large custom incinerator smoke tank"
-	desc = "A tank holding powdered smoke that expands when exposed to an open flame and carries any chemicals along with it. This one has been outfitted with an upgraded internal compressor, allowing for larger capacity."
+	name = "M240大型定制焚烧器烟雾罐"
+	desc = "一个装有粉末状烟雾的罐体，暴露于明火时会膨胀，并携带任何化学物质一同扩散。此罐配备了升级的内部压缩机，允许更大的容量。"
 	matter = list("metal" = 50) //no free metal
 	flamer_chem = null
 	custom = TRUE
 	max_rounds = 150
 
 /obj/item/ammo_magazine/flamer_tank/survivor
-	name = "improvised flamer tank"
-	desc = "A repurposed tank from heavy welding equipment, holding a flammable mix similar to napalm."
+	name = "简易火焰喷射器燃料罐"
+	desc = "一个从重型焊接设备中改装的罐体，装有类似凝固汽油的可燃混合物。"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/flamers.dmi'
 	icon_state = "flamer_fuel"
 	gun_type = /obj/item/weapon/gun/flamer/survivor
@@ -292,8 +292,8 @@
 	flamer_chem = null
 
 /obj/item/ammo_magazine/flamer_tank/flammenwerfer
-	name = "FW3 heavy incinerator tank"
-	desc = "A heavy, high capacity tank utilized by the Flammenwerfer 3 Heavy Incineration Unit. This one has a blue, heat-resistant Weyland-Yutani logo on it."
+	name = "FW3重型焚烧器燃料罐"
+	desc = "FW3重型焚烧装置使用的一款重型、高容量燃料罐。罐体上印有蓝色的耐高温维兰德-汤谷标志。"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/WY/flamers.dmi'
 	icon_state = "fl3"
 	item_state = "fl3"
@@ -304,8 +304,8 @@
 	stripe_icon = FALSE
 
 /obj/item/ammo_magazine/flamer_tank/flammenwerfer/whiteout
-	name = "FW3 heavy incinerator tank (EX)"
-	desc = "A heavy fuel tank of Ultra Thick Napthal Fuel type EX, a sticky combustible liquid chemical that burns so hot it melts straight through most flame-resistant materials, utilized by the Flammenwerfer 3 Heavy Incineration Unit. This has a blue, heat-resistant Weyland-Yutani logo on it. Handle with care."
-	caliber = "Napalm EX"
+	name = "FW3重型焚烧器燃料罐（EX型）"
+	desc = "FW3重型焚烧装置使用的EX型超稠萘燃料重型燃料罐，这是一种粘性可燃液态化学品，燃烧温度极高，足以熔化大多数防火材料。罐体上印有蓝色的耐高温维兰德-汤谷标志。小心处理。"
+	caliber = "凝固汽油EX型"
 	flamer_chem = "napalmex"
 	stripe_icon = TRUE

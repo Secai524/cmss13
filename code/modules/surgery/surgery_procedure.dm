@@ -70,17 +70,17 @@
 /datum/surgery/proc/attempt_next_step(mob/user, obj/item/tool, repeating)
 	if(step_in_progress)
 		if(!user.action_busy) //Otherwise, assume it's the same person.
-			to_chat(user, SPAN_WARNING("Someone is already performing surgery on [target]'s [affected_limb.display_name]!"))
+			to_chat(user, SPAN_WARNING("已经有人在为[target]的[affected_limb.display_name]进行手术了！"))
 			return FALSE
 
 		return TRUE //So that you don't poke them with a tool you're already using.
 
 	if(user.action_busy)
-		to_chat(user, SPAN_WARNING("You're too busy to perform surgery on [user == target ? "yourself" : "[target]"]!"))
+		to_chat(user, SPAN_WARNING("你太忙了，无法为[user == target ? "yourself" : "[target]"]!"))
 		return FALSE
 
 	if((target.mob_flags & EASY_SURGERY) ? !skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_NOVICE) : !skillcheck(user, SKILL_SURGERY, required_surgery_skill))
-		to_chat(user, SPAN_WARNING("This operation is more complex than you're trained for!"))
+		to_chat(user, SPAN_WARNING("这个手术比你受训过的要复杂！"))
 		return FALSE
 
 	if(target.pulledby?.grab_level == GRAB_CARRY)
@@ -97,12 +97,12 @@
 	for(var/mob/living/potential_blocker in get_turf(target))
 		if(potential_blocker == user || potential_blocker == target)
 			continue
-		to_chat(user, SPAN_WARNING("You can't operate when you don't have enough space! Remove everybody else."))
+		to_chat(user, SPAN_WARNING("空间不足时无法进行手术！请让其他人离开。"))
 		return FALSE
 
 	if(user == target)
 		if(!self_operable)
-			to_chat(user, SPAN_WARNING("You can't perform this operation on yourself!"))
+			to_chat(user, SPAN_WARNING("你不能对自己进行这个手术！"))
 			return FALSE
 		if((!user.hand && (user.zone_selected in list("r_arm", "r_hand"))) || (user.hand && (user.zone_selected in list("l_arm", "l_hand"))))
 			to_chat(user, SPAN_WARNING("You can't perform surgery on the same \
@@ -119,9 +119,9 @@
 				return TRUE
 		if(tool && is_surgery_tool(tool)) //Just because you used the wrong tool doesn't mean you meant to whack the patient with it...
 			if(next_step)
-				to_chat(user, SPAN_WARNING("You can't [current_step.desc] with \the [tool], or [next_step.desc]."))
+				to_chat(user, SPAN_WARNING("你不能用\the [tool]来[current_step.desc]，或者[next_step.desc]。"))
 			else
-				to_chat(user, SPAN_WARNING("You can't [current_step.desc] with \the [tool]."))
+				to_chat(user, SPAN_WARNING("你不能用\the [tool]来[current_step.desc]。"))
 			return FALSE //...but you might be wanting to use it on them anyway. If on help intent, the help-intent safety will apply for this attack.
 	return FALSE
 

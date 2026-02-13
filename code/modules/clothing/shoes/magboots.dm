@@ -1,5 +1,5 @@
 /obj/item/clothing/shoes/magboots
-	desc = "Magnetic boots, often used during extravehicular activity to ensure the user remains safely attached to the vehicle."
+	desc = "磁力靴，常用于舱外活动，确保使用者安全附着在载具上。"
 	name = "magboots"
 	icon_state = "magboots0"
 	var/magpulse = 0
@@ -13,13 +13,13 @@
 		slowdown = SHOES_SLOWDOWN
 		magpulse = 0
 		icon_state = "magboots0"
-		to_chat(user, "You disable the mag-pulse traction system.")
+		to_chat(user, "你关闭了磁脉冲牵引系统。")
 	else
 		flags_inventory |= NOSLIPPING
 		slowdown = 2
 		magpulse = 1
 		icon_state = "magboots1"
-		to_chat(user, "You enable the mag-pulse traction system.")
+		to_chat(user, "你开启了磁脉冲牵引系统。")
 	user.update_inv_shoes() //so our mob-overlays update
 
 	for(var/X in actions)

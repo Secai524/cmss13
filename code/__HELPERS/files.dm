@@ -20,7 +20,7 @@
 		if(path != root)
 			choices.Insert(1,"/")
 
-		var/choice = tgui_input_list(src,"Choose a file to access:","Download",choices)
+		var/choice = tgui_input_list(src,"选择要访问的文件：","Download",choices)
 		switch(choice)
 			if(null)
 				return
@@ -34,7 +34,7 @@
 
 	var/extension = copytext(path,-4,0)
 	if( !fexists(path) || !(extension in valid_extensions) )
-		to_chat(src, "<font color='red'>Error: browse_files(): File not found/Invalid file([path]).</font>")
+		to_chat(src, "<font color='red'>错误：browse_files()：文件未找到/文件无效([path])。</font>")
 		return
 
 	return path
@@ -48,7 +48,7 @@
 /client/proc/file_spam_check()
 	var/time_to_wait = GLOB.fileaccess_timer - world.time
 	if(time_to_wait > 0)
-		to_chat(src, "<font color='red'>Error: file_spam_check(): Spam. Please wait [floor(time_to_wait/10)] seconds.</font>")
+		to_chat(src, "<font color='red'>错误：file_spam_check()：操作过于频繁。请等待[floor(time_to_wait/10)]秒。</font>")
 		return 1
 	GLOB.fileaccess_timer = world.time + FTPDELAY
 	return 0

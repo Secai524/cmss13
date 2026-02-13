@@ -51,7 +51,7 @@
 	sound = 'sound/voice/pred_voice/pred_ugly_freak.ogg'
 
 /datum/emote/living/carbon/human/yautja/voice/lucky_you
-	override_say = "Who's there? Lucky you!"
+	override_say = "目标's there? Lucky you!"
 	key = "luckyyou"
 	sound = 'sound/voice/pred_voice/lucky_you.ogg'
 	volume = 25

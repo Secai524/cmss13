@@ -19,7 +19,7 @@
 	behavior_delegate_type = /datum/behavior_delegate/lurker_base
 
 	deevolves_to = list(XENO_CASTE_RUNNER)
-	caste_desc = "A fast, powerful backline combatant."
+	caste_desc = "一个快速、强大的后排战斗员。"
 	evolves_to = list(XENO_CASTE_RAVAGER)
 
 	heal_resting = 1.5
@@ -31,7 +31,7 @@
 /mob/living/carbon/xenomorph/lurker
 	caste_type = XENO_CASTE_LURKER
 	name = XENO_CASTE_LURKER
-	desc = "A beefy, fast alien with sharp claws."
+	desc = "一只强壮、迅捷且拥有利爪的异形。"
 	icon_size = 48
 	icon_state = "Lurker Walking"
 	plasma_types = list(PLASMA_CATECHOLAMINE)
@@ -68,7 +68,7 @@
 	pelt = /obj/item/pelt/lurker
 
 /datum/behavior_delegate/lurker_base
-	name = "Base Lurker Behavior Delegate"
+	name = "基础潜伏者行为委托"
 
 	// Config
 	var/invis_recharge_time = 20 SECONDS
@@ -85,8 +85,8 @@
 		return original_damage
 
 	if (next_slash_buffed)
-		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We significantly strengthen our attack, slowing [target_carbon]!"))
-		to_chat(target_carbon, SPAN_XENOHIGHDANGER("You feel a sharp pain as [bound_xeno] slashes you, slowing you down!"))
+		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("我们极大地强化了攻击，减缓了[target_carbon]的速度！"))
+		to_chat(target_carbon, SPAN_XENOHIGHDANGER("你感到一阵剧痛，[bound_xeno]砍中了你，使你速度变慢！"))
 		original_damage *= buffed_slash_damage_ratio
 		target_carbon.set_effect(get_xeno_stun_duration(target_carbon, 3), SUPERSLOW)
 		next_slash_buffed = FALSE
@@ -191,7 +191,7 @@
 	if(HAS_TRAIT(bumped_into, TRAIT_CLOAKED)) //ignore invisible scouts and preds
 		return
 
-	to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We bumped into someone and lost our invisibility!"))
+	to_chat(bound_xeno, SPAN_XENOHIGHDANGER("我们撞到了某人，失去了隐身状态！"))
 	lurker_invisibility_action.invisibility_off(0.5) // partial refund of remaining time
 
 
@@ -276,7 +276,7 @@
 		invis_timer_id = TIMER_ID_NULL
 
 	animate(xeno, alpha = initial(xeno.alpha), time = 0.1 SECONDS, easing = QUAD_EASING)
-	to_chat(xeno, SPAN_XENOHIGHDANGER("We feel our invisibility end!"))
+	to_chat(xeno, SPAN_XENOHIGHDANGER("我们的隐形即将结束！"))
 
 	button.icon_state = "template_xeno"
 	xeno.update_icons()
@@ -299,7 +299,7 @@
 
 /datum/action/xeno_action/onclick/lurker_invisibility/ability_cooldown_over()
 	if(owner.client?.prefs.show_cooldown_messages)
-		to_chat(owner, SPAN_XENOHIGHDANGER("We are ready to use our invisibility again!"))
+		to_chat(owner, SPAN_XENOHIGHDANGER("我们已准备好再次使用隐形！"))
 	..()
 
 /datum/action/xeno_action/onclick/lurker_assassinate/use_ability(atom/targeted_atom)
@@ -318,7 +318,7 @@
 	if (istype(behavior))
 		behavior.next_slash_buffed = TRUE
 
-	to_chat(xeno, SPAN_XENOHIGHDANGER("Our next slash will deal increased damage!"))
+	to_chat(xeno, SPAN_XENOHIGHDANGER("我们的下一次劈砍将造成额外伤害！"))
 
 	addtimer(CALLBACK(src, PROC_REF(unbuff_slash)), buff_duration)
 	xeno.next_move = world.time + 1 // Autoattack reset
@@ -337,4 +337,4 @@
 			return
 		behavior.next_slash_buffed = FALSE
 
-	to_chat(xeno, SPAN_XENODANGER("We have waited too long, our slash will no longer deal increased damage!"))
+	to_chat(xeno, SPAN_XENODANGER("我们等待太久，劈砍不再造成额外伤害！"))

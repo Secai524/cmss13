@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(influxmcstats)
-	name       = "InfluxDB MC Stats"
+	name       = "InfluxDB MC统计"
 	wait       = 60 SECONDS
 	priority   = SS_PRIORITY_INFLUXMCSTATS
 	init_order = SS_INIT_INFLUXMCSTATS

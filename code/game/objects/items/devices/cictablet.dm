@@ -1,7 +1,7 @@
 /obj/item/device/cotablet
 	icon = 'icons/obj/items/devices.dmi'
-	name = "command tablet"
-	desc = "A portable command interface used by top brass, capable of issuing commands over long ranges to their linked computer. Built to withstand a nuclear bomb."
+	name = "指挥平板"
+	desc = "一种高级军官使用的便携式指挥界面，能够向其连接的计算机远程下达指令。其坚固程度足以承受核弹冲击。"
 	suffix = "\[3\]"
 	icon_state = "Cotablet"
 	item_state = "Cotablet"
@@ -11,7 +11,7 @@
 	var/on = TRUE // 0 for off
 	var/cooldown_between_messages = COOLDOWN_COMM_MESSAGE
 
-	var/tablet_name = "Commanding Officer's Tablet"
+	var/tablet_name = "指挥官's Tablet"
 
 	var/announcement_title = COMMAND_ANNOUNCE
 	var/announcement_faction = FACTION_MARINE
@@ -43,7 +43,7 @@
 	if(allowed(user) && card?.check_biometrics(user))
 		tgui_interact(user)
 	else
-		to_chat(user, SPAN_DANGER("Access denied."))
+		to_chat(user, SPAN_DANGER("权限被拒绝。"))
 
 /obj/item/device/cotablet/ui_close(mob/user)
 	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
@@ -94,14 +94,14 @@
 	switch(action)
 		if("announce")
 			if(user.client.prefs.muted & MUTE_IC)
-				to_chat(user, SPAN_DANGER("You cannot send Announcements (muted)."))
+				to_chat(user, SPAN_DANGER("你无法发送公告（已被禁言）。"))
 				return
 
 			if(!COOLDOWN_FINISHED(src, announcement_cooldown))
-				to_chat(user, SPAN_WARNING("Please wait [COOLDOWN_TIMELEFT(src, announcement_cooldown)/10] second\s before making your next announcement."))
+				to_chat(user, SPAN_WARNING("请等待[COOLDOWN_TIMELEFT(src, announcement_cooldown)/10]秒再进行下一次广播。"))
 				return FALSE
 
-			var/input = stripped_multiline_input(user, "Please write a message to announce to the [MAIN_SHIP_NAME]'s crew and all groundside personnel.", "Priority Announcement", "")
+			var/input = stripped_multiline_input(user, "请输入一条消息，向[MAIN_SHIP_NAME]全体舰员及所有地面人员广播。", "Priority Announcement", "")
 			if(!input || !COOLDOWN_FINISHED(src, announcement_cooldown) || !(user in dview(1, src)))
 				return FALSE
 
@@ -139,15 +139,15 @@
 				return
 
 			if(GLOB.security_level < SEC_LEVEL_RED)
-				to_chat(user, SPAN_WARNING("The ship must be under red alert in order to enact evacuation procedures."))
+				to_chat(user, SPAN_WARNING("舰船必须处于红色警报状态才能启动撤离程序。"))
 				return FALSE
 
 			if(SShijack.evac_admin_denied)
-				to_chat(user, SPAN_WARNING("The USCM has placed a lock on deploying the evacuation pods."))
+				to_chat(user, SPAN_WARNING("USCM已锁定逃生舱的部署。"))
 				return FALSE
 
 			if(!SShijack.initiate_evacuation())
-				to_chat(user, SPAN_WARNING("You are unable to initiate an evacuation procedure right now!"))
+				to_chat(user, SPAN_WARNING("你现在无法启动撤离程序！"))
 				return FALSE
 
 			log_game("[key_name(user)] has called for an emergency evacuation.")
@@ -160,21 +160,21 @@
 				return FALSE //Not a game mode?
 
 			if(GLOB.security_level == SEC_LEVEL_DELTA)
-				to_chat(user, SPAN_WARNING("The ship is already undergoing self destruct procedures!"))
+				to_chat(user, SPAN_WARNING("舰船已启动自毁程序！"))
 				return FALSE
 
 			for(var/client/C in GLOB.admins)
 				if((R_ADMIN|R_MOD) & C.admin_holder.rights)
 					playsound_client(C,'sound/effects/sos-morse-code.ogg',10)
 			SSticker.mode.request_ert(user)
-			to_chat(user, SPAN_NOTICE("A distress beacon request has been sent to USCM Central Command."))
+			to_chat(user, SPAN_NOTICE("已向USCM中央司令部发送求救信标请求。"))
 			COOLDOWN_START(src, distress_cooldown, COOLDOWN_COMM_REQUEST)
 			return TRUE
 
 /obj/item/device/cotablet/pmc
-	desc = "A special device used by corporate PMC directors."
+	desc = "一种供公司PMC主管使用的特殊设备。"
 
-	tablet_name = "Site Director's Tablet"
+	tablet_name = "站点主管's Tablet"
 
 	announcement_title = PMC_COMMAND_ANNOUNCE
 	announcement_faction = FACTION_PMC
@@ -183,7 +183,7 @@
 
 /obj/item/device/cotablet/upp
 
-	desc = "A special device used by field UPP commanders."
+	desc = "一种供UPP战地指挥官使用的特殊设备。"
 
 	tablet_name = "UPP Field Commander's Tablet"
 

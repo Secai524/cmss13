@@ -7,7 +7,7 @@
 //LOCAL DEFINES//
 
 #define HIVEBUFF_TIER_MINOR "Minor"
-#define HIVEBUFF_TIER_MAJOR "Major"
+#define HIVEBUFF_TIER_MAJOR "少校"
 
 /**
  *
@@ -96,32 +96,32 @@
 ///Wrapper for on_engage(), handles checking if the buff can be actually purchased as well as adding buff to the active_hivebuffs and used_hivebuffs for the hive.
 /datum/hivebuff/proc/_on_engage(mob/living/carbon/xenomorph/purchasing_mob, obj/effect/alien/resin/special/pylon/purchased_pylon)
 	if(!_roundtime_check())
-		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive is not mature enough yet to purchase this!"))
+		to_chat(purchasing_mob, SPAN_XENONOTICE("我们的巢穴尚未成熟到可以购买这个！"))
 		return
 
 	if(!_check_num_required_pylons())
-		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive does not have the required number of available pylons! We require [number_of_required_pylons]"))
+		to_chat(purchasing_mob, SPAN_XENONOTICE("我们的巢穴没有足够数量的可用能量塔！我们需要[number_of_required_pylons]座。"))
 		return FALSE
 
 	if(!_check_danger())
-		to_chat(purchasing_mob, SPAN_XENONOTICE("There is not enough danger to warrant hive buffs."))
+		to_chat(purchasing_mob, SPAN_XENONOTICE("危险程度不足以证明启用巢穴增益是合理的。"))
 		return FALSE
 
 	if(!_check_can_afford_buff())
-		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive cannot afford [name]! [hive.buff_points] / [cost] points."))
+		to_chat(purchasing_mob, SPAN_XENONOTICE("我们的巢穴负担不起[name]！[hive.buff_points] / [cost] 点数。"))
 		return FALSE
 
 	if(!_check_pass_active())
-		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive can't benefit from [name] yet!"))
+		to_chat(purchasing_mob, SPAN_XENONOTICE("我们的巢穴目前还无法从[name]中受益！"))
 		return FALSE
 
 	if(!_check_pass_reusable())
-		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive has already used [name] and cannot use it again!"))
+		to_chat(purchasing_mob, SPAN_XENONOTICE("我们的巢穴已使用过[name]，无法再次使用！"))
 		return FALSE
 
 	var/datum/hivebuff/cooldown_buff = locate(type) in hive.cooldown_hivebuffs
 	if(cooldown_buff)
-		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive has already used [name] recently! Wait [DisplayTimeText(timeleft(cooldown_buff._timer_id_cooldown))]."))
+		to_chat(purchasing_mob, SPAN_XENONOTICE("我们的巢穴最近已使用过[name]！请等待[DisplayTimeText(timeleft(cooldown_buff._timer_id_cooldown))]。"))
 		return FALSE
 
 	if(!_check_pass_combineable())
@@ -129,7 +129,7 @@
 		for(var/buff in hive.active_hivebuffs)
 			active_buffs += buff + " "
 		active_buffs = trim_right(active_buffs)
-		to_chat(purchasing_mob, SPAN_XENONOTICE("[name] cannot be used with other active buffs! Wait for those to end first. Active buffs: [active_buffs]"))
+		to_chat(purchasing_mob, SPAN_XENONOTICE("[name]无法与其他生效中的增益效果同时使用！请等待现有增益结束。生效中的增益：[active_buffs]"))
 		return FALSE
 
 	if(!handle_special_checks())
@@ -277,7 +277,7 @@
 /// Deducts points from the hive buff points equal to the cost of the buff
 /datum/hivebuff/proc/_purchase_and_deduct(mob/purchasing_mob)
 	if(!_check_can_afford_buff())
-		to_chat(purchasing_mob, SPAN_XENONOTICE("Something went wrong, try again."))
+		to_chat(purchasing_mob, SPAN_XENONOTICE("出现错误，请重试。"))
 		return FALSE
 
 	hive.buff_points -= cost
@@ -289,7 +289,7 @@
 		return FALSE
 
 	var/mob/living/queen = hive.living_xeno_queen
-	var/queen_response = tgui_alert(queen, "You are trying to Purchase [name] at a cost of [cost] [BUFF_POINTS_NAME]. Our hive has [hive.buff_points] [BUFF_POINTS_NAME]. Are you sure you want to purchase it? Description: [desc]", "Approve Hive Buff", list("Yes", "No"), 20 SECONDS)
+	var/queen_response = tgui_alert(queen, "你正尝试以[cost]点[BUFF_POINTS_NAME]的价格购买[name]。我们的巢穴拥有[hive.buff_points]点[BUFF_POINTS_NAME]。确定要购买吗？描述：[desc]", "Approve Hive Buff", list("Yes", "No"), 20 SECONDS)
 
 	return queen_response == "Yes"
 
@@ -341,8 +341,8 @@
 // BUFFS //
 
 /datum/hivebuff/extra_larva
-	name = "Surge of Larva"
-	desc = "Provides 5 larva instantly to the hive."
+	name = "幼虫涌动"
+	desc = "立即为巢穴提供5只幼虫。"
 	radial_icon = "larba"
 
 	engage_flavourmessage = "The Queen has purchased 5 extra larva to join the hive!"
@@ -355,8 +355,8 @@
 	return TRUE
 
 /datum/hivebuff/evo_buff
-	name = "Boon of Evolution"
-	desc = "Doubles evolution speed for 5 minutes."
+	name = "进化恩赐"
+	desc = "在5分钟内使进化速度加倍。"
 	tier = HIVEBUFF_TIER_MINOR
 	engage_flavourmessage = "The Queen has blessed us with faster evolution."
 	duration = 5 MINUTES
@@ -373,8 +373,8 @@
 	hive.override_evilution(value_before_buff, FALSE)
 
 /datum/hivebuff/evo_buff/major
-	name = "Major Boon of Evolution"
-	desc = "Doubles evolution speed for 10 minutes and allows evolution progress without an ovipositor."
+	name = "高等进化恩赐"
+	desc = "在10分钟内使进化速度加倍，并允许在没有产卵器的情况下进行进化。"
 	tier = HIVEBUFF_TIER_MAJOR
 
 	engage_flavourmessage = "The Queen has blessed us with faster evolution."
@@ -393,8 +393,8 @@
 	hive.allow_no_queen_evo = FALSE
 
 /datum/hivebuff/game_ender_caste
-	name = "His Grace"
-	desc = "A huge behemoth of a Xenomorph which can tear its way through defences and flesh alike. Requires open space around the hive core to spawn."
+	name = "威严巨兽"
+	desc = "一种巨大的异形庞然大物，能够撕裂防御工事与血肉之躯。需要在巢穴核心周围有开阔空间才能生成。"
 	tier = HIVEBUFF_TIER_MAJOR
 	radial_icon = "king"
 
@@ -461,8 +461,8 @@
 	return TRUE
 
 /datum/hivebuff/fire
-	name = "Boon of Fire Resistance"
-	desc = "Makes all xenomorphs immune to fire for 5 minutes."
+	name = "火焰抗性恩赐"
+	desc = "使所有异形在5分钟内免疫火焰伤害。"
 	tier = HIVEBUFF_TIER_MINOR
 
 	engage_flavourmessage = "The Queen has imbued us with flame-resistant chitin."
@@ -502,8 +502,8 @@
 	xeno.refresh_fire_immunity() // Returns all affected Xenos back to whatever fire immunity is logged on the mob
 
 /datum/hivebuff/adaptability
-	name = "Boon of Adaptability"
-	desc = "Allows each xenomorph to change to a different caste of the same tier."
+	name = "适应力恩赐"
+	desc = "允许每只异形转变为同阶层的其他种姓。"
 	tier = HIVEBUFF_TIER_MAJOR
 
 	engage_flavourmessage = "The Queen has blessed us with adaptability."
@@ -524,8 +524,8 @@
 	transmute_action.give_to(xeno)
 
 /datum/hivebuff/attack
-	name = "Boon of Aggression"
-	desc = "Increases all xenomorph damage by 5 for 5 minutes."
+	name = "侵略恩赐"
+	desc = "在5分钟内使所有异形的伤害提高5点。"
 	tier = HIVEBUFF_TIER_MINOR
 
 	engage_flavourmessage = "The Queen has imbued us with sharp claws."
@@ -542,8 +542,8 @@
 	xeno.recalculate_damage()
 
 /datum/hivebuff/attack/major
-	name = "Major Boon of Aggression"
-	desc = "Increases all xenomorph damage by 10 for 10 minutes."
+	name = "高等侵略恩赐"
+	desc = "在10分钟内使所有异形的伤害提高10点。"
 	tier = HIVEBUFF_TIER_MAJOR
 
 	engage_flavourmessage = "The Queen has imbued us with razor-sharp claws."
@@ -562,8 +562,8 @@
 
 
 /datum/hivebuff/boost_structure
-	name = "Boon of Fortification"
-	desc = "Gives buffs out to all the sturctures, not only do structures regenerate their own health slowly any recovery nodes of all sorts work twice as fast."
+	name = "强化恩赐"
+	desc = "为所有建筑提供增益效果，不仅使建筑能缓慢自我修复，所有类型的恢复节点工作效率也将加倍。"
 	tier = HIVEBUFF_TIER_MINOR
 
 	engage_flavourmessage = "The resin starts moving and shifting..."

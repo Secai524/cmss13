@@ -4,53 +4,53 @@
 
 /datum/action/xeno_action/verb/verb_pounce()
 	set category = "Alien"
-	set name = "Pounce"
+	set name = "猛扑"
 	set hidden = TRUE
-	var/action_name = "Pounce"
+	var/action_name = "猛扑"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_plant_weeds()
 	set category = "Alien"
 	set name = "Plant Weeds"
 	set hidden = TRUE
-	var/action_name = "Plant Weeds (75)"
+	var/action_name = "铺设菌毯 (75)"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_mark_resin()
 	set category = "Alien"
-	set name = "Mark Resin"
+	set name = "标记树脂"
 	set hidden = TRUE
-	var/action_name = "Mark Resin"
+	var/action_name = "标记树脂"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_toggle_spit_type()
 	set category = "Alien"
-	set name = "Toggle Spit Type"
+	set name = "切换喷吐类型"
 	set hidden = TRUE
-	var/action_name = "Toggle Spit Type"
+	var/action_name = "切换喷吐类型"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_release_haul()
 	set category = "Alien"
-	set name = "Release"
+	set name = "释放"
 	set hidden = TRUE
-	var/action_name = "Release"
+	var/action_name = "释放"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_choose_resin_structure()
 	set category = "Alien"
-	set name = "Choose Resin Structure"
+	set name = "选择树脂结构"
 	set hidden = TRUE
-	var/action_name = "Choose Resin Structure"
+	var/action_name = "选择树脂结构"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_secrete_resin()
 	set category = "Alien"
-	set name = "Secrete Resin"
+	set name = "分泌树脂"
 	set hidden = TRUE
 	var/action_name = "Secrete Resin (150)"
 	if(ishivelord(src)) // >:( special snowflake caste
-		action_name = "Secrete Resin (200)"
+		action_name = "分泌树脂 (200)"
 	handle_xeno_macro(src, action_name)
 
 /* Resolve this line once structures are resolved.
@@ -64,127 +64,127 @@
 
 /datum/action/xeno_action/verb/verb_corrosive_acid()
 	set category = "Alien"
-	set name = "Corrosive Acid"
+	set name = "腐蚀酸液"
 	set hidden = TRUE
-	var/action_name = "Corrosive Acid (100)"
+	var/action_name = "腐蚀酸液 (100)"
 
 	var/mob/living/carbon/xenomorph/X = src // different levels of have different names
 	switch(X.acid_level)
 		if(1)
-			action_name = "Corrosive Acid (75)"
+			action_name = "腐蚀酸液 (75)"
 		if(2)
-			action_name = "Corrosive Acid (100)"
+			action_name = "腐蚀酸液 (100)"
 		if(3)
-			action_name = "Corrosive Acid (125)"
+			action_name = "腐蚀酸液 (125)"
 
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_spray_acid()
 	set category = "Alien"
-	set name = "Spray Acid"
+	set name = "喷洒酸液"
 	set hidden = TRUE
-	var/action_name = "Spray Acid"
+	var/action_name = "喷洒酸液"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_burrow()
 	set category = "Alien"
-	set name = "Burrow"
+	set name = "掘地"
 	set hidden = TRUE
-	var/action_name = "Burrow"
+	var/action_name = "掘地"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_xeno_spit()
 	set category = "Alien"
-	set name = "Xeno Spit"
+	set name = "异形吐息"
 	set hidden = TRUE
-	var/action_name = "Xeno Spit"
+	var/action_name = "异形吐息"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_hide()
 	set category = "Alien"
-	set name = "Hide"
+	set name = "隐藏"
 	set hidden = TRUE
-	var/action_name = "Hide"
+	var/action_name = "隐藏"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_pheremones()
 	set category = "Alien"
-	set name = "Emit Pheromones"
+	set name = "释放信息素"
 	set hidden = TRUE
-	var/action_name = "Emit Pheromones (30)"
+	var/action_name = "释放信息素 (30)"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_transfer_plasma()
 	set category = "Alien"
-	set name = "Transfer Plasma"
+	set name = "转移等离子体"
 	set hidden = TRUE
-	var/action_name = "Transfer Plasma"
+	var/action_name = "转移等离子体"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_toggle_long_range()
 	set category = "Alien"
-	set name = "Toggle Long-Range Sight"
+	set name = "切换远程瞄准"
 	set hidden = TRUE
-	var/action_name = "Toggle Long-Range Sight"
+	var/action_name = "切换远程瞄准"
 	if(isrunner(src))
-		action_name = "Toggle Long-Range Sight (10)"
+		action_name = "切换远程视野 (10)"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_resin_hole()
 	set category = "Alien"
 	set name = "Place resin hole"
 	set hidden = TRUE
-	var/action_name = "Place resin hole (200)"
+	var/action_name = "放置树脂孔 (200)"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_stomp()
 	set category = "Alien"
-	set name = "Stomp"
+	set name = "践踏"
 	set hidden = TRUE
 	var/action_name = "Stomp (50)"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_toggle_charge()
 	set category = "Alien"
-	set name = "Toggle Charging"
+	set name = "切换冲锋状态"
 	set hidden = TRUE
-	var/action_name = "Toggle Charging"
+	var/action_name = "切换冲锋状态"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_resin_walker()
 	set category = "Alien"
 	set name = "Resin Walker"
 	set hidden = TRUE
-	var/action_name = "Resin Walker (50)"
+	var/action_name = "树脂行者 (50)"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_dig_tunnel()
 	set category = "Alien"
 	set name = "Dig Tunnel"
 	set hidden = TRUE
-	var/action_name = "Dig Tunnel (200)"
+	var/action_name = "挖掘隧道 (200)"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_screech()
 	set category = "Alien"
-	set name = "Screech"
+	set name = "尖啸"
 	set hidden = TRUE
-	var/action_name = "Screech (250)"
+	var/action_name = "尖啸（250）"
 	handle_xeno_macro(src, action_name)
 
 
 /datum/action/xeno_action/verb/verb_watch_xeno()
 	set category = "Alien"
-	set name = "Watch Xenomorph"
+	set name = "观察异形"
 	set hidden = TRUE
-	var/action_name = "Watch Xenomorph"
+	var/action_name = "观察异形"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_heal_xeno()
 	set category = "Alien"
 	set name = "Heal Xenomorph"
 	set hidden = TRUE
-	var/action_name = "Heal Xenomorph (600)"
+	var/action_name = "治疗异形（600）"
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_plasma_xeno()
@@ -207,5 +207,5 @@
 	set category = "Alien"
 	set name = "Order Construction"
 	set hidden = TRUE
-	var/action_name = "Order Construction (400)"
+	var/action_name = "下令建造 (400)"
 	handle_xeno_macro(src, action_name)

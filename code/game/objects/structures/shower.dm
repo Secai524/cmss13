@@ -1,6 +1,6 @@
 /obj/structure/machinery/shower
 	name = "shower"
-	desc = "The HS-451. Installed in the 2050s by the Weyland Hygiene Division."
+	desc = "HS-451型。由维兰德卫生部门于2050年代安装。"
 	icon = 'icons/obj/structures/props/watercloset.dmi'
 	icon_state = "shower"
 	density = FALSE
@@ -50,9 +50,9 @@
 
 /obj/structure/machinery/shower/attackby(obj/item/I as obj, mob/user as mob)
 	if(I.type == /obj/item/device/analyzer)
-		to_chat(user, SPAN_NOTICE("The water temperature seems to be [watertemp]."))
+		to_chat(user, SPAN_NOTICE("水温似乎是[watertemp]。"))
 	if(HAS_TRAIT(I, TRAIT_TOOL_WRENCH))
-		to_chat(user, SPAN_NOTICE("You begin to adjust the temperature valve with \the [I]."))
+		to_chat(user, SPAN_NOTICE("你开始用\the [I]调节温度阀门。"))
 		if(do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			switch(watertemp)
 				if("normal")
@@ -61,7 +61,7 @@
 					watertemp = "boiling"
 				if("boiling")
 					watertemp = "normal"
-			user.visible_message(SPAN_NOTICE("[user] adjusts the shower with \the [I]."), SPAN_NOTICE("You adjust the shower with \the [I]."))
+			user.visible_message(SPAN_NOTICE("[user]用\the [I]调节了淋浴。"), SPAN_NOTICE("You adjust the shower with \the [I]."))
 			add_fingerprint(user)
 
 
@@ -113,7 +113,7 @@
 		var/mob/living/L = O
 		L.ExtinguishMob()
 		L.fire_stacks = -20 //Douse ourselves with water to avoid fire more easily
-		to_chat(L, SPAN_WARNING("You've been drenched in water!"))
+		to_chat(L, SPAN_WARNING("你被水淋透了！"))
 		if(iscarbon(O))
 			var/mob/living/carbon/M = O
 			if(M.r_hand)
@@ -219,11 +219,11 @@
 		if(watertemp == "freezing")
 			C.bodytemperature = max(T0C, C.bodytemperature - BODYTEMP_COOLING_MAX)
 			C.recalculate_move_delay = TRUE
-			to_chat(C, SPAN_WARNING("The water is freezing!"))
+			to_chat(C, SPAN_WARNING("水冰冷刺骨！"))
 			return
 		if(watertemp == "boiling")
 			C.bodytemperature = min(T90C, C.bodytemperature + BODYTEMP_HEATING_MAX)
 			C.recalculate_move_delay = TRUE
 			C.apply_damage(5, BURN, enviro=TRUE)
-			to_chat(C, SPAN_DANGER("The water is searing!"))
+			to_chat(C, SPAN_DANGER("水滚烫灼人！"))
 			return

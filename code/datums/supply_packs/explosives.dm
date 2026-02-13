@@ -1,7 +1,7 @@
 // Group to populate with all the explosives exept OB and mortar shell
 
 /datum/supply_packs/explosives
-	name = "surplus explosives crate (claymore mine x5, M40 HIDP x2, M40 HEDP x2, M15 Frag x2, M12 Blast x2, M40 MFHS x2)"
+	name = "剩余爆炸物箱（阔剑地雷x5，M40 HIDP燃烧弹x2，M40 HEDP爆破弹x2，M15破片手榴弹x2，M12爆破弹x2，M40 MFHS烟雾弹x2）"
 	contains = list(
 		/obj/item/storage/box/explosive_mines,
 		/obj/item/explosive/grenade/high_explosive,
@@ -21,7 +21,7 @@
 	group = "Explosives"
 
 /datum/supply_packs/explosives_mines
-	name = "claymore mines crate (x10)"
+	name = "阔剑地雷箱（x10）"
 	contains = list(
 		/obj/item/storage/box/explosive_mines,
 		/obj/item/storage/box/explosive_mines,
@@ -32,7 +32,7 @@
 	group = "Explosives"
 
 /datum/supply_packs/explosives_m15
-	name = "M15 fragmentation grenades crate (x6)"
+	name = "M15破片手榴弹箱（x6）"
 	contains = list(
 		/obj/item/storage/box/packet/m15,
 		/obj/item/storage/box/packet/m15,
@@ -43,7 +43,7 @@
 	group = "Explosives"
 
 /datum/supply_packs/explosives_plastic
-	name = "plastic explosives crate (x3)"
+	name = "塑胶炸药箱（x3）"
 	contains = list(
 		/obj/item/explosive/plastic,
 		/obj/item/explosive/plastic,
@@ -55,7 +55,7 @@
 	group = "Explosives"
 
 /datum/supply_packs/explosives_breaching_charge
-	name = "breaching charge crate (x4)"
+	name = "破门炸药箱（x4）"
 	contains = list(
 		/obj/item/explosive/plastic/breaching_charge,
 		/obj/item/explosive/plastic/breaching_charge,
@@ -68,7 +68,7 @@
 	group = "Explosives"
 
 /datum/supply_packs/brute_rockets
-	name = "M6H-BRUTE Breaching Rocket Crate (x6)"
+	name = "M6H-BRUTE破门火箭箱（x6）"
 	contains = list(
 		/obj/item/ammo_magazine/rocket/brute,
 		/obj/item/ammo_magazine/rocket/brute,
@@ -83,7 +83,7 @@
 	group = "Explosives"
 
 /datum/supply_packs/explosives_incendiary
-	name = "M40 HIDP incendiary grenades crate (x6)"
+	name = "M40 HIDP燃烧手榴弹箱（x6）"
 	contains = list(
 		/obj/item/storage/box/packet/incendiary,
 		/obj/item/storage/box/packet/incendiary,
@@ -94,7 +94,7 @@
 	group = "Explosives"
 
 /datum/supply_packs/explosives_M40_HEDP
-	name = "M40 HEDP blast grenades crate (x6)"
+	name = "M40 HEDP爆破手榴弹箱（x6）"
 	contains = list(
 		/obj/item/storage/box/packet/high_explosive,
 		/obj/item/storage/box/packet/high_explosive,
@@ -105,7 +105,7 @@
 	group = "Explosives"
 
 /datum/supply_packs/explosives_sebb
-	name = "G2 electroshock grenades crate (x6)"
+	name = "G2电击手榴弹箱（x6）"
 	contains = list(
 		/obj/item/storage/box/packet/sebb,
 		/obj/item/storage/box/packet/sebb,
@@ -117,7 +117,7 @@
 
 
 /datum/supply_packs/explosives_hedp
-	name = "M40 HEDP blast grenade box crate (x25)"
+	name = "M40 HEDP爆破手榴弹盒装箱（x25）"
 	contains = list(
 		/obj/item/storage/box/nade_box,
 	)
@@ -127,7 +127,7 @@
 	group = "Explosives"
 
 /datum/supply_packs/explosives_M40_CCDP
-	name = "M40 CCDP chemical compound grenades crate (x6)"
+	name = "M40 CCDP化学复合手榴弹箱（x6）"
 	contains = list(
 		/obj/item/storage/box/packet/phosphorus,
 		/obj/item/storage/box/packet/phosphorus,
@@ -138,7 +138,7 @@
 	group = "Explosives"
 
 /datum/supply_packs/explosives_M40_CCDP_crate
-	name = "M40 WPDP chemical compund grenade box crate (x25)"
+	name = "M40 WPDP化学复合手榴弹盒装箱（x25）"
 	contains = list(
 		/obj/item/storage/box/nade_box/phophorus,
 	)
@@ -148,7 +148,7 @@
 	group = "Explosives"
 
 /datum/supply_packs/explosives_M40_HEFA
-	name = "M40 HEFA fragmentation grenades crate (x6)"
+	name = "M40 HEFA破片手榴弹箱（x6）"
 	contains = list(
 		/obj/item/storage/box/packet/hefa,
 		/obj/item/storage/box/packet/hefa,
@@ -160,7 +160,7 @@
 
 
 /datum/supply_packs/explosives_hefa
-	name = "M40 HEFA fragmentation grenade box crate (x25)"
+	name = "M40 HEFA破片手榴弹盒装箱（x25）"
 	contains = list(
 		/obj/item/storage/box/nade_box/frag,
 	)
@@ -170,7 +170,7 @@
 	group = "Explosives"
 
 /datum/supply_packs/explosives_M74_AGM_F
-	name = "M74 airburst grenades crate (x6)"
+	name = "M74空爆手榴弹箱（x6）"
 	contains = list(
 		/obj/item/storage/box/packet/airburst_he,
 		/obj/item/storage/box/packet/airburst_he,
@@ -181,7 +181,7 @@
 	group = "Explosives"
 
 /datum/supply_packs/explosives_AGMF
-	name = "M74 Airburst Grenade Munition fragmentation grenade box crate (x25)"
+	name = "M74空爆手榴弹破片弹箱（x25）"
 	contains = list(
 		/obj/item/storage/box/nade_box/airburst,
 	)
@@ -191,7 +191,7 @@
 	group = "Explosives"
 
 /datum/supply_packs/explosives_incendiary
-	name = "M74 Airburst Grenade Munition incendiary grenades crate (x6)"
+	name = "M74空爆手榴弹燃烧弹箱（x6）"
 	contains = list(
 		/obj/item/storage/box/packet/airburst_incen,
 		/obj/item/storage/box/packet/airburst_incen,
@@ -202,7 +202,7 @@
 	group = "Explosives"
 
 /datum/supply_packs/explosives_M74_AGM_I_box
-	name = "M74 Airburst Grenade Munition incendiary grenades box crate (x25)"
+	name = "M74空爆手榴弹燃烧弹盒装箱（x25）"
 	contains = list(
 		/obj/item/storage/box/nade_box/airburstincen,
 	)
@@ -212,7 +212,7 @@
 	group = "Explosives"
 
 /datum/supply_packs/explosives_airburst_smoke
-	name = "M74 Airburst Grenade Munition smoke grenades crate (x6)"
+	name = "M74空爆手榴弹烟雾弹箱（x6）"
 	contains = list(
 		/obj/item/storage/box/packet/airburst_smoke,
 		/obj/item/storage/box/packet/airburst_smoke,
@@ -223,7 +223,7 @@
 	group = "Explosives"
 
 /datum/supply_packs/explosives_m74_hornet
-	name = "M74 AGM-Hornet Grenade Crate (x6)"
+	name = "M74 AGM-大黄蜂手榴弹箱 (x6)"
 	contains = list(
 		/obj/item/storage/box/packet/hornet,
 		/obj/item/storage/box/packet/hornet,
@@ -234,7 +234,7 @@
 	group = "Explosives"
 
 /datum/supply_packs/explosives_m74_starshell
-	name = "M74 AGM-Star Shell Grenade Crate (x6)"
+	name = "M74 AGM-星爆弹手榴弹箱 (x6)"
 	contains = list(
 		/obj/item/storage/box/packet/flare,
 		/obj/item/storage/box/packet/flare,
@@ -245,7 +245,7 @@
 	group = "Explosives"
 
 /datum/supply_packs/explosives_baton_slug
-	name = "M40 HIRR Baton Slug Crate (x6)"
+	name = "M40 HIRR 警棍独头弹箱 (x6)"
 	contains = list(
 		/obj/item/storage/box/packet/baton_slug,
 		/obj/item/storage/box/packet/baton_slug,

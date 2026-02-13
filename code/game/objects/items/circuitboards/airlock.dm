@@ -1,6 +1,6 @@
 
 /obj/item/circuitboard/airlock
-	name = "airlock electronics"
+	name = "气闸电子元件"
 	gender = PLURAL
 	icon_state = "door_electronics"
 	w_class = SIZE_SMALL
@@ -112,5 +112,5 @@
 
 
 /obj/item/circuitboard/airlock/secure
-	name = "secure airlock electronics"
-	desc = "Designed to be somewhat more resistant to hacking than standard electronics."
+	name = "安全气闸电子元件"
+	desc = "设计得比标准电子元件更能抵抗黑客攻击。"

@@ -2,7 +2,7 @@
 
 /obj/item/storage/lockbox
 	name = "lockbox"
-	desc = "A locked box."
+	desc = "一个上了锁的箱子。"
 	icon = 'icons/obj/items/storage/briefcases.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/briefcases_lefthand.dmi',
@@ -25,30 +25,30 @@
 /obj/item/storage/lockbox/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/card/id))
 		if(src.broken)
-			to_chat(user, SPAN_DANGER("It appears to be broken."))
+			to_chat(user, SPAN_DANGER("它似乎已损坏。"))
 			return
 		if(can_storage_interact(user))
 			src.locked = !( src.locked )
 			if(src.locked)
 				src.icon_state = src.icon_locked
-				to_chat(user, SPAN_DANGER("You lock the [src.name]!"))
+				to_chat(user, SPAN_DANGER("你锁上了[src.name]！"))
 				return
 			else
 				src.icon_state = src.icon_closed
-				to_chat(user, SPAN_DANGER("You unlock the [src.name]!"))
+				to_chat(user, SPAN_DANGER("你解锁了[src.name]！"))
 				return
 		else
-			to_chat(user, SPAN_DANGER("Access denied."))
+			to_chat(user, SPAN_DANGER("权限被拒绝。"))
 	if(!locked)
 		..()
 	else
-		to_chat(user, SPAN_DANGER("It's locked!"))
+		to_chat(user, SPAN_DANGER("它锁住了！"))
 	return
 
 
 /obj/item/storage/lockbox/show_to(mob/user as mob)
 	if(locked)
-		to_chat(user, SPAN_DANGER("It's locked!"))
+		to_chat(user, SPAN_DANGER("它锁住了！"))
 	else
 		..()
 	return
@@ -65,8 +65,8 @@
 	new /obj/item/ammo_magazine/pistol/es4(src)
 
 /obj/item/storage/lockbox/cluster
-	name = "lockbox of cluster flashbangs"
-	desc = "You have a bad feeling about opening this."
+	name = "集束闪光弹锁箱"
+	desc = "你对打开这东西有种不祥的预感。"
 	req_access = list(ACCESS_MARINE_BRIG)
 
 /obj/item/storage/lockbox/clusterbang/fill_preset_inventory()

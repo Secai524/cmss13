@@ -1,5 +1,5 @@
 /datum/action/xeno_action/activable/pounce/facehugger
-	name = "Leap"
+	name = "飞跃"
 	action_icon_state = "pounce"
 	action_text = "leap"
 	macro_path = /datum/action/xeno_action/verb/verb_pounce

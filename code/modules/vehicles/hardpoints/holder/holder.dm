@@ -1,6 +1,6 @@
 /obj/item/hardpoint/holder
-	name = "holder hardpoint"
-	desc = "Holder for other hardpoints."
+	name = "挂架硬点"
+	desc = "用于安装其他硬点的挂架。"
 
 	// List of types of hardpoints that this hardpoint can hold
 	var/list/accepted_hardpoints
@@ -70,13 +70,13 @@
 
 /obj/item/hardpoint/holder/proc/install(obj/item/hardpoint/H, mob/user)
 	if(health <= 0)
-		to_chat(user, SPAN_WARNING("All the mounting points on \the [src] are broken!"))
+		to_chat(user, SPAN_WARNING("\the [src]上所有的安装点都损坏了！"))
 		return
 
-	user.visible_message(SPAN_NOTICE("[user] begins installing \the [H] on the [H.slot] hardpoint slot of \the [src]."),
+	user.visible_message(SPAN_NOTICE("[user]开始将\the [H]安装到\the [src]的[H.slot]硬点插槽上。"),
 		SPAN_NOTICE("You begin installing \the [H] on the [H.slot] hardpoint slot of \the [src]."))
 	if(!do_after(user, 120 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-		user.visible_message(SPAN_WARNING("[user] stops installing \the [H] on \the [src]."), SPAN_WARNING("You stop installing \the [H] on \the [src]."))
+		user.visible_message(SPAN_WARNING("[user]停止在\the [src]上安装\the [H]。"), SPAN_WARNING("You stop installing \the [H] on \the [src]."))
 		return
 
 	user.temp_drop_inv_item(H, 0)
@@ -88,10 +88,10 @@
 	if(!LAZYISIN(hardpoints, H))
 		return
 
-	user.visible_message(SPAN_NOTICE("[user] begins removing \the [H] from the [H.slot] hardpoint slot of \the [src]."),
+	user.visible_message(SPAN_NOTICE("[user]开始从\the [src]的[H.slot]硬点插槽上拆卸\the [H]。"),
 		SPAN_NOTICE("You begin removing \the [H] from the [H.slot] hardpoint slot of \the [src]."))
 	if(!do_after(user, 120 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-		user.visible_message(SPAN_WARNING("[user] stops removing \the [H] from \the [src]."), SPAN_WARNING("You stop removing \the [H] from \the [src]."))
+		user.visible_message(SPAN_WARNING("[user]停止从\the [src]上拆卸\the [H]。"), SPAN_WARNING("You stop removing \the [H] from \the [src]."))
 		return
 
 	remove_hardpoint(H, get_turf(user))
@@ -101,10 +101,10 @@
 /obj/item/hardpoint/holder/attackby(obj/item/O, mob/user)
 	if(HAS_TRAIT(O, TRAIT_TOOL_CROWBAR))
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-			to_chat(user, SPAN_WARNING("You don't know what to do with \the [O] on \the [src]."))
+			to_chat(user, SPAN_WARNING("你不知道该如何在\the [src]上处理\the [O]。"))
 			return
 
-		var/chosen_hp = tgui_input_list(usr, "Select a hardpoint to remove", "Vehicle Hardpoint Removal", (hardpoints + "Cancel"))
+		var/chosen_hp = tgui_input_list(usr, "选择要移除的挂载点", "Vehicle Hardpoint Removal", (hardpoints + "Cancel"))
 		if(chosen_hp == "Cancel")
 			return
 		var/obj/item/hardpoint/old = chosen_hp
@@ -114,12 +114,12 @@
 
 	if(istype(O, /obj/item/hardpoint))
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-			to_chat(user, SPAN_WARNING("You don't know what to do with \the [O] on \the [src]."))
+			to_chat(user, SPAN_WARNING("你不知道该如何在\the [src]上处理\the [O]。"))
 			return
 
 		var/obj/item/hardpoint/H = O
 		if(!(H.type in accepted_hardpoints))
-			to_chat(user, SPAN_WARNING("You don't know what to do with \the [O] on \the [src]."))
+			to_chat(user, SPAN_WARNING("你不知道该如何在\the [src]上处理\the [O]。"))
 			return
 
 		install(H, user)

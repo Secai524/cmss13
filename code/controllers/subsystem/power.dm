@@ -1,7 +1,7 @@
 GLOBAL_LIST_EMPTY(power_machines)
 
 SUBSYSTEM_DEF(power)
-	name   = "Power"
+	name   = "功率"
 	init_order = SS_INIT_POWER
 	priority   = SS_PRIORITY_POWER
 	wait   = 2 SECONDS

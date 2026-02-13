@@ -18,10 +18,10 @@
 	if(istype(I, /obj/item/card/id))
 		var/obj/item/card/id/card = I
 		if(ACCESS_CIVILIAN_PUBLIC in card.GetAccess())
-			var/sign_type = tgui_input_list(user, "What would you like to change the barsign to?", "Bar Sign", list("Off", "Pink Flamingo", "Magma Sea", "Limbo", "Rusty Axe", "Armok Bar", "Broken Drum", "Mead Bay", "The Damn Wall", "The Cavern", "Cindi Kate", "The Orchard", "The Saucy Clown", "The Clowns Head", "Whiskey Implant", "Carpe Carp", "Robust Roadhouse", "Greytide", "The Redshirt"))
+			var/sign_type = tgui_input_list(user, "你想将酒吧招牌改成什么？", "Bar Sign", list("Off", "Pink Flamingo", "Magma Sea", "Limbo", "Rusty Axe", "Armok Bar", "Broken Drum", "Mead Bay", "The Damn Wall", "The Cavern", "Cindi Kate", "The Orchard", "The Saucy Clown", "The Clowns Head", "Whiskey Implant", "Carpe Carp", "Robust Roadhouse", "Greytide", "The Redshirt"))
 			if(sign_type == null)
 				return
 			else
 				sign_type = replacetext(lowertext(sign_type), " ", "") // lowercase, strip spaces - along with choices for user options, avoids huge if-else-else
 				src.ChangeSign(sign_type)
-				to_chat(user, "You change the barsign.")
+				to_chat(user, "你更换了酒吧招牌。")

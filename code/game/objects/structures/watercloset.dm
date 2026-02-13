@@ -1,6 +1,6 @@
 /obj/structure/toilet
 	name = "toilet"
-	desc = "The HT-451, a torque rotation-based, waste disposal unit for small matter. This one seems remarkably clean."
+	desc = "HT-451，一种基于扭矩旋转的小型废物处理装置。这个看起来异常干净。"
 	icon = 'icons/obj/structures/props/watercloset.dmi'
 	icon_state = "toilet00"
 	density = FALSE
@@ -37,14 +37,14 @@
 		return
 
 	if(swirlie)
-		user.visible_message(SPAN_DANGER("[user] slams the toilet seat onto [swirlie.name]'s head!"), SPAN_NOTICE("You slam the toilet seat onto [swirlie.name]'s head!"), "You hear reverberating porcelain.")
+		user.visible_message(SPAN_DANGER("[user]将马桶盖猛地砸在[swirlie.name]的头上！"), SPAN_NOTICE("You slam the toilet seat onto [swirlie.name]'s head!"), "You hear reverberating porcelain.")
 		swirlie.apply_damage(8, BRUTE)
 		return
 
 	if(!open)
 		if(cistern)
 			if(!length(contents))
-				to_chat(user, SPAN_NOTICE("The cistern is empty."))
+				to_chat(user, SPAN_NOTICE("水箱是空的。"))
 				return
 			else
 				var/obj/item/I = pick(contents)
@@ -52,7 +52,7 @@
 					user.put_in_hands(I)
 				else
 					I.forceMove(get_turf(src))
-				to_chat(user, SPAN_NOTICE("You find \an [I] in the cistern."))
+				to_chat(user, SPAN_NOTICE("你在水箱里找到了\an [I]。"))
 				w_items -= I.w_class
 				return
 		else
@@ -73,10 +73,10 @@
 
 /obj/structure/toilet/send_buckling_message(mob/M, mob/user)
 	if (M == user)
-		to_chat(M, SPAN_NOTICE("You seat yourself onto the toilet."))
+		to_chat(M, SPAN_NOTICE("你坐到了马桶上。"))
 	else
-		to_chat(user, SPAN_NOTICE("[M] has been seated onto the toilet by [user]."))
-		to_chat(M, SPAN_NOTICE("You have been seated onto the toilet by [user]."))
+		to_chat(user, SPAN_NOTICE("[M]被[user]按到了马桶上。"))
+		to_chat(M, SPAN_NOTICE("你被[user]按到了马桶上。"))
 
 
 /obj/structure/toilet/afterbuckle(mob/M)
@@ -123,10 +123,10 @@
 
 /obj/structure/toilet/attackby(obj/item/I, mob/living/user)
 	if(HAS_TRAIT(I, TRAIT_TOOL_CROWBAR))
-		to_chat(user, SPAN_NOTICE("You start to [cistern ? "replace the lid on the cistern" : "lift the lid off the cistern"]."))
+		to_chat(user, SPAN_NOTICE("你开始[cistern ? "replace the lid on the cistern" : "lift the lid off the cistern"]."))
 		playsound(loc, 'sound/effects/stonedoor_openclose.ogg', 25, 1)
 		if(do_after(user, 30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			user.visible_message(SPAN_NOTICE("[user] [cistern ? "replaces the lid on the cistern" : "lifts the lid off the cistern"]!"), SPAN_NOTICE("You [cistern ? "replace the lid on the cistern" : "lift the lid off the cistern"]!"), "You hear grinding porcelain.")
+			user.visible_message(SPAN_NOTICE("[user][cistern ? "replaces the lid on the cistern" : "lifts the lid off the cistern"]!"), SPAN_NOTICE("You [cistern ? "replace the lid on the cistern" : "lift the lid off the cistern"]!"), "You hear grinding porcelain.")
 			cistern = !cistern
 			update_icon()
 			return
@@ -141,31 +141,31 @@
 
 			if(user.grab_level > GRAB_PASSIVE)
 				if(!GM.loc == get_turf(src))
-					to_chat(user, SPAN_NOTICE("[GM.name] needs to be on the toilet."))
+					to_chat(user, SPAN_NOTICE("[GM.name]需要坐在马桶上。"))
 					return
 				if(open && !swirlie)
-					user.visible_message(SPAN_DANGER("[user] starts to give [GM.name] a swirlie!"), SPAN_NOTICE("You start to give [GM.name] a swirlie!"))
+					user.visible_message(SPAN_DANGER("[user]开始给[GM.name]来个“漩涡冲头”！"), SPAN_NOTICE("You start to give [GM.name] a swirlie!"))
 					swirlie = GM
 					if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-						user.visible_message(SPAN_DANGER("[user] gives [GM.name] a swirlie!"), SPAN_NOTICE("You give [GM.name] a swirlie!"), "You hear a toilet flushing.")
+						user.visible_message(SPAN_DANGER("[user]给[GM.name]来了个“漩涡冲头”！"), SPAN_NOTICE("You give [GM.name] a swirlie!"), "You hear a toilet flushing.")
 						if(!GM.internal)
 							GM.apply_damage(5, OXY)
 					swirlie = null
 				else
-					user.visible_message(SPAN_DANGER("[user] slams [GM.name] into [src]!"), SPAN_NOTICE("You slam [GM.name] into [src]!"))
+					user.visible_message(SPAN_DANGER("[user]将[GM.name]猛撞进[src]！"), SPAN_NOTICE("You slam [GM.name] into [src]!"))
 					GM.apply_damage(8, BRUTE)
 			else
-				to_chat(user, SPAN_NOTICE("You need a tighter grip."))
+				to_chat(user, SPAN_NOTICE("你需要握得更紧。"))
 
 	if(cistern)
 		if(I.w_class > SIZE_MEDIUM)
 			to_chat(user, SPAN_NOTICE("\The [I] does not fit."))
 			return
 		if(w_items + I.w_class > 5)
-			to_chat(user, SPAN_NOTICE("The cistern is full."))
+			to_chat(user, SPAN_NOTICE("水箱是满的。"))
 			return
 		user.drop_held_item()
 		I.forceMove(src)
 		w_items += I.w_class
-		to_chat(user, "You carefully place \the [I] into the cistern.")
+		to_chat(user, "你小心地将\the [I]放入水箱。")
 		return

@@ -16,43 +16,43 @@
 
 	if(!keycheck(user))
 		if(COOLDOWN_FINISHED(src, message_cooldown))
-			to_chat(user, SPAN_WARNING("[vehicle_parent] has no key inserted!"))
+			to_chat(user, SPAN_WARNING("[vehicle_parent]没有插入钥匙！"))
 			COOLDOWN_START(src, message_cooldown, 5 SECONDS)
 		return COMPONENT_DRIVER_BLOCK_MOVE
 
 	if(HAS_TRAIT(user, TRAIT_INCAPACITATED))
 		if(ride_check_flags & UNBUCKLE_DISABLED_RIDER)
 			vehicle_parent.unbuckle(user, TRUE)
-			user.visible_message(SPAN_DANGER("[user] falls off [vehicle_parent]."),\
+			user.visible_message(SPAN_DANGER("[user]从[vehicle_parent]上摔了下来。"),\
 			SPAN_DANGER("You slip off [vehicle_parent] as your body slumps!"))
 			user.Stun(3 SECONDS)
 
 		if(COOLDOWN_FINISHED(src, message_cooldown))
-			to_chat(user, SPAN_WARNING("You cannot operate [vehicle_parent] right now!"))
+			to_chat(user, SPAN_WARNING("你现在无法操作[vehicle_parent]！"))
 			COOLDOWN_START(src, message_cooldown, 5 SECONDS)
 		return COMPONENT_DRIVER_BLOCK_MOVE
 
 	if(ride_check_flags & RIDER_NEEDS_LEGS && HAS_TRAIT(user, TRAIT_FLOORED))
 		if(ride_check_flags & UNBUCKLE_DISABLED_RIDER)
 			vehicle_parent.unbuckle(user, TRUE)
-			user.visible_message(SPAN_DANGER("[user] falls off [vehicle_parent]."),\
+			user.visible_message(SPAN_DANGER("[user]从[vehicle_parent]上摔了下来。"),\
 			SPAN_DANGER("You fall off [vehicle_parent] while trying to operate it while unable to stand!"))
 			user.Stun(3 SECONDS)
 
 		if(COOLDOWN_FINISHED(src, message_cooldown))
-			to_chat(user, SPAN_WARNING("You can't seem to manage that while unable to stand up enough to move [vehicle_parent]..."))
+			to_chat(user, SPAN_WARNING("你似乎无法在站不稳的情况下移动[vehicle_parent]..."))
 			COOLDOWN_START(src, message_cooldown, 5 SECONDS)
 		return COMPONENT_DRIVER_BLOCK_MOVE
 
 	if(ride_check_flags & RIDER_NEEDS_ARMS && user.is_mob_restrained())
 		if(ride_check_flags & UNBUCKLE_DISABLED_RIDER)
 			vehicle_parent.unbuckle(user, TRUE)
-			user.visible_message(SPAN_DANGER("[user] falls off [vehicle_parent]."),\
+			user.visible_message(SPAN_DANGER("[user]从[vehicle_parent]上摔了下来。"),\
 			SPAN_DANGER("You fall off [vehicle_parent] while trying to operate it without being able to hold on!"))
 			user.Stun(3 SECONDS)
 
 		if(COOLDOWN_FINISHED(src, message_cooldown))
-			to_chat(user, SPAN_WARNING("You can't seem to hold onto [vehicle_parent] to move it..."))
+			to_chat(user, SPAN_WARNING("你似乎抓不住[vehicle_parent]来移动它..."))
 			COOLDOWN_START(src, message_cooldown, 5 SECONDS)
 		return COMPONENT_DRIVER_BLOCK_MOVE
 

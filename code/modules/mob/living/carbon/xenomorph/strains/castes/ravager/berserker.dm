@@ -28,7 +28,7 @@
 
 // Mutator delegate for Berserker ravager
 /datum/behavior_delegate/ravager_berserker
-	name = "Berserker Ravager Behavior Delegate"
+	name = "狂暴掠夺者行为代理"
 
 	var/hp_vamp_ratio = 0.3
 
@@ -70,7 +70,7 @@
 		if (rage == max_rage)
 			bound_xeno.add_filter("berserker_rage", 1, list("type" = "outline", "color" = "#000000ff", "size" = 1))
 			rage_lock()
-			to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We feel a euphoric rush as we reach max rage! We are LOCKED at max Rage!"))
+			to_chat(bound_xeno, SPAN_XENOHIGHDANGER("达到最大狂怒时，我们感到一阵狂喜！我们已被锁定在最大狂怒状态！"))
 
 	// HP vamp
 	if(!bound_xeno.on_fire)
@@ -121,7 +121,7 @@
 	rage_cooldown_start_time = world.time
 	decrement_rage(rage)
 	bound_xeno.remove_filter("berserker_rage")
-	to_chat(bound_xeno, SPAN_XENOWARNING("Our adrenal glands spasm. We cannot gain any rage for [rage_cooldown_duration/10] seconds."))
+	to_chat(bound_xeno, SPAN_XENOWARNING("我们的肾上腺痉挛。在[rage_cooldown_duration/10]秒内无法获得任何狂怒值。"))
 	addtimer(CALLBACK(src, PROC_REF(rage_cooldown_callback)), rage_cooldown_duration)
 	bound_xeno.add_filter("berserker_lockdown", 1, list("type" = "outline", "color" = "#fcfcfcff", "size" = 1))
 
@@ -135,8 +135,8 @@
 		return original_damage
 
 	if (next_slash_buffed)
-		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We significantly strengthen our attack, slowing [A]!"))
-		to_chat(A, SPAN_XENOHIGHDANGER("You feel a sharp pain as [bound_xeno] slashes you, slowing you down!"))
+		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("我们大幅强化了攻击，并减缓了[A]的速度！"))
+		to_chat(A, SPAN_XENOHIGHDANGER("你感到一阵剧痛，[bound_xeno]砍中了你，使你速度变慢！"))
 		A.apply_effect(get_xeno_stun_duration(A, slash_slow_duration), SLOW)
 		next_slash_buffed = FALSE
 
@@ -164,7 +164,7 @@
 	if (istype(behavior))
 		behavior.next_slash_buffed = TRUE
 
-	to_chat(xeno, SPAN_XENODANGER("Our next slash will slow!"))
+	to_chat(xeno, SPAN_XENODANGER("我们的下一次挥击将造成减速！"))
 
 	addtimer(CALLBACK(src, PROC_REF(unbuff_slash)), buff_duration)
 
@@ -183,7 +183,7 @@
 	if (istype(xeno))
 		xeno.speed_modifier += speed_buff
 		xeno.recalculate_speed()
-		to_chat(xeno, SPAN_XENOHIGHDANGER("We feel our speed wane!"))
+		to_chat(xeno, SPAN_XENOHIGHDANGER("我们感到速度在减弱！"))
 
 /datum/action/xeno_action/onclick/apprehend/proc/unbuff_slash()
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -196,7 +196,7 @@
 			return
 		behavior.next_slash_buffed = FALSE
 
-	to_chat(xeno, SPAN_XENODANGER("We have waited too long, our slash will no longer slow enemies!"))
+	to_chat(xeno, SPAN_XENODANGER("我们等待过久，挥击将不再减缓敌人！"))
 
 
 /datum/action/xeno_action/activable/clothesline/use_ability(atom/affected_atom)
@@ -209,11 +209,11 @@
 		return
 
 	if (!isxeno_human(affected_atom) || xeno.can_not_harm(affected_atom))
-		to_chat(xeno, SPAN_XENOWARNING("We must target a hostile!"))
+		to_chat(xeno, SPAN_XENOWARNING("我们必须以敌对目标为目标！"))
 		return
 
 	if (!xeno.Adjacent(affected_atom))
-		to_chat(xeno, SPAN_XENOWARNING("We must be adjacent to our target!"))
+		to_chat(xeno, SPAN_XENOWARNING("我们必须紧邻目标！"))
 		return
 
 	var/mob/living/carbon/carbon = affected_atom
@@ -222,7 +222,7 @@
 	var/debilitate = TRUE // Do we apply neg. status effects to the target?
 
 	if (carbon.mob_size >= MOB_SIZE_BIG)
-		to_chat(xeno, SPAN_XENOWARNING("We creature is too massive to target."))
+		to_chat(xeno, SPAN_XENOWARNING("该生物体型过于庞大，无法作为目标。"))
 		return
 
 	if (carbon.stat == DEAD)
@@ -233,7 +233,7 @@
 		behavior.decrement_rage()
 		heal_amount += additional_healing_enraged
 	else
-		to_chat(xeno, SPAN_XENOWARNING("Our rejuvenation was weaker without rage!"))
+		to_chat(xeno, SPAN_XENOWARNING("没有狂怒，我们的恢复效果较弱！"))
 		debilitate = FALSE
 		fling_distance--
 
@@ -286,7 +286,7 @@
 
 	var/datum/behavior_delegate/ravager_berserker/behavior = xeno.behavior_delegate
 	if (behavior.rage == 0)
-		to_chat(xeno, SPAN_XENODANGER("We cannot eviscerate when we have 0 rage!"))
+		to_chat(xeno, SPAN_XENODANGER("狂怒值为0时，我们无法进行开膛攻击！"))
 		return
 	damage = damage_at_rage_levels[clamp(behavior.rage, 1, behavior.max_rage)]
 	range = range_at_rage_levels[clamp(behavior.rage, 1, behavior.max_rage)]
@@ -296,11 +296,11 @@
 	apply_cooldown()
 
 	if (range > 1)
-		xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] begins digging in for a massive strike!"), SPAN_XENOHIGHDANGER("We begin digging in for a massive strike!"))
+		xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno]开始蓄力，准备发动一次强力打击！"), SPAN_XENOHIGHDANGER("We begin digging in for a massive strike!"))
 	else
-		xeno.visible_message(SPAN_XENODANGER("[xeno] begins digging in for a strike!"), SPAN_XENOHIGHDANGER("We begin digging in for a strike!"))
+		xeno.visible_message(SPAN_XENODANGER("[xeno]开始蓄力，准备发动打击！"), SPAN_XENOHIGHDANGER("We begin digging in for a strike!"))
 
-	ADD_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Eviscerate"))
+	ADD_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("开膛破肚"))
 	xeno.anchored = TRUE
 
 	if (do_after(xeno, (activation_delay - windup_reduction), INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
@@ -321,12 +321,12 @@
 				continue
 
 			if (range > 1)
-				xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] rips open the guts of [targets_to_hit]!"), SPAN_XENOHIGHDANGER("We rip open the guts of [targets_to_hit]!"))
+				xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno]撕开了[targets_to_hit]的内脏！"), SPAN_XENOHIGHDANGER("We rip open the guts of [targets_to_hit]!"))
 				targets_to_hit.spawn_gibs()
 				playsound(get_turf(targets_to_hit), 'sound/effects/gibbed.ogg', 30, 1)
 				targets_to_hit.apply_effect(get_xeno_stun_duration(targets_to_hit, 1), WEAKEN)
 			else
-				xeno.visible_message(SPAN_XENODANGER("[xeno] claws [targets_to_hit]!"), SPAN_XENODANGER("We claw [targets_to_hit]!"))
+				xeno.visible_message(SPAN_XENODANGER("[xeno]抓向[targets_to_hit]！"), SPAN_XENODANGER("We claw [targets_to_hit]!"))
 				playsound(get_turf(targets_to_hit), "alien_claw_flesh", 30, 1)
 
 			targets_to_hit.apply_armoured_damage(get_xeno_damage_slash(targets_to_hit, damage), ARMOR_MELEE, BRUTE, "chest", 20)
@@ -347,7 +347,7 @@
 	if(!xeno.on_fire)
 		xeno.gain_health(clamp(valid_count * lifesteal_per_marine, 0, max_lifesteal))
 
-	REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Eviscerate"))
+	REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("开膛破肚"))
 	xeno.anchored = FALSE
 
 	return ..()

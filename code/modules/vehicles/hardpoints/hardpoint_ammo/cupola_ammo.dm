@@ -1,6 +1,6 @@
 /obj/item/ammo_magazine/hardpoint/m56_cupola
-	name = "M56 Cupola Magazine"
-	desc = "A box of 500, 10x28mm caseless tungsten rounds for the M56D heavy machine gun system."
+	name = "M56炮塔弹箱"
+	desc = "一个装有500发M56D重机枪系统使用的10x28mm无壳钨芯弹的弹箱。"
 	caliber = "10x28mm" //Correlates to smartguns
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/vehicles.dmi'
 	icon_state = "cupola_1"
@@ -13,8 +13,8 @@
 	icon_state = "cupola_[current_rounds <= 0 ? "0" : "1"]"
 
 /obj/item/ammo_magazine/hardpoint/m56_cupola/frontal_cannon
-	name = "RE-RE700 Frontal Cannon magazine"
-	desc = "A big box of bullets that looks suspiciously similar to the box you would use to refill a M56 Cupola. The Bleihagel logo sticker has peeled slightly and it looks like there's another logo underneath..."
+	name = "RE-RE700前装炮弹箱"
+	desc = "一大箱子弹，看起来可疑地像给M56炮塔补充弹药用的箱子。布莱哈格尔的商标贴纸微微翘起，底下似乎还有另一个商标……"
 	gun_type = /obj/item/hardpoint/secondary/frontalcannon
 	icon_state = "frontal_1"
 

@@ -1,6 +1,6 @@
 /obj/item/clothing/accessory/device/whistle
 	name = "\improper whistle"
-	desc = "A metal pea-whistle. Can be blown while held, or worn in the mouth. It can also be worn as an accessory."
+	desc = "一个金属豌豆哨。可以在手持时吹响，或含在嘴里。也可以作为配饰佩戴。"
 	icon_state = "whistle_generic"
 	icon = 'icons/obj/items/tools.dmi'
 	w_class = SIZE_TINY
@@ -48,14 +48,14 @@
 
 /obj/item/clothing/accessory/device/whistle/proc/whistle_playsound(mob/user, bypass_cooldown = FALSE, custom_sound, leader_slowdown = FALSE)
 	if(!COOLDOWN_FINISHED(src, spam_cooldown) && !bypass_cooldown)
-		to_chat(user, SPAN_DANGER("You are out of breath after using [src]! Wait [COOLDOWN_SECONDSLEFT(src, spam_cooldown)] second\s."))
+		to_chat(user, SPAN_DANGER("使用[src]后你气喘吁吁！等待[COOLDOWN_SECONDSLEFT(src, spam_cooldown)]秒。"))
 		return
 
 	if(leader_slowdown)
-		user.visible_message(SPAN_WARNING("[user] rouses everyone around as they blow [src]!"), SPAN_WARNING("You rouse everyone around you as you blow into [src], slowing yourself down as you do!"))
+		user.visible_message(SPAN_WARNING("[user]吹响[src]，惊动了周围所有人！"), SPAN_WARNING("You rouse everyone around you as you blow into [src], slowing yourself down as you do!"))
 		user.set_effect(3, SLOW) // 3 ticks, yes
 	else
-		user.visible_message(SPAN_WARNING("[user] blows into [src]!"))
+		user.visible_message(SPAN_WARNING("[user]吹响了[src]！"))
 	playsound(get_turf(src), custom_sound ? custom_sound : whistle_sound, volume, 1, vary = 0)
 
 	COOLDOWN_START(src, spam_cooldown, spam_cooldown_time)
@@ -74,8 +74,8 @@
 			add_fingerprint(usr)
 
 /obj/item/clothing/accessory/device/whistle/trench
-	name = "trench whistle"
-	desc = "A metallic field whistle, popularized back in the early 20th century. Can be blown while held, or worn in the mouth. It can also be worn as an accessory."
+	name = "战壕哨"
+	desc = "一种金属野战哨，在20世纪初流行。可以手持吹响，或含在嘴里。也可作为配饰佩戴。"
 	desc_lore = "While these trench whistles had fallen out of fashion in favor for the smaller and ligher pea whistles, they are still favored by certain military leaders for their authoritative and distinct sound. It had regained its popularity in recent years during the various campaigns held against the UPP at the tail-end of the Dog War on the year 2162, where such whistles were used to coordinate squad movements and issue audible orders on the battlefield by both sides while under constant, heavy fire. During which most engagements were fielded out in the open, and long-range radio communications relied through vulnerable radio-men, whose equipment had faults within the aging technology most typically due to hostile jamming of the communications network among other issues, which further reinforced the necessity of these whistles."
 	icon_state = "trench_whistle"
 	icon = 'icons/obj/items/tools.dmi'
@@ -84,7 +84,7 @@
 
 /obj/item/device/hailer
 	name = "hailer"
-	desc = "Used by obese officers to save their breath for running."
+	desc = "肥胖军官用来节省跑步时的呼吸。"
 	icon_state = "voice0"
 	item_state = "flash_device" //looks exactly like a flash (and nothing like a flashbang)
 	w_class = SIZE_TINY
@@ -100,7 +100,7 @@
 		return
 
 	playsound(get_turf(src), 'sound/voice/halt.ogg', 25, 1, vary = 0)
-	user.show_message(SPAN_WARNING("[user]'s [name] rasps, \"Halt! Security!\""), SHOW_MESSAGE_AUDIBLE)
+	user.show_message(SPAN_WARNING("[user]的[name]发出刺耳的声音，\"Halt! Security!\""), SHOW_MESSAGE_AUDIBLE)
 
 	spamcheck = 1
 	addtimer(VARSET_CALLBACK(src, spamcheck, FALSE), 2 SECONDS)

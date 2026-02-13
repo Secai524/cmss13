@@ -16,8 +16,8 @@
 		sort_index = set_sort_index
 
 /obj/item/toy/deck
-	name = "deck of cards"
-	desc = "A simple deck of playing cards."
+	name = "扑克牌"
+	desc = "一副简单的扑克牌。"
 	icon = 'icons/obj/items/playing_cards.dmi'
 	icon_state = "deck"
 	item_state_slots = list(WEAR_AS_GARB = "card_deck")
@@ -56,8 +56,8 @@
 	return
 
 /obj/item/toy/deck/uno
-	name = "deck of UNO cards"
-	desc = "A simple deck of the Weyland-Yutani classic UNO playing cards."
+	name = "UNO牌"
+	desc = "一副经典的维兰德-汤谷UNO扑克牌。"
 	icon_state = "deck_uno"
 	base_icon = "deck_uno"
 	item_state_slots = list(WEAR_AS_GARB = "card_uno")
@@ -95,7 +95,7 @@
 			H.cards -= P
 		update_icon()
 		qdel(O)
-		user.visible_message(SPAN_NOTICE("<b>[user]</b> places their cards on the bottom of \the [src]."), SPAN_NOTICE("You place your cards on the bottom of the deck."))
+		user.visible_message(SPAN_NOTICE("<b>[user]</b>将他们的牌放到了\the [src]的底部。"), SPAN_NOTICE("You place your cards on the bottom of the deck."))
 		return
 	..()
 
@@ -123,7 +123,7 @@
 	var/mob/living/carbon/human/user = usr
 
 	if(!length(cards))
-		to_chat(usr, SPAN_WARNING("There are no cards in the deck."))
+		to_chat(usr, SPAN_WARNING("牌堆里没有牌了。"))
 		return
 
 	var/obj/item/toy/handcard/H = get_or_make_user_hand(user)
@@ -151,13 +151,13 @@
 
 	var/cards_length = length(cards)
 	if(!cards_length)
-		to_chat(user, SPAN_WARNING("There are no cards in the deck."))
+		to_chat(user, SPAN_WARNING("牌堆里没有牌了。"))
 		return
 
-	var/num_cards = tgui_input_number(user, "How many cards do you want to draw? ([cards_length] remaining)", "Card Drawing", 1, cards_length, 1)
+	var/num_cards = tgui_input_number(user, "你想抽多少张牌？（剩余[cards_length]张）", "Card Drawing", 1, cards_length, 1)
 	cards_length = length(cards)
 	if(!cards_length)
-		to_chat(user, SPAN_WARNING("There are no cards in the deck."))
+		to_chat(user, SPAN_WARNING("牌堆里没有牌了。"))
 		return
 	if(!num_cards || num_cards <= 0)
 		return
@@ -181,7 +181,7 @@
 	H.update_icon()
 	update_icon()
 
-	to_chat(user, SPAN_NOTICE("You've drawn: [chat_message]"))
+	to_chat(user, SPAN_NOTICE("你抽到了：[chat_message]"))
 
 /obj/item/toy/deck/verb/draw_pile()
 	set name = "Draw Pile (Concealed)"
@@ -199,7 +199,7 @@
 
 	var/cards_length = length(cards)
 	if(!cards_length)
-		to_chat(user, SPAN_WARNING("There are no cards in the deck."))
+		to_chat(user, SPAN_WARNING("牌堆里没有牌了。"))
 		return
 
 	var/obj/item/toy/handcard/H = new(get_turf(src))
@@ -228,7 +228,7 @@
 		return
 
 	if(!length(cards))
-		to_chat(usr, SPAN_WARNING("There are no cards in the deck."))
+		to_chat(usr, SPAN_WARNING("牌堆里没有牌了。"))
 		return
 
 	var/list/players = list()
@@ -236,12 +236,12 @@
 		if(!player.stat)
 			players += player
 
-	var/mob/living/M = tgui_input_list(usr, "Who do you wish to deal a card?", "Deal card", players)
+	var/mob/living/M = tgui_input_list(usr, "你想给谁发牌？", "Deal card", players)
 	if(!usr || QDELETED(src) || !Adjacent(usr) || !M || QDELETED(M))
 		return
 
 	if(!length(cards))
-		to_chat(usr, SPAN_WARNING("There are no cards in the deck."))
+		to_chat(usr, SPAN_WARNING("牌堆里没有牌了。"))
 		return
 
 	if(get_dist(usr, M) < 4)
@@ -281,14 +281,14 @@
 		return
 
 	if(!length(cards))
-		to_chat(usr, SPAN_WARNING("There are no cards in the deck."))
+		to_chat(usr, SPAN_WARNING("牌堆里没有牌了。"))
 		return
 
 	deal_at(usr, over)
 
 /obj/item/toy/handcard
-	name = "hand of cards"
-	desc = "Some playing cards."
+	name = "一手牌"
+	desc = "一些扑克牌。"
 	icon = 'icons/obj/items/playing_cards.dmi'
 	icon_state = "empty"
 	item_icons = list(WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/cards.dmi')
@@ -317,27 +317,27 @@
 
 /obj/item/toy/handcard/aceofspades
 	icon_state = "spades_ace"
-	desc = "An Ace of Spades."
+	desc = "一张黑桃A。"
 	item_state_slots = list(WEAR_AS_GARB = "ace_of_spades")
 
 /obj/item/toy/handcard/uno_reverse_red
 	icon_state = "red_reverse"
-	desc = "Always handy to have one or three of these up your sleeve."
+	desc = "袖子里藏上一两张总是有用的。"
 	item_state_slots = list(WEAR_AS_GARB = "red_reverse")
 
 /obj/item/toy/handcard/uno_reverse_blue
 	icon_state = "blue_reverse"
-	desc = "Always handy to have one or three of these up your sleeve."
+	desc = "袖子里藏上一两张总是有用的。"
 	item_state_slots = list(WEAR_AS_GARB = "blue_reverse")
 
 /obj/item/toy/handcard/uno_reverse_yellow
 	icon_state = "yellow_reverse"
-	desc = "Always handy to have one or three of these up your sleeve."
+	desc = "袖子里藏上一两张总是有用的。"
 	item_state_slots = list(WEAR_AS_GARB = "yellow_reverse")
 
 /obj/item/toy/handcard/uno_reverse_purple
 	icon_state = "purple_reverse"
-	desc = "Always handy to have one or three of these up your sleeve."
+	desc = "袖子里藏上一两张总是有用的。"
 	item_state_slots = list(WEAR_AS_GARB = "purple_reverse")
 
 /obj/item/toy/handcard/verb/toggle_discard_state()
@@ -371,7 +371,7 @@
 	//fuck any qsorts and merge sorts. This needs to be brutally easy
 	var/cards_length = length(cards)
 	if(cards_length >= 200)
-		to_chat(usr, SPAN_WARNING("Your hand is too big to sort. Remove some cards."))
+		to_chat(usr, SPAN_WARNING("你手里的牌太多，无法整理。移除一些牌。"))
 		return
 	for(var/i = 1 to cards_length)
 		for(var/k = 2 to cards_length)
@@ -412,7 +412,7 @@
 		for(var/datum/playing_card/P as anything in cards)
 			to_pick_up[P.name] = P
 
-		var/picking_up = tgui_input_list(user, "Which card do you wish to pick up?", "Take a card", to_pick_up)
+		var/picking_up = tgui_input_list(user, "你想拿起哪张牌？", "Take a card", to_pick_up)
 		if(!picking_up || !user || QDELETED(src))
 			return
 
@@ -435,7 +435,7 @@
 		H.cards += P
 		cards -= P
 		H.update_icon()
-		user.visible_message(SPAN_NOTICE("<b>[user]</b> draws a card from \the [src]."), SPAN_NOTICE("You draw <b>[P.name]</b> from \the [src]."))
+		user.visible_message(SPAN_NOTICE("<b>[user]</b>从\the [src]抽了一张牌。"), SPAN_NOTICE("You draw <b>[P.name]</b> from \the [src]."))
 		if(!length(cards))
 			qdel(src)
 		else
@@ -482,18 +482,18 @@
 	var/cards_length = length(cards)
 	if(pile_state)
 		if(concealed)
-			name = "draw pile"
-			desc = "A pile of cards to draw from."
+			name = "抽牌堆"
+			desc = "一堆可供抽取的纸牌。"
 		else
-			name = "discard pile"
-			desc = "A pile of cards you can discard to."
+			name = "弃牌堆"
+			desc = "一堆你可以弃置纸牌的地方。"
 	else
 		if(cards_length > 1)
-			name = "hand of cards"
-			desc = "Some playing cards."
+			name = "一手牌"
+			desc = "一些扑克牌。"
 		else
-			name = "a playing card"
-			desc = "A playing card."
+			name = "一张扑克牌"
+			desc = "一张扑克牌。"
 
 	if(length(cards) >= 200)
 		// BYOND will flat out choke when using thousands of cards for some unknown reason,

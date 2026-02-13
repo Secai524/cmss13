@@ -23,11 +23,11 @@
 /datum/action/xeno_action/activable/pounce/facehugger/use_ability(atom/target)
 	for(var/obj/structure/machinery/door/airlock/current_airlock in get_turf(owner))
 		if(current_airlock.density) //if its CLOSED YOU'RE SCUTTLING AND CANNOT POUNCE!!!
-			to_chat(owner, SPAN_WARNING("We cannot do that while squeezing and scuttling!"))
+			to_chat(owner, SPAN_WARNING("我们在挤压和疾行时无法这么做！"))
 			return FALSE
 
 	if(HAS_TRAIT(owner, TRAIT_IMMOBILIZED))
-		to_chat(owner, SPAN_WARNING("We cannot do that while immobilized!"))
+		to_chat(owner, SPAN_WARNING("我们在无法移动时无法这么做！"))
 		return FALSE
 
 	return ..()

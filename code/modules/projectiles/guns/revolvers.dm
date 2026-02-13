@@ -64,7 +64,7 @@
 
 /obj/item/weapon/gun/revolver/display_ammo(mob/user) // revolvers don't *really* have a chamber, at least in a way that matters for ammo displaying
 	if(flags_gun_features & GUN_AMMO_COUNTER && !(flags_gun_features & GUN_BURST_FIRING) && current_mag)
-		to_chat(user, SPAN_DANGER("[current_mag.current_rounds] / [current_mag.max_rounds] ROUNDS REMAINING."))
+		to_chat(user, SPAN_DANGER("剩余 [current_mag.current_rounds] / [current_mag.max_rounds] 发子弹。"))
 
 /obj/item/weapon/gun/revolver/proc/rotate_cylinder(mob/user) //Cylinder moves backward.
 	if(current_mag)
@@ -73,14 +73,14 @@
 /obj/item/weapon/gun/revolver/proc/spin_cylinder(mob/user)
 	if(current_mag && current_mag.chamber_closed) //We're not spinning while it's open. Could screw up reloading.
 		current_mag.chamber_position = rand(1,current_mag.max_rounds)
-		to_chat(user, SPAN_NOTICE("You spin the cylinder."))
+		to_chat(user, SPAN_NOTICE("你旋转了弹巢。"))
 		playsound(user, cocked_sound, 25, 1)
 		russian_roulette = TRUE //Sets to play RR. Resets when the gun is emptied.
 
 /obj/item/weapon/gun/revolver/proc/perform_tricks(mob/user)
 	var/result = revolver_trick(user)
 	if(result)
-		to_chat(user, SPAN_NOTICE("Your badass trick inspires you. Your next few shots will be focused!"))
+		to_chat(user, SPAN_NOTICE("你炫酷的技巧鼓舞了自己。接下来的几枪将会更加专注！"))
 		accuracy_mult = BASE_ACCURACY_MULT * 2
 		accuracy_mult_unwielded = BASE_ACCURACY_MULT * 2
 		addtimer(CALLBACK(src, PROC_REF(recalculate_attachment_bonuses)), 3 SECONDS)
@@ -120,17 +120,17 @@
 		return
 
 	if(!magazine || !istype(magazine))
-		to_chat(user, SPAN_WARNING("That's not gonna work!"))
+		to_chat(user, SPAN_WARNING("这行不通！"))
 		return
 
 	if(magazine.current_rounds <= 0)
-		to_chat(user, SPAN_WARNING("That [magazine.name] is empty!"))
+		to_chat(user, SPAN_WARNING("那个 [magazine.name] 是空的！"))
 		return
 
 	if(current_mag)
 		if(istype(magazine, /obj/item/ammo_magazine/handful)) //Looks like we're loading via handful.
 			if(current_mag.chamber_closed)
-				to_chat(user, SPAN_WARNING("You can't load anything when the cylinder is closed!"))
+				to_chat(user, SPAN_WARNING("弹巢关闭时无法装填任何东西！"))
 				return
 			if(!current_mag.current_rounds && current_mag.caliber == magazine.caliber) //Make sure nothing's loaded and the calibers match.
 				replace_ammo(user, magazine) //We are going to replace the ammo just in case.
@@ -142,7 +142,7 @@
 				if(current_mag.transfer_ammo(magazine,user,1))
 					add_to_cylinder(user)//If the magazine is deleted, we're still fine.
 			else
-				to_chat(user, "[current_mag] is [current_mag.current_rounds ? "already loaded with some other ammo. Better not mix them up." : "not compatible with that ammo."]") //Not the right kind of ammo.
+				to_chat(user, "[current_mag] 是 [current_mag.current_rounds ? "already loaded with some other ammo. Better not mix them up." : "not compatible with that ammo."]") //Not the right kind of ammo.
 		else //So if it's not a handful, it's an actual speedloader.
 			if(current_mag.gun_type == magazine.gun_type) //Has to be the same gun type.
 				if(current_mag.chamber_closed) // If the chamber is closed unload it
@@ -163,7 +163,7 @@
 
 	if(current_mag)
 		if(current_mag.chamber_closed) //If it's actually closed.
-			to_chat(user, SPAN_NOTICE("You clear the cylinder of [src]."))
+			to_chat(user, SPAN_NOTICE("你清空了 [src] 的弹巢。"))
 			empty_cylinder()
 			current_mag.create_handful(user)
 			current_mag.chamber_closed = !current_mag.chamber_closed
@@ -178,7 +178,7 @@
 /obj/item/weapon/gun/revolver/able_to_fire(mob/user)
 	. = ..()
 	if(. && istype(user) && current_mag && !current_mag.chamber_closed)
-		to_chat(user, SPAN_WARNING("Close the cylinder!"))
+		to_chat(user, SPAN_WARNING("关闭弹巢！"))
 		playsound(user, pick(cylinder_click), 25, 1, 5)
 		return 0
 
@@ -216,7 +216,7 @@
 /obj/item/weapon/gun/revolver/proc/close_chamber(mob/user)
 	if(current_mag && !current_mag.chamber_closed)
 		current_mag.chamber_closed = TRUE
-		to_chat(user, SPAN_NOTICE("You close the cylinder of [src]."))
+		to_chat(user, SPAN_NOTICE("你关闭了 [src] 的弹巢。"))
 		playsound(user, chamber_close_sound, 25, 1)
 		update_icon()
 
@@ -234,10 +234,10 @@
 	set waitfor = 0
 	playsound(user, spin_sound, 25, 1)
 	if(double)
-		user.visible_message("[user] deftly flicks and spins [src] and [double]!", SPAN_NOTICE("You flick and spin [src] and [double]!"),  null, 3)
+		user.visible_message("[user] 灵巧地甩动并旋转了 [src] 和 [double]！", SPAN_NOTICE("You flick and spin [src] and [double]!"),  null, 3)
 		animation_wrist_flick(double, 1)
 	else
-		user.visible_message("[user] deftly flicks and spins [src]!",SPAN_NOTICE("You flick and spin [src]!"),  null, 3)
+		user.visible_message("[user] 灵巧地甩动并旋转了 [src]！",SPAN_NOTICE("You flick and spin [src]!"),  null, 3)
 
 	animation_wrist_flick(src, direction)
 	sleep(3)
@@ -246,7 +246,7 @@
 
 /obj/item/weapon/gun/revolver/proc/revolver_throw_catch(mob/living/carbon/human/user)
 	set waitfor = 0
-	user.visible_message("[user] deftly flicks [src] and tosses it into the air!", SPAN_NOTICE("You flick and toss [src] into the air!"), null, 3)
+	user.visible_message("[user]灵巧地拨动[src]并将其抛向空中！", SPAN_NOTICE("You flick and toss [src] into the air!"), null, 3)
 	var/img_layer = MOB_LAYER+0.1
 	var/image/trick = image(icon,user,icon_state,img_layer)
 	switch(pick(1,2))
@@ -273,7 +273,7 @@
 	if(loc && user)
 		playsound(user, thud_sound, 25, 1)
 		if(user.get_inactive_hand())
-			user.visible_message("[user] catches [src] with the same hand!", SPAN_NOTICE("You catch [src] as it spins in to your hand!"), null, 3)
+			user.visible_message("[user]用同一只手接住了[src]！", SPAN_NOTICE("You catch [src] as it spins in to your hand!"), null, 3)
 		else
 			user.visible_message("[user] catches [src] with \his other hand!", SPAN_NOTICE("You snatch [src] with your other hand! Awesome!"), null, 3)
 			user.temp_drop_inv_item(src)
@@ -322,8 +322,8 @@
 					revolver_throw_catch(user)
 		return TRUE
 	else
-		user.visible_message(SPAN_INFO("<b>[user]</b> fumbles with [src] like a huge idiot!"), null, null, 3)
-		to_chat(user, SPAN_WARNING("You fumble with [src] like an idiot... Uncool."))
+		user.visible_message(SPAN_INFO("<b>[user]</b>像个大蠢货一样笨手笨脚地摆弄着[src]！"), null, null, 3)
+		to_chat(user, SPAN_WARNING("你像个蠢货一样笨手笨脚地摆弄着[src]...真逊。"))
 		return FALSE
 
 
@@ -332,7 +332,7 @@
 
 /obj/item/weapon/gun/revolver/m44
 	name = "\improper M44 combat revolver"
-	desc = "A bulky revolver, occasionally carried by assault troops and officers in the Colonial Marines, as well as civilian law enforcement. Fires .44 Magnum rounds."
+	desc = "一把笨重的左轮手枪，殖民地海军陆战队的突击部队和军官以及民间执法部门偶尔会携带。发射.44马格南子弹。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/revolvers.dmi'
 	icon_state = "m44r"
 	item_state = "m44r"
@@ -387,7 +387,7 @@
 
 /obj/item/weapon/gun/revolver/m44/able_to_fire(mob/user)
 	if (folded)
-		to_chat(user, SPAN_NOTICE("You need to unfold the stock to fire!"))//this is stupid
+		to_chat(user, SPAN_NOTICE("你需要展开枪托才能开火！"))//this is stupid
 		return 0
 	else
 		return ..()
@@ -397,7 +397,7 @@
 
 /obj/item/weapon/gun/revolver/m44/custom //loadout
 	name = "\improper M44 custom combat revolver"
-	desc = "A bulky combat revolver. The handle has been polished to a pearly perfection, and the body is silver plated. Fires .44 Magnum rounds."
+	desc = "一把笨重的战斗左轮手枪。握把被抛光至珍珠般完美，枪身镀银。发射.44马格南子弹。"
 	current_mag = /obj/item/ammo_magazine/internal/revolver/m44
 	icon_state = "m44rc"
 	item_state = "m44rc"
@@ -406,7 +406,7 @@
 // Blade Runner Blasters.
 /obj/item/weapon/gun/revolver/m44/custom/pkd_special
 	name = "\improper M2019 Blaster"
-	desc = "Properly known as the Pflager Katsumata Series-D Blaster, the M2019 is a relic of a handgun used by detectives and blade runners, having replaced the snub nose .38 detective special in 2019. Fires .44 custom packed sabot magnum rounds. Legally a revolver, the unconventional but robust internal design has made this model incredibly popular amongst collectors and enthusiasts."
+	desc = "正式名称为Pflager Katsumata D系列爆能手枪，M2019是侦探和银翼杀手使用的手枪遗物，于2019年取代了.38短管侦探特制手枪。发射.44定制包装脱壳马格南子弹。法律上属于左轮手枪，其非传统但坚固的内部设计使该型号在收藏家和爱好者中极受欢迎。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/revolvers.dmi'
 	icon_state = "lapd_2019"
 	item_state = "highpower" //placeholder
@@ -447,7 +447,7 @@
 
 /obj/item/weapon/gun/revolver/m44/custom/pkd_special/k2049
 	name = "\improper M2049 Blaster"
-	desc = "In service since 2049, the LAPD 2049 .44 special has been used to retire more replicants than there are colonists in the American Corridor. The top mounted attachment rail allows this revised version to mount a wide variety of optics for the aspiring detective. Although replicants aren't permitted past the outer core systems, this piece occasionally finds its way to the rim in the hand of defects, collectors, and thieves."
+	desc = "自2049年服役以来，LAPD 2049 .44特制手枪“退役”的复制人比美国走廊的殖民者还多。顶部安装的附件导轨使这个修订版能为有抱负的侦探安装多种光学瞄具。虽然复制人不被允许进入外核心星系之外，但这把枪偶尔会通过缺陷品、收藏家和窃贼之手流落到边缘地带。"
 	icon_state = "lapd_2049"
 	item_state = "m4a3c" //placeholder
 
@@ -468,7 +468,7 @@
 
 /obj/item/weapon/gun/revolver/m44/custom/pkd_special/l_series
 	name = "\improper PKL 'Double' Blaster"
-	desc = "Sold to civilians and private corporations, the Pflager Katsumata Series-L Blaster is a premium double barrel sidearm that can fire two rounds at the same time. Usually found in the hands of combat synths and replicants, this hand cannon is worth more than the combined price of three Emanators. Originally commissioned by the Wallace Corporation, it has since been released onto public market as a luxury firearm."
+	desc = "出售给平民和私营公司的Pflager Katsumata L系列爆能手枪是一款优质双管手枪，可以同时发射两发子弹。通常见于战斗合成人和复制人手中，这把“手炮”的价值超过三台发射器的总价。最初由华莱士公司委托制造，后来作为奢侈枪械在公开市场发售。"
 	icon_state = "pkd_double"
 	item_state = "_88m4" //placeholder
 
@@ -492,7 +492,7 @@
 
 /obj/item/weapon/gun/revolver/m44/custom/webley
 	name = "\improper Webley SRV-80"
-	desc = "A top-break revolver used by the Imperial Armed Space Force’s 24th Para Regiment, and sometimes seen in the hands of other TWE military forces. Fires .455 Magnum. Archaic, yes, but brutally effective. Vacuum-sealed internals, Bakelite-style grips, and a recoil like getting kicked by a mule. Still puts things down. Hard."
+	desc = "帝国武装太空军第24伞兵团使用的顶开式左轮手枪，有时也见于其他TWE军事部队手中。发射.455马格南子弹。古老，是的，但极其有效。真空密封的内部结构、胶木风格握把，以及如同被骡子踢了一脚的后坐力。依然能放倒目标。狠狠地放倒。"
 	current_mag = /obj/item/ammo_magazine/internal/revolver/webley
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/revolvers.dmi'
 	icon_state = "webley"
@@ -525,7 +525,7 @@
 
 /obj/item/weapon/gun/revolver/upp
 	name = "\improper ZHNK-72 revolver"
-	desc = "The ZHNK-72 is a UPP designed revolver. The ZHNK-72 is used by the UPP armed forces in a policing role as well as limited numbers in the hands of SNCOs."
+	desc = "ZHNK-72是一款UPP设计的左轮手枪。ZHNK-72被UPP武装部队用于警务角色，也有少量配发给士官长。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/revolvers.dmi'
 	icon_state = "zhnk72"
 	item_state = "zhnk72"
@@ -585,7 +585,7 @@
 
 /obj/item/weapon/gun/revolver/small
 	name = "\improper S&W .38 model 37 revolver"
-	desc = "A lean .38 made by Smith & Wesson. A timeless classic, from antiquity to the future. This specific model is known to be wildly inaccurate, yet extremely lethal."
+	desc = "一把由史密斯&韦森制造的纤薄.38手枪。永恒的经典，从古代到未来。这款特定型号以极度不准但极其致命而闻名。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/revolvers.dmi'
 	icon_state = "sw357"
 	item_state = "sw357"
@@ -610,7 +610,7 @@
 
 /obj/item/weapon/gun/revolver/small/black
 	name = "\improper S&W .38 model 37 Custom revolver"
-	desc = "A Custom, lean .38 made by Smith & Wesson. A timeless classic, from antiquity to the future. This specific model, with its sleek black body and custom ivory grips, is known to be wildly inaccurate, yet extremely lethal."
+	desc = "一把由史密斯&韦森制造的定制纤薄.38手枪。永恒的经典，从古代到未来。这款特定型号，拥有光滑的黑色枪身和定制的象牙握把，以极度不准但极其致命而闻名。"
 	icon_state = "black_sw357"
 	item_state = "black_sw357"
 
@@ -618,8 +618,8 @@
 //BURST REVOLVER //Mateba(Unica) is pretty well known. The cylinder folds up instead of to the side.
 
 /obj/item/weapon/mateba_key
-	name = "Unica barrel key"
-	desc = "Used to swap the barrels of a unica revolver."
+	name = "独角兽枪管钥匙"
+	desc = "用于更换独角兽左轮手枪的枪管。"
 	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "matebakey"
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
@@ -632,7 +632,7 @@
 
 /obj/item/weapon/gun/revolver/mateba
 	name = "\improper Spearhead Unica 6 autorevolver"
-	desc = "The Spearhead Unica is a powerful, fast-firing revolver that uses its own recoil to rotate the cylinders. It fires heavy .454 rounds."
+	desc = "矛头独角兽是一款威力强大、射速快的左轮手枪，利用自身后坐力旋转弹巢。发射重型.454子弹。"
 	desc_lore = "Originally an Italian design, during the middle 21st century, Mateba company had many severe financial issues as well as violation of local firearm laws. \
 	After numerous court cases, they went bankrupt and few years later, Spearhead Armaments acquired the rights to the Mateba designs, and re-introduced the Unica 6 as the 'Spearhead Unica', \
 	as well as many other Mateba revolvers. The new design featured a few changes, like rechambered variation for .454 rounds, attachment rail and other attachments support, but overall, design intentionally remained the same, \
@@ -672,7 +672,7 @@
 	if(istype(I, /obj/item/weapon/mateba_key) && can_change_barrel)
 		if(attachments["special"])
 			var/obj/item/attachable/R = attachments["special"]
-			visible_message(SPAN_NOTICE("[user] begins stripping [R] from [src]."),
+			visible_message(SPAN_NOTICE("[user]开始从[src]上拆卸[R]。"),
 			SPAN_NOTICE("You begin stripping [R] from [src]."), null, 4)
 
 			if(!do_after(usr, 35, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
@@ -681,7 +681,7 @@
 			if(!(R == attachments[R.slot]))
 				return
 
-			visible_message(SPAN_NOTICE("[user] unlocks and removes [R] from [src]."),
+			visible_message(SPAN_NOTICE("[user]解锁并从[src]上取下[R]。"),
 			SPAN_NOTICE("You unlocks removes [R] from [src]."), null, 4)
 			R.Detach(user, src)
 			if(attachments["muzzle"])
@@ -692,7 +692,7 @@
 	else if(istype(I, /obj/item/attachable))
 		var/obj/item/attachable/A = I
 		if(A.slot == "muzzle" && !attachments["special"] && can_change_barrel)
-			to_chat(user, SPAN_WARNING("You need to attach a barrel first!"))
+			to_chat(user, SPAN_WARNING("你需要先安装枪管！"))
 			return
 	. = ..()
 
@@ -725,7 +725,7 @@
 
 /obj/item/weapon/gun/revolver/mateba/general
 	name = "\improper golden Spearhead Unica-6 autorevolver custom"
-	desc = "Boasting a gold-plated frame and grips made of a critically-endangered rosewood tree, this heavily-customized Unica 6 autorevolver's pretentious design rivals only the power of its wielder. Fit for a king. Or a general."
+	desc = "这款深度定制的独角兽6型自动左轮手枪拥有镀金枪身和由极度濒危红木制成的握把，其矫饰的设计只有其使用者的权力可以匹敌。适合国王。或将军。"
 	icon_state = "amateba"
 	item_state = "amateba"
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact
@@ -752,7 +752,7 @@
 
 /obj/item/weapon/gun/revolver/mateba/general/santa
 	name = "\improper Festeba"
-	desc = "The Unica used by SANTA himself. Rumoured to be loaded with explosive ammunition."
+	desc = "SANTA本人使用的独角兽手枪。据传装有爆炸性弹药。"
 	icon_state = "amateba"
 	item_state = "amateba"
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/explosive
@@ -763,14 +763,14 @@
 
 /obj/item/weapon/gun/revolver/mateba/engraved
 	name = "\improper engraved Spearhead Unica 6 autorevolver"
-	desc = "With a matte black chassis, ebony wooden grips, and gold-trimmed cylinder, this statement of a Unica is as much a work of art as it is a bringer of death."
+	desc = "哑光黑色枪身、乌木握把、金边弹巢，这把独角兽手枪既是一件艺术品，也是死亡的使者。"
 	icon_state = "aamateba"
 	item_state = "aamateba"
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact
 
 /obj/item/weapon/gun/revolver/mateba/silver
 	name = "\improper silver Spearhead Unica 6 autorevolver"
-	desc = "The .454 Spearhead Unica 6 autorevolver is a semi-automatic handcannon that uses its own recoil to rotate the cylinders. Extremely rare, prohibitively costly, and unyieldingly powerful, it's found in the hands of a select few high-ranking USCM officials. Stylish, sophisticated, and above all, extremely deadly. This one is finished in a beautiful polished silver."
+	desc = ".454矛头独角兽6型自动左轮手枪是一款半自动手炮，利用自身后坐力旋转弹巢。极其稀有、价格高昂、威力无匹，仅见于少数USCM高级官员之手。时尚、精致，最重要的是，极其致命。这把采用漂亮的抛光银色涂装。"
 	icon_state = "smateba"
 	item_state = "smateba"
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact
@@ -790,7 +790,7 @@
 
 /obj/item/weapon/gun/revolver/mateba/golden
 	name = "\improper golden Spearhead Unica 6 autorevolver"
-	desc = "The .454 Spearhead Unica 6 autorevolver is a semi-automatic handcannon that uses its own recoil to rotate the cylinders. Extremely rare, prohibitively costly, and unyieldingly powerful, it's found in the hands of a select few high-ranking USCM officials. Stylish, sophisticated, and above all, extremely deadly. This one is finished in a beautiful polished silver."
+	desc = ".454矛头独角兽6型自动左轮手枪是一款半自动手炮，利用自身后坐力旋转弹巢。极其稀有、价格高昂、威力无匹，仅见于少数USCM高级官员之手。时尚、精致，最重要的是，极其致命。这把采用漂亮的抛光银色涂装。"
 	icon_state = "amateba"
 	item_state = "amateba"
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact
@@ -813,16 +813,16 @@
 	starting_attachment_types = list(/obj/item/attachable/mateba, /obj/item/attachable/compensator, /obj/item/attachable/reflex)
 
 /obj/item/weapon/gun/revolver/mateba/cmateba
-	name = "custom Spearhead Unica 6 autorevolver"
-	desc = "The .454 Spearhead Unica 6 autorevolver is a semi-automatic handcannon that uses its own recoil to rotate the cylinders. Extremely rare, prohibitively costly, and unyieldingly powerful, it's found in the hands of a select few high-ranking USCM officials. Stylish, sophisticated, and above all, extremely deadly."
+	name = "定制型矛头独角兽6型自动左轮"
+	desc = ".454口径矛头独角兽6型自动左轮是一款利用自身后坐力旋转弹巢的半自动手炮。极其稀有、价格高昂且威力惊人，仅见于少数高级USCM官员之手。时尚、精密，最重要的是，极度致命。"
 	icon_state = "cmateba"
 	item_state = "cmateba"
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact
 	map_specific_decoration = TRUE
 
 /obj/item/weapon/gun/revolver/mateba/special
-	name = "special Spearhead Unica 6 autorevolver"
-	desc = "An old, heavily modified version of the Spearhead Unica 6 autorevolver. It sports a smooth wooden grip, and a much larger barrel to it's unmodified counterpart. It's clear that this weapon has been cared for over a long period of time."
+	name = "特制矛头独角兽6型自动左轮"
+	desc = "一支老旧且经过大量改装的矛头独角兽6型自动左轮。它配有光滑的木制握把，枪管也比未改装型号大得多。显然，这把武器得到了长期的精心保养。"
 	icon_state = "cmateba_special"
 	item_state = "cmateba_special"
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact
@@ -847,7 +847,7 @@
 
 /obj/item/weapon/gun/revolver/mateba/mtr6m
 	name = "\improper Spearhead 2006M autorevolver"
-	desc = "The Spearhead 2006M is a powerful, fast-firing revolver that uses its own recoil to rotate the cylinders. It fires heavy .454 rounds. It is compatible with more commonly found Unica 6 speedloaders."
+	desc = "矛头2006M是一款威力强大、射速快的左轮手枪，利用自身后坐力旋转弹巢。发射重型.454子弹。兼容更常见的独角兽6型快速装弹器。"
 	desc_lore = "Originally an Italian design, during the middle 21st century, Mateba company had many severe financial issues as well as violation of local firearm laws. \
 	After numerous court cases, they went bankrupt and few years later, Spearhead Armaments acquired the rights to the Mateba designs, and re-introduced the 2006M as the 'Spearhead 2006M', \
 	as well as many other Mateba revolvers. The new design featured a few changes, like rechambered variation for .454 rounds, attachment rail and other attachments support, but overall, design intentionally remained the same, \
@@ -896,7 +896,7 @@
 
 /obj/item/weapon/gun/revolver/cmb
 	name = "\improper Spearhead Autorevolver"
-	desc = "An automatic revolver chambered in .357, often loaded with hollowpoint on spaceships to prevent hull damage. Commonly issued to Colonial Marshals."
+	desc = "一款发射.357子弹的自动左轮手枪，在飞船上通常装填空尖弹以防止船体损坏。通常配发给殖民地执法官。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/revolvers.dmi'
 	icon_state = "spearhead"
 	item_state = "spearhead"
@@ -929,7 +929,7 @@
 
 /obj/item/weapon/gun/revolver/cmb/click_empty(mob/user)
 	if(user)
-		to_chat(user, SPAN_WARNING("<b>*click*</b>"))
+		to_chat(user, SPAN_WARNING("<b>*咔哒*</b>"))
 		playsound(user, pick('sound/weapons/handling/gun_cmb_click1.ogg', 'sound/weapons/handling/gun_cmb_click2.ogg'), 25, 1, 5) //5 tile range
 	else
 		playsound(src, pick('sound/weapons/handling/gun_cmb_click1.ogg', 'sound/weapons/handling/gun_cmb_click2.ogg'), 25, 1, 5)
@@ -960,7 +960,7 @@
 
 /obj/item/weapon/gun/revolver/cmb/custom
 	name = "\improper Spearhead custom autorevolver"
-	desc = "An automatic revolver chambered in .357, custom made of darker metal and with a wooden handle, clearly made for a person with taste in mind."
+	desc = "一款发射.357子弹的自动左轮手枪，由深色金属定制而成，配有木制握把，显然是专为有品位的人士打造。"
 	icon_state = "black_spearhead"
 	item_state = "black_spearhead"
 	current_mag = /obj/item/ammo_magazine/internal/revolver/cmb

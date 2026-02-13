@@ -3,25 +3,25 @@
 	special_punishment = "Demotion or Execution and ID Termination"
 
 /datum/law/capital_law/attempted_murder
-	name = "Attempted Murder"
-	desc = "Attempting to murder a person but failing to do so. If the evidence shows that the arrested person was clearly trying to kill someone with ill intent but failed in the action itself."
+	name = "谋杀未遂"
+	desc = "试图谋杀某人但未能成功。若有证据表明被捕者明显怀有恶意企图杀人，但行动本身失败。"
 
 /datum/law/capital_law/murder
-	name = "Murder or Unauthorized Execution"
-	desc = "Killing someone with malicious intent. This includes Synthetic units. Executions are only authorized as outlined in the Execution Procedure."
+	name = "谋杀或未经授权处决"
+	desc = "怀有恶意意图杀害某人。包括合成人单位。处决仅限按《处决程序》规定授权执行。"
 
 /datum/law/capital_law/desertion
-	name = "Desertion"
-	desc = "Refusing to carry out the duties essential to one’s post or abandoning post unauthorized, without intent to return. (Retreating from the planet when the FOB is breached is not Desertion, refusing to return when ordered is)."
+	name = "擅离职守"
+	desc = "拒绝履行岗位基本职责，或未经授权擅离岗位且无返回意图。（前线基地被攻破时从星球撤退不属擅离职守，但接令后拒绝返回则属此列）。"
 
 /datum/law/capital_law/sedition
-	name = "Sedition"
-	desc = "To engage in actions or refuse to follow orders as to overthrow or usurp the legitimate command structure."
+	name = "煽动叛乱"
+	desc = "采取行动或拒绝服从命令，以推翻或篡夺合法指挥体系。"
 
 /datum/law/capital_law/jailbreak_escape
-	name = "Jailbreak/Escape"
-	desc = "To escape, assist in an escape, attempt escape, or be willfully and knowingly broken out."
+	name = "越狱/逃脱"
+	desc = "逃脱、协助逃脱、企图逃脱，或被蓄意且知情地劫狱。"
 
 /datum/law/capital_law/crimes_against_humanity
-	name = "Crimes against Humanity"
-	desc = "To engage in actions that violate human rights or otherwise are heinous acts against humans. Examples are torture, cannibalism and forced infection with Xenomorph larva."
+	name = "反人类罪"
+	desc = "从事侵犯人权或针对人类的其它暴行。例如酷刑、食人和强制感染异形幼虫。"

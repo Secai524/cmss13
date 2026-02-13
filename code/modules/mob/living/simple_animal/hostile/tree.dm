@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/tree
-	name = "pine tree"
-	desc = "A pissed off tree-like alien. It seems annoyed with the festivities..."
+	name = "松树"
+	desc = "一个被激怒的、树状的外星生物。它似乎对这场庆典感到恼火……"
 	icon = 'icons/obj/structures/props/natural/vegetation/pinetrees.dmi'
 	icon_state = "pine_1"
 	icon_living = "pine_1"

@@ -1,5 +1,5 @@
 /datum/equipment_preset/survivor/corporate/shiva
-	name = "Survivor - Shivas Corporate Liaison"
+	name = "幸存者 - 湿婆公司联络官"
 	assignment = "Shivas Corporate Liaison"
 
 /datum/equipment_preset/survivor/corporate/shiva/load_gear(mob/living/carbon/human/new_human)
@@ -13,7 +13,7 @@
 	..()
 
 /datum/equipment_preset/survivor/doctor/shiva
-	name = "Survivor - Shivas Doctor"
+	name = "幸存者 - 湿婆医生"
 	assignment = "Shivas Doctor"
 
 /datum/equipment_preset/survivor/doctor/shiva/load_gear(mob/living/carbon/human/new_human)
@@ -26,7 +26,7 @@
 	..()
 
 /datum/equipment_preset/survivor/scientist/shiva
-	name = "Survivor - Shivas Researcher"
+	name = "幸存者 - 湿婆研究员"
 	assignment = "Shivas Researcher"
 
 /datum/equipment_preset/survivor/scientist/shiva/load_gear(mob/living/carbon/human/new_human)
@@ -40,8 +40,8 @@
 	..()
 
 /datum/equipment_preset/survivor/colonial_marshal/shiva
-	name = "Survivor - Shivas Colonial Marshal Deputy"
-	assignment = "CMB Deputy"
+	name = "幸存者 - 湿婆殖民地法警副手"
+	assignment = "CMB副手"
 
 /datum/equipment_preset/survivor/colonial_marshal/shiva/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform(new_human), WEAR_BODY)
@@ -55,7 +55,7 @@
 	..()
 
 /datum/equipment_preset/survivor/engineer/shiva
-	name = "Survivor - Shivas Engineer"
+	name = "幸存者 - 湿婆工程师"
 	assignment = "Shivas Engineer"
 
 /datum/equipment_preset/survivor/engineer/shiva/load_gear(mob/living/carbon/human/new_human)
@@ -68,7 +68,7 @@
 	..()
 
 /datum/equipment_preset/survivor/security/shiva
-	name = "Survivor - Shivas Security Guard"
+	name = "幸存者 - 湿婆保安"
 	assignment = "United Americas Peacekeeper"
 
 /datum/equipment_preset/survivor/security/shiva/load_gear(mob/living/carbon/human/new_human)

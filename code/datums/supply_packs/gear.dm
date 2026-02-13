@@ -1,7 +1,7 @@
 // add all the gear in this group.
 
 /datum/supply_packs/binocs
-	name = "Mixed Binoculars Crate (x2 per, x6 total)"
+	name = "混合望远镜箱 (每箱x2，共x6)"
 	cost = 20
 	containertype = /obj/structure/closet/crate/green
 	containername = "Mixed Binoculars Crate"
@@ -16,7 +16,7 @@
 	)
 
 /datum/supply_packs/flares
-	name = "flare packs crate (x20)"
+	name = "照明弹包箱 (x20)"
 	contains = list(
 		/obj/item/ammo_box/magazine/misc/flares,
 		/obj/item/ammo_box/magazine/misc/flares,
@@ -28,7 +28,7 @@
 
 
 /datum/supply_packs/motiondetector
-	name = "Motion Detector (x2)"
+	name = "动态探测器 (x2)"
 	contains = list(
 		/obj/item/device/motiondetector,
 		/obj/item/device/motiondetector,
@@ -39,7 +39,7 @@
 	group = "Gear"
 
 /datum/supply_packs/signal_flares
-	name = "signal flare packs crate (x4)"
+	name = "信号弹包箱 (x4)"
 	contains = list(
 		/obj/item/storage/box/m94/signal,
 		/obj/item/storage/box/m94/signal,
@@ -52,7 +52,7 @@
 	group = "Gear"
 
 /datum/supply_packs/fulton
-	name = "fulton recovery device crate (x4)"
+	name = "富尔顿回收装置箱 (x4)"
 	contains = list(
 		/obj/item/stack/fulton,
 		/obj/item/stack/fulton,
@@ -65,7 +65,7 @@
 	group = "Gear"
 
 /datum/supply_packs/parachute
-	name = "parachute crate (x20)"
+	name = "降落伞箱 (x20)"
 	contains = list(
 		/obj/item/parachute,
 		/obj/item/parachute,

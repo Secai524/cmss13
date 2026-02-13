@@ -2,7 +2,7 @@
 
 /obj/item/paper/punch_card
 	name = "\improper Weyland-Yutani punch card"
-	desc = "A stiff piece of paper starting to yellow with a bunch of numbers on it."
+	desc = "一张开始泛黄的硬纸，上面印着一串数字。"
 	icon_state = "punchcard"
 	extra_stylesheets = list("punchcard"="html/browser/punchcard.css")
 	/// The asset in /datum/asset/simple/paper for the punch card visuals corresponding to the company that produced it

@@ -1,7 +1,7 @@
 //Best ert ever
 
 /datum/emergency_call/souto
-	name = "Souto Man"
+	name = "索托人"
 	mob_max = 1
 	mob_min = 1
 	objectives = "Party like it's 1999!"
@@ -22,13 +22,13 @@
 
 	arm_equipment(H, /datum/equipment_preset/other/souto, TRUE, TRUE)
 
-	to_chat(H, SPAN_ROLE_HEADER("You are Souto Man! You should bring awareness to the Souto brand!"))
-	to_chat(H, SPAN_ROLE_BODY("Your job is to party hard and share Souto. Make sure those marines are never thirsty again!"))
+	to_chat(H, SPAN_ROLE_HEADER("你是索托侠！你应该提升索托品牌的知名度！"))
+	to_chat(H, SPAN_ROLE_BODY("你的职责是尽情狂欢并分享索托。确保那些陆战队员永不口渴！"))
 
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("任务目标：[objectives]")), 1 SECONDS)
 
 /datum/emergency_call/souto/cryo
-	name = "Souto Man (Cryo)"
+	name = "索托人（冷冻舱）"
 	probability = 0
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_cryo
 	shuttle_id = ""

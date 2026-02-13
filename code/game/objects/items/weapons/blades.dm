@@ -1,6 +1,6 @@
 /obj/item/weapon/sword
-	name = "combat sword"
-	desc = "A dusty sword commonly seen in historical museums. Where you got this is a mystery, for sure. Only a mercenary would be nuts enough to carry one of these. Sharpened to deal massive damage."
+	name = "战斗剑"
+	desc = "一把常见于历史博物馆的落满灰尘的剑。你从哪弄来的这玩意儿绝对是个谜。只有雇佣兵才会疯到随身带着这个。经过打磨，可造成巨大伤害。"
 	icon_state = "mercsword"
 	item_state = "mercsword"
 	item_icons = list(
@@ -28,20 +28,20 @@
 
 /obj/item/weapon/sword/claymore
 	name = "claymore"
-	desc = "What are you standing around staring at this for? Get to killing!"
+	desc = "你还站在这儿盯着看什么？快去杀敌！"
 	icon_state = "claymore"
 	item_state = "claymore"
 	shield_chance = SHIELD_CHANCE_MED
 
 /obj/item/weapon/sword/ceremonial
-	name = "Ceremonial Sword"
-	desc = "A fancy ceremonial sword passed down from generation to generation. Despite this, it has been very well cared for, and is in top condition."
+	name = "礼仪剑"
+	desc = "一把代代相传的华丽礼仪剑。尽管如此，它保养得非常好，处于最佳状态。"
 	icon_state = "ceremonial"
 	item_state = "ceremonial"
 
 /obj/item/weapon/sword/machete
 	name = "\improper M2132 machete"
-	desc = "Latest issue of the USCM Machete. Great for clearing out jungle or brush on outlying colonies. Found commonly in the hands of scouts and trackers, but difficult to carry with the usual kit."
+	desc = "最新一期的USCM砍刀。非常适合在偏远殖民地清理丛林或灌木。常见于侦察兵和追踪者手中，但很难与标准装备一同携带。"
 	icon_state = "machete"
 	item_state = "machete"
 
@@ -64,7 +64,7 @@
 
 /obj/item/weapon/sword/machete/arnold
 	name = "\improper M2100 \"Ngájhe\" machete"
-	desc = "An older issue USCM machete, never left testing. Designed in the Central African Republic. The notching made it hard to clean, and as such the USCM refused to adopt it - despite the superior bludgeoning power offered. Difficult to carry with the usual kit."
+	desc = "一把旧版的USCM砍刀，从未通过测试。在非洲共和国中部设计。其凹槽设计难以清洁，因此USCM拒绝采用——尽管它提供了更强的钝击能力。很难与标准装备一同携带。"
 	icon_state = "arnold-machete"
 	item_state = "arnold-machete"
 	force = MELEE_FORCE_TIER_11
@@ -72,10 +72,10 @@
 	shield_projectile_mult = PROJECTILE_BLOCK_PERC_50
 
 /obj/item/weapon/sword/hefa
-	name = "HEFA sword"
+	name = "HEFA剑"
 	icon_state = "hefasword"
 	item_state = "hefasword"
-	desc = "A blade known to be used by the Order of the HEFA, this highly dangerous blade blows up in a shower of shrapnel on impact."
+	desc = "这把以HEFA骑士团使用而闻名的刀刃极具危险性，击中目标时会爆炸并迸射出大量破片。"
 	attack_verb = list("bapped", "smacked", "clubbed")
 	shield_chance = SHIELD_CHANCE_MEDHIGH
 
@@ -115,7 +115,7 @@
 
 /obj/item/weapon/sword/katana
 	name = "katana"
-	desc = "A finely made Japanese sword, with a well sharpened blade. The blade has been filed to a molecular edge, and is extremely deadly. Commonly found in the hands of mercenaries and yakuza."
+	desc = "一把做工精良的日本刀，刀刃锋利。刀锋被研磨至分子级锐度，极其致命。常见于雇佣兵和极道成员之手。"
 	icon_state = "katana"
 	item_state = "katana"
 	force = MELEE_FORCE_VERY_STRONG
@@ -123,15 +123,15 @@
 
 //To do: replace the toys.
 /obj/item/weapon/sword/katana/replica
-	name = "replica katana"
-	desc = "A cheap knock-off commonly found in regular knife stores. Can still do some damage."
+	name = "仿制武士刀"
+	desc = "普通刀具店里常见的廉价仿制品。仍能造成一定伤害。"
 	force = MELEE_FORCE_WEAK
 	throwforce = 7
 	shield_chance = SHIELD_CHANCE_MED
 
 /obj/item/weapon/sword/dragon_katana
-	name = "dragon katana"
-	desc = "A finely made Japanese sword, with a cherry colored handle. The blade has been filed to a molecular edge, and is extremely deadly. This one seems to have been handcrafted."
+	name = "龙纹武士刀"
+	desc = "一把做工精良的日本刀，配有樱色刀柄。刀锋被研磨至分子级锐度，极其致命。这把似乎是手工打造的。"
 	icon_state = "dragon_katana"
 	item_state = "dragon_katana"
 	force = MELEE_FORCE_VERY_STRONG
@@ -146,7 +146,7 @@
 	)
 	icon_state = "throwing_knife"
 	item_state = "throwing_knife"
-	desc = "A military knife designed to be thrown at the enemy. Much quieter than a firearm, but requires a steady hand to be used optimally, although you should probably just use a gun instead."
+	desc = "一种设计用于投掷攻击敌人的军用刀。比枪械安静得多，但需要稳健的手法才能发挥最佳效果——尽管你或许应该直接用枪。"
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
 	sharp = IS_SHARP_ITEM_ACCURATE
 	force = MELEE_FORCE_TIER_1
@@ -184,14 +184,14 @@
 			SPAN_NOTICE("[user] begins to examine [embedded_human]'s body for shrapnel."))
 		address_mode = "out of [embedded_human]'s" //includes "out of " to prevent capital-T 'The unknown'.
 		if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, embedded_human, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
-			to_chat(user, SPAN_NOTICE("You were interrupted!"))
+			to_chat(user, SPAN_NOTICE("你被打断了！"))
 			return
 	else
 		user.visible_message(SPAN_NOTICE("[user] starts checking \his body for shrapnel."),
 			SPAN_NOTICE("You begin searching your body for shrapnel."))
 		address_mode = "out of your"
 		if(!do_after(embedded_human, 20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-			to_chat(user, SPAN_NOTICE("You were interrupted!"))
+			to_chat(user, SPAN_NOTICE("你被打断了！"))
 			return
 
 	var/list/removed_limbs = list()
@@ -228,12 +228,12 @@
 		SEND_SIGNAL(embedded_human, COMSIG_HUMAN_SHRAPNEL_REMOVED)
 
 	else
-		to_chat(user, SPAN_NOTICE("You couldn't find any shrapnel."))
+		to_chat(user, SPAN_NOTICE("你没能找到任何破片。"))
 
 // Demo and example of a 64x64 weapon.
 /obj/item/weapon/ritual
-	name = "cool knife"
-	desc = "It shines with awesome coding power."
+	name = "酷炫军刀"
+	desc = "它闪耀着惊人的编程之力。"
 	icon_state = "dark_blade"
 	item_state = "dark_blade"
 	icon = 'icons/obj/items/weapons/melee/misc.dmi'
@@ -258,8 +258,8 @@
 	shield_sound = 'sound/items/parry.ogg'
 
 /obj/item/weapon/straight_razor
-	name = "straight razor"
-	desc = "The commandant's favorite weapon against marines who dare break the grooming standards."
+	name = "直剃刀"
+	desc = "这是指挥官用来对付胆敢违反仪容标准陆战队员的最爱武器。"
 	icon_state = "razor"
 	icon = 'icons/obj/items/weapons/melee/knives.dmi'
 	hitsound = 'sound/weapons/genhit3.ogg'
@@ -298,14 +298,14 @@
 		return
 	playsound(user, 'sound/weapons/flipblade.ogg', 15, 1)
 	change_razor_state(!razor_opened)
-	to_chat(user, SPAN_NOTICE("You [razor_opened ? "reveal" : "hide"] [src]'s blade."))
+	to_chat(user, SPAN_NOTICE("你[razor_opened ? "reveal" : "hide"] [src]'s blade."))
 
 ///Check if the item can fit as a boot knife, var/source for signals
 /obj/item/weapon/straight_razor/proc/can_fit_in_shoe(source = src, mob/user, slot)
 	if(slot != WEAR_IN_SHOES) //Only check if you try putting it in a shoe
 		return
 	if(razor_opened)
-		to_chat(user, SPAN_NOTICE("You cannot store [src] in your shoes until the blade is hidden."))
+		to_chat(user, SPAN_NOTICE("在刀片收起前，你无法将[src]藏进鞋里。"))
 		return COMPONENT_CANCEL_EQUIP
 
 ///Changes all the vars for the straight razor
@@ -342,7 +342,7 @@
 		return
 
 	if(!razor_opened)
-		to_chat(human_user, SPAN_NOTICE("You need to reveal [src]'s blade to change your hairstyle."))
+		to_chat(human_user, SPAN_NOTICE("你需要露出[src]的刀片才能改变发型。"))
 		return
 
 	var/list/species_facial_hair = GLOB.facial_hair_styles_list
@@ -371,11 +371,11 @@
 	var/new_beard_style
 	var/new_hair_style
 	if(human_user.gender == MALE)
-		new_beard_style = tgui_input_list(human_user, "Select a facial hair style", "Grooming", species_facial_hair)
-	new_hair_style = tgui_input_list(human_user, "Select a hair style", "Grooming", species_hair)
+		new_beard_style = tgui_input_list(human_user, "选择胡须样式", "Grooming", species_facial_hair)
+	new_hair_style = tgui_input_list(human_user, "选择发型", "Grooming", species_hair)
 
 	if(loc != human_user)
-		to_chat(human_user, SPAN_NOTICE("You are too far from [src] to change your hair styles."))
+		to_chat(human_user, SPAN_NOTICE("你离[src]太远，无法改变发型。"))
 		return
 
 	if(!new_beard_style && !new_hair_style)
@@ -385,7 +385,7 @@
 		return
 
 	if(!razor_opened)
-		to_chat(human_user, SPAN_NOTICE("You need to reveal [src]'s blade to change your hairstyle."))
+		to_chat(human_user, SPAN_NOTICE("你需要露出[src]的刀片才能改变发型。"))
 		return
 
 	if(new_beard_style)
@@ -397,8 +397,8 @@
 	human_user.update_hair()
 
 /obj/item/weapon/sword/gladius
-	name = "Gladius sword"
-	desc = "A standard sword used by Roman infantry units. Its remarkable how its still in pristine condition."
+	name = "罗马短剑"
+	desc = "罗马步兵部队使用的标准佩剑。令人称奇的是它仍保持着崭新状态。"
 	icon = 'icons/obj/items/weapons/melee/swords.dmi'
 	icon_state = "gladius"
 	item_state = "gladius"

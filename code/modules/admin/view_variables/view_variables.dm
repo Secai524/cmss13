@@ -5,7 +5,7 @@
 	var/static/cookieoffset = rand(1, 9999) //to force cookies to reset after the round.
 
 	if(!(usr.client) || !(usr.client.admin_holder) || !(usr.client.admin_holder.rights & R_MOD))
-		to_chat(usr, SPAN_DANGER("You need to be an administrator to access this."), confidential = TRUE)
+		to_chat(usr, SPAN_DANGER("你需要管理员权限才能访问此功能。"), confidential = TRUE)
 		return
 
 	if(!D)

@@ -7,11 +7,11 @@
 		return FALSE
 
 	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
-		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
+		to_chat(src, SPAN_WARNING("游戏尚未开始！"))
 		return FALSE
 
 	if(key in GLOB.event_mob_players)
-		to_chat(src, SPAN_WARNING("You have already played as an event mob this round! You cannot respawn!"))
+		to_chat(src, SPAN_WARNING("本轮你已扮演过事件生物！无法重生！"))
 		return FALSE
 
 	var/list/event_mob_choices = GLOB.event_mob_landmarks.Copy()
@@ -20,9 +20,9 @@
 			event_mob_choices -= pos_spawner
 
 	if(!length(event_mob_choices))
-		to_chat(src, SPAN_WARNING("There are no Event Mobs available."))
+		to_chat(src, SPAN_WARNING("没有可用的事件生物。"))
 		return FALSE
-	var/obj/effect/landmark/event_mob_spawn/spawner = tgui_input_list(usr, "Pick an Event Mob:", "Join as Event Mob", event_mob_choices)
+	var/obj/effect/landmark/event_mob_spawn/spawner = tgui_input_list(usr, "选择事件生物：", "Join as Event Mob", event_mob_choices)
 	if(!spawner)
 		return FALSE
 
@@ -30,12 +30,12 @@
 		spawner.join_as_mob(src)
 		return TRUE
 
-	to_chat(src, SPAN_WARNING("This event mob is no longer available! Try another."))
+	to_chat(src, SPAN_WARNING("该事件生物已不可用！请尝试其他选项。"))
 	return FALSE
 
 /obj/effect/landmark/event_mob_spawn
-	name = "event mob spawnpoint"
-	desc = "The spot an event mob spawns in. Players in-game can't see this."
+	name = "事件生物生成点"
+	desc = "事件生物生成的位置。游戏内玩家不可见。"
 	icon_state = "freed_mob_spawner"
 	invisibility_value = INVISIBILITY_OBSERVER
 
@@ -99,21 +99,21 @@
 		return FALSE
 
 	if(SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
-		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
+		to_chat(src, SPAN_WARNING("游戏尚未开始！"))
 		return FALSE
 
 	if(user.key in GLOB.event_mob_players)
-		to_chat(src, SPAN_WARNING("You have already played as an event mob this round! You cannot respawn!"))
+		to_chat(src, SPAN_WARNING("本轮你已扮演过事件生物！无法重生！"))
 		return FALSE
 
-	if(!(tgui_alert(user, "Do you wish to spawn as this mob?", "Confirm Spawn", list("Yes","No")) == "Yes"))
+	if(!(tgui_alert(user, "你希望生成为此生物吗？", "Confirm Spawn", list("Yes","No")) == "Yes"))
 		return FALSE
 
 	if(!being_spawned)
 		join_as_mob(user)
 		return TRUE
 
-	to_chat(user, SPAN_WARNING("This event mob is no longer available! Try another."))
+	to_chat(user, SPAN_WARNING("该事件生物已不可用！请尝试其他选项。"))
 	return FALSE
 
 /obj/effect/landmark/event_mob_spawn/proc/join_as_mob(mob/dead/observer/observer)

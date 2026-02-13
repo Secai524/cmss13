@@ -1,7 +1,7 @@
 // Here will be added all the reagent tank water fuel etc.....
 
 /datum/supply_packs/fueltank
-	name = "fuel tank crate (x1)"
+	name = "燃料箱箱（x1）"
 	contains = list(/obj/structure/reagent_dispensers/tank/fuel)
 	cost = 20
 	containertype = /obj/structure/largecrate

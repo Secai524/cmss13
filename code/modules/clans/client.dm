@@ -8,12 +8,12 @@
 	if(!(clan_info.permissions & CLAN_PERMISSION_ADMIN_MANAGER))
 		return
 
-	var/input = input(src, "Name the clan:", "Create a Clan") as text|null
+	var/input = input(src, "为氏族命名：", "Create a Clan") as text|null
 
 	if(!input)
 		return
 
-	to_chat(src, SPAN_NOTICE("Made a new clan called: [input]"))
+	to_chat(src, SPAN_NOTICE("创建了新氏族：[input]"))
 
 	create_new_clan(input)
 
@@ -31,7 +31,7 @@ CLIENT_VERB(view_clan_info)
 
 	if(!clan_id && !force_clan_id)
 		if(!clan_info)
-			to_chat(src, SPAN_WARNING("You don't have a yautja whitelist!"))
+			to_chat(src, SPAN_WARNING("你没有铁血战士白名单权限！"))
 			return
 
 		if(clan_info.permissions & CLAN_PERMISSION_ADMIN_VIEW)
@@ -43,10 +43,10 @@ CLIENT_VERB(view_clan_info)
 
 			clans += list("People without clans" = null)
 
-			var/input = tgui_input_list(src, "Choose the clan to view", "View clan", clans)
+			var/input = tgui_input_list(src, "选择要查看的氏族", "View clan", clans)
 
 			if(!input)
-				to_chat(src, SPAN_WARNING("Couldn't find any clans for you to view!"))
+				to_chat(src, SPAN_WARNING("找不到任何可供你查看的氏族！"))
 				return
 
 			clan_to_get = clans[input]
@@ -57,7 +57,7 @@ CLIENT_VERB(view_clan_info)
 				"People without clans" = null
 			)
 
-			var/input = tgui_input_list(src, "Choose the clan to view", "View clan", options)
+			var/input = tgui_input_list(src, "选择要查看的氏族", "View clan", options)
 
 			if(!input)
 				return
@@ -157,19 +157,19 @@ CLIENT_VERB(view_clan_info)
 /client/proc/has_clan_permission(permission_flag, clan_id, warn)
 	if(!clan_info)
 		if(warn)
-			to_chat(src, "You do not have a yautja whitelist!")
+			to_chat(src, "你没有铁血战士白名单权限！")
 		return FALSE
 
 	if(clan_id)
 		if(clan_id != clan_info.clan_id)
 			if(warn)
-				to_chat(src, "You do not have permission to perform actions on this clan!")
+				to_chat(src, "你无权对此氏族执行操作！")
 			return FALSE
 
 
 	if(!(clan_info.permissions & permission_flag))
 		if(warn)
-			to_chat(src, "You do not have the necessary permissions to perform this action!")
+			to_chat(src, "你没有执行此操作的必要权限！")
 		return FALSE
 
 	return TRUE
@@ -212,66 +212,66 @@ CLIENT_VERB(view_clan_info)
 				if(!has_clan_permission(CLAN_PERMISSION_ADMIN_MODIFY))
 					return
 
-				var/input = input(src, "Input the new name", "Set Name", target_clan.name) as text|null
+				var/input = input(src, "输入新名称", "设置名称", target_clan.name) as text|null
 
 				if(!input || input == target_clan.name)
 					return
 
 
 				message_admins("[key_name_admin(src)] has set the name of [target_clan.name] to [input].")
-				to_chat(src, SPAN_NOTICE("Set the name of [target_clan.name] to [input]."))
+				to_chat(src, SPAN_NOTICE("已将[target_clan.name]的名称设置为[input]。"))
 				target_clan.name = trim(input)
 
 			if(CLAN_ACTION_CLAN_SETDESC)
 				if(!has_clan_permission(CLAN_PERMISSION_USER_MODIFY))
 					return
 
-				var/input = input(usr, "Input a new description", "Set Description", target_clan.description) as message|null
+				var/input = input(usr, "输入新描述", "Set Description", target_clan.description) as message|null
 
 				if(!input || input == target_clan.description)
 					return
 
 				message_admins("[key_name_admin(src)] has set the description of [target_clan.name].")
-				to_chat(src, SPAN_NOTICE("Set the description of [target_clan.name]."))
+				to_chat(src, SPAN_NOTICE("已设置[target_clan.name]的描述。"))
 				target_clan.description = trim(input)
 
 			if(CLAN_ACTION_CLAN_SETCOLOR)
 				if(!has_clan_permission(CLAN_PERMISSION_ADMIN_MODIFY))
 					return
 
-				var/color = input(usr, "Input a new color", "Set Color", target_clan.color) as color|null
+				var/color = input(usr, "输入新颜色", "Set Color", target_clan.color) as color|null
 
 				if(!color)
 					return
 
 				target_clan.color = color
 				message_admins("[key_name_admin(src)] has set the color of [target_clan.name] to [color].")
-				to_chat(src, SPAN_NOTICE("Set the name of [target_clan.name] to [color]."))
+				to_chat(src, SPAN_NOTICE("已将[target_clan.name]的名称设置为[color]。"))
 			if(CLAN_ACTION_CLAN_SETHONOR)
 				if(!has_clan_permission(CLAN_PERMISSION_ADMIN_MANAGER))
 					return
 
-				var/input = tgui_input_number(src, "Input the new honor", "Set Honor", target_clan.honor)
+				var/input = tgui_input_number(src, "输入新的荣誉值", "Set Honor", target_clan.honor)
 
 				if((!input && input != 0) || input == target_clan.honor)
 					return
 
 				message_admins("[key_name_admin(src)] has set the honor of clan [target_clan.name] from [target_clan.honor] to [input].")
-				to_chat(src, SPAN_NOTICE("Set the honor of [target_clan.name] from [target_clan.honor] to [input]."))
+				to_chat(src, SPAN_NOTICE("已将[target_clan.name]的荣誉值从[target_clan.honor]更改为[input]。"))
 				target_clan.honor = input
 
 			if(CLAN_ACTION_CLAN_DELETE)
 				if(!has_clan_permission(CLAN_PERMISSION_ADMIN_MANAGER))
 					return
 
-				var/input = input(src, "Please input the name of the clan to proceed.", "Delete Clan") as text|null
+				var/input = input(src, "请输入氏族名称以继续。", "Delete Clan") as text|null
 
 				if(input != target_clan.name)
-					to_chat(src, "You have decided not to delete [target_clan.name].")
+					to_chat(src, "你已决定不删除[target_clan.name]。")
 					return
 
 				message_admins("[key_name_admin(src)] has deleted the clan [target_clan.name].")
-				to_chat(src, SPAN_NOTICE("You have deleted [target_clan.name]."))
+				to_chat(src, SPAN_NOTICE("你已删除[target_clan.name]。"))
 				var/list/datum/view_record/clan_playerbase_view/CPV = DB_VIEW(/datum/view_record/clan_playerbase_view, DB_COMP("clan_id", DB_EQUALS, target_clan.id))
 
 				for(var/datum/view_record/clan_playerbase_view/CP in CPV)
@@ -309,7 +309,7 @@ CLIENT_VERB(view_clan_info)
 			player_rank = 999
 
 		if((target.permissions & CLAN_PERMISSION_ADMIN_MANAGER) || player_rank <= target.clan_rank)
-			to_chat(src, SPAN_DANGER("You can't target this person!"))
+			to_chat(src, SPAN_DANGER("你无法将此人员设为目标！"))
 			return
 
 		switch(href_list[CLAN_ACTION])
@@ -317,14 +317,14 @@ CLIENT_VERB(view_clan_info)
 				if(!has_clan_permission(CLAN_PERMISSION_ADMIN_MANAGER))
 					return
 
-				var/input = input(src, "Are you sure you want to purge this person? Type '[player_name]' to purge", "Confirm Purge") as text|null
+				var/input = input(src, "你确定要清除此人吗？输入‘[player_name]’以清除", "Confirm Purge") as text|null
 
 				if(!input || input != player_name)
 					return
 
 				var/target_clan = target.clan_id
 				message_admins("[key_name_admin(src)] has purged [player_name]'s clan profile.")
-				to_chat(src, SPAN_NOTICE("You have purged [player_name]'s clan profile."))
+				to_chat(src, SPAN_NOTICE("你已清除[player_name]的氏族档案。"))
 
 				target.delete()
 
@@ -354,7 +354,7 @@ CLIENT_VERB(view_clan_info)
 				if(target.clan_id)
 					clans += list("Remove from clan")
 
-				var/input = tgui_input_list(src, "Choose the clan to put them in", "Change player's clan", clans)
+				var/input = tgui_input_list(src, "选择要将其加入的氏族", "Change player's clan", clans)
 
 				if(!input)
 					return
@@ -362,20 +362,20 @@ CLIENT_VERB(view_clan_info)
 				if(input == "Remove from clan" && target.clan_id)
 					target.clan_id = null
 					target.clan_rank = GLOB.clan_ranks_ordered[CLAN_RANK_BLOODED]
-					to_chat(src, SPAN_NOTICE("Removed [player_name] from their clan."))
+					to_chat(src, SPAN_NOTICE("已将[player_name]从其氏族中移除。"))
 					message_admins("[key_name_admin(src)] has removed [player_name] from their current clan.")
 				else if(input == "Remove from Ancient")
 					target.clan_rank = GLOB.clan_ranks_ordered[CLAN_RANK_BLOODED]
 					target.permissions = GLOB.clan_ranks[CLAN_RANK_BLOODED].permissions
-					to_chat(src, SPAN_NOTICE("Removed [player_name] from ancient."))
+					to_chat(src, SPAN_NOTICE("已将[player_name]从远古者中移除。"))
 					message_admins("[key_name_admin(src)] has removed [player_name] from ancient.")
 				else if(input == "Make Ancient" && is_clan_manager)
 					target.clan_rank = GLOB.clan_ranks_ordered[CLAN_RANK_ADMIN]
 					target.permissions = CLAN_PERMISSION_ADMIN_ANCIENT
-					to_chat(src, SPAN_NOTICE("Made [player_name] an ancient."))
+					to_chat(src, SPAN_NOTICE("已将[player_name]设为远古者。"))
 					message_admins("[key_name_admin(src)] has made [player_name] an ancient.")
 				else
-					to_chat(src, SPAN_NOTICE("Moved [player_name] to [input]."))
+					to_chat(src, SPAN_NOTICE("已将[player_name]移至[input]。"))
 					message_admins("[key_name_admin(src)] has moved [player_name] to clan [input].")
 
 					target.clan_id = clans[input]
@@ -386,7 +386,7 @@ CLIENT_VERB(view_clan_info)
 
 			if(CLAN_ACTION_PLAYER_MODIFYRANK)
 				if(!target.clan_id)
-					to_chat(src, SPAN_WARNING("This player doesn't belong to a clan!"))
+					to_chat(src, SPAN_WARNING("该玩家不属于任何氏族！"))
 					return
 
 				var/list/datum/yautja_rank/ranks = GLOB.clan_ranks.Copy()
@@ -394,7 +394,7 @@ CLIENT_VERB(view_clan_info)
 
 				var/datum/yautja_rank/chosen_rank
 				if(has_clan_permission(CLAN_PERMISSION_ADMIN_MODIFY, warn = FALSE))
-					var/input = tgui_input_list(src, "Select the rank to change this user to.", "Select Rank", ranks)
+					var/input = tgui_input_list(src, "选择要更改为此用户的军衔。", "Select Rank", ranks)
 
 					if(!input)
 						return
@@ -406,7 +406,7 @@ CLIENT_VERB(view_clan_info)
 						if(!has_clan_permission(ranks[rank].permission_required, warn = FALSE))
 							ranks -= rank
 
-					var/input = tgui_input_list(src, "Select the rank to change this user to.", "Select Rank", ranks)
+					var/input = tgui_input_list(src, "选择要更改为此用户的军衔。", "Select Rank", ranks)
 
 					if(!input)
 						return
@@ -420,14 +420,14 @@ CLIENT_VERB(view_clan_info)
 						switch(chosen_rank.limit_type)
 							if(CLAN_LIMIT_NUMBER)
 								if(players_in_rank >= chosen_rank.limit)
-									to_chat(src, SPAN_DANGER("This slot is full! (Maximum of [chosen_rank.limit] slots)"))
+									to_chat(src, SPAN_DANGER("该槽位已满！（最多[chosen_rank.limit]个槽位）"))
 									return
 							if(CLAN_LIMIT_SIZE)
 								var/list/datum/view_record/clan_playerbase_view/clan_players = DB_VIEW(/datum/view_record/clan_playerbase_view/, DB_COMP("clan_id", DB_EQUALS, target.clan_id))
 								var/available_slots = ceil(length(clan_players) / chosen_rank.limit)
 
 								if(players_in_rank >= available_slots)
-									to_chat(src, SPAN_DANGER("This slot is full! (Maximum of [chosen_rank.limit] per player in the clan, currently [available_slots])"))
+									to_chat(src, SPAN_DANGER("该槽位已满！（氏族内每名玩家最多[chosen_rank.limit]个，当前为[available_slots]个）"))
 									return
 
 
@@ -440,7 +440,7 @@ CLIENT_VERB(view_clan_info)
 				target.clan_rank = GLOB.clan_ranks_ordered[chosen_rank.name]
 				target.permissions = chosen_rank.permissions
 				message_admins("[key_name_admin(src)] has set the rank of [player_name] to [chosen_rank.name] for their clan.")
-				to_chat(src, SPAN_NOTICE("Set [player_name]'s rank to [chosen_rank.name]"))
+				to_chat(src, SPAN_NOTICE("已将[player_name]的军衔设为[chosen_rank.name]"))
 
 		target.save()
 		target.sync()

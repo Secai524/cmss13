@@ -1,5 +1,5 @@
 /datum/surgery/eschar_mend
-	name = "Eschar Removal Surgery"
+	name = "焦痂移除手术"
 	possible_locs = ALL_LIMBS
 	invasiveness = list(SURGERY_DEPTH_SHALLOW)
 	required_surgery_skill = SKILL_SURGERY_NOVICE
@@ -13,8 +13,8 @@
 	return L.status & LIMB_ESCHAR
 
 /datum/surgery_step/separate_eschar
-	name = "Remove the Eschar"
-	desc = "remove the eschar"
+	name = "移除焦痂"
+	desc = "移除焦痂"
 	tools = SURGERY_TOOLS_INCISION
 	time = 2 SECONDS
 	preop_sound = 'sound/surgery/scalpel1.ogg'
@@ -36,7 +36,7 @@
 		SPAN_NOTICE("[user] has removed the eschar from your [surgery.affected_limb.display_name] and exposed the pink and healthy tissue beneath it."),
 		SPAN_NOTICE("[user] has removed the eschar from [target]'s [surgery.affected_limb.display_name] and exposed the pink and healthy tissue beneath it."))
 
-	to_chat(target, SPAN_NOTICE("The air feels cold around the exposed skin on your [surgery.affected_limb.display_name]."))
+	to_chat(target, SPAN_NOTICE("你[surgery.affected_limb.display_name]上暴露的皮肤周围的空气感觉冰冷。"))
 	log_interact(user, target, "[key_name(user)] has removed the eschar from [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], starting [surgery].")
 
 /datum/surgery_step/separate_eschar/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/eschar_mend/surgery)
@@ -50,8 +50,8 @@
 	return FALSE
 
 /datum/surgery_step/graft_exposed_flesh
-	name = "Apply a Graft"
-	desc = "graft and seal the exposed flesh"
+	name = "植皮"
+	desc = "植皮并封闭暴露的皮肉"
 	tools = list(
 		/obj/item/stack/medical/advanced/ointment = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/tool/surgery/synthgraft = SURGERY_TOOL_MULT_IDEAL,
@@ -95,7 +95,7 @@
 		SPAN_NOTICE("[user] sealed a skin graft over the exposed skin on your [surgery.affected_limb.display_name]."),
 		SPAN_NOTICE("[user] sealed a skin graft over the exposed skin on [target]'s [surgery.affected_limb.display_name]."))
 
-	to_chat(target, SPAN_NOTICE("Your skin is covered and safe. You feel better."))
+	to_chat(target, SPAN_NOTICE("你的皮肤已被覆盖并安全了。你感觉好多了。"))
 	log_interact(user, target, "[key_name(user)] sealed a skin graft over the exposed skin on [key_name(target)]'s [surgery.affected_limb.display_name] with [tool], ending [surgery].")
 	surgery.affected_limb.status &= ~LIMB_ESCHAR
 	surgery.affected_limb.heal_damage(0, surgery.affected_limb.burn_healing_threshold)

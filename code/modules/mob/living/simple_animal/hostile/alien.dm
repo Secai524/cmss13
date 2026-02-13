@@ -1,7 +1,7 @@
 /mob/living/simple_animal/hostile/alien
-	name = "Drone"
+	name = "工蜂"
 	var/caste_name = null
-	desc = "A builder of hives. Only drones may evolve into Queens."
+	desc = "巢穴的建造者。只有工蜂可以进化为女王。"
 	icon = 'icons/mob/xenos/castes/tier_1/drone.dmi'
 	icon_gib = "syndicate_gib"
 	layer = BIG_XENO_LAYER
@@ -90,13 +90,13 @@
 		return FALSE
 
 /mob/living/simple_animal/hostile/alien/pull_response(mob/puller)
-	if(stat != DEAD && has_species(puller, "Human")) // If the Xeno is alive, fight back against a grab/pull
+	if(stat != DEAD && has_species(puller, "人类")) // If the Xeno is alive, fight back against a grab/pull
 		var/mob/living/carbon/human/H = puller
 		if(H.ally_of_hivenumber(hivenumber))
 			return TRUE
 		puller.apply_effect(2, WEAKEN)
 		playsound(puller.loc, 'sound/weapons/pierce.ogg', 25, 1)
-		puller.visible_message(SPAN_WARNING("[puller] tried to pull [src] but instead gets a tail swipe to the head!"))
+		puller.visible_message(SPAN_WARNING("[puller]试图拉动[src]，却被一记甩尾击中头部！"))
 		return FALSE
 	return TRUE
 
@@ -137,7 +137,7 @@
 		roar_emote()
 
 /mob/living/simple_animal/hostile/alien/proc/roar_emote()
-	visible_message("<B>The [name]</B> roars!")
+	visible_message("<B>[name]</B>发出咆哮！")
 	playsound(loc, "alien_roar", 40)
 
 /mob/living/simple_animal/hostile/alien/death(cause, gibbed, deathmessage = "lets out a waning guttural screech, green blood bubbling from its maw. The caustic acid starts melting the body away...")
@@ -154,8 +154,8 @@
 	return ..()
 
 /mob/living/simple_animal/hostile/alien/ravager
-	name = "Ravager"
-	desc = "A huge, nasty red alien with enormous scythed claws."
+	name = "掠夺者"
+	desc = "一个巨大、丑陋的红色异形，长着巨大的镰刀状爪子。"
 	icon = 'icons/mob/xenos/castes/tier_3/ravager.dmi'
 	melee_damage_lower = XENO_DAMAGE_TIER_5
 	melee_damage_upper = XENO_DAMAGE_TIER_5
@@ -167,8 +167,8 @@
 	old_x = -16
 
 /mob/living/simple_animal/hostile/alien/lurker
-	name = "Lurker"
-	desc = "A fast, powerful backline combatant."
+	name = "潜伏者"
+	desc = "一个快速、强大的后排战斗员。"
 	icon = 'icons/mob/xenos/castes/tier_2/lurker.dmi'
 	melee_damage_lower = XENO_DAMAGE_TIER_3
 	melee_damage_upper = XENO_DAMAGE_TIER_3

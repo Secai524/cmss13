@@ -18,7 +18,7 @@
 	mob_type_blacklist_typecache = list(/mob/living/carbon/xenomorph/hellhound)
 
 	key = "growl"
-	message = "growls."
+	message = "发出低吼。"
 	sound = "alien_growl"
 	predalien_sound = 'sound/voice/predalien_growl.ogg'
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
@@ -27,7 +27,7 @@
 	mob_type_blacklist_typecache = list(/mob/living/carbon/xenomorph/hellhound)
 
 	key = "hiss"
-	message = "hisses."
+	message = "发出嘶嘶声。"
 	sound = "alien_hiss"
 	predalien_sound = 'sound/voice/predalien_hiss.ogg'
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
@@ -36,7 +36,7 @@
 	mob_type_blacklist_typecache = list(/mob/living/carbon/xenomorph/hellhound)
 
 	key = "needshelp"
-	message = "needs help!"
+	message = "需要帮助！"
 	sound = "alien_help"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
@@ -44,7 +44,7 @@
 	mob_type_blacklist_typecache = list(/mob/living/carbon/xenomorph/hellhound)
 
 	key = "roar"
-	message = "roars!"
+	message = "咆哮！"
 	sound = "alien_roar"
 	predalien_sound = 'sound/voice/predalien_roar.ogg'
 	larva_sound = "alien_roar_larva"
@@ -52,7 +52,7 @@
 
 /datum/emote/living/carbon/xeno/tail
 	key = "tail"
-	message = "swipes its tail."
+	message = "甩动尾巴。"
 	sound = "alien_tail_swipe"
 
 /datum/emote/living/carbon/xeno/hellhound
@@ -61,18 +61,18 @@
 
 /datum/emote/living/carbon/xeno/hellhound/roar
 	key = "roar"
-	message = "roars!"
+	message = "咆哮！"
 	sound = 'sound/voice/ed209_20sec.ogg'
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/xeno/hellhound/growl
 	key = "growl"
-	message = "emits a strange, menacing growl."
+	message = "发出一种奇怪而危险的咆哮声。"
 	sound = "giant_lizard_growl"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/xeno/hellhound/hiss
 	key = "hiss"
-	message = "hisses."
+	message = "发出嘶嘶声。"
 	sound = "giant_lizard_hiss"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE

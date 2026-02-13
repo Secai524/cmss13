@@ -96,7 +96,7 @@
 			last_living_human = cur_human
 
 		if(!see_humans_on_tacmap && shipside_humans_count < (main_hive.get_real_total_xeno_count() * HIJACK_RATIO_FOR_TACMAP))
-			xeno_announcement("There is only a handful of tallhosts left, they are now visible on our hive mind map.", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
+			xeno_announcement("只剩下少数几个高个子宿主了，它们现在已显示在我们的蜂巢思维地图上。", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
 			main_hive.see_humans_on_tacmap = TRUE
 			main_hive.tacmap_requires_queen_ovi = FALSE
 			SEND_SIGNAL(main_hive, COMSIG_XENO_REVEAL_TACMAP)
@@ -105,10 +105,10 @@
 			if((GLOB.last_qm_callout + 2 MINUTES) < world.time)
 				GLOB.last_qm_callout = world.time
 				// Tell the xenos where the human is.
-				xeno_announcement("I sense the last tallhost hiding in [get_area_name(last_living_human)].", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
+				xeno_announcement("我感应到最后一个高个子宿主正躲在[get_area_name(last_living_human)]。", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
 				// Tell the human he is the last guy.
 				if(last_living_human.client)
-					to_chat(last_living_human, SPAN_ANNOUNCEMENT_HEADER_BLUE("Panic creeps up your spine. You realize that you are the last survivor."))
+					to_chat(last_living_human, SPAN_ANNOUNCEMENT_HEADER_BLUE("恐慌爬上你的脊背。你意识到自己是最后的幸存者。"))
 				//tell the ghosts
 				notify_ghosts(header = "Last Human", message = "There is only one person left: [last_living_human.real_name]!", source = last_living_human, action = NOTIFY_ORBIT)
 			//disable delaycloaks
@@ -118,7 +118,7 @@
 				if(delayer_cloak.camo_active)
 					delayer_cloak.deactivate_camouflage(delayer)
 				if((delayer_cloak.cloak_cooldown - world.time) < 30 MINUTES)
-					to_chat(delayer, SPAN_WARNING("Your [delayer_cloak] fizzles out and breaks!"))
+					to_chat(delayer, SPAN_WARNING("你的[delayer_cloak]嘶嘶作响并损坏了！"))
 				delayer_cloak.cloak_cooldown = world.time + 1 HOURS //fuck you
 			if(istype(delayer.wear_suit, /obj/item/clothing/suit/storage/marine/ghillie))
 				var/obj/item/clothing/suit/storage/marine/ghillie/delayer_armour = delayer.wear_suit
@@ -126,7 +126,7 @@
 					delayer_armour.deactivate_camouflage(delayer)
 				if(delayer_armour.can_camo)
 					delayer_armour.can_camo = FALSE //fuck you
-					to_chat(delayer, SPAN_WARNING("Your [delayer_armour]'s camo system breaks!"))
+					to_chat(delayer, SPAN_WARNING("你的[delayer_armour]伪装系统损坏了！"))
 
 	var/death_message = species.death_message
 	if(HAS_TRAIT(src, TRAIT_HARDCORE))

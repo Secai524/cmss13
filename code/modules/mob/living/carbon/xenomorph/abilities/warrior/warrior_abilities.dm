@@ -1,6 +1,6 @@
 // Warrior Fling
 /datum/action/xeno_action/activable/fling
-	name = "Fling"
+	name = "投掷"
 	action_icon_state = "fling"
 	macro_path = /datum/action/xeno_action/verb/verb_fling
 	action_type = XENO_ACTION_CLICK
@@ -15,7 +15,7 @@
 
 // Warrior Lunge
 /datum/action/xeno_action/activable/lunge
-	name = "Lunge"
+	name = "猛扑"
 	action_icon_state = "lunge"
 	macro_path = /datum/action/xeno_action/verb/verb_lunge
 	action_type = XENO_ACTION_CLICK
@@ -28,7 +28,7 @@
 	var/twitch_message_cooldown = 0 //apparently this is necessary for a tiny code that makes the lunge message on cooldown not be spammable, doesn't need to be big so 5 will do.
 
 /datum/action/xeno_action/activable/warrior_punch
-	name = "Punch"
+	name = "拳击"
 	action_icon_state = "punch"
 	macro_path = /datum/action/xeno_action/verb/verb_punch
 	action_type = XENO_ACTION_CLICK

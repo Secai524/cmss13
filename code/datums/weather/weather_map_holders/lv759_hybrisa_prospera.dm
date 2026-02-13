@@ -1,5 +1,5 @@
 /datum/weather_ss_map_holder/lv759_hybrisa_prospera
-	name = "LV-759 Map Holder"
+	name = "LV-759地图架"
 
 	warn_time = 1 MINUTES
 	min_time_between_events = 12 MINUTES

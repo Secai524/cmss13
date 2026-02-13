@@ -3,16 +3,16 @@
 	set name = "Dsay" //Gave this shit a shorter name so you only have to time out "dsay" rather than "dead say" to use it --NeoFite
 	set hidden = TRUE
 	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return
 	if(!src.mob)
 		return
 	if(prefs.muted & MUTE_DEADCHAT)
-		to_chat(src, SPAN_DANGER("You cannot send DSAY messages (muted)."))
+		to_chat(src, SPAN_DANGER("你无法发送DSAY消息（已被禁言）。"))
 		return
 
 	if(!(prefs.toggles_chat & CHAT_DEAD))
-		to_chat(src, SPAN_DANGER("You have deadchat muted."))
+		to_chat(src, SPAN_DANGER("你已静音死亡聊天。"))
 		return
 
 	if (src.handle_spam_prevention(msg,MUTE_DEADCHAT))

@@ -96,10 +96,10 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 		for(var/line in intro_text)
 			to_chat(survivor, line)
 	else
-		to_chat(survivor, "<h2>You are a survivor!</h2>")
+		to_chat(survivor, "<h2>你是一名幸存者！</h2>")
 		to_chat(survivor, SPAN_NOTICE(SSmapping.configs[GROUND_MAP].survivor_message))
-		to_chat(survivor, SPAN_NOTICE("You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit."))
-		to_chat(survivor, SPAN_NOTICE("You are NOT aware of the marines or their intentions."))
+		to_chat(survivor, SPAN_NOTICE("你完全清楚异形的威胁，并能酌情利用这些知识。"))
+		to_chat(survivor, SPAN_NOTICE("你并<B>不</B>清楚陆战队员或其意图。"))
 
 	if(story_text)
 		to_chat(survivor, story_text)
@@ -108,11 +108,11 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 		tell_survivor_story(survivor)
 
 	if(hostile)
-		to_chat(survivor, SPAN_HIGHDANGER("You are HOSTILE to the USCM!"))
+		to_chat(survivor, SPAN_HIGHDANGER("你对 USCM 抱有敌意！"))
 	else if(survivor.faction == FACTION_CLF)
-		to_chat(survivor, SPAN_HIGHDANGER("You are HOSTILE to the USCM, but NOT to other survivors!"))
+		to_chat(survivor, SPAN_HIGHDANGER("你对 USCM 抱有敌意，但对其他幸存者没有！"))
 	else
-		to_chat(survivor, SPAN_XENOHIGHDANGER("You are NON-HOSTILE to the USCM!"))
+		to_chat(survivor, SPAN_XENOHIGHDANGER("你对 USCM 没有敌意！"))
 
 /datum/job/civilian/survivor/proc/tell_survivor_story(mob/living/carbon/human/H)
 	var/list/survivor_story = list(

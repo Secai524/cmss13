@@ -21,7 +21,7 @@
 	. = ..()
 	if(W && !.)
 		if(!(W.flags_item & NOBLUDGEON))
-			visible_message(SPAN_DANGER("[src] has been hit by [user] with [W]."), null, null, 5, CHAT_TYPE_MELEE_HIT)
+			visible_message(SPAN_DANGER("[src]被[user]用[W]击中了。"), null, null, 5, CHAT_TYPE_MELEE_HIT)
 			user.animation_attack_on(src)
 			user.flick_attack_overlay(src, "punch")
 			return ATTACKBY_HINT_UPDATE_NEXT_MOVE
@@ -62,7 +62,7 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(!H.melee_allowed)
-			to_chat(H, SPAN_DANGER("You are currently unable to attack."))
+			to_chat(H, SPAN_DANGER("你目前无法攻击。"))
 			return FALSE
 
 	var/showname = "."
@@ -76,7 +76,7 @@
 
 	if (user.a_intent == INTENT_HELP && ((user.client?.prefs && user.client?.prefs?.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY) || (user.mob_flags & SURGERY_MODE_ON)))
 		playsound(loc, 'sound/effects/pop.ogg', 25, 1)
-		user.visible_message(SPAN_NOTICE("[M] has been poked with [src][showname]"),
+		user.visible_message(SPAN_NOTICE("[M]被[src][showname]戳了一下。"),
 			SPAN_NOTICE("You poke [M == user ? "yourself":M] with [src]."), null, 4)
 
 		return FALSE
@@ -97,7 +97,7 @@
 		var/used_verb = "attacked"
 		if(LAZYLEN(attack_verb))
 			used_verb = pick(attack_verb)
-		user.visible_message(SPAN_DANGER("[M] has been [used_verb] with [src][showname]."),
+		user.visible_message(SPAN_DANGER("[M]被[src][showname][used_verb]了。"),
 			SPAN_DANGER("You [used_verb] [M == user ? "yourself":M] with [src]."), null, 5, CHAT_TYPE_MELEE_HIT)
 
 		user.animation_attack_on(M)
@@ -114,7 +114,7 @@
 				M.apply_damage(power,BRUTE)
 			if("fire")
 				M.apply_damage(power,BURN)
-				to_chat(M, SPAN_WARNING("It burns!"))
+				to_chat(M, SPAN_WARNING("好烫！"))
 		if(power > 5)
 			M.last_damage_data = create_cause_data(initial(name), user)
 			user.track_hit(initial(name))

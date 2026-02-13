@@ -144,7 +144,7 @@ Additional game mode variables.
 //===================================================\\
 
 /datum/game_mode/proc/initialize_predator(mob/living/carbon/human/new_predator, ignore_pred_num = FALSE)
-	predators[new_predator.username()] = list("Name" = new_predator.real_name, "Status" = "Alive")
+	predators[new_predator.username()] = list("姓名" = new_predator.real_name, "Status" = "Alive")
 	if(!ignore_pred_num)
 		pred_current_num++
 
@@ -202,33 +202,33 @@ Additional game mode variables.
 
 	if(!pred_job)
 		if(show_warning)
-			to_chat(pred_candidate, SPAN_WARNING("Something went wrong!"))
+			to_chat(pred_candidate, SPAN_WARNING("出错了！"))
 		return FALSE
 
 	if(!pred_candidate.client.check_whitelist_status(WHITELIST_PREDATOR))
 		if(show_warning)
-			to_chat(pred_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a predator."))
+			to_chat(pred_candidate, SPAN_WARNING("你不在白名单中！你可以在论坛申请加入铁血战士白名单。"))
 		return FALSE
 
 	if(!(flags_round_type & MODE_PREDATOR))
 		if(show_warning)
-			to_chat(pred_candidate, SPAN_WARNING("There is no Hunt this round! Maybe the next one."))
+			to_chat(pred_candidate, SPAN_WARNING("本轮没有狩猎！也许下一轮会有。"))
 		return FALSE
 
 	if(pred_candidate.key in predators)
 		if(show_warning)
-			to_chat(pred_candidate, SPAN_WARNING("You already were a Yautja! Give someone else a chance."))
+			to_chat(pred_candidate, SPAN_WARNING("你已经扮演过铁血战士了！给其他人一个机会。"))
 		return FALSE
 
 	var/pred_rank = pred_job.get_whitelist_status(pred_candidate.client)
-	if(show_warning && tgui_alert(pred_candidate, "Confirm joining the hunt. You will join as \a [lowertext(pred_rank)] predator.", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
+	if(show_warning && tgui_alert(pred_candidate, "确认加入狩猎。你将作为一名\a [lowertext(pred_rank)]铁血战士加入。", "确认", list("Yes", "No"), 10 SECONDS) != "Yes")
 		return FALSE
 
 	if(pred_rank != CLAN_RANK_LEADER && !pred_candidate.client.check_whitelist_status(WHITELIST_YAUTJA_LEADER|WHITELIST_YAUTJA_COUNCIL))
 		var/pred_max = calculate_pred_max()
 		if(pred_current_num >= pred_max)
 			if(show_warning)
-				to_chat(pred_candidate, SPAN_WARNING("Only [pred_max] predators may spawn this round, but Leaders, Councillors and Ancients do not count."))
+				to_chat(pred_candidate, SPAN_WARNING("本轮最多只能有[pred_max]名铁血战士生成，但领袖、议员和长老不计入此限。"))
 			return FALSE
 
 	return TRUE
@@ -249,11 +249,11 @@ Additional game mode variables.
 	var/turf/spawn_point = SAFEPICK(SSpredships.get_clan_spawnpoints(clan_id))
 	if(!isturf(spawn_point))
 		log_debug("Failed to find spawn point for pred ship in transform_predator - clan_id=[clan_id]")
-		to_chat(pred_candidate, SPAN_WARNING("Unable to setup spawn location - you might want to tell someone about this."))
+		to_chat(pred_candidate, SPAN_WARNING("无法设置生成位置 - 你可能需要将此事告知相关人员。"))
 		return
 	if(!pred_candidate?.mind) // Legacy check
 		log_debug("Tried to spawn invalid pred player in transform_predator - new_player name=[pred_candidate]")
-		to_chat(pred_candidate, SPAN_WARNING("Could not setup character - you might want to tell someone about this."))
+		to_chat(pred_candidate, SPAN_WARNING("无法设置角色 - 你可能需要将此事告知相关人员。"))
 		return
 
 	var/mob/living/carbon/human/yautja/new_predator = new(spawn_point)
@@ -268,7 +268,7 @@ Additional game mode variables.
 
 	GLOB.RoleAuthority.equip_role(new_predator, J, new_predator.loc)
 
-	if(new_predator.client.check_whitelist_status(WHITELIST_YAUTJA_LEADER) && (tgui_alert(new_predator, "Do you wish to announce your presence?", "Announce Arrival", list("Yes","No"), 10 SECONDS) != "No"))
+	if(new_predator.client.check_whitelist_status(WHITELIST_YAUTJA_LEADER) && (tgui_alert(new_predator, "你希望宣告你的存在吗？", "Announce Arrival", list("Yes","No"), 10 SECONDS) != "No"))
 		elder_overseer_message("[new_predator.real_name] has joined the hunting party.")
 
 	return new_predator
@@ -284,13 +284,13 @@ Additional game mode variables.
 		return FALSE
 	if(!(responder?.client.check_whitelist_status(WHITELIST_FAX_RESPONDER)))
 		if(show_warning)
-			to_chat(responder, SPAN_WARNING("You are not whitelisted!"))
+			to_chat(responder, SPAN_WARNING("你不在白名单中！"))
 		return FALSE
-	if(show_warning && tgui_alert(responder, "Confirm joining as a Fax Responder.", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
+	if(show_warning && tgui_alert(responder, "确认以传真响应者身份加入。", "确认", list("Yes", "No"), 10 SECONDS) != "Yes")
 		return FALSE
 	if(!get_fax_responder_slots(responder))
 		if(show_warning)
-			to_chat(responder, SPAN_WARNING("No slots available!"))
+			to_chat(responder, SPAN_WARNING("没有可用位置！"))
 		return FALSE
 	return TRUE
 
@@ -299,7 +299,7 @@ Additional game mode variables.
 	if(!responder_candidate.client)
 		return FALSE
 	if(!(responder_candidate.client.check_whitelist_status(WHITELIST_FAX_RESPONDER)))
-		to_chat(responder_candidate, SPAN_WARNING("You are not whitelisted!"))
+		to_chat(responder_candidate, SPAN_WARNING("你不在白名单中！"))
 		return FALSE
 
 	for(var/job in FAX_RESPONDER_JOB_LIST)
@@ -312,12 +312,12 @@ Additional game mode variables.
 /datum/game_mode/proc/attempt_to_join_as_fax_responder(mob/responder_candidate, from_lobby = FALSE)
 	var/list/options = get_fax_responder_slots(responder_candidate)
 	if(!options || !options.len)
-		to_chat(responder_candidate, SPAN_WARNING("No Available Slot!"))
+		to_chat(responder_candidate, SPAN_WARNING("没有可用位置！"))
 		return FALSE
 
-	var/choice = tgui_input_list(responder_candidate, "What Fax Responder do you want to join as?", "Which Responder?", options, 30 SECONDS)
+	var/choice = tgui_input_list(responder_candidate, "你想以何种传真响应者身份加入？", "Which Responder?", options, 30 SECONDS)
 	if(!(choice in FAX_RESPONDER_JOB_LIST))
-		to_chat(responder_candidate, SPAN_WARNING("Error: No valid responder selected."))
+		to_chat(responder_candidate, SPAN_WARNING("错误：未选择有效的响应者。"))
 		return FALSE
 
 	if(!transform_fax_responder(responder_candidate, choice))
@@ -459,7 +459,7 @@ Additional game mode variables.
 
 /datum/game_mode/proc/check_xeno_late_join(mob/xeno_candidate)
 	if(jobban_isbanned(xeno_candidate, JOB_XENOMORPH)) // User is jobbanned
-		to_chat(xeno_candidate, SPAN_WARNING("You are banned from playing aliens and cannot spawn as a xenomorph."))
+		to_chat(xeno_candidate, SPAN_WARNING("你被禁止扮演异形，无法以异形身份生成。"))
 		return FALSE
 	return TRUE
 
@@ -520,7 +520,7 @@ Additional game mode variables.
 				You can try getting spawned as a chestburster larva by toggling your Xenomorph candidacy in \
 				Preferences -> Toggle SpecialRole Candidacy."))
 			return FALSE
-		to_chat(xeno_candidate, SPAN_WARNING("There aren't any available xenomorphs or burrowed larvae."))
+		to_chat(xeno_candidate, SPAN_WARNING("没有任何可用的异形或潜伏幼虫。"))
 
 		// If a lobby player is trying to join as xeno, estimate their possible position
 		if(is_new_player)
@@ -542,7 +542,7 @@ Additional game mode variables.
 	if(instant_join)
 		new_xeno = pick(available_xenos) //Just picks something at random.
 	else
-		var/userInput = tgui_input_list(xeno_candidate, "Available Xenomorphs", "Join as Xeno", available_xenos, theme="hive_status")
+		var/userInput = tgui_input_list(xeno_candidate, "可用异形", "以异形加入", available_xenos, theme="hive_status")
 
 		if(available_xenos[userInput]) //Free xeno mobs have no associated value and skip this. "Pooled larva" strings have a list of hives.
 			var/datum/hive_status/picked_hive = pick(available_xenos[userInput]) //The list contains all available hives if we are to choose at random, only one element if we already chose a hive by its name.
@@ -558,7 +558,7 @@ Additional game mode variables.
 
 				for(var/mob_name in picked_hive.banished_ckeys)
 					if(picked_hive.banished_ckeys[mob_name] == xeno_candidate.ckey)
-						to_chat(xeno_candidate, SPAN_WARNING("You are banished from the [picked_hive], you may not rejoin unless the Queen re-admits you or dies."))
+						to_chat(xeno_candidate, SPAN_WARNING("你已被[picked_hive]驱逐，除非女王重新接纳你或死亡，否则你无法重新加入。"))
 						return FALSE
 
 				if(isnewplayer(xeno_candidate))
@@ -570,11 +570,11 @@ Additional game mode variables.
 				else if((world.time < XENO_BURIED_LARVA_TIME_LIMIT + SSticker.round_start_time))
 					picked_hive.do_buried_larva_spawn(xeno_candidate)
 				else
-					to_chat(xeno_candidate, SPAN_WARNING("Seems like something went wrong. Try again?"))
+					to_chat(xeno_candidate, SPAN_WARNING("似乎出了点问题。再试一次？"))
 					return FALSE
 				return TRUE
 			else
-				to_chat(xeno_candidate, SPAN_WARNING("Seems like something went wrong. Try again?"))
+				to_chat(xeno_candidate, SPAN_WARNING("似乎出了点问题。再试一次？"))
 				return FALSE
 
 		if(!isxeno(userInput) || !xeno_candidate)
@@ -582,11 +582,11 @@ Additional game mode variables.
 		new_xeno = userInput
 
 		if(new_xeno.stat == DEAD)
-			to_chat(xeno_candidate, SPAN_WARNING("You cannot join if the xenomorph is dead."))
+			to_chat(xeno_candidate, SPAN_WARNING("如果该异形已死亡，你无法加入。"))
 			return FALSE
 
 		if(new_xeno.health <= 0)
-			to_chat(xeno_candidate, SPAN_WARNING("You cannot join if the xenomorph is in critical condition or unconscious."))
+			to_chat(xeno_candidate, SPAN_WARNING("如果异形处于危急状态或昏迷，则不能加入。"))
 			return FALSE
 
 		var/required_leave_time = XENO_LEAVE_TIMER
@@ -597,7 +597,7 @@ Additional game mode variables.
 
 		if(new_xeno.away_timer < required_leave_time)
 			var/to_wait = required_leave_time - new_xeno.away_timer
-			to_chat(xeno_candidate, SPAN_WARNING("That player hasn't been away long enough. Please wait [to_wait] second\s longer."))
+			to_chat(xeno_candidate, SPAN_WARNING("该玩家离开的时间还不够长。请再等待[to_wait]秒。"))
 			return FALSE
 
 		if(!xeno_bypass_timer)
@@ -605,15 +605,15 @@ Additional game mode variables.
 			if(istype(xeno_candidate, /mob/new_player))
 				deathtime = INFINITY //so new players don't have to wait to latejoin as xeno in the round's first 5 mins.
 			if(deathtime < required_dead_time && !candidate_observer.bypass_time_of_death_checks && !check_client_rights(xeno_candidate.client, R_ADMIN, FALSE))
-				to_chat(xeno_candidate, SPAN_WARNING("You have been dead for [DisplayTimeText(deathtime)]."))
-				to_chat(xeno_candidate, SPAN_WARNING("You must wait at least [required_dead_time / 600] minute\s before rejoining the game!"))
+				to_chat(xeno_candidate, SPAN_WARNING("你已经死亡[DisplayTimeText(deathtime)]。"))
+				to_chat(xeno_candidate, SPAN_WARNING("你必须至少等待[required_dead_time / 600]分钟才能重新加入游戏！"))
 				return FALSE
 
-		if(tgui_alert(xeno_candidate, "Are you sure you want to transfer yourself into [new_xeno]?", "Confirm Transfer", list("Yes", "No")) != "Yes")
+		if(tgui_alert(xeno_candidate, "你确定要将自己转移到[new_xeno]吗？", "Confirm Transfer", list("Yes", "No")) != "Yes")
 			return FALSE
 
 		if(QDELETED(new_xeno) || new_xeno.away_timer < required_leave_time || new_xeno.stat == DEAD || !(new_xeno in GLOB.living_xeno_list) || !xeno_candidate) // Do it again, just in case
-			to_chat(xeno_candidate, SPAN_WARNING("That xenomorph can no longer be controlled. Please try another."))
+			to_chat(xeno_candidate, SPAN_WARNING("该异形已无法控制。请尝试另一个。"))
 			return FALSE
 
 	if(istype(new_xeno) && xeno_candidate?.client)
@@ -622,11 +622,11 @@ Additional game mode variables.
 			noob.close_spawn_windows()
 		for(var/mob_name in new_xeno.hive.banished_ckeys)
 			if(new_xeno.hive.banished_ckeys[mob_name] == xeno_candidate.ckey)
-				to_chat(xeno_candidate, SPAN_WARNING("You are banished from this hive, You may not rejoin unless the Queen re-admits you or dies."))
+				to_chat(xeno_candidate, SPAN_WARNING("你已被此巢穴驱逐，除非女王重新接纳你或死亡，否则你无法重新加入。"))
 				return FALSE
 		if(transfer_xeno(xeno_candidate, new_xeno))
 			return TRUE
-	to_chat(xeno_candidate, "JAS01: Something went wrong, tell a coder.")
+	to_chat(xeno_candidate, "JAS01：出现错误，请通知程序员。")
 
 /datum/game_mode/proc/attempt_to_join_as_facehugger(mob/xeno_candidate)
 	//Step 1 - pick a Hive
@@ -641,13 +641,13 @@ Additional game mode variables.
 		last_active_hive = hive.hivenumber
 
 	if(length(active_hives) <= 0)
-		to_chat(xeno_candidate, SPAN_WARNING("There aren't any Hives active at this point for you to join."))
+		to_chat(xeno_candidate, SPAN_WARNING("当前没有可供你加入的活跃巢穴。"))
 		return FALSE
 
 	if(length(active_hives) > 1)
-		var/hive_picked = tgui_input_list(xeno_candidate, "Select which Hive to attempt joining.", "Hive Choice", active_hives, theme="hive_status")
+		var/hive_picked = tgui_input_list(xeno_candidate, "选择要尝试加入的巢穴。", "Hive Choice", active_hives, theme="hive_status")
 		if(!hive_picked)
-			to_chat(xeno_candidate, SPAN_ALERT("Hive choice error. Aborting."))
+			to_chat(xeno_candidate, SPAN_ALERT("巢穴选择错误。中止。"))
 			return
 		hive = GLOB.hive_datum[active_hives[hive_picked]]
 	else
@@ -670,19 +670,19 @@ Additional game mode variables.
 				available_facehugger_sources[descriptive_name] = morpher
 
 	if(length(available_facehugger_sources) <= 0)
-		to_chat(xeno_candidate, SPAN_WARNING("There aren't any Carriers or Egg Morphers with available Facehuggers for you to join. Find an egg or try again later!"))
+		to_chat(xeno_candidate, SPAN_WARNING("当前没有携带者或虫卵变形者拥有可用的抱脸虫供你加入。寻找一个虫卵或稍后再试！"))
 		return FALSE
 
-	var/source_picked = tgui_input_list(xeno_candidate, "Select a Facehugger source.", "Facehugger Source Choice", available_facehugger_sources, theme="hive_status")
+	var/source_picked = tgui_input_list(xeno_candidate, "选择抱脸虫来源。", "Facehugger Source Choice", available_facehugger_sources, theme="hive_status")
 	if(!source_picked)
-		to_chat(xeno_candidate, SPAN_ALERT("Facehugger source choice error. Aborting."))
+		to_chat(xeno_candidate, SPAN_ALERT("抱脸虫来源选择错误。中止。"))
 		return
 
 	var/facehugger_choice = available_facehugger_sources[source_picked]
 
 	//Just in case some xeno got gibbed while we were picking...
 	if(!facehugger_choice)
-		to_chat(xeno_candidate, SPAN_WARNING("Picked choice is not available anymore, try again!"))
+		to_chat(xeno_candidate, SPAN_WARNING("所选选项已不可用，请重试！"))
 		return FALSE
 
 	//Call the appropriate procs to spawn with
@@ -707,13 +707,13 @@ Additional game mode variables.
 		last_active_hive = hive.hivenumber
 
 	if(length(active_hives) <= 0)
-		to_chat(xeno_candidate, SPAN_WARNING("There aren't any Hives active at this point for you to join."))
+		to_chat(xeno_candidate, SPAN_WARNING("当前没有可供你加入的活跃巢穴。"))
 		return FALSE
 
 	if(length(active_hives) > 1)
-		var/hive_picked = tgui_input_list(xeno_candidate, "Select which Hive to attempt joining.", "Hive Choice", active_hives, theme="hive_status")
+		var/hive_picked = tgui_input_list(xeno_candidate, "选择要尝试加入的巢穴。", "Hive Choice", active_hives, theme="hive_status")
 		if(!hive_picked)
-			to_chat(xeno_candidate, SPAN_ALERT("Hive choice error. Aborting."))
+			to_chat(xeno_candidate, SPAN_ALERT("巢穴选择错误。中止。"))
 			return FALSE
 		hive = GLOB.hive_datum[active_hives[hive_picked]]
 	else
@@ -739,10 +739,10 @@ Additional game mode variables.
 			selection_list_structure += cycled_pylon
 
 	if(!length(selection_list))
-		to_chat(xeno_candidate, SPAN_WARNING("The selected hive does not have enough power for a lesser drone at any hive core or pylon!"))
+		to_chat(xeno_candidate, SPAN_WARNING("所选巢穴在任何巢穴核心或塔楼上都没有足够的能量来生成低级工蜂！"))
 		return FALSE
 
-	var/prompt = tgui_input_list(xeno_candidate, "Select spawn?", "Spawnpoint Selection", selection_list)
+	var/prompt = tgui_input_list(xeno_candidate, "选择重生点？", "Spawnpoint Selection", selection_list)
 	if(!prompt)
 		return FALSE
 
@@ -821,13 +821,13 @@ Additional game mode variables.
 
 	original.sight = BLIND
 
-	var/selected_spawn = tgui_input_list(original, "Where do you want you and your hive to spawn?", "Queen Spawn", spawn_list_map, QUEEN_SPAWN_TIMEOUT, theme="hive_status")
+	var/selected_spawn = tgui_input_list(original, "你希望你和你的巢穴在哪里重生？", "Queen Spawn", spawn_list_map, QUEEN_SPAWN_TIMEOUT, theme="hive_status")
 	if(hive.living_xeno_queen)
-		to_chat(original, SPAN_XENOANNOUNCE("You have taken too long to pick a spawn location, a queen has already evolved before you."))
+		to_chat(original, SPAN_XENOANNOUNCE("你花费了太长时间选择重生地点，在你之前已经进化出了一位女王。"))
 		player.send_to_lobby()
 	if(!selected_spawn)
 		selected_spawn = pick(spawn_list_map)
-		to_chat(original, SPAN_XENOANNOUNCE("You have taken too long to pick a spawn location, one has been chosen for you."))
+		to_chat(original, SPAN_XENOANNOUNCE("你花费了太长时间选择重生地点，已为你选择一个。"))
 
 	var/turf/QS
 	var/obj/effect/landmark/queen_spawn/QSI
@@ -859,15 +859,15 @@ Additional game mode variables.
 
 	SSround_recording.recorder.track_player(new_queen)
 	if(Check_WO())
-		to_chat(new_queen, "<B>You are now the alien queen!</B>")
-		to_chat(new_queen, "<B>Your job is to assist the hive in assaulting the human outpost!</B>")
-		to_chat(new_queen, "<B>You should start by planting weeds and growing an ovipositor, your children will appear around round time 0:20. You will be able to leave your cave after the round time reaches 1:00.</B>")
-		to_chat(new_queen, "Talk in Hivemind using <strong>;</strong> (e.g. ';Hello my children!')")
+		to_chat(new_queen, "<B>你现在是异形女王！</B>")
+		to_chat(new_queen, "<B>你的任务是协助巢穴攻击人类前哨站！</B>")
+		to_chat(new_queen, "<B>你应该从种植菌毯和生长产卵器开始，你的孩子们将在回合时间0:20左右出现。回合时间达到1:00后，你将能够离开你的洞穴。</B>")
+		to_chat(new_queen, "使用<strong>;</strong>在蜂巢思维中交谈（例如‘;你好，我的孩子们！’）")
 	else
-		to_chat(new_queen, "<B>You are now the alien queen!</B>")
-		to_chat(new_queen, "<B>Your job is to spread the hive.</B>")
-		to_chat(new_queen, "<B>You should start by building a hive core.</B>")
-		to_chat(new_queen, "Talk in Hivemind using <strong>;</strong> (e.g. ';Hello my children!')")
+		to_chat(new_queen, "<B>你现在是异形女王！</B>")
+		to_chat(new_queen, "<B>你的任务是扩张巢穴。</B>")
+		to_chat(new_queen, "<B>你应该从建造一个巢穴核心开始。</B>")
+		to_chat(new_queen, "使用<strong>;</strong>在蜂巢思维中交谈（例如‘;你好，我的孩子们！’）")
 
 	new_queen.update_icons()
 
@@ -930,7 +930,7 @@ Additional game mode variables.
 		survivor_old_equipment(H, is_synth = is_synth, is_CO = is_CO)
 	else
 		if(arm_equipment(H, spawner.equipment, FALSE, not_a_xenomorph) == -1)
-			to_chat(H, "SET02: Something went wrong, tell a coder. You may ask admin to spawn you as a survivor.")
+			to_chat(H, "SET02：出现错误，请通知程序员。你可以请求管理员将你生成为幸存者。")
 			return
 	if(spawner.roundstart_damage_max>0)
 		while(spawner.roundstart_damage_times>0)
@@ -945,10 +945,10 @@ Additional game mode variables.
 					to_chat(H, line)
 		else
 			spawn(4)
-				to_chat(H, "<h2>You are a survivor!</h2>")
+				to_chat(H, "<h2>你是一名幸存者！</h2>")
 				to_chat(H, SPAN_NOTICE(SSmapping.configs[GROUND_MAP].survivor_message))
-				to_chat(H, SPAN_NOTICE("You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit."))
-				to_chat(H, SPAN_NOTICE("You are NOT aware of the marines or their intentions."))
+				to_chat(H, SPAN_NOTICE("你完全清楚异形的威胁，并能酌情利用这些知识。"))
+				to_chat(H, SPAN_NOTICE("你并<B>不</B>清楚陆战队员或其意图。"))
 		if(spawner.story_text)
 			. = 1
 			spawn(6)
@@ -968,10 +968,10 @@ Additional game mode variables.
 	if(!H.first_xeno) //Only give objectives/back-stories to uninfected survivors
 		new /datum/cm_objective/move_mob/almayer/survivor(H)
 		spawn(4)
-			to_chat(H, "<h2>You are a survivor!</h2>")
+			to_chat(H, "<h2>你是一名幸存者！</h2>")
 			to_chat(H, SPAN_NOTICE(SSmapping.configs[GROUND_MAP].survivor_message))
-			to_chat(H, SPAN_NOTICE("You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit."))
-			to_chat(H, SPAN_NOTICE("You are NOT aware of the marines or their intentions."))
+			to_chat(H, SPAN_NOTICE("你完全清楚异形的威胁，并能酌情利用这些知识。"))
+			to_chat(H, SPAN_NOTICE("你并<B>不</B>清楚陆战队员或其意图。"))
 		return 1
 
 /datum/game_mode/proc/tell_survivor_story()
@@ -1145,25 +1145,25 @@ Additional game mode variables.
 
 	if(!joe_job)
 		if(show_warning)
-			to_chat(joe_candidate, SPAN_WARNING("Something went wrong!"))
+			to_chat(joe_candidate, SPAN_WARNING("出错了！"))
 		return
 
 	if(!joe_job.check_whitelist_status(joe_candidate))
 		if(show_warning)
-			to_chat(joe_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a synth."))
+			to_chat(joe_candidate, SPAN_WARNING("你不在白名单中！你可以在论坛上申请加入合成人白名单。"))
 		return
 
 	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_wj_spawns))
-		to_chat(joe_candidate, SPAN_WARNING("Working Joes are disabled from spawning!"))
+		to_chat(joe_candidate, SPAN_WARNING("工作乔的生成功能已禁用！"))
 		return FALSE
 
 	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_wj_respawns) && (joe_candidate.ckey in joes)) // No joe respawns if already a joe before
-		to_chat(joe_candidate, SPAN_WARNING("Working Joe respawns are disabled!"))
+		to_chat(joe_candidate, SPAN_WARNING("工作乔的重生功能已禁用！"))
 		return FALSE
 
 	var/deathtime = world.time - joe_candidate.timeofdeath
 	if((deathtime < JOE_JOIN_DEAD_TIME && (joe_candidate.ckey in joes)) && !MODE_HAS_MODIFIER(/datum/gamemode_modifier/ignore_wj_restrictions))
-		to_chat(joe_candidate, SPAN_WARNING("You have been dead for [DisplayTimeText(deathtime)]. You need to wait <b>[DisplayTimeText(JOE_JOIN_DEAD_TIME - deathtime)]</b> before rejoining as a Working Joe!"))
+		to_chat(joe_candidate, SPAN_WARNING("你已死亡 [DisplayTimeText(deathtime)]。你需要等待 <b>[DisplayTimeText(JOE_JOIN_DEAD_TIME - deathtime)]</b> 才能以工作乔的身份重新加入！"))
 		return FALSE
 
 	// council doesn't count towards this conditional.
@@ -1171,15 +1171,15 @@ Additional game mode variables.
 		var/joe_max = joe_job.total_positions
 		if((joe_job.current_positions >= joe_max) && !MODE_HAS_MODIFIER(/datum/gamemode_modifier/ignore_wj_restrictions))
 			if(show_warning)
-				to_chat(joe_candidate, SPAN_WARNING("Only [joe_max] Working Joes may spawn per round."))
+				to_chat(joe_candidate, SPAN_WARNING("每轮最多只能生成 [joe_max] 个工作乔。"))
 			return
 
 	if(!GLOB.enter_allowed && !MODE_HAS_MODIFIER(/datum/gamemode_modifier/ignore_wj_restrictions))
 		if(show_warning)
-			to_chat(joe_candidate, SPAN_WARNING("There is an administrative lock from entering the game."))
+			to_chat(joe_candidate, SPAN_WARNING("存在进入游戏的管理员锁定。"))
 		return
 
-	if(show_warning && tgui_alert(joe_candidate, "Confirm joining as a Working Joe.", "Confirmation", list("Yes", "No"), 10 SECONDS) != "Yes")
+	if(show_warning && tgui_alert(joe_candidate, "确认以工作乔身份加入。", "确认", list("Yes", "No"), 10 SECONDS) != "Yes")
 		return
 
 	return TRUE

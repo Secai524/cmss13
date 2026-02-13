@@ -1,6 +1,6 @@
 /obj/item/device/portable_vendor/antag
-	name = "Suspicious Automated Storage Briefcase"
-	desc = "A suitcase-sized automated storage and retrieval system. Designed to efficiently store and selectively dispense small items."
+	name = "可疑的自动化存储公文包"
+	desc = "一个手提箱大小的自动化存储和检索系统。旨在高效存储并有选择地分发小型物品。"
 
 	w_class = SIZE_MEDIUM
 
@@ -64,16 +64,16 @@
 		var/type_to_set = types_to_convert[target.type]
 
 		if(target_mag.current_rounds < target_mag.max_rounds)
-			to_chat(H, SPAN_WARNING("[target_mag] needs to be full to convert these into rubber rounds!"))
+			to_chat(H, SPAN_WARNING("[target_mag]必须是满的才能转换成橡胶弹！"))
 			return .
 
-		to_chat(H, SPAN_NOTICE("You start converting [target_mag] into a rubber magazine."))
+		to_chat(H, SPAN_NOTICE("你开始将[target_mag]转换成橡胶弹弹匣。"))
 		playsound(user.loc, "sound/machines/fax.ogg", 5)
 
 		if(!do_after(H, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, target_mag, INTERRUPT_ALL))
 			return .
 
-		to_chat(H, SPAN_NOTICE("You convert [target] into a rubber magazine."))
+		to_chat(H, SPAN_NOTICE("你将[target]转换成了橡胶弹弹匣。"))
 		var/obj/item/ammo_magazine/mag = new type_to_set(get_turf(user.loc))
 		qdel(target)
 
@@ -92,7 +92,7 @@
 
 		var/amount_to_add = min(P.amount, max_points - points)
 
-		to_chat(user, SPAN_NOTICE("You insert [P] into [src]."))
+		to_chat(user, SPAN_NOTICE("你将[P]装入了[src]。"))
 
 		if(P.use(amount_to_add))
 			points += amount_to_add
@@ -139,8 +139,8 @@
 	amount = 20
 
 /obj/item/device/portable_vendor/antag/cia
-	name = "Automated Storage Briefcase"
-	desc = "A briefcase able to dispense items at the user's discretion. This one appears to be tightly locked, and impenetrable."
+	name = "自动化存储公文包"
+	desc = "一个能按使用者意愿分发物品的公文包。这个看起来锁得很紧，无法穿透。"
 	points = 200
 	max_points = 300
 	delay = 0.5
@@ -152,7 +152,7 @@
 		list("pen", 1, /obj/item/tool/pen/clicky, "white", "A pen, for writing on the go."),
 		list("Paper", 1, /obj/item/paper, "white", "A fresh piece of paper, for writing on."),
 		list("Carbon Paper", 1, /obj/item/paper/carbon, "white", "A piece of carbon paper, to double the writing output."),
-		list("Clipboard", 1, /obj/item/clipboard, "white", "A clipboard, for storing all that writing."),
+		list("写字板", 1, /obj/item/clipboard, "white", "A clipboard, for storing all that writing."),
 
 		list("WEAPONS", 0, null, null, null),
 		list("Configured Stunbaton", 25, /obj/item/weapon/baton/antag, "white", "A stun baton with more charge."),
@@ -194,5 +194,5 @@
 /obj/item/device/portable_vendor/antag/cia/covert
 	name = "briefcase"
 	icon_state = "briefcase"
-	desc = "It's made of AUTHENTIC faux-leather and has a price-tag still attached. Its owner must be a real professional."
+	desc = "它由<em>正宗</em>人造革制成，价格标签还挂着。它的主人一定是个真正的专业人士。"
 	covert = TRUE

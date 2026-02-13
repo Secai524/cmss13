@@ -3,7 +3,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 /obj/item/reagent_container/food/drinks
 	name = "drink"
-	desc = "Yummy."
+	desc = "美味。"
 	icon = 'icons/obj/items/food/drinks.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
@@ -25,7 +25,7 @@
 	var/datum/reagents/R = src.reagents
 
 	if(!R.total_volume || !R)
-		to_chat(user, SPAN_DANGER("The [src.name] is empty!"))
+		to_chat(user, SPAN_DANGER("这[src.name]是空的！"))
 		return FALSE
 
 	if(HAS_TRAIT(M, TRAIT_CANNOT_EAT))
@@ -33,7 +33,7 @@
 		return FALSE
 
 	if(M == user)
-		to_chat(M, SPAN_NOTICE("You swallow a gulp from \the [src]."))
+		to_chat(M, SPAN_NOTICE("你吞下了一大口\the [src]。"))
 		if(reagents.total_volume)
 			reagents.set_source_mob(user)
 			reagents.trans_to_ingest(M, gulp_size)
@@ -77,32 +77,32 @@
 	if(istype(target, /obj/structure/reagent_dispensers)) //A dispenser. Transfer FROM it TO us.
 
 		if(!target.reagents.total_volume)
-			to_chat(user, SPAN_DANGER("[target] is empty."))
+			to_chat(user, SPAN_DANGER("[target]是空的。"))
 			return
 
 		if(reagents.total_volume >= reagents.maximum_volume)
-			to_chat(user, SPAN_DANGER("[src] is full."))
+			to_chat(user, SPAN_DANGER("[src]已满。"))
 			return
 
 		var/trans = target.reagents.trans_to(src, target:amount_per_transfer_from_this)
 
 		if(!trans)
-			to_chat(user, SPAN_DANGER("You fail to fill [src] with reagents from [target]."))
+			to_chat(user, SPAN_DANGER("你未能用[target]中的试剂装满[src]。"))
 			return
 
-		to_chat(user, SPAN_NOTICE("You fill [src] with [trans] units of the contents of [target]."))
+		to_chat(user, SPAN_NOTICE("你用[target]中的内容物向[src]注入了[trans]单位。"))
 
 	else if(target.is_open_container()) //Something like a glass. Player probably wants to transfer TO it.
 		if(!reagents.total_volume)
-			to_chat(user, SPAN_DANGER("[src] is empty."))
+			to_chat(user, SPAN_DANGER("[src]是空的。"))
 			return
 
 		if(target.reagents.total_volume >= target.reagents.maximum_volume)
-			to_chat(user, SPAN_DANGER("[target] is full."))
+			to_chat(user, SPAN_DANGER("[target]已满。"))
 			return
 
 		var/trans = src.reagents.trans_to(target, amount_per_transfer_from_this)
-		to_chat(user, SPAN_NOTICE("You transfer [trans] units of the solution to [target]."))
+		to_chat(user, SPAN_NOTICE("你将[trans]单位溶液转移至[target]。"))
 
 	return ..()
 
@@ -127,8 +127,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 /obj/item/reagent_container/food/drinks/golden_cup
-	desc = "A golden cup."
-	name = "golden cup"
+	desc = "一个金杯。"
+	name = "金杯"
 	icon_state = "golden_cup"
 	item_state = "golden_cup" //nope :(? nope my ass
 	w_class = SIZE_LARGE
@@ -141,7 +141,7 @@
 	black_market_value = 20
 
 /obj/item/reagent_container/food/drinks/golden_cup/tournament_26_06_2011
-	desc = "A golden cup. It will be presented to a winner of tournament 26 June and name of the winner will be graved on it."
+	desc = "一个金杯。它将被授予6月26日锦标赛的获胜者，获胜者的名字将被刻在上面。"
 
 
 ///////////////////////////////////////////////Drinks
@@ -150,8 +150,8 @@
 // Formatting is the same as food.
 
 /obj/item/reagent_container/food/drinks/milk
-	name = "Space Milk"
-	desc = "It's milk. White and nutritious goodness!"
+	name = "太空牛奶"
+	desc = "这是牛奶。白色且营养丰富！"
 	icon_state = "milk"
 	item_state = "milk"
 	center_of_mass = "x=16;y=9"
@@ -162,8 +162,8 @@
 
 /* Flour is no longer a reagent
 /obj/item/reagent_container/food/drinks/flour
-	name = "flour sack"
-	desc = "A big bag of flour. Good for baking!"
+	name = "面粉袋"
+	desc = "一大袋面粉。非常适合烘焙！"
 	icon = 'icons/obj/items/food.dmi'
 	icon_state = "flour"
 	item_state = "flour"
@@ -176,8 +176,8 @@
 */
 
 /obj/item/reagent_container/food/drinks/soymilk
-	name = "soy milk"
-	desc = "It's soy milk. White and nutritious goodness!"
+	name = "豆奶"
+	desc = "这是豆奶。白色且营养丰富的好东西！"
 	icon_state = "soymilk"
 	item_state = "soymilk"
 	center_of_mass = "x=16;y=9"
@@ -188,7 +188,7 @@
 
 /obj/item/reagent_container/food/drinks/coffee
 	name = "\improper Coffee"
-	desc = "Careful, the beverage you're about to enjoy is extremely hot."
+	desc = "小心，您即将享用的饮料极其滚烫。"
 	icon_state = "coffee"
 	item_state = "coffee"
 	center_of_mass = "x=15;y=10"
@@ -198,11 +198,11 @@
 	reagents.add_reagent("coffee", 20)
 
 /obj/item/reagent_container/food/drinks/coffee/marine
-	desc = "Recycled water, lab-grown coffee plants genetically designed for minimum expense and maximum production, and re-recycled coffee grounds have mixed together to create this insultingly cheap USCM culinary 'wonder'. You're just glad the troops get issued water for free."
+	desc = "回收水、实验室培育的咖啡植株（经过基因设计以最低成本和最高产量生产）以及再回收的咖啡渣混合在一起，创造了这种侮辱性的廉价USCM烹饪‘奇迹’。你只是庆幸部队能免费配发水。"
 
 /obj/item/reagent_container/food/drinks/tea
 	name = "\improper Duke Purple Tea"
-	desc = "An insult to Duke Purple is an insult to the Space Queen! Any proper gentleman will fight you, if you sully this tea."
+	desc = "对紫公爵的侮辱就是对太空女王的侮辱！任何一位真正的绅士都会在你玷污这杯茶时与你决斗。"
 	icon_state = "tea"
 	item_state = "tea"
 	center_of_mass = "x=16;y=14"
@@ -212,8 +212,8 @@
 	reagents.add_reagent("tea", 30)
 
 /obj/item/reagent_container/food/drinks/ice
-	name = "ice cup"
-	desc = "Careful, cold ice, do not chew."
+	name = "冰杯"
+	desc = "小心，冰冷的冰块，请勿咀嚼。"
 	icon_state = "coffee_nolid"
 	item_state = "coffee"
 	center_of_mass = "x=15;y=10"
@@ -224,7 +224,7 @@
 
 /obj/item/reagent_container/food/drinks/h_chocolate
 	name = "\improper Dutch hot coco"
-	desc = "Made in Space South America."
+	desc = "太空南美制造。"
 	icon_state = "hot_coco"
 	item_state = "hot_coco"
 	center_of_mass = "x=15;y=13"
@@ -234,8 +234,8 @@
 	reagents.add_reagent("hot_coco", 30)
 
 /obj/item/reagent_container/food/drinks/dry_ramen
-	name = "cup ramen"
-	desc = "Just add 10ml water, self-heats! A taste that reminds you of your school years."
+	name = "杯面"
+	desc = "只需加入10毫升水，即可自热！一种让你想起学生时代的味道。"
 	icon_state = "ramen"
 	center_of_mass = "x=16;y=11"
 
@@ -245,8 +245,8 @@
 
 
 /obj/item/reagent_container/food/drinks/sillycup
-	name = "paper cup"
-	desc = "A paper water cup."
+	name = "纸杯"
+	desc = "一个纸水杯。"
 	icon_state = "water_cup_e"
 	item_state = "water_cup_e"
 	possible_transfer_amounts = null
@@ -263,8 +263,8 @@
 		icon_state = "water_cup_e"
 
 /obj/item/reagent_container/food/drinks/cup
-	name = "plastic cup"
-	desc = "A generic red cup. Beer pong, anyone?"
+	name = "塑料杯"
+	desc = "一个普通的红色杯子。来玩啤酒乒乓吗？"
 	icon = 'icons/obj/items/food/drinks.dmi'
 	icon_state = "solocup"
 	throwforce = 0
@@ -275,18 +275,18 @@
 /obj/item/reagent_container/food/drinks/cup/attack_self(mob/user)
 	. = ..()
 	if(user.a_intent == INTENT_HARM)
-		user.visible_message(SPAN_WARNING("[user] crushes \the [src]!"), SPAN_WARNING("You crush \the [src]!"))
+		user.visible_message(SPAN_WARNING("[user] 捏碎了 \the [src]！"), SPAN_WARNING("You crush \the [src]!"))
 		if(reagents.total_volume > 0)
 			reagents.clear_reagents()
 			playsound(src.loc, 'sound/effects/slosh.ogg', 25, 1, 3)
-			to_chat(user, SPAN_WARNING("The contents of \the [src] spill!"))
+			to_chat(user, SPAN_WARNING("\the [src] 里的东西洒了出来！"))
 		qdel(src)
 		var/obj/item/trash/crushed_cup/C = new /obj/item/trash/crushed_cup(user)
 		user.equip_to_slot_if_possible(C, (user.hand ? WEAR_L_HAND : WEAR_R_HAND))
 
 /obj/item/trash/crushed_cup
-	name = "crushed cup"
-	desc = "A sad crushed and destroyed cup. It's now useless trash. What a waste."
+	name = "被捏碎的杯子"
+	desc = "一个可悲的被压扁毁坏的杯子。现在它只是无用的垃圾。真是浪费。"
 	icon = 'icons/obj/items/food/drinks.dmi'
 	icon_state = "crushed_solocup"
 	throwforce = 0
@@ -301,15 +301,15 @@
 
 /obj/item/reagent_container/food/drinks/shaker
 	name = "shaker"
-	desc = "A metal shaker to mix drinks in."
+	desc = "一个用来调制饮品的金属摇酒器。"
 	icon_state = "shaker"
 	amount_per_transfer_from_this = 10
 	volume = 100
 	center_of_mass = "x=17;y=10"
 
 /obj/item/reagent_container/food/drinks/flask
-	name = "metal flask"
-	desc = "A metal flask with a decent liquid capacity."
+	name = "金属酒壶"
+	desc = "一个具有不错液体容量的金属酒壶。"
 	icon_state = "flask"
 	item_state = "flask"
 	item_state_slots = list(WEAR_AS_GARB = "flask")
@@ -323,7 +323,7 @@
 
 /obj/item/reagent_container/food/drinks/flask/marine
 	name = "\improper USCM flask"
-	desc = "A metal flask embossed with the USCM logo and probably filled with a slurry of water, motor oil, and medicinal alcohol."
+	desc = "一个压印有USCM标志的金属酒壶，里面很可能装满了水、机油和医用酒精的混合物。"
 	icon_state = "flask_uscm"
 	item_state = "flask_uscm"
 	volume = 60
@@ -336,7 +336,7 @@
 
 /obj/item/reagent_container/food/drinks/flask/weylandyutani
 	name = "\improper Weyland-Yutani flask"
-	desc = "A metal flask embossed with Weyland-Yutani's signature logo that some corporate bootlicker probably ordered to be stocked in USS military vessels' canteen vendors."
+	desc = "一个压印有维兰德-汤谷标志性logo的金属酒壶，可能是某个公司马屁精下令配给USS军用舰船食堂贩卖机的。"
 	icon_state = "flask_wy"
 	item_state = "flask_wy"
 	volume = 60
@@ -349,7 +349,7 @@
 
 /obj/item/reagent_container/food/drinks/flask/canteen
 	name = "canteen"
-	desc = "You take a sip from your trusty USCM canteen..."
+	desc = "你从你可靠的USCM水壶里喝了一口……"
 	icon_state = "canteen"
 	item_state = "canteen"
 	volume = 60
@@ -360,8 +360,8 @@
 	reagents.add_reagent("water", 60)
 
 /obj/item/reagent_container/food/drinks/flask/detflask
-	name = "brown leather flask"
-	desc = "A flask with a leather band around the sides, often seen filled with whiskey and carried by rugged, gritty detectives."
+	name = "棕色皮革酒壶"
+	desc = "一个侧面环绕着皮革带子的扁酒壶，常见于装满威士忌、由粗犷坚韧的侦探携带。"
 	icon_state = "brownflask"
 	item_state = "brownflask"
 	volume = 60
@@ -373,23 +373,23 @@
 		reagents.add_reagent("whiskey", 30)
 
 /obj/item/reagent_container/food/drinks/flask/barflask
-	name = "black leather flask"
-	desc = "A flask with a slick black leather band around the sides. For those who can't be bothered to hang out at the bar to drink."
+	name = "黑色皮革扁酒壶"
+	desc = "一个侧面环绕着光滑黑色皮革带的扁酒壶。专为那些懒得去酒吧喝酒的人准备。"
 	icon_state = "blackflask"
 	item_state = "blackflask"
 	volume = 60
 	center_of_mass = "x=17;y=7"
 
 /obj/item/reagent_container/food/drinks/flask/vacuumflask
-	name = "vacuum flask"
-	desc = "Keeping your drinks at the perfect temperature since 1892."
+	name = "保温瓶"
+	desc = "自1892年起，为您的饮品保持完美温度。"
 	icon_state = "vacuumflask"
 	volume = 60
 	center_of_mass = "x=15;y=4"
 
 /obj/item/reagent_container/food/drinks/coffeecup
-	name = "coffee mug"
-	desc = "A ceramic coffee mug. Practically guaranteed to fall and spill scalding-hot drink onto your brand-new shirt. Ouch."
+	name = "咖啡杯"
+	desc = "一个陶瓷咖啡杯。几乎肯定会掉落，并将滚烫的饮料洒在你崭新的衬衫上。哎哟。"
 	icon_state = "coffeecup"
 	item_state = "coffecup"
 	volume = 30
@@ -397,13 +397,13 @@
 
 /obj/item/reagent_container/food/drinks/coffeecup/uscm
 	name = "\improper USCM coffee mug"
-	desc = "A red, white and blue coffee mug depicting the emblem of the USCM. Patriotic and bold, and commonly seen among veterans as a novelty."
+	desc = "一个红白蓝三色、绘有USCM徽章的咖啡杯。爱国且醒目，常被老兵当作新奇玩意儿。"
 	icon_state = "uscmcup"
 	item_state = "uscmcup"
 
 /obj/item/reagent_container/food/drinks/coffeecup/wy
 	name = "\improper Weyland-Yutani coffee mug"
-	desc = "A matte gray coffee mug bearing the Weyland-Yutani logo on its front. Either issued as corporate standard, or bought as a souvenir for people who love the Company oh so dearly. Probably the former."
+	desc = "一个哑光灰色的咖啡杯，正面印有维兰德-汤谷的标志。要么是公司标配，要么是那些热爱公司的人买来当纪念品。很可能是前者。"
 	icon_state = "wycup"
 	item_state = "wycup"
 
@@ -415,6 +415,6 @@
 
 /obj/item/reagent_container/food/drinks/coffee/cuppa_joes
 	name = "\improper Cuppa Joe's coffee"
-	desc = "Have you got the CuppaJoe Smile? Stay perky! Freeze-dried CuppaJoe's Coffee."
+	desc = "你拥有CuppaJoe的微笑吗？保持活力！冻干CuppaJoe咖啡。"
 	icon_state = "coffeecuppajoe"
 	center_of_mass = "x=15;y=10"

@@ -4,37 +4,37 @@
 	do_coloration = FALSE
 
 /datum/sprite_accessory/yautja_hair/standard
-	name = "Standard"
+	name = "标准型"
 	icon_state = "standard"
 
 /datum/sprite_accessory/yautja_hair/short_thick
-	name = "Short Thick"
+	name = "短粗型"
 	icon_state = "short_thick"
 
 /datum/sprite_accessory/yautja_hair/straight_thin
-	name = "Straight Thin"
+	name = "直薄型"
 	icon_state = "straight_thin"
 
 /datum/sprite_accessory/yautja_hair/long_tied
-	name = "Long Tied"
+	name = "长束型"
 	icon_state = "long_tied"
 
 /datum/sprite_accessory/yautja_hair/short_thin
-	name = "Short Thin"
+	name = "短薄型"
 	icon_state = "short_thin"
 
 /datum/sprite_accessory/yautja_hair/long_curved
-	name = "Long Curved"
+	name = "长曲型"
 	icon_state = "long_curved"
 
 /datum/sprite_accessory/yautja_hair/long_straight
-	name = "Long Straight"
+	name = "长直型"
 	icon_state = "long_straight"
 
 /datum/sprite_accessory/yautja_hair/long_wide
-	name = "Long Wide"
+	name = "长宽型"
 	icon_state = "long_wide"
 
 /datum/sprite_accessory/yautja_hair/short_wide
-	name = "Short Wide"
+	name = "短宽型"
 	icon_state = "short_wide"

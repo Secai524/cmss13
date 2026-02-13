@@ -12,7 +12,7 @@ K9 SCANNER
 */
 /obj/item/device/t_scanner
 	name = "\improper T-ray scanner"
-	desc = "A terahertz-ray emitter and scanner used to detect underfloor objects such as cables and pipes."
+	desc = "一种用于探测电缆和管道等地板下物体的太赫兹射线发射器和扫描仪。"
 	icon_state = "t-ray0"
 	var/on = 0
 	flags_atom = FPRINT|CONDUCT
@@ -77,7 +77,7 @@ K9 SCANNER
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_righthand.dmi'
 	)
-	desc = "A hand-held body scanner able to distinguish vital signs of the subject. The front panel is able to provide the basic readout of the subject's status."
+	desc = "一种手持式生命体征扫描仪，能够区分目标的生命体征。前面板可提供目标状态的基本读数。"
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	flags_item = NOBLUDGEON
@@ -98,7 +98,7 @@ K9 SCANNER
 
 /obj/item/device/healthanalyzer/attack(mob/living/target_mob, mob/living/user)
 	if(!istype(target_mob, /mob/living/carbon) || isxeno(target_mob))
-		to_chat(user, SPAN_WARNING("[src] can't make sense of this creature."))
+		to_chat(user, SPAN_WARNING("[src]无法理解这个生物。"))
 		return
 	if(!popup_window)
 		last_scan = target_mob.health_scan(user, FALSE, TRUE, popup_window, alien)
@@ -110,7 +110,7 @@ K9 SCANNER
 		SStgui.close_user_uis(user, src)
 		last_scan = last_health_display.ui_data(user, DETAIL_LEVEL_HEALTHANALYSER)
 		last_health_display.look_at(user, DETAIL_LEVEL_HEALTHANALYSER, bypass_checks = FALSE, ignore_delay = FALSE, alien = alien)
-	to_chat(user, SPAN_NOTICE("[user] has analyzed [target_mob]'s vitals."))
+	to_chat(user, SPAN_NOTICE("[user]已分析[target_mob]的生命体征。"))
 	playsound(src.loc, 'sound/items/healthanalyzer.ogg', 50)
 	src.add_fingerprint(user)
 	return
@@ -119,7 +119,7 @@ K9 SCANNER
 	..()
 
 	if(!last_scan)
-		user.show_message("No previous scan found.")
+		user.show_message("未找到之前的扫描记录。")
 		return
 
 	if(popup_window)
@@ -149,19 +149,19 @@ K9 SCANNER
 	set src in usr
 	popup_window = !popup_window
 	last_scan = null // reset the data
-	to_chat(usr, "The scanner [popup_window ? "now" : "no longer"] shows results on the hud.")
+	to_chat(usr, "扫描仪[popup_window ? "now" : "no longer"] shows results on the hud.")
 
 /obj/item/device/healthanalyzer/alien
 	name = "\improper YMX scanner"
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "scanner"
 	item_state = "analyzer"
-	desc = "An alien design hand-held body scanner able to distinguish vital signs of the subject. The front panel is able to provide the basic readout of the subject's status."
+	desc = "一种外星设计的手持式生命体征扫描仪，能够区分目标的生命体征。前面板可提供目标状态的基本读数。"
 	alien = TRUE
 	black_market_value = 35
 
 /obj/item/device/analyzer
-	desc = "A hand-held environmental scanner which reports current gas levels."
+	desc = "一种手持式环境扫描仪，可报告当前气体水平。"
 	name = "analyzer"
 	icon_state = "atmos"
 	item_state = "analyzer"
@@ -182,7 +182,7 @@ K9 SCANNER
 	if (user.stat)
 		return
 	if (!(istype(usr, /mob/living/carbon/human) || SSticker) && SSticker.mode.name != "monkey")
-		to_chat(usr, SPAN_DANGER("You don't have the dexterity to do this!"))
+		to_chat(usr, SPAN_DANGER("你的手不够灵巧，无法完成此操作！"))
 		return
 
 	var/turf/location = user.loc
@@ -193,21 +193,21 @@ K9 SCANNER
 	var/env_gas = location.return_gas()
 	var/env_temp = location.return_temperature()
 
-	user.show_message(SPAN_NOTICE("<B>Results:</B>"), 1)
+	user.show_message(SPAN_NOTICE("<B>结果：</B>"), 1)
 	if(abs(env_pressure - ONE_ATMOSPHERE) < 10)
-		user.show_message(SPAN_NOTICE("Pressure: [round(env_pressure,0.1)] kPa."), 1)
+		user.show_message(SPAN_NOTICE("压力：[round(env_pressure,0.1)] 千帕。"), 1)
 	else
-		user.show_message(SPAN_DANGER("Pressure: [round(env_pressure,0.1)] kPa."), 1)
+		user.show_message(SPAN_DANGER("压力：[round(env_pressure,0.1)] 千帕。"), 1)
 	if(env_pressure > 0)
-		user.show_message(SPAN_NOTICE("Gas Type: [env_gas]"), 1)
-		user.show_message(SPAN_NOTICE("Temperature: [floor(env_temp-T0C)]&deg;C."), 1)
+		user.show_message(SPAN_NOTICE("气体类型：[env_gas]"), 1)
+		user.show_message(SPAN_NOTICE("温度：[floor(env_temp-T0C)]&deg;摄氏度。"), 1)
 
 	src.add_fingerprint(user)
 	return
 
 /obj/item/device/mass_spectrometer
-	desc = "A hand-held mass spectrometer which identifies trace chemicals in a blood sample."
-	name = "mass-spectrometer"
+	desc = "一种手持式质谱仪，用于识别血样中的微量化学物质。"
+	name = "质谱仪"
 	icon_state = "spectrometer"
 	item_state = "analyzer"
 	w_class = SIZE_SMALL
@@ -239,22 +239,22 @@ K9 SCANNER
 	if (user.stat)
 		return
 	if (crit_fail)
-		to_chat(user, SPAN_DANGER("This device has critically failed and is no longer functional!"))
+		to_chat(user, SPAN_DANGER("该设备已严重故障，无法再使用！"))
 		return
 	if (!(istype(user, /mob/living/carbon/human) || SSticker) && SSticker.mode.name != "monkey")
-		to_chat(user, SPAN_DANGER("You don't have the dexterity to do this!"))
+		to_chat(user, SPAN_DANGER("你的手不够灵巧，无法完成此操作！"))
 		return
 
 
 /obj/item/device/mass_spectrometer/adv
-	name = "advanced mass-spectrometer"
+	name = "高级质谱仪"
 	icon_state = "adv_spectrometer"
 	details = 1
 
 
 /obj/item/device/reagent_scanner
-	name = "reagent scanner"
-	desc = "A hand-held reagent scanner which identifies chemical agents."
+	name = "试剂扫描仪"
+	desc = "一种手持式试剂扫描仪，用于识别化学制剂。"
 	icon_state = "spectrometer"
 	item_state = "analyzer"
 	w_class = SIZE_SMALL
@@ -275,12 +275,12 @@ K9 SCANNER
 	if (user.stat)
 		return
 	if (!(istype(user, /mob/living/carbon/human) || SSticker) && SSticker.mode.name != "monkey")
-		to_chat(user, SPAN_DANGER("You don't have the dexterity to do this!"))
+		to_chat(user, SPAN_DANGER("你的手不够灵巧，无法完成此操作！"))
 		return
 	if(!istype(O))
 		return
 	if (crit_fail)
-		to_chat(user, SPAN_DANGER("This device has critically failed and is no longer functional!"))
+		to_chat(user, SPAN_DANGER("该设备已严重故障，无法再使用！"))
 		return
 
 	if(!QDELETED(O.reagents))
@@ -298,22 +298,22 @@ K9 SCANNER
 				else
 					recent_fail = 1
 		if(dat)
-			to_chat(user, SPAN_NOTICE("Chemicals found: [dat]"))
+			to_chat(user, SPAN_NOTICE("发现的化学物质：[dat]"))
 		else
-			to_chat(user, SPAN_NOTICE("No active chemical agents found in [O]."))
+			to_chat(user, SPAN_NOTICE("在[O]中未发现活性化学制剂。"))
 	else
-		to_chat(user, SPAN_NOTICE("No significant chemical agents found in [O]."))
+		to_chat(user, SPAN_NOTICE("在[O]中未发现显著的化学制剂。"))
 
 	return
 
 /obj/item/device/reagent_scanner/adv
-	name = "advanced reagent scanner"
+	name = "高级试剂扫描仪"
 	icon_state = "adv_spectrometer"
 	details = 1
 
 /obj/item/device/demo_scanner
-	name = "demolitions scanner"
-	desc = "A hand-held specially designed reagent scanner meant for analyzing bombs. It can report explosive and fire hazards from chemical containers and explosive casings, including explosive and fire intensity. However, it can not predict effects such as shrapnel or burn duration nor predict hazards caused from immediate chemical reactions."
+	name = "爆破扫描仪"
+	desc = "一种专门设计用于分析炸弹的手持式试剂扫描仪。它可以报告化学容器和爆炸外壳的爆炸与火灾危险，包括爆炸和火灾强度。然而，它无法预测诸如破片或燃烧持续时间等效应，也无法预测由即时化学反应引起的危险。"
 	icon_state = "demolitions_scanner"
 	item_state = "analyzer"
 	w_class = SIZE_SMALL
@@ -336,10 +336,10 @@ K9 SCANNER
 	if(user.stat)
 		return
 	if(!(istype(user, /mob/living/carbon/human) || SSticker) && SSticker.mode.name != "monkey")
-		to_chat(user, SPAN_DANGER("You don't have the dexterity to do this!"))
+		to_chat(user, SPAN_DANGER("你的手不够灵巧，无法完成此操作！"))
 		return
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-		to_chat(user, SPAN_WARNING("You do not know how to use the [name]."))
+		to_chat(user, SPAN_WARNING("你不知道如何使用[name]。"))
 		return
 	if(!istype(O))
 		return
@@ -353,7 +353,7 @@ K9 SCANNER
 	if(istype(O, /obj/item/ammo_magazine/flamer_tank))
 		var/obj/item/ammo_magazine/flamer_tank/tank = O
 		if(!length(tank.reagents.reagent_list))
-			to_chat(user, SPAN_NOTICE("No fuel detected in [O]"))
+			to_chat(user, SPAN_NOTICE("在[O]中未检测到燃料"))
 			return
 		var/result
 		var/datum/reagent/chem = tank.reagents.reagent_list[1]
@@ -367,7 +367,7 @@ K9 SCANNER
 	if(istype(O,/obj/item/explosive))
 		var/obj/item/explosive/E = O
 		if(!E.customizable)
-			to_chat(user, SPAN_NOTICE("ERROR: This brand of explosive is under data protection. Scan has been cancelled."))
+			to_chat(user, SPAN_NOTICE("错误：该品牌炸药受数据保护。扫描已取消。"))
 			return
 		holder = E.reagents
 		for(var/obj/container in E.containers)
@@ -375,7 +375,7 @@ K9 SCANNER
 	else if(istype(O,/obj/item/ammo_magazine/rocket/custom))
 		var/obj/item/ammo_magazine/rocket/custom/E = O
 		if(!E.warhead)
-			to_chat(user, SPAN_NOTICE("No warhead detected in [E]."))
+			to_chat(user, SPAN_NOTICE("在[E]中未检测到弹头。"))
 			return
 		holder = E.warhead.reagents
 		for(var/obj/container in E.warhead.containers)
@@ -383,7 +383,7 @@ K9 SCANNER
 	else if(istype(O,/obj/item/mortar_shell/custom))
 		var/obj/item/mortar_shell/custom/E = O
 		if(!E.warhead)
-			to_chat(user, SPAN_NOTICE("No warhead detected in [E]."))
+			to_chat(user, SPAN_NOTICE("在[E]中未检测到弹头。"))
 			return
 		holder = E.warhead.reagents
 		for(var/obj/container in E.warhead.containers)
@@ -397,9 +397,9 @@ K9 SCANNER
 			dat += SPAN_ORANGE("<br>EXPLOSIVE HAZARD: ignition will create explosive detonation.<br>Potential detonation power: [min(ex_potential, holder.max_ex_power)]")
 		if(int_potential)
 			dat += SPAN_RED("<br>FIRE HAZARD: ignition will create chemical fire.<br>Expected fire intensity rating of [min(max(int_potential,holder.min_fire_int),holder.max_fire_int)] in a [min(max(rad_potential,holder.min_fire_rad),holder.max_fire_rad)] meter radius.")
-		to_chat(user, SPAN_NOTICE("Chemicals found: [dat]"))
+		to_chat(user, SPAN_NOTICE("发现的化学物质：[dat]"))
 	else
-		to_chat(user, SPAN_NOTICE("No active chemical agents found in [O]."))
+		to_chat(user, SPAN_NOTICE("在[O]中未发现活性化学制剂。"))
 	return
 
 /obj/item/device/demo_scanner/proc/scan(obj/O)
@@ -419,17 +419,17 @@ K9 SCANNER
 	..()
 
 	if(!dat)
-		to_chat(user, SPAN_NOTICE("No scan data available."))
+		to_chat(user, SPAN_NOTICE("无可用扫描数据。"))
 		return
-	if(alert(user,"Print latest scan?","[scan_name]","Yes","No") == "Yes")
+	if(alert(user,"打印最新扫描结果？","[scan_name]","Yes","No") == "Yes")
 		var/obj/item/paper/printing = new /obj/item/paper/()
 		printing.name = scan_name
-		printing.info = "Chemicals found: [dat]"
+		printing.info = "发现的化学物质：[dat]"
 		user.put_in_hands(printing)
 
 /obj/item/device/black_market_scanner
-	name = "suspicious device"
-	desc = "This is... seemingly a makeshift combination between an autopsy scanner, an ancient t-ray scanner, and some sort of robotic clamp, but you can see a lightbulb inside it. What the hell is this?"
+	name = "可疑装置"
+	desc = "这似乎是...尸检扫描仪、老式T射线扫描仪和某种机器人夹具的临时组合体，但你能看到里面有个灯泡。这到底是什么鬼东西？"
 	icon_state = "mendoza_scanner"
 	item_state = "analyzer"
 	w_class = SIZE_SMALL
@@ -476,14 +476,14 @@ K9 SCANNER
 	if(isnull(market_value))
 		return ..()
 	market_value = POSITIVE(market_value)
-	user.visible_message(SPAN_WARNING("[user] presses a button on [src] and holds it over [hit_atom]..."), SPAN_WARNING("You scan [hit_atom]..."))
+	user.visible_message(SPAN_WARNING("[user]按下[src]上的一个按钮，将其对准[hit_atom]..."), SPAN_WARNING("You scan [hit_atom]..."))
 	update_icon(market_value, TRUE)
 	playsound(user, 'sound/machines/twobeep.ogg', 15, TRUE)
-	to_chat(user, SPAN_NOTICE("You scan [hit_atom] and notice a reading on [src]'s pad, it says:<b> ITEM HAS [market_value] VALUE <b>"))
+	to_chat(user, SPAN_NOTICE("你扫描了[hit_atom]并注意到[src]的屏幕上显示读数，内容是：<b>物品价值：[market_value]<b>"))
 
 /obj/item/device/black_market_hacking_device
-	name = "modified security access tuner"
-	desc = "A security access tuner with wires and electrical pins sticking out at odd angles. A handwritten label on the bottom says something about the ASRS system."
+	name = "改装的安全权限调谐器"
+	desc = "一个安全权限调谐器，电线和引脚以奇怪的角度伸出。底部的手写标签提到了ASRS系统。"
 	icon_state = "bm_hacker"
 	item_state = "analyzer"
 	icon = 'icons/obj/items/tools.dmi'
@@ -494,7 +494,7 @@ K9 SCANNER
 
 /obj/item/device/cmb_black_market_tradeband
 	name = "\improper CMB Tradeband Compliance Device"
-	desc = "A device used to reset any tampering done to trading devices' signal range. Occasionally used to fix any signal chips damaged in an accident, but often for malpractice in trading. Use this with caution, as it will also reset any evidence of potential illicit trade. Created to fulfill a joint-organization requirement for CMB-ICC teams on the frontier, where tampered machinery was difficult to move and refurbish. Smugglers beware."
+	desc = "一种用于重置任何对交易设备信号范围所做篡改的设备。偶尔用于修复事故中损坏的信号芯片，但更常用于纠正交易中的不当操作。请谨慎使用，因为它也会清除任何潜在非法交易的证据。为满足边境地区CMB-ICC团队的联合组织要求而制造，在那里被篡改的机器难以移动和翻新。走私者当心。"
 	icon_state = "cmb_scanner"
 	item_state = "analyzer"
 	w_class = SIZE_SMALL
@@ -504,7 +504,7 @@ K9 SCANNER
 
 /obj/item/device/k9_scanner
 	name = "\improper K9 tracking device"
-	desc = "A small handheld tool used to track Synthetic K9 helpers, they tend to run off to strange places at inopportune times..."
+	desc = "一种用于追踪合成K9助手的小型手持工具，它们总在不合时宜的时候跑到奇怪的地方去..."
 	icon_state = "tracking0"
 	item_state = "tracking1"
 	pickup_sound = 'sound/handling/multitool_pickup.ogg'
@@ -526,17 +526,17 @@ K9 SCANNER
 
 /obj/item/device/k9_scanner/attack(mob/attacked_mob as mob, mob/user as mob)
 	if(!isk9synth(attacked_mob))
-		to_chat(user, SPAN_BOLDWARNING("ERROR: Cannot Sync To This."))
+		to_chat(user, SPAN_BOLDWARNING("错误：无法与此设备同步。"))
 		return
 	//we now know the attacked mob is a k9
 	tracked_k9 = attacked_mob
 	icon_state = "tracking1"
-	to_chat(user, SPAN_WARNING("[src] is now synced to: [attacked_mob]."))
+	to_chat(user, SPAN_WARNING("[src]现已同步至：[attacked_mob]。"))
 
 /obj/item/device/k9_scanner/attack_self(mob/user)
 	. = ..()
 	if (!tracked_k9)
-		to_chat(user, SPAN_WARNING("ERROR: No K9 unit currently tracked. Use scanner on K9 unit to track them."))
+		to_chat(user, SPAN_WARNING("错误：当前未追踪任何K9单位。请使用扫描仪对准K9单位以进行追踪。"))
 		return
 
 	var/turf/self_turf = get_turf(src)
@@ -545,15 +545,15 @@ K9 SCANNER
 	var/area/scanner_area = get_area(scanner_turf)
 
 	if(self_turf.z != scanner_turf.z || self_area.fake_zlevel != scanner_area.fake_zlevel)
-		to_chat(user, SPAN_BOLDWARNING("The [src] lights up: <b>UNABLE TO REACH LINKED K9!<b>"))
+		to_chat(user, SPAN_BOLDWARNING("[src]亮起：<b>无法联系到已链接的K9！<b>"))
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
 		return
 
 	var/dist = get_dist(self_turf, scanner_turf)
 	var/direction = dir2text(Get_Compass_Dir(self_turf, scanner_turf))
 	if(dist > 1)
-		to_chat(user, SPAN_BOLDNOTICE("[src] lights up: [tracked_k9] is <b>'[dist] meters to the [direction]</b>'"))
+		to_chat(user, SPAN_BOLDNOTICE("[src]亮起：[tracked_k9]位于<b>'[direction]方向[dist]米处</b>'"))
 	else
-		to_chat(user, SPAN_BOLDNOTICE("[src] lights up: <b>--><--</b>"))
+		to_chat(user, SPAN_BOLDNOTICE("[src]亮起：<b>--><--</b>"))
 	playsound(src, 'sound/machines/ping.ogg', 15, TRUE)
 

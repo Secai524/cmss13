@@ -1,5 +1,5 @@
 PROCESSING_SUBSYSTEM_DEF(obj_tab_items)
-	name = "Obj Tab Items"
+	name = "对象标签物品"
 	flags = SS_NO_INIT
 	runlevels = RUNLEVEL_LOBBY | RUNLEVELS_DEFAULT
 	wait = 0.1 SECONDS

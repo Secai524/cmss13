@@ -1,6 +1,6 @@
 /obj/item/storage/box/implant
-	name = "implant box"
-	desc = "A sterile metal lockbox housing hypodermic implant injectors."
+	name = "植入体盒"
+	desc = "一个存放皮下植入注射器的无菌金属锁盒。"
 	icon = 'icons/obj/items/storage/kits.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/briefcases_lefthand.dmi',
@@ -14,7 +14,7 @@
 
 
 /obj/item/storage/box/implant/picker
-	desc = "A sterile metal lockbox housing a printer for making hypodermic implant injectors."
+	desc = "一个装有制造皮下植入注射器打印机的无菌金属锁盒。"
 	foldable = FALSE
 	storage_slots = 2
 	var/picks_left = 2
@@ -41,7 +41,7 @@
 		var/list/options = list()
 		for(var/name in pickable)
 			options += name
-		var/choice = tgui_input_list(usr, "Pick your implants", "Implants Select", options)
+		var/choice = tgui_input_list(usr, "选择你的植入体", "Implants Select", options)
 		if(!choice || !(choice in pickable))
 			return
 		picks_left--
@@ -52,7 +52,7 @@
 
 /obj/item/device/implanter
 	name = "implanter"
-	desc = "An injector that drives an implant into your body. The injection stings quite badly."
+	desc = "一种将植入体注入你体内的注射器。注射过程相当刺痛。"
 	icon = 'icons/obj/items/syringe.dmi'
 	icon_state = "implanter"
 
@@ -75,11 +75,11 @@
 		return ..()
 
 	if(LAZYISIN(M.implants, implant_type))
-		to_chat(user, SPAN_WARNING("[M] already have this implant!"))
+		to_chat(user, SPAN_WARNING("[M]已拥有此植入体！"))
 		return
 
 	if(LAZYLEN(M.implants) >= M.max_implants)
-		to_chat(user, SPAN_WARNING("[M] can't take any more implants!"))
+		to_chat(user, SPAN_WARNING("[M]无法接受更多植入体！"))
 		return
 
 	var/self_inject = TRUE
@@ -102,9 +102,9 @@
 		QDEL_NULL(M.implants[implant_type])
 
 	if(self_inject)
-		to_chat(M, SPAN_NOTICE("You implant yourself with \the [src]. You feel [implant_string]"))
+		to_chat(M, SPAN_NOTICE("你为自己植入了\the [src]。你感觉[implant_string]"))
 	else
-		to_chat(M, SPAN_NOTICE("You've been implanted with \the [src]. You feel [implant_string]"))
+		to_chat(M, SPAN_NOTICE("你已被植入\the [src]。你感觉[implant_string]"))
 
 	playsound(src, 'sound/items/air_release.ogg', 75, TRUE)
 	var/obj/item/device/internal_implant/I = new implant_type(M)
@@ -117,7 +117,7 @@
 
 /obj/item/device/internal_implant
 	name = "implant"
-	desc = "An implant, usually delivered with an implanter."
+	desc = "一种植入体，通常通过植入器输送。"
 	icon_state = "implant"
 
 	var/mob/living/host
@@ -131,8 +131,8 @@
 	return ..()
 
 /obj/item/device/implanter/nvg
-	name = "nightvision implant"
-	desc = "This implant will give you night vision. These implants get damaged on death."
+	name = "夜视植入体"
+	desc = "此植入体将赋予你夜视能力。这些植入体在死亡时会损坏。"
 	implant_type = /obj/item/device/internal_implant/nvg
 	implant_string = "your pupils dilating to unsettling levels."
 
@@ -153,9 +153,9 @@
 			COMSIG_HUMAN_POST_UPDATE_SIGHT,
 			COMSIG_MOB_DEATH
 		))
-		to_chat(M, SPAN_WARNING("Everything feels a lot darker."))
+		to_chat(M, SPAN_WARNING("一切都感觉暗了许多。"))
 	else
-		to_chat(M, SPAN_WARNING("You feel the effects of the nightvision implant waning."))
+		to_chat(M, SPAN_WARNING("你感觉夜视植入体的效果正在减弱。"))
 
 /obj/item/device/internal_implant/nvg/proc/give_nvg(mob/living/M)
 	SIGNAL_HANDLER
@@ -164,8 +164,8 @@
 	M.sync_lighting_plane_alpha()
 
 /obj/item/device/implanter/rejuv
-	name = "rejuvenation implant"
-	desc = "This implant will automatically activate at the brink of death. When activated, it will expend itself, greatly healing you, and giving you a stimulant that speeds you up significantly and dulls all pain."
+	name = "再生植入体"
+	desc = "该植入体将在濒死边缘自动激活。激活后，它将耗尽自身，大幅治疗你的伤势，并注入一种能显著加速并钝化所有痛感的兴奋剂。"
 	implant_type = /obj/item/device/internal_implant/rejuv
 	implant_string = "something beating next to your heart." //spooky second heart deep lore
 
@@ -204,8 +204,8 @@
 		M.reagents.add_reagent(reagent_id, injection_amt)
 
 /obj/item/device/implanter/agility
-	name = "agility implant"
-	desc = "This implant will make you more agile, allowing you to vault over structures extremely quickly and allowing you to fireman carry other people."
+	name = "敏捷植入体"
+	desc = "该植入体将使你更加敏捷，允许你极快地翻越障碍物，并能以消防员姿势搬运他人。"
 	implant_type = /obj/item/device/internal_implant/agility
 	implant_string = "your heartrate increasing significantly and your pupils dilating."
 
@@ -245,8 +245,8 @@
 	return TRUE
 
 /obj/item/device/implanter/subdermal_armor
-	name = "subdermal armor implant"
-	desc = "This implant will grant you armor under the skin, reducing incoming damage and strengthening bones."
+	name = "皮下护甲植入体"
+	desc = "该植入体将在你的皮肤下生成护甲，减少受到的伤害并强化骨骼。"
 	implant_type = /obj/item/device/internal_implant/subdermal_armor
 	implant_string = "your skin becoming significantly harder... That's going to hurt in a decade."
 

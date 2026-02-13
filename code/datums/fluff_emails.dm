@@ -9,7 +9,7 @@
 
 
 /datum/fluff_email/almayer/iwantout
-	title = "RE: I want out."
+	title = "回复：我想退出。"
 	entry_text = {"<html>
 					Okay, yep, I know what you're saying. Stilettos aren't safe, you want out of my sharp stick business,
 					and sooner or later we're going to get hung upside down from our ankles by the MPs, stuffed in a freezer
@@ -39,7 +39,7 @@
 
 
 /datum/fluff_email/almayer/thermalcloak
-	title = "M68 Thermal Cloak."
+	title = "M68热光学迷彩披风。"
 	entry_text = {"<html>
 					Are you sure these things are safe, man? I just tried one on during a training exercise back at Bernice 378, took a wrong turn,
 					and wound up on an outdoor firing range being used by another Battalion (5th "Hammerheads" I think?). Now typically, somebody would have spotted me,
@@ -59,7 +59,7 @@
 
 
 /datum/fluff_email/almayer/snow
-	title = "Snow? Where the hell is all the snow?"
+	title = "雪？雪他妈都去哪了？"
 	entry_text = {"<html>
 					Why were we issued these damn snow uniforms in the first place? We've been around the sector almost three dozen times and we've
 					yet to put them to use. They even issued us bulky kits to repaint our rifles, pistols and shotguns to match the cold weather gear,
@@ -67,14 +67,14 @@
 					up six months ago from Bernice 378 (that base is a sanitation nightmare), and they need to be steamed on a regular basis.
 					<br>
 					<br>
-					For all the effort it's been worth to me, the moment the "Falling Falcons" have the misfortune of falling on what is probably
+					For all the effort it's been worth to me, the moment the "坠落猎鹰" have the misfortune of falling on what is probably
 					the last ice planet in the galaxy, I'm making sure we stay there for another two cycles.
 				</html>
 				"}
 
 
 /datum/fluff_email/almayer/hawaianpizza
-	title = "Hawaiian Pizza in the MREs?"
+	title = "单兵口粮里有夏威夷披萨？"
 	entry_text = {"<html>
 					I swear this must have been a joke, but the other day I opened up my MRE packet to come face to face with a 'Hawaiian Pizza" packet.
 					Of course, I had already cut the seal open (otherwise I'd have fenced it to the Damien twins from Bravo Squad and have retired by now),
@@ -91,7 +91,7 @@
 
 
 /datum/fluff_email/almayer/themajor
-	title = "The Major?"
+	title = "少校？"
 	entry_text = {"<html>
 					I keep forgetting what the new Major's name is. I got quizzed by one of the jackass staff officers last week about the Major's name,
 					and I absolutely spilled my marbles. PFC Mable was watching too, and she probably thinks I've got rocks in my head. I know it's been weeks
@@ -103,7 +103,7 @@
 
 
 /datum/fluff_email/almayer/tunes
-	title = "RE: Tunes"
+	title = "回复：音乐"
 	entry_text = {"<html>
 					Cryosleep is killing me, man. Inside and outside. I mean really, they expect us to sit in that tube for god only knows how long, and when we wake up?
 					It's all 'grab a crappy protein bar and grab your gear, you're going to war, Marine!' Bullshit.
@@ -122,7 +122,7 @@
 
 
 /datum/fluff_email/almayer/lasergun1
-	title = "Prototype Weapon"
+	title = "原型武器"
 	entry_text = {"<html>
 					This thing is an absolute blast to use.
 					It disintegrated some of the targets down range but you're going to need to work on those cooling coils.
@@ -144,7 +144,7 @@
 
 
 /datum/fluff_email/almayer/lasergun2
-	title = "New Prototype Design"
+	title = "新原型设计"
 	entry_text = {"<html>
 					Thanks for sending the report in, we've been mulling over the data you sent over.
 					We've updated the design for the prototype which solves most of the problems everyone has encountered.
@@ -155,7 +155,7 @@
 
 
 /datum/fluff_email/almayer/beatup
-	title = "Beat Up"
+	title = "被痛殴"
 	entry_text = {"<html>
 				Man last mission was an absolute shit show.
 				<br>
@@ -168,7 +168,7 @@
 
 
 /datum/fluff_email/almayer/rallyrace
-	title = "Rally Racing"
+	title = "拉力赛"
 	entry_text = {"<html>
 				Hey, remember last shore leave on LV-179? Man, that was one crazy night. The folks at the colony had setup a rally race with their tractors all stripped of non-essentials.
 				LCPL Millard got pretty friendly with the locals and got himself into the competition.
@@ -183,7 +183,7 @@
 				"}
 
 /datum/fluff_email/almayer/missing
-	title = "Missing Personnel"
+	title = "失踪人员"
 	entry_text = {"<html>
 				Has anyone seen Mendoza around? He owes me half of his paycheck from last month's poker game.
 				Everyone's payday was a week ago and we're all set to head back to Chinook station.
@@ -194,7 +194,7 @@
 
 
 /datum/fluff_email/almayer/newgunny
-	title = "RE: New Gunny"
+	title = "回复：新枪炮军士"
 	entry_text = {"<html>
 				Hey man, you gotta be careful with those razors,
 				if our new Platoon Sergeant catches you trying to sell your stash, you'll be in for a world of pain.
@@ -206,7 +206,7 @@
 				"}
 
 /datum/fluff_email/almayer/immunization
-	title = "RE: Immunizations & Training"
+	title = "回复：免疫接种与训练"
 	entry_text = {"<html>
 				One of the battalions just got mulched by a Beebop group and the AAR suggests their training was neglected, it's one hell of a shit show over here.
 				Command is breathing down everyone's necks and wants the entire regiment on high readiness. Orders are going out to immediately assess each battalion's state and conduct training.
@@ -221,7 +221,7 @@
 				"}
 
 /datum/fluff_email/almayer/morevehicles
-	title = "RE: Any chance of replacement vehicles?"
+	title = "回复：有更换载具的可能吗？"
 	entry_text = {"<htrml>
 				No, sorry. What we lost on Tychon was what we had. Maisie thinks there might be enough spare bits left to refurbish
 				one of the old rust buckets, but the chances of that are next to nil unless she can pull more than coins from behind her ear.

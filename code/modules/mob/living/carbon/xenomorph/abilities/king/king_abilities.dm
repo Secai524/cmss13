@@ -1,7 +1,7 @@
 
 /// 3 x 3 damage centred on the xenomorph
 /datum/action/xeno_action/onclick/rend
-	name = "Rend"
+	name = "撕裂"
 	action_icon_state = "rav_eviscerate"
 	macro_path = /datum/action_xeno_action/verb/verb_rend
 	xeno_cooldown = 2.5 SECONDS
@@ -14,7 +14,7 @@
 
 /// Screech which puts out lights in a 7 tile radius, slows and dazes.
 /datum/action/xeno_action/activable/doom
-	name = "Doom"
+	name = "厄运"
 	action_icon_state = "screech"
 	macro_path = /datum/action_xeno_action/verb/verb_doom
 	xeno_cooldown = 45 SECONDS
@@ -26,7 +26,7 @@
 
 /// Leap ability, crashing down dealing major damage to mobs and structures in the area.
 /datum/action/xeno_action/activable/destroy
-	name = "Destroy"
+	name = "摧毁"
 	action_icon_state = "charge"
 	macro_path = /datum/action/xeno_action/verb/verb_destroy
 	action_type = XENO_ACTION_CLICK
@@ -39,7 +39,7 @@
 
 /// Shield ability, limits the amount of damage from a single instance of damage to 10% of the xenomorph's max health.
 /datum/action/xeno_action/onclick/king_shield
-	name = "Bulwark of the Hive"
+	name = "巢穴壁垒"
 	action_icon_state = "soak"
 	macro_path = /datum/action_xeno_action/verb/king_shield
 	action_type = XENO_ACTION_ACTIVATE

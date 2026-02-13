@@ -113,13 +113,13 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	record_medical.fields["name"] = target.real_name
 	record_medical.name = target.name
 	record_medical.fields["blood_type"] = target.blood_type
-	record_medical.fields["minor_disability"] = "None"
+	record_medical.fields["minor_disability"] = "无"
 	record_medical.fields["minor_disability_details"] = "No minor disabilities have been declared."
-	record_medical.fields["major_disability"] = "None"
+	record_medical.fields["major_disability"] = "无"
 	record_medical.fields["major_disability_details"] = "No major disabilities have been diagnosed."
-	record_medical.fields["allergies"] = "None"
+	record_medical.fields["allergies"] = "无"
 	record_medical.fields["allergies_details"] = "No allergies have been detected in this patient."
-	record_medical.fields["diseases"] = "None"
+	record_medical.fields["diseases"] = "无"
 	record_medical.fields["diseases_details"] = "No diseases have been diagnosed at the moment."
 	record_medical.fields["last_scan_time"] = null
 	record_medical.fields["last_scan_result"] = "No scan data on record" // body scanner results
@@ -137,12 +137,12 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	record_security.fields["id"] = id
 	record_security.fields["name"] = target.real_name
 	record_security.name = target.real_name
-	record_security.fields["criminal"] = "None"
+	record_security.fields["criminal"] = "无"
 	record_security.fields["incident"] = ""
 	record_security.fields["ref"] = WEAKREF(target)
 
 	if(target.sec_record && !jobban_isbanned(target, "Records"))
-		var/new_comment = list("entry" = target.sec_record, "created_by" = list("name" = "\[REDACTED\]", "rank" = "Military Police"), "deleted_by" = null, "deleted_at" = null, "created_at" = "Pre-Deployment")
+		var/new_comment = list("entry" = target.sec_record, "created_by" = list("name" = "\[REDACTED\]", "rank" = "宪兵"), "deleted_by" = null, "deleted_at" = null, "created_at" = "Pre-Deployment")
 		record_security.fields["comments"] = list("1" = new_comment)
 		record_security.fields["notes"] = target.sec_record
 	security += record_security

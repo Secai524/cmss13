@@ -37,7 +37,7 @@
 			if (do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				open =! open
 				var/msg_open_status = "[open ? "open" : "close"]"
-				user.show_message(SPAN_NOTICE("You [msg_open_status ] the service panel."), SHOW_MESSAGE_VISIBLE)
+				user.show_message(SPAN_NOTICE("你[msg_open_status]了维修面板。"), SHOW_MESSAGE_VISIBLE)
 			return
 		if (HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL) && open == 1 && !l_hacking)
 			user.show_message(text(SPAN_DANGER("Now attempting to reset internal memory, please hold.")), SHOW_MESSAGE_VISIBLE)
@@ -123,7 +123,7 @@
 // Secure Briefcase
 // -----------------------------
 /obj/item/storage/secure/briefcase
-	name = "secure briefcase"
+	name = "加密公文箱"
 	icon = 'icons/obj/items/storage/briefcases.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/briefcases_lefthand.dmi',
@@ -131,7 +131,7 @@
 	)
 	icon_state = "secure"
 	item_state = "sec-case"
-	desc = "A large briefcase with a digital locking system."
+	desc = "一个带有数字锁定系统的大型公文箱。"
 	force = 8
 	throw_speed = SPEED_FAST
 	throw_range = 4
@@ -145,7 +145,7 @@
 /obj/item/storage/secure/briefcase/attack_hand(mob/user as mob)
 	if (loc == user)
 		if (locked)
-			to_chat(usr, SPAN_DANGER("[src] is locked and cannot be opened!"))
+			to_chat(usr, SPAN_DANGER("[src]已锁定，无法打开！"))
 		else
 			open(usr)
 	else
@@ -159,7 +159,7 @@
 // -----------------------------
 
 /obj/item/storage/secure/safe
-	name = "secure safe"
+	name = "加密保险箱"
 	icon = 'icons/obj/structures/safes.dmi'
 	icon_state = "wallsafe"
 	icon_opened = "safe0"

@@ -23,30 +23,30 @@
 			ammo.hit_target(picked_atom)
 			hits++
 		sleep(delay)
-	shipwide_ai_announcement("WARNING, [hits] HIT SHIP HULL, [missed] MISSED AND [intercepted] INTERCEPTED!", MAIN_AI_SYSTEM, 'sound/effects/double_klaxon.ogg')
+	shipwide_ai_announcement("警告，[hits]发命中舰体，[missed]发脱靶，[intercepted]发被拦截！", MAIN_AI_SYSTEM, 'sound/effects/double_klaxon.ogg')
 
 /datum/space_weapon/proc/shot_message(quantity, hit_eta)
 	return
 
 /datum/space_weapon/rail_gun
-	name = "Railgun"
+	name = "磁轨炮"
 	possibly_ammunition = list(
 		/datum/space_weapon_ammo/rail_gun,
 		/datum/space_weapon_ammo/rail_gun/stronk,
 	)
 
 /datum/space_weapon/rail_gun/shot_message(quantity, hit_eta)
-	shipwide_ai_announcement("DANGER: RAILGUN EMISSIONS DETECTED, INCOMING PROJECTILE[quantity > 1 ? "S" : ""]. BRACE, BRACE, BRACE. [quantity > 1 ? "SALVO SIZE: [quantity]," : ""] ESTIMATED TIME: [hit_eta] SECONDS." , MAIN_AI_SYSTEM, 'sound/effects/missile_warning.ogg')
+	shipwide_ai_announcement("危险：侦测到磁轨炮发射信号，来袭射弹[quantity > 1 ? "S" : ""]. BRACE, BRACE, BRACE. [quantity > 1 ? "SALVO SIZE: [quantity]," : ""] ESTIMATED TIME: [hit_eta] SECONDS." , MAIN_AI_SYSTEM, 'sound/effects/missile_warning.ogg')
 
 /datum/space_weapon/rocket_launcher
-	name = "Rocket Launcher"
+	name = "火箭发射器"
 	possibly_ammunition = list(
 		/datum/space_weapon_ammo/rocket_launcher,
 		/datum/space_weapon_ammo/rocket_launcher/swing_rockets,
 	)
 
 /datum/space_weapon/rocket_launcher/shot_message(quantity, hit_eta)
-	shipwide_ai_announcement("DANGER: MISSILE WARNING, LAUNCH DETECTED. BRACE, BRACE, BRACE. [quantity > 1 ? "SALVO SIZE: [quantity]," : ""] ESTIMATED TIME: [hit_eta] SECONDS." , MAIN_AI_SYSTEM, 'sound/effects/missile_warning.ogg')
+	shipwide_ai_announcement("危险：导弹警告，侦测到发射。准备抗冲击，准备抗冲击，准备抗冲击。[quantity > 1 ? "SALVO SIZE: [quantity]," : ""] ESTIMATED TIME: [hit_eta] SECONDS." , MAIN_AI_SYSTEM, 'sound/effects/missile_warning.ogg')
 
 /**
  * Ammo datum for space weapons
@@ -66,7 +66,7 @@
 	return
 
 /datum/space_weapon_ammo/rail_gun
-	name = "Piercing Near-Lightning Railgun Projectile"
+	name = "近光速穿甲磁轨炮弹"
 	base_miss_chance = 35
 	miss_sound = list('sound/effects/railgun_miss.ogg')
 	intercept_sound = list('sound/effects/laser_point_defence_success.ogg')
@@ -88,15 +88,15 @@
 	shakeship(5, 5, FALSE, FALSE)
 	playsound(picked_atom, "bigboom", 50, 1, 200, echo = echo_list)
 	playsound(picked_atom, pick(hit_sound), 50, 1, 200, echo = echo_list)
-	shipwide_ai_announcement("WARNING, [capitalize(name)] HIT SHIP HULL, CAUSED MASSIVE DAMAGE!", MAIN_AI_SYSTEM, 'sound/effects/double_klaxon.ogg')
+	shipwide_ai_announcement("警告，[capitalize(name)]命中舰体，造成严重损伤！", MAIN_AI_SYSTEM, 'sound/effects/double_klaxon.ogg')
 
 /datum/space_weapon_ammo/rail_gun/stronk
-	name = "Piercing Near-Lightning Railgun Projectile of Increased Strength"
+	name = "强化型近光速穿甲磁轨炮弹"
 	base_miss_chance = 50
 	interceptable = FALSE
 
 /datum/space_weapon_ammo/rocket_launcher
-	name = "Anti-Ship missile"
+	name = "反舰导弹"
 	base_miss_chance = 15
 	miss_sound = list('sound/effects/metal_shatter.ogg')
 	intercept_sound = list('sound/effects/laser_point_defence_success.ogg')
@@ -119,10 +119,10 @@
 	playsound(picked_atom, "bigboom", 50, 1, 200, echo = echo_list)
 	playsound(picked_atom, pick(hit_sound), 50, 1, 200, echo = echo_list)
 	playsound(picked_atom, "pry", 25, 1, 200, echo = echo_list)
-	shipwide_ai_announcement("WARNING, [capitalize(name)] HIT SHIP HULL, CAUSED MASSIVE DAMAGE!", MAIN_AI_SYSTEM, 'sound/effects/double_klaxon.ogg')
+	shipwide_ai_announcement("警告，[capitalize(name)]命中舰体，造成严重损伤！", MAIN_AI_SYSTEM, 'sound/effects/double_klaxon.ogg')
 
 /datum/space_weapon_ammo/rocket_launcher/swing_rockets
-	name = "Swing High Pierce Shreder Rockets"
+	name = "高抛穿甲破片火箭弹"
 	base_miss_chance = 0
 
 /datum/space_weapon_ammo/rocket_launcher/swing_rockets/hit_target(picked_atom)
@@ -142,4 +142,4 @@
 		shakeship(2, 2, FALSE, FALSE)
 		sleep(1)
 
-	shipwide_ai_announcement("WARNING, [capitalize(name)] HIT SHIP HULL, CAUSED MASSIVE DOT DAMAGE!", MAIN_AI_SYSTEM, 'sound/effects/double_klaxon.ogg')
+	shipwide_ai_announcement("警告，[capitalize(name)]命中舰体，造成严重持续损伤！", MAIN_AI_SYSTEM, 'sound/effects/double_klaxon.ogg')

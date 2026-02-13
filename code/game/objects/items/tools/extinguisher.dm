@@ -2,8 +2,8 @@
 #define PYRO_EXTINGUISHER_PWR 48
 
 /obj/item/tool/extinguisher
-	name = "fire extinguisher"
-	desc = "A traditional red fire extinguisher."
+	name = "灭火器"
+	desc = "一个传统的红色灭火器。"
 	icon = 'icons/obj/items/tools.dmi'
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/tools.dmi',
@@ -31,8 +31,8 @@
 	var/power = BASE_EXTINGUISHER_PWR
 
 /obj/item/tool/extinguisher/mini
-	name = "fire extinguisher"
-	desc = "A light and compact fibreglass-framed model fire extinguisher."
+	name = "灭火器"
+	desc = "一款轻便紧凑的玻璃钢框架灭火器。"
 	icon_state = "miniFE0"
 	item_state = "miniFE"
 	/// it is much lighter, after all.
@@ -48,8 +48,8 @@
 
 // A solely internal extinguisher
 /obj/item/tool/extinguisher/pyro
-	name = "fire extinguisher"
-	desc = "A heavy-duty fire extinguisher designed for extreme fires."
+	name = "灭火器"
+	desc = "一款为极端火灾设计的重型灭火器。"
 	w_class = SIZE_MEDIUM
 	force = 3
 	max_water = 500
@@ -72,8 +72,8 @@
 	..()
 	safety = !safety
 	src.icon_state = "[sprite_name][!safety]"
-	src.desc = "The safety is [safety ? "on" : "off"]."
-	to_chat(user, "The safety is [safety ? "on" : "off"].")
+	src.desc = "保险装置处于[safety ? "on" : "off"]."
+	to_chat(user, "保险装置处于[safety ? "on" : "off"].")
 
 /obj/item/tool/extinguisher/attack(mob/living/M, mob/living/user)
 	if (M == user && !safety && reagents && reagents.total_volume > EXTINGUISHER_WATER_USE_AMT)
@@ -85,10 +85,10 @@
 	if(istype(target, /obj/structure/reagent_dispensers/tank/water) && get_dist(user,target) <= 1)
 		var/obj/object = target
 		if(object.reagents.contains_harmful_substances())
-			to_chat(user, SPAN_WARNING("You cannot re-fill the extinguisher with the contents of this."))
+			to_chat(user, SPAN_WARNING("你无法用此物重新填充灭火器。"))
 			return
 		object.reagents.trans_to(src, 50)
-		to_chat(user, SPAN_NOTICE("[src] is now refilled."))
+		to_chat(user, SPAN_NOTICE("[src]现已重新填充完毕。"))
 		playsound(user, 'sound/effects/refill.ogg', 25, 1, 3)
 		return
 
@@ -96,7 +96,7 @@
 		return ..()
 
 	if(src.reagents.total_volume < 1)
-		to_chat(usr, SPAN_DANGER("[src] is empty."))
+		to_chat(usr, SPAN_DANGER("[src]是空的。"))
 		return
 
 	if(world.time < src.last_use + 20)

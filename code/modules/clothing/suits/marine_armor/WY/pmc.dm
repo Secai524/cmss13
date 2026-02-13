@@ -1,6 +1,6 @@
 /obj/item/clothing/suit/storage/marine/veteran/pmc
 	name = "\improper M4 pattern PMC armor"
-	desc = "A modification of the standard Armat Systems M3 armor. Designed for high-profile security operators and corporate mercenaries in mind."
+	desc = "标准阿玛特系统M3护甲的改型。专为高规格安保人员和公司雇佣兵设计。"
 	icon_state = "pmc_armor"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/WY.dmi'
 	item_icons = list(
@@ -30,7 +30,7 @@
 
 /obj/item/clothing/suit/storage/marine/veteran/pmc/guard
 	name = "\improper M4 pattern PMC guard armor"
-	desc = "A modification of the standard Armat Systems M3 armor. Designed for high-profile security operators and corporate mercenaries in mind. This one belongs to high profile elite guard within the W-Y PMC."
+	desc = "标准阿玛特系统M3护甲的改型。专为高规格安保人员和公司雇佣兵设计。这件属于维兰德-汤谷PMC内部的高级精英守卫。"
 	icon_state = "guard_armor"
 	item_state_slots = list(WEAR_JACKET = "guard_armor")
 
@@ -56,7 +56,7 @@
 
 /obj/item/clothing/suit/storage/marine/veteran/pmc/engineer
 	name = "\improper M4 pattern engineer PMC armor"
-	desc = "A modification of the standard Armat Systems M3 armor. Designed for high elemental protection, like shock, fire and fragments, lacks in terms of kevlar for bullet protection."
+	desc = "标准阿玛特系统M3护甲的改型。专为提供高元素防护（如电击、火焰和破片）而设计，在防弹凯夫拉方面有所欠缺。"
 	icon_state = "pmc_engineer_armor"
 	item_state_slots = list(WEAR_JACKET = "pmc_engineer_armor")
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
@@ -72,7 +72,7 @@
 
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light
 	name = "\improper M4 pattern light PMC armor"
-	desc = "A modification of the standard Armat Systems M3 armor. Designed for high-profile security operators and corporate mercenaries in mind. Has some armor plating removed for extra mobility."
+	desc = "标准阿玛特系统M3护甲的改型。专为高规格安保人员和公司雇佣兵设计。移除了部分护甲板以增强机动性。"
 	icon_state = "pmc_armor_light"
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
@@ -85,7 +85,7 @@
 
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/bulletproof
 	name = "\improper M4 pattern PMC bulletproof armor"
-	desc = "A modification of the standard Armat Systems M3 armor. Designed for high-profile security operators and corporate mercenaries in mind. Has some armor plating removed for extra mobility."
+	desc = "标准阿玛特系统M3护甲的改型。专为高规格安保人员和公司雇佣兵设计。移除了部分护甲板以增强机动性。"
 	icon_state = "pmc_vest"
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_melee = CLOTHING_ARMOR_LOW
@@ -95,13 +95,13 @@
 
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/bulletproof/guard
 	name = "\improper M4 pattern PMC guard bulletproof armor"
-	desc = "A modification of the standard Armat Systems M3 armor. Designed for high-profile security operators and corporate mercenaries in mind. This one belongs to high profile elite guard within the W-Y PMC."
+	desc = "标准阿玛特系统M3护甲的改型。专为高规格安保人员和公司雇佣兵设计。这件属于维兰德-汤谷PMC内部的高级精英守卫。"
 	icon_state = "guard_vest"
 	item_state_slots = list(WEAR_JACKET = "guard_vest")
 
 /obj/item/clothing/suit/storage/marine/veteran/pmc/leader
 	name = "\improper M4 pattern PMC leader armor"
-	desc = "A modification of the standard Armat Systems M3 armor. Designed for high-profile security operators and corporate mercenaries in mind. This particular suit looks like it belongs to a high-ranking officer."
+	desc = "标准阿玛特系统M3护甲的改型。专为高规格安保人员和公司雇佣兵设计。这套看起来属于一名高级军官。"
 	icon_state = "officer_armor"
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/pmc/leader)
 	item_state_slots = list(WEAR_JACKET = "officer_armor")
@@ -114,7 +114,7 @@
 
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/synth
 	name = "\improper M4 Synthetic PMC armor"
-	desc = "A serious modification of the standard Armat Systems M3 armor. This variant was designed for PMC Support Units in the field, with every armor insert removed. It's designed with the idea of a high speed lifesaver in mind."
+	desc = "标准阿玛特系统M3护甲的深度改型。此款专为战地PMC支援单位设计，移除了所有护甲插板。其设计理念是成为高速救生员。"
 	icon_state = "pmc_vest"
 	item_state_slots = list(WEAR_JACKET = "pmc_vest")
 	time_to_unequip = 0.5 SECONDS
@@ -137,7 +137,7 @@
 
 /obj/item/clothing/suit/storage/marine/smartgunner/veteran/pmc
 	name = "\improper M4 pattern PMC gunner armor"
-	desc = "A modification of the standard Armat Systems M3 armor. Hooked up with harnesses and straps allowing the user to carry an M56 Smartgun."
+	desc = "对标准阿玛特系统M3护甲的改良。配有背带和固定带，允许使用者携带M56智能枪。"
 	icon_state = "heavy_armor"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/WY.dmi'
 	item_icons = list(

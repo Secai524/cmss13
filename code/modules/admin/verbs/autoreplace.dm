@@ -2,23 +2,23 @@ GLOBAL_LIST_INIT_TYPED(admin_runtime_decorators, /datum/decorator/manual/admin_r
 
 /client/proc/set_autoreplacer()
 	set category = "Admin.Events"
-	set name = "Set Autoreplacer"
+	set name = "设置自动替换器"
 
 	if(!admin_holder || !(admin_holder.rights & R_ADMIN))
-		to_chat(usr, "Only administrators may use this command.")
+		to_chat(usr, "只有管理员可以使用此命令。")
 		return
 
-	var/types = input(usr, "Enter the type you want to create an autoreplacement for", "Set Autoreplacer") as text|null
+	var/types = input(usr, "输入你想要创建自动替换的类型", "设置自动替换器") as text|null
 	if(!types)
 		return
 
 	var/subtypes = FALSE
 
-	switch(alert("Do we want to replace subtypes too?", "Set Autoreplacer", "Yes", "No"))
+	switch(alert("Do we want to replace subtypes too?", "设置自动替换器", "Yes", "No"))
 		if("Yes")
 			subtypes = TRUE
 
-	var/field = input(usr, "What field we want to change?", "Set Autoreplacer") as text|null
+	var/field = input(usr, "要修改哪个字段？", "设置自动替换器") as text|null
 	if(!field)
 		return
 
@@ -26,7 +26,7 @@ GLOBAL_LIST_INIT_TYPED(admin_runtime_decorators, /datum/decorator/manual/admin_r
 
 	var/hint_text = subtypes ? "types and subtypes of" : "all"
 
-	switch(alert("Please check: set for [hint_text] `[types]` for field `[field]` set value `[value]`. Correct?", "Set Autoreplacer", "Yes", "No"))
+	switch(alert("Please check: set for [hint_text] `[types]` for field `[field]` set value `[value]`. Correct?", "设置自动替换器", "Yes", "No"))
 		if("No")
 			return
 
@@ -39,7 +39,7 @@ GLOBAL_LIST_INIT_TYPED(admin_runtime_decorators, /datum/decorator/manual/admin_r
 	set name = "Deactivate Autoreplacer"
 
 	if(!admin_holder || !(admin_holder.rights & R_ADMIN))
-		to_chat(usr, "Only administrators may use this command.")
+		to_chat(usr, "只有管理员可以使用此命令。")
 		return
 
 	var/num_value = tgui_input_real_number(src, "Enter new number:","Num")
@@ -53,13 +53,13 @@ GLOBAL_LIST_INIT_TYPED(admin_runtime_decorators, /datum/decorator/manual/admin_r
 
 /client/proc/rerun_decorators()
 	set category = "Admin.Events"
-	set name = "Rerun Decorators"
+	set name = "重新运行装饰器"
 
 	if(!admin_holder || !(admin_holder.rights & R_ADMIN))
-		to_chat(usr, "Only administrators may use this command.")
+		to_chat(usr, "只有管理员可以使用此命令。")
 		return
 
-	switch(alert("ARE YOU SURE? THIS MAY CAUSE A LOT OF LAG!", "Rerun Decorators", "Yes", "No"))
+	switch(alert("ARE YOU SURE? THIS MAY CAUSE A LOT OF LAG!", "重新运行装饰器", "Yes", "No"))
 		if("No")
 			return
 

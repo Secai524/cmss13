@@ -114,7 +114,7 @@
 			air.handle_multidoor(old_dir, new_dir)
 
 /obj/docking_port/mobile/marine_dropship/alamo
-	name = "Alamo"
+	name = "阿拉莫"
 	id = DROPSHIP_ALAMO
 	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
 
@@ -122,7 +122,7 @@
 	return /turf/open/space/transit/dropship/alamo
 
 /obj/docking_port/mobile/marine_dropship/normandy
-	name = "Normandy"
+	name = "诺曼底"
 	id = DROPSHIP_NORMANDY
 	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
 
@@ -130,7 +130,7 @@
 	return /turf/open/space/transit/dropship/normandy
 
 /obj/docking_port/mobile/marine_dropship/saipan
-	name = "Saipan"
+	name = "塞班"
 	id = DROPSHIP_SAIPAN
 	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
 
@@ -138,7 +138,7 @@
 	return /turf/open/space/transit/dropship/saipan
 
 /obj/docking_port/mobile/marine_dropship/morana
-	name = "Morana"
+	name = "莫拉娜"
 	id = DROPSHIP_MORANA
 	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
 	faction = FACTION_UPP
@@ -147,7 +147,7 @@
 	return /turf/open/space/transit/dropship/morana
 
 /obj/docking_port/mobile/marine_dropship/devana
-	name = "Devana"
+	name = "德瓦娜"
 	id = DROPSHIP_DEVANA
 	preferred_direction = SOUTH // If you are changing this, please update the dir of the path below as well
 	faction = FACTION_UPP
@@ -292,36 +292,36 @@
 		eq.on_launch()
 
 /obj/docking_port/stationary/marine_dropship/lz1
-	name = "LZ1 Landing Zone"
+	name = "LZ1着陆区"
 	id = DROPSHIP_LZ1
 	auto_open = TRUE
 
 /obj/docking_port/stationary/marine_dropship/lz2
-	name = "LZ2 Landing Zone"
+	name = "LZ2着陆区"
 	id = DROPSHIP_LZ2
 	auto_open = TRUE
 
 /obj/docking_port/stationary/marine_dropship/almayer_hangar_1
-	name = "Almayer Hangar bay 1"
+	name = "阿尔迈耶号机库1号舱"
 	id = ALMAYER_DROPSHIP_LZ1
 	auto_open = TRUE
 	roundstart_template = /datum/map_template/shuttle/alamo
 
 /obj/docking_port/stationary/marine_dropship/almayer_hangar_2
-	name = "Almayer Hangar bay 2"
+	name = "阿尔迈耶号机库2号舱"
 	id = ALMAYER_DROPSHIP_LZ2
 	auto_open = TRUE
 	roundstart_template = /datum/map_template/shuttle/normandy
 
 /obj/docking_port/stationary/marine_dropship/upp/hangar_1
-	name = "Rostock Hangar bay 1"
+	name = "罗斯托克号机库1号舱"
 	id = UPP_DROPSHIP_LZ1
 	faction = "UPP"
 	auto_open = TRUE
 	roundstart_template = /datum/map_template/shuttle/morana
 
 /obj/docking_port/stationary/marine_dropship/upp/hangar_2
-	name = "Rostock Hangar bay 2"
+	name = "罗斯托克号机库2号舱"
 	id = UPP_DROPSHIP_LZ2
 	auto_open = TRUE
 	roundstart_template = /datum/map_template/shuttle/devana
@@ -342,13 +342,13 @@
 		if(!is_mainship_level(affected_mob.z))
 			continue
 		if(affected_mob && HAS_TRAIT_FROM(affected_mob, TRAIT_UNDENSE, WALL_HIDING_TRAIT))
-			to_chat(affected_mob, SPAN_WARNING("You brace yourself against the impact!"))
+			to_chat(affected_mob, SPAN_WARNING("你做好了承受冲击的准备！"))
 			continue
 		if(affected_mob.buckled)
-			to_chat(affected_mob, SPAN_WARNING("You are jolted against [affected_mob.buckled]!"))
+			to_chat(affected_mob, SPAN_WARNING("你猛地撞向[affected_mob.buckled]！"))
 			// shake_camera(affected_mob, 3, 1)
 		else
-			to_chat(affected_mob, SPAN_WARNING("The floor jolts under your feet!"))
+			to_chat(affected_mob, SPAN_WARNING("脚下的地板猛地一震！"))
 			// shake_camera(affected_mob, 10, 1)
 			affected_mob.apply_effect(3, WEAKEN)
 
@@ -359,23 +359,23 @@
 	faction = FACTION_UPP
 
 /datum/map_template/shuttle/alamo
-	name = "Alamo"
+	name = "阿拉莫"
 	shuttle_id = DROPSHIP_ALAMO
 
 /datum/map_template/shuttle/normandy
-	name = "Normandy"
+	name = "诺曼底"
 	shuttle_id = DROPSHIP_NORMANDY
 
 /datum/map_template/shuttle/saipan
-	name = "Saipan"
+	name = "塞班"
 	shuttle_id = DROPSHIP_SAIPAN
 
 /datum/map_template/shuttle/morana
-	name = "Morana"
+	name = "莫拉娜"
 	shuttle_id = DROPSHIP_MORANA
 
 /datum/map_template/shuttle/devana
-	name = "Devana"
+	name = "德瓦娜"
 	shuttle_id = DROPSHIP_DEVANA
 
 

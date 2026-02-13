@@ -15,7 +15,7 @@
 */
 
 /obj/effect/vehicle_spawner/box_van/pizza_van
-	name = "Pizza-Galaxy Van Spawner"
+	name = "披萨银河厢式货车生成器"
 	icon = 'icons/obj/vehicles/pizza_van.dmi'
 	icon_state = "van_base"
 

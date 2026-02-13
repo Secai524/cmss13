@@ -1,8 +1,8 @@
 GLOBAL_LIST_EMPTY(command_apc_list)
 
 /obj/vehicle/multitile/apc
-	name = "M577 Armored Personnel Carrier"
-	desc = "An M577 Armored Personnel Carrier. An armored transport with four big wheels. Entrances on the sides and back."
+	name = "M577装甲运兵车"
+	desc = "一辆M577装甲运兵车。一种带有四个大轮子的装甲运输工具。侧面和后方有入口。"
 
 	icon = 'icons/obj/vehicles/apc.dmi'
 	icon_state = "apc_base"
@@ -157,7 +157,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 ** PRESETS SPAWNERS
 */
 /obj/effect/vehicle_spawner/apc
-	name = "APC Transport Spawner"
+	name = "装甲运兵车运输生成器"
 	icon = 'icons/obj/vehicles/apc.dmi'
 	icon_state = "apc_base"
 	pixel_x = -48

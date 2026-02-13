@@ -1,35 +1,35 @@
 //prop items
 /obj/item/oldresearch
-	name = "Alien Organ"
-	desc = "Looking at it makes you want to vomit."
+	name = "异形器官"
+	desc = "看着它让你想吐。"
 	icon = 'icons/obj/items/Marine_Research.dmi'
 	icon_state = "biomass"
 	black_market_value = 50
 	//For all of them for now, until we have specific organs/more techs
 
 /obj/item/oldresearch/Resin
-	name = "Alien Resin"
-	desc = "A piece of alien Resin."
+	name = "异形树脂"
+	desc = "一块异形树脂。"
 	icon_state = "biomass"
 
 
 /obj/item/oldresearch/Chitin
-	name = "Chunk of Chitin"
-	desc = "A chunk of alien Chitin."
+	name = "几丁质块"
+	desc = "一块异形几丁质。"
 	icon_state = "chitin-chunk"
 
 
 /obj/item/oldresearch/Blood
-	name = "Blood Vial"
-	desc = "A sample of alien Blood."
+	name = "血液样本瓶"
+	desc = "一份异形血液样本。"
 	icon_state = "blood-vial"
 
 //prop items end
 
 //previously file holding left over stuff that never got finished from 8 years ago, it was boring though, so we change that.
 /obj/item/research_upgrades
-	name = "Research upgrade"
-	desc = "Somehow you got this, you shouldn't be able to, consider yourself special."
+	name = "研究升级"
+	desc = "不知何故你得到了这个，你本不该能拿到，就当自己很特别吧。"
 	icon = 'icons/obj/items/disk.dmi'
 	w_class = SIZE_TINY
 	icon_state = "datadisk1" // doesnt HAVE to be a disk!
@@ -40,37 +40,37 @@
 
 // Upgrade for autodoc T1: Internal bleeding
 /obj/item/research_upgrades/autodoc
-	name = "Research Upgrade (AutoDoc)"
-	desc = "Research upgrade for an AutoDoc. The technology on this disk is used for stitching up internal bleedings. Insert it in an AutoDoc to use it."
+	name = "研究升级（自动医疗机）"
+	desc = "用于自动医疗机的研究升级。这张磁盘上的技术用于缝合内出血。将其插入自动医疗机以使用。"
 	value = RESEARCH_UPGRADE_TIER_1
 
 // Upgrade for autodoc T2: Broken bones
 /obj/item/research_upgrades/autodoc/tier2
-	desc = "Research upgrade for an AutoDoc. The technology on this disk is used for fixing broken bones. Insert it in an AutoDoc to use it."
+	desc = "自动医疗机的研发升级盘。此磁盘中的技术用于修复骨折。将其插入自动医疗机以使用。"
 	value = RESEARCH_UPGRADE_TIER_2
 
 // Upgrade for autodoc T3: Internal organ damage
 /obj/item/research_upgrades/autodoc/tier3
-	desc = "Research upgrade for an AutoDoc. The technology on this disk is used for treating internal organ damage. Insert it in an AutoDoc to use it."
+	desc = "自动医疗机的研发升级盘。此磁盘中的技术用于治疗内脏损伤。将其插入自动医疗机以使用。"
 	value = RESEARCH_UPGRADE_TIER_3
 
 // Upgrade for autodoc T4: Larva removal
 /obj/item/research_upgrades/autodoc/tier4
-	desc = "Research upgrade for an AutoDoc. The technology on this disk is used for extracting unknown parasites. Insert it in an AutoDoc to use it."
+	desc = "自动医疗机的研发升级盘。此磁盘中的技术用于提取未知寄生虫。将其插入自动医疗机以使用。"
 	value = RESEARCH_UPGRADE_TIER_4
 
 /obj/item/research_upgrades/sleeper
-	name = "Research Upgrade (Sleeper)"
-	desc = "Research upgrade for a sleeper system. The technology on this disk is used on a sleeper to allow a wider spectrum of chemicals to be administered."
+	name = "研发升级盘（休眠舱）"
+	desc = "休眠舱系统的研发升级盘。此磁盘中的技术用于休眠舱，以允许施用更广谱的化学药剂。"
 
 /obj/item/research_upgrades/grinderspeed
-	name = "Research Upgrade (Grinder)"
-	desc = "Research upgrade for Reagent grinder, technology on this disk makes storing and grinding procedures more effective, increasing both speed and product capacity of the grinder."
+	name = "研发升级盘（研磨机）"
+	desc = "试剂研磨机的研究升级，此磁盘上的技术使存储和研磨过程更加高效，提高了研磨机的速度和产品容量。"
 
 /obj/item/research_upgrades/autoharvest
-	name = "Research Upgrade (Botany)"
-	desc = "Research upgrade for a hydroponics system. The technology on this disk is used on a hydroponics tray to automatically shake the plant once the product is ready to harvest."
+	name = "研发升级盘（植物学）"
+	desc = "水培系统的研发升级盘。此磁盘中的技术用于水培托盘，可在作物成熟待收获时自动摇晃植株。"
 
 /obj/item/research_upgrades/reroll
-	name = "Research Market (Reroll)"
-	desc = "Research disk containing all the bits of data the analyzer could salvage, insert this into a research computer in order to sell the data and immediately reroll contracts."
+	name = "研发市场数据盘（重抽）"
+	desc = "包含分析仪所能抢救的所有数据碎片的研发磁盘，将其插入研究计算机以出售数据并立即重抽合同。"

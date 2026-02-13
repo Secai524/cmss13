@@ -6,7 +6,7 @@
 /obj/structure/machinery/defenses/tesla_coil
 	name = "\improper 21S tesla coil"
 	icon = 'icons/obj/structures/machinery/defenses/tesla.dmi'
-	desc = "A perfected way of producing high-voltage, low-current and high-frequency electricity. Minor modifications allow it to only hit hostile targets with a devastating shock."
+	desc = "一种生产高压、低电流、高频电力的完善方法。经过微小改造，使其仅能对敌对目标造成毁灭性电击。"
 	var/list/targets
 	var/last_fired = 0
 	var/tesla_range = TESLA_COIL_RANGE
@@ -75,7 +75,7 @@
 		if(M.stat == DEAD)
 			continue
 		if(HAS_TRAIT(M, TRAIT_CHARGING))
-			to_chat(M, SPAN_WARNING("You ignore some weird noises as you charge."))
+			to_chat(M, SPAN_WARNING("你无视了一些奇怪的声音，继续冲锋。"))
 			continue
 
 		if(M.get_target_lock(faction_group))
@@ -179,8 +179,8 @@
 #define TESLA_COIL_STUN_FIRE_DELAY 3 SECONDS
 #define TESLA_COIL_STUN_EFFECT 1
 /obj/structure/machinery/defenses/tesla_coil/stun
-	name = "21S overclocked tesla coil"
-	desc = "A perfected way of producing high-voltage, low-current and high-frequency electricity. Minor modifications allow it to only hit hostile targets with a devastating shock. This one is significantly overclocked, providing a lot more voltage at the cost of speed."
+	name = "21S超频特斯拉线圈"
+	desc = "一种生产高压、低电流和高频电能的完美方法。经过小幅修改，使其仅能对敌对目标造成毁灭性电击。这个线圈被显著超频，以速度为代价提供了更高的电压。"
 	fire_delay = TESLA_COIL_STUN_FIRE_DELAY
 	handheld_type = /obj/item/defenses/handheld/tesla_coil/stun
 	defense_type = "Stun"
@@ -197,7 +197,7 @@
 #define TESLA_COIL_MICRO_FIRE_DELAY 1 SECONDS
 /obj/structure/machinery/defenses/tesla_coil/micro
 	name = "\improper 25S micro tesla coil"
-	desc = "A perfected way of producing high-voltage, low-current and high-frequency electricity. Minor modifications allow it to only hit hostile targets with a devastating shock. This one is smaller and more lightweight."
+	desc = "一种生产高压、低电流和高频电能的完美方法。经过小幅修改，使其仅能对敌对目标造成毁灭性电击。这个型号更小更轻。"
 	handheld_type = /obj/item/defenses/handheld/tesla_coil/micro
 	disassemble_time = 0.5 SECONDS
 	fire_delay = TESLA_COIL_MICRO_FIRE_DELAY

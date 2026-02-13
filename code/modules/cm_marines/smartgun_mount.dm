@@ -3,8 +3,8 @@
 
 // First thing we need is the ammo drum for this thing.
 /obj/item/ammo_magazine/m56d
-	name = "M56D drum magazine (10x28mm Caseless)"
-	desc = "A box of 700, 10x28mm caseless tungsten rounds for the M56D heavy machine gun system. Just click the M56D with this to reload it."
+	name = "M56D弹鼓（10x28mm无壳弹）"
+	desc = "一盒700发、供M56D重机枪系统使用的10x28mm无壳钨芯弹。只需点击M56D即可为其装填。"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/machineguns.dmi'
 	w_class = SIZE_MEDIUM
 	icon_state = "m56d_drum"
@@ -19,7 +19,7 @@
 // Now we need a box for this.
 /obj/item/storage/box/m56d_hmg
 	name = "\improper M56D crate"
-	desc = "A large metal case with Japanese writing on the top. However it also comes with English text to the side. This is a M56D heavy machine gun, it clearly has various labeled warnings."
+	desc = "一个顶部印有日文的大型金属箱。侧面也附有英文说明。这是一挺M56D重机枪，上面清晰地标有各种警告标识。"
 	icon = 'icons/obj/structures/crates.dmi'
 	icon_state = "M56D_case" // I guess a placeholder? Not actually going to show up ingame for now.
 	w_class = SIZE_HUGE
@@ -37,7 +37,7 @@
 // The actual gun itself.
 /obj/item/device/m56d_gun
 	name = "\improper M56D heavy machine gun"
-	desc = "The top half of a M56D heavy machine gun post. However it ain't much use without the tripod."
+	desc = "M56D重机枪支架的上半部分。但没有三脚架就没多大用处。"
 	unacidable = TRUE
 	w_class = SIZE_HUGE
 	flags_equip_slot = SLOT_BACK
@@ -90,31 +90,31 @@
 			update_icon()
 			return
 		else
-			to_chat(usr, "The M56D already has a ammo drum mounted on it!")
+			to_chat(usr, "M56D已经装上了弹鼓！")
 		return
 
 /obj/item/device/m56d_gun/attack_self(mob/user)
 	..()
 	for(var/obj/structure/machinery/machine in long_range(defense_check_range, loc))
 		if(istype(machine, /obj/structure/machinery/m56d_hmg) || istype(machine, /obj/structure/machinery/m56d_post))
-			to_chat(user, SPAN_WARNING("This is too close to [machine]!"))
+			to_chat(user, SPAN_WARNING("这离[machine]太近了！"))
 			return
 	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		return
 	if(!has_mount)
 		return
 	if(SSinterior.in_interior(user))
-		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
+		to_chat(usr, SPAN_WARNING("这里空间太局促，无法部署\a [src]。"))
 		return
 	var/area/area = get_area(user)
 	if(!area.allow_construction)
-		to_chat(user, SPAN_WARNING("You cannot install \the [src] here, find a more secure surface!"))
+		to_chat(user, SPAN_WARNING("你无法在此安装\the [src]，找个更稳固的表面！"))
 		return
 	var/turf/T = get_turf(usr)
 	if(istype(T, /turf/open))
 		var/turf/open/floor = T
 		if(!floor.allow_construction)
-			to_chat(user, SPAN_WARNING("You cannot install \the [src] here, find a more secure surface!"))
+			to_chat(user, SPAN_WARNING("你无法在此安装\the [src]，找个更稳固的表面！"))
 			return FALSE
 	var/fail = FALSE
 	if(T.density)
@@ -137,7 +137,7 @@
 				fail = TRUE
 				break
 	if(fail)
-		to_chat(usr, SPAN_WARNING("You can't deploy \the [src] here, something is in the way."))
+		to_chat(usr, SPAN_WARNING("你无法在此部署\the [src]，有东西挡着。"))
 		return
 
 
@@ -145,7 +145,7 @@
 		return
 	for(var/obj/structure/machinery/machine in long_range(defense_check_range, loc))
 		if(istype(machine, /obj/structure/machinery/m56d_hmg) || istype(machine, /obj/structure/machinery/m56d_post))
-			to_chat(user, SPAN_WARNING("This is too close to [machine]!"))
+			to_chat(user, SPAN_WARNING("这离[machine]太近了！"))
 			return
 
 	var/obj/structure/machinery/m56d_post/post = new(user.loc)
@@ -156,7 +156,7 @@
 	post.anchored = TRUE
 	post.update_icon()
 	transfer_label_component(post)
-	to_chat(user, SPAN_NOTICE("You deploy [src]."))
+	to_chat(user, SPAN_NOTICE("你部署了[src]。"))
 	qdel(src)
 
 
@@ -166,7 +166,7 @@
 
 /obj/item/device/m56d_post_frame
 	name = "\improper M56D folded mount frame"
-	desc = "A flimsy frame of plasteel and metal. Still needs to be <b>welded</b> together."
+	desc = "一个由塑钢和金属制成的脆弱框架。仍需<b>焊接</b>在一起。"
 	unacidable = TRUE
 	w_class = SIZE_MEDIUM
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi'
@@ -175,13 +175,13 @@
 /obj/item/device/m56d_post_frame/attackby(obj/item/W as obj, mob/user as mob)
 	if (iswelder(W))
 		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
-			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			to_chat(user, SPAN_WARNING("你需要一把更强的喷枪！"))
 			return
 		var/obj/item/tool/weldingtool/WT = W
 
 		if(WT.remove_fuel(1, user))
 			var/obj/item/device/m56d_post/P = new(user.loc)
-			to_chat(user, SPAN_NOTICE("You shape [src] into \a [P]."))
+			to_chat(user, SPAN_NOTICE("你将[src]塑造成\a [P]。"))
 			qdel(src)
 		return
 	return ..()
@@ -189,7 +189,7 @@
 
 /obj/item/device/m56d_post //Adding this because I was fucken stupid and put a obj/structure/machinery in a box. Realized I couldn't take it out
 	name = "\improper M56D folded mount"
-	desc = "The folded, foldable tripod mount for the M56D. (Place on ground and drag to you to unfold)."
+	desc = "M56D的可折叠三脚架支架。（放置在地面并拖向你以展开）。"
 	unacidable = TRUE
 	w_class = SIZE_MEDIUM
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi'
@@ -208,17 +208,17 @@
 	if(!ishuman(usr) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		return
 	if(SSinterior.in_interior(user))
-		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
+		to_chat(usr, SPAN_WARNING("这里空间太局促，无法部署\a [src]。"))
 		return
 	var/area/area = get_area(user)
 	if(!area.allow_construction)
-		to_chat(user, SPAN_WARNING("You cannot install \the [src] here, find a more secure surface!"))
+		to_chat(user, SPAN_WARNING("你无法在此安装\the [src]，找个更稳固的表面！"))
 		return
 	var/turf/T = get_turf(user)
 	if(istype(T, /turf/open))
 		var/turf/open/floor = T
 		if(!floor.allow_construction)
-			to_chat(user, SPAN_WARNING("You cannot install \the [src] here, find a more secure surface!"))
+			to_chat(user, SPAN_WARNING("你无法在此安装\the [src]，找个更稳固的表面！"))
 			return FALSE
 	var/fail = FALSE
 	if(T.density)
@@ -241,10 +241,10 @@
 				fail = TRUE
 				break
 	if(fail)
-		to_chat(user, SPAN_WARNING("You can't install \the [src] here, something is in the way."))
+		to_chat(user, SPAN_WARNING("你无法在这里安装\the [src]，有东西挡路。"))
 		return
 
-	to_chat(user, SPAN_NOTICE("You deploy \the [src]."))
+	to_chat(user, SPAN_NOTICE("你部署了\the [src]。"))
 	var/obj/structure/machinery/m56d_post/post = new(user.loc)
 	transfer_label_component(post)
 	qdel(src)
@@ -253,7 +253,7 @@
 //The mount for the weapon.
 /obj/structure/machinery/m56d_post
 	name = "\improper M56D mount"
-	desc = "A foldable tripod mount for the M56D, provides stability to the M56D."
+	desc = "M56D的可折叠三脚架支架，为M56D提供稳定性。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi'
 	icon_state = "M56D_mount"
 	anchored = FALSE
@@ -308,7 +308,7 @@
 	if(islarva(M))
 		return //Larvae can't do shit
 
-	M.visible_message(SPAN_DANGER("[M] has slashed [src]!"),
+	M.visible_message(SPAN_DANGER("[M]劈砍了[src]！"),
 	SPAN_DANGER("You slash [src]!"))
 	M.animation_attack_on(src)
 	M.flick_attack_overlay(src, "slash")
@@ -327,7 +327,7 @@
 		else if(anchored)
 			to_chat(user, SPAN_WARNING("\The [src] can't be folded while screwed to the floor. Unscrew it first."))
 			return
-		to_chat(user, SPAN_NOTICE("You fold [src]."))
+		to_chat(user, SPAN_NOTICE("你折叠了[src]。"))
 		var/obj/item/device/m56d_post/post = new(loc)
 		transfer_label_component(post)
 		user.put_in_hands(post)
@@ -339,7 +339,7 @@
 
 	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH)) //rotate the mount
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-		user.visible_message(SPAN_NOTICE("[user] rotates [src]."),SPAN_NOTICE("You rotate [src]."))
+		user.visible_message(SPAN_NOTICE("[user]旋转了[src]。"),SPAN_NOTICE("You rotate [src]."))
 		setDir(turn(dir, -90))
 		return
 
@@ -347,15 +347,15 @@
 		var/obj/item/device/m56d_gun/MG = O
 		for(var/obj/structure/machinery/machine in long_orange(MG.defense_check_range, loc))
 			if(istype(machine, /obj/structure/machinery/m56d_hmg) || istype(machine, /obj/structure/machinery/m56d_post))
-				to_chat(user, SPAN_WARNING("This is too close to [machine]!"))
+				to_chat(user, SPAN_WARNING("这离[machine]太近了！"))
 				return
 		if(!anchored)
-			to_chat(user, SPAN_WARNING("[src] must be anchored! Use a screwdriver!"))
+			to_chat(user, SPAN_WARNING("[src]必须被固定！用螺丝刀！"))
 			return
-		to_chat(user, "You begin mounting [MG]...")
+		to_chat(user, "你开始安装[MG]...")
 		if(do_after(user, 30 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && !gun_mounted && anchored)
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-			user.visible_message(SPAN_NOTICE("[user] installs [MG] into place."),SPAN_NOTICE("You install [MG] into place."))
+			user.visible_message(SPAN_NOTICE("[user]将[MG]安装到位。"),SPAN_NOTICE("You install [MG] into place."))
 			gun_mounted = 1
 			gun_rounds = MG.rounds
 			gun_health = MG.health
@@ -367,12 +367,12 @@
 
 	if(istype(O,/obj/item/tool/crowbar))
 		if(!gun_mounted)
-			to_chat(user, SPAN_WARNING("There is no gun mounted."))
+			to_chat(user, SPAN_WARNING("没有安装机枪。"))
 			return
-		to_chat(user, "You begin dismounting [src]'s gun...")
+		to_chat(user, "你开始拆卸[src]的机枪...")
 		if(do_after(user, 30 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && gun_mounted)
 			playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
-			user.visible_message(SPAN_NOTICE("[user] removes [src]'s gun."), SPAN_NOTICE("You remove [src]'s gun."))
+			user.visible_message(SPAN_NOTICE("[user]移除了[src]的机枪。"), SPAN_NOTICE("You remove [src]'s gun."))
 			var/obj/item/device/m56d_gun/HMG = new(loc)
 			HMG.rounds = gun_rounds
 			if(gun_health)
@@ -411,28 +411,28 @@
 					fail = TRUE
 					break
 		if(fail)
-			to_chat(user, SPAN_WARNING("You can't install \the [src] here, something is in the way."))
+			to_chat(user, SPAN_WARNING("你无法在这里安装\the [src]，有东西挡路。"))
 			return
 		var/area/area = get_area(src)
 		if(!area.allow_construction)
-			to_chat(user, SPAN_WARNING("You cannot install \the [src] here, find a more secure surface!"))
+			to_chat(user, SPAN_WARNING("你无法在此安装\the [src]，找个更稳固的表面！"))
 			return
 		if(istype(T, /turf/open))
 			var/turf/open/floor = T
 			if(!floor.allow_construction)
-				to_chat(user, SPAN_WARNING("You cannot install \the [src] here, find a more secure surface!"))
+				to_chat(user, SPAN_WARNING("你无法在此安装\the [src]，找个更稳固的表面！"))
 				return FALSE
 
 		if(gun_mounted)
-			to_chat(user, "You're securing the M56D into place...")
+			to_chat(user, "你正在将M56D固定到位...")
 
 			var/disassemble_time = 30
 			if(do_after(user, disassemble_time * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
-				user.visible_message(SPAN_NOTICE("[user] screws the M56D into the mount."), SPAN_NOTICE("You finalize the M56D heavy machine gun."))
+				user.visible_message(SPAN_NOTICE("[user]将M56D拧紧在支架上。"), SPAN_NOTICE("You finalize the M56D heavy machine gun."))
 				var/obj/structure/machinery/m56d_hmg/HMG = new(loc)
 				transfer_label_component(HMG)
-				HMG.visible_message("[icon2html(HMG, viewers(src))] <B>\The [HMG] is now complete!</B>")
+				HMG.visible_message("[icon2html(HMG, viewers(src))] <B>\The [HMG]现已组装完毕！</B>")
 				HMG.setDir(dir)
 				HMG.rounds = gun_rounds
 				if(gun_health)
@@ -442,18 +442,18 @@
 				qdel(src)
 		else
 			if(anchored)
-				to_chat(user, "You begin unscrewing [src] from the ground...")
+				to_chat(user, "你开始将[src]从地面拧松...")
 			else
-				to_chat(user, "You begin screwing [src] into place...")
+				to_chat(user, "你开始将[src]拧紧到位...")
 
 			var/old_anchored = anchored
 			if(do_after(user, 20 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && anchored == old_anchored)
 				anchored = !anchored
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				if(anchored)
-					user.visible_message(SPAN_NOTICE("[user] anchors [src] into place."),SPAN_NOTICE("You anchor [src] into place."))
+					user.visible_message(SPAN_NOTICE("[user]将[src]固定到位。"),SPAN_NOTICE("You anchor [src] into place."))
 				else
-					user.visible_message(SPAN_NOTICE("[user] unanchors [src]."),SPAN_NOTICE("You unanchor [src]."))
+					user.visible_message(SPAN_NOTICE("[user]解除了[src]的固定。"),SPAN_NOTICE("You unanchor [src]."))
 		return
 
 	return ..()
@@ -463,7 +463,7 @@
 // The actual Machinegun itself, going to borrow some stuff from current sentry code to make sure it functions. Also because they're similar.
 /obj/structure/machinery/m56d_hmg
 	name = "\improper M56D heavy machine gun"
-	desc = "A deployable, heavy machine gun. While it is capable of taking the same rounds as the M56, it fires specialized tungsten rounds for increased armor penetration.<br>Drag its sprite onto yourself to man it. Ctrl-click it to cycle through firemodes."
+	desc = "一种可部署的重机枪。虽然它能使用与M56相同的弹药，但它发射特制的钨芯弹以增强穿甲能力。<br>将其图标拖到自己身上以操控。按住Ctrl点击以切换开火模式。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi'
 	icon_state = "M56D"
 	anchored = TRUE
@@ -609,11 +609,11 @@
 
 	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH)) // Let us rotate this stuff.
 		if(locked)
-			to_chat(user, "This one is anchored in place and cannot be rotated.")
+			to_chat(user, "这个已被固定，无法旋转。")
 			return
 		else
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-			user.visible_message("[user] rotates [src].", "You rotate [src].")
+			user.visible_message("[user]旋转了[src]。", "You rotate [src].")
 			setDir(turn(dir, -90))
 			if(operator)
 				update_pixels(operator)
@@ -621,13 +621,13 @@
 
 	if(HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER)) // Lets take it apart.
 		if(locked)
-			to_chat(user, "This one cannot be disassembled.")
+			to_chat(user, "这个无法拆卸。")
 		else
-			to_chat(user, "You begin disassembling [src]...")
+			to_chat(user, "你开始拆卸[src]...")
 
 			var/disassemble_time = 30
 			if(do_after(user, disassemble_time * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				user.visible_message(SPAN_NOTICE("[user] disassembles [src]!"), SPAN_NOTICE("You disassemble [src]!"))
+				user.visible_message(SPAN_NOTICE("[user]拆解了[src]！"), SPAN_NOTICE("You disassemble [src]!"))
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				var/obj/item/device/m56d_gun/HMG = new(loc)
 				transfer_label_component(HMG)
@@ -642,13 +642,13 @@
 		var/obj/item/ammo_magazine/m56d/M = O
 		if(!skillcheck(user, SKILL_FIREARMS, SKILL_FIREARMS_TRAINED))
 			if(rounds)
-				to_chat(user, SPAN_WARNING("You only know how to swap the ammo drum when it's empty."))
+				to_chat(user, SPAN_WARNING("你只知道如何在弹鼓打空时更换它。"))
 				return
 			if(user.action_busy)
 				return
 			if(!do_after(user, 25 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 				return
-		user.visible_message(SPAN_NOTICE("[user] loads [src]!"), SPAN_NOTICE("You load [src]!"))
+		user.visible_message(SPAN_NOTICE("[user]为[src]装弹！"), SPAN_NOTICE("You load [src]!"))
 		playsound(loc, 'sound/weapons/gun_minigun_cocked.ogg', 25, 1)
 		if(rounds)
 			var/obj/item/ammo_magazine/m56d/D = new(user.loc)
@@ -661,7 +661,7 @@
 
 	if(iswelder(O))
 		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
-			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			to_chat(user, SPAN_WARNING("你需要一把更强的喷枪！"))
 			return
 		if(user.action_busy)
 			return
@@ -669,20 +669,20 @@
 		var/obj/item/tool/weldingtool/WT = O
 
 		if(health == health_max)
-			to_chat(user, SPAN_WARNING("[src] doesn't need repairs."))
+			to_chat(user, SPAN_WARNING("[src]不需要修理。"))
 			return
 
 		if(WT.remove_fuel(0, user))
-			user.visible_message(SPAN_NOTICE("[user] begins repairing damage to [src]."),
+			user.visible_message(SPAN_NOTICE("[user]开始修理[src]的损伤。"),
 				SPAN_NOTICE("You begin repairing the damage to [src]."))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 			if(do_after(user, 5 SECONDS * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
-				user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."),
+				user.visible_message(SPAN_NOTICE("[user]修复了[src]上的一些损伤。"),
 					SPAN_NOTICE("You repair [src]."))
 				update_health(-floor(health_max*0.2))
 				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 		else
-			to_chat(user, SPAN_WARNING("You need more fuel in [WT] to repair damage to [src]."))
+			to_chat(user, SPAN_WARNING("你需要更多[WT]中的燃料来修理[src]的损伤。"))
 		return
 	return ..()
 
@@ -727,7 +727,7 @@
 
 /obj/structure/machinery/m56d_hmg/bullet_act(obj/projectile/P) //Nope.
 	bullet_ping(P)
-	visible_message(SPAN_WARNING("[src] is hit by the [P.name]!"))
+	visible_message(SPAN_WARNING("[src]被[P.name]击中！"))
 	update_health(floor(P.damage / 10)) //Universal low damage to what amounts to a post with a gun.
 	return 1
 
@@ -737,7 +737,7 @@
 	if(xeno.IsAdvancedToolUser() && xeno.a_intent == INTENT_HELP)
 		try_mount_gun(xeno)
 		return XENO_NO_DELAY_ACTION
-	xeno.visible_message(SPAN_DANGER("[xeno] has slashed [src]!"),
+	xeno.visible_message(SPAN_DANGER("[xeno]劈砍了[src]！"),
 	SPAN_DANGER("You slash [src]!"))
 	xeno.animation_attack_on(src)
 	xeno.flick_attack_overlay(src, "slash")
@@ -817,7 +817,7 @@
 	return total_scatter_angle
 
 /obj/structure/machinery/m56d_hmg/proc/handle_ammo_out(mob/user)
-	visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] [src] beeps steadily and its ammo light blinks red."))
+	visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] [src]发出稳定的蜂鸣声，其弹药指示灯闪烁红光。"))
 	playsound(loc, empty_alarm, 25, 1)
 	update_icon() //final safeguard.
 
@@ -825,12 +825,12 @@
 	if(!operator)
 		return
 	if(!rounds)
-		to_chat(operator, SPAN_WARNING("<b>*click*</b>"))
+		to_chat(operator, SPAN_WARNING("<b>*咔哒*</b>"))
 		playsound(src, 'sound/weapons/gun_empty.ogg', 25, 1, 5)
 		return
 
 	if(operator.l_hand || operator.r_hand)
-		to_chat(operator, SPAN_WARNING("Your hands need to be free to fire [src]!"))
+		to_chat(operator, SPAN_WARNING("你需要空出双手才能开火[src]！"))
 		return
 
 	return fire_shot()
@@ -893,24 +893,24 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/human = user
 		if(!human.allow_gun_usage)
-			to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
+			to_chat(user, SPAN_WARNING("你不被允许使用枪械！"))
 			return
 		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/ceasefire))
-			to_chat(human, SPAN_WARNING("You will not break the ceasefire by doing that!"))
+			to_chat(human, SPAN_WARNING("你那样做会破坏停火协议！"))
 			return FALSE
 	// If the user isn't actually allowed to use guns.
 	else if (!HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
-		to_chat(user, SPAN_WARNING("You don't know what to do with [src]!"))
+		to_chat(user, SPAN_WARNING("你不知道怎么使用[src]！"))
 		return
 
 	// If the user is invisible.
 	if(user.alpha <= 60)
-		to_chat(user, SPAN_WARNING("You can't use [src] while cloaked!"))
+		to_chat(user, SPAN_WARNING("你处于隐形状态时无法使用[src]！"))
 		return
 
 	// Make sure we're not manning two guns at once, tentacle arms.
 	if(user.interactee)
-		to_chat(user, SPAN_WARNING("You're already manning something!"))
+		to_chat(user, SPAN_WARNING("你已经在操控其他东西了！"))
 		return
 
 	// Check the directions opposite of where the gun is facing.
@@ -922,7 +922,7 @@
 			break
 	// If the user isn't standing behind or on top of the gun.
 	if(!found_user && user_turf != get_turf(src))
-		to_chat(user, SPAN_WARNING("You are too far from the handles to man [src]!"))
+		to_chat(user, SPAN_WARNING("你离[src]的操控手柄太远了！"))
 		return
 
 	// If there's already someone manning it.
@@ -931,12 +931,12 @@
 		if(operator.interactee == null)
 			operator = null
 		else
-			to_chat(user, SPAN_WARNING("Someone's already controlling [src]!"))
+			to_chat(user, SPAN_WARNING("已经有人在操控[src]了！"))
 			return
 
 	// If both hands aren't empty.
 	if(user.get_active_hand() || user.get_inactive_hand())
-		to_chat(user, SPAN_WARNING("You need both hands free to grab the handles!"))
+		to_chat(user, SPAN_WARNING("你需要双手空闲才能抓住握把！"))
 		return
 
 	// Man the gun!
@@ -949,7 +949,7 @@
 	user.setDir(dir)
 	user.reset_view(src)
 	user.status_flags |= IMMOBILE_ACTION
-	user.visible_message(SPAN_NOTICE("[user] mans [src]."), SPAN_NOTICE("You man [src], locked and loaded!"))
+	user.visible_message(SPAN_NOTICE("[user] 操控着 [src]。"), SPAN_NOTICE("You man [src], locked and loaded!"))
 	user_old_x = user.pixel_x
 	user_old_y = user.pixel_y
 	update_pixels(user)
@@ -970,7 +970,7 @@
 	user.setDir(dir) //set the direction of the player to the direction the gun is facing
 	user.reset_view(null)
 	user.status_flags &= ~IMMOBILE_ACTION
-	user.visible_message(SPAN_NOTICE("[user] lets go of [src]."), SPAN_NOTICE("You let go of [src], letting the gun rest."))
+	user.visible_message(SPAN_NOTICE("[user] 松开了 [src]。"), SPAN_NOTICE("You let go of [src], letting the gun rest."))
 	user_old_x = 0 //reset our x
 	user_old_y = 0 //reset our y
 	update_pixels(user, FALSE)
@@ -1047,7 +1047,7 @@
 /obj/structure/machinery/m56d_hmg/proc/CrusherImpact()
 	update_health(health_max * 0.2)
 	if(operator)
-		to_chat(operator, SPAN_HIGHDANGER("You are knocked off the gun by the sheer force of the ram!"))
+		to_chat(operator, SPAN_HIGHDANGER("你被猛烈的撞击力从机枪上震了下来！"))
 		operator.unset_interaction()
 		operator.apply_effect(3, WEAKEN)
 		operator.emote("pain")
@@ -1093,7 +1093,7 @@
 		CRASH("[src] called do_toggle_firemode() with an empty gun_firemodes")
 
 	if(length(gun_firemodes) == 1)
-		to_chat(user, SPAN_NOTICE("[icon2html(src, user)] This gun only has one firemode."))
+		to_chat(user, SPAN_NOTICE("[icon2html(src, user)] 这把枪只有一种开火模式。"))
 		return
 
 	if(new_firemode)
@@ -1109,7 +1109,7 @@
 
 	playsound(user, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
 
-	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You switch to <b>[gun_firemode]</b>."))
+	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] 你切换到了 <b>[gun_firemode]</b> 模式。"))
 	SEND_SIGNAL(src, COMSIG_GUN_FIRE_MODE_TOGGLE, gun_firemode)
 
 ///Set the target to its turf, so we keep shooting even when it was qdeled
@@ -1192,7 +1192,7 @@
 
 /obj/structure/machinery/m56d_hmg/mg_turret //Our mapbound version with stupid amounts of ammo.
 	name = "\improper scoped M56D heavy machine gun nest"
-	desc = "A scoped M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. Drag its sprite onto yourself to man it. Ctrl-click it to toggle burst fire."
+	desc = "一挺带瞄准镜的M56D重机枪，安装在一个加固的小型支柱上，周围堆有沙袋，构成一个机枪阵地，满足你所有的防御需求。将其图标拖到自己身上以操控。按住Ctrl键点击可切换连发模式。"
 	fire_delay = 2
 	rounds = 1500
 	rounds_max = 1500
@@ -1219,7 +1219,7 @@
 
 /obj/structure/machinery/m56d_hmg/mg_turret/dropship
 	name = "\improper scoped M56D heavy machine gun"
-	desc = "A scoped M56D heavy machine gun mounted behind a metal shield. Drag its sprite onto yourself to man it. Ctrl-click it to toggle burst fire."
+	desc = "一挺带瞄准镜的M56D重机枪，架设在金属护盾后方。将其图标拖到自己身上以操控。按住Ctrl键点击可切换连发模式。"
 	icon_full = "towergun_folding"
 	icon_empty = "towergun_folding"
 	var/obj/structure/dropship_equipment/mg_holder/deployment_system

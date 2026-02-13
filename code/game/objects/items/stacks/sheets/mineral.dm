@@ -18,8 +18,8 @@ Mineral Sheets
 GLOBAL_LIST_INIT(sandstone_recipes, list ( \
 	new/datum/stack_recipe("pile of dirt", /obj/structure/machinery/portable_atmospherics/hydroponics/soil, 3, time = 10, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe("sandstone door", /obj/structure/mineral_door/sandstone, 10, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
-	new/datum/stack_recipe("sandstone wall", /turf/closed/wall/mineral/sandstone, 5, time = 50, skill_req = SKILL_CONSTRUCTION, skill_lvl = SKILL_CONSTRUCTION_ENGI, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
-	new/datum/stack_recipe("sandstone floor", /turf/open/floor/sandstone/runed, 1, on_floor = 1), \
+	new/datum/stack_recipe("砂岩墙", /turf/closed/wall/mineral/sandstone, 5, time = 50, skill_req = SKILL_CONSTRUCTION, skill_lvl = SKILL_CONSTRUCTION_ENGI, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
+	new/datum/stack_recipe("砂岩地板", /turf/open/floor/sandstone/runed, 1, on_floor = 1), \
 	new/datum/stack_recipe("sandstone handrail (crenellations)", /obj/structure/barricade/handrail/sandstone, 2, time = 2 SECONDS, one_per_turf = ONE_TYPE_PER_BORDER, on_floor = 1, skill_req = SKILL_CONSTRUCTION, skill_lvl = SKILL_CONSTRUCTION_TRAINED, min_time = 1 SECONDS), \
 	new/datum/stack_recipe("sandstone handrail (flat)", /obj/structure/barricade/handrail/sandstone/b, 2, time = 2 SECONDS, one_per_turf = ONE_TYPE_PER_BORDER, on_floor = 1, skill_req = SKILL_CONSTRUCTION, skill_lvl = SKILL_CONSTRUCTION_TRAINED, min_time = 1 SECONDS), \
 	new/datum/stack_recipe("dark sandstone handrail (cren.)", /obj/structure/barricade/handrail/sandstone/dark, 2, time = 2 SECONDS, one_per_turf = ONE_TYPE_PER_BORDER, on_floor = 1, skill_req = SKILL_CONSTRUCTION, skill_lvl = SKILL_CONSTRUCTION_TRAINED, min_time = 1 SECONDS), \
@@ -36,14 +36,14 @@ GLOBAL_LIST_INIT(runedsandstone_recipes, list ( \
 		), 5), \
 	new/datum/stack_recipe_list("temple floors",list( \
 		new/datum/stack_recipe("tan floor", /turf/open/floor/sandstone/runed, 1, on_floor = 1), \
-		new/datum/stack_recipe("engraved floor", /turf/open/floor/sandstone/cult, 1, on_floor = 1), \
+		new/datum/stack_recipe("雕花地板", /turf/open/floor/sandstone/cult, 1, on_floor = 1), \
 		new/datum/stack_recipe("dark red floor", /turf/open/floor/sandstone/red, 1, on_floor = 1), \
 		new/datum/stack_recipe("sun runed floor", /turf/open/floor/sandstone/red2, 1, on_floor = 1), \
 		new/datum/stack_recipe("square runed floor", /turf/open/floor/sandstone/red3, 1, on_floor = 1), \
 		), 1), \
 	new/datum/stack_recipe("brazier frame", /obj/structure/prop/brazier/frame, 5, time = 5 SECONDS, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe("wall torch frame", /obj/item/prop/torch_frame, 2, time = 2 SECONDS, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
-	new/datum/stack_recipe("alien chair", /obj/structure/bed/chair/comfy/yautja, 2, time = 2 SECONDS, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
+	new/datum/stack_recipe("异形座椅", /obj/structure/bed/chair/comfy/yautja, 2, time = 2 SECONDS, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe("alien bed", /obj/structure/bed/alien/yautja, 3, time = 3 SECONDS, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe("tan statue", /obj/structure/showcase/yautja, 10, time = 30, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe("grey statue", /obj/structure/showcase/yautja/alt, 10, time = 30, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
@@ -71,11 +71,11 @@ GLOBAL_LIST_INIT(phoron_recipes, list ( \
 	))
 
 GLOBAL_LIST_INIT(plastic_recipes, list ( \
-	new/datum/stack_recipe("plastic crate", /obj/structure/closet/crate/plastic, 10, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
-	new/datum/stack_recipe("plastic ashtray", /obj/item/ashtray/plastic, 2, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
-	new/datum/stack_recipe("plastic fork", /obj/item/tool/kitchen/utensil/pfork, 1, on_floor = 1), \
-	new/datum/stack_recipe("plastic spoon", /obj/item/tool/kitchen/utensil/pspoon, 1, on_floor = 1), \
-	new/datum/stack_recipe("plastic knife", /obj/item/tool/kitchen/utensil/pknife, 1, on_floor = 1), \
+	new/datum/stack_recipe("塑料箱", /obj/structure/closet/crate/plastic, 10, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
+	new/datum/stack_recipe("塑料烟灰缸", /obj/item/ashtray/plastic, 2, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
+	new/datum/stack_recipe("塑料叉", /obj/item/tool/kitchen/utensil/pfork, 1, on_floor = 1), \
+	new/datum/stack_recipe("塑料勺", /obj/item/tool/kitchen/utensil/pspoon, 1, on_floor = 1), \
+	new/datum/stack_recipe("塑料刀", /obj/item/tool/kitchen/utensil/pknife, 1, on_floor = 1), \
 	))
 
 GLOBAL_LIST_INIT(iron_recipes, list ( \
@@ -98,7 +98,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 
 /obj/item/stack/sheet/mineral/iron
 	name = "iron"
-	desc = "Iron is a transition metal and the most basic building material in space. It is solid at room temperature, easy to shape, and available in immense quantities."
+	desc = "铁是一种过渡金属，也是太空中最基本的建筑材料。它在室温下呈固态，易于塑形，且储量巨大。"
 	singular_name = "iron sheet"
 	icon_state = "sheet-silver"
 
@@ -112,9 +112,9 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	recipes = GLOB.iron_recipes
 
 /obj/item/stack/sheet/mineral/sandstone
-	name = "sandstone brick"
-	desc = "Sandstone is sand cemented into stone. A common building material for primitive civilizations, but it can still make a good enough wall."
-	singular_name = "sandstone brick"
+	name = "砂岩砖"
+	desc = "砂岩是沙子胶结而成的石头。它是原始文明的常见建筑材料，但用来砌墙也足够坚固。"
+	singular_name = "砂岩砖"
 	icon_state = "sheet-sandstone"
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
@@ -130,9 +130,9 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	amount = STACK_50
 
 /obj/item/stack/sheet/mineral/sandstone/runed
-	name = "runed sandstone brick"
-	desc = "Sandstone is sand cemented into stone. A common building material for primitive civilizations, but it can still make a good enough wall. This one has strange runes embued into the brick."
-	singular_name = "runed sandstone brick"
+	name = "符文砂岩砖"
+	desc = "砂岩是沙子胶结而成的石头。它是原始文明的常见建筑材料，但用来砌墙也足够坚固。这块砖上蚀刻着奇怪的符文。"
+	singular_name = "符文砂岩砖"
 	icon_state = "sheet-runedsandstone"
 	amount_sprites = FALSE
 	black_market_value = 15
@@ -152,7 +152,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 
 /obj/item/stack/sheet/mineral/diamond
 	name = "diamond"
-	desc = "Diamond is highly-pressurized and heated carbon in a diamond cubic crystal lattice. It is highly-valued for its look and hardness, despite being artifically-manufactured, these days."
+	desc = "钻石是经过高压高温处理、形成金刚石立方晶格的碳。尽管如今已能人工制造，它仍因其外观和硬度而备受推崇。"
 	singular_name = "diamond gem"
 	icon_state = "sheet-diamond"
 
@@ -168,7 +168,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 
 /obj/item/stack/sheet/mineral/uranium
 	name = "uranium"
-	desc = "Uranium is a radioactive metal of the actinide series. Valued as reactor fuel for fission-type generators, and as a primer for fusion bombs."
+	desc = "铀是锕系的一种放射性金属。因其可作为裂变型反应堆的燃料以及聚变炸弹的起爆剂而具有重要价值。"
 	singular_name = "uranium rod"
 	icon_state = "sheet-uranium"
 
@@ -185,8 +185,8 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	amount = STACK_10
 
 /obj/item/stack/sheet/mineral/phoron
-	name = "solid phoron"
-	desc = "Phoron is an extremely rare mineral with exotic properties, often used in cutting-edge research. Just getting it into a stable, solid form is already difficult enough, considering it can be quite toxic and flammable."
+	name = "固态福隆"
+	desc = "福隆是一种具有奇特性质的极稀有矿物，常用于尖端研究。考虑到其具有相当的毒性和易燃性，仅将其稳定成固态形式就已足够困难。"
 	singular_name = "phoron ingot"
 	icon_state = "sheet-phoron"
 
@@ -202,8 +202,8 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	amount = STACK_30
 
 /obj/item/stack/sheet/mineral/plastic
-	name = "Plastic"
-	desc = "Plastic is a synthetic polymer, manufactured from organic and inorganic components into a malleable and light fabric. It can be used for a wide range of objects."
+	name = "塑料"
+	desc = "塑料是一种合成聚合物，由有机和无机成分制成，质地柔韧且轻便。可用于制造多种物品。"
 	singular_name = "plastic sheet"
 	icon_state = "sheet-plastic"
 	item_state = "sheet-plastic"
@@ -221,8 +221,8 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	amount = STACK_10
 
 /obj/item/stack/sheet/mineral/plastic/cyborg
-	name = "plastic sheets"
-	desc = "Plastic is a synthetic polymer, manufactured from organic and inorganic components into a malleable and light fabric. It can be used for a wide range of objects."
+	name = "塑料板"
+	desc = "塑料是一种合成聚合物，由有机和无机成分制成，质地柔韧且轻便。可用于制造多种物品。"
 	singular_name = "plastic sheet"
 	icon_state = "sheet-plastic"
 	item_state = "sheet-plastic"
@@ -230,7 +230,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 
 /obj/item/stack/sheet/mineral/gold
 	name = "gold"
-	desc = "Gold is a transition metal. A relatively rare metal, known for its color, shine, chemical and electrical properties, it is sought after for both cosmetic, engineering and scientific uses."
+	desc = "金是一种过渡金属。作为一种相对稀有的金属，以其色泽、光泽、化学和电学特性而闻名，在装饰、工程和科学领域都有广泛应用。"
 	singular_name = "gold ingot"
 	icon_state = "sheet-gold"
 
@@ -248,7 +248,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 
 /obj/item/stack/sheet/mineral/silver
 	name = "silver"
-	desc = "Silver is a transition metal. It is known for its namesake silver, gray color. It is used both for cosmetics as a cheaper alternative to gold, or for engineering for its unparalleled electrical and thermal conductivity and reflectivity."
+	desc = "银是一种过渡金属。以其同名银灰色而闻名。在装饰上作为黄金的廉价替代品，在工程上则因其无与伦比的导电性、导热性和反射性而被使用。"
 	singular_name = "silver ingot"
 	icon_state = "sheet-silver"
 
@@ -265,8 +265,8 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	amount = STACK_10
 
 /obj/item/stack/sheet/mineral/enruranium
-	name = "enriched uranium"
-	desc = "Enriched uranium rods are made out of around 3 to 5 percent of U-235 mixed with regular U-238. While nowhere near weapons-grade, it is good enough to be used in a fission engine."
+	name = "浓缩铀"
+	desc = "浓缩铀棒由约3%至5%的U-235与普通U-238混合制成。虽然远未达到武器级，但已足够用于裂变引擎。"
 	singular_name = "enriched uranium rod"
 	icon_state = "sheet-enruranium"
 
@@ -276,7 +276,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 //Valuable resource, cargo can now actually sell it.
 /obj/item/stack/sheet/mineral/platinum
 	name = "platinum"
-	desc = "Platinum is a transition metal. Relatively rare and pretty, it is used for its cosmetic value and chemical properties as a catalytic agent. It is also used in electrodes."
+	desc = "铂是一种过渡金属。相对稀有且美观，因其装饰价值和作为催化剂的化学性质而被使用。也用于制造电极。"
 	singular_name = "platinum ingot"
 	icon_state = "sheet-platinum"
 
@@ -288,7 +288,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 
 /obj/item/stack/sheet/mineral/lead
 	name = "lead"
-	desc = "Lead is a heavy metal. It is quite dense, yet soft and malleable in its solid state. Though toxic if consumed, lead sheets are used as a shielding material in walls to protect from radiation, and also to absorb sound and vibrations."
+	desc = "铅是一种重金属。密度很大，但在固态时柔软且具有延展性。虽然摄入有毒，但铅板被用作墙体屏蔽材料以抵御辐射，并吸收声音和振动。"
 	singular_name = "lead brick"
 	icon_state = "sheet-lead"
 
@@ -299,8 +299,8 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 
 //Extremely valuable to Research.
 /obj/item/stack/sheet/mineral/mhydrogen
-	name = "metallic hydrogen"
-	desc = "Metallic hydrogen is regular hydrogen in a near-solid state, turned into an ingot under immense pressures. The exact procedure to create and stabilize such ingots is still a trade secret."
+	name = "金属氢"
+	desc = "金属氢是普通氢在接近固态的状态下，经巨大压力形成的锭块。制造和稳定此类锭块的确切程序仍是商业机密。"
 	singular_name = "hydrogen ingot"
 	icon_state = "sheet-mythril"
 
@@ -311,7 +311,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 //Fuel for MRSPACMAN generator.
 /obj/item/stack/sheet/mineral/tritium
 	name = "tritium"
-	desc = "Tritium is an isotope of hydrogen, H-3, turned into an ingot under immense pressures. The exact procedure to create and stabilize such ingots is still a trade secret."
+	desc = "氚是氢的一种同位素，H-3，在巨大压力下形成的锭块。制造和稳定这种锭块的确切程序仍是商业机密。"
 	singular_name = "tritium ingot"
 	icon_state = "sheet-silver"
 	sheettype = "tritium"
@@ -323,7 +323,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 
 /obj/item/stack/sheet/mineral/osmium
 	name = "osmium"
-	desc = "Osmium is a transition metal. The densest naturally occurring element known to man, it is obviously known for its extreme hardness and durability and used as such."
+	desc = "锇是一种过渡金属。人类已知密度最高的天然元素，以其极高的硬度和耐用性而闻名，并因此被使用。"
 	singular_name = "osmium ingot"
 	icon_state = "sheet-silver"
 	sheettype = "osmium"
@@ -335,7 +335,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 
 /obj/item/stack/sheet/mineral/chitin
 	name = "chitin"
-	desc = "Chitin is the building block of an arthropod--such as an insect or crustracean's--exoskeleton. This sheet, in particular, came from aliens."
+	desc = "几丁质是节肢动物——例如昆虫或甲壳类——外骨骼的构成单元。这张薄片尤其来自外星生物。"
 	singular_name = "chitin brick"
 	icon_state = "sheet-chitin"
 

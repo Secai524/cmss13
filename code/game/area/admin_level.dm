@@ -104,53 +104,53 @@
 
 // ERT Station
 /area/adminlevel/ert_station
-	name = "ERT Station"
+	name = "ERT空间站"
 	icon_state = "green"
 	requires_power = FALSE
 	flags_area = AREA_NOBURROW
 
 /area/adminlevel/ert_station/upp_station
-	name = "UPP Station"
+	name = "UPP空间站"
 	icon_state = "green"
 
 /area/adminlevel/ert_station/pizza_station
-	name = "Pizza Galaxy"
+	name = "披萨银河"
 	icon_state = "red"
 
 /area/adminlevel/ert_station/clf_station
-	name = "CLF Station"
+	name = "CLF空间站"
 	icon_state = "white"
 
 /area/adminlevel/ert_station/weyland_station
-	name = "Weyland-Yutani Station"
+	name = "维兰德-汤谷空间站"
 	icon_state = "red"
 
 /area/adminlevel/ert_station/uscm_station
-	name = "USCM Station"
+	name = "USCM空间站"
 	icon_state = "green"
 
 /area/adminlevel/ert_station/freelancer_station
-	name = "Freelancer Station"
+	name = "自由佣兵空间站"
 	icon_state = "yellow"
 
 /area/adminlevel/ert_station/royal_marines_station
-	name = "HMS Patna Hangerbay"
+	name = "HMS帕特纳号机库舱"
 	icon_state = "yellow"
 
 /area/adminlevel/ert_station/shuttle_dispatch
-	name = "Shuttle Dispatch Station"
+	name = "穿梭机调度站"
 	soundscape_playlist = SCAPE_PL_ELEVATOR_MUSIC
 	icon_state = "yellow"
 
 //Fax Responder areas
 /area/adminlevel/ert_station/fax_response_station
-	name = "Sector Comms Relay"
+	name = "扇区通讯中继站"
 	icon_state = "green"
 	unlimited_power = TRUE
 	flags_area = AREA_AVOID_BIOSCAN
 
 /area/adminlevel/ert_station/fax_response_station/exterior
-	name = "Sector Comms Relay"
+	name = "扇区通讯中继站"
 	icon_state = "red"
 	ambience_exterior = AMBIENCE_JUNGLE
 	//ambience = list('sound/ambience/jungle_amb1.ogg')
@@ -158,7 +158,7 @@
 
 //Simulation area
 /area/adminlevel/simulation
-	name = "Simulated Reality"
+	name = "模拟现实"
 	icon_state = "green"
 	requires_power = 0
 	flags_area = AREA_NOBURROW
@@ -168,10 +168,10 @@
 
 /area/misc/testroom
 	requires_power = FALSE
-	name = "Test Room"
+	name = "测试室"
 
 /area/misc/tutorial
-	name = "Tutorial Zone"
+	name = "教程区"
 	icon_state = "tutorial"
 	requires_power = FALSE
 	unlimited_power = TRUE

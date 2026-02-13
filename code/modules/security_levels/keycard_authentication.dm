@@ -1,6 +1,6 @@
 /obj/structure/machinery/keycard_auth
-	name = "Keycard Authentication Device"
-	desc = "This device is used to trigger station functions, which require multiple swipes of an ID card to authenticate."
+	name = "身份卡认证装置"
+	desc = "此装置用于触发需要多次刷卡认证才能执行的站点功能。"
 	icon = 'icons/obj/structures/machinery/monitors.dmi'
 	icon_state = "auth_off"
 	unacidable = TRUE
@@ -25,12 +25,12 @@
 	COOLDOWN_DECLARE(id_scan_cooldown)
 
 /obj/structure/machinery/keycard_auth/attack_remote(mob/user as mob)
-	to_chat(user, "The station AI is not to interact with these devices.")
+	to_chat(user, "站点AI不得与此类装置交互。")
 	return
 
 /obj/structure/machinery/keycard_auth/attackby(obj/item/W as obj, mob/user as mob)
 	if(inoperable())
-		to_chat(user, "This device is not powered.")
+		to_chat(user, "此装置未通电。")
 		return
 	if(istype(W,/obj/item/card/id))
 		var/obj/item/card/id/ID = W
@@ -56,10 +56,10 @@
 
 /obj/structure/machinery/keycard_auth/attack_hand(mob/user as mob)
 	if(user.stat || inoperable())
-		to_chat(user, "This device is not powered.")
+		to_chat(user, "此装置未通电。")
 		return
 	if(busy)
-		to_chat(user, "This device is busy.")
+		to_chat(user, "此装置正忙。")
 		return
 
 	user.set_interaction(src)
@@ -89,10 +89,10 @@
 /obj/structure/machinery/keycard_auth/Topic(href, href_list)
 	..()
 	if(busy)
-		to_chat(usr, "This device is busy.")
+		to_chat(usr, "此装置正忙。")
 		return
 	if(usr.stat || inoperable())
-		to_chat(usr, "This device is without power.")
+		to_chat(usr, "此装置没有电力。")
 		return
 	if(href_list["triggerevent"])
 		event = href_list["triggerevent"]
@@ -165,11 +165,11 @@ GLOBAL_VAR_INIT(maint_all_access, TRUE)
 
 /proc/make_maint_all_access()
 	GLOB.maint_all_access = TRUE
-	ai_announcement("The maintenance access requirement has been removed on all airlocks.")
+	ai_announcement("所有气闸的维护权限要求已被移除。")
 
 /proc/revoke_maint_all_access()
 	GLOB.maint_all_access = FALSE
-	ai_announcement("The maintenance access requirement has been added on all airlocks.")
+	ai_announcement("所有气闸已添加维护权限要求。")
 
 GLOBAL_VAR_INIT(ob_cannon_safety, FALSE)
 
@@ -181,8 +181,8 @@ GLOBAL_VAR_INIT(ob_cannon_safety, FALSE)
 
 // Keycard reader at the CORSAT locks
 /obj/structure/machinery/keycard_auth/lockdown
-	name = "automated lockdown override"
-	desc = "This device is used override the security lockdown."
+	name = "自动封锁解除装置"
+	desc = "此装置用于解除安全封锁。"
 	channel = "map_lockdown"
 	var/window_desc = "This device is used to override the security lockdown. It requires both of the authentication disks."
 	var/announce_title = "Station Security Authority automated announcement"
@@ -192,11 +192,11 @@ GLOBAL_VAR_INIT(ob_cannon_safety, FALSE)
 	confirm_delay = 30
 
 /obj/structure/machinery/keycard_auth/lockdown/corsat
-	name = "CORSAT automated biohazard override"
+	name = "CORSAT自动生化危害解除装置"
 	card_type = /obj/item/card/data/corsat
 	announce_title = "CORSAT Security Authority automated announcement"
 	window_desc = "This device is used to override the CORSAT automated lockdown. It requires both of the authentication disks, which can be found in the offices of various heads of departments around the station."
-	desc = "This device is used override the CORSAT automatic biohazard lockdown."
+	desc = "此装置用于解除CORSAT自动生化危害封锁。"
 
 /obj/structure/machinery/keycard_auth/lockdown/prison
 	card_type = /obj/item/card/data/prison
@@ -204,7 +204,7 @@ GLOBAL_VAR_INIT(ob_cannon_safety, FALSE)
 
 /obj/structure/machinery/keycard_auth/lockdown/attackby(obj/item/W as obj, mob/user as mob)
 	if(inoperable())
-		to_chat(user, "This device is not powered.")
+		to_chat(user, "此装置未通电。")
 		return
 	if(!istype(W, card_type))
 		return
@@ -221,7 +221,7 @@ GLOBAL_VAR_INIT(ob_cannon_safety, FALSE)
 			event_source.confirmed = 1
 			event_source.event_confirmed_by = usr
 		else
-			visible_message(SPAN_NOTICE("[src] states: ONLY ONE UNIQUE CODE DISK DETECTED."))
+			visible_message(SPAN_NOTICE("[src]显示：仅检测到一个唯一代码盘。"))
 
 	else if(screen == 2)
 		event_triggered_by = usr
@@ -245,10 +245,10 @@ GLOBAL_VAR_INIT(ob_cannon_safety, FALSE)
 
 /obj/structure/machinery/keycard_auth/lockdown/attack_hand(mob/user as mob)
 	if(user.stat || inoperable())
-		to_chat(user, "This device is not powered.")
+		to_chat(user, "此装置未通电。")
 		return
 	if(busy)
-		to_chat(user, "This device is busy.")
+		to_chat(user, "此装置正忙。")
 		return
 
 	user.set_interaction(src)
@@ -277,7 +277,7 @@ GLOBAL_VAR_INIT(ob_cannon_safety, FALSE)
 	if(istype(SSticker.mode, /datum/game_mode/colonialmarines))
 		var/datum/game_mode/colonialmarines/gCM = SSticker.mode
 		if(gCM.round_status_flags & ROUNDSTATUS_PODDOORS_OPEN)
-			visible_message(SPAN_NOTICE("[src] states: LOCKDOWN ALREADY LIFTED."))
+			visible_message(SPAN_NOTICE("[src]报告：封锁已解除。"))
 			return
 		gCM.round_status_flags |= ROUNDSTATUS_PODDOORS_OPEN // So we don't spam the message twice
 
@@ -295,8 +295,8 @@ GLOBAL_VAR_INIT(ob_cannon_safety, FALSE)
 	for(var/mob/M in GLOB.player_list)
 		if(isxeno(M))
 			sound_to(M, sound(get_sfx("queen"), wait = 0, volume = 50))
-			to_chat(M, SPAN_XENOANNOUNCE("The Queen Mother reaches into your mind from worlds away."))
-			to_chat(M, SPAN_XENOANNOUNCE("To my children and their Queen. I sense the large doors that trap us will open in [text_timeleft]."))
+			to_chat(M, SPAN_XENOANNOUNCE("异形女皇的意识从遥远的世界探入你的脑海。"))
+			to_chat(M, SPAN_XENOANNOUNCE("致我的孩子们和它们的女王。我感知到困住我们的大型舱门将在[text_timeleft]后开启。"))
 	var/new_timeleft = timeleft - next_interval
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/machinery/keycard_auth/lockdown, timed_countdown), new_timeleft), next_interval)
 
@@ -307,7 +307,7 @@ GLOBAL_VAR_INIT(ob_cannon_safety, FALSE)
 			if(istype(SSticker.mode, /datum/game_mode/colonialmarines))
 				var/datum/game_mode/colonialmarines/gCM = SSticker.mode
 				if(gCM.round_status_flags & ROUNDSTATUS_PODDOORS_OPEN)
-					visible_message(SPAN_NOTICE("[src] states: LOCKDOWN ALREADY LIFTED."))
+					visible_message(SPAN_NOTICE("[src]报告：封锁已解除。"))
 					return
 				gCM.round_status_flags |= ROUNDSTATUS_PODDOORS_OPEN // So we don't spam the message twice
 			timed_countdown(3 MINUTES)

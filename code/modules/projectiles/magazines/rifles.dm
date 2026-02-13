@@ -6,7 +6,7 @@
 
 /obj/item/ammo_magazine/rifle
 	name = "\improper M41A magazine (10x24mm)"
-	desc = "A 10x24mm assault rifle magazine."
+	desc = "一个10x24mm突击步枪弹匣。"
 	caliber = "10x24mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/assault_rifles.dmi'
 	icon_state = "m41a"
@@ -24,7 +24,7 @@
 
 /obj/item/ammo_magazine/rifle/extended
 	name = "\improper M41A extended magazine (10x24mm)"
-	desc = "An extended 10x24mm assault rifle magazine."
+	desc = "一个加长型10x24mm突击步枪弹匣。"
 	icon_state = "m41a_extended"
 	max_rounds = 60
 	bonus_overlay_icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/assault_rifles.dmi'
@@ -32,51 +32,51 @@
 
 /obj/item/ammo_magazine/rifle/incendiary
 	name = "\improper M41A incendiary magazine (10x24mm)"
-	desc = "An incendiary 10x24mm assault rifle magazine."
+	desc = "一个燃烧型10x24mm突击步枪弹匣。"
 	default_ammo = /datum/ammo/bullet/rifle/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
 
 /obj/item/ammo_magazine/rifle/explosive
 	name = "\improper M41A explosive magazine (10x24mm)"
-	desc = "An explosive 10x24mm assault rifle magazine. Oh god... just don't hit friendlies with it."
+	desc = "一个爆炸型10x24mm突击步枪弹匣。老天……千万别用它打中友军。"
 	default_ammo = /datum/ammo/bullet/rifle/explosive
 	ammo_band_color = AMMO_BAND_COLOR_EXPLOSIVE
 
 /obj/item/ammo_magazine/rifle/heap
 	name = "\improper M41A HEAP magazine (10x24mm)"
-	desc = "A high-explosive armor-piercing 10x24mm assault rifle magazine."
+	desc = "一个高爆穿甲型10x24mm突击步枪弹匣。"
 	default_ammo = /datum/ammo/bullet/rifle/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
 
 /obj/item/ammo_magazine/rifle/ap
 	name = "\improper M41A AP magazine (10x24mm)"
-	desc = "An armor-piercing 10x24mm assault rifle magazine."
+	desc = "一个穿甲型10x24mm突击步枪弹匣。"
 	desc_lore = "Unlike standard HEAP magazines, these reserve bullets do not have depleted uranium tips. Instead, these rounds trade off some of their bullet package for a lighter weight, reducing damage but increasing penetration capabilities and muzzle velocity."
 	default_ammo = /datum/ammo/bullet/rifle/ap
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
 /obj/item/ammo_magazine/rifle/le
 	name = "\improper M41A LE magazine (10x24mm)"
-	desc = "An armor-shredding 10x24mm assault rifle magazine."
+	desc = "一个碎甲型10x24mm突击步枪弹匣。"
 	default_ammo = /datum/ammo/bullet/rifle/le
 	ammo_band_color = AMMO_BAND_COLOR_LIGHT_EXPLOSIVE
 
 /obj/item/ammo_magazine/rifle/penetrating
 	name = "\improper M41A wall-penetrating magazine (10x24mm)"
-	desc = "A wall-penetrating 10x24mm assault rifle magazine."
+	desc = "一个穿墙型10x24mm突击步枪弹匣。"
 	default_ammo = /datum/ammo/bullet/rifle/ap/penetrating
 	ammo_band_color = AMMO_BAND_COLOR_PENETRATING
 
 /obj/item/ammo_magazine/rifle/toxin
 	name = "\improper M41A toxin magazine (10x24mm)"
-	desc = "A toxin 10x24mm assault rifle magazine."
+	desc = "一个毒素型10x24mm突击步枪弹匣。"
 	default_ammo = /datum/ammo/bullet/rifle/ap/toxin
 	ammo_band_color = AMMO_BAND_COLOR_TOXIN
 
 
 /obj/item/ammo_magazine/rifle/rubber
-	name = "M41A Rubber Magazine (10x24mm)"
-	desc = "A 10x24mm assault rifle magazine filled with rubber bullets."
+	name = "M41A橡胶弹弹匣 (10x24mm)"
+	desc = "一个装满橡胶子弹的10x24mm突击步枪弹匣。"
 	default_ammo = /datum/ammo/bullet/rifle/rubber
 	ammo_band_color = AMMO_BAND_COLOR_RUBBER
 
@@ -85,7 +85,7 @@
 
 /obj/item/ammo_magazine/rifle/m41aMK1
 	name = "\improper M41A MK1 magazine (10x24mm)"
-	desc = "A long rectangular box of rounds that is only compatible with the older M41A MK1. Holds up to 95 rounds."
+	desc = "一个仅兼容旧式M41A MK1的长方形弹药箱。可容纳95发子弹。"
 	icon_state = "m41a_mk1"
 	max_rounds = 95
 	gun_type = /obj/item/weapon/gun/rifle/m41aMK1
@@ -95,31 +95,31 @@
 
 /obj/item/ammo_magazine/rifle/m41aMK1/ap
 	name = "\improper M41A MK1 AP magazine (10x24mm)"
-	desc = "A long rectangular box of rounds that is only compatible with the older M41A MK1. Holds up to 95 rounds. This one contains AP bullets."
+	desc = "一个仅兼容旧式M41A MK1的长方形弹药箱。可容纳95发子弹。此箱内为穿甲弹。"
 	default_ammo = /datum/ammo/bullet/rifle/ap
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
 /obj/item/ammo_magazine/rifle/m41aMK1/heap
 	name = "\improper M41A MK1 HEAP magazine (10x24mm)"
-	desc = "A long rectangular box of rounds that is only compatible with the older M41A MK1. Holds up to 95 rounds. This one contains High-Explosive Armor-Piercing bullets."
+	desc = "一个仅兼容旧式M41A MK1的长方形弹药箱。可容纳95发子弹。此箱内为高爆穿甲弹。"
 	default_ammo = /datum/ammo/bullet/rifle/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
 
 /obj/item/ammo_magazine/rifle/m41aMK1/incendiary
 	name = "\improper M41A MK1 incendiary magazine (10x24mm)"
-	desc = "A long rectangular box of rounds that is only compatible with the older M41A MK1. Holds up to 95 rounds. This one contains incendiary bullets."
+	desc = "一个仅兼容旧式M41A MK1的长方形弹药箱。可容纳95发子弹。此箱内为燃烧弹。"
 	default_ammo = /datum/ammo/bullet/rifle/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
 
 /obj/item/ammo_magazine/rifle/m41aMK1/toxin
 	name = "\improper M41A MK1 toxin magazine (10x24mm)"
-	desc = "A long rectangular box of rounds that is only compatible with the older M41A MK1. Holds up to 95 rounds. This one contains toxic bullets."
+	desc = "一个仅兼容旧式M41A MK1的长方形弹药箱。可容纳95发子弹。此箱内为毒气弹。"
 	default_ammo = /datum/ammo/bullet/rifle/ap/toxin
 	ammo_band_color = AMMO_BAND_COLOR_TOXIN
 
 /obj/item/ammo_magazine/rifle/m41aMK1/penetrating
 	name = "\improper M41A MK1 wall-penetrating magazine (10x24mm)"
-	desc = "A long rectangular box of rounds that is only compatible with the older M41A MK1. Holds up to 95 rounds. This one contains wall-penetrating bullets."
+	desc = "一个仅兼容旧式M41A MK1的长方形弹药箱。可容纳95发子弹。此箱内为穿墙弹。"
 	default_ammo = /datum/ammo/bullet/rifle/ap/penetrating
 	ammo_band_color = AMMO_BAND_COLOR_PENETRATING
 
@@ -128,7 +128,7 @@
 
 /obj/item/ammo_magazine/rifle/m4ra
 	name = "\improper M4RA magazine (10x24mm)"
-	desc = "A magazine of 10x24mm rounds for use in the M4RA battle rifle."
+	desc = "一个用于M4RA战斗步枪的10x24mm子弹弹匣。"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/marksman_rifles.dmi'
 	icon_state = "m4ra"
 	default_ammo = /datum/ammo/bullet/rifle
@@ -140,39 +140,39 @@
 
 /obj/item/ammo_magazine/rifle/m4ra/ap
 	name = "\improper M4RA armor-piercing magazine (10x24mm)"
-	desc = "A magazine of armor-piercing 10x24mm rounds for use in the M4RA battle rifle."
+	desc = "一个用于M4RA战斗步枪的10x24mm穿甲弹弹匣。"
 	default_ammo = /datum/ammo/bullet/rifle/ap
 	max_rounds = 25
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
 /obj/item/ammo_magazine/rifle/m4ra/extended
 	name = "\improper M4RA extended magazine (10x24mm)"
-	desc = "An extended magazine of 10x24mm rounds for use in the M4RA battle rifle. Holds an additional 10 rounds, up to 35."
+	desc = "M4RA战斗步枪使用的10x24mm子弹扩容弹匣。额外增加10发容量，最多可容纳35发。"
 	icon_state = "m4ra_extended"
 	bonus_overlay = "m4ra_ex"
 	max_rounds = 35
 
 /obj/item/ammo_magazine/rifle/m4ra/rubber
-	name = "M4RA rubber magazine (10x24mm)"
-	desc = "A magazine of less than lethal rubber 10x24mm rounds for use in the M4RA battle rifle."
+	name = "M4RA橡胶弹弹匣（10x24mm）"
+	desc = "M4RA战斗步枪使用的10x24mm低致命性橡胶子弹弹匣。"
 	default_ammo = /datum/ammo/bullet/rifle/rubber
 	ammo_band_color = AMMO_BAND_COLOR_RUBBER
 
 /obj/item/ammo_magazine/rifle/m4ra/heap
 	name = "\improper M4RA high-explosive armor-piercing magazine (10x24mm)"
-	desc = "A magazine of high-explosive armor-piercing 10x24mm rounds for use in the M4RA battle rifle."
+	desc = "M4RA战斗步枪使用的高爆穿甲10x24mm子弹弹匣。"
 	default_ammo = /datum/ammo/bullet/rifle/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
 
 /obj/item/ammo_magazine/rifle/m4ra/penetrating
 	name = "\improper M4RA wall-penetrating magazine (10x24mm)"
-	desc = "A magazine of wall-penetrating 10x24mm rounds for use in the M4RA battle rifle."
+	desc = "M4RA战斗步枪使用的穿墙10x24mm子弹弹匣。"
 	default_ammo = /datum/ammo/bullet/rifle/ap/penetrating
 	ammo_band_color = AMMO_BAND_COLOR_PENETRATING
 
 /obj/item/ammo_magazine/rifle/m4ra/incendiary
 	name = "\improper M4RA incendiary magazine (10x24mm)"
-	desc = "A magazine of incendiary 10x24mm rounds for use in the M4RA battle rifle."
+	desc = "M4RA战斗步枪使用的燃烧10x24mm子弹弹匣。"
 	default_ammo = /datum/ammo/bullet/rifle/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
 
@@ -180,7 +180,7 @@
 //XM40 AKA SOF RIFLE FROM HELL (It's an EM-2, a prototype of the real world L85A1 way back from the 1940s. We've given it a blue plastic shell and an integral suppressor)
 /obj/item/ammo_magazine/rifle/xm40
 	name = "\improper XM40 magazine (10x24mm)"
-	desc = "A stubby and wide high-capacity double stack magazine used in the XM40 pulse rifle. Fires 10x24mm armor piercing rounds, holding up to 60 + 1 in the chamber."
+	desc = "XM40脉冲步枪使用的短粗宽体双排大容量弹匣。发射10x24mm穿甲弹，可容纳60发，膛内另有1发。"
 	icon_state = "m40_sd"
 	max_rounds = 60
 	gun_type = /obj/item/weapon/gun/rifle/m41a/elite/xm40
@@ -188,7 +188,7 @@
 
 /obj/item/ammo_magazine/rifle/xm40/heap
 	name = "\improper XM40 HEAP magazine (10x24mm)"
-	desc = "A stubby and wide high-capacity double stack magazine used in the XM40 pulse rifle. Fires 10x24mm high explosive armor piercing rounds, holding up to 60 + 1 in the chamber."
+	desc = "XM40脉冲步枪使用的短粗宽体双排大容量弹匣。发射10x24mm高爆穿甲弹，可容纳60发，膛内另有1发。"
 	icon_state = "m40_sd_heap"
 	max_rounds = 60
 	gun_type = /obj/item/weapon/gun/rifle/m41a/elite/xm40
@@ -199,7 +199,7 @@
 
 /obj/item/ammo_magazine/rifle/mar40
 	name = "\improper MAR magazine (7.62x39mm)"
-	desc = "A 7.62x39mm magazine for the MAR series of firearms."
+	desc = "MAR系列枪械使用的7.62x39mm弹匣。"
 	caliber = "7.62x39mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/assault_rifles.dmi'
 	icon_state = "mar40"
@@ -210,14 +210,14 @@
 
 /obj/item/ammo_magazine/rifle/mar40/extended
 	name = "\improper MAR extended magazine (7.62x39mm)"
-	desc = "A 7.62x39mm MAR magazine, this one carries more rounds than the average magazine."
+	desc = "7.62x39mm MAR弹匣，此型号比标准弹匣容量更大。"
 	max_rounds = 60
 	bonus_overlay = "mar40_ex"
 	icon_state = "mar40_extended"
 
 /obj/item/ammo_magazine/rifle/mar40/lmg
 	name = "\improper MAR drum magazine (7.62x39mm)"
-	desc = "A 7.62x39mm drum magazine for the MAR-50 LMG."
+	desc = "MAR-50轻机枪使用的7.62x39mm弹鼓。"
 	caliber = "7.62x39mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/machineguns.dmi'
 	icon_state = "mar50"
@@ -229,7 +229,7 @@
 
 /obj/item/ammo_magazine/rifle/m16
 	name = "\improper M16 magazine (5.56x45mm)"
-	desc = "A 5.56x45mm magazine for the M16 assault rifle."
+	desc = "M16突击步枪使用的5.56x45mm弹匣。"
 	caliber = "5.56x45mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/assault_rifles.dmi'
 	icon_state = "m16"
@@ -242,7 +242,7 @@
 
 /obj/item/ammo_magazine/rifle/m16/ap
 	name = "\improper M16 AP magazine (5.56x45mm)"
-	desc = "An armor-piercing 5.56x45mm magazine for the M16 assault rifle."
+	desc = "M16突击步枪使用的5.56x45mm穿甲弹弹匣。"
 	caliber = "5.56x45mm"
 	default_ammo = /datum/ammo/bullet/rifle/ap
 	max_rounds = 20
@@ -252,7 +252,7 @@
 
 /obj/item/ammo_magazine/rifle/m16/ext
 	name = "\improper M16 extended magazine (5.56x45mm)"
-	desc = "An extended 5.56x45mm magazine for the M16 assault rifle. This one contains 30 bullets."
+	desc = "M16突击步枪使用的5.56x45mm扩容弹匣。此型号包含30发子弹。"
 	icon_state = "m16_ext"
 	item_state = "m16_ext"
 	bonus_overlay = "m16_ext_overlay"
@@ -263,7 +263,7 @@
 
 /obj/item/ammo_magazine/rifle/ar10
 	name = "\improper AR10 magazine (7.62x51mm)"
-	desc = "A 7.62x51mm magazine for the AR10 assault rifle."
+	desc = "AR10突击步枪使用的7.62x51mm弹匣。"
 	caliber = "7.62x51mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/assault_rifles.dmi'
 	icon_state = "ar10"
@@ -277,7 +277,7 @@
 
 /obj/item/ammo_magazine/rifle/lmg
 	name = "\improper M41AE2 ammo box (10x24mm)"
-	desc = "A semi-rectangular 10x24mm box magazine for the M41AE2 Heavy Pulse Rifle."
+	desc = "M41AE2重型脉冲步枪使用的半矩形10x24mm弹匣。"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/machineguns.dmi'
 	icon_state = "m41ae2"
 	max_rounds = 300
@@ -311,21 +311,21 @@
 
 /obj/item/ammo_magazine/rifle/lmg/holo_target
 	name = "\improper M41AE2 ammo box (10x24mm holo-target)"
-	desc = "A semi-rectangular holo-targeting box magazine for the M41AE2 Heavy Pulse Rifle."
+	desc = "M41AE2重型脉冲步枪使用的半矩形全息瞄准弹匣。"
 	default_ammo = /datum/ammo/bullet/rifle/holo_target
 	max_rounds = 200
 	ammo_band_color = AMMO_BAND_COLOR_HOLOTARGETING
 
 /obj/item/ammo_magazine/rifle/lmg/ap
 	name = "\improper M41AE2 ammo box (10x24mm armor-piercing)"
-	desc = "A semi-rectangular armor-piercing box magazine for the M41AE2 Heavy Pulse Rifle."
+	desc = "M41AE2重型脉冲步枪使用的半矩形穿甲弹匣。"
 	default_ammo = /datum/ammo/bullet/rifle/ap
 	max_rounds = 300
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
 /obj/item/ammo_magazine/rifle/lmg/heap
 	name = "\improper M41AE2 ammo box (10x24mm high-explosive armor-piercing)"
-	desc = "A semi-rectangular box magazine for the M41AE2 Heavy Pulse Rifle. This one contains the standard armor-piercing explosive tipped round of the USCM."
+	desc = "M41AE2重型脉冲步枪使用的半矩形弹匣。内装USCM标准的穿甲爆弹头子弹。"
 	default_ammo = /datum/ammo/bullet/rifle/heap
 	max_rounds = 300
 	gun_type = /obj/item/weapon/gun/rifle/lmg
@@ -336,7 +336,7 @@
 
 /obj/item/ammo_magazine/rifle/type71
 	name = "\improper Type 71 magazine (5.45x39mm)"
-	desc = "A 5.45x39mm high-capacity casket magazine for the Type 71 rifle."
+	desc = "71式步枪使用的5.45x39mm大容量盒式弹匣。"
 	caliber = "5.45x39mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/assault_rifles.dmi'
 	icon_state = "type71"
@@ -348,13 +348,13 @@
 
 /obj/item/ammo_magazine/rifle/type71/ap
 	name = "\improper Type 71 AP magazine (5.45x39mm)"
-	desc = "An armor-piercing 5.45x39mm high-capacity casket magazine for the Type 71 rifle."
+	desc = "71式步枪使用的5.45x39mm穿甲大容量盒式弹匣。"
 	default_ammo = /datum/ammo/bullet/rifle/type71/ap
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
 /obj/item/ammo_magazine/rifle/type71/heap
 	name = "\improper Type 71 HEAP magazine (5.45x39mm)"
-	desc = "A standard high-explosive armor-piercing 5.45x39mm high-capacity casket magazine for the Type 71 rifle."
+	desc = "71式步枪使用的标准高爆穿甲5.45x39mm大容量盒式弹匣。"
 	default_ammo = /datum/ammo/bullet/rifle/type71/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
 
@@ -363,7 +363,7 @@
 
 /obj/item/ammo_magazine/rifle/ak4047
 	name = "\improper AK-4047 magazine (10x24mm)"
-	desc = "A rugged and reliable 40-round magazine designed for the AK-4047 series assault rifle. Built for durability, it can withstand harsh conditions and keep firing even in the worst environments."
+	desc = "专为AK-4047系列突击步枪设计的坚固可靠40发弹匣。为耐用性打造，可承受恶劣条件，即使在最差环境中也能持续射击。"
 	caliber = "10x24mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/assault_rifles.dmi'
 	icon_state = "ak4047"
@@ -381,19 +381,19 @@
 
 /obj/item/ammo_magazine/rifle/ak4047/ap
 	name = "\improper AK-4047 AP magazine (10x24mm)"
-	desc = "A 10mm magazine containing armor piercing rounds for the AK-4047 rifle."
+	desc = "AK-4047步枪使用的10mm穿甲弹弹匣。"
 	default_ammo = /datum/ammo/bullet/rifle/ap
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
 /obj/item/ammo_magazine/rifle/ak4047/heap
 	name = "\improper AK-4047 HEAP magazine (10x24mm)"
-	desc = "A 10mm magazine containing the standard high explosive armor piercing rounds for the AK-4047 rifle."
+	desc = "AK-4047步枪使用的标准高爆穿甲10mm子弹弹匣。"
 	default_ammo = /datum/ammo/bullet/rifle/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
 
 /obj/item/ammo_magazine/rifle/ak4047/incendiary
 	name = "\improper AK-4047 incendiary magazine (10x24mm)"
-	desc = "A 10mm assault rifle magazine containing the incendiary rounds for the AK-4047 rifle."
+	desc = "一个10毫米突击步枪弹匣，内装AK-4047步枪的燃烧弹。"
 	default_ammo = /datum/ammo/bullet/rifle/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
 
@@ -402,7 +402,7 @@
 
 /obj/item/ammo_magazine/rifle/l42a
 	name = "\improper L42A magazine (10x24mm)"
-	desc = "A 10x24mm battle rifle magazine."
+	desc = "一个10x24毫米战斗步枪弹匣。"
 	caliber = "10x24mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/marksman_rifles.dmi'
 	icon_state = "l42mk1"
@@ -417,43 +417,43 @@
 
 /obj/item/ammo_magazine/rifle/l42a/ap
 	name = "\improper L42A AP magazine (10x24mm)"
-	desc = "An armor-piercing 10x24mm battle rifle magazine."
+	desc = "一个穿甲10x24毫米战斗步枪弹匣。"
 	default_ammo = /datum/ammo/bullet/rifle/ap
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
 /obj/item/ammo_magazine/rifle/l42a/le
 	name = "\improper L42A LE magazine (10x24mm)"
-	desc = "An armor-shredding 10x24mm battle rifle magazine."
+	desc = "一个破甲10x24毫米战斗步枪弹匣。"
 	default_ammo = /datum/ammo/bullet/rifle/le
 	ammo_band_color = AMMO_BAND_COLOR_LIGHT_EXPLOSIVE
 
 /obj/item/ammo_magazine/rifle/l42a/rubber
-	name = "L42A rubber magazine (10x24mm)"
-	desc = "A 10x24mm battle rifle magazine filled with rubber bullets."
+	name = "L42A橡胶弹弹匣（10x24毫米）"
+	desc = "一个装满橡胶子弹的10x24毫米战斗步枪弹匣。"
 	default_ammo = /datum/ammo/bullet/rifle/rubber
 	ammo_band_color = AMMO_BAND_COLOR_RUBBER
 
 /obj/item/ammo_magazine/rifle/l42a/heap
 	name = "\improper L42A HEAP (10x24mm)"
-	desc = "A high-explosive armor-piercing 10x24mm battle rifle magazine."
+	desc = "一个高爆穿甲10x24毫米战斗步枪弹匣。"
 	default_ammo = /datum/ammo/bullet/rifle/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
 
 /obj/item/ammo_magazine/rifle/l42a/penetrating
 	name = "\improper L42A wall-penetrating magazine (10x24mm)"
-	desc = "A wall-penetrating 10x24mm battle rifle magazine."
+	desc = "一个穿墙10x24毫米战斗步枪弹匣。"
 	default_ammo = /datum/ammo/bullet/rifle/ap/penetrating
 	ammo_band_color = AMMO_BAND_COLOR_PENETRATING
 
 /obj/item/ammo_magazine/rifle/l42a/toxin
 	name = "\improper L42A toxin magazine (10x24mm)"
-	desc = "A toxin 10x244mm battle rifle magazine."
+	desc = "一个毒素10x244毫米战斗步枪弹匣。"
 	default_ammo = /datum/ammo/bullet/rifle/ap/toxin
 	ammo_band_color = AMMO_BAND_COLOR_TOXIN
 
 /obj/item/ammo_magazine/rifle/l42a/extended
 	name = "\improper L42A extended magazine (10x24mm)"
-	desc = "An extended 10x24mm battle rifle magazine."
+	desc = "一个加长型10x24毫米战斗步枪弹匣。"
 	caliber = "10x24mm"
 	icon_state = "l42mk1_extended"
 	bonus_overlay = "l42_ex_overlay"
@@ -464,7 +464,7 @@
 
 /obj/item/ammo_magazine/rifle/l42a/incendiary
 	name = "\improper L42A incendiary magazine (10x24mm)"
-	desc = "An incendiary 10mm battle rifle magazine."
+	desc = "一个燃烧型10毫米战斗步枪弹匣。"
 	caliber = "10x24mm"
 	default_ammo = /datum/ammo/bullet/rifle/incendiary
 	max_rounds = 20
@@ -474,7 +474,7 @@
 
 /obj/item/ammo_magazine/rifle/l42a/abr40
 	name = "\improper ABR-40 magazine (10x24mm)"
-	desc = "An ABR-40 magazine loaded with full metal jacket ammunition, for use at the firing range or while hunting. Theoretically cross-compatible with an L42A battle rifle."
+	desc = "一个ABR-40弹匣，装有全金属被甲弹，用于靶场射击或狩猎。理论上与L42A战斗步枪通用。"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/marksman_rifles.dmi'
 	icon_state = "abr40"
 	bonus_overlay = "abr40_mag_overlay"
@@ -486,7 +486,7 @@
 
 /obj/item/ammo_magazine/rifle/l42a/abr40/holo_target
 	name = "\improper ABR-40 holotargeting magazine (10x24mm)"
-	desc = "An ABR-40 magazine loaded with holo-targeting ammunition, primarily utilized to highlight hunting targets for easier target capture. Theoretically cross-compatible with an L42A battle rifle."
+	desc = "一个ABR-40弹匣，装有全息瞄准弹药，主要用于高亮狩猎目标以便捕获。理论上与L42A战斗步枪通用。"
 	default_ammo = /datum/ammo/bullet/rifle/holo_target/hunting
 	ammo_band_color = AMMO_BAND_COLOR_HOLOTARGETING
 
@@ -495,7 +495,7 @@
 
 /obj/item/ammo_magazine/rifle/nsg23
 	name = "\improper NSG 23 magazine (10x24mm)"
-	desc = "An NSG 23 assault rifle magazine."
+	desc = "一个NSG 23突击步枪弹匣。"
 	caliber = "10x24mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/WY/assault_rifles.dmi'
 	icon_state = "nsg23"
@@ -508,7 +508,7 @@
 
 /obj/item/ammo_magazine/rifle/nsg23/extended
 	name = "\improper NSG 23 high-capacity drum magazine (10x24mm)"
-	desc = "An NSG 23 assault rifle magazine. This one contains 45 bullets."
+	desc = "一个NSG 23突击步枪弹匣。此弹匣装有45发子弹。"
 	icon_state = "nsg23_ext"
 	item_state = "nsg23_ext"
 	bonus_overlay = "nsg23_ext_overlay"
@@ -516,25 +516,25 @@
 
 /obj/item/ammo_magazine/rifle/nsg23/ap
 	name = "\improper NSG 23 armor-piercing magazine (10x24mm)"
-	desc = "An armor-piercing NSG 23 assault rifle magazine."
+	desc = "一个穿甲NSG 23突击步枪弹匣。"
 	default_ammo = /datum/ammo/bullet/rifle/ap
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
 /obj/item/ammo_magazine/rifle/nsg23/heap
 	name = "\improper NSG 23 HEAP magazine (10x24mm)"
-	desc = "A high-explosive armor-piercing NSG 23 assault rifle magazine."
+	desc = "一个高爆穿甲NSG 23突击步枪弹匣。"
 	default_ammo = /datum/ammo/bullet/rifle/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
 
 /obj/item/ammo_magazine/rifle/nsg23/incendiary
 	name = "\improper NSG 23 incendiary magazine (10x24mm)"
-	desc = "A white phosphorus-tipped incendiary NSG 23 assault rifle magazine."
+	desc = "一个白磷弹头燃烧型NSG 23突击步枪弹匣。"
 	default_ammo = /datum/ammo/bullet/rifle/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
 
 /obj/item/ammo_magazine/rifle/nsg23/rubber
 	name = "\improper NSG 23 training magazine (10x24mm)"
-	desc = "An NSG 23 assault rifle magazine. This one is loaded with rubber bullets."
+	desc = "一个NSG 23突击步枪弹匣。此弹匣装有橡胶子弹。"
 	default_ammo = /datum/ammo/bullet/rifle/rubber
 	ammo_band_color = AMMO_BAND_COLOR_RUBBER
 
@@ -542,7 +542,7 @@
 //Bolt action rifle ammo
 /obj/item/ammo_magazine/rifle/boltaction
 	name = "\improper Basira-Armstrong magazine (6.5mm)"
-	desc = "A magazine for the Basira-Armstrong hunting rifle. Compliant with the 15-cartridge limit on civilian hunting rifles."
+	desc = "一个用于Basira-Armstrong猎枪的弹匣。符合民用猎枪15发子弹的限制。"
 	caliber = "6.5mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/marksman_rifles.dmi'
 	icon_state = "hunting"
@@ -553,7 +553,7 @@
 
 /obj/item/ammo_magazine/rifle/boltaction/vulture
 	name = "\improper M707 \"Vulture\" magazine (20x102mm)"
-	desc = "A magazine for the M707 \"Vulture\" anti-materiel rifle. Contains up to 4 massively oversized rounds."
+	desc = "一个用于M707 \"Vulture\" anti-materiel rifle. Contains up to 4 massively oversized rounds."
 	caliber = "20x102mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/marksman_rifles.dmi'
 	icon_state = "vulture"
@@ -567,7 +567,7 @@
 
 /obj/item/ammo_magazine/rifle/boltaction/vulture/holo_target
 	name = "\improper M707 \"Vulture\" holo-target magazine (20x102mm)"
-	desc = "A magazine for the M707 \"Vulture\" anti-materiel rifle. Contains up to 4 massively oversized <b>IFF-CAPABLE</b> holo-targeting rounds, which excel at marking heavy targets to be attacked by allied ground forces. The logistical requirements for such capabilities heavily hinder the performance and stopping power of this round."
+	desc = "一个用于M707 \"Vulture\" anti-materiel rifle. Contains up to 4 massively oversized <b>IFF-CAPABLE</b> holo-targeting rounds, which excel at marking heavy targets to be attacked by allied ground forces. The logistical requirements for such capabilities heavily hinder the performance and stopping power of this round."
 	default_ammo =  /datum/ammo/bullet/sniper/anti_materiel/vulture/holo_target
 	ammo_band_color = AMMO_BAND_COLOR_HOLOTARGETING
 
@@ -575,7 +575,7 @@
 
 /obj/item/ammo_magazine/rifle/rmc_f90
 	name = "\improper F903 magazine (10x24mm)"
-	desc = "A 10x24mm F903 assault rifle magazine."
+	desc = "一个10x24毫米F903突击步枪弹匣。"
 	caliber = "10x24mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/TWE/assault_rifles.dmi'
 	icon_state = "aug"
@@ -589,7 +589,7 @@
 
 /obj/item/ammo_magazine/rifle/rmc_f90/marksman
 	name = "\improper F903A1 Marksman magazine (10x24mm)"
-	desc = "An armor-piercing 10x24mm armor-piercing F903 assault rifle magazine."
+	desc = "一个穿甲10x24毫米穿甲F903突击步枪弹匣。"
 	icon_state = "aug_dmr"
 	item_state = "aug_dmr"
 	default_ammo = /datum/ammo/bullet/rifle/ap
@@ -601,13 +601,13 @@
 
 /obj/item/ammo_magazine/rifle/rmc_f90/heap
 	name = "\improper F903 HEAP magazine (10x24mm)"
-	desc = "A high-explosive armor-piercing 10x24mm armor piercing high explosive assault rifle magazine."
+	desc = "一个高爆穿甲10x24毫米穿甲高爆突击步枪弹匣。"
 	default_ammo = /datum/ammo/bullet/rifle/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
 
 /obj/item/ammo_magazine/rifle/rmc_f90/marksman/heap
 	name = "\improper F903A1 Marksman magazine (10x24mm)"
-	desc = "A high-explosive armor-piercing 10x24mm F903 assault rifle magazine."
+	desc = "一个高爆穿甲10x24毫米F903突击步枪弹匣。"
 	icon_state = "aug_dmr"
 	item_state = "aug_dmr"
 	default_ammo = /datum/ammo/bullet/rifle/heap
@@ -615,7 +615,7 @@
 
 /obj/item/ammo_magazine/rifle/l23
 	name = "\improper L23 magazine (8.88x51mm)"
-	desc = "An 8.88x51mm L23 assault rifle magazine."
+	desc = "一个8.88x51mm L23突击步枪弹匣。"
 	caliber = "8.88x51mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/TWE/assault_rifles.dmi'
 	icon_state = "l23"
@@ -628,7 +628,7 @@
 
 /obj/item/ammo_magazine/rifle/l23/extended
 	name = "\improper L23 high-capacity drum magazine (8.88x51mm)"
-	desc = "An 8.88x51mm L23 assault rifle magazine. This one contains 45 bullets."
+	desc = "一个8.88x51mm L23突击步枪弹匣。此弹匣装有45发子弹。"
 	icon_state = "l23_ext"
 	item_state = "l23_ext"
 	bonus_overlay = "l23_ext_overlay"
@@ -636,37 +636,37 @@
 
 /obj/item/ammo_magazine/rifle/l23/ap
 	name = "\improper L23 armor-piercing magazine (8.88x51mm)"
-	desc = "An armor-piercing 8.88x51mm L23 assault rifle magazine."
+	desc = "一个穿甲型8.88x51mm L23突击步枪弹匣。"
 	default_ammo = /datum/ammo/bullet/rifle/l23/ap
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
 /obj/item/ammo_magazine/rifle/l23/heap
 	name = "\improper L23 HEAP magazine (8.88x51mm)"
-	desc = "A high-explosive armor-piercing 8.88x51mm L23 assault rifle magazine."
+	desc = "一个高爆穿甲型8.88x51mm L23突击步枪弹匣。"
 	default_ammo = /datum/ammo/bullet/rifle/l23/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
 
 /obj/item/ammo_magazine/rifle/l23/incendiary
 	name = "\improper L23 incendiary magazine (8.88x51mm)"
-	desc = "A white phosphorus-tipped incendiary 8.88x51mm L23 assault rifle magazine."
+	desc = "一个白磷燃烧型8.88x51mm L23突击步枪弹匣。"
 	default_ammo = /datum/ammo/bullet/rifle/l23/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
 
 /obj/item/ammo_magazine/rifle/l23/rubber
 	name = "\improper L23 practice magazine (8.88x51mm)"
-	desc = "An L23 assault rifle magazine. This one is loaded with rubber bullets."
+	desc = "一个L23突击步枪弹匣。此弹匣装填的是橡胶子弹。"
 	default_ammo = /datum/ammo/bullet/rifle/l23/rubber
 	ammo_band_color = AMMO_BAND_COLOR_RUBBER
 
 /obj/item/ammo_magazine/rifle/l23/toxin
 	name = "\improper L23 toxin magazine (8.88x51mm)"
-	desc = "A toxin 8.88x51mm L23 assault rifle magazine."
+	desc = "一个毒素型8.88x51mm L23突击步枪弹匣。"
 	default_ammo = /datum/ammo/bullet/rifle/l23/ap/toxin
 	ammo_band_color = AMMO_BAND_COLOR_TOXIN
 
 /obj/item/ammo_magazine/rifle/l64
 	name = "\improper L64A3 squash-head magazine (8.88x51mm Caseless)"
-	desc = "A magazine of L10A7 squash-head match-grade 8.88x51mm ammo."
+	desc = "一个装有L10A7碎甲比赛级8.88x51mm弹药的弹匣。"
 	caliber = "8.88x51mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/TWE/marksman_rifles.dmi'
 	icon_state = "l64"
@@ -678,7 +678,7 @@
 
 /obj/item/ammo_magazine/rifle/l64/ap
 	name = "\improper L64 armor-piercing magazine (8.88x51mm)"
-	desc = "An armor-piercing 8.88x51mm L23 assault rifle magazine."
+	desc = "一个穿甲型8.88x51mm L23突击步枪弹匣。"
 	default_ammo = /datum/ammo/bullet/rifle/l64/ap
 	ammo_band_icon = "+l64_band"
 	ammo_band_icon_empty = "+l64_band_e"
@@ -688,7 +688,7 @@
 
 /obj/item/ammo_magazine/rifle/xm51
 	name = "\improper XM51 magazine (16g)"
-	desc = "A 16 gauge shotgun magazine."
+	desc = "一个16号口径霰弹枪弹匣。"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/shotguns.dmi'
 	icon_state = "xm51"
 	caliber = "16g"
@@ -705,7 +705,7 @@
 
 /obj/item/ammo_magazine/rifle/xm51/cmb/rubber
 	name = "\improper Model 1771 magazine (16g rubber buckshot)"
-	desc = "A 16 gauge rubber buckshot shotgun magazine."
+	desc = "一个16号口径橡胶鹿弹霰弹枪弹匣。"
 	icon_state = "m51b_rubber"
 	gun_type = /obj/item/weapon/gun/rifle/xm51/cmb
 	default_ammo = /datum/ammo/bullet/shotgun/light/rubber
@@ -714,7 +714,7 @@
 //P9 SHARP Rifle
 
 /obj/item/ammo_magazine/rifle/sharp
-	name = "sharp rifle magazine"
+	name = "SHARP步枪弹匣"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/grenade_launchers.dmi'
 	icon_state = "sharp_explosive_mag"
 	item_state = "sharprifle"
@@ -728,17 +728,17 @@
 
 /obj/item/ammo_magazine/rifle/sharp/explosive
 	name = "\improper 9X-E sticky explosive dart magazine"
-	desc = "A specialized explosive sticky dart magazine for the SHARP rifle."
+	desc = "一个为SHARP步枪设计的专用爆炸粘性飞镖弹匣。"
 
 /obj/item/ammo_magazine/rifle/sharp/incendiary
 	name = "\improper 9X-T sticky incendiary dart magazine"
-	desc = "A specialized incendiary dart magazine for the SHARP rifle."
+	desc = "一个为SHARP步枪设计的专用燃烧飞镖弹匣。"
 	icon_state = "sharp_incendiary_mag"
 	default_ammo = /datum/ammo/rifle/sharp/incendiary
 
 /obj/item/ammo_magazine/rifle/sharp/flechette
 	name = "\improper 9X-F flechette dart magazine"
-	desc = "A specialized flechette dart magazine for the SHARP rifle."
+	desc = "一个为SHARP步枪设计的专用箭形飞镖弹匣。"
 	icon_state = "sharp_flechette_mag"
 	default_ammo = /datum/ammo/rifle/sharp/flechette
 

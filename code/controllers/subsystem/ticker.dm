@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(ticker)
-	name = "Ticker"
+	name = "计时器"
 	init_order = SS_INIT_TICKER
 
 	priority = SS_PRIORITY_TICKER
@@ -175,14 +175,14 @@ SUBSYSTEM_DEF(ticker)
 	), 3 SECONDS)
 
 /datum/controller/subsystem/ticker/proc/setup()
-	to_chat(world, SPAN_BOLDNOTICE("Enjoy the game!"))
+	to_chat(world, SPAN_BOLDNOTICE("祝您游戏愉快！"))
 	var/init_start = world.timeofday
 	//Create and announce mode
 	mode = config.pick_mode(GLOB.master_mode)
 
 	CHECK_TICK
 	if(!mode.can_start(bypass_checks))
-		to_chat(world, "Requirements to start [GLOB.master_mode] not met. Reverting to pre-game lobby.")
+		to_chat(world, "启动[GLOB.master_mode]的条件未满足。正在返回游戏前大厅。")
 		// Make only one more attempt
 		if(world.time - 2 * wait > CONFIG_GET(number/lobby_countdown) SECONDS)
 			flash_clients()
@@ -193,16 +193,16 @@ SUBSYSTEM_DEF(ticker)
 					active_admins = TRUE
 					break
 			if(active_admins)
-				to_chat(world, SPAN_CENTERBOLD("The game start has been delayed."))
+				to_chat(world, SPAN_CENTERBOLD("游戏开始已被延迟。"))
 				message_admins(SPAN_ADMINNOTICE("Alert: Insufficent players ready to start [GLOB.master_mode].\nEither change mode and map or start round and bypass checks."))
 			else
 				var/fallback_mode = CONFIG_GET(string/gamemode_default)
 				SSticker.save_mode(fallback_mode)
 				GLOB.master_mode = fallback_mode
-				to_chat(world, SPAN_BOLDNOTICE("Notice: The Gamemode for next round has been set to [fallback_mode]"))
+				to_chat(world, SPAN_BOLDNOTICE("通知：下一回合的游戏模式已设置为[fallback_mode]"))
 				handle_map_reboot()
 		else
-			to_chat(world, "Attempting again...")
+			to_chat(world, "正在重试...")
 		QDEL_NULL(mode)
 		GLOB.RoleAuthority.reset_roles()
 		return FALSE
@@ -210,7 +210,7 @@ SUBSYSTEM_DEF(ticker)
 	CHECK_TICK
 	if(!mode.pre_setup() && !bypass_checks)
 		QDEL_NULL(mode)
-		to_chat(world, "<b>Error in pre-setup for [GLOB.master_mode].</b> Reverting to pre-game lobby.")
+		to_chat(world, "<b>[GLOB.master_mode]的预设出现错误。</b>正在返回游戏前大厅。")
 		GLOB.RoleAuthority.reset_roles()
 		return FALSE
 
@@ -362,7 +362,7 @@ SUBSYSTEM_DEF(ticker)
 	if(mode)
 		GLOB.master_mode = SSmapping.configs[GROUND_MAP].force_mode ? SSmapping.configs[GROUND_MAP].force_mode : mode
 	else
-		GLOB.master_mode = "Extended"
+		GLOB.master_mode = "延长战"
 	log_game("Saved mode is '[GLOB.master_mode]'")
 
 
@@ -387,16 +387,16 @@ SUBSYSTEM_DEF(ticker)
 
 	var/skip_delay = check_rights()
 	if(delay_end && !skip_delay)
-		to_chat(world, SPAN_BOLDNOTICE("An admin has delayed the round end."))
+		to_chat(world, SPAN_BOLDNOTICE("管理员已延迟回合结束。"))
 		return
 
-	to_chat(world, SPAN_BOLDNOTICE("Rebooting World in [DisplayTimeText(delay)]. [reason]"))
+	to_chat(world, SPAN_BOLDNOTICE("世界将在[DisplayTimeText(delay)]后重启。[reason]"))
 
 	var/start_wait = world.time
 	sleep(delay - (world.time - start_wait))
 
 	if(delay_end && !skip_delay)
-		to_chat(world, SPAN_BOLDNOTICE("Reboot was cancelled by an admin."))
+		to_chat(world, SPAN_BOLDNOTICE("重启已被管理员取消。"))
 		return
 
 	log_game("Rebooting World. [reason]")
@@ -429,7 +429,7 @@ SUBSYSTEM_DEF(ticker)
 		if(istype(M))
 			J.equip_job(M)
 			if(player.ckey in GLOB.donator_items)
-				to_chat(player, SPAN_BOLDNOTICE("You have gear available in the personal gear vendor near Requisitions."))
+				to_chat(player, SPAN_BOLDNOTICE("你可在补给处附近的个人装备贩卖机领取装备。"))
 
 			if(M.client)
 				var/client/C = M.client
@@ -461,7 +461,7 @@ SUBSYSTEM_DEF(ticker)
 			if(player.job)
 				INVOKE_ASYNC(GLOB.RoleAuthority, TYPE_PROC_REF(/datum/authority/branch/role, equip_role), player, GLOB.RoleAuthority.roles_by_name[player.job], FALSE)
 				if(player.ckey in GLOB.donator_items)
-					to_chat(player, SPAN_BOLDNOTICE("You have gear available in the personal gear vendor near Requisitions."))
+					to_chat(player, SPAN_BOLDNOTICE("你可在补给处附近的个人装备贩卖机领取装备。"))
 
 			if(player.client)
 				var/client/C = player.client
@@ -472,7 +472,7 @@ SUBSYSTEM_DEF(ticker)
 	if(captainless)
 		for(var/mob/M in GLOB.player_list)
 			if(!istype(M,/mob/new_player))
-				to_chat(M, "Marine commanding officer position not forced on anyone.")
+				to_chat(M, "陆战队指挥官职位未强制分配给任何人。")
 
 /datum/controller/subsystem/ticker/proc/send_tip_of_the_round()
 	var/message
@@ -484,7 +484,7 @@ SUBSYSTEM_DEF(ticker)
 		CRASH("send_tip_of_the_round() failed somewhere")
 
 	if(message)
-		to_chat(world, SPAN_PURPLE("<b>Tip of the round: </b>[html_encode(message)]"))
+		to_chat(world, SPAN_PURPLE("<b>本回合提示：</b>[html_encode(message)]"))
 		return TRUE
 	else
 		return FALSE

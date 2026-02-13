@@ -4,14 +4,14 @@
 /datum/emote/living/carbon/human/synthetic/working_joe/question/lost
 	key = "lost"
 	sound = 'sound/voice/joe/lost.ogg'
-	say_message = "Are you lost?"
+	say_message = "你迷路了吗？"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/misbehaving
 	key = "misbehaving"
 	sound = 'sound/voice/joe/misbehaving.ogg'
 	haz_sound = 'sound/voice/joe/misbehaving_haz.ogg'
-	say_message = "Have you been misbehaving?"
+	say_message = "你行为不端了吗？"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
@@ -20,7 +20,7 @@
 	sound = 'sound/voice/joe/what_happened_to_you.ogg'
 	haz_sound = 'sound/voice/joe/what_happened_to_you_haz.ogg'
 	upp_joe_sound = 'sound/voice/joe/upp_joe/sluchilos.ogg'
-	say_message = "What happened to you?"
+	say_message = "你出什么事了？"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
@@ -29,35 +29,35 @@
 	sound = 'sound/voice/joe/what_is_this.ogg'
 	haz_sound = 'sound/voice/joe/what_is_this_haz.ogg'
 	upp_joe_sound = 'sound/voice/joe/upp_joe/chtoeto.ogg'
-	say_message = "What is this?"
+	say_message = "这是什么？"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/whats_the_matter
 	key = "whatsthematter"
 	upp_joe_sound = 'sound/voice/joe/upp_joe/chemdelo.ogg'
-	say_message = "What's the matter?"
+	say_message = "怎么回事？"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/what_is_happening
 	key = "whatshappening"
 	upp_joe_sound = 'sound/voice/joe/upp_joe/chtoproishodit.ogg'
-	say_message = "What is happening?"
+	say_message = "发生什么了？"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/what_is_it
 	key = "whatisit"
 	upp_joe_sound = 'sound/voice/joe/upp_joe/chtotakoe.ogg'
-	say_message = "What is it?"
+	say_message = "什么情况？"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/who_did_this_upp
 	key = "whodidshitupp"
 	upp_joe_sound = 'sound/voice/joe/upp_joe/ktoetosdelal.ogg'
-	say_message = "Who did this?"
+	say_message = "谁干的？"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = UPP_JOE_EMOTE
 
@@ -65,7 +65,7 @@
 	key = "whatsthis"
 	sound = 'sound/voice/joe/whats_this.ogg'
 	haz_sound = 'sound/voice/joe/whats_this_haz.ogg'
-	say_message = "What's this?"
+	say_message = "这是什么？"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
@@ -73,7 +73,7 @@
 	key = "camefrom"
 	sound = 'sound/voice/joe/came_from.ogg'
 	haz_sound = 'sound/voice/joe/came_from_haz.ogg'
-	say_message = "Would you like to tell me where this came from?"
+	say_message = "你愿意告诉我这东西哪来的吗？"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
@@ -81,7 +81,7 @@
 	key = "reportyou"
 	sound = 'sound/voice/joe/report_you.ogg'
 	haz_sound = 'sound/voice/joe/report_you_haz.ogg'
-	say_message = "You understand i'll have to report you for this?"
+	say_message = "你明白我得为此上报你吗？"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
@@ -89,7 +89,7 @@
 	key = "thatsound"
 	sound = 'sound/voice/joe/that_sound.ogg'
 	upp_joe_sound = 'sound/voice/joe/upp_joe/za_zvuk.ogg'
-	say_message = "What was that sound?"
+	say_message = "那是什么声音？"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|UPP_JOE_EMOTE
 
@@ -98,7 +98,7 @@
 	sound = 'sound/voice/joe/doing_here.ogg'
 	haz_sound = 'sound/voice/joe/doing_here_haz.ogg'
 	upp_joe_sound = 'sound/voice/joe/upp_joe/chtovizdesdelaete.ogg'
-	say_message = "What are you doing here?"
+	say_message = "你在这干什么？"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
@@ -106,7 +106,7 @@
 	key = "goingon"
 	sound = 'sound/voice/joe/going_on.ogg'
 	haz_sound = 'sound/voice/joe/going_on_haz.ogg'
-	say_message = "What's going on here?"
+	say_message = "这里什么情况？"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
@@ -115,7 +115,7 @@
 	sound = 'sound/voice/joe/another_problem.ogg'
 	haz_sound = 'sound/voice/joe/another_problem_haz.ogg'
 	upp_joe_sound = 'sound/voice/joe/upp_joe/opyatproblema.ogg'
-	say_message = "Another problem?"
+	say_message = "又出问题了？"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
@@ -123,7 +123,7 @@
 	key = "wasthatyou"
 	sound = 'sound/voice/joe/was_that_you.ogg'
 	haz_sound = 'sound/voice/joe/another_problem_haz.ogg'
-	say_message = "Was that you?"
+	say_message = "是你干的吗？"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
@@ -131,7 +131,7 @@
 	key = "responsiblefor"
 	sound = 'sound/voice/joe/responsible_for_this.ogg'
 	haz_sound = 'sound/voice/joe/responsible_for_this_haz.ogg'
-	say_message = "Who's responsible for this?"
+	say_message = "谁该为此负责？"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
@@ -140,7 +140,7 @@
 	sound = 'sound/voice/joe/something_amiss.ogg'
 	haz_sound = 'sound/voice/joe/something_amiss_haz.ogg'
 	upp_joe_sound = 'sound/voice/joe/upp_joe/ne_tak.ogg'
-	say_message = "Something amiss?"
+	say_message = "有什么不对劲吗？"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
@@ -149,49 +149,49 @@
 	sound = 'sound/voice/joe/set_off_alarm.ogg'
 	haz_sound = 'sound/voice/joe/set_off_alarm_haz.ogg'
 	upp_joe_sound = 'sound/voice/joe/upp_joe/vcluchat.ogg'
-	say_message = "Are you authorized to set off this alarm?"
+	say_message = "你有权限触发这个警报吗？"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/someoneplaying
 	key = "someoneplaying"
 	sound = 'sound/voice/joe/someone_playing.ogg'
-	say_message = "Is someone playing a game with me?"
+	say_message = "有人在耍我吗？"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/areyouplaying
 	key = "areyouplaying"
 	sound = 'sound/voice/joe/are_you_playing.ogg'
 	haz_sound = 'sound/voice/joe/are_you_playing_haz.ogg'
-	say_message = "Are you playing a game with me?"
+	say_message = "你在耍我吗？"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/areyouplaying_upp
 	key = "areyouplayingupp"
 	upp_joe_sound = 'sound/voice/joe/upp_joe/razigrivaete.ogg'
-	say_message = "Are you... trying to prank me?"
+	say_message = "你...是想捉弄我？"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/thatlight
 	key = "thatlight"
 	sound = 'sound/voice/joe/was_that_light.ogg'
-	say_message = "What was that light?"
+	say_message = "那是什么光？"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/quitefinished
 	key = "quitefinished"
 	sound = 'sound/voice/joe/quite_finished.ogg'
 	haz_sound = 'sound/voice/joe/quite_finished_haz.ogg'
-	say_message = "Are you quite finished?"
+	say_message = "你闹够了吗？"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/quitefinished_upp
 	key = "quitefinishedupp"
 	upp_joe_sound = 'sound/voice/joe/upp_joe/dostatochno.ogg'
-	say_message = "Well, is that enough?"
+	say_message = "好了，够了吗？"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = UPP_JOE_EMOTE
 
@@ -200,7 +200,7 @@
 	sound = 'sound/voice/joe/where_are_you_going.ogg'
 	haz_sound = 'sound/voice/joe/where_are_you_going_haz.ogg'
 	upp_joe_sound = 'sound/voice/joe/upp_joe/kudasobralis.ogg'
-	say_message = "Where are you going?"
+	say_message = "你要去哪？"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
@@ -209,7 +209,7 @@
 	sound = 'sound/voice/joe/cant_see_you.ogg'
 	haz_sound = 'sound/voice/joe/cant_see_you_haz.ogg'
 	upp_joe_sound = 'sound/voice/joe/upp_joe/gde_vi.ogg'
-	say_message = "I can't see you. Where are you?"
+	say_message = "我看不见你。你在哪？"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
@@ -217,7 +217,7 @@
 	key = "needsassistance"
 	sound = 'sound/voice/joe/needs_assistance.ogg'
 	upp_joe_sound = 'sound/voice/joe/upp_joe/nujna_pomotch.ogg'
-	say_message = "Is there someone that needs assistance?"
+	say_message = "有人需要协助吗？"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|UPP_JOE_EMOTE
 
@@ -226,7 +226,7 @@
 	sound = 'sound/voice/joe/what_are_you.ogg'
 	haz_sound = 'sound/voice/joe/what_are_you_haz.ogg'
 	upp_joe_sound = 'sound/voice/joe/upp_joe/kto_vi.ogg'
-	say_message = "What are you?"
+	say_message = "你是什么东西？"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
@@ -234,7 +234,7 @@
 	key = "havewehere"
 	sound = 'sound/voice/joe/what_have_we.ogg'
 	haz_sound = 'sound/voice/joe/what_have_we_haz.ogg'
-	say_message = "What have we here?"
+	say_message = "我们这儿有什么？"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
@@ -243,34 +243,34 @@
 	sound = 'sound/voice/joe/belong_to_you.ogg'
 	haz_sound = 'sound/voice/joe/belong_to_you_haz.ogg'
 	upp_joe_sound = 'sound/voice/joe/upp_joe/etovashe.ogg'
-	say_message = "Does this belong to you?"
+	say_message = "这是你的东西吗？"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE|UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/aware_of
 	key = "awareofhaz"
 	sound = 'sound/voice/joe/are_you_aware.ogg'
-	say_message = "Are you aware of the current hazard containment breach?"
+	say_message = "你意识到当前的危险收容失效了吗？"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/why_would_you
 	key = "whywouldyou"
 	sound = 'sound/voice/joe/why_would_you.ogg'
 	haz_sound = 'sound/voice/joe/why_would_you_haz.ogg'
-	say_message = "Why would you do this?"
+	say_message = "你为什么要这么做？"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/why_did_you
 	key = "whydidyou"
 	upp_joe_sound = 'sound/voice/joe/upp_joe/zachem.ogg'
-	say_message = "Why did you do this?"
+	say_message = "你为什么这么做？"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = UPP_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/question/to_achieve
 	key = "toachieve"
 	upp_joe_sound = 'sound/voice/joe/upp_joe/dobivaetes.ogg'
-	say_message = "What are you trying to achieve?"
+	say_message = "你想达到什么目的？"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 	joe_flag = UPP_JOE_EMOTE

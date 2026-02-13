@@ -158,13 +158,13 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 
 	if(recipe.skill_lvl)
 		if(ishuman(ui.user) && !skillcheck(ui.user, recipe.skill_req, recipe.skill_lvl))
-			to_chat(ui.user, SPAN_WARNING("You are not trained to build this..."))
+			to_chat(ui.user, SPAN_WARNING("你没有接受过建造这个的训练……"))
 			return FALSE
 	if(amount < recipe.req_amount * multiplier)
 		if(recipe.req_amount * multiplier > 1)
-			to_chat(ui.user, SPAN_WARNING("You need more [name] to build \the [recipe.req_amount*multiplier] [recipe.title]\s!"))
+			to_chat(ui.user, SPAN_WARNING("你需要更多[name]来建造\the [recipe.req_amount*multiplier]个[recipe.title]！"))
 		else
-			to_chat(ui.user, SPAN_WARNING("You need more [name] to build \the [recipe.title]!"))
+			to_chat(ui.user, SPAN_WARNING("你需要更多[name]来建造\the [recipe.title]！"))
 		return FALSE
 
 	if(check_one_per_turf(recipe, ui.user))
@@ -175,26 +175,26 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		var/obj/structure/blocker/anti_cade/AC = locate(/obj/structure/blocker/anti_cade) in ui.user.loc // for M2C HMG, look at smartgun_mount.dm
 		var/area/area = get_area(ui.user)
 		if(!OT.allow_construction || !area.allow_construction)
-			to_chat(ui.user, SPAN_WARNING("The [recipe.title] must be constructed on a proper surface!"))
+			to_chat(ui.user, SPAN_WARNING("[recipe.title]必须在合适的表面上建造！"))
 			return FALSE
 
 		if(AC)
-			to_chat(ui.user, SPAN_WARNING("The [recipe.title] cannot be built here!"))  //might cause some friendly fire regarding other items like barbed wire, shouldn't be a problem?
+			to_chat(ui.user, SPAN_WARNING("[recipe.title]不能在这里建造！"))  //might cause some friendly fire regarding other items like barbed wire, shouldn't be a problem?
 			return FALSE
 
 		var/obj/structure/tunnel/tunnel = locate(/obj/structure/tunnel) in ui.user.loc
 		if(tunnel)
-			to_chat(ui.user, SPAN_WARNING("The [recipe.title] cannot be constructed on a tunnel!"))
+			to_chat(ui.user, SPAN_WARNING("[recipe.title]不能在隧道上建造！"))
 			return FALSE
 
 		if(recipe.one_per_turf != ONE_TYPE_PER_BORDER) //all barricade-esque structures utilize this define and have their own check for object density. checking twice is unneeded.
 			for(var/obj/object in ui.user.loc)
 				if(object.density || istype(object, /obj/structure/machinery/door/airlock))
-					to_chat(ui.user, SPAN_WARNING("[object] is blocking you from constructing \the [recipe.title]!"))
+					to_chat(ui.user, SPAN_WARNING("[object]阻挡了你建造\the [recipe.title]！"))
 					return FALSE
 
 	if((recipe.flags & RESULT_REQUIRES_SNOW) && !(istype(ui.user.loc, /turf/open/snow) || istype(ui.user.loc, /turf/open/auto_turf/snow)))
-		to_chat(ui.user, SPAN_WARNING("The [recipe.title] must be built on snow!"))
+		to_chat(ui.user, SPAN_WARNING("[recipe.title]必须在雪地上建造！"))
 		return FALSE
 
 	//cache the user, so when ui is closed, the construction continues
@@ -203,7 +203,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		if(user.action_busy)
 			return FALSE
 		var/time_mult = skillcheck(user, SKILL_CONSTRUCTION, 2) ? 1 : 2
-		user.visible_message(SPAN_NOTICE("[user] starts assembling \a [recipe.title]."),
+		user.visible_message(SPAN_NOTICE("[user]开始组装\a [recipe.title]。"),
 			SPAN_NOTICE("You start assembling \a [recipe.title]."))
 		if(!do_after(user, max(recipe.time * time_mult, recipe.min_time), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return FALSE
@@ -228,7 +228,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 	else
 		new_item = new recipe.result_type(user.loc, user)
 
-	user.visible_message(SPAN_NOTICE("[user] assembles \a [new_item]."),
+	user.visible_message(SPAN_NOTICE("[user]组装了\a [new_item]。"),
 	SPAN_NOTICE("You assemble \a [new_item]."))
 	new_item.setDir(user.dir)
 	if(recipe.max_res_amount > 1)
@@ -356,16 +356,16 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 
 		if(ONE_TYPE_PER_TURF)
 			if(locate(R.result_type) in user.loc)
-				to_chat(user, SPAN_WARNING("There is already another [R.title] here!"))
+				to_chat(user, SPAN_WARNING("这里已经有一个[R.title]了！"))
 				return TRUE
 
 		if(ONE_TYPE_PER_BORDER)
 			for(var/obj/O in user.loc) //Objects, we don't care about mobs. Turfs are checked elsewhere
 				if(O.density && !istype(O, R.result_type) && !((O.flags_atom & ON_BORDER))) //Note: If no dense items, or if dense item, both it and result must be border tiles
-					to_chat(user, SPAN_WARNING("You need a clear, open area to build \a [R.title]!"))
+					to_chat(user, SPAN_WARNING("你需要一个开阔、空旷的区域来建造\a [R.title]！"))
 					return TRUE
 				if((O.flags_atom & ON_BORDER) && O.dir == usr.dir) //We check overlapping dir here. Doesn't have to be the same type
-					to_chat(user, SPAN_WARNING("There is already \a [O.name] in this direction!"))
+					to_chat(user, SPAN_WARNING("这个方向已经有一个\a [O.name]了！"))
 					return TRUE
 
 	return FALSE
@@ -406,7 +406,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		if (item.amount>=item.max_amount)
 			continue
 		oldsrc.attackby(item, user)
-		to_chat(user, "You add new [item.singular_name] to the stack. It now contains [item.amount] [item.singular_name]\s.")
+		to_chat(user, "你向堆叠中添加了新的[item.singular_name]。它现在包含[item.amount]个[item.singular_name]。")
 		if(!oldsrc)
 			break
 
@@ -416,7 +416,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 			return
 		if(amount <= 1)
 			return
-		var/desired = tgui_input_number(user, "How much would you like to split off from this stack?", "How much?", 1, amount-1, 1)
+		var/desired = tgui_input_number(user, "你想从这个堆叠中分出多少？", "How much?", 1, amount-1, 1)
 		if(!desired)
 			return
 		if(!use(desired))
@@ -451,12 +451,12 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		var/obj/item/stack/other_stack = W
 		if(other_stack.stack_id == stack_id) //same stack type
 			if(other_stack.amount >= max_amount)
-				to_chat(user, SPAN_WARNING("The stack is full!"))
+				to_chat(user, SPAN_WARNING("堆叠已满！"))
 				return TRUE
 			var/to_transfer = min(amount, other_stack.max_amount - other_stack.amount)
 			if(to_transfer <= 0)
 				return
-			to_chat(user, SPAN_INFO("You transfer [to_transfer] between the stacks."))
+			to_chat(user, SPAN_INFO("你在堆叠物之间转移了[to_transfer]。"))
 			other_stack.add(to_transfer)
 			if(other_stack && user.interactee == other_stack)
 				INVOKE_ASYNC(other_stack, TYPE_PROC_REF(/obj/item/stack, interact), user)

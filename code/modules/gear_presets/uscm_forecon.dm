@@ -80,7 +80,7 @@
 	new_human.nutrition = NUTRITION_NORMAL
 
 /datum/equipment_preset/uscm/forecon/standard
-	name = "USCM Reconnaissance Marine"
+	name = "USCM侦察陆战队员"
 	assignment = JOB_FORECON_RIFLEMAN
 	job_title = JOB_SQUAD_MARINE
 	role_comm_title = "RFN"
@@ -117,7 +117,7 @@
 	add_forecon_weapon(new_human)
 
 /datum/equipment_preset/uscm/forecon/tech
-	name = "USCM Reconnaissance Support Technician"
+	name = "USCM侦察支援技术员"
 	assignment = JOB_FORECON_SUPPORT
 	job_title = JOB_FORECON_SUPPORT
 	role_comm_title = "SuppTech"
@@ -159,7 +159,7 @@
 	spawn_random_tech_headgear(new_human)
 
 /datum/equipment_preset/uscm/forecon/marksman
-	name = "USCM Reconnaissance Designated Marksman"
+	name = "USCM侦察指定射手"
 	assignment = JOB_FORECON_MARKSMAN
 	job_title = JOB_SQUAD_SPECIALIST
 	role_comm_title = "DMR"
@@ -203,7 +203,7 @@
 	spawn_random_headgear(new_human)
 
 /datum/equipment_preset/uscm/forecon/smartgunner
-	name = "USCM Reconnaissance Smartgunner"
+	name = "USCM侦察智能枪手"
 	assignment = JOB_FORECON_SMARTGUNNER
 	job_title = JOB_SQUAD_SMARTGUN
 	role_comm_title = "SG"
@@ -245,7 +245,7 @@
 	spawn_random_headgear(new_human)
 
 /datum/equipment_preset/uscm/forecon/squad_leader
-	name = "USCM Reconnaissance Squad Leader"
+	name = "USCM侦察班长"
 	assignment = JOB_FORECON_SL
 	job_title = JOB_SQUAD_LEADER
 	role_comm_title = "SL"

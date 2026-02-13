@@ -167,7 +167,7 @@
 		return
 
 	if(HAS_TRAIT(src, TRAIT_HAULED)) // We still probably wanna gib them as well if they were supposed to be gibbed by the explosion in the first place
-		visible_message(SPAN_WARNING("[src] is shielded from the blast!"), SPAN_WARNING("You are shielded from the blast!"))
+		visible_message(SPAN_WARNING("[src]被护盾挡住了爆炸！"), SPAN_WARNING("You are shielded from the blast!"))
 		return
 
 	if(!HAS_TRAIT(src, TRAIT_EAR_PROTECTION))
@@ -343,7 +343,7 @@
 
 //gets name from ID or ID inside PDA or PDA itself
 //Useful when player do something with computers
-/mob/living/carbon/human/proc/get_authentification_name(if_no_id = "Unknown")
+/mob/living/carbon/human/proc/get_authentification_name(if_no_id = "未知")
 	var/obj/item/card/id/id = wear_id
 	if(istype(id))
 		. = id.registered_name
@@ -363,25 +363,25 @@
 //repurposed proc. Now it combines get_id_name() and get_face_name() to determine a mob's name variable. Made into a separate proc as it'll be useful elsewhere
 /mob/living/carbon/human/proc/get_visible_name()
 	if(wear_mask && (wear_mask.flags_inv_hide & HIDEFACE) ) //Wearing a mask which hides our face, use id-name if possible
-		return get_id_name("Unknown")
+		return get_id_name("未知")
 	if(head && (head.flags_inv_hide & HIDEFACE) )
-		return get_id_name("Unknown") //Likewise for hats
+		return get_id_name("未知") //Likewise for hats
 	var/face_name = get_face_name()
 	var/id_name = get_id_name("")
 	if(id_name && (id_name != face_name))
 		return "[face_name] (as [id_name])"
 	return face_name
 
-//Returns "Unknown" if facially unidentifiable and real_name if not. Useful for setting name when headless or when updating a human's name variable
+//Returns "未知" if facially unidentifiable and real_name if not. Useful for setting name when headless or when updating a human's name variable
 /mob/living/carbon/human/proc/get_face_name()
 	var/obj/limb/head/head = get_limb("head")
 	if(!head || (head.status & LIMB_DESTROYED) || !real_name) //unidentifiable. use id-name if possible
-		return "Unknown"
+		return "未知"
 	return real_name
 
 //gets name from ID or PDA itself, ID inside PDA doesn't matter
 //Useful when player is being seen by other mobs
-/mob/living/carbon/human/proc/get_id_name(if_no_id = "Unknown")
+/mob/living/carbon/human/proc/get_id_name(if_no_id = "未知")
 	. = if_no_id
 	if(wear_id)
 		var/obj/item/card/id/I = wear_id.GetID()
@@ -421,13 +421,13 @@
 		if(!usr.is_mob_incapacitated() && Adjacent(usr))
 			if(href_list["item"] == "id")
 				if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && (stat == DEAD || health < health_threshold_crit) && !get_target_lock(usr.faction_group))
-					to_chat(usr, SPAN_WARNING("You can't strip a crit or dead member of another faction!"))
+					to_chat(usr, SPAN_WARNING("你不能扒取其他阵营重伤或死亡成员的装备！"))
 					return
 				if(istype(wear_id, /obj/item/card/id/dogtag) && (undefibbable || !skillcheck(usr, SKILL_POLICE, SKILL_POLICE_SKILLED)))
 					var/obj/item/card/id/dogtag/DT = wear_id
 					if(!DT.dogtag_taken)
 						if(stat == DEAD)
-							to_chat(usr, SPAN_NOTICE("You take [src]'s information tag, leaving the ID tag."))
+							to_chat(usr, SPAN_NOTICE("你取走了[src]的信息牌，留下了身份牌。"))
 							DT.dogtag_taken = TRUE
 							DT.icon_state = DT.tags_taken_icon
 							var/obj/item/dogtag/D = new(loc)
@@ -437,9 +437,9 @@
 							D.fallen_blood_types = list(DT.blood_type)
 							usr.put_in_hands(D)
 						else
-							to_chat(usr, SPAN_WARNING("You can't take a dogtag's information tag while its owner is alive."))
+							to_chat(usr, SPAN_WARNING("在狗牌主人还活着时，你不能取走其信息牌。"))
 					else
-						to_chat(usr, SPAN_WARNING("Someone's already taken [src]'s information tag."))
+						to_chat(usr, SPAN_WARNING("已经有人取走了[src]的信息牌。"))
 					return
 			//police skill lets you strip multiple items from someone at once.
 			if(!usr.action_busy || skillcheck(usr, SKILL_POLICE, SKILL_POLICE_SKILLED))
@@ -447,7 +447,7 @@
 				var/obj/item/what = get_item_by_slot(slot)
 				if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && (stat == DEAD || health < health_threshold_crit) && !get_target_lock(usr.faction_group))
 					if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_strip_essentials) || (what in list(head, wear_suit, w_uniform, shoes)))
-						to_chat(usr, SPAN_WARNING("You can't strip a crit or dead member of another faction!"))
+						to_chat(usr, SPAN_WARNING("你不能扒取其他阵营重伤或死亡成员的装备！"))
 						return
 				if(what)
 					usr.stripPanelUnequip(what,src,slot)
@@ -458,22 +458,22 @@
 	if(href_list["sensor"])
 		if(!usr.action_busy && !usr.is_mob_incapacitated() && Adjacent(usr))
 			if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && (stat == DEAD || health < health_threshold_crit) && !get_target_lock(usr.faction_group))
-				to_chat(usr, SPAN_WARNING("You can't tweak the sensors of a crit or dead member of another faction!"))
+				to_chat(usr, SPAN_WARNING("你不能调整其他阵营重伤或死亡成员的传感器！"))
 				return
 			attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their sensors toggled by [key_name(usr)]</font>")
 			usr.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to toggle [key_name(src)]'s' sensors</font>")
 			var/obj/item/clothing/under/U = w_uniform
 			if(QDELETED(U))
-				to_chat(usr, "You're not wearing a uniform!")
+				to_chat(usr, "你没穿制服！")
 			else if(U.has_sensor >= UNIFORM_FORCED_SENSORS)
-				to_chat(usr, "The controls are locked.")
+				to_chat(usr, "控制装置已锁定。")
 			else
 				var/oldsens = U.has_sensor
-				visible_message(SPAN_DANGER("<B>[usr] is trying to modify [src]'s sensors!</B>"), null, null, 4)
+				visible_message(SPAN_DANGER("<B>[usr]正试图修改[src]的传感器！</B>"), null, null, 4)
 				if(do_after(usr, get_strip_delay(usr, src), INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 					if(U == w_uniform)
 						if(U.has_sensor >= UNIFORM_FORCED_SENSORS)
-							to_chat(usr, "The controls are locked.")
+							to_chat(usr, "控制装置已锁定。")
 						else if(U.has_sensor == oldsens)
 							U.set_sensors(usr)
 
@@ -535,7 +535,7 @@
 						for(var/datum/data/record/R in GLOB.data_core.security)
 							if(R.fields["id"] == E.fields["id"])
 
-								var/setcriminal = tgui_input_list(usr, "Specify a new criminal status for this person.", "Security HUD", list("None", "*Arrest*", "Incarcerated", "Released", "Suspect", "NJP", "Cancel"))
+								var/setcriminal = tgui_input_list(usr, "为此人指定新的犯罪状态。", "Security HUD", list("无", "*Arrest*", "Incarcerated", "Released", "Suspect", "NJP", "Cancel"))
 
 								if(hasHUD(usr, "security"))
 									if(setcriminal != "Cancel")
@@ -545,7 +545,7 @@
 
 
 			if(!modified)
-				to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
+				to_chat(usr, SPAN_DANGER("无法找到此人的数据核心记录。"))
 
 	if(href_list["secrecord"])
 		if(hasHUD(usr,"security") || isobserver(usr))
@@ -561,13 +561,13 @@
 					for(var/datum/data/record/R in GLOB.data_core.security)
 						if(R.fields["id"] == E.fields["id"])
 							if(hasHUD(usr,"security") || isobserver(usr))
-								to_chat(usr, "<b>Name:</b> [R.fields["name"]] <b>Criminal Status:</b> [R.fields["criminal"]]")
-								to_chat(usr, "<b>Incidents:</b> [R.fields["incident"]]")
-								to_chat(usr, "<a href='byond://?src=\ref[src];secrecordComment=1'>\[View Comment Log\]</a>")
+								to_chat(usr, "<b>姓名：</b> [R.fields["name"]] <b>Criminal Status:</b> [R.fields["criminal"]]")
+								to_chat(usr, "<b>事件记录：</b> [R.fields["incident"]]")
+								to_chat(usr, "<a href='byond://?src=\ref[src];secrecordComment=1'>\[查看评论日志\]</a>")
 								read = 1
 
 			if(!read)
-				to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
+				to_chat(usr, SPAN_DANGER("无法找到此人的数据核心记录。"))
 
 	if(href_list["secrecordComment"] && (hasHUD(usr,"security") || isobserver(usr)))
 		var/perpref = null
@@ -602,7 +602,7 @@
 						to_chat(usr, "<a href='byond://?src=\ref[src];secrecordadd=1'>\[Add comment\]</a><br />")
 
 		if(!read)
-			to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
+			to_chat(usr, SPAN_DANGER("无法找到此人的数据核心记录。"))
 
 	if(href_list["secrecordadd"] && hasHUD(usr,"security"))
 		var/perpref = null
@@ -663,7 +663,7 @@
 												U.handle_regular_hud_updates()
 
 			if(!modified)
-				to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
+				to_chat(usr, SPAN_DANGER("无法找到此人的数据核心记录。"))
 
 	if(href_list["medrecord"])
 		if(hasHUD(usr,"medical"))
@@ -681,7 +681,7 @@
 						for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 							if(R.fields["id"] == E.fields["id"])
 								if(hasHUD(usr,"medical"))
-									to_chat(usr, "<b>Name:</b> [R.fields["name"]] <b>Blood Type:</b> [R.fields["blood_type"]]")
+									to_chat(usr, "<b>姓名：</b> [R.fields["name"]] <b>Blood Type:</b> [R.fields["blood_type"]]")
 									to_chat(usr, "<b>Minor Disabilities:</b> [R.fields["minor_disability"]]")
 									to_chat(usr, "<b>Details:</b> [R.fields["minor_disability_details"]]")
 									to_chat(usr, "<b>Major Disabilities:</b> [R.fields["major_disability"]]")
@@ -691,7 +691,7 @@
 									read = 1
 
 			if(!read)
-				to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
+				to_chat(usr, SPAN_DANGER("无法找到此人的数据核心记录。"))
 
 	if(href_list["medrecordComment"])
 		if(hasHUD(usr,"medical"))
@@ -719,7 +719,7 @@
 									to_chat(usr, "<a href='byond://?src=\ref[src];medrecordadd=1'>\[Add comment\]</a>")
 
 			if(!read)
-				to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
+				to_chat(usr, SPAN_DANGER("无法找到此人的数据核心记录。"))
 
 	if(href_list["medrecordadd"])
 		if(hasHUD(usr,"medical"))
@@ -782,7 +782,7 @@
 			if(!skillcheck(usr, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 				to_chat(usr, SPAN_WARNING("You're not trained to use this."))
 				return
-			if(!has_species(src, "Human"))
+			if(!has_species(src, "人类"))
 				to_chat(usr, SPAN_WARNING("This only works on humans."))
 				return
 			if(get_dist(usr, src) > 7)
@@ -827,7 +827,7 @@
 			return
 		to_chat(user, SPAN_WARNING("You're not trained to use this."))
 		return
-	if(!has_species(src, "Human"))
+	if(!has_species(src, "人类"))
 		to_chat(user, SPAN_WARNING("Triage holocards only works on humans."))
 		return
 	var/newcolor = tgui_input_list(user, "Choose a triage holo card to add to the patient:", "Triage holo card", list("black", "red", "orange", "purple", "none"))
@@ -922,7 +922,7 @@
 
 	if(!lastpuke)
 		lastpuke = 1
-		to_chat(src, SPAN_WARNING("You feel nauseous..."))
+		to_chat(src, SPAN_WARNING("你感到一阵恶心..."))
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), src, "You feel like you are about to throw up!"), 15 SECONDS)
 		addtimer(CALLBACK(src, PROC_REF(do_vomit)), 25 SECONDS)
 
@@ -930,7 +930,7 @@
 	apply_effect(5, STUN)
 	if(stat == 2) //One last corpse check
 		return
-	src.visible_message(SPAN_WARNING("[src] throws up!"), SPAN_WARNING("You throw up!"), null, 5)
+	src.visible_message(SPAN_WARNING("[src]呕吐了！"), SPAN_WARNING("You throw up!"), null, 5)
 	playsound(loc, 'sound/effects/splat.ogg', 25, 1, 7)
 
 	var/turf/location = loc
@@ -949,7 +949,7 @@
 /mob/living/carbon/human/revive(keep_viruses)
 	var/obj/limb/head/h = get_limb("head")
 	if(QDELETED(h))
-		h = get_limb("synthetic head")
+		h = get_limb("合成人头颅")
 
 	if(species && !(species.flags & NO_BLOOD))
 		restore_blood()
@@ -1033,7 +1033,7 @@
 			if(prob(20)) //Let's not make throwing knives too good in HvH
 				organ.take_damage(rand(1,2), 0, 0)
 		if(prob(30)) // Spam chat less
-			to_chat(src, SPAN_HIGHDANGER("Your movement jostles [W] in your [organ.display_name] painfully."))
+			to_chat(src, SPAN_HIGHDANGER("你的动作痛苦地搅动了[organ.display_name]里的[W]。"))
 
 /mob/living/carbon/human/proc/check_status(mob/living/carbon/human/target)
 	if(is_dead() || is_mob_restrained())
@@ -1076,11 +1076,11 @@
 
 
 /mob/living/carbon/human/verb/view_manifest()
-	set name = "View Crew Manifest"
+	set name = "查看船员名单"
 	set category = "IC"
 
 	if(faction != FACTION_MARINE && !((faction in FACTION_LIST_WY) || faction == FACTION_FAX))
-		to_chat(usr, SPAN_WARNING("You have no access to [MAIN_SHIP_NAME] crew manifest."))
+		to_chat(usr, SPAN_WARNING("你无权访问[MAIN_SHIP_NAME]船员名单。"))
 		return
 	GLOB.crew_manifest.open_ui(src)
 
@@ -1089,7 +1089,7 @@
 	set category = "IC"
 
 	if(faction != FACTION_MARINE && !(FACTION_MARINE in faction_group))
-		to_chat(usr, SPAN_WARNING("You have no access to [MAIN_SHIP_NAME] tactical map."))
+		to_chat(usr, SPAN_WARNING("你无权访问[MAIN_SHIP_NAME]战术地图。"))
 		return
 
 	GLOB.tacmap_viewer.tgui_interact(src)
@@ -1099,11 +1099,11 @@
 	set category = "IC"
 
 	if(!mind)
-		to_chat(src, "The game appears to have misplaced your mind datum.")
+		to_chat(src, "游戏似乎丢失了你的思维数据。")
 		return
 
 	if(!skillcheck(usr, SKILL_INTEL, SKILL_INTEL_TRAINED) || faction != FACTION_MARINE && !(faction in FACTION_LIST_WY))
-		to_chat(usr, SPAN_WARNING("You have no access to the [MAIN_SHIP_NAME] intel network."))
+		to_chat(usr, SPAN_WARNING("你无权访问[MAIN_SHIP_NAME]情报网络。"))
 		return
 
 	mind.view_objective_memories(src)
@@ -1113,11 +1113,11 @@
 	set category = "IC"
 
 	if(!mind)
-		to_chat(src, "The game appears to have misplaced your mind datum.")
+		to_chat(src, "游戏似乎丢失了你的思维数据。")
 		return
 
 	if(!skillcheck(usr, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED) || !(FACTION_MARINE in get_id_faction_group()))
-		to_chat(usr, SPAN_WARNING("You have no access to the [MAIN_SHIP_NAME] research network."))
+		to_chat(usr, SPAN_WARNING("你无权访问[MAIN_SHIP_NAME]研究网络。"))
 		return
 
 	mind.view_research_objective_memories(src)
@@ -1127,30 +1127,30 @@
 	set category = "OOC.Fix"
 
 	if(!mind)
-		to_chat(src, "The game appears to have misplaced your mind datum.")
+		to_chat(src, "游戏似乎丢失了你的思维数据。")
 		return
 
-	if(tgui_alert(src, "Remove the faulty entry?", "Confirm", list("Yes", "No"), 10 SECONDS) == "Yes")
+	if(tgui_alert(src, "移除错误条目？", "确认", list("Yes", "No"), 10 SECONDS) == "Yes")
 		for(var/datum/cm_objective/retrieve_data/disk/Objective in src.mind.objective_memory.disks)
 			if(!Objective.disk.disk_color || !Objective.disk.display_color)
 				src.mind.objective_memory.disks -= Objective
 	else
 		return
 
-	if(tgui_alert(src, "Did it work?", "Confirm", list("Yes", "No"), 10 SECONDS) == "No")
+	if(tgui_alert(src, "成功了吗？", "确认", list("Yes", "No"), 10 SECONDS) == "No")
 		for(var/datum/cm_objective/Objective in src.mind.objective_memory.disks)
 			src.mind.objective_memory.disks -= Objective
 
 /mob/living/carbon/human/look_up()
 	if(is_zoomed)
-		to_chat(src, SPAN_WARNING("You cannot look up while zoomed!"))
+		to_chat(src, SPAN_WARNING("缩放时无法向上看！"))
 		return
 
 	. = ..()
 
 /mob/living/carbon/human/proc/set_species(new_species, default_color)
 	if(!new_species)
-		new_species = "Human"
+		new_species = "人类"
 
 	if(species)
 		if(species.name && species.name == new_species) //we're already that species.
@@ -1165,7 +1165,7 @@
 
 	// If an invalid new_species value is passed, just default to human
 	if (!istype(species))
-		species = GLOB.all_species["Human"]
+		species = GLOB.all_species["人类"]
 
 	if(oldspecies)
 		//additional things to change when we're no longer that species
@@ -1278,7 +1278,7 @@
 	if(stat)
 		return
 	var/turf/T = get_turf(src)
-	visible_message(SPAN_DANGER("[src] vomits on the floor!"), null, null, 5)
+	visible_message(SPAN_DANGER("[src]吐在了地板上！"), null, null, 5)
 	nutrition -= 20
 	apply_damage(-3, TOX)
 	playsound(T, 'sound/effects/splat.ogg', 25, 1, 7)
@@ -1489,7 +1489,7 @@
 		var/list/obj/limb/to_splint = list()
 		var/same_arm_side = FALSE // If you are trying to splint yourself, need opposite hand to splint an arm/hand
 		if(user.get_limb(cur_hand).status & LIMB_DESTROYED)
-			to_chat(user, SPAN_WARNING("You cannot remove splints without a hand."))
+			to_chat(user, SPAN_WARNING("没有手无法移除夹板。"))
 			return
 		var/is_splint = FALSE
 		for(var/bodypart in list("l_leg","r_leg","l_arm","r_arm","r_hand","l_hand","r_foot","l_foot","chest","head","groin")) //check for any splints before do_after
@@ -1523,15 +1523,15 @@
 						to_splint += target_limb
 				if(!length(to_splint))
 					if(same_arm_side)
-						to_chat(user, SPAN_WARNING("You need to use the opposite hand to remove the splints on your arm and hand!"))
+						to_chat(user, SPAN_WARNING("你需要用另一只手来移除手臂和手上的夹板！"))
 					else
-						to_chat(user, SPAN_WARNING("There are no splints to remove."))
+						to_chat(user, SPAN_WARNING("没有夹板可移除。"))
 					return
 				if(wear_suit && istype(wear_suit,/obj/item/clothing/suit/space))
 					var/obj/item/clothing/suit/space/suit = target.wear_suit
 					if(LAZYLEN(suit.supporting_limbs))
 						msg = "[user == target ? "your":"\proper [target]'s"]"
-						to_chat(user, SPAN_WARNING("You cannot remove the splints, [msg] [suit] is supporting some of the breaks."))
+						to_chat(user, SPAN_WARNING("你无法移除夹板，[msg][suit]正支撑着部分骨折处。"))
 						can_reach_splints = FALSE
 				if(can_reach_splints)
 					var/obj/item/stack/medical/splint/new_splint = new(user.loc)
@@ -1557,32 +1557,32 @@
 					target.update_med_icon()
 			else
 				msg = "[user == target ? "your":"\proper [target]'s"]"
-				to_chat(user, SPAN_NOTICE("You stop trying to remove [msg] splints."))
+				to_chat(user, SPAN_NOTICE("你停止尝试移除[msg]的夹板。"))
 		else
 			if(same_arm_side)
-				to_chat(user, SPAN_WARNING("You need to use the opposite hand to remove the splints on your arm and hand!"))
+				to_chat(user, SPAN_WARNING("你需要用另一只手来移除手臂和手上的夹板！"))
 			else
-				to_chat(user, SPAN_WARNING("There are no splints to remove."))
+				to_chat(user, SPAN_WARNING("没有夹板可移除。"))
 
 /mob/living/carbon/human/yautja/Initialize(mapload)
-	. = ..(mapload, new_species = "Yautja")
+	. = ..(mapload, new_species = "铁血战士")
 
 /mob/living/carbon/human/monkey/Initialize(mapload)
-	. = ..(mapload, new_species = "Monkey")
+	. = ..(mapload, new_species = "猴子")
 
 
 /mob/living/carbon/human/farwa/Initialize(mapload)
-	. = ..(mapload, new_species = "Farwa")
+	. = ..(mapload, new_species = "法瓦")
 
 
 /mob/living/carbon/human/neaera/Initialize(mapload)
-	. = ..(mapload, new_species = "Neaera")
+	. = ..(mapload, new_species = "尼艾拉")
 
 /mob/living/carbon/human/stok/Initialize(mapload)
-	. = ..(mapload, new_species = "Stok")
+	. = ..(mapload, new_species = "斯托克")
 
 /mob/living/carbon/human/yiren/Initialize(mapload)
-	. = ..(mapload, new_species = "Yiren")
+	. = ..(mapload, new_species = "伊伦")
 
 /mob/living/carbon/human/synthetic/Initialize(mapload)
 	. = ..(mapload, SYNTH_GEN_THREE)
@@ -1610,13 +1610,13 @@
 		adjust_fire_stacks(HUNTER_FIRE_RESIST_AMOUNT, min_stacks = 0)
 		apply_effect(1, WEAKEN) // actually 0.5
 		spin(5, 1)
-		visible_message(SPAN_DANGER("[src] expertly rolls on the floor, greatly reducing the amount of flames!"),
+		visible_message(SPAN_DANGER("[src]熟练地在地上翻滚，大大减少了身上的火焰！"),
 			SPAN_NOTICE("You expertly roll to extinguish the flames!"), null, 5)
 	else
 		adjust_fire_stacks(HUMAN_FIRE_RESIST_AMOUNT, min_stacks = 0)
 		apply_effect(4, WEAKEN)
 		spin(35, 2)
-		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"),
+		visible_message(SPAN_DANGER("[src]在地上翻滚，试图扑灭自己！"),
 			SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
 
 	if(istype(get_turf(src), /turf/open/gm/river))
@@ -1625,7 +1625,7 @@
 	if(fire_stacks > 0)
 		return
 
-	visible_message(SPAN_DANGER("[src] has successfully extinguished themselves!"),
+	visible_message(SPAN_DANGER("[src]成功扑灭了身上的火焰！"),
 			SPAN_NOTICE("You extinguish yourself."), null, 5)
 
 /mob/living/carbon/human/resist_acid()
@@ -1633,21 +1633,21 @@
 	if(isyautja(src))
 		apply_effect(1, WEAKEN)
 		spin(10, 2)
-		visible_message(SPAN_DANGER("[src] expertly rolls on the floor!"),
+		visible_message(SPAN_DANGER("[src]熟练地在地上翻滚！"),
 			SPAN_NOTICE("You expertly roll to get rid of the acid!"), max_distance = 5)
 	else
 		apply_effect(1.5, WEAKEN)
 		spin(15, 2)
-		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to get the acid off!"),
+		visible_message(SPAN_DANGER("[src]在地上翻滚，试图弄掉酸液！"),
 			SPAN_NOTICE("You stop, drop, and roll!"), max_distance = 5)
 
 	sleep(sleep_amount)
 
 	if( extinguish_acid() )
-		visible_message(SPAN_DANGER("[src] has successfully removed the acid!"),
+		visible_message(SPAN_DANGER("[src]成功清除了酸液！"),
 				SPAN_NOTICE("You get rid of the acid."), max_distance = 5)
 	else
-		visible_message(SPAN_DANGER("[src] has managed to get rid of some of the acid!"),
+		visible_message(SPAN_DANGER("[src]成功清除了一部分酸液！"),
 				SPAN_NOTICE("You manage to get rid of some of the acid... but it's still melting you!"), max_distance = 5)
 
 	return
@@ -1668,14 +1668,14 @@
 	last_special = world.time + 10
 	var/can_break_cuffs
 	if(iszombie(src))
-		visible_message(SPAN_DANGER("[src] is attempting to break out of [restraint]..."),
+		visible_message(SPAN_DANGER("[src]正试图挣脱[restraint]..."),
 		SPAN_NOTICE("You use your superior zombie strength to start breaking [restraint]..."))
 		if(!do_after(src, 100, INTERRUPT_NO_NEEDHAND^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
 			return
 
 		if(!restraint || buckled)
 			return
-		visible_message(SPAN_DANGER("[src] tears [restraint] in half!"),
+		visible_message(SPAN_DANGER("[src]将[restraint]撕成两半！"),
 			SPAN_NOTICE("You tear [restraint] in half!"))
 		restraint = null
 		if(handcuffed)
@@ -1688,17 +1688,17 @@
 	if(species.can_shred(src))
 		can_break_cuffs = TRUE
 	if(can_break_cuffs) //Don't want to do a lot of logic gating here.
-		to_chat(usr, SPAN_DANGER("You attempt to break [restraint]. (This will take around 5 seconds and you need to stand still)"))
+		to_chat(usr, SPAN_DANGER("你试图挣脱[restraint]。（这大约需要5秒，你必须保持不动）"))
 		for(var/mob/O in viewers(src))
-			O.show_message(SPAN_DANGER("<B>[src] is trying to break [restraint]!</B>"), SHOW_MESSAGE_VISIBLE)
+			O.show_message(SPAN_DANGER("<B>[src]正试图挣脱[restraint]！</B>"), SHOW_MESSAGE_VISIBLE)
 		if(!do_after(src, 50, INTERRUPT_NO_NEEDHAND^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
 			return
 
 		if(!restraint || buckled)
 			return
 		for(var/mob/O in viewers(src))
-			O.show_message(SPAN_DANGER("<B>[src] manages to break [restraint]!</B>"), SHOW_MESSAGE_VISIBLE)
-		to_chat(src, SPAN_WARNING("You successfully break [restraint]."))
+			O.show_message(SPAN_DANGER("<B>[src]成功挣脱了[restraint]！</B>"), SHOW_MESSAGE_VISIBLE)
+		to_chat(src, SPAN_WARNING("你成功挣脱了[restraint]。"))
 		say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ))
 		if(handcuffed)
 			QDEL_NULL(handcuffed)
@@ -1708,17 +1708,17 @@
 			handcuff_update()
 	else
 		var/displaytime = max(1, floor(breakouttime / 600)) //Minutes
-		to_chat(src, SPAN_WARNING("You attempt to remove [restraint]. (This will take around [displaytime] minute(s) and you need to stand still)"))
+		to_chat(src, SPAN_WARNING("你试图移除[restraint]。（这大约需要[displaytime]分钟，你必须保持不动）"))
 		for(var/mob/O in viewers(src))
-			O.show_message(SPAN_DANGER("<B>[usr] attempts to remove [restraint]!</B>"), 1)
+			O.show_message(SPAN_DANGER("<B>[usr]正试图移除[restraint]！</B>"), 1)
 		if(!do_after(src, breakouttime, INTERRUPT_NO_NEEDHAND^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
 			return
 
 		if(!restraint || buckled)
 			return // time leniency for lag which also might make this whole thing pointless but the server
 		for(var/mob/O in viewers(src))//  lags so hard that 40s isn't lenient enough - Quarxink
-			O.show_message(SPAN_DANGER("<B>[src] manages to remove [restraint]!</B>"), SHOW_MESSAGE_VISIBLE)
-		to_chat(src, SPAN_NOTICE("You successfully remove [restraint]."))
+			O.show_message(SPAN_DANGER("<B>[src]成功移除了[restraint]！</B>"), SHOW_MESSAGE_VISIBLE)
+		to_chat(src, SPAN_NOTICE("你成功移除了[restraint]。"))
 		drop_inv_item_on_ground(restraint)
 
 /mob/living/carbon/human/equip_to_appropriate_slot(obj/item/W, ignore_delay = 1, list/slot_equipment_priority)
@@ -1783,14 +1783,14 @@
 	if(!throw_allowed)
 		var/obj/item/I = get_active_hand()
 		if(I.throwforce) // for hurty stuff only
-			to_chat(src, SPAN_DANGER("You are currently unable to throw harmful items."))
+			to_chat(src, SPAN_DANGER("你目前无法投掷有害物品。"))
 			return
 	. = ..()
 
 /mob/living/carbon/human/throw_atom(atom/target, range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS, list/end_throw_callbacks, list/collision_callbacks, tracking = FALSE)
 	var/turf/above = SSmapping.get_turf_above(thrower)
 	if(above && above.z == target.z)
-		to_chat(thrower, SPAN_WARNING("You can't throw someone that high!"))
+		to_chat(thrower, SPAN_WARNING("你无法把人扔那么高！"))
 		return
 	..()
 

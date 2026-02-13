@@ -1,10 +1,10 @@
 /obj/effect/landmark/start/upp
-	name = "UPP start join"
+	name = "UPP开局加入"
 	icon_state = "base_upp"
 	job_list = UPP_JOB_LIST
 
 /obj/effect/landmark/late_join/upp
-	name = "UPP late join"
+	name = "UPP中途加入"
 	icon_state = "late_join_upp"
 	job_list = UPP_JOB_LIST
 
@@ -62,7 +62,7 @@
 
 	new_human.change_real_name(new_human, "[first_name] [last_name]")
 	new_human.age = rand(17,35)
-	new_human.h_style = pick("Crewcut", "Shaved Head", "Buzzcut", "Undercut", "Side Undercut", "Bun, Topknot")
+	new_human.h_style = pick("平头", "光头", "板寸", "底层剃光", "侧边削短", "发髻，顶髻")
 	var/static/list/colors = list("BLACK" = list(15, 15, 25), "BROWN" = list(102, 51, 0), "AUBURN" = list(139, 62, 19))
 	var/static/list/hair_colors = colors.Copy() + list("BLONDE" = list(197, 164, 30), "CARROT" = list(174, 69, 42))
 	var/hair_color = pick(hair_colors)
@@ -89,7 +89,7 @@
 	gear_preset = /datum/equipment_preset/upp/soldier
 
 /datum/equipment_preset/upp/soldier
-	name = "UPP Soldier (Cryo)"
+	name = "UPP士兵（冷冻）"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	skills = /datum/skills/pfc
@@ -103,7 +103,7 @@
 	)
 
 /datum/equipment_preset/upp/soldier/dressed
-	name = "UPP Soldier"
+	name = "UPP士兵"
 	flags = EQUIPMENT_PRESET_EXTRA
 	skills = /datum/skills/upp
 
@@ -323,7 +323,7 @@
 
 
 /datum/equipment_preset/upp/medic
-	name = "UPP Medic (Cryo)"
+	name = "UPP医疗兵（冷冻）"
 
 	skills = /datum/skills/combat_medic
 	assignment = JOB_UPP_MEDIC
@@ -337,7 +337,7 @@
 	)
 
 /datum/equipment_preset/upp/medic/dressed
-	name = "UPP Medic"
+	name = "UPP医疗兵"
 
 	skills = /datum/skills/upp/combat_medic
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -421,10 +421,10 @@
 		list("Pressurized Reagent Canister Pouch (Revival Mix - Peridaxon)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/revival_peri, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Medical Kit Pouch", 0, /obj/item/storage/pouch/medkit, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 		list("First Responder Pouch", 0, /obj/item/storage/pouch/first_responder, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Pressurized Reagent Canister Pouch (Bicaridine)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/bicaridine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Pressurized Reagent Canister Pouch (Kelotane)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/kelotane, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Pressurized Reagent Canister Pouch (Tricordrazine)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
-		list("Pressurized Reagent Canister Pouch (Field Anesthetic)", 0, /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
+		list("加压试剂罐包（碧卡利定）", 0, /obj/item/storage/pouch/pressurized_reagent_canister/bicaridine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("加压试剂罐包（凯洛坦）", 0, /obj/item/storage/pouch/pressurized_reagent_canister/kelotane, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("加压试剂罐包（三合剂）", 0, /obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("加压试剂罐包（野战麻醉剂）", 0, /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 		list("Pressurized Reagent Canister Pouch (EMPTY)", 0, /obj/item/storage/pouch/pressurized_reagent_canister, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Vial Pouch (Full)", 0, /obj/item/storage/pouch/vials/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Medical Pouch", 0, /obj/item/storage/pouch/medical, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
@@ -505,7 +505,7 @@
 		list("Health Analyzer", 4, /obj/item/device/healthanalyzer, null, VENDOR_ITEM_REGULAR),
 		list("Medical HUD Glasses", 4, /obj/item/clothing/glasses/hud/health, null, VENDOR_ITEM_REGULAR),
 		list("MS-11 Smart Refill Tank", 6, /obj/item/reagent_container/glass/minitank, null, VENDOR_ITEM_REGULAR),
-		list("FixOVein", 7, /obj/item/tool/surgery/FixOVein, null, VENDOR_ITEM_REGULAR),
+		list("菲克索文", 7, /obj/item/tool/surgery/FixOVein, null, VENDOR_ITEM_REGULAR),
 		list("Roller Bed", 5, /obj/item/roller, null, VENDOR_ITEM_REGULAR),
 		list("Stasis Bag", 6, /obj/item/bodybag/cryobag, null, VENDOR_ITEM_REGULAR),
 
@@ -536,7 +536,7 @@
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 
 /datum/equipment_preset/upp/sapper
-	name = "UPP Sapper (Cryo)"
+	name = "UPP工兵（冷冻）"
 
 	skills = /datum/skills/combat_engineer
 	assignment = JOB_UPP_ENGI
@@ -550,7 +550,7 @@
 	)
 
 /datum/equipment_preset/upp/sapper/dressed
-	name = "UPP Sapper"
+	name = "UPP工兵"
 
 	skills = /datum/skills/upp/combat_engineer
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -657,8 +657,8 @@
 
 		list("HANDHELD DEFENSE (CHOOSE 1)", 0, null, null, null),
 		list("UPP Planted Flag", 0, /obj/item/defenses/handheld/planted_flag/upp, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
-		list("UPP SDS-R5 Sentry Flamer", 0, /obj/item/defenses/handheld/sentry/flamer/upp, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
-		list("UPP SDS-R3 Sentry Gun", 0, /obj/item/defenses/handheld/sentry/upp, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
+		list("UPP SDS-R5 火焰喷射哨戒炮", 0, /obj/item/defenses/handheld/sentry/flamer/upp, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
+		list("UPP SDS-R3 哨戒炮", 0, /obj/item/defenses/handheld/sentry/upp, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
 
 		list("ENGINEERING SUPPLIES", 0, null, null, null),
 		list("Airlock Circuit Board", 2, /obj/item/circuitboard/airlock, null, VENDOR_ITEM_REGULAR),
@@ -708,7 +708,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/upp/specialist
-	name = "UPP Specialist minigun (Cryo)"
+	name = "UPP专家转管机枪手（冷冻）"
 
 	skills = /datum/skills/upp/specialist
 	assignment = JOB_UPP_SPECIALIST
@@ -721,7 +721,7 @@
 	)
 
 /datum/equipment_preset/upp/specialist/dressed
-	name = "UPP Specialist"
+	name = "UPP专家"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/upp/specialist/dressed/New()
@@ -852,7 +852,7 @@
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 
 /datum/equipment_preset/upp/machinegunner
-	name = "UPP Machinegunner (Cryo)"
+	name = "UPP机枪手（冷冻）"
 
 	skills = /datum/skills/upp/specialist
 	assignment = JOB_UPP_SPECIALIST
@@ -865,7 +865,7 @@
 	)
 
 /datum/equipment_preset/upp/machinegunner/dressed
-	name = "UPP Machinegunner"
+	name = "UPP机枪手"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/upp/machinegunner/dressed/New()
@@ -1007,7 +1007,7 @@
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 
 /datum/equipment_preset/upp/leader
-	name = "UPP Squad Leader (Cryo)"
+	name = "UPP班长（冷冻）"
 
 	skills = /datum/skills/SL
 	assignment = JOB_UPP_LEADER
@@ -1024,7 +1024,7 @@
 	)
 
 /datum/equipment_preset/upp/leader/dressed
-	name = "UPP Squad Leader"
+	name = "UPP班长"
 
 	skills = /datum/skills/upp/SL
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -1218,7 +1218,7 @@
 //=================//
 
 /datum/equipment_preset/upp/military_police
-	name = "UPP Military Police (Cryo)"
+	name = "UPP宪兵（冷冻）"
 
 	skills = /datum/skills/upp/military_police
 	assignment = JOB_UPP_POLICE
@@ -1251,7 +1251,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife, WEAR_FEET)
 
 /datum/equipment_preset/upp/military_police/dressed
-	name = "UPP Military Police"
+	name = "UPP宪兵"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/upp/military_police/dressed/New()
@@ -1414,7 +1414,7 @@
 	gear_preset = /datum/equipment_preset/upp/doctor
 
 /datum/equipment_preset/upp/doctor
-	name = "UPP Doktor (Cryo)"
+	name = "UPP医生（冷冻）"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/upp/combat_medic
@@ -1445,7 +1445,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife, WEAR_FEET)
 
 /datum/equipment_preset/upp/doctor/dressed
-	name = "UPP Doctor"
+	name = "UPP医生"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/upp/doctor/dressed/New()
@@ -1595,7 +1595,7 @@
 
 
 /datum/equipment_preset/upp/supply
-	name = "UPP Logistics Technician (Cryo)"
+	name = "UPP后勤技术员（冷冻）"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/upp/logistics_technician
@@ -1626,7 +1626,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife, WEAR_FEET)
 
 /datum/equipment_preset/upp/supply/dressed
-	name = "UPP Logistics Technician"
+	name = "UPP后勤技术员"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/upp/supply/dressed/New()
@@ -1707,7 +1707,7 @@
 //  Field Officers  //
 //================//
 /datum/equipment_preset/upp/officer
-	name = "UPP Mladshiy Leytenant (Cryo)"
+	name = "UPP少尉（冷冻）"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/upp/officer
@@ -1745,7 +1745,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife, WEAR_FEET)
 
 /datum/equipment_preset/upp/officer/dressed
-	name = "UPP Lieutenant"
+	name = "UPP中尉"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/upp/officer/dressed/New()
@@ -1916,7 +1916,7 @@
 	gear_preset = /datum/equipment_preset/upp/officer/senior
 
 /datum/equipment_preset/upp/officer/senior
-	name = "UPP Starshiy Leytenant (Cryo)"
+	name = "UPP上尉（冷冻）"
 	assignment = JOB_UPP_SRLT_OFFICER
 	job_title = JOB_UPP_SRLT_OFFICER
 	role_comm_title = "Sr-Lt."
@@ -1936,7 +1936,7 @@
 	)
 
 /datum/equipment_preset/upp/officer/senior/dressed
-	name = "UPP Senior Lieutenant"
+	name = "UPP上尉"
 
 /datum/equipment_preset/upp/officer/senior/dressed/New()
 	.=..()
@@ -2093,7 +2093,7 @@
 	gear_preset = /datum/equipment_preset/upp/officer/kapitan
 
 /datum/equipment_preset/upp/officer/kapitan
-	name = "UPP Kapitan (Cryo)"
+	name = "UPP大尉（冷冻）"
 	assignment = JOB_UPP_KPT_OFFICER
 	job_title = JOB_UPP_KPT_OFFICER
 	role_comm_title = "May."
@@ -2103,7 +2103,7 @@
 
 
 /datum/equipment_preset/upp/officer/kapitan/dressed
-	name = "UPP Kapitan"
+	name = "UPP大尉"
 
 /datum/equipment_preset/upp/officer/kapitan/dressed/New()
 	.=..()
@@ -2289,7 +2289,7 @@
 	flags_whitelist = WHITELIST_COMMANDER
 
 /datum/equipment_preset/upp/officer/major
-	name = "UPP Mayjor (Cryo)"
+	name = "UPP少校（冷冻）"
 	assignment = JOB_UPP_MAY_OFFICER
 	job_title = JOB_UPP_MAY_OFFICER
 	role_comm_title = "May."
@@ -2298,12 +2298,12 @@
 	skills = /datum/skills/upp/commander
 
 /datum/equipment_preset/upp/officer/major/co
-	name = "UPP Mayjor (CO)(Cryo)"
+	name = "UPP少校（指挥官）（冷冻）"
 	assignment = JOB_UPP_CO_OFFICER
 	job_title = JOB_UPP_CO_OFFICER
 
 /datum/equipment_preset/upp/officer/major/dressed
-	name = "UPP Major"
+	name = "UPP少校"
 
 /datum/equipment_preset/upp/officer/major/dressed/New()
 	.=..()
@@ -2478,7 +2478,7 @@
 	flags_whitelist =  WHITELIST_COMMANDER_COUNCIL
 
 /datum/equipment_preset/upp/officer/flag/podpolkovnik
-	name = "UPP Podpolkovnik (Cryo)"
+	name = "UPP中校（冷冻）"
 	assignment = JOB_UPP_LTKOL_OFFICER
 	job_title = JOB_UPP_LTKOL_OFFICER
 	role_comm_title = "Lt. Kol."
@@ -2487,12 +2487,12 @@
 	skills = /datum/skills/upp/commander
 
 /datum/equipment_preset/upp/officer/flag/podpolkovnik/co
-	name = "UPP Podpolkovnik (CO)(Cryo)"
+	name = "UPP中校（指挥官）（冷冻）"
 	assignment = JOB_UPP_CO_OFFICER
 	job_title = JOB_UPP_CO_OFFICER
 
 /datum/equipment_preset/upp/officer/flag/dressed/podpolkovnik
-	name = "UPP Podpolkovnik"
+	name = "UPP中校"
 	assignment = JOB_UPP_LTKOL_OFFICER
 	job_title = JOB_UPP_LTKOL_OFFICER
 	role_comm_title = "Lt. Kol."
@@ -2505,12 +2505,12 @@
 
 //*****************************************************************************************************/
 /datum/equipment_preset/upp/officer/flag
-	name = "UPP Flag Officer Base"
+	name = "UPP将官基地"
 	minimap_icon = "upp_co"
 	skills = /datum/skills/upp/commander
 
 /datum/equipment_preset/upp/officer/flag/dressed
-	name = "UPP Flag Officer Base (Dressed)"
+	name = "UPP将官基地（着装）"
 
 /datum/equipment_preset/upp/officer/flag/dressed/load_gear(mob/living/carbon/human/new_human)
 	//back
@@ -2678,19 +2678,19 @@
 	flags_whitelist = WHITELIST_COMMANDER_COLONEL|WHITELIST_COMMANDER_LEADER
 
 /datum/equipment_preset/upp/officer/flag/polkovnik
-	name = "UPP Polkovnik (Cryo)"
+	name = "UPP波尔科弗尼克（冷冻）"
 	assignment = JOB_UPP_KOL_OFFICER
 	job_title = JOB_UPP_KOL_OFFICER
 	role_comm_title = "Kol."
 	paygrades = list(PAY_SHORT_UO6 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/officer/flag/polkovnik/co
-	name = "UPP Polkovnik (CO)(Cryo)"
+	name = "UPP波尔科弗尼克（指挥官）（冷冻）"
 	assignment = JOB_UPP_CO_OFFICER
 	job_title = JOB_UPP_CO_OFFICER
 
 /datum/equipment_preset/upp/officer/flag/dressed/polkovnik
-	name = "UPP Polkovnik"
+	name = "UPP波尔科弗尼克"
 	assignment = JOB_UPP_KOL_OFFICER
 	job_title = JOB_UPP_KOL_OFFICER
 	role_comm_title = "Kol."
@@ -2701,14 +2701,14 @@
 //  Flag Officers  //
 //===============//
 /datum/equipment_preset/upp/officer/flag/brig_gen
-	name = "UPP General Mayjor (Cryo)"
+	name = "UPP梅杰将军（冷冻）"
 	assignment = JOB_UPP_BRIG_GENERAL
 	job_title = JOB_UPP_BRIG_GENERAL
 	role_comm_title = "May. Gen."
 	paygrades = list(PAY_SHORT_UO7 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/officer/flag/dressed/brig_gen
-	name = "UPP General Mayjor"
+	name = "UPP梅杰将军"
 	assignment = JOB_UPP_BRIG_GENERAL
 	job_title = JOB_UPP_BRIG_GENERAL
 	role_comm_title = "May. Gen."
@@ -2717,7 +2717,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/upp/officer/flag/may_gen
-	name = "UPP General Leytenant (Cryo)"
+	name = "UPP莱滕南特将军（冷冻）"
 	assignment = JOB_UPP_MAY_GENERAL
 	job_title = JOB_UPP_MAY_GENERAL
 	role_comm_title = "Ley. Gen."
@@ -2726,7 +2726,7 @@
 	skills = /datum/skills/upp/commander
 
 /datum/equipment_preset/upp/officer/flag/may_gen/dressed
-	name = "UPP General Leytenant"
+	name = "UPP莱滕南特将军"
 	assignment = JOB_UPP_MAY_GENERAL
 	job_title = JOB_UPP_MAY_GENERAL
 	role_comm_title = "Ley. Gen."
@@ -2744,7 +2744,7 @@
 	flags_whitelist =  WHITELIST_COMMANDER
 
 /datum/equipment_preset/upp/officer/flag/ley_gen
-	name = "UPP General Polkovnik (Cryo)"
+	name = "UPP波尔科弗尼克将军（冷冻）"
 	assignment = JOB_UPP_LT_GENERAL
 	job_title = JOB_UPP_LT_GENERAL
 	role_comm_title = "Lt. Gen."
@@ -2753,7 +2753,7 @@
 	skills = /datum/skills/upp/commander
 
 /datum/equipment_preset/upp/officer/flag/ley_gen/dressed
-	name = "UPP General Polkovnik"
+	name = "UPP波尔科弗尼克将军"
 	assignment = JOB_UPP_LT_GENERAL
 	job_title = JOB_UPP_LT_GENERAL
 	role_comm_title = "Lt. Gen."
@@ -2769,7 +2769,7 @@
 	gear_preset = /datum/equipment_preset/upp/officer/flag/gen
 
 /datum/equipment_preset/upp/officer/flag/gen
-	name = "UPP General Armii (Cryo)"
+	name = "UPP阿尔米将军（冷冻）"
 	assignment = JOB_UPP_GENERAL
 	job_title = JOB_UPP_GENERAL
 	role_comm_title = "Gen."
@@ -2778,7 +2778,7 @@
 	skills = /datum/skills/upp/commander
 
 /datum/equipment_preset/upp/officer/flag/gen/dressed
-	name = "UPP General Armii"
+	name = "UPP阿尔米将军"
 	assignment = JOB_UPP_GENERAL
 	job_title = JOB_UPP_GENERAL
 	role_comm_title = "Gen."
@@ -2790,7 +2790,7 @@
 
 //*****************************************************************************************************/
 /datum/equipment_preset/upp/sapper/survivor
-	name = "UPP Sapper (Survivor)"
+	name = "UPP工兵（幸存者）"
 
 /datum/equipment_preset/upp/sapper/survivor/load_gear(mob/living/carbon/human/new_human)
 	//back
@@ -2844,7 +2844,7 @@
 	return ..()
 
 /datum/equipment_preset/upp/synth
-	name = "UPP Synthetic (Cryo)"
+	name = "UPP合成人（冷冻）"
 
 	languages = ALL_SYNTH_LANGUAGES_UPP
 
@@ -2864,7 +2864,7 @@
 
 
 /datum/equipment_preset/upp/synth/dressed
-	name = "UPP Synthetic"
+	name = "UPP合成人"
 
 /datum/equipment_preset/upp/synth/dressed/New()
 	.=..()
@@ -2899,10 +2899,10 @@
 				random_name = capitalize(pick(MALE, FEMALE) == MALE ? pick(GLOB.first_names_male_upp) : pick(GLOB.first_names_female_upp))
 			else // MALE
 				random_name = capitalize(pick(GLOB.first_names_male_upp))
-				new_human.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
+				new_human.f_style = pick("三点钟胡茬", "三点钟小胡子", "五点钟胡茬", "五点钟小胡子")
 
 	new_human.change_real_name(new_human, random_name)
-	new_human.h_style = pick("Crewcut", "Shaved Head", "Buzzcut", "Undercut", "Side Undercut")
+	new_human.h_style = pick("平头", "光头", "板寸", "底层剃光", "侧边削短")
 	var/static/list/colors = list("BLACK" = list(15, 15, 25), "BROWN" = list(102, 51, 0), "AUBURN" = list(139, 62, 19))
 	var/static/list/hair_colors = colors.Copy() + list("BLONDE" = list(197, 164, 30), "CARROT" = list(174, 69, 42))
 	var/hair_color = pick(hair_colors)
@@ -3023,7 +3023,7 @@
 		list("Tools Pouch (Full)", 0, /obj/item/storage/pouch/tools/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 
 		list("MASK", 0, null, null, null),
-		list("Sterile mask", 0, /obj/item/clothing/mask/surgical, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR)
+		list("无菌口罩", 0, /obj/item/clothing/mask/surgical, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR)
 	)
 
 /datum/equipment_preset/upp/synth/get_antag_gear_equipment()
@@ -3096,13 +3096,13 @@
 	gear_preset = /datum/equipment_preset/upp/synth/combat
 
 /datum/equipment_preset/upp/synth/combat
-	name = "UPP Combat Synthetic (Cryo)"
+	name = "UPP战斗合成人（冷冻）"
 
 	assignment = JOB_UPP_COMBAT_SYNTH
 	job_title = JOB_UPP_COMBAT_SYNTH
 
 /datum/equipment_preset/upp/synth/combat/dressed
-	name = "UPP Combat Synthetic"
+	name = "UPP战斗合成人"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/upp/synth/combat/dressed/New()
@@ -3161,7 +3161,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/upp/commando
-	name = "UPP Commando (!DEATHSQUAD! , Cryo)"
+	name = "UPP突击队员（！死亡小队！，冷冻）"
 
 	skills = /datum/skills/commando
 	assignment = JOB_UPP_COMMANDO
@@ -3179,7 +3179,7 @@
 	access = get_access(ACCESS_LIST_GLOBAL)
 
 /datum/equipment_preset/upp/commando/dressed
-	name = "UPP Commando (!DEATHSQUAD!)"
+	name = "UPP突击队员（！死亡小队！）"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 
@@ -3297,7 +3297,7 @@
 	gear_preset = /datum/equipment_preset/upp/commando/medic
 
 /datum/equipment_preset/upp/commando/medic
-	name = "UPP Commando Medic (!DEATHSQUAD!, Cryo)"
+	name = "UPP突击队医疗兵（！死亡小队！，冷冻）"
 
 	skills = /datum/skills/commando/medic
 	assignment = JOB_UPP_COMMANDO_MEDIC
@@ -3307,7 +3307,7 @@
 	paygrades = list(PAY_SHORT_UC2 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/upp/commando/medic/dressed
-	name = "UPP Commando Medic (!DEATHSQUAD!)"
+	name = "UPP突击队医疗兵（！死亡小队！）"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/upp/commando/medic/dressed/load_gear(mob/living/carbon/human/new_human)
@@ -3469,7 +3469,7 @@
 	gear_preset = /datum/equipment_preset/upp/commando/leader
 
 /datum/equipment_preset/upp/commando/leader
-	name = "UPP Commando Leader (!DEATHSQUAD!, cryo)"
+	name = "UPP突击队队长（！死亡小队！，冷冻）"
 
 	skills = /datum/skills/commando/leader
 	assignment = JOB_UPP_COMMANDO_LEADER
@@ -3480,7 +3480,7 @@
 	idtype = /obj/item/card/id/silver
 
 /datum/equipment_preset/upp/commando/leader/dressed
-	name = "UPP Commando Leader (!DEATHSQUAD!)"
+	name = "UPP突击队队长（！死亡小队！）"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 
@@ -3629,7 +3629,7 @@
 	)
 
 /datum/equipment_preset/upp/commando/low_threat
-	name = "UPP Commando"
+	name = "UPP突击队员"
 
 /datum/equipment_preset/upp/commando/low_threat/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/kdo, WEAR_L_EAR)
@@ -3661,7 +3661,7 @@
 	spawn_weapon(/obj/item/weapon/gun/rifle/type71/carbine/commando, /obj/item/ammo_magazine/rifle/type71, new_human, 0, 8)
 
 /datum/equipment_preset/upp/commando/medic/low_threat
-	name = "UPP Commando Medic"
+	name = "UPP突击队医疗兵"
 
 /datum/equipment_preset/upp/commando/medic/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/kdo/medic, WEAR_L_EAR)
@@ -3701,7 +3701,7 @@
 	spawn_weapon(/obj/item/weapon/gun/rifle/type71/carbine/commando, /obj/item/ammo_magazine/rifle/type71, new_human, 0, 5)
 
 /datum/equipment_preset/upp/commando/leader/low_threat
-	name = "UPP Commando Leader"
+	name = "UPP突击队队长"
 
 /datum/equipment_preset/upp/commando/leader/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/kdo/command, WEAR_L_EAR)
@@ -3739,7 +3739,7 @@
 //========//
 
 /datum/equipment_preset/upp/tank
-	name = "UPP Vehicle Crewman (TANK, cryo)"
+	name = "UPP载具乘员（坦克，冷冻）"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_UPP_CREWMAN
@@ -3759,7 +3759,7 @@
 	)
 
 /datum/equipment_preset/upp/tank/dressed
-	name = "UPP Vehicle Crewman (TANK)"
+	name = "UPP载具乘员（坦克）"
 
 /datum/equipment_preset/upp/tank/dressed/New()
 	.=..()
@@ -3797,7 +3797,7 @@
 		list("Binoculars", 0, /obj/item/device/binoculars, null, VENDOR_ITEM_MANDATORY),
 
 		list("PERSONAL SIDEARM (CHOOSE 1)", 0, null, null, null),
-		list("Type 73 Pistol", 0, /obj/item/weapon/gun/pistol/t73, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_RECOMMENDED),
+		list("73式手枪", 0, /obj/item/weapon/gun/pistol/t73, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_RECOMMENDED),
 		list("NP92 Pistol", 0, /obj/item/weapon/gun/pistol/np92, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
 		list("ZHNK-72 Revolver", 0, /obj/item/weapon/gun/revolver/upp, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
 
@@ -3857,7 +3857,7 @@
 	gear_preset = /datum/equipment_preset/upp/pilot
 
 /datum/equipment_preset/upp/pilot
-	name = "UPP Pilot (Cryo)"
+	name = "UPP飞行员（冷冻）"
 	assignment = JOB_UPP_PILOT
 	role_comm_title = "Pilot"
 	job_title = JOB_UPP_PILOT
@@ -3866,7 +3866,7 @@
 	access = list(ACCESS_UPP_GENERAL, ACCESS_UPP_ENGINEERING, ACCESS_UPP_FLIGHT)
 
 /datum/equipment_preset/upp/pilot/dressed
-	name = "UPP Pilot"
+	name = "UPP飞行员"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/upp/pilot/load_gear(mob/living/carbon/human/new_human)
@@ -3958,7 +3958,7 @@
 	gear_preset = /datum/equipment_preset/upp/commissar
 
 /datum/equipment_preset/upp/commissar
-	name = "UPP Political Commissar (Cryo)"
+	name = "UPP政治委员（冷冻）"
 
 	assignment = JOB_UPP_COMMISSAR
 	job_title = JOB_UPP_COMMISSAR
@@ -3970,7 +3970,7 @@
 	access = list(ACCESS_UPP_GENERAL, ACCESS_UPP_LEADERSHIP)
 
 /datum/equipment_preset/upp/commissar/dressed
-	name = "UPP Political Commissar"
+	name = "UPP政治委员"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/upp/commissar/dressed/New()
@@ -4080,7 +4080,7 @@
 
 /datum/equipment_preset/upp/conscript
 	//meme role
-	name = "UPP Conscript"
+	name = "UPP征召兵"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/upp
@@ -4145,7 +4145,7 @@
 
 	if(prob(10))
 		//sometimes Ivan smiles upon the corps
-		new_human.set_species("Human Hero")
+		new_human.set_species("人类英雄")
 
 /datum/equipment_preset/upp/conscript/get_antag_clothing_equipment()
 	return list(
@@ -4194,7 +4194,7 @@
 ///Hunting Grounds UPP///
 
 /datum/equipment_preset/upp/soldier/hunted
-	name = "UPP Soldier (Hunted)"
+	name = "UPP士兵（被猎杀）"
 	faction = FACTION_HUNTED_UPP
 
 /datum/equipment_preset/upp/soldier/hunted/load_gear(mob/living/carbon/human/new_human)
@@ -4231,7 +4231,7 @@
 
 
 /datum/equipment_preset/upp/machinegunner/hunted
-	name = "UPP Machinegunner (Hunted)"
+	name = "UPP机枪手（被猎杀）"
 	faction = FACTION_HUNTED_UPP
 
 /datum/equipment_preset/upp/machinegunner/hunted/load_gear(mob/living/carbon/human/new_human)
@@ -4263,7 +4263,7 @@
 	new_human.equip_to_slot_or_del(new uppvetsidearm, WEAR_WAIST)
 
 /datum/equipment_preset/upp/leader/hunted
-	name = "UPP Squad Leader (Hunted)"
+	name = "UPP班长（被猎杀）"
 	faction = FACTION_HUNTED_UPP
 
 /datum/equipment_preset/upp/leader/hunted/load_gear(mob/living/carbon/human/new_human)
@@ -4308,7 +4308,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate, WEAR_R_STORE)
 
 /datum/equipment_preset/upp/sapper/hunted
-	name = "UPP Sapper (Hunted)"
+	name = "UPP工兵（被猎杀）"
 	faction = FACTION_HUNTED_UPP
 
 /datum/equipment_preset/upp/sapper/hunted/load_gear(mob/living/carbon/human/new_human)

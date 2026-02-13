@@ -1,5 +1,5 @@
 /datum/hive_status_ui
-	var/name = "Hive Status"
+	var/name = "巢穴状态"
 
 	// Data to pass when rendering the UI (not static)
 	var/total_xenos

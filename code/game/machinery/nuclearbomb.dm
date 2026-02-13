@@ -1,7 +1,7 @@
 GLOBAL_VAR_INIT(bomb_set, FALSE)
 /obj/structure/machinery/nuclearbomb
 	name = "\improper 'Blockbuster' Large Atomic Fission Demolition Device (LAFDEDE)"
-	desc = "Mainly intended as a demolition charge, this device, also called 'W-135', is primarily used by USCM space vessels that don't have the equipment to remotely nuke planets from orbit. According to the Nuclear Regulatory Commission of the United Americas, this device have an estimated yield of 15 to 30 kilotonnes of TNT, enough to flatten everything that moves in a 6.30 kilometer, or 3.9 mile range. It also weighs 422 kilograms, or 930 pounds."
+	desc = "该装置主要设计用作爆破装药，也被称为‘W-135’，主要由那些没有设备从轨道上远程核打击行星的USCM太空舰船使用。根据美利坚合众国核管理委员会的说法，该装置的预估当量为15至30千吨TNT，足以夷平6.30公里（或3.9英里）范围内一切移动的目标。其重量为422公斤（或930磅）。"
 	icon = 'icons/obj/structures/machinery/nuclearbomb.dmi'
 	icon_state = "nuke"
 	density = TRUE
@@ -96,7 +96,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 
 /obj/structure/machinery/nuclearbomb/attackby(obj/item/O as obj, mob/user as mob)
 	if(anchored && timing && GLOB.bomb_set && HAS_TRAIT(O, TRAIT_TOOL_WIRECUTTERS))
-		user.visible_message(SPAN_INFO("[user] begins to defuse \the [src]."), SPAN_INFO("You begin to defuse \the [src]. This will take some time..."))
+		user.visible_message(SPAN_INFO("[user]开始拆除\the [src]。"), SPAN_INFO("You begin to defuse \the [src]. This will take some time..."))
 		if(do_after(user, 150 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			disable()
 			playsound(loc, 'sound/items/Wirecutter.ogg', 100, 1)
@@ -108,16 +108,16 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 		return
 
 	if(isyautja(user))
-		to_chat(usr, SPAN_YAUTJABOLD("A human Purification Device. Primitive and bulky, but effective. You don't have time to try figure out their counterintuitive controls. Better leave the hunting grounds before it detonates."))
+		to_chat(usr, SPAN_YAUTJABOLD("一种人类净化装置。原始且笨重，但有效。你没时间研究它们反直觉的控制方式。最好在它引爆前离开猎场。"))
 
 	if(deployable)
 		if(!ishuman(user) && !isqueen(user))
-			to_chat(usr, SPAN_INFO("You don't have the dexterity to do this!"))
+			to_chat(usr, SPAN_INFO("你的手不够灵巧，无法完成此操作！"))
 			return
 
 		if(isqueen(user))
 			if(timing && GLOB.bomb_set)
-				user.visible_message(SPAN_INFO("[user] begins engulfing \the [src] with resin."), SPAN_INFO("You start regurgitating and engulfing the \the [src] with resin... stopping the electronics from working, this will take some time..."))
+				user.visible_message(SPAN_INFO("[user]开始用树脂包裹\the [src]。"), SPAN_INFO("You start regurgitating and engulfing the \the [src] with resin... stopping the electronics from working, this will take some time..."))
 				if(do_after(user, 5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 					disable()
 			return
@@ -177,30 +177,30 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 				return
 
 			if(decryption_time != 0) //This should never get called unless the decryption process is still ongoing, in which case a user has modified their client.
-				to_chat(ui.user, SPAN_INFO("The encryption process must be completed first!"))
+				to_chat(ui.user, SPAN_INFO("必须首先完成加密程序！"))
 				message_admins("[key_name(ui.user, 1)] [ADMIN_JMP_USER(ui.user)] attempted to activate [src] before it is ready, this shouldn't be possible.")
 				return
 
 			if(!allowed(ui.user))
-				to_chat(ui.user, SPAN_INFO("Access denied!"))
+				to_chat(ui.user, SPAN_INFO("权限被拒绝！"))
 				return
 
 			if(!anchored)
-				to_chat(ui.user, SPAN_INFO("Engage anchors first!"))
+				to_chat(ui.user, SPAN_INFO("先启动锚定装置！"))
 				return
 
 			if(safety)
-				to_chat(ui.user, SPAN_INFO("The safety is still on."))
+				to_chat(ui.user, SPAN_INFO("保险还没关。"))
 				return
 
 			if(!A.can_build_special)
-				to_chat(ui.user, SPAN_INFO("You cannot deploy [src] here!"))
+				to_chat(ui.user, SPAN_INFO("你无法在此处部署[src]！"))
 				return
 
 			if(ui.user.action_busy)
 				return
 
-			ui.user.visible_message(SPAN_WARNING("[ui.user] begins to [timing ? "disengage" : "engage"] [src]!"), SPAN_WARNING("You begin to [timing ? "disengage" : "engage"] [src]."))
+			ui.user.visible_message(SPAN_WARNING("[ui.user]开始[timing ? "disengage" : "engage"] [src]!"), SPAN_WARNING("You begin to [timing ? "disengage" : "engage"] [src]."))
 			being_used = TRUE
 			ui = SStgui.try_update_ui(ui.user, src, ui)
 			if(do_after(ui.user, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
@@ -224,17 +224,17 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 
 		if("toggleSafety")
 			if(!allowed(ui.user))
-				to_chat(ui.user, SPAN_INFO("Access denied!"))
+				to_chat(ui.user, SPAN_INFO("权限被拒绝！"))
 				return
 			if(timing)
-				to_chat(ui.user, SPAN_INFO("Disengage first!"))
+				to_chat(ui.user, SPAN_INFO("先解除连接！"))
 				return
 			if(!A.can_build_special)
-				to_chat(ui.user, SPAN_INFO("You cannot deploy [src] here!"))
+				to_chat(ui.user, SPAN_INFO("你无法在此处部署[src]！"))
 				return
 			if(ui.user.action_busy)
 				return
-			ui.user.visible_message(SPAN_WARNING("[ui.user] begins to [safety ? "disable" : "enable"] the safety on [src]!"), SPAN_WARNING("You begin to [safety ? "disable" : "enable"] the safety on [src]."))
+			ui.user.visible_message(SPAN_WARNING("[ui.user]开始[safety ? "disable" : "enable"] the safety on [src]!"), SPAN_WARNING("You begin to [safety ? "disable" : "enable"] the safety on [src]."))
 			being_used = TRUE
 			ui = SStgui.try_update_ui(ui.user, src, ui)
 			if(do_after(ui.user, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
@@ -250,12 +250,12 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 			if(!ishuman(ui.user))
 				return
 			if(!allowed(ui.user))
-				to_chat(ui.user, SPAN_INFO("Access denied!"))
+				to_chat(ui.user, SPAN_INFO("权限被拒绝！"))
 				return
 			if(command_lockout)
 				command_lockout = FALSE
 				req_one_access = list()
-				to_chat(ui.user, SPAN_INFO("Command lockout disengaged."))
+				to_chat(ui.user, SPAN_INFO("指令锁定已解除。"))
 			else
 				//Check if they have command access
 				var/list/acc = list()
@@ -265,20 +265,20 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 				if(H.get_active_hand())
 					acc += H.get_active_hand().GetAccess()
 				if(!(ACCESS_MARINE_COMMAND in acc))
-					to_chat(ui.user, SPAN_INFO("Access denied!"))
+					to_chat(ui.user, SPAN_INFO("权限被拒绝！"))
 					return
 
 				command_lockout = TRUE
 				req_one_access = list(ACCESS_MARINE_COMMAND)
-				to_chat(ui.user, SPAN_INFO("Command lockout engaged."))
+				to_chat(ui.user, SPAN_INFO("指挥锁定已启动。"))
 			. = TRUE
 
 		if("toggleAnchor")
 			if(timing)
-				to_chat(ui.user, SPAN_INFO("Disengage first!"))
+				to_chat(ui.user, SPAN_INFO("先解除连接！"))
 				return
 			if(!A.can_build_special)
-				to_chat(ui.user, SPAN_INFO("You cannot deploy [src] here!"))
+				to_chat(ui.user, SPAN_INFO("你无法在此处部署[src]！"))
 				return
 			if(ui.user.action_busy)
 				return
@@ -286,9 +286,9 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 			ui = SStgui.try_update_ui(ui.user, src, ui)
 			if(do_after(ui.user, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 				if(!anchored)
-					visible_message(SPAN_INFO("With a steely snap, bolts slide out of [src] and anchor it to the flooring."))
+					visible_message(SPAN_INFO("随着一声钢铁的脆响，螺栓从[src]中滑出，将其锚定在地板上。"))
 				else
-					visible_message(SPAN_INFO("The anchoring bolts slide back into the depths of [src]."))
+					visible_message(SPAN_INFO("锚定螺栓滑回了[src]的深处。"))
 				playsound(loc, 'sound/items/Deconstruct.ogg', 100, 1)
 				anchored = !anchored
 			being_used = FALSE
@@ -306,15 +306,15 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 		return
 
 	if(!ishuman(usr))
-		to_chat(usr, SPAN_INFO("You don't have the dexterity to do this!"))
+		to_chat(usr, SPAN_INFO("你的手不够灵巧，无法完成此操作！"))
 		return
 
 	var/area/A = get_area(src)
 	if(!A.can_build_special)
-		to_chat(usr, SPAN_INFO("You don't want to deploy this here!"))
+		to_chat(usr, SPAN_INFO("你不想在这里部署这个！"))
 		return
 
-	usr.visible_message(SPAN_WARNING("[usr] begins to [deployable ? "close" : "adjust"] several panels to make [src] [deployable ? "undeployable" : "deployable"]."), SPAN_WARNING("You begin to [deployable ? "close" : "adjust"] several panels to make [src] [deployable ? "undeployable" : "deployable"]."))
+	usr.visible_message(SPAN_WARNING("[usr]开始[deployable ? "close" : "adjust"] several panels to make [src] [deployable ? "undeployable" : "deployable"]."), SPAN_WARNING("You begin to [deployable ? "close" : "adjust"] several panels to make [src] [deployable ? "undeployable" : "deployable"]."))
 	being_used = TRUE
 	if(do_after(usr, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 		if(deployable)
@@ -496,7 +496,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 		return
 
 	if(!allowed(ui.user))
-		to_chat(ui.user, SPAN_INFO("Access denied!"))
+		to_chat(ui.user, SPAN_INFO("权限被拒绝！"))
 		return
 
 	switch(action)
@@ -504,34 +504,34 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 			if(timing == -1)
 				return
 			if(timing)
-				to_chat(ui.user, SPAN_INFO("[src] is impossible to disengage now!"))
+				to_chat(ui.user, SPAN_INFO("[src]现在无法解除！"))
 				return
 		if("toggleSafety")
 			if(decrypting)
-				to_chat(ui.user, SPAN_INFO("Stop decryption first!"))
+				to_chat(ui.user, SPAN_INFO("先停止解密！"))
 				return
 		if("toggleAnchor")
 			if(decrypting)
-				to_chat(ui.user, SPAN_INFO("Stop decryption first!"))
+				to_chat(ui.user, SPAN_INFO("先停止解密！"))
 				return
 		if("toggleEncryption")
 			if(!anchored)
-				to_chat(ui.user, SPAN_INFO("Engage anchors first!"))
+				to_chat(ui.user, SPAN_INFO("先启动锚定装置！"))
 				return
 
 			if(safety)
-				to_chat(ui.user, SPAN_INFO("The safety is still on."))
+				to_chat(ui.user, SPAN_INFO("保险还没关。"))
 				return
 
 			var/area/current_area = get_area(src)
 			if(!current_area.can_build_special)
-				to_chat(ui.user, SPAN_INFO("You cannot deploy [src] here!"))
+				to_chat(ui.user, SPAN_INFO("你无法在此处部署[src]！"))
 				return
 
 			if(is_ground_level(z))
 				for(var/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/telecomm_unit in linked_decryption_towers)
 					if(!telecomm_unit.on)
-						to_chat(ui.user, SPAN_INFO("The groundside telecommunication relays must be activated!"))
+						to_chat(ui.user, SPAN_INFO("必须激活地面通讯中继器！"))
 						return
 
 			if(ui.user.action_busy)
@@ -540,7 +540,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 			if(being_used)
 				return
 
-			ui.user.visible_message(SPAN_WARNING("[ui.user] begins to [decrypting ? "stop the decryption process." : "start decrypting."]!"), SPAN_WARNING("You begin to [decrypting ? "stop the decryption process." : "start decrypting."]."))
+			ui.user.visible_message(SPAN_WARNING("[ui.user]开始[decrypting ? "stop the decryption process." : "start decrypting."]!"), SPAN_WARNING("You begin to [decrypting ? "stop the decryption process." : "start decrypting."]."))
 			being_used = TRUE
 			ui = SStgui.try_update_ui(ui.user, src, ui)
 			if(do_after(ui.user, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
@@ -677,7 +677,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 /obj/structure/machinery/nuclearbomb/tech/attack_hand(mob/user)
 	if(!decrypting || !isqueen(user))
 		return ..()
-	user.visible_message(SPAN_INFO("[user] begins engulfing \the [src] with resin."), SPAN_INFO("You start regurgitating and engulfing the \the [src] with resin... stopping the electronics from working, this will take some time..."))
+	user.visible_message(SPAN_INFO("[user]开始用树脂包裹\the [src]。"), SPAN_INFO("You start regurgitating and engulfing the \the [src] with resin... stopping the electronics from working, this will take some time..."))
 	if(do_after(user, 5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 		decrypting = FALSE
 		decryption_time = initial(decryption_time)

@@ -1,6 +1,6 @@
 //Slowing spit
 /datum/action/xeno_action/activable/slowing_spit
-	name = "Slowing Spit"
+	name = "减速唾液"
 	action_icon_state = "xeno_spit"
 	macro_path = /datum/action/xeno_action/verb/verb_slowing_spit
 	action_type = XENO_ACTION_CLICK
@@ -11,7 +11,7 @@
 
 // Scatterspit
 /datum/action/xeno_action/activable/scattered_spit
-	name = "Scattered Spit"
+	name = "散射唾液"
 	action_icon_state = "acid_shotgun"
 	macro_path = /datum/action/xeno_action/verb/verb_scattered_spit
 	action_type = XENO_ACTION_CLICK
@@ -22,7 +22,7 @@
 
 // Paralyzing slash
 /datum/action/xeno_action/onclick/paralyzing_slash
-	name = "Paralyzing Slash"
+	name = "麻痹挥砍"
 	action_icon_state = "lurker_inject_neuro"
 	macro_path = /datum/action/xeno_action/verb/verb_paralyzing_slash
 	action_type = XENO_ACTION_CLICK

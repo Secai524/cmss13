@@ -4,7 +4,7 @@
 	set desc = "OOC channel for Yautja players."
 
 	if(!src.admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only staff members may talk on this channel.")
+		to_chat(src, "只有工作人员可以在此频道发言。")
 		return
 
 	msg = copytext(sanitize(msg), 1, MAX_MESSAGE_LEN)

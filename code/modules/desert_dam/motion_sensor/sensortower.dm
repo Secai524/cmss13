@@ -9,7 +9,7 @@
 	name = "\improper experimental sensor tower"
 	icon = 'icons/obj/structures/machinery/motion_sensor_v2.dmi'
 	icon_state = "sensor_broken"
-	desc = "A tower with a lot of delicate sensors made to track weather conditions. This one has been adjusted to track biosignatures. This one is heavily damaged. Use a blowtorch, wirecutters, then a wrench to repair it."
+	desc = "一座装有大量精密传感器的塔，用于追踪天气状况。这座塔已被调整为追踪生物信号。它已严重损坏。使用焊枪、剪线钳，然后使用扳手来修复它。"
 	anchored = TRUE
 	density = TRUE
 	unslashable = TRUE
@@ -33,19 +33,19 @@
 /obj/structure/machinery/sensortower/update_icon()
 	..()
 	if(!buildstate && is_on)
-		desc = "A tower with a lot of delicate sensors made to track weather conditions. This one has been adjusted to track biosignatures. It looks like it is online."
+		desc = "一座装有大量精密传感器的塔，用于追踪天气状况。这座塔已被调整为追踪生物信号。看起来它在线。"
 		icon_state = "sensor_"
 	else if (!buildstate && !is_on)
-		desc = "A tower with a lot of delicate sensors made to track weather conditions. This one has been adjusted to track biosignatures. It looks like it is offline."
+		desc = "一座装有大量精密传感器的塔，用于追踪天气状况。这座塔已被调整为追踪生物信号。看起来它离线了。"
 		icon_state = "sensor_off"
 	else if(buildstate == SENSORTOWER_BUILDSTATE_BLOWTORCH)
-		desc = "A tower with a lot of delicate sensors made to track weather conditions. This one has been adjusted to track biosignatures. This one is heavily damaged. Use a blowtorch, wirecutters, then a wrench to repair it."
+		desc = "一座装有大量精密传感器的塔，用于追踪天气状况。这座塔已被调整为追踪生物信号。它已严重损坏。使用焊枪、剪线钳，然后使用扳手来修复它。"
 		icon_state = "sensor_broken"
 	else if(buildstate == SENSORTOWER_BUILDSTATE_WIRECUTTERS)
-		desc = "A tower with a lot of delicate sensors made to track weather conditions. This one has been adjusted to track biosignatures. This one is heavily damaged. Use wirecutters, then a wrench to repair it."
+		desc = "一座装有大量精密传感器的塔，用于追踪天气状况。这座塔已被调整为追踪生物信号。它已严重损坏。使用剪线钳，然后使用扳手来修复它。"
 		icon_state = "sensor_broken"
 	else if(buildstate == SENSORTOWER_BUILDSTATE_WRENCH)
-		desc = "A tower with a lot of delicate sensors made to track weather conditions. This one has been adjusted to track biosignatures. This one is heavily damaged. Use a wrench to repair it."
+		desc = "一座装有大量精密传感器的塔，用于追踪天气状况。这座塔已被调整为追踪生物信号。它已严重损坏。使用扳手来修复它。"
 		icon_state = "sensor_broken"
 
 /obj/structure/machinery/sensortower/process()
@@ -101,23 +101,23 @@
 	if(user.is_mob_incapacitated())
 		return FALSE
 	if(!ishuman(user))
-		to_chat(user, SPAN_DANGER("You have no idea how to use that.")) //No xenos or mankeys
+		to_chat(user, SPAN_DANGER("你完全不知道如何使用那个东西。")) //No xenos or mankeys
 		return FALSE
 
 	add_fingerprint(user)
 
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-		to_chat(user, SPAN_WARNING("You have no clue how this thing works..."))
+		to_chat(user, SPAN_WARNING("你完全搞不懂这东西怎么运作..."))
 		return FALSE
 
 	if(buildstate == SENSORTOWER_BUILDSTATE_BLOWTORCH)
-		to_chat(usr, SPAN_INFO("Use a blowtorch, then wirecutters, then wrench to repair it."))
+		to_chat(usr, SPAN_INFO("使用焊枪，然后剪线钳，然后扳手来修复它。"))
 		return FALSE
 	else if (buildstate == SENSORTOWER_BUILDSTATE_WIRECUTTERS)
-		to_chat(usr, SPAN_INFO("Use some wirecutters, then wrench to repair it."))
+		to_chat(usr, SPAN_INFO("使用一些剪线钳，然后扳手来修复它。"))
 		return FALSE
 	else if (buildstate == SENSORTOWER_BUILDSTATE_WRENCH)
-		to_chat(usr, SPAN_INFO("Use a wrench to repair it."))
+		to_chat(usr, SPAN_INFO("使用扳手来修复它。"))
 		return FALSE
 	if(is_on)
 		visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("<b>\The [src]</b> goes dark as [usr] shuts the power off.")]")
@@ -137,62 +137,62 @@
 /obj/structure/machinery/sensortower/attackby(obj/item/O as obj, mob/user as mob)
 	if(iswelder(O))
 		if(!HAS_TRAIT(O, TRAIT_TOOL_BLOWTORCH))
-			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			to_chat(user, SPAN_WARNING("你需要一把更强的喷枪！"))
 			return
 		if(buildstate == SENSORTOWER_BUILDSTATE_BLOWTORCH && !is_on)
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-				to_chat(user, SPAN_WARNING("You have no clue how to repair this thing."))
+				to_chat(user, SPAN_WARNING("你完全不知道如何修复这东西。"))
 				return FALSE
 			var/obj/item/tool/weldingtool/WT = O
 			if(WT.remove_fuel(1, user))
 
 				playsound(loc, 'sound/items/weldingtool_weld.ogg', 25)
-				user.visible_message(SPAN_NOTICE("[user] starts welding \the [src]'s internal damage."),
+				user.visible_message(SPAN_NOTICE("[user]开始焊接\the [src]的内部损伤。"),
 				SPAN_NOTICE("You start welding \the [src]'s internal damage."))
 				if(do_after(user, 200 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					if(buildstate != SENSORTOWER_BUILDSTATE_BLOWTORCH || is_on || !WT.isOn())
 						return FALSE
 					playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 					buildstate = SENSORTOWER_BUILDSTATE_WIRECUTTERS
-					user.visible_message(SPAN_NOTICE("[user] welds \the [src]'s internal damage."),
+					user.visible_message(SPAN_NOTICE("[user]焊接了\the [src]的内部损伤。"),
 					SPAN_NOTICE("You weld \the [src]'s internal damage."))
 					update_icon()
 					return TRUE
 			else
-				to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
+				to_chat(user, SPAN_WARNING("你需要更多焊枪燃料来完成此任务。"))
 				return
 
 	else if(HAS_TRAIT(O, TRAIT_TOOL_WIRECUTTERS))
 		if(buildstate == SENSORTOWER_BUILDSTATE_WIRECUTTERS && !is_on)
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-				to_chat(user, SPAN_WARNING("You have no clue how to repair this thing."))
+				to_chat(user, SPAN_WARNING("你完全不知道如何修复这东西。"))
 				return FALSE
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
-			user.visible_message(SPAN_NOTICE("[user] starts securing \the [src]'s wiring."),
+			user.visible_message(SPAN_NOTICE("[user]开始固定\the [src]的线路。"),
 			SPAN_NOTICE("You start securing \the [src]'s wiring."))
 			if(do_after(user, 120 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 12))
 				if(buildstate != SENSORTOWER_BUILDSTATE_WIRECUTTERS || is_on)
 					return FALSE
 				playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 				buildstate = SENSORTOWER_BUILDSTATE_WRENCH
-				user.visible_message(SPAN_NOTICE("[user] secures \the [src]'s wiring."),
+				user.visible_message(SPAN_NOTICE("[user]固定了\the [src]的线路。"),
 				SPAN_NOTICE("You secure \the [src]'s wiring."))
 				update_icon()
 				return TRUE
 	else if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		if(buildstate == SENSORTOWER_BUILDSTATE_WRENCH && !is_on)
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-				to_chat(user, SPAN_WARNING("You have no clue how to repair this thing."))
+				to_chat(user, SPAN_WARNING("你完全不知道如何修复这东西。"))
 				return FALSE
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-			user.visible_message(SPAN_NOTICE("[user] starts repairing \the [src]'s tubing and plating."),
+			user.visible_message(SPAN_NOTICE("[user]开始修复\the [src]的管道和护板。"),
 			SPAN_NOTICE("You start repairing \the [src]'s tubing and plating."))
 			if(do_after(user, 150 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				if(buildstate != SENSORTOWER_BUILDSTATE_WRENCH || is_on)
 					return FALSE
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 				buildstate = SENSORTOWER_BUILDSTATE_WORKING
-				user.visible_message(SPAN_NOTICE("[user] repairs \the [src]'s tubing and plating."),
+				user.visible_message(SPAN_NOTICE("[user]修复了\the [src]的管道和护板。"),
 				SPAN_NOTICE("You repair \the [src]'s tubing and plating."))
 				update_icon()
 				return TRUE
@@ -201,7 +201,7 @@
 
 /obj/structure/machinery/sensortower/attack_alien(mob/living/carbon/xenomorph/M)
 	if(buildstate == SENSORTOWER_BUILDSTATE_BLOWTORCH)
-		to_chat(M, SPAN_WARNING("You stare at \the [src] cluelessly."))
+		to_chat(M, SPAN_WARNING("你茫然地盯着\the [src]。"))
 		return XENO_NO_DELAY_ACTION
 
 	if(M.action_busy)
@@ -210,7 +210,7 @@
 	var/turf/cur_loc = M.loc
 
 	playsound(loc, 'sound/effects/metal_creaking.ogg', 25, TRUE)
-	M.visible_message(SPAN_DANGER("[M] starts wrenching apart \the [src]'s panels and reaching inside it!"),
+	M.visible_message(SPAN_DANGER("[M]开始用扳手撬开\the [src]的面板，并将手伸了进去！"),
 	SPAN_DANGER("You start wrenching apart \the [src]'s panels and reaching inside it!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	xeno_attack_delay(M)
 	if(do_after(M, 40, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
@@ -227,11 +227,11 @@
 			stop_processing()
 		update_icon()
 		msg_admin_niche("[key_name(M)] has destroyed the sensor tower.")
-		M.visible_message(SPAN_DANGER("[M] pulls apart \the [src]'s panels and breaks all its internal wiring and tubing!"),
+		M.visible_message(SPAN_DANGER("[M]撬开了\the [src]的面板，并破坏了其所有内部线路和管道！"),
 		SPAN_DANGER("You pull apart \the [src]'s panels and break all its internal wiring and tubing!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		playsound(loc, 'sound/effects/meteorimpact.ogg', 25, 1)
 	else
-		M.visible_message(SPAN_DANGER("[M] stops destroying \the [src]'s internal machinery!"),
+		M.visible_message(SPAN_DANGER("[M]停止破坏\the [src]的内部机械装置！"),
 		SPAN_DANGER("You stop destroying \the [src]'s internal machinery!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_NO_DELAY_ACTION
 

@@ -1,6 +1,6 @@
 /obj/item/ammo_magazine/hardpoint/ltb_cannon
-	name = "LTB Cannon Magazine"
-	desc = "A primary armament cannon magazine."
+	name = "LTB火炮弹箱"
+	desc = "一种主武器火炮弹箱。"
 	caliber = "86mm" //Making this unique on purpose
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/vehicles.dmi'
 	icon_state = "ltbcannon_4"

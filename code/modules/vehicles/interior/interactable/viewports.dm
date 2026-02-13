@@ -1,6 +1,6 @@
 /obj/structure/interior_viewport
-	name = "External Cameras Terminal"
-	desc = "A small terminal connected to the external cameras of a vehicle, allowing a 360-degree visual survey of vehicle surroundings."
+	name = "外部摄像头终端"
+	desc = "连接载具外部摄像头的小型终端，可对载具周围环境进行360度视觉勘察。"
 	icon = 'icons/obj/vehicles/interiors/general.dmi'
 	icon_state = "viewport"
 	layer = INTERIOR_DOOR_LAYER
@@ -27,13 +27,13 @@
 
 /obj/structure/interior_viewport/simple
 	name = "viewport"
-	desc = "Hey, I can see my base from here!"
+	desc = "嘿，我能从这里看到我的基地！"
 	icon_state = "viewport_simple"
 
 //van's frontal window viewport
 /obj/structure/interior_viewport/simple/windshield
 	name = "windshield"
-	desc = "When it was cleaned last time? There is a squashed bug in the corner."
+	desc = "上次清洁是什么时候？角落里有个被压扁的虫子。"
 	icon = 'icons/obj/vehicles/interiors/van.dmi'
 	icon_state = "windshield_viewport_top"
 	alpha = 80

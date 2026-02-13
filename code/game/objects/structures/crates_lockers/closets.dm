@@ -1,6 +1,6 @@
 /obj/structure/closet
 	name = "closet"
-	desc = "It's a basic storage unit."
+	desc = "这是一个基础存储单元。"
 	icon = 'icons/obj/structures/closet.dmi'
 	icon_state = "closed"
 	density = TRUE
@@ -86,7 +86,7 @@
 		if(isliving(M))
 			var/mob/living/living_M = M
 			if(living_M.mobility_flags & MOBILITY_MOVE)
-				M.visible_message(SPAN_WARNING("[M] suddenly gets out of [src]!"),
+				M.visible_message(SPAN_WARNING("[M]突然从[src]里出来了！"),
 				SPAN_WARNING("You get out of [src] and get your bearings!"))
 
 /// Attempts to open this closet by user, skipping checks that prevent opening if forced
@@ -160,7 +160,7 @@
 /obj/structure/closet/proc/toggle(mob/living/user)
 	user.next_move = world.time + 5
 	if(!(opened ? close(user) : open(user)))
-		to_chat(user, SPAN_NOTICE("It won't budge!"))
+		to_chat(user, SPAN_NOTICE("纹丝不动！"))
 	return
 
 
@@ -206,7 +206,7 @@
 
 /obj/structure/closet/attack_animal(mob/living/user)
 	if(user.wall_smash)
-		visible_message(SPAN_DANGER("[user] destroys [src]."))
+		visible_message(SPAN_DANGER("[user]摧毁了[src]。"))
 		deconstruct(FALSE)
 
 /obj/structure/closet/attackby(obj/item/attacking_item, mob/living/user, list/mods)
@@ -223,20 +223,20 @@
 		if(material == MATERIAL_METAL)
 			if(iswelder(attacking_item))
 				if(!HAS_TRAIT(attacking_item, TRAIT_TOOL_BLOWTORCH))
-					to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+					to_chat(user, SPAN_WARNING("你需要一把更强的喷枪！"))
 					return FALSE
 				var/obj/item/tool/weldingtool/torch = attacking_item
 				if(!torch.isOn())
-					to_chat(user, SPAN_WARNING("[torch] needs to be on!"))
+					to_chat(user, SPAN_WARNING("[torch]需要开启！"))
 					return FALSE
 				if(!torch.remove_fuel(0 ,user))
-					to_chat(user, SPAN_NOTICE("You need more welding fuel to complete this task."))
+					to_chat(user, SPAN_NOTICE("你需要更多焊枪燃料来完成此任务。"))
 					return FALSE
 				playsound(src, 'sound/items/Welder.ogg', 25, 1)
 				if(!do_after(user, 10 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 					return FALSE
 				new /obj/item/stack/sheet/metal(loc)
-				visible_message(SPAN_NOTICE("[src] has been cut apart by [user] with [torch]."),
+				visible_message(SPAN_NOTICE("[src]已被[user]用[torch]切割开。"),
 				SPAN_NOTICE("You hear welding."))
 				qdel(src)
 				return FALSE
@@ -246,7 +246,7 @@
 				if(!do_after(user, 10 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 					return FALSE
 				new /obj/item/stack/sheet/wood(loc)
-				user.visible_message(SPAN_NOTICE("[user] has pried apart [src] with [attacking_item]."), "You pry apart [src].")
+				user.visible_message(SPAN_NOTICE("[user]用[attacking_item]撬开了[src]。"), "You pry apart [src].")
 				qdel(src)
 				return FALSE
 		user.drop_inv_item_to_loc(attacking_item,loc)
@@ -258,24 +258,24 @@
 		return FALSE
 	else if(iswelder(attacking_item))
 		if(material != MATERIAL_METAL && material != MATERIAL_PLASTEEL)
-			to_chat(user, SPAN_WARNING("You cannot weld [material]!"))
+			to_chat(user, SPAN_WARNING("你无法焊接[material]！"))
 			return FALSE//Can't weld wood/plastic.
 		if(!HAS_TRAIT(attacking_item, TRAIT_TOOL_BLOWTORCH))
-			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+			to_chat(user, SPAN_WARNING("你需要一把更强的喷枪！"))
 			return FALSE
 		var/obj/item/tool/weldingtool/torch = attacking_item
 		if(!torch.isOn())
-			to_chat(user, SPAN_WARNING("[torch] needs to be on!"))
+			to_chat(user, SPAN_WARNING("[torch]需要开启！"))
 			return FALSE
 		if(!torch.remove_fuel(1, user))
-			to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
+			to_chat(user, SPAN_WARNING("你需要更多焊枪燃料来完成此任务。"))
 			return FALSE
 		playsound(src, 'sound/items/Welder.ogg', 25, 1)
 		if(!do_after(user, 10 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return FALSE
 		welded = !welded
 		update_icon()
-		visible_message(SPAN_NOTICE("[src] has been [welded?"welded shut":"unwelded"] by [user.name]."),
+		visible_message(SPAN_NOTICE("[src]已被[welded?"welded shut":"unwelded"] by [user.name]."),
 		SPAN_NOTICE("You hear welding."))
 	else
 		if(isxeno(user))
@@ -312,7 +312,7 @@
 		return
 	else
 		step_towards(O, loc)
-		user.visible_message(SPAN_DANGER("[user] stuffs [O] into [src]!"))
+		user.visible_message(SPAN_DANGER("[user]把[O]塞进了[src]！"))
 
 
 
@@ -325,13 +325,13 @@
 
 	var/obj/item/I = user.get_active_hand()
 	if(istype(I) && (I.pry_capable == IS_PRY_CAPABLE_FORCE))
-		visible_message(SPAN_DANGER("[user] smashes out of the locker!"))
+		visible_message(SPAN_DANGER("[user]从储物柜里破门而出！"))
 		playsound(loc, 'sound/effects/metal_crash.ogg', 75)
 		deconstruct(FALSE)
 		return
 
 	if(!open(user))
-		to_chat(user, SPAN_NOTICE("It won't budge!"))
+		to_chat(user, SPAN_NOTICE("纹丝不动！"))
 		if(!lastbang)
 			lastbang = 1
 			for (var/mob/M in hearers(src, null))
@@ -386,8 +386,8 @@
 		open(user, force=TRUE)
 
 /obj/structure/closet/yautja
-	name = "alien closet"
-	desc = "A suspicious dark metal alien closet, what horrors can be stored inside?"
+	name = "异形储物柜"
+	desc = "一个可疑的黑色金属异形储物柜，里面能藏着什么恐怖的东西？"
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	storage_capacity = 100
 

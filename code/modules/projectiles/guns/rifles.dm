@@ -44,7 +44,7 @@
 
 /obj/item/weapon/gun/rifle/m41a
 	name = "\improper M41A pulse rifle MK2"
-	desc = "The standard issue rifle of the Colonial Marines. Commonly carried by most combat personnel. Uses 10x24mm caseless ammunition."
+	desc = "殖民地海军陆战队的标准制式步枪。大多数战斗人员普遍配备。使用10x24毫米无壳弹药。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/assault_rifles.dmi'
 	icon_state = "m41a"
 	item_state = "m41a"
@@ -138,7 +138,7 @@
 
 /obj/item/weapon/gun/rifle/nsg23
 	name = "\improper NSG 23 assault rifle"
-	desc = "A rare sight, this rifle is seen most commonly in the hands of Weyland-Yutani PMCs. Compared to the M41A MK2, it has noticeably improved handling and vastly improved performance at long and medium range, but compares similarly up close."
+	desc = "这种步枪十分罕见，最常见于维兰德-汤谷PMC人员手中。与M41A MK2相比，其操控性显著提升，中远距离性能大幅改善，但近战表现相近。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/assault_rifles.dmi'
 	icon_state = "nsg23"
 	item_state = "nsg23"
@@ -245,7 +245,7 @@
 
 /obj/item/weapon/gun/rifle/m41a/elite
 	name = "\improper M41A/2 pulse rifle"
-	desc = "A modified version M41A Pulse Rifle MK2, re-engineered for better weight, handling and accuracy. Fires precise two-round bursts. Given only to elite units."
+	desc = "M41A脉冲步枪MK2的改进型号，经过重新设计以优化重量、操控性和精度。可进行精确的两连发点射。仅配发给精英部队。"
 	icon_state = "m41a2"
 	item_state = "m41a2"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/assault_rifles.dmi'
@@ -305,7 +305,7 @@
 	starting_attachment_types = list(/obj/item/attachable/stock/rifle/collapsible, /obj/item/attachable/magnetic_harness, /obj/item/attachable/angledgrip, /obj/item/attachable/suppressor)
 
 /obj/item/weapon/gun/rifle/m41a/corporate
-	desc = "A Weyland-Yutani creation, this M41A MK2 comes equipped in corporate white. Uses 10x24mm caseless ammunition."
+	desc = "维兰德-汤谷的产物，这款M41A MK2采用公司标志性的白色涂装。使用10x24毫米无壳弹药。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_map/snow/guns_obj.dmi'
 	item_icons = list(
 		WEAR_L_HAND = 'icons/obj/items/weapons/guns/guns_by_map/snow/guns_lefthand.dmi',
@@ -318,7 +318,7 @@
 	starting_attachment_types = list(/obj/item/attachable/stock/rifle/collapsible)
 
 /obj/item/weapon/gun/rifle/m41a/corporate/no_lock //for PMC nightmares.
-	desc = "A Weyland-Yutani creation, this M41A MK2 comes equipped in corporate white. Uses 10x24mm caseless ammunition. This one had its IFF electronics removed."
+	desc = "维兰德-汤谷的产物，这款M41A MK2采用公司标志性的白色涂装。使用10x24毫米无壳弹药。此型号移除了敌我识别电子元件。"
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 
 /obj/item/weapon/gun/rifle/m41a/corporate/commando
@@ -347,7 +347,7 @@
 
 /obj/item/weapon/gun/rifle/m41a/elite/xm40
 	name = "\improper XM40 pulse rifle"
-	desc = "One of the experimental predecessors to the M41 line that never saw widespread adoption beyond elite marine units. Of the rifles in the USCM inventory that are still in production, this is the only one to feature an integrated suppressor. It can accept M41A MK2 magazines, but also features its own proprietary magazine system. Extremely lethal in burstfire mode."
+	desc = "M41系列步枪的实验性前身之一，除精英陆战单位外从未广泛采用。在USCM仍在生产的步枪中，这是唯一一款配备一体式消音器的型号。它可兼容M41A MK2弹匣，但也拥有自己的专用弹匣系统。在连发模式下极具杀伤力。"
 	icon_state = "m40sd"
 	item_state = "m40sd"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/assault_rifles.dmi'
@@ -426,7 +426,7 @@
 
 /obj/item/weapon/gun/rifle/m41aMK1
 	name = "\improper M41A pulse rifle"
-	desc = "An older design of the Pulse Rifle commonly used by Colonial Marines. Uses 10x24mm caseless ammunition."
+	desc = "殖民地海军陆战队常用的脉冲步枪旧型号。使用10x24毫米无壳弹药。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/assault_rifles.dmi'
 	icon_state = "m41amk1" //Placeholder.
 	item_state = "m41amk1" //Placeholder.
@@ -491,12 +491,12 @@
 	current_mag = /obj/item/ammo_magazine/rifle/m41aMK1/ap
 
 /obj/item/weapon/gun/rifle/m41aMK1/anchorpoint
-	desc = "A classic M41 MK1 Pulse Rifle painted in a fresh coat of the classic Humbrol 170 camouflage. This one appears to be used by the Colonial Marine contingent aboard Anchorpoint Station, and is equipped with an underbarrel shotgun. Uses 10x24mm caseless ammunition."
+	desc = "一把经典的M41 MK1脉冲步枪，涂有崭新的经典亨伯尔170号迷彩。这把枪似乎由锚点空间站上的殖民地海军陆战队分遣队使用，并配备了下挂式霰弹枪。使用10x24毫米无壳弹药。"
 	starting_attachment_types = list(/obj/item/attachable/stock/rifle/collapsible, /obj/item/attachable/attached_gun/shotgun)
 	current_mag = /obj/item/ammo_magazine/rifle/m41aMK1/ap
 
 /obj/item/weapon/gun/rifle/m41aMK1/anchorpoint/gl
-	desc = "A classic M41 MK1 Pulse Rifle painted in a fresh coat of the classic Humbrol 170 camouflage. This one appears to be used by the Colonial Marine contingent aboard Anchorpoint Station, and is equipped with an underbarrel grenade launcher. Uses 10x24mm caseless ammunition."
+	desc = "一把经典的M41 MK1脉冲步枪，涂有崭新的经典亨伯尔170号迷彩。这把枪似乎由锚点空间站上的殖民地海军陆战队分遣队使用，并配备了下挂式榴弹发射器。使用10x24毫米无壳弹药。"
 	starting_attachment_types = list(/obj/item/attachable/stock/rifle/collapsible, /obj/item/attachable/attached_gun/grenade/mk1)
 
 //----------------------------------------------
@@ -504,7 +504,7 @@
 
 /obj/item/weapon/gun/rifle/m46c
 	name = "\improper M46C pulse rifle"
-	desc = "A prototype M46C, an experimental rifle platform built to outperform the standard M41A. Back issue only. Uses standard MK1 & MK2 rifle magazines."
+	desc = "M46C原型枪，一种旨在超越标准M41A的实验性步枪平台。仅限旧版。使用标准MK1和MK2步枪弹匣。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/assault_rifles.dmi'
 	icon_state = "m46c"
 	item_state = "m46c"
@@ -614,7 +614,7 @@
 	. = ..()
 	if(is_locked && linked_human && linked_human != user)
 		if(linked_human.is_revivable() || linked_human.stat != DEAD)
-			to_chat(user, SPAN_WARNING("[icon2html(src, usr)] Trigger locked by [src]. Unauthorized user."))
+			to_chat(user, SPAN_WARNING("[icon2html(src, usr)] 扳机已被[src]锁定。未授权用户。"))
 			playsound(loc,'sound/weapons/gun_empty.ogg', 25, 1)
 			return FALSE
 
@@ -626,7 +626,7 @@
 	. = ..()
 	if(!linked_human)
 		name_after_co(user)
-		to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You pick up \the [src], registering yourself as its owner."))
+		to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] 你拾起了\the [src]，将自己注册为其所有者。"))
 
 //---ability actions--\\
 
@@ -644,7 +644,7 @@
 
 /datum/action/item_action/m46c/toggle_lethal_mode/New(Target, obj/item/holder)
 	. = ..()
-	name = "Toggle IFF"
+	name = "切换敌我识别"
 	action_icon_state = "iff_toggle_on"
 	button.name = name
 	button.overlays.Cut()
@@ -665,22 +665,22 @@
 
 /obj/item/weapon/gun/rifle/m46c/proc/toggle_lock(mob/user)
 	if(linked_human && usr != linked_human)
-		to_chat(usr, SPAN_WARNING("[icon2html(src, usr)] Action denied by [src]. Unauthorized user."))
+		to_chat(usr, SPAN_WARNING("[icon2html(src, usr)] 操作被[src]拒绝。未授权用户。"))
 		return
 	else if(!linked_human)
 		name_after_co(usr)
 
 	is_locked = !is_locked
-	to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You [is_locked? "lock": "unlock"] [src]."))
+	to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] 你[is_locked? "lock": "unlock"] [src]."))
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 
 /obj/item/weapon/gun/rifle/m46c/proc/toggle_iff(mob/user)
 	if(is_locked && linked_human && usr != linked_human)
-		to_chat(usr, SPAN_WARNING("[icon2html(src, usr)] Action denied by [src]. Unauthorized user."))
+		to_chat(usr, SPAN_WARNING("[icon2html(src, usr)] 操作被[src]拒绝。未授权用户。"))
 		return
 
 	iff_enabled = !iff_enabled
-	to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You [iff_enabled? "enable": "disable"] the IFF on [src]."))
+	to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] 你[iff_enabled? "enable": "disable"] the IFF on [src]."))
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 
 	recalculate_attachment_bonuses()
@@ -724,7 +724,7 @@
 
 /obj/item/weapon/gun/rifle/mar40
 	name = "\improper MAR-40 battle rifle"
-	desc = "A cheap, reliable assault rifle chambered in 7.62x39mm. Commonly found in the hands of criminals or mercenaries, or in the hands of the UPP or CLF."
+	desc = "一款廉价可靠的7.62x39毫米口径突击步枪。常见于罪犯或雇佣兵手中，或UPP及CLF成员手中。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/assault_rifles.dmi'
 	icon_state = "mar40"
 	item_state = "mar40"
@@ -812,13 +812,13 @@
 	recoil = RECOIL_AMOUNT_TIER_5
 
 /obj/item/weapon/gun/rifle/mar40/tactical
-	desc = "A cheap, reliable assault rifle chambered in 7.62x39mm. Commonly found in the hands of criminals or mercenaries, or in the hands of the UPP or CLF. This one has been equipped with an after-market ammo-counter."
+	desc = "一款廉价可靠的7.62x39毫米口径突击步枪。常见于罪犯或雇佣兵手中，或UPP及CLF成员手中。此型号配备了售后市场弹药计数器。"
 	starting_attachment_types = list(/obj/item/attachable/angledgrip, /obj/item/attachable/suppressor, /obj/item/attachable/magnetic_harness)
 	flags_gun_features = GUN_AMMO_COUNTER|GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 
 /obj/item/weapon/gun/rifle/mar40/carbine
 	name = "\improper MAR-30 battle carbine"
-	desc = "A cheap, reliable carbine chambered in 7.62x39mm. Commonly found in the hands of criminals or mercenaries."
+	desc = "一款廉价可靠的卡宾枪，使用7.62x39mm弹药。常见于罪犯或雇佣兵之手。"
 	icon_state = "mar30"
 	item_state = "mar30"
 	fire_sound = 'sound/weapons/gun_mar40.ogg'
@@ -892,13 +892,13 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_3
 
 /obj/item/weapon/gun/rifle/mar40/carbine/tactical
-	desc = "A cheap, reliable carbine chambered in 7.62x39mm. Commonly found in the hands of criminals or mercenaries. This one has been equipped with an after-market ammo-counter."
+	desc = "一款廉价可靠的卡宾枪，使用7.62x39mm弹药。常见于罪犯或雇佣兵之手。这把枪加装了售后市场的弹药计数器。"
 	starting_attachment_types = list(/obj/item/attachable/verticalgrip, /obj/item/attachable/suppressor, /obj/item/attachable/magnetic_harness)
 	flags_gun_features = GUN_AMMO_COUNTER|GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 
 /obj/item/weapon/gun/rifle/mar40/lmg
 	name = "\improper MAR-50 light machine gun"
-	desc = "A cheap, reliable LMG chambered in 7.62x39mm. Commonly found in the hands of slightly better funded criminals."
+	desc = "一款廉价可靠的轻机枪，使用7.62x39mm弹药。常见于资金稍充裕的罪犯之手。"
 	icon_state = "mar50"
 	item_state = "mar50"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/machineguns.dmi'
@@ -955,7 +955,7 @@
 	recoil = RECOIL_AMOUNT_TIER_5
 
 /obj/item/weapon/gun/rifle/mar40/lmg/tactical
-	desc = "A cheap, reliable LMG chambered in 7.62x39mm. Commonly found in the hands of slightly better funded criminals. This one has been equipped with an after-market ammo-counter."
+	desc = "一款廉价可靠的轻机枪，使用7.62x39mm弹药。常见于资金稍充裕的罪犯之手。这把枪加装了售后市场的弹药计数器。"
 	starting_attachment_types = list(/obj/item/attachable/magnetic_harness)
 	flags_gun_features = GUN_AMMO_COUNTER|GUN_CAN_POINTBLANK|GUN_WIELDED_FIRING_ONLY
 //-------------------------------------------------------
@@ -963,7 +963,7 @@
 
 /obj/item/weapon/gun/rifle/m16
 	name = "\improper M16 rifle"
-	desc = "An old, reliable design first adopted by the U.S. military in the 1960s. Something like this belongs in a museum of war history. It is chambered in 5.56x45mm."
+	desc = "一款古老可靠的设计，最初于20世纪60年代被美军采用。这种东西应该放在战争历史博物馆里。使用5.56x45mm弹药。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/assault_rifles.dmi'
 	icon_state = "m16"
 	item_state = "m16"
@@ -1052,7 +1052,7 @@
 
 /obj/item/weapon/gun/rifle/m16/m16a5
 	name = "\improper M16A5 rifle"
-	desc = "Modernized version of M16 platform rifle, probably originated from bottomless stockpiles of UA, when they switched to a newer designs. It is chambered in 5.56x45mm."
+	desc = "M16平台步枪的现代化版本，可能源自UA在换装新设计后留下的无尽库存。使用5.56x45mm弹药。"
 	desc_lore = "The M16A5, introduced in 2016 has become something of a timeless classic in UA territory. The design rights for the gun and its many related platforms came into Armat ownership after their acquisition of Colt, and it's remained a surprisingly lucrative patent since then. While dated, the weapon's ease of use and more conventional rounds have made it popular among minimally-trained colonists and isolated units alike, being much easier to self-produce replacement parts and ammunition for than more advanced alternatives like pulse rifles and caseless ammunition. Subsequently, it remains a common sight on many colonies, and even in the reserve armories of some USCMC vessels like the Sulaco, partly from tradition and partly because of the sheer surplus supply of rifles that's lasted nearly two centuries."
 	icon_state = "m16a5"
 	item_state = "m16a5"
@@ -1114,7 +1114,7 @@
 
 /obj/item/weapon/gun/rifle/m16/grenadier
 	name = "\improper M16 grenadier rifle"
-	desc = "An old, reliable design first adopted by the U.S. military in the 1960s. Something like this belongs in a museum of war history. It is chambered in 5.56x45mm. This one has an irremovable M203 grenade launcher attached to it, holds one proprietary 40mm shell at a time, it lacks modern IFF systems and will impact the first target it hits; introduce your little friend."
+	desc = "一款古老可靠的设计，最初于20世纪60年代被美军采用。这种东西应该放在战争历史博物馆里。使用5.56x45mm弹药。这把枪装有一个不可拆卸的M203榴弹发射器，一次可装填一发专用的40mm榴弹，它缺乏现代敌我识别系统，会命中第一个击中的目标；给你的“小朋友”打个招呼吧。"
 	icon_state = "m16g"
 	item_state = "m16"
 	fire_sound = 'sound/weapons/gun_m16.ogg'
@@ -1174,7 +1174,7 @@
 
 /obj/item/weapon/gun/rifle/xm177
 	name = "\improper XM177E2 carbine"
-	desc = "An old design, essentially a shortened M16A1 with a collapsible stock. It is chambered in 5.56x45mm. The short length inhibits the attachment of most underbarrel attachments, and the barrel moderator prohibits the attachment of all muzzle devices."
+	desc = "一款老式设计，本质上是带折叠枪托的缩短版M16A1。使用5.56x45mm弹药。短枪身限制了大多数下挂附件的安装，枪管调节器则禁止安装所有枪口装置。"
 	desc_lore = "A carbine similar to the M16A1, with a collapsible stock and a distinct flash suppressor. A stamp on the receiver reads: 'COLT AR-15 - PROPERTY OF U.S. GOVT - XM177E2 - CAL 5.56MM' \nA design originating from the Vietnam War, the XM177, also known as the Colt Commando or GAU-5/A, was an improvement on the CAR-15 Model 607, fixing multiple issues found with the limited service of the Model 607 with Special Forces. The XM177 saw primary use with Army Special Forces and Navy Seals operating as commandos. \nHow this got here is a mystery."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/assault_rifles.dmi'
 	icon_state = "xm177"
@@ -1234,7 +1234,7 @@
 
 /obj/item/weapon/gun/rifle/xm177/car15a3
 	name = "\improper CAR-15A3 carbine"
-	desc = "Modernized version of the XM177, developed for limited use by special forces and Office of the Colonial Marshals. The short length inhibits the attachment of most underbarrel attachments, and the barrel moderator prohibits the attachment of all muzzle devices."
+	desc = "XM177的现代化版本，为特种部队和殖民地治安官办公室的有限使用而开发。短枪身限制了大多数下挂附件的安装，枪管调节器则禁止安装所有枪口装置。"
 	desc_lore = null
 	icon_state = "car15a3"
 	item_state = "car15a3"
@@ -1269,7 +1269,7 @@
 
 /obj/item/weapon/gun/rifle/ar10
 	name = "\improper AR10 rifle"
-	desc = "An earlier version of the more widespread M16 rifle. Considered to be the father of the 20th century rifle. How one of these ended up here is a mystery of its own. It is chambered in 7.62x51mm."
+	desc = "更为普及的M16步枪的早期版本。被认为是20世纪步枪之父。这东西怎么会出现在这里本身就是一个谜。使用7.62x51mm弹药。"
 	desc_lore = "The AR10 was initially manufactured by the Armalite corporation (bought by Weyland-Yutani in 2002) in the 1950s. It was the first production rifle to incorporate many new and innovative features, such as a gas operated bolt and carrier system. Only 10,000 were ever produced, and the only national entities to use them were Portugal and Sudan. Since the end of the 20th century, these rifles - alongside the far more common M16 and AR15 - have floated around the less civilized areas of space, littering jungles and colony floors with their uncommon cased ammunition - a rarity since the introduction of pulse munitions. This rifle has the word \"Salazar\" engraved on its side."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/assault_rifles.dmi'
 	icon_state = "ar10"
@@ -1349,7 +1349,7 @@
 
 /obj/item/weapon/gun/rifle/m16/dutch
 	name = "\improper Dutch's M16A1"
-	desc = "A modified M16 employed by Dutch's Dozen mercenaries. It has 'CLOAKER KILLER' printed on a label on the side. Chambered in 5.56x45mm."
+	desc = "荷兰十二人雇佣兵使用的改装版M16。侧面标签上印有‘CLOAKER KILLER’。使用5.56x45mm弹药。"
 	icon_state = "m16a1"
 	current_mag = /obj/item/ammo_magazine/rifle/m16/ap
 	starting_attachment_types = list(/obj/item/attachable/bayonet)
@@ -1378,7 +1378,7 @@
 
 /obj/item/weapon/gun/rifle/m16/grenadier/dutch
 	name = "\improper Dutch's Grenadier M16A1"
-	desc = "A modified M16 employed by Dutch's Dozen mercenaries. It has 'CLOAKER KILLER' printed on a label on the side. It is chambered in 5.56x45mm. This one has an irremovable M203 grenade launcher attached to it, holds one proprietary 40mm shell at a time, it lacks modern IFF systems and will impact the first target it hits; introduce your little friend."
+	desc = "荷兰十二人雇佣兵使用的改装版M16。侧面标签上印有‘CLOAKER KILLER’。使用5.56x45mm弹药。这把枪装有一个不可拆卸的M203榴弹发射器，一次可装填一发专用的40mm榴弹，它缺乏现代敌我识别系统，会命中第一个击中的目标；给你的“小朋友”打个招呼吧。"
 	current_mag = /obj/item/ammo_magazine/rifle/m16/ap
 	starting_attachment_types = list(/obj/item/attachable/scope/mini, /obj/item/attachable/bayonet)
 
@@ -1388,7 +1388,7 @@
 
 /obj/item/weapon/gun/rifle/xm177/dutch
 	name = "\improper Dutch's XM177E2 Carbine"
-	desc = "A modified XM177 employed by Dutch's Dozen mercenaries. It has 'CLOAKER KILLER' printed on a label on the side. It is chambered in 5.56x45mm. The short length inhibits the attachment of most underbarrel attachments, and the barrel moderator prohibits the attachment of all muzzle devices."
+	desc = "荷兰十二人雇佣兵使用的改装版XM177。侧面标签上印有‘CLOAKER KILLER’。使用5.56x45mm弹药。短枪身限制了大多数下挂附件的安装，枪管调节器则禁止安装所有枪口装置。"
 	desc_lore = "A carbine similar to the M16A1, with a collapsible stock and a distinct flash suppressor. A stamp on the receiver reads: 'COLT AR-15 - PROPERTY OF U.S. GOVT - XM177E2 - CAL 5.56MM', above the receiver is a crude sketching of some sort of mask? with the words 'CLOAKER KILLER' and seven tally marks etched on. \nA design originating from the Vietnam War, the XM177, also known as the Colt Commando or GAU-5/A, was an improvement on the CAR-15 Model 607, fixing multiple issues found with the limited service of the Model 607 with Special Forces. The XM177 saw primary use with Army Special Forces and Navy Seals operating as commandos. \nHow this got here is a mystery."
 	icon_state = "xm177"
 	current_mag = /obj/item/ammo_magazine/rifle/m16/ap
@@ -1412,7 +1412,7 @@
 
 /obj/item/weapon/gun/rifle/lmg
 	name = "\improper M41AE2 heavy pulse rifle"
-	desc = "A large squad support weapon capable of laying down sustained suppressing fire from a mounted position. While unstable and less accurate, it can be lugged and shot with two hands. Like it's smaller brothers, the M41A MK2 and M4RA, the M41AE2 is chambered in 10mm."
+	desc = "一种大型班组支援武器，能够从固定阵地进行持续压制射击。虽然不稳定且精度较低，但可以双手携带并射击。与其较小的兄弟M41A MK2和M4RA一样，M41AE2使用10mm弹药。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi'
 	icon_state = "m41ae2"
 	item_state = "m41ae2"
@@ -1498,7 +1498,7 @@
 
 /obj/item/weapon/gun/rifle/type71
 	name = "\improper Type 71 pulse rifle"
-	desc = "The primary service rifle of the UPP space forces, the Type 71 is an ergonomic, lightweight pulse rifle chambered in 5.45x39mm. In accordance with doctrinal principles of overmatch and suppression, the rifle has a high rate of fire and a high-capacity casket magazine. Despite lackluster precision, an integrated recoil-dampening mechanism makes the rifle surprisingly controllable in bursts."
+	desc = "UPP太空部队的主要制式步枪，71式是一款符合人体工程学、轻量化的脉冲步枪，使用5.45x39mm弹药。根据压制与优势火力的战术原则，该步枪射速高，并配备大容量盒式弹匣。尽管精度平平，但集成的后坐力抑制机制使其在点射时出奇地可控。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/assault_rifles.dmi'
 	icon_state = "type71"
 	item_state = "type71"
@@ -1624,7 +1624,7 @@
 
 /obj/item/weapon/gun/rifle/type71/flamer
 	name = "\improper Type 71-F pulse rifle"
-	desc = "This appears to be a less common variant of the Type 71 with an integrated flamethrower that seems especially powerful."
+	desc = "这似乎是71式的一种较不常见的变体，配备了一个看起来特别强大的集成火焰喷射器。"
 	attachable_allowed = list(
 		/obj/item/attachable/flashlight, // Rail
 		/obj/item/attachable/magnetic_harness,
@@ -1674,7 +1674,7 @@
 
 /obj/item/weapon/gun/rifle/type71/carbine
 	name = "\improper Type 71 pulse carbine"
-	desc = "A carbine variant of the Type 71, easier to handle at the cost of lesser damage, but negative soldier reviews have shifted it out of active use, given only to reserves or troops not expected to face much combat."
+	desc = "71式的卡宾枪变体，更易于操控，但代价是威力降低。由于士兵评价不佳，它已退出前线使用，仅配发给预备役或预计不会面临激烈战斗的部队。"
 	icon_state = "type71c"
 	item_state = "type71c"
 
@@ -1746,8 +1746,8 @@
 	)
 
 /obj/item/weapon/gun/rifle/type71/carbine/commando
-	name = "\improper Type 71 'Commando' pulse carbine"
-	desc = "A much rarer variant of the Type 71, this version contains an integrated suppressor, integrated scope, and extensive fine-tuning. Many parts have been replaced, filed down, and improved upon. As a result, this variant is rarely seen outside of commando units."
+	name = "\improper Type 71 '突击队员' pulse carbine"
+	desc = "71式的一种更为罕见的变体，此版本包含集成消音器、集成瞄准镜和广泛的精细调校。许多部件已被更换、打磨和改进。因此，这种变体很少在突击队单位之外见到。"
 	icon_state = "type73"
 	item_state = "type73"
 
@@ -1793,7 +1793,7 @@
 
 /obj/item/weapon/gun/rifle/ak4047
 	name = "\improper AK-4047 pulse assault rifle"
-	desc = "The UPP equivalent to the M41A Pulse Rifle, the AK-4047 is a cheap and reliable substitute. As such, the weapon often winds up in the hands of mercenaries and insurgents. While not as accurate as the M41, the AK-4047 is sturdier than the USCMC weapon. An AK-4047 still works after being thrown off a cliff and left underwater for a month."
+	desc = "UPP版的M41A脉冲步枪，AK-4047是一款廉价可靠的替代品。因此，这种武器常常落入雇佣兵和叛乱分子之手。虽然不如M41精准，但AK-4047比USCMC的武器更坚固。一把AK-4047即使被扔下悬崖并在水下浸泡一个月，依然能正常工作。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/assault_rifles.dmi'
 	icon_state = "ak4047"
 	item_state = "ak4047"
@@ -1877,7 +1877,7 @@
 
 /obj/item/weapon/gun/rifle/m4ra
 	name = "\improper M4RA battle rifle"
-	desc = "The Armat Battlefield Systems M4RA battle rifle is a designated marksman rifle in service with the USCM. Sporting a bullpup configuration, the M4RA battle rifle is perfect for reconnaissance and fire support teams.\nTakes *only* non-high-velocity M4RA magazines."
+	desc = "阿玛特战场系统M4RA战斗步枪是USCM服役的一款指定射手步枪。采用无托结构，M4RA战斗步枪是侦察和火力支援小组的完美选择。\n*仅*可使用非高速M4RA弹匣。"
 	icon_state = "m4ra"
 	item_state = "m4ra"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/marksman_rifles.dmi'
@@ -1972,7 +1972,7 @@
 
 /obj/item/weapon/gun/rifle/l42a
 	name = "\improper L42A battle rifle"
-	desc = "The Armat Battlefield Systems L42A Battle Rifle, found commonly around the frontiers of the Galaxy. It's commonly used by colonists for self defense, as well as many colonial militias, whomever they serve due to it's rugged reliability and ease of use without much training. This rifle was put up for adoption by the USCM and tested for a time, but ultimately lost to the M4RA already in service."
+	desc = "阿玛特战场系统L42A战斗步枪，常见于银河系边疆地区。由于其坚固可靠且无需太多训练即可轻松使用，常被殖民者用于自卫，也被许多殖民地民兵（无论他们效忠于谁）所使用。这款步枪曾被USCM考虑采用并测试了一段时间，但最终输给了已在服役的M4RA。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/marksman_rifles.dmi'
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/marksman_rifles.dmi',
@@ -2054,7 +2054,7 @@
 
 /obj/item/weapon/gun/rifle/l42a/abr40
 	name = "\improper ABR-40 hunting rifle"
-	desc = "The civilian version of the L42A battle rifle. Almost identical and even cross-compatible with L42 magazines, just don't take the stock off."
+	desc = "L42A战斗步枪的民用版本。几乎完全相同，甚至与L42弹匣交叉兼容，只是别拆枪托。"
 	desc_lore = "The ABR-40 was created along-side the L42A as a hunting rifle for civilians. Sporting faux wooden furniture and a legally-mandated 12 round magazine, it's still highly accurate and deadly, a favored pick of experienced hunters and retired Marines. However, it's very limited in attachment selection, only being able to fit rail attachments, and the differences in design from the L42 force an awkward pose when attempting to hold it one-handed. Removing the stock is not recommended."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/marksman_rifles.dmi'
 	icon_state = "abr40"
@@ -2105,7 +2105,7 @@
 
 /obj/item/weapon/gun/rifle/l42a/abr40/tactical
 	name = "\improper ABR-40 tactical rifle"
-	desc = "The civilian version of the L42A battle rifle that is often wielded by Marines. Almost identical and even cross-compatible with L42 magazines, just don't take the stock off. This rifle seems to have unique tacticool blue-black furniture alongside some miscellaneous aftermarket modding."
+	desc = "L42A战斗步枪的民用版本，常被陆战队员使用。几乎完全相同，甚至与L42弹匣交叉兼容，只是别拆枪托。这把步枪似乎拥有独特的战术蓝黑涂装以及一些杂项的售后改装。"
 	desc_lore = "The ABR-40 was created after the striking popularity of the L42 battle rifle as a hunting rifle for civilians, and naturally fell into the hands of many underfunded paramilitary groups and insurrections in turn, due to its smooth and simple handling and cross-compatibility with L42A magazines."
 	icon_state = "abr40_tac"
 	item_state = "abr40_tac"
@@ -2160,7 +2160,7 @@
 
 /obj/item/weapon/gun/rifle/rmc_f90
 	name = "\improper F903A1 Rifle"
-	desc = "The standard issue rifle of the royal marines. Uniquely the royal marines are the only modern military to not use a pulse weapon. Uses 10x24mm caseless ammunition."
+	desc = "皇家海军陆战队的标准制式步枪。独特的是，皇家海军陆战队是唯一不使用脉冲武器的现代军队。使用10x24mm无壳弹药。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/assault_rifles.dmi'
 	icon_state = "aug"
 	item_state = "aug"
@@ -2219,7 +2219,7 @@
 
 /obj/item/weapon/gun/rifle/rmc_f90/a_grip
 	name = "\improper F903A2 Rifle"
-	desc = "A non-standard issue rifle of the royal marines the F903A2 is currently being phased into the royal marines as their new mainline rifle but currently only sees use by unit leaders. Uniquely the royal marines are the only modern military to not use a pulse weapon. Uses 10x24mm caseless ammunition."
+	desc = "皇家海军陆战队的非标准制式步枪，F903A2目前正逐步成为皇家海军陆战队的新主力步枪，但目前仅由单位指挥官使用。独特的是，皇家海军陆战队是唯一不使用脉冲武器的现代军队。使用10x24mm无壳弹药。"
 	icon_state = "aug_com"
 	item_state = "aug_com"
 	attachable_allowed = list(
@@ -2240,7 +2240,7 @@
 
 /obj/item/weapon/gun/rifle/rmc_f90/scope
 	name = "\improper F903A1 Marksman Rifle"
-	desc = "A variation of the F903 rifle used by the royal marines commando. This weapon only accepts the smaller 20 round magazines of 10x24mm."
+	desc = "皇家海军陆战队突击队使用的F903步枪变体。此武器仅兼容较小的10x24毫米20发弹匣。"
 	icon_state = "aug_dmr"
 	item_state = "aug_dmr"
 	attachable_allowed = null
@@ -2273,7 +2273,7 @@
 
 /obj/item/weapon/gun/rifle/rmc_f90/shotgun
 	name = "\improper F903A1/B 'Breacher' Rifle"
-	desc = "A variation of the F903 rifle used by the royal marines commando. Modified to be used in one hand with a shield. Uses 10x24mm caseless ammunition."
+	desc = "皇家海军陆战队突击队使用的F903步枪变体。经过改装，可单手配合盾牌使用。使用10x24毫米无壳弹药。"
 	icon_state = "aug_mkey"
 	item_state = "aug_mkey"
 	attachable_allowed = list(
@@ -2307,7 +2307,7 @@
 
 /obj/item/weapon/gun/rifle/l23
 	name = "\improper L23 assault rifle"
-	desc = "A rare sight, this rifle is seen most commonly in the hands of Three World Empire RMCs. Compared to the M41A MK2, it has noticeably improved handling and vastly improved performance. This one is painted in RMC's purple-blue camouflage."
+	desc = "这种步枪很罕见，最常见于三世界帝国皇家海军陆战队员手中。与M41A MK2相比，其操控性显著提升，性能也大幅增强。这把涂有皇家海军陆战队的紫蓝色迷彩。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/assault_rifles.dmi'
 	icon_state = "l23"
 	item_state = "l23"
@@ -2392,7 +2392,7 @@
 //***************************************************************//
 /obj/item/weapon/gun/rifle/l23/breacher // One-handed UBS rifle
 	name = "\improper L23-B assault rifle"
-	desc = "A rare sight, this rifle is seen most commonly in the hands of Three World Empire RMCs. This particular model was modified to facilitate RMC operations in tight quarters, allowing for it to be fired one-handed. This however crippled its stopping power due to a shorter barrel needed to make it compact. Burst fire still kicks like a mule. Compared to the M41A MK2, it has noticeably improved handling and vastly improved performance. This one is painted in RMC's purple-blue camouflage."
+	desc = "这种步枪很罕见，最常见于三世界帝国皇家海军陆战队员手中。此特定型号经过改装，以便皇家海军陆战队在狭窄空间作战，允许单手射击。然而，为使其紧凑而缩短的枪管严重削弱了其停止作用。连发模式的后坐力依然像骡子踢一样猛。与M41A MK2相比，其操控性显著提升，性能也大幅增强。这把涂有皇家海军陆战队的紫蓝色迷彩。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/assault_rifles.dmi'
 	icon_state = "l23"
 	item_state = "l23"
@@ -2461,7 +2461,7 @@
 
 /obj/item/weapon/gun/rifle/l64a3
 	name = "\improper L64A3 battle rifle"
-	desc = "A lightweight designated marksman rifle developed by Howatomo Precision Machining for the Royal Marines and Imperial Armed Space Forces. valued for its reliability."
+	desc = "由豪沃友精密机械为皇家海军陆战队和帝国太空武装部队开发的轻型精确射手步枪。以其可靠性著称。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/marksman_rifles.dmi'
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/marksman_rifles.dmi',
@@ -2528,7 +2528,7 @@
 
 /obj/item/weapon/gun/rifle/l64a3/marksman
 	name = "\improper L64A3 battle rifle"
-	desc = "A lightweight designated marksman rifle developed by Howatomo Precision Machining for the Royal Marines and Imperial Armed Space Forces. Reliable and deadly."
+	desc = "由豪沃友精密机械为皇家海军陆战队和帝国太空武装部队开发的轻型精确射手步枪。可靠且致命。"
 
 	current_mag = /obj/item/ammo_magazine/rifle/l64/ap
 
@@ -2561,7 +2561,7 @@
 
 /obj/item/weapon/gun/rifle/xm51
 	name = "\improper XM51 breaching scattergun"
-	desc = "An experimental shotgun model going through testing trials in the USCM. Based on the original civilian and CMB version, the XM51 is a mag-fed, pump-action shotgun. It utilizes special 16-gauge breaching rounds which are effective at breaching walls and doors. Users are advised not to employ the weapon against soft or armored targets due to low performance of the shells."
+	desc = "正在USCM进行测试的实验性霰弹枪型号。基于原始民用和CMB版本，XM51是一款弹匣供弹、泵动式霰弹枪。它使用特殊的16号径破门弹，对破坏墙壁和门有效。由于弹丸性能较低，建议用户不要将其用于对付软目标或装甲目标。"
 	icon_state = "xm51"
 	item_state = "xm51"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/shotguns.dmi'
@@ -2652,7 +2652,7 @@
 		return
 	if(in_chamber)
 		if(COOLDOWN_FINISHED(src, allow_message))
-			to_chat(usr, SPAN_WARNING("<i>[src] already has a shell in the chamber!<i>"))
+			to_chat(usr, SPAN_WARNING("<i>[src]的枪膛里已经有一发霰弹了！<i>"))
 			COOLDOWN_START(src, allow_message, message_delay)
 		return
 
@@ -2690,14 +2690,14 @@
 	user.drop_inv_item_to_loc(magazine, src) //Click!
 	current_mag = magazine
 	replace_ammo(user,magazine)
-	user.visible_message(SPAN_NOTICE("[user] loads [magazine] into [src]!"),
+	user.visible_message(SPAN_NOTICE("[user]将[magazine]装入[src]！"),
 		SPAN_NOTICE("You load [magazine] into [src]!"), null, 3, CHAT_TYPE_COMBAT_ACTION)
 	if(reload_sound)
 		playsound(user, reload_sound, 25, 1, 5)
 
 /obj/item/weapon/gun/rifle/xm51/cmb
 	name = "\improper Model 1771 Cobra Max Tactical"
-	desc = "Designed on the M51 platform by Armat Battlefield Systems for the Office of the Colonial Marshals as a breaching and crowd control weapon, the Model 1771 is a mag-fed, pump-action shotgun. It utilizes special 16-gauge breaching rounds which are effective at breaching walls and doors, additionally designed to shoot rubber buckshot."
+	desc = "由阿玛特战场系统基于M51平台为殖民地执法官办公室设计，作为破门和人群控制武器，1771型是一款弹匣供弹、泵动式霰弹枪。它使用特殊的16号径破门弹，对破坏墙壁和门有效，此外还设计用于发射橡胶鹿弹。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/shotguns.dmi'
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/shotguns.dmi',

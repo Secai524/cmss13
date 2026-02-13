@@ -1,7 +1,7 @@
 /obj/structure/machinery/pipedispenser
-	name = "Pipe Dispenser"
+	name = "管道分配器"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
-	desc = "A large machine used for dispensing pipes. Bolts anchor it to the ground, but you can move it around if you unwrench them."
+	desc = "用于分配管道的大型机器。螺栓将其固定在地面，但拧松螺栓后可以移动它。"
 	icon_state = "pipe_d"
 	density = TRUE
 	anchored = TRUE
@@ -99,14 +99,14 @@
 /obj/structure/machinery/pipedispenser/attackby(obj/item/W as obj, mob/user as mob)
 	src.add_fingerprint(usr)
 	if (istype(W, /obj/item/pipe) || istype(W, /obj/item/pipe_meter))
-		to_chat(usr, SPAN_NOTICE("You put [W] back to [src]."))
+		to_chat(usr, SPAN_NOTICE("你将[W]放回[src]。"))
 		user.drop_held_item()
 		qdel(W)
 		return
 	else if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		if (unwrenched==0)
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-			to_chat(user, SPAN_NOTICE("You begin to unfasten \the [src] from the floor..."))
+			to_chat(user, SPAN_NOTICE("你开始将\the [src]从地板上松开..."))
 			if (do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				user.visible_message(
 					"[user] unfastens \the [src].",
@@ -119,7 +119,7 @@
 					close_browser(usr, "pipedispenser")
 		else /*if (unwrenched==1)*/
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-			to_chat(user, SPAN_NOTICE("You begin to fasten \the [src] to the floor..."))
+			to_chat(user, SPAN_NOTICE("你开始将\the [src]固定在地板上..."))
 			if (do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				user.visible_message(
 					"[user] fastens \the [src].",
@@ -133,7 +133,7 @@
 		return ..()
 
 /obj/structure/machinery/pipedispenser/disposal
-	name = "Disposal Pipe Dispenser"
+	name = "废物处理管道分配器"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "pipe_d"
 	density = TRUE

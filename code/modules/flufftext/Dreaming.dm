@@ -7,7 +7,7 @@
 "a blue light","an abandoned colony","USCM","blood","a bandage","fear","a stiff corpse","military fleet", \
 "loyalty","space","a crash","loneliness","suffocation","a fall","heat","flames","ice","cigarettes","falling","a buzzer","a PDA", \
 "snow","searing heat","calamity","the dead","a rifle", \
-"a knife","a distress beacon","a pistol","a spider","empty space","claws", \
+"a knife","a distress beacon","a pistol","a spider","空旷空间","claws", \
 "acid","jaws","a meeting","welding","the vents","being trapped","a survivor", \
 "a power loader","cyrostasis","a meeting room","an engineer","a severed head","a motion scanner","a dropship","a uniform", \
 "a ruined station","fire","a smokey room","a voice","the cold","dimness","an operating table","teeth","flowers","graves", \

@@ -5,7 +5,7 @@
 
 /obj/item/weapon/gun/flamer
 	name = "\improper core flamer item"
-	desc = "You shouldn't have this, report how you got this item on GitHub."
+	desc = "你不该拥有此物品，请在GitHub上报告获取途径。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/flamers.dmi'
 	icon_state = "m240"
 	item_state = "m240"
@@ -128,8 +128,8 @@
 			return
 		if((active_attachable.current_rounds <= 0) && !(active_attachable.flags_attach_features & ATTACH_IGNORE_EMPTY))
 			click_empty(user) //If it's empty, let them know.
-			to_chat(user, SPAN_WARNING("[active_attachable] is empty!"))
-			to_chat(user, SPAN_NOTICE("You disable [active_attachable]."))
+			to_chat(user, SPAN_WARNING("[active_attachable]是空的！"))
+			to_chat(user, SPAN_NOTICE("你关闭了[active_attachable]。"))
 			active_attachable.activate_attachment(src, null, TRUE)
 		else
 			active_attachable.fire_attachment(target, src, user) //Fire it.
@@ -160,29 +160,29 @@
 
 /obj/item/weapon/gun/flamer/reload(mob/user, obj/item/ammo_magazine/magazine)
 	if(!magazine || !istype(magazine))
-		to_chat(user, SPAN_WARNING("That's not a magazine!"))
+		to_chat(user, SPAN_WARNING("那不是弹匣！"))
 		return
 
 	if(magazine.current_rounds <= 0)
-		to_chat(user, SPAN_WARNING("That [magazine.name] is empty!"))
+		to_chat(user, SPAN_WARNING("那个 [magazine.name] 是空的！"))
 		return
 
 	if(!istype(src, magazine.gun_type))
-		to_chat(user, SPAN_WARNING("That magazine doesn't fit in there!"))
+		to_chat(user, SPAN_WARNING("那个弹匣装不进去！"))
 		return
 
 	if(!QDELETED(current_mag) && current_mag.loc == src)
-		to_chat(user, SPAN_WARNING("It's still got something loaded!"))
+		to_chat(user, SPAN_WARNING("里面还有东西没卸下！"))
 		return
 
 	else
 		if(user)
 			if(magazine.reload_delay > 1)
-				to_chat(user, SPAN_NOTICE("You begin reloading [src]. Hold still..."))
+				to_chat(user, SPAN_NOTICE("你开始为[src]装弹。保持不动..."))
 				if(do_after(user,magazine.reload_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 					replace_magazine(user)
 				else
-					to_chat(user, SPAN_WARNING("Your reload was interrupted!"))
+					to_chat(user, SPAN_WARNING("你的装填被打断了！"))
 					return
 			else
 				replace_magazine(user, magazine)
@@ -205,7 +205,7 @@
 
 	if (user)
 		playsound(user, unload_sound, 25, 1)
-		user.visible_message(SPAN_NOTICE("[user] unloads [current_mag] from [src]."),
+		user.visible_message(SPAN_NOTICE("[user]从[src]中卸下[current_mag]。"),
 		SPAN_NOTICE("You unload [current_mag] from [src]."))
 
 	current_mag.update_icon()
@@ -410,11 +410,11 @@
 
 /obj/item/weapon/gun/flamer/proc/show_percentage(mob/living/user)
 	if(current_mag)
-		to_chat(user, SPAN_WARNING("The gauge reads: <b>[floor(current_mag.get_ammo_percent())]</b>% fuel remains!"))
+		to_chat(user, SPAN_WARNING("仪表显示：<b>[floor(current_mag.get_ammo_percent())]</b>%燃料剩余！"))
 
 /obj/item/weapon/gun/flamer/m240
 	name = "\improper M240A1 incinerator unit"
-	desc = "M240A1 incinerator unit has proven to be one of the most effective weapons at clearing out soft-targets. This is a weapon to be feared and respected as it is quite deadly."
+	desc = "M240A1焚烧器已被证明是清除软目标最有效的武器之一。这是一种致命且令人敬畏的武器。"
 
 /obj/item/weapon/gun/flamer/m240/Initialize()
 	. = ..()
@@ -425,7 +425,7 @@
 
 /obj/item/weapon/gun/flamer/m240/spec
 	name = "\improper M240-T incinerator unit"
-	desc = "An improved version of the M240A1 incinerator unit, the M240-T model is capable of dispersing a larger variety of fuel types."
+	desc = "M240A1焚烧器的改进型号，M240-T型能够喷射更多种类的燃料。"
 	icon_state = "m240t"
 	item_state = "m240t"
 	unacidable = TRUE
@@ -484,7 +484,7 @@
 
 /obj/item/weapon/gun/flamer/m240/spec/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
 	if (!link_fuelpack(user) && !current_mag)
-		to_chat(user, SPAN_WARNING("You must equip the specialized Broiler-T back harness or load in a fuel tank to use this incinerator unit!"))
+		to_chat(user, SPAN_WARNING("必须装备专用Broiler-T背负式背带或装入燃料罐才能使用此焚烧器！"))
 		click_empty(user)
 		return
 	if (fuelpack)
@@ -501,13 +501,13 @@
 
 /obj/item/weapon/gun/flamer/m240/spec/reload(mob/user, obj/item/ammo_magazine/magazine)
 	if (fuelpack)
-		to_chat(user, SPAN_WARNING("The Broiler-T feed system cannot be reloaded manually."))
+		to_chat(user, SPAN_WARNING("Broiler-T供弹系统无法手动装填。"))
 		return
 	..()
 
 /obj/item/weapon/gun/flamer/m240/spec/unload(mob/user, reload_override = 0, drop_override = 0, loc_override = 0)
 	if (fuelpack && (current_mag in list(fuelpack.fuel, fuelpack.fuelB, fuelpack.fuelX)))
-		to_chat(user, SPAN_WARNING("The incinerator tank is locked in place. It cannot be removed."))
+		to_chat(user, SPAN_WARNING("焚烧器燃料罐已锁定到位，无法移除。"))
 		return
 	..()
 
@@ -518,7 +518,7 @@
 			return FALSE
 
 		if(!skillcheck(user, SKILL_SPEC_WEAPONS,  SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_PYRO)
-			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
+			to_chat(user, SPAN_WARNING("你似乎不知道如何使用 [src]..."))
 			return FALSE
 
 /obj/item/weapon/gun/flamer/m240/spec/proc/link_fuelpack(mob/user)
@@ -537,7 +537,7 @@
 
 /obj/item/weapon/gun/flamer/m240/spec/auto // With NEW advances in science, we've learned how to drain a pyro's tank in 6 seconds, or your money back!
 	name = "\improper M240-T2 incinerator unit"
-	desc = "A prototyped model of the M240-T incinerator unit, it was discontinued after its automatic mode was deemed too expensive to deploy in the field."
+	desc = "这是M240-T焚烧器单元的原型机，因其自动模式被认为在战场上部署成本过高而停产。"
 	start_semiauto = FALSE
 	start_automatic = TRUE
 
@@ -570,7 +570,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 
 /obj/flamer_fire
 	name = "fire"
-	desc = "Ouch!"
+	desc = "哎哟！"
 	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	icon = 'icons/effects/fire.dmi'
@@ -804,7 +804,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	if(sig_result & COMPONENT_XENO_FRENZY)
 		var/mob/living/carbon/xenomorph/X = M
 		if(X.plasma_stored != X.plasma_max) //limit num of noise
-			to_chat(X, SPAN_DANGER("The heat of the fire roars in your veins! KILL! CHARGE! DESTROY!"))
+			to_chat(X, SPAN_DANGER("火焰的热力在你血管中咆哮！杀戮！冲锋！毁灭！"))
 			X.emote("roar")
 		X.plasma_stored = X.plasma_max
 
@@ -820,7 +820,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 
 	if(!burn_damage)
 		if(HAS_TRAIT(M, TRAIT_HAULED))
-			M.visible_message(SPAN_WARNING("[M] is shielded from the flames!"), SPAN_WARNING("You are shielded from the flames!"))
+			M.visible_message(SPAN_WARNING("[M]被火焰护盾保护着！"), SPAN_WARNING("You are shielded from the flames!"))
 		else
 			to_chat(M, SPAN_DANGER("[isxeno(M) ? "We" : "You"] step over the flames."))
 		return
@@ -834,7 +834,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 			if(isxeno(M))
 				var/mob/living/carbon/xenomorph/X = M
 				X.armor_deflection?(variant_burn_msg=" We feel the flames weakening our exoskeleton!"):(variant_burn_msg=" You feel the flaming chemicals eating into your body!")
-	to_chat(M, SPAN_DANGER("You are burned![variant_burn_msg?"[variant_burn_msg]":""]"))
+	to_chat(M, SPAN_DANGER("你被烧伤了！[variant_burn_msg?"[variant_burn_msg]":""]"))
 	M.updatehealth()
 
 /obj/flamer_fire/proc/update_flame()
@@ -974,7 +974,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 
 /obj/item/weapon/gun/flamer/survivor
 	name = "\improper improvised flamethrower"
-	desc = "A custom made incinerator, made from repurposed welding and piping equipment."
+	desc = "一台由改造的焊接和管道设备制成的定制焚烧器。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/flamers.dmi'
 	icon_state = "flamer"
 	item_state = "flamer"
@@ -997,7 +997,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 
 /obj/item/weapon/gun/flamer/flammenwerfer3
 	name = "\improper Flammenwerfer 3 Heavy Incineration Unit"
-	desc = "A heavy industrial incineration unit produced by Weyland Corporation and later by Weyland-Yutani Corporation. Often found among foliage cleaning missions on frontier colonies, usually aren't seen in combat, but devastating when actually used."
+	desc = "一款由维兰德公司及后来的维兰德-汤谷公司生产的重型工业焚烧装置。常见于边境殖民地的植被清理任务中，通常不用于战斗，但实际使用时威力巨大。"
 	desc_lore = "This century-old flamethrower is seeing a comeback on Frontier colonies. Heavy Incinerator Units are often used for clearing out dead foliage and burning disease ridden corpses. Current market price of is 2000$."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/flamers.dmi'
 	icon_state = "fl3"

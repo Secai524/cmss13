@@ -34,7 +34,7 @@
 	prae.recalculate_everything()
 
 /datum/behavior_delegate/oppressor_praetorian
-	name = "Oppressor Praetorian Behavior Delegate"
+	name = "压迫者禁卫军行为代表"
 	var/tearing_damage = 15
 
 /datum/behavior_delegate/oppressor_praetorian/melee_attack_additional_effects_target(mob/living/carbon/target_carbon)
@@ -44,7 +44,7 @@
 	// impaired in some capacity
 	if(!(target_carbon.mobility_flags & MOBILITY_STAND) || !(target_carbon.mobility_flags & MOBILITY_MOVE) || target_carbon.slowed)
 		target_carbon.apply_armoured_damage(get_xeno_damage_slash(target_carbon, tearing_damage), ARMOR_MELEE, BRUTE, bound_xeno.zone_selected ? bound_xeno.zone_selected : "chest")
-		target_carbon.visible_message(SPAN_DANGER("[bound_xeno] tears into [target_carbon]!"))
+		target_carbon.visible_message(SPAN_DANGER("[bound_xeno]猛扑向[target_carbon]！"))
 		playsound(bound_xeno, 'sound/weapons/alien_tail_attack.ogg', 25, TRUE)
 
 
@@ -165,7 +165,7 @@
 			break
 
 	if(!length(turflist))
-		to_chat(abduct_user, SPAN_XENOWARNING("We don't have any room to do our abduction!"))
+		to_chat(abduct_user, SPAN_XENOWARNING("我们没有空间进行绑架！"))
 		return
 
 	abduct_user.visible_message(SPAN_XENODANGER("\The [abduct_user]'s segmented tail starts coiling..."), SPAN_XENODANGER("We begin coiling our tail, aiming towards \the [atom]..."))
@@ -173,23 +173,23 @@
 
 	var/throw_target_turf = get_step(abduct_user, facing)
 
-	ADD_TRAIT(abduct_user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
+	ADD_TRAIT(abduct_user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("绑架"))
 	if(!do_after(abduct_user, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 1))
-		to_chat(abduct_user, SPAN_XENOWARNING("You relax your tail."))
+		to_chat(abduct_user, SPAN_XENOWARNING("你放松了尾巴。"))
 		apply_cooldown()
 
 		for (var/obj/effect/xenomorph/xeno_telegraph/xenotelegraph in telegraph_atom_list)
 			telegraph_atom_list -= xenotelegraph
 			qdel(xenotelegraph)
 
-		REMOVE_TRAIT(abduct_user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
+		REMOVE_TRAIT(abduct_user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("绑架"))
 
 		return
 
 	if(!check_and_use_plasma_owner())
 		return
 
-	REMOVE_TRAIT(abduct_user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
+	REMOVE_TRAIT(abduct_user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("绑架"))
 
 	playsound(get_turf(abduct_user), 'sound/effects/bang.ogg', 25, 0)
 	abduct_user.visible_message(SPAN_XENODANGER("\The [abduct_user] suddenly uncoils its tail, firing it towards [atom]!"), SPAN_XENODANGER("We uncoil our tail, sending it out towards \the [atom]!"))
@@ -202,11 +202,11 @@
 
 			targets += target
 	if(LAZYLEN(targets) == 1)
-		abduct_user.balloon_alert(abduct_user, "slowed one target", text_color = "#51a16c")
+		abduct_user.balloon_alert(abduct_user, "减速一个目标", text_color = "#51a16c")
 	else if(LAZYLEN(targets) == 2)
-		abduct_user.balloon_alert(abduct_user, "rooted two targets", text_color = "#51a16c")
+		abduct_user.balloon_alert(abduct_user, "定身两个目标", text_color = "#51a16c")
 	else if(LAZYLEN(targets) >= 3)
-		abduct_user.balloon_alert(abduct_user, "stunned [LAZYLEN(targets)] targets", text_color = "#51a16c")
+		abduct_user.balloon_alert(abduct_user, "眩晕了[LAZYLEN(targets)]个目标", text_color = "#51a16c")
 
 	apply_cooldown()
 
@@ -219,17 +219,17 @@
 			new /datum/effects/xeno_slow(target, abduct_user, null, null, 2.5 SECONDS)
 			target.apply_effect(1, SLOW)
 		else if(LAZYLEN(targets) == 2)
-			ADD_TRAIT(target, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
+			ADD_TRAIT(target, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("绑架"))
 			if(ishuman(target))
 				var/mob/living/carbon/human/target_human = target
 				target_human.update_xeno_hostile_hud()
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), target, TRAIT_SOURCE_ABILITY("Abduct")), get_xeno_stun_duration(target, 2.5 SECONDS))
-			to_chat(target, SPAN_XENOHIGHDANGER("[abduct_user] has pinned you to the ground! You cannot move!"))
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), target, TRAIT_SOURCE_ABILITY("绑架")), get_xeno_stun_duration(target, 2.5 SECONDS))
+			to_chat(target, SPAN_XENOHIGHDANGER("[abduct_user]已将你按倒在地！你无法移动！"))
 
 			target.set_effect(2, DAZE)
 		else if(LAZYLEN(targets) >= 3)
 			target.apply_effect(get_xeno_stun_duration(target, 1.3), WEAKEN)
-			to_chat(target, SPAN_XENOHIGHDANGER("You are slammed into the other victims of [abduct_user]!"))
+			to_chat(target, SPAN_XENOHIGHDANGER("你被撞向[abduct_user]的其他受害者！"))
 
 
 		shake_camera(target, 10, 1)
@@ -296,7 +296,7 @@
 			human_to_update.update_xeno_hostile_hud()
 
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), target_carbon, TRAIT_SOURCE_ABILITY("Oppressor Punch")), get_xeno_stun_duration(target_carbon, 1.2 SECONDS))
-		to_chat(target_carbon, SPAN_XENOHIGHDANGER("[oppressor_user] has pinned you to the ground! You cannot move!"))
+		to_chat(target_carbon, SPAN_XENOHIGHDANGER("[oppressor_user]已将你按倒在地！你无法移动！"))
 	else
 		target_carbon.apply_armoured_damage(get_xeno_damage_slash(target_carbon, damage), ARMOR_MELEE, BRUTE, target_limb? target_limb.name : "chest")
 		step_away(target_carbon, oppressor_user, 2)
@@ -362,11 +362,11 @@
 		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/lash(next_turf, windup)
 
 	if(!length(target_turfs))
-		to_chat(lash_user, SPAN_XENOWARNING("We don't have any room to do our tail lash!"))
+		to_chat(lash_user, SPAN_XENOWARNING("我们没有空间进行尾鞭攻击！"))
 		return
 
 	if(!do_after(lash_user, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-		to_chat(lash_user, SPAN_XENOWARNING("We cancel our tail lash."))
+		to_chat(lash_user, SPAN_XENOWARNING("我们取消了尾鞭攻击。"))
 
 		for(var/obj/effect/xenomorph/xeno_telegraph/tail_telegraph in telegraph_atom_list)
 			telegraph_atom_list -= tail_telegraph
@@ -378,7 +378,7 @@
 
 	apply_cooldown()
 
-	lash_user.visible_message(SPAN_XENODANGER("[lash_user] lashes its tail furiously, hitting everything in front of it!"), SPAN_XENODANGER("We lash our tail furiously, hitting everything in front of us!"))
+	lash_user.visible_message(SPAN_XENODANGER("[lash_user]狂怒地甩动尾巴，击中了前方的一切！"), SPAN_XENODANGER("We lash our tail furiously, hitting everything in front of us!"))
 	lash_user.spin_circle()
 	lash_user.emote("tail")
 

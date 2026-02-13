@@ -2,19 +2,19 @@
 // Put any new machines in here before map is released and everything moved to their proper positions.
 
 /obj/structure/machinery/prop/almayer
-	name = "GENERIC USS ALMAYER PROP"
-	desc = "THIS SHOULDN'T BE VISIBLE, AHELP 'ART-P01' IF SEEN IN ROUND WITH LOCATION"
+	name = "通用阿尔迈耶号道具"
+	desc = "此内容不应可见，如在游戏回合中看到并附有位置信息，请通过AHELP报告'ART-P01'。"
 
 /obj/structure/machinery/prop/almayer/hangar/dropship_part_fabricator
 
 /obj/structure/machinery/prop/almayer/computer/PC
-	name = "personal desktop"
-	desc = "A small computer hooked up into the ship's computer network."
+	name = "个人桌面终端"
+	desc = "一台连接至舰船计算机网络的小型计算机。"
 	icon_state = "terminal1"
 
 /obj/structure/machinery/prop/almayer/computer
-	name = "systems computer"
-	desc = "A small computer hooked up into the ship's systems."
+	name = "系统计算机"
+	desc = "一台连接至舰船系统的小型计算机。"
 
 	density = FALSE
 	anchored = TRUE
@@ -55,21 +55,21 @@
 		icon_state += "0"
 
 /obj/structure/machinery/prop/almayer/computer/NavCon
-	name = "NavCon"
-	desc = "Navigational console for plotting course and heading of the ship. Since the AI calculates all long-range navigation, this is only used for in-system course corrections and orbital maneuvers. Don't touch it!"
+	name = "导航控制台"
+	desc = "用于规划舰船航线和航向的导航控制台。由于AI负责所有远程导航计算，此控制台仅用于系统内航线修正和轨道机动。别碰它！"
 
 	icon_state = "retro"
 
 /obj/structure/machinery/prop/almayer/computer/NavCon2
-	name = "NavCon 2"
-	desc = "Navigational console for plotting course and heading of the ship. Since the AI calculates all long-range navigation, this is only used for in-system course corrections and orbital maneuvers. Don't touch it!"
+	name = "导航控制台2"
+	desc = "用于规划舰船航线和航向的导航控制台。由于AI负责所有远程导航计算，此控制台仅用于系统内航线修正和轨道机动。别碰它！"
 
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "retro2"
 
 /obj/structure/machinery/prop/almayer/CICmap
-	name = "map table"
-	desc = "A table that displays a map of the current operation location."
+	name = "地图桌"
+	desc = "一张显示当前行动地点地图的桌子。"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "maptable"
 	anchored = TRUE
@@ -94,7 +94,7 @@
 		return TRUE
 
 	if(locate(/atom/movable/screen/minimap) in user.client.screen) //This seems like the most effective way to do this without some wacky code
-		to_chat(user, SPAN_WARNING("You already have a minimap open!"))
+		to_chat(user, SPAN_WARNING("您已打开一个小地图！"))
 		return
 	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
 	tacmap_component.show_tacmap(user)
@@ -119,8 +119,8 @@
 	UnregisterSignal(source, COMSIG_MOVABLE_MOVED)
 
 /obj/structure/machinery/prop/almayer/CICmap/computer
-	name = "map terminal"
-	desc = "A terminal that displays a map of the current operation location."
+	name = "地图终端"
+	desc = "一台显示当前行动地点地图的终端。"
 	icon = 'icons/obj/vehicles/interiors/arc.dmi'
 	icon_state = "cicmap_computer"
 	density = FALSE
@@ -137,14 +137,14 @@
 //Nonpower using props
 
 /obj/structure/prop/almayer
-	name = "GENERIC USS ALMAYER PROP"
-	desc = "THIS SHOULDN'T BE VISIBLE, AHELP 'ART-P02' IF SEEN IN ROUND WITH LOCATION"
+	name = "通用阿尔迈耶号道具"
+	desc = "此内容不应可见，如在游戏回合中看到并附有位置信息，请通过AHELP报告'ART-P02'。"
 	density = TRUE
 	anchored = TRUE
 
 /obj/structure/prop/almayer/minigun_crate
-	name = "30mm ammo crate"
-	desc = "A crate full of 30mm bullets used on one of the weapon pod types for the dropship. Moving this will require some sort of lifter."
+	name = "30毫米弹药箱"
+	desc = "一个装满30毫米子弹的板条箱，用于运输机的一种武器吊舱。移动它需要某种起重设备。"
 	icon = 'icons/obj/structures/props/dropship/dropship_ammo.dmi'
 	icon_state = "30mm_crate"
 
@@ -161,37 +161,37 @@
 
 /obj/structure/prop/almayer/computers/mission_planning_system
 	name = "\improper MPS IV computer"
-	desc = "The Mission Planning System IV (MPS IV), an enhancement in mission planning and charting for dropship pilots across the USCM. Fully capable of customizing their flight paths and loadouts to suit their combat needs."
+	desc = "任务规划系统IV型（MPS IV），是美国殖民地海军陆战队为运输机飞行员提供的任务规划与航图绘制增强系统。完全能够根据作战需求自定义飞行路线和装备配置。"
 	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi'
 	icon_state = "mps"
 
 /obj/structure/prop/almayer/computers/mapping_computer
 	name = "\improper CMPS II computer"
-	desc = "The Common Mapping Production System version II allows for sensory input from satellites and ship systems to derive planetary maps in a standardized fashion for all USCM pilots."
+	desc = "通用地图生成系统II型，能够从卫星和舰船系统接收传感输入，以标准化方式为所有USCM飞行员生成行星地图。"
 	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi'
 	icon_state = "mapping_comp"
 
 /obj/structure/prop/almayer/computers/sensor_computer1
-	name = "sensor computer"
-	desc = "The IBM series 10 computer retrofitted to work as a sensor computer for the ship. While somewhat dated it still serves its purpose."
+	name = "传感器计算机"
+	desc = "经过改装、作为舰船传感器计算机使用的IBM 10系列计算机。虽然有些过时，但仍能胜任其职责。"
 	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi'
 	icon_state = "sensor_comp1"
 
 /obj/structure/prop/almayer/computers/sensor_computer2
-	name = "sensor computer"
-	desc = "The IBM series 10 computer retrofitted to work as a sensor computer for the ship. While somewhat dated it still serves its purpose."
+	name = "传感器计算机"
+	desc = "经过改装、作为舰船传感器计算机使用的IBM 10系列计算机。虽然有些过时，但仍能胜任其职责。"
 	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi'
 	icon_state = "sensor_comp2"
 
 /obj/structure/prop/almayer/computers/sensor_computer3
-	name = "sensor computer"
-	desc = "The IBM series 10 computer retrofitted to work as a sensor computer for the ship. While somewhat dated it still serves its purpose."
+	name = "传感器计算机"
+	desc = "经过改装、作为舰船传感器计算机使用的IBM 10系列计算机。虽然有些过时，但仍能胜任其职责。"
 	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi'
 	icon_state = "sensor_comp3"
 
 /obj/structure/prop/almayer/missile_tube
 	name = "\improper Mk 33 ASAT launcher system"
-	desc = "Cold launch tubes that can fire a few varieties of missiles out of them, the most common being the ASAT-21 Rapier IV missile used against satellites and other spacecraft and the BGM-227 Sledgehammer missile which is used for ground attack."
+	desc = "冷发射管，可发射数种导弹。最常见的是用于攻击卫星和其他航天器的ASAT-21‘击剑手IV型’导弹，以及用于对地攻击的BGM-227‘大锤’导弹。"
 	icon = 'icons/obj/structures/props/almayer/almayer_props96.dmi'
 	icon_state = "missiletubenorth"
 	bound_width = 32
@@ -201,7 +201,7 @@
 
 /obj/structure/prop/almayer/particle_cannon
 	name = "\improper 75cm/140 Mark 74 General Atomics railgun"
-	desc = "The Mark 74 Railgun is top of the line for space-based weaponry. Capable of firing a round with a diameter of 3/4ths of a meter at 24 kilometers per second. It also is capable of using a variety of round types which can be interchanged at any time with its newly designed feed system."
+	desc = "马克74型轨道炮是太空武器的顶尖装备。能够以每秒24公里的速度发射直径达四分之三米的炮弹。它还能使用多种弹种，并可通过其新设计的供弹系统随时更换。"
 	icon = 'icons/obj/structures/machinery/artillery.dmi'
 	icon_state = "1"
 	unslashable = TRUE
@@ -212,8 +212,8 @@
 	desc = ""
 
 /obj/structure/prop/almayer/name_stencil
-	name = "USS Almayer"
-	desc = "The name of the ship stenciled on the hull."
+	name = "USS 阿尔迈耶号"
+	desc = "印在船体上的舰名。"
 	icon = 'icons/obj/structures/props/almayer/almayer_props64.dmi'
 	icon_state = "almayer0"
 	density = FALSE //dunno who would walk on it, but you know.
@@ -222,7 +222,7 @@
 
 /obj/structure/prop/almayer/hangar_stencil
 	name = "floor"
-	desc = "A large number stenciled on the hangar floor used to designate which dropship it is."
+	desc = "印在机库地板上的大号数字，用于标识是哪一架运输机。"
 	icon = 'icons/obj/structures/props/almayer/almayer_props96.dmi'
 	icon_state = "dropship1"
 	density = FALSE
@@ -231,7 +231,7 @@
 
 /obj/structure/prop/almayer/cannon_cables
 	name = "\improper Cannon cables"
-	desc = "Some large cables."
+	desc = "一些粗大的电缆。"
 	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi'
 	icon_state = "cannon_cables"
 	density = FALSE
@@ -249,7 +249,7 @@
 
 /obj/structure/prop/almayer/cannon_cable_connector
 	name = "\improper Cannon cable connector"
-	desc = "A connector for the large cannon cables."
+	desc = "大型火炮电缆的连接器。"
 	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi'
 	icon_state = "cannon_cable_connector"
 	density = TRUE
@@ -274,8 +274,8 @@
 // Also the lack of sleep makes me keep typing cyro instead of cryo. FFS ~Art
 
 /obj/structure/machinery/cryobag_recycler
-	name = "cryogenic bag recycler"
-	desc = "A small tomb like structure. Capable of taking in used and opened cryobags and refill the liner and attach new sealants."
+	name = "冷冻袋回收器"
+	desc = "一个类似小型坟墓的结构。能够回收使用过并已开封的冷冻袋，重新填充内衬并安装新的密封件。"
 	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi'
 	icon_state = "recycler"
 
@@ -288,7 +288,7 @@
 /obj/structure/machinery/cryobag_recycler/attackby(obj/item/W, mob/user) //Hope this works. Don't see why not.
 	. = ..()
 	if (istype(W, /obj/item))
-		if(W.name == "used stasis bag") //possiblity for abuse, but fairly low considering its near impossible to rename something without VV
+		if(W.name == "使用过的静滞袋") //possiblity for abuse, but fairly low considering its near impossible to rename something without VV
 			var/obj/item/bodybag/cryobag/R = new /obj/item/bodybag/cryobag //lets give them the bag considering having it unfolded would be a pain in the ass.
 			R.add_fingerprint(user)
 			user.temp_drop_inv_item(W)
@@ -298,8 +298,8 @@
 	. = ..()
 
 /obj/structure/closet/basketball
-	name = "athletic wardrobe"
-	desc = "It's a storage unit for athletic wear."
+	name = "运动衣柜"
+	desc = "这是一个用于存放运动服装的储物柜。"
 	icon_state = "purple"
 	icon_closed = "purple"
 	icon_opened = "purple_open"

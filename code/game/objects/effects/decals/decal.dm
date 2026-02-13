@@ -1,7 +1,7 @@
 //decal parent
 
 /obj/effect/decal
-	name = "you should not be seeing this!"
+	name = "你不应该看到这个！"
 	layer = TURF_LAYER
 	plane = FLOOR_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

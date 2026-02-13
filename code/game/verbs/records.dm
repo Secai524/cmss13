@@ -4,7 +4,7 @@ CLIENT_VERB(own_records)
 
 	var/list/options = list("Admin", "Merit", "Whitelist")
 
-	var/choice = tgui_input_list(usr, "What record do you wish to view?", "Record Choice", options)
+	var/choice = tgui_input_list(usr, "您希望查看哪项记录？", "Record Choice", options)
 	switch(choice)
 		if("Admin")
 			show_own_notes(NOTE_ADMIN, choice)
@@ -14,12 +14,12 @@ CLIENT_VERB(own_records)
 			show_own_notes(NOTE_WHITELIST, choice)
 		else
 			return
-	to_chat(usr, SPAN_NOTICE("Displaying your [choice] Record."))
+	to_chat(usr, SPAN_NOTICE("正在显示您的[choice]记录。"))
 
 /client/proc/show_own_notes(note_category, category_text)
 	var/datum/entity/player/P = get_player_from_key(ckey)
 	if(!P.migrated_notes)
-		to_chat(usr, "Error: notes not yet migrated for that key. Please try again in 5 minutes.")
+		to_chat(usr, "错误：该密钥的备注尚未迁移。请5分钟后再试。")
 		return
 
 	var/dat = {"
@@ -90,12 +90,12 @@ CLIENT_VERB(own_records)
 		if(admin_holder.rights & R_PERMISSIONS)
 			manager = TRUE
 	else if(!isCouncil(src))
-		to_chat(usr, SPAN_WARNING("Error: you are not authorised to view the records of another player!"))
+		to_chat(usr, SPAN_WARNING("错误：您无权查看其他玩家的记录！"))
 		return
 
-	var/target = input(usr, "What CKey do you wish to check?", "Target")
+	var/target = input(usr, "您希望检查哪个CKey？", "目标")
 	if(!target)
-		to_chat(src, SPAN_WARNING("Invalid Target."))
+		to_chat(src, SPAN_WARNING("目标无效。"))
 		return
 	target = ckey(target)
 
@@ -105,7 +105,7 @@ CLIENT_VERB(own_records)
 	if(manager || isSenator(src))
 		del_wl = TRUE
 
-	var/choice = tgui_input_list(usr, "What record do you wish to view?", "Record Choice", options)
+	var/choice = tgui_input_list(usr, "您希望查看哪项记录？", "Record Choice", options)
 	if(!choice)
 		return
 	switch(choice)
@@ -115,13 +115,13 @@ CLIENT_VERB(own_records)
 			show_other_record(NOTE_MERIT, choice, target, TRUE)
 		if("Whitelist")
 			show_other_record(NOTE_WHITELIST, choice, target, add_wl, del_wl)
-	to_chat(usr, SPAN_NOTICE("Displaying [target]'s [choice] notes."))
+	to_chat(usr, SPAN_NOTICE("正在显示[target]的[choice]记录。"))
 
 
 /client/proc/show_other_record(note_category, category_text, target, can_edit = FALSE, can_del = FALSE)
 	var/datum/entity/player/P = get_player_from_key(target)
 	if(!P?.migrated_notes)
-		to_chat(usr, "Error: notes not yet migrated for that key. Please try again in 5 minutes.")
+		to_chat(usr, "错误：该密钥的备注尚未迁移。请5分钟后再试。")
 		return
 
 	var/dat = {"

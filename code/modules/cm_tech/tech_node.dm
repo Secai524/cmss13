@@ -1,12 +1,12 @@
 /turf/open/blank
-	name = "Blank"
+	name = "空白"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "white"
 	mouse_opacity = FALSE
 	can_bloody = FALSE
 
 /obj/effect/node
-	name = "tech node"
+	name = "科技节点"
 
 	var/datum/tech/info
 

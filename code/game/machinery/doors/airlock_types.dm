@@ -160,7 +160,7 @@
 
 /obj/structure/machinery/door/airlock/uranium
 	name = "\improper Uranium Airlock"
-	desc = "And they said I was crazy."
+	desc = "他们还说我是疯子。"
 	icon = 'icons/obj/structures/doors/Dooruranium.dmi'
 	mineral = "uranium"
 	var/last_event = 0
@@ -179,7 +179,7 @@
 
 /obj/structure/machinery/door/airlock/phoron
 	name = "\improper Phoron Airlock"
-	desc = "No way this can end badly."
+	desc = "这不可能出岔子。"
 	icon = 'icons/obj/structures/doors/Doorphoron.dmi'
 	mineral = "phoron"
 
@@ -604,12 +604,12 @@
 	glass = TRUE
 
 /obj/structure/machinery/door/airlock/almayer/generic/corporate
-	name = "Corporate Liaison's Quarters"
+	name = "公司联络官宿舍"
 	icon = 'icons/obj/structures/doors/personaldoor.dmi'
 	req_access = list(ACCESS_WY_GENERAL)
 
 /obj/structure/machinery/door/airlock/almayer/generic/press
-	name = "Press Office"
+	name = "新闻办公室"
 	req_access = list(ACCESS_PRESS)
 
 /obj/structure/machinery/door/airlock/almayer/marine
@@ -904,7 +904,7 @@
 	if(!locked)
 		return ..()
 
-	to_chat(xeno, SPAN_NOTICE("You try and force the doors open."))
+	to_chat(xeno, SPAN_NOTICE("你试图强行打开舱门。"))
 	if(do_after(xeno, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		unlock(TRUE)
 		open(1)
@@ -916,7 +916,7 @@
 
 /obj/structure/machinery/door/airlock/dropship_hatch/monorail
 	icon = 'icons/obj/structures/doors/pod_doors.dmi' //TEMPLATE NEED TO REPLACE LATER
-	name = "monorail door"
+	name = "单轨列车门"
 	id = "gr_transport1"
 
 /obj/structure/machinery/door/airlock/hatch/cockpit
@@ -940,7 +940,7 @@
 
 //PRISON AIRLOCKS
 /obj/structure/machinery/door/airlock/prison
-	name = "cell Door"
+	name = "牢房门"
 	icon = 'icons/obj/structures/doors/celldoor.dmi'
 	glass = FALSE
 

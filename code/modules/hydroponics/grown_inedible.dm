@@ -30,8 +30,8 @@
 
 /obj/item/grown/log
 	name = "towercap"
-	name = "tower-cap log"
-	desc = "It's better than bad, it's good!"
+	name = "塔冠原木"
+	desc = "它比糟糕要好，它是好的！"
 	icon = 'icons/obj/items/harvest.dmi'
 	icon_state = "logs"
 	force = 5
@@ -45,7 +45,7 @@
 
 /obj/item/grown/log/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.sharp == IS_SHARP_ITEM_BIG)
-		user.show_message(SPAN_NOTICE("You make planks out of \the [src]!"), SHOW_MESSAGE_VISIBLE)
+		user.show_message(SPAN_NOTICE("你用\the [src]制作了木板！"), SHOW_MESSAGE_VISIBLE)
 		for(var/i=0,i<2,i++)
 			var/obj/item/stack/sheet/wood/NG = new (user.loc)
 			for (var/obj/item/stack/sheet/wood/G in user.loc)
@@ -54,14 +54,14 @@
 				if(G.amount>=G.max_amount)
 					continue
 				G.attackby(NG, user)
-				to_chat(usr, "You add the newly-formed wood to the stack. It now contains [NG.amount] planks.")
+				to_chat(usr, "你将新成型的木材添加到木堆中。现在共有[NG.amount]块木板。")
 		qdel(src)
 		return
 
 /obj/item/grown/sunflower // FLOWER POWER!
 	plantname = "sunflowers"
 	name = "sunflower"
-	desc = "It's beautiful! A certain person might beat you to death if you trample these."
+	desc = "真漂亮！要是你踩坏了这些，某个家伙可能会把你打死。"
 	icon = 'icons/obj/items/harvest.dmi'
 	icon_state = "sunflower"
 	damtype = "fire"
@@ -73,12 +73,12 @@
 	throw_range = 3
 
 /obj/item/grown/sunflower/attack(mob/M as mob, mob/user as mob)
-	to_chat(M, "<font color='green'><b> [user] smacks you with a sunflower!</font><font color='yellow'><b>FLOWER POWER<b></font>")
-	to_chat(user, "<font color='green'> Your sunflower's </font><font color='yellow'><b>FLOWER POWER</b></font><font color='green'> strikes [M]</font>")
+	to_chat(M, "<font color='green'><b> [user]用向日葵打了你！</font><font color='yellow'><b>鲜花之力<b></font>")
+	to_chat(user, "<font color='green'> 你的向日葵的</font><font color='yellow'><b>鲜花之力</b></font><font color='green'>击中了[M]</font>")
 
 /obj/item/corncob
-	name = "corn cob"
-	desc = "A reminder of meals gone by."
+	name = "玉米芯"
+	desc = "昔日餐食的纪念品。"
 	icon = 'icons/obj/items/harvest.dmi'
 	icon_state = "corncob"
 	item_state = "corncob"
@@ -89,7 +89,7 @@
 
 /obj/item/corncob/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.sharp == IS_SHARP_ITEM_ACCURATE)
-		to_chat(user, SPAN_NOTICE("You use [W] to fashion a pipe out of the corn cob!"))
+		to_chat(user, SPAN_NOTICE("你用[W]将玉米芯加工成了一支烟斗！"))
 		new /obj/item/clothing/mask/cigarette/pipe/cobpipe (user.loc)
 		qdel(src)
 	else

@@ -11,8 +11,8 @@
  * Welding mask
  */
 /obj/item/clothing/head/welding
-	name = "welding helmet"
-	desc = "A head-mounted face cover designed to protect the wearer completely from space-arc eye."
+	name = "焊接头盔"
+	desc = "一种头戴式面部护具，旨在完全保护佩戴者免受太空电弧光伤害。"
 	icon_state = "welding"
 	item_state = "welding"
 	matter = list("metal" = 3000, "glass" = 1000)
@@ -54,14 +54,14 @@
 		flags_inv_hide |= HIDEEARS|HIDEEYES|HIDEFACE
 		icon_state = initial(icon_state)
 		eye_protection = initial(eye_protection)
-		to_chat(usr, SPAN_NOTICE("You flip [src] down to protect your eyes."))
+		to_chat(usr, SPAN_NOTICE("你拉下[src]以保护眼睛。"))
 	else
 		vision_impair = VISION_IMPAIR_NONE
 		flags_inventory &= ~(COVEREYES|COVERMOUTH|BLOCKSHARPOBJ)
 		flags_inv_hide &= ~(HIDEEARS|HIDEEYES|HIDEFACE)
 		icon_state = "[initial(icon_state)]up"
 		eye_protection = EYE_PROTECTION_NONE
-		to_chat(usr, SPAN_NOTICE("You push [src] up out of your face."))
+		to_chat(usr, SPAN_NOTICE("你将[src]推离面部。"))
 	up = !up
 
 	if(ishuman(loc))
@@ -76,8 +76,8 @@
 		A.update_button_icon()
 
 /obj/item/clothing/head/welding/painted
-	name = "custom welding helmet"
-	desc = "A head-mounted face cover, painted red with bold white stripes, offering solid protection and a touch of style."
+	name = "定制焊接头盔"
+	desc = "一种头戴式面部护具，漆成红色并带有醒目的白色条纹，提供可靠的防护和一丝风格。"
 	icon_state = "weldingpainted"
 	item_state = "weldingpainted"
 	icon = 'icons/obj/items/clothing/hats/hats.dmi'
@@ -89,8 +89,8 @@
  * Cakehat
  */
 /obj/item/clothing/head/cakehat
-	name = "cake-hat"
-	desc = "It's tasty looking!"
+	name = "蛋糕帽"
+	desc = "看起来很好吃！"
 	icon_state = "cake0"
 	flags_inventory = COVEREYES
 	var/onfire = 0
@@ -126,8 +126,8 @@
  * Pumpkin head
  */
 /obj/item/clothing/head/pumpkinhead
-	name = "carved pumpkin"
-	desc = "A jack o' lantern! Believed to ward off evil spirits."
+	name = "雕刻过的南瓜"
+	desc = "一个南瓜灯！据信可以驱邪。"
 	icon_state = "hardhat0_pumpkin"//Could stand to be renamed
 	item_state = "hardhat0_pumpkin"
 	flags_inventory = COVEREYES|COVERMOUTH

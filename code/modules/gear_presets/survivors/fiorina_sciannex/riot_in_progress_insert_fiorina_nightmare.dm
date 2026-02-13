@@ -1,7 +1,7 @@
 // loadouts for riot_in_progress.dmm nightmare, thematic survivor preset.
 
 /datum/equipment_preset/survivor/cmb
-	name = "Survivor - Colonial Marshal"
+	name = "幸存者 - 殖民地执法官"
 	faction = FACTION_MARSHAL
 	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
@@ -14,13 +14,13 @@
 //*************************************************CMB****************************************************/
 
 /datum/equipment_preset/survivor/cmb/riot
-	name = "Survivor - CMB Riot Control Officer"
+	name = "幸存者 - CMB防暴控制官"
 	paygrades = list(PAY_SHORT_CMBR = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CMB RCO"
 	flags = EQUIPMENT_PRESET_EXTRA
 	faction = FACTION_MARSHAL
 	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
-	assignment = "CMB Riot Control Officer"
+	assignment = "CMB防暴控制官"
 	idtype = /obj/item/card/id/deputy/riot
 	job_title = JOB_CMB_RIOT
 	skills = /datum/skills/cmb
@@ -88,13 +88,13 @@
 	flags = EQUIPMENT_PRESET_STUB
 
 /datum/equipment_preset/synth/survivor/cmb/riotsynth
-	name = "Survivor - Synthetic - CMB Riot Control Synthetic"
+	name = "幸存者 - 合成人 - CMB防暴控制合成人"
 	paygrades = list(PAY_SHORT_CMBRS = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CMB Syn"
 	faction = FACTION_MARSHAL
 	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
 	flags = EQUIPMENT_PRESET_EXTRA
-	assignment = "CMB Riot Control Synthetic"
+	assignment = "CMB防暴控制合成人"
 	job_title = JOB_CMB_RSYN
 	languages = ALL_SYNTH_LANGUAGES
 	idtype = /obj/item/card/id/deputy/riot
@@ -153,7 +153,7 @@
 //************************************************UA RIOT POLICE****************************************************/
 
 /datum/equipment_preset/survivor/cmb/ua
-	name = "Survivor - United Americas Riot Officer(Riot Response)"
+	name = "幸存者 - 联合美洲防暴官（防暴响应）"
 	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "UA RCP"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -237,7 +237,7 @@
 
 // ua synth
 /datum/equipment_preset/synth/survivor/cmb/ua_synth
-	name = "Survivor - Synthetic - UA Police Synthetic(Riot Response)"
+	name = "幸存者 - 合成人 - UA警察合成人（防暴响应）"
 	paygrades = list(PAY_SHORT_CMBS = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "UA Syn"
 	flags = EQUIPMENT_PRESET_EXTRA

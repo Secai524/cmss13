@@ -6,7 +6,7 @@
 		if(!iff_tag)
 			to_chat(user, SPAN_WARNING("\The [src] doesn't have an IFF tag to reprogram."))
 			return
-		programmer.visible_message(SPAN_NOTICE("[programmer] starts reprogramming \the [src]'s IFF tag..."), SPAN_NOTICE("You start reprogramming \the [src]'s IFF tag..."), max_distance = 3)
+		programmer.visible_message(SPAN_NOTICE("[programmer]开始重新编程\the [src]的敌我识别标签..."), SPAN_NOTICE("You start reprogramming \the [src]'s IFF tag..."), max_distance = 3)
 		if(!do_after(programmer, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_DIFF_LOC, BUSY_ICON_GENERIC))
 			return
 		if(!iff_tag)
@@ -14,7 +14,7 @@
 			return
 		if(!iff_tag.handle_reprogramming(programmer, src))
 			return
-		programmer.visible_message(SPAN_NOTICE("[programmer] reprograms \the [src]'s IFF tag."), SPAN_NOTICE("You reprogram \the [src]'s IFF tag."), max_distance = 3)
+		programmer.visible_message(SPAN_NOTICE("[programmer]重新编程了\the [src]的敌我识别标签。"), SPAN_NOTICE("You reprogram \the [src]'s IFF tag."), max_distance = 3)
 		return
 	if(stat == DEAD)
 		if(!istype(item, /obj/item/reagent_container/syringe))
@@ -30,7 +30,7 @@
 		if(!iff_tag)
 			to_chat(user, SPAN_WARNING("\The [src] doesn't have an IFF tag to remove."))
 			return
-		user.visible_message(SPAN_NOTICE("[user] starts removing \the [src]'s IFF tag..."), SPAN_NOTICE("You start removing \the [src]'s IFF tag..."), max_distance = 3)
+		user.visible_message(SPAN_NOTICE("[user]开始移除\the [src]的敌我识别标签..."), SPAN_NOTICE("You start removing \the [src]'s IFF tag..."), max_distance = 3)
 		if(!do_after(user, 5 SECONDS * SURGERY_TOOLS_PINCH[item.type], INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_DIFF_LOC, BUSY_ICON_GENERIC))
 			return
 		if(!iff_tag)
@@ -38,9 +38,9 @@
 			return
 		user.put_in_hands(iff_tag)
 		iff_tag = null
-		user.visible_message(SPAN_NOTICE("[user] removes \the [src]'s IFF tag."), SPAN_NOTICE("You remove \the [src]'s IFF tag."), max_distance = 3)
+		user.visible_message(SPAN_NOTICE("[user]移除了\the [src]的敌我识别标签。"), SPAN_NOTICE("You remove \the [src]'s IFF tag."), max_distance = 3)
 		if(hive.hivenumber == XENO_HIVE_RENEGADE) //it's important to know their IFF settings for renegade
-			to_chat(src, SPAN_NOTICE("With the removal of the device, your instincts have returned to normal."))
+			to_chat(src, SPAN_NOTICE("随着装置被移除，你的本能已恢复正常。"))
 		return
 	return ..()
 
@@ -327,4 +327,4 @@
 			fire.set_on_fire(src) //Deals an extra proc of fire when you're crossing it. 30 damage per tile crossed, plus 15 per Process().
 			next_move_slowdown = next_move_slowdown + (SLOWDOWN_AMT_GREENFIRE * resist_modifier)
 			if(resist_modifier > 0)
-				to_chat(src, SPAN_DANGER("We feel pieces of our exoskeleton fusing with the viscous fluid below and tearing off as we struggle to move through the flames!"))
+				to_chat(src, SPAN_DANGER("我们感觉到外骨骼碎片与下方粘稠液体融合，并在我们挣扎着穿过火焰时被撕裂！"))

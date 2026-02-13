@@ -5,14 +5,14 @@
 */
 
 /datum/ammo/bullet/revolver
-	name = "revolver bullet"
+	name = "左轮手枪弹"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 	damage = 72
 	penetration = ARMOR_PENETRATION_TIER_1
 	accuracy = HIT_ACCURACY_TIER_1
 
 /datum/ammo/bullet/revolver/marksman
-	name = "marksman revolver bullet"
+	name = "神射手左轮手枪弹"
 	damage = 55
 	shrapnel_chance = 0
 	damage_falloff = 0
@@ -20,7 +20,7 @@
 	penetration = ARMOR_PENETRATION_TIER_7
 
 /datum/ammo/bullet/revolver/heavy
-	name = "heavy revolver bullet"
+	name = "重型左轮手枪弹"
 
 	damage = 35
 	penetration = ARMOR_PENETRATION_TIER_4
@@ -31,7 +31,7 @@
 	pushback(entity, bullet, 4)
 
 /datum/ammo/bullet/revolver/incendiary
-	name = "incendiary revolver bullet"
+	name = "燃烧左轮手枪弹"
 	damage = 40
 
 /datum/ammo/bullet/revolver/incendiary/set_bullet_traits()
@@ -41,7 +41,7 @@
 	))
 
 /datum/ammo/bullet/revolver/marksman/toxin
-	name = "toxic revolver bullet"
+	name = "剧毒左轮手枪弹"
 	var/acid_per_hit = 10
 	var/organic_damage_mult = 3
 
@@ -60,7 +60,7 @@
 		P.damage *= organic_damage_mult
 
 /datum/ammo/bullet/revolver/penetrating
-	name = "wall-penetrating revolver bullet"
+	name = "穿墙左轮手枪弹"
 	shrapnel_chance = 0
 
 	penetration = ARMOR_PENETRATION_TIER_10
@@ -72,14 +72,14 @@
 	))
 
 /datum/ammo/bullet/revolver/upp
-	name = "heavy revolver bullet"
+	name = "重型左轮手枪弹"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 	penetration = ARMOR_PENETRATION_TIER_4
 	damage = 70
 
 
 /datum/ammo/bullet/revolver/upp/shrapnel
-	name = "shrapnel shot"
+	name = "破片弹"
 	headshot_state = HEADSHOT_OVERLAY_HEAVY //Gol-dang shotgun blow your fething head off.
 	debilitate = list(0,0,0,0,0,0,0,0)
 	icon_state = "shrapnelshot"
@@ -99,7 +99,7 @@
 	pushback(M, P, 1)
 
 /datum/ammo/bullet/revolver/upp/shrapnel_bits
-	name = "small shrapnel"
+	name = "小型破片"
 	icon_state = "shrapnelshot_bit"
 
 	max_range = 6
@@ -110,7 +110,7 @@
 	shrapnel_type = /obj/item/shard/shrapnel/upp/bits
 
 /datum/ammo/bullet/revolver/small
-	name = "small revolver bullet"
+	name = "小型左轮手枪弹"
 	headshot_state = HEADSHOT_OVERLAY_LIGHT
 
 	damage = 45
@@ -121,7 +121,7 @@
 	damage = 60
 
 /datum/ammo/bullet/revolver/small/hollowpoint
-	name = "small hollowpoint revolver bullet"
+	name = "小型空尖左轮手枪子弹"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 
 	damage = 75 // way too strong because it's hard to make a good balance between HP and normal with this system, but the damage falloff is really strong
@@ -129,7 +129,7 @@
 	damage_falloff = DAMAGE_FALLOFF_TIER_6
 
 /datum/ammo/bullet/revolver/mateba
-	name = ".454 heavy revolver bullet"
+	name = ".454重型左轮手枪子弹"
 
 	damage = 60
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
@@ -142,13 +142,13 @@
 	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, PROC_REF(handle_battlefield_execution))
 
 /datum/ammo/bullet/revolver/mateba/highimpact
-	name = ".454 heavy high-impact revolver bullet"
+	name = ".454重型高冲击左轮手枪子弹"
 	debilitate = list(0,2,0,0,0,1,0,0)
 	penetration = ARMOR_PENETRATION_TIER_5
 	flags_ammo_behavior = AMMO_BALLISTIC
 
 /datum/ammo/bullet/revolver/mateba/highimpact/ap
-	name = ".454 heavy high-impact armor piercing revolver bullet"
+	name = ".454重型高冲击穿甲左轮手枪子弹"
 	penetration = ARMOR_PENETRATION_TIER_10
 	damage = 50
 
@@ -156,7 +156,7 @@
 	knockback(M, P, 4)
 
 /datum/ammo/bullet/revolver/mateba/highimpact/explosive //if you ever put this in normal gameplay, i am going to scream
-	name = ".454 heavy explosive revolver bullet"
+	name = ".454重型爆炸左轮手枪子弹"
 	damage = 100
 	damage_var_low = PROJECTILE_VARIANCE_TIER_10
 	damage_var_high = PROJECTILE_VARIANCE_TIER_1
@@ -176,7 +176,7 @@
 	cell_explosion(T, 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
 
 /datum/ammo/bullet/revolver/webley //Mateba(Unica) round without the knockdown.
-	name = ".455 Webley bullet"
+	name = ".455韦伯利子弹"
 	damage = 60
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_6

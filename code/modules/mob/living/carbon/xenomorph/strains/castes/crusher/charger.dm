@@ -42,7 +42,7 @@
 	crusher.recalculate_everything()
 
 /datum/behavior_delegate/crusher_charger
-	name = "Charger Crusher Behavior Delegate"
+	name = "碾压者冲锋行为委托"
 
 	var/frontal_armor = 30
 	var/side_armor = 15
@@ -388,14 +388,14 @@
 			xeno.throw_atom(get_step(xeno, pick(GLOB.cardinals)), 1, 3, xeno, TRUE)
 			charger_ability.stop_momentum() // We assume the other crusher'sparks handle_charge_collision() kicks in and stuns us too.
 			for(var/mob/living/carbon/carbon_target in range(7, xeno))
-				to_chat(carbon_target, SPAN_WARNING("The chargers colliding causes the ground to shake!"))
+				to_chat(carbon_target, SPAN_WARNING("冲锋者相撞导致地面震动！"))
 				shake_camera(carbon_target, 2, 3)
 				if(get_dist(xeno, carbon_target) <= 3 && !xeno.can_not_harm(carbon_target))
 					if(carbon_target.mob_size >= MOB_SIZE_BIG)
 						carbon_target.apply_effect(1, SLOW)
 					else
 						carbon_target.apply_effect(1, WEAKEN)
-						to_chat(carbon_target, SPAN_WARNING("The violent tremors make you lose your footing!"))
+						to_chat(carbon_target, SPAN_WARNING("剧烈的震动让你脚下不稳！"))
 			playsound(get_turf(xeno), 'sound/effects/bang.ogg', 25, 0)
 			return
 		var/list/ram_dirs = get_perpen_dir(xeno.dir)
@@ -404,8 +404,8 @@
 		var/target_turf = get_step(src, ram_dir)
 		if(LinkBlocked(src, cur_turf, target_turf))
 			xeno.emote("roar")
-			xeno.visible_message(SPAN_DANGER("[xeno] flings [src] over to the side!"),SPAN_DANGER( "You fling [src] out of the way!"))
-			to_chat(src, SPAN_XENOHIGHDANGER("[xeno] flings you out of its way! Move it!"))
+			xeno.visible_message(SPAN_DANGER("[xeno]将[src]甩到一边！"),SPAN_DANGER( "You fling [src] out of the way!"))
+			to_chat(src, SPAN_XENOHIGHDANGER("[xeno]将你甩开！快让开！"))
 			apply_effect(1, WEAKEN) // brief flicker stun
 			throw_atom(get_turf(src), 1, 3, xeno, TRUE)
 		step(src, ram_dir, charger_ability.momentum * 0.5)
@@ -657,7 +657,7 @@
 
 	activated = !activated
 	var/will_charge = "[activated ? "now" : "no longer"]"
-	to_chat(Xeno, SPAN_XENONOTICE("We will [will_charge] charge when moving."))
+	to_chat(Xeno, SPAN_XENONOTICE("移动时我们将[will_charge]充能。"))
 	if(activated)
 		RegisterSignal(Xeno, COMSIG_MOVABLE_MOVED, PROC_REF(handle_movement))
 		RegisterSignal(Xeno, COMSIG_LIVING_SET_BODY_POSITION, PROC_REF(handle_position_change))
@@ -702,7 +702,7 @@
 	if(!target_dir)
 		return
 
-	Xeno.visible_message(SPAN_XENOWARNING("[Xeno] tumbles over to the side!"), SPAN_XENOHIGHDANGER("We tumble over to the side!"))
+	Xeno.visible_message(SPAN_XENOWARNING("[Xeno]翻滚到一边！"), SPAN_XENOHIGHDANGER("We tumble over to the side!"))
 	Xeno.spin(5,1) // note: This spins the sprite and DOES NOT affect directional armor
 	var/start_charging = HAS_TRAIT(Xeno, TRAIT_CHARGING)
 	SEND_SIGNAL(Xeno, COMSIG_XENO_STOP_MOMENTUM)

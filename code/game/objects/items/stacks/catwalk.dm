@@ -1,7 +1,7 @@
 /obj/item/stack/catwalk
-	name = "catwalk mesh"
-	singular_name = "catwalk mesh"
-	desc = "Those could work as a pretty decent throwing weapon."
+	name = "步道网格"
+	singular_name = "步道网格"
+	desc = "这可以当作相当不错的投掷武器。"
 	icon = 'icons/turf/almayer.dmi'
 	icon_state = "catwalk_tile"
 	w_class = SIZE_MEDIUM
@@ -22,7 +22,7 @@
 
 /obj/item/stack/catwalk/proc/set_turf_type(new_turf_type)
 	var/turf/open/floor/floor_type = new_turf_type
-	name = "[initial(floor_type.name)] tile"
+	name = "[initial(floor_type.name)]地砖"
 	singular_name = name
 	turf_type = new_turf_type
 	stack_id = name

@@ -6,7 +6,7 @@
 	return
 
 /mob/living/proc/hide()
-	set name = "Hide"
+	set name = "隐藏"
 	set desc = "Allows to hide beneath tables or certain items. Toggled on or off."
 	set category = "Abilities"
 

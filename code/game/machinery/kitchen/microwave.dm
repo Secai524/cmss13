@@ -82,9 +82,9 @@
 				flags_atom = OPENCONTAINER
 		else
 			if(broken == 2)
-				to_chat(user, SPAN_DANGER("It's broken! Use a screwdriver and a wrench to fix it!"))
+				to_chat(user, SPAN_DANGER("它坏了！用螺丝刀和扳手来修理它！"))
 			else
-				to_chat(user, SPAN_DANGER("It's broken! Use a wrench to fix it!"))
+				to_chat(user, SPAN_DANGER("它坏了！用扳手来修理它！"))
 			return 1
 	else if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		. = ..()
@@ -105,13 +105,13 @@
 				icon_state = "mw"
 				flags_atom = OPENCONTAINER
 		else //Otherwise bad luck!!
-			to_chat(user, SPAN_DANGER("It's dirty! Clean it with a spray cleaner!"))
+			to_chat(user, SPAN_DANGER("它脏了！用喷雾清洁剂清洗它！"))
 			return 1
 	else if(operating)
-		to_chat(user, SPAN_DANGER("It's running!"))
+		to_chat(user, SPAN_DANGER("它正在运行！"))
 	else if(is_type_in_list(O,acceptable_items))
 		if (length(contents)>=max_n_of_items)
-			to_chat(user, SPAN_DANGER("[src] is full of ingredients, you cannot put more."))
+			to_chat(user, SPAN_DANGER("[src]已经装满了原料，你无法放入更多。"))
 			return 1
 		if(istype(O, /obj/item/stack) && O:get_amount() > 1) // This is bad, but I can't think of how to change it
 			var/obj/item/stack/S = O
@@ -125,19 +125,19 @@
 			if(user.drop_held_item())
 				O.forceMove(src)
 				user.visible_message(
-					SPAN_NOTICE("[user] has added \the [O] to \the [src]."),
+					SPAN_NOTICE("[user]已将\the [O]加入\the [src]。"),
 					SPAN_NOTICE("You add \the [O] to \the [src]."))
 	else if(istype(O,/obj/item/reagent_container/glass) || istype(O,/obj/item/reagent_container/food/drinks) || istype(O,/obj/item/reagent_container/food/condiment)) // TODO: typecache this
 		if (!O.reagents)
 			return 1
 		for (var/datum/reagent/R in O.reagents.reagent_list)
 			if (!(R.id in acceptable_reagents))
-				to_chat(user, SPAN_DANGER("Your [O] contains components unsuitable for cookery."))
+				to_chat(user, SPAN_DANGER("你的[O]含有不适合烹饪的部件。"))
 				return 1
 	else if(istype(O,/obj/item/grab))
 		return 1
 	else
-		to_chat(user, SPAN_DANGER("You have no idea what you can cook with this [O]."))
+		to_chat(user, SPAN_DANGER("你不知道能用这个[O]烹饪什么。"))
 		return 1
 	src.updateUsrDialog()
 
@@ -179,7 +179,7 @@
 			items_measures[display_name] = "slab of meat"
 			items_measures_p[display_name] = "slabs of meat"
 		if (istype(contents_item, /obj/item/reagent_container/food/snacks/donkpocket))
-			display_name = "Turnovers"
+			display_name = "馅饼"
 			items_measures[display_name] = "turnover"
 			items_measures_p[display_name] = "turnovers"
 		if (istype(contents_item, /obj/item/reagent_container/food/snacks/carpmeat))
@@ -212,7 +212,7 @@
 		if (contents_reagent.id == "hotsauce")
 			reagent["name"] = "Hotsauce"
 		if (contents_reagent.id == "frostoil")
-			reagent["name"] = "Coldsauce"
+			reagent["name"] = "冷酱"
 
 		ingredients += list(reagent)
 
@@ -299,7 +299,7 @@
 	return 0
 
 /obj/structure/machinery/microwave/proc/start()
-	src.visible_message(SPAN_NOTICE("The microwave turns on."), SPAN_NOTICE("You hear a microwave."))
+	src.visible_message(SPAN_NOTICE("微波炉启动了。"), SPAN_NOTICE("You hear a microwave."))
 	src.operating = 1
 	src.icon_state = "mw1"
 	src.updateUsrDialog()
@@ -321,7 +321,7 @@
 	if (src.reagents.total_volume)
 		src.dirty++
 	src.reagents.clear_reagents()
-	to_chat(usr, SPAN_NOTICE("You dispose of the microwave contents."))
+	to_chat(usr, SPAN_NOTICE("你处理掉了微波炉里的东西。"))
 	src.updateUsrDialog()
 
 /obj/structure/machinery/microwave/proc/muck_start()
@@ -330,7 +330,7 @@
 
 /obj/structure/machinery/microwave/proc/muck_finish()
 	playsound(src.loc, 'sound/machines/ding.ogg', 25, 1)
-	visible_message(SPAN_DANGER("The microwave gets covered in muck!"))
+	visible_message(SPAN_DANGER("微波炉被污物覆盖了！"))
 	dirty = 100 // Make it dirty so it can't be used util cleaned
 	flags_atom = null //So you can't add condiments
 	icon_state = "mwbloody" // Make it look dirty too
@@ -342,7 +342,7 @@
 	s.set_up(2, 1, src)
 	s.start()
 	icon_state = "mwb" // Make it look all busted up and shit
-	visible_message(SPAN_DANGER("The microwave breaks!")) //Let them know they're stupid
+	visible_message(SPAN_DANGER("微波炉坏了！")) //Let them know they're stupid
 	broken = 2 // Make it broken so it can't be used util fixed
 	flags_atom = null //So you can't add condiments
 	operating = 0 // Turn it off again aferwards
@@ -379,6 +379,6 @@
 	return TRUE
 
 /obj/structure/machinery/microwave/yautja
-	name = "alien microwave"
-	desc = "Dark alloy sinister machine that heats up cold food."
+	name = "异形微波炉"
+	desc = "一种加热冷食的黑色合金邪恶机器。"
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'

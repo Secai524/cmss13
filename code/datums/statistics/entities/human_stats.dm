@@ -20,7 +20,7 @@
 /datum/entity/player_stats/human/get_playtime(type)
 	if(!type)
 		return ..()
-	if(type == "Squad Roles")
+	if(type == "班组成员职位")
 		var/total_squad_time = 0
 		for(var/squad_type in GLOB.job_squad_roles)
 			var/datum/entity/player_stats/job/squad_stat = job_stats_list["[squad_type]"]

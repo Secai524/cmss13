@@ -1,7 +1,7 @@
 //Helper object for picking dionaea (and other creatures) up.
 /obj/item/holder
 	name = "holder"
-	desc = "You shouldn't ever see this."
+	desc = "你不应该看到这个。"
 	icon = 'icons/mob/animal.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/critters.dmi',
@@ -57,10 +57,10 @@
 	if(!holder_type)
 		return
 	if(isxeno(grabber))
-		to_chat(grabber, SPAN_WARNING("You leave [src] alone. It cannot be made a host, so there is no use for it."))
+		to_chat(grabber, SPAN_WARNING("你放过了[src]。它无法成为宿主，所以没有利用价值。"))
 		return
 	if(locate(/obj/item/explosive/plastic) in contents)
-		to_chat(grabber, SPAN_WARNING("You leave [src] alone. It's got live explosives on it!"))
+		to_chat(grabber, SPAN_WARNING("你放过了[src]。它上面有未引爆的炸药！"))
 		return
 
 	var/obj/item/holder/mob_holder = new holder_type(loc)
@@ -70,8 +70,8 @@
 	mob_holder.gender = gender
 	mob_holder.attack_hand(grabber)
 
-	to_chat(grabber, "You scoop up [src].")
-	to_chat(src, "[grabber] scoops you up.")
+	to_chat(grabber, "你抱起了[src]。")
+	to_chat(src, "[grabber]把你抱了起来。")
 	grabber.status_flags |= PASSEMOTES
 	return
 
@@ -79,34 +79,34 @@
 
 /obj/item/holder/cat
 	name = "cat"
-	desc = "A domesticated, feline pet. Has a tendency to adopt crewmembers."
+	desc = "一只家养宠物猫。有收养船员的倾向。"
 	icon_state = "cat2_rest"
 	item_state = "cat2"
 	item_state_slots = list(WEAR_HEAD = "cat2")
 
 /obj/item/holder/cat/kitten
 	name = "kitten"
-	desc = "D'aaawwww."
+	desc = "好可爱啊。"
 	icon_state = "kitten_rest"
 
 /obj/item/holder/cat/Jones
 	name = "\improper Jones"
-	desc = "A tough, old stray whose origin no one seems to know."
+	desc = "一只来历不明的、坚韧的老流浪猫。"
 
 /obj/item/holder/cat/blackcat
-	name = "black cat"
-	desc = "It's a cat, now in black!"
+	name = "黑猫"
+	desc = "一只猫，现在是黑色的！"
 	icon_state = "cat_rest"
 	item_state = "cat"
 	item_state_slots = list(WEAR_HEAD = "cat")
 
 /obj/item/holder/cat/blackcat/Runtime
 	name = "\improper Runtime"
-	desc = "Her fur has the look and feel of velvet, and her tail quivers occasionally."
+	desc = "它的毛皮看起来和摸起来都像天鹅绒，尾巴偶尔会颤抖。"
 
 /obj/item/holder/mouse
 	name = "mouse"
-	desc = "It's a small mouse."
+	desc = "这是一只小老鼠。"
 	icon = 'icons/mob/animal.dmi'
 	icon_state = "mouse_white"
 	w_class = SIZE_TINY
@@ -122,23 +122,23 @@
 	icon_state = "mouse_brown"
 
 /obj/item/holder/mouse/white/Doc
-	name = "Doc"
-	desc = "Senior researcher of the Almayer. Likes: cheese, experiments, explosions."
+	name = "博士"
+	desc = "阿尔迈耶号的高级研究员。喜欢：奶酪、实验、爆炸。"
 
 /obj/item/holder/mouse/brown/Tom
-	name = "Tom"
-	desc = "Jerry the cat is not amused."
+	name = "汤姆"
+	desc = "猫杰瑞对此并不觉得有趣。"
 
 /obj/item/holder/corgi
 	name = "corgi"
-	desc = "It's a corgi."
+	desc = "这是一只柯基犬。"
 	icon_state = "corgi"
 
 /obj/item/holder/corgi/Ian
-	name = "Ian"
+	name = "伊恩"
 
 /obj/item/holder/corgi/Lisa
-	name = "Ian"
+	name = "伊恩"
 	icon_state = "lisa"
 
 /obj/item/holder/corgi/puppy
@@ -150,7 +150,7 @@
 
 /obj/item/holder/rat
 	name = "rat"
-	desc = "It's a big rat."
+	desc = "这是一只大老鼠。"
 	icon = 'icons/mob/animal.dmi'
 	icon_state = "rat_gray"
 	w_class = SIZE_TINY
@@ -170,23 +170,23 @@
 
 
 /obj/item/holder/rat/white/Milky
-	name = "Milky"
-	desc = "An escaped test rat from the Weyland-Yutani Research Facility. Hope it doesn't have some sort of genetically engineered disease or something..."
+	name = "米尔基"
+	desc = "一只从维兰德-汤谷研究设施逃出的实验鼠。希望它没有携带什么基因工程疾病之类的……"
 
 /obj/item/holder/rat/brown/Old_Timmy
-	name = "Old Timmy"
-	desc = "An ancient looking rat from the old days of the colony."
+	name = "老提米"
+	desc = "一只从殖民地旧时代遗留下来的、看起来年迈的老鼠。"
 
 /obj/item/holder/rat/pet
-	name = "Pet Rat"
-	desc = "This is someone's pet rat. I wonder what it's doing here."
+	name = "宠物鼠"
+	desc = "这是某人的宠物鼠。我想知道它为什么会在这里。"
 
 /obj/item/holder/rat/pet/marvin
-	name = "Marvin"
-	desc = "A sleek well kept rat with a tiny collar around it's neck, it must belong to someone. For a rodent it appears remarkably clean and hygenic."
+	name = "马文"
+	desc = "一只光滑、保养良好的老鼠，脖子上戴着一个小项圈，它一定有主人。作为啮齿动物，它看起来异常干净卫生。"
 	icon_state = "rat_black"
 
 /obj/item/holder/rat/pet/ikit
-	name = "Ikit"
-	desc = "An albino rat with a tiny collar around it's neck, it must belong to someone. Hope it doesn't have some sort of genetically engineered disease or something..."
+	name = "伊基特"
+	desc = "一只白化病老鼠，脖子上戴着一个小项圈，它一定有主人。希望它没有携带什么基因工程疾病之类的……"
 	icon_state = "rat_white"

@@ -5,8 +5,8 @@ their unique feature is that a direct hit will buff your damage and firerate
 */
 
 /obj/item/weapon/gun/lever_action
-	name = "lever-action rifle"
-	desc = "Welcome to the Wild West!\nThis gun is levered via Unique-Action, but it has a bonus feature: Hitting a target directly will grant you a fire rate and damage buff for your next shot during a short interval. Combo precision hits for massive damage."
+	name = "杠杆式步枪"
+	desc = "欢迎来到狂野西部！\n此枪采用独特杠杆式操作，但有一项额外功能：直接命中目标将在短时间内为你下一次射击提供射速和伤害增益。连续精准命中可造成巨额伤害。"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/marksman_rifles.dmi'
 	icon_state = "r4t-placeholder" //placeholder for a 'base' leveraction
 	item_state = "r4t-placeholder"
@@ -90,7 +90,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 			cur_onehand_chance = cur_onehand_chance - 20 //gets steadily worse if you spam it
 			return
 		else
-			to_chat(user, SPAN_DANGER("Augh! Your hand catches on the [lever_name]!!"))
+			to_chat(user, SPAN_DANGER("啊！你的手卡在[lever_name]上了！！"))
 			var/obj/limb/O = human_user.get_limb(human_user.hand ? "l_hand" : "r_hand")
 			if(O.status & LIMB_BROKEN)
 				O = human_user.get_limb(user.hand ? "l_arm" : "r_arm")
@@ -108,9 +108,9 @@ their unique feature is that a direct hit will buff your damage and firerate
 
 	else
 		if(streak)
-			to_chat(user, SPAN_BOLDNOTICE("Bullseye! [streak + 1] hits in a row!"))
+			to_chat(user, SPAN_BOLDNOTICE("正中靶心！连续[streak + 1]次命中！"))
 		else
-			to_chat(user, SPAN_BOLDNOTICE("Bullseye!"))
+			to_chat(user, SPAN_BOLDNOTICE("正中靶心！"))
 		streak++
 		playsound(user, lever_hitsound, 25, FALSE)
 	if(!(flags_gun_lever_action & USES_STREAKS))
@@ -199,7 +199,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 /obj/item/weapon/gun/lever_action/reload(mob/user, obj/item/ammo_magazine/magazine)
 
 	if(!magazine || !istype(magazine,/obj/item/ammo_magazine/handful)) //Can only reload with handfuls.
-		to_chat(user, SPAN_WARNING("You can't use that to reload!"))
+		to_chat(user, SPAN_WARNING("你不能用那个来装填！"))
 		return
 
 	var/mag_caliber = magazine.default_ammo //Handfuls can get deleted, so we need to keep this on hand for later.
@@ -236,7 +236,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 		return
 	if(levered)
 		if (world.time > (message_cooldown + lever_delay))
-			to_chat(user, SPAN_WARNING("<i>\The [src] already has a bullet in the chamber!<i>"))
+			to_chat(user, SPAN_WARNING("<i>\The [src]的枪膛里已经有一发子弹了！<i>"))
 			message_cooldown = world.time
 		return
 	if(in_chamber) //eject the chambered round
@@ -268,7 +268,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 		twohand_lever(user)
 		return
 	if(flags_gun_lever_action & MOVES_WHEN_LEVERING)
-		to_chat(user, SPAN_WARNING("<i>You spin \the [src] one-handed! Fuck yeah!<i>"))
+		to_chat(user, SPAN_WARNING("<i>你单手旋转了\the [src]！太他妈帅了！<i>"))
 		animation_wrist_flick(src)
 	direct_hit_buff(user, ,TRUE)
 
@@ -285,7 +285,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 
 /obj/item/weapon/gun/lever_action/unload(mob/user)
 	if(levered)
-		to_chat(user, SPAN_WARNING("You open the lever on \the [src]."))
+		to_chat(user, SPAN_WARNING("你打开了\the [src]的杠杆。"))
 		levered = FALSE
 	return empty_chamber(user)
 
@@ -293,8 +293,8 @@ their unique feature is that a direct hit will buff your damage and firerate
 //===================THE R4T===================\\
 
 /obj/item/weapon/gun/lever_action/r4t
-	name = "R4T lever-action rifle"
-	desc = "This lever-action was designed for exotic hunting and small scout operations in harsh environments such as the jungle or particularly windy deserts, as such its internal mechanisms are simple yet robust."
+	name = "R4T杠杆式步枪"
+	desc = "这款杠杆式步枪专为异星狩猎以及在丛林或风沙极大的沙漠等恶劣环境下的小型侦察行动而设计，因此其内部结构简单而坚固。"
 	icon_state = "r4t"
 	item_state = "r4t"
 	flags_equip_slot = SLOT_BACK
@@ -348,7 +348,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 
 /obj/item/weapon/gun/lever_action/xm88
 	name = "\improper XM88 heavy rifle"
-	desc = "An experimental man-portable anti-material rifle chambered in .458 SOCOM. It must be manually chambered for every shot.\nIt has a special property - when you obtain multiple direct hits in a row, its armor penetration and damage will increase."
+	desc = "一款实验性的.458 SOCOM口径单兵反器材步枪。每次射击后必须手动上膛。\n它有一个特殊属性——当你连续获得多次直接命中时，其穿甲能力和伤害会提升。"
 	desc_lore = "Originally developed by Armat Battlefield Systems for the government of the state of Greater Brazil for use in the Favela Wars (2161 - Ongoing) against mechanized infantry. The platform features an onboard computerized targeting system, sensor array, and an electronic autoloader; these features work in tandem to reduce and render inert armor on the users target with successive hits. The Almayer was issued a small amount of XM88s while preparing for Operation Swamp Hopper with the USS Nan-Shan."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/marksman_rifles.dmi' // overridden with camos anyways
 	icon_state = "boomslang"
@@ -506,7 +506,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 
 /obj/item/weapon/gun/lever_action/xm88/unload(mob/user)
 	if(levered)
-		to_chat(user, SPAN_WARNING("You open \the [src]'s breech and take out a round."))
+		to_chat(user, SPAN_WARNING("你打开\the [src]的枪膛，取出一发子弹。"))
 		levered = FALSE
 	return empty_chamber(user)
 
@@ -514,7 +514,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 	if(!(flags_gun_lever_action & USES_STREAKS))
 		return
 	if(streak > 0)
-		to_chat(user, SPAN_WARNING("[src] beeps as it loses its targeting data, and returns to normal firing procedures."))
+		to_chat(user, SPAN_WARNING("[src]发出哔哔声，丢失了目标数据，并恢复到正常射击程序。"))
 	streak = 0
 	lever_sound = initial(lever_sound)
 	lever_message = initial(lever_message)

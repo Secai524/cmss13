@@ -1,6 +1,6 @@
 GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
 /obj/structure/machinery/computer/supply/asrs/upp
-	name = "UPP Supply ordering console"
+	name = "UPP补给订购控制台"
 	req_access = list(ACCESS_UPP_ENGINEERING)
 	faction = FACTION_UPP
 	circuit = /obj/item/circuitboard/computer/ordercomp/upp
@@ -10,8 +10,8 @@ GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
 	asrs_name = "General Supply Storage"
 
 /obj/structure/machinery/computer/supply/upp
-	name = "UPP supply console"
-	desc = "A console for the General Supply Storage."
+	name = "UPP补给控制台"
+	desc = "通用补给存储控制台。"
 	circuit = /obj/item/circuitboard/computer/supplycomp/upp
 	faction = FACTION_UPP
 
@@ -20,11 +20,11 @@ GLOBAL_DATUM_INIT(supply_controller_upp, /datum/controller/supply/upp, new())
 	asrs_name = "General Supply Storage"
 
 /obj/item/paper/manifest/upp
-	name = "UPP Supply Manifest"
+	name = "UPP补给清单"
 
 /obj/structure/machinery/computer/supply/asrs/upp/attack_hand(mob/user as mob) //does not return when on non alamyer z level
 	if(!allowed(user))
-		to_chat(user, SPAN_DANGER("Access Denied."))
+		to_chat(user, SPAN_DANGER("权限被拒绝。"))
 		return
 
 	if(..())

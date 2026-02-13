@@ -161,25 +161,25 @@
 		precision = max(rand(1,100)*length(bagholding),100)
 		if(istype(teleatom, /mob/living))
 			var/mob/living/MM = teleatom
-			to_chat(MM, SPAN_WARNING("The Bluespace interface on your Bag of Holding interferes with the teleport!"))
+			to_chat(MM, SPAN_WARNING("你次元袋上的蓝空间接口干扰了传送！"))
 	return 1
 
 /datum/teleport/instant/science/teleportChecks()
 	if(istype(teleatom, /obj/item/disk/nuclear)) // Don't let nuke disks get teleported --NeoFite
-		teleatom.visible_message(SPAN_DANGER("<B>[teleatom] bounces off of the portal!</B>"))
+		teleatom.visible_message(SPAN_DANGER("<B>[teleatom] 从传送门弹开了！</B>"))
 		return 0
 
 	if(length(teleatom.search_contents_for(/obj/item/disk/nuclear)))
 		if(istype(teleatom, /mob/living))
 			var/mob/living/MM = teleatom
-			MM.visible_message(SPAN_DANGER("<B>[MM] bounces off of the portal!</B>"),SPAN_DANGER("Something you are carrying seems to be unable to pass through the portal. Better drop it if you want to go through."))
+			MM.visible_message(SPAN_DANGER("<B>[MM]被传送门弹开了！</B>"),SPAN_DANGER("你携带的某件物品似乎无法通过传送门。如果你想通过，最好把它丢掉。"))
 		else
-			teleatom.visible_message(SPAN_DANGER("<B>[teleatom] bounces off of the portal!</B>"))
+			teleatom.visible_message(SPAN_DANGER("<B>[teleatom] 从传送门弹开了！</B>"))
 		return 0
 
 	if(should_block_game_interaction(destination))
 		if(length(teleatom.search_contents_for(/obj/item/storage/backpack/holding)))
-			teleatom.visible_message(SPAN_DANGER("<B>The Bag of Holding bounces off of the portal!</B>"))
+			teleatom.visible_message(SPAN_DANGER("<B>次元袋被传送门弹开了！</B>"))
 			return 0
 
 	return 1

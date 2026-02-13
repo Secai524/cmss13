@@ -1,5 +1,5 @@
 /datum/equipment_preset/synth
-	name = "Synth"
+	name = "合成人"
 	uses_special_name = TRUE
 	languages = ALL_SYNTH_LANGUAGES
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
@@ -49,7 +49,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/synth/survivor
-	name = "Survivor - Synthetic - Classic Joe"
+	name = "幸存者 - 合成人 - 经典工作乔"
 	flags = EQUIPMENT_PRESET_EXTRA
 	faction = FACTION_SURVIVOR
 	faction_group = list(FACTION_SURVIVOR)
@@ -122,7 +122,7 @@
 	return ..()
 
 /datum/equipment_preset/synth/survivor/surgeon_synth
-	name = "Survivor - Synthetic - Surgeon Synth"
+	name = "幸存者 - 合成人 - 外科医生合成人"
 	equipment_to_spawn = list(
 		WEAR_R_EAR = /obj/item/device/flashlight/pen,
 		WEAR_FACE = /obj/item/clothing/mask/surgical,
@@ -143,7 +143,7 @@
 	survivor_variant = MEDICAL_SURVIVOR
 
 /datum/equipment_preset/synth/survivor/doctor_synth
-	name = "Survivor - Synthetic - Doctor Synth"
+	name = "幸存者 - 合成人 - 医生合成人"
 	equipment_to_spawn = list(
 		WEAR_R_EAR = /obj/item/device/flashlight/pen,
 		WEAR_FACE = /obj/item/clothing/mask/surgical,
@@ -164,7 +164,7 @@
 	survivor_variant = MEDICAL_SURVIVOR
 
 /datum/equipment_preset/synth/survivor/emt_synth_teal
-	name = "Survivor - Synthetic - Teal EMT Synth"
+	name = "幸存者 - 合成人 - 蓝绿色急救合成人"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/cmcap,
 		WEAR_R_EAR = /obj/item/device/flashlight/pen,
@@ -186,7 +186,7 @@
 	survivor_variant = MEDICAL_SURVIVOR
 
 /datum/equipment_preset/synth/survivor/emt_synth_red
-	name = "Survivor - Synthetic - Red EMT Synth"
+	name = "幸存者 - 合成人 - 红色急救合成人"
 	equipment_to_spawn = list(
 		WEAR_R_EAR = /obj/item/device/flashlight/pen,
 		WEAR_FACE = /obj/item/clothing/mask/surgical,
@@ -207,7 +207,7 @@
 	survivor_variant = MEDICAL_SURVIVOR
 
 /datum/equipment_preset/synth/survivor/scientist_synth
-	name = "Survivor - Synthetic - Scientist Synth"
+	name = "幸存者 - 合成人 - 科学家合成人"
 	equipment_to_spawn = list(
 		WEAR_EYES = /obj/item/clothing/glasses/science,
 		WEAR_BODY = /obj/item/clothing/under/detective/neutral,
@@ -225,7 +225,7 @@
 	survivor_variant = SCIENTIST_SURVIVOR
 
 /datum/equipment_preset/synth/survivor/biohazard_synth
-	name = "Survivor - Synthetic - Biohazardous Research Synth"
+	name = "幸存者 - 合成人 - 生物危害研究合成人"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/bio_hood/synth,
 		WEAR_FACE = /obj/item/clothing/mask/surgical,
@@ -245,7 +245,7 @@
 	survivor_variant = SCIENTIST_SURVIVOR
 
 /datum/equipment_preset/synth/survivor/archaeologist_synth
-	name = "Survivor - Synthetic - Archaeologist Synth"
+	name = "幸存者 - 合成人 - 考古学家合成人"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/cmcap/boonie/tan,
 		WEAR_BODY = /obj/item/clothing/under/colonist/workwear/blue,
@@ -263,7 +263,7 @@
 	survivor_variant = SCIENTIST_SURVIVOR
 
 /datum/equipment_preset/synth/survivor/engineer_synth
-	name = "Survivor - Synthetic - Engineer Synth"
+	name = "幸存者 - 合成人 - 工程师合成人"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/hardhat,
 		WEAR_BODY = /obj/item/clothing/under/hybrisa/engineering_utility,
@@ -284,7 +284,7 @@
 	survivor_variant = ENGINEERING_SURVIVOR
 
 /datum/equipment_preset/synth/survivor/radiation_synth
-	name = "Survivor - Synthetic - Radiation Synth"
+	name = "幸存者 - 合成人 - 辐射处理合成人"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/radiation,
 		WEAR_BODY = /obj/item/clothing/under/marine/officer/engi,
@@ -301,7 +301,7 @@
 	survivor_variant = ENGINEERING_SURVIVOR
 
 /datum/equipment_preset/synth/survivor/firefighter_synth
-	name = "Survivor - Synthetic - Fire Response Synth"
+	name = "幸存者 - 合成人 - 消防响应合成人"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/hardhat/red,
 		WEAR_BODY = /obj/item/clothing/under/hybrisa/engineering_utility,
@@ -319,7 +319,7 @@
 	survivor_variant = ENGINEERING_SURVIVOR
 
 /datum/equipment_preset/synth/survivor/miner_synth
-	name = "Survivor - Synthetic - Mining Synth"
+	name = "幸存者 - 合成人 - 采矿合成人"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/hardhat/orange,
 		WEAR_BODY = /obj/item/clothing/under/hybrisa/kelland_mining,
@@ -338,14 +338,14 @@
 	survivor_variant = ENGINEERING_SURVIVOR
 
 /datum/equipment_preset/synth/survivor/corporate_synth
-	name = "Survivor - Synthetic - Corporate Synth"
+	name = "幸存者 - 合成人 - 企业合成人"
 
 /datum/equipment_preset/synth/survivor/corporate_synth/load_gear(mob/living/carbon/human/new_human)
 	..()
 	add_random_cl_survivor_loot(new_human)
 
 /datum/equipment_preset/synth/survivor/janitor_synth
-	name = "Survivor - Synthetic - Janitor Synth"
+	name = "幸存者 - 合成人 - 清洁工合成人"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/soft/purple,
 		WEAR_EYES = /obj/item/clothing/glasses/mgoggles,
@@ -365,7 +365,7 @@
 	)
 
 /datum/equipment_preset/synth/survivor/fisher_synth
-	name = "Survivor - Synthetic - Fishing Synth"
+	name = "幸存者 - 合成人 - 渔夫合成人"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/cmcap/boonie/tan,
 		WEAR_EYES = /obj/item/clothing/glasses/regular/hipster,
@@ -381,7 +381,7 @@
 	)
 
 /datum/equipment_preset/synth/survivor/hydro_synth
-	name = "Survivor - Synthetic - Hydroponics Synth"
+	name = "幸存者 - 合成人 - 水培合成人"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/cmcap,
 		WEAR_EYES = /obj/item/clothing/glasses/regular/hipster,
@@ -396,7 +396,7 @@
 	)
 
 /datum/equipment_preset/synth/survivor/chef_synth
-	name = "Survivor - Synthetic - Chef Synth"
+	name = "幸存者 - 合成人 - 厨师合成人"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/chefhat,
 		WEAR_FACE = /obj/item/clothing/mask/surgical,
@@ -412,7 +412,7 @@
 	)
 
 /datum/equipment_preset/synth/survivor/teacher_synth
-	name = "Survivor - Synthetic - Teacher Synth"
+	name = "幸存者 - 合成人 - 教师合成人"
 	equipment_to_spawn = list(
 		WEAR_EYES = /obj/item/clothing/glasses/regular/hipster,
 		WEAR_BODY = /obj/item/clothing/under/rank/utility/brown,
@@ -428,7 +428,7 @@
 	)
 
 /datum/equipment_preset/synth/survivor/freelancer_synth
-	name = "Survivor - Synthetic - Freelancer Synth"
+	name = "幸存者 - 合成人 - 自由职业者合成人"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/welding,
 		WEAR_FACE = /obj/item/clothing/mask/rebreather/scarf,
@@ -446,7 +446,7 @@
 	)
 
 /datum/equipment_preset/synth/survivor/surveyor_synth
-	name = "Survivor - Synthetic - Surveyor Synth"
+	name = "幸存者 - 合成人 - 勘测员合成人"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/cmcap/flap,
 		WEAR_FACE = /obj/item/clothing/mask/tornscarf,
@@ -464,7 +464,7 @@
 	)
 
 /datum/equipment_preset/synth/survivor/trucker_synth
-	name = "Survivor - Synthetic - Trucker Synth"
+	name = "幸存者 - 合成人 - 卡车司机合成人"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/soft/ferret,
 		WEAR_BODY = /obj/item/clothing/under/rank/frontier,
@@ -476,7 +476,7 @@
 	)
 
 /datum/equipment_preset/synth/survivor/bartender_synth
-	name = "Survivor - Synthetic - Bartender Synth"
+	name = "幸存者 - 合成人 - 酒保合成人"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/bowlerhat,
 		WEAR_BODY = /obj/item/clothing/under/colonist/white_service,
@@ -492,7 +492,7 @@
 	)
 
 /datum/equipment_preset/synth/survivor/atc_synth
-	name = "Survivor - Synthetic - Landing Pad Attendant Synth"
+	name = "幸存者 - 合成人 - 着陆坪服务合成人"
 	equipment_to_spawn = list(
 		WEAR_R_EAR = /obj/item/clothing/ears/earmuffs,
 		WEAR_HEAD = /obj/item/clothing/head/cmcap,
@@ -510,7 +510,7 @@
 	)
 
 /datum/equipment_preset/synth/survivor/journalist_synth
-	name = "Survivor - Synthetic - Videojournalist Synth"
+	name = "幸存者 - 合成人 - 视频记者合成人"
 	equipment_to_spawn = list(
 		WEAR_EYES = /obj/item/clothing/glasses/regular/hipster,
 		WEAR_BODY = /obj/item/clothing/under/liaison_suit/black,
@@ -526,7 +526,7 @@
 	)
 
 /datum/equipment_preset/synth/survivor/detective_synth
-	name = "Survivor - Synthetic - Detective Synth"
+	name = "幸存者 - 合成人 - 侦探合成人"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/fedora,
 		WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
@@ -544,7 +544,7 @@
 	survivor_variant = SECURITY_SURVIVOR
 
 /datum/equipment_preset/synth/survivor/cmb_synth
-	name = "Survivor - Synthetic - CMB Investigative Synthetic"
+	name = "幸存者 - 合成人 - CMB调查合成人"
 	idtype = /obj/item/card/id/deputy
 	role_comm_title = "CMB Syn"
 	assignment = JOB_CMB_SYN
@@ -576,7 +576,7 @@
 	survivor_variant = SECURITY_SURVIVOR
 
 /datum/equipment_preset/synth/survivor/wy/security_synth
-	name = "Survivor - Synthetic - W-Y Security Guard Synthetic"
+	name = "幸存者 - 合成人 - 维兰德保安合成人"
 	assignment = JOB_WY_SEC_SYNTH
 	job_title = JOB_WY_SEC_SYNTH
 	idtype = /obj/item/card/id/silver/cl
@@ -604,7 +604,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/synth/survivor/wy/corporate_synth
-	name = "Survivor - Synthetic - Corporate Clerical Synth"
+	name = "幸存者 - 合成人 - 公司文员合成人"
 	idtype = /obj/item/card/id/data
 	role_comm_title = "WY Syn"
 	equipment_to_spawn = list(
@@ -627,7 +627,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/synth/survivor/icc_synth
-	name = "Survivor - Synthetic - Interstellar Commerce Commission Synthetic"
+	name = "幸存者 - 合成人 - 星际贸易委员会合成人"
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "ICC Syn"
 	minimap_background = "background_cmb"
@@ -651,7 +651,7 @@
 	survivor_variant = CORPORATE_SURVIVOR
 
 /datum/equipment_preset/synth/survivor/pilot_synth
-	name = "Survivor - Synthetic - WY Pilot Synth"
+	name = "幸存者 - 合成人 - 维兰德飞行员合成人"
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "Pilot Syn"
 	equipment_to_spawn = list(
@@ -674,7 +674,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/synth/working_joe
-	name = "Synthetic - Working Joe"
+	name = "合成人 - 工作乔"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 	faction = FACTION_MARINE
 	faction_group = FACTION_LIST_ARES_MARINE
@@ -698,8 +698,8 @@
 	new_human.bubble_icon = "robot"
 	new_human.gender = MALE
 	new_human.flavor_text = ""
-	new_human.h_style = "Bald"
-	new_human.f_style = "Shaved"
+	new_human.h_style = "光头"
+	new_human.f_style = "剃光"
 	new_human.r_eyes = 0
 	new_human.g_eyes = 255
 	new_human.b_eyes = 0
@@ -740,7 +740,7 @@
 
 
 /datum/equipment_preset/synth/working_joe/engi
-	name = "Synthetic - Hazmat Joe"
+	name = "合成人 - 危险品处理乔"
 	joe_type = SYNTH_HAZARD_JOE
 
 /datum/equipment_preset/synth/working_joe/engi/load_gear(mob/living/carbon/human/new_human)
@@ -769,7 +769,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/glass/reinforced/large_stack(new_human.back), WEAR_IN_R_STORE)
 
 /datum/equipment_preset/synth/working_joe/upp
-	name = "Synthetic - Dzho Automaton"
+	name = "合成人 - 德佐自动机"
 	assignment = JOB_UPP_JOE
 	job_title = JOB_UPP_JOE
 	joe_type = SYNTH_UPP_JOE
@@ -817,7 +817,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/synth/survivor/cultist_synth
-	name = "Cultist - Xeno Cultist Synthetic"
+	name = "异形教徒 - 异形教徒合成人"
 	faction = FACTION_XENOMORPH
 	minimap_icon = "cult_synth"
 	minimap_background = "background_cultist"
@@ -847,7 +847,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/synth/survivor/midwife
-	name = "Fun - Xeno Cultist Midwife (Synthetic)"
+	name = "娱乐 - 异形教徒助产士（合成人）"
 	faction = FACTION_XENOMORPH
 
 /datum/equipment_preset/synth/survivor/midwife/load_gear(mob/living/carbon/human/new_human)
@@ -884,7 +884,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/synth/infiltrator
-	name = "Infiltrator Synthetic"
+	name = "渗透者合成人"
 	flags = EQUIPMENT_PRESET_EXTRA
 	faction = FACTION_NEUTRAL
 	assignment = JOB_COLONIST

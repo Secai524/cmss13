@@ -1,5 +1,5 @@
 /obj/item/device/pipe_painter
-	name = "pipe painter"
+	name = "管道喷漆器"
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "labeler1"
 	item_state = "flight"
@@ -23,14 +23,14 @@
 
 	var/turf/T = P.loc
 	if (P.level < 2 && T.level==1 && isturf(T) && T.intact_tile)
-		to_chat(user, SPAN_DANGER("You must remove the plating first."))
+		to_chat(user, SPAN_DANGER("你必须先移除护板。"))
 		return
 
 	P.change_color(GLOB.pipe_colors[mode])
 
 /obj/item/device/pipe_painter/attack_self(mob/user)
 	..()
-	mode = tgui_input_list(usr, "Which color do you want to use?", "Pipe painter", modes)
+	mode = tgui_input_list(usr, "你想使用哪种颜色？", "Pipe painter", modes)
 
 /obj/item/device/pipe_painter/get_examine_text(mob/user)
 	. = ..()

@@ -3,11 +3,11 @@
 	set category = "Admin.Events"
 
 	if(!admin_holder)
-		to_chat(usr, "Only administrators may use this command.")
+		to_chat(usr, "只有管理员可以使用此命令。")
 		return
 
 	if(!LAZYLEN(GLOB.custom_event_info_list))
-		to_chat(usr, "custom_event_info_list is not initialized, tell a dev.")
+		to_chat(usr, "自定义事件信息列表未初始化，请通知开发人员。")
 		return
 
 	var/list/temp_list = list()
@@ -16,19 +16,19 @@
 		var/datum/custom_event_info/CEI = GLOB.custom_event_info_list[T]
 		temp_list["[CEI.msg ? "(x) [CEI.faction]" : CEI.faction]"] = CEI.faction
 
-	var/faction = tgui_input_list(usr, "Select faction. Ghosts will see only \"Global\" category message. Factions with event message set are marked with (x).", "Faction Choice", temp_list)
+	var/faction = tgui_input_list(usr, "选择阵营。幽灵将仅看到\"Global\" category message. Factions with event message set are marked with (x).", "Faction Choice", temp_list)
 	if(!faction)
 		return
 
 	faction = temp_list[faction]
 
 	if(!GLOB.custom_event_info_list[faction])
-		to_chat(usr, "Error has occurred, [faction] category is not found.")
+		to_chat(usr, "发生错误，未找到[faction]类别。")
 		return
 
 	var/datum/custom_event_info/CEI = GLOB.custom_event_info_list[faction]
 
-	var/input = input(usr, "Enter the custom event message for \"[faction]\" category. Be descriptive. \nTo remove the event message, remove text and confirm.", "[faction] Event Message", CEI.msg) as message|null
+	var/input = input(usr, "为输入自定义事件消息。\"[faction]\" category. Be descriptive. \nTo remove the event message, remove text and confirm.", "[faction] Event Message", CEI.msg) as message|null
 	if(isnull(input))
 		return
 
@@ -48,22 +48,22 @@
 	if(!admin_holder)
 		return
 
-	var/flag = tgui_input_list(src, "Which flag?", "Whitelist Flags", GLOB.bitfields["whitelist_status"])
+	var/flag = tgui_input_list(src, "哪个旗帜？", "Whitelist Flags", GLOB.bitfields["whitelist_status"])
 
 	var/list/ckeys = list()
 	for(var/client/test_client in GLOB.clients)
 		if(test_client.check_whitelist_status(GLOB.bitfields["whitelist_status"][flag]))
 			ckeys += test_client.ckey
 	if(!length(ckeys))
-		to_chat(src, SPAN_NOTICE("There are no players with that whitelist online."))
+		to_chat(src, SPAN_NOTICE("没有持有该白名单的玩家在线。"))
 		return
-	to_chat(src, SPAN_NOTICE("Whitelist holders: [ckeys.Join(", ")]."))
+	to_chat(src, SPAN_NOTICE("白名单持有者：[ckeys.Join(", ")]."))
 
 /client/proc/change_security_level()
 	if(!check_rights(R_ADMIN))
 		return
-	var sec_level = input(usr, "It's currently code [get_security_level()].", "Select Security Level")  as null|anything in (list("green","blue","red","delta")-get_security_level())
-	if(sec_level && alert("Switch from code [get_security_level()] to code [sec_level]?","Change security level?","Yes","No") == "Yes")
+	var sec_level = input(usr, "当前安全等级为[get_security_level()]。", "Select Security Level")  as null|anything in (list("green","blue","red","delta")-get_security_level())
+	if(sec_level && alert("Switch from code [get_security_level()] to code [sec_level]?","更改安全等级？","Yes","No") == "Yes")
 		set_security_level(seclevel2num(sec_level))
 		log_admin("[key_name(usr)] changed the security level to code [sec_level].")
 
@@ -72,10 +72,10 @@
 		return
 
 	if(CONFIG_GET(flag/remove_gun_restrictions))
-		to_chat(src, "<b>Enabled gun restrictions.</b>")
+		to_chat(src, "<b>已启用武器限制。</b>")
 		message_admins("Admin [key_name_admin(usr)] has enabled WY gun restrictions.")
 	else
-		to_chat(src, "<b>Disabled gun restrictions.</b>")
+		to_chat(src, "<b>已禁用武器限制。</b>")
 		message_admins("Admin [key_name_admin(usr)] has disabled WY gun restrictions.")
 	CONFIG_SET(flag/remove_gun_restrictions, !CONFIG_GET(flag/remove_gun_restrictions))
 
@@ -102,7 +102,7 @@
 	var/falloff_warn_threshold = 0.05
 	var/list/choices = list("Small Bomb", "Medium Bomb", "Big Bomb", "Custom Bomb")
 	var/list/falloff_shape_choices = list("CANCEL", "Linear", "Exponential")
-	var/choice = tgui_input_list(usr, "What size explosion would you like to produce?", "Drop Bomb", choices)
+	var/choice = tgui_input_list(usr, "您想制造多大威力的爆炸？", "Drop Bomb", choices)
 	var/datum/cause_data/cause_data = create_cause_data("divine intervention")
 	switch(choice)
 		if(null)
@@ -114,15 +114,15 @@
 		if("Big Bomb")
 			explosion(epicenter, 3, 5, 7, 5, , , , cause_data)
 		if("Custom Bomb")
-			var/power = tgui_input_number(src, "Power?", "Power?")
+			var/power = tgui_input_number(src, "威力？", "威力？")
 			if(!power)
 				return
 
-			var/falloff = tgui_input_number(src, "Falloff?", "Falloff?")
+			var/falloff = tgui_input_number(src, "衰减？", "衰减？")
 			if(!falloff)
 				return
 
-			var/shape_choice = tgui_input_list(src, "Select falloff shape?", "Select falloff shape", falloff_shape_choices)
+			var/shape_choice = tgui_input_list(src, "选择衰减形状？", "Select falloff shape", falloff_shape_choices)
 			var/explosion_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR
 			switch(shape_choice)
 				if("CANCEL")
@@ -134,7 +134,7 @@
 				return
 
 			if((power >= power_warn_threshold) && ((1 / (power / falloff)) <= falloff_warn_threshold) && (explosion_shape == EXPLOSION_FALLOFF_SHAPE_LINEAR)) // The lag can be a bit situational, but a large-power explosion with minimal (linear) falloff can absolutely bring the server to a halt in certain cases.
-				if(tgui_input_list(src, "This bomb has the potential to lag the server. Are you sure you wish to drop it?", "Drop confirm", list("Yes", "No")) != "Yes")
+				if(tgui_input_list(src, "此炸弹可能导致服务器延迟。您确定要投放吗？", "Drop confirm", list("Yes", "No")) != "Yes")
 					return
 
 			cell_explosion(epicenter, power, falloff, explosion_shape, null, cause_data)
@@ -149,10 +149,10 @@
 	if(!check_rights(R_DEBUG|R_ADMIN))
 		return
 
-	var/heavy = input("Range of heavy pulse.", text("Input"))  as num|null
+	var/heavy = input("Range of heavy pulse.", text("输入"))  as num|null
 	if(heavy == null)
 		return
-	var/light = input("Range of light pulse.", text("Input"))  as num|null
+	var/light = input("Range of light pulse.", text("输入"))  as num|null
 	if(light == null)
 		return
 
@@ -176,7 +176,7 @@
 	var/list/shuttle_map = list()
 	for(var/obj/docking_port/mobile/emergency_response/ert_shuttles in SSshuttle.mobile)
 		shuttle_map[ert_shuttles.name] = ert_shuttles.id
-	var/tag = tgui_input_list(usr, "Which ERT shuttle should be force launched?", "Select an ERT Shuttle:", shuttle_map)
+	var/tag = tgui_input_list(usr, "应强制发射哪艘紧急响应小组运输机？", "Select an ERT Shuttle:", shuttle_map)
 	if(!tag)
 		return
 
@@ -190,7 +190,7 @@
 		if(can_dock == SHUTTLE_CAN_DOCK)
 			targets += list(dock)
 			target_names +=  list(dock.name)
-	var/dock_name = tgui_input_list(usr, "Where on the [MAIN_SHIP_NAME] should the shuttle dock?", "Select a docking zone:", target_names)
+	var/dock_name = tgui_input_list(usr, "运输机应在[MAIN_SHIP_NAME]的何处停靠？", "Select a docking zone:", target_names)
 	var/launched = FALSE
 	if(!dock_name)
 		return
@@ -200,7 +200,7 @@
 			ert.request(target)
 			launched=TRUE
 	if(!launched)
-		to_chat(usr, SPAN_WARNING("Unable to launch this Distress shuttle at this moment. Aborting."))
+		to_chat(usr, SPAN_WARNING("目前无法发射此求救运输机。中止。"))
 		return
 
 	message_admins("[key_name_admin(usr)] force launched a distress shuttle ([tag])")
@@ -227,7 +227,7 @@
 
 	list_of_calls += "Randomize"
 
-	var/choice = tgui_input_list(usr, "Which distress call?", "Distress Signal", list_of_calls)
+	var/choice = tgui_input_list(usr, "哪个求救信号？", "求救信号", list_of_calls)
 
 	if(!choice)
 		return
@@ -242,17 +242,17 @@
 	if(!istype(chosen_ert))
 		return
 	var/quiet_launch = TRUE
-	var/ql_prompt = tgui_alert(usr, "Would you like to broadcast the beacon launch? This will reveal the distress beacon to all players.", "Announce distress beacon?", list("Yes", "No"), 20 SECONDS)
+	var/ql_prompt = tgui_alert(usr, "您要广播信标发射吗？这将向所有玩家公开求救信标。", "Announce distress beacon?", list("Yes", "No"), 20 SECONDS)
 	if(ql_prompt == "Yes")
 		quiet_launch = FALSE
 
 	var/announce_receipt = FALSE
-	var/ar_prompt = tgui_alert(usr, "Would you like to announce the beacon received message? This will reveal the distress beacon to all players.", "Announce beacon received?", list("Yes", "No"), 20 SECONDS)
+	var/ar_prompt = tgui_alert(usr, "您要宣布收到信标的消息吗？这将向所有玩家公开求救信标。", "Announce beacon received?", list("Yes", "No"), 20 SECONDS)
 	if(ar_prompt == "Yes")
 		announce_receipt = TRUE
 
 	var/turf/override_spawn_loc
-	var/prompt = tgui_alert(usr, "Spawn at their assigned spawn, or at your location?", "Spawnpoint Selection", list("Spawn", "Current Location"), 0)
+	var/prompt = tgui_alert(usr, "在其指定出生点生成，还是在您的位置生成？", "Spawnpoint Selection", list("Spawn", "Current Location"), 0)
 	if(!prompt)
 		qdel(chosen_ert)
 		return
@@ -306,7 +306,7 @@
 
 	message_admins("[key_name_admin(usr)] granted requisitions [points_to_add] points.")
 	if(points_to_add >= 0)
-		shipwide_ai_announcement("Additional Supply Budget has been authorised for this operation.")
+		shipwide_ai_announcement("本次行动已获授权额外补给预算。")
 	message_admins("[key_name_admin(usr)] granted UPP requisitions [points_to_add] points.")
 
 /datum/admins/proc/add_upp_req_points()
@@ -351,7 +351,7 @@
 	if(!SSticker.mode || !check_rights(R_ADMIN) || get_security_level() == "delta")
 		return
 
-	if(alert(src, "Are you sure you want to do this?", "Confirmation", "Yes", "No") != "Yes")
+	if(alert(src, "你确定要执行此操作吗？", "确认", "Yes", "No") != "Yes")
 		return
 
 	set_security_level(SEC_LEVEL_DELTA)
@@ -367,11 +367,11 @@
 		return
 
 	var/list/options = list(
-		"Weyland-Yutani", "High Command", "Provost", "Press",
-		"Colonial Marshal Bureau", "Union of Progressive Peoples",
-		"Three World Empire", "Colonial Liberation Front",
-		"Other", "Cancel")
-	var/answer = tgui_input_list(src, "Which kind of faxes would you like to see?", "Faxes", options)
+		"Weyland-Yutani", "High Command", "宪兵总监", "Press",
+		"殖民地执法局", "进步人民联盟",
+		"三世界帝国", "殖民地解放阵线",
+		"其他", "Cancel")
+	var/answer = tgui_input_list(src, "你想查看哪种传真？", "Faxes", options)
 	switch(answer)
 		if("Weyland-Yutani")
 			var/body = "<body>"
@@ -393,7 +393,7 @@
 			body += "<br><br></body>"
 			show_browser(src, body, "Faxes to High Command", "uscmfaxviewer", width = 300, height = 600)
 
-		if("Provost")
+		if("宪兵总监")
 			var/body = "<body>"
 
 			for(var/text in GLOB.ProvostFaxes)
@@ -413,7 +413,7 @@
 			body += "<br><br></body>"
 			show_browser(src, body, "Faxes to Press organizations", "pressfaxviewer", width = 300, height = 600)
 
-		if("Colonial Marshal Bureau")
+		if("殖民地执法局")
 			var/body = "<body>"
 
 			for(var/text in GLOB.CMBFaxes)
@@ -423,7 +423,7 @@
 			body += "<br><br></body>"
 			show_browser(src, body, "Faxes to the Colonial Marshal Bureau", "cmbfaxviewer", width = 300, height = 600)
 
-		if("Union of Progressive Peoples")
+		if("进步人民联盟")
 			var/body = "<body>"
 
 			for(var/text in GLOB.UPPFaxes)
@@ -433,7 +433,7 @@
 			body += "<br><br></body>"
 			show_browser(src, body, "Faxes to the Union of Progressive Peoples", "uppfaxviewer", width = 300, height = 600)
 
-		if("Three World Empire")
+		if("三世界帝国")
 			var/body = "<body>"
 
 			for(var/text in GLOB.TWEFaxes)
@@ -443,7 +443,7 @@
 			body += "<br><br></body>"
 			show_browser(src, body, "Faxes to the Three World Empire", "twefaxviewer", width = 300, height = 600)
 
-		if("Colonial Liberation Front")
+		if("殖民地解放阵线")
 			var/body = "<body>"
 
 			for(var/text in GLOB.CLFFaxes)
@@ -453,7 +453,7 @@
 			body += "<br><br></body>"
 			show_browser(src, body, "Faxes to the Colonial Liberation Front", "clffaxviewer", width = 300, height = 600)
 
-		if("Other")
+		if("其他")
 			var/body = "<body>"
 
 			for(var/text in GLOB.GeneralFaxes)
@@ -487,12 +487,12 @@
 			last_hive_checked = hive
 
 	if(!length(hives))
-		to_chat(src, SPAN_ALERT("There seem to be no hives at the moment."))
+		to_chat(src, SPAN_ALERT("目前似乎没有巢穴。"))
 		return
 	else if(length(hives) > 1) // More than one hive, display an input menu for that
-		var/faction = tgui_input_list(src, "Select which hive to award", "Hive Choice", hives, theme="hive_status")
+		var/faction = tgui_input_list(src, "选择要奖励的巢穴", "Hive Choice", hives, theme="hive_status")
 		if(!faction)
-			to_chat(src, SPAN_ALERT("Hive choice error. Aborting."))
+			to_chat(src, SPAN_ALERT("巢穴选择错误。中止。"))
 			return
 		last_hive_checked = GLOB.hive_datum[hives[faction]]
 
@@ -501,11 +501,11 @@
 /client/proc/give_nuke()
 	if(!check_rights(R_ADMIN))
 		return
-	var/nukename = "Decrypted Operational Blockbuster"
-	var/encrypt = tgui_alert(src, "Do you want the nuke to be already decrypted?", "Nuke Type", list("Encrypted", "Decrypted"), 20 SECONDS)
+	var/nukename = "已解密的行动大片"
+	var/encrypt = tgui_alert(src, "是否希望核弹已处于解密状态？", "Nuke Type", list("Encrypted", "Decrypted"), 20 SECONDS)
 	if(encrypt == "Encrypted")
-		nukename = "Encrypted Operational Blockbuster"
-	var/prompt = tgui_alert(src, "THIS CAN BE USED TO END THE ROUND. Are you sure you want to spawn a nuke? The nuke will be put onto the ASRS Lift.", "DEFCON 1", list("Yes", "No"), 30 SECONDS)
+		nukename = "加密的行动大片"
+	var/prompt = tgui_alert(src, "此操作可用于结束回合。你确定要生成一枚核弹吗？核弹将被放置在ASRS升降机上。", "DEFCON 1", list("Yes", "No"), 30 SECONDS)
 	if(prompt != "Yes")
 		return
 
@@ -518,20 +518,20 @@
 	new_order.approvedby = MAIN_AI_SYSTEM
 	GLOB.supply_controller.shoppinglist += new_order
 
-	marine_announcement("A nuclear device has been supplied and will be delivered to requisitions via ASRS.", "NUCLEAR ARSENAL ACQUIRED", 'sound/misc/notice2.ogg')
+	marine_announcement("一枚核装置已供应，将通过ASRS运送至补给处。", "NUCLEAR ARSENAL ACQUIRED", 'sound/misc/notice2.ogg')
 	message_admins("[key_name_admin(usr)] admin-spawned \a [encrypt] nuke.")
 	log_game("[key_name_admin(usr)] admin-spawned \a [encrypt] nuke.")
 
 /client/proc/turn_everyone_into_primitives()
 	var/random_names = FALSE
-	if (alert(src, "Do you want to give everyone random numbered names?", "Confirmation", "Yes", "No") == "Yes")
+	if (alert(src, "是否要为所有人赋予随机编号名称？", "确认", "Yes", "No") == "Yes")
 		random_names = TRUE
-	if (alert(src, "Are you sure you want to do this? It will laaag.", "Confirmation", "Yes", "No") != "Yes")
+	if (alert(src, "你确定要执行此操作吗？这会造成卡顿。", "确认", "Yes", "No") != "Yes")
 		return
 	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
 		if(ismonkey(H))
 			continue
-		H.set_species(pick("Monkey", "Yiren", "Stok", "Farwa", "Neaera"))
+		H.set_species(pick("猴子", "伊伦", "斯托克", "法瓦", "尼艾拉"))
 		H.is_important = TRUE
 		if(random_names)
 			var/random_name = "[lowertext(H.species.name)] ([rand(1, 999)])"
@@ -549,18 +549,18 @@
 	set category = "Admin.Shuttles"
 
 	var/list/shuttles = list(DROPSHIP_ALAMO, DROPSHIP_NORMANDY)
-	var/tag = tgui_input_list(usr, "Which dropship should be force hijacked?", "Select a dropship:", shuttles)
+	var/tag = tgui_input_list(usr, "强制劫持哪架运输机？", "Select a dropship:", shuttles)
 	if(!tag)
 		return
 
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(tag)
 
 	if(!dropship)
-		to_chat(src, SPAN_DANGER("Error: Attempted to force a dropship hijack but the shuttle datum was null. Code: MSD_FSV_DIN"))
-		log_admin("Error: Attempted to force a dropship hijack but the shuttle datum was null. Code: MSD_FSV_DIN")
+		to_chat(src, SPAN_DANGER("错误：尝试强制劫持运输机，但穿梭机数据为空。代码：MSD_FSV_DIN"))
+		log_admin("错误：尝试强制劫持运输机，但穿梭机数据为空。代码：MSD_FSV_DIN")
 		return
 
-	var/confirm = tgui_alert(usr, "Are you sure you want to hijack [dropship]?", "Force hijack", list("Yes", "No")) == "Yes"
+	var/confirm = tgui_alert(usr, "你确定要劫持[dropship]吗？", "Force hijack", list("Yes", "No")) == "Yes"
 	if(!confirm)
 		return
 
@@ -572,15 +572,15 @@
 	set category = "Admin.Factions"
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return
-	var/faction = tgui_input_list(usr, "Please choose faction your announcement will be shown to.", "Faction Selection", (FACTION_LIST_HUMANOID - list(FACTION_YAUTJA) + list("Everyone (-Yautja)")))
+	var/faction = tgui_input_list(usr, "请选择你的公告将显示给哪个阵营。", "Faction Selection", (FACTION_LIST_HUMANOID - list(FACTION_YAUTJA) + list("Everyone (-Yautja)")))
 	if(!faction)
 		return
-	var/input = input(usr, "Please enter announcement text. Be advised, this announcement will be heard both on Almayer and planetside by conscious humans of selected faction.", "What?", "") as message|null
+	var/input = input(usr, "请输入公告文本。请注意，此公告将被阿尔迈耶号及行星地表上所选阵营意识清醒的人类听到。", "什么？", "") as message|null
 	if(!input)
 		return
-	var/customname = input(usr, "Pick a title for the announcement. Confirm empty text for \"[faction] Update\" title.", "Title") as text|null
+	var/customname = input(usr, "为公告选择一个标题。确认输入空文本以使用\"[faction] Update\" title.", "Title") as text|null
 	if(isnull(customname))
 		return
 	if(!customname)
@@ -612,7 +612,7 @@
 	set category = "Admin.Factions"
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return
 
 	var/list/hives = list()
@@ -621,14 +621,14 @@
 		hives += list("[hive.name]" = hive.hivenumber)
 
 	hives += list("All Hives" = "everything")
-	var/hive_choice = tgui_input_list(usr, "Please choose the hive you want to see your announcement. Selecting \"All hives\" option will change title to \"Unknown Higher Force\"", "Hive Selection", hives)
+	var/hive_choice = tgui_input_list(usr, "请选择你希望看到公告的巢穴。选择\"All hives\" option will change title to \"Unknown Higher Force\"", "Hive Selection", hives)
 	if(!hive_choice)
 		return FALSE
 
 	var/hivenumber = hives[hive_choice]
 
 
-	var/input = input(usr, "This should be a message from the ruler of the Xenomorph race.", "What?", "") as message|null
+	var/input = input(usr, "这应该是来自异形种族统治者的信息。", "什么？", "") as message|null
 	if(!input)
 		return FALSE
 
@@ -650,21 +650,21 @@
 	set category = "Admin.Factions"
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return FALSE
 
 	if(!ares_is_active())
-		to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is destroyed, and cannot talk!"))
+		to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM]已被摧毁，无法通话！"))
 		return FALSE
 
-	var/input = input(usr, "This is a standard message from the ship's AI. It uses Almayer General channel and won't be heard by humans without access to Almayer General channel (headset or intercom). Check with online staff before you send this. Do not use html.", "What?", "") as message|null
+	var/input = input(usr, "这是来自舰船AI的标准信息。它使用阿尔迈耶号通用频道，没有阿尔迈耶号通用频道权限（耳机或对讲机）的人类将无法听到。发送前请与在线工作人员确认。不要使用html。", "什么？", "") as message|null
 	if(!input)
 		return FALSE
 
 	if(!ares_can_interface())
-		var/prompt = tgui_alert(src, "ARES interface processor is offline or destroyed, send the message anyways?", "Choose.", list("Yes", "No"), 20 SECONDS)
+		var/prompt = tgui_alert(src, "ARES接口处理器离线或已摧毁，是否仍要发送信息？", "Choose.", list("Yes", "No"), 20 SECONDS)
 		if(prompt == "No")
-			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It's interface processor may be offline or destroyed."))
+			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM]无响应。其接口处理器可能离线或已摧毁。"))
 			return FALSE
 
 	ai_announcement(input)
@@ -677,21 +677,21 @@
 	set category = "Admin.Factions"
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return FALSE
 
 	if(!ares_is_active())
-		to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is destroyed, and cannot talk!"))
+		to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM]已被摧毁，无法通话！"))
 		return FALSE
 
-	var/input = tgui_input_text(usr, "This is a broadcast from the ship AI to Working Joes and Maintenance Drones. Do not use html.", "What?", "")
+	var/input = tgui_input_text(usr, "这是来自舰船AI对工作乔和维护无人机的广播。不要使用html。", "什么？", "")
 	if(!input)
 		return FALSE
 
 	if(!ares_can_apollo())
-		var/prompt = tgui_alert(src, "ARES APOLLO processor is offline or destroyed, send the message anyways?", "Choose.", list("Yes", "No"), 20 SECONDS)
+		var/prompt = tgui_alert(src, "ARES APOLLO处理器离线或已摧毁，是否仍要发送信息？", "Choose.", list("Yes", "No"), 20 SECONDS)
 		if(prompt != "Yes")
-			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It's APOLLO processor may be offline or destroyed."))
+			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM]无响应。其APOLLO处理器可能离线或已摧毁。"))
 			return FALSE
 
 	ares_apollo_talk(input)
@@ -703,15 +703,15 @@
 	set category = "Admin.Factions"
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return
-	var/input = input(usr, "This is an announcement type message from the ship's AI. This will be announced to every conscious human on Almayer z-level. Be aware, this will work even if ARES unpowered/destroyed. Check with online staff before you send this.", "What?", "") as message|null
+	var/input = input(usr, "这是来自舰船AI的公告类信息。这将向阿尔迈耶号Z层级所有意识清醒的人类广播。请注意，即使ARES断电/被摧毁，此功能仍有效。发送前请与在线工作人员确认。", "什么？", "") as message|null
 	if(!input)
 		return FALSE
 	if(!ares_can_interface())
-		var/prompt = tgui_alert(src, "ARES interface processor is offline or destroyed, send the message anyways?", "Choose.", list("Yes", "No"), 20 SECONDS)
+		var/prompt = tgui_alert(src, "ARES接口处理器离线或已摧毁，是否仍要发送信息？", "Choose.", list("Yes", "No"), 20 SECONDS)
 		if(prompt == "No")
-			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It's interface processor may be offline or destroyed."))
+			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM]无响应。其接口处理器可能离线或已摧毁。"))
 			return
 
 	shipwide_ai_announcement(input)
@@ -723,9 +723,9 @@
 	set category = "Admin.Factions"
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return
-	var/input = tgui_input_text(usr, "This is a message from the Yautja Elder Overseer. They are not an AI, but they have witnessed everything that has happened this round through the eyes of all predators, both alive and dead. This message will appear on the screens of all living predator mobs. Check with online staff before sending.", "What Will The Elder Say?")
+	var/input = tgui_input_text(usr, "这是来自铁血战士长老监督者的信息。他们并非AI，但他们已通过所有铁血战士（无论生死）的眼睛目睹了本回合发生的一切。此信息将显示在所有存活的铁血战士实体屏幕上。发送前请与在线工作人员确认。", "What Will The Elder Say?")
 	if(!input)
 		return FALSE
 	elder_overseer_message(input, elder_user = "[key_name(src)]")
@@ -735,10 +735,10 @@
 	set category = "Admin.Events"
 
 	if (!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return
 
-	var/msg = input("Message:", text("Enter the text you wish to appear to everyone:")) as text
+	var/msg = input("信息：", text("Enter the text you wish to appear to everyone:")) as text
 
 	if(!msg)
 		return
@@ -915,7 +915,7 @@
 	if(!check_rights(R_MOD))
 		return
 
-	if(alert(usr, "Are you sure you want to change all mutineers back to normal?", "Confirmation", "Yes", "No") != "Yes")
+	if(alert(usr, "你确定要将所有叛变者恢复为正常状态吗？", "确认", "Yes", "No") != "Yes")
 		return
 
 	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
@@ -938,7 +938,7 @@
 		return
 
 	var/list/firemodes = list("Standard Warhead", "Custom HE", "Custom Cluster", "Custom Incendiary")
-	var/mode = tgui_input_list(usr, "Select fire mode:", "Fire mode", firemodes)
+	var/mode = tgui_input_list(usr, "选择开火模式：", "Fire mode", firemodes)
 	// Select the warhead.
 	var/obj/structure/ob_ammo/warhead/warhead
 	var/statsmessage
@@ -947,89 +947,89 @@
 		if("Standard Warhead")
 			custom = FALSE
 			var/list/warheads = subtypesof(/obj/structure/ob_ammo/warhead/)
-			var/choice = tgui_input_list(usr, "Select the warhead:", "Warhead to use", warheads)
+			var/choice = tgui_input_list(usr, "选择弹头类型：", "Warhead to use", warheads)
 			if(!choice)
 				return
 			warhead = new choice
 		if("Custom HE")
 			var/obj/structure/ob_ammo/warhead/explosive/OBShell = new
-			OBShell.name = input("What name should the warhead have?", "Set name", "HE orbital warhead")
+			OBShell.name = input("What name should the warhead have?", "设定名称", "HE orbital warhead")
 			if(!OBShell.name)
 				return//null check to cancel
-			OBShell.clear_power = tgui_input_number(src, "How much explosive power should the wall clear blast have?", "Set clear power", 1200, 3000)
+			OBShell.clear_power = tgui_input_number(src, "清障爆炸的威力应设为多少？", "Set clear power", 1200, 3000)
 			if(isnull(OBShell.clear_power))
 				return
-			OBShell.clear_falloff = tgui_input_number(src, "How much falloff should the wall clear blast have?", "Set clear falloff", 400)
+			OBShell.clear_falloff = tgui_input_number(src, "清障爆炸的威力衰减应设为多少？", "Set clear falloff", 400)
 			if(isnull(OBShell.clear_falloff))
 				return
-			OBShell.standard_power = tgui_input_number(src, "How much explosive power should the main blasts have?", "Set blast power", 600, 3000)
+			OBShell.standard_power = tgui_input_number(src, "主爆炸的威力应设为多少？", "Set blast power", 600, 3000)
 			if(isnull(OBShell.standard_power))
 				return
-			OBShell.standard_falloff = tgui_input_number(src, "How much falloff should the main blasts have?", "Set blast falloff", 30)
+			OBShell.standard_falloff = tgui_input_number(src, "主爆炸的威力衰减应设为多少？", "Set blast falloff", 30)
 			if(isnull(OBShell.standard_falloff))
 				return
-			OBShell.clear_delay = tgui_input_number(src, "How much delay should the clear blast have?", "Set clear delay", 3)
+			OBShell.clear_delay = tgui_input_number(src, "清障爆炸的延迟应设为多少？", "Set clear delay", 3)
 			if(isnull(OBShell.clear_delay))
 				return
-			OBShell.double_explosion_delay = tgui_input_number(src, "How much delay should the clear blast have?", "Set clear delay", 6)
+			OBShell.double_explosion_delay = tgui_input_number(src, "清障爆炸的延迟应设为多少？", "Set clear delay", 6)
 			if(isnull(OBShell.double_explosion_delay))
 				return
 			statsmessage = "Custom HE OB ([OBShell.name]) Stats from [key_name(usr)]: Clear Power: [OBShell.clear_power], Clear Falloff: [OBShell.clear_falloff], Clear Delay: [OBShell.clear_delay], Blast Power: [OBShell.standard_power], Blast Falloff: [OBShell.standard_falloff], Blast Delay: [OBShell.double_explosion_delay]."
 			warhead = OBShell
 		if("Custom Cluster")
 			var/obj/structure/ob_ammo/warhead/cluster/OBShell = new
-			OBShell.name = input("What name should the warhead have?", "Set name", "Cluster orbital warhead")
+			OBShell.name = input("What name should the warhead have?", "设定名称", "Cluster orbital warhead")
 			if(!OBShell.name)
 				return//null check to cancel
-			OBShell.total_amount = tgui_input_number(src, "How many salvos should be fired?", "Set cluster number", 60)
+			OBShell.total_amount = tgui_input_number(src, "应发射多少轮齐射？", "Set cluster number", 60)
 			if(isnull(OBShell.total_amount))
 				return
-			OBShell.instant_amount = tgui_input_number(src, "How many shots per salvo? (Max 10)", "Set shot count", 3)
+			OBShell.instant_amount = tgui_input_number(src, "每轮齐射多少发？（最多10发）", "Set shot count", 3)
 			if(isnull(OBShell.instant_amount))
 				return
 			if(OBShell.instant_amount > 10)
 				OBShell.instant_amount = 10
-			OBShell.explosion_power = tgui_input_number(src, "How much explosive power should the blasts have?", "Set blast power", 300, 1500)
+			OBShell.explosion_power = tgui_input_number(src, "爆炸的威力应设为多少？", "Set blast power", 300, 1500)
 			if(isnull(OBShell.explosion_power))
 				return
-			OBShell.explosion_falloff = tgui_input_number(src, "How much falloff should the blasts have?", "Set blast falloff", 150)
+			OBShell.explosion_falloff = tgui_input_number(src, "爆炸的威力衰减应设为多少？", "Set blast falloff", 150)
 			if(isnull(OBShell.explosion_falloff))
 				return
 			statsmessage = "Custom Cluster OB ([OBShell.name]) Stats from [key_name(usr)]: Salvos: [OBShell.total_amount], Shot per Salvo: [OBShell.instant_amount], Explosion Power: [OBShell.explosion_power], Explosion Falloff: [OBShell.explosion_falloff]."
 			warhead = OBShell
 		if("Custom Incendiary")
 			var/obj/structure/ob_ammo/warhead/incendiary/OBShell = new
-			OBShell.name = input("What name should the warhead have?", "Set name", "Incendiary orbital warhead")
+			OBShell.name = input("What name should the warhead have?", "设定名称", "Incendiary orbital warhead")
 			if(!OBShell.name)
 				return//null check to cancel
-			OBShell.clear_power = tgui_input_number(src, "How much explosive power should the wall clear blast have?", "Set clear power", 1200, 3000)
+			OBShell.clear_power = tgui_input_number(src, "清障爆炸的威力应设为多少？", "Set clear power", 1200, 3000)
 			if(isnull(OBShell.clear_power))
 				return
-			OBShell.clear_falloff = tgui_input_number(src, "How much falloff should the wall clear blast have?", "Set clear falloff", 400)
+			OBShell.clear_falloff = tgui_input_number(src, "清障爆炸的威力衰减应设为多少？", "Set clear falloff", 400)
 			if(isnull(OBShell.clear_falloff))
 				return
-			OBShell.clear_delay = tgui_input_number(src, "How much delay should the clear blast have?", "Set clear delay", 3)
+			OBShell.clear_delay = tgui_input_number(src, "清障爆炸的延迟应设为多少？", "Set clear delay", 3)
 			if(isnull(OBShell.clear_delay))
 				return
-			OBShell.distance = tgui_input_number(src, "How many tiles radius should the fire be? (Max 30)", "Set fire radius", 18, 30)
+			OBShell.distance = tgui_input_number(src, "火焰半径应为多少格？（最多30格）", "Set fire radius", 18, 30)
 			if(isnull(OBShell.distance))
 				return
 			if(OBShell.distance > 30)
 				OBShell.distance = 30
-			OBShell.fire_level = tgui_input_number(src, "How long should the fire last?", "Set fire duration", 70)
+			OBShell.fire_level = tgui_input_number(src, "火焰应持续多久？", "Set fire duration", 70)
 			if(isnull(OBShell.fire_level))
 				return
-			OBShell.burn_level = tgui_input_number(src, "How damaging should the fire be?", "Set fire strength", 80)
+			OBShell.burn_level = tgui_input_number(src, "火焰的伤害应设为多少？", "Set fire strength", 80)
 			if(isnull(OBShell.burn_level))
 				return
 			var/list/firetypes = list("white","blue","red","green","custom")
-			OBShell.fire_type = tgui_input_list(usr, "Select the fire color:", "Fire color", firetypes)
+			OBShell.fire_type = tgui_input_list(usr, "选择火焰颜色：", "Fire color", firetypes)
 			if(isnull(OBShell.fire_type))
 				return
 			OBShell.fire_color = null
 			if(OBShell.fire_type == "custom")
 				OBShell.fire_type = "dynamic"
-				OBShell.fire_color = input(src, "Please select Fire color.", "Fire color") as color|null
+				OBShell.fire_color = input(src, "请选择火焰颜色。", "Fire color") as color|null
 				if(isnull(OBShell.fire_color))
 					return
 			statsmessage = "Custom Incendiary OB ([OBShell.name]) Stats from [key_name(usr)]: Clear Power: [OBShell.clear_power], Clear Falloff: [OBShell.clear_falloff], Clear Delay: [OBShell.clear_delay], Fire Distance: [OBShell.distance], Fire Duration: [OBShell.fire_level], Fire Strength: [OBShell.burn_level]."
@@ -1045,7 +1045,7 @@
 
 	var/turf/target = get_turf(usr.loc)
 
-	if(alert(usr, "Fire or Spawn Warhead?", "Mode", "Fire", "Spawn") == "Fire")
+	if(alert(usr, "发射还是生成弹头？", "Mode", "Fire", "Spawn") == "Fire")
 		if(alert("Are you SURE you want to do this? It will create an OB explosion!",, "Yes", "No") != "Yes")
 			qdel(warhead)
 			return
@@ -1064,7 +1064,7 @@
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/taskbar_icon = tgui_input_list(usr, "Select an icon you want to appear on the player's taskbar.", "Taskbar Icon", GLOB.available_taskbar_icons)
+	var/taskbar_icon = tgui_input_list(usr, "选择你想显示在玩家任务栏上的图标。", "Taskbar Icon", GLOB.available_taskbar_icons)
 	if(!taskbar_icon)
 		return
 
@@ -1080,15 +1080,15 @@
 		return
 
 	if(!SSweather.map_holder)
-		to_chat(src, SPAN_WARNING("This map has no weather data."))
+		to_chat(src, SPAN_WARNING("此地图无天气数据。"))
 		return
 
 	if(SSweather.is_weather_event_starting)
-		to_chat(src, SPAN_WARNING("A weather event is already starting. Please wait."))
+		to_chat(src, SPAN_WARNING("天气事件已在启动中，请稍候。"))
 		return
 
 	if(SSweather.is_weather_event)
-		if(tgui_alert(src, "A weather event is already in progress! End it?", "Confirm", list("End", "Continue"), 10 SECONDS) == "Continue")
+		if(tgui_alert(src, "天气事件正在进行中！是否结束？", "确认", list("End", "Continue"), 10 SECONDS) == "Continue")
 			return
 		if(SSweather.is_weather_event)
 			SSweather.end_weather_event()
@@ -1096,16 +1096,16 @@
 	var/list/mappings = list()
 	for(var/datum/weather_event/typepath as anything in subtypesof(/datum/weather_event))
 		mappings[initial(typepath.name)] = typepath
-	var/chosen_name = tgui_input_list(src, "Select a weather event to start", "Weather Selector", mappings)
+	var/chosen_name = tgui_input_list(src, "选择要启动的天气事件", "Weather Selector", mappings)
 	var/chosen_typepath = mappings[chosen_name]
 	if(!chosen_typepath)
 		return
 
 	var/retval = SSweather.setup_weather_event(chosen_typepath)
 	if(!retval)
-		to_chat(src, SPAN_WARNING("Could not start the weather event at present!"))
+		to_chat(src, SPAN_WARNING("当前无法启动天气事件！"))
 		return
-	to_chat(src, SPAN_BOLDNOTICE("Success! The weather event should start shortly."))
+	to_chat(src, SPAN_BOLDNOTICE("成功！天气事件将很快开始。"))
 
 
 /client/proc/cmd_admin_create_bioscan()
@@ -1113,28 +1113,28 @@
 	set category = "Admin.Factions"
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "只有管理员可以使用此命令。")
 		return
 
-	var/choice = tgui_alert(usr, "Are you sure you want to trigger a bioscan?", "Bioscan?", list("Yes", "No"))
+	var/choice = tgui_alert(usr, "你确定要触发生物扫描吗？", "Bioscan?", list("Yes", "No"))
 	if(choice != "Yes")
 		return
 	else
-		var/faction = tgui_input_list(usr, "What faction do you wish to provide a bioscan for?", "Bioscan Faction", list("Xeno","Marine","Yautja"), 20 SECONDS)
-		var/variance = tgui_input_number(usr, "How variable do you want the scan to be? (+ or - an amount from truth)", "Variance", 2, 10, 0, 20 SECONDS)
+		var/faction = tgui_input_list(usr, "你希望为哪个阵营提供生物扫描？", "Bioscan Faction", list("Xeno","陆战队员","铁血战士"), 20 SECONDS)
+		var/variance = tgui_input_number(usr, "你希望扫描结果的误差范围是多少？（在真实值基础上增减）", "Variance", 2, 10, 0, 20 SECONDS)
 		message_admins("BIOSCAN: [key_name(usr)] admin-triggered a bioscan for [faction].")
 		GLOB.bioscan_data.get_scan_data()
 		switch(faction)
 			if("Xeno")
 				GLOB.bioscan_data.qm_bioscan(variance)
-			if("Marine")
+			if("陆战队员")
 				var/force_status = FALSE
 				if(!ares_can_interface()) //proc checks if ARES is dead or if ARES cannot do announcements
-					var/force_check = tgui_alert(usr, "ARES is currently unable to properly display and/or perform the Bioscan, do you wish to force ARES to display the bioscan?", "Display force", list("Yes", "No"), 20 SECONDS)
+					var/force_check = tgui_alert(usr, "ARES目前无法正常显示和/或执行生物扫描，你是否要强制ARES显示生物扫描？", "Display force", list("Yes", "No"), 20 SECONDS)
 					if(force_check == "Yes")
 						force_status = TRUE
 				GLOB.bioscan_data.ares_bioscan(force_status, variance)
-			if("Yautja")
+			if("铁血战士")
 				GLOB.bioscan_data.yautja_bioscan()
 
 /client/proc/admin_blurb()
@@ -1145,12 +1145,12 @@
 		return FALSE
 	var/duration = 5 SECONDS
 	var/message = "ADMIN TEST"
-	var/text_input = tgui_input_text(usr, "Announcement message", "Message Contents", message, timeout = 5 MINUTES)
+	var/text_input = tgui_input_text(usr, "通告信息", "Message Contents", message, timeout = 5 MINUTES)
 	if(!text_input)
 		return // Early return here so people don't have to go through the whole process just to cancel it.
 	message = text_input
-	duration = tgui_input_number(usr, "Set the duration of the alert in deci-seconds.", "Duration", 5 SECONDS, 5 MINUTES, 5 SECONDS, 20 SECONDS)
-	var/confirm = tgui_alert(usr, "Are you sure you wish to send '[message]' to all players for [(duration / 10)] seconds?", "Confirm", list("Yes", "No"), 20 SECONDS)
+	duration = tgui_input_number(usr, "设置警报持续时间（十分之一秒）。", "Duration", 5 SECONDS, 5 MINUTES, 5 SECONDS, 20 SECONDS)
+	var/confirm = tgui_alert(usr, "你确定要向所有玩家发送‘[message]’信息，持续[(duration / 10)]秒吗？", "确认", list("Yes", "No"), 20 SECONDS)
 	if(confirm != "Yes")
 		return FALSE
 	show_blurb(GLOB.player_list, duration, message, TRUE, "center", "center", "#bd2020", "ADMIN")
@@ -1165,7 +1165,7 @@
 		return FALSE
 
 	if(!SSticker?.mode)
-		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
+		to_chat(src, SPAN_WARNING("游戏尚未开始！"))
 		return FALSE
 
 	if(!length(GLOB.event_mob_landmarks_delayed))
@@ -1176,5 +1176,5 @@
 		spawner.handle_setup()
 		count++
 
-	to_chat(src, SPAN_NOTICE("Setup [count] landmarks."))
+	to_chat(src, SPAN_NOTICE("设置[count]个地标。"))
 	return TRUE

@@ -1,6 +1,6 @@
 /datum/tech/arc
-	name = "M540-B Armored Recon Carrier"
-	desc = "Purchase an M540-B Armored Recon Carrier, specialized in assisting groundside command. Able to be driven by Staff Officers, Executive Officers, and Commanding Officers."
+	name = "M540-B装甲侦察车"
+	desc = "购买一辆M540-B装甲侦察车，专门用于协助地面指挥。可由参谋官、副指挥官和指挥官驾驶。"
 	icon_state = "upgrade"
 
 	required_points = 5
@@ -19,7 +19,7 @@
 	var/obj/structure/machinery/cm_vending/gear/vehicle_crew/gearcomp = GLOB.VehicleGearConsole
 
 	if(gearcomp.selected_vehicle == "TANK")
-		to_chat(unlocking_mob, SPAN_WARNING ("A vehicle has already been selected for this operation."))
+		to_chat(unlocking_mob, SPAN_WARNING ("本次行动已选定载具。"))
 		return FALSE
 
 	return TRUE
